@@ -34,4 +34,12 @@ export type GetPathOperationIfExists<T extends keyof paths> = HasGetOperation<T>
   ? paths[T]['get']
   : never
 
+export type BaseAcl = {
+  canRead: boolean
+  canUpdate: boolean
+  canDelete: boolean
+}
 
+export interface ApiAclResource {
+  _acl: BaseAcl
+}

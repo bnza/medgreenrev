@@ -1,11 +1,11 @@
 import qs from 'qs';
-import type {CollectionResponse, CollectionResponses} from "~~/types";
+import type {ApiAclResource, CollectionResponse, CollectionResponses} from "~~/types";
 import useCollectionPaginationStore from "~/stores/collection-pagination";
 
 const useCollectionQueryStore = <PATH extends keyof CollectionResponses>(path: PATH) => {
   return defineStore(`collection-query:${path}`, () => {
     // Get the response type directly from our mapping
-    type ApiResponse = CollectionResponse<PATH>
+    type ApiResponse = CollectionResponse<PATH> & ApiAclResource
 
     const paginationStore = useCollectionPaginationStore(path)
     const {query: paginationQuery} = storeToRefs(paginationStore)

@@ -1,7 +1,14 @@
 import {defineVitestConfig} from '@nuxt/test-utils/config'
+import {resolve} from 'path'
 
 export default defineVitestConfig({
+  // plugins: [
+  //   vue(),
+  // ],
   test: {
+    alias: {
+      '~': resolve(__dirname, './app'),
+    },
     environment: 'nuxt',
     // You can also use 'jsdom' or 'happy-dom' for lighter tests
     environmentOptions: {
@@ -24,6 +31,11 @@ export default defineVitestConfig({
       provider: 'v8',
       reporter: ['text', 'json-summary', 'html'],
     },
-    setupFiles: ['./tests/setup.ts']
+    server: {
+      deps: {
+        inline: ['vuetify'],
+      },
+    },
+    setupFiles: ['./tests/setup.ts'],
   }
 })

@@ -10,6 +10,7 @@ const props = defineProps<{
     density="compact"
   >
     <template #prepend>
+      <lazy-navigation-back/>
       <slot name="toolbar-prepend"/>
     </template>
     <template #title

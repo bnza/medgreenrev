@@ -90,10 +90,17 @@ export default defineNuxtConfig({
       apiBaseUrl: 'http://localhost',
     },
   },
-  vite: {
-    optimizeDeps: {
-      include: ['ol > geotiff'],
-    },
+  sourcemap: {
+    client: true,
+    server: true,
   },
+  // vite: {
+  //   build: {
+  //     sourcemap: true,
+  //   },
+  //   optimizeDeps: {
+  //     include: ['ol > geotiff'],
+  //   },
+  // },
   ssr: false,
 })
