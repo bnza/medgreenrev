@@ -4,6 +4,7 @@ const DEFAULT_MESSAGE = {
   color: 'info',
   timeout: 3000,
   visible: true,
+  class: 'app-message-item'
 } as const satisfies Partial<SnackbarMessage>
 
 export const useMessagesStore = defineStore('messages', () => {

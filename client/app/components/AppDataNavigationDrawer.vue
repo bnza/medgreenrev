@@ -37,6 +37,15 @@ const {visible, dataOpened} = storeToRefs(useDataNavigationDrawerStore())
           data-testid="app-nav-drawer-li-sites"
         />
       </v-list-group>
+      <v-list-item
+        nuxt
+        to="/about"
+        router
+        exact
+        prepend-icon="fas fa-info"
+        data-testid="app-navigation-drawer-li-about"
+        title="About"
+      />
     </v-list>
   </v-navigation-drawer>
 </template>

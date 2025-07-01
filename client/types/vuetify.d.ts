@@ -13,6 +13,7 @@ export type SnackbarMessage = {
   vertical?: SnackbarProps['vertical']
   visible?: SnackbarProps['visible']
   title?: string
+  class?: string
 }
 
 export interface SortItem {
