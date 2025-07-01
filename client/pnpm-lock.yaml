@@ -11,6 +11,12 @@ importers:
       '@nuxtjs/google-fonts':
         specifier: ^3.2.0
         version: 3.2.0(magicast@0.3.5)
+      '@pinia/colada':
+        specifier: ^0.17.1
+        version: 0.17.1(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
+      '@pinia/colada-nuxt':
+        specifier: ^0.2.1
+        version: 0.2.1(@pinia/colada@0.17.1(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))))(magicast@0.3.5)
       '@pinia/nuxt':
         specifier: ^0.10
         version: 0.10.1(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
@@ -1151,6 +1157,16 @@ packages:
 
   '@petamoriken/float16@3.9.2':
     resolution: {integrity: sha512-VgffxawQde93xKxT3qap3OH+meZf7VaSB5Sqd4Rqc+FP5alWbpOyan/7tRbOAvynjpG3GpdtAuGU/NdhQpmrog==}
+
+  '@pinia/colada-nuxt@0.2.1':
+    resolution: {integrity: sha512-bYeuu6ITlNrnRTUoRXsPo+TttNDWa9MZbJ1rS/ElmzA4liPAXJD4mozJ6PS46Rb7inBFYWTDNvRfHXBuweifmg==}
+    peerDependencies:
+      '@pinia/colada': '>=0.17.0'
+
+  '@pinia/colada@0.17.1':
+    resolution: {integrity: sha512-we89QKKfLCCbhz/UOCJBYvZ5XdnbJYLDsO2prIO9W/0qMLSBRcehAi/Pm+q0wFIhvUbrAvblN3kUFxFNeyDxTw==}
+    peerDependencies:
+      pinia: ^2.2.6 || ^3.0.0
 
   '@pinia/nuxt@0.10.1':
     resolution: {integrity: sha512-xrpkKZHSmshPK6kQzboJ+TZiZ5zj73gBCI5SfiUaJkKKS9gx4B1hLEzJIjxZl0/HS5jRWrIvQ+u9ulvIRlNiow==}
@@ -6532,6 +6548,18 @@ snapshots:
       '@parcel/watcher-win32-x64': 2.5.1
 
   '@petamoriken/float16@3.9.2': {}
+
+  '@pinia/colada-nuxt@0.2.1(@pinia/colada@0.17.1(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))))(magicast@0.3.5)':
+    dependencies:
+      '@nuxt/kit': 3.17.5(magicast@0.3.5)
+      '@pinia/colada': 0.17.1(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
+    transitivePeerDependencies:
+      - magicast
+
+  '@pinia/colada@0.17.1(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))':
+    dependencies:
+      '@vue/devtools-api': 7.7.7
+      pinia: 3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
 
   '@pinia/nuxt@0.10.1(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))':
     dependencies:

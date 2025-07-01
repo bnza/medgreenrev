@@ -1,5 +1,10 @@
+export * from './api'
 export * from './globals'
+export * from './jsonld'
 export * from './next-auth'
+export * from './openapi'
+export * from './openapi-helpers'
+export * from './resources'
 export * from './vuetify'
-
+export type {ApiResourceKey} from '~/utils/consts/resources'
 

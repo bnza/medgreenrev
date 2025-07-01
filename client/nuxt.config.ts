@@ -66,7 +66,6 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   modules: [
-    'vuetify-nuxt-module',
     '@nuxt/eslint',
     [
       '@nuxtjs/google-fonts',
@@ -76,8 +75,10 @@ export default defineNuxtConfig({
         },
       },
     ],
+    '@pinia/colada-nuxt',
     '@pinia/nuxt',
     '@sidebase/nuxt-auth',
+    'vuetify-nuxt-module',
   ],
   router: {
     options: {
