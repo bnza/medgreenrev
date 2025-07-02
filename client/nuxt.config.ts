@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         getSession: {path: '/users/me', method: 'get'},
       },
       refresh: {
-        isEnabled: false,
+        isEnabled: true,
         refreshOnlyToken: false,
         endpoint: {
           path: '/token/refresh',
