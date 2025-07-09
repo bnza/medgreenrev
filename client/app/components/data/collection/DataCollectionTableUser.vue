@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type {CollectionResponses} from "~~/types";
+import type {GetCollectionPath} from "~~/types";
 
 const resourceKey = "user"
 
-// Define the specific operation path for sites as a const
-const GET_COLLECTION_OPERATION = "/api/users" as const satisfies keyof CollectionResponses
+const GET_COLLECTION_OPERATION = "/api/users" as const satisfies GetCollectionPath
 </script>
 
 <template>
-  <data-collection-table :operation="GET_COLLECTION_OPERATION">
+  <data-collection-table :path="GET_COLLECTION_OPERATION">
     <template #[`item.id`]="{ item  }">
       <navigation-resource-item
         :id="item.id"

@@ -1,15 +1,14 @@
 import type {
   ApiRequestOptions,
   GetCollectionPath,
-  GetCollectionResponseMap,
   GetItemPath,
-  GetItemResponseMap, OperationPathParams
+  OperationPathParams
 } from "~~/types";
 import {GetCollectionRequest} from "./GetCollectionRequest";
 import {BaseRequest} from "~/repositories/BaseRequest";
 import {GetItemRequest} from "~/repositories/GetItemRequest";
 
-type ConstructorParameters<
+export type ConstructorParameters<
   TCollectionPath extends GetCollectionPath,
   TItemPath extends GetItemPath
 > = {
@@ -17,19 +16,27 @@ type ConstructorParameters<
   itemPath?: TItemPath
 }
 
-export class BaseApiRepository<
+export abstract class BaseApiRepository<
   TCollectionPath extends GetCollectionPath,
   TItemPath extends GetItemPath
 > extends BaseRequest {
+  public readonly resourcePath: TCollectionPath
   private readonly collectionRequest?: GetCollectionRequest<TCollectionPath>
   private readonly itemRequest?: GetItemRequest<TItemPath>
+
+  // Abstract methods that subclasses can override to provide defaults
+  protected abstract getDefaultCollectionPath(): TCollectionPath
+  protected abstract getDefaultItemPath(): TItemPath
+
   constructor(
-    {
-      collectionPath,
-      itemPath,
-    } : ConstructorParameters<TCollectionPath, TItemPath>
-  )  {
+    params: ConstructorParameters<TCollectionPath, TItemPath> = {}
+  ) {
     super();
+
+    const collectionPath = params.collectionPath ?? this.getDefaultCollectionPath();
+    const itemPath = params.itemPath ?? this.getDefaultItemPath();
+
+    this.resourcePath = collectionPath;
     this.collectionRequest = collectionPath && new GetCollectionRequest(collectionPath);
     this.itemRequest = itemPath && new GetItemRequest(itemPath);
   }
