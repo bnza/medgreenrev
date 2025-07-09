@@ -7,6 +7,11 @@ export enum ApiRole {
   User = 'ROLE_USER',
 }
 
+export enum AclVoters {
+  HasRoleAdmin = 'HasRoleAdmin',
+  HasRoleEditor = 'HasRoleEditor',
+}
+
 export const ROLE_COLORS = {
   [ApiRole.Admin]: COLORS.error,
   [ApiRole.Editor]: COLORS.warning,
