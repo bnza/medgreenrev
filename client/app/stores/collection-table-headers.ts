@@ -1,5 +1,4 @@
-import qs from 'qs';
-import type {ApiDataResourceKey, GetCollectionPath} from "~~/types";
+import type {ApiDataResourceKey} from "~~/types";
 import {API_RESOURCE_MAP} from "~/utils/consts/resources";
 import {RESOURCE_CONFIG_MAP} from "~/utils/consts/configs";
 

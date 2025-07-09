@@ -1,17 +1,9 @@
 <script setup lang="ts">
 definePageMeta({
-  auth: false,
+  public: true,
 })
-
-const route = useRoute()
 </script>
 
 <template>
-  <lazy-data-card title="Site">
-    {{ route.params.id }}
-  </lazy-data-card>
+  <data-item-page-site />
 </template>
-
-<style scoped>
-
-</style>

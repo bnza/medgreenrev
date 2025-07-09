@@ -31,7 +31,7 @@ export default function useAppQuery<
   const RESOURCE_QUERY_KEY = {
     root: [rootKey, repository.resourcePath ] as const,
     byFilter: (query: Record<string, any>) => [...RESOURCE_QUERY_KEY.root, query ] as const,
-    byId: (params: OperationPathParams<TItem, 'get'> ) => [...RESOURCE_QUERY_KEY.root, params ] as const,
+    byId: (params: Record<string, string> ) => [...RESOURCE_QUERY_KEY.root, params ] as const,
   }
 
   const getCollectionFn = (options: ApiRequestOptions = {}) => (query: Record<string, any>) =>
@@ -61,11 +61,17 @@ export default function useAppQuery<
         filter
       }
   })}
-
+  const getItemQuery = (params: OperationPathParams<TItem, 'get'>) =>
+    defineQueryOptions({
+      key: RESOURCE_QUERY_KEY.byId(params as Record<string, string>),
+      query: () => repository.getItem(params),
+      enabled: Boolean(params),
+    })
   return {
     QUERY_KEYS,
     RESOURCE_QUERY_KEY,
     defaultPaginationFn,
+    getItemQuery,
     useGetCollectionFn
   }
 }

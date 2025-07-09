@@ -7,6 +7,7 @@ export type PathsWithMethod<Method extends keyof paths[keyof paths]> = {
 
 type OperationDetails<T extends keyof paths, Method extends keyof paths[T]> =
   paths[T][Method]
+
 export type OperationPathParams<T extends keyof paths, M extends keyof paths[T]> =
   paths[T][M] extends { parameters: { path: infer P } } ? P : never
 

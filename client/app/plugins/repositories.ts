@@ -3,7 +3,7 @@ import {Api} from "~/repositories/Api";
 export default defineNuxtPlugin({
   name: 'repositories',
   enforce: 'pre', // or 'post'
-  async setup (nuxtApp) {
+  async setup () {
     const api = new Api()
     return {
       provide: {

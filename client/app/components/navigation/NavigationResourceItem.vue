@@ -1,12 +1,15 @@
 <script setup lang="ts">
 
 import type {BaseAcl} from "~~/types";
-import {defaultBaseAcl} from "~/utils/consts/auth";
 
 defineProps<{
   appPath: string
   id: string | number
   acl: BaseAcl
+}>()
+defineEmits<{
+  (e: 'delete'): void
+  (e: 'update'): void
 }>()
 </script>
 
@@ -17,6 +20,14 @@ defineProps<{
       :id
       :app-path
       :disabled="!acl.canRead"
+    />
+    <navigation-resource-item-update
+      :disabled="!acl.canUpdate"
+      @update="$emit('update')"
+    />
+    <navigation-resource-item-delete
+      :disabled="!acl.canDelete"
+      @delete="$emit('delete')"
     />
     <slot name="append"/>
   </v-btn-group>

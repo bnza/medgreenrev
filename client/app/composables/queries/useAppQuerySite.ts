@@ -4,7 +4,7 @@ import type {RepositoryPath} from "~/repositories/Api";
 
 export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sites') {
   const repository = useNuxtApp().$api.getRepository(resourcePath)
-  const {useGetCollectionFn} = useAppQuery('/api/sites', repository)
+  const {useGetCollectionFn, getItemQuery} = useAppQuery('/api/sites', repository)
 
   const useGetCollection = useGetCollectionFn({
     onRequest: (req) => {console.log('request')},
@@ -13,5 +13,6 @@ export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sit
 
   return {
     useGetCollection,
+    getItemQuery
   }
 }

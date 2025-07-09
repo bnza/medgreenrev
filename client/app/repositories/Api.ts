@@ -2,6 +2,7 @@ import type { GetCollectionPath } from "~~/types";
 import { BaseApiRepository } from "./BaseApiRepository";
 import { SiteRepository } from "./SiteRepository";
 import { UserRepository } from "./UserRepository";
+import {SiteUserRepository} from "~/repositories/SiteUserRepository";
 
 export type RepositoryPath = keyof RepositoryMap;
 
@@ -9,6 +10,7 @@ export type RepositoryPath = keyof RepositoryMap;
 type RepositoryMap = {
   '/api/users': typeof UserRepository;
   '/api/sites': typeof SiteRepository;
+  '/api/site_user_privileges': typeof SiteUserRepository;
   // Add other repository mappings here
 };
 
@@ -16,6 +18,7 @@ type RepositoryMap = {
 type RepositoryReturnMap = {
   '/api/users': UserRepository<'/api/users', '/api/users/{id}'>;
   '/api/sites': SiteRepository<'/api/sites', '/api/sites/{id}'>;
+  '/api/site_user_privileges': SiteUserRepository<'/api/site_user_privileges', '/api/site_user_privileges/{id}'>;
   // Add other repository return types here
 };
 
@@ -53,6 +56,7 @@ export class Api {
     const repositoryMap: RepositoryMap = {
       '/api/users': UserRepository,
       '/api/sites': SiteRepository,
+      '/api/site_user_privileges': SiteUserRepository
     };
 
     // Constructor arguments mapping (optional)
