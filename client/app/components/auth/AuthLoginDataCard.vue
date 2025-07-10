@@ -22,7 +22,7 @@ const router = useRouter()
 const signInAndFeedback = async ({email, password}: Credential) => {
   pending.value = true
   try {
-    await signIn({email, password}, {callbackUrl: historyStack.current.path})
+    await signIn({email, password}, {callbackUrl: historyStack.last.path})
     addSuccess(`User ${email} successfully logged in`)
   } catch (e: unknown) {
     console.error(e)

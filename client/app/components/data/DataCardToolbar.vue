@@ -1,6 +1,16 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
+  identifier?: string
   title: string
+  showBackButton?: boolean
+}>(), {
+  showBackButton: true
+})
+
+defineSlots<{
+  'toolbar-prepend'(): any
+  'title-append'(): any
+  'toolbar-append'(): any
 }>()
 </script>
 
@@ -10,7 +20,7 @@ const props = defineProps<{
     density="compact"
   >
     <template #prepend>
-      <lazy-navigation-back/>
+      <lazy-navigation-back v-if="showBackButton"/>
       <slot name="toolbar-prepend"/>
     </template>
     <template #title

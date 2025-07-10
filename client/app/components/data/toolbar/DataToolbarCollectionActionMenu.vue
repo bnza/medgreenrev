@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
 import type {GetCollectionPath, CollectionAcl} from "~~/types";
+import DataToolbarListItemCreate from "~/components/data/toolbar/DataToolbarListItemCreate.vue";
 
 defineProps<{
   acl: CollectionAcl
@@ -19,6 +20,7 @@ defineProps<{
     >
       <v-list>
         <data-toolbar-list-item-search :path/>
+        <data-toolbar-list-item-create v-if="acl.canCreate" :path/>
       </v-list>
     </v-menu>
   </v-btn>

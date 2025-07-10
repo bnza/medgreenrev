@@ -10,6 +10,6 @@ export class GetCollectionRequest<
     super();
   }
   call(options?: ApiRequestOptions) {
-    return this._request<GetCollectionResponseMap[TPath]>(this.path, options)
+    return this._request<GetCollectionResponseMap[TPath]>(this.path, {...options, method: 'get'})
   }
 }

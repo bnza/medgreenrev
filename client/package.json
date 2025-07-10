@@ -24,6 +24,8 @@
     "@pinia/colada": "^0.17.1",
     "@pinia/colada-nuxt": "^0.2.1",
     "@pinia/nuxt": "^0.10",
+    "@regle/core": "^1.5.2",
+    "@regle/rules": "^1.5.2",
     "@sidebase/nuxt-auth": "^0.10",
     "@types/jsonld": "^1.5.15",
     "deep-object-diff": "^1.1.9",

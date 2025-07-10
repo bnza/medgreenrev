@@ -13,7 +13,7 @@ export class GetItemRequest<
     pathParams: OperationPathParams<TPath, 'get'>,
     options?: ApiRequestOptions
   ) {
-    // Replace path parameters in the URL
+    // Replace path parameters in the URL with params (see. openapi.d.ts)
     let finalPath = this.path as string;
     if (pathParams && typeof pathParams === 'object') {
       Object.entries(pathParams).forEach(([key, value]) => {
@@ -21,6 +21,6 @@ export class GetItemRequest<
       });
     }
 
-    return this._request<GetItemResponseMap[TPath]>(finalPath, options)
+    return this._request<GetItemResponseMap[TPath]>(finalPath, {...options, method: 'get'})
   }
 }

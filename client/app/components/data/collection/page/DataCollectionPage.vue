@@ -8,6 +8,7 @@ defineProps<{
 
 defineSlots<{
   default(): any
+  dialogs(): any
 }>()
 
 const {siteCollectionAcl} = useAppAuth()
@@ -26,6 +27,7 @@ const {siteCollectionAcl} = useAppAuth()
       <slot />
     </template>
     <template #append>
+      <slot name="dialogs"/>
       <data-dialog-search-site :path/>
     </template>
   </data-card>

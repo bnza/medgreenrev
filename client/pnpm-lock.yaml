@@ -20,6 +20,12 @@ importers:
       '@pinia/nuxt':
         specifier: ^0.10
         version: 0.10.1(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))
+      '@regle/core':
+        specifier: ^1.5.2
+        version: 1.5.2(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+      '@regle/rules':
+        specifier: ^1.5.2
+        version: 1.5.2(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@sidebase/nuxt-auth':
         specifier: ^0.10
         version: 0.10.1(magicast@0.3.5)(next-auth@4.21.1(next@13.5.11(@babel/core@7.27.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -1211,6 +1217,18 @@ packages:
   '@redocly/openapi-core@1.34.3':
     resolution: {integrity: sha512-3arRdUp1fNx55itnjKiUhO6t4Mf91TsrTIYINDNLAZPS0TPd5YpiXRctwjel0qqWoOOhjA34cZ3m4dksLDFUYg==}
     engines: {node: '>=18.17.0', npm: '>=9.5.0'}
+
+  '@regle/core@1.5.2':
+    resolution: {integrity: sha512-WM/VyB5k8zKiUylfMdPK0eiBSNTwFAFe7o8XVl6K5XFrGfPali+2d5i24K7cg/RyMVVi/jSwDuSRWyKyUqJRDw==}
+    peerDependencies:
+      pinia: '>=2.2.5'
+      vue: '>=3.3.0'
+    peerDependenciesMeta:
+      pinia:
+        optional: true
+
+  '@regle/rules@1.5.2':
+    resolution: {integrity: sha512-19h4qaOJcXJS7PyJeSemQavAEHMNWPCsnIOYKQWdanPNPmidQ5dOae2YYsGQN7eEPCI+toTHKAgg3rt8ZPza1g==}
 
   '@rolldown/pluginutils@1.0.0-beta.18':
     resolution: {integrity: sha512-sHG++r1AOeQrzp0Lm3w9TBuaMHty3rU4yCZ4Vd/s428dvv3eTIhuRqHPHJCBlVpZjOJ5b4ZcBPTyRCsDKFt2+w==}
@@ -6632,6 +6650,19 @@ snapshots:
       yaml-ast-parser: 0.0.43
     transitivePeerDependencies:
       - supports-color
+
+  '@regle/core@1.5.2(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      vue: 3.5.17(typescript@5.8.3)
+    optionalDependencies:
+      pinia: 3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
+
+  '@regle/rules@1.5.2(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@regle/core': 1.5.2(pinia@3.0.3(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+    transitivePeerDependencies:
+      - pinia
+      - vue
 
   '@rolldown/pluginutils@1.0.0-beta.18': {}
 

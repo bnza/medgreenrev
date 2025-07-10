@@ -2,6 +2,7 @@ import type {operations, paths} from './openapi'
 import type {HTTPMethod} from "h3";
 
 export type ApiHttpMethod = Exclude<Lowercase<HTTPMethod>, 'trace', 'put', 'head', 'options'>
+
 export type ApiRequestOptions = Parameters<typeof $fetch>[1]
 
 export type BaseAcl = {

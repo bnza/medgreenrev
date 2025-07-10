@@ -2,43 +2,52 @@ import type {
   ApiRequestOptions,
   GetCollectionPath,
   GetItemPath,
-  OperationPathParams
+  OperationPathParams,
+  PostCollectionPath
 } from "~~/types";
 import {GetCollectionRequest} from "./GetCollectionRequest";
 import {BaseRequest} from "~/repositories/BaseRequest";
 import {GetItemRequest} from "~/repositories/GetItemRequest";
+import {PostCollectionRequest} from "~/repositories/PostCollectionRequest";
 
 export type ConstructorParameters<
   TCollectionPath extends GetCollectionPath,
-  TItemPath extends GetItemPath
+  TItemPath extends GetItemPath,
+  TPostPath extends PostCollectionPath
 > = {
   collectionPath?: TCollectionPath
   itemPath?: TItemPath
+  postPath?: TPostPath
 }
 
 export abstract class BaseApiRepository<
   TCollectionPath extends GetCollectionPath,
-  TItemPath extends GetItemPath
+  TItemPath extends GetItemPath,
+  TPostPath extends PostCollectionPath = TCollectionPath
 > extends BaseRequest {
   public readonly resourcePath: TCollectionPath
   private readonly collectionRequest?: GetCollectionRequest<TCollectionPath>
   private readonly itemRequest?: GetItemRequest<TItemPath>
+  private readonly postRequest?: PostCollectionRequest<TPostPath>
 
   // Abstract methods that subclasses can override to provide defaults
   protected abstract getDefaultCollectionPath(): TCollectionPath
   protected abstract getDefaultItemPath(): TItemPath
+  protected abstract getDefaultPostPath(): TPostPath
 
   constructor(
-    params: ConstructorParameters<TCollectionPath, TItemPath> = {}
+    params: ConstructorParameters<TCollectionPath, TItemPath, TPostPath> = {}
   ) {
     super();
 
     const collectionPath = params.collectionPath ?? this.getDefaultCollectionPath();
     const itemPath = params.itemPath ?? this.getDefaultItemPath();
+    const postPath = params.postPath ?? this.getDefaultPostPath();
 
     this.resourcePath = collectionPath;
     this.collectionRequest = collectionPath && new GetCollectionRequest(collectionPath);
     this.itemRequest = itemPath && new GetItemRequest(itemPath);
+    this.postRequest = postPath && new PostCollectionRequest(postPath)
   }
 
   getCollection(options: ApiRequestOptions) {
@@ -54,5 +63,11 @@ export abstract class BaseApiRepository<
     return this.itemRequest
       ? this.itemRequest.call(pathParams, options)
       : Promise.reject('Get item is not implemented in this repository')
+  }
+
+  post(options: ApiRequestOptions) {
+    return this.postRequest
+      ? this.postRequest.call(options)
+      : Promise.reject('Post is not implemented in this repository')
   }
 }

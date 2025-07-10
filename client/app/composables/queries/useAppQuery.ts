@@ -24,13 +24,17 @@ export default function useAppQuery<
   rootKey: QueryRootKey,
   repository: BaseApiRepository<TCollection, TItem>
 ) {
+
+  const {invalidateQueries} = useQueryCache()
+
+
   const QUERY_KEYS = {
     root: [rootKey] as const,
   } as const
 
   const RESOURCE_QUERY_KEY = {
     root: [rootKey, repository.resourcePath ] as const,
-    byFilter: (query: Record<string, any>) => [...RESOURCE_QUERY_KEY.root, query ] as const,
+    byFilter: (query?: Record<string, any>) => [...RESOURCE_QUERY_KEY.root, query || {} ] as const,
     byId: (params: Record<string, string> ) => [...RESOURCE_QUERY_KEY.root, params ] as const,
   }
 
@@ -67,11 +71,25 @@ export default function useAppQuery<
       query: () => repository.getItem(params),
       enabled: Boolean(params),
     })
+
+  const usePostCollectionMutationFn = () => defineMutation(() => {
+    const mutation = useMutation({
+      mutation: (item: Record<string, any>) => repository.post({body: item}),
+      onSuccess: () => invalidateQueries({
+        key: RESOURCE_QUERY_KEY.byFilter()
+      }, "all")
+    })
+    return {
+      mutation
+    }
+  })
+
   return {
     QUERY_KEYS,
     RESOURCE_QUERY_KEY,
     defaultPaginationFn,
     getItemQuery,
-    useGetCollectionFn
+    useGetCollectionFn,
+    usePostCollectionMutationFn
   }
 }
