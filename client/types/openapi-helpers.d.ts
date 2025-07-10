@@ -1,5 +1,7 @@
 import type {paths} from './openapi'
 
+export type ApiPath = keyof paths
+
 // Generic helper type to filter paths by HTTP method
 export type PathsWithMethod<Method extends keyof paths[keyof paths]> = {
   [K in keyof paths]: paths[K] extends { [M in Method]: any } ? K : never

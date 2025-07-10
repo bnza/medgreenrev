@@ -1,7 +1,6 @@
 import type {GetCollectionPath, GetItemPath} from "~~/types";
 import {BaseApiRepository} from "./BaseApiRepository";
 
-
 export class SiteRepository<
   TCollectionPath extends GetCollectionPath = '/api/sites',
   TItemPath extends GetItemPath = '/api/sites/{id}'

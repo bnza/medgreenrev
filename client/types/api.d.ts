@@ -10,6 +10,11 @@ export type BaseAcl = {
   canDelete: boolean
 }
 
+export type CollectionAcl = {
+  canCreate: boolean
+  canExport: boolean
+}
+
 export interface ApiAclResource {
   _acl: BaseAcl
 }

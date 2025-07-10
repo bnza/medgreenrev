@@ -1,6 +1,7 @@
 import {ApiRole, ROLE_COLORS} from '~/utils/consts/auth'
 
 import {reduceAppRoles} from "~/utils/acl";
+import type {CollectionAcl} from "~~/types";
 
 export default function useAppAuth() {
   const {data, status} = useAuth()
@@ -16,10 +17,24 @@ export default function useAppAuth() {
     return isAppRole(role) ? ROLE_COLORS[role] : '#FFF'
   })
 
+  const hasRoleFn = (role: ApiRole) => roles.value.includes(role)
+  const hasRole = computed(
+    () => hasRoleFn
+  )
+  const hasRoleAdmin = computed(() => hasRoleFn(ApiRole.Admin))
+
+  const canCreateSite = computed(() => hasRoleFn(ApiRole.Admin) || hasRoleFn(ApiRole.Editor))
+
+  const siteCollectionAcl = computed<CollectionAcl>(() => ({
+    canCreate: canCreateSite.value,
+    canExport: isAuthenticated.value,
+  }))
+
   return {
     isAuthenticated,
     roles,
     roleColor,
+    siteCollectionAcl,
     userIdentifier,
   }
 }
