@@ -3,7 +3,7 @@ import type {
   DataTableComponentOptions,
   GetCollectionPath,
   GetItemPath,
-  OperationPathParams
+  OperationPathParams, PostCollectionPath
 } from "~~/types";
 import type {RepositoryPath} from "~/repositories/Api";
 import type {ApiResourcePath} from "~/utils/consts/resources";
@@ -19,10 +19,11 @@ const defaultPaginationFn = () => ({
 type QueryRootKey = RepositoryPath | ApiResourcePath
 export default function useAppQuery<
   TCollection extends GetCollectionPath,
-  TItem extends GetItemPath
+  TItem extends GetItemPath,
+  TPost extends PostCollectionPath
 >(
   rootKey: QueryRootKey,
-  repository: BaseApiRepository<TCollection, TItem>
+  repository: BaseApiRepository<TCollection, TItem, TPost>
 ) {
 
   const {invalidateQueries} = useQueryCache()

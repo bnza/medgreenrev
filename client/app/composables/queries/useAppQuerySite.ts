@@ -1,6 +1,5 @@
 import useAppQuery from "~/composables/queries/useAppQuery";
 import type {RepositoryPath} from "~/repositories/Api";
-import type {PostCollectionRequestMap, PostCollectionResponseMap} from "~~/types";
 
 
 export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sites') {
@@ -13,16 +12,6 @@ export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sit
   })
 
   const usePostCollection = usePostCollectionMutationFn()
-
-  // const usePostCollection = defineMutation(() => {
-  //   type A = PostCollectionResponseMap['/api/sites']
-  //   const mutation = useMutation({
-  //       mutation: (body: Record<string, any>) => repository.post({body}) as Promise<A>
-  //     })
-  //   return {
-  //     mutation
-  //   }
-  // })
 
   return {
     useGetCollection,

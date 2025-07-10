@@ -27,10 +27,11 @@ export function getRules<M extends ValidatedHttpMethod, P extends ValidationMeth
 
 // Implementation
 export function getRules(method: ValidatedHttpMethod, path: string) {
-  const methodRules = rules[method]
-  if (!methodRules) {
+  const isValidKey = (value: unknown): value is keyof typeof rules => typeof value === 'string' && value in rules
+  if (!isValidKey(method)) {
     throw new Error(`No validation rules found for method: ${method}`)
   }
+  const methodRules = rules[method]
 
   const pathRules = methodRules[path as keyof typeof methodRules]
   if (!pathRules) {

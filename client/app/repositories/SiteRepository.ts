@@ -6,15 +6,15 @@ export class SiteRepository<
   TItemPath extends GetItemPath = '/api/sites/{id}',
   TPostPath extends PostCollectionPath = '/api/sites'
 > extends BaseApiRepository<TCollectionPath, TItemPath, TPostPath> {
-  protected getDefaultCollectionPath(): TCollectionPath {
+  protected getDefaultCollectionPath() {
     return '/api/sites' as TCollectionPath;
   }
 
-  protected getDefaultItemPath(): TItemPath {
+  protected getDefaultItemPath(){
     return '/api/sites/{id}' as TItemPath;
   }
 
-  protected getDefaultPostPath(): TPostPath {
+  protected getDefaultPostPath() {
     return '/api/sites' as TPostPath;
   }
 }

@@ -1,6 +1,6 @@
 import type {RegleComputedRules} from "@regle/core";
 import {required} from "@regle/rules";
-import type {PatchItemRequestMap, PostCollectionRequestMap, ValidationRequestBody} from "~~/types";
+import type {ValidationRequestBody} from "~~/types";
 
 export const create = computed(
   () => ({

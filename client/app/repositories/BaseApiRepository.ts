@@ -23,7 +23,7 @@ export type ConstructorParameters<
 export abstract class BaseApiRepository<
   TCollectionPath extends GetCollectionPath,
   TItemPath extends GetItemPath,
-  TPostPath extends PostCollectionPath = TCollectionPath
+  TPostPath extends PostCollectionPath
 > extends BaseRequest {
   public readonly resourcePath: TCollectionPath
   private readonly collectionRequest?: GetCollectionRequest<TCollectionPath>
@@ -33,7 +33,7 @@ export abstract class BaseApiRepository<
   // Abstract methods that subclasses can override to provide defaults
   protected abstract getDefaultCollectionPath(): TCollectionPath
   protected abstract getDefaultItemPath(): TItemPath
-  protected abstract getDefaultPostPath(): TPostPath
+  protected abstract getDefaultPostPath(): TPostPath | undefined
 
   constructor(
     params: ConstructorParameters<TCollectionPath, TItemPath, TPostPath> = {}

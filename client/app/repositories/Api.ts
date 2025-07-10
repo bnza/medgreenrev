@@ -4,16 +4,7 @@ import { SiteRepository } from "./SiteRepository";
 import { UserRepository } from "./UserRepository";
 import {SiteUserRepository} from "~/repositories/SiteUserRepository";
 
-export type RepositoryPath = keyof RepositoryMap;
-
-// Define the repository map
-type RepositoryMap = {
-  '/api/users': typeof UserRepository;
-  '/api/sites': typeof SiteRepository;
-  '/api/site_user_privileges': typeof SiteUserRepository;
-  // Add other repository mappings here
-};
-
+export type RepositoryPath = keyof RepositoryReturnMap;
 // Define specific return types for each repository
 type RepositoryReturnMap = {
   '/api/users': UserRepository<'/api/users', '/api/users/{id}'>;
@@ -22,29 +13,14 @@ type RepositoryReturnMap = {
   // Add other repository return types here
 };
 
-// Define constructor arguments map (optional)
-type ConstructorArgsMap = {
-  // '/api/users'?: {
-  //   collectionPath?: '/api/users';
-  //   itemPath?: '/api/users/{id}';
-  // };
-  // '/api/sites'?: {
-  //   collectionPath?: '/api/sites';
-  //   itemPath?: '/api/sites/{id}';
-  // };
-  // Add other constructor arguments as needed
-};
-
 export class Api {
   // Create a cache for repository instances
-  private repositoryCache = new Map<GetCollectionPath, BaseApiRepository<any, any>>();
+  private repositoryCache = new Map<GetCollectionPath, BaseApiRepository<any, any, any>>();
 
   // Type-safe repository factory function
   getRepository<T extends GetCollectionPath>(
     path: T
-  ): T extends keyof RepositoryReturnMap
-    ? RepositoryReturnMap[T]
-    : never {
+  ) {
 
     // Check cache first
     const cached = this.repositoryCache.get(path);
@@ -53,26 +29,24 @@ export class Api {
     }
 
     // Repository mapping
-    const repositoryMap: RepositoryMap = {
+    const repositoryMap = {
       '/api/users': UserRepository,
       '/api/sites': SiteRepository,
       '/api/site_user_privileges': SiteUserRepository
     };
 
     // Constructor arguments mapping (optional)
-    const constructorArgsMap: ConstructorArgsMap = {
+    const constructorArgsMap = {
       // '/api/users': {
-      //   collectionPath: '/api/users',
-      //   itemPath: '/api/users/{id}',
-      // },
-      // '/api/sites': {
-      //   collectionPath: '/api/sites',
-      //   itemPath: '/api/sites/{id}',
+      //   collectionPath: '/api/sites/{siteId}/users',
+      //   itemPath: '/api/sites/{siteId}/users/{id}',
+      //   postPath: '/api/users/
+      //   patchPath: '/api/users/{id}
       // },
     };
 
     // Get the repository constructor
-    const RepositoryClass = repositoryMap[path as keyof RepositoryMap];
+    const RepositoryClass = repositoryMap[path as keyof typeof repositoryMap];
 
     // Only instantiate if the repository class exists in the map
     if (!RepositoryClass) {
@@ -80,12 +54,13 @@ export class Api {
     }
 
     // Use constructor arguments if available, otherwise use empty constructor
-    const constructorArgs = constructorArgsMap[path as keyof ConstructorArgsMap];
-    const instance = constructorArgs ? new RepositoryClass(constructorArgs) : new RepositoryClass();
+    const constructorArgs = constructorArgsMap[path as keyof typeof constructorArgsMap];
+
+    const instance = new RepositoryClass(constructorArgs)
 
     // Cache the instance
     this.repositoryCache.set(path, instance);
 
-    return instance as T extends keyof RepositoryReturnMap ? RepositoryReturnMap[T] : never;
+    return instance
   }
 }
