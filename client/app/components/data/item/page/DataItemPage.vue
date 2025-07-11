@@ -15,7 +15,7 @@ defineSlots<{
 }>()
 
 const {routeId} = useAppRoute()
-const {getItemQuery} = useRepositoryQuery(props.path)
+const {getItemQuery} = useNuxtApp().$queryFactory.getQuery(props.path)
 const {data: item, status, error} = useQuery(getItemQuery, () => ({id: routeId}))
 
 const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {

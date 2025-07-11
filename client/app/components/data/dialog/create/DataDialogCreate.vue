@@ -17,7 +17,7 @@ defineSlots<{
 }>()
 
 const {isCreateDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
-const {usePostCollection} = useRepositoryQuery(props.path)
+const {usePostCollection} = useNuxtApp().$queryFactory.getQuery(props.path)
 const {addSuccess} = useMessagesStore()
 
 const a = usePostCollection()

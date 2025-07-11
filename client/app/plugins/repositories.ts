@@ -1,4 +1,4 @@
-import {Api} from "~/repositories/Api";
+import {Api} from "~/api/Api";
 
 export default defineNuxtPlugin({
   name: 'repositories',

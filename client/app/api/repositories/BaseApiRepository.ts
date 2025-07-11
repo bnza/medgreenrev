@@ -5,10 +5,10 @@ import type {
   OperationPathParams,
   PostCollectionPath
 } from "~~/types";
-import {GetCollectionRequest} from "./GetCollectionRequest";
-import {BaseRequest} from "~/repositories/BaseRequest";
-import {GetItemRequest} from "~/repositories/GetItemRequest";
-import {PostCollectionRequest} from "~/repositories/PostCollectionRequest";
+import {GetCollectionRequest} from "~/api/requests/GetCollectionRequest";
+import {BaseRequest} from "~/api/requests//BaseRequest";
+import {GetItemRequest} from "~/api/requests//GetItemRequest";
+import {PostCollectionRequest} from "~/api/requests//PostCollectionRequest";
 
 export type ConstructorParameters<
   TCollectionPath extends GetCollectionPath,

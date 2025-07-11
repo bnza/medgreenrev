@@ -5,9 +5,9 @@ import type {
   GetItemPath,
   OperationPathParams, PostCollectionPath
 } from "~~/types";
-import type {RepositoryPath} from "~/repositories/Api";
+import type {RepositoryPath} from "~/api/Api";
 import type {ApiResourcePath} from "~/utils/consts/resources";
-import type {BaseApiRepository} from "~/repositories/BaseApiRepository";
+import type {BaseApiRepository} from "~/api/repositories/BaseApiRepository";
 
 const defaultPaginationFn = () => ({
   page: 1,

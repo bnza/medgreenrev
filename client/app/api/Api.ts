@@ -1,8 +1,8 @@
 import type { GetCollectionPath } from "~~/types";
-import { BaseApiRepository } from "./BaseApiRepository";
-import { SiteRepository } from "./SiteRepository";
-import { UserRepository } from "./UserRepository";
-import {SiteUserRepository} from "~/repositories/SiteUserRepository";
+import { BaseApiRepository } from "~/api/repositories/BaseApiRepository";
+import { SiteRepository } from "~/api/repositories/SiteRepository";
+import { UserRepository } from "~/api/repositories/UserRepository";
+import {SiteUserRepository} from "~/api/repositories/SiteUserRepository";
 
 export type RepositoryPath = keyof RepositoryReturnMap;
 // Define specific return types for each repository

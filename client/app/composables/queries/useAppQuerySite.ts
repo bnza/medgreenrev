@@ -1,5 +1,5 @@
 import useAppQuery from "~/composables/queries/useAppQuery";
-import type {RepositoryPath} from "~/repositories/Api";
+import type {RepositoryPath} from "~/api/Api";
 
 
 export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sites') {
