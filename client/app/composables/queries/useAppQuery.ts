@@ -1,9 +1,9 @@
 import type {
   ApiRequestOptions,
-  DataTableComponentOptions,
+  DataTableComponentOptions, DeleteItemPath,
   GetCollectionPath,
   GetItemPath,
-  OperationPathParams, PostCollectionPath
+  OperationPathParams, PatchItemPath, PostCollectionPath
 } from "~~/types";
 import type {RepositoryPath} from "~/api/Api";
 import type {ApiResourcePath} from "~/utils/consts/resources";
@@ -20,10 +20,12 @@ type QueryRootKey = RepositoryPath | ApiResourcePath
 export default function useAppQuery<
   TCollection extends GetCollectionPath,
   TItem extends GetItemPath,
-  TPost extends PostCollectionPath
+  TPost extends PostCollectionPath,
+  TDelete extends DeleteItemPath,
+  TPatch extends PatchItemPath,
 >(
   rootKey: QueryRootKey,
-  repository: BaseApiRepository<TCollection, TItem, TPost>
+  repository: BaseApiRepository<TCollection, TItem, TPost, TDelete, TPatch>
 ) {
 
   const {invalidateQueries} = useQueryCache()
@@ -66,6 +68,7 @@ export default function useAppQuery<
         filter
       }
   })}
+
   const getItemQuery = (params: OperationPathParams<TItem, 'get'>) =>
     defineQueryOptions({
       key: RESOURCE_QUERY_KEY.byId(params as Record<string, string>),
@@ -75,7 +78,7 @@ export default function useAppQuery<
 
   const usePostCollectionMutationFn = () => defineMutation(() => {
     const mutation = useMutation({
-      mutation: (item: Record<string, any>) => repository.post({body: item}),
+      mutation: (item: Record<string, any>) => repository.create({body: item}),
       onSuccess: () => invalidateQueries({
         key: RESOURCE_QUERY_KEY.byFilter()
       }, "all")

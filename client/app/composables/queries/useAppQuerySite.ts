@@ -1,9 +1,10 @@
 import useAppQuery from "~/composables/queries/useAppQuery";
 import type {RepositoryPath} from "~/api/Api";
+import type {SiteRepository} from "~/api/repositories/SiteRepository";
 
 
 export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sites') {
-  const repository = useNuxtApp().$api.getRepository(resourcePath)
+  const repository = useNuxtApp().$api.getRepository(resourcePath) as SiteRepository
   const {useGetCollectionFn, getItemQuery, usePostCollectionMutationFn} = useAppQuery('/api/sites', repository)
 
   const useGetCollection = useGetCollectionFn({

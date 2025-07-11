@@ -1,73 +1,98 @@
+import {BaseRequest} from "./BaseRequest";
 import type {
-  ApiRequestOptions,
+  ApiPath,
+  ApiRequestOptions, DeleteItemPath, DeleteItemResponseMap,
   GetCollectionPath,
-  GetItemPath,
-  OperationPathParams,
-  PostCollectionPath
+  GetCollectionResponseMap,
+  GetItemPath, GetItemResponseMap, OperationPathParams, PatchItemPath, PostCollectionPath, PostCollectionResponseMap,
 } from "~~/types";
-import {GetCollectionRequest} from "~/api/requests/GetCollectionRequest";
-import {BaseRequest} from "~/api/requests//BaseRequest";
-import {GetItemRequest} from "~/api/requests//GetItemRequest";
-import {PostCollectionRequest} from "~/api/requests//PostCollectionRequest";
 
-export type ConstructorParameters<
-  TCollectionPath extends GetCollectionPath,
-  TItemPath extends GetItemPath,
-  TPostPath extends PostCollectionPath
-> = {
-  collectionPath?: TCollectionPath
-  itemPath?: TItemPath
-  postPath?: TPostPath
+export type DynamicRepositoryConfig = {
+  collectionPath?: string
+  itemPath?: string
+  postPath?: string
+  deletePath?: string
+  patchPath?: string
 }
 
 export abstract class BaseApiRepository<
-  TCollectionPath extends GetCollectionPath,
-  TItemPath extends GetItemPath,
-  TPostPath extends PostCollectionPath
+  CollectionPath extends GetCollectionPath,
+  ItemPath extends GetItemPath,
+  PostPath extends PostCollectionPath | never = never,
+  DeletePath extends DeleteItemPath | never = never,
+  PatchPath extends PatchItemPath | never = never
 > extends BaseRequest {
-  public readonly resourcePath: TCollectionPath
-  private readonly collectionRequest?: GetCollectionRequest<TCollectionPath>
-  private readonly itemRequest?: GetItemRequest<TItemPath>
-  private readonly postRequest?: PostCollectionRequest<TPostPath>
-
-  // Abstract methods that subclasses can override to provide defaults
-  protected abstract getDefaultCollectionPath(): TCollectionPath
-  protected abstract getDefaultItemPath(): TItemPath
-  protected abstract getDefaultPostPath(): TPostPath | undefined
+  public readonly resourcePath: string
+  protected readonly collectionPath: string
+  protected readonly itemPath: string
+  protected readonly postPath?: string
+  protected readonly deletePath?: string
+  protected readonly patchPath?: string
 
   constructor(
-    params: ConstructorParameters<TCollectionPath, TItemPath, TPostPath> = {}
+    defaultPaths: {
+      collectionPath: CollectionPath
+      itemPath?: ItemPath
+      postPath?: PostPath
+      deletePath?: DeletePath
+      patchPath?: PatchPath
+    },
+    runtimeConfig?: DynamicRepositoryConfig
   ) {
     super();
 
-    const collectionPath = params.collectionPath ?? this.getDefaultCollectionPath();
-    const itemPath = params.itemPath ?? this.getDefaultItemPath();
-    const postPath = params.postPath ?? this.getDefaultPostPath();
 
-    this.resourcePath = collectionPath;
-    this.collectionRequest = collectionPath && new GetCollectionRequest(collectionPath);
-    this.itemRequest = itemPath && new GetItemRequest(itemPath);
-    this.postRequest = postPath && new PostCollectionRequest(postPath)
+    this.collectionPath = runtimeConfig?.collectionPath || defaultPaths.collectionPath;
+    this.resourcePath = this.collectionPath;
+    this.itemPath = runtimeConfig?.itemPath || defaultPaths.itemPath || `${this.collectionPath}/{id}`;
+    this.postPath = runtimeConfig?.postPath || defaultPaths.postPath;
+    this.deletePath = runtimeConfig?.deletePath || defaultPaths.deletePath;
+    this.patchPath = runtimeConfig?.patchPath || defaultPaths.patchPath;
   }
 
-  getCollection(options: ApiRequestOptions) {
-    return this.collectionRequest
-      ? this.collectionRequest.call(options)
-      : Promise.reject('Get collection is not implemented in this repository')
-  }
-
-  getItem(
-    pathParams: OperationPathParams<TItemPath, 'get'>,
-    options?: ApiRequestOptions
+  protected getItemPath<P extends ApiPath, M extends 'get' | 'patch' | 'delete'>(
+    path: P,
+    method: M,
+    pathParams: OperationPathParams<P, M>
   ) {
-    return this.itemRequest
-      ? this.itemRequest.call(pathParams, options)
-      : Promise.reject('Get item is not implemented in this repository')
+    let finalPath = path as string;
+    if (pathParams && typeof pathParams === 'object') {
+      Object.entries(pathParams).forEach(([key, value]) => {
+        finalPath = finalPath.replace(`{${key}}`, String(value));
+      });
+    }
+    return finalPath
   }
 
-  post(options: ApiRequestOptions) {
-    return this.postRequest
-      ? this.postRequest.call(options)
+  getCollection(options?: ApiRequestOptions) {
+    return this._request<GetCollectionResponseMap[CollectionPath]>(this.collectionPath, {...options, method: 'get'})
+  }
+
+  getItem(pathParams: OperationPathParams<ItemPath, 'get'>, options?: ApiRequestOptions) {
+    return this._request<GetItemResponseMap[ItemPath]>(
+      this.getItemPath(this.itemPath as ItemPath, 'get', pathParams),
+      {...options, method: 'get'})
+  }
+
+  create(options?: ApiRequestOptions) {
+    return this.postPath
+      ? this._request<PostCollectionResponseMap[PostPath]>(this.postPath, {...options, method: 'post'})
       : Promise.reject('Post is not implemented in this repository')
+  }
+
+  delete(pathParams: OperationPathParams<DeletePath, 'delete'>, options?: ApiRequestOptions) {
+    return this.deletePath
+      ? this._request<DeleteItemResponseMap[DeletePath]>(
+        this.getItemPath(this.deletePath as DeletePath, 'delete', pathParams),
+        {...options, method: 'delete'})
+      : Promise.reject('Delete is not implemented in this repository')
+  }
+
+  patch(pathParams: OperationPathParams<PatchPath, 'patch'>, options?: ApiRequestOptions) {
+    return this.patchPath
+      ? this._request<DeleteItemResponseMap[PatchPath]>(
+        this.getItemPath(this.patchPath as PatchPath, 'patch', pathParams),
+        {...options, method: 'patch'})
+      : Promise.reject('Patch is not implemented in this repository')
   }
 }

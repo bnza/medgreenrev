@@ -1,27 +1,26 @@
 import type { GetCollectionPath } from "~~/types";
 import { BaseApiRepository } from "~/api/repositories/BaseApiRepository";
-import { SiteRepository } from "~/api/repositories/SiteRepository";
 import { UserRepository } from "~/api/repositories/UserRepository";
-import {SiteUserRepository} from "~/api/repositories/SiteUserRepository";
+import { SiteRepository } from "~/api/repositories/SiteRepository";
+import { SiteUserPrivilegeRepository } from "~/api/repositories/SiteUserPrivilegeRepository";
 
 export type RepositoryPath = keyof RepositoryReturnMap;
 // Define specific return types for each repository
 type RepositoryReturnMap = {
-  '/api/users': UserRepository<'/api/users', '/api/users/{id}'>;
-  '/api/sites': SiteRepository<'/api/sites', '/api/sites/{id}'>;
-  '/api/site_user_privileges': SiteUserRepository<'/api/site_user_privileges', '/api/site_user_privileges/{id}'>;
+  '/api/users': UserRepository;
+  '/api/sites': SiteRepository;
+  '/api/site_user_privileges': SiteUserPrivilegeRepository;
+  '/api/sites/{siteId}/user_privileges': SiteUserPrivilegeRepository;
   // Add other repository return types here
 };
 
 export class Api {
   // Create a cache for repository instances
-  private repositoryCache = new Map<GetCollectionPath, BaseApiRepository<any, any, any>>();
+  private repositoryCache = new Map<GetCollectionPath, BaseApiRepository<any, any, any, any, any>>();
 
-  // Type-safe repository factory function
   getRepository<T extends GetCollectionPath>(
     path: T
   ) {
-
     // Check cache first
     const cached = this.repositoryCache.get(path);
     if (cached) {
@@ -32,16 +31,21 @@ export class Api {
     const repositoryMap = {
       '/api/users': UserRepository,
       '/api/sites': SiteRepository,
-      '/api/site_user_privileges': SiteUserRepository
+      '/api/site_user_privileges': SiteUserPrivilegeRepository,
+      '/api/sites/{siteId}/user_privileges': SiteUserPrivilegeRepository
     };
 
-    // Constructor arguments mapping (optional)
+    // Constructor arguments mapping (for dynamic paths)
     const constructorArgsMap = {
+      '/api/sites/{siteId}/user_privileges': {
+        collectionPath: '/api/sites/{siteId}/user_privileges',
+        itemPath: '/api/sites/{siteId}/user_privileges/{id}',
+      }
+      // Example: Override paths for specific repositories
       // '/api/users': {
       //   collectionPath: '/api/sites/{siteId}/users',
       //   itemPath: '/api/sites/{siteId}/users/{id}',
-      //   postPath: '/api/users/
-      //   patchPath: '/api/users/{id}
+      //   postPath: '/api/users'
       // },
     };
 

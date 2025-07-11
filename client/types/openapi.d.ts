@@ -62,10 +62,18 @@ export interface paths {
         get: operations["api_sites_id_get"];
         put?: never;
         post?: never;
-        delete?: never;
+        /**
+         * Removes the Site resource.
+         * @description Removes the Site resource.
+         */
+        delete: operations["api_sites_id_delete"];
         options?: never;
         head?: never;
-        patch?: never;
+        /**
+         * Updates the Site resource.
+         * @description Updates the Site resource.
+         */
+        patch: operations["api_sites_id_patch"];
         trace?: never;
     };
     "/api/site_user_privileges": {
@@ -118,6 +126,46 @@ export interface paths {
          * @description Updates the SiteUserPrivilege resource.
          */
         patch: operations["api_site_user_privileges_id_patch"];
+        trace?: never;
+    };
+    "/api/sites/{siteId}/user_privileges": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieves the collection of SiteUserPrivilege resources.
+         * @description Retrieves the collection of SiteUserPrivilege resources.
+         */
+        get: operations["api_sites_siteIduser_privileges_get_collection"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/sites/{siteId}/user_privileges/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieves a SiteUserPrivilege resource.
+         * @description Retrieves a SiteUserPrivilege resource.
+         */
+        get: operations["api_sites_siteIduser_privileges_id_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/api/users": {
@@ -310,6 +358,20 @@ export interface components {
             readonly type?: string;
             readonly description?: string | null;
         };
+        Site: {
+            readonly id?: number & string;
+            code?: string;
+            name?: string;
+            description?: string | null;
+            /** Format: date-time */
+            createdAt?: string;
+            /**
+             * Format: iri-reference
+             * @example https://example.com/
+             */
+            createdBy?: string | null;
+            userPrivileges?: string[];
+        };
         "Site.jsonld": {
             readonly id?: number & string;
             code?: string;
@@ -324,7 +386,7 @@ export interface components {
             createdBy?: string | null;
             userPrivileges?: string[];
         };
-        "Site.jsonld-site.read": {
+        "Site.jsonld-site.acl.read": {
             readonly "@context"?: string | ({
                 "@vocab": string;
                 /** @enum {string} */
@@ -338,9 +400,9 @@ export interface components {
             code?: string;
             name?: string;
             description?: string | null;
-            createdBy?: components["schemas"]["User.jsonld-site.read"] | null;
+            createdBy?: components["schemas"]["User.jsonld-site.acl.read"] | null;
         };
-        "Site.jsonld-site_user_privilege.read": {
+        "Site.jsonld-site_user_privilege.acl.read": {
             readonly "@context"?: string | ({
                 "@vocab": string;
                 /** @enum {string} */
@@ -355,6 +417,24 @@ export interface components {
             name?: string;
         };
         "SiteUserPrivilege-site_user_privilege.update": {
+            /**
+             * @default 0
+             * @example 0
+             */
+            privilege: number;
+        };
+        "SiteUserPrivilege.jsonld-site_user_privilege.acl.read": {
+            readonly "@context"?: string | ({
+                "@vocab": string;
+                /** @enum {string} */
+                hydra: "http://www.w3.org/ns/hydra/core#";
+            } & {
+                [key: string]: unknown;
+            });
+            readonly "@id"?: string;
+            readonly "@type"?: string;
+            user?: components["schemas"]["User.jsonld-site_user_privilege.acl.read"];
+            site?: components["schemas"]["Site.jsonld-site_user_privilege.acl.read"];
             /**
              * @default 0
              * @example 0
@@ -378,24 +458,6 @@ export interface components {
              */
             privilege: number;
         };
-        "SiteUserPrivilege.jsonld-site_user_privilege.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            user?: components["schemas"]["User.jsonld-site_user_privilege.read"];
-            site?: components["schemas"]["Site.jsonld-site_user_privilege.read"];
-            /**
-             * @default 0
-             * @example 0
-             */
-            privilege: number;
-        };
         "User-user.change-password": {
             plainPassword: string | null;
         };
@@ -404,7 +466,7 @@ export interface components {
             plainPassword: string | null;
             repeatPassword: string | null;
         };
-        "User.jsonld-site.read": {
+        "User.jsonld-site.acl.read": {
             readonly "@context"?: string | ({
                 "@vocab": string;
                 /** @enum {string} */
@@ -418,7 +480,7 @@ export interface components {
             readonly id?: string | null;
             readonly userIdentifier?: string;
         };
-        "User.jsonld-site_user_privilege.read": {
+        "User.jsonld-site_user_privilege.acl.read": {
             readonly "@context"?: string | ({
                 "@vocab": string;
                 /** @enum {string} */
@@ -432,7 +494,7 @@ export interface components {
             readonly id?: string | null;
             readonly userIdentifier?: string;
         };
-        "User.jsonld-user.read": {
+        "User.jsonld-user.acl.read": {
             readonly "@context"?: string | ({
                 "@vocab": string;
                 /** @enum {string} */
@@ -455,6 +517,29 @@ export interface components {
              */
             roles: string[];
             readonly userIdentifier?: string;
+        };
+        "User.jsonld-user.me.read": {
+            readonly "@context"?: string | ({
+                "@vocab": string;
+                /** @enum {string} */
+                hydra: "http://www.w3.org/ns/hydra/core#";
+            } & {
+                [key: string]: unknown;
+            });
+            readonly "@id"?: string;
+            readonly "@type"?: string;
+            /** Format: uuid */
+            readonly id?: string | null;
+            email?: string;
+            /**
+             * @default [
+             *       "ROLE_USER"
+             *     ]
+             * @example [
+             *       "ROLE_USER"
+             *     ]
+             */
+            roles: string[];
         };
         "User.jsonld-user.write": {
             /** Format: email */
@@ -537,7 +622,7 @@ export interface operations {
                 };
                 content: {
                     "application/ld+json": {
-                        member: components["schemas"]["Site.jsonld-site.read"][];
+                        member: components["schemas"]["Site.jsonld-site.acl.read"][];
                         totalItems?: number;
                         /** @example {
                          *       "@id": "string",
@@ -596,7 +681,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["Site.jsonld-site.read"];
+                    "application/ld+json": components["schemas"]["Site.jsonld-site.acl.read"];
                 };
             };
             /** @description Invalid input */
@@ -641,7 +726,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["Site.jsonld-site.read"];
+                    "application/ld+json": components["schemas"]["Site.jsonld-site.acl.read"];
                 };
             };
             /** @description Not found */
@@ -653,6 +738,121 @@ export interface operations {
                     "application/ld+json": components["schemas"]["Error.jsonld"];
                     "application/problem+json": components["schemas"]["Error"];
                     "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    api_sites_id_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Site identifier */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Site resource deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    api_sites_id_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Site identifier */
+                id: string;
+            };
+            cookie?: never;
+        };
+        /** @description The updated Site resource */
+        requestBody: {
+            content: {
+                "application/merge-patch+json": components["schemas"]["Site"];
+            };
+        };
+        responses: {
+            /** @description Site resource updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Site.jsonld-site.acl.read"];
+                };
+            };
+            /** @description Invalid input */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description An error occurred */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
+                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
+                    "application/json": components["schemas"]["ConstraintViolation-json"];
                 };
             };
         };
@@ -678,7 +878,7 @@ export interface operations {
                 };
                 content: {
                     "application/ld+json": {
-                        member: components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.read"][];
+                        member: components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"][];
                         totalItems?: number;
                         /** @example {
                          *       "@id": "string",
@@ -715,6 +915,17 @@ export interface operations {
                     };
                 };
             };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
         };
     };
     api_site_user_privileges_post: {
@@ -737,11 +948,22 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.read"];
+                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
                 };
             };
             /** @description Invalid input */
             400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -782,7 +1004,18 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.read"];
+                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
                 };
             };
             /** @description Not found */
@@ -864,7 +1097,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.read"];
+                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
                 };
             };
             /** @description Invalid input */
@@ -913,6 +1146,127 @@ export interface operations {
             };
         };
     };
+    api_sites_siteIduser_privileges_get_collection: {
+        parameters: {
+            query?: {
+                /** @description The collection page number */
+                page?: number;
+                /** @description The number of items per page */
+                itemsPerPage?: number;
+            };
+            header?: never;
+            path: {
+                /** @description SiteUserPrivilege identifier */
+                siteId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description SiteUserPrivilege collection */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": {
+                        member: components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"][];
+                        totalItems?: number;
+                        /** @example {
+                         *       "@id": "string",
+                         *       "type": "string",
+                         *       "first": "string",
+                         *       "last": "string",
+                         *       "previous": "string",
+                         *       "next": "string"
+                         *     } */
+                        view?: {
+                            /** Format: iri-reference */
+                            "@id"?: string;
+                            "@type"?: string;
+                            /** Format: iri-reference */
+                            first?: string;
+                            /** Format: iri-reference */
+                            last?: string;
+                            /** Format: iri-reference */
+                            previous?: string;
+                            /** Format: iri-reference */
+                            next?: string;
+                        };
+                        search?: {
+                            "@type"?: string;
+                            template?: string;
+                            variableRepresentation?: string;
+                            mapping?: {
+                                "@type"?: string;
+                                variable?: string;
+                                property?: string | null;
+                                required?: boolean;
+                            }[];
+                        };
+                    };
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    api_sites_siteIduser_privileges_id_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description SiteUserPrivilege identifier */
+                siteId: string;
+                /** @description SiteUserPrivilege identifier */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description SiteUserPrivilege resource */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/ld+json": components["schemas"]["Error.jsonld"];
+                    "application/problem+json": components["schemas"]["Error"];
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
     api_users_get_collection: {
         parameters: {
             query?: {
@@ -934,7 +1288,7 @@ export interface operations {
                 };
                 content: {
                     "application/ld+json": {
-                        member: components["schemas"]["User.jsonld-user.read"][];
+                        member: components["schemas"]["User.jsonld-user.acl.read"][];
                         totalItems?: number;
                         /** @example {
                          *       "@id": "string",
@@ -1004,7 +1358,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["User.jsonld-user.read"];
+                    "application/ld+json": components["schemas"]["User.jsonld-user.acl.read"];
                 };
             };
             /** @description Invalid input */
@@ -1057,7 +1411,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["User.jsonld-user.read"];
+                    "application/ld+json": components["schemas"]["User.jsonld-user.me.read"];
                 };
             };
             /** @description Forbidden */
@@ -1160,7 +1514,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/ld+json": components["schemas"]["User.jsonld-user.read"];
+                    "application/ld+json": components["schemas"]["User.jsonld-user.acl.read"];
                 };
             };
             /** @description Forbidden */

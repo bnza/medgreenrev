@@ -18,6 +18,8 @@ const pathToRepositoryMap: Record<GetCollectionPath | GetItemPath, RepositoryPat
   "/api/users/me": "/api/users",
   "/api/site_user_privileges": "/api/site_user_privileges",
   "/api/site_user_privileges/{id}": "/api/site_user_privileges",
+  "/api/sites/{siteId}/user_privileges": "/api/site_user_privileges",
+  "/api/sites/{siteId}/user_privileges/{id}": "/api/site_user_privileges",
 } as const;
 
 type QueryPath = keyof typeof queryComposableMap;

@@ -1,22 +1,13 @@
-import type {GetCollectionPath, GetItemPath, OperationDetails, PostCollectionPath} from "~~/types";
-import {BaseApiRepository} from "./BaseApiRepository";
-
-
-export class UserRepository<
-  TCollectionPath extends GetCollectionPath = '/api/users',
-  TItemPath extends GetItemPath = '/api/users/{id}',
-  TPostPath extends PostCollectionPath = '/api/users'
-> extends BaseApiRepository<TCollectionPath, TItemPath, TPostPath> {
-  protected getDefaultCollectionPath() {
-    return '/api/users' as TCollectionPath;
-  }
-
-  protected getDefaultItemPath(){
-    return '/api/users/{id}' as TItemPath;
-  }
-
-  protected getDefaultPostPath() {
-    return undefined;
+import type {DynamicRepositoryConfig} from "./BaseApiRepository";
+import type { OperationDetails } from "~~/types";
+import { createRepository} from "./RepositoryFactory";
+export class UserRepository extends createRepository({
+  collectionPath: '/api/users',
+  itemPath: '/api/users/{id}',
+  postPath: '/api/users',
+}) {
+  constructor(customPaths?: DynamicRepositoryConfig) {
+    super(customPaths);
   }
 
   getUsersMe() {

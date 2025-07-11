@@ -6,7 +6,12 @@ type OperationDetails<T extends keyof paths, Method extends keyof paths[T]> =
   paths[T][Method]
 
 export type OperationPathParams<T extends keyof paths, M extends keyof paths[T]> =
-  paths[T][M] extends { parameters: { path: infer P } } ? P : never
+  T extends keyof paths
+    ? paths[T][M] extends { parameters: { path: infer P } }
+      ? P
+      : never
+    : never
+
 
 // Check if path parameters contain an 'id' property
 type HasIdInPathParams<T> = T extends { id: any } ? true : false
@@ -32,6 +37,14 @@ export type PostCollectionPath = {
 export type PatchItemPath = {
   [K in keyof paths]: paths[K] extends { patch: any }
     ? paths[K]['patch'] extends { responses: { 200: { content: { 'application/ld+json': infer Response } } } }
+      ? K
+      : never
+    : never
+}[keyof paths]
+
+export type DeleteItemPath = {
+  [K in keyof paths]: paths[K] extends { delete: any }
+    ? paths[K]['delete'] extends { responses: { 204: any } }
       ? K
       : never
     : never
@@ -72,3 +85,6 @@ export type GetItemResponseMap = {
   [K in GetItemPath]: paths[K]['get']['responses']['200']['content']['application/ld+json']
 }
 
+export type DeleteItemResponseMap = {
+  [K in DeleteItemPath]: paths[K]['delete']['responses']['204']
+}

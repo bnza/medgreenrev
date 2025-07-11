@@ -9,5 +9,4 @@ export const API_RESOURCE_MAP = {
 
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP
 
-// Extract the values from the resource map
 export type ApiResourcePath = typeof API_RESOURCE_MAP[keyof typeof API_RESOURCE_MAP]

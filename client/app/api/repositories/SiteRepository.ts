@@ -1,20 +1,14 @@
-import type {GetCollectionPath, GetItemPath, PostCollectionPath} from "~~/types";
-import {BaseApiRepository} from "./BaseApiRepository";
+import type {DynamicRepositoryConfig} from "~/api/repositories/BaseApiRepository";
+import { createRepository} from "./RepositoryFactory";
 
-export class SiteRepository<
-  TCollectionPath extends GetCollectionPath = '/api/sites',
-  TItemPath extends GetItemPath = '/api/sites/{id}',
-  TPostPath extends PostCollectionPath = '/api/sites'
-> extends BaseApiRepository<TCollectionPath, TItemPath, TPostPath> {
-  protected getDefaultCollectionPath() {
-    return '/api/sites' as TCollectionPath;
-  }
-
-  protected getDefaultItemPath(){
-    return '/api/sites/{id}' as TItemPath;
-  }
-
-  protected getDefaultPostPath() {
-    return '/api/sites' as TPostPath;
+export class SiteRepository extends createRepository({
+  collectionPath: '/api/sites',
+  itemPath: '/api/sites/{id}',
+  postPath: '/api/sites',
+  deletePath: '/api/sites/{id}',
+  patchPath: '/api/sites/{id}'
+}) {
+  constructor(customPaths?: DynamicRepositoryConfig) {
+    super(customPaths);
   }
 }
