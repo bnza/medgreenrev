@@ -18,20 +18,23 @@ defineSlots<{
 
 const {isCreateDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
 const {usePostCollection} = useNuxtApp().$queryFactory.getQuery(props.path)
-const {addSuccess} = useMessagesStore()
+const {addSuccess, addError} = useMessagesStore()
 
-const a = usePostCollection()
+const {mutation} = usePostCollection()
 
-const submit = () => {
-  props.regle.$validate()
+const submit = async () => {
+  await props.regle.$validate()
   const isValidItem = (value: any): value is PostCollectionRequestMap[Path] => !props.regle.$invalid
 
   if (!isValidItem(props.regle.$value)) return
 
-  a.mutation.mutateAsync(props.regle.$value)
-  addSuccess('Resource successfully created')
-
-  visible.value = false
+  try {
+    await mutation.mutateAsync(props.regle.$value)
+    addSuccess('Resource successfully created')
+    visible.value = false
+  } catch (e) {
+    addError(e)
+  }
 }
 const disabled = computed(() => false)
 

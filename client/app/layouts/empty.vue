@@ -11,5 +11,6 @@
         style="width: 480px"
       />
     </v-row>
+    <lazy-app-message-queue/>
   </v-container>
 </template>

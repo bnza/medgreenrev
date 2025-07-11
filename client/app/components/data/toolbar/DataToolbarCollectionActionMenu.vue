@@ -1,11 +1,16 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
-import type {GetCollectionPath, CollectionAcl} from "~~/types";
+import type {GetCollectionPath, CollectionAcl, PostCollectionPath} from "~~/types";
 import DataToolbarListItemCreate from "~/components/data/toolbar/DataToolbarListItemCreate.vue";
 
-defineProps<{
+const props = defineProps<{
   acl: CollectionAcl
   path: Path
 }>()
+const {findRelatedApiResourcePath, isPostOperation} = useOpenApiStore()
+const postPath = computed<PostCollectionPath | ''>(() => {
+  const resourceKey = isApiResourceKey(props.path) ? props.path : findRelatedApiResourcePath(props.path)
+  return isPostOperation(resourceKey) ? resourceKey : ''
+})
 </script>
 
 <template>
@@ -20,7 +25,7 @@ defineProps<{
     >
       <v-list>
         <data-toolbar-list-item-search :path/>
-        <data-toolbar-list-item-create v-if="acl.canCreate" :path/>
+        <data-toolbar-list-item-create v-if="acl.canCreate && postPath" :path="postPath"/>
       </v-list>
     </v-menu>
   </v-btn>

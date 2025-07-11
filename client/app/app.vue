@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const ready = ref(true)
+const {ready} = storeToRefs(useOpenApiStore())
 const name = computed(() => (ready.value ? 'default' : 'empty'))
 </script>
 
