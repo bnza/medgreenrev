@@ -10,7 +10,7 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const {RESOURCE_QUERY_KEY, invalidateQueries} = useAppQueryCache(resourceKey)
+  const {RESOURCE_QUERY_KEY, invalidateQueries} = useAppQueryCache(resourceKey, path)
 
   const patchItem = useMutation({
     mutation: (model: OperationPathParams<P, 'patch'>) => patchItemOperation.request(model),

@@ -15,7 +15,13 @@ const defaultPagination = () => ({
 export function useDefineGetCollectionQuery(path: GetCollectionPath) {
   const getCollectionOperation = new GetCollectionOperation(path)
 
-  const {RESOURCE_QUERY_KEY} = useAppQueryCache(path)
+  const openApiStore = useOpenApiStore()
+  const resourceKey = openApiStore.findRelatedApiResourcePath(path)
+  if (!resourceKey) {
+    throw new Error(`Resource key not found for path ${path}`)
+  }
+
+  const {RESOURCE_QUERY_KEY} = useAppQueryCache(resourceKey, path)
 
   const queryOptions = (query: Record<string, any>) =>
     defineQueryOptions({

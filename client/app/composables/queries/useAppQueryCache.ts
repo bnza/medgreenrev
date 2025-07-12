@@ -1,9 +1,8 @@
-import type {RepositoryPath} from "~/api/Api";
 import type {ApiResourcePath} from "~/utils/consts/resources";
-import type {GetCollectionPath} from "~~/types";
+import type {ApiPath, GetCollectionPath} from "~~/types";
 
-type QueryRootKey = RepositoryPath | ApiResourcePath
-export default function useAppQueryCache(rootKey: QueryRootKey, resourcePath?: GetCollectionPath) {
+type QueryRootKey = ApiResourcePath
+export default function useAppQueryCache(rootKey: QueryRootKey, resourcePath?: ApiPath) {
   const {invalidateQueries, remove, cancelQueries, caches} = useQueryCache()
 
   resourcePath = resourcePath || rootKey

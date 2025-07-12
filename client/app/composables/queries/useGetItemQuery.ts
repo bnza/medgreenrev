@@ -3,6 +3,7 @@ import type {
   OperationPathParams,
 } from "~~/types";
 import {GetItemOperation} from "~/api/operations/GetItemOperation";
+import useAppQueryCache from "~/composables/queries/useAppQueryCache";
 
 
 export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
@@ -14,7 +15,7 @@ export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
   if (!resourceKey) {
     throw new Error(`Resource key not found for path ${path}`)
   }
-  const {RESOURCE_QUERY_KEY} = useAppQueryCache(resourceKey)
+  const {RESOURCE_QUERY_KEY} = useAppQueryCache(resourceKey, path)
 
   const queryOptions = (params?: OperationPathParams<P, 'get'>) =>
     defineQueryOptions({

@@ -10,7 +10,7 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const {RESOURCE_QUERY_KEY, invalidateQueries, remove, caches} = useAppQueryCache(resourceKey)
+  const {QUERY_KEYS, RESOURCE_QUERY_KEY, invalidateQueries, remove, caches} = useAppQueryCache(resourceKey, path)
 
   const deleteItem = useMutation({
     mutation: (params: OperationPathParams<P, 'delete'>) => deleteItemOperation.request(params),
@@ -23,7 +23,7 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
         remove(caches.get(keyHash)!)
       }
 
-      return await invalidateQueries({key: RESOURCE_QUERY_KEY.root}, "all")
+      return await invalidateQueries({key: QUERY_KEYS.root})
     }
   })
 
