@@ -1,8 +1,18 @@
 import type {ApiPath} from "~~/types";
 
 const useResourceUiStore = (path: ApiPath) => defineStore(`resource-ui:${path}`, () => {
-  const dialogStates = reactive<{ delete: boolean, create: boolean, update: boolean, search: boolean }>({
-    delete: false,
+
+  const deleteDialogState = ref<Record<string, string>|false>(false)
+
+  const isDeleteDialogOpen = computed({
+    get() {
+      return Boolean(deleteDialogState.value)
+    },
+    set(value: Record<string, string>|false) {
+      deleteDialogState.value = value
+    }})
+
+  const dialogStates = reactive<{ create: boolean, update: boolean, search: boolean }>({
     create: false,
     update: false,
     search: false,
@@ -19,7 +29,8 @@ const useResourceUiStore = (path: ApiPath) => defineStore(`resource-ui:${path}`,
 
   return {
     dialogStates,
-    isDeleteDialogOpen: isDialogOpenFn('delete'),
+    deleteDialogState,
+    isDeleteDialogOpen,
     isCreateDialogOpen: isDialogOpenFn('create'),
     isUpdateDialogOpen: isDialogOpenFn('update'),
     isSearchDialogOpen: isDialogOpenFn('search'),

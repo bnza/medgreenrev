@@ -8,7 +8,7 @@ const props = defineProps<{
 
 const {headers} = storeToRefs(useCollectionTableHeadersStore(props.path))
 
-const {useGetCollection} = useNuxtApp().$queryFactory.getQuery(props.path)
+const {useGetCollection} = useDefineGetCollectionQuery(props.path)
 const {pagination, items, totalItems, status} = useGetCollection()
 
 </script>

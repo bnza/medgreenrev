@@ -4,7 +4,7 @@ import type {RepositoryPath} from "~/api/Api";
 
 export default function useAppQueryUser(resourcePath: RepositoryPath = '/api/users') {
   const repository = useNuxtApp().$api.getRepository(resourcePath)
-  const {useGetCollectionFn, getItemQuery, usePostCollectionMutationFn} = useAppQuery('/api/users', repository)
+  const {useGetCollectionFn, getItemQuery, usePostCollectionMutationFn, useDeleteItemMutationFn} = useAppQuery('/api/users', repository)
 
   const useGetCollection = useGetCollectionFn({
     onRequest: () => {console.log('request')},
@@ -12,9 +12,12 @@ export default function useAppQueryUser(resourcePath: RepositoryPath = '/api/use
   })
   const usePostCollection = usePostCollectionMutationFn()
 
+  const useDeleteItem = useDeleteItemMutationFn()
+
   return {
+    useDeleteItem,
     useGetCollection,
-    getItemQuery,
-    usePostCollection
+    usePostCollection,
+    getItemQuery
   }
 }

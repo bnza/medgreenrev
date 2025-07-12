@@ -28,14 +28,15 @@ export const useOpenApiStore = (fetchedSpec?: OpenAPIV3_1.Document) => defineSto
 
     const targetTags = targetOperation.tags || [];
 
-    return Object.entries(openApiSpec.paths).find(([path, pathItem]) => {
+    const found = Object.entries(openApiSpec.paths).find(([path, pathItem]) => {
       const operation = pathItem?.get;
       if (!operation) return false;
 
       // Match by tag AND response schema
       const hasSameTag = operation.tags?.some(tag => targetTags.includes(tag));
-      return hasSameTag && isApiResourceKey(path)
-    })?.[0] as ApiResourcePath | undefined;
+      return hasSameTag && isApiResourcePath(path)
+    })
+    return found?.[0] as ApiResourcePath | undefined;
   }
 
   const findApiResourceKeyFromPath = (path: string): ApiResourceKey | undefined => {

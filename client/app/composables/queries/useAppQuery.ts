@@ -88,11 +88,24 @@ export default function useAppQuery<
     }
   })
 
+  const useDeleteItemMutationFn = () => defineMutation(() => {
+    const mutation = useMutation({
+      mutation: (params: OperationPathParams<TDelete, 'delete'>) => repository.delete(params),
+      onSuccess: () => invalidateQueries({
+        key: RESOURCE_QUERY_KEY.byFilter()
+      }, "all")
+    })
+    return {
+      mutation
+    }
+  })
+
   return {
     QUERY_KEYS,
     RESOURCE_QUERY_KEY,
     defaultPaginationFn,
     getItemQuery,
+    useDeleteItemMutationFn,
     useGetCollectionFn,
     usePostCollectionMutationFn
   }

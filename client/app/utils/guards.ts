@@ -43,4 +43,6 @@ export const isPlainObjectWithValues = <T>(
 
 export const isPlainObjectWithStringValues = (value: unknown) => isPlainObjectWithValues<string>(value, isString)
 
-export const isApiResourcePath = (value: unknown): value is ApiResourcePath => isString(value) && Object.values<string>(API_RESOURCE_MAP).includes(value)
+export const isApiResourcePath = (value: unknown): value is ApiResourcePath => {
+  return isString(value) && Object.values<string>(API_RESOURCE_MAP).includes(value)
+}

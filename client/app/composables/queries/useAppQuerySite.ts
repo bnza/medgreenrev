@@ -5,7 +5,7 @@ import type {SiteRepository} from "~/api/repositories/SiteRepository";
 
 export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sites') {
   const repository = useNuxtApp().$api.getRepository(resourcePath) as SiteRepository
-  const {useGetCollectionFn, getItemQuery, usePostCollectionMutationFn} = useAppQuery('/api/sites', repository)
+  const {useGetCollectionFn, getItemQuery, usePostCollectionMutationFn, useDeleteItemMutationFn } = useAppQuery('/api/sites', repository)
 
   const useGetCollection = useGetCollectionFn({
     onRequest: (req) => {console.log('request')},
@@ -14,7 +14,10 @@ export default function useAppQuerySite(resourcePath: RepositoryPath = '/api/sit
 
   const usePostCollection = usePostCollectionMutationFn()
 
+  const useDeleteItem = useDeleteItemMutationFn()
+
   return {
+    useDeleteItem,
     useGetCollection,
     usePostCollection,
     getItemQuery

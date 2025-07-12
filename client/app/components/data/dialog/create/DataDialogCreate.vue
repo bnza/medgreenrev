@@ -4,6 +4,7 @@ import type {PostCollectionPath, PostCollectionRequestMap} from "~~/types";
 
 import useResourceUiStore from "~/stores/resource-ui";
 import type {RegleRoot} from "@regle/core";
+import usePostCollectionMutation from "~/composables/queries/usePostCollectionMutation";
 
 const props = defineProps<{
   path: Path
@@ -17,10 +18,9 @@ defineSlots<{
 }>()
 
 const {isCreateDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
-const {usePostCollection} = useNuxtApp().$queryFactory.getQuery(props.path)
+const {postCollection} = usePostCollectionMutation(props.path)
 const {addSuccess, addError} = useMessagesStore()
 
-const {mutation} = usePostCollection()
 
 const submit = async () => {
   await props.regle.$validate()
@@ -29,7 +29,7 @@ const submit = async () => {
   if (!isValidItem(props.regle.$value)) return
 
   try {
-    await mutation.mutateAsync(props.regle.$value)
+    await postCollection.mutateAsync(props.regle.$value)
     addSuccess('Resource successfully created')
     visible.value = false
   } catch (e) {

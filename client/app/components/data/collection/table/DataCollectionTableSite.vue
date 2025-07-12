@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import type {GetCollectionPath} from "~~/types";
+import useResourceUiStore from "~/stores/resource-ui";
 
 const resourceKey = "site"
 
 const SITES_GET_COLLECTION_OPERATION = "/api/sites" as const satisfies GetCollectionPath
+const SITES_GET_ITEM_OPERATION = '/api/sites/{id}'
 const appPath = getApiResourceConfig(resourceKey).appPath
+const {deleteDialogState} = storeToRefs(useResourceUiStore(SITES_GET_ITEM_OPERATION))
 </script>
 
 <template>
@@ -14,6 +17,7 @@ const appPath = getApiResourceConfig(resourceKey).appPath
         :id="item.id"
         :acl="item._acl"
         :app-path
+        @delete="deleteDialogState = {id: item.id}"
       />
     </template>
   </data-collection-table>
