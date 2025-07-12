@@ -12,9 +12,18 @@ const useResourceUiStore = (path: ApiPath) => defineStore(`resource-ui:${path}`,
       deleteDialogState.value = value
     }})
 
-  const dialogStates = reactive<{ create: boolean, update: boolean, search: boolean }>({
+  const updateDialogState = ref<Record<string, string>|false>(false)
+
+  const isUpdateDialogOpen = computed({
+    get() {
+      return Boolean(updateDialogState.value)
+    },
+    set(value: Record<string, string>|false) {
+      updateDialogState.value = value
+    }})
+
+  const dialogStates = reactive<{ create: boolean, search: boolean }>({
     create: false,
-    update: false,
     search: false,
   })
 
@@ -30,9 +39,10 @@ const useResourceUiStore = (path: ApiPath) => defineStore(`resource-ui:${path}`,
   return {
     dialogStates,
     deleteDialogState,
+    updateDialogState,
     isDeleteDialogOpen,
+    isUpdateDialogOpen,
     isCreateDialogOpen: isDialogOpenFn('create'),
-    isUpdateDialogOpen: isDialogOpenFn('update'),
     isSearchDialogOpen: isDialogOpenFn('search'),
   }
 })()

@@ -10,6 +10,7 @@ import DataDialogCreateSite from "~/components/data/dialog/create/DataDialogCrea
       <data-dialog-search-site path="/api/sites"/>
       <data-dialog-create-site path="/api/sites"/>
       <data-dialog-delete-site path="/api/sites/{id}" />
+      <data-dialog-update-site path="/api/sites/{id}" />
     </template>
   </data-collection-page>
 </template>

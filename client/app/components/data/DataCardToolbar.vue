@@ -24,7 +24,7 @@ defineSlots<{
       <slot name="toolbar-prepend"/>
     </template>
     <template #title
-    >{{ title }}
+    ><span data-testid="data-card-toolbar-main-title">{{ title }}</span>
       <slot name="title-append"/>
     </template>
     <template #append>

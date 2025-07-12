@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const {ready} = storeToRefs(useOpenApiStore())
 const name = computed(() => (ready.value ? 'default' : 'empty'))
+
+const {isAuthenticated} = useAppAuth()
+const {invalidateQueries} = useQueryCache()
+
+watch(isAuthenticated, () => invalidateQueries())
 </script>
 
 <template>

@@ -29,7 +29,7 @@ export abstract class BaseOperation {
     url: string,
     options: ApiRequestOptions = {}
   ) {
-    const {headers, query,  ...restOptions} = options
+    const {headers, query, body, ...restOptions} = options
     let finalUrl = url;
     if (query) {
       const queryString = qs.stringify(query, {
@@ -40,9 +40,14 @@ export abstract class BaseOperation {
         finalUrl = `${url}${url.includes('?') ? '&' : '?'}${queryString}`;
       }
     }
+
+    // Serialize body to JSON string if it's an object
+    const processedBody = body && typeof body === 'object' ? JSON.stringify(body) : body;
+
     return $fetch<T>(finalUrl, {
       baseURL: this.baseURL,
       headers: this.getHeaders(options),
+      body: processedBody,
       ...restOptions,
     })
   }
