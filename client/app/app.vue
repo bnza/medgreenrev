@@ -2,6 +2,7 @@
 import type { OpenAPIV3_1 } from 'openapi-types'
 
 const { ready } = storeToRefs(useOpenApiStore())
+const { addError } = useMessagesStore()
 const name = computed(() => (ready.value ? 'default' : 'empty'))
 
 const { isAuthenticated } = useAppAuth()
@@ -17,7 +18,8 @@ await $fetch<OpenAPIV3_1.Document>('/api/docs.jsonopenapi', {
     specInternal.value = response
   })
   .catch((e) => {
-    console.error('miao', e)
+    console.error('openapi', e)
+    addError('Failed to load openapi.json: \n' + e.message)
   })
 </script>
 
@@ -30,6 +32,7 @@ await $fetch<OpenAPIV3_1.Document>('/api/docs.jsonopenapi', {
           <NuxtPage />
         </NuxtLayout>
       </v-main>
+      <app-message-queue />
     </v-layout>
   </v-app>
 </template>

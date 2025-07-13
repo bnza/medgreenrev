@@ -1,8 +1,8 @@
 import { BaseOperation } from '~/api/operations/BaseOperation'
 import type {
   ApiRequestOptions,
-  GetCollectionResponseMap,
   PostCollectionPath,
+  PostCollectionResponseMap,
 } from '~~/types'
 
 export class PostCollectionOperation<
@@ -13,7 +13,7 @@ export class PostCollectionOperation<
   }
 
   request(options?: ApiRequestOptions) {
-    return this._request<GetCollectionResponseMap[P]>(this.path, {
+    return this._request<PostCollectionResponseMap[P]>(this.path, {
       ...options,
       method: 'post',
     })

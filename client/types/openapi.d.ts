@@ -168,6 +168,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/site/code/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesitecode_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/site_user_privileges/{site}/{user}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesite_user_privileges_site_user_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/users': {
     parameters: {
       query?: never
@@ -246,10 +286,18 @@ export interface paths {
     get: operations['api_users_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the User resource.
+     * @description Removes the User resource.
+     */
+    delete: operations['api_users_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the User resource.
+     * @description Updates the User resource.
+     */
+    patch: operations['api_users_id_patch']
     trace?: never
   }
   '/api/users/{id}/change_password': {
@@ -362,33 +410,10 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
-    Site: {
-      readonly id?: number & string
+    'Site-site.create': {
       code?: string
       name?: string
       description?: string | null
-      /** Format: date-time */
-      createdAt?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      createdBy?: string | null
-      userPrivileges?: string[]
-    }
-    'Site.jsonld': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-      description?: string | null
-      /** Format: date-time */
-      createdAt?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      createdBy?: string | null
-      userPrivileges?: string[]
     }
     'Site.jsonld-site.acl.read': {
       readonly '@context'?:
@@ -407,6 +432,11 @@ export interface components {
       name?: string
       description?: string | null
       createdBy?: components['schemas']['User.jsonld-site.acl.read'] | null
+    }
+    'Site.jsonld-site.create': {
+      code?: string
+      name?: string
+      description?: string | null
     }
     'Site.jsonld-site_user_privilege.acl.read': {
       readonly '@context'?:
@@ -468,8 +498,34 @@ export interface components {
        */
       privilege: number
     }
+    'UniqueValidator.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      criteria?: string[]
+      valid?: number
+    }
     'User-user.change-password': {
       plainPassword: string | null
+    }
+    'User-user.update': {
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       * @example [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
     }
     'User.UserPasswordChangeInputDto.jsonld': {
       oldPassword: string | null
@@ -534,6 +590,20 @@ export interface components {
       roles: string[]
       readonly userIdentifier?: string
     }
+    'User.jsonld-user.create': {
+      /** Format: email */
+      email: string
+      plainPassword: string | null
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       * @example [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+    }
     'User.jsonld-user.me.read': {
       readonly '@context'?:
         | string
@@ -549,20 +619,6 @@ export interface components {
       /** Format: uuid */
       readonly id?: string | null
       email?: string
-      /**
-       * @default [
-       *       "ROLE_USER"
-       *     ]
-       * @example [
-       *       "ROLE_USER"
-       *     ]
-       */
-      roles: string[]
-    }
-    'User.jsonld-user.write': {
-      /** Format: email */
-      email: string
-      plainPassword: string | null
       /**
        * @default [
        *       "ROLE_USER"
@@ -689,7 +745,7 @@ export interface operations {
     /** @description The new Site resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Site.jsonld']
+        'application/ld+json': components['schemas']['Site.jsonld-site.create']
       }
     }
     responses: {
@@ -816,7 +872,7 @@ export interface operations {
     /** @description The updated Site resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Site']
+        'application/merge-patch+json': components['schemas']['Site-site.create']
       }
     }
     responses: {
@@ -1285,6 +1341,76 @@ export interface operations {
       }
     }
   }
+  api_validatoruniquesitecode_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesite_user_privileges_site_user_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        site: string
+        /** @description UniqueValidator identifier */
+        user: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_users_get_collection: {
     parameters: {
       query?: {
@@ -1366,7 +1492,7 @@ export interface operations {
     /** @description The new User resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['User.jsonld-user.write']
+        'application/ld+json': components['schemas']['User.jsonld-user.create']
       }
     }
     responses: {
@@ -1555,6 +1681,121 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description User identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description User resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description User identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated User resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['User-user.update']
+      }
+    }
+    responses: {
+      /** @description User resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['User.jsonld-user.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }

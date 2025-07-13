@@ -4,17 +4,25 @@ import type {
   OperationPathParams,
   PatchItemPath,
   PatchItemRequestMap,
-  PostCollectionRequestMap,
 } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
+import { diff } from 'deep-object-diff'
 
-const props = defineProps<{
-  path: Path
-  title: string
-  regle: RegleRoot
-}>()
+type OnPreSubmit = <T extends object>(oldItem: T, item: T) => Partial<T>
+
+const props = withDefaults(
+  defineProps<{
+    path: Path
+    title: string
+    regle: RegleRoot
+    onPreSubmit?: OnPreSubmit
+  }>(),
+  {
+    onPreSubmit: (oldItem: object, item: object) => diff(oldItem, item),
+  },
+)
 
 defineSlots<{
   default(): any
@@ -64,8 +72,6 @@ const submit = async () => {
   const isValidItem = (value: any): value is PatchItemRequestMap[Path] =>
     !props.regle.$invalid
 
-  const runtimeError: string[] = []
-
   if (!isValidItem(props.regle.$value)) {
     addError('Invalid model.')
     console.log('model', props.regle.$value)
@@ -79,10 +85,12 @@ const submit = async () => {
   }
 
   patchItem.item.value = toRaw(item.value)
+
+  const model = props.onPreSubmit(item.value, props.regle.$value)
   try {
     await patchItem.mutateAsync({
       param: { id: item.value?.id } as OperationPathParams<Path, 'patch'>,
-      model: toRaw(props.regle.$value),
+      model: toRaw(model),
     })
     addSuccess('Resource successfully updated')
     visible.value = false

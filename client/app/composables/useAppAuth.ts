@@ -31,6 +31,7 @@ export default function useAppAuth() {
   }))
 
   return {
+    hasRoleAdmin,
     isAuthenticated,
     roles,
     roleColor,

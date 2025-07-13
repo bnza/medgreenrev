@@ -7,5 +7,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-user />
+  <data-item-page-user />
 </template>

@@ -7,6 +7,7 @@ import type { ReglePartialRuleTree } from '@regle/core'
 
 import site from './site'
 import site_user_privileges from './site_user_privileges'
+import user from './user'
 
 // Create specific type mappings to avoid conditional type issues
 type CreateSiteRules = ReglePartialRuleTree<
@@ -24,6 +25,7 @@ const rules = {
     '/api/sites': site.create as ComputedRef<CreateSiteRules>,
     '/api/site_user_privileges':
       site_user_privileges.create as ComputedRef<CreateSiteUserPrivilegesRules>,
+    '/api/users': user.create as ComputedRef<CreateSiteUserPrivilegesRules>,
   },
   update: {
     '/api/site_user_privileges/{id}':

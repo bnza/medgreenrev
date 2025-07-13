@@ -7,6 +7,10 @@ export enum ApiRole {
   User = 'ROLE_USER',
 }
 
+export enum ApiSpecialistRole {
+  GeoArchaeologist = 'ROLE_GEO_ARCHAEOLOGIST',
+}
+
 export enum AclVoters {
   HasRoleAdmin = 'HasRoleAdmin',
   HasRoleEditor = 'HasRoleEditor',

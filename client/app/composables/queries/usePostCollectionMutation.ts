@@ -12,17 +12,13 @@ export function usePostCollectionMutation<P extends PostCollectionPath>(
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const { QUERY_KEYS, RESOURCE_QUERY_KEY, invalidateQueries } =
-    useAppQueryCache(resourceKey, path)
+  const { QUERY_KEYS, invalidateQueries } = useAppQueryCache(resourceKey, path)
 
   const postCollection = useMutation({
     mutation: (model: PostCollectionRequestMap[P]) => {
-      console.log('mutation', model)
       return postCollectionOperation.request({ body: model })
     },
-    onMutate: (...args: any[]) => console.log('onMutation', args),
-    // onMutate: (params: OperationPathParams<P, 'delete'>) => ({params}),
-    onSettled: async (data, error, context) => {
+    onSettled: async () => {
       return await invalidateQueries({ key: QUERY_KEYS.root })
     },
   })

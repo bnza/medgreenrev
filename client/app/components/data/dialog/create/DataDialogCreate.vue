@@ -1,19 +1,40 @@
 <script setup lang="ts" generic="Path extends PostCollectionPath">
-import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import type {
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  PostCollectionResponseMap,
+} from '~~/types'
 
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 
-const props = defineProps<{
-  path: Path
-  title: string
-  regle: RegleRoot
-}>()
+type OnPreSubmit = <T>(item: T) => T
+
+const props = withDefaults(
+  defineProps<{
+    path: Path
+    title: string
+    regle: RegleRoot
+    onPreSubmit?: OnPreSubmit
+  }>(),
+  {
+    onPreSubmit: <T,>(item: T) => item,
+  },
+)
 
 defineSlots<{
   default(): any
   actions(): any
+}>()
+
+const emit = defineEmits<{
+  success: [
+    {
+      request: PostCollectionRequestMap[Path]
+      response: PostCollectionResponseMap[Path]
+    },
+  ]
 }>()
 
 const { isCreateDialogOpen: visible } = storeToRefs(
@@ -29,8 +50,11 @@ const submit = async () => {
 
   if (!isValidItem(props.regle.$value)) return
 
+  const model = props.onPreSubmit(props.regle.$value)
+
   try {
-    await postCollection.mutateAsync(props.regle.$value)
+    const data = await postCollection.mutateAsync(model)
+    emit('success', { request: model, response: data })
     addSuccess('Resource successfully created')
     visible.value = false
   } catch (e) {

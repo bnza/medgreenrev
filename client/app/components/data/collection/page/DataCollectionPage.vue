@@ -15,7 +15,7 @@ const { siteCollectionAcl } = useAppAuth()
 </script>
 
 <template>
-  <data-card title="Sites">
+  <data-card :title>
     <template #toolbar-append>
       <data-toolbar-collection-action-menu :acl="siteCollectionAcl" :path />
     </template>
@@ -24,7 +24,6 @@ const { siteCollectionAcl } = useAppAuth()
     </template>
     <template #append>
       <slot name="dialogs" />
-      <data-dialog-search-site :path />
     </template>
   </data-card>
 </template>

@@ -1,13 +1,12 @@
 import type {
-  DeleteItemPath,
   GetItemResponseMap,
   OperationPathParams,
+  PatchItemPath,
 } from '~~/types'
 import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 import { PatchItemOperation } from '~/api/operations/PatchItemOperation'
-import { getNormalizer, getPatchNormalizer } from '~/api/requests'
 
-export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
+export function useDeleteItemMutation<P extends PatchItemPath>(path: P) {
   const patchItemOperation = new PatchItemOperation(path)
   const openApiStore = useOpenApiStore()
   const resourceKey = openApiStore.findRelatedApiResourcePath(path)
@@ -17,7 +16,7 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
 
   const { QUERY_KEYS, invalidateQueries } = useAppQueryCache(resourceKey, path)
 
-  const patchNormalize = getPatchNormalizer(path)
+  // const patchNormalize = getPatchNormalizer(path)
 
   const patchItem = defineMutation(() => {
     const item = ref<GetItemResponseMap[`${typeof resourceKey}/{id}`]>()
@@ -29,10 +28,10 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
         param: OperationPathParams<P, 'patch'>
         model: Record<string, any>
       }) => {
-        const diffObject = patchNormalize(item.value ?? {}, model)
-        return patchItemOperation.request(param, { body: diffObject })
+        // const diffObject = patchNormalize(item.value ?? {}, model)
+        return patchItemOperation.request(param, { body: model })
       },
-      onSettled: async (data, error, context) => {
+      onSettled: async () => {
         return await invalidateQueries({ key: QUERY_KEYS.root })
       },
     })
