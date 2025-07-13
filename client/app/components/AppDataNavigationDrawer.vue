@@ -1,10 +1,8 @@
 <script setup lang="ts">
-
-const {visible, dataOpened} = storeToRefs(useDataNavigationDrawerStore())
+const { visible, dataOpened } = storeToRefs(useDataNavigationDrawerStore())
 </script>
 
 <template>
-
   <v-navigation-drawer
     :model-value="visible"
     :permanent="true"
@@ -49,5 +47,3 @@ const {visible, dataOpened} = storeToRefs(useDataNavigationDrawerStore())
     </v-list>
   </v-navigation-drawer>
 </template>
-
-

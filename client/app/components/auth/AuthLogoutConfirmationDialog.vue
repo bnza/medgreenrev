@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const isOpen = defineModel<boolean>()
-const {addSuccess} = useMessagesStore()
-const {signOut} = useAuth()
+const { addSuccess } = useMessagesStore()
+const { signOut } = useAuth()
 const signOutAndFeedBack = async () => {
-  await signOut({callbackUrl: '/'})
+  await signOut({ callbackUrl: '/' })
   addSuccess('User successfully logged out')
 }
 </script>
@@ -27,7 +27,7 @@ const signOutAndFeedBack = async () => {
           variant="tonal"
           @click="isOpen = false"
         />
-        <v-spacer/>
+        <v-spacer />
         <v-btn
           class="ma-4"
           color="secondary"

@@ -1,6 +1,6 @@
-import type {DeleteItemPath, OperationPathParams} from "~~/types";
-import {DeleteItemOperation} from "~/api/operations/DeleteItemOperation";
-import useAppQueryCache from "~/composables/queries/useAppQueryCache";
+import type { DeleteItemPath, OperationPathParams } from '~~/types'
+import { DeleteItemOperation } from '~/api/operations/DeleteItemOperation'
+import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 
 export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
   const deleteItemOperation = new DeleteItemOperation(path)
@@ -16,14 +16,15 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
     toCacheKey,
     remove,
     invalidateQueries,
-    caches
+    caches,
   } = useAppQueryCache(resourceKey, path)
 
   const deleteItem = useMutation({
-    mutation: (params: OperationPathParams<P, 'delete'>) => deleteItemOperation.request(params),
+    mutation: (params: OperationPathParams<P, 'delete'>) =>
+      deleteItemOperation.request(params),
     // onMutate: (params: OperationPathParams<P, 'delete'>) => ({params}),
     onSettled: async (data, error, context) => {
-      const key = RESOURCE_QUERY_KEY.byId({id: context.id})
+      const key = RESOURCE_QUERY_KEY.byId({ id: context.id })
 
       const keyHash = toCacheKey(key)
 
@@ -31,12 +32,12 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
         remove(caches.get(keyHash)!)
       }
 
-      return await invalidateQueries({key: QUERY_KEYS.root})
-    }
+      return await invalidateQueries({ key: QUERY_KEYS.root })
+    },
   })
 
   return {
-    deleteItem
+    deleteItem,
   }
 }
 

@@ -1,7 +1,6 @@
-import {useRoute} from 'vue-router'
+import { useRoute } from 'vue-router'
 
 export default function useAppRoute() {
-
   const route = useRoute()
 
   const routeIds = route.params.id

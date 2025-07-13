@@ -1,10 +1,10 @@
-import {ApiRole, ROLE_COLORS} from '~/utils/consts/auth'
+import { ApiRole, ROLE_COLORS } from '~/utils/consts/auth'
 
-import {reduceAppRoles} from "~/utils/acl";
-import type {CollectionAcl} from "~~/types";
+import { reduceAppRoles } from '~/utils/acl'
+import type { CollectionAcl } from '~~/types'
 
 export default function useAppAuth() {
-  const {data, status} = useAuth()
+  const { data, status } = useAuth()
   const isAuthenticated = computed(() => status.value === 'authenticated')
   const userIdentifier = computed(() => data.value?.email || null)
 
@@ -18,12 +18,12 @@ export default function useAppAuth() {
   })
 
   const hasRoleFn = (role: ApiRole) => roles.value.includes(role)
-  const hasRole = computed(
-    () => hasRoleFn
-  )
+  const hasRole = computed(() => hasRoleFn)
   const hasRoleAdmin = computed(() => hasRoleFn(ApiRole.Admin))
 
-  const canCreateSite = computed(() => hasRoleFn(ApiRole.Admin) || hasRoleFn(ApiRole.Editor))
+  const canCreateSite = computed(
+    () => hasRoleFn(ApiRole.Admin) || hasRoleFn(ApiRole.Editor),
+  )
 
   const siteCollectionAcl = computed<CollectionAcl>(() => ({
     canCreate: canCreateSite.value,

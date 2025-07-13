@@ -4,9 +4,10 @@
 export const API_RESOURCE_MAP = {
   site: '/api/sites',
   siteUserPrivilege: '/api/site_user_privileges',
-  user: '/api/users'
+  user: '/api/users',
 } as const
 
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP
 
-export type ApiResourcePath = typeof API_RESOURCE_MAP[keyof typeof API_RESOURCE_MAP]
+export type ApiResourcePath =
+  (typeof API_RESOURCE_MAP)[keyof typeof API_RESOURCE_MAP]

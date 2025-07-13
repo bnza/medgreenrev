@@ -3,16 +3,13 @@ type HistoryStackItem = {
   isUserAction: boolean
 }
 export const useHistoryStackStore = defineStore('history-stack', () => {
-  const defaultItem = () => ({path: '/', isUserAction: false})
+  const defaultItem = () => ({ path: '/', isUserAction: false })
   const history = ref<HistoryStackItem[]>([defaultItem()])
   const route = useRoute()
 
-  const {isAuthenticated} = useAppAuth()
+  const { isAuthenticated } = useAppAuth()
 
-  const last = computed(() =>
-    history.value.at(-1) || defaultItem()
-  )
-
+  const last = computed(() => history.value.at(-1) || defaultItem())
 
   /**
    * A computed variable that determines the redirection path based on user actions, authentication status, and navigation history.
@@ -24,28 +21,28 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
    * Returns:
    * - A string representing the determined redirection path.
    */
-  const redirectionPath = computed(
-    () =>
-      last.value.isUserAction
+  const redirectionPath = computed(() =>
+    last.value.isUserAction
+      ? last.value.path
+      : isAuthenticated.value
         ? last.value.path
-        : isAuthenticated.value
-          ? last.value.path
-          : history.value.at(-2)?.path || '/'
+        : history.value.at(-2)?.path || '/',
   )
 
   const push = (item?: HistoryStackItem | string) => {
     if (typeof item === 'string') {
-      item = {path: item, isUserAction: true}
+      item = { path: item, isUserAction: true }
     }
     if (!item) {
       item = route.redirectedFrom?.fullPath
-        ? {path: route.redirectedFrom.fullPath, isUserAction: false}
+        ? { path: route.redirectedFrom.fullPath, isUserAction: false }
         : defaultItem()
     }
     history.value.push(item)
   }
 
-  const pushCurrentPath = (isUserAction: boolean = true) => push({path: route.fullPath, isUserAction})
+  const pushCurrentPath = (isUserAction: boolean = true) =>
+    push({ path: route.fullPath, isUserAction })
 
   const pop = () => history.value.pop() || defaultItem()
 
@@ -60,6 +57,6 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
     pushCurrentPath,
     pop,
     $reset,
-    redirectionPath
+    redirectionPath,
   }
 })

@@ -1,8 +1,8 @@
-import type {ResourceConfig} from "~~/types";
+import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: "/api/users",
-  appPath: "/admin/users",
+  apiPath: '/api/users',
+  appPath: '/admin/users',
   defaultHeaders: [
     {
       key: 'id',
@@ -26,7 +26,7 @@ const config: Readonly<ResourceConfig> = {
     },
   ],
   labels: ['user', 'users'],
-  name: 'user'
+  name: 'user',
 }
 
 export default config

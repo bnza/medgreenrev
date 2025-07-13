@@ -1,7 +1,5 @@
 <script setup lang="ts">
-
-const {toggleVisible} = useDataNavigationDrawerStore()
-
+const { toggleVisible } = useDataNavigationDrawerStore()
 </script>
 
 <template>
@@ -13,9 +11,7 @@ const {toggleVisible} = useDataNavigationDrawerStore()
       />
     </template>
     <template #append>
-      <auth-app-bar-icon/>
+      <auth-app-bar-icon />
     </template>
   </v-app-bar>
 </template>
-
-

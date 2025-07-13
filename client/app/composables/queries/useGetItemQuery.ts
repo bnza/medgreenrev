@@ -1,10 +1,6 @@
-import type {
-  GetItemPath,
-  OperationPathParams,
-} from "~~/types";
-import {GetItemOperation} from "~/api/operations/GetItemOperation";
-import useAppQueryCache from "~/composables/queries/useAppQueryCache";
-
+import type { GetItemPath, OperationPathParams } from '~~/types'
+import { GetItemOperation } from '~/api/operations/GetItemOperation'
+import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 
 export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
   const getItemOperation = new GetItemOperation(path)
@@ -15,12 +11,13 @@ export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
   if (!resourceKey) {
     throw new Error(`Resource key not found for path ${path}`)
   }
-  const {RESOURCE_QUERY_KEY} = useAppQueryCache(resourceKey, path)
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(resourceKey, path)
 
   const queryOptions = (params?: OperationPathParams<P, 'get'>) =>
     defineQueryOptions({
       key: RESOURCE_QUERY_KEY.byId(params as Record<string, string>),
-      query: () => params ? getItemOperation.request(params) : Promise.resolve(null),
+      query: () =>
+        params ? getItemOperation.request(params) : Promise.resolve(null),
       enabled: Boolean(params),
     })
 
@@ -35,7 +32,7 @@ export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
     const query = useQuery(queryOptions, () => params.value)
     return {
       params,
-      ...query
+      ...query,
     }
   })
 
@@ -46,4 +43,3 @@ export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
 }
 
 export default useDefineGetItemQuery
-

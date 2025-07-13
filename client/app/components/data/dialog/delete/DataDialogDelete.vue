@@ -1,9 +1,13 @@
 <script setup lang="ts" generic="Path extends DeleteItemPath & GetItemPath">
-
-import type {DeleteItemPath, GetItemPath, GetItemResponseMap, OperationPathParams} from "~~/types";
-import useResourceUiStore from "~/stores/resource-ui";
-import DataDialogDeleteAlert from "~/components/data/dialog/delete/DataDialogDeleteAlert.vue";
-import useDeleteItemMutation from "~/composables/queries/useDeleteItemMutation";
+import type {
+  DeleteItemPath,
+  GetItemPath,
+  GetItemResponseMap,
+  OperationPathParams,
+} from '~~/types'
+import useResourceUiStore from '~/stores/resource-ui'
+import DataDialogDeleteAlert from '~/components/data/dialog/delete/DataDialogDeleteAlert.vue'
+import useDeleteItemMutation from '~/composables/queries/useDeleteItemMutation'
 
 const props = defineProps<{
   path: Path
@@ -15,20 +19,34 @@ defineSlots<{
   actions(): any
 }>()
 
-const {isDeleteDialogOpen: visible, deleteDialogState} = storeToRefs(useResourceUiStore(props.path))
+const { isDeleteDialogOpen: visible, deleteDialogState } = storeToRefs(
+  useResourceUiStore(props.path),
+)
 
-const {queryOptions} = useDefineGetItemQuery(props.path)
-const {data: item, status, error} = useQuery(queryOptions, () => (deleteDialogState.value || undefined) as OperationPathParams<Path, 'get'> | undefined)
+const { queryOptions } = useDefineGetItemQuery(props.path)
+const {
+  data: item,
+  status,
+  error,
+} = useQuery(
+  queryOptions,
+  () =>
+    (deleteDialogState.value || undefined) as
+      | OperationPathParams<Path, 'get'>
+      | undefined,
+)
 const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   return isPlainObject(value) && 'id' in value
 }
 
-const {deleteItem} = useDeleteItemMutation(props.path)
+const { deleteItem } = useDeleteItemMutation(props.path)
 
 const disabled = computed(() => false)
 
-const {addError, addSuccess} = useMessagesStore()
-const isValidOperationPathParams = (params: unknown): params is OperationPathParams<Path, "delete"> => {
+const { addError, addSuccess } = useMessagesStore()
+const isValidOperationPathParams = (
+  params: unknown,
+): params is OperationPathParams<Path, 'delete'> => {
   console.log('check')
   return isValidItem(params) && 'id' in params
 }
@@ -40,7 +58,10 @@ const emit = defineEmits<{
 const submit = async () => {
   if (!isValidOperationPathParams(item.value)) return
   try {
-    await deleteItem.mutateAsync({id: item.value.id} as OperationPathParams<Path, 'delete'>)
+    await deleteItem.mutateAsync({ id: item.value.id } as OperationPathParams<
+      Path,
+      'delete'
+    >)
     addSuccess('Resource successfully deleted')
     visible.value = false
     emit('deleted')
@@ -59,10 +80,14 @@ const submit = async () => {
     <template #default>
       <data-dialog-delete-alert />
       <data-item-form-read>
-        <loading-component v-if="status === 'pending'"/>
-        <resource-not-found v-else-if="error" :error :path="props.path"/>
-        <slot v-else-if="isValidItem(item)" v-bind="{item}"/>
-        <resource-not-found v-else error="Unsupported item value" :path="props.path"/>
+        <loading-component v-if="status === 'pending'" />
+        <resource-not-found v-else-if="error" :error :path="props.path" />
+        <slot v-else-if="isValidItem(item)" v-bind="{ item }" />
+        <resource-not-found
+          v-else
+          error="Unsupported item value"
+          :path="props.path"
+        />
       </data-item-form-read>
     </template>
     <template #actions>
@@ -70,8 +95,8 @@ const submit = async () => {
         <v-btn
           data-testid="data-dialog-form-close-button"
           :disabled
-          @click="visible=false"
-        >close
+          @click="visible = false"
+          >close
         </v-btn>
       </v-col>
       <v-col class="d-flex justify-center">
@@ -80,7 +105,7 @@ const submit = async () => {
           data-testid="data-dialog-form-submit-button"
           :disabled
           @click="submit"
-        >delete
+          >delete
         </v-btn>
       </v-col>
     </template>

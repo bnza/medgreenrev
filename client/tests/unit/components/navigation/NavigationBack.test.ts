@@ -1,15 +1,13 @@
-import {createTestingPinia} from "@pinia/testing";
-import {mount} from '@vue/test-utils'
-import {describe, expect, it, vi, beforeEach} from 'vitest'
+import { createTestingPinia } from '@pinia/testing'
+import { mount } from '@vue/test-utils'
+import { describe, expect, it, vi, beforeEach } from 'vitest'
 import NavigationBack from '~/components/navigation/NavigationBack.vue'
 
-let pinia: ReturnType<typeof createTestingPinia>;
-
+let pinia: ReturnType<typeof createTestingPinia>
 
 describe('NavigationBack.vue', () => {
   // Reset mocks before each test
   beforeEach(() => {
-
     beforeEach(() => {
       // Creates a fresh testing Pinia instance for each test
       pinia = createTestingPinia({
@@ -24,12 +22,12 @@ describe('NavigationBack.vue', () => {
             {
               path: '/test',
               isUserAction: true,
-            }
+            },
           ],
         },
         // stubActions: false, // Set to true to prevent actions from running their original implementation
-      });
-    });
+      })
+    })
   })
 
   it('renders correctly with default props', () => {
@@ -41,7 +39,7 @@ describe('NavigationBack.vue', () => {
 
   it('disables button when disabled prop is true', () => {
     const wrapper = mount(NavigationBack, {
-      props: {disabled: true},
+      props: { disabled: true },
     })
     const vBtn = wrapper.find('[data-testid="navigation-back-button"]')
     expect(vBtn.attributes('disabled')).not.toBeUndefined()

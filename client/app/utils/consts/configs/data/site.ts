@@ -1,8 +1,8 @@
-import type {ResourceConfig} from "~~/types";
+import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: "/api/sites",
-  appPath: "/data/sites",
+  apiPath: '/api/sites',
+  appPath: '/data/sites',
   defaultHeaders: [
     {
       key: 'id',
@@ -30,8 +30,8 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ["site", "sites"],
-  name: 'site'
+  labels: ['site', 'sites'],
+  name: 'site',
 }
 
 export default config

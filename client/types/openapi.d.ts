@@ -4,1613 +4,1631 @@
  */
 
 export interface paths {
-    "/api/login": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Creates a user token.
-         * @description Creates a user token.
-         */
-        post: operations["login_check_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/sites": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves the collection of Site resources.
-         * @description Retrieves the collection of Site resources.
-         */
-        get: operations["api_sites_get_collection"];
-        put?: never;
-        /**
-         * Creates a Site resource.
-         * @description Creates a Site resource.
-         */
-        post: operations["api_sites_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/sites/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves a Site resource.
-         * @description Retrieves a Site resource.
-         */
-        get: operations["api_sites_id_get"];
-        put?: never;
-        post?: never;
-        /**
-         * Removes the Site resource.
-         * @description Removes the Site resource.
-         */
-        delete: operations["api_sites_id_delete"];
-        options?: never;
-        head?: never;
-        /**
-         * Updates the Site resource.
-         * @description Updates the Site resource.
-         */
-        patch: operations["api_sites_id_patch"];
-        trace?: never;
-    };
-    "/api/site_user_privileges": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves the collection of SiteUserPrivilege resources.
-         * @description Retrieves the collection of SiteUserPrivilege resources.
-         */
-        get: operations["api_site_user_privileges_get_collection"];
-        put?: never;
-        /**
-         * Creates a SiteUserPrivilege resource.
-         * @description Creates a SiteUserPrivilege resource.
-         */
-        post: operations["api_site_user_privileges_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/site_user_privileges/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves a SiteUserPrivilege resource.
-         * @description Retrieves a SiteUserPrivilege resource.
-         */
-        get: operations["api_site_user_privileges_id_get"];
-        put?: never;
-        post?: never;
-        /**
-         * Removes the SiteUserPrivilege resource.
-         * @description Removes the SiteUserPrivilege resource.
-         */
-        delete: operations["api_site_user_privileges_id_delete"];
-        options?: never;
-        head?: never;
-        /**
-         * Updates the SiteUserPrivilege resource.
-         * @description Updates the SiteUserPrivilege resource.
-         */
-        patch: operations["api_site_user_privileges_id_patch"];
-        trace?: never;
-    };
-    "/api/sites/{siteId}/user_privileges": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves the collection of SiteUserPrivilege resources.
-         * @description Retrieves the collection of SiteUserPrivilege resources.
-         */
-        get: operations["api_sites_siteIduser_privileges_get_collection"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/sites/{siteId}/user_privileges/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves a SiteUserPrivilege resource.
-         * @description Retrieves a SiteUserPrivilege resource.
-         */
-        get: operations["api_sites_siteIduser_privileges_id_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/users": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves the collection of User resources.
-         * @description Retrieves the collection of User resources.
-         */
-        get: operations["api_users_get_collection"];
-        put?: never;
-        /**
-         * Creates a User resource.
-         * @description Creates a User resource.
-         */
-        post: operations["api_users_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/users/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves a User resource.
-         * @description Retrieves a User resource.
-         */
-        get: operations["api_usersme_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/users/me/change_password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Creates a User resource.
-         * @description Creates a User resource.
-         */
-        post: operations["api_usersmechange_password_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/users/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieves a User resource.
-         * @description Retrieves a User resource.
-         */
-        get: operations["api_users_id_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/users/{id}/change_password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        /**
-         * Updates the User resource.
-         * @description Updates the User resource.
-         */
-        patch: operations["api_users_idchange_password_patch"];
-        trace?: never;
-    };
+  '/api/login': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /**
+     * Creates a user token.
+     * @description Creates a user token.
+     */
+    post: operations['login_check_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Site resources.
+     * @description Retrieves the collection of Site resources.
+     */
+    get: operations['api_sites_get_collection']
+    put?: never
+    /**
+     * Creates a Site resource.
+     * @description Creates a Site resource.
+     */
+    post: operations['api_sites_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/sites/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Site resource.
+     * @description Retrieves a Site resource.
+     */
+    get: operations['api_sites_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the Site resource.
+     * @description Removes the Site resource.
+     */
+    delete: operations['api_sites_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the Site resource.
+     * @description Updates the Site resource.
+     */
+    patch: operations['api_sites_id_patch']
+    trace?: never
+  }
+  '/api/site_user_privileges': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SiteUserPrivilege resources.
+     * @description Retrieves the collection of SiteUserPrivilege resources.
+     */
+    get: operations['api_site_user_privileges_get_collection']
+    put?: never
+    /**
+     * Creates a SiteUserPrivilege resource.
+     * @description Creates a SiteUserPrivilege resource.
+     */
+    post: operations['api_site_user_privileges_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/site_user_privileges/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SiteUserPrivilege resource.
+     * @description Retrieves a SiteUserPrivilege resource.
+     */
+    get: operations['api_site_user_privileges_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the SiteUserPrivilege resource.
+     * @description Removes the SiteUserPrivilege resource.
+     */
+    delete: operations['api_site_user_privileges_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the SiteUserPrivilege resource.
+     * @description Updates the SiteUserPrivilege resource.
+     */
+    patch: operations['api_site_user_privileges_id_patch']
+    trace?: never
+  }
+  '/api/sites/{siteId}/user_privileges': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SiteUserPrivilege resources.
+     * @description Retrieves the collection of SiteUserPrivilege resources.
+     */
+    get: operations['api_sites_siteIduser_privileges_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/sites/{siteId}/user_privileges/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SiteUserPrivilege resource.
+     * @description Retrieves a SiteUserPrivilege resource.
+     */
+    get: operations['api_sites_siteIduser_privileges_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of User resources.
+     * @description Retrieves the collection of User resources.
+     */
+    get: operations['api_users_get_collection']
+    put?: never
+    /**
+     * Creates a User resource.
+     * @description Creates a User resource.
+     */
+    post: operations['api_users_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users/me': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a User resource.
+     * @description Retrieves a User resource.
+     */
+    get: operations['api_usersme_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users/me/change_password': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /**
+     * Creates a User resource.
+     * @description Creates a User resource.
+     */
+    post: operations['api_usersmechange_password_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a User resource.
+     * @description Retrieves a User resource.
+     */
+    get: operations['api_users_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users/{id}/change_password': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    /**
+     * Updates the User resource.
+     * @description Updates the User resource.
+     */
+    patch: operations['api_users_idchange_password_patch']
+    trace?: never
+  }
 }
-export type webhooks = Record<string, never>;
+export type webhooks = Record<string, never>
 export interface components {
-    schemas: {
-        /** @description Unprocessable entity */
-        "ConstraintViolation-json": {
-            /**
-             * @default 422
-             * @example 422
-             */
-            status: number;
-            violations?: {
-                /** @description The property path of the violation */
-                propertyPath?: string;
-                /** @description The message associated with the violation */
-                message?: string;
-            }[];
-            readonly detail?: string;
-            readonly type?: string;
-            readonly title?: string | null;
-            readonly instance?: string | null;
-        };
-        /** @description Unprocessable entity */
-        "ConstraintViolation.jsonld-jsonld": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            /**
-             * @default 422
-             * @example 422
-             */
-            status: number;
-            violations?: {
-                /** @description The property path of the violation */
-                propertyPath?: string;
-                /** @description The message associated with the violation */
-                message?: string;
-            }[];
-            readonly detail?: string;
-            readonly description?: string;
-            readonly type?: string;
-            readonly title?: string | null;
-            readonly instance?: string | null;
-        };
-        /** @description A representation of common errors. */
-        Error: {
-            /** @description A short, human-readable summary of the problem. */
-            readonly title?: string | null;
-            /** @description A human-readable explanation specific to this occurrence of the problem. */
-            readonly detail?: string | null;
-            /** @default 400 */
-            status: number;
-            /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
-            readonly instance?: string | null;
-            /** @description A URI reference that identifies the problem type */
-            readonly type?: string;
-        };
-        /** @description A representation of common errors. */
-        "Error.jsonld": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            /** @description A short, human-readable summary of the problem. */
-            readonly title?: string | null;
-            /** @description A human-readable explanation specific to this occurrence of the problem. */
-            readonly detail?: string | null;
-            /** @default 400 */
-            status: number;
-            /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
-            readonly instance?: string | null;
-            /** @description A URI reference that identifies the problem type */
-            readonly type?: string;
-            readonly description?: string | null;
-        };
-        Site: {
-            readonly id?: number & string;
-            code?: string;
-            name?: string;
-            description?: string | null;
-            /** Format: date-time */
-            createdAt?: string;
-            /**
-             * Format: iri-reference
-             * @example https://example.com/
-             */
-            createdBy?: string | null;
-            userPrivileges?: string[];
-        };
-        "Site.jsonld": {
-            readonly id?: number & string;
-            code?: string;
-            name?: string;
-            description?: string | null;
-            /** Format: date-time */
-            createdAt?: string;
-            /**
-             * Format: iri-reference
-             * @example https://example.com/
-             */
-            createdBy?: string | null;
-            userPrivileges?: string[];
-        };
-        "Site.jsonld-site.acl.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            readonly id?: number & string;
-            code?: string;
-            name?: string;
-            description?: string | null;
-            createdBy?: components["schemas"]["User.jsonld-site.acl.read"] | null;
-        };
-        "Site.jsonld-site_user_privilege.acl.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            readonly id?: number & string;
-            code?: string;
-            name?: string;
-        };
-        "SiteUserPrivilege-site_user_privilege.update": {
-            /**
-             * @default 0
-             * @example 0
-             */
-            privilege: number;
-        };
-        "SiteUserPrivilege.jsonld-site_user_privilege.acl.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            user?: components["schemas"]["User.jsonld-site_user_privilege.acl.read"];
-            site?: components["schemas"]["Site.jsonld-site_user_privilege.acl.read"];
-            /**
-             * @default 0
-             * @example 0
-             */
-            privilege: number;
-        };
-        "SiteUserPrivilege.jsonld-site_user_privilege.create": {
-            /**
-             * Format: iri-reference
-             * @example https://example.com/
-             */
-            user: string;
-            /**
-             * Format: iri-reference
-             * @example https://example.com/
-             */
-            site: string;
-            /**
-             * @default 0
-             * @example 0
-             */
-            privilege: number;
-        };
-        "User-user.change-password": {
-            plainPassword: string | null;
-        };
-        "User.UserPasswordChangeInputDto.jsonld": {
-            oldPassword: string | null;
-            plainPassword: string | null;
-            repeatPassword: string | null;
-        };
-        "User.jsonld-site.acl.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            /** Format: uuid */
-            readonly id?: string | null;
-            readonly userIdentifier?: string;
-        };
-        "User.jsonld-site_user_privilege.acl.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            /** Format: uuid */
-            readonly id?: string | null;
-            readonly userIdentifier?: string;
-        };
-        "User.jsonld-user.acl.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            /** Format: uuid */
-            readonly id?: string | null;
-            email?: string;
-            /**
-             * @default [
-             *       "ROLE_USER"
-             *     ]
-             * @example [
-             *       "ROLE_USER"
-             *     ]
-             */
-            roles: string[];
-            readonly userIdentifier?: string;
-        };
-        "User.jsonld-user.me.read": {
-            readonly "@context"?: string | ({
-                "@vocab": string;
-                /** @enum {string} */
-                hydra: "http://www.w3.org/ns/hydra/core#";
-            } & {
-                [key: string]: unknown;
-            });
-            readonly "@id"?: string;
-            readonly "@type"?: string;
-            /** Format: uuid */
-            readonly id?: string | null;
-            email?: string;
-            /**
-             * @default [
-             *       "ROLE_USER"
-             *     ]
-             * @example [
-             *       "ROLE_USER"
-             *     ]
-             */
-            roles: string[];
-        };
-        "User.jsonld-user.write": {
-            /** Format: email */
-            email: string;
-            plainPassword: string | null;
-            /**
-             * @default [
-             *       "ROLE_USER"
-             *     ]
-             * @example [
-             *       "ROLE_USER"
-             *     ]
-             */
-            roles: string[];
-        };
-    };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+  schemas: {
+    /** @description Unprocessable entity */
+    'ConstraintViolation-json': {
+      /**
+       * @default 422
+       * @example 422
+       */
+      status: number
+      violations?: {
+        /** @description The property path of the violation */
+        propertyPath?: string
+        /** @description The message associated with the violation */
+        message?: string
+      }[]
+      readonly detail?: string
+      readonly type?: string
+      readonly title?: string | null
+      readonly instance?: string | null
+    }
+    /** @description Unprocessable entity */
+    'ConstraintViolation.jsonld-jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /**
+       * @default 422
+       * @example 422
+       */
+      status: number
+      violations?: {
+        /** @description The property path of the violation */
+        propertyPath?: string
+        /** @description The message associated with the violation */
+        message?: string
+      }[]
+      readonly detail?: string
+      readonly description?: string
+      readonly type?: string
+      readonly title?: string | null
+      readonly instance?: string | null
+    }
+    /** @description A representation of common errors. */
+    Error: {
+      /** @description A short, human-readable summary of the problem. */
+      readonly title?: string | null
+      /** @description A human-readable explanation specific to this occurrence of the problem. */
+      readonly detail?: string | null
+      /** @default 400 */
+      status: number
+      /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
+      readonly instance?: string | null
+      /** @description A URI reference that identifies the problem type */
+      readonly type?: string
+    }
+    /** @description A representation of common errors. */
+    'Error.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /** @description A short, human-readable summary of the problem. */
+      readonly title?: string | null
+      /** @description A human-readable explanation specific to this occurrence of the problem. */
+      readonly detail?: string | null
+      /** @default 400 */
+      status: number
+      /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
+      readonly instance?: string | null
+      /** @description A URI reference that identifies the problem type */
+      readonly type?: string
+      readonly description?: string | null
+    }
+    Site: {
+      readonly id?: number & string
+      code?: string
+      name?: string
+      description?: string | null
+      /** Format: date-time */
+      createdAt?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+      userPrivileges?: string[]
+    }
+    'Site.jsonld': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+      description?: string | null
+      /** Format: date-time */
+      createdAt?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+      userPrivileges?: string[]
+    }
+    'Site.jsonld-site.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?: components['schemas']['User.jsonld-site.acl.read'] | null
+    }
+    'Site.jsonld-site_user_privilege.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'SiteUserPrivilege-site_user_privilege.update': {
+      /**
+       * @default 0
+       * @example 0
+       */
+      privilege: number
+    }
+    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
+      site?: components['schemas']['Site.jsonld-site_user_privilege.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      privilege: number
+    }
+    'SiteUserPrivilege.jsonld-site_user_privilege.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      user: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      privilege: number
+    }
+    'User-user.change-password': {
+      plainPassword: string | null
+    }
+    'User.UserPasswordChangeInputDto.jsonld': {
+      oldPassword: string | null
+      plainPassword: string | null
+      repeatPassword: string | null
+    }
+    'User.jsonld-site.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-site_user_privilege.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-user.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /** Format: uuid */
+      readonly id?: string | null
+      email?: string
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       * @example [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-user.me.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /** Format: uuid */
+      readonly id?: string | null
+      email?: string
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       * @example [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+    }
+    'User.jsonld-user.write': {
+      /** Format: email */
+      email: string
+      plainPassword: string | null
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       * @example [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+    }
+  }
+  responses: never
+  parameters: never
+  requestBodies: never
+  headers: never
+  pathItems: never
 }
-export type $defs = Record<string, never>;
+export type $defs = Record<string, never>
 export interface operations {
-    login_check_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The login data */
-        requestBody: {
-            content: {
-                "application/json": {
-                    email: string;
-                    password: string;
-                };
-            };
-        };
-        responses: {
-            /** @description User token created */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        readonly token: string;
-                    };
-                };
-            };
-        };
-    };
-    api_sites_get_collection: {
-        parameters: {
-            query?: {
-                /** @description The collection page number */
-                page?: number;
-                /** @description The number of items per page */
-                itemsPerPage?: number;
-                "order[id]"?: "asc" | "desc";
-                "order[code]"?: "asc" | "desc";
-                "order[name]"?: "asc" | "desc";
-                code?: string;
-                "code[]"?: string[];
-                name?: string;
-                description?: string;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Site collection */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": {
-                        member: components["schemas"]["Site.jsonld-site.acl.read"][];
-                        totalItems?: number;
-                        /** @example {
-                         *       "@id": "string",
-                         *       "type": "string",
-                         *       "first": "string",
-                         *       "last": "string",
-                         *       "previous": "string",
-                         *       "next": "string"
-                         *     } */
-                        view?: {
-                            /** Format: iri-reference */
-                            "@id"?: string;
-                            "@type"?: string;
-                            /** Format: iri-reference */
-                            first?: string;
-                            /** Format: iri-reference */
-                            last?: string;
-                            /** Format: iri-reference */
-                            previous?: string;
-                            /** Format: iri-reference */
-                            next?: string;
-                        };
-                        search?: {
-                            "@type"?: string;
-                            template?: string;
-                            variableRepresentation?: string;
-                            mapping?: {
-                                "@type"?: string;
-                                variable?: string;
-                                property?: string | null;
-                                required?: boolean;
-                            }[];
-                        };
-                    };
-                };
-            };
-        };
-    };
-    api_sites_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The new Site resource */
-        requestBody: {
-            content: {
-                "application/ld+json": components["schemas"]["Site.jsonld"];
-            };
-        };
-        responses: {
-            /** @description Site resource created */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Site.jsonld-site.acl.read"];
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
-    api_sites_id_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Site identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Site resource */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Site.jsonld-site.acl.read"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_sites_id_delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Site identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Site resource deleted */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_sites_id_patch: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Site identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        /** @description The updated Site resource */
-        requestBody: {
-            content: {
-                "application/merge-patch+json": components["schemas"]["Site"];
-            };
-        };
-        responses: {
-            /** @description Site resource updated */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Site.jsonld-site.acl.read"];
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
-    api_site_user_privileges_get_collection: {
-        parameters: {
-            query?: {
-                /** @description The collection page number */
-                page?: number;
-                /** @description The number of items per page */
-                itemsPerPage?: number;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description SiteUserPrivilege collection */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": {
-                        member: components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"][];
-                        totalItems?: number;
-                        /** @example {
-                         *       "@id": "string",
-                         *       "type": "string",
-                         *       "first": "string",
-                         *       "last": "string",
-                         *       "previous": "string",
-                         *       "next": "string"
-                         *     } */
-                        view?: {
-                            /** Format: iri-reference */
-                            "@id"?: string;
-                            "@type"?: string;
-                            /** Format: iri-reference */
-                            first?: string;
-                            /** Format: iri-reference */
-                            last?: string;
-                            /** Format: iri-reference */
-                            previous?: string;
-                            /** Format: iri-reference */
-                            next?: string;
-                        };
-                        search?: {
-                            "@type"?: string;
-                            template?: string;
-                            variableRepresentation?: string;
-                            mapping?: {
-                                "@type"?: string;
-                                variable?: string;
-                                property?: string | null;
-                                required?: boolean;
-                            }[];
-                        };
-                    };
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_site_user_privileges_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The new SiteUserPrivilege resource */
-        requestBody: {
-            content: {
-                "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.create"];
-            };
-        };
-        responses: {
-            /** @description SiteUserPrivilege resource created */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
-    api_site_user_privileges_id_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description SiteUserPrivilege identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description SiteUserPrivilege resource */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_site_user_privileges_id_delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description SiteUserPrivilege identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description SiteUserPrivilege resource deleted */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_site_user_privileges_id_patch: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description SiteUserPrivilege identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        /** @description The updated SiteUserPrivilege resource */
-        requestBody: {
-            content: {
-                "application/merge-patch+json": components["schemas"]["SiteUserPrivilege-site_user_privilege.update"];
-            };
-        };
-        responses: {
-            /** @description SiteUserPrivilege resource updated */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
-    api_sites_siteIduser_privileges_get_collection: {
-        parameters: {
-            query?: {
-                /** @description The collection page number */
-                page?: number;
-                /** @description The number of items per page */
-                itemsPerPage?: number;
-            };
-            header?: never;
-            path: {
-                /** @description SiteUserPrivilege identifier */
-                siteId: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description SiteUserPrivilege collection */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": {
-                        member: components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"][];
-                        totalItems?: number;
-                        /** @example {
-                         *       "@id": "string",
-                         *       "type": "string",
-                         *       "first": "string",
-                         *       "last": "string",
-                         *       "previous": "string",
-                         *       "next": "string"
-                         *     } */
-                        view?: {
-                            /** Format: iri-reference */
-                            "@id"?: string;
-                            "@type"?: string;
-                            /** Format: iri-reference */
-                            first?: string;
-                            /** Format: iri-reference */
-                            last?: string;
-                            /** Format: iri-reference */
-                            previous?: string;
-                            /** Format: iri-reference */
-                            next?: string;
-                        };
-                        search?: {
-                            "@type"?: string;
-                            template?: string;
-                            variableRepresentation?: string;
-                            mapping?: {
-                                "@type"?: string;
-                                variable?: string;
-                                property?: string | null;
-                                required?: boolean;
-                            }[];
-                        };
-                    };
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_sites_siteIduser_privileges_id_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description SiteUserPrivilege identifier */
-                siteId: string;
-                /** @description SiteUserPrivilege identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description SiteUserPrivilege resource */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["SiteUserPrivilege.jsonld-site_user_privilege.acl.read"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_users_get_collection: {
-        parameters: {
-            query?: {
-                /** @description The collection page number */
-                page?: number;
-                /** @description The number of items per page */
-                itemsPerPage?: number;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description User collection */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": {
-                        member: components["schemas"]["User.jsonld-user.acl.read"][];
-                        totalItems?: number;
-                        /** @example {
-                         *       "@id": "string",
-                         *       "type": "string",
-                         *       "first": "string",
-                         *       "last": "string",
-                         *       "previous": "string",
-                         *       "next": "string"
-                         *     } */
-                        view?: {
-                            /** Format: iri-reference */
-                            "@id"?: string;
-                            "@type"?: string;
-                            /** Format: iri-reference */
-                            first?: string;
-                            /** Format: iri-reference */
-                            last?: string;
-                            /** Format: iri-reference */
-                            previous?: string;
-                            /** Format: iri-reference */
-                            next?: string;
-                        };
-                        search?: {
-                            "@type"?: string;
-                            template?: string;
-                            variableRepresentation?: string;
-                            mapping?: {
-                                "@type"?: string;
-                                variable?: string;
-                                property?: string | null;
-                                required?: boolean;
-                            }[];
-                        };
-                    };
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_users_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The new User resource */
-        requestBody: {
-            content: {
-                "application/ld+json": components["schemas"]["User.jsonld-user.write"];
-            };
-        };
-        responses: {
-            /** @description User resource created */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["User.jsonld-user.acl.read"];
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
-    api_usersme_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description User resource */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["User.jsonld-user.me.read"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_usersmechange_password_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description The new User resource */
-        requestBody: {
-            content: {
-                "application/ld+json": components["schemas"]["User.UserPasswordChangeInputDto.jsonld"];
-            };
-        };
-        responses: {
-            /** @description User resource created */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": unknown;
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
-    api_users_id_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description User identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description User resource */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["User.jsonld-user.acl.read"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-        };
-    };
-    api_users_idchange_password_patch: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description User identifier */
-                id: string;
-            };
-            cookie?: never;
-        };
-        /** @description The updated User resource */
-        requestBody: {
-            content: {
-                "application/merge-patch+json": components["schemas"]["User-user.change-password"];
-            };
-        };
-        responses: {
-            /** @description User resource updated */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": unknown;
-                };
-            };
-            /** @description Invalid input */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description Not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["Error.jsonld"];
-                    "application/problem+json": components["schemas"]["Error"];
-                    "application/json": components["schemas"]["Error"];
-                };
-            };
-            /** @description An error occurred */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/ld+json": components["schemas"]["ConstraintViolation.jsonld-jsonld"];
-                    "application/problem+json": components["schemas"]["ConstraintViolation-json"];
-                    "application/json": components["schemas"]["ConstraintViolation-json"];
-                };
-            };
-        };
-    };
+  login_check_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The login data */
+    requestBody: {
+      content: {
+        'application/json': {
+          email: string
+          password: string
+        }
+      }
+    }
+    responses: {
+      /** @description User token created */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': {
+            readonly token: string
+          }
+        }
+      }
+    }
+  }
+  api_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        name?: string
+        description?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Site collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Site.jsonld-site.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_sites_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new Site resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['Site.jsonld']
+      }
+    }
+    responses: {
+      /** @description Site resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Site.jsonld-site.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_sites_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Site identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Site resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Site.jsonld-site.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_sites_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Site identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Site resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_sites_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Site identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated Site resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['Site']
+      }
+    }
+    responses: {
+      /** @description Site resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Site.jsonld-site.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_site_user_privileges_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_site_user_privileges_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new SiteUserPrivilege resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.create']
+      }
+    }
+    responses: {
+      /** @description SiteUserPrivilege resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_site_user_privileges_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_site_user_privileges_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_site_user_privileges_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated SiteUserPrivilege resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['SiteUserPrivilege-site_user_privilege.update']
+      }
+    }
+    responses: {
+      /** @description SiteUserPrivilege resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_sites_siteIduser_privileges_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        siteId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_sites_siteIduser_privileges_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        siteId: string
+        /** @description SiteUserPrivilege identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description User collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['User.jsonld-user.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new User resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['User.jsonld-user.write']
+      }
+    }
+    responses: {
+      /** @description User resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['User.jsonld-user.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_usersme_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description User resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['User.jsonld-user.me.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_usersmechange_password_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new User resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['User.UserPasswordChangeInputDto.jsonld']
+      }
+    }
+    responses: {
+      /** @description User resource created */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': unknown
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_users_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description User identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description User resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['User.jsonld-user.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_idchange_password_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description User identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated User resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['User-user.change-password']
+      }
+    }
+    responses: {
+      /** @description User resource updated */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': unknown
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
 }

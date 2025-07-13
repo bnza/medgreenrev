@@ -12,13 +12,10 @@ const props = withDefaults(
 const clicked = ref(false)
 const historyStackStore = useHistoryStackStore()
 
-const {last: to} = storeToRefs(historyStackStore)
+const { last: to } = storeToRefs(historyStackStore)
 
 onUnmounted(() => {
-  if (
-    clicked.value
-    && to.value.isUserAction
-  ) {
+  if (clicked.value && to.value.isUserAction) {
     historyStackStore.pop()
   }
 })
@@ -35,7 +32,7 @@ onUnmounted(() => {
         icon
         @click="clicked = true"
       >
-        <v-icon class="mx-3" v-bind="actProps" icon="fas fa-arrow-left"/>
+        <v-icon class="mx-3" v-bind="actProps" icon="fas fa-arrow-left" />
       </v-btn>
     </template>
   </v-tooltip>

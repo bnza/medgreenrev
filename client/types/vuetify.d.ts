@@ -1,8 +1,10 @@
-import {VSnackbar} from 'vuetify/components'
-import type {VDataTable} from 'vuetify/lib/components/VDataTable'
+import { VSnackbar } from 'vuetify/components'
+import type { VDataTable } from 'vuetify/lib/components/VDataTable'
 
 type SnackbarProps = InstanceType<typeof VSnackbar>['$props']
-export type ReadonlyHeaders = InstanceType<typeof VDataTable>['$props']['headers']
+export type ReadonlyHeaders = InstanceType<
+  typeof VDataTable
+>['$props']['headers']
 
 export type SnackbarMessage = {
   color: SnackbarProps['color']
@@ -17,16 +19,14 @@ export type SnackbarMessage = {
 }
 
 export interface SortItem {
-  key: string;
-  order: 'asc' | 'desc';
+  key: string
+  order: 'asc' | 'desc'
 }
 
 export interface DataTableComponentOptions {
-  page: number;
-  itemsPerPage?: number;
-  sortBy: SortItem[];
-  groupBy: SortItem[];
-  search?: string;
+  page: number
+  itemsPerPage?: number
+  sortBy: SortItem[]
+  groupBy: SortItem[]
+  search?: string
 }
-
-

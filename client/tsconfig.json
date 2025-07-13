@@ -1,9 +1,7 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noUncheckedIndexedAccess": true

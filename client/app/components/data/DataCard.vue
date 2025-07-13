@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const props = withDefaults(
   defineProps<{
     title: string
@@ -9,8 +8,9 @@ const props = withDefaults(
   }>(),
   {
     loading: false,
-    showBackButton: true
-  })
+    showBackButton: true,
+  },
+)
 
 defineSlots<{
   actions(): any
@@ -30,18 +30,18 @@ defineSlots<{
     <template #item>
       <data-card-toolbar v-bind="$props">
         <template #toolbar-append>
-          <slot name="toolbar-append"/>
+          <slot name="toolbar-append" />
         </template>
       </data-card-toolbar>
       <slot>
-        <loading-component/>
+        <loading-component />
       </slot>
     </template>
     <template #actions>
-      <slot name="actions"/>
+      <slot name="actions" />
     </template>
     <template #append>
-      <slot name="append"/>
+      <slot name="append" />
     </template>
   </v-card>
 </template>

@@ -1,13 +1,14 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
-
-import type {GetCollectionPath} from "~~/types";
-import useResourceUiStore from "~/stores/resource-ui";
+import type { GetCollectionPath } from '~~/types'
+import useResourceUiStore from '~/stores/resource-ui'
 
 const props = defineProps<{
   path: Path
 }>()
 
-const {isSearchDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
+const { isSearchDialogOpen: visible } = storeToRefs(
+  useResourceUiStore(props.path),
+)
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const {isSearchDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path)
     @click="visible = true"
   >
     <template #prepend>
-      <v-icon color="primary" icon="fas fa-magnifying-glass"/>
+      <v-icon color="primary" icon="fas fa-magnifying-glass" />
     </template>
   </v-list-item>
 </template>

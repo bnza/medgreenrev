@@ -1,16 +1,15 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
-import type {GetCollectionPath} from "~~/types";
-import useCollectionTableHeadersStore from "~/stores/collection-table-headers";
+import type { GetCollectionPath } from '~~/types'
+import useCollectionTableHeadersStore from '~/stores/collection-table-headers'
 
 const props = defineProps<{
   path: Path
 }>()
 
-const {headers} = storeToRefs(useCollectionTableHeadersStore(props.path))
+const { headers } = storeToRefs(useCollectionTableHeadersStore(props.path))
 
-const {useGetCollection} = useDefineGetCollectionQuery(props.path)
-const {pagination, items, totalItems, status} = useGetCollection()
-
+const { useGetCollection } = useDefineGetCollectionQuery(props.path)
+const { pagination, items, totalItems, status } = useGetCollection()
 </script>
 
 <template>
@@ -32,7 +31,7 @@ const {pagination, items, totalItems, status} = useGetCollection()
   >
     <!-- https://mokkapps.de/vue-tips/expose-slots-from-a-child-component-->
     <template v-for="(_, name) in $slots" #[name]="slotProps">
-      <slot :name v-bind="slotProps || {}"/>
+      <slot :name v-bind="slotProps || {}" />
     </template>
   </v-data-table-server>
 </template>

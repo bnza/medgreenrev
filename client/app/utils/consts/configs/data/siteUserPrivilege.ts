@@ -1,8 +1,8 @@
-import type {ResourceConfig} from "~~/types";
+import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: "/api/site_user_privileges",
-  appPath: "/admin/site-user-privileges",
+  apiPath: '/api/site_user_privileges',
+  appPath: '/admin/site-user-privileges',
   defaultHeaders: [
     {
       key: 'id',
@@ -31,7 +31,7 @@ const config: Readonly<ResourceConfig> = {
   ],
 
   labels: ['sites/users privileges', 'user/site privilege'],
-  name: 'siteUserPrivilege'
+  name: 'siteUserPrivilege',
 }
 
 export default config

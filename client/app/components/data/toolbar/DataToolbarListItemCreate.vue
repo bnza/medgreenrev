@@ -1,13 +1,14 @@
 <script setup lang="ts" generic="PATH extends PostCollectionPath">
-
-import type {PostCollectionPath} from "~~/types";
-import useResourceUiStore from "~/stores/resource-ui";
+import type { PostCollectionPath } from '~~/types'
+import useResourceUiStore from '~/stores/resource-ui'
 
 const props = defineProps<{
   path: PATH
 }>()
 
-const {isCreateDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
+const { isCreateDialogOpen: visible } = storeToRefs(
+  useResourceUiStore(props.path),
+)
 </script>
 
 <template>
@@ -17,8 +18,7 @@ const {isCreateDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path)
     @click="visible = true"
   >
     <template #prepend>
-      <v-icon color="error" icon="fas fa-plus"/>
+      <v-icon color="error" icon="fas fa-plus" />
     </template>
   </v-list-item>
 </template>
-

@@ -1,15 +1,14 @@
 <script setup lang="ts" generic="Path extends PatchItemPath">
-
 import type {
   GetItemResponseMap,
   OperationPathParams,
   PatchItemPath,
   PatchItemRequestMap,
   PostCollectionRequestMap,
-} from "~~/types";
-import useResourceUiStore from "~/stores/resource-ui";
-import type {RegleRoot} from "@regle/core";
-import usePatchItemMutation from "~/composables/queries/usePatchItemMutation";
+} from '~~/types'
+import useResourceUiStore from '~/stores/resource-ui'
+import type { RegleRoot } from '@regle/core'
+import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
 
 const props = defineProps<{
   path: Path
@@ -22,31 +21,48 @@ defineSlots<{
   actions(): any
 }>()
 
-const {isUpdateDialogOpen: visible, updateDialogState} = storeToRefs(useResourceUiStore(props.path))
+const { isUpdateDialogOpen: visible, updateDialogState } = storeToRefs(
+  useResourceUiStore(props.path),
+)
 
-const {queryOptions} = useDefineGetItemQuery(props.path)
-const {data: item, status, error} = useQuery(queryOptions, () => (updateDialogState.value || undefined) as OperationPathParams<Path, 'get'> | undefined)
-watch(item, (value) => {
+const { queryOptions } = useDefineGetItemQuery(props.path)
+const {
+  data: item,
+  status,
+  error,
+} = useQuery(
+  queryOptions,
+  () =>
+    (updateDialogState.value || undefined) as
+      | OperationPathParams<Path, 'get'>
+      | undefined,
+)
+watch(
+  item,
+  (value) => {
     if (value) {
       props.regle.$value = structuredClone(value)
     }
   },
-  {immediate: true}
+  { immediate: true },
 )
 
-const {patchItem} = usePatchItemMutation(props.path)
-const {addSuccess, addError} = useMessagesStore()
+const { patchItem } = usePatchItemMutation(props.path)
+const { addSuccess, addError } = useMessagesStore()
 
 const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   return isPlainObject(value) && 'id' in value
 }
-const isValidOperationPathParams = (params: unknown): params is OperationPathParams<Path, "patch"> => {
+const isValidOperationPathParams = (
+  params: unknown,
+): params is OperationPathParams<Path, 'patch'> => {
   return isValidItem(params) && 'id' in params
 }
 
 const submit = async () => {
   await props.regle.$validate()
-  const isValidItem = (value: any): value is PatchItemRequestMap[Path] => !props.regle.$invalid
+  const isValidItem = (value: any): value is PatchItemRequestMap[Path] =>
+    !props.regle.$invalid
 
   const runtimeError: string[] = []
 
@@ -64,13 +80,10 @@ const submit = async () => {
 
   patchItem.item.value = toRaw(item.value)
   try {
-    await patchItem.mutateAsync(
-      {
-        param: {id: item.value?.id} as OperationPathParams<Path, "patch">,
-        model: toRaw(props.regle.$value)
-      }
-
-    )
+    await patchItem.mutateAsync({
+      param: { id: item.value?.id } as OperationPathParams<Path, 'patch'>,
+      model: toRaw(props.regle.$value),
+    })
     addSuccess('Resource successfully updated')
     visible.value = false
   } catch (e) {
@@ -98,7 +111,7 @@ watch(visible, (flag) => {
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
-            <slot @submit.prevent/>
+            <slot @submit.prevent />
           </v-container>
         </v-sheet>
       </v-form>
@@ -108,8 +121,8 @@ watch(visible, (flag) => {
         <v-btn
           data-testid="data-dialog-form-close-button"
           :disabled
-          @click="visible=false"
-        >close
+          @click="visible = false"
+          >close
         </v-btn>
       </v-col>
       <v-col class="d-flex justify-center">
@@ -118,7 +131,7 @@ watch(visible, (flag) => {
           data-testid="data-dialog-form-submit-button"
           :disabled
           @click="submit"
-        >submit
+          >submit
         </v-btn>
       </v-col>
     </template>

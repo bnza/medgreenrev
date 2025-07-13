@@ -1,14 +1,14 @@
-import type {ApiDataResourceKey} from "~~/types";
-import {API_RESOURCE_MAP} from "~/utils/consts/resources";
-import {RESOURCE_CONFIG_MAP} from "~/utils/consts/configs";
+import type { ApiDataResourceKey } from '~~/types'
+import { API_RESOURCE_MAP } from '~/utils/consts/resources'
+import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
 
-
-const useCollectionTableHeadersStore = <GetCollectionPath>(path: GetCollectionPath) => {
-
+const useCollectionTableHeadersStore = <GetCollectionPath>(
+  path: GetCollectionPath,
+) => {
   return defineStore(`collection-table-headers:${path}`, () => {
-
-    const resourceKey = Object.entries(API_RESOURCE_MAP)
-      .find(([_, value]) => value === path)?.[0] as ApiDataResourceKey | undefined
+    const resourceKey = Object.entries(API_RESOURCE_MAP).find(
+      ([_, value]) => value === path,
+    )?.[0] as ApiDataResourceKey | undefined
 
     if (!resourceKey) {
       throw new Error(`Unknown resource key for path ${path}`)
@@ -19,7 +19,7 @@ const useCollectionTableHeadersStore = <GetCollectionPath>(path: GetCollectionPa
     const headers = computed(() => config.defaultHeaders)
 
     return {
-      headers
+      headers,
     }
   })()
 }

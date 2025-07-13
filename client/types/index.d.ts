@@ -7,5 +7,4 @@ export * from './openapi-helpers'
 export * from './resources'
 export * from './validation'
 export * from './vuetify'
-export type {ApiResourceKey} from '~/utils/consts/resources'
-
+export type { ApiResourceKey } from '~/utils/consts/resources'

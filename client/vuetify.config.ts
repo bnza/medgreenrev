@@ -1,7 +1,7 @@
-import {md3} from 'vuetify/blueprints'
-import {defineVuetifyConfiguration} from 'vuetify-nuxt-module/custom-configuration'
-import {COLORS} from './app/utils/consts/colors'
-import type {ThemeDefinition} from 'vuetify'
+import { md3 } from 'vuetify/blueprints'
+import { defineVuetifyConfiguration } from 'vuetify-nuxt-module/custom-configuration'
+import { COLORS } from './app/utils/consts/colors'
+import type { ThemeDefinition } from 'vuetify'
 
 const darkTheme: ThemeDefinition = {
   dark: true,

@@ -1,6 +1,12 @@
-import type {HTTPMethod} from "h3";
+import type { HTTPMethod } from 'h3'
 
-export type ApiHttpMethod = Exclude<Lowercase<HTTPMethod>, 'trace', 'put', 'head', 'options'>
+export type ApiHttpMethod = Exclude<
+  Lowercase<HTTPMethod>,
+  'trace',
+  'put',
+  'head',
+  'options'
+>
 
 export type ApiRequestOptions = Parameters<typeof $fetch>[1]
 

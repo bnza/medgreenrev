@@ -1,11 +1,9 @@
 <script setup lang="ts" generic="Path extends ApiPath">
-
-import type {ApiPath} from "~~/types";
+import type { ApiPath } from '~~/types'
 
 defineProps<{
   path: Path
 }>()
-
 </script>
 
 <template>

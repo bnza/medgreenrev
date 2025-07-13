@@ -1,5 +1,5 @@
 <script setup>
-const {isAuthenticated} = useAppAuth()
+const { isAuthenticated } = useAppAuth()
 const AuthUserMenu = resolveComponent('AuthUserMenu')
 const AuthLoginIcon = resolveComponent('AuthLoginIcon')
 const authComponent = computed(() =>
@@ -8,5 +8,5 @@ const authComponent = computed(() =>
 </script>
 
 <template>
-  <component :is="authComponent"/>
+  <component :is="authComponent" />
 </template>

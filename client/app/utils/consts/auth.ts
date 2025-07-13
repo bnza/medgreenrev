@@ -1,5 +1,5 @@
-import {COLORS} from '~/utils/consts/colors'
-import type {BaseAcl} from "~~/types";
+import { COLORS } from '~/utils/consts/colors'
+import type { BaseAcl } from '~~/types'
 
 export enum ApiRole {
   Admin = 'ROLE_ADMIN',
@@ -16,7 +16,7 @@ export const ROLE_COLORS = {
   [ApiRole.Admin]: COLORS.error,
   [ApiRole.Editor]: COLORS.warning,
   [ApiRole.User]: COLORS.success,
-} as const satisfies Record<ApiRole, string>;
+} as const satisfies Record<ApiRole, string>
 
 export const ROLE_HIERARCHY = {
   [ApiRole.Admin]: 1000,

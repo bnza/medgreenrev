@@ -1,24 +1,31 @@
-import type {paths} from './openapi'
+import type { paths } from './openapi'
 
 export type ApiPath = keyof paths
 
-type OperationDetails<T extends keyof paths, Method extends keyof paths[T]> =
-  paths[T][Method]
+type OperationDetails<
+  T extends keyof paths,
+  Method extends keyof paths[T],
+> = paths[T][Method]
 
-export type OperationPathParams<T extends keyof paths, M extends keyof paths[T]> =
-  T extends keyof paths
-    ? paths[T][M] extends { parameters: { path: infer P } }
-      ? P
-      : never
+export type OperationPathParams<
+  T extends keyof paths,
+  M extends keyof paths[T],
+> = T extends keyof paths
+  ? paths[T][M] extends { parameters: { path: infer P } }
+    ? P
     : never
-
+  : never
 
 // Check if path parameters contain an 'id' property
 type HasIdInPathParams<T> = T extends { id: any } ? true : false
 
 export type GetCollectionPath = {
   [K in keyof paths]: paths[K] extends { get: any }
-    ? paths[K]['get'] extends { responses: { 200: { content: { 'application/ld+json': infer Response } } } }
+    ? paths[K]['get'] extends {
+        responses: {
+          200: { content: { 'application/ld+json': infer Response } }
+        }
+      }
       ? Response extends { member: any }
         ? K
         : never
@@ -28,7 +35,11 @@ export type GetCollectionPath = {
 
 export type PostCollectionPath = {
   [K in keyof paths]: paths[K] extends { post: any }
-    ? paths[K]['post'] extends { responses: { 201: { content: { 'application/ld+json': infer Response } } } }
+    ? paths[K]['post'] extends {
+        responses: {
+          201: { content: { 'application/ld+json': infer Response } }
+        }
+      }
       ? K
       : never
     : never
@@ -36,7 +47,11 @@ export type PostCollectionPath = {
 
 export type PatchItemPath = {
   [K in keyof paths]: paths[K] extends { patch: any }
-    ? paths[K]['patch'] extends { responses: { 200: { content: { 'application/ld+json': infer Response } } } }
+    ? paths[K]['patch'] extends {
+        responses: {
+          200: { content: { 'application/ld+json': infer Response } }
+        }
+      }
       ? K
       : never
     : never
@@ -52,14 +67,17 @@ export type DeleteItemPath = {
 
 export type GetItemPath = {
   [K in keyof paths]: paths[K] extends { get: any }
-    ? paths[K]['get'] extends { responses: { 200: { content: { 'application/ld+json': infer Response } } } }
+    ? paths[K]['get'] extends {
+        responses: {
+          200: { content: { 'application/ld+json': infer Response } }
+        }
+      }
       ? Response extends { member: any }
         ? never
         : K
       : never
     : never
 }[keyof paths]
-
 
 export type GetCollectionResponseMap = {
   [K in GetCollectionPath]: paths[K]['get']['responses']['200']['content']['application/ld+json']

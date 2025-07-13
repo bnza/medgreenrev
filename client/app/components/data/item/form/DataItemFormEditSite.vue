@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import type {RegleErrorTree} from "@regle/core";
+import type { RegleErrorTree } from '@regle/core'
 
 type Item = { code?: string; name?: string; description?: string | null }
-const item = defineModel<Item>('item', {required: true})
+const item = defineModel<Item>('item', { required: true })
 
 interface Props {
   errors?: RegleErrorTree<Item>
 }
 
 const props = defineProps<Props>()
-
 </script>
 
 <template>
@@ -28,9 +27,6 @@ const props = defineProps<Props>()
     />
   </v-row>
   <v-row>
-    <v-textarea
-      v-model="item.description"
-      label="description"
-    />
+    <v-textarea v-model="item.description" label="description" />
   </v-row>
 </template>

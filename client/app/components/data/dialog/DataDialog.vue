@@ -10,23 +10,15 @@ defineSlots<{
 </script>
 
 <template>
-  <v-dialog
-    :model-value="visible"
-    data-testid="data-dialog"
-    fullscreen
-  >
-    <data-card
-      v-if="visible"
-      :title
-      :show-back-button="false"
-    >
+  <v-dialog :model-value="visible" data-testid="data-dialog" fullscreen>
+    <data-card v-if="visible" :title :show-back-button="false">
       <template #default>
-        <slot/>
+        <slot />
       </template>
       <template #actions>
         <v-container>
           <v-row justify="space-around">
-            <slot name="actions"/>
+            <slot name="actions" />
           </v-row>
         </v-container>
       </template>

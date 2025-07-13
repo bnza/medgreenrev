@@ -1,11 +1,14 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  identifier?: string
-  title: string
-  showBackButton?: boolean
-}>(), {
-  showBackButton: true
-})
+const props = withDefaults(
+  defineProps<{
+    identifier?: string
+    title: string
+    showBackButton?: boolean
+  }>(),
+  {
+    showBackButton: true,
+  },
+)
 
 defineSlots<{
   'toolbar-prepend'(): any
@@ -15,20 +18,17 @@ defineSlots<{
 </script>
 
 <template>
-  <v-toolbar
-    data-testid="data-card-toolbar"
-    density="compact"
-  >
+  <v-toolbar data-testid="data-card-toolbar" density="compact">
     <template #prepend>
-      <lazy-navigation-back v-if="showBackButton"/>
-      <slot name="toolbar-prepend"/>
+      <lazy-navigation-back v-if="showBackButton" />
+      <slot name="toolbar-prepend" />
     </template>
     <template #title
-    ><span data-testid="data-card-toolbar-main-title">{{ title }}</span>
-      <slot name="title-append"/>
+      ><span data-testid="data-card-toolbar-main-title">{{ title }}</span>
+      <slot name="title-append" />
     </template>
     <template #append>
-      <slot name="toolbar-append"/>
+      <slot name="toolbar-append" />
     </template>
   </v-toolbar>
 </template>

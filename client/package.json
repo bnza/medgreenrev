@@ -10,6 +10,8 @@
     "generate:api-resources": "node bin/generate-api-resources-types.mjs",
     "generate:api-resources-operations": "node bin/generate-api-resources-operations-types.mjs",
     "generate:all": "pnpm generate:openapi && pnpm generate:api-resources && pnpm generate:api-resources-operations",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,vue,css,scss,json,md}\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,vue,css,scss,json,md}\" --ignore-path .prettierignore",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",

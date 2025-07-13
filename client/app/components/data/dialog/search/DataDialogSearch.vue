@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="Path extends ApiPath">
-
-import type {ApiPath} from "~~/types";
-import useResourceUiStore from "~/stores/resource-ui";
+import type { ApiPath } from '~~/types'
+import useResourceUiStore from '~/stores/resource-ui'
 
 const props = defineProps<{
   path: Path
@@ -13,7 +12,9 @@ defineSlots<{
   actions(): any
 }>()
 
-const {isSearchDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
+const { isSearchDialogOpen: visible } = storeToRefs(
+  useResourceUiStore(props.path),
+)
 </script>
 
 <template>
@@ -23,13 +24,13 @@ const {isSearchDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path)
     :title="`Search (${title})`"
   >
     <template #default>
-      <slot/>
+      <slot />
     </template>
     <template #actions>
       <v-btn
         data-testid="data-dialog-form-close-button"
-        @click="visible=false"
-      >close
+        @click="visible = false"
+        >close
       </v-btn>
     </template>
   </data-dialog>

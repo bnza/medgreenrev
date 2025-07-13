@@ -11,8 +11,7 @@ const props = withDefaults(
 )
 const message = ref('')
 if (props.error) {
-
-  if (!isObject(props.error) ) {
+  if (!isObject(props.error)) {
     message.value = String(props.error)
   }
 
@@ -20,8 +19,6 @@ if (props.error) {
     message.value = String(props.error.message)
   }
 }
-
-
 </script>
 
 <template>
@@ -32,7 +29,7 @@ if (props.error) {
     data-testid="resource-empty-state"
   >
     <template #actions>
-      <lazy-navigation-back/>
+      <lazy-navigation-back />
     </template>
   </v-empty-state>
 </template>

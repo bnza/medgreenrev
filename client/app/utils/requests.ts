@@ -1,4 +1,4 @@
-import type {DataTableComponentOptions} from "~~/types";
+import type { DataTableComponentOptions } from '~~/types'
 
 export const dataTableOptionsToQsObject = (
   dataTableOptions: DataTableComponentOptions,
@@ -20,6 +20,6 @@ export const dataTableOptionsToQsObject = (
     order,
     page: options.page,
     itemsPerPage: options.itemsPerPage,
-    ...(options.search && {search: options.search}),
+    ...(options.search && { search: options.search }),
   }
 }

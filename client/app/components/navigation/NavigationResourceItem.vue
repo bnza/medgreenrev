@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import type {BaseAcl} from "~~/types";
+import type { BaseAcl } from '~~/types'
 
 defineProps<{
   appPath: string
@@ -15,12 +14,8 @@ defineEmits<{
 
 <template>
   <v-btn-group variant="text" rounded="lg" class="item-nav">
-    <slot name="prepend"/>
-    <navigation-resource-item-read
-      :id
-      :app-path
-      :disabled="!acl.canRead"
-    />
+    <slot name="prepend" />
+    <navigation-resource-item-read :id :app-path :disabled="!acl.canRead" />
     <navigation-resource-item-update
       :disabled="!acl.canUpdate"
       @update="$emit('update')"
@@ -29,6 +24,6 @@ defineEmits<{
       :disabled="!acl.canDelete"
       @delete="$emit('delete')"
     />
-    <slot name="append"/>
+    <slot name="append" />
   </v-btn-group>
 </template>

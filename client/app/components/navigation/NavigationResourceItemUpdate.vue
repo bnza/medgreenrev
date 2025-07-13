@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
     disabled?: boolean
@@ -23,7 +22,7 @@ defineEmits<{
     data-testid="delete-item-button"
     @click="$emit('update')"
   >
-    <v-icon color="success" icon="fas fa-pen-to-square" size="xsmall"/>
+    <v-icon color="success" icon="fas fa-pen-to-square" size="xsmall" />
     <v-tooltip activator="parent" location="bottom">Edit item</v-tooltip>
   </v-btn>
 </template>

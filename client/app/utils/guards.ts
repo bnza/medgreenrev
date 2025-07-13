@@ -1,6 +1,9 @@
-import {ApiRole} from '~/utils/consts/auth'
-import type {ApiResourceKey} from "~~/types";
-import {API_RESOURCE_MAP, type ApiResourcePath} from "~/utils/consts/resources";
+import { ApiRole } from '~/utils/consts/auth'
+import type { ApiResourceKey } from '~~/types'
+import {
+  API_RESOURCE_MAP,
+  type ApiResourcePath,
+} from '~/utils/consts/resources'
 
 export const isAppRole = (value: unknown): value is ApiRole =>
   typeof value === 'string' && Object.values<string>(ApiRole).includes(value)
@@ -10,17 +13,15 @@ export const isApiResourceKey = (value: unknown): value is ApiResourceKey =>
 
 export const isString = (val: unknown): val is string => typeof val === 'string'
 export const isNumber = (val: unknown): val is number => typeof val === 'number'
-export const isBoolean = (val: unknown): val is boolean => typeof val === 'boolean'
+export const isBoolean = (val: unknown): val is boolean =>
+  typeof val === 'boolean'
 
-export const isObject= (value: unknown): value is object =>
-  (
-    typeof value === 'object' &&
-    value !== null &&
-    !Array.isArray(value)
-  )
+export const isObject = (value: unknown): value is object =>
+  typeof value === 'object' && value !== null && !Array.isArray(value)
 
-
-export const isPlainObject = (value: unknown): value is Record<string, unknown> => {
+export const isPlainObject = (
+  value: unknown,
+): value is Record<string, unknown> => {
   if (!isObject(value)) {
     return false
   }
@@ -37,12 +38,15 @@ export const isPlainObject = (value: unknown): value is Record<string, unknown> 
 
 export const isPlainObjectWithValues = <T>(
   value: unknown,
-  valueValidator: (val: unknown) => val is T
+  valueValidator: (val: unknown) => val is T,
 ): value is Record<string, T> =>
   isPlainObject(value) && Object.values(value).every(valueValidator)
 
-export const isPlainObjectWithStringValues = (value: unknown) => isPlainObjectWithValues<string>(value, isString)
+export const isPlainObjectWithStringValues = (value: unknown) =>
+  isPlainObjectWithValues<string>(value, isString)
 
 export const isApiResourcePath = (value: unknown): value is ApiResourcePath => {
-  return isString(value) && Object.values<string>(API_RESOURCE_MAP).includes(value)
+  return (
+    isString(value) && Object.values<string>(API_RESOURCE_MAP).includes(value)
+  )
 }

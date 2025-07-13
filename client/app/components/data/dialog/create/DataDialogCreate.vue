@@ -1,10 +1,9 @@
 <script setup lang="ts" generic="Path extends PostCollectionPath">
+import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
 
-import type {PostCollectionPath, PostCollectionRequestMap} from "~~/types";
-
-import useResourceUiStore from "~/stores/resource-ui";
-import type {RegleRoot} from "@regle/core";
-import usePostCollectionMutation from "~/composables/queries/usePostCollectionMutation";
+import useResourceUiStore from '~/stores/resource-ui'
+import type { RegleRoot } from '@regle/core'
+import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 
 const props = defineProps<{
   path: Path
@@ -17,14 +16,16 @@ defineSlots<{
   actions(): any
 }>()
 
-const {isCreateDialogOpen: visible} = storeToRefs(useResourceUiStore(props.path))
-const {postCollection} = usePostCollectionMutation(props.path)
-const {addSuccess, addError} = useMessagesStore()
-
+const { isCreateDialogOpen: visible } = storeToRefs(
+  useResourceUiStore(props.path),
+)
+const { postCollection } = usePostCollectionMutation(props.path)
+const { addSuccess, addError } = useMessagesStore()
 
 const submit = async () => {
   await props.regle.$validate()
-  const isValidItem = (value: any): value is PostCollectionRequestMap[Path] => !props.regle.$invalid
+  const isValidItem = (value: any): value is PostCollectionRequestMap[Path] =>
+    !props.regle.$invalid
 
   if (!isValidItem(props.regle.$value)) return
 
@@ -57,7 +58,7 @@ watch(visible, (flag) => {
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
-            <slot @submit.prevent/>
+            <slot @submit.prevent />
           </v-container>
         </v-sheet>
       </v-form>
@@ -67,8 +68,8 @@ watch(visible, (flag) => {
         <v-btn
           data-testid="data-dialog-form-close-button"
           :disabled
-          @click="visible=false"
-        >close
+          @click="visible = false"
+          >close
         </v-btn>
       </v-col>
       <v-col class="d-flex justify-center">
@@ -77,7 +78,7 @@ watch(visible, (flag) => {
           data-testid="data-dialog-form-submit-button"
           :disabled
           @click="submit"
-        >submit
+          >submit
         </v-btn>
       </v-col>
     </template>

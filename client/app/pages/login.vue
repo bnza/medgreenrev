@@ -6,5 +6,5 @@ definePageMeta({
 </script>
 
 <template>
-  <lazy-auth-login-data-card/>
+  <lazy-auth-login-data-card />
 </template>

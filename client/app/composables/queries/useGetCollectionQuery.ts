@@ -1,16 +1,14 @@
-import type {
-  DataTableComponentOptions,
-  GetCollectionPath,
-} from "~~/types";
-import {GetCollectionOperation} from "~/api/operations/GetCollectionOperation";
-import useAppQueryCache from "./useAppQueryCache";
+import type { DataTableComponentOptions, GetCollectionPath } from '~~/types'
+import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
+import useAppQueryCache from './useAppQueryCache'
 
-const defaultPagination = () => ({
-  page: 1,
-  itemsPerPage: 10,
-  sortBy: [],
-  groupBy: [],
-}) as const as DataTableComponentOptions
+const defaultPagination = () =>
+  ({
+    page: 1,
+    itemsPerPage: 10,
+    sortBy: [],
+    groupBy: [],
+  }) as const as DataTableComponentOptions
 
 export function useDefineGetCollectionQuery(path: GetCollectionPath) {
   const getCollectionOperation = new GetCollectionOperation(path)
@@ -21,7 +19,7 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const {RESOURCE_QUERY_KEY} = useAppQueryCache(resourceKey, path)
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(resourceKey, path)
 
   const queryOptions = (query: Record<string, any>) =>
     defineQueryOptions({
@@ -32,7 +30,7 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
   const useGetCollection = defineQuery(() => {
     const pagination = reactive(defaultPagination())
     const query = useQuery(queryOptions, () => ({
-      pagination
+      pagination,
     }))
 
     const items = computed(() => query.data.value?.member ?? [])
@@ -41,7 +39,7 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
       items,
       ...query,
       totalItems,
-      pagination
+      pagination,
     }
   })
 
@@ -51,4 +49,3 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
 }
 
 export default useDefineGetCollectionQuery
-

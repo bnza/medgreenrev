@@ -8,8 +8,8 @@ const pending = ref(false)
 const email = ref('')
 const password = ref('')
 
-const {signIn} = useAuth()
-const {addSuccess, addError} = useMessagesStore()
+const { signIn } = useAuth()
+const { addSuccess, addError } = useMessagesStore()
 
 const disabled = computed(() => {
   return !password.value || !email.value || pending.value
@@ -19,10 +19,10 @@ const historyStack = useHistoryStackStore()
 
 const router = useRouter()
 
-const signInAndFeedback = async ({email, password}: Credential) => {
+const signInAndFeedback = async ({ email, password }: Credential) => {
   pending.value = true
   try {
-    await signIn({email, password}, {callbackUrl: historyStack.last.path})
+    await signIn({ email, password }, { callbackUrl: historyStack.last.path })
     addSuccess(`User ${email} successfully logged in`)
   } catch (e: unknown) {
     console.error(e)
@@ -47,8 +47,8 @@ onBeforeRouteLeave(() => {
     <v-card-title class="text-secondary">Login</v-card-title>
     <v-card-text>Enter your credentials</v-card-text>
     <v-form class="px-6" @submit.prevent>
-      <v-text-field v-model="email" label="e-mail"/>
-      <v-text-field v-model="password" type="password" label="password"/>
+      <v-text-field v-model="email" label="e-mail" />
+      <v-text-field v-model="password" type="password" label="password" />
     </v-form>
     <v-card-actions>
       <v-btn
@@ -59,7 +59,7 @@ onBeforeRouteLeave(() => {
         :disabled="pending"
         @click="router.replace(historyStack.redirectionPath)"
       />
-      <v-spacer/>
+      <v-spacer />
       <v-btn
         color="secondary"
         rounded="lg"

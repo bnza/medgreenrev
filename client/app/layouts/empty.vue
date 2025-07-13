@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center" style="margin-top: 78px">
-      <home-page-logo/>
+      <home-page-logo />
     </v-row>
     <v-row justify="center">
       <v-progress-linear
@@ -11,6 +11,6 @@
         style="width: 480px"
       />
     </v-row>
-    <lazy-app-message-queue/>
+    <lazy-app-message-queue />
   </v-container>
 </template>

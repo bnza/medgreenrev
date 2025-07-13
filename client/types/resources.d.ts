@@ -1,8 +1,8 @@
-import type {ApiResourceKey} from "~/utils/consts/resources";
-import type {CollectionResponses} from "~~/types/openapi-helpers";
-import type {ReadonlyHeaders} from "~~/types/vuetify";
+import type { ApiResourceKey } from '~/utils/consts/resources'
+import type { CollectionResponses } from '~~/types/openapi-helpers'
+import type { ReadonlyHeaders } from '~~/types/vuetify'
 
-export type ApiDataResourceKey = Exclude<ApiResourceKey, never>;
+export type ApiDataResourceKey = Exclude<ApiResourceKey, never>
 
 export type ResourceConfig = {
   apiPath: keyof CollectionResponses
@@ -12,5 +12,3 @@ export type ResourceConfig = {
   protectedFields?: string[]
   defaultHeaders: ReadonlyHeaders[]
 }
-
-

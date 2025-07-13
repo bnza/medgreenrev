@@ -1,5 +1,5 @@
-import {defineVitestConfig} from '@nuxt/test-utils/config'
-import {resolve} from 'path'
+import { defineVitestConfig } from '@nuxt/test-utils/config'
+import { resolve } from 'path'
 
 export default defineVitestConfig({
   // plugins: [
@@ -15,17 +15,13 @@ export default defineVitestConfig({
       nuxt: {
         rootDir: './',
         domEnvironment: 'jsdom', // or 'happy-dom'
-      }
+      },
     },
     include: [
       'tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-      'app/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+      'app/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
     ],
-    exclude: [
-      '**/node_modules/**',
-      '**/cypress/**',
-      '**/playwright/**',
-    ],
+    exclude: ['**/node_modules/**', '**/cypress/**', '**/playwright/**'],
     globals: true,
     coverage: {
       provider: 'v8',
@@ -37,5 +33,5 @@ export default defineVitestConfig({
       },
     },
     setupFiles: ['./tests/setup.ts'],
-  }
+  },
 })

@@ -1,6 +1,10 @@
-
-import type {ApiHttpMethod} from "./api";
-import type {PostCollectionPath, PatchItemPath, PostCollectionRequestMap, PatchItemRequestMap} from "./openapi-helpers";
+import type { ApiHttpMethod } from './api'
+import type {
+  PostCollectionPath,
+  PatchItemPath,
+  PostCollectionRequestMap,
+  PatchItemRequestMap,
+} from './openapi-helpers'
 
 export type ValidatedHttpMethod = Extract<ApiHttpMethod, 'create' | 'update'>
 
@@ -17,7 +21,7 @@ export type ValidationMethodToPath<M extends ValidatedHttpMethod> = {
 // Then create the RequestBody type helper
 export type ValidationRequestBody<
   M extends ValidatedHttpMethod,
-  P extends ValidationMethodToPath<M> = ValidationMethodToPath<M>
+  P extends ValidationMethodToPath<M> = ValidationMethodToPath<M>,
 > = M extends 'create'
   ? P extends PostCollectionPath
     ? PostCollectionRequestMap[P]
