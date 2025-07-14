@@ -1,5 +1,4 @@
 import type { ApiPath } from '~~/types'
-import { isTemplatePathItemPage } from '~/utils'
 
 const useResourceUiStore = (path: ApiPath) =>
   defineStore(`resource-ui:${path}`, () => {

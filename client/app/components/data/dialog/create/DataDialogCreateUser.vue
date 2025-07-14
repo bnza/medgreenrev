@@ -2,7 +2,6 @@
 import type { PostCollectionRequestMap, ValidationMethodToPath } from '~~/types'
 import { useRegle } from '@regle/core'
 import rules from '~/utils/validation/rules/user'
-import { isValidUserBaseData } from '~/utils/guards'
 
 const props = defineProps<{
   path: Path

@@ -25,6 +25,13 @@ defineSlots<{
     </template>
     <template #title
       ><span data-testid="data-card-toolbar-main-title">{{ title }}</span>
+      <span
+        v-if="identifier"
+        class="font-weight-bold text-secondary pl-6"
+        data-testid="data-card-toolbar-identifier"
+      >
+        {{ identifier }}
+      </span>
       <slot name="title-append" />
     </template>
     <template #append>

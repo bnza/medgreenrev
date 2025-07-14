@@ -14,6 +14,6 @@ export const isAppPathItemPage = (path: string): boolean => {
 }
 
 export const isTemplatePathItemPage = (path: string): boolean => {
-  const templatePattern = /\{[a-zA-Z]+\}$/
+  const templatePattern = /\{[a-zA-Z]+}$/
   return templatePattern.test(path)
 }

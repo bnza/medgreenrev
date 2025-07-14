@@ -8,7 +8,7 @@ import type {
 const props = defineProps<{
   path: Path
   title: string
-  identifier?: string
+  identifierProp?: string
 }>()
 
 defineSlots<{
@@ -27,6 +27,17 @@ const {
   queryOptions,
   () => ({ id: routeId }) as OperationPathParams<Path, 'get'>,
 )
+
+const identifier = computed(() => {
+  if (
+    props.identifierProp &&
+    item.value &&
+    props.identifierProp in item.value
+  ) {
+    const value = (item.value as Record<string, unknown>)[props.identifierProp]
+    return typeof value === 'string' ? value : undefined
+  }
+})
 
 const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   return Boolean(value) && typeof value === 'object'

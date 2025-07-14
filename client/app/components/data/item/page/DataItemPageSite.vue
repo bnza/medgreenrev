@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <data-item-page path="/api/sites/{id}" title="Site">
+  <data-item-page path="/api/sites/{id}" title="Site" identifier-prop="code">
     <template #default="{ item }">
       <lazy-data-item-form-info-site :item />
     </template>
