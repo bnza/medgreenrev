@@ -12,17 +12,23 @@ const darkTheme: ThemeDefinition = {
   },
 }
 
-const VCard = {
-  variant: 'flat',
-}
 const VBtn = {
-  flat: true,
+  variant: 'tonal',
+  rounded: 'lg',
 }
 const VTextField = {
   variant: 'underlined',
 }
 const VAutocomplete = {
   variant: 'underlined',
+}
+const VCard = {
+  variant: 'flat',
+  VCardActions: {
+    VBtn,
+  },
+  VTextField,
+  VAutocomplete,
 }
 
 export default defineVuetifyConfiguration({
