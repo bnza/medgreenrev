@@ -24,3 +24,8 @@ export type CollectionAcl = {
 export interface ApiAclResource {
   _acl: BaseAcl
 }
+
+export type UserBaseData = {
+  id: string
+  email: string
+}

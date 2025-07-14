@@ -17,9 +17,11 @@ const props = withDefaults(
     title: string
     regle: RegleRoot
     onPreSubmit?: OnPreSubmit
+    getEmptyModel?: () => Record<string, any>
   }>(),
   {
     onPreSubmit: <T,>(item: T) => item,
+    getEmptyModel: () => ({}),
   },
 )
 
@@ -54,7 +56,7 @@ const submit = async () => {
 
   try {
     const data = await postCollection.mutateAsync(model)
-    emit('success', { request: model, response: data })
+    emit('success', { request: structuredClone(toRaw(model)), response: data })
     addSuccess('Resource successfully created')
     visible.value = false
   } catch (e) {
@@ -65,7 +67,7 @@ const disabled = computed(() => false)
 
 watch(visible, (flag) => {
   if (!flag) {
-    props.regle.$value = {}
+    props.regle.$value = props.getEmptyModel()
     props.regle.$reset()
   }
 })

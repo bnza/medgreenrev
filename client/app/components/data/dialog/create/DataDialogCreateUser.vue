@@ -2,24 +2,40 @@
 import type { PostCollectionRequestMap, ValidationMethodToPath } from '~~/types'
 import { useRegle } from '@regle/core'
 import rules from '~/utils/validation/rules/user'
+import { isValidUserBaseData } from '~/utils/guards'
 
 const props = defineProps<{
   path: Path
 }>()
 
 type RequestBody = PostCollectionRequestMap['/api/users']
-const { r$ } = useRegle(
-  {
+
+const getEmptyModel = () =>
+  ({
     roles: [] as string[],
-  } as RequestBody,
-  rules.create,
-)
+  }) as RequestBody
+
+const { r$ } = useRegle(getEmptyModel(), rules.create)
 const onPreSubmit = (item: any) => {
   item.plainPassword = generatePassword()
   return item
 }
 
-const { addSuccess } = useMessagesStore()
+const { plainPassword, userData } = storeToRefs(useUserPasswordDialog())
+
+const openUserPasswordDialog = ({
+  request,
+  response,
+}: {
+  request: Record<string, any>
+  response: Record<string, any>
+}) => {
+  plainPassword.value = request.plainPassword
+  if (isValidUserBaseData(response)) {
+    console.error('Invalid user data', response)
+  }
+  userData.value = isValidUserBaseData(response) ? response : undefined
+}
 </script>
 
 <template>
@@ -28,7 +44,8 @@ const { addSuccess } = useMessagesStore()
     :path
     :regle="r$"
     :on-pre-submit
-    @success="(event) => console.log('plainPassword', event)"
+    :get-empty-model
+    @success="(event) => openUserPasswordDialog(event)"
   >
     <template #default>
       <data-item-form-edit-user

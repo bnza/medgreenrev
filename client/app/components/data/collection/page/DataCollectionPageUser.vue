@@ -6,6 +6,7 @@
       <data-dialog-create-user path="/api/users" />
       <data-dialog-delete-user />
       <data-dialog-update-user />
+      <data-dialog-user-password mode="reset" />
     </template>
   </data-collection-page>
 </template>
