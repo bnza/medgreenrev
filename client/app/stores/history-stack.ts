@@ -5,7 +5,6 @@ type HistoryStackItem = {
 export const useHistoryStackStore = defineStore('history-stack', () => {
   const defaultItem = () => ({ path: '/', isUserAction: false })
   const history = ref<HistoryStackItem[]>([defaultItem()])
-  const route = useRoute()
 
   const { isAuthenticated } = useAppAuth()
 
@@ -29,20 +28,27 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
         : history.value.at(-2)?.path || '/',
   )
 
-  const push = (item?: HistoryStackItem | string) => {
-    if (typeof item === 'string') {
-      item = { path: item, isUserAction: true }
-    }
+  const push = (item?: HistoryStackItem | string | { fullPath: string }) => {
+    const pushingItem = ref<HistoryStackItem>()
     if (!item) {
-      item = route.redirectedFrom?.fullPath
-        ? { path: route.redirectedFrom.fullPath, isUserAction: false }
-        : defaultItem()
+      pushingItem.value = defaultItem()
     }
-    history.value.push(item)
+    if (typeof item === 'string') {
+      pushingItem.value = { path: item, isUserAction: true }
+    }
+    // item is a vue-route route object
+    if (isPlainObject(item) && 'fullPath' in item) {
+      pushingItem.value = { path: item.fullPath, isUserAction: false }
+    }
+    if (isPlainObject(item) && 'isUserAction' in item) {
+      pushingItem.value = item
+    }
+    if (!pushingItem.value) {
+      console.warn('Invalid pushing item. Pushing default one.', item)
+      pushingItem.value = defaultItem()
+    }
+    history.value.push(pushingItem.value)
   }
-
-  const pushCurrentPath = (isUserAction: boolean = true) =>
-    push({ path: route.fullPath, isUserAction })
 
   const pop = () => history.value.pop() || defaultItem()
 
@@ -54,7 +60,6 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
     history,
     last,
     push,
-    pushCurrentPath,
     pop,
     $reset,
     redirectionPath,

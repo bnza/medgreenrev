@@ -20,22 +20,7 @@ const onPreSubmit = (item: any) => {
   item.plainPassword = generatePassword()
   return item
 }
-
-const { plainPassword, userData } = storeToRefs(useUserPasswordDialog())
-
-const openUserPasswordDialog = ({
-  request,
-  response,
-}: {
-  request: Record<string, any>
-  response: Record<string, any>
-}) => {
-  plainPassword.value = request.plainPassword
-  if (isValidUserBaseData(response)) {
-    console.error('Invalid user data', response)
-  }
-  userData.value = isValidUserBaseData(response) ? response : undefined
-}
+const { openUserPasswordDialog } = useUserPasswordDialog()
 </script>
 
 <template>

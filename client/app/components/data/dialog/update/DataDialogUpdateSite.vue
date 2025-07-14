@@ -14,6 +14,7 @@ const { r$ } = useRegle(
     <template #default>
       <data-item-form-edit-site
         v-if="r$.$value"
+        mode="update"
         v-model:item="r$.$value"
         :errors="r$.$errors"
       />

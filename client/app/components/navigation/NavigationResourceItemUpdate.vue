@@ -19,7 +19,7 @@ defineEmits<{
     icon
     variant="text"
     nuxt
-    data-testid="delete-item-button"
+    data-testid="update-item-button"
     @click="$emit('update')"
   >
     <v-icon color="success" icon="fas fa-pen-to-square" size="xsmall" />

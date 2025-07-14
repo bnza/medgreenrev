@@ -5,6 +5,7 @@ type Item = { code?: string; name?: string; description?: string | null }
 const item = defineModel<Item>('item', { required: true })
 
 interface Props {
+  mode: 'create' | 'update'
   errors?: RegleErrorTree<Item>
 }
 
@@ -16,6 +17,7 @@ const props = defineProps<Props>()
     <v-text-field
       v-model="item.code"
       label="code"
+      :disabled="mode === 'update'"
       :error-messages="errors?.code"
     />
   </v-row>

@@ -61,4 +61,4 @@ export const isRole = (
 }
 
 export const isValidUserBaseData = (value: unknown): value is UserBaseData =>
-  isObject(value) && 'id' in value && 'email' in value
+  isPlainObject(value) && 'id' in value && 'email' in value

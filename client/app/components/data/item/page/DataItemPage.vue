@@ -12,9 +12,8 @@ const props = defineProps<{
 }>()
 
 defineSlots<{
-  append(): any
   default(props: { item: GetItemResponseMap[Path] }): any
-  'toolbar-append'(): any
+  dialogs(): any
 }>()
 
 const { routeId } = useAppRoute()
@@ -38,7 +37,10 @@ const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   <data-card :title :identifier :loading="status === 'pending'">
     <loading-component v-if="status === 'pending'" />
     <resource-not-found v-else-if="error" :error :path="props.path" />
-    <slot v-else-if="isValidItem(item)" v-bind="{ item }" />
+    <v-container class="m-0 p-0" v-else-if="isValidItem(item)">
+      <slot v-bind="{ item }" />
+      <slot name="dialogs" />
+    </v-container>
     <resource-not-found
       v-else
       error="Unsupported item value"

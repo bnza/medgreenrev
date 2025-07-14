@@ -1,12 +1,12 @@
 import type { RegleComputedRules } from '@regle/core'
-import { required } from '@regle/rules'
+import { required, email, minLength } from '@regle/rules'
 import type { ValidationRequestBody } from '~~/types'
 
 export const create = computed(
   () =>
     ({
-      email: { required },
-      roles: { required },
+      email: { required, email },
+      roles: { required, minLength: minLength(1) },
     }) satisfies RegleComputedRules<
       Partial<ValidationRequestBody<'create', '/api/users'>>
     >,

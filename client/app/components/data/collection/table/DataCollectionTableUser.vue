@@ -33,5 +33,12 @@ const { userData } = storeToRefs(userPasswordDialog())
         </template>
       </navigation-resource-item>
     </template>
+    <template #dialogs>
+      <data-dialog-search-user path="/api/users" />
+      <data-dialog-create-user path="/api/users" />
+      <data-dialog-delete-user />
+      <data-dialog-update-user />
+      <data-dialog-user-password mode="reset" />
+    </template>
   </data-collection-table>
 </template>

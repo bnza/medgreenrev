@@ -39,14 +39,33 @@ const emit = defineEmits<{
   ]
 }>()
 
-const { isCreateDialogOpen: visible } = storeToRefs(
+const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
   useResourceUiStore(props.path),
 )
 const { postCollection } = usePostCollectionMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
+const { fullPath, path } = useRoute()
+const router = useRouter()
+const disabled = ref(false)
+const { push } = useHistoryStackStore()
+
+const redirectToNewItem = async (newItem: Record<string, any>) => {
+  if (!('id' in newItem)) {
+    addError('Cannot redirect to new item')
+    console.error('new item', newItem)
+    return
+  }
+  const id = newItem.id
+  const path = `${fullPath}/${id}`
+  push(fullPath)
+  await router.push(path)
+}
+
 const submit = async () => {
   await props.regle.$validate()
+
+  // Once validated regle model should be fine. It's not a real TS guard
   const isValidItem = (value: any): value is PostCollectionRequestMap[Path] =>
     !props.regle.$invalid
 
@@ -55,15 +74,25 @@ const submit = async () => {
   const model = props.onPreSubmit(props.regle.$value)
 
   try {
+    disabled.value = true
     const data = await postCollection.mutateAsync(model)
+
+    // Eventual side effects are produced/handled by the parent Dialog
     emit('success', { request: structuredClone(toRaw(model)), response: data })
+
+    //The app redirects to the new item page since the user decided so
+    if (redirectToItem.value) {
+      await redirectToNewItem(data)
+    }
+
     addSuccess('Resource successfully created')
     visible.value = false
   } catch (e) {
     addError(e)
+  } finally {
+    disabled.value = false
   }
 }
-const disabled = computed(() => false)
 
 watch(visible, (flag) => {
   if (!flag) {
@@ -84,6 +113,15 @@ watch(visible, (flag) => {
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
+            <v-row justify="end">
+              <v-col cols="4">
+                <v-checkbox
+                  data-testid="show-created-item-checkbox"
+                  label="show created item"
+                  v-model="redirectToItem"
+                />
+              </v-col>
+            </v-row>
             <slot @submit.prevent />
           </v-container>
         </v-sheet>

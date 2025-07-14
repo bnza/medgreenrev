@@ -47,7 +47,6 @@ const { addError, addSuccess } = useMessagesStore()
 const isValidOperationPathParams = (
   params: unknown,
 ): params is OperationPathParams<Path, 'delete'> => {
-  console.log('check')
   return isValidItem(params) && 'id' in params
 }
 

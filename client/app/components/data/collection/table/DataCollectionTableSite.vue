@@ -24,5 +24,11 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
+    <template #dialogs>
+      <data-dialog-search-site path="/api/sites" />
+      <data-dialog-create-site path="/api/sites" />
+      <data-dialog-delete-site />
+      <data-dialog-update-site />
+    </template>
   </data-collection-table>
 </template>

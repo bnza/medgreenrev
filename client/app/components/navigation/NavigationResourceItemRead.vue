@@ -12,7 +12,7 @@ const props = withDefaults(
 const { push } = useHistoryStackStore()
 
 const to = computed(() => `${props.appPath}/${props.id}`)
-const { path } = useRoute()
+const { fullPath } = useRoute()
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const { path } = useRoute()
     nuxt
     :to
     data-testid="read-item-button"
-    @click="push(path)"
+    @click="push(fullPath)"
   >
     <v-icon color="primary" icon="fas fa-arrow-right" size="xsmall" />
     <v-tooltip activator="parent" location="bottom">View item</v-tooltip>

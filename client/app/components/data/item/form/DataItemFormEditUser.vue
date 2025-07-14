@@ -25,7 +25,6 @@ const role = computed({
       value,
       item.value.roles as (ApiRole | ApiSpecialistRole)[],
     )
-    console.log(item.value.roles)
   },
 })
 </script>
@@ -40,7 +39,10 @@ const role = computed({
     />
   </v-row>
   <v-col data-cy="roles-input-col">
-    <v-radio-group v-model="role">
+    <v-radio-group
+      v-model="role"
+      :error-messages="flattenRegleErrors(errors?.roles)"
+    >
       <v-radio label="ROLE_ADMIN" color="error" value="ROLE_ADMIN" />
       <v-radio label="ROLE_EDITOR" color="warning" value="ROLE_EDITOR" />
       <v-radio label="ROLE_USER" color="success" value="ROLE_USER" />

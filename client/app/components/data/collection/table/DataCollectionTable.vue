@@ -34,4 +34,5 @@ const { pagination, items, totalItems, status } = useGetCollection()
       <slot :name v-bind="slotProps || {}" />
     </template>
   </v-data-table-server>
+  <slot name="dialogs" />
 </template>

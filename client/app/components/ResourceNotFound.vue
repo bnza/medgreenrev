@@ -2,11 +2,11 @@
 const props = withDefaults(
   defineProps<{
     error: unknown
-    path: string
-    tooltipText?: string
+    back?: boolean
+    title?: string
   }>(),
   {
-    tooltipText: 'Back to collection',
+    title: 'Requested resource cannot be found',
   },
 )
 const message = ref('')
@@ -24,12 +24,12 @@ if (props.error) {
 <template>
   <v-empty-state
     v-if="message"
-    title="Requested resource cannot be found"
+    :title
     :text="message"
     data-testid="resource-empty-state"
   >
     <template #actions>
-      <lazy-navigation-back />
+      <lazy-navigation-back v-if="back" />
     </template>
   </v-empty-state>
 </template>

@@ -1,4 +1,5 @@
 import type { ApiPath } from '~~/types'
+import { isTemplatePathItemPage } from '~/utils'
 
 const useResourceUiStore = (path: ApiPath) =>
   defineStore(`resource-ui:${path}`, () => {
@@ -39,6 +40,8 @@ const useResourceUiStore = (path: ApiPath) =>
         },
       })
 
+    const redirectToItem = ref(false)
+
     return {
       dialogStates,
       deleteDialogState,
@@ -47,6 +50,7 @@ const useResourceUiStore = (path: ApiPath) =>
       isUpdateDialogOpen,
       isCreateDialogOpen: isDialogOpenFn('create'),
       isSearchDialogOpen: isDialogOpenFn('search'),
+      redirectToItem,
     }
   })()
 
