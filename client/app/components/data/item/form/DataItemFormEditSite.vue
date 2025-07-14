@@ -9,7 +9,7 @@ interface Props {
   errors?: RegleErrorTree<Item>
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>

@@ -54,7 +54,7 @@ export default function useApiRequestOption() {
     if (!options) {
       return headers
     }
-    const { headers: optionHeaders, ...restOptions } = options
+    const { headers: optionHeaders } = options
 
     const normalizedHeaders = normalizeHeaders(optionHeaders || {})
 

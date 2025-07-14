@@ -14,7 +14,7 @@ export abstract class BaseOperation {
   protected getItemPath<
     P extends ApiPath,
     M extends 'get' | 'patch' | 'delete',
-  >(path: P, method: M, pathParams: OperationPathParams<P, M>) {
+  >(path: P, _method: M, pathParams: OperationPathParams<P, M>) {
     let finalPath = path as string
     if (pathParams && typeof pathParams === 'object') {
       Object.entries(pathParams).forEach(([key, value]) => {
@@ -25,7 +25,7 @@ export abstract class BaseOperation {
   }
 
   protected async _request<T>(url: string, options: ApiRequestOptions = {}) {
-    const { headers, query, body, ...restOptions } = options
+    const { query, body, ...restOptions } = options
     let finalUrl = url
     if (query) {
       const queryString = qs.stringify(query, {

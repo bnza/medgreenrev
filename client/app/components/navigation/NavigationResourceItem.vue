@@ -7,8 +7,8 @@ defineProps<{
   acl: BaseAcl
 }>()
 defineEmits<{
-  (e: 'delete'): void
-  (e: 'update'): void
+  delete: []
+  update: []
 }>()
 defineSlots<{
   prepend(): any

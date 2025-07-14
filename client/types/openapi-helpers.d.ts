@@ -16,9 +16,6 @@ export type OperationPathParams<
     : never
   : never
 
-// Check if path parameters contain an 'id' property
-type HasIdInPathParams<T> = T extends { id: any } ? true : false
-
 export type GetCollectionPath = {
   [K in keyof paths]: paths[K] extends { get: any }
     ? paths[K]['get'] extends {
@@ -37,7 +34,7 @@ export type PostCollectionPath = {
   [K in keyof paths]: paths[K] extends { post: any }
     ? paths[K]['post'] extends {
         responses: {
-          201: { content: { 'application/ld+json': infer Response } }
+          201: { content: { 'application/ld+json': any } }
         }
       }
       ? K
@@ -49,7 +46,7 @@ export type PatchItemPath = {
   [K in keyof paths]: paths[K] extends { patch: any }
     ? paths[K]['patch'] extends {
         responses: {
-          200: { content: { 'application/ld+json': infer Response } }
+          200: { content: { 'application/ld+json': any } }
         }
       }
       ? K

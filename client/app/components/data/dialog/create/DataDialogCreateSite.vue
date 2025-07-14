@@ -3,7 +3,7 @@ import type { PostCollectionRequestMap, ValidationMethodToPath } from '~~/types'
 import { useRegle } from '@regle/core'
 import rules from '~/utils/validation/rules/site'
 
-const props = defineProps<{
+defineProps<{
   path: Path
 }>()
 
@@ -14,7 +14,7 @@ const { r$ } = useRegle(
 </script>
 
 <template>
-  <data-dialog-create :path title="Site" :regle="r$">
+  <data-dialog-create :path title="Site" v-model:regle="r$">
     <template #default>
       <data-item-form-edit-site
         v-if="r$.$value"

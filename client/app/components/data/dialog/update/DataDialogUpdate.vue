@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="Path extends PatchItemPath">
 import type {
-  GetItemResponseMap,
   OperationPathParams,
   PatchItemPath,
   PatchItemRequestMap,
@@ -12,11 +11,12 @@ import { diff } from 'deep-object-diff'
 
 type OnPreSubmit = <T extends object>(oldItem: T, item: T) => Partial<T>
 
+const regle = defineModel<RegleRoot>('regle', { required: true })
+
 const props = withDefaults(
   defineProps<{
     path: Path
     title: string
-    regle: RegleRoot
     onPreSubmit?: OnPreSubmit
   }>(),
   {
@@ -34,11 +34,7 @@ const { isUpdateDialogOpen: visible, updateDialogState } = storeToRefs(
 )
 
 const { queryOptions } = useDefineGetItemQuery(props.path)
-const {
-  data: item,
-  status,
-  error,
-} = useQuery(
+const { data: item } = useQuery(
   queryOptions,
   () =>
     (updateDialogState.value || undefined) as
@@ -49,7 +45,7 @@ watch(
   item,
   (value) => {
     if (value) {
-      props.regle.$value = structuredClone(value)
+      regle.value.$value = structuredClone(value)
     }
   },
   { immediate: true },
@@ -58,23 +54,14 @@ watch(
 const { patchItem } = usePatchItemMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
-const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
-  return isPlainObject(value) && 'id' in value
-}
-const isValidOperationPathParams = (
-  params: unknown,
-): params is OperationPathParams<Path, 'patch'> => {
-  return isValidItem(params) && 'id' in params
-}
-
 const submit = async () => {
-  await props.regle.$validate()
+  await regle.value.$validate()
   const isValidItem = (value: any): value is PatchItemRequestMap[Path] =>
-    !props.regle.$invalid
+    !regle.value.$invalid
 
-  if (!isValidItem(props.regle.$value)) {
+  if (!isValidItem(regle.value.$value)) {
     addError('Invalid model.')
-    console.log('model', props.regle.$value)
+    console.log('model', regle.value.$value)
     return
   }
 
@@ -86,7 +73,7 @@ const submit = async () => {
 
   patchItem.item.value = toRaw(item.value)
 
-  const model = props.onPreSubmit(item.value, props.regle.$value)
+  const model = props.onPreSubmit(item.value, regle.value.$value)
   try {
     await patchItem.mutateAsync({
       param: { id: item.value?.id } as OperationPathParams<Path, 'patch'>,
@@ -102,8 +89,8 @@ const disabled = computed(() => false)
 
 watch(visible, (flag) => {
   if (!flag) {
-    props.regle.$value = {}
-    props.regle.$reset()
+    regle.value.$value = {}
+    regle.value.$reset()
   }
 })
 </script>
@@ -119,7 +106,7 @@ watch(visible, (flag) => {
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
-            <slot @submit.prevent />
+            <slot />
           </v-container>
         </v-sheet>
       </v-form>

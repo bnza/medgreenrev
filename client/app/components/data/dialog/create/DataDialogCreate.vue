@@ -11,11 +11,12 @@ import usePostCollectionMutation from '~/composables/queries/usePostCollectionMu
 
 type OnPreSubmit = <T>(item: T) => T
 
+const regle = defineModel<RegleRoot>('regle', { required: true })
+
 const props = withDefaults(
   defineProps<{
     path: Path
     title: string
-    regle: RegleRoot
     onPreSubmit?: OnPreSubmit
     getEmptyModel?: () => Record<string, any>
   }>(),
@@ -44,10 +45,11 @@ const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
 )
 const { postCollection } = usePostCollectionMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
-
-const { fullPath, path } = useRoute()
-const router = useRouter()
 const disabled = ref(false)
+
+// Possible redirect handling
+const { fullPath } = useRoute()
+const router = useRouter()
 const { push } = useHistoryStackStore()
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
@@ -61,17 +63,18 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
   push(fullPath)
   await router.push(path)
 }
+// Possible redirect handling
 
 const submit = async () => {
-  await props.regle.$validate()
+  await regle.value.$validate()
 
   // Once validated regle model should be fine. It's not a real TS guard
   const isValidItem = (value: any): value is PostCollectionRequestMap[Path] =>
-    !props.regle.$invalid
+    !regle.value.$invalid
 
-  if (!isValidItem(props.regle.$value)) return
+  if (!isValidItem(regle.value.$value)) return
 
-  const model = props.onPreSubmit(props.regle.$value)
+  const model = props.onPreSubmit(regle.value.$value)
 
   try {
     disabled.value = true
@@ -96,8 +99,8 @@ const submit = async () => {
 
 watch(visible, (flag) => {
   if (!flag) {
-    props.regle.$value = props.getEmptyModel()
-    props.regle.$reset()
+    regle.value.$value = props.getEmptyModel()
+    regle.value.$reset()
   }
 })
 </script>

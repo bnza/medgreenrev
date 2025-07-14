@@ -18,7 +18,7 @@ defineProps<{
     </v-row>
     <v-row>
       <v-col cols="12" xs="12" class="px-2">
-        <v-textarea v-model="item.description" label="description" />
+        <v-textarea :model-value="item.description" label="description" />
       </v-col>
     </v-row>
   </data-item-form-read>

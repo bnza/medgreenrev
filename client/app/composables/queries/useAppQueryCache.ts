@@ -1,5 +1,5 @@
 import type { ApiResourcePath } from '~/utils/consts/resources'
-import type { ApiPath, GetCollectionPath } from '~~/types'
+import type { ApiPath } from '~~/types'
 import type { EntryKey } from '@pinia/colada'
 
 declare function toCacheKey(key: undefined): undefined

@@ -3,7 +3,7 @@ import type { PostCollectionRequestMap, ValidationMethodToPath } from '~~/types'
 import { useRegle } from '@regle/core'
 import rules from '~/utils/validation/rules/user'
 
-const props = defineProps<{
+defineProps<{
   path: Path
 }>()
 
@@ -26,7 +26,7 @@ const { openUserPasswordDialog } = useUserPasswordDialog()
   <data-dialog-create
     title="User"
     :path
-    :regle="r$"
+    v-model:regle="r$"
     :on-pre-submit
     :get-empty-model
     @success="(event) => openUserPasswordDialog(event)"

@@ -22,7 +22,7 @@ const onPreSubmit = (oldItem: object, item: object) => {
   <data-dialog-update
     path="/api/users/{id}"
     title="User"
-    :regle="r$"
+    v-model:regle="r$"
     :on-pre-submit
   >
     <template #default>

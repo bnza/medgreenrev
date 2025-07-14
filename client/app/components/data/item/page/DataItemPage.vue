@@ -37,6 +37,7 @@ const identifier = computed(() => {
     const value = (item.value as Record<string, unknown>)[props.identifierProp]
     return typeof value === 'string' ? value : undefined
   }
+  return undefined
 })
 
 const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {

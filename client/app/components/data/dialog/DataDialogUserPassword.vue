@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DataDialogUserPasswordContentReset from '~/components/data/dialog/DataDialogUserPasswordContentReset.vue'
 
-const props = defineProps<{
+defineProps<{
   mode: 'reset' | 'change'
 }>()
 

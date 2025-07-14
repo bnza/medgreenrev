@@ -10,7 +10,7 @@ const { r$ } = useRegle(
 </script>
 
 <template>
-  <data-dialog-update path="/api/sites/{id}" title="Site" :regle="r$">
+  <data-dialog-update path="/api/sites/{id}" title="Site" v-model:regle="r$">
     <template #default>
       <data-item-form-edit-site
         v-if="r$.$value"
