@@ -10,6 +10,10 @@ defineEmits<{
   (e: 'delete'): void
   (e: 'update'): void
 }>()
+defineSlots<{
+  prepend(): any
+  append(): any
+}>()
 </script>
 
 <template>

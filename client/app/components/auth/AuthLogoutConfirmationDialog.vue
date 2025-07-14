@@ -22,17 +22,14 @@ const signOutAndFeedBack = async () => {
         <v-btn
           class="ma-4"
           color="anchor"
-          rounded="lg"
-          text="cancel"
           variant="tonal"
+          text="cancel"
           @click="isOpen = false"
         />
         <v-spacer />
         <v-btn
           class="ma-4"
           color="secondary"
-          rounded="lg"
-          variant="tonal"
           text="logout"
           @click="signOutAndFeedBack()"
         />

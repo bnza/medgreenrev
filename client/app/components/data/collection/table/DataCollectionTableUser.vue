@@ -10,6 +10,8 @@ const appPath = getApiResourceConfig(resourceKey).appPath
 const { deleteDialogState, updateDialogState } = storeToRefs(
   useResourceUiStore('/api/users/{id}'),
 )
+const { isCurrentUser } = useAppAuth()
+const { userData } = storeToRefs(userPasswordDialog())
 </script>
 
 <template>
@@ -21,7 +23,15 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
         :app-path
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
-      />
+      >
+        <template #prepend>
+          <navigation-resource-reset-password
+            :id="item.id"
+            :disabled="isCurrentUser(item.email)"
+            @reset-password="userData = item"
+          />
+        </template>
+      </navigation-resource-item>
     </template>
   </data-collection-table>
 </template>

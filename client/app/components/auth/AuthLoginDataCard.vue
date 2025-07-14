@@ -52,9 +52,6 @@ onBeforeRouteLeave(() => {
     </v-form>
     <v-card-actions>
       <v-btn
-        color="anchor"
-        variant="tonal"
-        rounded="lg"
         text="cancel"
         :disabled="pending"
         @click="router.replace(historyStack.redirectionPath)"
@@ -62,9 +59,7 @@ onBeforeRouteLeave(() => {
       <v-spacer />
       <v-btn
         color="secondary"
-        rounded="lg"
         text="login"
-        variant="tonal"
         :disabled
         @click="signInAndFeedback({ email, password })"
       />

@@ -6,7 +6,7 @@ import type { CollectionAcl } from '~~/types'
 export default function useAppAuth() {
   const { data, status } = useAuth()
   const isAuthenticated = computed(() => status.value === 'authenticated')
-  const userIdentifier = computed(() => data.value?.email || null)
+  const userIdentifier = computed(() => data.value?.email)
 
   const roles = computed(() =>
     isAuthenticated.value ? data.value?.roles || [] : [],
@@ -30,9 +30,15 @@ export default function useAppAuth() {
     canExport: isAuthenticated.value,
   }))
 
+  const isCurrentUser = computed(
+    () => (identifier: string) =>
+      isAuthenticated.value && userIdentifier.value === identifier,
+  )
+
   return {
     hasRoleAdmin,
     isAuthenticated,
+    isCurrentUser,
     roles,
     roleColor,
     siteCollectionAcl,

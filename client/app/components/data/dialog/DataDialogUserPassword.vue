@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DataDialogUserPasswordContentReset from '~/components/data/dialog/DataDialogUserPasswordContentReset.vue'
+
 const props = defineProps<{
   mode: 'reset' | 'change'
 }>()
@@ -8,6 +10,8 @@ const { isDialogOpen, userData, plainPassword } = storeToRefs(
   useUserPasswordDialog(),
 )
 const copyToClipboard = useCopyToClipboard()
+
+const triggered = ref(false)
 </script>
 
 <template>
@@ -25,23 +29,29 @@ const copyToClipboard = useCopyToClipboard()
         <v-container v-if="submitStatus === 'pending'" style="height: 200px">
           <v-row align-content="center" class="fill-height" justify="center">
             <v-col class="text-subtitle-1 text-center" cols="12">
-              {{ mode === 'reset' ? 'Resetting' : 'Changing' }} password
+              <v-card-text>
+                {{ mode === 'reset' ? 'Resetting' : 'Changing' }} password
+              </v-card-text>
             </v-col>
-            <v-row align-content="center" class="fill-height" justify="center">
-              <v-col cols="12">
-                <v-progress-linear
-                  color="warning"
-                  height="6"
-                  indeterminate
-                  rounded
-                />
-              </v-col>
-            </v-row>
+            <v-col cols="6">
+              <v-progress-linear
+                color="warning"
+                height="6"
+                indeterminate
+                rounded
+              />
+            </v-col>
           </v-row>
         </v-container>
-        <data-dialog-user-password-show
+        <data-dialog-user-password-content-show
           v-else-if="plainPassword"
           :plain-password
+        />
+        <data-dialog-user-password-content-reset
+          v-else-if="mode === 'reset' && userData?.id"
+          :id="userData.id"
+          v-model:triggered="triggered"
+          v-model:status="submitStatus"
         />
         <v-container v-else style="height: 200px" />
       </template>
@@ -49,6 +59,7 @@ const copyToClipboard = useCopyToClipboard()
         <layout-action-two-buttons>
           <template #left>
             <v-btn
+              color="anchor"
               text="close"
               :disabled="submitStatus === 'pending'"
               @click="userData = undefined"
@@ -61,6 +72,12 @@ const copyToClipboard = useCopyToClipboard()
               text="copy"
               :disabled="submitStatus === 'pending'"
               @click="copyToClipboard(plainPassword)"
+            />
+            <v-btn
+              v-else
+              :text="mode"
+              :disabled="submitStatus === 'pending'"
+              @click="triggered = true"
             />
           </template>
         </layout-action-two-buttons>

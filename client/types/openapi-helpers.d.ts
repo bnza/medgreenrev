@@ -57,6 +57,18 @@ export type PatchItemPath = {
     : never
 }[keyof paths]
 
+export type PatchItemNoResponsePath = {
+  [K in keyof paths]: paths[K] extends { patch: any }
+    ? paths[K]['patch'] extends {
+        responses: {
+          204: any
+        }
+      }
+      ? K
+      : never
+    : never
+}[keyof paths]
+
 export type DeleteItemPath = {
   [K in keyof paths]: paths[K] extends { delete: any }
     ? paths[K]['delete'] extends { responses: { 204: any } }
