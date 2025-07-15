@@ -5,7 +5,7 @@ export default defineNuxtConfig({
       link: [
         {
           rel: 'icon',
-          href: '/app/favicon.ico',
+          href: '/app/favicon.png',
         },
       ],
     },
