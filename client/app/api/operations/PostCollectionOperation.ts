@@ -8,19 +8,13 @@ import type {
 
 export class PostCollectionOperation<
   P extends PostCollectionPath,
-> extends BaseOperation {
-  constructor(public readonly path: P) {
-    super()
-  }
-
+> extends BaseOperation<P> {
   request(
     pathParams?: OperationPathParams<P, 'post'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<PostCollectionResponseMap[P]>(
-      pathParams
-        ? this.expandUrlTemplate(this.path, 'patch', pathParams)
-        : this.path,
+      pathParams ? this.expandUrlTemplate('post', pathParams) : this.path,
       {
         ...options,
         method: 'post',

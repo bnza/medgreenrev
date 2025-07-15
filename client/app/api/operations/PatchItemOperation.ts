@@ -9,17 +9,13 @@ import { BaseOperation } from './BaseOperation'
 
 export class PatchItemOperation<
   P extends PatchItemPath | PatchItemNoResponsePath,
-> extends BaseOperation {
-  constructor(public readonly path: P) {
-    super()
-  }
-
+> extends BaseOperation<P> {
   request(
     pathParams: OperationPathParams<P, 'patch'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<PatchItemResponseMap[PatchItemPath] | never>(
-      this.expandUrlTemplate(this.path, 'patch', pathParams),
+      this.expandUrlTemplate('patch', pathParams),
       { ...options, method: 'patch' },
     )
   }

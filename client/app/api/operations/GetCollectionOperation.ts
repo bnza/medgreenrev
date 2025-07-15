@@ -8,11 +8,7 @@ import type {
 
 export class GetCollectionOperation<
   P extends GetCollectionPath,
-> extends BaseOperation {
-  constructor(public readonly path: P) {
-    super()
-  }
-
+> extends BaseOperation<P> {
   request(options?: ApiRequestOptions) {
     const pathParams = ref<OperationPathParams<P, 'get'>>()
     if (options?.params) {
@@ -20,7 +16,7 @@ export class GetCollectionOperation<
     }
     return this._request<GetCollectionResponseMap[P]>(
       pathParams.value
-        ? this.expandUrlTemplate(this.path, 'get', pathParams.value)
+        ? this.expandUrlTemplate('get', pathParams.value)
         : this.path,
       {
         ...options,

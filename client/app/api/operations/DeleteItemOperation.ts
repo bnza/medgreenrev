@@ -8,17 +8,13 @@ import { BaseOperation } from './BaseOperation'
 
 export class DeleteItemOperation<
   P extends DeleteItemPath,
-> extends BaseOperation {
-  constructor(public readonly path: P) {
-    super()
-  }
-
+> extends BaseOperation<P> {
   request(
     pathParams: OperationPathParams<P, 'delete'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<DeleteItemResponseMap[DeleteItemPath]>(
-      this.expandUrlTemplate(this.path, 'delete', pathParams),
+      this.expandUrlTemplate('delete', pathParams),
       { ...options, method: 'delete' },
     )
   }

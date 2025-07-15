@@ -1,21 +1,21 @@
-import type { ApiPath, ApiRequestOptions, OperationPathParams } from '~~/types'
+import type { ApiRequestOptions, OperationPathParams, paths } from '~~/types'
 import qs from 'qs'
 
-export abstract class BaseOperation {
+export abstract class BaseOperation<P extends keyof paths> {
   public readonly baseURL: string
   getHeaders: (options: ApiRequestOptions) => Record<string, string>
 
-  protected constructor() {
+  constructor(public readonly path: P) {
     const { baseURL, getHeaders } = useApiRequestOption()
     this.baseURL = baseURL
     this.getHeaders = getHeaders
   }
 
-  protected expandUrlTemplate<
-    P extends ApiPath,
-    M extends 'get' | 'patch' | 'delete' | 'post',
-  >(path: P, _method: M, pathParams: OperationPathParams<P, M>) {
-    let finalPath = path as string
+  protected expandUrlTemplate<M extends 'get' | 'patch' | 'delete' | 'post'>(
+    _method: M,
+    pathParams: OperationPathParams<P, M>,
+  ) {
+    let finalPath = this.path as string
     if (pathParams && typeof pathParams === 'object') {
       Object.entries(pathParams).forEach(([key, value]) => {
         finalPath = finalPath.replace(`{${key}}`, String(value))

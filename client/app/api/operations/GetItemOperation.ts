@@ -6,17 +6,13 @@ import type {
 } from '~~/types'
 import { BaseOperation } from './BaseOperation'
 
-export class GetItemOperation<P extends GetItemPath> extends BaseOperation {
-  constructor(public readonly path: P) {
-    super()
-  }
-
+export class GetItemOperation<P extends GetItemPath> extends BaseOperation<P> {
   request(
     pathParams: OperationPathParams<P, 'get'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<GetItemResponseMap[GetItemPath]>(
-      this.expandUrlTemplate(this.path, 'get', pathParams),
+      this.expandUrlTemplate('get', pathParams),
       { ...options, method: 'get' },
     )
   }
