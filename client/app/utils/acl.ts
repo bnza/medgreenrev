@@ -1,4 +1,11 @@
-import { ApiRole, ApiSpecialistRole, ROLE_HIERARCHY } from '~/utils/consts/auth'
+import {
+  ApiRole,
+  ApiSiteRole,
+  ApiSiteRoleKey,
+  type ApiSpecialistRole,
+  ROLE_HIERARCHY,
+  SITES_ROLE_COLORS,
+} from '~/utils/consts/auth'
 import { isAppRole, isSpecialistRole } from '~/utils/guards'
 
 const getRoleHierarchyValue = (role: ApiRole | ''): number =>
@@ -31,4 +38,26 @@ export const mergeRole = (
   const _roles = removeAppRoles(roles)
   const _expandedRoles = expandAppRole(role)
   return [..._roles, ..._expandedRoles]
+}
+
+// Sites roles handling
+export const getSitePrivilegeKey = (
+  privilegeNumber: number,
+): string | undefined => {
+  return ApiSiteRoleKey[privilegeNumber]
+}
+
+export const getSitePrivilegeRole = (
+  privilegeNumber: number,
+): ApiSiteRole | undefined => {
+  const key = ApiSiteRoleKey[privilegeNumber]
+  if (!key || !(key in ApiSiteRole)) {
+    return undefined
+  }
+  return ApiSiteRole[key as keyof typeof ApiSiteRole]
+}
+
+export const getSitePrivilegeColor = (sitePrivileges: number) => {
+  const role = getSitePrivilegeRole(sitePrivileges) || ApiSiteRole.User
+  return SITES_ROLE_COLORS[role]
 }

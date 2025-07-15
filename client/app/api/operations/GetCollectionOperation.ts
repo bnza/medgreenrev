@@ -13,6 +13,7 @@ export class GetCollectionOperation<
     const pathParams = ref<OperationPathParams<P, 'get'>>()
     if (options?.params) {
       pathParams.value = options.params as OperationPathParams<P, 'get'>
+      delete options.params
     }
     return this._request<GetCollectionResponseMap[P]>(
       pathParams.value

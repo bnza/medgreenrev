@@ -23,7 +23,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
    * it searches the OpenAPI specification for a related API resource path based on shared tags
    */
   const findApiResourcePath = (
-    targetPath: string,
+    targetPath: keyof paths,
   ): ApiResourcePath | undefined => {
     if (isApiResourcePath(targetPath)) return targetPath
     const openApiSpec = specInternal.value
@@ -44,8 +44,31 @@ export const useOpenApiStore = defineStore('openapi', () => {
     return found?.[0] as ApiResourcePath | undefined
   }
 
+  /**
+   * Returns an array of item paths that share at least one tag with the provided itemPath.
+   * @param itemPath The item path to compare tags with.
+   */
+  const getRelatedItemPaths = (itemPath: keyof paths): (keyof paths)[] => {
+    const openApiSpec = specInternal.value
+    if (!openApiSpec) return []
+
+    const targetTags = openApiSpec.paths?.[itemPath]?.get?.tags ?? []
+    if (targetTags.length === 0) return []
+
+    const matchedPaths = Object.entries(openApiSpec.paths || {})
+      .filter(([path, pathItem]) => {
+        if (!path.endsWith('/{id}')) return false
+        const operationTags = pathItem?.get?.tags ?? []
+        return operationTags.some((tag) => targetTags.includes(tag))
+      })
+      .map(([path]) => path as keyof paths)
+
+    // Remove duplicates by converting to a Set then back to array
+    return Array.from(new Set(matchedPaths))
+  }
+
   const findApiResourceKeyFromPath = (
-    path: string,
+    path: keyof paths,
   ): ApiResourceKey | undefined => {
     const apiResourcePath = findApiResourcePath(path)
     if (!apiResourcePath) return undefined
@@ -139,6 +162,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
 
   return {
     buildValidOperationPathParams,
+    getRelatedItemPaths,
     isPostOperation,
     fetchSpec,
     findApiResourcePath,

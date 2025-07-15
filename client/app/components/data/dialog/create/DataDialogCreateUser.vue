@@ -25,10 +25,10 @@ const { openUserPasswordDialog } = useUserPasswordDialog()
 
 <template>
   <data-dialog-create
+    v-model:regle="r$"
     title="User"
     :parent-id
     :path
-    v-model:regle="r$"
     :on-pre-submit
     :get-empty-model
     @success="(event) => openUserPasswordDialog(event)"

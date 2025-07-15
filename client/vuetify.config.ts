@@ -12,6 +12,10 @@ const darkTheme: ThemeDefinition = {
   },
 }
 
+const VBtnGroup = {
+  rounded: 'lg',
+}
+
 const VBtn = {
   variant: 'tonal',
   rounded: 'lg',
@@ -29,6 +33,7 @@ const VCard = {
   },
   VTextField,
   VAutocomplete,
+  VBtnGroup,
 }
 
 export default defineVuetifyConfiguration({

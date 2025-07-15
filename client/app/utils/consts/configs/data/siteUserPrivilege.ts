@@ -24,9 +24,9 @@ const config: Readonly<ResourceConfig> = {
       title: 'user',
     },
     {
-      key: 'privileges',
-      value: 'privileges',
-      title: 'privileges',
+      key: 'privilege',
+      value: 'privilege',
+      title: 'privilege',
     },
   ],
 

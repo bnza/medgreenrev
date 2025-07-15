@@ -55,7 +55,7 @@ const { push } = useHistoryStackStore()
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
   if (!('id' in newItem)) {
-    addError('Cannot redirect to new item')
+    addError('Cannot redirect to new item: missing id.')
     console.error('new item', newItem)
     return
   }
@@ -133,9 +133,9 @@ watch(visible, (flag) => {
             <v-row justify="end">
               <v-col cols="4">
                 <v-checkbox
+                  v-model="redirectToItem"
                   data-testid="show-created-item-checkbox"
                   label="show created item"
-                  v-model="redirectToItem"
                 />
               </v-col>
             </v-row>

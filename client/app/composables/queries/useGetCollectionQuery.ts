@@ -26,38 +26,35 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const queryOptions = (options: {
-    query: Record<string, any> // URL query params
-    params?: OperationPathParams<typeof path, 'get'> // Path params
-  }) =>
-    defineQueryOptions({
-      key: RESOURCE_QUERY_KEY.byFilter({
-        ...options.query,
-        ...(options.params || {}),
-      }),
-      query: () => getCollectionOperation.request(options),
-    })
-
-  const useGetCollection = defineQuery(() => {
-    const pathParams = ref<
-      OperationPathParams<typeof path, 'get'> | undefined
-    >()
-    const pagination = reactive(defaultPagination())
-    const query = useQuery(queryOptions, () => ({
-      query: { ...dataTableOptionsToQsObject(pagination) },
-      params: pathParams.value,
-    }))
-
-    const items = computed(() => query.data.value?.member ?? [])
-    const totalItems = computed(() => query.data.value?.totalItems ?? 0)
-    return {
-      items,
-      ...query,
-      totalItems,
-      pagination,
-      pathParams,
-    }
-  })
+  const useGetCollection = (
+    params?: Ref<OperationPathParams<typeof path, 'get'> | undefined>,
+  ) =>
+    defineQuery(() => {
+      const pagination = reactive(defaultPagination())
+      const pathParams = computed(() => params?.value)
+      const query = useQuery({
+        key: RESOURCE_QUERY_KEY.byFilter({
+          pagination,
+          ...(pathParams.value || {}),
+        }),
+        query: () =>
+          getCollectionOperation.request({
+            query: { ...dataTableOptionsToQsObject(pagination) },
+            params: pathParams.value,
+          }),
+        enabled:
+          /\{[^}]*}/.test(path) === (typeof pathParams.value !== 'undefined'),
+      })
+      const items = computed(() => query.data.value?.member ?? [])
+      const totalItems = computed(() => query.data.value?.totalItems ?? 0)
+      return {
+        items,
+        ...query,
+        totalItems,
+        pagination,
+        pathParams,
+      }
+    })()
 
   return {
     useGetCollection,

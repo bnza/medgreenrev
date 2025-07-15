@@ -16,11 +16,26 @@ export enum AclVoters {
   HasRoleEditor = 'HasRoleEditor',
 }
 
+export enum ApiSiteRoleKey {
+  User = 0,
+  Editor = 1,
+}
+
+export enum ApiSiteRole {
+  Editor = 'ROLE_SITE_EDITOR',
+  User = 'ROLE_SITE_USER',
+}
+
 export const ROLE_COLORS = {
   [ApiRole.Admin]: COLORS.error,
   [ApiRole.Editor]: COLORS.warning,
   [ApiRole.User]: COLORS.success,
 } as const satisfies Record<ApiRole, string>
+
+export const SITES_ROLE_COLORS: Readonly<Record<ApiSiteRole, string>> = {
+  [ApiSiteRole.User]: COLORS.success,
+  [ApiSiteRole.Editor]: COLORS.warning,
+} as const
 
 export const ROLE_HIERARCHY = {
   [ApiRole.Admin]: 1000,

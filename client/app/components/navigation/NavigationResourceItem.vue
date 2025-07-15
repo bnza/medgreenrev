@@ -17,7 +17,7 @@ defineSlots<{
 </script>
 
 <template>
-  <v-btn-group variant="text" rounded="lg" class="item-nav">
+  <v-btn-group>
     <slot name="prepend" />
     <navigation-resource-item-read :id :app-path :disabled="!acl.canRead" />
     <navigation-resource-item-update

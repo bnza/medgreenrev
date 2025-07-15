@@ -9,9 +9,11 @@ const props = defineProps<{
 
 const { headers } = storeToRefs(useCollectionTableHeadersStore(props.path))
 
+const pathParams = computed(() =>
+  props.parentId ? { parentId: props.parentId } : undefined,
+)
 const { useGetCollection } = useDefineGetCollectionQuery(props.path)
-const { pathParams, pagination, items, totalItems, status } = useGetCollection()
-pathParams.value = props.parentId ? { parentId: props.parentId } : undefined
+const { pagination, items, totalItems, status } = useGetCollection(pathParams)
 </script>
 
 <template>
