@@ -6,7 +6,7 @@ import {
 } from '~/utils/consts/resources'
 
 export const useOpenApiStore = defineStore('openapi', () => {
-  const specInternal = ref<Readonly<OpenAPIV3_1.Document> | null>(null)
+  const specInternal = shallowRef<Readonly<OpenAPIV3_1.Document> | null>(null)
 
   const ready = computed(() => Boolean(specInternal.value))
 
@@ -51,11 +51,34 @@ export const useOpenApiStore = defineStore('openapi', () => {
   const isPostOperation = (path: unknown): path is PostCollectionPath =>
     isString(path) && specInternal.value?.paths?.[path]?.post !== undefined
 
+  const { addError } = useMessagesStore()
+
+  const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
+
+  const fetchSpec = async () => {
+    status.value = 'pending'
+    await $fetch<OpenAPIV3_1.Document>('/api/docs.jsonopenapi', {
+      baseURL: useNuxtApp().$config.public.apiBaseUrl,
+    })
+      .then((response) => {
+        const { specInternal } = storeToRefs(useOpenApiStore())
+        specInternal.value = response
+        status.value = 'success'
+      })
+      .catch((e) => {
+        status.value = 'error'
+        console.error('openapi', e)
+        addError('Failed to load API spec: \n' + e.message)
+      })
+  }
+
   return {
     isPostOperation,
+    fetchSpec,
     findRelatedApiResourcePath,
     specInternal,
     ready,
+    status,
   }
 })
 

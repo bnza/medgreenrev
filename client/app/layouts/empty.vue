@@ -1,5 +1,14 @@
+<script setup lang="ts">
+defineProps<{ status: 'idle' | 'pending' | 'error' | 'success' }>()
+</script>
 <template>
-  <v-container>
+  <resource-not-found
+    v-if="status === 'error'"
+    error="API spec could not be loaded"
+    :back="false"
+    title="Application error"
+  />
+  <v-container v-else>
     <v-row justify="center" style="margin-top: 78px">
       <home-page-logo />
     </v-row>
