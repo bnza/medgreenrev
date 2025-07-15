@@ -6,12 +6,12 @@ export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
   const getItemOperation = new GetItemOperation(path)
 
   const openApiStore = useOpenApiStore()
-  const resourceKey = openApiStore.findRelatedApiResourcePath(path)
+  const apiResourcePath = openApiStore.findApiResourcePath(path)
 
-  if (!resourceKey) {
+  if (!apiResourcePath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
-  const { RESOURCE_QUERY_KEY } = useAppQueryCache(resourceKey, path)
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
   const queryOptions = (params?: OperationPathParams<P, 'get'>) =>
     defineQueryOptions({

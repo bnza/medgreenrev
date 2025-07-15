@@ -10,12 +10,13 @@ export class GetItemOperation<P extends GetItemPath> extends BaseOperation {
   constructor(public readonly path: P) {
     super()
   }
+
   request(
     pathParams: OperationPathParams<P, 'get'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<GetItemResponseMap[GetItemPath]>(
-      this.getItemPath(this.path, 'get', pathParams),
+      this.expandUrlTemplate(this.path, 'get', pathParams),
       { ...options, method: 'get' },
     )
   }

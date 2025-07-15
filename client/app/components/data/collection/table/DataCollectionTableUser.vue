@@ -1,11 +1,17 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+  generic="Path extends Extract<GetCollectionPath, '/api/users'>"
+>
 import type { GetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 
 const resourceKey = 'user'
 
-const GET_COLLECTION_OPERATION =
-  '/api/users' as const satisfies GetCollectionPath
+defineProps<{
+  path: Path
+}>()
+
 const appPath = getApiResourceConfig(resourceKey).appPath
 const { deleteDialogState, updateDialogState } = storeToRefs(
   useResourceUiStore('/api/users/{id}'),
@@ -15,7 +21,7 @@ const { userData } = storeToRefs(userPasswordDialog())
 </script>
 
 <template>
-  <data-collection-table :path="GET_COLLECTION_OPERATION">
+  <data-collection-table :path>
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
@@ -34,8 +40,8 @@ const { userData } = storeToRefs(userPasswordDialog())
       </navigation-resource-item>
     </template>
     <template #dialogs>
-      <data-dialog-search-user path="/api/users" />
-      <data-dialog-create-user path="/api/users" />
+      <data-dialog-search-user :path />
+      <data-dialog-create-user :path />
       <data-dialog-delete-user />
       <data-dialog-update-user />
       <data-dialog-user-password mode="reset" />

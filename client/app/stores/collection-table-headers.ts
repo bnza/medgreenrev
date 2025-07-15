@@ -6,8 +6,9 @@ const useCollectionTableHeadersStore = <GetCollectionPath>(
   path: GetCollectionPath,
 ) => {
   return defineStore(`collection-table-headers:${path}`, () => {
+    const { findApiResourcePath } = useOpenApiStore()
     const resourceKey = Object.entries(API_RESOURCE_MAP).find(
-      ([_, value]) => value === path,
+      ([_, value]) => value === findApiResourcePath(path as string),
     )?.[0] as ApiDataResourceKey | undefined
 
     if (!resourceKey) {

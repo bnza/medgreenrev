@@ -4,12 +4,14 @@ import useCollectionTableHeadersStore from '~/stores/collection-table-headers'
 
 const props = defineProps<{
   path: Path
+  parentId?: string
 }>()
 
 const { headers } = storeToRefs(useCollectionTableHeadersStore(props.path))
 
 const { useGetCollection } = useDefineGetCollectionQuery(props.path)
-const { pagination, items, totalItems, status } = useGetCollection()
+const { pathParams, pagination, items, totalItems, status } = useGetCollection()
+pathParams.value = props.parentId ? { parentId: props.parentId } : undefined
 </script>
 
 <template>

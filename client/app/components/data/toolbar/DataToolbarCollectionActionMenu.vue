@@ -10,11 +10,11 @@ const props = defineProps<{
   acl: CollectionAcl
   path: Path
 }>()
-const { findRelatedApiResourcePath, isPostOperation } = useOpenApiStore()
+const { findApiResourcePath, isPostOperation } = useOpenApiStore()
 const postPath = computed<PostCollectionPath | ''>(() => {
   const resourceKey = isApiResourceKey(props.path)
     ? props.path
-    : findRelatedApiResourcePath(props.path)
+    : findApiResourcePath(props.path)
   return isPostOperation(resourceKey) ? resourceKey : ''
 })
 </script>

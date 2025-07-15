@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{ status: 'idle' | 'pending' | 'error' | 'success' }>()
+</script>
 
 <template>
   <app-bar />

@@ -5,6 +5,7 @@ import rules from '~/utils/validation/rules/site'
 
 defineProps<{
   path: Path
+  parentId?: string
 }>()
 
 const { r$ } = useRegle(
@@ -14,7 +15,7 @@ const { r$ } = useRegle(
 </script>
 
 <template>
-  <data-dialog-create :path title="Site" v-model:regle="r$">
+  <data-dialog-create :path title="Site" v-model:regle="r$" :parent-id>
     <template #default>
       <data-item-form-edit-site
         v-if="r$.$value"

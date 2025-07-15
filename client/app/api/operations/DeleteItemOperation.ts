@@ -12,12 +12,13 @@ export class DeleteItemOperation<
   constructor(public readonly path: P) {
     super()
   }
+
   request(
     pathParams: OperationPathParams<P, 'delete'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<DeleteItemResponseMap[DeleteItemPath]>(
-      this.getItemPath(this.path, 'delete', pathParams),
+      this.expandUrlTemplate(this.path, 'delete', pathParams),
       { ...options, method: 'delete' },
     )
   }

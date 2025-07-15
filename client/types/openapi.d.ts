@@ -128,7 +128,7 @@ export interface paths {
     patch: operations['api_site_user_privileges_id_patch']
     trace?: never
   }
-  '/api/sites/{siteId}/user_privileges': {
+  '/api/sites/{parentId}/site_user_privileges': {
     parameters: {
       query?: never
       header?: never
@@ -139,16 +139,20 @@ export interface paths {
      * Retrieves the collection of SiteUserPrivilege resources.
      * @description Retrieves the collection of SiteUserPrivilege resources.
      */
-    get: operations['api_sites_siteIduser_privileges_get_collection']
+    get: operations['api_sites_parentIdsite_user_privileges_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a SiteUserPrivilege resource.
+     * @description Creates a SiteUserPrivilege resource.
+     */
+    post: operations['api_sites_parentIdsite_user_privileges_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/sites/{siteId}/user_privileges/{id}': {
+  '/api/sites/{parentId}/site_user_privileges/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -159,7 +163,51 @@ export interface paths {
      * Retrieves a SiteUserPrivilege resource.
      * @description Retrieves a SiteUserPrivilege resource.
      */
-    get: operations['api_sites_siteIduser_privileges_id_get']
+    get: operations['api_sites_parentIdsite_user_privileges_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users/{parentId}/site_user_privileges': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SiteUserPrivilege resources.
+     * @description Retrieves the collection of SiteUserPrivilege resources.
+     */
+    get: operations['api_users_parentIdsite_user_privileges_get_collection']
+    put?: never
+    /**
+     * Creates a SiteUserPrivilege resource.
+     * @description Creates a SiteUserPrivilege resource.
+     */
+    post: operations['api_users_parentIdsite_user_privileges_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/users/{parentId}/site_user_privileges/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SiteUserPrivilege resource.
+     * @description Retrieves a SiteUserPrivilege resource.
+     */
+    get: operations['api_users_parentIdsite_user_privileges_id_get']
     put?: never
     post?: never
     delete?: never
@@ -1220,7 +1268,7 @@ export interface operations {
       }
     }
   }
-  api_sites_siteIduser_privileges_get_collection: {
+  api_sites_parentIdsite_user_privileges_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -1231,7 +1279,7 @@ export interface operations {
       header?: never
       path: {
         /** @description SiteUserPrivilege identifier */
-        siteId: string
+        parentId: string
       }
       cookie?: never
     }
@@ -1294,13 +1342,256 @@ export interface operations {
       }
     }
   }
-  api_sites_siteIduser_privileges_id_get: {
+  api_sites_parentIdsite_user_privileges_post: {
     parameters: {
       query?: never
       header?: never
       path: {
         /** @description SiteUserPrivilege identifier */
-        siteId: string
+        parentId: string
+      }
+      cookie?: never
+    }
+    /** @description The new SiteUserPrivilege resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.create']
+      }
+    }
+    responses: {
+      /** @description SiteUserPrivilege resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_sites_parentIdsite_user_privileges_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        parentId: string
+        /** @description SiteUserPrivilege identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_parentIdsite_user_privileges_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_users_parentIdsite_user_privileges_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    /** @description The new SiteUserPrivilege resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.create']
+      }
+    }
+    responses: {
+      /** @description SiteUserPrivilege resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_users_parentIdsite_user_privileges_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        parentId: string
         /** @description SiteUserPrivilege identifier */
         id: string
       }

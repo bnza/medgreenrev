@@ -20,5 +20,6 @@ defineProps<{ status: 'idle' | 'pending' | 'error' | 'success' }>()
         style="width: 480px"
       />
     </v-row>
+    <NuxtPage v-if="false" />
   </v-container>
 </template>

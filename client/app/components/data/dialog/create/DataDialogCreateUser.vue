@@ -5,6 +5,7 @@ import rules from '~/utils/validation/rules/user'
 
 defineProps<{
   path: Path
+  parentId?: string
 }>()
 
 type RequestBody = PostCollectionRequestMap['/api/users']
@@ -25,6 +26,7 @@ const { openUserPasswordDialog } = useUserPasswordDialog()
 <template>
   <data-dialog-create
     title="User"
+    :parent-id
     :path
     v-model:regle="r$"
     :on-pre-submit

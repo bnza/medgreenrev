@@ -5,8 +5,8 @@ import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
   const deleteItemOperation = new DeleteItemOperation(path)
   const openApiStore = useOpenApiStore()
-  const resourceKey = openApiStore.findRelatedApiResourcePath(path)
-  if (!resourceKey) {
+  const apiResourcePath = openApiStore.findApiResourcePath(path)
+  if (!apiResourcePath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
@@ -17,7 +17,7 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
     remove,
     invalidateQueries,
     caches,
-  } = useAppQueryCache(resourceKey, path)
+  } = useAppQueryCache(apiResourcePath, path)
 
   const deleteItem = useMutation({
     mutation: (params: OperationPathParams<P, 'delete'>) =>

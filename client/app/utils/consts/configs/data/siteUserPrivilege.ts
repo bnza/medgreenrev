@@ -20,7 +20,7 @@ const config: Readonly<ResourceConfig> = {
     },
     {
       key: 'user.email',
-      value: 'user.email',
+      value: 'user.userIdentifier',
       title: 'user',
     },
     {

@@ -19,7 +19,7 @@ export class PatchItemOperation<
     options?: ApiRequestOptions,
   ) {
     return this._request<PatchItemResponseMap[PatchItemPath] | never>(
-      this.getItemPath(this.path, 'patch', pathParams),
+      this.expandUrlTemplate(this.path, 'patch', pathParams),
       { ...options, method: 'patch' },
     )
   }

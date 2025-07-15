@@ -9,17 +9,20 @@ import { PatchItemOperation } from '~/api/operations/PatchItemOperation'
 export function useDeleteItemMutation<P extends PatchItemPath>(path: P) {
   const patchItemOperation = new PatchItemOperation(path)
   const openApiStore = useOpenApiStore()
-  const resourceKey = openApiStore.findRelatedApiResourcePath(path)
-  if (!resourceKey) {
+  const apiResourcePath = openApiStore.findApiResourcePath(path)
+  if (!apiResourcePath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const { QUERY_KEYS, invalidateQueries } = useAppQueryCache(resourceKey, path)
+  const { QUERY_KEYS, invalidateQueries } = useAppQueryCache(
+    apiResourcePath,
+    path,
+  )
 
   // const patchNormalize = getPatchNormalizer(path)
 
   const patchItem = defineMutation(() => {
-    const item = ref<GetItemResponseMap[`${typeof resourceKey}/{id}`]>()
+    const item = ref<GetItemResponseMap[`${typeof apiResourcePath}/{id}`]>()
     const mutation = useMutation({
       mutation: ({
         param,

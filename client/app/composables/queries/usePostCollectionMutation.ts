@@ -1,4 +1,8 @@
-import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import type {
+  OperationPathParams,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+} from '~~/types'
 import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 import { PostCollectionOperation } from '~/api/operations/PostCollectionOperation'
 
@@ -7,16 +11,25 @@ export function usePostCollectionMutation<P extends PostCollectionPath>(
 ) {
   const postCollectionOperation = new PostCollectionOperation(path)
   const openApiStore = useOpenApiStore()
-  const resourceKey = openApiStore.findRelatedApiResourcePath(path)
-  if (!resourceKey) {
+  const apiResourcePath = openApiStore.findApiResourcePath(path)
+  if (!apiResourcePath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const { QUERY_KEYS, invalidateQueries } = useAppQueryCache(resourceKey, path)
+  const { QUERY_KEYS, invalidateQueries } = useAppQueryCache(
+    apiResourcePath,
+    path,
+  )
 
   const postCollection = useMutation({
-    mutation: (model: PostCollectionRequestMap[P]) => {
-      return postCollectionOperation.request({ body: model })
+    mutation: ({
+      param,
+      model,
+    }: {
+      param?: OperationPathParams<P, 'post'>
+      model: PostCollectionRequestMap[P]
+    }) => {
+      return postCollectionOperation.request(param, { body: model })
     },
     onSettled: async () => {
       return await invalidateQueries({ key: QUERY_KEYS.root })

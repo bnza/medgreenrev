@@ -1,25 +1,33 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/sites'>"
+  generic="
+    Path extends Extract<
+      GetCollectionPath,
+      | '/api/site_user_privileges'
+      | '/api/sites/{parentId}/site_user_privileges'
+      | '/api/users/{parentId}/site_user_privileges'
+    >
+  "
 >
-import type { GetCollectionPath } from '~~/types'
+import type { ApiResourceKey, GetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 
-defineProps<{
-  path: Path
-}>()
+const resourceKey = 'siteUserPrivilege' as ApiResourceKey
 
-const resourceKey = 'site'
+const props = defineProps<{
+  path: Path
+  parentId?: string
+}>()
 
 const appPath = getApiResourceConfig(resourceKey).appPath
 const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/sites/{id}'),
+  useResourceUiStore(props.path),
 )
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"

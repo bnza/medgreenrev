@@ -41,6 +41,8 @@ const useResourceUiStore = (path: ApiPath) =>
 
     const redirectToItem = ref(false)
 
+    const tab = ref('')
+
     return {
       dialogStates,
       deleteDialogState,
@@ -50,6 +52,7 @@ const useResourceUiStore = (path: ApiPath) =>
       isCreateDialogOpen: isDialogOpenFn('create'),
       isSearchDialogOpen: isDialogOpenFn('search'),
       redirectToItem,
+      tab,
     }
   })()
 

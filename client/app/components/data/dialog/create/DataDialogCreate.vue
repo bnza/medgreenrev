@@ -17,6 +17,7 @@ const props = withDefaults(
   defineProps<{
     path: Path
     title: string
+    parentId?: string
     onPreSubmit?: OnPreSubmit
     getEmptyModel?: () => Record<string, any>
   }>(),
@@ -65,6 +66,8 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
 }
 // Possible redirect handling
 
+const { buildValidOperationPathParams } = useOpenApiStore()
+
 const submit = async () => {
   await regle.value.$validate()
 
@@ -78,7 +81,18 @@ const submit = async () => {
 
   try {
     disabled.value = true
-    const data = await postCollection.mutateAsync(model)
+
+    const param = buildValidOperationPathParams(
+      props.path,
+      'post',
+      props.parentId ? { parentId: props.parentId } : undefined,
+    )
+
+    if (props.parentId && !param) {
+      addError('Invalid path params. Check your configuration')
+      return
+    }
+    const data = await postCollection.mutateAsync({ param, model })
 
     // Eventual side effects are produced/handled by the parent Dialog
     emit('success', { request: structuredClone(toRaw(model)), response: data })

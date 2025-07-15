@@ -3,6 +3,7 @@ import type {
   ApiRequestOptions,
   GetCollectionPath,
   GetCollectionResponseMap,
+  OperationPathParams,
 } from '~~/types'
 
 export class GetCollectionOperation<
@@ -13,9 +14,18 @@ export class GetCollectionOperation<
   }
 
   request(options?: ApiRequestOptions) {
-    return this._request<GetCollectionResponseMap[P]>(this.path, {
-      ...options,
-      method: 'get',
-    })
+    const pathParams = ref<OperationPathParams<P, 'get'>>()
+    if (options?.params) {
+      pathParams.value = options.params as OperationPathParams<P, 'get'>
+    }
+    return this._request<GetCollectionResponseMap[P]>(
+      pathParams.value
+        ? this.expandUrlTemplate(this.path, 'get', pathParams.value)
+        : this.path,
+      {
+        ...options,
+        method: 'get',
+      },
+    )
   }
 }

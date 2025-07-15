@@ -1,6 +1,11 @@
-import type { DataTableComponentOptions, GetCollectionPath } from '~~/types'
+import type {
+  DataTableComponentOptions,
+  GetCollectionPath,
+  OperationPathParams,
+} from '~~/types'
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 import useAppQueryCache from './useAppQueryCache'
+import { dataTableOptionsToQsObject } from '~/utils/requests'
 
 const defaultPagination = () =>
   ({
@@ -14,23 +19,33 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
   const getCollectionOperation = new GetCollectionOperation(path)
 
   const openApiStore = useOpenApiStore()
-  const resourceKey = openApiStore.findRelatedApiResourcePath(path)
-  if (!resourceKey) {
+  const apiResourcePath = openApiStore.findApiResourcePath(path)
+  if (!apiResourcePath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const { RESOURCE_QUERY_KEY } = useAppQueryCache(resourceKey, path)
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const queryOptions = (query: Record<string, any>) =>
+  const queryOptions = (options: {
+    query: Record<string, any> // URL query params
+    params?: OperationPathParams<typeof path, 'get'> // Path params
+  }) =>
     defineQueryOptions({
-      key: RESOURCE_QUERY_KEY.byFilter(query),
-      query: () => getCollectionOperation.request(query),
+      key: RESOURCE_QUERY_KEY.byFilter({
+        ...options.query,
+        ...(options.params || {}),
+      }),
+      query: () => getCollectionOperation.request(options),
     })
 
   const useGetCollection = defineQuery(() => {
+    const pathParams = ref<
+      OperationPathParams<typeof path, 'get'> | undefined
+    >()
     const pagination = reactive(defaultPagination())
     const query = useQuery(queryOptions, () => ({
-      pagination,
+      query: { ...dataTableOptionsToQsObject(pagination) },
+      params: pathParams.value,
     }))
 
     const items = computed(() => query.data.value?.member ?? [])
@@ -40,6 +55,7 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
       ...query,
       totalItems,
       pagination,
+      pathParams,
     }
   })
 

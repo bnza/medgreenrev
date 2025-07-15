@@ -11,9 +11,9 @@ export abstract class BaseOperation {
     this.getHeaders = getHeaders
   }
 
-  protected getItemPath<
+  protected expandUrlTemplate<
     P extends ApiPath,
-    M extends 'get' | 'patch' | 'delete',
+    M extends 'get' | 'patch' | 'delete' | 'post',
   >(path: P, _method: M, pathParams: OperationPathParams<P, M>) {
     let finalPath = path as string
     if (pathParams && typeof pathParams === 'object') {
