@@ -10,14 +10,14 @@
     >
   "
 >
-import type { GetCollectionPath, PostCollectionRequestMap } from '~~/types'
+import type {
+  GetCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParentSiteUserPrivilege,
+} from '~~/types'
 import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
-import {
-  isResourceParentUser,
-  isResourceParentSite,
-  type ResourceParentSiteUserPrivilege,
-} from '~/utils/guards/resourceParent/siteUserPrivileges'
+
 import useResourceParent from '~/composables/useResourceParent'
 
 const props = defineProps<{
@@ -26,20 +26,12 @@ const props = defineProps<{
 }>()
 
 type RequestBody = PostCollectionRequestMap['/api/site_user_privileges']
-const {
-  key: parentKey,
-  id: parentId,
-  item: parentItem,
-} = useResourceParent(props.parent)
+const { key: parentKey, iri: parentIri } = useResourceParent(props.parent)
 
 const getEmptyModel = () =>
   ({
-    user: isResourceParentUser(props.parent)
-      ? props.parent[2]['@id']
-      : undefined,
-    site: isResourceParentSite(props.parent)
-      ? props.parent[2]['@id']
-      : undefined,
+    user: parentKey.value === 'user' ? parentIri.value : undefined,
+    site: parentKey.value === 'site' ? parentIri.value : undefined,
     privilege: 0,
   }) as unknown as RequestBody & {
     user: Record<string, any> | undefined
@@ -58,19 +50,16 @@ const onPreSubmit = (item: any) => {
   if ('privilege' in item) item.privilege = Number(item.privilege)
   return item
 }
-const { openUserPasswordDialog } = useUserPasswordDialog()
 </script>
 
 <template>
   <data-dialog-create
     v-model:regle="r$"
     title="User"
-    :parent-id
     :path
     :redirect-option="false"
     :on-pre-submit
     :get-empty-model
-    @success="(event) => openUserPasswordDialog(event)"
   >
     <template #default>
       <data-item-form-edit-site-user-privilege

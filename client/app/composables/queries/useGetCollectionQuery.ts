@@ -1,20 +1,8 @@
-import type {
-  DataTableComponentOptions,
-  GetCollectionPath,
-  OperationPathParams,
-} from '~~/types'
+import type { GetCollectionPath, OperationPathParams } from '~~/types'
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 import useAppQueryCache from './useAppQueryCache'
 import { dataTableOptionsToQsObject } from '~/utils/requests'
 import useCollectionQueryStore from '~/stores/collection-query'
-
-const defaultPagination = () =>
-  ({
-    page: 1,
-    itemsPerPage: 10,
-    sortBy: [],
-    groupBy: [],
-  }) as const as DataTableComponentOptions
 
 export function useDefineGetCollectionQuery(path: GetCollectionPath) {
   const getCollectionOperation = new GetCollectionOperation(path)

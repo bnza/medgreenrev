@@ -1,8 +1,4 @@
-import type {
-  ApiDataResourceKey,
-  DataTableComponentOptions,
-  paths,
-} from '~~/types'
+import type { DataTableComponentOptions, paths } from '~~/types'
 
 const defaultPagination = () =>
   ({

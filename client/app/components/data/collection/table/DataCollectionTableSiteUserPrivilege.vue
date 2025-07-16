@@ -10,8 +10,12 @@
     >
   "
 >
-import type { ApiResourceKey, GetCollectionPath } from '~~/types'
-import type { ResourceParentSiteUserPrivilege } from '~/utils/guards/resourceParent/siteUserPrivileges'
+import type {
+  ApiResourceKey,
+  GetCollectionPath,
+  ResourceParentSiteUserPrivilege,
+} from '~~/types'
+
 import useResourceUiStore from '~/stores/resource-ui'
 
 const resourceKey = 'siteUserPrivilege' as ApiResourceKey

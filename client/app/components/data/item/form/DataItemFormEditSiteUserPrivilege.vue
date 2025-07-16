@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import {
-  isResourceParentUser,
-  isResourceParentSite,
-  type ResourceParentSiteUserPrivilege,
-} from '~/utils/guards/resourceParent/siteUserPrivileges'
+import type { ResourceParentSiteUserPrivilege } from '~~/types'
 
 type Item = { site?: string; user?: string; privilege?: number }
 const item = defineModel<Item>('item', { required: true })
@@ -15,28 +11,13 @@ interface Props {
   errors?: RegleErrorTree<Item>
 }
 
-const props = defineProps<Props>()
-const parentUser = computed(() =>
-  isResourceParentUser(props.parent) ? props.parent[2] : undefined,
-)
-const parentSite = computed(() =>
-  isResourceParentSite(props.parent) ? props.parent[2] : undefined,
-)
-
-watch(
-  () => props.parent,
-  (value) => {
-    if (isResourceParentUser(value)) {
-      item.value.user = value[2]['@id']
-    }
-  },
-)
+defineProps<Props>()
 </script>
 
 <template>
   <v-row>
     <v-text-field
-      :disabled="Boolean(parentUser)"
+      :disabled="parent?.key === 'user'"
       v-model="item.user"
       label="user"
       :error-messages="errors?.user"
@@ -44,7 +25,7 @@ watch(
   </v-row>
   <v-row>
     <v-text-field
-      :disabled="Boolean(parentSite)"
+      :disabled="parent?.key === 'site'"
       v-model="item.site"
       label="site"
       :error-messages="errors?.site"

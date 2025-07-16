@@ -16,7 +16,7 @@ const { tab } = storeToRefs(useResourceUiStore('/api/users/{id}'))
           <data-collection-page-user-site-privilege
             v-if="item?.id"
             path="/api/users/{parentId}/site_user_privileges"
-            :parent="['user', '/api/users/{id}', item]"
+            :parent="{ key: 'user', resourceItemPath: '/api/users/{id}', item }"
           />
         </v-tabs-window-item>
       </v-tabs-window>

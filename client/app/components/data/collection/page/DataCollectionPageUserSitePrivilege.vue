@@ -10,8 +10,10 @@
     >
   "
 >
-import type { GetCollectionPath } from '~~/types'
-import type { ResourceParentSiteUserPrivilege } from '~/utils/guards/resourceParent/siteUserPrivileges'
+import type {
+  GetCollectionPath,
+  ResourceParentSiteUserPrivilege,
+} from '~~/types'
 
 defineProps<{
   path: P

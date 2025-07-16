@@ -7,18 +7,19 @@ export const useResourceParent = <
 >(
   resourceParent?: ResourceParent<K, P>,
 ) => {
-  const _parentTuple = resourceParent
-  const key = computed(() => _parentTuple?.[0])
-  const item = computed(() => _parentTuple?.[2])
+  const key = computed(() => resourceParent?.key)
+  const path = computed(() => resourceParent?.resourceItemPath)
+  const item = computed(() => resourceParent?.item)
   const id = computed(() =>
     item.value && 'id' in item.value ? String(item.value.id) : undefined,
   )
   const iri = computed(() =>
-    item.value && 'iri' in item.value ? String(item.value.iri) : undefined,
+    item.value && '@id' in item.value ? String(item.value['@id']) : undefined,
   )
 
   return {
     key,
+    path,
     item,
     id,
     iri,

@@ -1,4 +1,5 @@
 import type { paths } from './openapi'
+import type { ApiResourceItemPath } from '~/utils/consts/resources'
 
 export type ApiPath = keyof paths
 
@@ -116,8 +117,12 @@ export type DeleteItemResponseMap = {
   [K in DeleteItemPath]: paths[K]['delete']['responses']['204']
 }
 
-export type ResourceParent<K extends string, P extends ApiResourceItemPath> = [
-  K,
-  P,
-  GetItemResponseMap[P],
-]
+export type ResourceParent<K extends string, P extends ApiResourceItemPath> = {
+  key: K
+  resourceItemPath: P
+  item: GetItemResponseMap[P]
+}
+
+export type ResourceParentSiteUserPrivilege =
+  | ResourceParent<'site', '/api/sites/{id}'>
+  | ResourceParent<'user', '/api/users/{id}'>
