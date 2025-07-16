@@ -115,3 +115,9 @@ export type GetItemResponseMap = {
 export type DeleteItemResponseMap = {
   [K in DeleteItemPath]: paths[K]['delete']['responses']['204']
 }
+
+export type ResourceParent<K extends string, P extends ApiResourceItemPath> = [
+  K,
+  P,
+  GetItemResponseMap[P],
+]

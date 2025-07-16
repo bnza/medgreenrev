@@ -2,7 +2,7 @@
 withDefaults(
   defineProps<{
     identifier?: string
-    title: string
+    title?: string
     showBackButton?: boolean
   }>(),
   {

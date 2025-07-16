@@ -28,10 +28,7 @@ const postPath = computed<PostCollectionPath | ''>(() => {
     >
       <v-list>
         <data-toolbar-list-item-search :path />
-        <data-toolbar-list-item-create
-          v-if="acl.canCreate && postPath"
-          :path="postPath"
-        />
+        <data-toolbar-list-item-create v-if="acl.canCreate && postPath" :path />
       </v-list>
     </v-menu>
   </v-btn>

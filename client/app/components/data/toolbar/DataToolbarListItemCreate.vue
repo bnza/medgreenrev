@@ -1,9 +1,9 @@
-<script setup lang="ts" generic="PATH extends PostCollectionPath">
-import type { PostCollectionPath } from '~~/types'
+<script setup lang="ts" generic="Path extends keyof paths">
+import type { paths } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 
 const props = defineProps<{
-  path: PATH
+  path: Path
 }>()
 
 const { isCreateDialogOpen: visible } = storeToRefs(

@@ -1,5 +1,4 @@
 import type { UserBaseData } from '~~/types'
-import { isValidUserBaseData } from '~/utils/guards'
 
 export const useUserPasswordDialog = defineStore('user-password-dialog', () => {
   const userData = ref<UserBaseData>()

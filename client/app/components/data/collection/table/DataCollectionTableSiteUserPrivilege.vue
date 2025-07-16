@@ -4,21 +4,24 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
+      | '/api/site_user_privileges'
       | '/api/sites/{parentId}/site_user_privileges'
       | '/api/users/{parentId}/site_user_privileges'
     >
   "
 >
 import type { ApiResourceKey, GetCollectionPath } from '~~/types'
+import type { ResourceParentSiteUserPrivilege } from '~/utils/guards/resourceParent/siteUserPrivileges'
 import useResourceUiStore from '~/stores/resource-ui'
 
 const resourceKey = 'siteUserPrivilege' as ApiResourceKey
 
-defineProps<{
+const props = defineProps<{
   path: Path
-  parentId?: string
+  parent?: ResourceParentSiteUserPrivilege
 }>()
 
+const { id: parentId } = useResourceParent(props.parent)
 const appPath = getApiResourceConfig(resourceKey).appPath
 
 const { deleteDialogState, updateDialogState } = storeToRefs(
@@ -43,6 +46,7 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
     </template>
     <template #dialogs>
       <data-dialog-delete-site-user-privilege />
+      <data-dialog-create-site-user-privilege :path :parent />
     </template>
   </data-collection-table>
 </template>

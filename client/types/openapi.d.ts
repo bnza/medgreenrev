@@ -141,11 +141,7 @@ export interface paths {
      */
     get: operations['api_sites_parentIdsite_user_privileges_get_collection']
     put?: never
-    /**
-     * Creates a SiteUserPrivilege resource.
-     * @description Creates a SiteUserPrivilege resource.
-     */
-    post: operations['api_sites_parentIdsite_user_privileges_post']
+    post?: never
     delete?: never
     options?: never
     head?: never
@@ -185,11 +181,7 @@ export interface paths {
      */
     get: operations['api_users_parentIdsite_user_privileges_get_collection']
     put?: never
-    /**
-     * Creates a SiteUserPrivilege resource.
-     * @description Creates a SiteUserPrivilege resource.
-     */
-    post: operations['api_users_parentIdsite_user_privileges_post']
+    post?: never
     delete?: never
     options?: never
     head?: never
@@ -521,6 +513,8 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      /** Format: uuid */
+      readonly id?: string
       user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
       site?: components['schemas']['Site.jsonld-site_user_privilege.acl.read']
       /**
@@ -986,6 +980,10 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[user.email]'?: 'asc' | 'desc'
+        'order[privilege]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -1275,6 +1273,10 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[user.email]'?: 'asc' | 'desc'
+        'order[privilege]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -1338,67 +1340,6 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_sites_parentIdsite_user_privileges_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SiteUserPrivilege identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    /** @description The new SiteUserPrivilege resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.create']
-      }
-    }
-    responses: {
-      /** @description SiteUserPrivilege resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }
@@ -1457,6 +1398,10 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[user.email]'?: 'asc' | 'desc'
+        'order[privilege]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -1520,67 +1465,6 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_users_parentIdsite_user_privileges_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SiteUserPrivilege identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    /** @description The new SiteUserPrivilege resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.create']
-      }
-    }
-    responses: {
-      /** @description SiteUserPrivilege resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }

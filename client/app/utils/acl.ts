@@ -6,7 +6,6 @@ import {
   ROLE_HIERARCHY,
   SITES_ROLE_COLORS,
 } from '~/utils/consts/auth'
-import { isAppRole, isSpecialistRole } from '~/utils/guards'
 
 const getRoleHierarchyValue = (role: ApiRole | ''): number =>
   role ? ROLE_HIERARCHY[role] : 0

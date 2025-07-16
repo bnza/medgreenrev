@@ -1,6 +1,6 @@
-<script setup lang="ts" generic="Path extends PostCollectionPath">
+<script setup lang="ts" generic="Path extends keyof paths">
 import type {
-  PostCollectionPath,
+  paths,
   PostCollectionRequestMap,
   PostCollectionResponseMap,
 } from '~~/types'
@@ -17,11 +17,13 @@ const props = withDefaults(
   defineProps<{
     path: Path
     title: string
+    redirectOption?: boolean
     parentId?: string
     onPreSubmit?: OnPreSubmit
     getEmptyModel?: () => Record<string, any>
   }>(),
   {
+    redirectOption: true,
     onPreSubmit: <T,>(item: T) => item,
     getEmptyModel: () => ({}),
   },
@@ -32,11 +34,20 @@ defineSlots<{
   actions(): any
 }>()
 
+const { addSuccess, addError } = useMessagesStore()
+const { findApiResourcePath, isPostOperation } = useOpenApiStore()
+
+const postPath = findApiResourcePath(props.path)
+if (!isPostOperation(postPath)) {
+  addError(`${props.path} is not a valid post path.`)
+  throw new Error(`${props.path} is not a valid post path.`)
+}
+
 const emit = defineEmits<{
   success: [
     {
-      request: PostCollectionRequestMap[Path]
-      response: PostCollectionResponseMap[Path]
+      request: PostCollectionRequestMap[typeof postPath]
+      response: PostCollectionResponseMap[typeof postPath]
     },
   ]
 }>()
@@ -44,8 +55,8 @@ const emit = defineEmits<{
 const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
   useResourceUiStore(props.path),
 )
-const { postCollection } = usePostCollectionMutation(props.path)
-const { addSuccess, addError } = useMessagesStore()
+const { postCollection } = usePostCollectionMutation(postPath)
+
 const disabled = ref(false)
 
 // Possible redirect handling
@@ -60,9 +71,9 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
     return
   }
   const id = newItem.id
-  const path = `${fullPath}/${id}`
+  const redirectPath = `${fullPath}/${id}`
   push(fullPath)
-  await router.push(path)
+  await router.push(redirectPath)
 }
 // Possible redirect handling
 
@@ -72,8 +83,9 @@ const submit = async () => {
   await regle.value.$validate()
 
   // Once validated regle model should be fine. It's not a real TS guard
-  const isValidItem = (value: any): value is PostCollectionRequestMap[Path] =>
-    !regle.value.$invalid
+  const isValidItem = (
+    value: any,
+  ): value is PostCollectionRequestMap[typeof postPath] => !regle.value.$invalid
 
   if (!isValidItem(regle.value.$value)) return
 
@@ -82,17 +94,17 @@ const submit = async () => {
   try {
     disabled.value = true
 
-    const param = buildValidOperationPathParams(
-      props.path,
-      'post',
-      props.parentId ? { parentId: props.parentId } : undefined,
-    )
+    // const param = buildValidOperationPathParams(
+    //   props.path,
+    //   'post',
+    //   props.parentId ? { parentId: props.parentId } : undefined,
+    // )
 
-    if (props.parentId && !param) {
-      addError('Invalid path params. Check your configuration')
-      return
-    }
-    const data = await postCollection.mutateAsync({ param, model })
+    // if (props.parentId && !param) {
+    //   addError('Invalid path params. Check your configuration')
+    //   return
+    // }
+    const data = await postCollection.mutateAsync({ model })
 
     // Eventual side effects are produced/handled by the parent Dialog
     emit('success', { request: structuredClone(toRaw(model)), response: data })
@@ -133,6 +145,7 @@ watch(visible, (flag) => {
             <v-row justify="end">
               <v-col cols="4">
                 <v-checkbox
+                  v-if="redirectOption"
                   v-model="redirectToItem"
                   data-testid="show-created-item-checkbox"
                   label="show created item"

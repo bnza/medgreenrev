@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
 import { ApiRole } from '~/utils/consts/auth'
-import { isAppRole } from '~/utils/guards'
 
 describe('isAppRole', () => {
   it('should return true for a valid ApiRole', () => {

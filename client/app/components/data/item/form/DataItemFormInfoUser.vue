@@ -11,7 +11,7 @@ const role = computed(() => reduceAppRoles(props.item.roles))
 <template>
   <data-item-form-read>
     <v-row>
-      <v-col cols="12" xs="6" sm="2" class="px-2">
+      <v-col cols="12" xs="6" sm="4" class="px-2">
         <v-text-field :model-value="item.email" label="email" />
       </v-col>
       <v-col data-cy="roles-input-col">

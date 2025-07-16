@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    title: string
+    title?: string
     identifier?: string
     loading?: boolean
     showBackButton?: boolean
