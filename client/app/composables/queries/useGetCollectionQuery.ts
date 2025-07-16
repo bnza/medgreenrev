@@ -6,6 +6,7 @@ import type {
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 import useAppQueryCache from './useAppQueryCache'
 import { dataTableOptionsToQsObject } from '~/utils/requests'
+import useCollectionQueryStore from '~/stores/collection-query'
 
 const defaultPagination = () =>
   ({
@@ -30,7 +31,7 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
     params?: Ref<OperationPathParams<typeof path, 'get'> | undefined>,
   ) =>
     defineQuery(() => {
-      const pagination = reactive(defaultPagination())
+      const { pagination } = useCollectionQueryStore(path)
       const pathParams = computed(() => params?.value)
       const query = useQuery({
         key: RESOURCE_QUERY_KEY.byFilter({
