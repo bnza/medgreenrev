@@ -22,7 +22,11 @@ defineProps<{
 </script>
 
 <template>
-  <data-collection-page :path title="Site/User Privilege">
+  <data-collection-page
+    :path
+    title="Site/User Privilege"
+    :show-back-button="!Boolean(parent)"
+  >
     <data-collection-table-site-user-privilege :path :parent />
   </data-collection-page>
 </template>

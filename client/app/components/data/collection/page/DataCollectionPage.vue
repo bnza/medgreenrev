@@ -1,10 +1,16 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
 import type { GetCollectionPath } from '~~/types'
 
-defineProps<{
-  path: Path
-  title: string
-}>()
+withDefaults(
+  defineProps<{
+    path: Path
+    title: string
+    showBackButton?: boolean
+  }>(),
+  {
+    showBackButton: true,
+  },
+)
 
 defineSlots<{
   default(): any
@@ -15,7 +21,7 @@ const { siteCollectionAcl } = useAppAuth()
 </script>
 
 <template>
-  <data-card :title>
+  <data-card :title :show-back-button>
     <template #toolbar-append>
       <data-toolbar-collection-action-menu :acl="siteCollectionAcl" :path />
     </template>

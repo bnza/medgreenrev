@@ -16,19 +16,21 @@ defineProps<Props>()
 
 <template>
   <v-row>
-    <v-text-field
-      :disabled="parent?.key === 'user'"
+    <data-autocomplete
+      path="/api/users"
+      item-title="email"
       v-model="item.user"
       label="user"
-      :error-messages="errors?.user"
+      :disabled="parent?.key === 'user'"
     />
   </v-row>
   <v-row>
-    <v-text-field
-      :disabled="parent?.key === 'site'"
+    <data-autocomplete
+      path="/api/sites"
+      item-title="name"
       v-model="item.site"
       label="site"
-      :error-messages="errors?.site"
+      :disabled="parent?.key === 'site'"
     />
     <v-row>
       <v-checkbox
