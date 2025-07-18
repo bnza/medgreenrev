@@ -29,3 +29,5 @@ export type UserBaseData = {
   id: string
   email: string
 }
+
+type Iri = string & { readonly __brand: 'Iri' }

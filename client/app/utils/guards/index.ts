@@ -1,9 +1,10 @@
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
-import type { ApiResourceKey, UserBaseData } from '~~/types'
+import type { ApiResourceKey, Iri, UserBaseData } from '~~/types'
 import {
   API_RESOURCE_MAP,
   type ApiResourcePath,
 } from '~/utils/consts/resources'
+import { isAppPathItemPage } from '~/utils'
 
 export const isApiResourceKey = (value: unknown): value is ApiResourceKey =>
   typeof value === 'string' && Object.keys(API_RESOURCE_MAP).includes(value)
@@ -62,3 +63,6 @@ export const isRole = (
 
 export const isValidUserBaseData = (value: unknown): value is UserBaseData =>
   isPlainObject(value) && 'id' in value && 'email' in value
+
+export const isValidIri = (value: unknown): value is Iri =>
+  isString(value) && isAppPathItemPage(value)

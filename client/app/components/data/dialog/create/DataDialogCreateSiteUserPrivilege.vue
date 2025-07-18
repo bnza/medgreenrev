@@ -12,15 +12,12 @@
 >
 import type {
   GetCollectionPath,
-  PostCollectionRequestMap,
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
-import { createRule, type Maybe, useRegle } from '@regle/core'
-import { required, isFilled } from '@regle/rules'
+import { useRegle } from '@regle/core'
+import { required } from '@regle/rules'
 
 import useResourceParent from '~/composables/useResourceParent'
-import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
-import { extractIdFromIri } from '~/utils'
 
 const props = defineProps<{
   path: Path
@@ -35,41 +32,27 @@ const getEmptyModel = () => ({
   privilege: 0,
 })
 
-const apiValidator = new GetValidationOperation(
+const uniqueSite = useApiUniqueValidator(
   '/api/validator/unique/site_user_privileges/{site}/{user}',
+  ['site', 'user'],
+  'Duplicate [site, user] combination',
 )
-
-const uniqueSite = createRule({
-  async validator(site: Maybe<string>, user: Maybe<string>) {
-    if (!isFilled(site)) return true
-    site = extractIdFromIri(site)
-    if (!site) {
-      console.error('Invalid site IRI: ', site)
-      return false
-    }
-    if (!isFilled(user)) return true
-    user = extractIdFromIri(user)
-    if (!user) {
-      console.error('Invalid user IRI: ', site)
-      return false
-    }
-    return await apiValidator.isValid({
-      site,
-      user,
-    })
-  },
-  message: 'Duplicate [site, user] combination',
-})
+const uniqueUser = useApiUniqueValidator(
+  '/api/validator/unique/site_user_privileges/{site}/{user}',
+  ['user', 'site'],
+  'Duplicate [site, user] combination',
+)
 
 const model = reactive(getEmptyModel())
 
 const { r$ } = useRegle(model, {
   site: {
     required,
-    uniqueUser: uniqueSite(() => model.user),
+    uniqueSite: uniqueSite(() => model.user),
   },
   user: {
     required,
+    uniqueUser: uniqueUser(() => model.site),
   },
 })
 const onPreSubmit = (item: any) => {
