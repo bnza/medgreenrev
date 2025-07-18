@@ -4,7 +4,10 @@ import useAppQueryCache from './useAppQueryCache'
 import { dataTableOptionsToQsObject } from '~/utils/requests'
 import useCollectionQueryStore from '~/stores/collection-query'
 
-export function useDefineGetCollectionQuery(path: GetCollectionPath) {
+export function useGetCollectionQuery(
+  path: GetCollectionPath,
+  params?: Ref<OperationPathParams<typeof path, 'get'> | undefined>,
+) {
   const getCollectionOperation = new GetCollectionOperation(path)
 
   const openApiStore = useOpenApiStore()
@@ -15,39 +18,29 @@ export function useDefineGetCollectionQuery(path: GetCollectionPath) {
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const useGetCollection = (
-    params?: Ref<OperationPathParams<typeof path, 'get'> | undefined>,
-  ) =>
-    defineQuery(() => {
-      const { pagination } = useCollectionQueryStore(path)
-      const pathParams = computed(() => params?.value)
-      const query = useQuery({
-        key: RESOURCE_QUERY_KEY.byFilter({
-          pagination,
-          ...(pathParams.value || {}),
-        }),
-        query: () =>
-          getCollectionOperation.request({
-            query: { ...dataTableOptionsToQsObject(pagination) },
-            params: pathParams.value,
-          }),
-        enabled:
-          /\{[^}]*}/.test(path) === (typeof pathParams.value !== 'undefined'),
-      })
-      const items = computed(() => query.data.value?.member ?? [])
-      const totalItems = computed(() => query.data.value?.totalItems ?? 0)
-      return {
-        items,
-        ...query,
-        totalItems,
+  return defineQuery(() => {
+    const { pagination } = useCollectionQueryStore(path)
+    const query = useQuery({
+      key: RESOURCE_QUERY_KEY.byFilter({
         pagination,
-        pathParams,
-      }
-    })()
-
-  return {
-    useGetCollection,
-  }
+        ...(params?.value || {}),
+      }),
+      query: () =>
+        getCollectionOperation.request({
+          query: { ...dataTableOptionsToQsObject(pagination) },
+          params: params?.value,
+        }),
+      enabled: /\{[^}]*}/.test(path) === (typeof params?.value !== 'undefined'),
+    })
+    const items = computed(() => query.data.value?.member ?? [])
+    const totalItems = computed(() => query.data.value?.totalItems ?? 0)
+    return {
+      items,
+      ...query,
+      totalItems,
+      pagination,
+    }
+  })()
 }
 
-export default useDefineGetCollectionQuery
+export default useGetCollectionQuery
