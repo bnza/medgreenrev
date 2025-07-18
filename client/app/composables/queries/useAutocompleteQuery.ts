@@ -13,8 +13,8 @@ export function useAutocompleteQuery(
     search.value ? { query: { search: search.value } } : {},
   )
 
-  const queryOptions = defineQueryOptions((search: Ref<string>) => ({
-    key: QUERY_KEYS.bySearch(search.value),
+  const queryOptions = defineQueryOptions((_search: Ref<string>) => ({
+    key: QUERY_KEYS.bySearch(_search.value),
     query: () => getCollectionOperation.request(requestOptions.value),
   }))
 

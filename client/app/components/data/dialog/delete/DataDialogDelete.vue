@@ -8,6 +8,7 @@ import type {
 import useResourceUiStore from '~/stores/resource-ui'
 import DataDialogDeleteAlert from '~/components/data/dialog/delete/DataDialogDeleteAlert.vue'
 import useDeleteItemMutation from '~/composables/queries/useDeleteItemMutation'
+import useGetItemQuery from '../../../../composables/queries/useGetItemQuery'
 
 const props = defineProps<{
   path: Path
@@ -23,18 +24,11 @@ const { isDeleteDialogOpen: visible, deleteDialogState } = storeToRefs(
   useResourceUiStore(props.path),
 )
 
-const { queryOptions } = useDefineGetItemQuery(props.path)
 const {
   data: item,
   status,
   error,
-} = useQuery(
-  queryOptions,
-  () =>
-    (deleteDialogState.value || undefined) as
-      | OperationPathParams<Path, 'get'>
-      | undefined,
-)
+} = useGetItemQuery(props.path, deleteDialogState)
 const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   return isPlainObject(value) && 'id' in value
 }

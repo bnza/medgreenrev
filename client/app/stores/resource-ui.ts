@@ -1,25 +1,29 @@
-import type { ApiPath } from '~~/types'
+import type { ApiPath, OperationPathParams, paths } from '~~/types'
 
-const useResourceUiStore = (path: ApiPath) =>
+const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
   defineStore(`resource-ui:${path}`, () => {
-    const deleteDialogState = ref<Record<string, string> | false>(false)
+    const deleteDialogState = ref<
+      OperationPathParams<P, 'get' | 'delete'> | undefined
+    >()
 
     const isDeleteDialogOpen = computed({
       get() {
         return Boolean(deleteDialogState.value)
       },
-      set(value: Record<string, string> | false) {
+      set(value: OperationPathParams<P, 'get' | 'delete'> | undefined) {
         deleteDialogState.value = value
       },
     })
 
-    const updateDialogState = ref<Record<string, string> | false>(false)
+    const updateDialogState = ref<
+      OperationPathParams<P, 'get' | 'patch'> | undefined
+    >()
 
     const isUpdateDialogOpen = computed({
       get() {
         return Boolean(updateDialogState.value)
       },
-      set(value: Record<string, string> | false) {
+      set(value: OperationPathParams<P, 'get' | 'patch'> | undefined) {
         updateDialogState.value = value
       },
     })

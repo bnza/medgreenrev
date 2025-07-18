@@ -2,7 +2,10 @@ import type { GetItemPath, OperationPathParams } from '~~/types'
 import { GetItemOperation } from '~/api/operations/GetItemOperation'
 import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 
-export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
+export function useGetItemQuery<P extends GetItemPath>(
+  path: P,
+  params: Ref<OperationPathParams<P, 'get'> | undefined>,
+) {
   const getItemOperation = new GetItemOperation(path)
 
   const openApiStore = useOpenApiStore()
@@ -13,33 +16,23 @@ export function useDefineGetItemQuery<P extends GetItemPath>(path: P) {
   }
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const queryOptions = (params?: OperationPathParams<P, 'get'>) =>
-    defineQueryOptions({
-      key: RESOURCE_QUERY_KEY.byId(params as Record<string, string>),
+  const queryOptions = defineQueryOptions(
+    (_params: Ref<OperationPathParams<P, 'get'> | undefined>) => ({
+      key: _params.value ? RESOURCE_QUERY_KEY.byId(_params.value) : ['*'],
       query: () =>
-        params ? getItemOperation.request(params) : Promise.resolve(null),
-      enabled: Boolean(params),
-    })
+        _params.value
+          ? getItemOperation.request(_params.value)
+          : Promise.resolve(null),
+      enabled: Boolean(_params),
+    }),
+  )
 
-  /**
-   * A reactive query object used to fetch and manage data from a GET operation.
-   *
-   * It provides read and reactive bindings for query-related parameters and results.
-   * Use it if you want to share the params parameter through components
-   */
-  const useGetItem = defineQuery(() => {
-    const params = ref<OperationPathParams<P, 'get'> | undefined>()
-    const query = useQuery(queryOptions, () => params.value)
+  return defineQuery(() => {
+    const query = useQuery(() => queryOptions(params))
     return {
-      params,
       ...query,
     }
-  })
-
-  return {
-    queryOptions,
-    useGetItem,
-  }
+  })()
 }
 
-export default useDefineGetItemQuery
+export default useGetItemQuery

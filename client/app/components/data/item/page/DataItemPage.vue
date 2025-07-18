@@ -17,16 +17,14 @@ defineSlots<{
 }>()
 
 const { routeId } = useAppRoute()
+const params = computed<OperationPathParams<Path, 'get'> | undefined>(() => {
+  if (routeId) {
+    return { id: routeId } as OperationPathParams<Path, 'get'>
+  }
+  return undefined
+})
 
-const { queryOptions } = useDefineGetItemQuery(props.path)
-const {
-  data: item,
-  status,
-  error,
-} = useQuery(
-  queryOptions,
-  () => ({ id: routeId }) as OperationPathParams<Path, 'get'>,
-)
+const { data: item, status, error } = useGetItemQuery(props.path, params)
 
 const identifier = computed(() => {
   if (

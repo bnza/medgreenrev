@@ -8,6 +8,7 @@ import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
 import { diff } from 'deep-object-diff'
+import useGetItemQuery from '../../../../composables/queries/useGetItemQuery'
 
 type OnPreSubmit = <T extends object>(oldItem: T, item: T) => Partial<T>
 
@@ -33,14 +34,8 @@ const { isUpdateDialogOpen: visible, updateDialogState } = storeToRefs(
   useResourceUiStore(props.path),
 )
 
-const { queryOptions } = useDefineGetItemQuery(props.path)
-const { data: item } = useQuery(
-  queryOptions,
-  () =>
-    (updateDialogState.value || undefined) as
-      | OperationPathParams<Path, 'get'>
-      | undefined,
-)
+const { data: item } = useGetItemQuery(props.path, updateDialogState)
+
 watch(
   item,
   (value) => {
