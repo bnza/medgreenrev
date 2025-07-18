@@ -2,7 +2,7 @@
 import type { ApiResourcePath } from '~/utils/consts/resources'
 import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 
-const model = defineModel()
+const model = defineModel<string>()
 const props = defineProps<{
   path: ApiResourcePath
   itemTitle: string
@@ -33,4 +33,3 @@ const { items, asyncStatus } = useAutocompleteQuery(props.path, search)
     </template>
   </v-autocomplete>
 </template>
-o

@@ -18,9 +18,9 @@ defineProps<Props>()
   <v-row>
     <v-col cols="6">
       <data-autocomplete
+        v-model="item.user"
         path="/api/users"
         item-title="email"
-        v-model="item.user"
         label="user"
         :disabled="parent?.key === 'user'"
       />
@@ -28,10 +28,10 @@ defineProps<Props>()
   </v-row>
   <v-row>
     <v-col cols="6">
-      <data-autocomplete
+      <data-autocomplete-site
+        v-model="item.site"
         path="/api/sites"
         item-title="name"
-        v-model="item.site"
         label="site"
         :disabled="parent?.key === 'site'"
       />
