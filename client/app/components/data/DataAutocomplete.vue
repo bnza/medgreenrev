@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useAutocomplete } from '~/composables/queries/useAutocomplete'
 import type { ApiResourcePath } from '~/utils/consts/resources'
+import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 
 const model = defineModel()
 const props = defineProps<{
@@ -8,7 +8,8 @@ const props = defineProps<{
   itemTitle: string
 }>()
 
-const { items, asyncStatus, search } = useAutocomplete(props.path)
+const search = ref('')
+const { items, asyncStatus } = useAutocompleteQuery(props.path, search)
 </script>
 
 <template>
@@ -20,6 +21,7 @@ const { items, asyncStatus, search } = useAutocomplete(props.path)
     :item-title
     :loading="asyncStatus === 'loading'"
     :search
+    @update:model-value="(event) => console.log(event)"
     @update:search="
       (event) => {
         search = event
@@ -31,3 +33,4 @@ const { items, asyncStatus, search } = useAutocomplete(props.path)
     </template>
   </v-autocomplete>
 </template>
+o
