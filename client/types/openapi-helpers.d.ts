@@ -1,4 +1,4 @@
-import type { paths } from './openapi'
+import type { paths, components } from './openapi'
 import type { ApiResourceItemPath } from '~/utils/consts/resources'
 
 export type ApiPath = keyof paths
@@ -88,6 +88,16 @@ export type GetItemPath = {
       : never
     : never
 }[keyof paths]
+
+export type GetValidationPath = {
+  [K in keyof paths]: paths[K] extends { get: any }
+    ? K extends `/api/validator/unique/${string}`
+      ? K
+      : never
+    : never
+}[keyof paths]
+
+export type ValidationResponse = components['schemas']['UniqueValidator.jsonld']
 
 export type GetCollectionResponseMap = {
   [K in GetCollectionPath]: paths[K]['get']['responses']['200']['content']['application/ld+json']

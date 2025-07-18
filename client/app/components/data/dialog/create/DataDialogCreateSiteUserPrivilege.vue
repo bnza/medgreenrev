@@ -15,32 +15,58 @@ import type {
   PostCollectionRequestMap,
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
-import { useRegle } from '@regle/core'
-import { required } from '@regle/rules'
+import { createRule, type Maybe, useRegle } from '@regle/core'
+import { required, isFilled } from '@regle/rules'
 
 import useResourceParent from '~/composables/useResourceParent'
+import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
+import { extractIdFromIri } from '~/utils'
 
 const props = defineProps<{
   path: Path
   parent?: ResourceParentSiteUserPrivilege
 }>()
 
-type RequestBody = PostCollectionRequestMap['/api/site_user_privileges']
 const { key: parentKey, iri: parentIri } = useResourceParent(props.parent)
 
-const getEmptyModel = () =>
-  ({
-    user: parentKey.value === 'user' ? parentIri.value : undefined,
-    site: parentKey.value === 'site' ? parentIri.value : undefined,
-    privilege: 0,
-  }) as unknown as RequestBody & {
-    user: Record<string, any> | undefined
-    site: Record<string, any> | undefined
-  }
+const getEmptyModel = () => ({
+  user: parentKey.value === 'user' ? parentIri.value : undefined,
+  site: parentKey.value === 'site' ? parentIri.value : undefined,
+  privilege: 0,
+})
 
-const { r$ } = useRegle(getEmptyModel(), {
+const apiValidator = new GetValidationOperation(
+  '/api/validator/unique/site_user_privileges/{site}/{user}',
+)
+
+const uniqueSite = createRule({
+  async validator(site: Maybe<string>, user: Maybe<string>) {
+    if (!isFilled(site)) return true
+    site = extractIdFromIri(site)
+    if (!site) {
+      console.error('Invalid site IRI: ', site)
+      return false
+    }
+    if (!isFilled(user)) return true
+    user = extractIdFromIri(user)
+    if (!user) {
+      console.error('Invalid user IRI: ', site)
+      return false
+    }
+    return await apiValidator.isValid({
+      site,
+      user,
+    })
+  },
+  message: 'Duplicate [site, user] combination',
+})
+
+const model = reactive(getEmptyModel())
+
+const { r$ } = useRegle(model, {
   site: {
     required,
+    uniqueUser: uniqueSite(() => model.user),
   },
   user: {
     required,

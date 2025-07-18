@@ -22,6 +22,7 @@ defineProps<Props>()
         path="/api/users"
         item-title="email"
         label="user"
+        :error-messages="errors?.user"
         :disabled="parent?.key === 'user'"
       />
     </v-col>
@@ -33,6 +34,7 @@ defineProps<Props>()
         path="/api/sites"
         item-title="name"
         label="site"
+        :error-messages="errors?.site"
         :disabled="parent?.key === 'site'"
       />
     </v-col>

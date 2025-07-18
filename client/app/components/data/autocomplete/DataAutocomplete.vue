@@ -21,7 +21,6 @@ const { items, asyncStatus } = useAutocompleteQuery(props.path, search)
     :item-title
     :loading="asyncStatus === 'loading'"
     :search
-    @update:model-value="(event) => console.log(event)"
     @update:search="
       (event) => {
         search = event

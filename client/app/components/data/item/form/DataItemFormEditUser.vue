@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
+import { ApiRole, type ApiSpecialistRole } from '~/utils/consts/auth'
 import { mergeRole } from '~/utils/acl'
 import type { PatchItemRequestMap, PostCollectionRequestMap } from '~~/types'
 

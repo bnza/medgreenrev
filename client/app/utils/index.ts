@@ -14,6 +14,11 @@ export const isAppPathItemPage = (path: string): boolean => {
   return digitsPattern.test(path) || uuidV4Pattern.test(path)
 }
 
+export const extractIdFromIri = (iri: string) => {
+  const parts = iri.split('/')
+  return parts[parts.length - 1]
+}
+
 export const isTemplatePathItemPage = (path: string): boolean => {
   const templatePattern = /\{[a-zA-Z]+}$/
   return templatePattern.test(path)

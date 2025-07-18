@@ -33,8 +33,6 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
       search: false,
     })
 
-    watch(dialogStates, (state) => console.log(`dialogStates: ${path}`, state))
-
     const isDialogOpenFn = (mode: keyof typeof dialogStates) =>
       computed({
         get() {
