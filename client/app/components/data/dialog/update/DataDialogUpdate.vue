@@ -18,9 +18,11 @@ const props = withDefaults(
   defineProps<{
     path: Path
     title: string
+    fullscreen?: boolean
     onPreSubmit?: OnPreSubmit
   }>(),
   {
+    fullscreen: true,
     onPreSubmit: (oldItem: object, item: object) => diff(oldItem, item),
   },
 )
@@ -93,7 +95,8 @@ watch(visible, (flag) => {
 <template>
   <data-dialog
     v-if="visible"
-    data-testid="data-dialog-create"
+    data-testid="data-dialog-update"
+    :fullscreen
     :visible
     :title="`Edit (${title})`"
   >

@@ -46,11 +46,15 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
       </v-btn-group>
     </template>
     <template #[`item.privilege`]="{ item }">
-      <auth-sites-user-privilege-button :privilege="item.privilege" />
+      <auth-sites-user-privilege-button
+        :privilege="item.privilege"
+        @click="updateDialogState = { id: item.id }"
+      />
     </template>
     <template #dialogs>
       <data-dialog-delete-site-user-privilege />
       <data-dialog-create-site-user-privilege :path :parent />
+      <data-dialog-update-site-user-privileges />
     </template>
   </data-collection-table>
 </template>

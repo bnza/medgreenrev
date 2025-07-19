@@ -5,12 +5,22 @@ const props = defineProps<{
   privilege: number
 }>()
 
-const key = getSitePrivilegeRole(props.privilege)
-const color = getSitePrivilegeColor(props.privilege)
+const key = computed(() => getSitePrivilegeRole(props.privilege))
+const color = computed(() => getSitePrivilegeColor(props.privilege))
+
+defineEmits<{
+  click: []
+}>()
 </script>
 
 <template>
-  <v-btn :color icon variant="plain" data-testid="auth-user-button">
+  <v-btn
+    :color
+    icon
+    variant="plain"
+    data-testid="auth-user-button"
+    @click="$emit('click')"
+  >
     <v-icon icon="fas fa-user" />
     <v-tooltip activator="parent" location="bottom">{{ key }}</v-tooltip>
   </v-btn>

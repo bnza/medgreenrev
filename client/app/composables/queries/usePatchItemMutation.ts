@@ -19,8 +19,6 @@ export function useDeleteItemMutation<P extends PatchItemPath>(path: P) {
     path,
   )
 
-  // const patchNormalize = getPatchNormalizer(path)
-
   const patchItem = defineMutation(() => {
     const item = ref<GetItemResponseMap[`${typeof apiResourcePath}/{id}`]>()
     const mutation = useMutation({

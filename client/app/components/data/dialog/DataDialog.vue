@@ -1,8 +1,14 @@
 <script setup lang="ts">
-defineProps<{
-  visible: boolean
-  title: string
-}>()
+withDefaults(
+  defineProps<{
+    visible: boolean
+    title: string
+    fullscreen?: boolean
+  }>(),
+  {
+    fullscreen: true,
+  },
+)
 defineSlots<{
   default(): any
   actions(): any
@@ -10,7 +16,14 @@ defineSlots<{
 </script>
 
 <template>
-  <v-dialog :model-value="visible" data-testid="data-dialog" fullscreen>
+  <v-dialog
+    persistent
+    :model-value="visible"
+    data-testid="data-dialog"
+    :close-on-content-click="false"
+    :fullscreen
+    :max-width="fullscreen ? '100%' : '400px'"
+  >
     <data-card v-if="visible" :title :show-back-button="false">
       <template #default>
         <slot />
