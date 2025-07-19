@@ -11,7 +11,7 @@ import {
 } from '~/utils/consts/resources'
 
 export const useOpenApiStore = defineStore('openapi', () => {
-  const specInternal = shallowRef<Readonly<OpenAPIV3_1.Document> | null>(null)
+  const specInternal = shallowRef<Readonly<OpenAPIV3_1.Document>>()
 
   const ready = computed(() => Boolean(specInternal.value))
 
@@ -25,7 +25,6 @@ export const useOpenApiStore = defineStore('openapi', () => {
   const findApiResourcePath = (
     targetPath: keyof paths,
   ): ApiResourcePath | undefined => {
-    if (isApiResourcePath(targetPath)) return targetPath
     const openApiSpec = specInternal.value
     if (!openApiSpec) return undefined
     const targetOperation = openApiSpec.paths?.[targetPath]?.get
@@ -46,7 +45,6 @@ export const useOpenApiStore = defineStore('openapi', () => {
 
   /**
    * Returns an array of item paths that share at least one tag with the provided itemPath.
-   * @param itemPath The item path to compare tags with.
    */
   const getRelatedItemPaths = (itemPath: keyof paths): (keyof paths)[] => {
     const openApiSpec = specInternal.value
@@ -80,36 +78,46 @@ export const useOpenApiStore = defineStore('openapi', () => {
   const isPostOperation = (path: unknown): path is PostCollectionPath =>
     isString(path) && specInternal.value?.paths?.[path]?.post !== undefined
 
-  const isHttpMethod = (value: unknown): value is OpenAPIV3_1.HttpMethods =>
-    isString(value) &&
-    ['get', 'post', 'put', 'delete', 'patch', 'options', 'head'].includes(value)
+  const isValidOperationPath = (
+    path: unknown,
+  ): path is keyof OpenAPIV3_1.Document['paths'] => {
+    return (
+      isString(path) &&
+      Object.keys(specInternal.value?.paths || {}).includes(path)
+    )
+  }
 
-  /**
-   * Validates and builds operation path parameters based on the provided OpenAPI specification.
-   * This function ensures the given `param` object meets all the required parameter definitions for a specific path and method.
-   *
-   * @param {P} path The path key from the OpenAPI paths object.
-   * @param {M} method The HTTP method (e.g., 'get', 'post', etc.) to validate the parameters for.
-   * @param {unknown} param The parameter object to validate against the OpenAPI specification.
-   * @return {OperationPathParams<P, M> | undefined} The validated and cast parameter object if valid, or `undefined` if invalid.
-   */
-  function buildValidOperationPathParams<
+  const isValidOperationPathMethod = (
+    path: unknown,
+    method: unknown,
+  ): method is OpenAPIV3_1.HttpMethods => {
+    return (
+      isString(path) &&
+      isString(method) &&
+      isValidOperationPath(path) &&
+      isPlainObject(specInternal.value?.paths?.[path]) &&
+      Object.keys(specInternal.value).includes(method)
+    )
+  }
+
+  const isValidOperationPathParams = <
     P extends keyof paths,
     M extends keyof paths[P],
-  >(path: P, method: M, param: unknown): OperationPathParams<P, M> | undefined {
-    const openApiSpec = specInternal.value
-    if (!openApiSpec) return undefined
-    if (!isHttpMethod(method)) return undefined
+  >(
+    path: P,
+    method: M,
+    param: unknown,
+  ): param is OperationPathParams<P, M> => {
+    if (typeof specInternal.value === 'undefined') return false
+    if (typeof param === 'object') return false
+    if (!isValidOperationPath(path)) return false
+    const operation = specInternal.value.paths?.[path]
+    if (!isValidOperationPathMethod(path, method)) return false
+    if (!operation?.[method]) return false
+    const operationParams = operation[method].parameters
+    if (!operationParams) return false
 
-    const operation = openApiSpec.paths?.[path]?.[method]
-    if (!operation) return undefined
-
-    const params = operation.parameters ?? []
-
-    if (typeof param !== 'object' || param === null) return undefined
-
-    // Validate parameters and return the param if valid
-    const isValid = params.every((parameter) => {
+    return operationParams.every((parameter) => {
       if ('$ref' in parameter) {
         // Unsupported: parameter is a ref string
         return false
@@ -133,10 +141,6 @@ export const useOpenApiStore = defineStore('openapi', () => {
       }
       return true
     })
-
-    if (!isValid) return undefined
-
-    return param as OperationPathParams<P, M>
   }
 
   const { addError } = useMessagesStore()
@@ -161,11 +165,14 @@ export const useOpenApiStore = defineStore('openapi', () => {
   }
 
   return {
-    buildValidOperationPathParams,
     getRelatedItemPaths,
     isPostOperation,
+    isValidOperationPathMethod,
+    isValidOperationPath,
+    isValidOperationPathParams,
     fetchSpec,
     findApiResourcePath,
+    findApiResourceKeyFromPath,
     specInternal,
     ready,
     status,

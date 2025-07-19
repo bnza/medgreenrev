@@ -2,12 +2,11 @@ import { defineVitestConfig } from '@nuxt/test-utils/config'
 import { resolve } from 'path'
 
 export default defineVitestConfig({
-  // plugins: [
-  //   vue(),
-  // ],
   test: {
     alias: {
+      '~~': resolve(__dirname, './'),
       '~': resolve(__dirname, './app'),
+      '@fixtures': resolve(__dirname, './tests/fixtures'),
     },
     environment: 'nuxt',
     // You can also use 'jsdom' or 'happy-dom' for lighter tests

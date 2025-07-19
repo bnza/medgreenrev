@@ -1,12 +1,14 @@
-import type { paths, components } from './openapi'
+import type { paths, components, $defs, webhooks, operations } from './openapi'
 import type { ApiResourceItemPath } from '~/utils/consts/resources'
 
+export type ApiSpec = {
+  paths
+  components
+  $defs
+  webhooks
+  operations
+}
 export type ApiPath = keyof paths
-
-type OperationDetails<
-  T extends keyof paths,
-  Method extends keyof paths[T],
-> = paths[T][Method]
 
 export type OperationPathParams<
   T extends keyof paths,
