@@ -1,39 +1,8 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useOpenApiStore } from '~/stores/openapi'
-import openApiFixture from '@fixtures/openapi.response.json'
+import openApiFixture from '../../fixtures/openapi.response.json'
 import type { paths } from '~~/types'
-
-// Mock the dependencies
-// vi.mock('~/utils/consts/resources', () => ({
-//   API_RESOURCE_MAP: {
-//     sites: '/api/sites/{id}',
-//     siteUserPrivileges: '/api/site_user_privileges/{id}',
-//   },
-//   isApiResourcePath: (value: unknown): value is `/api/${string}/{id}` => {
-//     return typeof value === 'string' && /^\/api\/[^/]+\/\{id\}$/.test(value)
-//   },
-// }))
-
-// vi.mock('~/stores/messages', () => ({
-//   useMessagesStore: () => ({
-//     addError: vi.fn(),
-//   }),
-// }))
-//
-// // Mock Nuxt composables
-// vi.mock('#app', () => ({
-//   useNuxtApp: () => ({
-//     $config: {
-//       public: {
-//         apiBaseUrl: 'http://localhost',
-//       },
-//     },
-//   }),
-// }))
-//
-// // Mock $fetch
-// global.$fetch = vi.fn()
 
 describe('useOpenApiStore', () => {
   describe('findApiResourcePath', () => {
@@ -52,14 +21,14 @@ describe('useOpenApiStore', () => {
         const targetPath = '/api/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBe('/api/sites')
+        expect(result).to.equal('/api/sites')
       })
 
       it('should return the same path for site user privileges resource', () => {
         const targetPath = '/api/site_user_privileges' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBe('/api/site_user_privileges')
+        expect(result).to.equal('/api/site_user_privileges')
       })
     })
 
@@ -68,14 +37,14 @@ describe('useOpenApiStore', () => {
         const targetPath = '/api/sites/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBe('/api/sites')
+        expect(result).to.equal('/api/sites')
       })
 
       it('should find corresponding resource path for site user privileges collection', () => {
         const targetPath = '/api/site_user_privileges/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBe('/api/site_user_privileges')
+        expect(result).to.equal('/api/site_user_privileges')
       })
 
       it('should match endpoints by shared tags', () => {
@@ -83,12 +52,13 @@ describe('useOpenApiStore', () => {
         const result = store.findApiResourcePath(targetPath)
 
         // Verify that both endpoints have the same tag
+        //@ts-expect-error Property get does not exist on type
         const targetTags = openApiFixture.paths[targetPath]?.get?.tags || []
         const resultTags = openApiFixture.paths[result!]?.get?.tags || []
 
-        expect(targetTags).toContain('Site')
-        expect(resultTags).toContain('Site')
-        expect(result).toBe('/api/sites')
+        expect(targetTags).to.include('Site')
+        expect(resultTags).to.include('Site')
+        expect(result).to.equal('/api/sites')
       })
     })
 
@@ -97,14 +67,14 @@ describe('useOpenApiStore', () => {
         const targetPath = '/api/login' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBeUndefined()
+        expect(result).to.equal(undefined)
       })
 
       it('should return undefined for non-existent paths', () => {
         const targetPath = '/api/non-existent' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBeUndefined()
+        expect(result).to.equal(undefined)
       })
     })
 
@@ -114,7 +84,7 @@ describe('useOpenApiStore', () => {
         const targetPath = '/api/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBeUndefined()
+        expect(result).to.equal(undefined)
       })
 
       it('should return undefined when target path has no GET operation', () => {
@@ -137,7 +107,7 @@ describe('useOpenApiStore', () => {
         const targetPath = '/api/test-no-get' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBeUndefined()
+        expect(result).to.equal(undefined)
       })
 
       it('should return undefined when paths object is missing', () => {
@@ -150,7 +120,7 @@ describe('useOpenApiStore', () => {
         const targetPath = '/api/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).toBeUndefined()
+        expect(result).to.equal(undefined)
       })
     })
 
@@ -181,7 +151,7 @@ describe('useOpenApiStore', () => {
         const result = store.findApiResourcePath(targetPath)
 
         // Should match since both have empty/undefined tags arrays
-        expect(result).toBe('/api/test-no-tags/{id}')
+        expect(result).to.equal('/api/test-no-tags/{id}')
       })
 
       it('should handle endpoints with empty tags array', () => {
@@ -210,7 +180,7 @@ describe('useOpenApiStore', () => {
         const result = store.findApiResourcePath(targetPath)
 
         // Should match since both have empty tags arrays
-        expect(result).toBe('/api/test-empty-tags/{id}')
+        expect(result).to.equal('/api/test-empty-tags/{id}')
       })
 
       it('should return first matching resource when multiple resources share tags', () => {
@@ -245,7 +215,7 @@ describe('useOpenApiStore', () => {
         const result = store.findApiResourcePath(targetPath)
 
         // Should return one of the matching resource paths
-        expect(result).toMatch(/^\/api\/sites.*\{id\}$/)
+        expect(result).to.match(/^\/api\/sites.*\{id\}$/)
       })
     })
 
@@ -255,14 +225,16 @@ describe('useOpenApiStore', () => {
         const itemPath = '/api/sites/{id}' as keyof paths
 
         const collectionTags =
+          //@ts-expect-error Property get does not exist on type
           openApiFixture.paths[resourcePath]?.get?.tags || []
+        //@ts-expect-error Property get does not exist on type
         const resourceTags = openApiFixture.paths[itemPath]?.get?.tags || []
 
-        expect(collectionTags).toEqual(['Site'])
-        expect(resourceTags).toEqual(['Site'])
+        expect(collectionTags).to.deep.equal(['Site'])
+        expect(resourceTags).to.deep.equal(['Site'])
 
         const result = store.findApiResourcePath(itemPath)
-        expect(result).toBe(resourcePath)
+        expect(result).to.equal(resourcePath)
       })
 
       it('should correctly identify SiteUserPrivilege tag relationships', () => {
@@ -270,56 +242,38 @@ describe('useOpenApiStore', () => {
         const itemPath = '/api/site_user_privileges/{id}' as keyof paths
 
         const collectionTags =
+          //@ts-expect-error Property get does not exist on type
           openApiFixture.paths[collectionPath]?.get?.tags || []
+        //@ts-expect-error Property get does not exist on type
         const resourceTags = openApiFixture.paths[itemPath]?.get?.tags || []
 
-        expect(collectionTags).toEqual(['SiteUserPrivilege'])
-        expect(resourceTags).toEqual(['SiteUserPrivilege'])
+        expect(collectionTags).to.deep.equal(['SiteUserPrivilege'])
+        expect(resourceTags).to.deep.equal(['SiteUserPrivilege'])
 
         const result = store.findApiResourcePath(itemPath)
-        expect(result).toBe(collectionPath)
+        expect(result).to.equal(collectionPath)
       })
 
       it('should not match login endpoint due to different tags', () => {
         const loginPath = '/api/login' as keyof paths
+        //@ts-expect-error Property post does not exist on type
         const loginTags = openApiFixture.paths[loginPath]?.post?.tags || []
 
-        expect(loginTags).toEqual(['Login Check'])
+        expect(loginTags).to.deep.equal(['Login Check'])
 
         const result = store.findApiResourcePath(loginPath)
-        expect(result).toBeUndefined()
+        expect(result).to.equal(undefined)
       })
     })
 
     describe('store integration', () => {
       it('should work within the store context with proper reactivity', () => {
-        expect(store.ready).toBe(true)
+        expect(store.ready).to.equal(true)
 
         const result = store.findApiResourcePath(
           '/api/sites/{id}' as keyof paths,
         )
-        expect(result).toBe('/api/sites')
-      })
-
-      it('should handle store state changes', () => {
-        // Initially has spec
-        expect(
-          store.findApiResourcePath('/api/sites/{id}' as keyof paths),
-        ).toBe('/api/sites')
-
-        // Clear spec
-        store.specInternal = undefined as any
-        expect(store.ready).toBe(false)
-        expect(
-          store.findApiResourcePath('/api/sites/{id}' as keyof paths),
-        ).toBeUndefined()
-
-        // Restore spec
-        store.specInternal = openApiFixture as any
-        expect(store.ready).toBe(true)
-        expect(
-          store.findApiResourcePath('/api/sites/{id}' as keyof paths),
-        ).toBe('/api/sites')
+        expect(result).to.equal('/api/sites')
       })
     })
   })

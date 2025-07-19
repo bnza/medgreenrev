@@ -21,11 +21,10 @@ export default defineVitestConfig({
       'app/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
     ],
     exclude: ['**/node_modules/**', '**/cypress/**', '**/playwright/**'],
-    globals: true,
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json-summary', 'html'],
-    },
+    // coverage: {
+    //   provider: 'v8',
+    //   reporter: ['text', 'json-summary', 'html'],
+    // },
     server: {
       deps: {
         inline: ['vuetify'],
