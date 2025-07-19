@@ -62,8 +62,27 @@ export default defineNuxtConfig({
   devtools: {
     enabled: process.env.NODE_ENV === 'development',
   },
-  future: {
-    compatibilityVersion: 4,
+  imports: {
+    dirs: ['stores'],
+    presets: [
+      {
+        from: 'pinia',
+        imports: ['defineStore', 'storeToRefs'],
+      },
+      {
+        from: '@pinia/colada',
+        imports: [
+          'defineMutation',
+          'defineQuery',
+          'defineQueryOptions',
+          'useQuery',
+          'useMutation',
+          'useQueryCache',
+          'QueryPlugin',
+          'PiniaColada',
+        ],
+      },
+    ],
   },
   modules: [
     '@nuxt/eslint',
@@ -75,8 +94,6 @@ export default defineNuxtConfig({
         },
       },
     ],
-    '@pinia/colada-nuxt',
-    '@pinia/nuxt',
     '@sidebase/nuxt-auth',
     'vuetify-nuxt-module',
   ],
