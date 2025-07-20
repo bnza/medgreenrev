@@ -6,7 +6,7 @@ const { userIdentifier, roleColor } = useAppAuth()
 </script>
 
 <template>
-  <v-menu>
+  <v-menu data-testid="auth-user-menu">
     <template #activator="{ props: menu }">
       <v-tooltip location="left">
         <template #activator="{ props: tooltip }">

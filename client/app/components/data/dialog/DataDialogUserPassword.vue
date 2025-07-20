@@ -15,7 +15,11 @@ const triggered = ref(false)
 </script>
 
 <template>
-  <v-dialog :model-value="isDialogOpen" persistent>
+  <v-dialog
+    :model-value="isDialogOpen"
+    persistent
+    data-testid="data-dialog-user-password"
+  >
     <v-card width="400px" class="mx-auto">
       <template #title>
         <span
