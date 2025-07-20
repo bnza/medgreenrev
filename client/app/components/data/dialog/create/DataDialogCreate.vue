@@ -77,12 +77,43 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
 // Possible redirect handling
 
 const submit = async () => {
-  await regle.value.$validate()
+  try {
+    await regle.value.$validate()
+  } catch (e) {
+    addError('Unexpected validation error')
+    console.error(e)
+    return
+  }
 
-  // Once validated regle model should be fine. It's not a real TS guard
+  /**
+   *
+   * Evaluates the presence of both `$errors` and `$silentErrors` within the
+   * `regle.value` object to determine the validity of the value. If errors or silent errors
+   * exist, the value is considered invalid.
+   * It's a workaround function, since sometimes in Playwright tests regle.$invalid is set false
+   * even though there are no errors: so it checks for this inconsistency
+   * between the `$invalid` property and the overall error states, and logs a warning if
+   * a mismatch is detected.
+   *
+   * Once validated, the regle.$value model should be fine. It's not an actual TS guard
+   */
   const isValidItem = (
     value: any,
-  ): value is PostCollectionRequestMap[typeof postPath] => !regle.value.$invalid
+  ): value is PostCollectionRequestMap[typeof postPath] => {
+    const invalid =
+      Object.values<string[]>(regle.value.$errors).some(
+        (propErrors) => propErrors.length > 0,
+      ) &&
+      Object.values<string[]>(regle.value.$silentErrors).some(
+        (propErrors) => propErrors.length > 0,
+      )
+    if (invalid !== regle.value.$invalid) {
+      console.warn(
+        'Regle $invalid value mismatches with $errors and $silentErrors values.',
+      )
+    }
+    return !invalid
+  }
 
   if (!isValidItem(regle.value.$value)) return
 
@@ -96,7 +127,7 @@ const submit = async () => {
     // Eventual side effects are produced/handled by the parent Dialog
     emit('success', { request: structuredClone(toRaw(model)), response: data })
 
-    //The app redirects to the new item page since the user decided so
+    //The app will redirect to the new item page since the user decided so
     if (redirectToItem.value) {
       await redirectToNewItem(data)
     }
