@@ -5,14 +5,13 @@
 >
 import type { GetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
+import useResourceConfig from '~/stores/resource-config'
 
-defineProps<{
+const props = defineProps<{
   path: Path
 }>()
 
-const resourceKey = 'site'
-
-const appPath = getApiResourceConfig(resourceKey).appPath
+const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(
   useResourceUiStore('/api/sites/{id}'),
 )

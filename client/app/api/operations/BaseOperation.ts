@@ -13,7 +13,7 @@ export abstract class BaseOperation<P extends keyof paths> {
 
   protected expandUrlTemplate<M extends 'get' | 'patch' | 'delete' | 'post'>(
     _method: M,
-    pathParams: OperationPathParams<P, M>,
+    pathParams = {} as OperationPathParams<P, M>,
   ) {
     let finalPath = this.path as string
     if (pathParams && typeof pathParams === 'object') {

@@ -96,7 +96,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
       isString(method) &&
       isValidOperationPath(path) &&
       isPlainObject(specInternal.value?.paths?.[path]) &&
-      Object.keys(specInternal.value).includes(method)
+      Object.keys(specInternal.value.paths[path]).includes(method)
     )
   }
 
@@ -109,14 +109,18 @@ export const useOpenApiStore = defineStore('openapi', () => {
     param: unknown,
   ): param is OperationPathParams<P, M> => {
     if (typeof specInternal.value === 'undefined') return false
-    if (typeof param === 'object') return false
     if (!isValidOperationPath(path)) return false
     const operation = specInternal.value.paths?.[path]
     if (!isValidOperationPathMethod(path, method)) return false
     if (!operation?.[method]) return false
     const operationParams = operation[method].parameters
-    if (!operationParams) return false
 
+    // no parameters get item operations such as /api/users/me are allowed
+    if (!operationParams || operationParams?.length === 0) {
+      return !param
+    }
+
+    if (!isPlainObject(param)) return false
     return operationParams.every((parameter) => {
       if ('$ref' in parameter) {
         // Unsupported: parameter is a ref string

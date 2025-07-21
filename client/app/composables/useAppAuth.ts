@@ -1,7 +1,7 @@
 import { ApiRole, ROLE_COLORS } from '~/utils/consts/auth'
 
 import { reduceAppRoles } from '~/utils/acl'
-import type { CollectionAcl } from '~~/types'
+import type { CollectionAcl, GetItemResponseMap } from '~~/types'
 
 export default function useAppAuth() {
   const { data, status } = useAuth()
@@ -18,7 +18,7 @@ export default function useAppAuth() {
   })
 
   const hasRoleFn = (role: ApiRole) => roles.value.includes(role)
-  const hasRole = computed(() => hasRoleFn)
+  const hasRole = (role: ApiRole) => computed(() => hasRoleFn(role))
   const hasRoleAdmin = computed(() => hasRoleFn(ApiRole.Admin))
 
   const canCreateSite = computed(
@@ -35,10 +35,24 @@ export default function useAppAuth() {
       isAuthenticated.value && userIdentifier.value === identifier,
   )
 
+  type CreatedBy = GetItemResponseMap['/api/sites/{id}']['createdBy']
+  const isSiteAdmin = (site: { createdBy?: CreatedBy }) => {
+    const result = computed(
+      () =>
+        isAuthenticated.value &&
+        (hasRole(ApiRole.Admin).value ||
+          (hasRole(ApiRole.Editor).value &&
+            site.createdBy?.userIdentifier === userIdentifier.value)),
+    )
+    return result.value
+  }
+
   return {
     hasRoleAdmin,
+    hasRole,
     isAuthenticated,
     isCurrentUser,
+    isSiteAdmin,
     roles,
     roleColor,
     siteCollectionAcl,

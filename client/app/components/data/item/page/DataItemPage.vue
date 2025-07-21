@@ -47,7 +47,7 @@ const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   <data-card :title :identifier :loading="status === 'pending'">
     <loading-component v-if="status === 'pending'" />
     <resource-not-found v-else-if="error" :error :path="props.path" />
-    <v-container class="m-0 p-0 card-container" v-else-if="isValidItem(item)">
+    <v-container v-else-if="isValidItem(item)" class="m-0 p-0 card-container">
       <slot v-bind="{ item }" />
       <slot name="dialogs" />
     </v-container>

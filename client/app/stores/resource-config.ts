@@ -1,0 +1,23 @@
+import type { GetCollectionPath } from '~~/types'
+import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
+
+const useResourceConfig = <Path extends GetCollectionPath>(path: Path) => {
+  return defineStore(`resource-config:${path}`, () => {
+    const { findApiResourcePath } = useOpenApiStore()
+
+    const configKey =
+      path in RESOURCE_CONFIG_MAP ? path : findApiResourcePath(path)
+
+    if (!configKey) {
+      throw new Error(`Unknown resource key for path ${path}`)
+    }
+
+    if (configKey in RESOURCE_CONFIG_MAP) {
+      return RESOURCE_CONFIG_MAP[configKey as keyof typeof RESOURCE_CONFIG_MAP]
+    }
+
+    throw new Error(`Unknown resource config for key ${configKey}`)
+  })()
+}
+
+export default useResourceConfig

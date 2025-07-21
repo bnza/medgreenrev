@@ -8,7 +8,7 @@ import { BaseOperation } from './BaseOperation'
 
 export class GetItemOperation<P extends GetItemPath> extends BaseOperation<P> {
   request(
-    pathParams: OperationPathParams<P, 'get'>,
+    pathParams = {} as OperationPathParams<P, 'get'>,
     options?: ApiRequestOptions,
   ) {
     return this._request<GetItemResponseMap[GetItemPath]>(

@@ -3,11 +3,13 @@ import { getSitePrivilegeColor, getSitePrivilegeRole } from '~/utils/acl'
 
 const props = defineProps<{
   privilege: number
+  disabled?: boolean
 }>()
 
 const key = computed(() => getSitePrivilegeRole(props.privilege))
 const color = computed(() => getSitePrivilegeColor(props.privilege))
 
+const active = ref(false)
 defineEmits<{
   click: []
 }>()

@@ -168,6 +168,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/users/me/site_user_privileges': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SiteUserPrivilege resources.
+     * @description Retrieves the collection of SiteUserPrivilege resources.
+     */
+    get: operations['api_usersmesite_user_privileges_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/users/{parentId}/site_user_privileges': {
     parameters: {
       query?: never
@@ -493,6 +513,9 @@ export interface components {
       readonly id?: number & string
       code?: string
       name?: string
+      createdBy?:
+        | components['schemas']['User.jsonld-site_user_privilege.acl.read']
+        | null
     }
     'SiteUserPrivilege-site_user_privilege.update': {
       /**
@@ -722,8 +745,21 @@ export interface operations {
         'order[name]'?: 'asc' | 'desc'
         code?: string
         'code[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
         name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
         description?: string
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -1391,6 +1427,81 @@ export interface operations {
       }
     }
   }
+  api_usersmesite_user_privileges_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[user.email]'?: 'asc' | 'desc'
+        'order[privilege]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_users_parentIdsite_user_privileges_get_collection: {
     parameters: {
       query?: {
@@ -1593,6 +1704,11 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        /**
+         * @description Search case insensitive match the email field
+         * @example me
+         */
+        search?: string
       }
       header?: never
       path?: never

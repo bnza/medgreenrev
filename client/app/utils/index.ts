@@ -1,12 +1,7 @@
-import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
-import type { ApiResourceKey } from '~/utils/consts/resources'
 import type { Iri } from '~~/types'
 
 export * from './validation'
 export * from './guards'
-
-export const getApiResourceConfig = (key: ApiResourceKey) =>
-  RESOURCE_CONFIG_MAP[key]
 
 export const isAppPathItemPage = (path: string): boolean => {
   // General UUID pattern (accepts any version)

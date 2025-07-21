@@ -6,6 +6,7 @@ import {
   ROLE_HIERARCHY,
   SITES_ROLE_COLORS,
 } from '~/utils/consts/auth'
+import type { ApiAclResource, BaseAcl } from '~~/types'
 
 const getRoleHierarchyValue = (role: ApiRole | ''): number =>
   role ? ROLE_HIERARCHY[role] : 0
@@ -60,3 +61,11 @@ export const getSitePrivilegeColor = (sitePrivileges: number) => {
   const role = getSitePrivilegeRole(sitePrivileges) || ApiSiteRole.User
   return SITES_ROLE_COLORS[role]
 }
+
+export const hasAcl = (
+  item: unknown,
+  acl: keyof BaseAcl,
+): item is ApiAclResource =>
+  isPlainObject(item) &&
+  isPlainObject(item._acl) &&
+  (acl as string) in item._acl

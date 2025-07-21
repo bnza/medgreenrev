@@ -11,23 +11,25 @@
   "
 >
 import type {
-  ApiResourceKey,
   GetCollectionPath,
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
 
 import useResourceUiStore from '~/stores/resource-ui'
-
-const resourceKey = 'siteUserPrivilege' as ApiResourceKey
+import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
   path: Path
   parent?: ResourceParentSiteUserPrivilege
 }>()
 
-const { id: parentId } = useResourceParent(props.parent)
-const appPath = getApiResourceConfig(resourceKey).appPath
+const {
+  id: parentId,
+  key: parentKey,
+  item: parentItem,
+} = useResourceParent(props.parent)
 
+const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(
   useResourceUiStore('/api/site_user_privileges/{id}'),
 )
@@ -39,7 +41,7 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
       <v-btn-group>
         <navigation-resource-item-delete
           :id="item.id"
-          :acl="item._acl"
+          :disabled="!item._acl.canDelete"
           :app-path
           @delete="deleteDialogState = { id: item.id }"
         />
@@ -47,6 +49,7 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
     </template>
     <template #[`item.privilege`]="{ item }">
       <auth-sites-user-privilege-button
+        :disabled="!item._acl.canUpdate"
         :privilege="item.privilege"
         @click="updateDialogState = { id: item.id }"
       />
