@@ -8,11 +8,14 @@ const name = computed(() => (ready.value ? 'default' : 'empty'))
 
 apiStore.fetchSpec()
 
-// Refresh queries on auth changes
 const { isAuthenticated } = useAppAuth()
-const { invalidateQueries } = useQueryCache()
+const { removeCachedAuthQueries } = useRemoveCachedAuthQueries()
 
-watch(isAuthenticated, () => invalidateQueries())
+watch(isAuthenticated, (value) => {
+  if (!value) {
+    removeCachedAuthQueries()
+  }
+})
 </script>
 
 <template>

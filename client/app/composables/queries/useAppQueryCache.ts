@@ -39,11 +39,18 @@ export default function useAppQueryCache(
       [...RESOURCE_QUERY_KEY.root, params] as const,
   } as const
 
+  const removeQueries = () => {
+    caches.entries().forEach(([_key, value]) => {
+      remove(value)
+    })
+  }
+
   return {
     caches,
     toCacheKey,
     invalidateQueries,
     remove,
+    removeQueries,
     QUERY_KEYS,
     RESOURCE_QUERY_KEY,
   }

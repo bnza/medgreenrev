@@ -18,29 +18,28 @@ export function useGetCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  return defineQuery(() => {
-    const { pagination } = useCollectionQueryStore(path)
-    const query = useQuery({
-      key: RESOURCE_QUERY_KEY.byFilter({
-        pagination,
-        ...(params?.value || {}),
-      }),
-      query: () =>
-        getCollectionOperation.request({
-          query: { ...dataTableOptionsToQsObject(pagination) },
-          params: params?.value,
-        }),
-      enabled: /\{[^}]*}/.test(path) === (typeof params?.value !== 'undefined'),
-    })
-    const items = computed(() => query.data.value?.member ?? [])
-    const totalItems = computed(() => query.data.value?.totalItems ?? 0)
-    return {
-      items,
-      ...query,
-      totalItems,
+  const { pagination } = useCollectionQueryStore(path)
+
+  const query = useQuery({
+    key: RESOURCE_QUERY_KEY.byFilter({
       pagination,
-    }
-  })()
+      ...(params?.value || {}),
+    }),
+    query: () =>
+      getCollectionOperation.request({
+        query: { ...dataTableOptionsToQsObject(pagination) },
+        params: params?.value,
+      }),
+    enabled: /\{[^}]*}/.test(path) === (typeof params?.value !== 'undefined'),
+  })
+  const items = computed(() => query.data.value?.member ?? [])
+  const totalItems = computed(() => query.data.value?.totalItems ?? 0)
+  return {
+    items,
+    ...query,
+    totalItems,
+    pagination,
+  }
 }
 
 export default useGetCollectionQuery
