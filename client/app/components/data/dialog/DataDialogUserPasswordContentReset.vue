@@ -5,20 +5,20 @@ const props = defineProps<{
   id: string
 }>()
 
-const { plainPassword } = storeToRefs(useUserPasswordDialog())
-const status = defineModel<'idle' | 'pending' | 'success' | 'error'>('status', {
-  required: true,
-})
-const triggered = defineModel<boolean>('triggered', { required: true })
+const {
+  plainPassword,
+  submitStatus: status,
+  triggered,
+} = storeToRefs(useUserPasswordDialog())
 const { addError } = useMessagesStore()
 
 const resetPasswordOperation = new UserResetPasswordPatchItemOperation()
 
-const submit = () => {
+const submit = async () => {
   status.value = 'pending'
   try {
     const requestPlainPassword = generatePassword()
-    resetPasswordOperation.request(
+    await resetPasswordOperation.request(
       { id: props.id },
       { body: { plainPassword: requestPlainPassword } },
     )

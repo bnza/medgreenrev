@@ -4,6 +4,8 @@ export const useUserPasswordDialog = defineStore('user-password-dialog', () => {
   const userData = ref<UserBaseData>()
   const plainPassword = ref<string>()
   const isDialogOpen = computed(() => userData.value !== undefined)
+  const triggered = ref(false)
+  const submitStatus = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
   const openUserPasswordDialog = ({
     request,
     response,
@@ -26,7 +28,14 @@ export const useUserPasswordDialog = defineStore('user-password-dialog', () => {
     },
     { immediate: true },
   )
-  return { isDialogOpen, plainPassword, userData, openUserPasswordDialog }
+  return {
+    triggered,
+    isDialogOpen,
+    plainPassword,
+    submitStatus,
+    userData,
+    openUserPasswordDialog,
+  }
 })
 
 export default useUserPasswordDialog

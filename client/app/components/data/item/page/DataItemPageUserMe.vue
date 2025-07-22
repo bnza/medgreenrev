@@ -20,6 +20,9 @@ const role = computed(() =>
     :title="data?.email || ''"
     identifier-prop="email"
   >
+    <template #toolbar-append>
+      <data-toolbar-item-user-me />
+    </template>
     <template #default="{ item }">
       <lazy-data-item-form-info-user :item />
       <v-tabs v-model="tab" background-color="transparent">
@@ -44,7 +47,7 @@ const role = computed(() =>
       </v-tabs-window>
     </template>
     <template #dialogs>
-      <data-dialog-user-password mode="reset" />
+      <data-dialog-user-password mode="change" />
     </template>
   </data-item-page>
 </template>

@@ -5,13 +5,9 @@ defineProps<{
   mode: 'reset' | 'change'
 }>()
 
-const submitStatus = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
-const { isDialogOpen, userData, plainPassword } = storeToRefs(
-  useUserPasswordDialog(),
-)
+const { isDialogOpen, userData, plainPassword, triggered, submitStatus } =
+  storeToRefs(useUserPasswordDialog())
 const copyToClipboard = useCopyToClipboard()
-
-const triggered = ref(false)
 </script>
 
 <template>
@@ -30,7 +26,7 @@ const triggered = ref(false)
         >
       </template>
       <template #default>
-        <v-container v-if="submitStatus === 'pending'" style="height: 200px">
+        <v-container v-if="submitStatus === 'pending'" style="height: 300px">
           <v-row align-content="center" class="fill-height" justify="center">
             <v-col class="text-subtitle-1 text-center" cols="12">
               <v-card-text>
@@ -47,17 +43,23 @@ const triggered = ref(false)
             </v-col>
           </v-row>
         </v-container>
-        <data-dialog-user-password-content-show
-          v-else-if="plainPassword"
-          :plain-password
-        />
-        <data-dialog-user-password-content-reset
-          v-else-if="mode === 'reset' && userData?.id"
-          :id="userData.id"
-          v-model:triggered="triggered"
-          v-model:status="submitStatus"
-        />
-        <v-container v-else style="height: 200px" />
+        <v-container class="p-0 m-0" style="height: 300px">
+          <data-dialog-user-password-content-show
+            v-if="plainPassword"
+            :plain-password
+          />
+          <data-dialog-user-password-content-reset
+            v-else-if="mode === 'reset' && userData?.id"
+            :id="userData.id"
+            v-model:triggered="triggered"
+            v-model:status="submitStatus"
+          />
+          <data-dialog-user-password-content-change
+            v-else-if="mode === 'change'"
+            v-model:triggered="triggered"
+            v-model:status="submitStatus"
+          />
+        </v-container>
       </template>
       <template #actions>
         <layout-action-two-buttons>

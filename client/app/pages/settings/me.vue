@@ -1,6 +1,6 @@
 <template>
   <Suspense>
-    <data-collection-page-current-user-site-user-privilege />
+    <data-item-page-user-me />
     <template #fallback>
       <loading-component />
     </template>

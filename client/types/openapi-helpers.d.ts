@@ -36,9 +36,13 @@ export type GetCollectionPath = {
 export type PostCollectionPath = {
   [K in keyof paths]: paths[K] extends { post: any }
     ? paths[K]['post'] extends {
-        responses: {
-          201: { content: { 'application/ld+json': any } }
-        }
+        responses:
+          | {
+              201: { content: { 'application/ld+json': any } }
+            }
+          | {
+              204: { content: { 'application/ld+json': any } }
+            }
       }
       ? K
       : never
