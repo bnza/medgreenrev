@@ -7,8 +7,6 @@ import type { GetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 import useResourceConfig from '~/stores/resource-config'
 
-const resourceKey = 'user'
-
 const props = defineProps<{
   path: Path
 }>()

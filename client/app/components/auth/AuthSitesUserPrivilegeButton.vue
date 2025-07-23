@@ -8,8 +8,6 @@ const props = defineProps<{
 
 const key = computed(() => getSitePrivilegeRole(props.privilege))
 const color = computed(() => getSitePrivilegeColor(props.privilege))
-
-const active = ref(false)
 defineEmits<{
   click: []
 }>()

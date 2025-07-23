@@ -73,7 +73,9 @@ const submit = async () => {
   const model = props.onPreSubmit(item.value, regle.value.$value)
   try {
     await patchItem.mutateAsync({
-      param: { id: item.value?.id } as OperationPathParams<Path, 'patch'>,
+      param: {
+        id: item.value ? item.value.id : undefined,
+      } as OperationPathParams<Path, 'patch'>,
       model: toRaw(model),
     })
     addSuccess('Resource successfully updated')

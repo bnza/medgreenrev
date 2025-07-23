@@ -127,23 +127,8 @@ export const useOpenApiStore = defineStore('openapi', () => {
         return false
       }
 
-      const { name, required, schema } = parameter
-      if (required && !(param as Record<string, unknown>)[name]) return false
-
-      if (
-        schema &&
-        !('$ref' in schema) &&
-        (param as Record<string, unknown>)[name] !== undefined &&
-        schema.type
-      ) {
-        const value = (param as Record<string, unknown>)[name]
-        if (schema.type === 'string' && typeof value !== 'string') return false
-        if (schema.type === 'number' && typeof value !== 'number') return false
-        if (schema.type === 'boolean' && typeof value !== 'boolean')
-          return false
-        // Add other schema type checks as needed
-      }
-      return true
+      const { name, required } = parameter
+      return !(required && !(param as Record<string, unknown>)[name])
     })
   }
 

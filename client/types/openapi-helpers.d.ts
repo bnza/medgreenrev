@@ -1,4 +1,4 @@
-import type { paths, components, $defs, webhooks, operations } from './openapi'
+import type { paths, components } from './openapi'
 import type { ApiResourceItemPath } from '~/utils/consts/resources'
 
 export type ApiSpec = {

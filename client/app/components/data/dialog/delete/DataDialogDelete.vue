@@ -49,12 +49,17 @@ const emit = defineEmits<{
 }>()
 
 const submit = async () => {
-  if (!isValidOperationPathParams(item.value)) return
+  if (!isValidOperationPathParams(item.value)) {
+    addError(
+      `Invalid delete operation params for path "${props.path}`,
+      JSON.stringify(item.value),
+    )
+    return
+  }
   try {
-    await deleteItem.mutateAsync({ id: item.value.id } as OperationPathParams<
-      Path,
-      'delete'
-    >)
+    await deleteItem.mutateAsync({
+      id: item.value.id,
+    } as OperationPathParams<Path, 'delete'>)
     addSuccess('Resource successfully deleted')
     visible.value = false
     emit('deleted')

@@ -1,12 +1,6 @@
 <script setup lang="ts">
-import { ApiRole } from '~/utils/consts/auth'
-
 const { data } = useAuth()
 const tab = ref('data')
-
-const role = computed(() =>
-  data.value ? reduceAppRoles(data.value.roles) : ApiRole.User,
-)
 </script>
 
 <template>
@@ -35,10 +29,10 @@ const role = computed(() =>
             title="Granted sites privileges"
           >
             <data-collection-table path="/api/users/me/site_user_privileges">
-              <template #[`item.privilege`]="{ item }">
+              <template #[`item.privilege`]="{ item: privilegeItem }">
                 <auth-sites-user-privilege-button
                   disabled
-                  :privilege="item.privilege"
+                  :privilege="privilegeItem.privilege"
                 />
               </template>
             </data-collection-table>

@@ -2,7 +2,7 @@
 import type { paths } from '~~/types'
 import { useAuth } from '#imports'
 
-const props = defineProps<{
+defineProps<{
   path: Path
 }>()
 

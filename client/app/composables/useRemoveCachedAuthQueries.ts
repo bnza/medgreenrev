@@ -5,12 +5,8 @@ export function useRemoveCachedAuthQueriesWatcher() {
   )
 
   const removeCachedAuthQueries = () => {
-    console.log(userCachedQueries.caches)
-    console.log(siteUserPrivilegeCacheQueries.caches)
     userCachedQueries.removeQueries()
     siteUserPrivilegeCacheQueries.removeQueries()
-    console.log(userCachedQueries.caches)
-    console.log(siteUserPrivilegeCacheQueries.caches)
   }
 
   return {

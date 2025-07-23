@@ -23,11 +23,7 @@ const props = defineProps<{
   parent?: ResourceParentSiteUserPrivilege
 }>()
 
-const {
-  id: parentId,
-  key: parentKey,
-  item: parentItem,
-} = useResourceParent(props.parent)
+const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(

@@ -33,6 +33,15 @@ export function useGetItemQuery<P extends GetItemPath>(
     }),
   )
 
+  watch(params, (value) => {
+    if (value && !openApiStore.isValidOperationPathParams(path, 'get', value)) {
+      console.error(
+        `Invalid get item operation params for path "${path}": `,
+        value,
+      )
+    }
+  })
+
   const query = useQuery(() => queryOptions(params))
   return {
     ...query,
