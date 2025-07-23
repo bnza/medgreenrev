@@ -43,16 +43,16 @@ const uniqueUser = useApiUniqueValidator(
   'Duplicate [site, user] combination',
 )
 
-const model = reactive(getEmptyModel())
+const model = ref(getEmptyModel())
 
 const { r$ } = useRegle(model, {
   site: {
     required,
-    uniqueSite: uniqueSite(() => model.user),
+    uniqueSite: uniqueSite(() => model.value.user),
   },
   user: {
     required,
-    uniqueUser: uniqueUser(() => model.site),
+    uniqueUser: uniqueUser(() => model.value.site),
   },
 })
 const onPreSubmit = (item: any) => {
