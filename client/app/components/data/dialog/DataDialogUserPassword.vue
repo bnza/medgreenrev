@@ -26,7 +26,7 @@ const copyToClipboard = useCopyToClipboard()
         >
       </template>
       <template #default>
-        <v-container v-if="submitStatus === 'pending'" style="height: 300px">
+        <v-container v-if="submitStatus === 'pending'" style="height: 350px">
           <v-row align-content="center" class="fill-height" justify="center">
             <v-col class="text-subtitle-1 text-center" cols="12">
               <v-card-text>
@@ -43,7 +43,7 @@ const copyToClipboard = useCopyToClipboard()
             </v-col>
           </v-row>
         </v-container>
-        <v-container class="p-0 m-0" style="height: 300px">
+        <v-container v-else class="p-0 m-0" style="height: 350px">
           <data-dialog-user-password-content-show
             v-if="plainPassword"
             :plain-password

@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useRegle } from '@regle/core'
-import { required, sameAs } from '@regle/rules'
+import {
+  required,
+  sameAs,
+  minLength,
+  maxLength,
+  withMessage,
+} from '@regle/rules'
 import { UserChangePasswordPostCollectionOperation } from '~/api/operations/resources/user/UserChangePasswordPostCollectionOperation'
 
 const {
@@ -10,6 +16,27 @@ const {
 } = storeToRefs(useUserPasswordDialog())
 const { addError, addSuccess } = useMessagesStore()
 
+// Custom password validation rules to match server-side IsStrongPassword
+const hasUppercase = withMessage(
+  (value) => typeof value === 'string' && /[A-Z]/.test(value),
+  'Password must contain at least one uppercase letter.',
+)
+
+const hasLowercase = withMessage(
+  (value) => typeof value === 'string' && /[a-z]/.test(value),
+  'Password must contain at least one lowercase letter.',
+)
+
+const hasDigit = withMessage(
+  (value) => typeof value === 'string' && /\d/.test(value),
+  'Password must contain at least one digit.',
+)
+
+const hasSpecialChar = withMessage(
+  (value) => typeof value === 'string' && /[\W_]/.test(value),
+  'Password must contain at least one special character.',
+)
+
 const model = reactive({
   oldPassword: '',
   plainPassword: '',
@@ -18,14 +45,29 @@ const model = reactive({
 
 const { r$ } = useRegle(model, {
   oldPassword: {
-    required,
+    required: withMessage(required, 'Old password cannot be blank.'),
   },
   plainPassword: {
-    required,
+    required: withMessage(required, 'Password cannot be blank.'),
+    minLength: withMessage(
+      minLength(8),
+      'Password must be at least 8 characters long.',
+    ),
+    maxLength: withMessage(
+      maxLength(20),
+      'Password cannot be longer than 20 characters.',
+    ),
+    hasUppercase,
+    hasLowercase,
+    hasDigit,
+    hasSpecialChar,
   },
   repeatPassword: {
-    required,
-    sameAs: sameAs(() => model.plainPassword),
+    required: withMessage(required, 'Repeat password cannot be blank.'),
+    sameAs: withMessage(
+      sameAs(() => model.plainPassword),
+      'Passwords must match.',
+    ),
   },
 })
 
