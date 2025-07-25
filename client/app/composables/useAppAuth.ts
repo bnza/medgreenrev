@@ -4,7 +4,7 @@ import { reduceAppRoles } from '~/utils/acl'
 import type { CollectionAcl, GetItemResponseMap } from '~~/types'
 
 export default function useAppAuth() {
-  const { data, status } = useAuth()
+  const { data, status } = useAuthState()
   const isAuthenticated = computed(() => status.value === 'authenticated')
   const userIdentifier = computed(() => data.value?.email)
 
@@ -48,13 +48,12 @@ export default function useAppAuth() {
       : false,
   )
 
+  const hasSitePrivilege = computed(
+    () => (siteId: number) => Boolean(data.value?.sitePrivileges?.[siteId]),
+  )
+
   const siteCollectionAcl = computed<CollectionAcl>(() => ({
     canCreate: canCreateSite.value,
-    canExport: isAuthenticated.value,
-  }))
-
-  const stratigraphicUnitCollectionAcl = computed<CollectionAcl>(() => ({
-    canCreate: hasAnySitePrivilege.value,
     canExport: isAuthenticated.value,
   }))
 
@@ -62,13 +61,14 @@ export default function useAppAuth() {
     hasRoleAdmin,
     hasRole,
     hasAnySitePrivilege,
+    hasSitePrivilege,
     isAuthenticated,
     isCurrentUser,
     isSiteAdmin,
     roles,
     roleColor,
     siteCollectionAcl,
-    stratigraphicUnitCollectionAcl,
+    // stratigraphicUnitCollectionAcl,
     userIdentifier,
   }
 }
