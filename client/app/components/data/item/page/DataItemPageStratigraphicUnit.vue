@@ -6,7 +6,6 @@ const path = '/api/stratigraphic_units/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path))
-const { isSiteAdmin } = useAppAuth()
 </script>
 
 <template>

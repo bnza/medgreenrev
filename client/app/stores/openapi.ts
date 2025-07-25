@@ -75,6 +75,10 @@ export const useOpenApiStore = defineStore('openapi', () => {
     )?.[0] as ApiResourceKey | undefined
   }
 
+  // const isGetCollectionOperation = (path: unknown): path is GetCollectionPath =>
+  //   isString(path)
+  //   && specInternal.value?.paths?.[path]?.get?.responses?.['200']?.content?.['application/ld+json']?.['member'] !== undefined
+
   const isPostOperation = (path: unknown): path is PostCollectionPath =>
     isString(path) && specInternal.value?.paths?.[path]?.post !== undefined
 

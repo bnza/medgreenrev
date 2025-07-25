@@ -1,8 +1,17 @@
-<script setup lang="ts" generic="Path extends ValidationMethodToPath<'create'>">
+<script
+  setup
+  lang="ts"
+  generic="
+    Path extends Extract<
+      GetCollectionPath,
+      '/api/stratigraphic_units' | '/api/sites/{parentId}/stratigraphic_units'
+    >
+  "
+>
 import type {
+  GetCollectionPath,
   PostCollectionRequestMap,
   ResourceParent,
-  ValidationMethodToPath,
 } from '~~/types'
 import { useRegle } from '@regle/core'
 import useResourceParent from '~/composables/useResourceParent'
@@ -59,6 +68,7 @@ const onPreSubmit = (item: any) => {
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
+        :parent
         mode="create"
       />
     </template>

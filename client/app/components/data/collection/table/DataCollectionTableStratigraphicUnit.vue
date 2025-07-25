@@ -1,15 +1,23 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/stratigraphic_units'>"
+  generic="
+    Path extends Extract<
+      GetCollectionPath,
+      '/api/stratigraphic_units' | '/api/sites/{parentId}/stratigraphic_units'
+    >
+  "
 >
-import type { GetCollectionPath } from '~~/types'
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
   path: Path
+  parent?: ResourceParent<'site', '/api/sites/{id}'>
 }>()
+
+const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(
@@ -18,7 +26,7 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
@@ -30,7 +38,7 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
     </template>
     <template #dialogs>
       <!--      <data-dialog-search-site :path />-->
-      <data-dialog-create-stratigraphic-unit :path />
+      <data-dialog-create-stratigraphic-unit :path :parent />
       <data-dialog-delete-stratigraphic-unit />
       <data-dialog-update-stratigraphic-unit />
     </template>

@@ -16,6 +16,7 @@ const { isSiteAdmin } = useAppAuth()
       <lazy-data-item-form-info-site :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
+        <v-tab value="sus">stratigraphic units</v-tab>
         <v-tab
           v-if="hasAcl(item, 'canDelete') && item._acl.canDelete"
           value="privileges"
@@ -23,13 +24,19 @@ const { isSiteAdmin } = useAppAuth()
         </v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="data" data-testid="tab-privileges">
+        <v-tabs-window-item value="data" data-testid="tab-window-data">
           <p>Data: isSiteAdmin: {{ isSiteAdmin(item) }}</p>
+        </v-tabs-window-item>
+        <v-tabs-window-item value="sus" data-testid="tab-window-sus">
+          <data-collection-page-stratigraphic-unit
+            path="/api/sites/{parentId}/stratigraphic_units"
+            :parent="{ key: 'site', resourceItemPath: '/api/sites/{id}', item }"
+          />
         </v-tabs-window-item>
         <v-tabs-window-item
           v-if="hasAcl(item, 'canDelete') && item._acl.canDelete"
           value="privileges"
-          data-testid="tab-privileges"
+          data-testid="tab-window-privileges"
         >
           <data-collection-page-user-site-privilege
             v-if="item?.id"

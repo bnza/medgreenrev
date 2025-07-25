@@ -1,7 +1,7 @@
-import type { GetCollectionPath } from '~~/types'
+import type { paths } from '~~/types'
 import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
 
-const useResourceConfig = <Path extends GetCollectionPath>(path: Path) => {
+const useResourceConfig = <Path extends keyof paths>(path: Path) => {
   return defineStore(`resource-config:${path}`, () => {
     const { findApiResourcePath } = useOpenApiStore()
 

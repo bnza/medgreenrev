@@ -8,6 +8,7 @@ import type {
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
+import useResourceConfig from '~/stores/resource-config'
 
 type OnPreSubmit = <T>(item: T) => T
 
@@ -62,6 +63,7 @@ const disabled = ref(false)
 const { fullPath } = useRoute()
 const router = useRouter()
 const { push } = useHistoryStackStore()
+const { appPath } = useResourceConfig(props.path)
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
   if (!('id' in newItem)) {
@@ -70,7 +72,7 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
     return
   }
   const id = newItem.id
-  const redirectPath = `${fullPath}/${id}`
+  const redirectPath = `${appPath}/${id}`
   push(fullPath)
   await router.push(redirectPath)
 }
