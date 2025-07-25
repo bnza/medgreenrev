@@ -27,6 +27,7 @@ const tab = ref('data')
           <data-collection-page
             path="/api/users/me/site_user_privileges"
             title="Granted sites privileges"
+            :acl="{ canCreate: false, canExport: false }"
           >
             <data-collection-table path="/api/users/me/site_user_privileges">
               <template #[`item.privilege`]="{ item: privilegeItem }">

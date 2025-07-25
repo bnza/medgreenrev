@@ -228,6 +228,58 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of StratigraphicUnit resources.
+     * @description Retrieves the collection of StratigraphicUnit resources.
+     */
+    get: operations['api_stratigraphic_units_get_collection']
+    put?: never
+    /**
+     * Creates a StratigraphicUnit resource.
+     * @description Creates a StratigraphicUnit resource.
+     */
+    post: operations['api_stratigraphic_units_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/stratigraphic_units/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a StratigraphicUnit resource.
+     * @description Retrieves a StratigraphicUnit resource.
+     */
+    get: operations['api_stratigraphic_units_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the StratigraphicUnit resource.
+     * @description Removes the StratigraphicUnit resource.
+     */
+    delete: operations['api_stratigraphic_units_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the StratigraphicUnit resource.
+     * @description Updates the StratigraphicUnit resource.
+     */
+    patch: operations['api_stratigraphic_units_id_patch']
+    trace?: never
+  }
   '/api/validator/unique/site/code/{id}': {
     parameters: {
       query?: never
@@ -517,6 +569,21 @@ export interface components {
         | components['schemas']['User.jsonld-site_user_privilege.acl.read']
         | null
     }
+    'Site.jsonld-sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      code?: string
+      name?: string
+    }
     'SiteUserPrivilege-site_user_privilege.update': {
       /**
        * @default 0
@@ -562,6 +629,52 @@ export interface components {
        * @example 0
        */
       privilege: number
+    }
+    StratigraphicUnit: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      year?: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
+    'StratigraphicUnit.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      year?: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
+    'StratigraphicUnit.jsonld-sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      site?: components['schemas']['Site.jsonld-sus.acl.read']
+      year?: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
     }
     'UniqueValidator.jsonld': {
       readonly '@context'?:
@@ -693,6 +806,16 @@ export interface components {
        *     ]
        */
       roles: string[]
+      /**
+       * @description A map of site IDs (keys) to privilege levels (values).
+       * @example {
+       *       "1": 1,
+       *       "2": 0
+       *     }
+       */
+      readonly sitePrivileges?: {
+        [key: string]: number
+      }
     }
   }
   responses: never
@@ -1623,6 +1746,266 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new StratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['StratigraphicUnit.jsonld']
+      }
+    }
+    responses: {
+      /** @description StratigraphicUnit resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-sus.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-sus.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnit resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated StratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['StratigraphicUnit']
+      }
+    }
+    responses: {
+      /** @description StratigraphicUnit resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-sus.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }

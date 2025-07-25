@@ -35,6 +35,13 @@ const { hasRoleAdmin } = useAppAuth()
           title="Sites"
           data-testid="app-nav-drawer-li-sites"
         />
+        <v-list-item
+          nuxt
+          to="/data/stratigraphic-units"
+          router
+          title="Stratigraphic Units"
+          data-testid="app-nav-drawer-li-sus"
+        />
       </v-list-group>
       <v-list-group v-if="hasRoleAdmin" value="Admin">
         <template #activator="{ props }">

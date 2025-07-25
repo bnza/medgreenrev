@@ -40,7 +40,7 @@ export default defineNuxtConfig({
           id: 'string',
           email: 'string',
           roles: 'ApiRole[]',
-          privileges: 'Record<number,number>[]',
+          sitePrivileges: 'Record<number,number>[]',
         },
       },
     },

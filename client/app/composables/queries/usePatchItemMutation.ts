@@ -6,7 +6,7 @@ import type {
 import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 import { PatchItemOperation } from '~/api/operations/PatchItemOperation'
 
-export function useDeleteItemMutation<P extends PatchItemPath>(path: P) {
+export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
   const patchItemOperation = new PatchItemOperation(path)
   const openApiStore = useOpenApiStore()
   const apiResourcePath = openApiStore.findApiResourcePath(path)
@@ -47,4 +47,4 @@ export function useDeleteItemMutation<P extends PatchItemPath>(path: P) {
   }
 }
 
-export default useDeleteItemMutation
+export default usePatchItemMutation

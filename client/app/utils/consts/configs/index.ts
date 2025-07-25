@@ -1,12 +1,14 @@
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
+import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/sites': site,
   '/api/site_user_privileges': siteUserPrivilege,
+  '/api/stratigraphic_units': stratigraphicUnit,
   '/api/users': user,
   '/api/users/me/site_user_privileges': currentUserSitePrivilege,
 } as const

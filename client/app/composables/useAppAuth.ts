@@ -25,11 +25,6 @@ export default function useAppAuth() {
     () => hasRoleFn(ApiRole.Admin) || hasRoleFn(ApiRole.Editor),
   )
 
-  const siteCollectionAcl = computed<CollectionAcl>(() => ({
-    canCreate: canCreateSite.value,
-    canExport: isAuthenticated.value,
-  }))
-
   const isCurrentUser = computed(
     () => (identifier: string) =>
       isAuthenticated.value && userIdentifier.value === identifier,
@@ -47,15 +42,33 @@ export default function useAppAuth() {
     return result.value
   }
 
+  const hasAnySitePrivilege = computed(() =>
+    data.value?.sitePrivileges
+      ? Object.keys(data.value.sitePrivileges).length > 0
+      : false,
+  )
+
+  const siteCollectionAcl = computed<CollectionAcl>(() => ({
+    canCreate: canCreateSite.value,
+    canExport: isAuthenticated.value,
+  }))
+
+  const stratigraphicUnitCollectionAcl = computed<CollectionAcl>(() => ({
+    canCreate: hasAnySitePrivilege.value,
+    canExport: isAuthenticated.value,
+  }))
+
   return {
     hasRoleAdmin,
     hasRole,
+    hasAnySitePrivilege,
     isAuthenticated,
     isCurrentUser,
     isSiteAdmin,
     roles,
     roleColor,
     siteCollectionAcl,
+    stratigraphicUnitCollectionAcl,
     userIdentifier,
   }
 }

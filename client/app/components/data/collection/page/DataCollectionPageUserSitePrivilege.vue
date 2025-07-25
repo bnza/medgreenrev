@@ -19,13 +19,16 @@ defineProps<{
   path: P
   parent?: ResourceParentSiteUserPrivilege
 }>()
+
+const { siteCollectionAcl: acl } = useAppAuth()
 </script>
 
 <template>
   <data-collection-page
     :path
-    title="Site/User Privilege"
+    title="Site/User Privileges"
     :show-back-button="!Boolean(parent)"
+    :acl
   >
     <data-collection-table-site-user-privilege :path :parent />
   </data-collection-page>

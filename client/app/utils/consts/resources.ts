@@ -4,6 +4,7 @@
 export const API_RESOURCE_MAP = {
   site: '/api/sites',
   siteUserPrivilege: '/api/site_user_privileges',
+  stratigraphicUnit: '/api/stratigraphic_units',
   user: '/api/users',
 } as const
 

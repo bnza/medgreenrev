@@ -11,4 +11,5 @@ export type ResourceConfig = {
   labels: [string, string]
   protectedFields?: string[]
   defaultHeaders: ReadonlyHeaders[]
+  // onPreSubmit?: <T extends Record<string, any>>(data: T) => Partial<T> & {[key: string]: any}
 }
