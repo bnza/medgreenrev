@@ -10,7 +10,7 @@ defineProps<{
 }>()
 
 const apiValidator = new GetValidationOperation(
-  '/api/validator/unique/site/code/{id}',
+  '/api/validator/unique/sites/code/{id}',
 )
 
 const unique = createRule({

@@ -13,7 +13,7 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { useRegle } from '@regle/core'
+import { inferRules, useRegle } from '@regle/core'
 import useResourceParent from '~/composables/useResourceParent'
 import { required, integer, maxValue, minValue } from '@regle/rules'
 
@@ -33,20 +33,53 @@ const getEmptyModel = () =>
 
 const model = ref(getEmptyModel())
 
-const { r$ } = useRegle(model, {
-  site: {
-    required,
-  },
-  year: {
-    integer,
-    maxValue: maxValue(new Date().getFullYear()),
-  },
-  number: {
-    required,
-    integer,
-    minValue: minValue(1),
-  },
-})
+const uniqueSite = useApiUniqueValidator(
+  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}',
+  ['site', 'year', 'number'],
+  'Duplicate [site, year, number] combination',
+)
+const uniqueYear = useApiUniqueValidator(
+  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}',
+  ['year', 'site', 'number'],
+  'Duplicate [year, site, number] combination',
+)
+const uniqueNumber = useApiUniqueValidator(
+  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}',
+  ['number', 'site', 'year'],
+  'Duplicate [number, site, year] combination',
+)
+
+const rules = computed(() =>
+  inferRules(model, {
+    site: {
+      required,
+      uniqueSite: uniqueSite(
+        () => model.value.year || 0,
+        () => model.value.number,
+      ),
+    },
+    year: {
+      integer,
+      uniqueYear: uniqueYear(
+        () => model.value.site,
+        () => model.value.number,
+      ),
+      minValue: minValue(2000),
+      maxValue: maxValue(new Date().getFullYear()),
+    },
+    number: {
+      required,
+      integer,
+      minValue: minValue(1),
+      uniqueNumber: uniqueNumber(
+        () => model.value.site,
+        () => model.value.year || 0,
+      ),
+    },
+  }),
+)
+
+const { r$ } = useRegle(model, rules)
 const onPreSubmit = (item: any) => {
   if ('number' in item) item.number = Number(item.number)
   if ('year' in item) item.year = Number(item.year)

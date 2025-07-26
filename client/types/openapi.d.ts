@@ -300,26 +300,6 @@ export interface paths {
     patch: operations['api_stratigraphic_units_id_patch']
     trace?: never
   }
-  '/api/validator/unique/site/code/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a UniqueValidator resource.
-     * @description Retrieves a UniqueValidator resource.
-     */
-    get: operations['api_validatoruniquesitecode_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/validator/unique/site_user_privileges/{site}/{user}': {
     parameters: {
       query?: never
@@ -332,6 +312,46 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquesite_user_privileges_site_user_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/sites/code/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesitescode_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquestratigraphic_units_site_year_number_get']
     put?: never
     post?: never
     delete?: never
@@ -657,7 +677,11 @@ export interface components {
        * @example https://example.com/
        */
       site?: string
-      year?: number
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
       number?: number
       description?: string | null
       interpretation?: string | null
@@ -669,9 +693,13 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      site?: string
-      year?: number
-      number?: number
+      site: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number: number
       description?: string | null
       interpretation?: string | null
       readonly code?: string
@@ -690,7 +718,11 @@ export interface components {
       readonly '@type'?: string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sus.acl.read']
-      year?: number
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
       number?: number
       description?: string | null
       interpretation?: string | null
@@ -2097,7 +2129,43 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesitecode_id_get: {
+  api_validatoruniquesite_user_privileges_site_user_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        site: string
+        /** @description UniqueValidator identifier */
+        user: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesitescode_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -2131,7 +2199,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesite_user_privileges_site_user_get: {
+  api_validatoruniquestratigraphic_units_site_year_number_get: {
     parameters: {
       query?: never
       header?: never
@@ -2139,7 +2207,9 @@ export interface operations {
         /** @description UniqueValidator identifier */
         site: string
         /** @description UniqueValidator identifier */
-        user: string
+        year: string
+        /** @description UniqueValidator identifier */
+        number: string
       }
       cookie?: never
     }
