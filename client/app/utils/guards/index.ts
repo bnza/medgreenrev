@@ -66,3 +66,8 @@ export const isValidUserBaseData = (value: unknown): value is UserBaseData =>
 
 export const isValidIri = (value: unknown): value is Iri =>
   isString(value) && isAppPathItemPage(value)
+
+export const isApiResourceObject = (
+  value: unknown,
+): value is { '@id': string } =>
+  isObject(value) && '@id' in value && isString(value['@id'])

@@ -9,6 +9,7 @@ import type { RegleRoot } from '@regle/core'
 import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
 import { diff } from 'deep-object-diff'
 import useGetItemQuery from '../../../../composables/queries/useGetItemQuery'
+import { isApiResourceObject } from '~/utils'
 
 type OnPreSubmit = <T extends object>(oldItem: T, item: T) => Partial<T>
 
@@ -38,11 +39,21 @@ const { isUpdateDialogOpen: visible, updateDialogState } = storeToRefs(
 
 const { data: item } = useGetItemQuery(props.path, updateDialogState)
 
+const normalizePatchItem = (item: Record<string, any>) => {
+  const normalizedItem = structuredClone(item)
+  Object.keys(item).forEach((key) => {
+    if (isApiResourceObject(normalizedItem[key])) {
+      normalizedItem[key] = normalizedItem[key]['@id']
+    }
+  })
+  return normalizedItem
+}
+
 watch(
   item,
   (value) => {
     if (value) {
-      regle.value.$value = structuredClone(value)
+      regle.value.$value = normalizePatchItem(value)
     }
   },
   { immediate: true },

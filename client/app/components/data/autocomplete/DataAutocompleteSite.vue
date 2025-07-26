@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ApiResourcePath } from '~/utils/consts/resources'
 
-const model = defineModel<string>()
+const model = defineModel<string | { '@id': string }>()
 const props = defineProps<{
   path: ApiResourcePath
   itemTitle: string

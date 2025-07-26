@@ -8,10 +8,12 @@ apiStore.fetchSpec()
 
 const { isAuthenticated } = useAppAuth()
 const { removeCachedAuthQueries } = useRemoveCachedAuthQueries()
+const { invalidateQueries } = useQueryCache()
 
 watch(isAuthenticated, (value) => {
   if (!value) {
     removeCachedAuthQueries()
+    invalidateQueries()
   }
 })
 </script>
