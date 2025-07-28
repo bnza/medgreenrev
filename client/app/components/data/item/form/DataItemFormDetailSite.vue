@@ -18,7 +18,7 @@ const culturalContexts = computed(
 </script>
 
 <template>
-  <v-expansion-panels v-model="panels" multiple>
+  <v-expansion-panels v-model="panels" multiple color="grey-darken-3">
     <v-expansion-panel
       title="chronology"
       value="chronology"
@@ -28,10 +28,18 @@ const culturalContexts = computed(
         <v-container class="pa-0" fluid>
           <v-row>
             <v-col cols="6" xs="12" class="px-2">
-              <v-text-field label="chronology (lower)" />
+              <v-text-field
+                readonly
+                :model-value="item.chronologyLower"
+                label="chronology (lower)"
+              />
             </v-col>
             <v-col cols="6" xs="12" class="px-2">
-              <v-text-field label="chronology (upper)" />
+              <v-text-field
+                readonly
+                :model-value="item.chronologyUpper"
+                label="chronology (upper)"
+              />
             </v-col>
           </v-row>
           <v-row>

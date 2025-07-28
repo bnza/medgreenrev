@@ -400,6 +400,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/sites/name/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesitesname_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}': {
     parameters: {
       query?: never
@@ -629,9 +649,12 @@ export interface components {
       readonly description?: string | null
     }
     'Site-site.create': {
-      code?: string
-      name?: string
+      code: string
+      name: string
       description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
       culturalContexts?: string[]
     }
     'Site.jsonld-site.acl.read': {
@@ -651,12 +674,18 @@ export interface components {
       name?: string
       description?: string | null
       createdBy?: components['schemas']['User.jsonld-site.acl.read'] | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
     }
     'Site.jsonld-site.create': {
-      code?: string
-      name?: string
+      code: string
+      name: string
       description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
       culturalContexts?: string[]
     }
     'Site.jsonld-site_user_privilege.acl.read': {
@@ -1091,6 +1120,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[code]'?: 'asc' | 'desc'
         'order[name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
         code?: string
         'code[]'?: string[]
         /**
@@ -2433,6 +2464,40 @@ export interface operations {
     }
   }
   api_validatoruniquesitescode_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesitesname_id_get: {
     parameters: {
       query?: never
       header?: never

@@ -49,7 +49,8 @@ export default function useAppAuth() {
   )
 
   const hasSitePrivilege = computed(
-    () => (siteId: number) => Boolean(data.value?.sitePrivileges?.[siteId]),
+    () => (siteId: number) =>
+      hasRoleAdmin || Boolean(data.value?.sitePrivileges?.[siteId]),
   )
 
   const siteCollectionAcl = computed<CollectionAcl>(() => ({
@@ -68,7 +69,6 @@ export default function useAppAuth() {
     roles,
     roleColor,
     siteCollectionAcl,
-    // stratigraphicUnitCollectionAcl,
     userIdentifier,
   }
 }

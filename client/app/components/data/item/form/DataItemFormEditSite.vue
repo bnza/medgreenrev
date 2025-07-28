@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import DataSelectionVocabulary from '~/components/data/selection/DataSelectionVocabulary.vue'
 import type { PatchItemRequestMap, PostCollectionRequestMap } from '~~/types'
 
 type Item = PostCollectionRequestMap['/api/sites'] &
@@ -30,6 +29,31 @@ defineProps<Props>()
         v-model="item.name"
         label="name"
         :error-messages="errors?.name"
+      />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="4" xs="12" class="px-2">
+      <v-text-field
+        v-model="item.fieldDirector"
+        label="field director"
+        :error-messages="errors?.fieldDirector"
+      />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12" xs="5" class="px-2">
+      <v-text-field
+        v-model="item.chronologyLower"
+        label="chronology (lower)"
+        :error-messages="errors?.chronologyLower"
+      />
+    </v-col>
+    <v-col cols="12" xs="5" class="px-2">
+      <v-text-field
+        v-model="item.chronologyUpper"
+        label="chronology (upper)"
+        :error-messages="errors?.chronologyUpper"
       />
     </v-col>
   </v-row>
