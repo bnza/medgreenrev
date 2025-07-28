@@ -1,5 +1,5 @@
 import type { paths, components } from './openapi'
-import type { ApiResourceItemPath } from '~/utils/consts/resources'
+import type { ApiResourcePath } from '~/utils/consts/resources'
 
 export type ApiSpec = {
   paths
@@ -100,6 +100,8 @@ export type GetItemPath = {
       : never
     : never
 }[keyof paths]
+
+export type ApiResourceItemPath = `${ApiResourcePath}/{id}` & GetItemPath
 
 export type GetValidationPath = {
   [K in keyof paths]: paths[K] extends { get: any }

@@ -1,4 +1,5 @@
 import type {
+  GetItemPath,
   GetItemResponseMap,
   OperationPathParams,
   PatchItemPath,
@@ -18,9 +19,10 @@ export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
     apiResourcePath,
     path,
   )
-
+  type PatchItemMutation =
+    `${Exclude<typeof apiResourcePath, undefined>}/{id}` & GetItemPath
   const patchItem = defineMutation(() => {
-    const item = ref<GetItemResponseMap[`${typeof apiResourcePath}/{id}`]>()
+    const item = ref<GetItemResponseMap[PatchItemMutation]>()
     const mutation = useMutation({
       mutation: ({
         param,

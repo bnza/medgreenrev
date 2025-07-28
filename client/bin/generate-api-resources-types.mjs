@@ -50,8 +50,6 @@ ${resourceMapEntries}
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP
 
 export type ApiResourcePath = (typeof API_RESOURCE_MAP)[keyof typeof API_RESOURCE_MAP]
-
-export type ApiResourceItemPath = \`\${ApiResourcePath}/{id}\`
 `
 
   // Ensure directory exists

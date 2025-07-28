@@ -1,5 +1,4 @@
-import type { ApiResourceItemPath } from '~/utils/consts/resources'
-import type { ResourceParent } from '~~/types'
+import type { ResourceParent, ApiResourceItemPath } from '~~/types'
 
 export const useResourceParent = <
   K extends string,
