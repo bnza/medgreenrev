@@ -44,6 +44,10 @@ const normalizePatchItem = (item: Record<string, any>) => {
   Object.keys(item).forEach((key) => {
     if (isApiResourceObject(normalizedItem[key])) {
       normalizedItem[key] = normalizedItem[key]['@id']
+    } else if (Array.isArray(normalizedItem[key])) {
+      normalizedItem[key] = normalizedItem[key].map((innerItem) =>
+        isApiResourceObject(innerItem) ? innerItem['@id'] : innerItem,
+      )
     }
   })
   return normalizedItem

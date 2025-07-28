@@ -25,7 +25,7 @@ const { isSiteAdmin } = useAppAuth()
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="data" data-testid="tab-window-data">
-          <p>Data: isSiteAdmin: {{ isSiteAdmin(item) }}</p>
+          <data-item-form-detail-site :item />
         </v-tabs-window-item>
         <v-tabs-window-item value="sus" data-testid="tab-window-sus">
           <data-collection-page-stratigraphic-unit

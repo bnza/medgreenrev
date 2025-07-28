@@ -4,6 +4,26 @@
  */
 
 export interface paths {
+  '/api/vocabulary/cultural_contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of CulturalContext resources.
+     * @description Retrieves the collection of CulturalContext resources.
+     */
+    get: operations['api_vocabularycultural_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/login': {
     parameters: {
       query?: never
@@ -74,6 +94,46 @@ export interface paths {
      * @description Updates the Site resource.
      */
     patch: operations['api_sites_id_patch']
+    trace?: never
+  }
+  '/api/site_cultural_contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SiteCulturalContext resources.
+     * @description Retrieves the collection of SiteCulturalContext resources.
+     */
+    get: operations['api_site_cultural_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/site_cultural_contexts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SiteCulturalContext resource.
+     * @description Retrieves a SiteCulturalContext resource.
+     */
+    get: operations['api_site_cultural_contexts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
     trace?: never
   }
   '/api/site_user_privileges': {
@@ -524,6 +584,12 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
+    'CulturalContext.jsonld': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      id?: number
+      value?: string
+    }
     /** @description A representation of common errors. */
     Error: {
       /** @description A short, human-readable summary of the problem. */
@@ -566,6 +632,7 @@ export interface components {
       code?: string
       name?: string
       description?: string | null
+      culturalContexts?: string[]
     }
     'Site.jsonld-site.acl.read': {
       readonly '@context'?:
@@ -584,11 +651,13 @@ export interface components {
       name?: string
       description?: string | null
       createdBy?: components['schemas']['User.jsonld-site.acl.read'] | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
     }
     'Site.jsonld-site.create': {
       code?: string
       name?: string
       description?: string | null
+      culturalContexts?: string[]
     }
     'Site.jsonld-site_user_privilege.acl.read': {
       readonly '@context'?:
@@ -621,8 +690,51 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      readonly id?: number & string
       code?: string
       name?: string
+    }
+    'SiteCulturalContext.jsonld': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string
+    }
+    'SiteCulturalContext.jsonld-site.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string
     }
     'SiteUserPrivilege-site_user_privilege.update': {
       /**
@@ -878,6 +990,67 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
+  api_vocabularycultural_contexts_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description CulturalContext collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['CulturalContext.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
   login_check_post: {
     parameters: {
       query?: never
@@ -1180,6 +1353,100 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_site_cultural_contexts_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteCulturalContext collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['SiteCulturalContext.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_site_cultural_contexts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteCulturalContext identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteCulturalContext resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteCulturalContext.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

@@ -11,10 +11,14 @@ export const useResourceParent = <
   const path = computed(() => resourceParent?.resourceItemPath)
   const item = computed(() => resourceParent?.item)
   const id = computed(() =>
-    item.value && 'id' in item.value ? String(item.value.id) : undefined,
+    isPlainObject(item.value) && 'id' in item.value
+      ? String(item.value.id)
+      : undefined,
   )
   const iri = computed(() =>
-    item.value && '@id' in item.value ? String(item.value['@id']) : undefined,
+    isPlainObject(item.value) && '@id' in item.value
+      ? String(item.value['@id'])
+      : undefined,
   )
 
   return {

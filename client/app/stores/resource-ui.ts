@@ -46,7 +46,7 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
     const redirectToItem = ref(false)
 
     const tab = ref('')
-
+    const panels = ref<string[]>([])
     return {
       dialogStates,
       deleteDialogState,
@@ -57,6 +57,7 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
       isSearchDialogOpen: isDialogOpenFn('search'),
       redirectToItem,
       tab,
+      panels,
     }
   })()
 
