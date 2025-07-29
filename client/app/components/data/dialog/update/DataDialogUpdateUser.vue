@@ -1,21 +1,12 @@
 <script setup lang="ts">
-import { diff } from 'deep-object-diff'
-import type { PatchItemRequestMap } from '~~/types'
-import { useRegle } from '@regle/core'
-import rules from '~/utils/validation/rules/user'
+import { useNormalization } from '~/composables/normalization/useUserNormalization'
+import useResourceUiStore from '~/stores/resource-ui'
+import { useUpdateValidation } from '~/composables/validation/useUserValidation'
 
-const { r$ } = useRegle(
-  {} as PatchItemRequestMap['/api/users/{id}'],
-  rules.update,
-)
+const { updateDialogState } = storeToRefs(useResourceUiStore('/api/users/{id}'))
+const { r$, item } = useUpdateValidation(updateDialogState)
 
-const onPreSubmit = (oldItem: object, item: object) => {
-  const diffItem = diff(oldItem, item)
-  if (diffItem && 'roles' in diffItem && 'roles' in item) {
-    diffItem.roles = item.roles
-  }
-  return diffItem
-}
+const { onPreUpdate } = useNormalization()
 </script>
 
 <template>
@@ -23,7 +14,7 @@ const onPreSubmit = (oldItem: object, item: object) => {
     path="/api/users/{id}"
     title="User"
     v-model:regle="r$"
-    :on-pre-submit
+    :on-pre-submit="onPreUpdate(item)"
   >
     <template #default>
       <data-item-form-edit-user

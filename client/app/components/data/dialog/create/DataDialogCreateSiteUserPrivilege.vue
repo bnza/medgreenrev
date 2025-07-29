@@ -14,51 +14,17 @@ import type {
   GetCollectionPath,
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
-import { useRegle } from '@regle/core'
-import { required } from '@regle/rules'
-
-import useResourceParent from '~/composables/useResourceParent'
+import { useCreateValidation } from '~/composables/validation/useSiteUserPrivilegeValidation'
+import { useNormalization } from '~/composables/normalization/useSiteUserPrivilegeNormalization'
 
 const props = defineProps<{
   path: Path
   parent?: ResourceParentSiteUserPrivilege
 }>()
 
-const { key: parentKey, iri: parentIri } = useResourceParent(props.parent)
+const { getEmptyModel, r$ } = useCreateValidation(props.parent)
 
-const getEmptyModel = () => ({
-  user: parentKey.value === 'user' ? parentIri.value : undefined,
-  site: parentKey.value === 'site' ? parentIri.value : undefined,
-  privilege: 0,
-})
-
-const uniqueSite = useApiUniqueValidator(
-  '/api/validator/unique/site_user_privileges/{site}/{user}',
-  ['site', 'user'],
-  'Duplicate [site, user] combination',
-)
-const uniqueUser = useApiUniqueValidator(
-  '/api/validator/unique/site_user_privileges/{site}/{user}',
-  ['user', 'site'],
-  'Duplicate [site, user] combination',
-)
-
-const model = ref(getEmptyModel())
-
-const { r$ } = useRegle(model, {
-  site: {
-    required,
-    uniqueSite: uniqueSite(() => model.value.user),
-  },
-  user: {
-    required,
-    uniqueUser: uniqueUser(() => model.value.site),
-  },
-})
-const onPreSubmit = (item: any) => {
-  if ('privilege' in item) item.privilege = Number(item.privilege)
-  return item
-}
+const { onPreCreate: onPreSubmit } = useNormalization()
 </script>
 
 <template>

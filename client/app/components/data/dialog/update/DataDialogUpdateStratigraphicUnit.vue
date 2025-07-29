@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import type { PatchItemRequestMap } from '~~/types'
-import { useRegle } from '@regle/core'
-import { diff } from 'deep-object-diff'
+import useResourceUiStore from '~/stores/resource-ui'
+import { useUpdateValidation } from '~/composables/validation/useStratigraphicUnitValidation'
+import { useNormalization } from '~/composables/normalization/useStratigraphicUnitNormalization'
 
-const { r$ } = useRegle(
-  {} as PatchItemRequestMap['/api/stratigraphic_units/{id}'],
-  {},
+const { updateDialogState } = storeToRefs(
+  useResourceUiStore('/api/stratigraphic_units/{id}'),
 )
+const { r$, item } = useUpdateValidation(updateDialogState)
 
-const onPreSubmit = (
-  oldItem: Record<string, any>,
-  item: Record<string, any>,
-) => {
-  const diffItem = diff(oldItem, item)
-  if ('number' in diffItem) diffItem.number = Number(diffItem.number)
-  if ('year' in diffItem) diffItem.year = Number(diffItem.year)
-  return diffItem
-}
+const { onPreUpdate } = useNormalization()
 </script>
 
 <template>
@@ -24,7 +16,7 @@ const onPreSubmit = (
     path="/api/stratigraphic_units/{id}"
     title="Stratigraphic Unit"
     v-model:regle="r$"
-    :on-pre-submit
+    :on-pre-submit="onPreUpdate(item)"
   >
     <template #default>
       <data-item-form-edit-stratigraphic-unit

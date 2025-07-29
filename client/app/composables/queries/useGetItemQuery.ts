@@ -42,10 +42,7 @@ export function useGetItemQuery<P extends GetItemPath>(
     }
   })
 
-  const query = useQuery(() => queryOptions(params))
-  return {
-    ...query,
-  }
+  return useQuery(() => queryOptions(params))
 }
 
 export default useGetItemQuery

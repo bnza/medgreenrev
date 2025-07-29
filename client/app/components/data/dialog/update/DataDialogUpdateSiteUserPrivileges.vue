@@ -1,32 +1,20 @@
 <script setup lang="ts">
-import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
-import { useRegle } from '@regle/core'
-import { required } from '@regle/rules'
+import useResourceUiStore from '~/stores/resource-ui'
+import { useUpdateValidation } from '~/composables/validation/useSiteUserPrivilegeValidation'
+import { useNormalization } from '~/composables/normalization/useSiteUserPrivilegeNormalization'
+import type { GetItemResponseMap } from '~~/types'
 
-const { r$ } = useRegle(
-  {} as PatchItemRequestMap['/api/site_user_privileges/{id}'],
-  {
-    privilege: {
-      required,
-    },
-  },
+const { updateDialogState } = storeToRefs(
+  useResourceUiStore('/api/site_user_privileges/{id}'),
 )
+const { r$, responseItem, item } = useUpdateValidation(updateDialogState)
 
-const onPreSubmit = <T extends Record<string, any>>(item: T): Partial<T> => {
-  const submitItem = {} as Partial<T>
-  // Only privilege can be updated
-  if ('privilege' in item) {
-    submitItem['privilege' as keyof T] = Number(!item.privilege) as T[keyof T]
-  }
-  return submitItem
-}
+const { onPreUpdate } = useNormalization()
 
-const item = computed(
-  () =>
-    structuredClone(
-      toRaw(r$.$value),
-    ) as GetItemResponseMap['/api/site_user_privileges/{id}'],
-)
+const isSiteUserPrivilegeFn = (
+  item: unknown,
+): item is GetItemResponseMap['/api/site_user_privileges/{id}'] =>
+  isPlainObject(item) && 'site' in item && 'user' in item && 'privilege' in item
 </script>
 
 <template>
@@ -35,20 +23,20 @@ const item = computed(
     title="Site/User Privilege"
     v-model:regle="r$"
     :fullscreen="false"
-    :on-pre-submit
+    :on-pre-submit="onPreUpdate(item)"
   >
-    <template v-if="item" #default>
+    <template v-if="isSiteUserPrivilegeFn(responseItem)" #default>
       <v-card-text class="text-center">
         Are you sure you want to change the privilege of user<br />
         <strong class="text-primary py-2">{{
-          item?.user?.userIdentifier
+          responseItem?.user?.userIdentifier
         }}</strong
         ><br />
         for the site<br />
-        <strong class="text-primary py-2">{{ item?.site?.name }}</strong
+        <strong class="text-primary py-2">{{ responseItem?.site?.name }}</strong
         ><br />
         to
-        <strong>{{ item.privilege ? 'USER' : 'EDITOR' }}</strong
+        <strong>{{ responseItem.privilege ? 'USER' : 'EDITOR' }}</strong
         >?
       </v-card-text>
     </template>

@@ -1,8 +1,7 @@
 import type {
-  GetItemPath,
-  GetItemResponseMap,
   OperationPathParams,
   PatchItemPath,
+  PatchItemRequestMap,
 } from '~~/types'
 import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 import { PatchItemOperation } from '~/api/operations/PatchItemOperation'
@@ -19,10 +18,8 @@ export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
     apiResourcePath,
     path,
   )
-  type PatchItemMutation =
-    `${Exclude<typeof apiResourcePath, undefined>}/{id}` & GetItemPath
   const patchItem = defineMutation(() => {
-    const item = ref<GetItemResponseMap[PatchItemMutation]>()
+    const item = ref<PatchItemRequestMap[P]>()
     const mutation = useMutation({
       mutation: ({
         param,
@@ -31,7 +28,6 @@ export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
         param: OperationPathParams<P, 'patch'>
         model: Record<string, any>
       }) => {
-        // const diffObject = patchNormalize(item.value ?? {}, model)
         return patchItemOperation.request(param, { body: model })
       },
       onSettled: async () => {

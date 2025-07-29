@@ -1,25 +1,17 @@
-<script setup lang="ts" generic="Path extends ValidationMethodToPath<'create'>">
-import type { PostCollectionRequestMap, ValidationMethodToPath } from '~~/types'
-import { useRegle } from '@regle/core'
-import rules from '~/utils/validation/rules/user'
+<script setup lang="ts" generic="P extends PostCollectionPath">
+import type { PostCollectionPath } from '~~/types'
+import { useCreateValidation } from '~/composables/validation/useUserValidation'
+import { useNormalization } from '~/composables/normalization/useUserNormalization'
 
 defineProps<{
-  path: Path
+  path: P
   parentId?: string
 }>()
 
-type RequestBody = PostCollectionRequestMap['/api/users']
+const { getEmptyModel, r$ } = useCreateValidation()
 
-const getEmptyModel = () =>
-  ({
-    roles: [] as string[],
-  }) as RequestBody
+const { onPreCreate: onPreSubmit } = useNormalization()
 
-const { r$ } = useRegle(getEmptyModel(), rules.create)
-const onPreSubmit = (item: any) => {
-  item.plainPassword = generatePassword()
-  return item
-}
 const { openUserPasswordDialog } = useUserPasswordDialog()
 </script>
 

@@ -7,11 +7,8 @@ import type {
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
-import { diff } from 'deep-object-diff'
-import useGetItemQuery from '../../../../composables/queries/useGetItemQuery'
-import { isApiResourceObject } from '~/utils'
 
-type OnPreSubmit = <T extends object>(oldItem: T, item: T) => Partial<T>
+type OnPreSubmit = <T extends Record<string, any>>(item: T) => Partial<T>
 
 const regle = defineModel<RegleRoot>('regle', { required: true })
 
@@ -20,11 +17,10 @@ const props = withDefaults(
     path: Path
     title: string
     fullscreen?: boolean
-    onPreSubmit?: OnPreSubmit
+    onPreSubmit: OnPreSubmit
   }>(),
   {
     fullscreen: true,
-    onPreSubmit: (oldItem: object, item: object) => diff(oldItem, item),
   },
 )
 
@@ -33,47 +29,49 @@ defineSlots<{
   actions(): any
 }>()
 
-const { isUpdateDialogOpen: visible, updateDialogState } = storeToRefs(
+const { isUpdateDialogOpen: visible } = storeToRefs(
   useResourceUiStore(props.path),
 )
 
-const { data: item } = useGetItemQuery(props.path, updateDialogState)
-
-const normalizePatchItem = (item: Record<string, any>) => {
-  const normalizedItem = structuredClone(item)
-  Object.keys(item).forEach((key) => {
-    if (isApiResourceObject(normalizedItem[key])) {
-      normalizedItem[key] = normalizedItem[key]['@id']
-    } else if (Array.isArray(normalizedItem[key])) {
-      normalizedItem[key] = normalizedItem[key].map((innerItem) =>
-        isApiResourceObject(innerItem) ? innerItem['@id'] : innerItem,
-      )
-    }
-  })
-  return normalizedItem
-}
-
-watch(
-  item,
-  (value) => {
-    if (value) {
-      regle.value.$value = normalizePatchItem(value)
-    }
-  },
-  { immediate: true },
-)
+const item = computed(() => regle.value.$value)
 
 const { patchItem } = usePatchItemMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
+/**
+ *
+ * Evaluates the presence of both `$errors` and `$silentErrors` within the
+ * `regle.value` object to determine the validity of the value. If errors or silent errors
+ * exist, the value is considered invalid.
+ * It's a workaround function, since sometimes in Playwright tests regle.$invalid is set false
+ * even though there are no errors: so it checks for this inconsistency
+ * between the `$invalid` property and the overall error states, and logs a warning if
+ * a mismatch is detected.
+ *
+ * Once validated, the regle.$value model should be fine. It's not an actual TS guard
+ */
+const isValidItem = (value: any): value is PatchItemRequestMap[Path] => {
+  const invalid =
+    Object.values<string[]>(regle.value.$errors).some(
+      (propErrors) => propErrors.length > 0,
+    ) &&
+    Object.values<string[]>(regle.value.$silentErrors).some(
+      (propErrors) => propErrors.length > 0,
+    )
+  if (invalid !== regle.value.$invalid) {
+    console.warn(
+      'Regle $invalid value mismatches with $errors and $silentErrors values.',
+    )
+  }
+  return !invalid
+}
+
 const submit = async () => {
   await regle.value.$validate()
-  const isValidItem = (value: any): value is PatchItemRequestMap[Path] =>
-    !regle.value.$invalid
 
   if (!isValidItem(regle.value.$value)) {
     addError('Invalid model.')
-    console.log('model', regle.value.$value)
+    console.log('model', toRaw(regle.value.$value))
     return
   }
 
@@ -85,7 +83,7 @@ const submit = async () => {
 
   patchItem.item.value = toRaw(item.value)
 
-  const model = props.onPreSubmit(item.value, regle.value.$value)
+  const model = props.onPreSubmit(regle.value.$value)
   try {
     await patchItem.mutateAsync({
       param: {

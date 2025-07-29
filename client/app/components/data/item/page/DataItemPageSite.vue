@@ -7,7 +7,6 @@ const path = '/api/sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore('/api/sites/{id}'))
-const { isSiteAdmin } = useAppAuth()
 </script>
 
 <template>
