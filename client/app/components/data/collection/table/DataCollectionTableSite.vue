@@ -29,7 +29,7 @@ const { deleteDialogState, updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs>
-      <data-dialog-search-site :path />
+      <data-dialog-search :path title="Site" />
       <data-dialog-create-site :path />
       <data-dialog-delete-site />
       <data-dialog-update-site />

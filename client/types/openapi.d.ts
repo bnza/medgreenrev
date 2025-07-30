@@ -1124,6 +1124,22 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         code?: string
         'code[]'?: string[]
+        'culturalContexts.culturalContext'?: string
+        'culturalContexts.culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -1134,6 +1150,16 @@ export interface operations {
          * @example cafè
          */
         description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        fieldDirector?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[fieldDirector]'?: boolean
+        'exists[culturalContexts]'?: boolean
         /**
          * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
          * @example me

@@ -12,6 +12,127 @@
     }
   ],
   "paths": {
+    "\/api\/vocabulary\/cultural_contexts": {
+      "get": {
+        "operationId": "api_vocabularycultural_contexts_get_collection",
+        "tags": ["CulturalContext"],
+        "responses": {
+          "200": {
+            "description": "CulturalContext collection",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/CulturalContext.jsonld"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": ["string", "null"]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["member"]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of CulturalContext resources.",
+        "description": "Retrieves the collection of CulturalContext resources.",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Filter using case insensitive unaccented string matching",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "example": "cafè"
+          }
+        ],
+        "deprecated": false
+      }
+    },
     "\/api\/login": {
       "post": {
         "operationId": "login_check_post",
@@ -244,6 +365,38 @@
             "allowReserved": false
           },
           {
+            "name": "order[chronologyLower]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[chronologyUpper]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
             "name": "code",
             "in": "query",
             "description": "",
@@ -275,6 +428,239 @@
             "allowReserved": false
           },
           {
+            "name": "culturalContexts.culturalContext",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "culturalContexts.culturalContext[]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "integer"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower[]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "integer"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper[]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower[between]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower[gt]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower[gte]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower[lt]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyLower[lte]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper[between]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper[gt]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper[gte]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper[lt]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "chronologyUpper[lte]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
             "name": "name",
             "in": "query",
             "description": "Filter using case insensitive unaccented string matching",
@@ -303,6 +689,91 @@
             "explode": false,
             "allowReserved": false,
             "example": "cafè"
+          },
+          {
+            "name": "fieldDirector",
+            "in": "query",
+            "description": "Filter using case insensitive unaccented string matching",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "example": "cafè"
+          },
+          {
+            "name": "exists[chronologyLower]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "exists[chronologyUpper]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "exists[description]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "exists[fieldDirector]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "exists[culturalContexts]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
           },
           {
             "name": "search",
@@ -653,6 +1124,201 @@
           },
           "required": true
         },
+        "deprecated": false
+      }
+    },
+    "\/api\/site_cultural_contexts": {
+      "get": {
+        "operationId": "api_site_cultural_contexts_get_collection",
+        "tags": ["SiteCulturalContext"],
+        "responses": {
+          "200": {
+            "description": "SiteCulturalContext collection",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/SiteCulturalContext.jsonld"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": ["string", "null"]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["member"]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of SiteCulturalContext resources.",
+        "description": "Retrieves the collection of SiteCulturalContext resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 0
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "\/api\/site_cultural_contexts\/{id}": {
+      "get": {
+        "operationId": "api_site_cultural_contexts_id_get",
+        "tags": ["SiteCulturalContext"],
+        "responses": {
+          "200": {
+            "description": "SiteCulturalContext resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/SiteCulturalContext.jsonld"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves a SiteCulturalContext resource.",
+        "description": "Retrieves a SiteCulturalContext resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "SiteCulturalContext identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
         "deprecated": false
       }
     },
@@ -1582,6 +2248,228 @@
         "deprecated": false
       }
     },
+    "\/api\/users\/me\/site_user_privileges": {
+      "get": {
+        "operationId": "api_usersmesite_user_privileges_get_collection",
+        "tags": ["SiteUserPrivilege"],
+        "responses": {
+          "200": {
+            "description": "SiteUserPrivilege collection",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/SiteUserPrivilege.jsonld-site_user_privilege.acl.read"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": ["string", "null"]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["member"]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves the collection of SiteUserPrivilege resources.",
+        "description": "Retrieves the collection of SiteUserPrivilege resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 0
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[id]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[site.code]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[user.email]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[privilege]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      }
+    },
     "\/api\/users\/{parentId}\/site_user_privileges": {
       "get": {
         "operationId": "api_users_parentIdsite_user_privileges_get_collection",
@@ -1911,17 +2799,507 @@
         "deprecated": false
       }
     },
-    "\/api\/validator\/unique\/site\/code\/{id}": {
+    "\/api\/sites\/{parentId}\/stratigraphic_units": {
       "get": {
-        "operationId": "api_validatoruniquesitecode_id_get",
-        "tags": ["UniqueValidator"],
+        "operationId": "api_sites_parentIdstratigraphic_units_get_collection",
+        "tags": ["StratigraphicUnit"],
         "responses": {
           "200": {
-            "description": "UniqueValidator resource",
+            "description": "StratigraphicUnit collection",
             "content": {
               "application\/ld+json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/UniqueValidator.jsonld"
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/StratigraphicUnit.jsonld-sus.acl.read"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": ["string", "null"]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["member"]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of StratigraphicUnit resources.",
+        "description": "Retrieves the collection of StratigraphicUnit resources.",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "path",
+            "description": "StratigraphicUnit identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 0
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[id]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[year]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[number]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[site.code]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "\/api\/stratigraphic_units": {
+      "get": {
+        "operationId": "api_stratigraphic_units_get_collection",
+        "tags": ["StratigraphicUnit"],
+        "responses": {
+          "200": {
+            "description": "StratigraphicUnit collection",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/StratigraphicUnit.jsonld-sus.acl.read"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": ["string", "null"]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["member"]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of StratigraphicUnit resources.",
+        "description": "Retrieves the collection of StratigraphicUnit resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 0
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[id]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[year]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[number]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "order[site.code]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string",
+              "default": "asc",
+              "enum": ["asc", "desc"]
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "operationId": "api_stratigraphic_units_post",
+        "tags": ["StratigraphicUnit"],
+        "responses": {
+          "201": {
+            "description": "StratigraphicUnit resource created",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/StratigraphicUnit.jsonld-sus.acl.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ConstraintViolation.jsonld-jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ConstraintViolation-json"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ConstraintViolation-json"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Creates a StratigraphicUnit resource.",
+        "description": "Creates a StratigraphicUnit resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new StratigraphicUnit resource",
+          "content": {
+            "application\/ld+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/StratigraphicUnit.jsonld"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      }
+    },
+    "\/api\/stratigraphic_units\/{id}": {
+      "get": {
+        "operationId": "api_stratigraphic_units_id_get",
+        "tags": ["StratigraphicUnit"],
+        "responses": {
+          "200": {
+            "description": "StratigraphicUnit resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/StratigraphicUnit.jsonld-sus.acl.read"
                 }
               }
             }
@@ -1948,13 +3326,13 @@
             "links": {}
           }
         },
-        "summary": "Retrieves a UniqueValidator resource.",
-        "description": "Retrieves a UniqueValidator resource.",
+        "summary": "Retrieves a StratigraphicUnit resource.",
+        "description": "Retrieves a StratigraphicUnit resource.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "UniqueValidator identifier",
+            "description": "StratigraphicUnit identifier",
             "required": true,
             "deprecated": false,
             "allowEmptyValue": false,
@@ -1966,6 +3344,207 @@
             "allowReserved": false
           }
         ],
+        "deprecated": false
+      },
+      "delete": {
+        "operationId": "api_stratigraphic_units_id_delete",
+        "tags": ["StratigraphicUnit"],
+        "responses": {
+          "204": {
+            "description": "StratigraphicUnit resource deleted"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Removes the StratigraphicUnit resource.",
+        "description": "Removes the StratigraphicUnit resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "StratigraphicUnit identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "patch": {
+        "operationId": "api_stratigraphic_units_id_patch",
+        "tags": ["StratigraphicUnit"],
+        "responses": {
+          "200": {
+            "description": "StratigraphicUnit resource updated",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/StratigraphicUnit.jsonld-sus.acl.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ConstraintViolation.jsonld-jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ConstraintViolation-json"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ConstraintViolation-json"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Updates the StratigraphicUnit resource.",
+        "description": "Updates the StratigraphicUnit resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "StratigraphicUnit identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated StratigraphicUnit resource",
+          "content": {
+            "application\/merge-patch+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/StratigraphicUnit"
+              }
+            }
+          },
+          "required": true
+        },
         "deprecated": false
       }
     },
@@ -2025,6 +3604,208 @@
           },
           {
             "name": "user",
+            "in": "path",
+            "description": "UniqueValidator identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "\/api\/validator\/unique\/sites\/code\/{id}": {
+      "get": {
+        "operationId": "api_validatoruniquesitescode_id_get",
+        "tags": ["UniqueValidator"],
+        "responses": {
+          "200": {
+            "description": "UniqueValidator resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/UniqueValidator.jsonld"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves a UniqueValidator resource.",
+        "description": "Retrieves a UniqueValidator resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UniqueValidator identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "\/api\/validator\/unique\/sites\/name\/{id}": {
+      "get": {
+        "operationId": "api_validatoruniquesitesname_id_get",
+        "tags": ["UniqueValidator"],
+        "responses": {
+          "200": {
+            "description": "UniqueValidator resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/UniqueValidator.jsonld"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves a UniqueValidator resource.",
+        "description": "Retrieves a UniqueValidator resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UniqueValidator identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "\/api\/validator\/unique\/stratigraphic_units\/{site}\/{year}\/{number}": {
+      "get": {
+        "operationId": "api_validatoruniquestratigraphic_units_site_year_number_get",
+        "tags": ["UniqueValidator"],
+        "responses": {
+          "200": {
+            "description": "UniqueValidator resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/UniqueValidator.jsonld"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error.jsonld"
+                }
+              },
+              "application\/problem+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves a UniqueValidator resource.",
+        "description": "Retrieves a UniqueValidator resource.",
+        "parameters": [
+          {
+            "name": "site",
+            "in": "path",
+            "description": "UniqueValidator identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "description": "UniqueValidator identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "number",
             "in": "path",
             "description": "UniqueValidator identifier",
             "required": true,
@@ -2194,6 +3975,21 @@
             "style": "form",
             "explode": false,
             "allowReserved": false
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search case insensitive match the email field",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "example": "me"
           }
         ],
         "deprecated": false
@@ -2989,6 +4785,27 @@
           }
         }
       },
+      "CulturalContext.jsonld": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
       "Error": {
         "type": "object",
         "description": "A representation of common errors.",
@@ -3091,8 +4908,10 @@
         "type": "object",
         "description": "",
         "deprecated": false,
+        "required": ["code", "name"],
         "properties": {
           "code": {
+            "pattern": "^([A-Z]{2}[A-Z\\d]{0,4})$",
             "type": "string"
           },
           "name": {
@@ -3100,6 +4919,25 @@
           },
           "description": {
             "type": ["string", "null"]
+          },
+          "chronologyLower": {
+            "minimum": -32768,
+            "type": ["integer", "null"]
+          },
+          "chronologyUpper": {
+            "minimum": -32768,
+            "type": ["integer", "null"]
+          },
+          "fieldDirector": {
+            "type": ["string", "null"]
+          },
+          "culturalContexts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "iri-reference",
+              "example": "https:\/\/example.com\/"
+            }
           }
         }
       },
@@ -3150,6 +4988,8 @@
             ]
           },
           "code": {
+            "minLength": 2,
+            "maxLength": 6,
             "type": "string"
           },
           "name": {
@@ -3167,6 +5007,21 @@
                 "type": "null"
               }
             ]
+          },
+          "chronologyLower": {
+            "type": ["integer", "null"]
+          },
+          "chronologyUpper": {
+            "type": ["integer", "null"]
+          },
+          "fieldDirector": {
+            "type": ["string", "null"]
+          },
+          "culturalContexts": {
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/SiteCulturalContext.jsonld-site.acl.read"
+            }
           }
         }
       },
@@ -3174,8 +5029,10 @@
         "type": "object",
         "description": "",
         "deprecated": false,
+        "required": ["code", "name"],
         "properties": {
           "code": {
+            "pattern": "^([A-Z]{2}[A-Z\\d]{0,4})$",
             "type": "string"
           },
           "name": {
@@ -3183,6 +5040,25 @@
           },
           "description": {
             "type": ["string", "null"]
+          },
+          "chronologyLower": {
+            "minimum": -32768,
+            "type": ["integer", "null"]
+          },
+          "chronologyUpper": {
+            "minimum": -32768,
+            "type": ["integer", "null"]
+          },
+          "fieldDirector": {
+            "type": ["string", "null"]
+          },
+          "culturalContexts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "iri-reference",
+              "example": "https:\/\/example.com\/"
+            }
           }
         }
       },
@@ -3233,10 +5109,178 @@
             ]
           },
           "code": {
+            "minLength": 2,
+            "maxLength": 6,
             "type": "string"
           },
           "name": {
             "type": "string"
+          },
+          "createdBy": {
+            "anyOf": [
+              {
+                "$ref": "#\/components\/schemas\/User.jsonld-site_user_privilege.acl.read"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "Site.jsonld-sus.acl.read": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": ["http:\/\/www.w3.org\/ns\/hydra\/core#"]
+                  }
+                },
+                "required": ["@vocab", "hydra"],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "code": {
+            "minLength": 2,
+            "maxLength": 6,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "SiteCulturalContext.jsonld": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": ["http:\/\/www.w3.org\/ns\/hydra\/core#"]
+                  }
+                },
+                "required": ["@vocab", "hydra"],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "site": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https:\/\/example.com\/"
+          },
+          "culturalContext": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https:\/\/example.com\/"
+          }
+        }
+      },
+      "SiteCulturalContext.jsonld-site.acl.read": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": ["http:\/\/www.w3.org\/ns\/hydra\/core#"]
+                  }
+                },
+                "required": ["@vocab", "hydra"],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "culturalContext": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https:\/\/example.com\/"
           }
         }
       },
@@ -3328,6 +5372,159 @@
             "default": 0,
             "example": 0,
             "type": "integer"
+          }
+        }
+      },
+      "StratigraphicUnit": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "site": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https:\/\/example.com\/"
+          },
+          "year": {
+            "default": 0,
+            "example": 0,
+            "type": "integer"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "description": {
+            "type": ["string", "null"]
+          },
+          "interpretation": {
+            "type": ["string", "null"]
+          },
+          "code": {
+            "readOnly": true,
+            "type": "string"
+          }
+        }
+      },
+      "StratigraphicUnit.jsonld": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "site": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https:\/\/example.com\/"
+          },
+          "year": {
+            "default": 0,
+            "example": 0,
+            "type": "integer"
+          },
+          "number": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "description": {
+            "type": ["string", "null"]
+          },
+          "interpretation": {
+            "type": ["string", "null"]
+          },
+          "code": {
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "required": ["site", "number"]
+      },
+      "StratigraphicUnit.jsonld-sus.acl.read": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": ["http:\/\/www.w3.org\/ns\/hydra\/core#"]
+                  }
+                },
+                "required": ["@vocab", "hydra"],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "site": {
+            "$ref": "#\/components\/schemas\/Site.jsonld-sus.acl.read"
+          },
+          "year": {
+            "default": 0,
+            "example": 0,
+            "type": "integer"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "description": {
+            "type": ["string", "null"]
+          },
+          "interpretation": {
+            "type": ["string", "null"]
+          },
+          "code": {
+            "readOnly": true,
+            "type": "string"
           }
         }
       },
@@ -3655,6 +5852,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "sitePrivileges": {
+            "readOnly": true,
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "example": 1
+            },
+            "description": "A map of site IDs (keys) to privilege levels (values).",
+            "example": {
+              "1": 1,
+              "2": 0
+            }
           }
         }
       }
@@ -3685,7 +5895,16 @@
       "name": "User"
     },
     {
+      "name": "SiteCulturalContext"
+    },
+    {
       "name": "Site"
+    },
+    {
+      "name": "StratigraphicUnit"
+    },
+    {
+      "name": "CulturalContext"
     },
     {
       "name": "UniqueValidator"

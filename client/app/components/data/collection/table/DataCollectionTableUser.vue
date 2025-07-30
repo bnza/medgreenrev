@@ -39,7 +39,7 @@ const { userData } = storeToRefs(userPasswordDialog())
       </navigation-resource-item>
     </template>
     <template #dialogs>
-      <data-dialog-search-user :path />
+      <data-dialog-search :path title="User" />
       <data-dialog-create-user :path />
       <data-dialog-delete-user />
       <data-dialog-update-user />
