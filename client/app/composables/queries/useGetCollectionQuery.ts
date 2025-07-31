@@ -1,7 +1,6 @@
 import type { GetCollectionPath, OperationPathParams } from '~~/types'
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 import useAppQueryCache from './useAppQueryCache'
-import { dataTableOptionsToQsObject } from '~/utils/requests'
 import useCollectionQueryStore from '~/stores/collection-query'
 
 export function useGetCollectionQuery(
@@ -18,16 +17,18 @@ export function useGetCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const { pagination } = useCollectionQueryStore(path)
+  const { pagination, filtersState, queryObject } = storeToRefs(
+    useCollectionQueryStore(path),
+  )
 
   const query = useQuery({
     key: RESOURCE_QUERY_KEY.byFilter({
-      pagination,
+      ...{ ...pagination, ...filtersState },
       ...(params?.value || {}),
     }),
     query: () =>
       getCollectionOperation.request({
-        query: { ...dataTableOptionsToQsObject(pagination) },
+        query: { ...queryObject.value },
         params: params?.value,
       }),
     enabled: /\{[^}]*}/.test(path) === (typeof params?.value !== 'undefined'),
@@ -39,6 +40,7 @@ export function useGetCollectionQuery(
     ...query,
     totalItems,
     pagination,
+    queryObject,
   }
 }
 

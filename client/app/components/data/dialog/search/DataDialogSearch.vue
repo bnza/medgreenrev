@@ -1,10 +1,12 @@
-<script setup lang="ts" generic="Path extends SearchableGetCollectionPath">
-import type { SearchableGetCollectionPath } from '~~/types/filters'
+<script setup lang="ts">
+import type { Filter, FilterState, SearchableGetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
 import LayoutActionThreeButtons from '~/components/layout/LayoutActionThreeButtons.vue'
+import useCollectionQueryStore from '~/stores/collection-query'
+import { diff } from 'deep-object-diff'
 
 const props = defineProps<{
-  path: Path
+  path: SearchableGetCollectionPath
   title: string
 }>()
 
@@ -18,8 +20,51 @@ const { isSearchDialogOpen: visible } = storeToRefs(
 )
 const currentFilterId = ref<string>()
 const filterDialogVisible = ref(false)
-const { getPathFilters } = useFilterConfig(props.path)
-console.log(getPathFilters())
+
+const collectionStore = useCollectionQueryStore(props.path)
+const { filtersState } = storeToRefs(collectionStore)
+const filtersMap = ref(new Map(Object.entries({} as FilterState)))
+const filters = computed(() => Object.fromEntries(filtersMap.value.entries()))
+const isChanged = computed(
+  () => Object.keys(diff(filtersState.value, filters.value)).length > 0,
+)
+
+const openFilterDialog = (id: string) => {
+  console.log('open filter dialog', id)
+  currentFilterId.value = id
+  filterDialogVisible.value = true
+}
+
+const closeFilterDialog = () => {
+  console.log('close filter dialog')
+  filterDialogVisible.value = false
+  currentFilterId.value = undefined
+}
+
+const deleteFilter = (id: string) => {
+  console.log('delete filter', id)
+  filtersMap.value.delete(id)
+}
+
+const setFilter = (id: string, filter: Filter) => {
+  console.log('add filter', id, filter)
+  filtersMap.value.set(id, filter)
+  filterDialogVisible.value = false
+  currentFilterId.value = undefined
+}
+
+const setFiltersToStore = () => {
+  collectionStore.setFilters(filtersMap.value)
+  visible.value = false
+}
+
+watch(visible, (flag) => {
+  if (!flag) {
+    filtersMap.value.clear()
+  } else {
+    filtersMap.value = new Map(Object.entries(filtersState.value))
+  }
+})
 </script>
 
 <template>
@@ -43,10 +88,18 @@ console.log(getPathFilters())
           </v-btn>
         </template>
       </layout-action-three-buttons>
+      <data-dialog-search-filters-list
+        :filters
+        @delete="deleteFilter"
+        @update="openFilterDialog"
+      />
       <data-dialog-search-filter
-        v-model:visible="filterDialogVisible"
-        v-model:id="currentFilterId"
+        :visible="filterDialogVisible"
+        :filter-id="currentFilterId"
         :path
+        :filters
+        @update="setFilter"
+        @close="closeFilterDialog"
       />
     </template>
     <template #actions>
@@ -62,7 +115,7 @@ console.log(getPathFilters())
         <template #left-two>
           <v-btn
             data-testid="data-dialog-form-close-button"
-            @click="visible = false"
+            @click="filtersMap.clear()"
             color="white"
             >clear
           </v-btn>
@@ -70,7 +123,8 @@ console.log(getPathFilters())
         <template #default>
           <v-btn
             data-testid="data-dialog-form-close-button"
-            @click="visible = false"
+            :disabled="!isChanged"
+            @click="setFiltersToStore"
             >submit
           </v-btn>
         </template>

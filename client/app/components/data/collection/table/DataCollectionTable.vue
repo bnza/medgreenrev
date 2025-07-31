@@ -31,10 +31,7 @@ const { pagination, items, totalItems, status } = useGetCollectionQuery(
     multi-sort
     :page="pagination.page"
     :sort-by="pagination.sortBy"
-    @update:group-by="pagination.groupBy = $event"
-    @update:sort-by="pagination.sortBy = $event"
-    @update:items-per-page="pagination.itemsPerPage = $event"
-    @update:page="pagination.page = $event"
+    @update:options="pagination = $event"
   >
     <!-- https://mokkapps.de/vue-tips/expose-slots-from-a-child-component-->
     <template v-for="(_, name) in $slots" #[name]="slotProps">

@@ -13,7 +13,10 @@ const useResourceConfig = <Path extends keyof paths>(path: Path) => {
     }
 
     if (configKey in RESOURCE_CONFIG_MAP) {
-      return RESOURCE_CONFIG_MAP[configKey as keyof typeof RESOURCE_CONFIG_MAP]
+      return {
+        ...{ protectedFields: [] },
+        ...RESOURCE_CONFIG_MAP[configKey as keyof typeof RESOURCE_CONFIG_MAP],
+      }
     }
 
     throw new Error(`Unknown resource config for key ${configKey}`)

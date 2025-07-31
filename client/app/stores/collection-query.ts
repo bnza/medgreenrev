@@ -1,5 +1,7 @@
 import type { DataTableComponentOptions, GetCollectionPath } from '~~/types'
 import type { FilterState, Filter } from '~~/types/filters'
+import { API_FILTERS } from '~/utils/consts/configs/filters'
+import { dataTableOptionsToQsObject } from '~/utils/requests'
 
 const defaultPagination = () =>
   ({
@@ -13,26 +15,49 @@ const useCollectionQueryStore = <Path extends GetCollectionPath>(
   path: Path,
 ) => {
   return defineStore(`collection-query:${path}`, () => {
-    const pagination = reactive(defaultPagination())
+    const pagination = shallowRef(defaultPagination())
 
-    const filters = shallowRef<FilterState>({})
-
-    const isFiltered = computed(() =>
-      Boolean(Object.keys(filters.value).length > 0),
+    const paginationQueryObject = computed(() =>
+      dataTableOptionsToQsObject(pagination.value),
     )
 
-    const clonedFilters = computed(() => structuredClone(filters.value))
+    const filtersState = shallowRef<FilterState>({})
 
-    const getFilter = (key?: string) =>
-      key
-        ? structuredClone(filters.value[key] || ({} as Partial<Filter>))
-        : ({} as Partial<Filter>)
+    const isFiltered = computed(() =>
+      Boolean(Object.keys(filtersState.value).length > 0),
+    )
+
+    const clonedFilters = computed(
+      () => JSON.parse(JSON.stringify(filtersState.value)) as FilterState,
+    )
+
+    const setFilters = (map: Map<string, Filter>) =>
+      (filtersState.value = Object.fromEntries(map.entries()))
+
+    const clearFilters = () => (filtersState.value = {})
+
+    const filterQueryObject = computed(() => {
+      const queryObject: Record<string, unknown> = {}
+      for (const filter of Object.values(filtersState.value)) {
+        API_FILTERS[filter.key].addToQueryObject(queryObject, filter)
+      }
+      return queryObject
+    })
+
+    const queryObject = computed(() => ({
+      ...paginationQueryObject.value,
+      ...filterQueryObject.value,
+    }))
 
     return {
       pagination,
+      paginationQueryObject,
+      queryObject,
       clonedFilters,
-      getFilter,
-      filters,
+      clearFilters,
+      setFilters,
+      filterQueryObject,
+      filtersState,
       isFiltered,
     }
   })()

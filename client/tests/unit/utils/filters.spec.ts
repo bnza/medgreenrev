@@ -1,422 +1,253 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import type { OpenAPIV3_1 } from 'openapi-types'
+import { describe, it, expect } from 'vitest'
 import {
-  getBaseName,
-  processPathFilters,
-  getAvailableProperties,
-  getAvailableOperations,
+  normalizeResourceFiltersDefinition,
+  createComponentFiltersMap,
 } from '~/utils/filters'
-import type { GetCollectionPath } from '~~/types'
-import type { ApiPathFilters } from '~~/types/filters'
+import type {
+  ResourceStaticFiltersDefinitionObject,
+  ResourceFiltersDefinitionObject,
+  AddToQueryObject,
+} from '~~/types/filters'
 
-describe('filters.ts', () => {
-  describe('getBaseName', () => {
-    it('should extract base name from array parameters', () => {
-      expect(getBaseName('code[]')).toBe('code')
-      expect(getBaseName('culturalContexts[]')).toBe('culturalContexts')
-      expect(getBaseName('chronologyLower[]')).toBe('chronologyLower')
-    })
+// Mock AddToQueryObject functions for testing
+const mockAddToQuery: AddToQueryObject = (queryObject, filter) => {
+  queryObject[filter.property] = filter.operands[0]
+}
 
-    it('should extract base name from exists parameters', () => {
-      expect(getBaseName('exists[chronologyLower]')).toBe('chronologyLower')
-      expect(getBaseName('exists[description]')).toBe('description')
-      expect(getBaseName('exists[culturalContexts]')).toBe('culturalContexts')
-    })
+const mockAddToQueryMultiple: AddToQueryObject = (queryObject, filter) => {
+  if (!(filter.property in queryObject)) {
+    queryObject[filter.property] = []
+  }
+  queryObject[filter.property].push(filter.operands[0])
+}
 
-    it('should extract base name from operation parameters', () => {
-      expect(getBaseName('chronologyLower[between]')).toBe('chronologyLower')
-      expect(getBaseName('chronologyUpper[gt]')).toBe('chronologyUpper')
-      expect(getBaseName('chronologyLower[gte]')).toBe('chronologyLower')
-      expect(getBaseName('chronologyUpper[lt]')).toBe('chronologyUpper')
-      expect(getBaseName('chronologyLower[lte]')).toBe('chronologyLower')
-    })
-
-    it('should return original name for simple parameters', () => {
-      expect(getBaseName('code')).toBe('code')
-      expect(getBaseName('name')).toBe('name')
-      expect(getBaseName('description')).toBe('description')
-      expect(getBaseName('fieldDirector')).toBe('fieldDirector')
-    })
-
-    it('should handle edge cases gracefully', () => {
-      expect(getBaseName('param[invalid')).toBe('param[invalid') // No closing bracket, return as-is
-      expect(getBaseName('param]invalid[')).toBe('param]invalid') // Malformed, return as-is
-      expect(getBaseName('param[]extra')).toBe('param') // Extra content after [], return param
-      expect(getBaseName('')).toBe('')
-    })
-
-    it('should handle nested property names', () => {
-      expect(getBaseName('culturalContexts.culturalContext')).toBe(
-        'culturalContexts.culturalContext',
-      )
-      expect(getBaseName('culturalContexts.culturalContext[]')).toBe(
-        'culturalContexts.culturalContext',
-      )
-    })
-  })
-
-  describe('processPathFilters', () => {
-    let mockOpenApiSpec: OpenAPIV3_1.Document
-
-    beforeEach(() => {
-      mockOpenApiSpec = {
-        openapi: '3.1.0',
-        info: { title: 'Test API', version: '1.0.0' },
-        paths: {
-          '/api/sites': {
-            get: {
-              operationId: 'test_operation',
-              responses: {
-                '200': {
-                  description: 'Success',
-                  content: {
-                    'application/json': {
-                      schema: {
-                        type: 'object',
-                      },
-                    },
-                  },
-                },
-              },
-              parameters: [
-                // Pagination params (should be excluded)
-                {
-                  name: 'page',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'integer' },
-                },
-                {
-                  name: 'itemsPerPage',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'integer' },
-                },
-                {
-                  name: 'search',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-                // Order params (should be excluded)
-                {
-                  name: 'order[id]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string', enum: ['asc', 'desc'] },
-                },
-                // Filter params (should be included)
-                {
-                  name: 'code',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                  description: 'Filter by code',
-                },
-                {
-                  name: 'code[]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'array', items: { type: 'string' } },
-                },
-                {
-                  name: 'chronologyLower[between]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-                {
-                  name: 'chronologyLower[gt]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-                {
-                  name: 'exists[description]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'boolean' },
-                },
-                {
-                  name: 'name',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                  description: 'Filter by name',
-                },
-              ],
-            },
-          },
-        },
-      } as OpenAPIV3_1.Document
-    })
-
-    it('should process valid collection path with filters', () => {
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/sites' as GetCollectionPath,
-      )
-
-      expect(result).toHaveProperty('code')
-      expect(result).toHaveProperty('chronologyLower')
-      expect(result).toHaveProperty('description')
-      expect(result).toHaveProperty('name')
-
-      // Should have operations
-      expect(result.code).toHaveProperty('in')
-      expect(result.chronologyLower).toHaveProperty('between')
-      expect(result.chronologyLower).toHaveProperty('gt')
-      expect(result.description).toHaveProperty('exists')
-      expect(result.name).toHaveProperty('equals')
-    })
-
-    it('should remove singular duplicates when array version exists', () => {
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/sites' as GetCollectionPath,
-      )
-
-      // Should only have 'in' operation for code (from code[])
-      expect(result.code).toHaveProperty('in')
-      expect(result.code).not.toHaveProperty('equals')
-    })
-
-    it('should return empty object for non-existent path', () => {
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/nonexistent' as GetCollectionPath,
-      )
-      expect(result).toEqual({})
-    })
-
-    it('should return empty object for path without GET operation', () => {
-      mockOpenApiSpec.paths!['/api/sites']!.get = undefined
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/sites' as GetCollectionPath,
-      )
-      expect(result).toEqual({})
-    })
-
-    it('should return empty object for path without parameters', () => {
-      mockOpenApiSpec.paths!['/api/sites']!.get!.parameters = []
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/sites' as GetCollectionPath,
-      )
-      expect(result).toEqual({})
-    })
-
-    it('should handle path parameters correctly (exclude them)', () => {
-      mockOpenApiSpec.paths!['/api/sites']!.get!.parameters!.push({
-        name: 'id',
-        in: 'path',
-        required: true,
-        schema: { type: 'string' },
-      })
-
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/sites' as GetCollectionPath,
-      )
-      expect(result).not.toHaveProperty('id')
-    })
-
-    it('should handle parameters with $ref (skip them)', () => {
-      mockOpenApiSpec.paths!['/api/sites']!.get!.parameters!.push({
-        $ref: '#/components/parameters/TestParam',
-      })
-
-      const result = processPathFilters(
-        mockOpenApiSpec,
-        '/api/sites' as GetCollectionPath,
-      )
-      // Should still work with other parameters
-      expect(result).toHaveProperty('code')
-    })
-
-    it('should handle empty OpenAPI spec', () => {
-      const emptySpec: OpenAPIV3_1.Document = {
-        openapi: '3.1.0',
-        info: { title: 'Empty API', version: '1.0.0' },
-        paths: {},
-      }
-
-      const result = processPathFilters(
-        emptySpec,
-        '/api/sites' as GetCollectionPath,
-      )
-      expect(result).toEqual({})
-    })
-  })
-
-  describe('getAvailableProperties', () => {
-    it('should return array of property names', () => {
-      const pathFilters: ApiPathFilters = {
+describe('filters', () => {
+  describe('normalizeResourceFiltersDefinition', () => {
+    it('should normalize static definition with default propertyLabel', () => {
+      const staticDefinition: ResourceStaticFiltersDefinitionObject = {
         code: {
-          equals: { name: 'code', schema: { type: 'string' } },
-          in: {
-            name: 'code[]',
-            schema: { type: 'array', items: { type: 'string' } },
-          },
-        },
-        name: {
-          equals: { name: 'name', schema: { type: 'string' } },
-        },
-      }
-
-      const result = getAvailableProperties(pathFilters)
-      expect(result).toEqual(['code', 'name'])
-    })
-
-    it('should return empty array for empty filters', () => {
-      const result = getAvailableProperties({})
-      expect(result).toEqual([])
-    })
-
-    it('should maintain property order', () => {
-      const pathFilters: ApiPathFilters = {
-        zebra: { equals: { name: 'zebra', schema: { type: 'string' } } },
-        alpha: { equals: { name: 'alpha', schema: { type: 'string' } } },
-        beta: { equals: { name: 'beta', schema: { type: 'string' } } },
-      }
-
-      const result = getAvailableProperties(pathFilters)
-      expect(result).toEqual(['zebra', 'alpha', 'beta'])
-    })
-  })
-
-  describe('getAvailableOperations', () => {
-    it('should return array of operation names for existing property', () => {
-      const pathFilters: ApiPathFilters = {
-        chronologyLower: {
-          between: {
-            name: 'chronologyLower[between]',
-            schema: { type: 'string' },
-          },
-          gt: { name: 'chronologyLower[gt]', schema: { type: 'string' } },
-          gte: { name: 'chronologyLower[gte]', schema: { type: 'string' } },
-        },
-      }
-
-      const result = getAvailableOperations(pathFilters, 'chronologyLower')
-      expect(result).toEqual(['between', 'gt', 'gte'])
-    })
-
-    it('should return empty array for non-existent property', () => {
-      const pathFilters: ApiPathFilters = {
-        code: {
-          equals: { name: 'code', schema: { type: 'string' } },
-        },
-      }
-
-      const result = getAvailableOperations(pathFilters, 'nonexistent')
-      expect(result).toEqual([])
-    })
-
-    it('should return empty array for empty filters', () => {
-      const result = getAvailableOperations({}, 'anyProperty')
-      expect(result).toEqual([])
-    })
-
-    it('should handle property with single operation', () => {
-      const pathFilters: ApiPathFilters = {
-        name: {
-          equals: { name: 'name', schema: { type: 'string' } },
-        },
-      }
-
-      const result = getAvailableOperations(pathFilters, 'name')
-      expect(result).toEqual(['equals'])
-    })
-  })
-
-  describe('integration tests', () => {
-    it('should work with real OpenAPI spec structure', () => {
-      const realSpec: OpenAPIV3_1.Document = {
-        openapi: '3.1.0',
-        info: { title: 'Real API', version: '1.0.0' },
-        paths: {
-          //@ts-expect-error type mismatch
-          '/api/sites': {
-            get: {
-              operationId: 'real_operation',
-              responses: {
-                '200': {
-                  description: 'Success',
-                },
-              },
-              parameters: [
-                {
-                  name: 'page',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'integer' },
-                },
-                {
-                  name: 'itemsPerPage',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'integer' },
-                },
-                {
-                  name: 'search',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-                {
-                  name: 'order[code]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-                {
-                  name: 'code',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-                {
-                  name: 'code[]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'array' },
-                },
-                {
-                  name: 'exists[description]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'boolean' },
-                },
-                {
-                  name: 'chronologyLower[gt]',
-                  in: 'query',
-                  required: false,
-                  schema: { type: 'string' },
-                },
-              ],
+          filters: {
+            SearchExact: {
+              operationLabel: 'equals',
+              multiple: true,
+              component: 'Single',
+              addToQueryObject: mockAddToQuery,
             },
           },
         },
       }
 
-      const pathFilters = processPathFilters(
-        realSpec,
-        '/api/sites' as GetCollectionPath,
+      const result = normalizeResourceFiltersDefinition(staticDefinition)
+
+      expect(result).toEqual({
+        code: {
+          SearchExact: {
+            propertyLabel: 'code',
+            operationLabel: 'equals',
+            multiple: true,
+            component: 'Single',
+            addToQueryObject: mockAddToQuery,
+          },
+        },
+      })
+    })
+
+    it('should use custom propertyLabel when provided', () => {
+      const staticDefinition: ResourceStaticFiltersDefinitionObject = {
+        'culturalContexts.culturalContext': {
+          propertyLabel: 'cultural context',
+          filters: {
+            SearchExact: {
+              operationLabel: 'equals',
+              multiple: false,
+              component: 'Single',
+              addToQueryObject: mockAddToQuery,
+            },
+            Exists: {
+              operationLabel: 'has any value',
+              multiple: false,
+              component: 'Boolean',
+              addToQueryObject: mockAddToQueryMultiple,
+            },
+          },
+        },
+      }
+
+      const result = normalizeResourceFiltersDefinition(staticDefinition)
+
+      expect(
+        result['culturalContexts.culturalContext']!['SearchExact']!
+          .propertyLabel,
+      ).toBe('cultural context')
+      expect(
+        result['culturalContexts.culturalContext']!['Exists']!.propertyLabel,
+      ).toBe('cultural context')
+    })
+
+    it('should handle multiple properties', () => {
+      const staticDefinition: ResourceStaticFiltersDefinitionObject = {
+        code: {
+          filters: {
+            SearchExact: {
+              operationLabel: 'equals',
+              multiple: true,
+              component: 'Single',
+              addToQueryObject: mockAddToQuery,
+            },
+          },
+        },
+        fieldDirector: {
+          propertyLabel: 'field director',
+          filters: {
+            SearchPartial: {
+              operationLabel: 'contains',
+              multiple: false,
+              component: 'Single',
+              addToQueryObject: mockAddToQuery,
+            },
+          },
+        },
+      }
+
+      const result = normalizeResourceFiltersDefinition(staticDefinition)
+
+      expect(Object.keys(result)).toHaveLength(2)
+      expect(result['code']!['SearchExact']!.propertyLabel).toBe('code')
+      expect(result['fieldDirector']!['SearchPartial']!.propertyLabel).toBe(
+        'field director',
       )
-      const properties = getAvailableProperties(pathFilters)
-      const codeOperations = getAvailableOperations(pathFilters, 'code')
-      const chronologyOperations = getAvailableOperations(
-        pathFilters,
-        'chronologyLower',
+    })
+  })
+
+  describe('createComponentFiltersMap', () => {
+    const mockResourceFilters: ResourceFiltersDefinitionObject = {
+      code: {
+        SearchExact: {
+          propertyLabel: 'code',
+          operationLabel: 'equals',
+          multiple: true,
+          componentKey: 'Single',
+          addToQueryObject: mockAddToQuery,
+        },
+      },
+      'culturalContexts.culturalContext': {
+        SearchExact: {
+          propertyLabel: 'cultural context',
+          operationLabel: 'equals',
+          multiple: false,
+          componentKey: 'Single',
+          addToQueryObject: mockAddToQuery,
+        },
+      },
+      culturalContexts: {
+        Exists: {
+          propertyLabel: 'cultural context',
+          operationLabel: 'has any value',
+          multiple: false,
+          componentKey: 'Boolean',
+          addToQueryObject: mockAddToQueryMultiple,
+        },
+      },
+      secretField: {
+        SearchExact: {
+          propertyLabel: 'secret field',
+          operationLabel: 'equals',
+          multiple: false,
+          componentKey: 'Single',
+          addToQueryObject: mockAddToQuery,
+        },
+      },
+    }
+
+    it('should create component filters map for authenticated user', () => {
+      const result = createComponentFiltersMap(mockResourceFilters, true, [
+        'secretField',
+      ])
+
+      expect(result).toEqual({
+        code: {
+          equals: mockResourceFilters['code']!['SearchExact'],
+        },
+        'cultural context': {
+          equals:
+            mockResourceFilters['culturalContexts.culturalContext']![
+              'SearchExact'
+            ],
+          'has any value': mockResourceFilters['culturalContexts']!['Exists'],
+        },
+        'secret field': {
+          equals: mockResourceFilters['secretField']!['SearchExact'],
+        },
+      })
+    })
+
+    it('should exclude protected fields for unauthenticated user', () => {
+      const result = createComponentFiltersMap(mockResourceFilters, false, [
+        'secretField',
+      ])
+
+      expect(result).toEqual({
+        code: {
+          equals: mockResourceFilters['code']!['SearchExact'],
+        },
+        'cultural context': {
+          equals:
+            mockResourceFilters['culturalContexts.culturalContext']![
+              'SearchExact'
+            ],
+          'has any value': mockResourceFilters['culturalContexts']!['Exists'],
+        },
+      })
+      expect(result['secret field']).toBeUndefined()
+    })
+
+    it('should handle empty protected fields array', () => {
+      const result = createComponentFiltersMap(mockResourceFilters, false)
+
+      expect(Object.keys(result)).toHaveLength(3)
+      expect(result['code']).toBeDefined()
+      expect(result['cultural context']).toBeDefined()
+      expect(result['secret field']).toBeDefined()
+    })
+
+    it('should handle empty resource filters', () => {
+      const result = createComponentFiltersMap({}, true, [])
+
+      expect(result).toEqual({})
+    })
+
+    it('should group multiple filters under same propertyLabel', () => {
+      const result = createComponentFiltersMap(mockResourceFilters, true, [])
+
+      expect(result['cultural context']).toHaveProperty('equals')
+      expect(result['cultural context']).toHaveProperty('has any value')
+      expect(Object.keys(result['cultural context']!)).toHaveLength(2)
+    })
+
+    it('should handle missing property filters gracefully', () => {
+      const resourceFiltersWithUndefined: ResourceFiltersDefinitionObject = {
+        validProperty: {
+          SearchExact: {
+            propertyLabel: 'valid',
+            operationLabel: 'equals',
+            multiple: false,
+            componentKey: 'Single',
+            addToQueryObject: mockAddToQuery,
+          },
+        },
+      }
+
+      // Simulate a missing property filter
+      resourceFiltersWithUndefined['missingProperty'] = undefined as any
+
+      const result = createComponentFiltersMap(
+        resourceFiltersWithUndefined,
+        true,
+        [],
       )
 
-      expect(properties).toContain('code')
-      expect(properties).toContain('description')
-      expect(properties).toContain('chronologyLower')
-      expect(codeOperations).toEqual(['in']) // Only array version should remain
-      expect(chronologyOperations).toEqual(['gt'])
+      expect(result['valid']).toBeDefined()
+      expect(Object.keys(result)).toHaveLength(1)
     })
   })
 })
