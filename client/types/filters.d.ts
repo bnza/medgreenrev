@@ -34,9 +34,8 @@ type StaticFiltersDefinitionObject = Omit<
   propertyLabel?: string
 }
 
-type ResourcePropertyFiltersDefinitionObject = Record<
-  FilterKey,
-  FilterDefinitionObject
+type ResourcePropertyFiltersDefinitionObject = Partial<
+  Record<FilterKey, FilterDefinitionObject>
 >
 
 type ResourcePropertyStaticFiltersDefinitionObject = {

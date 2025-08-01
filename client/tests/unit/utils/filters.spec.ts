@@ -30,7 +30,7 @@ describe('filters', () => {
             SearchExact: {
               operationLabel: 'equals',
               multiple: true,
-              component: 'Single',
+              componentKey: 'Single',
               addToQueryObject: mockAddToQuery,
             },
           },
@@ -42,11 +42,12 @@ describe('filters', () => {
       expect(result).toEqual({
         code: {
           SearchExact: {
+            key: 'SearchExact',
+            property: 'code',
             propertyLabel: 'code',
             operationLabel: 'equals',
             multiple: true,
-            component: 'Single',
-            addToQueryObject: mockAddToQuery,
+            componentKey: 'Single',
           },
         },
       })
@@ -60,13 +61,13 @@ describe('filters', () => {
             SearchExact: {
               operationLabel: 'equals',
               multiple: false,
-              component: 'Single',
+              componentKey: 'Single',
               addToQueryObject: mockAddToQuery,
             },
             Exists: {
               operationLabel: 'has any value',
               multiple: false,
-              component: 'Boolean',
+              componentKey: 'Boolean',
               addToQueryObject: mockAddToQueryMultiple,
             },
           },
@@ -91,7 +92,7 @@ describe('filters', () => {
             SearchExact: {
               operationLabel: 'equals',
               multiple: true,
-              component: 'Single',
+              componentKey: 'Single',
               addToQueryObject: mockAddToQuery,
             },
           },
@@ -102,7 +103,7 @@ describe('filters', () => {
             SearchPartial: {
               operationLabel: 'contains',
               multiple: false,
-              component: 'Single',
+              componentKey: 'Single',
               addToQueryObject: mockAddToQuery,
             },
           },
@@ -123,38 +124,42 @@ describe('filters', () => {
     const mockResourceFilters: ResourceFiltersDefinitionObject = {
       code: {
         SearchExact: {
+          key: 'SearchExact',
+          property: 'code',
           propertyLabel: 'code',
           operationLabel: 'equals',
           multiple: true,
           componentKey: 'Single',
-          addToQueryObject: mockAddToQuery,
         },
       },
       'culturalContexts.culturalContext': {
         SearchExact: {
+          key: 'SearchExact',
+          property: 'culturalContexts.culturalContext',
           propertyLabel: 'cultural context',
           operationLabel: 'equals',
           multiple: false,
           componentKey: 'Single',
-          addToQueryObject: mockAddToQuery,
         },
       },
       culturalContexts: {
         Exists: {
+          key: 'Exists',
+          property: 'culturalContexts',
           propertyLabel: 'cultural context',
           operationLabel: 'has any value',
           multiple: false,
           componentKey: 'Boolean',
-          addToQueryObject: mockAddToQueryMultiple,
         },
       },
       secretField: {
         SearchExact: {
+          key: 'SearchExact',
+          property: 'secretField',
           propertyLabel: 'secret field',
           operationLabel: 'equals',
           multiple: false,
           componentKey: 'Single',
-          addToQueryObject: mockAddToQuery,
         },
       },
     }
@@ -225,23 +230,25 @@ describe('filters', () => {
     })
 
     it('should handle missing property filters gracefully', () => {
-      const resourceFiltersWithUndefined: ResourceFiltersDefinitionObject = {
+      const resourceFiltersWithUndefined = {
         validProperty: {
           SearchExact: {
+            key: 'SearchExact' as const,
+            property: 'validProperty',
             propertyLabel: 'valid',
             operationLabel: 'equals',
             multiple: false,
-            componentKey: 'Single',
-            addToQueryObject: mockAddToQuery,
+            componentKey: 'Single' as const,
           },
         },
       }
 
       // Simulate a missing property filter
+      // @ts-expect-error unexistent property
       resourceFiltersWithUndefined['missingProperty'] = undefined as any
 
       const result = createComponentFiltersMap(
-        resourceFiltersWithUndefined,
+        resourceFiltersWithUndefined as any,
         true,
         [],
       )

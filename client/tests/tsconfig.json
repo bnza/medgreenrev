@@ -13,5 +13,6 @@
   //  "types": [
   //    "vitest"
   //  ],
-  "include": ["./**/*", "../app/**/*", "../.nuxt/types/**/*"]
+  "include": ["./**/*", "../.nuxt/types/**/*"]
+  //"include": ["./**/*", "../app/**/*", "../.nuxt/types/**/*"]
 }

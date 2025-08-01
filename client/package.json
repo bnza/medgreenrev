@@ -19,7 +19,9 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:watch": "vitest --watch",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.json --composite false"
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json --composite false",
+    "typecheck:tests": "vue-tsc --noEmit -p tests/tsconfig.json --composite false",
+    "typecheck:all": "pnpm typecheck && pnpm typecheck:tests"
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
