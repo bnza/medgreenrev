@@ -114,7 +114,7 @@ watch(visible, (flag) => {
         </template>
         <template #left-two>
           <v-btn
-            data-testid="data-dialog-form-close-button"
+            data-testid="data-dialog-form-clear-button"
             @click="filtersMap.clear()"
             color="white"
             >clear
@@ -122,7 +122,7 @@ watch(visible, (flag) => {
         </template>
         <template #default>
           <v-btn
-            data-testid="data-dialog-form-close-button"
+            data-testid="data-dialog-form-submit-button"
             :disabled="!isChanged"
             @click="setFiltersToStore"
             >submit
