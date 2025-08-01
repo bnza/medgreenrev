@@ -11,7 +11,7 @@ defineEmits<{
 </script>
 
 <template>
-  <v-list-item>
+  <v-list-item data-testid="data-dialog-search-filters-list-item">
     <template #default>
       <v-container class="h-90">
         <v-row align="center" justify="space-evenly" dense>

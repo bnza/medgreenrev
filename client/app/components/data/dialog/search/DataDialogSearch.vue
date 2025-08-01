@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Filter, FilterState, SearchableGetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
-import LayoutActionThreeButtons from '~/components/layout/LayoutActionThreeButtons.vue'
 import useCollectionQueryStore from '~/stores/collection-query'
 import { diff } from 'deep-object-diff'
 
@@ -90,6 +89,7 @@ watch(visible, (flag) => {
       </layout-action-three-buttons>
       <data-dialog-search-filters-list
         :filters
+        :is-changed
         @delete="deleteFilter"
         @update="openFilterDialog"
       />
@@ -107,16 +107,16 @@ watch(visible, (flag) => {
         <template #left-one>
           <v-btn
             data-testid="data-dialog-form-close-button"
-            @click="visible = false"
             color="white"
+            @click="visible = false"
             >close
           </v-btn>
         </template>
         <template #left-two>
           <v-btn
             data-testid="data-dialog-form-clear-button"
-            @click="filtersMap.clear()"
             color="white"
+            @click="filtersMap.clear()"
             >clear
           </v-btn>
         </template>

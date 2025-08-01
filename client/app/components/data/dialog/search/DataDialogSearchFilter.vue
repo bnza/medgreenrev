@@ -42,7 +42,6 @@ const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
 // Components management
 
 // Filter management
-
 const isRefreshingFilters = ref(false)
 const getFilter = (key?: string) => {
   if (key) {
