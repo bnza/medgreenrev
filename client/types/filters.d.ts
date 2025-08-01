@@ -5,7 +5,7 @@ export type OperandComponentsKey = 'Boolean' | 'Single'
 export type Filter = {
   property: string
   key: FilterKey
-  operands: Array<string | number>
+  operands: Array<string | number | boolean>
 }
 
 export interface FilterState {

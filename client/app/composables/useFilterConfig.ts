@@ -26,47 +26,8 @@ export const useFilterConfig = (path: SearchableGetCollectionPath) => {
     ),
   )
 
-  const propertyLabel = ref<string>()
-  const operationLabel = ref<string>()
-
-  const availableProperties = computed(() =>
-    Object.keys(componentFiltersMap.value),
-  )
-
-  const availableOperations = computed(() =>
-    propertyLabel.value
-      ? Object.keys(componentFiltersMap.value[propertyLabel.value] || {})
-      : [],
-  )
-
-  const filterDefinition = computed(() => {
-    if (!operationLabel.value || !propertyLabel.value) {
-      return undefined
-    }
-
-    // Check if propertyLabel exists in componentFiltersMap
-    const propertyFilters = componentFiltersMap.value[propertyLabel.value]
-    if (!propertyFilters) {
-      return undefined
-    }
-
-    return propertyFilters[operationLabel.value]
-  })
-
-  const filterDefinitionKey = computed(() => filterDefinition.value?.key)
-  const filterComponentKey = computed(
-    () => filterDefinition.value?.componentKey,
-  )
-
   return {
     componentFiltersMap,
     resourceFiltersDefinition,
-    propertyLabel,
-    operationLabel,
-    filterDefinition,
-    filterComponentKey,
-    filterDefinitionKey,
-    availableProperties,
-    availableOperations,
   }
 }

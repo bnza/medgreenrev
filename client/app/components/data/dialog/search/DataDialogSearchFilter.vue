@@ -21,8 +21,9 @@ const {
   filterComponentKey,
   filterDefinitionKey,
   filterDefinition,
-  resourceFiltersDefinition,
-} = useFilterConfig(props.path)
+  getFilter,
+  syncState,
+} = useCollectionQueryFilter(props.path, toRef(props, 'filters'))
 
 // Components management
 type ResolvedComponent = ReturnType<typeof resolveComponent>
@@ -43,35 +44,14 @@ const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
 
 // Filter management
 const isRefreshingFilters = ref(false)
-const getFilter = (key?: string) => {
-  if (key) {
-    const filterDefinition = props.filters[key]
-    return structuredClone(
-      toRaw(filterDefinition) || ({ operands: [] } as Partial<Filter>),
-    )
-  }
-  return { operands: [] } as Partial<Filter>
-}
 
 const filter = ref<Partial<Filter>>(getFilter(props.filterId))
-
-watch(operationLabel, () => {
-  console.log('operationLabel', operationLabel.value)
-})
 
 watch(
   () => props.filterId,
   (value) => {
-    filter.value = getFilter(value)
-    if (value) {
-      isRefreshingFilters.value = true
-      const filterDefinition =
-        filter.value.property && filter.value.key
-          ? resourceFiltersDefinition[filter.value.property]?.[filter.value.key]
-          : undefined
-      propertyLabel.value = filterDefinition?.propertyLabel
-      operationLabel.value = filterDefinition?.operationLabel
-    }
+    isRefreshingFilters.value = Boolean(value)
+    filter.value = syncState(value)
   },
 )
 

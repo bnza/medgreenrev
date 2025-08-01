@@ -1,13 +1,26 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import {
   normalizeResourceFiltersDefinition,
   createComponentFiltersMap,
+  createAvailableFiltersMap,
 } from '~/utils/filters'
 import type {
   ResourceStaticFiltersDefinitionObject,
   ResourceFiltersDefinitionObject,
   AddToQueryObject,
+  ComponentFiltersMap,
+  FilterState,
 } from '~~/types/filters'
+
+// Mock API_FILTERS
+vi.mock('~/utils/consts/configs/filters', () => ({
+  API_FILTERS: {
+    SearchExact: { multiple: false },
+    SearchPartial: { multiple: true },
+    Exists: { multiple: false },
+    DateRange: { multiple: true },
+  },
+}))
 
 // Mock AddToQueryObject functions for testing
 const mockAddToQuery: AddToQueryObject = (queryObject, filter) => {
@@ -255,6 +268,231 @@ describe('filters', () => {
 
       expect(result['valid']).toBeDefined()
       expect(Object.keys(result)).toHaveLength(1)
+    })
+  })
+
+  describe('createAvailableFiltersMap', () => {
+    const mockComponentFiltersMap: ComponentFiltersMap = {
+      name: {
+        equals: {
+          key: 'SearchExact',
+          property: 'name',
+          propertyLabel: 'name',
+          operationLabel: 'equals',
+          multiple: false,
+          componentKey: 'Single',
+        },
+        contains: {
+          key: 'SearchPartial',
+          property: 'name',
+          propertyLabel: 'name',
+          operationLabel: 'contains',
+          multiple: true,
+          componentKey: 'Single',
+        },
+      },
+      status: {
+        equals: {
+          key: 'SearchExact',
+          property: 'status',
+          propertyLabel: 'status',
+          operationLabel: 'equals',
+          multiple: false,
+          componentKey: 'Single',
+        },
+        exists: {
+          key: 'Exists',
+          property: 'status',
+          propertyLabel: 'status',
+          operationLabel: 'exists',
+          multiple: false,
+          componentKey: 'Boolean',
+        },
+      },
+      'date range': {
+        between: {
+          //@ts-expect-error FILTERS_MAP is mocked
+          key: 'DateRange',
+          property: 'createdAt',
+          propertyLabel: 'date range',
+          operationLabel: 'between',
+          multiple: true,
+          componentKey: 'Single',
+        },
+      },
+    }
+
+    it('should return all filters when no active filters exist', () => {
+      const filters: FilterState = {}
+
+      const result = createAvailableFiltersMap(mockComponentFiltersMap, filters)
+
+      expect(result).toEqual(mockComponentFiltersMap)
+    })
+
+    it('should exclude single-use filters that are already active', () => {
+      const filters: FilterState = {
+        filter1: {
+          key: 'SearchExact',
+          property: 'name',
+          operands: ['test'],
+        },
+        filter2: {
+          key: 'Exists',
+          property: 'status',
+          operands: [true],
+        },
+      }
+
+      const result = createAvailableFiltersMap(mockComponentFiltersMap, filters)
+
+      expect(result).toEqual({
+        name: {
+          contains: mockComponentFiltersMap['name']!['contains'],
+        },
+        status: {
+          equals: mockComponentFiltersMap['status']!['equals'],
+        },
+        'date range': {
+          between: mockComponentFiltersMap['date range']!['between'],
+        },
+      })
+    })
+
+    it('should include multi-use filters even when already active', () => {
+      const filters: FilterState = {
+        filter1: {
+          key: 'SearchPartial',
+          property: 'name',
+          operands: ['test'],
+        },
+        filter2: {
+          //@ts-expect-error FILTERS_MAP is mocked
+          key: 'DateRange',
+          property: 'createdAt',
+          operands: ['2023-01-01', '2023-12-31'],
+        },
+      }
+
+      const result = createAvailableFiltersMap(mockComponentFiltersMap, filters)
+
+      expect(result).toEqual({
+        name: {
+          equals: mockComponentFiltersMap['name']!['equals'],
+          contains: mockComponentFiltersMap['name']!['contains'], // Still available (multiple: true)
+        },
+        status: {
+          equals: mockComponentFiltersMap['status']!['equals'],
+          exists: mockComponentFiltersMap['status']!['exists'],
+        },
+        'date range': {
+          between: mockComponentFiltersMap['date range']!['between'], // Still available (multiple: true)
+        },
+      })
+    })
+
+    it('should remove entire property when all operations are filtered out', () => {
+      const filters: FilterState = {
+        filter1: {
+          key: 'SearchExact',
+          property: 'status',
+          operands: ['active'],
+        },
+        filter2: {
+          key: 'Exists',
+          property: 'status',
+          operands: [true],
+        },
+      }
+
+      const result = createAvailableFiltersMap(mockComponentFiltersMap, filters)
+
+      expect(result).toEqual({
+        name: {
+          equals: mockComponentFiltersMap['name']!['equals'],
+          contains: mockComponentFiltersMap['name']!['contains'],
+        },
+        'date range': {
+          between: mockComponentFiltersMap['date range']!['between'],
+        },
+      })
+      expect(result['status']).toBeUndefined()
+    })
+
+    it('should handle empty component filters map', () => {
+      const filters: FilterState = {}
+
+      const result = createAvailableFiltersMap({}, filters)
+
+      expect(result).toEqual({})
+    })
+
+    it('should handle mixed scenarios with multiple and single-use filters', () => {
+      const filters: FilterState = {
+        filter1: {
+          key: 'SearchExact',
+          property: 'name',
+          operands: ['John'],
+        },
+        filter2: {
+          key: 'SearchPartial',
+          property: 'name',
+          operands: ['Doe'],
+        },
+        filter3: {
+          //@ts-expect-error FILTERS_MAP is mocked
+          key: 'DateRange',
+          property: 'createdAt',
+          operands: ['2023-01-01', '2023-06-30'],
+        },
+      }
+
+      const result = createAvailableFiltersMap(mockComponentFiltersMap, filters)
+
+      expect(result).toEqual({
+        name: {
+          contains: mockComponentFiltersMap['name']!['contains'], // Multiple allowed
+        },
+        status: {
+          equals: mockComponentFiltersMap['status']!['equals'],
+          exists: mockComponentFiltersMap['status']!['exists'],
+        },
+        'date range': {
+          between: mockComponentFiltersMap['date range']!['between'], // Multiple allowed
+        },
+      })
+    })
+
+    it('should handle filters with different property paths but same key', () => {
+      const extendedComponentFiltersMap: ComponentFiltersMap = {
+        ...mockComponentFiltersMap,
+        description: {
+          equals: {
+            key: 'SearchExact',
+            property: 'description',
+            propertyLabel: 'description',
+            operationLabel: 'equals',
+            multiple: false,
+            componentKey: 'Single',
+          },
+        },
+      }
+
+      const filters: FilterState = {
+        filter1: {
+          key: 'SearchExact',
+          property: 'name', // Same key, different property
+          operands: ['test'],
+        },
+      }
+
+      const result = createAvailableFiltersMap(
+        extendedComponentFiltersMap,
+        filters,
+      )
+
+      expect(result['name']!['equals']).toBeUndefined() // Filtered out
+      expect(result['description']!['equals']).toBeDefined() // Different property, should remain
     })
   })
 })

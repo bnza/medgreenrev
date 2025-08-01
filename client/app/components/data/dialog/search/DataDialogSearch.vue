@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { Filter, FilterState, SearchableGetCollectionPath } from '~~/types'
+import type { Filter, SearchableGetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
-import useCollectionQueryStore from '~/stores/collection-query'
-import { diff } from 'deep-object-diff'
 
 const props = defineProps<{
   path: SearchableGetCollectionPath
@@ -20,40 +18,31 @@ const { isSearchDialogOpen: visible } = storeToRefs(
 const currentFilterId = ref<string>()
 const filterDialogVisible = ref(false)
 
-const collectionStore = useCollectionQueryStore(props.path)
-const { filtersState } = storeToRefs(collectionStore)
-const filtersMap = ref(new Map(Object.entries({} as FilterState)))
-const filters = computed(() => Object.fromEntries(filtersMap.value.entries()))
-const isChanged = computed(
-  () => Object.keys(diff(filtersState.value, filters.value)).length > 0,
-)
+const { filtersMap, filters, isChanged, setFilters, syncFilterMapToState } =
+  useCollectionQueryFilters(props.path)
 
 const openFilterDialog = (id: string) => {
-  console.log('open filter dialog', id)
   currentFilterId.value = id
   filterDialogVisible.value = true
 }
 
 const closeFilterDialog = () => {
-  console.log('close filter dialog')
   filterDialogVisible.value = false
   currentFilterId.value = undefined
 }
 
 const deleteFilter = (id: string) => {
-  console.log('delete filter', id)
   filtersMap.value.delete(id)
 }
 
 const setFilter = (id: string, filter: Filter) => {
-  console.log('add filter', id, filter)
   filtersMap.value.set(id, filter)
   filterDialogVisible.value = false
   currentFilterId.value = undefined
 }
 
 const setFiltersToStore = () => {
-  collectionStore.setFilters(filtersMap.value)
+  setFilters(filtersMap.value)
   visible.value = false
 }
 
@@ -61,7 +50,7 @@ watch(visible, (flag) => {
   if (!flag) {
     filtersMap.value.clear()
   } else {
-    filtersMap.value = new Map(Object.entries(filtersState.value))
+    syncFilterMapToState()
   }
 })
 </script>
