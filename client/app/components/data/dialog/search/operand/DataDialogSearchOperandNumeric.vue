@@ -31,6 +31,7 @@ watch(
   (value) => {
     valid.value = !value
   },
+  { immediate: true },
 )
 </script>
 

@@ -109,7 +109,7 @@ export const useCollectionQueryFilter = (
    */
   const availableOperations = computed(() =>
     propertyLabel.value
-      ? Object.keys(componentFiltersMap.value[propertyLabel.value] || {})
+      ? Object.keys(availableFiltersMap.value[propertyLabel.value] || {})
       : [],
   )
 
