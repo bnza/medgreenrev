@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import type { FilterState } from '~~/types'
+import type {
+  ExpandedFilter,
+  FilterState,
+  SearchableGetCollectionPath,
+} from '~~/types'
 
 const props = defineProps<{
   filters: FilterState
   isChanged: boolean
+  path: SearchableGetCollectionPath
 }>()
 defineEmits<{
   delete: [id: string]
@@ -14,6 +19,19 @@ const text = computed(() =>
     ? 'All filters have been removed.'
     : 'No filter selected yet. Please add new filters clicking the plus button in the top right corner',
 )
+const { resourceFiltersDefinition } = useFilterConfig(props.path)
+const expandedFilters = computed<Record<string, ExpandedFilter>>(() => {
+  const entries = Object.entries(props.filters).map(([id, filter]) => {
+    const definition = resourceFiltersDefinition[filter.property]?.[filter.key]
+    return [
+      id,
+      definition ? { ...definition, operands: filter.operands } : undefined,
+    ]
+  })
+  return Object.fromEntries(
+    entries.filter(([_, definition]) => Boolean(definition)),
+  )
+})
 </script>
 
 <template>
@@ -23,7 +41,7 @@ const text = computed(() =>
     data-testid="data-dialog-search-filters-list"
   >
     <data-dialog-search-filters-list-item
-      v-for="(filter, key) in filters"
+      v-for="(filter, key) in expandedFilters"
       :key
       :filter
       @delete="$emit('delete', String(key))"

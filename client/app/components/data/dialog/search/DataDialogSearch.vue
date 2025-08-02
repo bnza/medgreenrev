@@ -79,6 +79,7 @@ watch(visible, (flag) => {
       <data-dialog-search-filters-list
         :filters
         :is-changed
+        :path
         @delete="deleteFilter"
         @update="openFilterDialog"
       />

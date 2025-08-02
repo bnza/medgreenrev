@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Filter } from '~~/types'
+import type { ExpandedFilter } from '~~/types'
 
 defineProps<{
-  filter: Filter
+  filter: ExpandedFilter
 }>()
 defineEmits<{
   delete: []
@@ -24,7 +24,7 @@ defineEmits<{
           <v-col cols="3">
             <v-text-field
               readonly
-              :model-value="filter.property"
+              :model-value="filter.propertyLabel"
               variant="solo-filled"
               label="property"
               flat
@@ -33,7 +33,7 @@ defineEmits<{
           <v-col cols="3">
             <v-text-field
               readonly
-              :model-value="filter.key"
+              :model-value="filter.operationLabel"
               label="operands"
               variant="solo-filled"
               flat

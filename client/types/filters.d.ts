@@ -26,6 +26,8 @@ export type FilterDefinitionObject = {
   propertyLabel: string
 }
 
+export type ExpandedFilter = FilterDefinitionObject & Filter
+
 type StaticFiltersDefinitionObject = Omit<
   FilterDefinitionObject,
   'propertyLabel' | 'property' | 'key'
@@ -44,12 +46,12 @@ type ResourcePropertyStaticFiltersDefinitionObject = {
 }
 
 type ResourceStaticFiltersDefinitionObject = Record<
-  string,
+  string, // property
   ResourcePropertyStaticFiltersDefinitionObject
 >
 
 type ResourceFiltersDefinitionObject = Record<
-  string,
+  string, // property
   ResourcePropertyFiltersDefinitionObject
 >
 
