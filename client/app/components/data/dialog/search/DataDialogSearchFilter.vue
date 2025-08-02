@@ -44,6 +44,7 @@ const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
   Single: resolveComponent('DataDialogSearchOperandSingle'),
   Numeric: resolveComponent('DataDialogSearchOperandNumeric'),
   NumericRange: resolveComponent('DataDialogSearchOperandNumericRange'),
+  Vocabulary: resolveComponent('DataDialogSearchOperandVocabulary'),
 } as const
 // Components management
 
@@ -150,6 +151,11 @@ const submit = () => {
                 v-if="filterDefinition"
                 v-model="filter.operands"
                 v-model:valid="valid"
+                :path="
+                  filterDefinition.componentKey === 'Vocabulary'
+                    ? filterDefinition.path
+                    : undefined
+                "
               />
               <v-col v-else cols="4" />
             </v-row>

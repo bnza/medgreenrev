@@ -23,6 +23,10 @@ const addToQueryObjectMultiple: AddToQueryObject = (queryObject, filter) => {
   queryObject[filter.property].push(filter.operands[0])
 }
 
+const addToQueryObjectArray: AddToQueryObject = (queryObject, filter) => {
+  queryObject[filter.property] = filter.operands
+}
+
 const SearchExact: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -71,6 +75,7 @@ const NumericLessThanOrEqualTo: StaticFiltersDefinitionObject = {
   componentKey: 'Numeric',
   addToQueryObject: addOperatorToQueryObjectSingle('lte'),
 }
+
 const NumericRange: StaticFiltersDefinitionObject = {
   operationLabel: 'between',
   multiple: true,
@@ -82,6 +87,14 @@ const NumericRange: StaticFiltersDefinitionObject = {
     queryObject[filter.property].between =
       `${filter.operands[0]}..${filter.operands[1]}`
   },
+}
+
+const VocabularyCulturalContext: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/cultural_contexts',
+  addToQueryObject: addToQueryObjectArray,
 }
 
 const NumericOperations = {
@@ -115,6 +128,7 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  VocabularyCulturalContext,
 } as const
 
 export type FilterKey = keyof typeof API_FILTERS
@@ -134,7 +148,7 @@ export const FILTERS_PATHS_MAP: Record<
     'culturalContexts.culturalContext': {
       propertyLabel: 'cultural context',
       filters: {
-        SearchExact,
+        VocabularyCulturalContext,
       },
     },
     culturalContexts: {

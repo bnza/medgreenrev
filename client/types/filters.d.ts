@@ -1,10 +1,12 @@
 import type { FilterKey } from '~/utils/consts/configs/filters'
+import type { VocabularyGetCollectionPath } from './openapi-helpers'
 
 export type OperandComponentsKey =
   | 'Boolean'
   | 'Single'
   | 'Numeric'
   | 'NumericRange'
+  | 'Vocabulary'
 
 export type Filter = {
   property: string
@@ -21,24 +23,28 @@ export type AddToQueryObject = (
   filter: Filter,
 ) => void
 
-export type FilterDefinitionObject = {
-  key: FilterKey
-  componentKey: OperandComponentsKey
+type BaseFilterDefinitionObject = {
   multiple: boolean
   operationLabel: string
-  property: string
-  propertyLabel: string
 }
+
+type ComponentKeyWithPath =
+  | { componentKey: 'Vocabulary'; path: VocabularyGetCollectionPath }
+  | { componentKey: Exclude<OperandComponentsKey, 'Vocabulary'> }
+
+export type FilterDefinitionObject<K extends FilterKey = FilterKey> =
+  BaseFilterDefinitionObject & {
+    key: K
+    property: string
+    propertyLabel: string
+  } & ComponentKeyWithPath
 
 export type ExpandedFilter = FilterDefinitionObject & Filter
 
-type StaticFiltersDefinitionObject = Omit<
-  FilterDefinitionObject,
-  'propertyLabel' | 'property' | 'key'
-> & {
+type StaticFiltersDefinitionObject = BaseFilterDefinitionObject & {
   addToQueryObject: AddToQueryObject
   propertyLabel?: string
-}
+} & ComponentKeyWithPath
 
 type ResourcePropertyFiltersDefinitionObject = Partial<
   Record<FilterKey, FilterDefinitionObject>
