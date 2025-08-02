@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useRegle } from '@regle/core'
+import { required } from '@regle/rules'
+
 const operands = defineModel<any[]>({
   required: true,
 })
@@ -18,19 +21,57 @@ const operand1 = computed({
     operands.value[1] = value
   },
 })
+
+const valid = defineModel<boolean>('valid', {
+  required: true,
+})
+
+const { r$ } = useRegle(
+  {
+    operand0,
+    operand1,
+  },
+  {
+    operand0: {
+      required,
+      lessThanOrEqual: lessThanOrEqual(
+        'Min value must be greater than or equal to max value.',
+      )(() => operand1.value),
+    },
+    operand1: {
+      required,
+      greaterOrEqualThan: greaterThanOrEqual(
+        'Max value must be less than or equal to min value.',
+      )(() => operand0.value),
+    },
+  },
+)
+
+watch(
+  () => r$.$invalid,
+  (value) => {
+    valid.value = !value
+  },
+)
 </script>
 
 <template>
-  <v-text-field
-    v-model="operand0"
-    type="number"
-    data-testid="search-operand0-single-range"
-    label="value"
-  />
-  <v-text-field
-    v-model="operand1"
-    type="number"
-    data-testid="search-operand1-single-range"
-    label="value"
-  />
+  <v-col cols="2">
+    <v-text-field
+      v-model="operand0"
+      type="number"
+      data-testid="search-operand0-single-range"
+      label="min"
+      :error-messages="r$.operand0.$errors"
+    />
+  </v-col>
+  <v-col cols="2">
+    <v-text-field
+      v-model="operand1"
+      type="number"
+      data-testid="search-operand1-single-range"
+      label="max"
+      :error-messages="r$.operand1.$errors"
+    />
+  </v-col>
 </template>

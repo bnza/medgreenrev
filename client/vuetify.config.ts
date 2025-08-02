@@ -23,6 +23,9 @@ const VBtn = {
 const VTextField = {
   variant: 'underlined',
 }
+const VSelect = {
+  variant: 'underlined',
+}
 const VAutocomplete = {
   variant: 'underlined',
 }
@@ -34,6 +37,7 @@ const VCard = {
   VTextField,
   VAutocomplete,
   VBtnGroup,
+  VSelect,
 }
 
 export default defineVuetifyConfiguration({

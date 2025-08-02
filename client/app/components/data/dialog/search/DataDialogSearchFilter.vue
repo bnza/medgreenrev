@@ -85,10 +85,11 @@ const isValidFilter = (value: unknown): value is Filter =>
   isPlainObject(value) &&
   ['key', 'property', 'operands'].every((key) =>
     Object.keys(value).includes(key),
-  ) &&
-  Array.isArray(filter.value.operands)
+  )
 
-const isValid = computed(() => isValidFilter(filter.value))
+const valid = ref(false)
+
+const isValid = computed(() => isValidFilter(filter.value) && valid.value)
 
 const { addError } = useMessagesStore()
 const { increment } = useGlobalSequenceStore()
@@ -126,7 +127,7 @@ const submit = () => {
       <v-card-text>
         <v-form>
           <v-container>
-            <v-row align="center" flex>
+            <v-row align="center" justify="space-evenly" flex>
               <v-col cols="3">
                 <v-select
                   v-model="propertyLabel"
@@ -144,13 +145,13 @@ const submit = () => {
                   label="operator"
                 />
               </v-col>
-              <v-col cols="4">
-                <component
-                  :is="operandsComponent"
-                  v-if="filterDefinition"
-                  v-model="filter.operands"
-                />
-              </v-col>
+              <component
+                :is="operandsComponent"
+                v-if="filterDefinition"
+                v-model="filter.operands"
+                v-model:valid="valid"
+              />
+              <v-col v-else cols="4" />
             </v-row>
           </v-container>
         </v-form>

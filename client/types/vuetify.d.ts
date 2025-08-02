@@ -1,4 +1,4 @@
-import { VSnackbar } from 'vuetify/components'
+import type { VSnackbar } from 'vuetify/components'
 import type { VDataTable } from 'vuetify/lib/components/VDataTable'
 
 type SnackbarProps = InstanceType<typeof VSnackbar>['$props']

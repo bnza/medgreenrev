@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useRegle } from '@regle/core'
+import { required } from '@regle/rules'
+
 const operands = defineModel<any[]>({
   required: true,
 })
@@ -13,12 +16,34 @@ const operand = computed({
 const label = computed(() =>
   'undefined' === typeof operand.value ? 'no value' : String(operand.value),
 )
+const valid = defineModel<boolean>('valid', {
+  required: true,
+})
+
+const { r$ } = useRegle(
+  {
+    operand,
+  },
+  {
+    operand: { required },
+  },
+)
+
+watch(
+  () => r$.$invalid,
+  (value) => {
+    valid.value = !value
+  },
+)
 </script>
 
 <template>
-  <v-checkbox
-    v-model="operand"
-    :indeterminate="'undefined' === typeof operand"
-    :label
-  />
+  <v-col cols="4">
+    <v-checkbox
+      v-model="r$.$value.operand"
+      :indeterminate="'undefined' === typeof operand"
+      :label
+      :error-messages="r$.operand.$errors"
+    />
+  </v-col>
 </template>
