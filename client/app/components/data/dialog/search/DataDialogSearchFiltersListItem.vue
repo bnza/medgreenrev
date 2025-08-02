@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ExpandedFilter, OperandComponentsKey } from '~~/types'
+import type { ExpandedFilter } from '~~/types'
 
 const props = defineProps<{
   filter: ExpandedFilter
@@ -10,23 +10,7 @@ defineEmits<{
 }>()
 // Components management
 const filterComponentKey = computed(() => props.filter.componentKey)
-type ResolvedComponent = ReturnType<typeof resolveComponent>
-
-const operandsComponent = computed(() => {
-  if (!filterComponentKey.value) {
-    return undefined
-  }
-
-  return operandComponentsMap[filterComponentKey.value]
-})
-
-const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
-  Boolean: resolveComponent('DataDialogSearchOperandBoolean'),
-  Single: resolveComponent('DataDialogSearchOperandSingle'),
-  Numeric: resolveComponent('DataDialogSearchOperandNumeric'),
-  NumericRange: resolveComponent('DataDialogSearchOperandNumericRange'),
-  Vocabulary: resolveComponent('DataDialogSearchOperandVocabulary'),
-} as const
+const { operandsComponent } = useFilterOperandComponents(filterComponentKey)
 // Components management
 </script>
 
@@ -66,6 +50,7 @@ const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
               filter.componentKey === 'Vocabulary' ? filter.path : undefined
             "
             readonly
+            valid
           />
         </v-row>
       </v-container>

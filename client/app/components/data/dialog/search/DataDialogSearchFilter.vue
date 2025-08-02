@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import type {
-  SearchableGetCollectionPath,
-  Filter,
-  OperandComponentsKey,
-  FilterState,
-} from '~~/types'
+import type { SearchableGetCollectionPath, Filter, FilterState } from '~~/types'
 
 const props = defineProps<{
   path: SearchableGetCollectionPath
@@ -28,25 +23,7 @@ const {
   computed(() => props.filters),
 )
 
-// Components management
-type ResolvedComponent = ReturnType<typeof resolveComponent>
-
-const operandsComponent = computed(() => {
-  if (!filterComponentKey.value) {
-    return undefined
-  }
-
-  return operandComponentsMap[filterComponentKey.value]
-})
-
-const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
-  Boolean: resolveComponent('DataDialogSearchOperandBoolean'),
-  Single: resolveComponent('DataDialogSearchOperandSingle'),
-  Numeric: resolveComponent('DataDialogSearchOperandNumeric'),
-  NumericRange: resolveComponent('DataDialogSearchOperandNumericRange'),
-  Vocabulary: resolveComponent('DataDialogSearchOperandVocabulary'),
-} as const
-// Components management
+const { operandsComponent } = useFilterOperandComponents(filterComponentKey)
 
 // Filter management
 const isRefreshingFilters = ref(false)
@@ -75,7 +52,7 @@ watch(filterDefinitionKey, (value) => {
       filter.value.property = filterDefinition.value?.property
       filter.value.operands = []
     } else {
-      isRefreshingFilters.value = false
+      isRefreshingFilters.value = false // <--- This by now is the last watch of the update chain. Caution it could change. It's not a robust solution
     }
   }
 })
