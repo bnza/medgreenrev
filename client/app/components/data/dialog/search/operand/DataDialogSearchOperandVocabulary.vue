@@ -3,7 +3,15 @@ import type { VocabularyGetCollectionPath } from '~~/types'
 import { useRegle } from '@regle/core'
 import { required, minLength, withMessage } from '@regle/rules'
 
-defineProps<{ path: VocabularyGetCollectionPath }>()
+const props = withDefaults(
+  defineProps<{ path: VocabularyGetCollectionPath; readonly?: boolean }>(),
+  {
+    readonly: false,
+  },
+)
+
+const variant = computed(() => (props.readonly ? 'solo-filled' : 'underlined'))
+
 const operands = defineModel<any[]>({
   required: true,
 })
@@ -38,6 +46,13 @@ watch(
 
 <template>
   <v-col cols="4">
-    <data-selection-vocabulary v-model="operands" :path="path" />
+    <data-selection-vocabulary
+      v-model="operands"
+      :path="path"
+      :readonly
+      :variant
+      label="values"
+      flat
+    />
   </v-col>
 </template>

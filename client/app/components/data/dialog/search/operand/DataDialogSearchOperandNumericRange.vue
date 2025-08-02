@@ -2,6 +2,17 @@
 import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 
+const props = withDefaults(
+  defineProps<{
+    readonly?: boolean
+  }>(),
+  {
+    readonly: false,
+  },
+)
+
+const variant = computed(() => (props.readonly ? 'solo-filled' : 'underlined'))
+
 const operands = defineModel<any[]>({
   required: true,
 })
@@ -64,6 +75,9 @@ watch(
       data-testid="search-operand0-single-range"
       label="min"
       :error-messages="r$.operand0.$errors"
+      :readonly
+      :variant
+      flat
     />
   </v-col>
   <v-col cols="2">
@@ -73,6 +87,9 @@ watch(
       data-testid="search-operand1-single-range"
       label="max"
       :error-messages="r$.operand1.$errors"
+      :readonly
+      :variant
+      flat
     />
   </v-col>
 </template>

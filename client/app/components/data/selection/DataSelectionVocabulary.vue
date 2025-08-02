@@ -21,6 +21,5 @@ const model = defineModel<string[] | undefined>({ required: true })
     item-value="@id"
     item-title="value"
     multiple
-    chips
   />
 </template>

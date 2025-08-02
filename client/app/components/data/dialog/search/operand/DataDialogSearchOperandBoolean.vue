@@ -2,6 +2,15 @@
 import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 
+withDefaults(
+  defineProps<{
+    readonly?: boolean
+  }>(),
+  {
+    readonly: false,
+  },
+)
+
 const operands = defineModel<any[]>({
   required: true,
 })
@@ -45,6 +54,8 @@ watch(
       :indeterminate="'undefined' === typeof operand"
       :label
       :error-messages="r$.operand.$errors"
+      :readonly="readonly"
+      flat
     />
   </v-col>
 </template>

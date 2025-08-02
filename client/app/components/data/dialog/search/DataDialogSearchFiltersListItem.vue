@@ -1,13 +1,33 @@
 <script setup lang="ts">
-import type { ExpandedFilter } from '~~/types'
+import type { ExpandedFilter, OperandComponentsKey } from '~~/types'
 
-defineProps<{
+const props = defineProps<{
   filter: ExpandedFilter
 }>()
 defineEmits<{
   delete: []
   update: []
 }>()
+// Components management
+const filterComponentKey = computed(() => props.filter.componentKey)
+type ResolvedComponent = ReturnType<typeof resolveComponent>
+
+const operandsComponent = computed(() => {
+  if (!filterComponentKey.value) {
+    return undefined
+  }
+
+  return operandComponentsMap[filterComponentKey.value]
+})
+
+const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
+  Boolean: resolveComponent('DataDialogSearchOperandBoolean'),
+  Single: resolveComponent('DataDialogSearchOperandSingle'),
+  Numeric: resolveComponent('DataDialogSearchOperandNumeric'),
+  NumericRange: resolveComponent('DataDialogSearchOperandNumericRange'),
+  Vocabulary: resolveComponent('DataDialogSearchOperandVocabulary'),
+} as const
+// Components management
 </script>
 
 <template>
@@ -39,15 +59,14 @@ defineEmits<{
               flat
             />
           </v-col>
-          <v-col cols="5">
-            <v-text-field
-              readonly
-              :model-value="filter.operands"
-              :label="filter.operands.length > 1 ? 'values' : 'value'"
-              variant="solo-filled"
-              flat
-            />
-          </v-col>
+          <component
+            :is="operandsComponent"
+            :model-value="filter.operands"
+            :path="
+              filter.componentKey === 'Vocabulary' ? filter.path : undefined
+            "
+            readonly
+          />
         </v-row>
       </v-container>
     </template>

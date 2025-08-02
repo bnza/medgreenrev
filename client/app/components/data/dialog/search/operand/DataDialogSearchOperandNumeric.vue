@@ -2,6 +2,17 @@
 import { useRegle } from '@regle/core'
 import { required, numeric } from '@regle/rules'
 
+const props = withDefaults(
+  defineProps<{
+    readonly?: boolean
+  }>(),
+  {
+    readonly: false,
+  },
+)
+
+const variant = computed(() => (props.readonly ? 'solo-filled' : 'underlined'))
+
 const operands = defineModel<any[]>({
   required: true,
 })
@@ -42,6 +53,9 @@ watch(
       type="number"
       data-testid="search-operand-single-numeric"
       label="value"
+      :readonly
+      :variant
+      flat
     />
   </v-col>
 </template>
