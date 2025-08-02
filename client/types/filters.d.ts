@@ -1,6 +1,10 @@
 import type { FilterKey } from '~/utils/consts/configs/filters'
 
-export type OperandComponentsKey = 'Boolean' | 'Single'
+export type OperandComponentsKey =
+  | 'Boolean'
+  | 'Single'
+  | 'Numeric'
+  | 'NumericRange'
 
 export type Filter = {
   property: string

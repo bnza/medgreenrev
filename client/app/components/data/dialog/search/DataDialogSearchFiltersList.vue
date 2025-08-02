@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import type {
-  ExpandedFilter,
-  FilterState,
-  SearchableGetCollectionPath,
-} from '~~/types'
+import type { FilterState, SearchableGetCollectionPath } from '~~/types'
 
 const props = defineProps<{
   filters: FilterState
@@ -19,19 +15,11 @@ const text = computed(() =>
     ? 'All filters have been removed.'
     : 'No filter selected yet. Please add new filters clicking the plus button in the top right corner',
 )
-const { resourceFiltersDefinition } = useFilterConfig(props.path)
-const expandedFilters = computed<Record<string, ExpandedFilter>>(() => {
-  const entries = Object.entries(props.filters).map(([id, filter]) => {
-    const definition = resourceFiltersDefinition[filter.property]?.[filter.key]
-    return [
-      id,
-      definition ? { ...definition, operands: filter.operands } : undefined,
-    ]
-  })
-  return Object.fromEntries(
-    entries.filter(([_, definition]) => Boolean(definition)),
-  )
-})
+
+const { expandedFilters } = useCollectionQueryFilter(
+  props.path,
+  computed(() => props.filters),
+)
 </script>
 
 <template>

@@ -1,36 +1,21 @@
-import type { Filter, FilterState, SearchableGetCollectionPath } from '~~/types'
+import type {
+  ExpandedFilter,
+  Filter,
+  FilterState,
+  SearchableGetCollectionPath,
+} from '~~/types'
 import { createAvailableFiltersMap } from '~/utils/filters'
 
 /**
- * Composable for managing filter state modification and display in the DataDialogSearchFilter component.
+ * Composable for managing individual filter state in collection search dialogs.
  *
- * The composable serves as the primary interface for handling individual filter creation and editing
- * within the search dialog system. It provides reactive state management for filter property and
- * operation selection, dynamically determines available filter options based on existing filters,
- * and handles the synchronization between UI state and filter data structures.
- *
- * ## Primary Use Case
- * Used exclusively by `DataDialogSearchFilter.vue` to:
- * - Populate property and operation dropdown selections
- * - Manage form state during filter creation/editing
- * - Provide dynamic filtering of available options based on current filter state
- * - Handle filter data synchronization and validation
- *
- * ## Component Integration
- * The composable integrates with the broader search system:
- * - `DataDialogSearch.vue`: Parent dialog that manages the overall filter collection
- * - `DataDialogSearchFilter.vue`: Direct consumer for individual filter editing
- * - `DataDialogSearch*.vue` operand components: Receive component keys to render appropriate inputs
- *
- * ## Filter Availability Logic
- * Dynamically filters available options based on:
- * - Existing active filters in the current filter state
- * - Filter multiplicity rules (single-use vs multi-use filters)
- * - Authentication and field protection rules from the filter configuration
+ * Provides reactive state management for filter property and operation selection,
+ * dynamically determines available filter options based on existing filters,
+ * and handles synchronization between UI state and filter data structures.
  *
  * @example
  * ```typescript
- * // In DataDialogSearchFilter.vue
+ * // In DataDialogSearchFilter.vue - Individual filter editing
  * const {
  *   propertyLabel,
  *   operationLabel,
@@ -39,18 +24,50 @@ import { createAvailableFiltersMap } from '~/utils/filters'
  *   filterComponentKey,
  *   getFilter,
  *   syncState
- * } = useCollectionQueryFilter(props.path, toRef(props, 'filters'))
+ * } = useCollectionQueryFilter(props.path, computed(() => props.filters))
  *
  * // Property selection drives operation availability
  * watch(propertyLabel, () => {
  *   operationLabel.value = undefined // Reset operation when property changes
  * })
- *
- * // Component selection for operand input
- * const operandsComponent = computed(() => {
- *   return operandComponentsMap[filterComponentKey.value]
- * })
  * ```
+ *
+ * @example
+ * ```typescript
+ * // In DataDialogSearchFiltersList.vue - Filter list display
+ * const { expandedFilters } = useCollectionQueryFilter(
+ *   props.path,
+ *   computed(() => props.filters) // Use computed for proper reactivity
+ * )
+ * ```
+ *
+ * ## Core Functionality
+ *
+ * ### Filter Availability Logic
+ * - Filters available options based on existing active filters
+ * - Respects filter multiplicity rules (single-use vs multi-use)
+ * - Integrates with authentication and field protection rules
+ *
+ * ### State Management
+ * - `propertyLabel` / `operationLabel`: Currently selected filter criteria
+ * - `availableProperties` / `availableOperations`: Dynamic option arrays
+ * - `filterDefinition`: Complete metadata for current selection
+ * - `expandedFilters`: Enriched filter objects for display
+ *
+ * ### Component Integration
+ * - `filterComponentKey`: Determines which operand input component to render
+ * - Maps to: 'Single' → DataDialogSearchOperandSingle, 'Boolean' → DataDialogSearchOperandBoolean, etc.
+ *
+ * ## Usage Patterns
+ *
+ * **Filter Creation/Editing**: Used by `DataDialogSearchFilter.vue` for form state management
+ * **Filter Display**: Used by `DataDialogSearchFiltersList.vue` for rendering filter summaries
+ * **Parent Integration**: Connects with `DataDialogSearch.vue` filter collection management
+ *
+ * ## Reactivity Notes
+ *
+ * ⚠️ **Important**: Pass filters using `computed(() => props.filters)` instead of `toRef(props.filters)`
+ * to ensure proper reactivity chain when parent computed properties update.
  */
 export const useCollectionQueryFilter = (
   path: SearchableGetCollectionPath,
@@ -159,7 +176,34 @@ export const useCollectionQueryFilter = (
     return filter
   }
 
+  const expandedFilters = computed<Record<string, ExpandedFilter>>(() => {
+    const entries = Object.entries(filters.value).map(([id, filter]) => {
+      const definition =
+        resourceFiltersDefinition[filter.property]?.[filter.key]
+      return [
+        id,
+        definition ? { ...definition, operands: filter.operands } : undefined,
+      ]
+    })
+    return Object.fromEntries(
+      entries.filter(([_, definition]) => typeof definition !== 'undefined'),
+    )
+  })
+
+  const expandedFilter = computed<ExpandedFilter | undefined>(() => {
+    if (!propertyLabel.value || !operationLabel.value) {
+      return undefined
+    }
+    return Object.values(expandedFilters).find(
+      (expandedFilter) =>
+        expandedFilter?.propertyLabel === propertyLabel.value &&
+        expandedFilter?.operationLabel === operationLabel.value,
+    )
+  })
+
   return {
+    expandedFilters,
+    expandedFilter,
     propertyLabel,
     operationLabel,
     availableOperations,

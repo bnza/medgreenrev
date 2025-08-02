@@ -17,7 +17,9 @@ export const useCollectionQueryFilters = (
   const collectionStore = useCollectionQueryStore(path)
   const { filtersState } = storeToRefs(collectionStore)
   const filtersMap = ref(new Map(Object.entries({} as FilterState)))
-  const filters = computed(() => Object.fromEntries(filtersMap.value.entries()))
+  const filters = computed(
+    () => Object.fromEntries(filtersMap.value.entries()) || {},
+  )
   const isChanged = computed(
     () => Object.keys(diff(filtersState.value, filters.value)).length > 0,
   )

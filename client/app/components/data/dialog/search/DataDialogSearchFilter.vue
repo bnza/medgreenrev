@@ -23,7 +23,10 @@ const {
   filterDefinition,
   getFilter,
   syncState,
-} = useCollectionQueryFilter(props.path, toRef(props, 'filters'))
+} = useCollectionQueryFilter(
+  props.path,
+  computed(() => props.filters),
+)
 
 // Components management
 type ResolvedComponent = ReturnType<typeof resolveComponent>
@@ -39,6 +42,8 @@ const operandsComponent = computed(() => {
 const operandComponentsMap: Record<OperandComponentsKey, ResolvedComponent> = {
   Boolean: resolveComponent('DataDialogSearchOperandBoolean'),
   Single: resolveComponent('DataDialogSearchOperandSingle'),
+  Numeric: resolveComponent('DataDialogSearchOperandNumeric'),
+  NumericRange: resolveComponent('DataDialogSearchOperandNumericRange'),
 } as const
 // Components management
 
@@ -142,7 +147,7 @@ const submit = () => {
               <v-col cols="4">
                 <component
                   :is="operandsComponent"
-                  v-if="operationLabel"
+                  v-if="filterDefinition"
                   v-model="filter.operands"
                 />
               </v-col>

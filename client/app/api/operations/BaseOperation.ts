@@ -28,9 +28,7 @@ export abstract class BaseOperation<P extends keyof paths> {
     const { query, body, ...restOptions } = options
     let finalUrl = url
     if (query) {
-      const queryString = qs.stringify(query, {
-        arrayFormat: 'brackets',
-      })
+      const queryString = qs.stringify(query)
 
       if (queryString) {
         finalUrl = `${url}${url.includes('?') ? '&' : '?'}${queryString}`

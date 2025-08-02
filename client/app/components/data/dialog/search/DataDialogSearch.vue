@@ -36,7 +36,7 @@ const deleteFilter = (id: string) => {
 }
 
 const setFilter = (id: string, filter: Filter) => {
-  filtersMap.value.set(id, filter)
+  filtersMap.value.set(id, toRaw(filter))
   filterDialogVisible.value = false
   currentFilterId.value = undefined
 }
