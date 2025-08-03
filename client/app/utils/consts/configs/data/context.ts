@@ -1,0 +1,46 @@
+import type { ResourceConfig } from '~~/types'
+
+const config: Readonly<ResourceConfig> = {
+  apiPath: '/api/contexts',
+  appPath: '/data/contexts',
+  defaultHeaders: [
+    {
+      key: 'id',
+      value: 'id',
+      title: 'ID',
+      align: 'center',
+      width: '200',
+      maxWidth: '200',
+    },
+    {
+      key: 'site.code',
+      value: 'site.code',
+      title: 'site',
+    },
+    {
+      key: 'type.group',
+      value: 'type.group',
+      title: 'group',
+    },
+    {
+      key: 'type.value',
+      value: 'type.value',
+      title: 'type',
+    },
+    {
+      key: 'name',
+      value: 'name',
+      title: 'name',
+    },
+    {
+      key: 'description',
+      value: 'description',
+      title: 'description',
+      sortable: false,
+    },
+  ],
+  labels: ['site', 'sites'],
+  name: 'site',
+}
+
+export default config
