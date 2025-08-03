@@ -44,6 +44,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Sample resources.
+     * @description Retrieves the collection of Sample resources.
+     */
+    get: operations['api_samples_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/samples/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Sample resource.
+     * @description Retrieves a Sample resource.
+     */
+    get: operations['api_samples_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/sites': {
     parameters: {
       query?: never
@@ -360,6 +400,26 @@ export interface paths {
     patch: operations['api_stratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/vocabulary/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Type resources.
+     * @description Retrieves the collection of Type resources.
+     */
+    get: operations['api_vocabularytypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/site_user_privileges/{site}/{user}': {
     parameters: {
       query?: never
@@ -648,6 +708,28 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
+    'Sample.jsonld-sample.acl.read': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string | null
+      year?: number | null
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
     'Site-site.create': {
       code: string
       name: string
@@ -868,6 +950,13 @@ export interface components {
       description?: string | null
       interpretation?: string | null
       readonly code?: string
+    }
+    'Type.jsonld': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number
+      code?: string
+      value?: string
     }
     'UniqueValidator.jsonld': {
       readonly '@context'?:
@@ -1106,6 +1195,100 @@ export interface operations {
           'application/json': {
             readonly token: string
           }
+        }
+      }
+    }
+  }
+  api_samples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Sample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Sample.jsonld-sample.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_samples_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Sample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -2137,6 +2320,11 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        /**
+         * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example 2025 123
+         */
+        search?: string
       }
       header?: never
       path: {
@@ -2204,6 +2392,11 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        /**
+         * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example 2025 123
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -2449,6 +2642,67 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_vocabularytypes_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Type collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Type.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }

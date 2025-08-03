@@ -3,10 +3,12 @@
 
 export const API_RESOURCE_MAP = {
   culturalContext: '/api/vocabulary/cultural_contexts',
+  sample: '/api/samples',
   site: '/api/sites',
   siteCulturalContext: '/api/site_cultural_contexts',
   siteUserPrivilege: '/api/site_user_privileges',
   stratigraphicUnit: '/api/stratigraphic_units',
+  type: '/api/vocabulary/types',
   user: '/api/users',
 } as const
 
