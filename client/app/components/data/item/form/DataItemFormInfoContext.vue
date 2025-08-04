@@ -2,7 +2,7 @@
 import type { GetItemResponseMap } from '~~/types'
 
 const props = defineProps<{
-  item: GetItemResponseMap['/api/data_contexts/{id}']
+  item: GetItemResponseMap['/api/data/contexts/{id}']
 }>()
 
 const type = computed(

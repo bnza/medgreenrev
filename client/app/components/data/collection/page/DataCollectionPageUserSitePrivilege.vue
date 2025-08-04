@@ -4,9 +4,9 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/site_user_privileges'
-      | '/api/sites/{parentId}/site_user_privileges'
-      | '/api/users/{parentId}/site_user_privileges'
+      | '/api/admin/site_user_privileges'
+      | '/api/admin/sites/{parentId}/site_user_privileges'
+      | '/api/admin/users/{parentId}/site_user_privileges'
     >
   "
 >

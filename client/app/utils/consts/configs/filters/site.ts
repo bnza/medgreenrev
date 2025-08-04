@@ -1,14 +1,14 @@
 // import type { PartialFilterConfig } from '~~/types/filters'
 //
 // const siteCodeFilters: PartialFilterConfig<
-//   '/api/sites',
+//   '/api/data/sites',
 //   'culturalContexts.culturalContext'
 // > = {
 //   operations: {},
 // }
 //
 // const site = {
-//   '/api/sites': {
+//   '/api/data/sites': {
 //     code: {},
 //   },
 // }

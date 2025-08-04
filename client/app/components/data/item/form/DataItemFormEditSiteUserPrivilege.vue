@@ -19,7 +19,7 @@ defineProps<Props>()
     <v-col cols="6">
       <data-autocomplete
         v-model="item.user"
-        path="/api/users"
+        path="/api/admin/users"
         item-title="email"
         label="user"
         :error-messages="errors?.user"
@@ -31,7 +31,7 @@ defineProps<Props>()
     <v-col cols="6">
       <data-autocomplete-site
         v-model="item.site"
-        path="/api/sites"
+        path="/api/data/sites"
         item-title="name"
         label="site"
         :error-messages="errors?.site"

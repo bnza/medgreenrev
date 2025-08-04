@@ -2,13 +2,13 @@ import type { GetItemResponseMap } from '~~/types'
 
 export type ResourceParentSite = [
   'site',
-  '/api/sites/{id}',
-  GetItemResponseMap['/api/sites/{id}'],
+  '/api/data/sites/{id}',
+  GetItemResponseMap['/api/data/sites/{id}'],
 ]
 export type ResourceParentUser = [
   'user',
-  '/api/users/{id}',
-  GetItemResponseMap['/api/users/{id}'],
+  '/api/admin/users/{id}',
+  GetItemResponseMap['/api/admin/users/{id}'],
 ]
 
 export type ResourceParentSiteUserPrivilege =

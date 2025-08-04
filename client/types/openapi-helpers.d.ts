@@ -148,5 +148,5 @@ export type ResourceParent<K extends string, P extends ApiResourceItemPath> = {
 }
 
 export type ResourceParentSiteUserPrivilege =
-  | ResourceParent<'site', '/api/sites/{id}'>
-  | ResourceParent<'user', '/api/users/{id}'>
+  | ResourceParent<'site', '/api/data/sites/{id}'>
+  | ResourceParent<'user', '/api/admin/users/{id}'>

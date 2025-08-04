@@ -5,7 +5,7 @@ import { useNormalization } from '~/composables/normalization/useSiteUserPrivile
 import type { GetItemResponseMap } from '~~/types'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/site_user_privileges/{id}'),
+  useResourceUiStore('/api/admin/site_user_privileges/{id}'),
 )
 const { r$, responseItem, item } = useUpdateValidation(updateDialogState)
 
@@ -13,15 +13,15 @@ const { onPreUpdate } = useNormalization()
 
 const isSiteUserPrivilegeFn = (
   item: unknown,
-): item is GetItemResponseMap['/api/site_user_privileges/{id}'] =>
+): item is GetItemResponseMap['/api/admin/site_user_privileges/{id}'] =>
   isPlainObject(item) && 'site' in item && 'user' in item && 'privilege' in item
 </script>
 
 <template>
   <data-dialog-update
-    path="/api/site_user_privileges/{id}"
-    title="Site/User Privilege"
     v-model:regle="r$"
+    path="/api/admin/site_user_privileges/{id}"
+    title="Site/User Privilege"
     :fullscreen="false"
     :on-pre-submit="onPreUpdate(item)"
   >

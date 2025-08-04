@@ -2,7 +2,7 @@
 import type { GetItemResponseMap } from '~~/types'
 
 const props = defineProps<{
-  item: GetItemResponseMap['/api/users/{id}']
+  item: GetItemResponseMap['/api/admin/users/{id}']
 }>()
 
 const role = computed(() => reduceAppRoles(props.item.roles))

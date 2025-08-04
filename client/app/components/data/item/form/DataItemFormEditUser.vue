@@ -4,8 +4,8 @@ import { ApiRole, type ApiSpecialistRole } from '~/utils/consts/auth'
 import { mergeRole } from '~/utils/acl'
 import type { PatchItemRequestMap, PostCollectionRequestMap } from '~~/types'
 
-type Item = PostCollectionRequestMap['/api/users'] &
-  PatchItemRequestMap['/api/users/{id}']
+type Item = PostCollectionRequestMap['/api/admin/users'] &
+  PatchItemRequestMap['/api/admin/users/{id}']
 
 const item = defineModel<Partial<Item>>('item', { required: true })
 

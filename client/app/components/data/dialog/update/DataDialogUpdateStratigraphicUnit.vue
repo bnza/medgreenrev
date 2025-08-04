@@ -4,7 +4,7 @@ import { useUpdateValidation } from '~/composables/validation/useStratigraphicUn
 import { useNormalization } from '~/composables/normalization/useStratigraphicUnitNormalization'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/stratigraphic_units/{id}'),
+  useResourceUiStore('/api/data/stratigraphic_units/{id}'),
 )
 const { r$, item } = useUpdateValidation(updateDialogState)
 
@@ -13,9 +13,9 @@ const { onPreUpdate } = useNormalization()
 
 <template>
   <data-dialog-update
-    path="/api/stratigraphic_units/{id}"
-    title="Stratigraphic Unit"
     v-model:regle="r$"
+    path="/api/data/stratigraphic_units/{id}"
+    title="Stratigraphic Unit"
     :on-pre-submit="onPreUpdate(item)"
   >
     <template #default>

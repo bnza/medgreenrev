@@ -52,11 +52,12 @@ export function useCreateValidation(parent?: ResourceParentSiteUserPrivilege) {
 
 export function useUpdateValidation(
   params: Ref<
-    OperationPathParams<'/api/site_user_privileges/{id}', 'get'> | undefined
+    | OperationPathParams<'/api/admin/site_user_privileges/{id}', 'get'>
+    | undefined
   >,
 ) {
   const { item, model, responseItem } = useGetPatchItemQuery(
-    '/api/site_user_privileges/{id}',
+    '/api/admin/site_user_privileges/{id}',
     params,
   )
 

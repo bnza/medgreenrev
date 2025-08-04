@@ -1,9 +1,9 @@
 import type { ApiRequestOptions } from '~~/types'
 import { PostCollectionOperation } from '~/api/operations/PostCollectionOperation'
 
-export class UserChangePasswordPostCollectionOperation extends PostCollectionOperation<'/api/users/me/change_password'> {
+export class UserChangePasswordPostCollectionOperation extends PostCollectionOperation<'/api/admin/users/me/change_password'> {
   constructor() {
-    super('/api/users/me/change_password')
+    super('/api/admin/users/me/change_password')
   }
 
   override request(options?: ApiRequestOptions) {

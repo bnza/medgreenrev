@@ -30,7 +30,7 @@ export default function useAppAuth() {
       isAuthenticated.value && userIdentifier.value === identifier,
   )
 
-  type CreatedBy = GetItemResponseMap['/api/sites/{id}']['createdBy']
+  type CreatedBy = GetItemResponseMap['/api/data/sites/{id}']['createdBy']
   const isSiteAdmin = (site: { createdBy?: CreatedBy }) => {
     const result = computed(
       () =>

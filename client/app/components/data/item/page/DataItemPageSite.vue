@@ -3,10 +3,10 @@ import useResourceUiStore from '~/stores/resource-ui'
 import type { GetItemResponseMap } from '~~/types'
 import { hasAcl } from '~/utils/acl'
 
-const path = '/api/sites/{id}' as const
+const path = '/api/data/sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(useResourceUiStore('/api/sites/{id}'))
+const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
 </script>
 
 <template>
@@ -28,8 +28,12 @@ const { tab } = storeToRefs(useResourceUiStore('/api/sites/{id}'))
         </v-tabs-window-item>
         <v-tabs-window-item value="sus" data-testid="tab-window-sus">
           <data-collection-page-stratigraphic-unit
-            path="/api/sites/{parentId}/stratigraphic_units"
-            :parent="{ key: 'site', resourceItemPath: '/api/sites/{id}', item }"
+            path="/api/data/sites/{parentId}/stratigraphic_units"
+            :parent="{
+              key: 'site',
+              resourceItemPath: '/api/data/sites/{id}',
+              item,
+            }"
           />
         </v-tabs-window-item>
         <v-tabs-window-item
@@ -39,8 +43,12 @@ const { tab } = storeToRefs(useResourceUiStore('/api/sites/{id}'))
         >
           <data-collection-page-user-site-privilege
             v-if="item?.id"
-            path="/api/sites/{parentId}/site_user_privileges"
-            :parent="{ key: 'site', resourceItemPath: '/api/sites/{id}', item }"
+            path="/api/admin/sites/{parentId}/site_user_privileges"
+            :parent="{
+              key: 'site',
+              resourceItemPath: '/api/data/sites/{id}',
+              item,
+            }"
           />
         </v-tabs-window-item>
       </v-tabs-window>

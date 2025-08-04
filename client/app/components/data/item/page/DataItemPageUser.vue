@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import useResourceUiStore from '~/stores/resource-ui'
 
-const { tab } = storeToRefs(useResourceUiStore('/api/users/{id}'))
+const { tab } = storeToRefs(useResourceUiStore('/api/admin/users/{id}'))
 </script>
 
 <template>
-  <data-item-page path="/api/users/{id}" title="User" identifier-prop="email">
+  <data-item-page
+    path="/api/admin/users/{id}"
+    title="User"
+    identifier-prop="email"
+  >
     <template #default="{ item }">
       <lazy-data-item-form-info-user :item />
       <v-tabs v-model="tab" background-color="transparent">
@@ -15,8 +19,12 @@ const { tab } = storeToRefs(useResourceUiStore('/api/users/{id}'))
         <v-tabs-window-item value="privileges" data-testid="tab-privileges">
           <data-collection-page-user-site-privilege
             v-if="item?.id"
-            path="/api/users/{parentId}/site_user_privileges"
-            :parent="{ key: 'user', resourceItemPath: '/api/users/{id}', item }"
+            path="/api/admin/users/{parentId}/site_user_privileges"
+            :parent="{
+              key: 'user',
+              resourceItemPath: '/api/admin/users/{id}',
+              item,
+            }"
           />
         </v-tabs-window-item>
       </v-tabs-window>

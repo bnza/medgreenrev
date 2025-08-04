@@ -2,7 +2,7 @@
 import type { GetItemResponseMap } from '~~/types'
 
 defineProps<{
-  item: GetItemResponseMap['/api/site_user_privileges/{id}']
+  item: GetItemResponseMap['/api/admin/site_user_privileges/{id}']
 }>()
 </script>
 

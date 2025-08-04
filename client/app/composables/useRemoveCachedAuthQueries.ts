@@ -1,7 +1,7 @@
 export function useRemoveCachedAuthQueriesWatcher() {
-  const userCachedQueries = useAppQueryCache('/api/users')
+  const userCachedQueries = useAppQueryCache('/api/admin/users')
   const siteUserPrivilegeCacheQueries = useAppQueryCache(
-    '/api/site_user_privileges',
+    '/api/admin/site_user_privileges',
   )
 
   const removeCachedAuthQueries = () => {

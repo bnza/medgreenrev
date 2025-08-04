@@ -18,37 +18,37 @@ describe('useOpenApiStore', () => {
 
     describe('when target path is already an API resource path', () => {
       it('should return the same path for single resource endpoints', () => {
-        const targetPath = '/api/sites' as keyof paths
+        const targetPath = '/api/data/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).to.equal('/api/sites')
+        expect(result).to.equal('/api/data/sites')
       })
 
       it('should return the same path for site user privileges resource', () => {
-        const targetPath = '/api/site_user_privileges' as keyof paths
+        const targetPath = '/api/admin/site_user_privileges' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).to.equal('/api/site_user_privileges')
+        expect(result).to.equal('/api/admin/site_user_privileges')
       })
     })
 
     describe('when target path is a collection endpoint', () => {
       it('should find corresponding resource path for sites collection', () => {
-        const targetPath = '/api/sites/{id}' as keyof paths
+        const targetPath = '/api/data/sites/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).to.equal('/api/sites')
+        expect(result).to.equal('/api/data/sites')
       })
 
       it('should find corresponding resource path for site user privileges collection', () => {
-        const targetPath = '/api/site_user_privileges/{id}' as keyof paths
+        const targetPath = '/api/admin/site_user_privileges/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).to.equal('/api/site_user_privileges')
+        expect(result).to.equal('/api/admin/site_user_privileges')
       })
 
       it('should match endpoints by shared tags', () => {
-        const targetPath = '/api/sites/{id}' as keyof paths
+        const targetPath = '/api/data/sites/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         // Verify that both endpoints have the same tag
@@ -58,7 +58,7 @@ describe('useOpenApiStore', () => {
 
         expect(targetTags).to.include('Site')
         expect(resultTags).to.include('Site')
-        expect(result).to.equal('/api/sites')
+        expect(result).to.equal('/api/data/sites')
       })
     })
 
@@ -81,7 +81,7 @@ describe('useOpenApiStore', () => {
     describe.skip('when openApi spec conditions are not met', () => {
       it('should return undefined when specInternal is not set', () => {
         store.specInternal = undefined as any
-        const targetPath = '/api/sites' as keyof paths
+        const targetPath = '/api/data/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         expect(result).to.equal(undefined)
@@ -117,7 +117,7 @@ describe('useOpenApiStore', () => {
         }
         store.specInternal = specWithoutPaths as any
 
-        const targetPath = '/api/sites' as keyof paths
+        const targetPath = '/api/data/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         expect(result).to.equal(undefined)
@@ -187,9 +187,10 @@ describe('useOpenApiStore', () => {
         const mockSpec = {
           ...openApiFixture,
           paths: {
-            '/api/sites': openApiFixture.paths['/api/sites'],
-            '/api/sites/{id}': openApiFixture.paths['/api/sites/{id}'],
-            '/api/sites2/{id}': {
+            '/api/data/sites': openApiFixture.paths['/api/data/sites'],
+            '/api/data/sites/{id}':
+              openApiFixture.paths['/api/data/sites/{id}'],
+            '/api/data/sites2/{id}': {
               get: {
                 operationId: 'api_sites2_id_get',
                 tags: ['Site'], // Same tag as sites
@@ -211,7 +212,7 @@ describe('useOpenApiStore', () => {
         }
         store.specInternal = mockSpec as any
 
-        const targetPath = '/api/sites' as keyof paths
+        const targetPath = '/api/data/sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         // Should return one of the matching resource paths
@@ -221,8 +222,8 @@ describe('useOpenApiStore', () => {
 
     describe('real fixture data validation', () => {
       it('should correctly identify Site tag relationships', () => {
-        const resourcePath = '/api/sites' as keyof paths
-        const itemPath = '/api/sites/{id}' as keyof paths
+        const resourcePath = '/api/data/sites' as keyof paths
+        const itemPath = '/api/data/sites/{id}' as keyof paths
 
         const collectionTags =
           //@ts-expect-error Property get does not exist on type
@@ -238,8 +239,8 @@ describe('useOpenApiStore', () => {
       })
 
       it('should correctly identify SiteUserPrivilege tag relationships', () => {
-        const collectionPath = '/api/site_user_privileges' as keyof paths
-        const itemPath = '/api/site_user_privileges/{id}' as keyof paths
+        const collectionPath = '/api/admin/site_user_privileges' as keyof paths
+        const itemPath = '/api/admin/site_user_privileges/{id}' as keyof paths
 
         const collectionTags =
           //@ts-expect-error Property get does not exist on type
@@ -271,9 +272,9 @@ describe('useOpenApiStore', () => {
         expect(store.ready).to.equal(true)
 
         const result = store.findApiResourcePath(
-          '/api/sites/{id}' as keyof paths,
+          '/api/data/sites/{id}' as keyof paths,
         )
-        expect(result).to.equal('/api/sites')
+        expect(result).to.equal('/api/data/sites')
       })
     })
   })

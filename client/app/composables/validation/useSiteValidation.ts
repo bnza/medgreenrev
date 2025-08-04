@@ -25,7 +25,7 @@ const uniqueName = createRule({
 })
 
 export function useCreateValidation() {
-  type RequestBody = PostCollectionRequestMap['/api/sites']
+  type RequestBody = PostCollectionRequestMap['/api/data/sites']
   const getEmptyModel = () => ({}) as RequestBody
   const model = ref(getEmptyModel())
 
@@ -66,10 +66,10 @@ export function useCreateValidation() {
 }
 
 export function useUpdateValidation(
-  params: Ref<OperationPathParams<'/api/sites/{id}', 'get'> | undefined>,
+  params: Ref<OperationPathParams<'/api/data/sites/{id}', 'get'> | undefined>,
 ) {
   const { item, model, responseItem } = useGetPatchItemQuery(
-    '/api/sites/{id}',
+    '/api/data/sites/{id}',
     params,
   )
 

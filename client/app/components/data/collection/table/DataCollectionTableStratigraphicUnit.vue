@@ -4,7 +4,8 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/stratigraphic_units' | '/api/sites/{parentId}/stratigraphic_units'
+      | '/api/data/stratigraphic_units'
+      | '/api/data/sites/{parentId}/stratigraphic_units'
     >
   "
 >
@@ -14,14 +15,14 @@ import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'site', '/api/sites/{id}'>
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/stratigraphic_units/{id}'),
+  useResourceUiStore('/api/data/stratigraphic_units/{id}'),
 )
 </script>
 

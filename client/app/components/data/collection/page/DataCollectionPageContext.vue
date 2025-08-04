@@ -4,7 +4,8 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      '/api/data_contexts' | '/api/stratigraphic_units/{parentId}/data_contexts'
+      | '/api/data/contexts'
+      | '/api/data/stratigraphic_units/{parentId}/data_contexts'
     >
   "
 >
@@ -13,8 +14,8 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 defineProps<{
   path: P
   parent?:
-    | ResourceParent<'site', '/api/sites/{id}'>
-    | ResourceParent<'stratigraphicUnit', '/api/stratigraphic_units/{id}'>
+    | ResourceParent<'site', '/api/data/sites/{id}'>
+    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
 }>()
 const { siteCollectionAcl: acl } = useAppAuth()
 </script>

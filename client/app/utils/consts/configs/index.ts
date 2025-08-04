@@ -8,17 +8,17 @@ import user from './data/user'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
-  '/api/context_stratigraphic_units': contextStratigraphicUnit.config,
-  '/api/data_contexts': context,
-  '/api/data_contexts/{parentId}/stratigraphic_units':
+  '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
+  '/api/data/contexts': context,
+  '/api/data/contexts/{parentId}/stratigraphic_units':
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
-  '/api/sites': site,
-  '/api/site_user_privileges': siteUserPrivilege,
-  '/api/stratigraphic_units': stratigraphicUnit,
-  '/api/stratigraphic_units/{parentId}/data_contexts':
+  '/api/data/sites': site,
+  '/api/admin/site_user_privileges': siteUserPrivilege,
+  '/api/data/stratigraphic_units': stratigraphicUnit,
+  '/api/data/stratigraphic_units/{parentId}/contexts':
     contextStratigraphicUnit.contextSubResourceConfig,
-  '/api/users': user,
-  '/api/users/me/site_user_privileges': currentUserSitePrivilege,
+  '/api/admin/users': user,
+  '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
 } as const
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>

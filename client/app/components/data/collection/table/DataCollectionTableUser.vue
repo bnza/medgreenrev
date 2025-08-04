@@ -1,7 +1,7 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/users'>"
+  generic="Path extends Extract<GetCollectionPath, '/api/admin/users'>"
 >
 import type { GetCollectionPath } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/users/{id}'),
+  useResourceUiStore('/api/admin/users/{id}'),
 )
 const { isCurrentUser } = useAppAuth()
 const { userData } = storeToRefs(userPasswordDialog())

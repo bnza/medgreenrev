@@ -1,6 +1,6 @@
 <template>
   <data-dialog-delete
-    path="/api/stratigraphic_units/{id}"
+    path="/api/data/stratigraphic_units/{id}"
     title="Stratigraphic Unit"
   >
     <template #default="{ item }">

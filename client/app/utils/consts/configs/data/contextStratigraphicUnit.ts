@@ -1,7 +1,7 @@
 import type { ResourceConfig } from '~~/types'
 
 export const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data_contexts_stratigraphic_units',
+  apiPath: '/api/data/contexts_stratigraphic_units',
   appPath: '/data/contexts-stratigraphic-units',
   defaultHeaders: [
     {

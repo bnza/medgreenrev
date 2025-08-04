@@ -4,7 +4,47 @@
  */
 
 export interface paths {
-  '/api/context_stratigraphic_units': {
+  '/api/data/contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Context resources.
+     * @description Retrieves the collection of Context resources.
+     */
+    get: operations['api_datacontexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/contexts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Context resource.
+     * @description Retrieves a Context resource.
+     */
+    get: operations['api_datacontexts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/context_stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -15,20 +55,20 @@ export interface paths {
      * Retrieves the collection of ContextStratigraphicUnit resources.
      * @description Retrieves the collection of ContextStratigraphicUnit resources.
      */
-    get: operations['api_context_stratigraphic_units_get_collection']
+    get: operations['api_datacontext_stratigraphic_units_get_collection']
     put?: never
     /**
      * Creates a ContextStratigraphicUnit resource.
      * @description Creates a ContextStratigraphicUnit resource.
      */
-    post: operations['api_context_stratigraphic_units_post']
+    post: operations['api_datacontext_stratigraphic_units_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/context_stratigraphic_units/{id}': {
+  '/api/data/context_stratigraphic_units/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -42,13 +82,13 @@ export interface paths {
      * Removes the ContextStratigraphicUnit resource.
      * @description Removes the ContextStratigraphicUnit resource.
      */
-    delete: operations['api_context_stratigraphic_units_id_delete']
+    delete: operations['api_datacontext_stratigraphic_units_id_delete']
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/data_contexts/{parentId}/stratigraphic_units': {
+  '/api/data/contexts/{parentId}/stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -59,7 +99,7 @@ export interface paths {
      * Retrieves the collection of ContextStratigraphicUnit resources.
      * @description Retrieves the collection of ContextStratigraphicUnit resources.
      */
-    get: operations['api_data_contexts_parentIdstratigraphic_units_get_collection']
+    get: operations['api_datacontexts_parentIdstratigraphic_units_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -68,7 +108,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/stratigraphic_units/{parentId}/data_contexts': {
+  '/api/data/stratigraphic_units/{parentId}/contexts': {
     parameters: {
       query?: never
       header?: never
@@ -79,7 +119,7 @@ export interface paths {
      * Retrieves the collection of ContextStratigraphicUnit resources.
      * @description Retrieves the collection of ContextStratigraphicUnit resources.
      */
-    get: operations['api_stratigraphic_units_parentIddata_contexts_get_collection']
+    get: operations['api_datastratigraphic_units_parentIdcontexts_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -128,46 +168,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data_contexts': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of DataContext resources.
-     * @description Retrieves the collection of DataContext resources.
-     */
-    get: operations['api_data_contexts_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data_contexts/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a DataContext resource.
-     * @description Retrieves a DataContext resource.
-     */
-    get: operations['api_data_contexts_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/login': {
     parameters: {
       query?: never
@@ -188,7 +188,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/samples': {
+  '/api/data/samples': {
     parameters: {
       query?: never
       header?: never
@@ -199,7 +199,7 @@ export interface paths {
      * Retrieves the collection of Sample resources.
      * @description Retrieves the collection of Sample resources.
      */
-    get: operations['api_samples_get_collection']
+    get: operations['api_datasamples_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -208,7 +208,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/samples/{id}': {
+  '/api/data/samples/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -219,7 +219,7 @@ export interface paths {
      * Retrieves a Sample resource.
      * @description Retrieves a Sample resource.
      */
-    get: operations['api_samples_id_get']
+    get: operations['api_datasamples_id_get']
     put?: never
     post?: never
     delete?: never
@@ -248,7 +248,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/sites': {
+  '/api/data/sites': {
     parameters: {
       query?: never
       header?: never
@@ -259,20 +259,20 @@ export interface paths {
      * Retrieves the collection of Site resources.
      * @description Retrieves the collection of Site resources.
      */
-    get: operations['api_sites_get_collection']
+    get: operations['api_datasites_get_collection']
     put?: never
     /**
      * Creates a Site resource.
      * @description Creates a Site resource.
      */
-    post: operations['api_sites_post']
+    post: operations['api_datasites_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/sites/{id}': {
+  '/api/data/sites/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -283,24 +283,24 @@ export interface paths {
      * Retrieves a Site resource.
      * @description Retrieves a Site resource.
      */
-    get: operations['api_sites_id_get']
+    get: operations['api_datasites_id_get']
     put?: never
     post?: never
     /**
      * Removes the Site resource.
      * @description Removes the Site resource.
      */
-    delete: operations['api_sites_id_delete']
+    delete: operations['api_datasites_id_delete']
     options?: never
     head?: never
     /**
      * Updates the Site resource.
      * @description Updates the Site resource.
      */
-    patch: operations['api_sites_id_patch']
+    patch: operations['api_datasites_id_patch']
     trace?: never
   }
-  '/api/site_cultural_contexts': {
+  '/api/data/site_cultural_contexts': {
     parameters: {
       query?: never
       header?: never
@@ -311,7 +311,7 @@ export interface paths {
      * Retrieves the collection of SiteCulturalContext resources.
      * @description Retrieves the collection of SiteCulturalContext resources.
      */
-    get: operations['api_site_cultural_contexts_get_collection']
+    get: operations['api_datasite_cultural_contexts_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -320,7 +320,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/site_cultural_contexts/{id}': {
+  '/api/data/site_cultural_contexts/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -331,7 +331,7 @@ export interface paths {
      * Retrieves a SiteCulturalContext resource.
      * @description Retrieves a SiteCulturalContext resource.
      */
-    get: operations['api_site_cultural_contexts_id_get']
+    get: operations['api_datasite_cultural_contexts_id_get']
     put?: never
     post?: never
     delete?: never
@@ -340,7 +340,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/site_user_privileges': {
+  '/api/admin/site_user_privileges': {
     parameters: {
       query?: never
       header?: never
@@ -351,20 +351,20 @@ export interface paths {
      * Retrieves the collection of SiteUserPrivilege resources.
      * @description Retrieves the collection of SiteUserPrivilege resources.
      */
-    get: operations['api_site_user_privileges_get_collection']
+    get: operations['api_adminsite_user_privileges_get_collection']
     put?: never
     /**
      * Creates a SiteUserPrivilege resource.
      * @description Creates a SiteUserPrivilege resource.
      */
-    post: operations['api_site_user_privileges_post']
+    post: operations['api_adminsite_user_privileges_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/site_user_privileges/{id}': {
+  '/api/admin/site_user_privileges/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -375,24 +375,24 @@ export interface paths {
      * Retrieves a SiteUserPrivilege resource.
      * @description Retrieves a SiteUserPrivilege resource.
      */
-    get: operations['api_site_user_privileges_id_get']
+    get: operations['api_adminsite_user_privileges_id_get']
     put?: never
     post?: never
     /**
      * Removes the SiteUserPrivilege resource.
      * @description Removes the SiteUserPrivilege resource.
      */
-    delete: operations['api_site_user_privileges_id_delete']
+    delete: operations['api_adminsite_user_privileges_id_delete']
     options?: never
     head?: never
     /**
      * Updates the SiteUserPrivilege resource.
      * @description Updates the SiteUserPrivilege resource.
      */
-    patch: operations['api_site_user_privileges_id_patch']
+    patch: operations['api_adminsite_user_privileges_id_patch']
     trace?: never
   }
-  '/api/sites/{parentId}/site_user_privileges': {
+  '/api/admin/sites/{parentId}/site_user_privileges': {
     parameters: {
       query?: never
       header?: never
@@ -403,7 +403,7 @@ export interface paths {
      * Retrieves the collection of SiteUserPrivilege resources.
      * @description Retrieves the collection of SiteUserPrivilege resources.
      */
-    get: operations['api_sites_parentIdsite_user_privileges_get_collection']
+    get: operations['api_adminsites_parentIdsite_user_privileges_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -412,7 +412,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/sites/{parentId}/site_user_privileges/{id}': {
+  '/api/admin/sites/{parentId}/site_user_privileges/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -423,7 +423,7 @@ export interface paths {
      * Retrieves a SiteUserPrivilege resource.
      * @description Retrieves a SiteUserPrivilege resource.
      */
-    get: operations['api_sites_parentIdsite_user_privileges_id_get']
+    get: operations['api_adminsites_parentIdsite_user_privileges_id_get']
     put?: never
     post?: never
     delete?: never
@@ -432,7 +432,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/users/me/site_user_privileges': {
+  '/api/admin/users/me/site_user_privileges': {
     parameters: {
       query?: never
       header?: never
@@ -443,7 +443,7 @@ export interface paths {
      * Retrieves the collection of SiteUserPrivilege resources.
      * @description Retrieves the collection of SiteUserPrivilege resources.
      */
-    get: operations['api_usersmesite_user_privileges_get_collection']
+    get: operations['api_adminusersmesite_user_privileges_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -452,7 +452,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/users/{parentId}/site_user_privileges': {
+  '/api/admin/users/{parentId}/site_user_privileges': {
     parameters: {
       query?: never
       header?: never
@@ -463,7 +463,7 @@ export interface paths {
      * Retrieves the collection of SiteUserPrivilege resources.
      * @description Retrieves the collection of SiteUserPrivilege resources.
      */
-    get: operations['api_users_parentIdsite_user_privileges_get_collection']
+    get: operations['api_adminusers_parentIdsite_user_privileges_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -472,7 +472,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/users/{parentId}/site_user_privileges/{id}': {
+  '/api/admin/users/{parentId}/site_user_privileges/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -483,7 +483,7 @@ export interface paths {
      * Retrieves a SiteUserPrivilege resource.
      * @description Retrieves a SiteUserPrivilege resource.
      */
-    get: operations['api_users_parentIdsite_user_privileges_id_get']
+    get: operations['api_adminusers_parentIdsite_user_privileges_id_get']
     put?: never
     post?: never
     delete?: never
@@ -492,7 +492,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/sites/{parentId}/stratigraphic_units': {
+  '/api/data/sites/{parentId}/stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -503,7 +503,7 @@ export interface paths {
      * Retrieves the collection of StratigraphicUnit resources.
      * @description Retrieves the collection of StratigraphicUnit resources.
      */
-    get: operations['api_sites_parentIdstratigraphic_units_get_collection']
+    get: operations['api_datasites_parentIdstratigraphic_units_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -512,7 +512,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/stratigraphic_units': {
+  '/api/data/stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -523,20 +523,20 @@ export interface paths {
      * Retrieves the collection of StratigraphicUnit resources.
      * @description Retrieves the collection of StratigraphicUnit resources.
      */
-    get: operations['api_stratigraphic_units_get_collection']
+    get: operations['api_datastratigraphic_units_get_collection']
     put?: never
     /**
      * Creates a StratigraphicUnit resource.
      * @description Creates a StratigraphicUnit resource.
      */
-    post: operations['api_stratigraphic_units_post']
+    post: operations['api_datastratigraphic_units_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/stratigraphic_units/{id}': {
+  '/api/data/stratigraphic_units/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -547,21 +547,21 @@ export interface paths {
      * Retrieves a StratigraphicUnit resource.
      * @description Retrieves a StratigraphicUnit resource.
      */
-    get: operations['api_stratigraphic_units_id_get']
+    get: operations['api_datastratigraphic_units_id_get']
     put?: never
     post?: never
     /**
      * Removes the StratigraphicUnit resource.
      * @description Removes the StratigraphicUnit resource.
      */
-    delete: operations['api_stratigraphic_units_id_delete']
+    delete: operations['api_datastratigraphic_units_id_delete']
     options?: never
     head?: never
     /**
      * Updates the StratigraphicUnit resource.
      * @description Updates the StratigraphicUnit resource.
      */
-    patch: operations['api_stratigraphic_units_id_patch']
+    patch: operations['api_datastratigraphic_units_id_patch']
     trace?: never
   }
   '/api/validator/unique/site_user_privileges/{site}/{user}': {
@@ -644,7 +644,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/users': {
+  '/api/admin/users': {
     parameters: {
       query?: never
       header?: never
@@ -655,17 +655,85 @@ export interface paths {
      * Retrieves the collection of User resources.
      * @description Retrieves the collection of User resources.
      */
-    get: operations['api_users_get_collection']
+    get: operations['api_adminusers_get_collection']
     put?: never
     /**
      * Creates a User resource.
      * @description Creates a User resource.
      */
-    post: operations['api_users_post']
+    post: operations['api_adminusers_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
+    trace?: never
+  }
+  '/api/admin/users/me/change_password': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /**
+     * Creates a User resource.
+     * @description Creates a User resource.
+     */
+    post: operations['api_adminusersmechange_password_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/admin/users/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a User resource.
+     * @description Retrieves a User resource.
+     */
+    get: operations['api_adminusers_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the User resource.
+     * @description Removes the User resource.
+     */
+    delete: operations['api_adminusers_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the User resource.
+     * @description Updates the User resource.
+     */
+    patch: operations['api_adminusers_id_patch']
+    trace?: never
+  }
+  '/api/admin/users/{id}/change_password': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    /**
+     * Updates the User resource.
+     * @description Updates the User resource.
+     */
+    patch: operations['api_adminusers_idchange_password_patch']
     trace?: never
   }
   '/api/users/me': {
@@ -686,74 +754,6 @@ export interface paths {
     options?: never
     head?: never
     patch?: never
-    trace?: never
-  }
-  '/api/users/me/change_password': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /**
-     * Creates a User resource.
-     * @description Creates a User resource.
-     */
-    post: operations['api_usersmechange_password_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/users/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a User resource.
-     * @description Retrieves a User resource.
-     */
-    get: operations['api_users_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the User resource.
-     * @description Removes the User resource.
-     */
-    delete: operations['api_users_id_delete']
-    options?: never
-    head?: never
-    /**
-     * Updates the User resource.
-     * @description Updates the User resource.
-     */
-    patch: operations['api_users_id_patch']
-    trace?: never
-  }
-  '/api/users/{id}/change_password': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    /**
-     * Updates the User resource.
-     * @description Updates the User resource.
-     */
-    patch: operations['api_users_idchange_password_patch']
     trace?: never
   }
 }
@@ -808,6 +808,72 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
+    'Context.jsonld-context.acl.read': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number & string
+      type?: components['schemas']['ContextType.jsonld-context.acl.read'] | null
+      site?: components['schemas']['Site.jsonld-context.acl.read']
+      contextsStratigraphicUnits?: string[]
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-context_stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      type?:
+        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
+        | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      type?:
+        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read']
+        | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      name?: string
+      description?: string | null
+    }
     'ContextStratigraphicUnit.jsonld': {
       readonly id?: number & string
       /**
@@ -839,12 +905,13 @@ export interface components {
        * @example https://example.com/
        */
       stratigraphicUnit?: string
-      context?: components['schemas']['DataContext.jsonld-context_stratigraphic_unit.acl.read']
+      context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
     }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read': {
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read']
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -860,7 +927,7 @@ export interface components {
        * @example https://example.com/
        */
       stratigraphicUnit?: string
-      context?: components['schemas']['DataContext.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read']
+      context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read']
     }
     'ContextType.jsonld': {
       readonly '@id'?: string
@@ -919,72 +986,6 @@ export interface components {
       readonly '@type'?: string
       id?: number
       value?: string
-    }
-    'DataContext.jsonld-context.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context.acl.read'] | null
-      site?: components['schemas']['Site.jsonld-context.acl.read']
-      contextsStratigraphicUnits?: string[]
-      name?: string
-      description?: string | null
-    }
-    'DataContext.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly id?: number & string
-      type?:
-        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
-        | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site?: string
-      name?: string
-      description?: string | null
-    }
-    'DataContext.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id'?: string
-      readonly '@type'?: string
-      type?:
-        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read']
-        | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site?: string
-      name?: string
-      description?: string | null
     }
     /** @description A representation of common errors. */
     Error: {
@@ -1269,6 +1270,28 @@ export interface components {
       interpretation?: string | null
       readonly code?: string
     }
+    'StratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
     'StratigraphicUnit.jsonld-sus.acl.read': {
       readonly '@context'?:
         | string
@@ -1443,7 +1466,106 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
-  api_context_stratigraphic_units_get_collection: {
+  api_datacontexts_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[type.group]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Context collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Context.jsonld-context.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datacontexts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Context identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Context resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datacontext_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -1506,7 +1628,7 @@ export interface operations {
       }
     }
   }
-  api_context_stratigraphic_units_post: {
+  api_datacontext_stratigraphic_units_post: {
     parameters: {
       query?: never
       header?: never
@@ -1553,7 +1675,7 @@ export interface operations {
       }
     }
   }
-  api_context_stratigraphic_units_id_delete: {
+  api_datacontext_stratigraphic_units_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -1585,7 +1707,7 @@ export interface operations {
       }
     }
   }
-  api_data_contexts_parentIdstratigraphic_units_get_collection: {
+  api_datacontexts_parentIdstratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -1651,7 +1773,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_parentIddata_contexts_get_collection: {
+  api_datastratigraphic_units_parentIdcontexts_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -1839,105 +1961,6 @@ export interface operations {
       }
     }
   }
-  api_data_contexts_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[name]'?: 'asc' | 'desc'
-        'order[type.group]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description DataContext collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['DataContext.jsonld-context.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type'?: string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type'?: string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_data_contexts_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description DataContext identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description DataContext resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['DataContext.jsonld-context.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   login_check_post: {
     parameters: {
       query?: never
@@ -1968,7 +1991,7 @@ export interface operations {
       }
     }
   }
-  api_samples_get_collection: {
+  api_datasamples_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -2028,7 +2051,7 @@ export interface operations {
       }
     }
   }
-  api_samples_id_get: {
+  api_datasamples_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -2123,7 +2146,7 @@ export interface operations {
       }
     }
   }
-  api_sites_get_collection: {
+  api_datasites_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -2231,7 +2254,7 @@ export interface operations {
       }
     }
   }
-  api_sites_post: {
+  api_datasites_post: {
     parameters: {
       query?: never
       header?: never
@@ -2278,7 +2301,7 @@ export interface operations {
       }
     }
   }
-  api_sites_id_get: {
+  api_datasites_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -2312,7 +2335,7 @@ export interface operations {
       }
     }
   }
-  api_sites_id_delete: {
+  api_datasites_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -2355,7 +2378,7 @@ export interface operations {
       }
     }
   }
-  api_sites_id_patch: {
+  api_datasites_id_patch: {
     parameters: {
       query?: never
       header?: never
@@ -2427,7 +2450,7 @@ export interface operations {
       }
     }
   }
-  api_site_cultural_contexts_get_collection: {
+  api_datasite_cultural_contexts_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -2487,7 +2510,7 @@ export interface operations {
       }
     }
   }
-  api_site_cultural_contexts_id_get: {
+  api_datasite_cultural_contexts_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -2521,7 +2544,7 @@ export interface operations {
       }
     }
   }
-  api_site_user_privileges_get_collection: {
+  api_adminsite_user_privileges_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -2596,7 +2619,7 @@ export interface operations {
       }
     }
   }
-  api_site_user_privileges_post: {
+  api_adminsite_user_privileges_post: {
     parameters: {
       query?: never
       header?: never
@@ -2654,7 +2677,7 @@ export interface operations {
       }
     }
   }
-  api_site_user_privileges_id_get: {
+  api_adminsite_user_privileges_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -2699,7 +2722,7 @@ export interface operations {
       }
     }
   }
-  api_site_user_privileges_id_delete: {
+  api_adminsite_user_privileges_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -2742,7 +2765,7 @@ export interface operations {
       }
     }
   }
-  api_site_user_privileges_id_patch: {
+  api_adminsite_user_privileges_id_patch: {
     parameters: {
       query?: never
       header?: never
@@ -2814,7 +2837,7 @@ export interface operations {
       }
     }
   }
-  api_sites_parentIdsite_user_privileges_get_collection: {
+  api_adminsites_parentIdsite_user_privileges_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -2892,7 +2915,7 @@ export interface operations {
       }
     }
   }
-  api_sites_parentIdsite_user_privileges_id_get: {
+  api_adminsites_parentIdsite_user_privileges_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -2939,7 +2962,7 @@ export interface operations {
       }
     }
   }
-  api_usersmesite_user_privileges_get_collection: {
+  api_adminusersmesite_user_privileges_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -3014,7 +3037,7 @@ export interface operations {
       }
     }
   }
-  api_users_parentIdsite_user_privileges_get_collection: {
+  api_adminusers_parentIdsite_user_privileges_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -3092,7 +3115,7 @@ export interface operations {
       }
     }
   }
-  api_users_parentIdsite_user_privileges_id_get: {
+  api_adminusers_parentIdsite_user_privileges_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -3139,7 +3162,7 @@ export interface operations {
       }
     }
   }
-  api_sites_parentIdstratigraphic_units_get_collection: {
+  api_datasites_parentIdstratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -3211,7 +3234,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_get_collection: {
+  api_datastratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -3280,7 +3303,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_post: {
+  api_datastratigraphic_units_post: {
     parameters: {
       query?: never
       header?: never
@@ -3327,7 +3350,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_id_get: {
+  api_datastratigraphic_units_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -3361,7 +3384,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_id_delete: {
+  api_datastratigraphic_units_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -3404,7 +3427,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_id_patch: {
+  api_datastratigraphic_units_id_patch: {
     parameters: {
       query?: never
       header?: never
@@ -3618,7 +3641,7 @@ export interface operations {
       }
     }
   }
-  api_users_get_collection: {
+  api_adminusers_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -3694,7 +3717,7 @@ export interface operations {
       }
     }
   }
-  api_users_post: {
+  api_adminusers_post: {
     parameters: {
       query?: never
       header?: never
@@ -3752,49 +3775,7 @@ export interface operations {
       }
     }
   }
-  api_usersme_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description User resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['User.jsonld-user.me.read']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_usersmechange_password_post: {
+  api_adminusersmechange_password_post: {
     parameters: {
       query?: never
       header?: never
@@ -3852,7 +3833,7 @@ export interface operations {
       }
     }
   }
-  api_users_id_get: {
+  api_adminusers_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -3897,7 +3878,7 @@ export interface operations {
       }
     }
   }
-  api_users_id_delete: {
+  api_adminusers_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -3940,7 +3921,7 @@ export interface operations {
       }
     }
   }
-  api_users_id_patch: {
+  api_adminusers_id_patch: {
     parameters: {
       query?: never
       header?: never
@@ -4012,7 +3993,7 @@ export interface operations {
       }
     }
   }
-  api_users_idchange_password_patch: {
+  api_adminusers_idchange_password_patch: {
     parameters: {
       query?: never
       header?: never
@@ -4080,6 +4061,48 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_usersme_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description User resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['User.jsonld-user.me.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

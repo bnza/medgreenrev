@@ -133,13 +133,13 @@ export const API_FILTERS = {
 
 export type FilterKey = keyof typeof API_FILTERS
 
-export type SearchableGetCollectionPath = '/api/sites'
+export type SearchableGetCollectionPath = '/api/data/sites'
 
 export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
 > = {
-  '/api/sites': {
+  '/api/data/sites': {
     code: {
       filters: {
         SearchExact,

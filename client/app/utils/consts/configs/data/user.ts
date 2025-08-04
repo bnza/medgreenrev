@@ -1,7 +1,7 @@
 import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/users',
+  apiPath: '/api/admin/users',
   appPath: '/admin/users',
   defaultHeaders: [
     {

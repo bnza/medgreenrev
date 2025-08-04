@@ -2,14 +2,14 @@
 import type { RegleErrorTree } from '@regle/core'
 import type { PatchItemRequestMap, ResourceParent } from '~~/types'
 
-type Item = PatchItemRequestMap['/api/stratigraphic_units/{id}']
+type Item = PatchItemRequestMap['/api/data/stratigraphic_units/{id}']
 
 const item = defineModel<Partial<Item>>('item', { required: true })
 
 interface Props {
   mode: 'create' | 'update'
   errors?: RegleErrorTree<Partial<Item>>
-  parent?: ResourceParent<'site', '/api/sites/{id}'>
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }
 
 defineProps<Props>()
@@ -20,7 +20,7 @@ defineProps<Props>()
     <v-col cols="4">
       <data-autocomplete-site
         v-model="item.site"
-        path="/api/sites"
+        path="/api/data/sites"
         item-title="name"
         label="site"
         :error-messages="errors?.site"

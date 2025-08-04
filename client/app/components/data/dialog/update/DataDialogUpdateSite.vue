@@ -3,7 +3,9 @@ import { useUpdateValidation } from '~/composables/validation/useSiteValidation'
 import { useNormalization } from '~/composables/normalization/useSiteNormalization'
 import useResourceUiStore from '~/stores/resource-ui'
 
-const { updateDialogState } = storeToRefs(useResourceUiStore('/api/sites/{id}'))
+const { updateDialogState } = storeToRefs(
+  useResourceUiStore('/api/data/sites/{id}'),
+)
 const { r$, item } = useUpdateValidation(updateDialogState)
 
 const { onPreUpdate } = useNormalization()
@@ -11,9 +13,9 @@ const { onPreUpdate } = useNormalization()
 
 <template>
   <data-dialog-update
-    path="/api/sites/{id}"
-    title="Site"
     v-model:regle="r$"
+    path="/api/data/sites/{id}"
+    title="Site"
     :on-pre-submit="onPreUpdate(item)"
   >
     <template #default>

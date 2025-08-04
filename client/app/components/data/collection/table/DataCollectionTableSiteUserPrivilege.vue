@@ -4,9 +4,9 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      | '/api/site_user_privileges'
-      | '/api/sites/{parentId}/site_user_privileges'
-      | '/api/users/{parentId}/site_user_privileges'
+      | '/api/admin/site_user_privileges'
+      | '/api/admin/sites/{parentId}/site_user_privileges'
+      | '/api/admin/users/{parentId}/site_user_privileges'
     >
   "
 >
@@ -27,7 +27,7 @@ const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/site_user_privileges/{id}'),
+  useResourceUiStore('/api/admin/site_user_privileges/{id}'),
 )
 </script>
 

@@ -5,5 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-stratigraphic-unit path="/api/stratigraphic_units" />
+  <data-collection-page-stratigraphic-unit
+    path="/api/data/stratigraphic_units"
+  />
 </template>

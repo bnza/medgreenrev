@@ -1,6 +1,6 @@
 <template>
   <data-dialog-delete
-    path="/api/site_user_privileges/{id}"
+    path="/api/admin/site_user_privileges/{id}"
     title="Site/User Privilege"
   >
     <template #default="{ item }">

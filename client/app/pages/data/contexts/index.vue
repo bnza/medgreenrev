@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-context path="/api/data_contexts" />
+  <data-collection-page-context path="/api/data/contexts" />
 </template>

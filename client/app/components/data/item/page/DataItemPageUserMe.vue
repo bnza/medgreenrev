@@ -25,11 +25,13 @@ const tab = ref('data')
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="privileges" data-testid="tab-privileges">
           <data-collection-page
-            path="/api/users/me/site_user_privileges"
+            path="/api/admin/users/me/site_user_privileges"
             title="Granted sites privileges"
             :acl="{ canCreate: false, canExport: false }"
           >
-            <data-collection-table path="/api/users/me/site_user_privileges">
+            <data-collection-table
+              path="/api/admin/users/me/site_user_privileges"
+            >
               <template #[`item.privilege`]="{ item: privilegeItem }">
                 <auth-sites-user-privilege-button
                   disabled

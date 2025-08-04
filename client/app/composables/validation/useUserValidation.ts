@@ -4,7 +4,7 @@ import { email, minLength, required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 export function useCreateValidation() {
-  type RequestBody = PostCollectionRequestMap['/api/users']
+  type RequestBody = PostCollectionRequestMap['/api/admin/users']
   const getEmptyModel = () =>
     ({
       roles: [] as string[],
@@ -26,10 +26,10 @@ export function useCreateValidation() {
 }
 
 export function useUpdateValidation(
-  params: Ref<OperationPathParams<'/api/users/{id}', 'get'> | undefined>,
+  params: Ref<OperationPathParams<'/api/admin/users/{id}', 'get'> | undefined>,
 ) {
   const { item, responseItem, model } = useGetPatchItemQuery(
-    '/api/users/{id}',
+    '/api/admin/users/{id}',
     params,
   )
 

@@ -3,7 +3,7 @@ import { isAppPathItemPage } from '~/utils'
 
 describe('isAppPathItemPage', () => {
   it('should return true for a valid UUID v4 Iri', () => {
-    const path = '/api/users/1f06335e-d167-6a42-a6b6-b5923121c6cc'
+    const path = '/api/admin/users/1f06335e-d167-6a42-a6b6-b5923121c6cc'
     expect(isAppPathItemPage(path)).to.equal(true)
   })
 

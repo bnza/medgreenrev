@@ -17,7 +17,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
 
   /**
    * Attempts to find an API resource path (@see ~/utils/const/resources.ts) related to the provided target path.
-   * (e.g. ```/api/users/{parentId}/site_user_privileges``` returns ```/api/site_user_privileges```)
+   * (e.g. ```/api/admin/users/{parentId}/site_user_privileges``` returns ```/api/admin/site_user_privileges```)
    *
    * This function analyzes the target path to determine if it is a valid API resource path. If not,
    * it searches the OpenAPI specification for a related API resource path based on shared tags
@@ -119,7 +119,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
     if (!operation?.[method]) return false
     const operationParams = operation[method].parameters
 
-    // no parameters get item operations such as /api/users/me are allowed
+    // no parameters get item operations such as /api/admin/users/me are allowed
     if (!operationParams || operationParams?.length === 0) {
       return !param
     }

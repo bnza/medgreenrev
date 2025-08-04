@@ -2,8 +2,8 @@
 import type { RegleErrorTree } from '@regle/core'
 import type { PatchItemRequestMap, PostCollectionRequestMap } from '~~/types'
 
-type Item = PostCollectionRequestMap['/api/sites'] &
-  PatchItemRequestMap['/api/sites/{id}']
+type Item = PostCollectionRequestMap['/api/data/sites'] &
+  PatchItemRequestMap['/api/data/sites/{id}']
 const item = defineModel<Item>('item', { required: true })
 
 interface Props {

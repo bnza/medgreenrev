@@ -4,7 +4,8 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      '/api/stratigraphic_units' | '/api/sites/{parentId}/stratigraphic_units'
+      | '/api/data/stratigraphic_units'
+      | '/api/data/sites/{parentId}/stratigraphic_units'
     >
   "
 >
@@ -12,7 +13,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'site', '/api/sites/{id}'>
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
 
 const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()

@@ -2,7 +2,7 @@ import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
   appPath: '/data/stratigraphic-units',
-  apiPath: '/api/stratigraphic_units',
+  apiPath: '/api/data/stratigraphic_units',
   name: 'stratigraphicUnit',
   labels: ['Stratigraphic Unit', 'Stratigraphic Units'],
   defaultHeaders: [

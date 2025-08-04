@@ -4,9 +4,9 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      | '/api/context_stratigraphic_units'
-      | '/api/stratigraphic_units/{parentId}/data_contexts'
-      | '/api/data_contexts/{parentId}/stratigraphic_units'
+      | '/api/data/context_stratigraphic_units'
+      | '/api/data/stratigraphic_units/{parentId}/contexts'
+      | '/api/data/contexts/{parentId}/stratigraphic_units'
     >
   "
 >
@@ -17,8 +17,8 @@ import useResourceConfig from '~/stores/resource-config'
 const props = defineProps<{
   path: Path
   parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/stratigraphic_units/{id}'>
-    | ResourceParent<'dataContext', '/api/data_contexts/{id}'>
+    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
+    | ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
 
 const subResourceKey = computed(() =>
@@ -28,8 +28,8 @@ const subResourceKey = computed(() =>
 const { appPath } = useResourceConfig(
   props.parent
     ? props.parent.key === 'stratigraphicUnit'
-      ? '/api/data_contexts'
-      : '/api/stratigraphic_units'
+      ? '/api/data/contexts'
+      : '/api/data/stratigraphic_units'
     : props.path,
 )
 const { updateDialogState } = storeToRefs(useResourceUiStore(props.path))

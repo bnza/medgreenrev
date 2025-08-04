@@ -25,11 +25,11 @@ const uniqueNumber = useApiUniqueValidator(
 )
 
 export function useCreateValidation(
-  parent?: ResourceParent<'site', '/api/sites/{id}'>,
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>,
 ) {
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
 
-  type RequestBody = PostCollectionRequestMap['/api/stratigraphic_units']
+  type RequestBody = PostCollectionRequestMap['/api/data/stratigraphic_units']
   const getEmptyModel = () =>
     ({
       site: parentKey.value === 'site' ? parentIri.value : undefined,
@@ -75,11 +75,11 @@ export function useCreateValidation(
 
 export function useUpdateValidation(
   params: Ref<
-    OperationPathParams<'/api/stratigraphic_units/{id}', 'get'> | undefined
+    OperationPathParams<'/api/data/stratigraphic_units/{id}', 'get'> | undefined
   >,
 ) {
   const { item, responseItem, model } = useGetPatchItemQuery(
-    '/api/stratigraphic_units/{id}',
+    '/api/data/stratigraphic_units/{id}',
     params,
   )
 
