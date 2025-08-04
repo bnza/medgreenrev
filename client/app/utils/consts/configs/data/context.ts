@@ -1,7 +1,7 @@
 import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/contexts',
+  apiPath: '/api/data_contexts',
   appPath: '/data/contexts',
   defaultHeaders: [
     {

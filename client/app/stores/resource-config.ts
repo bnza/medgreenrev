@@ -5,8 +5,14 @@ const useResourceConfig = <Path extends keyof paths>(path: Path) => {
   return defineStore(`resource-config:${path}`, () => {
     const { findApiResourcePath } = useOpenApiStore()
 
-    const configKey =
-      path in RESOURCE_CONFIG_MAP ? path : findApiResourcePath(path)
+    // Check if the given path exists as a key of RESOURCE_CONFIG_MAP
+    // If not, apply findApiResourcePath(path) to normalize the path
+    let configKey: string | undefined
+    if (path in RESOURCE_CONFIG_MAP) {
+      configKey = path
+    } else {
+      configKey = findApiResourcePath(path)
+    }
 
     if (!configKey) {
       throw new Error(`Unknown resource key for path ${path}`)

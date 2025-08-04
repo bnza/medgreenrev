@@ -1,5 +1,5 @@
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
-import type { ApiResourceKey, Iri, UserBaseData } from '~~/types'
+import type { ApiResourceKey, Iri, JsonLdItem, UserBaseData } from '~~/types'
 import {
   API_RESOURCE_MAP,
   type ApiResourcePath,
@@ -33,6 +33,9 @@ export const isPlainObject = (
   const proto = Object.getPrototypeOf(value)
   return proto === null || proto === Object.prototype
 }
+
+export const isJsonLdItem = (value: unknown): value is JsonLdItem =>
+  isPlainObject(value) && '@id' in value && '@type' in value
 
 export const isPlainObjectWithValues = <T>(
   value: unknown,

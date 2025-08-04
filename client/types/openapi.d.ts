@@ -4,70 +4,6 @@
  */
 
 export interface paths {
-  '/api/contexts': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Context resources.
-     * @description Retrieves the collection of Context resources.
-     */
-    get: operations['api_contexts_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/contexts/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a Context resource.
-     * @description Retrieves a Context resource.
-     */
-    get: operations['api_contexts_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/stratigraphic_units/{parentId}/contexts': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Context resources.
-     * @description Retrieves the collection of Context resources.
-     */
-    get: operations['api_stratigraphic_units_parentIdcontexts_get_collection']
-    put?: never
-    /**
-     * Creates a ContextStratigraphicUnit resource.
-     * @description Creates a ContextStratigraphicUnit resource.
-     */
-    post: operations['api_stratigraphic_units_parentIdcontexts_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/context_stratigraphic_units': {
     parameters: {
       query?: never
@@ -81,7 +17,11 @@ export interface paths {
      */
     get: operations['api_context_stratigraphic_units_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a ContextStratigraphicUnit resource.
+     * @description Creates a ContextStratigraphicUnit resource.
+     */
+    post: operations['api_context_stratigraphic_units_post']
     delete?: never
     options?: never
     head?: never
@@ -103,6 +43,46 @@ export interface paths {
      * @description Removes the ContextStratigraphicUnit resource.
      */
     delete: operations['api_context_stratigraphic_units_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data_contexts/{parentId}/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ContextStratigraphicUnit resources.
+     * @description Retrieves the collection of ContextStratigraphicUnit resources.
+     */
+    get: operations['api_data_contexts_parentIdstratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/stratigraphic_units/{parentId}/data_contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ContextStratigraphicUnit resources.
+     * @description Retrieves the collection of ContextStratigraphicUnit resources.
+     */
+    get: operations['api_stratigraphic_units_parentIddata_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
     options?: never
     head?: never
     patch?: never
@@ -140,6 +120,46 @@ export interface paths {
      * @description Retrieves the collection of CulturalContext resources.
      */
     get: operations['api_vocabularycultural_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data_contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of DataContext resources.
+     * @description Retrieves the collection of DataContext resources.
+     */
+    get: operations['api_data_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data_contexts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a DataContext resource.
+     * @description Retrieves a DataContext resource.
+     */
+    get: operations['api_data_contexts_id_get']
     put?: never
     post?: never
     delete?: never
@@ -788,40 +808,20 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
-    'Context.jsonld-context.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
+    'ContextStratigraphicUnit.jsonld': {
       readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context.acl.read'] | null
-      site?: components['schemas']['Site.jsonld-context.acl.read']
-      name?: string
-      description?: string | null
-    }
-    'Context.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly id?: number & string
-      type?:
-        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
-        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      site?: string
-      name?: string
-      description?: string | null
+      stratigraphicUnit?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      context?: string
     }
-    'ContextStratigraphicUnit.jsonld': {
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -839,11 +839,28 @@ export interface components {
        * @example https://example.com/
        */
       stratigraphicUnit?: string
+      context?: components['schemas']['DataContext.jsonld-context_stratigraphic_unit.acl.read']
+    }
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       context?: string
+    }
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      context?: components['schemas']['DataContext.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read']
     }
     'ContextType.jsonld': {
       readonly '@id'?: string
@@ -882,11 +899,92 @@ export interface components {
       group?: string
       value?: string
     }
+    'ContextType.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      group?: string
+      value?: string
+    }
     'CulturalContext.jsonld': {
       readonly '@id'?: string
       readonly '@type'?: string
       id?: number
       value?: string
+    }
+    'DataContext.jsonld-context.acl.read': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number & string
+      type?: components['schemas']['ContextType.jsonld-context.acl.read'] | null
+      site?: components['schemas']['Site.jsonld-context.acl.read']
+      contextsStratigraphicUnits?: string[]
+      name?: string
+      description?: string | null
+    }
+    'DataContext.jsonld-context_stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      type?:
+        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
+        | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      name?: string
+      description?: string | null
+    }
+    'DataContext.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      type?:
+        | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read']
+        | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      name?: string
+      description?: string | null
     }
     /** @description A representation of common errors. */
     Error: {
@@ -1345,7 +1443,7 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
-  api_contexts_get_collection: {
+  api_context_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -1353,10 +1451,8 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[name]'?: 'asc' | 'desc'
-        'order[type.group]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
+        'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.value]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -1364,14 +1460,14 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description Context collection */
+      /** @description ContextStratigraphicUnit collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['Context.jsonld-context.acl.read'][]
+            member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -1410,116 +1506,11 @@ export interface operations {
       }
     }
   }
-  api_contexts_id_get: {
+  api_context_stratigraphic_units_post: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description Context identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Context resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_stratigraphic_units_parentIdcontexts_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[name]'?: 'asc' | 'desc'
-        'order[type.group]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path: {
-        /** @description Context identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Context collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type'?: string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type'?: string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_stratigraphic_units_parentIdcontexts_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextStratigraphicUnit identifier */
-        parentId: string
-      }
+      path?: never
       cookie?: never
     }
     /** @description The new ContextStratigraphicUnit resource */
@@ -1535,7 +1526,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ContextStratigraphicUnit.jsonld']
+          'application/ld+json': components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
         }
       }
       /** @description Invalid input */
@@ -1558,66 +1549,6 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_context_stratigraphic_units_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextStratigraphicUnit collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextStratigraphicUnit.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type'?: string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type'?: string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
         }
       }
     }
@@ -1650,6 +1581,138 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_data_contexts_parentIdstratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.value]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description ContextStratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ContextStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_parentIddata_contexts_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.value]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description ContextStratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ContextStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_unit.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }
@@ -1772,6 +1835,105 @@ export interface operations {
               }[]
             }
           }
+        }
+      }
+    }
+  }
+  api_data_contexts_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[type.group]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description DataContext collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['DataContext.jsonld-context.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_data_contexts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description DataContext identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description DataContext resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['DataContext.jsonld-context.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

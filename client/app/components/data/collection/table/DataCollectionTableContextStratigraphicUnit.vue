@@ -4,7 +4,9 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data_contexts' | '/api/stratigraphic_units/{parentId}/data_contexts'
+      | '/api/context_stratigraphic_units'
+      | '/api/stratigraphic_units/{parentId}/data_contexts'
+      | '/api/data_contexts/{parentId}/stratigraphic_units'
     >
   "
 >
@@ -15,20 +17,29 @@ import useResourceConfig from '~/stores/resource-config'
 const props = defineProps<{
   path: Path
   parent?:
-    | ResourceParent<'site', '/api/sites/{id}'>
     | ResourceParent<'stratigraphicUnit', '/api/stratigraphic_units/{id}'>
+    | ResourceParent<'dataContext', '/api/data_contexts/{id}'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
-const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/data_contexts/{id}'),
+const subResourceKey = computed(() =>
+  props.parent?.key === 'stratigraphicUnit' ? 'context' : 'stratigraphicUnit',
 )
+
+const { appPath } = useResourceConfig(
+  props.parent
+    ? props.parent.key === 'stratigraphicUnit'
+      ? '/api/data_contexts'
+      : '/api/stratigraphic_units'
+    : props.path,
+)
+const { updateDialogState } = storeToRefs(useResourceUiStore(props.path))
+const { id: parentId } = useResourceParent(props.parent)
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
-      <navigation-resource-item :id="item.id" :acl="item._acl" :app-path />
+      <navigation-join-resource-item :item :sub-resource-key :app-path />
       <!--      @delete="deleteDialogState = { id: item.id }"-->
       <!--      @update="updateDialogState = { id: item.id }"-->
     </template>
