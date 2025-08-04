@@ -9,7 +9,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
 </script>
 
 <template>
-  <data-item-page :path title="Stratigraphic Unit" identifier-prop="code">
+  <data-item-page :path title="Context" identifier-prop="code">
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-context :item />
       <v-tabs v-model="tab" background-color="transparent">

@@ -11,6 +11,7 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
         return Boolean(deleteDialogState.value)
       },
       set(value: OperationPathParams<P, 'get' | 'delete'> | undefined) {
+        console.log('set', path, value)
         deleteDialogState.value = value
       },
     })
@@ -24,6 +25,7 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
         return Boolean(updateDialogState.value)
       },
       set(value: OperationPathParams<P, 'get' | 'patch'> | undefined) {
+        console.log('set', path, value)
         updateDialogState.value = value
       },
     })

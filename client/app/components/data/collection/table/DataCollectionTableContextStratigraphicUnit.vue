@@ -32,22 +32,25 @@ const { appPath } = useResourceConfig(
       : '/api/data/stratigraphic_units'
     : props.path,
 )
-const { updateDialogState } = storeToRefs(useResourceUiStore(props.path))
+const { isDeleteDialogOpen } = storeToRefs(
+  useResourceUiStore('/api/data/context_stratigraphic_units/{id}'),
+)
 const { id: parentId } = useResourceParent(props.parent)
 </script>
 
 <template>
   <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
-      <navigation-join-resource-item :item :sub-resource-key :app-path />
-      <!--      @delete="deleteDialogState = { id: item.id }"-->
-      <!--      @update="updateDialogState = { id: item.id }"-->
+      <navigation-join-resource-item
+        :item
+        :sub-resource-key
+        :app-path
+        @delete="isDeleteDialogOpen = { id: item.id }"
+      />
     </template>
     <template #dialogs>
-      <!--      <data-dialog-search :path title="Site" />-->
-      <!--      <data-dialog-create-site :path />-->
-      <!--      <data-dialog-delete-site />-->
-      <!--      <data-dialog-update-site />-->
+      <data-dialog-create-context-stratigraphic-unit :path :parent />
+      <data-dialog-delete-context-stratigraphic-unit />
     </template>
   </data-collection-table>
 </template>

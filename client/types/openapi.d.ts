@@ -75,7 +75,11 @@ export interface paths {
       path?: never
       cookie?: never
     }
-    get?: never
+    /**
+     * Retrieves a ContextStratigraphicUnit resource.
+     * @description Retrieves a ContextStratigraphicUnit resource.
+     */
+    get: operations['api_datacontext_stratigraphic_units_id_get']
     put?: never
     post?: never
     /**
@@ -564,6 +568,26 @@ export interface paths {
     patch: operations['api_datastratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/validator/unique/context_stratigraphic_units/{context}/{stratigraphicUnit}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquecontext_stratigraphic_units_context_stratigraphicUnit_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/site_user_privileges/{site}/{user}': {
     parameters: {
       query?: never
@@ -843,11 +867,7 @@ export interface components {
       type?:
         | components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
         | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site?: string
+      site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
       description?: string | null
     }
@@ -900,11 +920,7 @@ export interface components {
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit?: string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
     }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read': {
@@ -1068,6 +1084,21 @@ export interface components {
       culturalContexts?: string[]
     }
     'Site.jsonld-context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -1267,6 +1298,28 @@ export interface components {
       year: number
       number: number
       description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
+    'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
       interpretation?: string | null
       readonly code?: string
     }
@@ -1478,6 +1531,11 @@ export interface operations {
         'order[name]'?: 'asc' | 'desc'
         'order[type.group]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
+         * @example TO.fill 90
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -1671,6 +1729,40 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datacontext_stratigraphic_units_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ContextStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ContextStratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -3495,6 +3587,42 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_validatoruniquecontext_stratigraphic_units_context_stratigraphicUnit_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        context: string
+        /** @description UniqueValidator identifier */
+        stratigraphicUnit: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

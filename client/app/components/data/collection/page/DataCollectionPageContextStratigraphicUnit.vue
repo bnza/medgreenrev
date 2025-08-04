@@ -12,19 +12,25 @@
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 
-defineProps<{
+const props = defineProps<{
   path: P
   parent?:
     | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
     | ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
 const { siteCollectionAcl: acl } = useAppAuth()
+
+const title = computed(() =>
+  props.parent?.key === 'stratigraphicUnit'
+    ? 'contexts'
+    : 'stratigraphic units',
+)
 </script>
 
 <template>
   <data-collection-page
     :path
-    title="Contexts"
+    :title="`Related ${title}`"
     :show-back-button="!Boolean(parent)"
     :acl
   >
