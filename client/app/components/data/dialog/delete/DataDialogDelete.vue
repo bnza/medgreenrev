@@ -5,10 +5,8 @@ import type {
   GetItemResponseMap,
   OperationPathParams,
 } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
-import DataDialogDeleteAlert from '~/components/data/dialog/delete/DataDialogDeleteAlert.vue'
 import useDeleteItemMutation from '~/composables/queries/useDeleteItemMutation'
-import useGetItemQuery from '../../../../composables/queries/useGetItemQuery'
+import useGetItemQuery from '~/composables/queries/useGetItemQuery'
 
 const props = defineProps<{
   path: Path
@@ -21,7 +19,7 @@ defineSlots<{
 }>()
 
 const { isDeleteDialogOpen: visible, deleteDialogState } = storeToRefs(
-  useResourceUiStore(props.path),
+  useResourceDeleteDialogStore(props.path),
 )
 
 const {

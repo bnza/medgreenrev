@@ -11,7 +11,6 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
 import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
@@ -32,9 +31,12 @@ const { appPath } = useResourceConfig(
       : '/api/data/stratigraphic_units'
     : props.path,
 )
-const { isDeleteDialogOpen } = storeToRefs(
-  useResourceUiStore('/api/data/context_stratigraphic_units/{id}'),
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/context_stratigraphic_units/{id}'),
 )
+// const { updateDialogState } = storeToRefs(
+//   useResourceUpdateDialogStore('/apidata/context_stratigraphic_units/{id}'),
+// )
 const { id: parentId } = useResourceParent(props.parent)
 </script>
 
@@ -45,7 +47,7 @@ const { id: parentId } = useResourceParent(props.parent)
         :item
         :sub-resource-key
         :app-path
-        @delete="isDeleteDialogOpen = { id: item.id }"
+        @delete="deleteDialogState = { id: item.id }"
       />
     </template>
     <template #dialogs>

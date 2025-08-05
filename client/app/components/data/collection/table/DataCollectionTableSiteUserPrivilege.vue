@@ -15,7 +15,6 @@ import type {
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
 
-import useResourceUiStore from '~/stores/resource-ui'
 import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
@@ -26,8 +25,11 @@ const props = defineProps<{
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
-const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/admin/site_user_privileges/{id}'),
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/admin/site_user_privileges/{id}'),
+)
+const { updateDialogState } = storeToRefs(
+  useResourceUpdateDialogStore('/api/admin/site_user_privileges/{id}'),
 )
 </script>
 

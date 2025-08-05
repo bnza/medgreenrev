@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useUpdateValidation } from '~/composables/validation/useSiteValidation'
 import { useNormalization } from '~/composables/normalization/useSiteNormalization'
-import useResourceUiStore from '~/stores/resource-ui'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/data/sites/{id}'),
+  useResourceUpdateDialogStore('/api/data/sites/{id}'),
 )
 const { r$, item } = useUpdateValidation(updateDialogState)
 

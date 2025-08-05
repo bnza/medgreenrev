@@ -10,7 +10,6 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
 import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
@@ -21,8 +20,11 @@ const props = defineProps<{
 }>()
 
 const { appPath } = useResourceConfig(props.path)
-const { deleteDialogState, updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/data/contexts/{id}'),
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/contexts/{id}'),
+)
+const { updateDialogState } = storeToRefs(
+  useResourceUpdateDialogStore('/api/data/contexts/{id}'),
 )
 </script>
 

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useNormalization } from '~/composables/normalization/useUserNormalization'
-import useResourceUiStore from '~/stores/resource-ui'
 import { useUpdateValidation } from '~/composables/validation/useUserValidation'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/admin/users/{id}'),
+  useResourceUpdateDialogStore('/api/admin/users/{id}'),
 )
 const { r$, item } = useUpdateValidation(updateDialogState)
 

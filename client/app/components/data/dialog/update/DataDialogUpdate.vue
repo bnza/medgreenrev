@@ -4,7 +4,6 @@ import type {
   PatchItemPath,
   PatchItemRequestMap,
 } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
 
@@ -30,7 +29,7 @@ defineSlots<{
 }>()
 
 const { isUpdateDialogOpen: visible } = storeToRefs(
-  useResourceUiStore(props.path),
+  useResourceUpdateDialogStore(props.path),
 )
 
 const item = computed(() => regle.value.$value)

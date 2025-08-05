@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
 import { useUpdateValidation } from '~/composables/validation/useStratigraphicUnitValidation'
 import { useNormalization } from '~/composables/normalization/useStratigraphicUnitNormalization'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/data/stratigraphic_units/{id}'),
+  useResourceUpdateDialogStore('/api/data/stratigraphic_units/{id}'),
 )
 const { r$, item } = useUpdateValidation(updateDialogState)
 

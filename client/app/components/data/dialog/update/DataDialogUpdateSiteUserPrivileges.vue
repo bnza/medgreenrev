@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
 import { useUpdateValidation } from '~/composables/validation/useSiteUserPrivilegeValidation'
 import { useNormalization } from '~/composables/normalization/useSiteUserPrivilegeNormalization'
 import type { GetItemResponseMap } from '~~/types'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUiStore('/api/admin/site_user_privileges/{id}'),
+  useResourceUpdateDialogStore('/api/admin/site_user_privileges/{id}'),
 )
 const { r$, responseItem, item } = useUpdateValidation(updateDialogState)
 
