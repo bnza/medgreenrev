@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { PiniaColadaDevtools } from '@pinia/colada-devtools'
+
 const apiStore = useOpenApiStore()
 const { ready, status } = storeToRefs(apiStore)
 
@@ -30,5 +32,5 @@ watch(isAuthenticated, (value) => {
       <app-message-queue />
     </v-layout>
   </v-app>
-  <!--  <PiniaColadaDevtools />-->
+  <PiniaColadaDevtools />
 </template>
