@@ -17,21 +17,24 @@ export function useGetCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const { pagination, filtersState, queryObject } = storeToRefs(
-    useCollectionQueryStore(path),
+  const { pagination, queryObject } = storeToRefs(useCollectionQueryStore(path))
+
+  const key = computed(() =>
+    RESOURCE_QUERY_KEY.byFilter({
+      ...queryObject.value,
+      ...(params?.value || {}),
+    }),
   )
 
   const query = useQuery({
-    key: RESOURCE_QUERY_KEY.byFilter({
-      ...{ ...pagination, ...filtersState },
-      ...(params?.value || {}),
-    }),
+    key: () => key.value,
     query: () =>
       getCollectionOperation.request({
         query: { ...queryObject.value },
         params: params?.value,
       }),
-    enabled: /\{[^}]*}/.test(path) === (typeof params?.value !== 'undefined'),
+    enabled: () =>
+      /\{[^}]*}/.test(path) === (typeof params?.value !== 'undefined'),
   })
   const items = computed(() => query.data.value?.member ?? [])
   const totalItems = computed(() => query.data.value?.totalItems ?? 0)
@@ -40,7 +43,6 @@ export function useGetCollectionQuery(
     ...query,
     totalItems,
     pagination,
-    queryObject,
   }
 }
 

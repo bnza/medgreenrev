@@ -19,20 +19,6 @@ export function useGetItemQuery<P extends GetItemPath>(
     path,
   )
 
-  const queryOptions = defineQueryOptions(
-    (_params: Ref<OperationPathParams<P, 'get'> | undefined>) => ({
-      key: _params.value
-        ? RESOURCE_QUERY_KEY.byId(_params.value)
-        : QUERY_KEYS.root,
-      query: () => getItemOperation.request(_params.value),
-      enabled: openApiStore.isValidOperationPathParams(
-        path,
-        'get',
-        _params.value,
-      ),
-    }),
-  )
-
   watch(params, (value) => {
     if (value && !openApiStore.isValidOperationPathParams(path, 'get', value)) {
       console.error(
@@ -42,7 +28,13 @@ export function useGetItemQuery<P extends GetItemPath>(
     }
   })
 
-  return useQuery(() => queryOptions(params))
+  return useQuery({
+    key: () =>
+      params.value ? RESOURCE_QUERY_KEY.byId(params.value) : QUERY_KEYS.root,
+    query: () => getItemOperation.request(params.value),
+    enabled: () =>
+      openApiStore.isValidOperationPathParams(path, 'get', params.value),
+  })
 }
 
 export default useGetItemQuery
