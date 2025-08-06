@@ -39,10 +39,14 @@ const { updateDialogState } = storeToRefs(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #dialogs>
+    <template #dialogs="{ refetch }">
       <!--      <data-dialog-search-site :path />-->
-      <data-dialog-create-stratigraphic-unit :path :parent />
-      <data-dialog-delete-stratigraphic-unit />
+      <data-dialog-create-stratigraphic-unit
+        :path
+        :parent
+        @refresh="refetch()"
+      />
+      <data-dialog-delete-stratigraphic-unit @refresh="refetch()" />
       <data-dialog-update-stratigraphic-unit />
     </template>
   </data-collection-table>

@@ -11,6 +11,10 @@ defineProps<{
 const { getEmptyModel, r$ } = useCreateValidation()
 
 const { onPreCreate: onPreSubmit } = useNormalization()
+
+const emit = defineEmits<{
+  refresh: []
+}>()
 </script>
 
 <template>
@@ -21,6 +25,7 @@ const { onPreCreate: onPreSubmit } = useNormalization()
     :parent="undefined"
     :on-pre-submit
     :get-empty-model
+    @refresh="emit('refresh')"
   >
     <template #default>
       <data-item-form-edit-site

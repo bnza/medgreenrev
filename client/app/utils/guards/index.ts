@@ -1,5 +1,11 @@
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
-import type { ApiResourceKey, Iri, JsonLdItem, UserBaseData } from '~~/types'
+import type {
+  ApiResourceKey,
+  HydraConstraintViolation,
+  Iri,
+  JsonLdItem,
+  UserBaseData,
+} from '~~/types'
 import {
   API_RESOURCE_MAP,
   type ApiResourcePath,

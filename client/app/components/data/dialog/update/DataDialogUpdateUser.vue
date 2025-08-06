@@ -8,6 +8,10 @@ const { updateDialogState } = storeToRefs(
 const { r$, item } = useUpdateValidation(updateDialogState)
 
 const { onPreUpdate } = useNormalization()
+
+defineEmits<{
+  refresh: []
+}>()
 </script>
 
 <template>
@@ -16,6 +20,7 @@ const { onPreUpdate } = useNormalization()
     path="/api/admin/users/{id}"
     title="User"
     :on-pre-submit="onPreUpdate(item)"
+    @refresh="$emit('refresh')"
   >
     <template #default>
       <data-item-form-edit-user

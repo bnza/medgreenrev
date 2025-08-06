@@ -12,10 +12,8 @@ const { headers } = storeToRefs(useCollectionTableHeadersStore(props.path))
 const pathParams = computed(() =>
   props.parentId ? { parentId: props.parentId } : undefined,
 )
-const { pagination, items, totalItems, status } = useGetCollectionQuery(
-  props.path,
-  pathParams,
-)
+const { pagination, items, totalItems, status, refetch } =
+  useGetCollectionQuery(props.path, pathParams)
 </script>
 
 <template>
@@ -38,5 +36,5 @@ const { pagination, items, totalItems, status } = useGetCollectionQuery(
       <slot :name v-bind="slotProps || {}" />
     </template>
   </v-data-table-server>
-  <slot name="dialogs" />
+  <slot name="dialogs" v-bind="{ refetch }" />
 </template>

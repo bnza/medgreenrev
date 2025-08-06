@@ -14,6 +14,10 @@ const isSiteUserPrivilegeFn = (
   item: unknown,
 ): item is GetItemResponseMap['/api/admin/site_user_privileges/{id}'] =>
   isPlainObject(item) && 'site' in item && 'user' in item && 'privilege' in item
+
+defineEmits<{
+  refresh: []
+}>()
 </script>
 
 <template>
@@ -23,6 +27,7 @@ const isSiteUserPrivilegeFn = (
     title="Site/User Privilege"
     :fullscreen="false"
     :on-pre-submit="onPreUpdate(item)"
+    @refresh="$emit('refresh')"
   >
     <template v-if="isSiteUserPrivilegeFn(responseItem)" #default>
       <v-card-text class="text-center">

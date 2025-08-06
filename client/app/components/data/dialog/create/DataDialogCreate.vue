@@ -50,12 +50,14 @@ const emit = defineEmits<{
       response: PostCollectionResponseMap[typeof postPath]
     },
   ]
+  refresh: []
 }>()
 
 const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
   useResourceUiStore(props.path),
 )
-const { postCollection } = usePostCollectionMutation(postPath)
+const { postCollection, invalidatedCacheEntries } =
+  usePostCollectionMutation(postPath)
 
 const disabled = ref(false)
 
@@ -128,6 +130,12 @@ const submit = async () => {
 
     // Eventual side effects are produced/handled by the parent Dialog
     emit('success', { request: structuredClone(toRaw(model)), response: data })
+
+    // If no cache hits, probably query cache has been deleted
+    // so we need to force a refresh of the collection
+    if (!invalidatedCacheEntries.value.length) {
+      emit('refresh')
+    }
 
     //The app will redirect to the new item page since the user decided so
     if (redirectToItem.value) {

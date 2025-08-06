@@ -13,6 +13,10 @@ const { getEmptyModel, r$ } = useCreateValidation()
 const { onPreCreate: onPreSubmit } = useNormalization()
 
 const { openUserPasswordDialog } = useUserPasswordDialog()
+
+const emit = defineEmits<{
+  refresh: []
+}>()
 </script>
 
 <template>
@@ -24,6 +28,7 @@ const { openUserPasswordDialog } = useUserPasswordDialog()
     :on-pre-submit
     :get-empty-model
     @success="(event) => openUserPasswordDialog(event)"
+    @refresh="emit('refresh')"
   >
     <template #default>
       <data-item-form-edit-user

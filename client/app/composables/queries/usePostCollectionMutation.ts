@@ -21,6 +21,12 @@ export function usePostCollectionMutation<P extends PostCollectionPath>(
     path,
   )
 
+  // After re-get window focus, the query cache is cleared. So we need to manually signal that we need to refetch the data.
+  const invalidatedCacheEntriesRaw = ref<any[]>([])
+  const invalidatedCacheEntries = computed(() =>
+    invalidatedCacheEntriesRaw.value.filter((entry) => Boolean(entry)),
+  )
+
   const postCollection = useMutation({
     mutation: ({
       param,
@@ -32,11 +38,15 @@ export function usePostCollectionMutation<P extends PostCollectionPath>(
       return postCollectionOperation.request(param, { body: model })
     },
     onSettled: async () => {
-      return await invalidateQueries({ key: QUERY_KEYS.root })
+      const cacheHits = await invalidateQueries({ key: QUERY_KEYS.root })
+      invalidatedCacheEntriesRaw.value = Array.isArray(cacheHits)
+        ? cacheHits
+        : []
     },
   })
 
   return {
+    invalidatedCacheEntries,
     postCollection,
   }
 }

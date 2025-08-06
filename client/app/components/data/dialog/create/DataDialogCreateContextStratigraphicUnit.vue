@@ -21,16 +21,21 @@ const props = defineProps<{
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)
+const emit = defineEmits<{
+  refresh: []
+}>()
 </script>
 
 <template>
   <data-dialog-create
     v-model:regle="r$"
     title="User"
+    :redirect-option="false"
     :parent
     :path
     :on-pre-submit="(item) => item"
     :get-empty-model
+    @refresh="emit('refresh')"
   >
     <template #default>
       <data-item-form-edit-context-stratigraphic-unit

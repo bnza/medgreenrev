@@ -47,9 +47,13 @@ const { id: parentId } = useResourceParent(props.parent)
         @delete="deleteDialogState = { id: item.id }"
       />
     </template>
-    <template #dialogs>
-      <data-dialog-create-context-stratigraphic-unit :path :parent />
-      <data-dialog-delete-context-stratigraphic-unit />
+    <template #dialogs="{ refetch }">
+      <data-dialog-create-context-stratigraphic-unit
+        :path
+        :parent
+        @refresh="refetch()"
+      />
+      <data-dialog-delete-context-stratigraphic-unit @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

@@ -28,13 +28,17 @@ defineSlots<{
   actions(): any
 }>()
 
+const emit = defineEmits<{
+  refresh: []
+}>()
+
 const { isUpdateDialogOpen: visible } = storeToRefs(
   useResourceUpdateDialogStore(props.path),
 )
 
 const item = computed(() => regle.value.$value)
 
-const { patchItem } = usePatchItemMutation(props.path)
+const { patchItem, invalidatedCacheEntries } = usePatchItemMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
 /**
@@ -92,6 +96,12 @@ const submit = async () => {
     })
     addSuccess('Resource successfully updated')
     visible.value = false
+
+    // If no cache hits, probably query cache has been deleted
+    // so we need to force a refresh of the collection
+    if (!invalidatedCacheEntries.value.length) {
+      emit('refresh')
+    }
   } catch (e) {
     addError(e)
   }

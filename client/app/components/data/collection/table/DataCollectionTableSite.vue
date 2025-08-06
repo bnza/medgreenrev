@@ -30,10 +30,10 @@ const { updateDialogState } = storeToRefs(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #dialogs>
+    <template #dialogs="{ refetch }">
       <data-dialog-search :path title="Site" />
-      <data-dialog-create-site :path />
-      <data-dialog-delete-site />
+      <data-dialog-create-site :path @refresh="refetch()" />
+      <data-dialog-delete-site @refresh="refetch()" />
       <data-dialog-update-site />
     </template>
   </data-collection-table>

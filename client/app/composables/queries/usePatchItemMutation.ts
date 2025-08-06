@@ -18,6 +18,13 @@ export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
     apiResourcePath,
     path,
   )
+
+  // After re-get window focus, the query cache is cleared. So we need to manually signal that we need to refetch the data.
+  const invalidatedCacheEntriesRaw = ref<any[]>([])
+  const invalidatedCacheEntries = computed(() =>
+    invalidatedCacheEntriesRaw.value.filter((entry) => Boolean(entry)),
+  )
+
   const patchItem = defineMutation(() => {
     const item = ref<PatchItemRequestMap[P]>()
     const mutation = useMutation({
@@ -31,7 +38,10 @@ export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
         return patchItemOperation.request(param, { body: model })
       },
       onSettled: async () => {
-        return await invalidateQueries({ key: QUERY_KEYS.root })
+        const cacheHits = await invalidateQueries({ key: QUERY_KEYS.root })
+        invalidatedCacheEntriesRaw.value = Array.isArray(cacheHits)
+          ? cacheHits
+          : []
       },
     })
     return {
@@ -41,6 +51,7 @@ export function usePatchItemMutation<P extends PatchItemPath>(path: P) {
   })()
 
   return {
+    invalidatedCacheEntries,
     patchItem,
   }
 }

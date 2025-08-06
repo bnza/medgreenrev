@@ -21,6 +21,10 @@ const props = defineProps<{
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)
 
 const { onPreCreate: onPreSubmit } = useNormalization()
+
+const emit = defineEmits<{
+  refresh: []
+}>()
 </script>
 
 <template>
@@ -31,6 +35,7 @@ const { onPreCreate: onPreSubmit } = useNormalization()
     :path
     :on-pre-submit
     :get-empty-model
+    @refresh="emit('refresh')"
   >
     <template #default>
       <data-item-form-edit-stratigraphic-unit

@@ -31,7 +31,9 @@ const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
   return isPlainObject(value) && 'id' in value
 }
 
-const { deleteItem } = useDeleteItemMutation(props.path)
+const { deleteItem, invalidatedCacheEntries } = useDeleteItemMutation(
+  props.path,
+)
 
 const disabled = computed(() => false)
 
@@ -43,7 +45,8 @@ const isValidOperationPathParams = (
 }
 
 const emit = defineEmits<{
-  (e: 'deleted'): void
+  deleted: []
+  refresh: []
 }>()
 
 const submit = async () => {
@@ -61,6 +64,12 @@ const submit = async () => {
     addSuccess('Resource successfully deleted')
     visible.value = false
     emit('deleted')
+
+    // If no cache hits, probably query cache has been deleted
+    // so we need to force a refresh of the collection
+    if (!invalidatedCacheEntries.value.length) {
+      emit('refresh')
+    }
   } catch (e) {
     addError(e)
   }

@@ -19,6 +19,12 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
     caches,
   } = useAppQueryCache(apiResourcePath, path)
 
+  // After re-get window focus, the query cache is cleared. So we need to manually signal that we need to refetch the data.
+  const invalidatedCacheEntriesRaw = ref<any[]>([])
+  const invalidatedCacheEntries = computed(() =>
+    invalidatedCacheEntriesRaw.value.filter((entry) => Boolean(entry)),
+  )
+
   const deleteItem = useMutation({
     mutation: (params: OperationPathParams<P, 'delete'>) =>
       deleteItemOperation.request(params),
@@ -32,12 +38,16 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
         remove(caches.get(keyHash)!)
       }
 
-      return await invalidateQueries({ key: QUERY_KEYS.root })
+      const cacheHits = await invalidateQueries({ key: QUERY_KEYS.root })
+      invalidatedCacheEntriesRaw.value = Array.isArray(cacheHits)
+        ? cacheHits
+        : []
     },
   })
 
   return {
     deleteItem,
+    invalidatedCacheEntries,
   }
 }
 
