@@ -34,9 +34,6 @@ const { appPath } = useResourceConfig(
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/context_stratigraphic_units/{id}'),
 )
-// const { updateDialogState } = storeToRefs(
-//   useResourceUpdateDialogStore('/apidata/context_stratigraphic_units/{id}'),
-// )
 const { id: parentId } = useResourceParent(props.parent)
 </script>
 

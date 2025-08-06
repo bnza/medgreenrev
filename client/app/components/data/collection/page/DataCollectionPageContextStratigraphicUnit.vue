@@ -10,7 +10,7 @@
     >
   "
 >
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+import type { GetCollectionPath, Iri, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: P
@@ -18,13 +18,18 @@ const props = defineProps<{
     | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
     | ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
-const { siteCollectionAcl: acl } = useAppAuth()
+const { item: parentItem } = useResourceParent(props.parent)
 
 const title = computed(() =>
   props.parent?.key === 'stratigraphicUnit'
     ? 'contexts'
     : 'stratigraphic units',
 )
+const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
+const siteId = computed(() => {
+  const id = parentItem.value?.site?.['@id']
+  return id ? Number(extractIdFromIri(id as Iri)) : undefined
+})
 </script>
 
 <template>
@@ -32,7 +37,10 @@ const title = computed(() =>
     :path
     :title="`Related ${title}`"
     :show-back-button="!Boolean(parent)"
-    :acl
+    :acl="{
+      canExport: isAuthenticated,
+      canCreate: siteId ? hasSitePrivilege(siteId) : hasAnySitePrivilege,
+    }"
   >
     <data-collection-table-context-stratigraphic-unit :path :parent />
   </data-collection-page>
