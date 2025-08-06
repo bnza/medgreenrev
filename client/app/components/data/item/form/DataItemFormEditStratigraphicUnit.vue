@@ -23,6 +23,7 @@ defineProps<Props>()
         path="/api/data/sites"
         item-title="name"
         label="site"
+        granted-only
         :error-messages="errors?.site"
         :disabled="parent?.key === 'site' || mode === 'update'"
       />

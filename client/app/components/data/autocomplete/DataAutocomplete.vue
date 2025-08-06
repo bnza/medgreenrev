@@ -3,13 +3,21 @@ import type { ApiResourcePath } from '~/utils/consts/resources'
 import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 
 const model = defineModel<string>()
-const props = defineProps<{
-  path: ApiResourcePath
-  itemTitle: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    path: ApiResourcePath
+    itemTitle: string
+    grantedOnly?: boolean
+  }>(),
+  { grantedOnly: false },
+)
 
 const search = ref('')
-const { items, asyncStatus } = useAutocompleteQuery(props.path, search)
+const { items, asyncStatus } = useAutocompleteQuery(
+  props.path,
+  search,
+  props.grantedOnly,
+)
 </script>
 
 <template>

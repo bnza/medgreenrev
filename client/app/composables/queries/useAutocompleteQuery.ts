@@ -5,16 +5,21 @@ import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 export function useAutocompleteQuery(
   path: ApiResourcePath,
   search: Ref<string>,
+  grantedOnly: boolean,
 ) {
   const { QUERY_KEYS } = useAppQueryCache(path)
   const getCollectionOperation = new GetCollectionOperation(path)
 
   const requestOptions = computed(() =>
-    search.value ? { query: { search: search.value } } : {},
+    search.value
+      ? { query: { search: search.value, granted: grantedOnly } }
+      : grantedOnly
+        ? { query: { granted: grantedOnly } }
+        : {},
   )
 
   const queryOptions = defineQueryOptions((_search: Ref<string>) => ({
-    key: QUERY_KEYS.bySearch(_search.value),
+    key: QUERY_KEYS.bySearch(_search.value, grantedOnly),
     query: () => getCollectionOperation.request(requestOptions.value),
   }))
 
