@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import type { ApiResourcePath } from '~/utils/consts/resources'
+import type { DataAutocompleteComponentProps } from '~~/types'
 import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 
 const model = defineModel<string>()
-const props = withDefaults(
-  defineProps<{
-    path: ApiResourcePath
-    itemTitle: string
-    grantedOnly?: boolean
-  }>(),
-  { grantedOnly: false },
-)
+const props = withDefaults(defineProps<DataAutocompleteComponentProps>(), {
+  grantedOnly: false,
+})
 
 const search = ref('')
 const { items, asyncStatus } = useAutocompleteQuery(
