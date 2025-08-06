@@ -24,6 +24,7 @@ defineProps<Props>()
         path="/api/data/stratigraphic_units"
         item-title="code"
         label="stratigraphic unit"
+        :granted-only="parent?.key !== 'stratigraphicUnit'"
         :error-messages="errors?.stratigraphicUnit"
         :disabled="parent?.key === 'stratigraphicUnit'"
       />
@@ -36,6 +37,7 @@ defineProps<Props>()
         path="/api/data/contexts"
         item-title="name"
         label="context"
+        :granted-only="parent?.key !== 'context'"
         :error-messages="errors?.context"
         :disabled="parent?.key === 'context'"
       />

@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { ApiResourcePath } from '~/utils/consts/resources'
+import type { DataAutocompleteComponentProps } from '~~/types'
 
 const model = defineModel<string>()
-const props = defineProps<{
-  path: ApiResourcePath
-  itemTitle: string
-}>()
+const props = withDefaults(defineProps<DataAutocompleteComponentProps>(), {
+  grantedOnly: false,
+})
 </script>
 
 <template>
@@ -13,6 +12,7 @@ const props = defineProps<{
     v-model="model"
     :path="props.path"
     :item-title="props.itemTitle"
+    :granted-only
   >
     <template #selection="{ item }">
       <v-list-item v-if="item.raw.site">
