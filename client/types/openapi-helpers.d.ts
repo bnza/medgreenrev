@@ -147,6 +147,9 @@ export type ResourceParent<K extends string, P extends ApiResourceItemPath> = {
   item: GetItemResponseMap[P]
 }
 
+export type HydraConstraintViolation =
+  components['schemas']['ConstraintViolation.jsonld-jsonld']
+
 export type ResourceParentSiteUserPrivilege =
   | ResourceParent<'site', '/api/data/sites/{id}'>
   | ResourceParent<'user', '/api/admin/users/{id}'>

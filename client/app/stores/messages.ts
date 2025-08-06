@@ -19,6 +19,27 @@ export const useMessagesStore = defineStore('messages', () => {
   }
 
   function addError(text: unknown, title?: string) {
+    // Check if it's a FetchError with 422 status
+    if (isFetchError(text) && text.status === 422) {
+      if (isHydraConstraintViolation(text.data)) {
+        // Handle constraint violations
+        text.data.violations?.forEach(
+          (violation: { propertyPath?: string; message?: string }) => {
+            const violationTitle = violation.propertyPath
+              ? `${title || 'Validation Error'}: ${violation.propertyPath}`
+              : title || 'Validation Error'
+            add({
+              color: 'error',
+              timeout: -1,
+              text: violation.message || 'Unknown validation error',
+              title: violationTitle,
+            })
+          },
+        )
+        return
+      }
+    }
+
     if (text instanceof Error) {
       text = text.message
     }

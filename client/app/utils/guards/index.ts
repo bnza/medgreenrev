@@ -74,3 +74,27 @@ export const isApiResourceObject = (
   value: unknown,
 ): value is { '@id': string } =>
   isObject(value) && '@id' in value && isString(value['@id'])
+
+export function isHydraConstraintViolation(
+  data: unknown,
+): data is HydraConstraintViolation {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    'status' in data &&
+    (data as any).status === 422 &&
+    'violations' in data &&
+    Array.isArray((data as any).violations)
+  )
+}
+
+export function isFetchError(
+  error: unknown,
+): error is { data: unknown; status: number } & Error {
+  return (
+    error instanceof Error &&
+    error.constructor.name === 'FetchError' &&
+    'data' in error &&
+    'status' in error
+  )
+}
