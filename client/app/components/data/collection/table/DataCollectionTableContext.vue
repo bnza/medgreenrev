@@ -4,8 +4,7 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      | '/api/data/contexts'
-      | '/api/data/stratigraphic_units/{parentId}/data_contexts'
+      '/api/data/contexts' | '/api/data/sites/{parentId}/contexts'
     >
   "
 >
@@ -18,6 +17,8 @@ const props = defineProps<{
 }>()
 
 const { appPath } = useResourceConfig(props.path)
+const { id: parentId } = useResourceParent(props.parent)
+
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/contexts/{id}'),
 )
@@ -27,7 +28,7 @@ const { updateDialogState } = storeToRefs(
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
