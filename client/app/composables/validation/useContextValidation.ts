@@ -4,7 +4,7 @@ import type {
   ResourceParent,
 } from '~~/types'
 import { inferRules, useRegle } from '@regle/core'
-import { applyIf, required } from '@regle/rules'
+import { required } from '@regle/rules'
 import useResourceParent from '~/composables/useResourceParent'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
@@ -58,25 +58,34 @@ export function useUpdateValidation(
   const siteChanged = computed(() => item.value.site !== model.value.site)
   const nameChanged = computed(() => item.value.name !== model.value.name)
 
-  const rules = computed(() =>
-    inferRules(model, {
+  const rules = computed(() => {
+    const baseRules = {
       type: { required },
       site: {
         required,
-        uniqueSite: applyIf(
-          siteChanged,
-          uniqueSite(() => model.value.name),
-        ),
+        // Conditionally add uniqueSite validation only when site has changed
+        // Using spread operator to dynamically include async validators and avoid applyIf issues
+        ...(siteChanged.value
+          ? {
+              uniqueSite: uniqueSite(() => model.value.name),
+            }
+          : {}),
       },
       name: {
         required,
-        uniqueName: applyIf(
-          nameChanged,
-          uniqueName(() => model.value.site),
-        ),
+        // Conditionally add uniqueName validation only when name has changed
+        // Using spread operator to dynamically build validation rules
+        ...(nameChanged.value
+          ? {
+              uniqueName: uniqueName(() => model.value.site),
+            }
+          : {}),
       },
-    }),
-  )
+    }
+
+    return inferRules(model, baseRules)
+  })
+
   const { r$ } = useRegle(model, rules)
 
   return {

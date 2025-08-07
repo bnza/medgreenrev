@@ -1,7 +1,7 @@
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 import type { OperationPathParams, PostCollectionRequestMap } from '~~/types'
 import { createRule, inferRules, type Maybe, useRegle } from '@regle/core'
-import { applyIf, integer, maxValue, minValue, required } from '@regle/rules'
+import { integer, maxValue, minValue, required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const apiCodeValidator = new GetValidationOperation(
@@ -74,18 +74,29 @@ export function useUpdateValidation(
   )
 
   const codeChanged = computed(() => item.value.code !== model.value.code)
-
   const nameChanged = computed(() => item.value.name !== model.value.name)
 
-  const rules = computed(() =>
-    inferRules(model, {
+  const rules = computed(() => {
+    const baseRules = {
       code: {
-        required: applyIf(codeChanged, required),
-        unique: asyncConditionalRule(codeChanged, uniqueCode),
+        // Conditionally add required and unique validation only when code has changed
+        // Using spread operator to avoid applyIf + async validator combination issues
+        ...(codeChanged.value
+          ? {
+              required,
+              unique: uniqueCode,
+            }
+          : {}),
       },
       name: {
-        required: applyIf(nameChanged, required),
-        unique: asyncConditionalRule(nameChanged, uniqueName),
+        // Conditionally add required and unique validation only when name has changed
+        // Using spread operator to dynamically build validation rules
+        ...(nameChanged.value
+          ? {
+              required,
+              unique: uniqueName,
+            }
+          : {}),
       },
       chronologyLower: {
         integer,
@@ -103,8 +114,10 @@ export function useUpdateValidation(
           'Upper chronology must be less than or equal lower chronology.',
         )(() => model.value.chronologyLower),
       },
-    }),
-  )
+    }
+
+    return inferRules(model, baseRules)
+  })
 
   const { r$ } = useRegle(model, rules)
   return {

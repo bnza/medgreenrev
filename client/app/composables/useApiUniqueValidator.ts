@@ -73,6 +73,7 @@ function useApiUniqueValidator<P extends GetValidationPath>(
         : true
     },
     message,
+    async: true,
   })
 }
 

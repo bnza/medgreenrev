@@ -87,29 +87,33 @@ export function useUpdateValidation(
   const yearChanged = computed(() => item.value.year !== model.value.year)
   const numberChanged = computed(() => item.value.number !== model.value.number)
 
-  const rules = computed(() =>
-    inferRules(model, {
+  const rules = computed(() => {
+    const baseRules = {
       site: {
         required,
-        uniqueSite: applyIf(
-          //@TODO test, by now site is disabled in update form
-          siteChanged,
-          uniqueSite(
-            () => model.value.year || 0,
-            () => model.value.number,
-          ),
-        ),
+        // Conditionally add uniqueSite validation only when site has changed
+        // Using spread operator to dynamically include async validators
+        ...(siteChanged.value
+          ? {
+              uniqueSite: uniqueSite(
+                () => model.value.year || 0,
+                () => model.value.number,
+              ),
+            }
+          : {}),
       },
       year: {
         integer: integer,
-        uniqueYear: applyIf(
-          //@TODO test, by now year is disabled in update form
-          yearChanged,
-          uniqueYear(
-            () => model.value.site,
-            () => model.value.number,
-          ),
-        ),
+        // Conditionally add uniqueYear validation only when year has changed
+        // Using spread operator to avoid applyIf + async validator issues
+        ...(yearChanged.value
+          ? {
+              uniqueYear: uniqueYear(
+                () => model.value.site,
+                () => model.value.number,
+              ),
+            }
+          : {}),
         minValue: minValue(2000),
         maxValue: maxValue(new Date().getFullYear()),
       },
@@ -117,17 +121,21 @@ export function useUpdateValidation(
         required,
         integer,
         minValue: minValue(1),
-        uniqueNumber: applyIf(
-          //@TODO test, by now number is disabled in update form
-          numberChanged,
-          uniqueNumber(
-            () => model.value.site,
-            () => model.value.year || 0,
-          ),
-        ),
+        // Conditionally add uniqueNumber validation only when number has changed
+        // Using spread operator to dynamically build validation rules
+        ...(numberChanged.value
+          ? {
+              uniqueNumber: uniqueNumber(
+                () => model.value.site,
+                () => model.value.year || 0,
+              ),
+            }
+          : {}),
       },
-    }),
-  )
+    }
+
+    return inferRules(model, baseRules)
+  })
 
   const { r$ } = useRegle(model, rules)
   return {
