@@ -4,7 +4,7 @@ import type {
   ResourceParent,
 } from '~~/types'
 import { inferRules, useRegle } from '@regle/core'
-import { integer, maxValue, minValue, required, applyIf } from '@regle/rules'
+import { integer, maxValue, minValue, required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 import useResourceParent from '~/composables/useResourceParent'
 

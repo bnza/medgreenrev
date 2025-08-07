@@ -24,8 +24,8 @@ importers:
         specifier: ^1.6.3
         version: 1.6.3(pinia@3.0.3(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
       '@sidebase/nuxt-auth':
-        specifier: ^0.10.1
-        version: 0.10.1(@netlify/blobs@9.1.2)(magicast@0.3.5)(next-auth@4.21.1(next@13.5.11(@babel/core@7.28.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        specifier: ^1.0.1
+        version: 1.0.1(@netlify/blobs@9.1.2)(magicast@0.3.5)(next-auth@4.21.1(next@13.5.11(@babel/core@7.28.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@types/jsonld':
         specifier: ^1.5.15
         version: 1.5.15
@@ -1745,8 +1745,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@sidebase/nuxt-auth@0.10.1':
-    resolution: {integrity: sha512-fCSDfGl6npVIWrb//NbeKA16ATk1CpjzfRrNAdJ2PRr0BF5aJz6KCvDI8dSzs5VLMJBIRLR39G2rWYq5q+v5iA==}
+  '@sidebase/nuxt-auth@1.0.1':
+    resolution: {integrity: sha512-mQ40v2VULxhvjr/zif+zH4tuYCN8W6wANuQNxPmyyfQqQJRSmthg9WVLSVg/48wYvNJPEVpa4DudAeLu1ihmcg==}
     engines: {node: '>=20', pnpm: '>=9.4.0'}
     peerDependencies:
       next-auth: ~4.21.1
@@ -7328,7 +7328,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.46.2':
     optional: true
 
-  '@sidebase/nuxt-auth@0.10.1(@netlify/blobs@9.1.2)(magicast@0.3.5)(next-auth@4.21.1(next@13.5.11(@babel/core@7.28.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@sidebase/nuxt-auth@1.0.1(@netlify/blobs@9.1.2)(magicast@0.3.5)(next-auth@4.21.1(next@13.5.11(@babel/core@7.28.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
       '@nuxt/kit': 3.18.1(magicast@0.3.5)
       defu: 6.1.4

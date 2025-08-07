@@ -38,7 +38,7 @@ const { isUpdateDialogOpen: visible } = storeToRefs(
 
 const item = computed(() => regle.value.$value)
 
-const { patchItem, invalidatedCacheEntries } = usePatchItemMutation(props.path)
+const { patchItem } = usePatchItemMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
 /**

@@ -29,7 +29,7 @@
     "@pinia/colada-nuxt": "^0.2.1",
     "@regle/core": "^1.6.3",
     "@regle/rules": "^1.6.3",
-    "@sidebase/nuxt-auth": "^0.10.1",
+    "@sidebase/nuxt-auth": "^1.0.1",
     "@types/jsonld": "^1.5.15",
     "deep-object-diff": "^1.1.9",
     "dotenv": "^17.2.1",
