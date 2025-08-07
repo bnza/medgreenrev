@@ -1,0 +1,87 @@
+import type {
+  OperationPathParams,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
+import { inferRules, useRegle } from '@regle/core'
+import { applyIf, required } from '@regle/rules'
+import useResourceParent from '~/composables/useResourceParent'
+import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
+
+const uniqueSite = useApiUniqueValidator(
+  '/api/validator/unique/contexts/{site}/{name}',
+  ['site', 'name'],
+  'Duplicate [number, site, year] combination',
+)
+const uniqueName = useApiUniqueValidator(
+  '/api/validator/unique/contexts/{site}/{name}',
+  ['name', 'site'],
+  'Duplicate [number, site, year] combination',
+)
+export function useCreateValidation(
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>,
+) {
+  const { key: parentKey, iri: parentIri } = useResourceParent(parent)
+
+  type RequestBody = PostCollectionRequestMap['/api/data/contexts']
+  const getEmptyModel = () =>
+    ({
+      site: parentKey.value === 'site' ? parentIri.value : undefined,
+    }) as RequestBody
+  const model = ref(getEmptyModel())
+
+  const rules = computed(() =>
+    inferRules(model, {
+      type: { required },
+      site: { required, uniqueYear: uniqueSite(() => model.value.name) },
+      name: { required, uniqueName: uniqueName(() => model.value.site) },
+    }),
+  )
+  const { r$ } = useRegle(model, rules)
+
+  return {
+    getEmptyModel,
+    r$,
+  }
+}
+
+export function useUpdateValidation(
+  params: Ref<
+    OperationPathParams<'/api/data/contexts/{id}', 'get'> | undefined
+  >,
+) {
+  const { item, responseItem, model } = useGetPatchItemQuery(
+    '/api/data/contexts/{id}',
+    params,
+  )
+
+  const siteChanged = computed(() => item.value.site !== model.value.site)
+  const nameChanged = computed(() => item.value.name !== model.value.name)
+
+  const rules = computed(() =>
+    inferRules(model, {
+      type: { required },
+      site: {
+        required,
+        uniqueSite: applyIf(
+          siteChanged,
+          uniqueSite(() => model.value.name),
+        ),
+      },
+      name: {
+        required,
+        uniqueName: applyIf(
+          nameChanged,
+          uniqueName(() => model.value.site),
+        ),
+      },
+    }),
+  )
+  const { r$ } = useRegle(model, rules)
+
+  return {
+    responseItem,
+    item,
+    r$,
+  }
+}

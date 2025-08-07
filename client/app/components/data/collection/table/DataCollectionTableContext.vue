@@ -14,9 +14,7 @@ import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
   path: Path
-  parent?:
-    | ResourceParent<'site', '/api/data/sites/{id}'>
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
 
 const { appPath } = useResourceConfig(props.path)
@@ -31,15 +29,19 @@ const { updateDialogState } = storeToRefs(
 <template>
   <data-collection-table :path>
     <template #[`item.id`]="{ item }">
-      <navigation-resource-item :id="item.id" :acl="item._acl" :app-path />
-      <!--      @delete="deleteDialogState = { id: item.id }"-->
-      <!--      @update="updateDialogState = { id: item.id }"-->
+      <navigation-resource-item
+        :id="item.id"
+        :acl="item._acl"
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
+        @update="updateDialogState = { id: item.id }"
+      />
     </template>
-    <template #dialogs>
+    <template #dialogs="{ refetch }">
       <!--      <data-dialog-search :path title="Site" />-->
-      <!--      <data-dialog-create-site :path />-->
-      <!--      <data-dialog-delete-site />-->
-      <!--      <data-dialog-update-site />-->
+      <data-dialog-create-context :path :parent @refresh="refetch()" />
+      <data-dialog-delete-context @refresh="refetch()" />
+      <data-dialog-update-context @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

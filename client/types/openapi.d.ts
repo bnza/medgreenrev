@@ -17,7 +17,11 @@ export interface paths {
      */
     get: operations['api_datacontexts_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a Context resource.
+     * @description Creates a Context resource.
+     */
+    post: operations['api_datacontexts_post']
     delete?: never
     options?: never
     head?: never
@@ -36,6 +40,34 @@ export interface paths {
      * @description Retrieves a Context resource.
      */
     get: operations['api_datacontexts_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the Context resource.
+     * @description Removes the Context resource.
+     */
+    delete: operations['api_datacontexts_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the Context resource.
+     * @description Updates the Context resource.
+     */
+    patch: operations['api_datacontexts_id_patch']
+    trace?: never
+  }
+  '/api/data/sites/{parentId}/contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Context resources.
+     * @description Retrieves the collection of Context resources.
+     */
+    get: operations['api_datasites_parentIdcontexts_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -588,6 +620,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/contexts/{site}/{name}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquecontexts_site_name_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/site_user_privileges/{site}/{user}': {
     parameters: {
       query?: never
@@ -832,9 +884,39 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
+    Context: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      contextsStratigraphicUnits?: string[]
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      contextsStratigraphicUnits?: string[]
+      name?: string
+      description?: string | null
+    }
     'Context.jsonld-context.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
       readonly '@context'?:
         | string
         | ({
@@ -844,6 +926,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
+      readonly '@id'?: string
+      readonly '@type'?: string
       readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context.acl.read'] | null
       site?: components['schemas']['Site.jsonld-context.acl.read']
@@ -900,12 +984,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      stratigraphicUnit?: string
+      stratigraphicUnit: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      context?: string
+      context: string
     }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
@@ -1531,11 +1615,23 @@ export interface operations {
         'order[name]'?: 'asc' | 'desc'
         'order[type.group]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
         /**
          * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
          * @example TO.fill 90
          */
         search?: string
+        /**
+         * @description Filter contexts to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path?: never
@@ -1589,6 +1685,53 @@ export interface operations {
       }
     }
   }
+  api_datacontexts_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new Context resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['Context.jsonld']
+      }
+    }
+    responses: {
+      /** @description Context resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datacontexts_id_get: {
     parameters: {
       query?: never
@@ -1623,6 +1766,206 @@ export interface operations {
       }
     }
   }
+  api_datacontexts_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Context identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Context resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datacontexts_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Context identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated Context resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['Context']
+      }
+    }
+    responses: {
+      /** @description Context resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datasites_parentIdcontexts_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[type.group]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
+         * @example TO.fill 90
+         */
+        search?: string
+        /**
+         * @description Filter contexts to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
+      }
+      header?: never
+      path: {
+        /** @description Context identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Context collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Context.jsonld-context.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
   api_datacontext_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
@@ -1632,6 +1975,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.group]'?: 'asc' | 'desc'
         'order[context.type.value]'?: 'asc' | 'desc'
       }
       header?: never
@@ -1808,6 +2152,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.group]'?: 'asc' | 'desc'
         'order[context.type.value]'?: 'asc' | 'desc'
       }
       header?: never
@@ -1874,6 +2219,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.group]'?: 'asc' | 'desc'
         'order[context.type.value]'?: 'asc' | 'desc'
       }
       header?: never
@@ -2293,6 +2639,11 @@ export interface operations {
          * @example me
          */
         search?: string
+        /**
+         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path?: never
@@ -3265,11 +3616,22 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
          * @example 2025 123
          */
         search?: string
+        /**
+         * @description Filter stratigraphic units to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path: {
@@ -3337,11 +3699,22 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
          * @example 2025 123
          */
         search?: string
+        /**
+         * @description Filter stratigraphic units to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path?: never
@@ -3600,6 +3973,42 @@ export interface operations {
         context: string
         /** @description UniqueValidator identifier */
         stratigraphicUnit: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquecontexts_site_name_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        site: string
+        /** @description UniqueValidator identifier */
+        name: string
       }
       cookie?: never
     }

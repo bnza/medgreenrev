@@ -97,11 +97,7 @@ const submit = async () => {
     addSuccess('Resource successfully updated')
     visible.value = false
 
-    // If no cache hits, probably query cache has been deleted
-    // so we need to force a refresh of the collection
-    if (!invalidatedCacheEntries.value.length) {
-      emit('refresh')
-    }
+    emit('refresh')
   } catch (e) {
     addError(e)
   }

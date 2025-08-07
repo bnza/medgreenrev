@@ -17,7 +17,8 @@ defineProps<{
     | ResourceParent<'site', '/api/data/sites/{id}'>
     | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
 }>()
-const { siteCollectionAcl: acl } = useAppAuth()
+
+const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 </script>
 
 <template>
@@ -25,7 +26,12 @@ const { siteCollectionAcl: acl } = useAppAuth()
     :path
     title="Contexts"
     :show-back-button="!Boolean(parent)"
-    :acl
+    :acl="{
+      canExport: isAuthenticated,
+      canCreate: parent?.item.id
+        ? hasSitePrivilege(parent.item.id)
+        : hasAnySitePrivilege,
+    }"
   >
     <data-collection-table-context :path :parent />
   </data-collection-page>

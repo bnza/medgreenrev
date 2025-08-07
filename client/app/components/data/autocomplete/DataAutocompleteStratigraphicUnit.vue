@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import type { DataAutocompleteComponentProps } from '~~/types'
+import type { ApiResourcePath } from '~~/types'
 
 const model = defineModel<string>()
-const props = withDefaults(defineProps<DataAutocompleteComponentProps>(), {
+interface Props {
+  path: ApiResourcePath
+  itemTitle: string
+  grantedOnly?: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
   grantedOnly: false,
 })
 </script>
