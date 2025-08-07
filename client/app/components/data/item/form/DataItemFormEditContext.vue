@@ -47,7 +47,7 @@ defineEmits<{
       <v-col cols="9">
         <v-text-field
           v-model="item.name"
-          label="Name"
+          label="name"
           :error-messages="errors?.name"
           required
         />
@@ -57,7 +57,7 @@ defineEmits<{
       <v-col cols="12">
         <v-textarea
           v-model="item.description"
-          label="Description"
+          label="description"
           :error-messages="errors?.description"
           rows="3"
         />
