@@ -15,6 +15,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
         <v-tab value="contexts">contexts</v-tab>
+        <v-tab value="samples">samples</v-tab>
         <!--        <v-tab-->
         <!--          v-if="hasAcl(item, 'canDelete') && item._acl.canDelete"-->
         <!--          value="privileges"-->
@@ -26,8 +27,18 @@ const { tab } = storeToRefs(useResourceUiStore(path))
           <p>Data</p>
         </v-tabs-window-item>
         <v-tabs-window-item value="contexts" data-testid="tab-contexts">
-          <data-collection-page-context-stratigraphic-unit
+          <data-collection-page-join-context-stratigraphic-unit
             path="/api/data/stratigraphic_units/{parentId}/contexts"
+            :parent="{
+              key: 'stratigraphicUnit',
+              resourceItemPath: '/api/data/stratigraphic_units/{id}',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="samples" data-testid="tab-samples">
+          <data-collection-page-join-sample-stratigraphic-unit
+            path="/api/data/stratigraphic_units/{parentId}/samples"
             :parent="{
               key: 'stratigraphicUnit',
               resourceItemPath: '/api/data/stratigraphic_units/{id}',

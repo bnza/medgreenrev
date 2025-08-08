@@ -42,6 +42,6 @@ const siteId = computed(() => {
       canCreate: siteId ? hasSitePrivilege(siteId) : hasAnySitePrivilege,
     }"
   >
-    <data-collection-table-context-stratigraphic-unit :path :parent />
+    <data-collection-table-join-context-stratigraphic-unit :path :parent />
   </data-collection-page>
 </template>

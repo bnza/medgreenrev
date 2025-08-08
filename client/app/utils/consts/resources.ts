@@ -3,10 +3,12 @@
 
 export const API_RESOURCE_MAP = {
   context: '/api/data/contexts',
+  contextSample: '/api/data/context_samples',
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',
   contextType: '/api/vocabulary/context/types',
   culturalContext: '/api/vocabulary/cultural_contexts',
   sample: '/api/data/samples',
+  sampleStratigraphicUnit: '/api/data/sample_stratigraphic_units',
   sampleType: '/api/vocabulary/sample/types',
   site: '/api/data/sites',
   siteCulturalContext: '/api/data/site_cultural_contexts',

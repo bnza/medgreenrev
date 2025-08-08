@@ -37,6 +37,13 @@ const { hasRoleAdmin } = useAppAuth()
         />
         <v-list-item
           nuxt
+          to="/data/samples"
+          router
+          title="Samples"
+          data-testid="app-nav-drawer-li-samples"
+        />
+        <v-list-item
+          nuxt
           to="/data/sites"
           router
           title="Sites"

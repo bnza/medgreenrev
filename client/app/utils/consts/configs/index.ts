@@ -1,6 +1,9 @@
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
+import * as contextSample from './data/contextSample'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
+import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import context from './data/context'
+import sample from './data/sample'
 import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
@@ -8,10 +11,21 @@ import user from './data/user'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
+  '/api/data/context_samples': contextSample.config,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
+  '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/contexts': context,
+  '/api/data/contexts/{parentId}/samples':
+    contextSample.sampleSubResourceConfig,
   '/api/data/contexts/{parentId}/stratigraphic_units':
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
+  '/api/data/stratigraphic_units/{parentId}/samples':
+    sampleStratigraphicUnit.sampleSubResourceConfig,
+  '/api/data/samples': sample,
+  '/api/data/samples/{parentId}/contexts':
+    contextSample.contextSubResourceConfig,
+  '/api/data/samples/{parentId}/stratigraphic_units':
+    sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/sites': site,
   '/api/admin/site_user_privileges': siteUserPrivilege,
   '/api/data/stratigraphic_units': stratigraphicUnit,
@@ -23,3 +37,5 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>
 > = RESOURCE_CONFIG_MAP_INTERNAL as any
+
+export { contextSample }
