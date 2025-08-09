@@ -20,8 +20,9 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 </script>
 <template>
   <data-collection-page
-    :path
     title="Stratigraphic Units"
+    :parent="Boolean(parent)"
+    :path
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,

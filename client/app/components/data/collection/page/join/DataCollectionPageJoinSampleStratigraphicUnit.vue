@@ -35,8 +35,9 @@ const siteId = computed(() => {
 
 <template>
   <data-collection-page
-    :path
     :title="`Related ${title}`"
+    :parent="Boolean(parent)"
+    :path
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,

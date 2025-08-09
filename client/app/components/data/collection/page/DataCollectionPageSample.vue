@@ -14,8 +14,9 @@ const { isAuthenticated } = useAppAuth()
 
 <template>
   <data-collection-page
-    :path
     title="Samples"
+    :parent="false"
+    :path
     :show-back-button="false"
     :acl="{
       canExport: isAuthenticated,

@@ -7,6 +7,7 @@ withDefaults(
     title: string
     showBackButton?: boolean
     acl: CollectionAcl
+    parent: boolean
   }>(),
   {
     showBackButton: true,

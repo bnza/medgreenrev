@@ -5,10 +5,12 @@ withDefaults(
     identifier?: string
     loading?: boolean
     showBackButton?: boolean
+    parent: boolean
   }>(),
   {
     loading: false,
     showBackButton: true,
+    parent: false,
   },
 )
 
@@ -22,7 +24,7 @@ defineSlots<{
 
 <template>
   <v-card
-    data-testid="data-card"
+    :data-testid="parent ? 'child-data-card' : 'data-card'"
     :loading
     :rounded="false"
     class="w-100 h-100 no-padding"

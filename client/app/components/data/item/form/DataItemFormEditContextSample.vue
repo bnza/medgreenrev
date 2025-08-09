@@ -22,8 +22,9 @@ defineProps<Props>()
       <v-col cols="12" md="6">
         <data-autocomplete-context
           v-model="item.context"
-          :path="'/api/data/contexts'"
           item-title="name"
+          label="context"
+          :path="'/api/data/contexts'"
           :error-messages="errors?.context"
           :disabled="parent?.key === 'context'"
           :granted-only="true"
@@ -32,8 +33,9 @@ defineProps<Props>()
       <v-col cols="12" md="6">
         <data-autocomplete-sample
           v-model="item.sample"
-          :path="'/api/data/samples'"
           item-title="code"
+          label="sample"
+          :path="'/api/data/samples'"
           :error-messages="errors?.sample"
           :disabled="parent?.key === 'sample'"
           :granted-only="true"
