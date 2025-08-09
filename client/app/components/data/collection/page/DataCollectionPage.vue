@@ -21,7 +21,7 @@ defineSlots<{
 </script>
 
 <template>
-  <data-card :title :show-back-button>
+  <data-card :title :show-back-button :parent>
     <template #toolbar-append>
       <data-toolbar-collection-action-menu :acl :path />
     </template>

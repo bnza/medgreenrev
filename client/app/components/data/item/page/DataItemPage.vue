@@ -45,7 +45,7 @@ const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
 </script>
 
 <template>
-  <data-card :title :identifier :loading="status === 'pending'">
+  <data-card :title :identifier :loading="status === 'pending'" :parent="false">
     <template #toolbar-append>
       <slot name="toolbar-append" />
     </template>

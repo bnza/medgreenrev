@@ -11,3 +11,4 @@
     </v-menu>
   </v-btn>
 </template>
+<script setup lang="ts"></script>

@@ -3,7 +3,7 @@ const { toggleVisible } = useDataNavigationDrawerStore()
 </script>
 
 <template>
-  <v-app-bar color="primary" height="48" flat>
+  <v-app-bar color="primary" height="48" flat data-testid="app-bar">
     <template #prepend>
       <v-app-bar-nav-icon
         data-testid="app-bar-nav-icon"

@@ -28,6 +28,7 @@ const tab = ref('data')
             path="/api/admin/users/me/site_user_privileges"
             title="Granted sites privileges"
             :acl="{ canCreate: false, canExport: false }"
+            parent
           >
             <data-collection-table
               path="/api/admin/users/me/site_user_privileges"

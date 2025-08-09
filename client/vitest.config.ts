@@ -30,6 +30,6 @@ export default defineVitestConfig({
         inline: ['vuetify'],
       },
     },
-    setupFiles: ['./tests/setup.ts'],
+    setupFiles: ['./tests/unit/setup.ts'],
   },
 })
