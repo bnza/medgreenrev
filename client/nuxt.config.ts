@@ -24,8 +24,8 @@ export default defineNuxtConfig({
       refresh: {
         isEnabled: true,
         refreshOnlyToken: false,
-        enableOnWindowFocus: true,
-        enablePeriodically: 30 * 60 * 1000,
+        // enableOnWindowFocus: true,
+        // enablePeriodically: 30 * 60 * 1000,
         endpoint: {
           path: '/token/refresh',
         },
