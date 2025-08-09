@@ -89,7 +89,11 @@ export interface paths {
      */
     get: operations['api_datacontext_samples_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a ContextSample resource.
+     * @description Creates a ContextSample resource.
+     */
+    post: operations['api_datacontext_samples_post']
     delete?: never
     options?: never
     head?: never
@@ -110,7 +114,11 @@ export interface paths {
     get: operations['api_datacontext_samples_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the ContextSample resource.
+     * @description Removes the ContextSample resource.
+     */
+    delete: operations['api_datacontext_samples_id_delete']
     options?: never
     head?: never
     patch?: never
@@ -357,7 +365,11 @@ export interface paths {
      */
     get: operations['api_datasample_stratigraphic_units_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a SampleStratigraphicUnit resource.
+     * @description Creates a SampleStratigraphicUnit resource.
+     */
+    post: operations['api_datasample_stratigraphic_units_post']
     delete?: never
     options?: never
     head?: never
@@ -760,6 +772,26 @@ export interface paths {
     patch: operations['api_datastratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/validator/unique/context_sample/{context}/{sample}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquecontext_sample_context_sample_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/context_stratigraphic_units/{context}/{stratigraphicUnit}': {
     parameters: {
       query?: never
@@ -792,6 +824,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquecontexts_site_name_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/sample_stratigraphic_units/{sample}/{stratigraphicUnit}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesample_stratigraphic_units_sample_stratigraphicUnit_get']
     put?: never
     post?: never
     delete?: never
@@ -1108,6 +1160,24 @@ export interface components {
       name?: string
       description?: string | null
     }
+    'Context.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      type?: components['schemas']['ContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      name?: string
+      description?: string | null
+    }
     'Context.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
         | string
@@ -1120,6 +1190,7 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
@@ -1142,9 +1213,20 @@ export interface components {
       name?: string
       description?: string | null
     }
+    'ContextSample.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      context: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sample: string
+    }
     'ContextSample.jsonld-context_sample.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
       readonly '@context'?:
         | string
         | ({
@@ -1154,6 +1236,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
+      readonly '@id'?: string
+      readonly '@type'?: string
       readonly id?: number & string
       /**
        * Format: iri-reference
@@ -1171,6 +1255,22 @@ export interface components {
       readonly '@type'?: string
       readonly id?: number & string
       context?: components['schemas']['Context.jsonld-context_sample.contexts.acl.read_context.acl.read']
+    }
+    'ContextSample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      context?: components['schemas']['Context.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      sample?: components['schemas']['Sample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
     }
     'ContextSample.jsonld-context_sample.samples.acl.read_sample.acl.read': {
       readonly '@id'?: string
@@ -1242,6 +1342,21 @@ export interface components {
       value?: string
     }
     'ContextType.jsonld-context_sample.contexts.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      group?: string
+      value?: string
+    }
+    'ContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -1330,6 +1445,30 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
+    'Sample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      type?: components['schemas']['SampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
     'Sample.jsonld-context_sample.samples.acl.read_sample.acl.read': {
       readonly '@context'?:
         | string
@@ -1402,9 +1541,20 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
+    'SampleStratigraphicUnit.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sample: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+    }
     'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
       readonly '@context'?:
         | string
         | ({
@@ -1414,6 +1564,19 @@ export interface components {
           } & {
             [key: string]: unknown
           })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sample?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
     }
     'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       readonly '@id'?: string
@@ -1429,6 +1592,21 @@ export interface components {
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number
+      code?: string
+      value?: string
+    }
+    'SampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
       code?: string
       value?: string
     }
@@ -1513,6 +1691,22 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
       code?: string
       name?: string
     }
@@ -2422,6 +2616,14 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.group]'?: 'asc' | 'desc'
+        'order[context.type.value]'?: 'asc' | 'desc'
+        'order[context.site.code]'?: 'asc' | 'desc'
+        'order[sample.year]'?: 'asc' | 'desc'
+        'order[sample.number]'?: 'asc' | 'desc'
+        'order[sample.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -2475,6 +2677,53 @@ export interface operations {
       }
     }
   }
+  api_datacontext_samples_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new ContextSample resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['ContextSample.jsonld']
+      }
+    }
+    responses: {
+      /** @description ContextSample resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ContextSample.jsonld-context_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datacontext_samples_id_get: {
     parameters: {
       query?: never
@@ -2493,7 +2742,50 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ContextSample.jsonld-context_sample.acl.read']
+          'application/ld+json': components['schemas']['ContextSample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datacontext_samples_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ContextSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ContextSample resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
       /** @description Not found */
@@ -2516,6 +2808,14 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.group]'?: 'asc' | 'desc'
+        'order[context.type.value]'?: 'asc' | 'desc'
+        'order[context.site.code]'?: 'asc' | 'desc'
+        'order[sample.year]'?: 'asc' | 'desc'
+        'order[sample.number]'?: 'asc' | 'desc'
+        'order[sample.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -2579,6 +2879,14 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type.group]'?: 'asc' | 'desc'
+        'order[context.type.value]'?: 'asc' | 'desc'
+        'order[context.site.code]'?: 'asc' | 'desc'
+        'order[sample.year]'?: 'asc' | 'desc'
+        'order[sample.number]'?: 'asc' | 'desc'
+        'order[sample.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -2646,6 +2954,10 @@ export interface operations {
         'order[context.name]'?: 'asc' | 'desc'
         'order[context.type.group]'?: 'asc' | 'desc'
         'order[context.type.value]'?: 'asc' | 'desc'
+        'order[context.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -2823,6 +3135,10 @@ export interface operations {
         'order[context.name]'?: 'asc' | 'desc'
         'order[context.type.group]'?: 'asc' | 'desc'
         'order[context.type.value]'?: 'asc' | 'desc'
+        'order[context.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -2890,6 +3206,10 @@ export interface operations {
         'order[context.name]'?: 'asc' | 'desc'
         'order[context.type.group]'?: 'asc' | 'desc'
         'order[context.type.value]'?: 'asc' | 'desc'
+        'order[context.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -3105,6 +3425,12 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[type.code]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -3199,6 +3525,13 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[sample.year]'?: 'asc' | 'desc'
+        'order[sample.number]'?: 'asc' | 'desc'
+        'order[sample.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -3252,6 +3585,53 @@ export interface operations {
       }
     }
   }
+  api_datasample_stratigraphic_units_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new SampleStratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['SampleStratigraphicUnit.jsonld']
+      }
+    }
+    responses: {
+      /** @description SampleStratigraphicUnit resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datasample_stratigraphic_units_id_get: {
     parameters: {
       query?: never
@@ -3293,6 +3673,13 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[sample.year]'?: 'asc' | 'desc'
+        'order[sample.number]'?: 'asc' | 'desc'
+        'order[sample.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -3356,6 +3743,13 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[sample.year]'?: 'asc' | 'desc'
+        'order[sample.number]'?: 'asc' | 'desc'
+        'order[sample.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -4853,6 +5247,42 @@ export interface operations {
       }
     }
   }
+  api_validatoruniquecontext_sample_context_sample_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        context: string
+        /** @description UniqueValidator identifier */
+        sample: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniquecontext_stratigraphic_units_context_stratigraphicUnit_get: {
     parameters: {
       query?: never
@@ -4898,6 +5328,42 @@ export interface operations {
         site: string
         /** @description UniqueValidator identifier */
         name: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesample_stratigraphic_units_sample_stratigraphicUnit_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        sample: string
+        /** @description UniqueValidator identifier */
+        stratigraphicUnit: string
       }
       cookie?: never
     }

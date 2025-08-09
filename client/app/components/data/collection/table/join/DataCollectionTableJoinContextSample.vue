@@ -32,22 +32,25 @@ const { appPath } = useResourceConfig(
     : props.path,
 )
 const { id: parentId } = useResourceParent(props.parent)
+
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/context_samples/{id}'),
+)
 </script>
 
 <template>
   <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
-      <navigation-join-resource-item :item :sub-resource-key :app-path />
-    </template>
-    <!--
-    <template #dialogs="{ refetch }">
-      <data-dialog-create-context-sample
-        :path
-        :parent
-        @refresh="refetch()"
+      <navigation-join-resource-item
+        :item
+        :sub-resource-key
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
       />
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-create-context-sample :path :parent @refresh="refetch()" />
       <data-dialog-delete-context-sample @refresh="refetch()" />
     </template>
-    -->
   </data-collection-table>
 </template>
