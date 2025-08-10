@@ -16,7 +16,7 @@ const uniqueSample = useApiUniqueValidator(
 export function useCreateValidation(
   parent?:
     | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'context', '/api/data/contexts/{id}'>,
+    | ResourceParent<'sample', '/api/data/samples/{id}'>,
 ) {
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
   type RequestBody =
@@ -25,9 +25,8 @@ export function useCreateValidation(
   const getEmptyModel = () =>
     ({
       stratigraphicUnit:
-        parentKey.value === 'context' ? parentIri.value : undefined,
-      sample:
         parentKey.value === 'stratigraphicUnit' ? parentIri.value : undefined,
+      sample: parentKey.value === 'sample' ? parentIri.value : undefined,
     }) as RequestBody
   const model = ref(getEmptyModel())
 

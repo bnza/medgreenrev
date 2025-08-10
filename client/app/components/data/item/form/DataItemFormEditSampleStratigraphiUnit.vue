@@ -22,7 +22,8 @@ defineProps<Props>()
       <v-col cols="12" md="6">
         <data-autocomplete-sample
           v-model="item.sample"
-          :path="'/api/data/samples'"
+          path="/api/data/samples"
+          label="sample"
           item-title="code"
           :error-messages="errors?.sample"
           :disabled="parent?.key === 'sample'"
@@ -30,10 +31,11 @@ defineProps<Props>()
         />
       </v-col>
       <v-col cols="12" md="6">
-        <data-autocomplete-context
+        <data-autocomplete-stratigraphic-unit
           v-model="item.stratigraphicUnit"
-          :path="'/api/data/contexts'"
-          item-title="name"
+          path="/api/data/stratigraphic_units"
+          label="stratigraphic unit"
+          item-title="code"
           :error-messages="errors?.stratigraphicUnit"
           :disabled="parent?.key === 'stratigraphicUnit'"
           :granted-only="true"

@@ -31,16 +31,22 @@ const { appPath } = useResourceConfig(
       : '/api/data/stratigraphic_units'
     : props.path,
 )
-
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/sample_stratigraphic_units/{id}'),
+)
 const { id: parentId } = useResourceParent(props.parent)
 </script>
 
 <template>
   <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
-      <navigation-join-resource-item :item :sub-resource-key :app-path />
+      <navigation-join-resource-item
+        :item
+        :sub-resource-key
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
+      />
     </template>
-    <!--
     <template #dialogs="{ refetch }">
       <data-dialog-create-sample-stratigraphic-unit
         :path
@@ -49,6 +55,5 @@ const { id: parentId } = useResourceParent(props.parent)
       />
       <data-dialog-delete-sample-stratigraphic-unit @refresh="refetch()" />
     </template>
-    -->
   </data-collection-table>
 </template>

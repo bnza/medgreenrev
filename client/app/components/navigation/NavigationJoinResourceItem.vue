@@ -13,7 +13,7 @@ defineEmits<{
 
 const subResource = computed(() => props.item[props.subResourceKey])
 
-const id = computed(() =>
+const subResourceId = computed(() =>
   isJsonLdItem(subResource.value)
     ? extractIdFromIri(subResource.value['@id'] as Iri)
     : undefined,
@@ -23,8 +23,8 @@ const id = computed(() =>
 <template>
   <v-btn-group>
     <navigation-resource-item-read
-      v-if="id"
-      :id
+      v-if="subResourceId"
+      :id="subResourceId"
       :app-path
       :disabled="!item._acl.canRead"
     />
