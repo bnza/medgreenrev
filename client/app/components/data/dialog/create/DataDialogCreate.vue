@@ -180,7 +180,9 @@ watch(visible, (flag) => {
                 />
               </v-col>
             </v-row>
-            <slot @submit.prevent />
+            <async-wrapper>
+              <slot />
+            </async-wrapper>
           </v-container>
         </v-sheet>
       </v-form>

@@ -42,7 +42,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <data-item-form-edit-site-user-privilege
+      <lazy-data-item-form-edit-site-user-privilege
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

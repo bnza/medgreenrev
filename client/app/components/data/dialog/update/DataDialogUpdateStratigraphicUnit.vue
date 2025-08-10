@@ -23,7 +23,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <data-item-form-edit-stratigraphic-unit
+      <lazy-data-item-form-edit-stratigraphic-unit
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

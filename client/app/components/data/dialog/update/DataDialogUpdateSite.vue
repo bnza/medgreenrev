@@ -23,7 +23,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <data-item-form-edit-site
+      <lazy-data-item-form-edit-site
         v-if="r$.$value"
         v-model:item="r$.$value"
         mode="update"

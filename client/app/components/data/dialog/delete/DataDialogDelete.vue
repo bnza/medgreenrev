@@ -87,7 +87,9 @@ const submit = async () => {
       <data-item-form-read>
         <loading-component v-if="status === 'pending'" />
         <resource-not-found v-else-if="error" :error :path="props.path" />
-        <slot v-else-if="isValidItem(item)" v-bind="{ item }" />
+        <async-wrapper v-else-if="isValidItem(item)">
+          <slot v-bind="{ item }" />
+        </async-wrapper>
         <resource-not-found
           v-else
           error="Unsupported item value"

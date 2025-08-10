@@ -37,7 +37,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <data-item-form-edit-context
+      <lazy-data-item-form-edit-context
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

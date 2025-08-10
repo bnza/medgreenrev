@@ -124,7 +124,9 @@ watch(visible, (flag) => {
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
-            <slot />
+            <async-wrapper>
+              <slot />
+            </async-wrapper>
           </v-container>
         </v-sheet>
       </v-form>
