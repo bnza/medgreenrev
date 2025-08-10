@@ -22,3 +22,27 @@ test.describe('Login page', () => {
     )
   })
 })
+
+test.describe('Auth handling', () => {
+  test.use({ storageState: 'playwright/.auth/base.json' })
+  test('Login redirection works as expected', async ({ page }) => {
+    await page.route('**/api/data/sites**', async (route) => {
+      // Mock JSON response
+      await route.fulfill({
+        status: 401,
+        contentType: 'application/json',
+        body: JSON.stringify({ code: 401, message: 'Expired JWT Token' }),
+      })
+    })
+    // Start waiting for request before clicking
+    await page.waitForRequest('**/api/token/invalidate')
+    const pom = new LoginPage(page)
+    const homePom = new HomePage(page)
+    await homePom.open()
+    await homePom.clickAppDataNavigationDrawerItem(['Data', 'Sites'])
+    const response = await page.waitForResponse('**/api/token/invalidate')
+    await pom.expectAppMessageToHaveText('Session expired. Please login again.')
+    expect(response.status()).toBe(200)
+    await expect(pom.appBar.loginButton).toBeVisible()
+  })
+})

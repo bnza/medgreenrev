@@ -1,6 +1,9 @@
 import type { ApiRequestOptions, OperationPathParams, paths } from '~~/types'
 import qs from 'qs'
 
+const { signOut, status } = useAuth()
+const { add: addMessage } = useMessagesStore()
+
 export abstract class BaseOperation<P extends keyof paths> {
   public readonly baseURL: string
   getHeaders: (options: ApiRequestOptions) => Record<string, string>
@@ -25,7 +28,12 @@ export abstract class BaseOperation<P extends keyof paths> {
   }
 
   protected async _request<T>(url: string, options: ApiRequestOptions = {}) {
-    const { query, body, ...restOptions } = options
+    const {
+      query,
+      body,
+      onResponseError: onResponseErrorOption,
+      ...restOptions
+    } = options
     let finalUrl = url
     if (query) {
       const queryString = qs.stringify(query)
@@ -44,6 +52,34 @@ export abstract class BaseOperation<P extends keyof paths> {
       headers: this.getHeaders(options),
       body: processedBody,
       ...restOptions,
+      onResponseError: async (context) => {
+        // Your existing error handling
+        if (
+          status.value === 'authenticated' &&
+          context.response.status === 401
+        ) {
+          const responseData = context.response._data
+          if (responseData?.message === 'Expired JWT Token') {
+            addMessage({
+              text: 'Session expired. Please login again.',
+              color: 'warning',
+              timeout: 0,
+            })
+            await signOut({ callbackUrl: 'login', redirect: true })
+          }
+        }
+
+        // Handle the possible MaybeArray<FetchHook> case
+        if (onResponseErrorOption) {
+          if (Array.isArray(onResponseErrorOption)) {
+            // If it's an array, call all handlers
+            await Promise.all(onResponseErrorOption.map((fn) => fn(context)))
+          } else if (typeof onResponseErrorOption === 'function') {
+            // If it's a single function, call it
+            await onResponseErrorOption(context)
+          }
+        }
+      },
     })
   }
 }

@@ -6,9 +6,8 @@ export class AppDataNavigationDrawerComponent extends BaseComponent {
     if (typeof item === 'string') {
       return await this.container.getByText(item).click()
     }
-    for (const i of item) {
-      return await this.clickOnItem(i)
-    }
+    await Promise.all(item.map((i) => this.clickOnItem(i)))
+    return
   }
 
   constructor(page: Page) {
