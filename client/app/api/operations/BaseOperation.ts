@@ -2,7 +2,6 @@ import type { ApiRequestOptions, OperationPathParams, paths } from '~~/types'
 import qs from 'qs'
 
 const { signOut, status } = useAuth()
-const { add: addMessage } = useMessagesStore()
 
 export abstract class BaseOperation<P extends keyof paths> {
   public readonly baseURL: string
@@ -53,19 +52,21 @@ export abstract class BaseOperation<P extends keyof paths> {
       body: processedBody,
       ...restOptions,
       onResponseError: async (context) => {
-        // Your existing error handling
         if (
           status.value === 'authenticated' &&
           context.response.status === 401
         ) {
           const responseData = context.response._data
           if (responseData?.message === 'Expired JWT Token') {
+            const { add: addMessage } = useMessagesStore()
+            const { pushForcedLogin } = useHistoryStackStore()
             addMessage({
               text: 'Session expired. Please login again.',
               color: 'warning',
               timeout: 0,
             })
             await signOut({ callbackUrl: 'login', redirect: true })
+            pushForcedLogin()
           }
         }
 

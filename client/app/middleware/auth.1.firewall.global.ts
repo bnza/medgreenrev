@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware((to) => {
   const { isAuthenticated } = useAppAuth()
   const historyStack = useHistoryStackStore()
   if (!isAuthenticated.value) {
-    historyStack.push({ path: to.fullPath, isUserAction: false })
+    historyStack.pushForcedLogin(to.fullPath)
     return navigateTo('/login')
   }
 })

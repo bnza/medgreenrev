@@ -8,6 +8,8 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
 
   const { isAuthenticated } = useAppAuth()
 
+  const route = useRoute()
+
   const last = computed(() => history.value.at(-1) || defaultItem())
 
   /**
@@ -50,6 +52,10 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
     history.value.push(pushingItem.value)
   }
 
+  const pushForcedLogin = (path?: string) => {
+    push({ path: path ?? route.fullPath, isUserAction: false })
+  }
+
   const pop = () => history.value.pop() || defaultItem()
 
   function $reset() {
@@ -60,6 +66,7 @@ export const useHistoryStackStore = defineStore('history-stack', () => {
     history,
     last,
     push,
+    pushForcedLogin,
     pop,
     $reset,
     redirectionPath,

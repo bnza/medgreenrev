@@ -4,7 +4,7 @@ import { PiniaColadaDevtools } from '@pinia/colada-devtools'
 const apiStore = useOpenApiStore()
 const { ready, status } = storeToRefs(apiStore)
 
-const name = computed(() => (ready.value ? 'default' : 'empty'))
+const name = computed(() => (ready.value ? undefined : 'loading'))
 
 apiStore.fetchSpec()
 
