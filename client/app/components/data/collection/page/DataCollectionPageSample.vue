@@ -1,15 +1,21 @@
 <script
   setup
   lang="ts"
-  generic="P extends Extract<GetCollectionPath, '/api/data/samples'>"
+  generic="
+    P extends Extract<
+      GetCollectionPath,
+      '/api/data/samples' | '/api/data/sites/{parentId}/samples'
+    >
+  "
 >
-import type { GetCollectionPath } from '~~/types'
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
 
-const { isAuthenticated } = useAppAuth()
+const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 </script>
 
 <template>
@@ -20,7 +26,9 @@ const { isAuthenticated } = useAppAuth()
     :show-back-button="false"
     :acl="{
       canExport: isAuthenticated,
-      canCreate: false,
+      canCreate: parent?.item.id
+        ? hasSitePrivilege(parent.item.id)
+        : hasAnySitePrivilege,
     }"
   >
     <data-collection-table-sample :path />

@@ -1,0 +1,17 @@
+<script setup lang="ts">
+defineEmits<{
+  refresh: []
+}>()
+</script>
+
+<template>
+  <data-dialog-delete
+    path="/api/data/samples/{id}"
+    title="Sample"
+    @refresh="$emit('refresh')"
+  >
+    <template #default="{ item }">
+      <lazy-data-item-form-info-sample :item />
+    </template>
+  </data-dialog-delete>
+</template>

@@ -325,7 +325,11 @@ export interface paths {
      */
     get: operations['api_datasamples_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a Sample resource.
+     * @description Creates a Sample resource.
+     */
+    post: operations['api_datasamples_post']
     delete?: never
     options?: never
     head?: never
@@ -344,6 +348,34 @@ export interface paths {
      * @description Retrieves a Sample resource.
      */
     get: operations['api_datasamples_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the Sample resource.
+     * @description Removes the Sample resource.
+     */
+    delete: operations['api_datasamples_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the Sample resource.
+     * @description Updates the Sample resource.
+     */
+    patch: operations['api_datasamples_id_patch']
+    trace?: never
+  }
+  '/api/data/sites/{parentId}/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Sample resources.
+     * @description Retrieves the collection of Sample resources.
+     */
+    get: operations['api_datasites_parentIdsamples_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -848,6 +880,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquesample_stratigraphic_units_sample_stratigraphicUnit_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/samples/{site}/{type}/{year}/{number}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesamples_site_type_year_number_get']
     put?: never
     post?: never
     delete?: never
@@ -1449,6 +1501,48 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
+    Sample: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+    }
     'Sample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
       readonly '@context'?:
         | string
@@ -1498,8 +1592,6 @@ export interface components {
       readonly code?: string
     }
     'Sample.jsonld-sample.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
       readonly '@context'?:
         | string
         | ({
@@ -1509,6 +1601,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
+      readonly '@id'?: string
+      readonly '@type'?: string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample.acl.read']
       type?: components['schemas']['SampleType.jsonld-sample.acl.read']
@@ -3566,6 +3660,53 @@ export interface operations {
       }
     }
   }
+  api_datasamples_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new Sample resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['Sample.jsonld']
+      }
+    }
+    responses: {
+      /** @description Sample resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datasamples_id_get: {
     parameters: {
       query?: never
@@ -3596,6 +3737,195 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasamples_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Sample resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasamples_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated Sample resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['Sample']
+      }
+    }
+    responses: {
+      /** @description Sample resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datasites_parentIdsamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[type.code]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        /**
+         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
+         * @example ME.GE.34.93
+         */
+        search?: string
+      }
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Sample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Sample.jsonld-sample.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }
@@ -5489,6 +5819,46 @@ export interface operations {
         sample: string
         /** @description UniqueValidator identifier */
         stratigraphicUnit: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesamples_site_type_year_number_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        site: string
+        /** @description UniqueValidator identifier */
+        type: string
+        /** @description UniqueValidator identifier */
+        year: string
+        /** @description UniqueValidator identifier */
+        number: string
       }
       cookie?: never
     }
