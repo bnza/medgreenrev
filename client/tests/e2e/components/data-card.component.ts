@@ -10,6 +10,9 @@ export class DataCardComponent extends BaseComponent {
   public readonly title = this.toolbar.getByTestId(
     'data-card-toolbar-main-title',
   )
+  public readonly backButton = this.toolbar.getByTestId(
+    'navigation-back-button',
+  )
   constructor(
     page: Page,
     actionMenuTestId = 'data-toolbar-item-action-menu',

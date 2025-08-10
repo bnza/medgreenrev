@@ -5,7 +5,7 @@ withDefaults(
     identifier?: string
     loading?: boolean
     showBackButton?: boolean
-    parent: boolean
+    parent?: boolean
   }>(),
   {
     loading: false,

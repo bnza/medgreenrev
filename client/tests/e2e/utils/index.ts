@@ -1,5 +1,9 @@
 import type { Locator } from '@playwright/test'
-
+export enum NavigationLinksButton {
+  Delete = 'delete-item-button',
+  Read = 'read-item-button',
+  Update = 'update-item-button',
+}
 export const isInViewport = async (element: Locator) => {
   const viewportSize = element.page().viewportSize()
   const boundingBox = await element.boundingBox()

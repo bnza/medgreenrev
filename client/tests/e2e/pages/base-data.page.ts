@@ -1,8 +1,6 @@
 import { BasePage } from '~~/tests/e2e/pages/base.page'
 import { DataCardComponent } from '~~/tests/e2e/components/data-card.component'
-import type { Page } from '@playwright/test'
-import { AppBarComponent } from '~~/tests/e2e/components/app-bar.component'
-import { AppDataNavigationDrawerComponent } from '~~/tests/e2e/components/app-data-navigation-drawer.component'
+import type { Locator, Page } from '@playwright/test'
 
 export abstract class BaseDataPage extends BasePage {
   public readonly dataCard: DataCardComponent
