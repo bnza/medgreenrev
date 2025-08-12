@@ -31,6 +31,7 @@ export abstract class BaseOperation<P extends keyof paths> {
       query,
       body,
       onResponseError: onResponseErrorOption,
+      headers: _headers, // Exclude headers from restOptions
       ...restOptions
     } = options
     let finalUrl = url
@@ -42,13 +43,20 @@ export abstract class BaseOperation<P extends keyof paths> {
       }
     }
 
-    // Serialize body to JSON string if it's an object
+    // Only serialize to JSON if it's not FormData or other special body types
     const processedBody =
-      body && typeof body === 'object' ? JSON.stringify(body) : body
+      body &&
+      typeof body === 'object' &&
+      !(body instanceof FormData) &&
+      !(body instanceof URLSearchParams) &&
+      !(body instanceof Blob)
+        ? JSON.stringify(body)
+        : body
 
+    const headers = this.getHeaders(options)
     return $fetch<T>(finalUrl, {
       baseURL: this.baseURL,
-      headers: this.getHeaders(options),
+      headers,
       body: processedBody,
       ...restOptions,
       onResponseError: async (context) => {

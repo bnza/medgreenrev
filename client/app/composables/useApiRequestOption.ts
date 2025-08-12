@@ -50,7 +50,7 @@ export default function useApiRequestOption() {
   })
 
   const getHeaders = (options?: ApiRequestOptions) => {
-    const headers = defaultHeaders.value
+    const headers = { ...defaultHeaders.value }
     if (!options) {
       return headers
     }
@@ -58,13 +58,22 @@ export default function useApiRequestOption() {
 
     const normalizedHeaders = normalizeHeaders(optionHeaders || {})
 
-    if (
+    // Merge headers, with option headers taking precedence
+    const mergedHeaders = { ...headers, ...normalizedHeaders }
+
+    // Handle special Content-Type cases
+    if (normalizedHeaders['Content-Type'] === 'multipart/form-data') {
+      // Remove Content-Type for multipart/form-data to let the browser set it with boundary
+      delete mergedHeaders['Content-Type']
+    } else if (
       options?.method?.toLowerCase() === 'patch' &&
-      normalizedHeaders['Content-Type'] !== 'application/merge-patch+json'
+      !normalizedHeaders['Content-Type']
     ) {
-      normalizedHeaders['Content-Type'] = 'application/merge-patch+json'
+      // Only set merge-patch if no Content-Type was explicitly provided
+      mergedHeaders['Content-Type'] = 'application/merge-patch+json'
     }
-    return { ...headers, ...normalizedHeaders }
+
+    return mergedHeaders
   }
 
   return {
