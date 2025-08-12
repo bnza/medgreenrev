@@ -312,6 +312,138 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObject resources.
+     * @description Retrieves the collection of MediaObject resources.
+     */
+    get: operations['api_datamedia_objects_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObject resource.
+     * @description Creates a MediaObject resource.
+     */
+    post: operations['api_datamedia_objects_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_objects/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObject resource.
+     * @description Retrieves a MediaObject resource.
+     */
+    get: operations['api_datamedia_objects_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_objects/{sha256}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObject resource.
+     * @description Retrieves a MediaObject resource.
+     */
+    get: operations['api_datamedia_objects_sha256_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/media_object_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectStratigraphicUnit resources.
+     * @description Retrieves the collection of MediaObjectStratigraphicUnit resources.
+     */
+    get: operations['api_media_object_stratigraphic_units_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectStratigraphicUnit resource.
+     * @description Creates a MediaObjectStratigraphicUnit resource.
+     */
+    post: operations['api_media_object_stratigraphic_units_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/media_object_stratigraphic_units/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectStratigraphicUnit resource.
+     * @description Retrieves a MediaObjectStratigraphicUnit resource.
+     */
+    get: operations['api_media_object_stratigraphic_units_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectStratigraphicUnit resource.
+     * @description Removes the MediaObjectStratigraphicUnit resource.
+     */
+    delete: operations['api_media_object_stratigraphic_units_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/stratigraphic_units/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectStratigraphicUnit resources.
+     * @description Retrieves the collection of MediaObjectStratigraphicUnit resources.
+     */
+    get: operations['api_stratigraphic_units_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/samples': {
     parameters: {
       query?: never
@@ -1501,6 +1633,87 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
+    'MediaObject.jsonld-media_object.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: string[] | null
+    }
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: string[] | null
+    }
+    'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      item?: components['schemas']['StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      description?: string | null
+    }
+    'MediaObjectStratigraphicUnit.jsonld-media_object_join.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
     Sample: {
       readonly id?: number & string
       /**
@@ -1903,6 +2116,22 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
     'Site.jsonld-sample.acl.read': {
       readonly '@context'?:
         | string
@@ -2195,6 +2424,30 @@ export interface components {
       interpretation?: string | null
       readonly code?: string
     }
+    'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      site?: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly '@context'?:
         | string
@@ -2436,6 +2689,11 @@ export interface operations {
          * @example cafè
          */
         name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
         /**
          * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
          * @example TO.fill 90
@@ -2714,6 +2972,11 @@ export interface operations {
          * @example cafè
          */
         name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
         /**
          * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
          * @example TO.fill 90
@@ -3584,6 +3847,475 @@ export interface operations {
         content: {
           'application/json': {
             readonly token: string
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObject collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['MediaObject.jsonld-media_object.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_objects_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObject resource */
+    requestBody: {
+      content: {
+        'multipart/form-data': {
+          /** Format: binary */
+          file: string
+        }
+      }
+    }
+    responses: {
+      /** @description MediaObject resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datamedia_objects_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObject identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObject resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_objects_sha256_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObject identifier */
+        sha256: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObject resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_media_object_stratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_media_object_stratigraphic_units_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectStratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectStratigraphicUnit resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_media_object_stratigraphic_units_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectStratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_media_object_stratigraphic_units_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectStratigraphicUnit resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_stratigraphic_units_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectStratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
           }
         }
       }
@@ -5361,6 +6093,11 @@ export interface operations {
         year?: number
         'year[]'?: number[]
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
          * @example 2025 123
          */
@@ -5443,6 +6180,11 @@ export interface operations {
         'number[]'?: number[]
         year?: number
         'year[]'?: number[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
          * @example 2025 123

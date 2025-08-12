@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="Path extends GetItemPath">
 import type {
+  ApiAclResource,
   GetItemPath,
   GetItemResponseMap,
   OperationPathParams,
@@ -12,7 +13,7 @@ const props = defineProps<{
 }>()
 
 defineSlots<{
-  default(props: { item: GetItemResponseMap[Path] }): any
+  default(props: { item: GetItemResponseMap[Path] & ApiAclResource }): any
   dialogs(): any
   'toolbar-append'(): any
 }>()
@@ -39,7 +40,9 @@ const identifier = computed(() => {
   return undefined
 })
 
-const isValidItem = (value: unknown): value is GetItemResponseMap[Path] => {
+const isValidItem = (
+  value: unknown,
+): value is GetItemResponseMap[Path] & ApiAclResource => {
   return Boolean(value) && typeof value === 'object'
 }
 </script>

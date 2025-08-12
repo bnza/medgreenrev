@@ -33,6 +33,16 @@ export type GetCollectionPath = {
     : never
 }[keyof paths]
 
+export type MediaObjectGetCollectionPath = {
+  [K in GetCollectionPath]: GetCollectionResponseMap[K] extends {
+    member: (infer T)[]
+  }
+    ? T extends { mediaObject?: any }
+      ? K
+      : never
+    : never
+}[GetCollectionPath]
+
 export type VocabularyGetCollectionPath = {
   [K in GetCollectionPath]: K extends `${string}/vocabulary/${string}`
     ? K
@@ -122,8 +132,20 @@ export type PostCollectionResponseMap = {
 }
 
 export type PostCollectionRequestMap = {
-  [K in PostCollectionPath]: paths[K]['post']['requestBody']['content']['application/ld+json']
+  [K in PostCollectionPath]: paths[K]['post']['requestBody'] extends {
+    content: { 'application/ld+json': infer T }
+  }
+    ? T
+    : paths[K]['post']['requestBody'] extends {
+          content: { 'multipart/form-data': infer U }
+        }
+      ? U
+      : never
 }
+
+// export type PostCollectionRequestMap = {
+//   [K in PostCollectionPath]: paths[K]['post']['requestBody']['content']['application/ld+json']
+// }
 
 export type PatchItemResponseMap = {
   [K in PatchItemPath]: paths[K]['patch']['responses']['200']['content']['application/ld+json']

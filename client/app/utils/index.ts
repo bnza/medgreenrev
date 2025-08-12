@@ -1,4 +1,5 @@
 import type { Iri } from '~~/types'
+import { sha256 } from 'js-sha256'
 
 export * from './validation'
 export * from './guards'
@@ -25,4 +26,10 @@ export const extractIdFromIri = (iri: Iri) => {
 export const isTemplatePathItemPage = (path: string): boolean => {
   const templatePattern = /\{[a-zA-Z]+}$/
   return templatePattern.test(path)
+}
+
+export async function calculateSHA256FileHash(file: File): Promise<string> {
+  const arrayBuffer = await file.arrayBuffer()
+  const uint8Array = new Uint8Array(arrayBuffer)
+  return sha256(uint8Array)
 }

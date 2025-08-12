@@ -1,4 +1,5 @@
 import type {
+  ApiRequestOptions,
   OperationPathParams,
   PostCollectionPath,
   PostCollectionRequestMap,
@@ -8,6 +9,7 @@ import { PostCollectionOperation } from '~/api/operations/PostCollectionOperatio
 
 export function usePostCollectionMutation<P extends PostCollectionPath>(
   path: P,
+  options: ApiRequestOptions = {},
 ) {
   const postCollectionOperation = new PostCollectionOperation(path)
   const openApiStore = useOpenApiStore()
@@ -35,7 +37,7 @@ export function usePostCollectionMutation<P extends PostCollectionPath>(
       param?: OperationPathParams<P, 'post'>
       model: PostCollectionRequestMap[P]
     }) => {
-      return postCollectionOperation.request(param, { body: model })
+      return postCollectionOperation.request(param, { ...options, body: model })
     },
     onSettled: async () => {
       const cacheHits = await invalidateQueries({ key: QUERY_KEYS.root })

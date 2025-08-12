@@ -7,6 +7,8 @@ export const API_RESOURCE_MAP = {
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',
   contextType: '/api/vocabulary/context/types',
   culturalContext: '/api/vocabulary/cultural_contexts',
+  mediaObject: '/api/data/media_objects',
+  mediaObjectStratigraphicUnit: '/api/media_object_stratigraphic_units',
   sample: '/api/data/samples',
   sampleStratigraphicUnit: '/api/data/sample_stratigraphic_units',
   sampleType: '/api/vocabulary/sample/types',
