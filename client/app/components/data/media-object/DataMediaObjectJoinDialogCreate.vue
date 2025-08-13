@@ -1,8 +1,13 @@
 <script setup lang="ts" generic="P extends PostCollectionPath">
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import type {
+  FormDataFields,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+} from '~~/types'
 import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
+import { DataMediaObjectFormEdit } from '#components'
 
 const props = defineProps<{
   path: P
@@ -13,10 +18,6 @@ const visible = defineModel<boolean>({ required: true })
 const { addSuccess, addError } = useMessagesStore()
 
 const { postCollection } = usePostCollectionMutation(props.path)
-const { postCollection: mediaObjectPostCollection } = usePostCollectionMutation(
-  '/api/data/media_objects',
-  { headers: { 'Content-Type': 'multipart/form-data' } },
-)
 
 const disabled = ref(false)
 
@@ -40,17 +41,28 @@ const { r$ } = useRegle(model, {
     required,
   },
 })
+
+const isNewMediaObject = computed(() => !r$.$value.mediaObject && file.value)
+
+const mediaObjectForm =
+  useTemplateRef<typeof DataMediaObjectFormEdit>('mediaObjectForm')
 const submit = async () => {
   try {
     disabled.value = true
-    if (!r$.$value.mediaObject && file.value) {
-      const formData = new FormData()
-      formData.append('file', file.value)
-      const mediaObject = await mediaObjectPostCollection.mutateAsync({
-        model: formData,
-      })
-      r$.$value.mediaObject = mediaObject['@id']
+    if (isNewMediaObject.value) {
+      if (!mediaObjectForm.value) {
+        addError(
+          'Media object form is not defined. Contact support if this error persists.',
+        )
+        return
+      }
+      const newMediaObject = await mediaObjectForm.value.submit()
+      if (!newMediaObject) {
+        return
+      }
+      model.value.mediaObject = newMediaObject['@id']
     }
+
     await r$.$validate()
     if (r$.$invalid) {
       return
@@ -85,14 +97,21 @@ watch(
       <v-form data-testid="data-dialog-form" class="ma-4">
         <v-container fluid>
           <v-row style="min-height: 60px" justify="center">
-            <v-banner
-              v-if="r$.$errors.mediaObject && r$.$errors.mediaObject.length > 0"
-              class="mt-4"
-              type="error"
-              icon="fas fa-exclamation-triangle"
-              color="error"
-              >{{ r$.$errors.mediaObject.join(', ') }}</v-banner
-            >
+            <v-col cols="12" sm="6">
+              <v-banner
+                v-if="
+                  r$.$errors.mediaObject && r$.$errors.mediaObject.length > 0
+                "
+                type="error"
+              >
+                <template #prepend
+                  ><v-icon color="error" icon="fas fa-exclamation-triangle"
+                /></template>
+                <template #text>{{
+                  r$.$errors.mediaObject.join(', ')
+                }}</template>
+              </v-banner>
+            </v-col>
           </v-row>
           <v-file-upload v-model="file" clearable>
             <template #item="{ file: itemFile, props: itemProps }">
@@ -106,6 +125,11 @@ watch(
               />
             </template>
           </v-file-upload>
+          <data-media-object-form-edit
+            v-if="isNewMediaObject && typeof file !== 'undefined'"
+            ref="mediaObjectForm"
+            :file
+          />
         </v-container>
       </v-form>
     </template>

@@ -41,13 +41,13 @@ const deletingItem = ref<string | undefined>(undefined)
 
 <template>
   <v-container fluid data-testid="media-object-join-container">
-    <data-media-object-join-data-dialog-create
+    <data-media-object-join-dialog-create
       v-model="isCreateDialogOpen"
       :path="postPath"
       :parent-iri
       @refresh="refetch()"
     />
-    <data-media-object-data-dialog-delete
+    <data-media-object-join-dialog-delete
       v-model="deletingItem"
       :path="deletePath"
       @refresh="refetch()"

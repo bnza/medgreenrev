@@ -54,7 +54,7 @@ const isValidItem = (
       <v-list-item-subtitle class="pl-8">{{ file.type }}</v-list-item-subtitle>
       <v-form v-if="isValidItem(mediaObject)" ref="form" class="d-flex">
         <v-container fluid>
-          <v-row dense no-gutters class="mb-4">
+          <v-row dense class="mb-4">
             <v-col cols="12" sm="6">
               <v-sheet color="info" rounded>
                 <v-container fluid>
@@ -67,7 +67,7 @@ const isValidItem = (
               </v-sheet>
             </v-col>
           </v-row>
-          <v-row dense no-gutters>
+          <v-row dense>
             <v-col cols="12" sm="6">
               <v-text-field
                 :model-value="mediaObject?.originalFilename"
@@ -78,12 +78,42 @@ const isValidItem = (
               />
             </v-col>
           </v-row>
-          <v-row dense no-gutters>
-            <v-col cols="12" sm="6">
+          <v-row dense>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                :model-value="mediaObject?.type?.group"
+                density="compact"
+                label="group"
+                variant="solo-filled"
+                flat
+              />
+            </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                :model-value="mediaObject?.type?.value"
+                density="compact"
+                label="type"
+                variant="solo-filled"
+                flat
+              />
+            </v-col>
+            <v-spacer />
+            <v-col cols="12" sm="3">
               <v-text-field
                 :model-value="mediaObject?.sha256"
                 density="compact"
-                label="filename"
+                label="hash"
+                variant="solo-filled"
+                flat
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="6">
+              <v-textarea
+                :model-value="mediaObject?.description"
+                density="compact"
+                label="description"
                 variant="solo-filled"
                 flat
               />
@@ -103,5 +133,3 @@ const isValidItem = (
     </template>
   </v-list-item>
 </template>
-
-<style scoped></style>

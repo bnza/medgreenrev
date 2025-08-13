@@ -1,5 +1,6 @@
 import type { paths, components } from './openapi'
 import type { ApiResourcePath } from '~/utils/consts/resources'
+import type { TypedFormData } from '~/api/TypedFormData'
 
 export type ApiSpec = {
   paths
@@ -139,9 +140,31 @@ export type PostCollectionRequestMap = {
     : paths[K]['post']['requestBody'] extends {
           content: { 'multipart/form-data': infer U }
         }
-      ? U
+      ? TypedFormData<FormDataFields<K>> | FormData
       : never
 }
+
+// Helper type to extract expected form fields from OpenAPI schema
+export type FormDataFields<K extends PostCollectionPath> =
+  paths[K]['post']['requestBody'] extends {
+    content: { 'multipart/form-data': infer U }
+  }
+    ? U extends Record<string, any>
+      ? {
+          [P in keyof U]: U[P] extends { type: 'string'; format: 'binary' }
+            ? File | Blob
+            : U[P] extends { type: 'string' }
+              ? string
+              : U[P] extends { type: 'number' | 'integer' }
+                ? number | string
+                : U[P] extends { type: 'boolean' }
+                  ? boolean | string
+                  : U[P] extends { type: 'array' }
+                    ? Array<any> | string
+                    : any
+        }
+      : Record<string, any>
+    : Record<string, any>
 
 // export type PostCollectionRequestMap = {
 //   [K in PostCollectionPath]: paths[K]['post']['requestBody']['content']['application/ld+json']

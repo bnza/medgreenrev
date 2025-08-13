@@ -444,6 +444,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/media_object/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectType resources.
+     * @description Retrieves the collection of MediaObjectType resources.
+     */
+    get: operations['api_vocabularymedia_objecttypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/samples': {
     parameters: {
       query?: never
@@ -1646,6 +1666,7 @@ export interface components {
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number & string
+      type?: components['schemas']['MediaObjectType.jsonld-media_object.acl.read']
       contentUrl?: string | null
       originalFilename?: string
       sha256?: string
@@ -1655,6 +1676,7 @@ export interface components {
       height?: number | null
       /** Format: date-time */
       uploadDate?: string | null
+      description?: string | null
       readonly contentThumbnailUrl?: string | null
       dimensions?: string[] | null
     }
@@ -1671,6 +1693,7 @@ export interface components {
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number & string
+      type?: components['schemas']['MediaObjectType.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       contentUrl?: string | null
       originalFilename?: string
       sha256?: string
@@ -1680,6 +1703,7 @@ export interface components {
       height?: number | null
       /** Format: date-time */
       uploadDate?: string | null
+      description?: string | null
       readonly contentThumbnailUrl?: string | null
       dimensions?: string[] | null
     }
@@ -1713,6 +1737,43 @@ export interface components {
        */
       mediaObject?: string
       description?: string | null
+    }
+    'MediaObjectType.jsonld': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number
+      group?: string
+      value?: string
+    }
+    'MediaObjectType.jsonld-media_object.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      group?: string
+      value?: string
+    }
+    'MediaObjectType.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      group?: string
+      value?: string
     }
     Sample: {
       readonly id?: number & string
@@ -4283,6 +4344,63 @@ export interface operations {
         content: {
           'application/ld+json': {
             member: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularymedia_objecttypes_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['MediaObjectType.jsonld'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
