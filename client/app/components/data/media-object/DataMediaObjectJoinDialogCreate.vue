@@ -1,10 +1,6 @@
 <script setup lang="ts" generic="P extends PostCollectionPath">
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import type {
-  FormDataFields,
-  PostCollectionPath,
-  PostCollectionRequestMap,
-} from '~~/types'
+import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
 import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 import { DataMediaObjectFormEdit } from '#components'

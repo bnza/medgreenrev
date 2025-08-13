@@ -67,10 +67,9 @@ defineExpose({
     <v-container fluid>
       <v-row dense>
         <v-col cols="12" sm="6">
-          <data-autocomplete
+          <data-autocomplete-hierarchical-vocabulary
             v-model="r$.$value.type"
             path="/api/vocabulary/media_object/types"
-            item-title="value"
             label="type"
             :error-messages="r$.$errors.type"
           />

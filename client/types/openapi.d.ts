@@ -3764,11 +3764,8 @@ export interface operations {
   api_vocabularycontexttypes_get_collection: {
     parameters: {
       query?: {
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        value?: string
+        /** @description Search case insensitive match across group and value fields */
+        search?: string
       }
       header?: never
       path?: never
@@ -4385,7 +4382,8 @@ export interface operations {
   api_vocabularymedia_objecttypes_get_collection: {
     parameters: {
       query?: {
-        value?: string
+        /** @description Search case insensitive match across group and value fields */
+        search?: string
       }
       header?: never
       path?: never

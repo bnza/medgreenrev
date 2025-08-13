@@ -20,6 +20,11 @@ const { items, asyncStatus } = useAutocompleteQuery(
   search,
   props.grantedOnly,
 )
+
+// Clear search when model changes (item is selected)
+watch(model, () => {
+  search.value = ''
+})
 </script>
 
 <template>
@@ -30,12 +35,7 @@ const { items, asyncStatus } = useAutocompleteQuery(
     :items="items || []"
     :item-title
     :loading="asyncStatus === 'loading'"
-    :search
-    @update:search="
-      (event) => {
-        search = event
-      }
-    "
+    @update:search="search = $event"
   >
     <template v-for="(_, name) in $slots" #[name]="slotProps">
       <slot :name v-bind="slotProps || {}" />
