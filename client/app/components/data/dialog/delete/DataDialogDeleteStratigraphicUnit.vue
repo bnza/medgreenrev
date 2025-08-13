@@ -10,7 +10,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <lazy-data-item-form-info-stratigrafic-unit :item />
+      <lazy-data-item-form-info-stratigraphic-unit :item />
     </template>
   </data-dialog-delete>
 </template>

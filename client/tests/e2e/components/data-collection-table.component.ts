@@ -1,6 +1,5 @@
 import { BaseComponent } from '~~/tests/e2e/components/base.component'
-import { type Locator, type Page, expect } from '@playwright/test'
-import { DataDialogCreateComponent } from '~~/tests/e2e/components/data-dialog-create.component'
+import { type Page, expect } from '@playwright/test'
 
 export class DataCollectionTableComponent extends BaseComponent {
   protected readonly table = this.container.locator('table')
@@ -44,13 +43,19 @@ export class DataCollectionTableComponent extends BaseComponent {
       .filter({ has: this.page.locator('td', { hasText: text }) })
   }
 
+  // expectRowToHaveText(
+  //   nthOrText: number | string | RegExp,
+  //   text: string | RegExp,
+  // ) {
+  //   return expect(this.getRow(nthOrText)).toHaveText(
+  //     typeof text === 'string' ? new RegExp(`${text}`) : text,
+  //   )
+  // }
   expectRowToHaveText(
     nthOrText: number | string | RegExp,
     text: string | RegExp,
   ) {
-    return expect(this.getRow(nthOrText)).toHaveText(
-      typeof text === 'string' ? new RegExp(`${text}`) : text,
-    )
+    return expect(this.getRow(nthOrText)).toContainText(text)
   }
 
   expectNotToHaveRowContainingText(text: string | RegExp) {

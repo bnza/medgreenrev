@@ -47,7 +47,7 @@ const { updateDialogState } = storeToRefs(
         @refresh="refetch()"
       />
       <data-dialog-delete-stratigraphic-unit @refresh="refetch()" />
-      <data-dialog-update-stratigraphic-unit />
+      <data-dialog-update-stratigraphic-unit @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

@@ -4,7 +4,7 @@ import { SiteCollectionPage } from '~~/tests/e2e/pages/site-collection.page'
 import { SiteItemPage } from '~~/tests/e2e/pages/site-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
 
-test.beforeAll(async () => {
+test.beforeEach(async () => {
   loadFixtures()
 })
 
@@ -80,10 +80,12 @@ test.describe('Site lifecycle', () => {
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'field director' })
         .fill('Some One Else')
+      const responsePromise = page.waitForResponse('**/api/data/sites/**')
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully updated',
       )
+      await responsePromise
       await collectionPom.table.expectRowToHaveText('NW', 'Newer Shining Site')
       await collectionPom.table.expectRowToHaveText(
         'NW',
@@ -121,7 +123,6 @@ test.describe('Site lifecycle', () => {
     })
     test('Data validation', async ({ page }) => {
       const collectionPom = new SiteCollectionPage(page)
-      const itemPom = new SiteItemPage(page)
       await collectionPom.open()
       await collectionPom.table.expectData()
       await collectionPom.dataCard.clickOnActionMenuButton('add new')
@@ -151,7 +152,7 @@ test.describe('Site lifecycle', () => {
       await page.keyboard.press('Tab')
       await expect(
         collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).toBeVisible()
+      ).toHaveCount(2)
 
       // Test 3: Unique validation - try to create with existing code
       await collectionPom.dataDialogCreate.form

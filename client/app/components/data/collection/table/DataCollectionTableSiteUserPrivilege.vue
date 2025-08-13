@@ -59,7 +59,7 @@ const { updateDialogState } = storeToRefs(
         :parent
         @refresh="refetch()"
       />
-      <data-dialog-update-site-user-privileges />
+      <data-dialog-update-site-user-privileges @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>
