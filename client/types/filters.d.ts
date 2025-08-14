@@ -7,6 +7,8 @@ export type OperandComponentsKey =
   | 'Numeric'
   | 'NumericRange'
   | 'Vocabulary'
+  | 'Site'
+  | 'StratigraphicUnit'
 
 export type Filter = {
   property: string

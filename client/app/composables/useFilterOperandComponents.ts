@@ -4,6 +4,8 @@ import DataDialogSearchOperandNumeric from '~/components/data/dialog/search/oper
 import DataDialogSearchOperandSingle from '~/components/data/dialog/search/operand/DataDialogSearchOperandSingle.vue'
 import DataDialogSearchOperandVocabulary from '~/components/data/dialog/search/operand/DataDialogSearchOperandVocabulary.vue'
 import DataDialogSearchOperandNumericRange from '~/components/data/dialog/search/operand/DataDialogSearchOperandNumericRange.vue'
+import DataDialogSearchOperandSite from '~/components/data/dialog/search/operand/DataDialogSearchOperandSite.vue'
+import DataDialogSearchOperandStratigraphicUnit from '~/components/data/dialog/search/operand/DataDialogSearchOperandStratigraphicUnit.vue'
 
 const componentNameMap: Record<OperandComponentsKey, Component> = {
   Boolean: DataDialogSearchOperandBoolean,
@@ -11,6 +13,8 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   Numeric: DataDialogSearchOperandNumeric,
   NumericRange: DataDialogSearchOperandNumericRange,
   Vocabulary: DataDialogSearchOperandVocabulary,
+  Site: DataDialogSearchOperandSite,
+  StratigraphicUnit: DataDialogSearchOperandStratigraphicUnit,
 } as const
 
 export function useFilterOperandComponents(

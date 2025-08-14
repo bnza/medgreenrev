@@ -40,7 +40,7 @@ const { updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-search-site :path />-->
+      <data-dialog-search :path title="Stratigraphic Unit" />
       <data-dialog-create-stratigraphic-unit
         :path
         :parent

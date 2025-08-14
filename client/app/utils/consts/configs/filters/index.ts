@@ -3,6 +3,7 @@ import type {
   ResourceStaticFiltersDefinitionObject,
   StaticFiltersDefinitionObject,
 } from '~~/types/filters'
+import type { GetCollectionPath } from '~~/types'
 
 const addToQueryObjectSingle: AddToQueryObject = (queryObject, filter) => {
   queryObject[filter.property] = filter.operands[0]
@@ -97,6 +98,28 @@ const VocabularyCulturalContext: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyContextType: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/context/types',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const SiteEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Site',
+  addToQueryObject: addToQueryObjectMultiple,
+}
+
+const StratigraphicUnitEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'StratigraphicUnit',
+  addToQueryObject: addToQueryObjectMultiple,
+}
+
 const NumericOperations = {
   NumericEqual,
   NumericGreaterThan,
@@ -122,53 +145,142 @@ export const API_FILTERS = {
   Exists,
   SearchExact,
   SearchPartial,
+  SiteEquals,
+  StratigraphicUnitEquals,
   NumericEqual,
   NumericGreaterThan,
   NumericGreaterThanOrEqualTo,
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  VocabularyContextType,
   VocabularyCulturalContext,
 } as const
 
 export type FilterKey = keyof typeof API_FILTERS
 
-export type SearchableGetCollectionPath = '/api/data/sites'
+export type SearchableGetCollectionPath = Extract<
+  GetCollectionPath,
+  | '/api/data/contexts'
+  | '/api/data/sites'
+  | '/api/data/sites/{parentId}/stratigraphic_units'
+  | '/api/data/sites/{parentId}/contexts'
+  | '/api/data/stratigraphic_units'
+>
+const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
+  site: {
+    filters: {
+      SiteEquals,
+    },
+  },
+  'contextsStratigraphicUnits.stratigraphicUnit': {
+    propertyLabel: 'stratigraphic unit',
+    filters: {
+      StratigraphicUnitEquals,
+    },
+  },
+  'stratigraphicUnit.interpretation': {
+    propertyLabel: 'stratigraphic unit (interpretation)',
+    filters: {
+      SearchPartial,
+    },
+  },
+  'stratigraphicUnit.description': {
+    propertyLabel: 'stratigraphic unit (description)',
+    filters: {
+      SearchPartial,
+      Exists,
+    },
+  },
+  'stratigraphicUnit.year': {
+    propertyLabel: 'stratigraphic unit (year)',
+    filters: {
+      SearchExact,
+      ...NumericOperations,
+    },
+  },
+  'stratigraphicUnit.number': {
+    propertyLabel: 'stratigraphic unit (number)',
+    filters: {
+      SearchExact,
+      ...NumericOperations,
+    },
+  },
+  name: {
+    filters: {
+      SearchPartial,
+    },
+  },
+  description: {
+    filters: {
+      SearchPartial,
+      Exists,
+    },
+  },
+  type: {
+    filters: {
+      VocabularyContextType,
+    },
+  },
+}
 
-export const FILTERS_PATHS_MAP: Record<
-  SearchableGetCollectionPath,
-  ResourceStaticFiltersDefinitionObject
-> = {
-  '/api/data/sites': {
-    code: {
+const siteUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
+  code: {
+    filters: {
+      SearchExact,
+    },
+  },
+  'culturalContexts.culturalContext': {
+    propertyLabel: 'cultural context',
+    filters: {
+      VocabularyCulturalContext,
+    },
+  },
+  culturalContexts: {
+    propertyLabel: 'cultural context',
+    filters: {
+      Exists,
+    },
+  },
+  chronologyLower: {
+    propertyLabel: 'chronology (lower)',
+    filters: {
+      Exists,
+      ...NumericOperations,
+    },
+  },
+  chronologyUpper: {
+    propertyLabel: 'chronology (upper)',
+    filters: {
+      Exists,
+      ...NumericOperations,
+    },
+  },
+  description: {
+    filters: {
+      SearchPartial,
+      Exists,
+    },
+  },
+  fieldDirector: {
+    propertyLabel: 'field director',
+    filters: {
+      SearchPartial,
+      Exists,
+    },
+  },
+}
+
+const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    site: {
       filters: {
-        SearchExact,
+        SiteEquals,
       },
     },
-    'culturalContexts.culturalContext': {
-      propertyLabel: 'cultural context',
+    interpretation: {
       filters: {
-        VocabularyCulturalContext,
-      },
-    },
-    culturalContexts: {
-      propertyLabel: 'cultural context',
-      filters: {
-        Exists,
-      },
-    },
-    chronologyLower: {
-      propertyLabel: 'chronology (lower)',
-      filters: {
-        Exists,
-        ...NumericOperations,
-      },
-    },
-    chronologyUpper: {
-      propertyLabel: 'chronology (upper)',
-      filters: {
-        Exists,
-        ...NumericOperations,
+        SearchPartial,
       },
     },
     description: {
@@ -177,12 +289,26 @@ export const FILTERS_PATHS_MAP: Record<
         Exists,
       },
     },
-    fieldDirector: {
-      propertyLabel: 'field director',
+    year: {
       filters: {
-        SearchPartial,
-        Exists,
+        ...NumericOperations,
       },
     },
-  },
+    number: {
+      filters: {
+        ...NumericOperations,
+      },
+    },
+  }
+
+export const FILTERS_PATHS_MAP: Record<
+  SearchableGetCollectionPath,
+  ResourceStaticFiltersDefinitionObject
+> = {
+  '/api/data/contexts': contextStaticFiltersDefinition,
+  '/api/data/sites': siteUnitStaticFiltersDefinition,
+  '/api/data/sites/{parentId}/contexts': contextStaticFiltersDefinition,
+  '/api/data/sites/{parentId}/stratigraphic_units':
+    stratigraphicUnitStaticFiltersDefinition,
+  '/api/data/stratigraphic_units': stratigraphicUnitStaticFiltersDefinition,
 } as const
