@@ -12,7 +12,10 @@ const addToQueryObjectSingle: AddToQueryObject = (queryObject, filter) => {
 const addOperatorToQueryObjectSingle: (operator: string) => AddToQueryObject =
   (operator: string) => (queryObject, filter) => {
     if (!(filter.property in queryObject)) {
-      queryObject[filter.property] = []
+      queryObject[filter.property] = {}
+    }
+    if (!(filter.property in queryObject)) {
+      queryObject[filter.property][operator] = []
     }
     queryObject[filter.property][operator] = filter.operands[0]
   }
