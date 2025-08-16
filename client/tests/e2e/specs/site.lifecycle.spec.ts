@@ -136,8 +136,8 @@ test.describe('Site lifecycle', () => {
         .clear()
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("code"))'),
+      ).toContainText(/required/)
 
       // Test 2: Required field validation - name field
       await collectionPom.dataDialogCreate.form
@@ -151,8 +151,8 @@ test.describe('Site lifecycle', () => {
         .clear()
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).toHaveCount(2)
+        page.locator('.v-input:has(label:text("name"))'),
+      ).toContainText(/required/)
 
       // Test 3: Unique validation - try to create with existing code
       await collectionPom.dataDialogCreate.form
@@ -163,8 +163,8 @@ test.describe('Site lifecycle', () => {
         .fill('Valid Name')
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText('Code must be unique'),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("code"))'),
+      ).toContainText('Code must be unique')
 
       // Test 4: Unique validation - try to create with existing name
       await collectionPom.dataDialogCreate.form
@@ -175,8 +175,8 @@ test.describe('Site lifecycle', () => {
         .fill('Tozar')
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText('Name must be unique'),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("name"))'),
+      ).toContainText('Name must be unique')
 
       // Test 5: Chronology validation - invalid year format
       await collectionPom.dataDialogCreate.form
@@ -187,8 +187,8 @@ test.describe('Site lifecycle', () => {
         .fill('not_a_number')
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText('Must be an integer'),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("chronology (lower)"))'),
+      ).toContainText(/must be an integer/i)
 
       // Test 6: Chronology validation - year too low
       await collectionPom.dataDialogCreate.form
@@ -196,8 +196,8 @@ test.describe('Site lifecycle', () => {
         .fill('-50000')
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/must be greater than/i),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("chronology (lower)"))'),
+      ).toContainText(/must be greater than/i)
 
       // Test 7: Chronology validation - year too high (future year)
       const futureYear = new Date().getFullYear() + 100
@@ -206,8 +206,8 @@ test.describe('Site lifecycle', () => {
         .fill(futureYear.toString())
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/must be less than/i),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("chronology (lower)"))'),
+      ).toContainText(/must be less than/i)
 
       // Test 8: Chronology validation - lower > upper
       await collectionPom.dataDialogCreate.form
@@ -218,10 +218,10 @@ test.describe('Site lifecycle', () => {
         .fill('1000')
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(
-          'Lower chronology must be greater than or equal upper chronology.',
-        ),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("chronology (lower)"))'),
+      ).toContainText(
+        'Lower chronology must be greater than or equal upper chronology.',
+      )
 
       // Test 9: Valid form submission after fixing validation errors
       await collectionPom.dataDialogCreate.form
@@ -241,6 +241,7 @@ test.describe('Site lifecycle', () => {
         'Resource successfully created',
       )
     })
+
     test('Site chronology works as expected', async ({ page }) => {
       const collectionPom = new SiteCollectionPage(page)
       const itemPom = new SiteItemPage(page)

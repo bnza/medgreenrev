@@ -35,12 +35,25 @@ const props = defineProps<{
 
 const { appPath } = useResourceConfig(props.path)
 const { id: parentId } = useResourceParent(props.parent)
+
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/potteries/{id}'),
+)
+const { updateDialogState } = storeToRefs(
+  useResourceUpdateDialogStore('/api/data/potteries/{id}'),
+)
 </script>
 
 <template>
   <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
-      <navigation-resource-item :id="item.id" :acl="item._acl" :app-path />
+      <navigation-resource-item
+        :id="item.id"
+        :acl="item._acl"
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
+        @update="updateDialogState = { id: item.id }"
+      />
     </template>
     <template #[`item.culturalContext.id`]="{ item }">
       {{ vocabularyCulturalContextStore.getValue(item.culturalContext) }}
@@ -56,10 +69,10 @@ const { id: parentId } = useResourceParent(props.parent)
         {{ vocabularyPotteryFunctionalFormStore.getValue(item.functionalForm) }}
       </p>
     </template>
-    <!-- <template #dialogs="{ refetch }">
-      <lazy-data-dialog-create-pottery :path @refresh="refetch()" />
+    <template #dialogs="{ refetch }">
+      <lazy-data-dialog-create-pottery :path :parent @refresh="refetch()" />
       <data-dialog-delete-pottery @refresh="refetch()" />
       <data-dialog-update-pottery @refresh="refetch()" />
-    </template> -->
+    </template>
   </data-collection-table>
 </template>

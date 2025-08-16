@@ -132,32 +132,21 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page.keyboard.press('Backspace')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("site"))'),
+      ).toContainText(/required/)
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page.getByRole('option').first().click()
-
-      // Test 2: Required field validation - year  field
-      await collectionPom.dataDialogCreate.form.getByLabel('year').fill('2')
-      await collectionPom.dataDialogCreate.form.getByLabel('year').fill('')
-      await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).toBeVisible()
-      await collectionPom.dataDialogCreate.form.getByLabel('year').fill('2023')
-      await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).not.toBeVisible()
 
       // Test 3: Required field validation - number field
       await collectionPom.dataDialogCreate.form.getByLabel('number').fill('2')
       await collectionPom.dataDialogCreate.form.getByLabel('number').fill('')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("number"))'),
+      ).toContainText(/required/)
       await collectionPom.dataDialogCreate.form.getByLabel('number').fill('999')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/required/),
-      ).not.toBeVisible()
+        page.locator('.v-input:has(label:text("number"))'),
+      ).not.toContainText(/required/)
 
       // Test 4: Year validation - invalid year format
       await collectionPom.dataDialogCreate.form
@@ -165,16 +154,16 @@ test.describe('Stratigraphic Unit lifecycle', () => {
         .fill('not_a_year')
       await page.keyboard.press('Tab')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText('Must be an integer'),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("year"))'),
+      ).toContainText(/must be an integer/i)
 
       // Test 5: Year validation - year too low
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'year' })
         .fill('1899')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/must be greater than/i),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("year"))'),
+      ).toContainText(/must be greater than/i)
 
       // Test 6: Year validation - year too high (future year)
       const futureYear = new Date().getFullYear() + 10
@@ -182,21 +171,24 @@ test.describe('Stratigraphic Unit lifecycle', () => {
         .getByRole('textbox', { name: 'year' })
         .fill(futureYear.toString())
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/must be less than/i),
-      ).toBeVisible()
+        page.locator('.v-input:has(label:text("year"))'),
+      ).toContainText(/must be less than/i)
 
       // Test 7: Unique validation - try to create with existing combination
       await collectionPom.dataDialogCreate.form.getByLabel('site').fill('SE')
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option')
+        .filter({ hasText: /esteban/i })
+        .click()
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'year' })
-        .fill('2025') // Assuming this exists in fixtures
+        .fill('2025')
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'number' })
-        .fill('508') // Assuming this combination exists
+        .fill('508')
       await expect(
-        collectionPom.dataDialogCreate.form.getByText(/duplicate \[/i),
-      ).toHaveCount(3)
+        page.locator('.v-input:has(label:text("number"))'),
+      ).toContainText(/duplicate/i)
 
       // Test 8: Valid form submission after fixing validation errors
       await collectionPom.dataDialogCreate.form

@@ -272,6 +272,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/context/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ContextType resource.
+     * @description Retrieves a ContextType resource.
+     */
+    get: operations['api_vocabularycontexttypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/cultural_contexts': {
     parameters: {
       query?: never
@@ -284,6 +304,26 @@ export interface paths {
      * @description Retrieves the collection of CulturalContext resources.
      */
     get: operations['api_vocabularycultural_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/cultural_contexts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a CulturalContext resource.
+     * @description Retrieves a CulturalContext resource.
+     */
+    get: operations['api_vocabularycultural_contexts_id_get']
     put?: never
     post?: never
     delete?: never
@@ -312,6 +352,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/pottery/functional_forms/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a FunctionalForm resource.
+     * @description Retrieves a FunctionalForm resource.
+     */
+    get: operations['api_vocabularypotteryfunctional_forms_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/pottery/functional_groups': {
     parameters: {
       query?: never
@@ -324,6 +384,26 @@ export interface paths {
      * @description Retrieves the collection of FunctionalGroup resources.
      */
     get: operations['api_vocabularypotteryfunctional_groups_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/functional_groups/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a FunctionalGroup resource.
+     * @description Retrieves a FunctionalGroup resource.
+     */
+    get: operations['api_vocabularypotteryfunctional_groups_id_get']
     put?: never
     post?: never
     delete?: never
@@ -504,6 +584,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/media_object/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectType resource.
+     * @description Retrieves a MediaObjectType resource.
+     */
+    get: operations['api_vocabularymedia_objecttypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/potteries': {
     parameters: {
       query?: never
@@ -517,7 +617,11 @@ export interface paths {
      */
     get: operations['api_datapotteries_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a Pottery resource.
+     * @description Creates a Pottery resource.
+     */
+    post: operations['api_datapotteries_post']
     delete?: never
     options?: never
     head?: never
@@ -538,10 +642,18 @@ export interface paths {
     get: operations['api_datapotteries_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the Pottery resource.
+     * @description Removes the Pottery resource.
+     */
+    delete: operations['api_datapotteries_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the Pottery resource.
+     * @description Updates the Pottery resource.
+     */
+    patch: operations['api_datapotteries_id_patch']
     trace?: never
   }
   '/api/data/stratigraphic_units/{parentId}/potteries': {
@@ -744,6 +856,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/sample/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SampleType resource.
+     * @description Retrieves a SampleType resource.
+     */
+    get: operations['api_vocabularysampletypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/pottery/shapes': {
     parameters: {
       query?: never
@@ -756,6 +888,26 @@ export interface paths {
      * @description Retrieves the collection of Shape resources.
      */
     get: operations['api_vocabularypotteryshapes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/shapes/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Shape resource.
+     * @description Retrieves a Shape resource.
+     */
+    get: operations['api_vocabularypotteryshapes_id_get']
     put?: never
     post?: never
     delete?: never
@@ -1132,6 +1284,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquecontexts_site_name_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/potteries/inventory/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquepotteriesinventory_id_get']
     put?: never
     post?: never
     delete?: never
@@ -1648,6 +1820,15 @@ export interface components {
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
     'ContextType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number
@@ -1730,6 +1911,15 @@ export interface components {
       value?: string
     }
     'CulturalContext.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
       readonly '@id'?: string
       readonly '@type'?: string
       id?: number
@@ -1774,12 +1964,6 @@ export interface components {
       readonly description?: string | null
     }
     'FunctionalForm.jsonld': {
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly id?: number
-      value?: string
-    }
-    'FunctionalForm.jsonld-pottery.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -1791,15 +1975,10 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      readonly id?: number
       value?: string
     }
     'FunctionalGroup.jsonld': {
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly id?: number
-      value?: string
-    }
-    'FunctionalGroup.jsonld-pottery.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -1811,6 +1990,7 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      readonly id?: number
       value?: string
     }
     'MediaObject.jsonld-media_object.acl.read': {
@@ -1899,6 +2079,15 @@ export interface components {
       description?: string | null
     }
     'MediaObjectType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number
@@ -1935,9 +2124,39 @@ export interface components {
       group?: string
       value?: string
     }
+    'Pottery-pottery.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      inventory?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
     'Pottery.jsonld-pottery.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
       readonly '@context'?:
         | string
         | ({
@@ -1947,6 +2166,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
+      readonly '@id'?: string
+      readonly '@type'?: string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory?: string
@@ -1957,9 +2178,53 @@ export interface components {
       culturalContext?: string | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
-      shape?: components['schemas']['Shape.jsonld-pottery.acl.read'] | null
-      functionalGroup?: components['schemas']['FunctionalGroup.jsonld-pottery.acl.read']
-      functionalForm?: components['schemas']['FunctionalForm.jsonld-pottery.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
+    'Pottery.jsonld-pottery.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      inventory?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
       notes?: string | null
     }
     Sample: {
@@ -2170,6 +2435,15 @@ export interface components {
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
     'SampleType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
       readonly '@id'?: string
       readonly '@type'?: string
       readonly id?: number
@@ -2252,12 +2526,6 @@ export interface components {
       value?: string
     }
     'Shape.jsonld': {
-      readonly '@id'?: string
-      readonly '@type'?: string
-      readonly id?: number
-      value?: string
-    }
-    'Shape.jsonld-pottery.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -2269,6 +2537,7 @@ export interface components {
           })
       readonly '@id'?: string
       readonly '@type'?: string
+      readonly id?: number
       value?: string
     }
     'Site-site.create': {
@@ -2637,8 +2906,7 @@ export interface components {
        */
       privilege: number
     }
-    StratigraphicUnit: {
-      readonly id?: number & string
+    'StratigraphicUnit-su.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2652,28 +2920,6 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      stratigraphicUnitContexts?: string[]
-      stratigraphicUnitSamples?: string[]
-      readonly code?: string
-    }
-    'StratigraphicUnit.jsonld': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site: string
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number: number
-      description?: string | null
-      interpretation?: string | null
-      stratigraphicUnitContexts?: string[]
-      stratigraphicUnitSamples?: string[]
-      readonly code?: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
@@ -2801,6 +3047,21 @@ export interface components {
       description?: string | null
       interpretation?: string | null
       readonly code?: string
+    }
+    'StratigraphicUnit.jsonld-su.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number: number
+      description?: string | null
+      interpretation?: string | null
     }
     'StratigraphicUnit.jsonld-sus.acl.read': {
       readonly '@context'?:
@@ -2994,6 +3255,22 @@ export interface operations {
         'type[]'?: string[]
         'contextSamples.sample'?: string
         'contextSamples.sample[]'?: string[]
+        'contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[description]'?: boolean
+        'exists[contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -3005,6 +3282,16 @@ export interface operations {
          */
         description?: string
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
          * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
          * @example TO.fill 90
          */
@@ -3014,45 +3301,6 @@ export interface operations {
          * @example true
          */
         granted?: boolean
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship */
-        'stratigraphicUnit.year'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship */
-        'stratigraphicUnit.number'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (greater than) */
-        'stratigraphicUnit.year[gt]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (greater than or equal) */
-        'stratigraphicUnit.year[gte]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (less than) */
-        'stratigraphicUnit.year[lt]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (less than or equal) */
-        'stratigraphicUnit.year[lte]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (between) */
-        'stratigraphicUnit.year[between]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (greater than) */
-        'stratigraphicUnit.number[gt]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (greater than or equal) */
-        'stratigraphicUnit.number[gte]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (less than) */
-        'stratigraphicUnit.number[lt]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (less than or equal) */
-        'stratigraphicUnit.number[lte]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (between) */
-        'stratigraphicUnit.number[between]'?: string
-        /**
-         * @description Filter by stratigraphicUnit.interpretation using many-to-many relationship with case insensitive unaccented string matching
-         * @example cafè
-         */
-        'stratigraphicUnit.interpretation'?: string
-        /**
-         * @description Filter by stratigraphicUnit.description using many-to-many relationship with case insensitive unaccented string matching
-         * @example cafè
-         */
-        'stratigraphicUnit.description'?: string
-        /**
-         * @description Filter by stratigraphicUnit.description using many-to-many relationship (check if property exists)
-         * @example true
-         */
-        'exists[stratigraphicUnit.description]'?: boolean
       }
       header?: never
       path?: never
@@ -3320,6 +3568,22 @@ export interface operations {
         'type[]'?: string[]
         'contextSamples.sample'?: string
         'contextSamples.sample[]'?: string[]
+        'contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[description]'?: boolean
+        'exists[contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -3331,6 +3595,16 @@ export interface operations {
          */
         description?: string
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
          * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
          * @example TO.fill 90
          */
@@ -3340,45 +3614,6 @@ export interface operations {
          * @example true
          */
         granted?: boolean
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship */
-        'stratigraphicUnit.year'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship */
-        'stratigraphicUnit.number'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (greater than) */
-        'stratigraphicUnit.year[gt]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (greater than or equal) */
-        'stratigraphicUnit.year[gte]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (less than) */
-        'stratigraphicUnit.year[lt]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (less than or equal) */
-        'stratigraphicUnit.year[lte]'?: string
-        /** @description Filter by stratigraphicUnit.year using many-to-many relationship (between) */
-        'stratigraphicUnit.year[between]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (greater than) */
-        'stratigraphicUnit.number[gt]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (greater than or equal) */
-        'stratigraphicUnit.number[gte]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (less than) */
-        'stratigraphicUnit.number[lt]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (less than or equal) */
-        'stratigraphicUnit.number[lte]'?: string
-        /** @description Filter by stratigraphicUnit.number using many-to-many relationship (between) */
-        'stratigraphicUnit.number[between]'?: string
-        /**
-         * @description Filter by stratigraphicUnit.interpretation using many-to-many relationship with case insensitive unaccented string matching
-         * @example cafè
-         */
-        'stratigraphicUnit.interpretation'?: string
-        /**
-         * @description Filter by stratigraphicUnit.description using many-to-many relationship with case insensitive unaccented string matching
-         * @example cafè
-         */
-        'stratigraphicUnit.description'?: string
-        /**
-         * @description Filter by stratigraphicUnit.description using many-to-many relationship (check if property exists)
-         * @example true
-         */
-        'exists[stratigraphicUnit.description]'?: boolean
       }
       header?: never
       path: {
@@ -4150,6 +4385,40 @@ export interface operations {
       }
     }
   }
+  api_vocabularycontexttypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ContextType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ContextType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ContextType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularycultural_contexts_get_collection: {
     parameters: {
       query?: {
@@ -4211,6 +4480,40 @@ export interface operations {
       }
     }
   }
+  api_vocabularycultural_contexts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description CulturalContext identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description CulturalContext resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['CulturalContext.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularypotteryfunctional_forms_get_collection: {
     parameters: {
       query?: never
@@ -4266,6 +4569,40 @@ export interface operations {
       }
     }
   }
+  api_vocabularypotteryfunctional_forms_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description FunctionalForm identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description FunctionalForm resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['FunctionalForm.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularypotteryfunctional_groups_get_collection: {
     parameters: {
       query?: never
@@ -4317,6 +4654,40 @@ export interface operations {
               }[]
             }
           }
+        }
+      }
+    }
+  }
+  api_vocabularypotteryfunctional_groups_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description FunctionalGroup identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description FunctionalGroup resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['FunctionalGroup.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -4878,6 +5249,40 @@ export interface operations {
       }
     }
   }
+  api_vocabularymedia_objecttypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_datapotteries_get_collection: {
     parameters: {
       query?: {
@@ -4885,6 +5290,15 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[inventory]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[culturalContext.id]'?: 'asc' | 'desc'
+        'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalGroup.value]'?: 'asc' | 'desc'
+        'order[functionalForm.value]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -4938,6 +5352,53 @@ export interface operations {
       }
     }
   }
+  api_datapotteries_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new Pottery resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['Pottery.jsonld-pottery.create']
+      }
+    }
+    responses: {
+      /** @description Pottery resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Pottery.jsonld-pottery.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datapotteries_id_get: {
     parameters: {
       query?: never
@@ -4972,6 +5433,121 @@ export interface operations {
       }
     }
   }
+  api_datapotteries_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Pottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Pottery resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapotteries_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Pottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated Pottery resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['Pottery-pottery.create']
+      }
+    }
+    responses: {
+      /** @description Pottery resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Pottery.jsonld-pottery.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datastratigraphic_units_parentIdpotteries_get_collection: {
     parameters: {
       query?: {
@@ -4979,6 +5555,15 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[inventory]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[culturalContext.id]'?: 'asc' | 'desc'
+        'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalGroup.value]'?: 'asc' | 'desc'
+        'order[functionalForm.value]'?: 'asc' | 'desc'
       }
       header?: never
       path: {
@@ -5790,6 +6375,40 @@ export interface operations {
       }
     }
   }
+  api_vocabularysampletypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SampleType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SampleType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SampleType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularypotteryshapes_get_collection: {
     parameters: {
       query?: never
@@ -5841,6 +6460,40 @@ export interface operations {
               }[]
             }
           }
+        }
+      }
+    }
+  }
+  api_vocabularypotteryshapes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Shape identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Shape resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Shape.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -6883,6 +7536,7 @@ export interface operations {
         'stratigraphicUnitContexts.context[]'?: string[]
         'stratigraphicUnitSamples.sample'?: string
         'stratigraphicUnitSamples.sample[]'?: string[]
+        'stratigraphicUnitContexts.context.name'?: string
         number?: number
         'number[]'?: number[]
         year?: number
@@ -6991,6 +7645,7 @@ export interface operations {
         'stratigraphicUnitContexts.context[]'?: string[]
         'stratigraphicUnitSamples.sample'?: string
         'stratigraphicUnitSamples.sample[]'?: string[]
+        'stratigraphicUnitContexts.context.name'?: string
         number?: number
         'number[]'?: number[]
         year?: number
@@ -7089,7 +7744,7 @@ export interface operations {
     /** @description The new StratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['StratigraphicUnit.jsonld']
+        'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-su.create']
       }
     }
     responses: {
@@ -7216,7 +7871,7 @@ export interface operations {
     /** @description The updated StratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['StratigraphicUnit']
+        'application/merge-patch+json': components['schemas']['StratigraphicUnit-su.create']
       }
     }
     responses: {
@@ -7356,6 +8011,40 @@ export interface operations {
         site: string
         /** @description UniqueValidator identifier */
         name: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquepotteriesinventory_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        id: string
       }
       cookie?: never
     }

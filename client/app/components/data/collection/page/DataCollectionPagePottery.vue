@@ -16,7 +16,7 @@ defineProps<{
   path: P
   parent?: ResourceParent<
     'stratigraphicUnit',
-    '/api/data/sample_stratigraphic_units/{id}'
+    '/api/data/stratigraphic_units/{id}'
   >
 }>()
 
@@ -24,14 +24,14 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 </script>
 <template>
   <data-collection-page
-    title="Stratigraphic Units"
+    title="Pottery"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,
       canCreate: parent?.item.id
-        ? hasSitePrivilege(parent.item.id)
+        ? hasSitePrivilege(parent.item.site?.id)
         : hasAnySitePrivilege,
     }"
   >
