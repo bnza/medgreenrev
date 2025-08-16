@@ -1,0 +1,65 @@
+<script
+  setup
+  lang="ts"
+  generic="
+    Path extends Extract<
+      GetCollectionPath,
+      | '/api/data/potteries'
+      | '/api/data/stratigraphic_units/{parentId}/potteries'
+    >
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
+import useResourceConfig from '~/stores/resource-config'
+const vocabularyPotteryShapeStore = useVocabularyStore(
+  '/api/vocabulary/pottery/shapes',
+)
+const vocabularyCulturalContextStore = useVocabularyStore(
+  '/api/vocabulary/cultural_contexts',
+)
+
+const vocabularyPotteryFunctionalGroupStore = useVocabularyStore(
+  '/api/vocabulary/pottery/functional_groups',
+)
+const vocabularyPotteryFunctionalFormStore = useVocabularyStore(
+  '/api/vocabulary/pottery/functional_forms',
+)
+
+const props = defineProps<{
+  path: Path
+  parent?: ResourceParent<
+    'stratigraphicUnit',
+    '/api/data/stratigraphic_units/{id}'
+  >
+}>()
+
+const { appPath } = useResourceConfig(props.path)
+const { id: parentId } = useResourceParent(props.parent)
+</script>
+
+<template>
+  <data-collection-table :path :parent-id>
+    <template #[`item.id`]="{ item }">
+      <navigation-resource-item :id="item.id" :acl="item._acl" :app-path />
+    </template>
+    <template #[`item.culturalContext.id`]="{ item }">
+      {{ vocabularyCulturalContextStore.getValue(item.culturalContext) }}
+    </template>
+    <template #[`item.shape.value`]="{ item }"
+      >{{ vocabularyPotteryShapeStore.getValue(item.shape) }}
+    </template>
+    <template #[`item.functionalGroup.value`]="{ item }">
+      {{ vocabularyPotteryFunctionalGroupStore.getValue(item.functionalGroup) }}
+    </template>
+    <template #[`item.functionalForm.value`]="{ item }">
+      <p>
+        {{ vocabularyPotteryFunctionalFormStore.getValue(item.functionalForm) }}
+      </p>
+    </template>
+    <!-- <template #dialogs="{ refetch }">
+      <lazy-data-dialog-create-pottery :path @refresh="refetch()" />
+      <data-dialog-delete-pottery @refresh="refetch()" />
+      <data-dialog-update-pottery @refresh="refetch()" />
+    </template> -->
+  </data-collection-table>
+</template>

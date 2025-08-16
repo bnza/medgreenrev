@@ -3,6 +3,7 @@ import * as contextSample from './data/contextSample'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import context from './data/context'
+import pottery from './data/pottery'
 import sample from './data/sample'
 import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
@@ -21,6 +22,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/samples':
     sampleStratigraphicUnit.sampleSubResourceConfig,
+  '/api/data/potteries': pottery,
   '/api/data/samples': sample,
   '/api/data/samples/{parentId}/contexts':
     contextSample.contextSubResourceConfig,

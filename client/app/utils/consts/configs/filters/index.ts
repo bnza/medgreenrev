@@ -173,33 +173,33 @@ const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
       SiteEquals,
     },
   },
-  'contextsStratigraphicUnits.stratigraphicUnit': {
+  'contextStratigraphicUnits.stratigraphicUnit': {
     propertyLabel: 'stratigraphic unit',
     filters: {
       StratigraphicUnitEquals,
     },
   },
-  'stratigraphicUnit.interpretation': {
+  'contextStratigraphicUnits.stratigraphicUnit.interpretation': {
     propertyLabel: 'stratigraphic unit (interpretation)',
     filters: {
       SearchPartial,
     },
   },
-  'stratigraphicUnit.description': {
+  'contextStratigraphicUnits.stratigraphicUnit.description': {
     propertyLabel: 'stratigraphic unit (description)',
     filters: {
       SearchPartial,
       Exists,
     },
   },
-  'stratigraphicUnit.year': {
+  'contextStratigraphicUnits.stratigraphicUnit.year': {
     propertyLabel: 'stratigraphic unit (year)',
     filters: {
       SearchExact,
       ...NumericOperations,
     },
   },
-  'stratigraphicUnit.number': {
+  'contextStratigraphicUnits.stratigraphicUnit.number': {
     propertyLabel: 'stratigraphic unit (number)',
     filters: {
       SearchExact,

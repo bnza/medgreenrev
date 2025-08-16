@@ -1,0 +1,43 @@
+import type { VocabularyGetCollectionPath } from '~~/types'
+import { useGetCollectionVocabularyQuery } from '~/composables/queries/useGetCollectionVocabularyQuery'
+
+export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
+  path: Path,
+) => {
+  const query = useGetCollectionVocabularyQuery(path, ref(undefined))
+  return defineStore(`vocabulary:${path}`, () => {
+    const state = computed(() => query.data.value?.member || [])
+
+    const normalizedState = computed(() =>
+      Object.fromEntries(
+        state.value
+          .filter((item) => item && '@id' in item)
+          .map((item) => [item['@id'], item] as const),
+      ),
+    )
+
+    // Make get reactive by returning a computed function
+    const get = (id?: string) =>
+      computed(() => (id ? normalizedState.value[id] : undefined))
+
+    const getValue = (id?: string, prop = 'value') =>
+      computed(() => {
+        return id ? normalizedState.value[id]?.[prop] : undefined
+      })
+
+    // Getter to check if data is loaded
+    const isLoaded = computed(() => !!query.data.value)
+
+    // Getter to check if data is loading
+    const isLoading = computed(() => query.isLoading.value)
+
+    return {
+      state,
+      normalizedState,
+      get,
+      getValue,
+      isLoaded,
+      isLoading,
+    }
+  })()
+}
