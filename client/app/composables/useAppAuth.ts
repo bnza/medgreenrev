@@ -1,6 +1,6 @@
-import { ApiRole, ROLE_COLORS } from '~/utils/consts/auth'
+import { ApiRole } from '~/utils/consts/auth'
 
-import { reduceAppRoles } from '~/utils/acl'
+import { getRoleColor } from '~/utils/acl'
 import type { CollectionAcl, GetItemResponseMap } from '~~/types'
 
 export default function useAppAuth() {
@@ -12,10 +12,7 @@ export default function useAppAuth() {
     isAuthenticated.value ? data.value?.roles || [] : [],
   )
 
-  const roleColor = computed(() => {
-    const role = reduceAppRoles(roles.value)
-    return isAppRole(role) ? ROLE_COLORS[role] : '#FFF'
-  })
+  const roleColor = computed(() => getRoleColor(roles.value))
 
   const hasRoleFn = (role: ApiRole) => roles.value.includes(role)
   const hasRole = (role: ApiRole) => computed(() => hasRoleFn(role))
@@ -50,7 +47,8 @@ export default function useAppAuth() {
 
   const hasSitePrivilege = computed(
     () => (siteId: number) =>
-      hasRoleAdmin.value || Boolean(data.value?.sitePrivileges?.[siteId]),
+      hasRoleAdmin.value ||
+      typeof data.value?.sitePrivileges?.[siteId] !== 'undefined',
   )
 
   const siteCollectionAcl = computed<CollectionAcl>(() => ({
@@ -58,9 +56,13 @@ export default function useAppAuth() {
     canExport: isAuthenticated.value,
   }))
 
+  const hasSpecialistRole = (role: ApiSpecialistRole) =>
+    computed(() => roles.value.includes(role))
+
   return {
     hasRoleAdmin,
     hasRole,
+    hasSpecialistRole,
     hasAnySitePrivilege,
     hasSitePrivilege,
     isAuthenticated,

@@ -5,6 +5,8 @@
 >
 import type { GetCollectionPath } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
+import { ApiSpecialistRole } from '~/utils/consts/auth'
+import { getRoleColor, getRoleLabel } from '~/utils/acl'
 
 const props = defineProps<{
   path: Path
@@ -40,12 +42,49 @@ const { userData } = storeToRefs(userPasswordDialog())
         </template>
       </navigation-resource-item>
     </template>
+    <template #[`item.role`]="{ item }">
+      <p>
+        <v-icon icon="fas fa-user" :color="getRoleColor(item.roles)" />
+        <span class="pl-2">{{ getRoleLabel(reduceAppRoles(item.roles)) }}</span>
+      </p>
+    </template>
+    <template #[`item.geo_archaeologist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.GeoArchaeologist"
+      />
+    </template>
+    <template #[`item.ceramic_specialist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.CeramicSpecialist"
+      />
+    </template>
+    <template #[`item.zoo_archaeologist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.ZooArchaeologist"
+      />
+    </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-search :path title="User" />-->
       <data-dialog-create-user :path @refresh="refetch()" />
       <data-dialog-delete-user @refresh="refetch()" />
-      <data-dialog-update-user />
+      <data-dialog-update-user @refresh="refetch()" />
       <data-dialog-user-password mode="reset" />
     </template>
   </data-collection-table>
 </template>
+
+<style scoped>
+.centered-item {
+  margin: 0 auto;
+  display: block;
+}
+</style>

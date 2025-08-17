@@ -10,9 +10,9 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import DataCollectionTablePottery from '~/components/data/collection/table/DataCollectionTablePottery.vue'
+import { ApiSpecialistRole } from '~/utils/consts/auth'
 
-defineProps<{
+const props = defineProps<{
   path: P
   parent?: ResourceParent<
     'stratigraphicUnit',
@@ -20,7 +20,27 @@ defineProps<{
   >
 }>()
 
-const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
+const {
+  hasAnySitePrivilege,
+  hasSitePrivilege,
+  isAuthenticated,
+  hasSpecialistRole,
+} = useAppAuth()
+
+const hasPrivileges = computed(() => {
+  if (props.parent) {
+    return props.parent.item.site?.id
+      ? hasSitePrivilege.value(props.parent.item.site.id)
+      : false
+  }
+  return hasAnySitePrivilege.value
+})
+
+const canCreate = computed(
+  () =>
+    hasPrivileges.value &&
+    hasSpecialistRole(ApiSpecialistRole.CeramicSpecialist).value,
+)
 </script>
 <template>
   <data-collection-page
@@ -30,9 +50,7 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,
-      canCreate: parent?.item.id
-        ? hasSitePrivilege(parent.item.site?.id)
-        : hasAnySitePrivilege,
+      canCreate,
     }"
   >
     <data-collection-table-pottery :path :parent />

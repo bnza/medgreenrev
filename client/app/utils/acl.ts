@@ -3,7 +3,9 @@ import {
   ApiSiteRole,
   ApiSiteRoleKey,
   type ApiSpecialistRole,
+  ROLE_COLORS,
   ROLE_HIERARCHY,
+  ROLE_LABELS,
   SITES_ROLE_COLORS,
 } from '~/utils/consts/auth'
 import type { ApiAclResource, BaseAcl } from '~~/types'
@@ -38,6 +40,15 @@ export const mergeRole = (
   const _roles = removeAppRoles(roles)
   const _expandedRoles = expandAppRole(role)
   return [..._roles, ..._expandedRoles]
+}
+
+export const getRoleColor = (role: string | string[]) => {
+  const _role = Array.isArray(role) ? reduceAppRoles(role) : role
+  return isAppRole(_role) ? ROLE_COLORS[_role] : '#FFF'
+}
+
+export const getRoleLabel = (role: string) => {
+  return isAppRole(role) || isSpecialistRole(role) ? ROLE_LABELS[role] : '?'
 }
 
 // Sites roles handling

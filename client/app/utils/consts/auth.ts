@@ -9,6 +9,8 @@ export enum ApiRole {
 
 export enum ApiSpecialistRole {
   GeoArchaeologist = 'ROLE_GEO_ARCHAEOLOGIST',
+  CeramicSpecialist = 'ROLE_CERAMIC_SPECIALIST',
+  ZooArchaeologist = 'ROLE_ZOO_ARCHAEOLOGIST',
 }
 
 export enum AclVoters {
@@ -42,6 +44,15 @@ export const ROLE_HIERARCHY = {
   [ApiRole.Editor]: 100,
   [ApiRole.User]: 10,
 } as const satisfies Record<ApiRole, number>
+
+export const ROLE_LABELS = {
+  [ApiRole.Admin]: 'Admin',
+  [ApiRole.Editor]: 'Editor',
+  [ApiRole.User]: 'User',
+  [ApiSpecialistRole.GeoArchaeologist]: 'GeoArchaeologist',
+  [ApiSpecialistRole.CeramicSpecialist]: 'CeramicSpecialist',
+  [ApiSpecialistRole.ZooArchaeologist]: 'ZooArchaeologist',
+} as const satisfies Record<ApiRole | ApiSpecialistRole, string>
 
 export const defaultBaseAcl = {
   canRead: true,
