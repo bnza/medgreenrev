@@ -1,4 +1,4 @@
-import { ApiRole } from '~/utils/consts/auth'
+import { ApiRole, type ApiSpecialistRole } from '~/utils/consts/auth'
 
 import { getRoleColor } from '~/utils/acl'
 import type { CollectionAcl, GetItemResponseMap } from '~~/types'

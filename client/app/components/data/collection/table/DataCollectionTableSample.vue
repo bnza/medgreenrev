@@ -36,6 +36,7 @@ const { appPath } = useResourceConfig(props.path)
       />
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path title="Sample" />
       <lazy-data-dialog-create-sample :path @refresh="refetch()" />
       <data-dialog-delete-sample @refresh="refetch()" />
       <data-dialog-update-sample @refresh="refetch()" />

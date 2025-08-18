@@ -49,6 +49,7 @@ const { deleteDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path :title="subResourceKey" :parent-id />
       <data-dialog-create-context-sample :path :parent @refresh="refetch()" />
       <data-dialog-delete-context-sample @refresh="refetch()" />
     </template>

@@ -3,7 +3,7 @@ import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 import type { ApiResourcePath } from '~/utils/consts/resources'
 import type { GetItemPath, Iri, OperationPathParams } from '~~/types'
 
-const model = defineModel<string>()
+const model = defineModel<string | null>()
 
 interface Props {
   path: ApiResourcePath

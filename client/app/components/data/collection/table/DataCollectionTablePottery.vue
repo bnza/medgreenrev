@@ -70,6 +70,7 @@ const { updateDialogState } = storeToRefs(
       </p>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path title="Pottery" />
       <lazy-data-dialog-create-pottery :path :parent @refresh="refetch()" />
       <data-dialog-delete-pottery @refresh="refetch()" />
       <data-dialog-update-pottery @refresh="refetch()" />

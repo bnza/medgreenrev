@@ -1596,6 +1596,13 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
+    'Context-context.acl.read': {
+      readonly id?: number & string
+      type?: components['schemas']['ContextType-context.acl.read']
+      site?: components['schemas']['Site-context.acl.read']
+      name?: string
+      description?: string | null
+    }
     'Context-context.create': {
       /**
        * Format: iri-reference
@@ -1607,6 +1614,19 @@ export interface components {
        * @example https://example.com/
        */
       site?: string
+      name?: string
+      description?: string | null
+    }
+    'Context-context_stratigraphic_unit.acl.read': {
+      readonly id?: number & string
+      type?: components['schemas']['ContextType-context_stratigraphic_unit.acl.read']
+      site?: components['schemas']['Site-context_stratigraphic_unit.acl.read']
+      name?: string
+    }
+    'Context-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      readonly id?: number & string
+      type?: components['schemas']['ContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      site?: components['schemas']['Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
     }
@@ -1713,6 +1733,23 @@ export interface components {
       name?: string
       description?: string | null
     }
+    'ContextSample-context_sample.acl.read': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      context?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sample?: string
+    }
+    'ContextSample-context_sample.samples.acl.read_sample.acl.read': {
+      readonly id?: number & string
+      sample?: components['schemas']['Sample-context_sample.samples.acl.read_sample.acl.read']
+    }
     'ContextSample.jsonld': {
       readonly id?: number & string
       /**
@@ -1778,6 +1815,15 @@ export interface components {
       readonly id?: number & string
       sample?: components['schemas']['Sample.jsonld-context_sample.samples.acl.read_sample.acl.read']
     }
+    'ContextStratigraphicUnit-context_stratigraphic_unit.acl.read': {
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit-context_stratigraphic_unit.acl.read']
+      context?: components['schemas']['Context-context_stratigraphic_unit.acl.read']
+    }
+    'ContextStratigraphicUnit-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      readonly id?: number & string
+      context?: components['schemas']['Context-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+    }
     'ContextStratigraphicUnit.jsonld': {
       readonly id?: number & string
       /**
@@ -1818,6 +1864,18 @@ export interface components {
       readonly '@type'?: string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+    }
+    'ContextType-context.acl.read': {
+      group?: string
+      value?: string
+    }
+    'ContextType-context_stratigraphic_unit.acl.read': {
+      group?: string
+      value?: string
+    }
+    'ContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      group?: string
+      value?: string
     }
     'ContextType.jsonld': {
       readonly '@context'?:
@@ -2124,6 +2182,34 @@ export interface components {
       group?: string
       value?: string
     }
+    'Pottery-pottery.acl.read': {
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit-pottery.acl.read']
+      inventory?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
     'Pottery-pottery.create': {
       readonly id?: number & string
       /**
@@ -2247,6 +2333,58 @@ export interface components {
       number?: number
       sampleStratigraphicUnits?: string[]
       sampleContexts?: string[]
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample-context_sample.samples.acl.read_sample.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-context_sample.samples.acl.read_sample.acl.read']
+      type?: components['schemas']['SampleType-context_sample.samples.acl.read_sample.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample-sample.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sample.acl.read']
+      type?: components['schemas']['SampleType-sample.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      type?: components['schemas']['SampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      type?: components['schemas']['SampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
       description?: string | null
       readonly code?: string
     }
@@ -2393,6 +2531,19 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
+    'SampleStratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      sample?: components['schemas']['Sample-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+    }
+    'SampleStratigraphicUnit-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      readonly id?: number & string
+      sample?: components['schemas']['Sample-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+    }
+    'SampleStratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+    }
     'SampleStratigraphicUnit.jsonld': {
       readonly id?: number & string
       /**
@@ -2433,6 +2584,22 @@ export interface components {
       readonly '@type'?: string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+    }
+    'SampleType-context_sample.samples.acl.read_sample.acl.read': {
+      code?: string
+      value?: string
+    }
+    'SampleType-sample.acl.read': {
+      code?: string
+      value?: string
+    }
+    'SampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      code?: string
+      value?: string
+    }
+    'SampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      code?: string
+      value?: string
     }
     'SampleType.jsonld': {
       readonly '@context'?:
@@ -2540,6 +2707,58 @@ export interface components {
       readonly id?: number
       value?: string
     }
+    'Site-context.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site-context_sample.samples.acl.read_sample.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site-context_stratigraphic_unit.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site-pottery.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site-sample.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site-site.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?: components['schemas']['User-site.acl.read'] | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext-site.acl.read'][]
+    }
     'Site-site.create': {
       code: string
       name: string
@@ -2548,6 +2767,11 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: string[]
+    }
+    'Site-sus.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
     }
     'Site.jsonld-context.acl.read': {
       readonly '@context'?:
@@ -2818,6 +3042,13 @@ export interface components {
       code?: string
       name?: string
     }
+    'SiteCulturalContext-site.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string
+    }
     'SiteCulturalContext.jsonld': {
       readonly '@id'?: string
       readonly '@type'?: string
@@ -2906,6 +3137,41 @@ export interface components {
        */
       privilege: number
     }
+    'StratigraphicUnit-context_stratigraphic_unit.acl.read': {
+      readonly id?: number & string
+      interpretation?: string | null
+      readonly code?: string
+    }
+    'StratigraphicUnit-pottery.acl.read': {
+      site?: components['schemas']['Site-pottery.acl.read']
+      readonly code?: string
+    }
+    'StratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
+    'StratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
+    }
     'StratigraphicUnit-su.create': {
       /**
        * Format: iri-reference
@@ -2920,6 +3186,19 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+    }
+    'StratigraphicUnit-sus.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code?: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
@@ -3101,6 +3380,11 @@ export interface components {
       readonly '@type'?: string
       criteria?: string[]
       valid?: number
+    }
+    'User-site.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
     }
     'User-user.change-password': {
       plainPassword: string | null
@@ -3314,6 +3598,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Context-context.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Context.jsonld-context.acl.read'][]
             totalItems?: number
@@ -3630,6 +3915,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Context-context.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Context.jsonld-context.acl.read'][]
             totalItems?: number
@@ -3698,6 +3984,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['ContextSample-context_sample.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['ContextSample.jsonld-context_sample.acl.read'][]
             totalItems?: number
@@ -3893,6 +4180,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['ContextSample-context_sample.samples.acl.read_sample.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['ContextSample.jsonld-context_sample.samples.acl.read_sample.acl.read'][]
             totalItems?: number
@@ -4032,6 +4320,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['ContextStratigraphicUnit-context_stratigraphic_unit.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read'][]
             totalItems?: number
@@ -4287,6 +4576,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['ContextStratigraphicUnit-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
             totalItems?: number
@@ -5312,6 +5602,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Pottery-pottery.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
             totalItems?: number
@@ -5580,6 +5871,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Pottery-pottery.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
             totalItems?: number
@@ -5662,6 +5954,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Sample-sample.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Sample.jsonld-sample.acl.read'][]
             totalItems?: number
@@ -5943,6 +6236,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Sample-sample.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Sample.jsonld-sample.acl.read'][]
             totalItems?: number
@@ -6010,6 +6304,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['SampleStratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
             totalItems?: number
@@ -6204,6 +6499,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['SampleStratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
             totalItems?: number
@@ -6274,6 +6570,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['SampleStratigraphicUnit-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
             totalItems?: number
@@ -6571,6 +6868,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['Site-site.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Site.jsonld-site.acl.read'][]
             totalItems?: number
@@ -7588,6 +7886,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['StratigraphicUnit-sus.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
             totalItems?: number
@@ -7694,6 +7993,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
+          'text/csv': components['schemas']['StratigraphicUnit-sus.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
             totalItems?: number

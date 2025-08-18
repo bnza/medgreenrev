@@ -39,6 +39,7 @@ const { updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path title="Context" />
       <data-dialog-search :path title="Context" />
       <data-dialog-create-context :path :parent @refresh="refetch()" />
       <data-dialog-delete-context @refresh="refetch()" />

@@ -17,7 +17,11 @@ export function useGetCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const { pagination, queryObject } = storeToRefs(useCollectionQueryStore(path))
+  const {
+    pagination,
+    queryObject,
+    totalItems: storeTotalItems,
+  } = storeToRefs(useCollectionQueryStore(path))
 
   const key = computed(() =>
     RESOURCE_QUERY_KEY.byFilter({
@@ -38,6 +42,14 @@ export function useGetCollectionQuery(
   })
   const items = computed(() => query.data.value?.member ?? [])
   const totalItems = computed(() => query.data.value?.totalItems ?? 0)
+
+  watch(
+    () => totalItems.value,
+    (value) => {
+      storeTotalItems.value = value
+    },
+  )
+
   return {
     items,
     ...query,

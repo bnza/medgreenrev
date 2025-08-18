@@ -48,6 +48,7 @@ const { id: parentId } = useResourceParent(props.parent)
       />
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path :title="subResourceKey" :parent-id />
       <data-dialog-create-sample-stratigraphic-unit
         :path
         :parent

@@ -31,6 +31,7 @@ const { updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path title="Site" />
       <data-dialog-search :path title="Site" />
       <data-dialog-create-site :path @refresh="refetch()" />
       <data-dialog-delete-site @refresh="refetch()" />

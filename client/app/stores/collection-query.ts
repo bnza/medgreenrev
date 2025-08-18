@@ -49,9 +49,12 @@ const useCollectionQueryStore = <Path extends GetCollectionPath>(
       ...filterQueryObject.value,
     }))
 
+    const totalItems = ref(0)
+
     return {
       pagination,
       paginationQueryObject,
+      totalItems,
       queryObject,
       clonedFilters,
       clearFilters,
