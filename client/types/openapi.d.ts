@@ -5589,6 +5589,48 @@ export interface operations {
         'order[shape.value]'?: 'asc' | 'desc'
         'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        inventory?: string
+        culturalContext?: string
+        'culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        shape?: string
+        'shape[]'?: string[]
+        functionalGroup?: string
+        'functionalGroup[]'?: string[]
+        functionalForm?: string
+        'functionalForm[]'?: string[]
+        notes?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[culturalContext]'?: boolean
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
       }
       header?: never
       path?: never
@@ -5855,6 +5897,48 @@ export interface operations {
         'order[shape.value]'?: 'asc' | 'desc'
         'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        inventory?: string
+        culturalContext?: string
+        'culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        shape?: string
+        'shape[]'?: string[]
+        functionalGroup?: string
+        'functionalGroup[]'?: string[]
+        functionalForm?: string
+        'functionalForm[]'?: string[]
+        notes?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[culturalContext]'?: boolean
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
       }
       header?: never
       path: {

@@ -109,6 +109,30 @@ const VocabularyContextType: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyPotteryFunctionalForm: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/pottery/functional_forms',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyPotteryFunctionalGroups: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/pottery/functional_groups',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyPotteryShape: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/pottery/shapes',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const SiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -158,6 +182,9 @@ export const API_FILTERS = {
   NumericRange,
   VocabularyContextType,
   VocabularyCulturalContext,
+  VocabularyPotteryFunctionalForm,
+  VocabularyPotteryFunctionalGroups,
+  VocabularyPotteryShape,
 } as const
 
 export type FilterKey = keyof typeof API_FILTERS
@@ -165,10 +192,12 @@ export type FilterKey = keyof typeof API_FILTERS
 export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
   | '/api/data/contexts'
+  | '/api/data/potteries'
   | '/api/data/sites'
   | '/api/data/sites/{parentId}/stratigraphic_units'
   | '/api/data/sites/{parentId}/contexts'
   | '/api/data/stratigraphic_units'
+  | '/api/data/stratigraphic_units/{parentId}/potteries'
 >
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
@@ -226,6 +255,82 @@ const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
     },
   },
 }
+
+const potteryUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    culturalContext: {
+      propertyLabel: 'cultural context',
+      filters: {
+        VocabularyCulturalContext,
+        Exists,
+      },
+    },
+    chronologyLower: {
+      propertyLabel: 'chronology (lower)',
+      filters: {
+        SearchExact,
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    chronologyUpper: {
+      propertyLabel: 'chronology (upper)',
+      filters: {
+        SearchExact,
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    functionalForm: {
+      propertyLabel: 'functional form',
+      filters: {
+        VocabularyPotteryFunctionalForm,
+      },
+    },
+    functionalGroup: {
+      propertyLabel: 'functional group',
+      filters: {
+        VocabularyPotteryFunctionalGroups,
+      },
+    },
+    inventory: {
+      filters: {
+        SearchPartial,
+      },
+    },
+    notes: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    shape: {
+      filters: {
+        Exists,
+        VocabularyPotteryShape,
+      },
+    },
+    stratigraphicUnit: {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'stratigraphic.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+    'stratigraphic.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+  }
 
 const siteUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   code: {
@@ -309,9 +414,12 @@ export const FILTERS_PATHS_MAP: Record<
   ResourceStaticFiltersDefinitionObject
 > = {
   '/api/data/contexts': contextStaticFiltersDefinition,
+  '/api/data/potteries': potteryUnitStaticFiltersDefinition,
   '/api/data/sites': siteUnitStaticFiltersDefinition,
   '/api/data/sites/{parentId}/contexts': contextStaticFiltersDefinition,
   '/api/data/sites/{parentId}/stratigraphic_units':
     stratigraphicUnitStaticFiltersDefinition,
   '/api/data/stratigraphic_units': stratigraphicUnitStaticFiltersDefinition,
+  '/api/data/stratigraphic_units/{parentId}/potteries':
+    potteryUnitStaticFiltersDefinition,
 } as const
