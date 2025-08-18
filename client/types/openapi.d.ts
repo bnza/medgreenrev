@@ -332,6 +332,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/pottery/decorations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Decoration resources.
+     * @description Retrieves the collection of Decoration resources.
+     */
+    get: operations['api_vocabularypotterydecorations_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/decorations/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Decoration resource.
+     * @description Retrieves a Decoration resource.
+     */
+    get: operations['api_vocabularypotterydecorations_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/pottery/functional_forms': {
     parameters: {
       query?: never
@@ -668,6 +708,46 @@ export interface paths {
      * @description Retrieves the collection of Pottery resources.
      */
     get: operations['api_datastratigraphic_units_parentIdpotteries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/pottery_decorations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of PotteryDecoration resources.
+     * @description Retrieves the collection of PotteryDecoration resources.
+     */
+    get: operations['api_datapottery_decorations_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/pottery_decorations/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PotteryDecoration resource.
+     * @description Retrieves a PotteryDecoration resource.
+     */
+    get: operations['api_datapottery_decorations_id_get']
     put?: never
     post?: never
     delete?: never
@@ -1983,6 +2063,21 @@ export interface components {
       id?: number
       value?: string
     }
+    'Decoration.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number
+      value?: string
+    }
     /** @description A representation of common errors. */
     Error: {
       /** @description A short, human-readable summary of the problem. */
@@ -2186,6 +2281,7 @@ export interface components {
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit-pottery.acl.read']
       inventory?: string
+      decorations?: components['schemas']['PotteryDecoration-pottery.acl.read'][]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2218,6 +2314,7 @@ export interface components {
        */
       stratigraphicUnit?: string
       inventory?: string
+      decorations?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2257,6 +2354,7 @@ export interface components {
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory?: string
+      decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2289,6 +2387,7 @@ export interface components {
        */
       stratigraphicUnit?: string
       inventory?: string
+      decorations?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2312,6 +2411,55 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+    }
+    'PotteryDecoration-pottery.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      decoration?: string
+    }
+    'PotteryDecoration.jsonld': {
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      pottery?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      decoration?: string
+    }
+    'PotteryDecoration.jsonld-pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      decoration?: string
     }
     Sample: {
       readonly id?: number & string
@@ -4804,6 +4952,97 @@ export interface operations {
       }
     }
   }
+  api_vocabularypotterydecorations_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Decoration collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['Decoration.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotterydecorations_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Decoration identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Decoration resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Decoration.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularypotteryfunctional_forms_get_collection: {
     parameters: {
       query?: never
@@ -5631,6 +5870,7 @@ export interface operations {
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
+        'exists[shape]'?: boolean
       }
       header?: never
       path?: never
@@ -5939,6 +6179,7 @@ export interface operations {
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
+        'exists[shape]'?: boolean
       }
       header?: never
       path: {
@@ -5992,6 +6233,100 @@ export interface operations {
               }[]
             }
           }
+        }
+      }
+    }
+  }
+  api_datapottery_decorations_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PotteryDecoration collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['PotteryDecoration.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datapottery_decorations_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PotteryDecoration identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PotteryDecoration resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PotteryDecoration.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

@@ -97,6 +97,15 @@ defineEmits<{
       </v-col>
     </v-row>
     <v-row>
+      <v-col cols="12" xs="12" class="px-2">
+        <data-selection-vocabulary
+          v-model="item.decorations"
+          path="/api/vocabulary/pottery/decorations"
+          label="decorations"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="12">
         <v-textarea v-model="item.notes" label="notes" rows="3" />
       </v-col>

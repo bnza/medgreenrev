@@ -109,6 +109,14 @@ const VocabularyContextType: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyPotteryDecoration: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/pottery/decorations',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const VocabularyPotteryFunctionalForm: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -182,6 +190,7 @@ export const API_FILTERS = {
   NumericRange,
   VocabularyContextType,
   VocabularyCulturalContext,
+  VocabularyPotteryDecoration,
   VocabularyPotteryFunctionalForm,
   VocabularyPotteryFunctionalGroups,
   VocabularyPotteryShape,
@@ -279,6 +288,12 @@ const potteryUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject 
         SearchExact,
         Exists,
         ...NumericOperations,
+      },
+    },
+    'decorations.decoration': {
+      propertyLabel: 'decoration',
+      filters: {
+        VocabularyPotteryDecoration,
       },
     },
     functionalForm: {
