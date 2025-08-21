@@ -3,7 +3,7 @@ import useResourceUiStore from '~/stores/resource-ui'
 import type { GetItemResponseMap } from '~~/types'
 
 const { panels } = storeToRefs(useResourceUiStore('/api/data/potteries/{id}'))
-const props = defineProps<{
+defineProps<{
   item: GetItemResponseMap['/api/data/potteries/{id}']
 }>()
 </script>
@@ -15,8 +15,9 @@ const props = defineProps<{
         <v-container class="pa-0" fluid>
           <v-row>
             <v-col cols="4" xs="12" class="px-2">
-              <data-selection-vocabulary
+              <data-autocomplete
                 :model-value="item.surfaceTreatment ?? undefined"
+                item-title="value"
                 path="/api/vocabulary/pottery/surface_treatments"
                 label="surface treatment"
               />

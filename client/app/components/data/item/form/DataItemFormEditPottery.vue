@@ -99,6 +99,7 @@ defineEmits<{
       <v-col cols="4" xs="12" class="px-2">
         <data-selection-vocabulary
           v-model="item.surfaceTreatment"
+          :multiple="false"
           path="/api/vocabulary/pottery/surface_treatments"
           label="surface treatment"
         />
