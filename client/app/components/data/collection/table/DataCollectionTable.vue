@@ -14,10 +14,17 @@ const pathParams = computed(() =>
 )
 const { pagination, items, totalItems, status, refetch } =
   useGetCollectionQuery(props.path, pathParams)
+
+const { tableHeightPx } = useResponsiveTable({
+  excludeSelectors: ['.v-toolbar'],
+  fixedOffset: 120,
+  minHeight: 350,
+})
 </script>
 
 <template>
   <v-data-table-server
+    class="overflow-x-auto"
     data-testid="data-collection-table"
     fixed-footer
     fixed-header
@@ -25,8 +32,11 @@ const { pagination, items, totalItems, status, refetch } =
     :items
     :items-length="totalItems"
     :items-per-page="pagination.itemsPerPage"
+    :items-per-page-options="[10, 25, 50, 100]"
     :loading="status === 'pending'"
+    :height="parentId ? '350px' : tableHeightPx"
     multi-sort
+    striped="odd"
     :page="pagination.page"
     :sort-by="pagination.sortBy"
     @update:options="pagination = $event"
