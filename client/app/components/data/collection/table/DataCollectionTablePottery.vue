@@ -11,9 +11,11 @@
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
+
 const vocabularyPotteryShapeStore = useVocabularyStore(
   '/api/vocabulary/pottery/shapes',
 )
+
 const vocabularyCulturalContextStore = useVocabularyStore(
   '/api/vocabulary/cultural_contexts',
 )
@@ -21,8 +23,13 @@ const vocabularyCulturalContextStore = useVocabularyStore(
 const vocabularyPotteryFunctionalGroupStore = useVocabularyStore(
   '/api/vocabulary/pottery/functional_groups',
 )
+
 const vocabularyPotteryFunctionalFormStore = useVocabularyStore(
   '/api/vocabulary/pottery/functional_forms',
+)
+
+const vocabularyPotterySurfaceTreatmentStore = useVocabularyStore(
+  '/api/vocabulary/pottery/surface_treatments',
 )
 
 const props = defineProps<{
@@ -67,6 +74,13 @@ const { updateDialogState } = storeToRefs(
     <template #[`item.functionalForm.value`]="{ item }">
       <p>
         {{ vocabularyPotteryFunctionalFormStore.getValue(item.functionalForm) }}
+      </p>
+    </template>
+    <template #[`item.surfaceTreatment.value`]="{ item }">
+      <p>
+        {{
+          vocabularyPotterySurfaceTreatmentStore.getValue(item.surfaceTreatment)
+        }}
       </p>
     </template>
     <template #dialogs="{ refetch }">

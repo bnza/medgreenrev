@@ -23,6 +23,7 @@ export const API_RESOURCE_MAP = {
   siteCulturalContext: '/api/data/site_cultural_contexts',
   siteUserPrivilege: '/api/admin/site_user_privileges',
   stratigraphicUnit: '/api/data/stratigraphic_units',
+  surfaceTreatment: '/api/vocabulary/pottery/surface_treatments',
   user: '/api/admin/users',
 } as const
 

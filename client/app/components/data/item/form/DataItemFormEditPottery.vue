@@ -39,7 +39,6 @@ defineEmits<{
           v-model="item.inventory"
           :error-messages="errors?.inventory"
           label="inventory"
-          required
         />
       </v-col>
     </v-row>
@@ -97,12 +96,32 @@ defineEmits<{
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" xs="12" class="px-2">
+      <v-col cols="4" xs="12" class="px-2">
+        <data-selection-vocabulary
+          v-model="item.surfaceTreatment"
+          path="/api/vocabulary/pottery/surface_treatments"
+          label="surface treatment"
+        />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field v-model="item.innerColor" label="inner color" />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field v-model="item.outerColor" label="outer color" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
         <data-selection-vocabulary
           v-model="item.decorations"
           path="/api/vocabulary/pottery/decorations"
           label="decorations"
         />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="8" xs="12" class="px-2">
+        <v-text-field v-model="item.decorationMotif" label="decoration motif" />
       </v-col>
     </v-row>
     <v-row>

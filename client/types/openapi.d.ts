@@ -1312,6 +1312,46 @@ export interface paths {
     patch: operations['api_datastratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/vocabulary/pottery/surface_treatments': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SurfaceTreatment resources.
+     * @description Retrieves the collection of SurfaceTreatment resources.
+     */
+    get: operations['api_vocabularypotterysurface_treatments_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/surface_treatments/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SurfaceTreatment resource.
+     * @description Retrieves a SurfaceTreatment resource.
+     */
+    get: operations['api_vocabularypotterysurface_treatments_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/context_sample/{context}/{sample}': {
     parameters: {
       query?: never
@@ -2286,6 +2326,14 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       culturalContext?: string | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
@@ -2315,6 +2363,14 @@ export interface components {
       stratigraphicUnit?: string
       inventory?: string
       decorations?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2359,6 +2415,14 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       culturalContext?: string | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
@@ -2388,6 +2452,14 @@ export interface components {
       stratigraphicUnit?: string
       inventory?: string
       decorations?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3513,6 +3585,21 @@ export interface components {
       description?: string | null
       interpretation?: string | null
       readonly code?: string
+    }
+    'SurfaceTreatment.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number
+      value?: string
     }
     'UniqueValidator.jsonld': {
       readonly '@context'?:
@@ -5832,6 +5919,8 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'decorations.decoration'?: string
+        'decorations.decoration[]'?: string[]
         inventory?: string
         culturalContext?: string
         'culturalContext[]'?: string[]
@@ -6141,6 +6230,8 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'decorations.decoration'?: string
+        'decorations.decoration[]'?: string[]
         inventory?: string
         culturalContext?: string
         'culturalContext[]'?: string[]
@@ -8645,6 +8736,97 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_vocabularypotterysurface_treatments_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SurfaceTreatment collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['SurfaceTreatment.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotterysurface_treatments_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SurfaceTreatment identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SurfaceTreatment resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SurfaceTreatment.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

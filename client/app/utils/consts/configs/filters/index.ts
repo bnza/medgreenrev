@@ -141,6 +141,14 @@ const VocabularyPotteryShape: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyPotterySurfaceTreatment: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/pottery/surface_treatments',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const SiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -194,6 +202,7 @@ export const API_FILTERS = {
   VocabularyPotteryFunctionalForm,
   VocabularyPotteryFunctionalGroups,
   VocabularyPotteryShape,
+  VocabularyPotterySurfaceTreatment,
 } as const
 
 export type FilterKey = keyof typeof API_FILTERS
@@ -290,6 +299,13 @@ const potteryUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject 
         ...NumericOperations,
       },
     },
+    decorationMotif: {
+      propertyLabel: 'decoration motif',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
     'decorations.decoration': {
       propertyLabel: 'decoration',
       filters: {
@@ -308,12 +324,26 @@ const potteryUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject 
         VocabularyPotteryFunctionalGroups,
       },
     },
+    innerColor: {
+      propertyLabel: 'inner color',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
     inventory: {
       filters: {
         SearchPartial,
       },
     },
     notes: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    outerColor: {
+      propertyLabel: 'outer color',
       filters: {
         SearchPartial,
         Exists,
@@ -343,6 +373,13 @@ const potteryUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject 
       filters: {
         SearchExact,
         ...NumericOperations,
+      },
+    },
+    surfaceTreatment: {
+      propertyLabel: 'surface treatment',
+      filters: {
+        VocabularyPotterySurfaceTreatment,
+        Exists,
       },
     },
   }
