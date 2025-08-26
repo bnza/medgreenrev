@@ -4,6 +4,46 @@
  */
 
 export interface paths {
+  '/api/vocabulary/analysis/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisType resources.
+     * @description Retrieves the collection of AnalysisType resources.
+     */
+    get: operations['api_vocabularyanalysistypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/analysis/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisType resource.
+     * @description Retrieves a AnalysisType resource.
+     */
+    get: operations['api_vocabularyanalysistypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/contexts': {
     parameters: {
       query?: never
@@ -716,6 +756,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of PotteryAnalysis resources.
+     * @description Retrieves the collection of PotteryAnalysis resources.
+     */
+    get: operations['api_dataanalysespotteries_get_collection']
+    put?: never
+    /**
+     * Creates a PotteryAnalysis resource.
+     * @description Creates a PotteryAnalysis resource.
+     */
+    post: operations['api_dataanalysespotteries_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/potteries/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PotteryAnalysis resource.
+     * @description Retrieves a PotteryAnalysis resource.
+     */
+    get: operations['api_dataanalysespotteries_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the PotteryAnalysis resource.
+     * @description Removes the PotteryAnalysis resource.
+     */
+    delete: operations['api_dataanalysespotteries_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the PotteryAnalysis resource.
+     * @description Updates the PotteryAnalysis resource.
+     */
+    patch: operations['api_dataanalysespotteries_id_patch']
+    trace?: never
+  }
+  '/api/data/potteries/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of PotteryAnalysis resources.
+     * @description Retrieves the collection of PotteryAnalysis resources.
+     */
+    get: operations['api_datapotteries_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/pottery_decorations': {
     parameters: {
       query?: never
@@ -1352,6 +1464,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/potteries/{pottery}/{type}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysespotteries_pottery_type_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/context_sample/{context}/{sample}': {
     parameters: {
       query?: never
@@ -1668,6 +1800,22 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    'AnalysisType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number
+      group?: string
+      value?: string
+    }
     /** @description Unprocessable entity */
     'ConstraintViolation-json': {
       /**
@@ -2240,6 +2388,29 @@ export interface components {
       readonly contentThumbnailUrl?: string | null
       dimensions?: string[] | null
     }
+    'MediaObject.jsonld-pottery_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+    }
     'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       readonly '@context'?:
         | string
@@ -2483,6 +2654,95 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+    }
+    'Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      inventory?: string
+    }
+    PotteryAnalysis: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      pottery?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      document?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rawData?: string | null
+      summary?: string | null
+    }
+    'PotteryAnalysis.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      pottery: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      document?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rawData?: string | null
+      summary?: string | null
+    }
+    'PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id'?: string
+      readonly '@type'?: string
+      readonly id?: number & string
+      pottery?: components['schemas']['Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      document?:
+        | components['schemas']['MediaObject.jsonld-pottery_analysis.acl.read_media_object_join.read']
+        | null
+      rawData?:
+        | components['schemas']['MediaObject.jsonld-pottery_analysis.acl.read_media_object_join.read']
+        | null
+      summary?: string | null
     }
     'PotteryDecoration-pottery.acl.read': {
       /**
@@ -3756,6 +4016,98 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
+  api_vocabularyanalysistypes_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Search case insensitive match across group and value fields */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisType.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyanalysistypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_datacontexts_get_collection: {
     parameters: {
       query?: {
@@ -5422,6 +5774,12 @@ export interface operations {
         'multipart/form-data': {
           /** Format: binary */
           file: string
+          /**
+           * Format: iri-reference
+           * @example /api/vocabulary/media_object/types/1
+           */
+          type: string
+          description?: string
         }
       }
     }
@@ -5915,6 +6273,9 @@ export interface operations {
         'order[shape.value]'?: 'asc' | 'desc'
         'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
+        'order[surfaceTreatment.value]'?: 'asc' | 'desc'
+        'order[innerColor]'?: 'asc' | 'desc'
+        'order[outerColor]'?: 'asc' | 'desc'
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
@@ -5935,6 +6296,11 @@ export interface operations {
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
+        surfaceTreatment?: string
+        'surfaceTreatment[]'?: string[]
+        innerColor?: string
+        outerColor?: string
+        decorationMotif?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
@@ -5959,7 +6325,18 @@ export interface operations {
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
+        'exists[innerColor]'?: boolean
+        'exists[outerColor]'?: boolean
+        'exists[decorationMotif]'?: boolean
         'exists[shape]'?: boolean
+        'exists[surfaceTreatment]'?: boolean
+        /** @description Search case insensitive match the inventory field */
+        search?: string
+        /**
+         * @description Filter contexts to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path?: never
@@ -6226,6 +6603,9 @@ export interface operations {
         'order[shape.value]'?: 'asc' | 'desc'
         'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
+        'order[surfaceTreatment.value]'?: 'asc' | 'desc'
+        'order[innerColor]'?: 'asc' | 'desc'
+        'order[outerColor]'?: 'asc' | 'desc'
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
@@ -6246,6 +6626,11 @@ export interface operations {
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
+        surfaceTreatment?: string
+        'surfaceTreatment[]'?: string[]
+        innerColor?: string
+        outerColor?: string
+        decorationMotif?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
@@ -6270,7 +6655,18 @@ export interface operations {
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
+        'exists[innerColor]'?: boolean
+        'exists[outerColor]'?: boolean
+        'exists[decorationMotif]'?: boolean
         'exists[shape]'?: boolean
+        'exists[surfaceTreatment]'?: boolean
+        /** @description Search case insensitive match the inventory field */
+        search?: string
+        /**
+         * @description Filter contexts to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path: {
@@ -6290,6 +6686,333 @@ export interface operations {
           'text/csv': components['schemas']['Pottery-pottery.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PotteryAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id'?: string
+              '@type'?: string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type'?: string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type'?: string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new PotteryAnalysis resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['PotteryAnalysis.jsonld']
+      }
+    }
+    responses: {
+      /** @description PotteryAnalysis resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PotteryAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PotteryAnalysis resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PotteryAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PotteryAnalysis resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PotteryAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated PotteryAnalysis resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['PotteryAnalysis']
+      }
+    }
+    responses: {
+      /** @description PotteryAnalysis resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datapotteries_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description PotteryAnalysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PotteryAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -8816,6 +9539,42 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['SurfaceTreatment.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysespotteries_pottery_type_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        pottery: string
+        /** @description UniqueValidator identifier */
+        type: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
         }
       }
       /** @description Not found */

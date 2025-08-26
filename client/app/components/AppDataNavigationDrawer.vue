@@ -19,6 +19,23 @@ const { hasRoleAdmin } = useAppAuth()
         data-testid="app-navigation-drawer-li-home"
         title="Home"
       />
+      <v-list-group value="Analyses">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-table-list"
+            title="Analyses"
+            data-testid="app-nav-drawer-li-analyses"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/data/analysis/potteries"
+          router
+          title="Potteries"
+          data-testid="app-nav-drawer-li-analysis-potteries"
+        />
+      </v-list-group>
       <v-list-group value="Data">
         <template #activator="{ props }">
           <v-list-item

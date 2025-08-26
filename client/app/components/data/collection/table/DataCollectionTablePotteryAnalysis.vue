@@ -1,0 +1,58 @@
+<script
+  setup
+  lang="ts"
+  generic="
+    Path extends
+      | Extract<GetCollectionPath, '/api/data/analyses/potteries'>
+      | '/api/data/potteries/{parentId}/analyses'
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
+import useResourceConfig from '~/stores/resource-config'
+
+const props = defineProps<{
+  path: Path
+  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+}>()
+
+const { id: parentId } = useResourceParent(props.parent)
+
+const { appPath } = useResourceConfig(props.path)
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/analyses/potteries/{id}'),
+)
+const { updateDialogState } = storeToRefs(
+  useResourceUpdateDialogStore('/api/data/analyses/potteries/{id}'),
+)
+
+const vocabularyAnalysisStore = useVocabularyStore(
+  '/api/vocabulary/analysis/types',
+)
+</script>
+
+<template>
+  <data-collection-table :path :parent-id>
+    <template #[`item.id`]="{ item }">
+      <navigation-resource-item
+        :id="item.id"
+        :acl="item._acl"
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
+        @update="updateDialogState = { id: item.id }"
+      />
+    </template>
+    <template #[`item.type.value`]="{ item }">
+      {{ vocabularyAnalysisStore.getValue(item.type) }}
+    </template>
+    <template #[`item.summary`]="{ item }">
+      <text-tooltip-span :text="item.summary" />
+    </template>
+    <template #dialogs="{ refetch }">
+      <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
+      <!--      <data-dialog-search :path title="Pottery Analysis" />-->
+      <data-dialog-create-pottery-analysis :path :parent @refresh="refetch()" />
+      <data-dialog-delete-pottery-analysis @refresh="refetch()" />
+      <data-dialog-update-pottery-analysis @refresh="refetch()" />
+    </template>
+  </data-collection-table>
+</template>
