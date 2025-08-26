@@ -6735,6 +6735,74 @@ export interface operations {
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'pottery.stratigraphicUnit.site'?: string
+        'pottery.stratigraphicUnit.site[]'?: string[]
+        'pottery.stratigraphicUnit'?: string
+        'pottery.stratigraphicUnit[]'?: string[]
+        'pottery.decorations.decoration'?: string
+        'pottery.decorations.decoration[]'?: string[]
+        'pottery.inventory'?: string
+        'pottery.culturalContext'?: string
+        'pottery.culturalContext[]'?: string[]
+        'pottery.chronologyLower'?: number
+        'pottery.chronologyLower[]'?: number[]
+        'pottery.chronologyUpper'?: number
+        'pottery.chronologyUpper[]'?: number[]
+        'pottery.shape'?: string
+        'pottery.shape[]'?: string[]
+        'pottery.functionalGroup'?: string
+        'pottery.functionalGroup[]'?: string[]
+        'pottery.functionalForm'?: string
+        'pottery.functionalForm[]'?: string[]
+        'pottery.notes'?: string
+        'pottery.surfaceTreatment'?: string
+        'pottery.surfaceTreatment[]'?: string[]
+        'pottery.innerColor'?: string
+        'pottery.outerColor'?: string
+        'pottery.decorationMotif'?: string
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'document.mimeType[]'?: string[]
+        'rawData.mimeType'?: string
+        'rawData.mimeType[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'pottery.stratigraphicUnit.number[between]'?: string
+        'pottery.stratigraphicUnit.number[gt]'?: string
+        'pottery.stratigraphicUnit.number[gte]'?: string
+        'pottery.stratigraphicUnit.number[lt]'?: string
+        'pottery.stratigraphicUnit.number[lte]'?: string
+        'pottery.stratigraphicUnit.year[between]'?: string
+        'pottery.stratigraphicUnit.year[gt]'?: string
+        'pottery.stratigraphicUnit.year[gte]'?: string
+        'pottery.stratigraphicUnit.year[lt]'?: string
+        'pottery.stratigraphicUnit.year[lte]'?: string
+        'pottery.chronologyLower[between]'?: string
+        'pottery.chronologyLower[gt]'?: string
+        'pottery.chronologyLower[gte]'?: string
+        'pottery.chronologyLower[lt]'?: string
+        'pottery.chronologyLower[lte]'?: string
+        'pottery.chronologyUpper[between]'?: string
+        'pottery.chronologyUpper[gt]'?: string
+        'pottery.chronologyUpper[gte]'?: string
+        'pottery.chronologyUpper[lt]'?: string
+        'pottery.chronologyUpper[lte]'?: string
+        'exists[pottery.notes]'?: boolean
+        'exists[pottery.culturalContext]'?: boolean
+        'exists[pottery.chronologyLower]'?: boolean
+        'exists[pottery.chronologyUpper]'?: boolean
+        'exists[pottery.innerColor]'?: boolean
+        'exists[pottery.outerColor]'?: boolean
+        'exists[pottery.decorationMotif]'?: boolean
+        'exists[pottery.shape]'?: boolean
+        'exists[pottery.surfaceTreatment]'?: boolean
+        'exists[document]'?: boolean
+        'exists[rawData]'?: boolean
+        'exists[summary]'?: boolean
       }
       header?: never
       path?: never
@@ -6995,6 +7063,74 @@ export interface operations {
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'pottery.stratigraphicUnit.site'?: string
+        'pottery.stratigraphicUnit.site[]'?: string[]
+        'pottery.stratigraphicUnit'?: string
+        'pottery.stratigraphicUnit[]'?: string[]
+        'pottery.decorations.decoration'?: string
+        'pottery.decorations.decoration[]'?: string[]
+        'pottery.inventory'?: string
+        'pottery.culturalContext'?: string
+        'pottery.culturalContext[]'?: string[]
+        'pottery.chronologyLower'?: number
+        'pottery.chronologyLower[]'?: number[]
+        'pottery.chronologyUpper'?: number
+        'pottery.chronologyUpper[]'?: number[]
+        'pottery.shape'?: string
+        'pottery.shape[]'?: string[]
+        'pottery.functionalGroup'?: string
+        'pottery.functionalGroup[]'?: string[]
+        'pottery.functionalForm'?: string
+        'pottery.functionalForm[]'?: string[]
+        'pottery.notes'?: string
+        'pottery.surfaceTreatment'?: string
+        'pottery.surfaceTreatment[]'?: string[]
+        'pottery.innerColor'?: string
+        'pottery.outerColor'?: string
+        'pottery.decorationMotif'?: string
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'document.mimeType[]'?: string[]
+        'rawData.mimeType'?: string
+        'rawData.mimeType[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'pottery.stratigraphicUnit.number[between]'?: string
+        'pottery.stratigraphicUnit.number[gt]'?: string
+        'pottery.stratigraphicUnit.number[gte]'?: string
+        'pottery.stratigraphicUnit.number[lt]'?: string
+        'pottery.stratigraphicUnit.number[lte]'?: string
+        'pottery.stratigraphicUnit.year[between]'?: string
+        'pottery.stratigraphicUnit.year[gt]'?: string
+        'pottery.stratigraphicUnit.year[gte]'?: string
+        'pottery.stratigraphicUnit.year[lt]'?: string
+        'pottery.stratigraphicUnit.year[lte]'?: string
+        'pottery.chronologyLower[between]'?: string
+        'pottery.chronologyLower[gt]'?: string
+        'pottery.chronologyLower[gte]'?: string
+        'pottery.chronologyLower[lt]'?: string
+        'pottery.chronologyLower[lte]'?: string
+        'pottery.chronologyUpper[between]'?: string
+        'pottery.chronologyUpper[gt]'?: string
+        'pottery.chronologyUpper[gte]'?: string
+        'pottery.chronologyUpper[lt]'?: string
+        'pottery.chronologyUpper[lte]'?: string
+        'exists[pottery.notes]'?: boolean
+        'exists[pottery.culturalContext]'?: boolean
+        'exists[pottery.chronologyLower]'?: boolean
+        'exists[pottery.chronologyUpper]'?: boolean
+        'exists[pottery.innerColor]'?: boolean
+        'exists[pottery.outerColor]'?: boolean
+        'exists[pottery.decorationMotif]'?: boolean
+        'exists[pottery.shape]'?: boolean
+        'exists[pottery.surfaceTreatment]'?: boolean
+        'exists[document]'?: boolean
+        'exists[rawData]'?: boolean
+        'exists[summary]'?: boolean
       }
       header?: never
       path: {

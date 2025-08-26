@@ -149,6 +149,22 @@ const VocabularyPotterySurfaceTreatment: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyAnalysisType: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/analysis/types',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+// const VocabularyMimeType: StaticFiltersDefinitionObject = {
+//   operationLabel: 'equals',
+//   multiple: false,
+//   componentKey: 'Vocabulary',
+//   path: '/api/vocabulary/mime_types',
+//   addToQueryObject: addToQueryObjectArray,
+// }
+
 const SiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -203,6 +219,8 @@ export const API_FILTERS = {
   VocabularyPotteryFunctionalGroups,
   VocabularyPotteryShape,
   VocabularyPotterySurfaceTreatment,
+  VocabularyAnalysisType,
+  // VocabularyMimeType,
 } as const
 
 export type FilterKey = keyof typeof API_FILTERS
@@ -211,11 +229,13 @@ export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
   | '/api/data/contexts'
   | '/api/data/potteries'
+  | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/sites'
   | '/api/data/sites/{parentId}/stratigraphic_units'
   | '/api/data/sites/{parentId}/contexts'
   | '/api/data/stratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/potteries'
+  | '/api/data/analyses/potteries'
 >
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
@@ -461,12 +481,170 @@ const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionO
     },
   }
 
+const potteryAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    'pottery.stratigraphicUnit.site': {
+      propertyLabel: 'site',
+      filters: {
+        SiteEquals,
+      },
+    },
+    'pottery.stratigraphicUnit': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'pottery.stratigraphicUnit.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+    'pottery.stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+    'pottery.decorations.decoration': {
+      propertyLabel: 'pottery decoration',
+      filters: {
+        VocabularyPotteryDecoration,
+      },
+    },
+    'pottery.inventory': {
+      propertyLabel: 'pottery inventory',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'pottery.culturalContext': {
+      propertyLabel: 'pottery cultural context',
+      filters: {
+        VocabularyCulturalContext,
+        Exists,
+      },
+    },
+    'pottery.chronologyLower': {
+      propertyLabel: 'pottery chronology (lower)',
+      filters: {
+        SearchExact,
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    'pottery.chronologyUpper': {
+      propertyLabel: 'pottery chronology (upper)',
+      filters: {
+        SearchExact,
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    'pottery.shape': {
+      propertyLabel: 'pottery shape',
+      filters: {
+        VocabularyPotteryShape,
+        Exists,
+      },
+    },
+    'pottery.functionalGroup': {
+      propertyLabel: 'pottery functional group',
+      filters: {
+        VocabularyPotteryFunctionalGroups,
+      },
+    },
+    'pottery.functionalForm': {
+      propertyLabel: 'pottery functional form',
+      filters: {
+        VocabularyPotteryFunctionalForm,
+      },
+    },
+    'pottery.notes': {
+      propertyLabel: 'pottery notes',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'pottery.surfaceTreatment': {
+      propertyLabel: 'pottery surface treatment',
+      filters: {
+        VocabularyPotterySurfaceTreatment,
+        Exists,
+      },
+    },
+    'pottery.innerColor': {
+      propertyLabel: 'pottery inner color',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'pottery.outerColor': {
+      propertyLabel: 'pottery outer color',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'pottery.decorationMotif': {
+      propertyLabel: 'pottery decoration motif',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    type: {
+      propertyLabel: 'analysis type',
+      filters: {
+        VocabularyAnalysisType,
+      },
+    },
+    'document.mimeType': {
+      propertyLabel: 'document mime type',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'rawData.mimeType': {
+      propertyLabel: 'raw data mime type',
+      filters: {
+        SearchPartial,
+      },
+    },
+    summary: {
+      propertyLabel: 'analysis summary',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    document: {
+      propertyLabel: 'document',
+      filters: {
+        Exists,
+      },
+    },
+    rawData: {
+      propertyLabel: 'raw data',
+      filters: {
+        Exists,
+      },
+    },
+  }
+
 export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
 > = {
   '/api/data/contexts': contextStaticFiltersDefinition,
   '/api/data/potteries': potteryUnitStaticFiltersDefinition,
+  '/api/data/potteries/{parentId}/analyses':
+    potteryAnalysisStaticFiltersDefinitionObject,
   '/api/data/sites': siteUnitStaticFiltersDefinition,
   '/api/data/sites/{parentId}/contexts': contextStaticFiltersDefinition,
   '/api/data/sites/{parentId}/stratigraphic_units':
@@ -474,4 +652,5 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/stratigraphic_units': stratigraphicUnitStaticFiltersDefinition,
   '/api/data/stratigraphic_units/{parentId}/potteries':
     potteryUnitStaticFiltersDefinition,
+  '/api/data/analyses/potteries': potteryAnalysisStaticFiltersDefinitionObject,
 } as const

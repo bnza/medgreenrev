@@ -49,7 +49,7 @@ const vocabularyAnalysisStore = useVocabularyStore(
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <!--      <data-dialog-search :path title="Pottery Analysis" />-->
+      <data-dialog-search :path title="Pottery Analysis" />
       <data-dialog-create-pottery-analysis :path :parent @refresh="refetch()" />
       <data-dialog-delete-pottery-analysis @refresh="refetch()" />
       <data-dialog-update-pottery-analysis @refresh="refetch()" />
