@@ -77,7 +77,7 @@ export function parseBitSize(input: string | number): number {
     return input
   }
 
-  if (typeof input !== 'string' || input.trim() === '') {
+  if (input.trim() === '') {
     throw new Error('Invalid input: must be a non-empty string or number')
   }
 
@@ -118,7 +118,7 @@ export function formatBitSize(bytes: number | undefined): string | undefined {
     return undefined
   }
 
-  if (typeof bytes !== 'number' || isNaN(bytes) || bytes < 0) {
+  if (isNaN(bytes) || bytes < 0) {
     throw new Error(
       `Invalid input: must be a non-negative number, got ${bytes}`,
     )

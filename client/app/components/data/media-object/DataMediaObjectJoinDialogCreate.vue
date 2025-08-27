@@ -72,7 +72,7 @@ const submit = async () => {
       if (!newMediaObject) {
         return
       }
-      model.value.mediaObject = replaceSha256IriWithNumericId(newMediaObject)
+      model.value.mediaObject = newMediaObject['@id']
     }
 
     await r$.$validate()

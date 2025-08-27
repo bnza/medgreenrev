@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
+import useGetMediaObjectBySha256ItemQuery from '~/composables/queries/useGetMediaObjectBySha256ItemQuery'
 
 const props = defineProps<{
   file: File
@@ -7,19 +8,12 @@ const props = defineProps<{
   errors?: string[]
 }>()
 
-const sha256 = ref<string>()
-const params = computed(() =>
-  sha256.value ? { sha256: sha256.value } : undefined,
-)
-const { data: mediaObject } = useGetItemQuery(
-  '/api/data/media_objects/{sha256}',
-  params,
-)
+const { data: mediaObject, sha256 } = useGetMediaObjectBySha256ItemQuery()
 
 watch(
   () => props.file,
   async (file) => {
-    sha256.value = file ? await calculateSHA256FileHash(file) : undefined
+    sha256.value = file ? await calculateSHA256FileHash(file) : ''
   },
   { immediate: true },
 )
@@ -31,7 +25,7 @@ const emit = defineEmits<{
 watch(
   () => mediaObject.value,
   (value) => {
-    emit('found', replaceSha256IriWithNumericId(value))
+    emit('found', value?.['@id'])
   },
 )
 
@@ -42,7 +36,7 @@ const clear = () => {
 
 const isValidItem = (
   value: unknown,
-): value is GetItemResponseMap['/api/data/media_objects/{sha256}'] =>
+): value is GetItemResponseMap['/api/data/media_objects/{id}'] =>
   isPlainObject(value)
 
 const duplicateMediaError = computed(

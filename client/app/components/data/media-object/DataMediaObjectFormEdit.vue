@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { createRule, type Maybe, useRegle } from '@regle/core'
-import { required, maxValue, withMessage } from '@regle/rules'
+import { required } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import { formatBitSize } from '~/utils'
+import type { PostCollectionResponseMap } from '~~/types'
 
 const props = defineProps<{
   file: File
@@ -56,7 +57,9 @@ const { postCollection: mediaObjectPostCollection } = usePostCollectionMutation(
 
 const { createFromObject } = useTypedFormData('/api/data/media_objects')
 
-const submit = async () => {
+const submit = async (): Promise<
+  PostCollectionResponseMap['/api/data/media_objects'] | undefined
+> => {
   await r$.$validate()
 
   if (r$.$invalid) {
@@ -67,7 +70,7 @@ const submit = async () => {
 
   // TypedFormData extends FormData, so it works with your existing API
   // Eventual request error will be handled in the parent form
-  return await mediaObjectPostCollection.mutateAsync({
+  return mediaObjectPostCollection.mutateAsync({
     model: typedFormData,
   })
 }
