@@ -12,7 +12,7 @@ export const API_RESOURCE_MAP = {
   functionalForm: '/api/vocabulary/pottery/functional_forms',
   functionalGroup: '/api/vocabulary/pottery/functional_groups',
   mediaObject: '/api/data/media_objects',
-  mediaObjectStratigraphicUnit: '/api/media_object_stratigraphic_units',
+  mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
   mediaObjectType: '/api/vocabulary/media_object/types',
   pottery: '/api/data/potteries',
   potteryAnalysis: '/api/data/analyses/potteries',

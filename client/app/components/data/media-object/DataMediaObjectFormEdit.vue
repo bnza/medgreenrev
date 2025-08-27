@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useRegle } from '@regle/core'
-import { required } from '@regle/rules'
+import { createRule, type Maybe, useRegle } from '@regle/core'
+import { required, maxValue, withMessage } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
+import { formatBitSize } from '~/utils'
 
 const props = defineProps<{
   file: File
@@ -17,9 +18,23 @@ const model = ref<{
   description?: string
 }>(defaultModel())
 
+const configClientMaxBodySize = useRuntimeConfig().public.clientMaxBodySize
+const maxBodySize = parseBitSize(configClientMaxBodySize)
+
+const maxFileSize = createRule({
+  type: 'maxFileSize',
+  validator: (value: Maybe<File>, maxSize: number) => {
+    if (!value) return true
+    return value.size <= maxSize
+  },
+  message: (context) =>
+    `File size must not exceed ${configClientMaxBodySize}: ${formatBitSize(context.$value?.size)} given`,
+})
+
 const { r$ } = useRegle(model, {
   file: {
     required,
+    maxFileSize: maxFileSize(maxBodySize),
   },
   type: {
     required,
@@ -65,6 +80,21 @@ defineExpose({
 <template>
   <v-form>
     <v-container fluid>
+      <v-row
+        v-for="error of r$.$errors.file"
+        :key="error"
+        dense
+        justify="center"
+      >
+        <v-col cols="12" sm="6">
+          <v-banner
+            type="error"
+            color="error"
+            :text="error"
+            icon="fas fa-exclamation-triangle"
+          />
+        </v-col>
+      </v-row>
       <v-row dense>
         <v-col cols="12" sm="6">
           <data-autocomplete-hierarchical-vocabulary

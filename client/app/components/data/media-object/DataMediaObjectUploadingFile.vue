@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { VForm } from 'vuetify/components'
 import type { GetItemResponseMap } from '~~/types'
 
 const props = defineProps<{
@@ -32,7 +31,7 @@ const emit = defineEmits<{
 watch(
   () => mediaObject.value,
   (value) => {
-    emit('found', value?.['@id'])
+    emit('found', replaceSha256IriWithNumericId(value))
   },
 )
 
@@ -45,6 +44,13 @@ const isValidItem = (
   value: unknown,
 ): value is GetItemResponseMap['/api/data/media_objects/{sha256}'] =>
   isPlainObject(value)
+
+const duplicateMediaError = computed(
+  () => props.errors?.filter((e) => e.includes('Duplicate')) || [],
+)
+const hasDuplicateMediaError = computed(
+  () => duplicateMediaError.value?.length > 0,
+)
 </script>
 
 <template>
@@ -52,17 +58,28 @@ const isValidItem = (
     <template #default>
       <v-list-item-title class="pl-8">{{ file.name }}</v-list-item-title>
       <v-list-item-subtitle class="pl-8">{{ file.type }}</v-list-item-subtitle>
-      <v-form v-if="isValidItem(mediaObject)" ref="form" class="d-flex">
+      <v-form v-if="isValidItem(mediaObject)" class="d-flex">
         <v-container fluid>
           <v-row dense class="mb-4">
             <v-col cols="12" sm="6">
-              <v-sheet color="info" rounded>
+              <v-sheet
+                :color="hasDuplicateMediaError ? 'error' : 'info'"
+                rounded
+              >
                 <v-container fluid>
-                  <v-icon icon="fas fa-info-circle" color="primary" />
-                  <span class="ml-2 text-primary"
-                    >Media already archived. You can anyway proceed to associate
-                    it</span
-                  >
+                  <v-row v-if="hasDuplicateMediaError" dense>
+                    <v-icon icon="fas fa-triangle-exclamation" color="white" />
+                    <span class="ml-2 text-white">{{
+                      duplicateMediaError.join(', ')
+                    }}</span>
+                  </v-row>
+                  <v-row v-else dense>
+                    <v-icon icon="fas fa-info-circle" color="primary" />
+                    <span class="ml-2 text-primary"
+                      >Media already archived. You can anyway proceed to
+                      associate it</span
+                    >
+                  </v-row>
                 </v-container>
               </v-sheet>
             </v-col>

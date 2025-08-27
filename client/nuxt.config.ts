@@ -107,6 +107,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBaseUrl: 'http://localhost',
+      clientMaxBodySize: '10M',
     },
   },
   sourcemap: {

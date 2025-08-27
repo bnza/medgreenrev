@@ -576,7 +576,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/media_object_stratigraphic_units': {
+  '/api/data/media_object_stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -587,20 +587,20 @@ export interface paths {
      * Retrieves the collection of MediaObjectStratigraphicUnit resources.
      * @description Retrieves the collection of MediaObjectStratigraphicUnit resources.
      */
-    get: operations['api_media_object_stratigraphic_units_get_collection']
+    get: operations['api_datamedia_object_stratigraphic_units_get_collection']
     put?: never
     /**
      * Creates a MediaObjectStratigraphicUnit resource.
      * @description Creates a MediaObjectStratigraphicUnit resource.
      */
-    post: operations['api_media_object_stratigraphic_units_post']
+    post: operations['api_datamedia_object_stratigraphic_units_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/media_object_stratigraphic_units/{id}': {
+  '/api/data/media_object_stratigraphic_units/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -611,20 +611,20 @@ export interface paths {
      * Retrieves a MediaObjectStratigraphicUnit resource.
      * @description Retrieves a MediaObjectStratigraphicUnit resource.
      */
-    get: operations['api_media_object_stratigraphic_units_id_get']
+    get: operations['api_datamedia_object_stratigraphic_units_id_get']
     put?: never
     post?: never
     /**
      * Removes the MediaObjectStratigraphicUnit resource.
      * @description Removes the MediaObjectStratigraphicUnit resource.
      */
-    delete: operations['api_media_object_stratigraphic_units_id_delete']
+    delete: operations['api_datamedia_object_stratigraphic_units_id_delete']
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/stratigraphic_units/{parentId}/media_objects': {
+  '/api/data/stratigraphic_units/{parentId}/media_objects': {
     parameters: {
       query?: never
       header?: never
@@ -635,7 +635,7 @@ export interface paths {
      * Retrieves the collection of MediaObjectStratigraphicUnit resources.
      * @description Retrieves the collection of MediaObjectStratigraphicUnit resources.
      */
-    get: operations['api_stratigraphic_units_parentIdmedia_objects_get_collection']
+    get: operations['api_datastratigraphic_units_parentIdmedia_objects_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1536,6 +1536,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquecontexts_site_name_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/media_objects/stratigraphic_units/{mediaObject}/{item}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquemedia_objectsstratigraphic_units_mediaObject_item_get']
     put?: never
     post?: never
     delete?: never
@@ -5918,7 +5938,7 @@ export interface operations {
       }
     }
   }
-  api_media_object_stratigraphic_units_get_collection: {
+  api_datamedia_object_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -5978,7 +5998,7 @@ export interface operations {
       }
     }
   }
-  api_media_object_stratigraphic_units_post: {
+  api_datamedia_object_stratigraphic_units_post: {
     parameters: {
       query?: never
       header?: never
@@ -6025,7 +6045,7 @@ export interface operations {
       }
     }
   }
-  api_media_object_stratigraphic_units_id_get: {
+  api_datamedia_object_stratigraphic_units_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -6059,7 +6079,7 @@ export interface operations {
       }
     }
   }
-  api_media_object_stratigraphic_units_id_delete: {
+  api_datamedia_object_stratigraphic_units_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -6102,7 +6122,7 @@ export interface operations {
       }
     }
   }
-  api_stratigraphic_units_parentIdmedia_objects_get_collection: {
+  api_datastratigraphic_units_parentIdmedia_objects_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -6763,9 +6783,7 @@ export interface operations {
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
-        'document.mimeType[]'?: string[]
         'rawData.mimeType'?: string
-        'rawData.mimeType[]'?: string[]
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -7091,9 +7109,7 @@ export interface operations {
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
-        'document.mimeType[]'?: string[]
         'rawData.mimeType'?: string
-        'rawData.mimeType[]'?: string[]
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -9807,6 +9823,42 @@ export interface operations {
         site: string
         /** @description UniqueValidator identifier */
         name: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquemedia_objectsstratigraphic_units_mediaObject_item_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        mediaObject: string
+        /** @description UniqueValidator identifier */
+        item: string
       }
       cookie?: never
     }

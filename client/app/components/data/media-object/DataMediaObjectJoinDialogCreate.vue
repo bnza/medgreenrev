@@ -2,7 +2,7 @@
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
 import { useRegle } from '@regle/core'
-import { required } from '@regle/rules'
+import { required, withMessage } from '@regle/rules'
 import { DataMediaObjectFormEdit } from '#components'
 
 const props = defineProps<{
@@ -32,9 +32,16 @@ const model = ref<{
   item: string
 }>(defaultModel())
 
+const uniqueMediaObject = useApiUniqueValidator(
+  '/api/validator/unique/media_objects/stratigraphic_units/{mediaObject}/{item}',
+  ['mediaObject', 'item'],
+  'Duplicate [media, stratigraphic unit] combination',
+)
+
 const { r$ } = useRegle(model, {
   mediaObject: {
-    required,
+    required: withMessage(required, 'File is required'),
+    uniqueMediaObject: uniqueMediaObject(() => model.value.item),
   },
 })
 
@@ -42,6 +49,15 @@ const isNewMediaObject = computed(() => !r$.$value.mediaObject && file.value)
 
 const mediaObjectForm =
   useTemplateRef<typeof DataMediaObjectFormEdit>('mediaObjectForm')
+
+const isInvalid = (regle: typeof r$) =>
+  Object.values<string[]>(regle.$errors).some(
+    (propErrors) => propErrors.length > 0,
+  ) &&
+  Object.values<string[]>(regle.$silentErrors).some(
+    (propErrors) => propErrors.length > 0,
+  )
+
 const submit = async () => {
   try {
     disabled.value = true
@@ -56,12 +72,20 @@ const submit = async () => {
       if (!newMediaObject) {
         return
       }
-      model.value.mediaObject = newMediaObject['@id']
+      model.value.mediaObject = replaceSha256IriWithNumericId(newMediaObject)
     }
 
     await r$.$validate()
-    if (r$.$invalid) {
+    if (isInvalid(r$)) {
       return
+    }
+    if (r$.$invalid) {
+      console.debug(
+        'r$.$invalid mismatch',
+        toRaw(r$.$invalid),
+        toRaw(r$.$errors),
+        toRaw(r$.$silentErrors),
+      )
     }
     const requestModel = toRaw(model.value) as PostCollectionRequestMap[P]
     await postCollection.mutateAsync({ model: requestModel })
@@ -92,40 +116,47 @@ watch(
     <template #default>
       <v-form data-testid="data-dialog-form" class="ma-4">
         <v-container fluid>
+          <v-row dense>
+            <v-col cols="12">
+              <v-file-upload v-model="file" clearable>
+                <template #item="{ file: itemFile, props: itemProps }">
+                  <data-media-object-uploading-file
+                    v-bind="{
+                      file: itemFile,
+                      onClickRemove: itemProps['onClick:remove'],
+                    }"
+                    :errors="r$.$errors.mediaObject"
+                    @found="r$.$value.mediaObject = $event"
+                  />
+                </template>
+              </v-file-upload>
+            </v-col>
+          </v-row>
           <v-row style="min-height: 60px" justify="center">
-            <v-col cols="12" sm="6">
+            <v-col cols="12" col="4">
               <v-banner
                 v-if="
                   r$.$errors.mediaObject && r$.$errors.mediaObject.length > 0
                 "
                 type="error"
-              >
-                <template #prepend
-                  ><v-icon color="error" icon="fas fa-exclamation-triangle"
-                /></template>
-                <template #text>{{
-                  r$.$errors.mediaObject.join(', ')
-                }}</template>
-              </v-banner>
+                border
+                rounded
+                density="compact"
+                color="error"
+                icon="fas fa-exclamation-triangle"
+                :text="r$.$errors.mediaObject.join(', ')"
+              />
             </v-col>
           </v-row>
-          <v-file-upload v-model="file" clearable>
-            <template #item="{ file: itemFile, props: itemProps }">
-              <data-media-object-uploading-file
-                v-bind="{
-                  file: itemFile,
-                  onClickRemove: itemProps['onClick:remove'],
-                }"
-                :errors="r$.$errors.mediaObject"
-                @found="r$.$value.mediaObject = $event"
+          <v-row dense>
+            <v-col cols="12">
+              <data-media-object-form-edit
+                v-if="isNewMediaObject && typeof file !== 'undefined'"
+                ref="mediaObjectForm"
+                :file
               />
-            </template>
-          </v-file-upload>
-          <data-media-object-form-edit
-            v-if="isNewMediaObject && typeof file !== 'undefined'"
-            ref="mediaObjectForm"
-            :file
-          />
+            </v-col>
+          </v-row>
         </v-container>
       </v-form>
     </template>

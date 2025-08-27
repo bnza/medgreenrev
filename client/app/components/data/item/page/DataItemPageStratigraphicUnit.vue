@@ -53,9 +53,9 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         </v-tabs-window-item>
         <v-tabs-window-item value="media" data-testid="tab-media">
           <data-media-object-join-container
-            path="/api/stratigraphic_units/{parentId}/media_objects"
-            post-path="/api/media_object_stratigraphic_units"
-            delete-path="/api/media_object_stratigraphic_units/{id}"
+            path="/api/data/stratigraphic_units/{parentId}/media_objects"
+            post-path="/api/data/media_object_stratigraphic_units"
+            delete-path="/api/data/media_object_stratigraphic_units/{id}"
             :parent-iri="item['@id']!"
             :can-update="item._acl?.canUpdate"
           />
