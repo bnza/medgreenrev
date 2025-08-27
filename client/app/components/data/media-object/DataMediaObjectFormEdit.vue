@@ -1,116 +1,89 @@
 <script setup lang="ts">
-import { createRule, type Maybe, useRegle } from '@regle/core'
-import { required } from '@regle/rules'
-import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import { formatBitSize } from '~/utils'
-import type { PostCollectionResponseMap } from '~~/types'
+import type { DataMediaObjectUploader } from '#components'
+const file = ref<File | undefined>()
+const model = defineModel<string | undefined>()
 
-const props = defineProps<{
-  file: File
-}>()
+defineProps<{ errors?: string[] }>()
+const isNewMediaObject = computed(() => !model.value && file.value)
 
-const defaultModel = () => ({
-  file: props.file,
-})
+const mediaObjectForm =
+  useTemplateRef<typeof DataMediaObjectUploader>('mediaObjectForm')
 
-const model = ref<{
-  file: File
-  type?: string
-  description?: string
-}>(defaultModel())
-
-const configClientMaxBodySize = useRuntimeConfig().public.clientMaxBodySize
-const maxBodySize = parseBitSize(configClientMaxBodySize)
-
-const maxFileSize = createRule({
-  type: 'maxFileSize',
-  validator: (value: Maybe<File>, maxSize: number) => {
-    if (!value) return true
-    return value.size <= maxSize
-  },
-  message: (context) =>
-    `File size must not exceed ${configClientMaxBodySize}: ${formatBitSize(context.$value?.size)} given`,
-})
-
-const { r$ } = useRegle(model, {
-  file: {
-    required,
-    maxFileSize: maxFileSize(maxBodySize),
-  },
-  type: {
-    required,
-  },
-})
-
-watch(
-  () => props.file,
-  () => {
-    r$.$value = defaultModel()
-    r$.$reset()
-  },
-)
-
-const { postCollection: mediaObjectPostCollection } = usePostCollectionMutation(
-  '/api/data/media_objects',
-  { headers: { 'Content-Type': 'multipart/form-data' } },
-)
-
-const { createFromObject } = useTypedFormData('/api/data/media_objects')
-
-const submit = async (): Promise<
-  PostCollectionResponseMap['/api/data/media_objects'] | undefined
-> => {
-  await r$.$validate()
-
-  if (r$.$invalid) {
-    return
+/**
+ * An asynchronous function that synchronizes and updates the `model.value` based on the
+ * result of a media object submission.
+ *
+ * The function attempts to submit the form to create a new media object.
+ *
+ * If the form submission is successful, the new media object's `@id` property is used to
+ * update the `model.value`.
+ *
+ * Throws:
+ * - Error: If `mediaObjectForm` is undefined when a new media object is required.
+ */
+const sync = async () => {
+  if (isNewMediaObject.value) {
+    if (!mediaObjectForm.value) {
+      throw new Error('mediaObjectForm is undefined')
+    }
+    const newMediaObject = await mediaObjectForm.value.submit()
+    if (!newMediaObject) {
+      return
+    }
+    model.value = newMediaObject['@id']
   }
-
-  const typedFormData = createFromObject(r$.$value)
-
-  // TypedFormData extends FormData, so it works with your existing API
-  // Eventual request error will be handled in the parent form
-  return mediaObjectPostCollection.mutateAsync({
-    model: typedFormData,
-  })
 }
 
+const validationPending = ref(false)
+
 defineExpose({
-  submit,
+  sync,
 })
 </script>
 
 <template>
-  <v-form>
+  <v-form data-testid="data-dialog-form" class="ma-4">
     <v-container fluid>
-      <v-row
-        v-for="error of r$.$errors.file"
-        :key="error"
-        dense
-        justify="center"
-      >
-        <v-col cols="12" sm="6">
-          <v-banner
-            type="error"
-            color="error"
-            :text="error"
-            icon="fas fa-exclamation-triangle"
-          />
+      <v-row dense>
+        <v-col cols="12">
+          <v-file-upload v-model="file" clearable>
+            <template #item="{ file: itemFile, props: itemProps }">
+              <div
+                style="height: 80px"
+                class="d-flex justify-center align-center"
+              >
+                <v-banner
+                  v-if="errors && errors.length > 0"
+                  class="mb-4"
+                  border
+                  rounded
+                  density="compact"
+                  color="error"
+                  icon="fas fa-exclamation-triangle"
+                  :text="errors.join(', ')"
+                />
+              </div>
+              <data-media-object-uploading-file
+                v-bind="{
+                  file: itemFile,
+                  onClickRemove: itemProps['onClick:remove'],
+                }"
+                :errors
+                :validation-pending
+                @found="model = $event"
+              />
+            </template>
+          </v-file-upload>
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="12" sm="6">
-          <data-autocomplete-hierarchical-vocabulary
-            v-model="r$.$value.type"
-            path="/api/vocabulary/media_object/types"
-            label="type"
-            :error-messages="r$.$errors.type"
+        <v-col cols="12">
+          <data-media-object-uploader
+            v-show="isNewMediaObject && typeof file !== 'undefined'"
+            ref="mediaObjectForm"
+            :file
+            @update:validation-pending="validationPending = $event"
           />
-        </v-col>
-      </v-row>
-      <v-row dense>
-        <v-col cols="12" sm="6">
-          <v-textarea v-model="r$.$value.description" label="description" />
         </v-col>
       </v-row>
     </v-container>

@@ -8,7 +8,7 @@ export const useGetMediaObjectBySha256ItemQuery = () => {
   )
 
   const { data: _data, ...query } = useQuery({
-    key: ['sha256', sha256.value],
+    key: () => ['sha256', sha256.value],
     query: () =>
       getCollectionOperation.request({ query: { sha256: sha256.value } }),
     enabled: () => Boolean(sha256.value),

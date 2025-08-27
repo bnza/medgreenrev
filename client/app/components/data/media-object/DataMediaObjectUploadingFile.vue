@@ -6,9 +6,14 @@ const props = defineProps<{
   file: File
   onClickRemove: () => void
   errors?: string[]
+  validationPending: boolean
 }>()
 
-const { data: mediaObject, sha256 } = useGetMediaObjectBySha256ItemQuery()
+const {
+  data: mediaObject,
+  sha256,
+  asyncStatus,
+} = useGetMediaObjectBySha256ItemQuery()
 
 watch(
   () => props.file,
@@ -53,7 +58,7 @@ const hasDuplicateMediaError = computed(
       <v-list-item-title class="pl-8">{{ file.name }}</v-list-item-title>
       <v-list-item-subtitle class="pl-8">{{ file.type }}</v-list-item-subtitle>
       <v-form v-if="isValidItem(mediaObject)" class="d-flex">
-        <v-container fluid>
+        <v-container v-if="asyncStatus !== 'loading'" fluid>
           <v-row dense class="mb-4">
             <v-col cols="12" sm="6">
               <v-sheet
@@ -61,6 +66,10 @@ const hasDuplicateMediaError = computed(
                 rounded
               >
                 <v-container fluid>
+                  <v-row v-if="validationPending" dense>
+                    <v-icon icon="fas fa-spinner" color="primary" />
+                    <span class="ml-2 text-primary">Fetching</span>
+                  </v-row>
                   <v-row v-if="hasDuplicateMediaError" dense>
                     <v-icon icon="fas fa-triangle-exclamation" color="white" />
                     <span class="ml-2 text-white">{{
