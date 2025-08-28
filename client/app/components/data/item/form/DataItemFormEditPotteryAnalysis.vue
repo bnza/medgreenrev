@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import type { PatchItemRequestMap, ResourceParent } from '~~/types'
+import type {
+  GetItemResponseMap,
+  PatchItemRequestMap,
+  ResourceParent,
+} from '~~/types'
 
 type Item = PatchItemRequestMap['/api/data/analyses/potteries/{id}']
 
@@ -13,6 +17,26 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const documentObject = ref<
+  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
+>()
+const rawDataObject = ref<
+  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
+>()
+
+watch(
+  () => documentObject.value,
+  (value) => {
+    item.value.document = value?.['@id']
+  },
+)
+watch(
+  () => rawDataObject.value,
+  (value) => {
+    item.value.rawData = value?.['@id']
+  },
+)
 </script>
 
 <template>
@@ -38,22 +62,24 @@ defineProps<Props>()
       />
     </v-col>
   </v-row>
-  <!--  <v-row>-->
-  <!--    <v-col cols="6" class="px-2">-->
-  <!--      <data-file-field-->
-  <!--        v-model="item.document"-->
-  <!--        label="document"-->
-  <!--        :error-messages="errors?.document"-->
-  <!--      />-->
-  <!--    </v-col>-->
-  <!--    <v-col cols="6" class="px-2">-->
-  <!--      <data-file-field-->
-  <!--        v-model="item.rawData"-->
-  <!--        label="raw data"-->
-  <!--        :error-messages="errors?.rawData"-->
-  <!--      />-->
-  <!--    </v-col>-->
-  <!--  </v-row>-->
+  <v-row>
+    <v-col cols="6" class="px-2">
+      <data-media-object-text-field
+        v-model="documentObject"
+        label="document"
+        :error-messages="errors?.document"
+        :readonly="false"
+      />
+    </v-col>
+    <v-col cols="6" class="px-2">
+      <data-media-object-text-field
+        v-model="rawDataObject"
+        label="raw data"
+        :error-messages="errors?.rawData"
+        :readonly="false"
+      />
+    </v-col>
+  </v-row>
   <v-row>
     <v-col cols="12" class="px-2">
       <v-textarea

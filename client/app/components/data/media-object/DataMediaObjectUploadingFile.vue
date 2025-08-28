@@ -24,13 +24,13 @@ watch(
 )
 
 const emit = defineEmits<{
-  found: [string | undefined]
+  found: [typeof mediaObject.value | undefined]
 }>()
 
 watch(
   () => mediaObject.value,
   (value) => {
-    emit('found', value?.['@id'])
+    emit('found', value)
   },
 )
 

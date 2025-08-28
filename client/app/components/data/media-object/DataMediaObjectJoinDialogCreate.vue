@@ -1,6 +1,11 @@
 <script setup lang="ts" generic="P extends PostCollectionPath">
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import type {
+  GetCollectionResponseMap,
+  GetItemResponseMap,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+} from '~~/types'
 import { useRegle } from '@regle/core'
 import { required, withMessage } from '@regle/rules'
 import type { DataMediaObjectFormEdit } from '#components'
@@ -83,6 +88,17 @@ watch(
     }
   },
 )
+
+const formMediaObject = ref<
+  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
+>()
+
+watch(
+  () => formMediaObject.value,
+  (value) => {
+    r$.$value.mediaObject = value?.['@id']
+  },
+)
 </script>
 
 <template>
@@ -90,7 +106,7 @@ watch(
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"
-        v-model="r$.$value.mediaObject"
+        v-model="formMediaObject"
         :errors="r$.$errors.mediaObject"
       />
     </template>

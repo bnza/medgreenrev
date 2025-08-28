@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { createRule, type Maybe, useRegle } from '@regle/core'
+import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import { formatBitSize } from '~/utils'
 import type { PostCollectionResponseMap } from '~~/types'
+import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
 
 const props = defineProps<{
   file: File | undefined
@@ -19,23 +19,12 @@ const model = ref<{
   description?: string
 }>(defaultModel())
 
-const configClientMaxBodySize = useRuntimeConfig().public.clientMaxBodySize
-const maxBodySize = parseBitSize(configClientMaxBodySize)
-
-const maxFileSize = createRule({
-  type: 'maxFileSize',
-  validator: (value: Maybe<File>, maxSize: number) => {
-    if (!value) return true
-    return value.size <= maxSize
-  },
-  message: (context) =>
-    `File size must not exceed ${configClientMaxBodySize}: ${formatBitSize(context.$value?.size)} given`,
-})
+const { maxFileSize } = useMaxFileSizeValidationRule()
 
 const { r$ } = useRegle(model, {
   file: {
     required,
-    maxFileSize: maxFileSize(maxBodySize),
+    maxFileSize,
   },
   type: {
     required,
