@@ -79,7 +79,7 @@ watch(
 </script>
 
 <template>
-  <v-container fluid>
+  <v-container fluid data-testid="data-media-object-uploader">
     <v-row v-for="error of r$.$errors.file" :key="error" dense justify="center">
       <v-col cols="12" sm="6">
         <v-banner

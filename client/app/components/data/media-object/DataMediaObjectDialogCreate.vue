@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DataMediaObjectFormEdit } from '#components'
-import type { GetItemResponseMap, PostCollectionRequestMap } from '~~/types'
+import type { GetItemResponseMap } from '~~/types'
 
 const model = defineModel<
   GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
@@ -29,7 +29,11 @@ const submit = async () => {
 </script>
 
 <template>
-  <data-dialog :visible title="Add media object association">
+  <data-dialog
+    :visible
+    title="Add media object association"
+    data-testid="data-dialog-media-object-create"
+  >
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"

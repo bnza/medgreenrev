@@ -79,7 +79,11 @@ defineExpose({
     <v-container fluid>
       <v-row dense>
         <v-col cols="12">
-          <v-file-upload v-model="file" clearable>
+          <v-file-upload
+            v-model="file"
+            clearable
+            data-testid="data-dialog-form-file-upload"
+          >
             <template #item="{ file: itemFile, props: itemProps }">
               <div
                 style="height: 80px"
@@ -94,6 +98,7 @@ defineExpose({
                   color="error"
                   icon="fas fa-exclamation-triangle"
                   :text="errors.join(', ')"
+                  data-testid="data-dialog-form-file-upload-error"
                 />
               </div>
               <data-media-object-uploading-file

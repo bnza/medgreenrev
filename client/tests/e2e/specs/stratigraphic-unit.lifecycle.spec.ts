@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { loadFixtures } from '~~/tests/e2e/utils/api'
+import { loadFixtures, resetFixtureMedia } from '~~/tests/e2e/utils/api'
 import { StratigraphicUnitCollectionPage } from '~~/tests/e2e/pages/stratigraphic-unit-collection.page'
 import { StratigraphicUnitsItemPage } from '~~/tests/e2e/pages/stratigraphic-units-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
@@ -213,6 +213,62 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
       )
+    })
+  })
+  test.describe('Base user', () => {
+    test.use({ storageState: 'playwright/.auth/base.json' })
+    test('Media object', async ({ page }) => {
+      resetFixtureMedia()
+      const collectionPom = new StratigraphicUnitCollectionPage(page)
+      const itemPom = new StratigraphicUnitsItemPage(page)
+      await collectionPom.open()
+      await collectionPom.table.expectData()
+      await collectionPom.table
+        .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
+        .click()
+
+      await itemPom.form.waitForLoad()
+      await itemPom.clickTab('media')
+      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(0)
+
+      // CREATE (new media)
+      await itemPom.mediaContainer.openCreateDialog()
+      await itemPom.mediaContainer.dataDialogCreate.expectDialogToBeVisible()
+      await itemPom.mediaContainer.dataDialogCreate.setFileInput(
+        'input/lorem ipsum.txt',
+      )
+      await itemPom.mediaContainer.dataDialogCreate.form
+        .getByLabel('type')
+        .click()
+      await page
+        .getByRole('listbox')
+        .getByText('report', { exact: true })
+        .click()
+      await itemPom.mediaContainer.dataDialogCreate.form
+        .getByLabel('description')
+        .fill('A short description of the media object')
+      await itemPom.mediaContainer.dataDialogCreate.submitForm()
+      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(1)
+
+      // CREATE (existing media)
+      await itemPom.mediaContainer.openCreateDialog()
+      await itemPom.mediaContainer.dataDialogCreate.expectDialogToBeVisible()
+      await itemPom.mediaContainer.dataDialogCreate.setFileInput(
+        'input/unnecessary stuff.csv',
+      )
+      await itemPom.mediaContainer.dataDialogCreate.expectFileAlreadyArchived()
+      await itemPom.mediaContainer.dataDialogCreate.submitForm()
+      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(2)
+
+      // DELETE
+      await itemPom.mediaContainer.cards
+        .first()
+        .getByTestId('delete-media-button')
+        .click()
+      await itemPom.mediaContainer.dataDialogDelete
+        .getByRole('button', { name: /delete/i })
+        .click()
+      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(1)
     })
   })
 })

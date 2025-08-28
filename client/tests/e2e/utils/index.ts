@@ -1,4 +1,6 @@
 import type { Locator } from '@playwright/test'
+import path from 'path'
+
 export enum NavigationLinksButton {
   Delete = 'delete-item-button',
   Read = 'read-item-button',
@@ -18,4 +20,8 @@ export const isInViewport = async (element: Locator) => {
     boundingBox.y + boundingBox.height <= viewportSize.height
 
   return isBoundingBoxVisible && isBoundingBoxInViewport
+}
+
+export function getFixturePath(relativePath: string): string {
+  return path.join(process.cwd(), 'tests/fixtures', relativePath)
 }

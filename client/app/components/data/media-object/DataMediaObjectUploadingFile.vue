@@ -53,7 +53,13 @@ const hasDuplicateMediaError = computed(
 </script>
 
 <template>
-  <v-list-item variant="outlined" rounded v-bind="props" class="pa-2">
+  <v-list-item
+    variant="outlined"
+    rounded
+    v-bind="props"
+    class="pa-2"
+    data-testid="data-dialog-form-file-uploading"
+  >
     <template #default>
       <v-list-item-title class="pl-8">{{ file.name }}</v-list-item-title>
       <v-list-item-subtitle class="pl-8">{{ file.type }}</v-list-item-subtitle>

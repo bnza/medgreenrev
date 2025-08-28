@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="P extends PostCollectionPath">
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import type {
-  GetCollectionResponseMap,
   GetItemResponseMap,
   PostCollectionPath,
   PostCollectionRequestMap,
@@ -102,7 +101,11 @@ watch(
 </script>
 
 <template>
-  <data-dialog :visible title="Add media object association">
+  <data-dialog
+    :visible
+    title="Add media object association"
+    data-testid="data-dialog-media-object-join-create"
+  >
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"

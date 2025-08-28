@@ -9,4 +9,8 @@ export abstract class BaseItemPage extends BaseDataPage {
     const textField = this.page.getByRole('textbox', { name: fieldName })
     await expect(textField).toHaveValue(expectedValue)
   }
+
+  clickTab(tabName: string) {
+    return this.page.getByRole('tab', { name: tabName }).click()
+  }
 }
