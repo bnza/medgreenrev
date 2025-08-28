@@ -21,7 +21,9 @@ const {
   hasSitePrivilege,
   isAuthenticated,
   hasSpecialistRole,
+  hasRoleAdmin,
 } = useAppAuth()
+
 const hasPrivileges = computed(() => {
   if (props.parent) {
     return props.parent.item.stratigraphicUnit?.site?.['@id']
@@ -51,7 +53,7 @@ const canCreate = computed(
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,
-      canCreate,
+      canCreate: canCreate || hasRoleAdmin,
     }"
   >
     <data-collection-table-pottery-analysis :path :parent />

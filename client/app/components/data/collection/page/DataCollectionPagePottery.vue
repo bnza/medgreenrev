@@ -25,6 +25,7 @@ const {
   hasSitePrivilege,
   isAuthenticated,
   hasSpecialistRole,
+  hasRoleAdmin,
 } = useAppAuth()
 
 const hasPrivileges = computed(() => {
@@ -50,7 +51,7 @@ const canCreate = computed(
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,
-      canCreate,
+      canCreate: canCreate || hasRoleAdmin,
     }"
   >
     <data-collection-table-pottery :path :parent />

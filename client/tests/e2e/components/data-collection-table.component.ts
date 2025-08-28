@@ -43,14 +43,6 @@ export class DataCollectionTableComponent extends BaseComponent {
       .filter({ has: this.page.locator('td', { hasText: text }) })
   }
 
-  // expectRowToHaveText(
-  //   nthOrText: number | string | RegExp,
-  //   text: string | RegExp,
-  // ) {
-  //   return expect(this.getRow(nthOrText)).toHaveText(
-  //     typeof text === 'string' ? new RegExp(`${text}`) : text,
-  //   )
-  // }
   expectRowToHaveText(
     nthOrText: number | string | RegExp,
     text: string | RegExp,

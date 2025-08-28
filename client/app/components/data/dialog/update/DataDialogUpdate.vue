@@ -41,58 +41,34 @@ const item = computed(() => regle.value.$value)
 const { patchItem } = usePatchItemMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
-/**
- *
- * Evaluates the presence of both `$errors` and `$silentErrors` within the
- * `regle.value` object to determine the validity of the value. If errors or silent errors
- * exist, the value is considered invalid.
- * It's a workaround function, since sometimes in Playwright tests regle.$invalid is set false
- * even though there are no errors: so it checks for this inconsistency
- * between the `$invalid` property and the overall error states, and logs a warning if
- * a mismatch is detected.
- *
- * Once validated, the regle.$value model should be fine. It's not an actual TS guard
- */
-const isValidItem = (value: any): value is PatchItemRequestMap[Path] => {
-  const invalid =
-    Object.values<string[]>(regle.value.$errors).some(
-      (propErrors) => propErrors.length > 0,
-    ) &&
-    Object.values<string[]>(regle.value.$silentErrors).some(
-      (propErrors) => propErrors.length > 0,
-    )
-  if (invalid !== regle.value.$invalid) {
-    console.warn(
-      'Regle $invalid value mismatches with $errors and $silentErrors values.',
-    )
-  }
-  return !invalid
-}
-
 const submit = async () => {
-  await regle.value.$validate()
+  regle.value.$reset()
+  await nextTick()
 
-  if (!isValidItem(regle.value.$value)) {
-    addError('Invalid model.')
-    console.log('model', toRaw(regle.value.$value))
-    return
+  const { valid, data: patchData } = await regle.value.$validate()
+
+  const isValidItem = (value: any): value is PatchItemRequestMap[Path] => {
+    return valid
   }
 
-  if (!isValidItem(item.value) || !('id' in item.value)) {
-    addError('Invalid item')
-    console.log('item', item.value)
+  if (
+    !isValidItem(item.value) ||
+    !('id' in item.value) ||
+    !isValidItem(patchData)
+  ) {
+    console.log('Form is invalid, stopping submission')
     return
   }
 
   patchItem.item.value = toRaw(item.value)
 
-  const model = props.onPreSubmit(regle.value.$value)
+  const model = toRaw(props.onPreSubmit(patchData))
   try {
     await patchItem.mutateAsync({
       param: {
         id: item.value ? item.value.id : undefined,
       } as OperationPathParams<Path, 'patch'>,
-      model: toRaw(model),
+      model: model,
     })
     addSuccess('Resource successfully updated')
     visible.value = false

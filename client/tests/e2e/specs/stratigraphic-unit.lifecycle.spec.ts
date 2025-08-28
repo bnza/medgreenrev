@@ -65,15 +65,26 @@ test.describe('Stratigraphic Unit lifecycle', () => {
         .getByRole('textbox', { name: 'interpretation' })
         .fill('Updated stratigraphic unit interpretation with new findings')
 
-      const responsePromise = page.waitForResponse(
-        '**/api/data/stratigraphic_units/**',
+      const patchResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/data/stratigraphic_units/') &&
+          response.request().method() === 'PATCH',
       )
+      const getResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/data/stratigraphic_units') &&
+          response.request().method() === 'GET',
+      )
+
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully updated',
       )
-      await responsePromise
-      // await collectionPom.table.expectRowToHaveText('PA.23.1', '2024')
+
+      // Wait for both the PATCH request and the subsequent GET request that refreshes the table
+      await patchResponsePromise
+      await getResponsePromise
+
       await collectionPom.table.expectRowToHaveText(
         'PA.23.1',
         'Updated stratigraphic unit interpretation with new findings',

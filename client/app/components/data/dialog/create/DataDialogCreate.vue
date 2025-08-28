@@ -81,11 +81,21 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
 // Possible redirect handling
 
 const submit = async () => {
-  try {
-    await regle.value.$validate()
-  } catch (e) {
-    addError('Unexpected validation error')
-    console.error(e)
+  //   try {
+  //     await regle.value.$validate()
+  //   } catch (e) {
+  //     addError('Unexpected validation error')
+  //     console.error(e)
+  //     return
+  //   }
+
+  regle.value.$reset()
+  await nextTick()
+
+  const { valid, data: postData } = await regle.value.$validate()
+
+  if (!valid) {
+    console.log('Form is invalid, stopping submission')
     return
   }
 
@@ -101,27 +111,33 @@ const submit = async () => {
    *
    * Once validated, the regle.$value model should be fine. It's not an actual TS guard
    */
+  // const isValidItem = (
+  //   value: any,
+  // ): value is PostCollectionRequestMap[typeof postPath] => {
+  //   const invalid =
+  //     Object.values<string[]>(regle.value.$errors).some(
+  //       (propErrors) => propErrors.length > 0,
+  //     ) &&
+  //     Object.values<string[]>(regle.value.$silentErrors).some(
+  //       (propErrors) => propErrors.length > 0,
+  //     )
+  //   if (invalid !== regle.value.$invalid) {
+  //     console.warn(
+  //       'Regle $invalid value mismatches with $errors and $silentErrors values.',
+  //     )
+  //   }
+  //   return !invalid
+  // }
+
   const isValidItem = (
     value: any,
   ): value is PostCollectionRequestMap[typeof postPath] => {
-    const invalid =
-      Object.values<string[]>(regle.value.$errors).some(
-        (propErrors) => propErrors.length > 0,
-      ) &&
-      Object.values<string[]>(regle.value.$silentErrors).some(
-        (propErrors) => propErrors.length > 0,
-      )
-    if (invalid !== regle.value.$invalid) {
-      console.warn(
-        'Regle $invalid value mismatches with $errors and $silentErrors values.',
-      )
-    }
-    return !invalid
+    return valid
   }
 
-  if (!isValidItem(regle.value.$value)) return
+  if (!isValidItem(postData)) return
 
-  const model = props.onPreSubmit(regle.value.$value)
+  const model = props.onPreSubmit(postData)
 
   try {
     disabled.value = true

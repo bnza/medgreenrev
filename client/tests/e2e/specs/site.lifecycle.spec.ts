@@ -80,12 +80,27 @@ test.describe('Site lifecycle', () => {
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'field director' })
         .fill('Some One Else')
-      const responsePromise = page.waitForResponse('**/api/data/sites/**')
+
+      const patchResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/data/stratigraphic_units/') &&
+          response.request().method() === 'PATCH',
+      )
+      const getResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('/api/data/stratigraphic_units') &&
+          response.request().method() === 'GET',
+      )
+
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully updated',
       )
-      await responsePromise
+
+      // Wait for both the PATCH request and the subsequent GET request that refreshes the table
+      await patchResponsePromise
+      await getResponsePromise
+
       await collectionPom.table.expectRowToHaveText('NW', 'Newer Shining Site')
       await collectionPom.table.expectRowToHaveText(
         'NW',

@@ -63,6 +63,7 @@ defineProps<Props>()
         v-model="item.culturalContexts"
         path="/api/vocabulary/cultural_contexts"
         label="cultural contexts"
+        multiple
       />
     </v-col>
   </v-row>
