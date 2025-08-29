@@ -1424,6 +1424,106 @@ export interface paths {
     patch: operations['api_datastratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/vocabulary/stratigraphic_unit/relationships': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of StratigraphicUnitRelation resources.
+     * @description Retrieves the collection of StratigraphicUnitRelation resources.
+     */
+    get: operations['api_vocabularystratigraphic_unitrelationships_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/stratigraphic_unit/relationships/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a StratigraphicUnitRelation resource.
+     * @description Retrieves a StratigraphicUnitRelation resource.
+     */
+    get: operations['api_vocabularystratigraphic_unitrelationships_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/stratigraphic_unit_relationships': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of StratigraphicUnitRelationship resources.
+     * @description Retrieves the collection of StratigraphicUnitRelationship resources.
+     */
+    get: operations['api_datastratigraphic_unit_relationships_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/stratigraphic_unit_relationships/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a StratigraphicUnitRelationship resource.
+     * @description Retrieves a StratigraphicUnitRelationship resource.
+     */
+    get: operations['api_datastratigraphic_unit_relationships_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/stratigraphic_units/{parentId}/relationships': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of StratigraphicUnitRelationship resources.
+     * @description Retrieves the collection of StratigraphicUnitRelationship resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdrelationships_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/pottery/surface_treatments': {
     parameters: {
       query?: never
@@ -1830,8 +1930,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       group?: string
       value?: string
@@ -1865,8 +1965,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /**
        * @default 422
        * @example 422
@@ -1928,8 +2028,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context.acl.read']
       site?: components['schemas']['Site.jsonld-context.acl.read']
@@ -1960,8 +2060,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context_sample.contexts.acl.read_context.acl.read']
       site?: components['schemas']['Site.jsonld-context_sample.contexts.acl.read_context.acl.read']
@@ -1978,8 +2078,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
       site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
@@ -1996,8 +2096,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
@@ -2013,8 +2113,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['ContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
@@ -2061,8 +2161,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       /**
        * Format: iri-reference
@@ -2076,8 +2176,8 @@ export interface components {
       sample?: string
     }
     'ContextSample.jsonld-context_sample.contexts.acl.read_context.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       context?: components['schemas']['Context.jsonld-context_sample.contexts.acl.read_context.acl.read']
     }
@@ -2091,15 +2191,15 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       context?: components['schemas']['Context.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
       sample?: components['schemas']['Sample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
     }
     'ContextSample.jsonld-context_sample.samples.acl.read_sample.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       sample?: components['schemas']['Sample.jsonld-context_sample.samples.acl.read_sample.acl.read']
     }
@@ -2135,21 +2235,21 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
     }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
     }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
@@ -2175,8 +2275,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       group?: string
       value?: string
@@ -2191,8 +2291,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2206,8 +2306,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2221,8 +2321,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2236,8 +2336,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2251,8 +2351,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2266,8 +2366,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       id?: number
       value?: string
     }
@@ -2281,8 +2381,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       value?: string
     }
@@ -2292,7 +2392,10 @@ export interface components {
       readonly title?: string | null
       /** @description A human-readable explanation specific to this occurrence of the problem. */
       readonly detail?: string | null
-      /** @default 400 */
+      /**
+       * @default 400
+       * @example 404
+       */
       status: number
       /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
       readonly instance?: string | null
@@ -2310,13 +2413,16 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /** @description A short, human-readable summary of the problem. */
       readonly title?: string | null
       /** @description A human-readable explanation specific to this occurrence of the problem. */
       readonly detail?: string | null
-      /** @default 400 */
+      /**
+       * @default 400
+       * @example 404
+       */
       status: number
       /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
       readonly instance?: string | null
@@ -2334,8 +2440,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       value?: string
     }
@@ -2349,8 +2455,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       value?: string
     }
@@ -2364,8 +2470,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['MediaObjectType.jsonld-media_object.acl.read']
       contentUrl?: string | null
@@ -2391,8 +2497,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       type?: components['schemas']['MediaObjectType.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       contentUrl?: string | null
@@ -2418,8 +2524,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       contentUrl?: string | null
       originalFilename?: string
@@ -2441,8 +2547,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       item?: components['schemas']['StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
@@ -2472,8 +2578,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       group?: string
       value?: string
@@ -2488,8 +2594,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2503,8 +2609,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -2596,8 +2702,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory?: string
@@ -2685,8 +2791,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       inventory?: string
     }
     PotteryAnalysis: {
@@ -2747,8 +2853,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       pottery?: components['schemas']['Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read']
       /**
@@ -2772,8 +2878,8 @@ export interface components {
       decoration?: string
     }
     'PotteryDecoration.jsonld': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly '@context'?:
         | string
         | ({
@@ -2805,8 +2911,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2921,8 +3027,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
       type?: components['schemas']['SampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
@@ -2945,8 +3051,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-context_sample.samples.acl.read_sample.acl.read']
       type?: components['schemas']['SampleType.jsonld-context_sample.samples.acl.read_sample.acl.read']
@@ -2969,8 +3075,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample.acl.read']
       type?: components['schemas']['SampleType.jsonld-sample.acl.read']
@@ -2993,8 +3099,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['SampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
@@ -3017,8 +3123,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['SampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
@@ -3067,21 +3173,21 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
     }
     'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
     }
     'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
@@ -3111,8 +3217,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       code?: string
       value?: string
@@ -3127,8 +3233,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       value?: string
     }
@@ -3142,8 +3248,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       value?: string
     }
@@ -3157,8 +3263,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       value?: string
     }
@@ -3172,8 +3278,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       value?: string
     }
@@ -3187,8 +3293,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       value?: string
     }
@@ -3202,8 +3308,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       value?: string
     }
@@ -3283,8 +3389,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -3298,8 +3404,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -3313,8 +3419,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3329,8 +3435,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3345,8 +3451,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -3360,8 +3466,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -3375,8 +3481,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3391,8 +3497,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3407,8 +3513,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -3422,8 +3528,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3438,8 +3544,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3454,8 +3560,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3470,8 +3576,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3486,8 +3592,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3517,8 +3623,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3536,8 +3642,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       code?: string
       name?: string
@@ -3550,8 +3656,8 @@ export interface components {
       culturalContext?: string
     }
     'SiteCulturalContext.jsonld': {
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly '@context'?:
         | string
         | ({
@@ -3583,8 +3689,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3608,8 +3714,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /** Format: uuid */
       readonly id?: string
       user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
@@ -3710,8 +3816,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       interpretation?: string | null
       readonly code?: string
@@ -3726,8 +3832,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       /**
@@ -3750,8 +3856,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       /**
@@ -3774,8 +3880,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       site?: components['schemas']['Site.jsonld-pottery.acl.read']
       readonly code?: string
     }
@@ -3789,8 +3895,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /**
@@ -3813,8 +3919,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       /**
@@ -3852,8 +3958,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sus.acl.read']
       /**
@@ -3866,6 +3972,55 @@ export interface components {
       interpretation?: string | null
       readonly code?: string
     }
+    'StratigraphicUnitRelation.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      id?: string
+      value?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      invertedBy?: string | null
+      description?: string | null
+    }
+    'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': {
+      readonly '@id': string
+      readonly '@type': string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      lftStratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      relationship: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rgtStratigraphicUnit: string
+    }
     'SurfaceTreatment.jsonld': {
       readonly '@context'?:
         | string
@@ -3876,8 +4031,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       readonly id?: number
       value?: string
     }
@@ -3891,8 +4046,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       criteria?: string[]
       valid?: number
     }
@@ -3930,8 +4085,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
@@ -3946,8 +4101,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
@@ -3962,8 +4117,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /** Format: uuid */
       readonly id?: string | null
       email?: string
@@ -4002,8 +4157,8 @@ export interface components {
           } & {
             [key: string]: unknown
           })
-      readonly '@id'?: string
-      readonly '@type'?: string
+      readonly '@id': string
+      readonly '@type': string
       /** Format: uuid */
       readonly id?: string | null
       email?: string
@@ -4067,8 +4222,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4079,11 +4234,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -4219,8 +4374,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4231,11 +4386,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -4536,8 +4691,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4548,11 +4703,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -4605,8 +4760,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4617,11 +4772,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -4801,8 +4956,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4813,11 +4968,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -4872,8 +5027,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4884,11 +5039,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -4941,8 +5096,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -4953,11 +5108,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5125,8 +5280,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5137,11 +5292,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5197,8 +5352,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5209,11 +5364,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5255,8 +5410,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5267,11 +5422,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5350,8 +5505,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5362,11 +5517,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5441,8 +5596,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5453,11 +5608,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5530,8 +5685,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5542,11 +5697,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5619,8 +5774,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5631,11 +5786,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5717,6 +5872,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        sha256?: string
+        'sha256[]'?: string[]
       }
       header?: never
       path?: never
@@ -5743,8 +5900,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5755,11 +5912,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -5971,8 +6128,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -5983,11 +6140,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -6158,8 +6315,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -6170,11 +6327,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -6216,8 +6373,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -6228,11 +6385,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -6384,8 +6541,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -6396,11 +6553,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -6717,8 +6874,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -6729,11 +6886,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -6847,8 +7004,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -6859,11 +7016,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7176,8 +7333,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7188,11 +7345,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7236,8 +7393,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7248,11 +7405,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7353,8 +7510,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7365,11 +7522,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7635,8 +7792,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7647,11 +7804,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7703,8 +7860,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7715,11 +7872,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7898,8 +8055,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7910,11 +8067,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -7969,8 +8126,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -7981,11 +8138,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -8030,8 +8187,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -8042,11 +8199,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -8119,8 +8276,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -8131,11 +8288,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -8267,8 +8424,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -8279,11 +8436,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -8523,8 +8680,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -8535,11 +8692,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -8621,8 +8778,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -8633,11 +8790,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -8917,8 +9074,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -8929,11 +9086,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -9039,8 +9196,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -9051,11 +9208,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -9117,8 +9274,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -9129,11 +9286,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -9285,8 +9442,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -9297,11 +9454,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -9392,8 +9549,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -9404,11 +9561,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -9615,6 +9772,247 @@ export interface operations {
       }
     }
   }
+  api_vocabularystratigraphic_unitrelationships_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnitRelation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['StratigraphicUnitRelation.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularystratigraphic_unitrelationships_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnitRelation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnitRelation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnitRelation.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_unit_relationships_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnitRelationship collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datastratigraphic_unit_relationships_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnitRelationship identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnitRelationship resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdrelationships_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnitRelationship identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnitRelationship collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
   api_vocabularypotterysurface_treatments_get_collection: {
     parameters: {
       query?: {
@@ -9645,8 +10043,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -9657,11 +10055,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean
@@ -10176,8 +10574,8 @@ export interface operations {
              *     } */
             view?: {
               /** Format: iri-reference */
-              '@id'?: string
-              '@type'?: string
+              '@id': string
+              '@type': string
               /** Format: iri-reference */
               first?: string
               /** Format: iri-reference */
@@ -10188,11 +10586,11 @@ export interface operations {
               next?: string
             }
             search?: {
-              '@type'?: string
+              '@type': string
               template?: string
               variableRepresentation?: string
               mapping?: {
-                '@type'?: string
+                '@type': string
                 variable?: string
                 property?: string | null
                 required?: boolean

@@ -128,6 +128,10 @@ export type GetCollectionResponseMap = {
   [K in GetCollectionPath]: paths[K]['get']['responses']['200']['content']['application/ld+json']
 }
 
+export type GetCollectionMemberResponseMap = {
+  [K in GetCollectionPath]: paths[K]['get']['responses']['200']['content']['application/ld+json']['member'][0]
+}
+
 export type PostCollectionResponseMap = {
   [K in PostCollectionPath]: paths[K]['post']['responses']['201']['content']['application/ld+json']
 }
