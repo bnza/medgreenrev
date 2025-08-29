@@ -1477,7 +1477,11 @@ export interface paths {
      */
     get: operations['api_datastratigraphic_unit_relationships_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a StratigraphicUnitRelationship resource.
+     * @description Creates a StratigraphicUnitRelationship resource.
+     */
+    post: operations['api_datastratigraphic_unit_relationships_post']
     delete?: never
     options?: never
     head?: never
@@ -1498,7 +1502,11 @@ export interface paths {
     get: operations['api_datastratigraphic_unit_relationships_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the StratigraphicUnitRelationship resource.
+     * @description Removes the StratigraphicUnitRelationship resource.
+     */
+    delete: operations['api_datastratigraphic_unit_relationships_id_delete']
     options?: never
     head?: never
     patch?: never
@@ -3746,11 +3754,11 @@ export interface components {
     'StratigraphicUnit-context_stratigraphic_unit.acl.read': {
       readonly id?: number & string
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit-pottery.acl.read': {
       site?: components['schemas']['Site-pottery.acl.read']
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number & string
@@ -3763,7 +3771,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number & string
@@ -3776,7 +3784,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit-su.create': {
       /**
@@ -3804,7 +3812,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
@@ -3820,7 +3828,7 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly '@context'?:
@@ -3844,7 +3852,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       readonly '@context'?:
@@ -3868,7 +3876,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-pottery.acl.read': {
       readonly '@context'?:
@@ -3883,7 +3891,7 @@ export interface components {
       readonly '@id': string
       readonly '@type': string
       site?: components['schemas']['Site.jsonld-pottery.acl.read']
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly '@context'?:
@@ -3907,7 +3915,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly '@context'?:
@@ -3931,7 +3939,21 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-su.create': {
       /**
@@ -3970,7 +3992,7 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
-      readonly code?: string
+      readonly code: string
     }
     'StratigraphicUnitRelation.jsonld': {
       readonly '@context'?:
@@ -3994,8 +4016,6 @@ export interface components {
       description?: string | null
     }
     'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': {
-      readonly '@id': string
-      readonly '@type': string
       readonly '@context'?:
         | string
         | ({
@@ -4005,6 +4025,17 @@ export interface components {
           } & {
             [key: string]: unknown
           })
+      readonly '@id': string
+      readonly '@type': string
+      lftStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      relationship: string
+      rgtStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
+    }
+    'StratigraphicUnitRelationship.jsonld-su_relationship.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -9921,6 +9952,53 @@ export interface operations {
       }
     }
   }
+  api_datastratigraphic_unit_relationships_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new StratigraphicUnitRelationship resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-su_relationship.create']
+      }
+    }
+    responses: {
+      /** @description StratigraphicUnitRelationship resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datastratigraphic_unit_relationships_id_get: {
     parameters: {
       query?: never
@@ -9940,6 +10018,49 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_unit_relationships_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description StratigraphicUnitRelationship identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnitRelationship resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
       /** @description Not found */

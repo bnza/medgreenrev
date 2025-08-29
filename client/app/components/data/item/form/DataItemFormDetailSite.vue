@@ -9,10 +9,8 @@ const props = defineProps<{
 }>()
 const culturalContexts = computed(
   () =>
-    props.item?.culturalContexts
-      ?.filter((context): context is { '@id': string } =>
-        Boolean(context['@id']),
-      )
+    props.item.culturalContexts
+      ?.filter((context) => Boolean(context['@id']))
       .map((context) => context['@id']) || [],
 )
 </script>

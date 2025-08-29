@@ -25,6 +25,8 @@ export const API_RESOURCE_MAP = {
   siteCulturalContext: '/api/data/site_cultural_contexts',
   siteUserPrivilege: '/api/admin/site_user_privileges',
   stratigraphicUnit: '/api/data/stratigraphic_units',
+  stratigraphicUnitRelation: '/api/vocabulary/stratigraphic_unit/relationships',
+  stratigraphicUnitRelationship: '/api/data/stratigraphic_unit_relationships',
   surfaceTreatment: '/api/vocabulary/pottery/surface_treatments',
   user: '/api/admin/users',
 } as const

@@ -3,6 +3,7 @@ import { sha256 } from 'js-sha256'
 
 export * from './validation'
 export * from './guards'
+export * from './consts'
 
 export const isAppPathItemPage = (path: string): boolean => {
   // General UUID pattern (accepts any version)

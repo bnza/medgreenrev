@@ -17,12 +17,18 @@ export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
     )
 
     // Make get reactive by returning a computed function
-    const get = (id?: string) =>
-      computed(() => (id ? normalizedState.value[id] : undefined))
+    const get = (iri?: string) =>
+      computed(() => (iri ? normalizedState.value[iri] : undefined))
+
+    // Helper function to safely access properties
+    const getPropertyValue = (item: unknown, prop: string): unknown =>
+      isPlainObject(item) ? item[prop] : undefined
 
     const getValue = (id?: string, prop = 'value') =>
       computed(() => {
-        return id ? normalizedState.value[id]?.[prop] : undefined
+        return id
+          ? getPropertyValue(normalizedState.value[id], prop)
+          : undefined
       })
 
     const getValuesText = (
@@ -33,7 +39,9 @@ export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
       computed(() => {
         return (ids || [])
           .filter((item) => item['@id'])
-          .map((item) => normalizedState.value[item['@id']!]?.[prop])
+          .map((item) =>
+            getPropertyValue(normalizedState.value[item['@id']!], prop),
+          )
           .filter(Boolean)
           .join(separator)
       })

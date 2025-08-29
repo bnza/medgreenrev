@@ -32,16 +32,3 @@ export type StratigraphicUnitRelationshipKey =
   | 'F'
   | 'x'
   | 'X'
-
-const STRATIGRAPHIC_UNIT_RELATIONSHIP_MAP: Record<
-  StratigraphicUnitRelationshipKey,
-  string
-> = {
-  c: 'cover to',
-  C: 'covered by',
-  e: 'same as',
-  f: 'fill to',
-  F: 'filled by',
-  x: 'cuts',
-  X: 'cut by',
-} as const

@@ -12,6 +12,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <lazy-data-item-form-info-stratigraphic-unit :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
+        <v-tab value="relationships">relationships</v-tab>
         <v-tab value="contexts">contexts</v-tab>
         <v-tab value="samples">samples</v-tab>
         <v-tab value="potteries">potteries</v-tab>
@@ -20,6 +21,12 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="data" data-testid="tab-data">
           <p>Data</p>
+        </v-tabs-window-item>
+        <v-tabs-window-item
+          value="relationships"
+          data-testid="tab-relationships"
+        >
+          <data-su-relationship-container :lft-su="item" />
         </v-tabs-window-item>
         <v-tabs-window-item value="contexts" data-testid="tab-contexts">
           <data-collection-page-join-context-stratigraphic-unit

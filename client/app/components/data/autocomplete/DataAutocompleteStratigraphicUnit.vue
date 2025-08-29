@@ -2,6 +2,8 @@
 import type { ApiResourcePath } from '~~/types'
 
 const model = defineModel<string>()
+
+// @TODO remove path, hardcode it
 interface Props {
   path: ApiResourcePath
   itemTitle: string
