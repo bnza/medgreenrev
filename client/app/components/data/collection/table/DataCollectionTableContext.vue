@@ -38,6 +38,12 @@ const { updateDialogState } = storeToRefs(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
+    <template #[`item.site.code`]="{ item }">
+      <data-item-info-box-span-site
+        :iri="item.site['@id']"
+        :text="item.site.code"
+      />
+    </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path title="Context" />
       <data-dialog-search :path title="Context" />

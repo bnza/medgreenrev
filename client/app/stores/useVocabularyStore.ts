@@ -25,6 +25,19 @@ export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
         return id ? normalizedState.value[id]?.[prop] : undefined
       })
 
+    const getValuesText = (
+      ids: { '@id'?: string }[] | undefined,
+      prop = 'value',
+      separator = ', ',
+    ) =>
+      computed(() => {
+        return (ids || [])
+          .filter((item) => item['@id'])
+          .map((item) => normalizedState.value[item['@id']!]?.[prop])
+          .filter(Boolean)
+          .join(separator)
+      })
+
     // Getter to check if data is loaded
     const isLoaded = computed(() => !!query.data.value)
 
@@ -36,6 +49,7 @@ export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
       normalizedState,
       get,
       getValue,
+      getValuesText,
       isLoaded,
       isLoading,
     }
