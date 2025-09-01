@@ -8,6 +8,7 @@ interface Props {
   path: ApiResourcePath
   itemTitle: string
   grantedOnly?: boolean
+  queryParam?: Record<string, any>
 }
 const props = withDefaults(defineProps<Props>(), {
   grantedOnly: false,
@@ -20,6 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
     :path="props.path"
     :item-title="props.itemTitle"
     :granted-only
+    :query-params="props.queryParam"
   >
     <template #selection="{ item }">
       <v-list-item v-if="item.raw.site">

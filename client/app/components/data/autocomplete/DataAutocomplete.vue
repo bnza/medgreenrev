@@ -9,10 +9,12 @@ interface Props {
   path: ApiResourcePath
   itemTitle: string
   grantedOnly?: boolean
+  queryParams?: Record<string, any>
 }
 
 const props = withDefaults(defineProps<Props>(), {
   grantedOnly: false,
+  queryParams: () => ({}),
 })
 
 const search = ref('')
@@ -20,6 +22,7 @@ const { items, asyncStatus } = useAutocompleteQuery(
   props.path,
   search,
   props.grantedOnly,
+  props.queryParams,
 )
 
 // Fetch the selected item if it's not in the current items list
