@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { injectStratigraphicUnitsRelationship } from '~/composables/injection/useStratigraphicUnitsRelationship'
-import { useRegle } from '@regle/core'
+import { createRule, type Maybe, useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 
@@ -29,15 +29,33 @@ const defaultModel = (): {
   lftStratigraphicUnit: lftStratigraphicUnit.value['@id'],
 })
 
-const { r$ } = useRegle(defaultModel(), {
-  rgtStratigraphicUnit: {
+const uniqueRelationship = useApiUniqueValidator(
+  '/api/validator/unique/stratigraphic_unit_relationships/{lftStratigraphicUnit}/{rgtStratigraphicUnit}',
+  ['rgtStratigraphicUnit', 'lftStratigraphicUnit'],
+  'Duplicate stratigraphic unit relationship.',
+)
+
+const differentFrom = createRule({
+  validator: (value: Maybe<string>, dependency: string) => {
+    if (!value) return true // Let required rule handle empty values
+    return value !== dependency
+  },
+  message: 'Self referencing relationships are not allowed.',
+})
+
+const model = ref(defaultModel())
+
+const { r$ } = useRegle(model, {
+  lftStratigraphicUnit: {
     required,
   },
   relationship: {
     required,
   },
-  lftStratigraphicUnit: {
+  rgtStratigraphicUnit: {
     required,
+    uniqueContext: uniqueRelationship(() => model.value.lftStratigraphicUnit),
+    differentFromLeft: differentFrom(() => model.value.lftStratigraphicUnit),
   },
 })
 

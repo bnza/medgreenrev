@@ -1792,6 +1792,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/stratigraphic_unit_relationships/{lftStratigraphicUnit}/{rgtStratigraphicUnit}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquestratigraphic_unit_relationships_lftStratigraphicUnit_rgtStratigraphicUnit_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}': {
     parameters: {
       query?: never
@@ -10592,6 +10612,42 @@ export interface operations {
       path: {
         /** @description UniqueValidator identifier */
         id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquestratigraphic_unit_relationships_lftStratigraphicUnit_rgtStratigraphicUnit_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        lftStratigraphicUnit: string
+        /** @description UniqueValidator identifier */
+        rgtStratigraphicUnit: string
       }
       cookie?: never
     }

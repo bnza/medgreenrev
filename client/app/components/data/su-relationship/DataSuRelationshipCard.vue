@@ -77,13 +77,3 @@ const relationships = computed(() =>
     </v-card-text>
   </v-card>
 </template>
-
-<!--<style scoped>-->
-<!--.mx-auto:deep(.v-card-title) {-->
-<!--  color: white;-->
-<!--  margin-left: 16px;-->
-<!--  font-size: 12px;-->
-<!--  text-transform: uppercase !important;-->
-<!--  min-height: 32px !important;-->
-<!--}-->
-<!--</style>-->
