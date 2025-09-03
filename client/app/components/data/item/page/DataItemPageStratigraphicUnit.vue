@@ -16,6 +16,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tab value="contexts">contexts</v-tab>
         <v-tab value="samples">samples</v-tab>
         <v-tab value="potteries">potteries</v-tab>
+        <v-tab value="zoo-bones">Zoo (bones)</v-tab>
         <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
@@ -51,6 +52,16 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tabs-window-item value="potteries" data-testid="tab-potteries">
           <data-collection-page-pottery
             path="/api/data/stratigraphic_units/{parentId}/potteries"
+            :parent="{
+              key: 'stratigraphicUnit',
+              resourceItemPath: '/api/data/stratigraphic_units/{id}',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="zoo-bones" data-testid="tab-zoo-bones">
+          <data-collection-page-zoo-bone
+            path="/api/data/stratigraphic_units/{parentId}/zoo/bones"
             :parent="{
               key: 'stratigraphicUnit',
               resourceItemPath: '/api/data/stratigraphic_units/{id}',

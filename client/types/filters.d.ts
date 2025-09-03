@@ -6,6 +6,8 @@ export type OperandComponentsKey =
   | 'Single'
   | 'Numeric'
   | 'NumericRange'
+  | 'SelectionZooBoneEndsPreserved'
+  | 'SelectionZooBoneSide'
   | 'Vocabulary'
   | 'Site'
   | 'StratigraphicUnit'

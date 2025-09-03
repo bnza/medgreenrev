@@ -10,6 +10,7 @@ import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
+import zooBone from './data/zooBone'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
@@ -37,6 +38,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
     contextStratigraphicUnit.contextSubResourceConfig,
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
+  '/api/data/zoo/bones': zooBone,
 } as const
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>

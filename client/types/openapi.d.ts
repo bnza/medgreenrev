@@ -1944,6 +1944,198 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocZooBone resources.
+     * @description Retrieves the collection of VocZooBone resources.
+     */
+    get: operations['api_vocabularyzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/bones/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocZooBone resource.
+     * @description Retrieves a VocZooBone resource.
+     */
+    get: operations['api_vocabularyzoobones_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/bone_parts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocZooBonePart resources.
+     * @description Retrieves the collection of VocZooBonePart resources.
+     */
+    get: operations['api_vocabularyzoobone_parts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/bone_parts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocZooBonePart resource.
+     * @description Retrieves a VocZooBonePart resource.
+     */
+    get: operations['api_vocabularyzoobone_parts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/species': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocZooSpecies resources.
+     * @description Retrieves the collection of VocZooSpecies resources.
+     */
+    get: operations['api_vocabularyzoospecies_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/species/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocZooSpecies resource.
+     * @description Retrieves a VocZooSpecies resource.
+     */
+    get: operations['api_vocabularyzoospecies_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/stratigraphic_units/{parentId}/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooBone resources.
+     * @description Retrieves the collection of ZooBone resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooBone resources.
+     * @description Retrieves the collection of ZooBone resources.
+     */
+    get: operations['api_datazoobones_get_collection']
+    put?: never
+    /**
+     * Creates a ZooBone resource.
+     * @description Creates a ZooBone resource.
+     */
+    post: operations['api_datazoobones_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/zoo/bones/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooBone resource.
+     * @description Retrieves a ZooBone resource.
+     */
+    get: operations['api_datazoobones_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the ZooBone resource.
+     * @description Removes the ZooBone resource.
+     */
+    delete: operations['api_datazoobones_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the ZooBone resource.
+     * @description Updates the ZooBone resource.
+     */
+    patch: operations['api_datazoobones_id_patch']
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -3676,6 +3868,21 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-zoo_bone.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
     'SiteCulturalContext-site.acl.read': {
       /**
        * Format: iri-reference
@@ -4014,6 +4221,21 @@ export interface components {
       interpretation?: string | null
       readonly code: string
     }
+    'StratigraphicUnit.jsonld-zoo_bone.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-zoo_bone.acl.read']
+      readonly code: string
+    }
     'StratigraphicUnitRelation.jsonld': {
       readonly '@context'?:
         | string
@@ -4232,6 +4454,142 @@ export interface components {
       readonly sitePrivileges?: {
         [key: string]: number
       }
+    }
+    'VocZooBone.jsonld': {
+      readonly '@id': string
+      readonly '@type': string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number
+      code?: string
+      value?: string
+    }
+    'VocZooBonePart.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      readonly id?: number
+      code?: string
+      value?: string
+    }
+    'VocZooSpecies.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      readonly id?: number
+      code?: string
+      value?: string
+      scientificName?: string
+      class?: string
+      family?: string | null
+    }
+    'ZooBone-zoo_bone.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      species: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      /** @enum {string|null} */
+      side?: 'L' | 'R' | '?' | null
+      notes?: string | null
+    }
+    'ZooBone.jsonld-zoo_bone.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': string
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_bone.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      species: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      side?: string | null
+      notes?: string | null
+    }
+    'ZooBone.jsonld-zoo_bone.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      species: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      /** @enum {string|null} */
+      side?: 'L' | 'R' | '?' | null
+      notes?: string | null
     }
   }
   responses: never
@@ -11175,6 +11533,676 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyzoobones_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocZooBone.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyzoobones_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocZooBone.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyzoobone_parts_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBonePart collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocZooBonePart.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyzoobone_parts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocZooBonePart identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBonePart resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocZooBonePart.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyzoospecies_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooSpecies collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocZooSpecies.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyzoospecies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocZooSpecies identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooSpecies resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocZooSpecies.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdzoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[species.value]'?: 'asc' | 'desc'
+        'order[species.scientificName]'?: 'asc' | 'desc'
+        'order[species.family]'?: 'asc' | 'desc'
+        'order[species.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        species?: string
+        'species[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        part?: string
+        'part[]'?: string[]
+        endsPreserved?: number
+        'endsPreserved[]'?: number[]
+        side?: string
+        'side[]'?: string[]
+        'species.family'?: string
+        'species.family[]'?: string[]
+        'species.class'?: string
+        'species.class[]'?: string[]
+        'species.scientificName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[species]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description ZooBone identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datazoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[species.value]'?: 'asc' | 'desc'
+        'order[species.scientificName]'?: 'asc' | 'desc'
+        'order[species.family]'?: 'asc' | 'desc'
+        'order[species.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        species?: string
+        'species[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        part?: string
+        'part[]'?: string[]
+        endsPreserved?: number
+        'endsPreserved[]'?: number[]
+        side?: string
+        'side[]'?: string[]
+        'species.family'?: string
+        'species.family[]'?: string[]
+        'species.class'?: string
+        'species.class[]'?: string[]
+        'species.scientificName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[species]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': string
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datazoobones_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new ZooBone resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.create']
+      }
+    }
+    responses: {
+      /** @description ZooBone resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datazoobones_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datazoobones_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datazoobones_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated ZooBone resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['ZooBone-zoo_bone.create']
+      }
+    }
+    responses: {
+      /** @description ZooBone resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }

@@ -51,6 +51,7 @@ watch(
       :path="path"
       :readonly
       :variant
+      multiple
       label="values"
       flat
     />

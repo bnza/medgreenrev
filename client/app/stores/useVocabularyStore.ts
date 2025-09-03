@@ -24,7 +24,7 @@ export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
     const getPropertyValue = (item: unknown, prop: string): unknown =>
       isPlainObject(item) ? item[prop] : undefined
 
-    const getValue = (id?: string, prop = 'value') =>
+    const getValue = (id?: string | null, prop = 'value') =>
       computed(() => {
         return id
           ? getPropertyValue(normalizedState.value[id], prop)

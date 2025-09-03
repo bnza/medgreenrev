@@ -1,0 +1,17 @@
+<script setup lang="ts">
+defineEmits<{
+  refresh: []
+}>()
+</script>
+
+<template>
+  <data-dialog-delete
+    path="/api/data/zoo/bones/{id}"
+    title="Zooarchaeological (bone)"
+    @refresh="$emit('refresh')"
+  >
+    <template #default="{ item }">
+      <lazy-data-item-form-info-zoo-bone :item />
+    </template>
+  </data-dialog-delete>
+</template>

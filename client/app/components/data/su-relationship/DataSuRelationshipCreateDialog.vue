@@ -141,7 +141,7 @@ const reset = () => {
                 :error-messages="r$.$errors.rgtStratigraphicUnit"
                 :query-param="
                   lftStratigraphicUnit
-                    ? { site: lftStratigraphicUnit.site['@id'] }
+                    ? { site: lftStratigraphicUnit.site?.['@id'] }
                     : undefined
                 "
               />

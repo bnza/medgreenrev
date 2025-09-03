@@ -29,6 +29,10 @@ export const API_RESOURCE_MAP = {
   stratigraphicUnitRelationship: '/api/data/stratigraphic_unit_relationships',
   surfaceTreatment: '/api/vocabulary/pottery/surface_treatments',
   user: '/api/admin/users',
+  vocZooBone: '/api/vocabulary/zoo/bones',
+  vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
+  vocZooSpecies: '/api/vocabulary/zoo/species',
+  zooBone: '/api/data/zoo/bones',
 } as const
 
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP

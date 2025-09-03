@@ -93,6 +93,20 @@ const NumericRange: StaticFiltersDefinitionObject = {
   },
 }
 
+const SelectionZooBoneEndsPreserved: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'SelectionZooBoneEndsPreserved',
+  addToQueryObject: addOperatorToQueryObjectSingle('any'),
+}
+
+const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'SelectionZooBoneSide',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const VocabularyCulturalContext: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -146,6 +160,30 @@ const VocabularyPotterySurfaceTreatment: StaticFiltersDefinitionObject = {
   multiple: false,
   componentKey: 'Vocabulary',
   path: '/api/vocabulary/pottery/surface_treatments',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyZooSpecies: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/zoo/species',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyZooBone: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/zoo/bones',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyZooBonePart: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/zoo/bone_parts',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -212,6 +250,9 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  SelectionZooBoneEndsPreserved,
+  SelectionZooBoneSide,
+  VocabularyAnalysisType,
   VocabularyContextType,
   VocabularyCulturalContext,
   VocabularyPotteryDecoration,
@@ -219,7 +260,9 @@ export const API_FILTERS = {
   VocabularyPotteryFunctionalGroups,
   VocabularyPotteryShape,
   VocabularyPotterySurfaceTreatment,
-  VocabularyAnalysisType,
+  VocabularyZooSpecies,
+  VocabularyZooBone,
+  VocabularyZooBonePart,
   // VocabularyMimeType,
 } as const
 
@@ -227,6 +270,7 @@ export type FilterKey = keyof typeof API_FILTERS
 
 export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
+  | '/api/data/analyses/potteries'
   | '/api/data/contexts'
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
@@ -235,7 +279,8 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/sites/{parentId}/contexts'
   | '/api/data/stratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/potteries'
-  | '/api/data/analyses/potteries'
+  | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
+  | '/api/data/zoo/bones'
 >
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
@@ -637,6 +682,63 @@ const potteryAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
     },
   }
 
+const zooBoneStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    'stratigraphicUnit.site': {
+      filters: {
+        SiteEquals,
+      },
+      propertyLabel: 'site',
+    },
+    stratigraphicUnit: {
+      filters: {
+        StratigraphicUnitEquals,
+      },
+      propertyLabel: 'stratigraphic unit',
+    },
+    'stratigraphicUnit.lowerChronology': {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'stratigraphic unit (lower chronology)',
+    },
+    'stratigraphicUnit.upperChronology': {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'stratigraphic unit (upper chronology)',
+    },
+    species: {
+      filters: {
+        VocabularyZooSpecies,
+      },
+    },
+    element: {
+      filters: {
+        VocabularyZooBone,
+      },
+    },
+    part: {
+      filters: {
+        VocabularyZooBonePart,
+      },
+      propertyLabel: 'part',
+    },
+    endsPreserved: {
+      filters: {
+        SelectionZooBoneEndsPreserved,
+      },
+      propertyLabel: 'ends preserved',
+    },
+    side: {
+      filters: {
+        SelectionZooBoneSide,
+      },
+    },
+  }
+
 export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
@@ -652,5 +754,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/stratigraphic_units': stratigraphicUnitStaticFiltersDefinition,
   '/api/data/stratigraphic_units/{parentId}/potteries':
     potteryUnitStaticFiltersDefinition,
+  '/api/data/stratigraphic_units/{parentId}/zoo/bones':
+    zooBoneStaticFiltersDefinitionObject,
   '/api/data/analyses/potteries': potteryAnalysisStaticFiltersDefinitionObject,
+  '/api/data/zoo/bones': zooBoneStaticFiltersDefinitionObject,
 } as const
