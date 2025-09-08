@@ -4,20 +4,18 @@ import { required } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import type { PostCollectionResponseMap } from '~~/types'
 import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
+import { injectMediaObjectJoin } from '~/composables/injection/useMediaObjectJoin'
 
-const props = defineProps<{
-  file: File | undefined
-}>()
-
-const defaultModel = () => ({
-  file: props.file,
-})
+const { uploadingFile: file, uploadFileValidationPending } =
+  injectMediaObjectJoin()
 
 const model = ref<{
   file: File | undefined
   type?: string
   description?: string
-}>(defaultModel())
+}>({
+  file: file.value,
+})
 
 const { maxFileSize } = useMaxFileSizeValidationRule()
 
@@ -32,11 +30,16 @@ const { r$ } = useRegle(model, {
 })
 
 watch(
-  () => props.file,
-  () => {
-    r$.$value = defaultModel()
-    r$.$reset()
+  () => file.value,
+  (value) => {
+    model.value.file = value
+    if (!value) {
+      r$.$reset()
+    } else {
+      r$.file.$touch()
+    }
   },
+  { immediate: true },
 )
 
 const { postCollection: mediaObjectPostCollection } = usePostCollectionMutation(
@@ -49,13 +52,14 @@ const { createFromObject } = useTypedFormData('/api/data/media_objects')
 const submit = async (): Promise<
   PostCollectionResponseMap['/api/data/media_objects'] | undefined
 > => {
-  await r$.$validate()
+  r$.$reset()
+  const { data, valid } = await r$.$validate()
 
-  if (r$.$invalid) {
+  if (!valid) {
     return
   }
 
-  const typedFormData = createFromObject(r$.$value)
+  const typedFormData = createFromObject(data)
 
   // TypedFormData extends FormData, so it works with your existing API
   // Eventual request error will be handled in the parent form
@@ -68,12 +72,10 @@ defineExpose({
   submit,
 })
 
-const emit = defineEmits<{ 'update:validationPending': [pending: boolean] }>()
-
 watch(
   () => r$.$pending,
-  (pending) => {
-    emit('update:validationPending', pending)
+  (value) => {
+    uploadFileValidationPending.value = value
   },
 )
 </script>

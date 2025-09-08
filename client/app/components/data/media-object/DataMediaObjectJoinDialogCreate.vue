@@ -1,19 +1,26 @@
 <script setup lang="ts" generic="P extends PostCollectionPath">
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import type {
-  GetItemResponseMap,
+  Iri,
   PostCollectionPath,
   PostCollectionRequestMap,
 } from '~~/types'
 import { useRegle } from '@regle/core'
 import { required, withMessage } from '@regle/rules'
 import type { DataMediaObjectFormEdit } from '#components'
+import { injectMediaObjectJoin } from '~/composables/injection/useMediaObjectJoin'
 
 const props = defineProps<{
   path: P
-  parentIri: string
+  parentIri: Iri
 }>()
-const visible = defineModel<boolean>({ required: true })
+
+const {
+  isCreateDialogOpen: visible,
+  creatingMediaObjectJoin: model,
+  creatingMediaObject,
+  uploadingFile,
+} = injectMediaObjectJoin()
 
 const { addSuccess, addError } = useMessagesStore()
 
@@ -24,15 +31,6 @@ const disabled = ref(false)
 const emit = defineEmits<{
   refresh: []
 }>()
-
-const defaultModel = () => ({
-  mediaObject: undefined,
-  item: props.parentIri,
-})
-const model = ref<{
-  mediaObject?: string
-  item: string
-}>(defaultModel())
 
 const uniqueMediaObject = useApiUniqueValidator(
   '/api/validator/unique/media_objects/stratigraphic_units/{mediaObject}/{item}',
@@ -82,20 +80,10 @@ watch(
   () => visible.value,
   (flag) => {
     if (!flag) {
-      r$.$value = defaultModel()
+      creatingMediaObject.value = undefined
+      uploadingFile.value = undefined
       r$.$reset()
     }
-  },
-)
-
-const formMediaObject = ref<
-  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
->()
-
-watch(
-  () => formMediaObject.value,
-  (value) => {
-    r$.$value.mediaObject = value?.['@id']
   },
 )
 </script>
@@ -103,14 +91,16 @@ watch(
 <template>
   <data-dialog
     :visible
-    title="Add media object association"
+    title="Add media association"
     data-testid="data-dialog-media-object-join-create"
   >
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"
-        v-model="formMediaObject"
-        :errors="r$.$errors.mediaObject"
+        :error="
+          // eslint-disable-next-line vue/no-deprecated-filter
+          r$.$errors.mediaObject as string[] | undefined
+        "
       />
     </template>
     <template #actions>

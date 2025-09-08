@@ -1,4 +1,4 @@
-import type { Iri } from '~~/types'
+import type { Iri, PostCollectionResponseMap } from '~~/types'
 
 export const mediaObjectJoinInjectionKey = Symbol() as InjectionKey<
   ReturnType<typeof useMediaObjectJoin>
@@ -11,10 +11,32 @@ export function injectMediaObjectJoin() {
   }
   return injected
 }
-export const useMediaObjectJoin = (mediaObjectIri: Iri) => {
+export const useMediaObjectJoin = (itemIri: Iri) => {
   const isCreateDialogOpen = ref(false)
+  const creatingMediaObject =
+    ref<PostCollectionResponseMap['/api/data/media_objects']>()
+
+  const uploadingFile = ref<File | undefined>()
+  const isNewMediaObject = computed(
+    () => !creatingMediaObject.value && uploadingFile.value,
+  )
+
+  const uploadFileValidationPending = ref(false)
+
+  const creatingMediaObjectJoin = computed(() => ({
+    mediaObject: creatingMediaObject.value?.['@id'],
+    item: itemIri,
+  }))
+
+  const deletingMediaObjectJoinItem = ref<Iri | undefined>()
 
   return {
+    creatingMediaObject,
+    creatingMediaObjectJoin,
     isCreateDialogOpen,
+    isNewMediaObject,
+    deletingMediaObjectJoinItem,
+    uploadingFile,
+    uploadFileValidationPending,
   }
 }

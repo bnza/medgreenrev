@@ -6,6 +6,10 @@ import type {
   MediaObjectGetCollectionPath,
   PostCollectionPath,
 } from '~~/types'
+import {
+  mediaObjectJoinInjectionKey,
+  useMediaObjectJoin,
+} from '~/composables/injection/useMediaObjectJoin'
 
 const props = defineProps<{
   path: P
@@ -26,7 +30,7 @@ const { items, refetch } = useGetCollectionQuery(props.path, pathParams)
 const isValidItem = (
   item: unknown,
 ): item is {
-  '@id': string
+  '@id': Iri
   mediaObject: GetItemResponseMap['/api/data/media_objects/{id}']
 } => {
   return (
@@ -37,20 +41,22 @@ const isValidItem = (
   )
 }
 
-const isCreateDialogOpen = ref(false)
-const deletingItem = ref<Iri | undefined>(undefined)
+const mediaObjectJoin = useMediaObjectJoin(props.parentIri)
+
+provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
+
+const { deletingMediaObjectJoinItem, isCreateDialogOpen } = mediaObjectJoin
 </script>
 
 <template>
   <v-container fluid data-testid="media-object-join-container">
     <data-media-object-join-dialog-create
-      v-model="isCreateDialogOpen"
       :path="postPath"
       :parent-iri
       @refresh="refetch()"
     />
     <data-media-object-join-dialog-delete
-      v-model="deletingItem"
+      v-model="deletingMediaObjectJoinItem"
       :path="deletePath"
       @refresh="refetch()"
     />
@@ -83,7 +89,7 @@ const deletingItem = ref<Iri | undefined>(undefined)
       >
         <data-media-object-card
           v-if="isValidItem(item)"
-          v-model="deletingItem"
+          v-model="deletingMediaObjectJoinItem"
           :item
           :can-update
         />

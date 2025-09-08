@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
 import useGetMediaObjectBySha256ItemQuery from '~/composables/queries/useGetMediaObjectBySha256ItemQuery'
+import { injectMediaObjectJoin } from '~/composables/injection/useMediaObjectJoin'
+
+const {
+  creatingMediaObject,
+  uploadingFile: file,
+  uploadFileValidationPending,
+} = injectMediaObjectJoin()
 
 const props = defineProps<{
-  file: File
   onClickRemove: () => void
   errors?: string[]
-  validationPending: boolean
 }>()
 
 const {
@@ -16,28 +21,19 @@ const {
 } = useGetMediaObjectBySha256ItemQuery()
 
 watch(
-  () => props.file,
+  () => file.value,
   async (file) => {
     sha256.value = file ? await calculateSHA256FileHash(file) : ''
   },
   { immediate: true },
 )
 
-const emit = defineEmits<{
-  found: [typeof mediaObject.value | undefined]
-}>()
-
 watch(
   () => mediaObject.value,
   (value) => {
-    emit('found', value)
+    creatingMediaObject.value = value
   },
 )
-
-const clear = () => {
-  emit('found', undefined)
-  props.onClickRemove()
-}
 
 const isValidItem = (
   value: unknown,
@@ -61,9 +57,9 @@ const hasDuplicateMediaError = computed(
     data-testid="data-dialog-form-file-uploading"
   >
     <template #default>
-      <v-list-item-title class="pl-8">{{ file.name }}</v-list-item-title>
-      <v-list-item-subtitle class="pl-8">{{ file.type }}</v-list-item-subtitle>
-      <v-form v-if="isValidItem(mediaObject)" class="d-flex">
+      <v-list-item-title class="pl-8">{{ file?.name }}</v-list-item-title>
+      <v-list-item-subtitle class="pl-8">{{ file?.type }}</v-list-item-subtitle>
+      <v-form v-if="isValidItem(creatingMediaObject)" class="d-flex">
         <v-container v-if="asyncStatus !== 'loading'" fluid>
           <v-row dense class="mb-4">
             <v-col cols="12" sm="6">
@@ -72,7 +68,7 @@ const hasDuplicateMediaError = computed(
                 rounded
               >
                 <v-container fluid>
-                  <v-row v-if="validationPending" dense>
+                  <v-row v-if="uploadFileValidationPending" dense>
                     <v-icon icon="fas fa-spinner" color="primary" />
                     <span class="ml-2 text-primary">Fetching</span>
                   </v-row>
@@ -154,7 +150,7 @@ const hasDuplicateMediaError = computed(
         rounded="circle"
         size="x-small"
         icon="fas fa-close"
-        @click="clear()"
+        @click="file = undefined"
       />
     </template>
   </v-list-item>
