@@ -1,5 +1,5 @@
 export interface JsonLdItem extends Record<string, unknown> {
-  '@id': string
+  '@id': Iri
   '@type': string
 }
 

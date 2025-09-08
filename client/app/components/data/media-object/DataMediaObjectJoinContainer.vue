@@ -2,6 +2,7 @@
 import type {
   DeleteItemPath,
   GetItemResponseMap,
+  Iri,
   MediaObjectGetCollectionPath,
   PostCollectionPath,
 } from '~~/types'
@@ -10,9 +11,10 @@ const props = defineProps<{
   path: P
   postPath: MediaObjectGetCollectionPath & PostCollectionPath
   deletePath: `${MediaObjectGetCollectionPath}/{id}` & DeleteItemPath
-  parentIri: string
+  parentIri: Iri
   canUpdate: boolean
 }>()
+
 const pathParams = computed(() =>
   isValidIri(props.parentIri)
     ? { parentId: extractIdFromIri(props.parentIri) }
@@ -36,7 +38,7 @@ const isValidItem = (
 }
 
 const isCreateDialogOpen = ref(false)
-const deletingItem = ref<string | undefined>(undefined)
+const deletingItem = ref<Iri | undefined>(undefined)
 </script>
 
 <template>
@@ -53,8 +55,8 @@ const deletingItem = ref<string | undefined>(undefined)
       @refresh="refetch()"
     />
     <v-row dense justify="end" style="min-height: 48px">
-      <v-col cols="1" xs="1"
-        ><v-btn
+      <v-col cols="1" xs="1">
+        <v-btn
           v-if="canUpdate"
           class="mr-4"
           density="compact"

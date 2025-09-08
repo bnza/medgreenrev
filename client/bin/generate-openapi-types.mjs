@@ -25,12 +25,12 @@ console.log('Post-processing generated types to fix JSON-LD properties...')
 try {
   const generatedTypes = readFileSync('types/openapi.d.ts', 'utf8')
 
-  // Fix optional @id and @type properties in JSON-LD schemas
-  const fixedTypes = generatedTypes
-    .replace(/"@id"\?\s*:/g, '"@id":')
+  // Add import statement at the beginning and fix JSON-LD properties
+  const fixedTypes = `import type { Iri } from '~~/types'\n\n${generatedTypes}`
+    .replace(/"@id"\??\s*:\s*string/g, '"@id": Iri')
     .replace(/"@type"\?\s*:/g, '"@type":')
     // Also handle cases with different spacing
-    .replace(/"@id"\s*\?\s*:/g, '"@id":')
+    .replace(/"@id"\s*\??\s*:\s*string/g, '"@id": Iri')
     .replace(/"@type"\s*\?\s*:/g, '"@type":')
 
   // Write the fixed types back to the file

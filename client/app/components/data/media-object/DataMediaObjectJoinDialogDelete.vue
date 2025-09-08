@@ -2,7 +2,7 @@
 import useDeleteItemMutation from '~/composables/queries/useDeleteItemMutation'
 import type { DeleteItemPath, Iri, OperationPathParams } from '~~/types'
 
-const item = defineModel<string | undefined>({ required: true })
+const item = defineModel<Iri | undefined>({ required: true })
 
 const props = defineProps<{
   path: P
@@ -24,7 +24,7 @@ const submit = async () => {
     }
     status.value = 'pending'
     await deleteItem.mutateAsync({
-      id: extractIdFromIri(item.value as Iri),
+      id: extractIdFromIri(item.value),
     } as OperationPathParams<P, 'delete'>)
     addSuccess('Successfully deleted media object')
     emit('refresh')

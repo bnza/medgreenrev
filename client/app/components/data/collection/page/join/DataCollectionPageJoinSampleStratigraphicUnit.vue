@@ -10,7 +10,7 @@
     >
   "
 >
-import type { GetCollectionPath, Iri, ResourceParent } from '~~/types'
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: P
@@ -29,7 +29,7 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 
 const siteId = computed(() => {
   const id = parentItem.value?.site?.['@id']
-  return id ? Number(extractIdFromIri(id as Iri)) : undefined
+  return id ? Number(extractIdFromIri(id)) : undefined
 })
 </script>
 

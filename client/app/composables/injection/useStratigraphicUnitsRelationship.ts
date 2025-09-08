@@ -27,7 +27,7 @@ export const useStratigraphicUnitsRelationship = (
   const isEditable = computed(() => !isReadonly.value && canUpdate.value)
 
   const parentId = computed(() => ({
-    parentId: extractIdFromIri(lftSu['@id'] as Iri),
+    parentId: extractIdFromIri(lftSu['@id']),
   }))
   const {
     items: _items,
@@ -59,10 +59,10 @@ export const useStratigraphicUnitsRelationship = (
       : undefined,
   )
 
-  const deletingRelationshipIri = ref<string>()
+  const deletingRelationshipIri = ref<Iri>()
   const deletingParams = computed(() =>
     deletingRelationshipIri.value
-      ? { id: extractIdFromIri(deletingRelationshipIri.value as Iri) }
+      ? { id: extractIdFromIri(deletingRelationshipIri.value) }
       : undefined,
   )
   const isDeleteDialogOpen = computed(

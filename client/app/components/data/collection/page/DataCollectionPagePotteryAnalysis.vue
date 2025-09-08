@@ -8,7 +8,7 @@
     >
   "
 >
-import type { GetCollectionPath, Iri, ResourceParent } from '~~/types'
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
@@ -29,9 +29,7 @@ const hasPrivileges = computed(() => {
     return props.parent.item.stratigraphicUnit?.site?.['@id']
       ? hasSitePrivilege.value(
           Number(
-            extractIdFromIri(
-              props.parent.item.stratigraphicUnit.site['@id'] as Iri,
-            ),
+            extractIdFromIri(props.parent.item.stratigraphicUnit.site['@id']),
           ),
         )
       : false

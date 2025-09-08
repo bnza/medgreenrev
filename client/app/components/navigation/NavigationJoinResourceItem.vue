@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="K extends string">
-import type { ApiAclResource, Iri, JsonLdItem } from '~~/types'
+import type { ApiAclResource, JsonLdItem } from '~~/types'
 import { extractIdFromIri, isJsonLdItem } from '~/utils'
 
 const props = defineProps<{
@@ -15,7 +15,7 @@ const subResource = computed(() => props.item[props.subResourceKey])
 
 const subResourceId = computed(() =>
   isJsonLdItem(subResource.value)
-    ? extractIdFromIri(subResource.value['@id'] as Iri)
+    ? extractIdFromIri(subResource.value['@id'])
     : undefined,
 )
 </script>

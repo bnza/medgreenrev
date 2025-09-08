@@ -44,7 +44,7 @@ defineProps<{
                 :model-value="
                   (item.decorations ?? [])
                     .map((decoration) => decoration['@id'])
-                    .filter((id): id is string => Boolean(id))
+                    .filter((id) => Boolean(id))
                 "
                 label="decorations"
                 data-testid="decorations-selection"
