@@ -25,8 +25,8 @@ defineEmits<{
     <template #default>
       <lazy-data-item-form-edit-media-object
         v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
+        v-model:item="r$.$value as any"
+        :errors="r$.$errors as any"
         mode="update"
       />
     </template>

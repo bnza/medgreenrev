@@ -97,10 +97,7 @@ watch(
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"
-        :error="
-          // eslint-disable-next-line vue/no-deprecated-filter
-          r$.$errors.mediaObject as string[] | undefined
-        "
+        :error="r$.$errors.mediaObject as any"
       />
     </template>
     <template #actions>

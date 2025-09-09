@@ -93,8 +93,8 @@ watch(
       </v-col>
     </v-row>
     <data-item-form-edit-media-object
-      :item="r$.$value"
-      :errors="r$.$errors"
+      :item="r$.$value as any"
+      :errors="r$.$errors as any"
       mode="create"
     />
   </v-container>
