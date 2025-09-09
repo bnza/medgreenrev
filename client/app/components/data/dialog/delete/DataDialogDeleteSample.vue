@@ -11,7 +11,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <lazy-data-item-form-info-sample :item />
+      <lazy-data-item-form-info-sample :item :read-link="false" />
     </template>
   </data-dialog-delete>
 </template>

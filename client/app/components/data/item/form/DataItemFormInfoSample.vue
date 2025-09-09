@@ -1,13 +1,28 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
 
-defineProps<{
-  item: GetItemResponseMap['/api/data/samples/{id}']
-}>()
+withDefaults(
+  defineProps<{
+    item: GetItemResponseMap['/api/data/samples/{id}']
+    readLink?: boolean
+  }>(),
+  {
+    readLink: true,
+  },
+)
 </script>
 
 <template>
   <data-item-form-read>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field :model-value="item.site?.name" label="site">
+          <template v-if="item.site?.['@id']" #append-inner>
+            <data-item-info-box-site :iri="item.site?.['@id']" :read-link />
+          </template>
+        </v-text-field>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col cols="12" xs="6" sm="2" class="px-2">
         <v-text-field :model-value="item.code" label="code" />

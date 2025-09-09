@@ -14,7 +14,7 @@ const isLongText = props.text ? String(props.text).length > 200 : false
     >
     <v-col cols="8" class="text-grey-lighten-4 text-justify">
       {{ shortText
-      }}<small v-if="isLongText" color="text-gray-darken-3">...</small>
+      }}<small v-if="isLongText" class="text-gray-darken-3">...</small>
     </v-col>
   </v-row>
 </template>

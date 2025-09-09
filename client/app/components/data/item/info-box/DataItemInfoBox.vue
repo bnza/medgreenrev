@@ -40,7 +40,7 @@ const id = computed(() => extractIdFromIri(props.iri))
         <template #activator="{ props: tooltip }">
           <slot name="activator" v-bind="mergeProps(menu, tooltip)">
             <v-btn
-              color="primary"
+              color="info"
               v-bind="mergeProps(menu, tooltip)"
               icon="fas fa-circle-info"
               size="xsmall"
