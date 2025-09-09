@@ -5,6 +5,24 @@ import type { CollectionAcl, GetItemResponseMap } from '~~/types'
 
 export default function useAppAuth() {
   const { data, status } = useAuthState()
+  const previousAuthState = ref<typeof status.value>(status.value)
+
+  watch(status, (value, oldValue) => {
+    if (
+      value === 'loading' &&
+      oldValue !== 'loading' &&
+      previousAuthState.value !== oldValue
+    ) {
+      console.log(
+        `auth state changed from ${previousAuthState.value} to ${value}`,
+      )
+      previousAuthState.value = oldValue
+    }
+  })
+  const statusChanged = computed(
+    () =>
+      status.value !== 'loading' && status.value !== previousAuthState.value,
+  )
   const isAuthenticated = computed(() => status.value === 'authenticated')
   const userIdentifier = computed(() => data.value?.email)
 
@@ -71,6 +89,7 @@ export default function useAppAuth() {
     roles,
     roleColor,
     siteCollectionAcl,
+    statusChanged,
     userIdentifier,
   }
 }

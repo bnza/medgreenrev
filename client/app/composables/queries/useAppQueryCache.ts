@@ -8,6 +8,7 @@ export default function useAppQueryCache(
   resourcePath?: ApiPath,
 ) {
   const { invalidateQueries, remove, caches } = useQueryCache()
+  const { statusChanged } = useAppAuth()
 
   // copy of the internal @pinia/colada toCacheKey function which declared in index.d.ts but actually not exported
   // @TODO check if bug has been fixed
@@ -45,6 +46,14 @@ export default function useAppQueryCache(
       remove(value)
     })
   }
+
+  watch(
+    () => statusChanged.value,
+    async () => {
+      console.log('statusChanged: invalidating queries')
+      await invalidateQueries({ key: QUERY_KEYS.root })
+    },
+  )
 
   return {
     caches,
