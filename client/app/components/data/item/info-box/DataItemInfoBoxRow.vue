@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   label: string
-  text: string | number | null | undefined
+  text: unknown
 }>()
 const shortText = props.text ? String(props.text).substring(0, 200) : undefined
 const isLongText = props.text ? String(props.text).length > 200 : false

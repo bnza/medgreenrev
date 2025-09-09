@@ -9,6 +9,7 @@
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
+import DataItemInfoBoxSpanPottery from '~/components/data/item/info-box/span/DataItemInfoBoxSpanPottery.vue'
 
 const props = defineProps<{
   path: Path
@@ -39,6 +40,12 @@ const vocabularyAnalysisStore = useVocabularyStore(
         :app-path
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
+      />
+    </template>
+    <template #[`item.pottery.inventory`]="{ item }">
+      <data-item-info-box-span-pottery
+        :iri="item.pottery['@id']"
+        :text="item.pottery.inventory"
       />
     </template>
     <template #[`item.type.value`]="{ item }">
