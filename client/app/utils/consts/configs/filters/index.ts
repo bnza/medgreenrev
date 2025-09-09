@@ -123,6 +123,14 @@ const VocabularyContextType: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyMediaObjectType: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/media_object/types',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const VocabularyPotteryDecoration: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -255,6 +263,7 @@ export const API_FILTERS = {
   VocabularyAnalysisType,
   VocabularyContextType,
   VocabularyCulturalContext,
+  VocabularyMediaObjectType,
   VocabularyPotteryDecoration,
   VocabularyPotteryFunctionalForm,
   VocabularyPotteryFunctionalGroups,
@@ -271,6 +280,7 @@ export type FilterKey = keyof typeof API_FILTERS
 export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
   | '/api/data/analyses/potteries'
+  | '/api/data/media_objects'
   | '/api/data/contexts'
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
@@ -338,6 +348,40 @@ const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
     },
   },
 }
+
+const mediaObjectStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    mimeType: {
+      propertyLabel: 'mime type',
+      filters: {
+        SearchPartial,
+      },
+    },
+    originalFilename: {
+      propertyLabel: 'name',
+      filters: {
+        SearchPartial,
+      },
+    },
+    type: {
+      propertyLabel: 'type',
+      filters: {
+        VocabularyMediaObjectType,
+      },
+    },
+    'uploadedBy.email': {
+      propertyLabel: 'uploaded by',
+      filters: {
+        SearchPartial,
+      },
+    },
+    description: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
 
 const potteryUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -744,6 +788,7 @@ export const FILTERS_PATHS_MAP: Record<
   ResourceStaticFiltersDefinitionObject
 > = {
   '/api/data/contexts': contextStaticFiltersDefinition,
+  '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
   '/api/data/potteries': potteryUnitStaticFiltersDefinition,
   '/api/data/potteries/{parentId}/analyses':
     potteryAnalysisStaticFiltersDefinitionObject,

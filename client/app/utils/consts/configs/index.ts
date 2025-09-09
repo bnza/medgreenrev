@@ -3,6 +3,7 @@ import * as contextSample from './data/contextSample'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import context from './data/context'
+import mediaObject from './data/mediaObject'
 import pottery from './data/pottery'
 import potteryAnalysis from './data/potteryAnalysis'
 import sample from './data/sample'
@@ -16,6 +17,7 @@ import type { ResourceConfig } from '~~/types'
 const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/context_samples': contextSample.config,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
+  '/api/data/media_objects': mediaObject,
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/contexts': context,
   '/api/data/contexts/{parentId}/samples':

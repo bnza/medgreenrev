@@ -92,20 +92,10 @@ watch(
         />
       </v-col>
     </v-row>
-    <v-row dense>
-      <v-col cols="12" sm="6">
-        <data-autocomplete-hierarchical-vocabulary
-          v-model="r$.$value.type"
-          path="/api/vocabulary/media_object/types"
-          label="type"
-          :error-messages="r$.$errors.type"
-        />
-      </v-col>
-    </v-row>
-    <v-row dense>
-      <v-col cols="12" sm="6">
-        <v-textarea v-model="r$.$value.description" label="description" />
-      </v-col>
-    </v-row>
+    <data-item-form-edit-media-object
+      :item="r$.$value"
+      :errors="r$.$errors"
+      mode="create"
+    />
   </v-container>
 </template>

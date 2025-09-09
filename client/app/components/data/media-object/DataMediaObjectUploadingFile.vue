@@ -89,57 +89,11 @@ const hasDuplicateMediaError = computed(
               </v-sheet>
             </v-col>
           </v-row>
-          <v-row dense>
-            <v-col cols="12" sm="6">
-              <v-text-field
-                :model-value="mediaObject?.originalFilename"
-                density="compact"
-                label="filename"
-                variant="solo-filled"
-                flat
-              />
-            </v-col>
-          </v-row>
-          <v-row dense>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                :model-value="mediaObject?.type?.group"
-                density="compact"
-                label="group"
-                variant="solo-filled"
-                flat
-              />
-            </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                :model-value="mediaObject?.type?.value"
-                density="compact"
-                label="type"
-                variant="solo-filled"
-                flat
-              />
-            </v-col>
-            <v-spacer />
-            <v-col cols="12" sm="3">
-              <v-text-field
-                :model-value="mediaObject?.sha256"
-                density="compact"
-                label="hash"
-                variant="solo-filled"
-                flat
-              />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="6">
-              <v-textarea
-                :model-value="mediaObject?.description"
-                density="compact"
-                label="description"
-                variant="solo-filled"
-                flat
-              />
-            </v-col>
+          <v-row dense class="pa-0">
+            <data-item-form-info-media-object
+              v-if="mediaObject"
+              :item="mediaObject"
+            />
           </v-row>
         </v-container>
       </v-form>

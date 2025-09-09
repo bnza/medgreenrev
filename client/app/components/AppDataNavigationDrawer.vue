@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { visible, dataOpened } = storeToRefs(useDataNavigationDrawerStore())
-const { hasRoleAdmin } = useAppAuth()
+const { hasRoleAdmin, isAuthenticated } = useAppAuth()
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const { hasRoleAdmin } = useAppAuth()
         <template #activator="{ props }">
           <v-list-item
             v-bind="props"
-            prepend-icon="fas fa-table-list"
+            prepend-icon="fas fa-magnifying-glass-chart"
             title="Analyses"
             data-testid="app-nav-drawer-li-analyses"
           />
@@ -96,6 +96,23 @@ const { hasRoleAdmin } = useAppAuth()
             data-testid="app-nav-drawer-li-sus"
           />
         </v-list-group>
+      </v-list-group>
+      <v-list-group v-if="isAuthenticated" value="Media">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-file"
+            title="Media"
+            data-testid="app-nav-drawer-li-media"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/data/media"
+          router
+          title="Media"
+          data-testid="app-nav-drawer-li-media-media"
+        />
       </v-list-group>
       <v-list-group v-if="hasRoleAdmin" value="Admin">
         <template #activator="{ props }">

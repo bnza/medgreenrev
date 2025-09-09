@@ -552,10 +552,18 @@ export interface paths {
     get: operations['api_datamedia_objects_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the MediaObject resource.
+     * @description Removes the MediaObject resource.
+     */
+    delete: operations['api_datamedia_objects_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the MediaObject resource.
+     * @description Updates the MediaObject resource.
+     */
+    patch: operations['api_datamedia_objects_id_patch']
     trace?: never
   }
   '/api/data/media_objects/{sha256}': {
@@ -2682,6 +2690,14 @@ export interface components {
       readonly id?: number
       value?: string
     }
+    'MediaObject-media_object.update': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      description?: string | null
+    }
     'MediaObject.jsonld-media_object.acl.read': {
       readonly '@context'?:
         | string
@@ -2695,7 +2711,14 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['MediaObjectType.jsonld-media_object.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      uploadedBy?:
+        | components['schemas']['User.jsonld-media_object.acl.read']
+        | null
       contentUrl?: string | null
       originalFilename?: string
       sha256?: string
@@ -2722,7 +2745,14 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['MediaObjectType.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      uploadedBy?:
+        | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        | null
       contentUrl?: string | null
       originalFilename?: string
       sha256?: string
@@ -2803,36 +2833,6 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number
-      group?: string
-      value?: string
-    }
-    'MediaObjectType.jsonld-media_object.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'MediaObjectType.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
       group?: string
       value?: string
     }
@@ -4349,6 +4349,34 @@ export interface components {
       oldPassword: string | null
       plainPassword: string | null
       repeatPassword: string | null
+    }
+    'User.jsonld-media_object.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly userIdentifier?: string
     }
     'User.jsonld-site.acl.read': {
       readonly '@context'?:
@@ -6283,8 +6311,39 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[mimeType]'?: 'asc' | 'desc'
+        'order[originalFilename]'?: 'asc' | 'desc'
+        'order[sha256]'?: 'asc' | 'desc'
+        'order[type.group]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[size]'?: 'asc' | 'desc'
+        'order[description]'?: 'asc' | 'desc'
+        'order[uploadedBy.email]'?: 'asc' | 'desc'
+        'order[uploadDate]'?: 'asc' | 'desc'
         sha256?: string
         'sha256[]'?: string[]
+        originalFilename?: string
+        mimeType?: string
+        'type.group'?: string
+        'type.group[]'?: string[]
+        type?: string
+        'type[]'?: string[]
+        description?: string
+        'uploadedBy.email'?: string
+        uploadDate?: string
+        'uploadDate[]'?: string
+        'size[between]'?: string
+        'size[gt]'?: string
+        'size[gte]'?: string
+        'size[lt]'?: string
+        'size[lte]'?: string
+        'uploadDate[between]'?: string
+        'uploadDate[gt]'?: string
+        'uploadDate[gte]'?: string
+        'uploadDate[lt]'?: string
+        'uploadDate[lte]'?: string
+        'exists[description]'?: boolean
       }
       header?: never
       path?: never
@@ -6457,6 +6516,121 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_objects_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObject identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObject resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_objects_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObject identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated MediaObject resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['MediaObject-media_object.update']
+      }
+    }
+    responses: {
+      /** @description MediaObject resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }
