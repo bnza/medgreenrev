@@ -9,10 +9,10 @@ defineProps<{
 <template>
   <data-item-form-read>
     <v-row>
-      <v-col cols="12" xs="6" sm="3" class="px-2">
+      <v-col cols="6" class="px-2">
         <v-text-field :model-value="item.pottery?.inventory" label="pottery" />
       </v-col>
-      <v-col cols="12" xs="6" sm="3" class="px-2">
+      <v-col cols="6" class="px-2">
         <data-autocomplete-hierarchical-vocabulary
           path="/api/vocabulary/analysis/types"
           :model-value="item.type ?? undefined"
@@ -20,10 +20,12 @@ defineProps<{
           item-title="value"
         />
       </v-col>
-      <v-col cols="12" xs="6" sm="3" class="px-2">
+    </v-row>
+    <v-row>
+      <v-col cols="6" class="px-2">
         <v-text-field :model-value="item.document?.mimeType" label="document" />
       </v-col>
-      <v-col cols="12" xs="6" sm="3" class="px-2">
+      <v-col cols="6" class="px-2">
         <v-text-field :model-value="item.rawData?.mimeType" label="raw data" />
       </v-col>
     </v-row>

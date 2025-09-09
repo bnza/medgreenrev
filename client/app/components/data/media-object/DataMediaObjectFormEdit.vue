@@ -46,6 +46,7 @@ const sync = async () => {
     emit('created', newMediaObject)
     file.value = undefined
   }
+  return model.value
 }
 
 defineExpose({

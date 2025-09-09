@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
-defineProps<{
+import { useMediaObject } from '~/composables/useMediaObject'
+const props = defineProps<{
   item: GetItemResponseMap['/api/data/media_objects/{id}']
 }>()
 const vocabularyMediaObjectTypeStore = useVocabularyStore(
   '/api/vocabulary/media_object/types',
 )
+const { mediaUrl } = useMediaObject(props.item)
 </script>
 
 <template>
@@ -77,7 +79,26 @@ const vocabularyMediaObjectTypeStore = useVocabularyStore(
         <v-container fluid class="pa-0">
           <v-row justify="center" align="center">
             <v-col cols="6">
-              <data-media-object-image :item :size="300" />
+              <v-card class="pa-0" width="300" flat rounded variant="outlined">
+                <data-media-object-image :item :size="300" />
+                <template #actions>
+                  <v-spacer />
+                  <v-btn
+                    class="mr-4"
+                    density="compact"
+                    :icon="true"
+                    data-testid="download-media-button"
+                    :href="mediaUrl"
+                    target="_blank"
+                    download
+                  >
+                    <v-icon icon="fas fa-download" />
+                    <v-tooltip activator="parent" location="bottom"
+                      >download</v-tooltip
+                    >
+                  </v-btn>
+                </template>
+              </v-card>
             </v-col>
           </v-row>
         </v-container>

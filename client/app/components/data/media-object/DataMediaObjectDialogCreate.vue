@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import type { DataMediaObjectFormEdit } from '#components'
-import type { GetItemResponseMap } from '~~/types'
-
-const model = defineModel<
-  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
->({ required: true })
+import type { PostCollectionResponseMap } from '~~/types'
 
 const visible = defineModel<boolean>('visible', { required: true })
 
@@ -15,10 +11,15 @@ const disabled = ref(false)
 
 const { addError, addSuccess } = useMessagesStore()
 
+const emit = defineEmits<{
+  sync: [response: PostCollectionResponseMap['/api/data/media_objects']]
+}>()
+
 const submit = async () => {
   try {
     disabled.value = true
-    await mediaObjectForm.value?.sync()
+    const item = await mediaObjectForm.value?.sync()
+    emit('sync', item)
     visible.value = false
   } catch (e) {
     addError(e)
@@ -37,7 +38,6 @@ const submit = async () => {
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"
-        v-model="model"
         @created="addSuccess('Successfully created media')"
       />
     </template>

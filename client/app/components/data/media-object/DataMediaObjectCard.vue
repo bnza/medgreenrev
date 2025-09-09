@@ -9,8 +9,7 @@ const props = defineProps<{
   }
   canUpdate?: boolean
 }>()
-const { mediaThumbnailUrl, fileName, icon, iconColor, mediaUrl } =
-  useMediaObject(props.item.mediaObject)
+const { fileName, mediaUrl } = useMediaObject(props.item.mediaObject)
 
 defineEmits<{
   click: [id: string]
@@ -28,27 +27,7 @@ defineEmits<{
     <template #title>
       <p class="text-body-2 text-white pa-1">{{ fileName }}</p>
     </template>
-    <v-img
-      :lazy-src="mediaThumbnailUrl"
-      :src="mediaThumbnailUrl"
-      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.3)"
-      height="200"
-      width="200"
-      class="bg-grey-lighten-2 align-end"
-      cover
-      @click="$emit('click', item['@id'])"
-    >
-      <template #placeholder>
-        <v-row align-content="center" class="fill-height" justify="center">
-          <v-progress-circular
-            v-if="mediaThumbnailUrl"
-            color="warning"
-            indeterminate
-          />
-          <v-icon v-else :icon size="90" :color="iconColor" />
-        </v-row>
-      </template>
-    </v-img>
+    <data-media-object-image :item="item.mediaObject" />
     <template #actions>
       <v-btn
         v-if="canUpdate"

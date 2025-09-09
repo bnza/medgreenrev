@@ -117,6 +117,7 @@ defineEmits<{
           v-model="item.decorations"
           path="/api/vocabulary/pottery/decorations"
           label="decorations"
+          multiple
         />
       </v-col>
     </v-row>

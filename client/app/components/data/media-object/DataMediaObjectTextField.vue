@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import type { GetItemResponseMap } from '~~/types'
+import type { Iri } from '~~/types'
 
-const model = defineModel<
-  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
->({ required: true })
+const model = defineModel<string | null | undefined>({ required: true })
+
+const params = computed(() =>
+  model.value ? { id: extractIdFromIri(model.value as Iri) } : undefined,
+)
+
+const { data: mediaObject } = useGetItemQuery(
+  '/api/data/media_objects/{id}',
+  params,
+)
 
 defineProps<{ readonly: boolean }>()
 
@@ -11,7 +18,7 @@ const dataMediaObjectDialogCreatVisible = ref(false)
 </script>
 
 <template>
-  <v-text-field :model-value="model?.mimeType" readonly flat>
+  <v-text-field :model-value="mediaObject?.mimeType" readonly flat>
     <template v-if="!readonly" #prepend-inner>
       <v-icon
         icon="fa fa-upload"
@@ -21,12 +28,12 @@ const dataMediaObjectDialogCreatVisible = ref(false)
         <v-tooltip activator="parent" location="bottom"> select </v-tooltip>
       </v-icon>
       <data-media-object-dialog-create
-        v-model="model"
-        v-model:visible="dataMediaObjectDialogCreatVisible"
+        :visible="dataMediaObjectDialogCreatVisible"
+        @sync="model = $event?.['@id']"
       />
     </template>
     <template v-if="!readonly" #clear>
-      <v-icon icon="fa fa-circle-xmark" size="small" @click="model = undefined">
+      <v-icon icon="fa fa-circle-xmark" size="small" @click="model = null">
         <v-tooltip activator="parent" location="bottom"> clear </v-tooltip>
       </v-icon>
     </template>

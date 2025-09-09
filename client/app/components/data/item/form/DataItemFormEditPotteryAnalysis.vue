@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import type {
-  GetItemResponseMap,
-  PatchItemRequestMap,
-  ResourceParent,
-} from '~~/types'
+import type { Iri, PatchItemRequestMap, ResourceParent } from '~~/types'
+
+import {
+  mediaObjectJoinInjectionKey,
+  useMediaObjectJoin,
+} from '~/composables/injection/useMediaObjectJoin'
 
 type Item = PatchItemRequestMap['/api/data/analyses/potteries/{id}']
 
@@ -18,25 +19,11 @@ interface Props {
 
 defineProps<Props>()
 
-const documentObject = ref<
-  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
->()
-const rawDataObject = ref<
-  GetItemResponseMap['/api/data/media_objects/{id}'] | undefined
->()
+const itemIri = computed(() => item.value.pottery as Iri)
 
-watch(
-  () => documentObject.value,
-  (value) => {
-    item.value.document = value?.['@id']
-  },
-)
-watch(
-  () => rawDataObject.value,
-  (value) => {
-    item.value.rawData = value?.['@id']
-  },
-)
+const mediaObjectJoin = useMediaObjectJoin(itemIri)
+
+provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
 </script>
 
 <template>
@@ -65,7 +52,7 @@ watch(
   <v-row>
     <v-col cols="6" class="px-2">
       <data-media-object-text-field
-        v-model="documentObject"
+        v-model="item.document"
         label="document"
         :error-messages="errors?.document"
         :readonly="false"
@@ -73,7 +60,7 @@ watch(
     </v-col>
     <v-col cols="6" class="px-2">
       <data-media-object-text-field
-        v-model="rawDataObject"
+        v-model="item.rawData"
         label="raw data"
         :error-messages="errors?.rawData"
         :readonly="false"

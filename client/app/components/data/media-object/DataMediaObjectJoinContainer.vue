@@ -41,7 +41,7 @@ const isValidItem = (
   )
 }
 
-const mediaObjectJoin = useMediaObjectJoin(props.parentIri)
+const mediaObjectJoin = useMediaObjectJoin(toRef(props.parentIri))
 
 provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
 

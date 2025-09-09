@@ -11,7 +11,7 @@ export function injectMediaObjectJoin() {
   }
   return injected
 }
-export const useMediaObjectJoin = (itemIri: Iri) => {
+export const useMediaObjectJoin = (itemIri: Ref<Iri | undefined>) => {
   const isCreateDialogOpen = ref(false)
   const creatingMediaObject =
     ref<PostCollectionResponseMap['/api/data/media_objects']>()
@@ -25,7 +25,7 @@ export const useMediaObjectJoin = (itemIri: Iri) => {
 
   const creatingMediaObjectJoin = computed(() => ({
     mediaObject: creatingMediaObject.value?.['@id'],
-    item: itemIri,
+    item: itemIri.value,
   }))
 
   const deletingMediaObjectJoinItem = ref<Iri | undefined>()
