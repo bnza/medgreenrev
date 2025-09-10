@@ -33,6 +33,7 @@ export const API_RESOURCE_MAP = {
   vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
   vocZooSpecies: '/api/vocabulary/zoo/species',
   zooBone: '/api/data/zoo/bones',
+  zooBoneAnalysis: '/api/data/analyses/zoo/bones',
 } as const
 
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP

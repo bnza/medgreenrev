@@ -16,7 +16,7 @@ export function useCreateValidation(
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
   const getEmptyModel = () =>
     ({
-      pottery: parentKey.value === 'pottery' ? parentIri.value : undefined,
+      item: parentKey.value === 'pottery' ? parentIri.value : undefined,
       document: null,
       rawData: null,
       summary: null,
@@ -25,7 +25,7 @@ export function useCreateValidation(
 
   const rules = computed(() =>
     inferRules(model, {
-      pottery: { required },
+      item: { required },
       type: { required },
     }),
   )
@@ -49,7 +49,7 @@ export function useUpdateValidation(
 
   const rules = computed(() =>
     inferRules(model, {
-      pottery: { required },
+      item: { required },
       type: { required },
     }),
   )

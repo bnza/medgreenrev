@@ -19,7 +19,7 @@ interface Props {
 
 defineProps<Props>()
 
-const itemIri = computed(() => item.value.pottery as Iri)
+const itemIri = computed(() => item.value.item as Iri)
 
 const mediaObjectJoin = useMediaObjectJoin(itemIri)
 
@@ -30,12 +30,12 @@ provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
   <v-row>
     <v-col cols="6">
       <data-autocomplete
-        v-model="item.pottery"
+        v-model="item.item"
         path="/api/data/potteries"
         item-title="inventory"
         label="pottery"
         granted-only
-        :error-messages="errors?.pottery"
+        :error-messages="errors?.item"
         :disabled="parent?.key === 'pottery' || mode === 'update'"
       />
     </v-col>

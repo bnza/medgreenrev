@@ -10,7 +10,7 @@ defineProps<{
   <data-item-form-read>
     <v-row>
       <v-col cols="6" class="px-2">
-        <v-text-field :model-value="item.pottery?.inventory" label="pottery" />
+        <v-text-field :model-value="item.item?.inventory" label="pottery" />
       </v-col>
       <v-col cols="6" class="px-2">
         <data-autocomplete-hierarchical-vocabulary

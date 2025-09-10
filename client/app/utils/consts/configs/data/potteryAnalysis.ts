@@ -13,8 +13,8 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
-      key: 'pottery.inventory',
-      value: 'pottery.inventory',
+      key: 'item.inventory',
+      value: 'item.inventory',
       title: 'pottery',
       minWidth: '100',
     },

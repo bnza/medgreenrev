@@ -2146,6 +2146,78 @@ export interface paths {
     patch: operations['api_datazoobones_id_patch']
     trace?: never
   }
+  '/api/data/analyses/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooBoneAnalysis resources.
+     * @description Retrieves the collection of ZooBoneAnalysis resources.
+     */
+    get: operations['api_dataanalyseszoobones_get_collection']
+    put?: never
+    /**
+     * Creates a ZooBoneAnalysis resource.
+     * @description Creates a ZooBoneAnalysis resource.
+     */
+    post: operations['api_dataanalyseszoobones_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/zoo/bones/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooBoneAnalysis resource.
+     * @description Retrieves a ZooBoneAnalysis resource.
+     */
+    get: operations['api_dataanalyseszoobones_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the ZooBoneAnalysis resource.
+     * @description Removes the ZooBoneAnalysis resource.
+     */
+    delete: operations['api_dataanalyseszoobones_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the ZooBoneAnalysis resource.
+     * @description Updates the ZooBoneAnalysis resource.
+     */
+    patch: operations['api_dataanalyseszoobones_id_patch']
+    trace?: never
+  }
+  '/api/data/zoo/bones/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooBoneAnalysis resources.
+     * @description Retrieves the collection of ZooBoneAnalysis resources.
+     */
+    get: operations['api_datazoobones_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -2619,9 +2691,9 @@ export interface components {
     /** @description A representation of common errors. */
     Error: {
       /** @description A short, human-readable summary of the problem. */
-      readonly title?: string | null
+      readonly title?: string
       /** @description A human-readable explanation specific to this occurrence of the problem. */
-      readonly detail?: string | null
+      readonly detail?: string
       /**
        * @default 400
        * @example 404
@@ -2646,9 +2718,9 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       /** @description A short, human-readable summary of the problem. */
-      readonly title?: string | null
+      readonly title?: string
       /** @description A human-readable explanation specific to this occurrence of the problem. */
-      readonly detail?: string | null
+      readonly detail?: string
       /**
        * @default 400
        * @example 404
@@ -2788,6 +2860,31 @@ export interface components {
       height?: number | null
       /** Format: date-time */
       uploadDate?: string | null
+      readonly contentThumbnailUrl?: string | null
+    }
+    'MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      readonly contentThumbnailUrl?: string | null
     }
     'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       readonly '@context'?:
@@ -3023,7 +3120,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      pottery?: string
+      item?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3047,7 +3144,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      pottery: string
+      item: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3078,7 +3175,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      pottery?: components['schemas']['Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read']
+      item?: components['schemas']['Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read']
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4620,6 +4717,95 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+    }
+    ZooBoneAnalysis: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      readonly item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      document?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rawData?: string | null
+      summary?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      pottery?: string
+    }
+    'ZooBoneAnalysis.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      readonly item: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      document?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rawData?: string | null
+      summary?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      pottery?: string
+    }
+    'ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      readonly item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      document?:
+        | components['schemas']['MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
+        | null
+      rawData?:
+        | components['schemas']['MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
+        | null
+      summary?: string | null
     }
   }
   responses: never
@@ -7497,31 +7683,6 @@ export interface operations {
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'pottery.stratigraphicUnit.site'?: string
-        'pottery.stratigraphicUnit.site[]'?: string[]
-        'pottery.stratigraphicUnit'?: string
-        'pottery.stratigraphicUnit[]'?: string[]
-        'pottery.decorations.decoration'?: string
-        'pottery.decorations.decoration[]'?: string[]
-        'pottery.inventory'?: string
-        'pottery.culturalContext'?: string
-        'pottery.culturalContext[]'?: string[]
-        'pottery.chronologyLower'?: number
-        'pottery.chronologyLower[]'?: number[]
-        'pottery.chronologyUpper'?: number
-        'pottery.chronologyUpper[]'?: number[]
-        'pottery.shape'?: string
-        'pottery.shape[]'?: string[]
-        'pottery.functionalGroup'?: string
-        'pottery.functionalGroup[]'?: string[]
-        'pottery.functionalForm'?: string
-        'pottery.functionalForm[]'?: string[]
-        'pottery.notes'?: string
-        'pottery.surfaceTreatment'?: string
-        'pottery.surfaceTreatment[]'?: string[]
-        'pottery.innerColor'?: string
-        'pottery.outerColor'?: string
-        'pottery.decorationMotif'?: string
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
@@ -7531,35 +7692,6 @@ export interface operations {
          * @example cafè
          */
         summary?: string
-        'pottery.stratigraphicUnit.number[between]'?: string
-        'pottery.stratigraphicUnit.number[gt]'?: string
-        'pottery.stratigraphicUnit.number[gte]'?: string
-        'pottery.stratigraphicUnit.number[lt]'?: string
-        'pottery.stratigraphicUnit.number[lte]'?: string
-        'pottery.stratigraphicUnit.year[between]'?: string
-        'pottery.stratigraphicUnit.year[gt]'?: string
-        'pottery.stratigraphicUnit.year[gte]'?: string
-        'pottery.stratigraphicUnit.year[lt]'?: string
-        'pottery.stratigraphicUnit.year[lte]'?: string
-        'pottery.chronologyLower[between]'?: string
-        'pottery.chronologyLower[gt]'?: string
-        'pottery.chronologyLower[gte]'?: string
-        'pottery.chronologyLower[lt]'?: string
-        'pottery.chronologyLower[lte]'?: string
-        'pottery.chronologyUpper[between]'?: string
-        'pottery.chronologyUpper[gt]'?: string
-        'pottery.chronologyUpper[gte]'?: string
-        'pottery.chronologyUpper[lt]'?: string
-        'pottery.chronologyUpper[lte]'?: string
-        'exists[pottery.notes]'?: boolean
-        'exists[pottery.culturalContext]'?: boolean
-        'exists[pottery.chronologyLower]'?: boolean
-        'exists[pottery.chronologyUpper]'?: boolean
-        'exists[pottery.innerColor]'?: boolean
-        'exists[pottery.outerColor]'?: boolean
-        'exists[pottery.decorationMotif]'?: boolean
-        'exists[pottery.shape]'?: boolean
-        'exists[pottery.surfaceTreatment]'?: boolean
         'exists[document]'?: boolean
         'exists[rawData]'?: boolean
         'exists[summary]'?: boolean
@@ -7823,31 +7955,6 @@ export interface operations {
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'pottery.stratigraphicUnit.site'?: string
-        'pottery.stratigraphicUnit.site[]'?: string[]
-        'pottery.stratigraphicUnit'?: string
-        'pottery.stratigraphicUnit[]'?: string[]
-        'pottery.decorations.decoration'?: string
-        'pottery.decorations.decoration[]'?: string[]
-        'pottery.inventory'?: string
-        'pottery.culturalContext'?: string
-        'pottery.culturalContext[]'?: string[]
-        'pottery.chronologyLower'?: number
-        'pottery.chronologyLower[]'?: number[]
-        'pottery.chronologyUpper'?: number
-        'pottery.chronologyUpper[]'?: number[]
-        'pottery.shape'?: string
-        'pottery.shape[]'?: string[]
-        'pottery.functionalGroup'?: string
-        'pottery.functionalGroup[]'?: string[]
-        'pottery.functionalForm'?: string
-        'pottery.functionalForm[]'?: string[]
-        'pottery.notes'?: string
-        'pottery.surfaceTreatment'?: string
-        'pottery.surfaceTreatment[]'?: string[]
-        'pottery.innerColor'?: string
-        'pottery.outerColor'?: string
-        'pottery.decorationMotif'?: string
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
@@ -7857,35 +7964,6 @@ export interface operations {
          * @example cafè
          */
         summary?: string
-        'pottery.stratigraphicUnit.number[between]'?: string
-        'pottery.stratigraphicUnit.number[gt]'?: string
-        'pottery.stratigraphicUnit.number[gte]'?: string
-        'pottery.stratigraphicUnit.number[lt]'?: string
-        'pottery.stratigraphicUnit.number[lte]'?: string
-        'pottery.stratigraphicUnit.year[between]'?: string
-        'pottery.stratigraphicUnit.year[gt]'?: string
-        'pottery.stratigraphicUnit.year[gte]'?: string
-        'pottery.stratigraphicUnit.year[lt]'?: string
-        'pottery.stratigraphicUnit.year[lte]'?: string
-        'pottery.chronologyLower[between]'?: string
-        'pottery.chronologyLower[gt]'?: string
-        'pottery.chronologyLower[gte]'?: string
-        'pottery.chronologyLower[lt]'?: string
-        'pottery.chronologyLower[lte]'?: string
-        'pottery.chronologyUpper[between]'?: string
-        'pottery.chronologyUpper[gt]'?: string
-        'pottery.chronologyUpper[gte]'?: string
-        'pottery.chronologyUpper[lt]'?: string
-        'pottery.chronologyUpper[lte]'?: string
-        'exists[pottery.notes]'?: boolean
-        'exists[pottery.culturalContext]'?: boolean
-        'exists[pottery.chronologyLower]'?: boolean
-        'exists[pottery.chronologyUpper]'?: boolean
-        'exists[pottery.innerColor]'?: boolean
-        'exists[pottery.outerColor]'?: boolean
-        'exists[pottery.decorationMotif]'?: boolean
-        'exists[pottery.shape]'?: boolean
-        'exists[pottery.surfaceTreatment]'?: boolean
         'exists[document]'?: boolean
         'exists[rawData]'?: boolean
         'exists[summary]'?: boolean
@@ -12395,6 +12473,357 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'rawData.mimeType'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[document]'?: boolean
+        'exists[rawData]'?: boolean
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBoneAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new ZooBoneAnalysis resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld']
+      }
+    }
+    responses: {
+      /** @description ZooBoneAnalysis resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooBoneAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBoneAnalysis resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooBoneAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBoneAnalysis resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooBoneAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated ZooBoneAnalysis resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['ZooBoneAnalysis']
+      }
+    }
+    responses: {
+      /** @description ZooBoneAnalysis resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datazoobones_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'rawData.mimeType'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[document]'?: boolean
+        'exists[rawData]'?: boolean
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description ZooBoneAnalysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBoneAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }

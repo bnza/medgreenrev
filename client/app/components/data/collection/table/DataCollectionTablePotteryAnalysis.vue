@@ -42,10 +42,10 @@ const vocabularyAnalysisStore = useVocabularyStore(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #[`item.pottery.inventory`]="{ item }">
+    <template #[`item.item.inventory`]="{ item }">
       <data-item-info-box-span-pottery
-        :iri="item.pottery['@id']"
-        :text="item.pottery.inventory"
+        :iri="item.item['@id']"
+        :text="item.item.inventory"
       />
     </template>
     <template #[`item.type.value`]="{ item }">
