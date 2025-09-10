@@ -40,6 +40,11 @@ export const contextSubResourceConfig = {
         maxWidth: '200',
       },
       {
+        key: 'site.code',
+        value: 'site.code',
+        title: 'site',
+      },
+      {
         key: 'context.type.group',
         value: 'context.type.group',
         title: 'group',
@@ -78,7 +83,7 @@ export const stratigraphicUnitSubResourceConfig = {
       },
       {
         key: 'stratigraphicUnit.site.code',
-        value: 'site.code',
+        value: 'stratigraphicUnit.site.code',
         title: 'site',
         width: '80',
       },

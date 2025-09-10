@@ -47,6 +47,18 @@ const { id: parentId } = useResourceParent(props.parent)
         @delete="deleteDialogState = { id: item.id }"
       />
     </template>
+    <template #[`item.stratigraphicUnit.site.code`]="{ item }">
+      <data-item-info-box-span-site
+        :iri="item.stratigraphicUnit.site['@id']"
+        :text="item.stratigraphicUnit.site.code"
+      />
+    </template>
+    <template #[`item.stratigraphicUnit.code`]="{ item }">
+      <data-item-info-box-span-stratigraphic-unit
+        :iri="item.stratigraphicUnit['@id']"
+        :text="item.stratigraphicUnit.code"
+      />
+    </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="subResourceKey" :parent-id />
       <data-dialog-create-context-stratigraphic-unit
