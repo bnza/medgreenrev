@@ -88,6 +88,13 @@ watch(
     }
   },
 )
+
+watch(
+  () => uploadingFile.value,
+  () => {
+    r$.$reset()
+  },
+)
 </script>
 
 <template>
@@ -99,7 +106,7 @@ watch(
     <template #default>
       <data-media-object-form-edit
         ref="mediaObjectForm"
-        :error="r$.$errors.mediaObject as any"
+        :errors="r$.$errors.mediaObject as any"
       />
     </template>
     <template #actions>

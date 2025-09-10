@@ -4658,6 +4658,7 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+      readonly code?: string
     }
     'ZooBone.jsonld-zoo_bone.acl.read': {
       readonly '@context'?:
@@ -4691,6 +4692,7 @@ export interface components {
       endsPreserved?: number | null
       side?: string | null
       notes?: string | null
+      readonly code?: string
     }
     'ZooBone.jsonld-zoo_bone.create': {
       /**
@@ -4717,6 +4719,21 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+      readonly code?: string
+    }
+    'ZooBone.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly code?: string
     }
     ZooBoneAnalysis: {
       readonly id?: number & string
@@ -4724,7 +4741,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      readonly item?: string
+      item?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4741,11 +4758,6 @@ export interface components {
        */
       rawData?: string | null
       summary?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      pottery?: string
     }
     'ZooBoneAnalysis.jsonld': {
       readonly id?: number & string
@@ -4753,7 +4765,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      readonly item: string
+      item: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4770,11 +4782,6 @@ export interface components {
        */
       rawData?: string | null
       summary?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      pottery?: string
     }
     'ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
       readonly '@context'?:
@@ -4789,11 +4796,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      readonly item?: string
+      item?: components['schemas']['ZooBone.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
       /**
        * Format: iri-reference
        * @example https://example.com/

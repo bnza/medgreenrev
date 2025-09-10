@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRegle } from '@regle/core'
-import { required } from '@regle/rules'
+import { required, withMessage } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import type { PostCollectionResponseMap } from '~~/types'
 import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
@@ -21,7 +21,7 @@ const { maxFileSize } = useMaxFileSizeValidationRule()
 
 const { r$ } = useRegle(model, {
   file: {
-    required,
+    required: withMessage((value) => Boolean(value), 'File is required'),
     maxFileSize,
   },
   type: {
@@ -53,6 +53,7 @@ const submit = async (): Promise<
   PostCollectionResponseMap['/api/data/media_objects'] | undefined
 > => {
   r$.$reset()
+  await nextTick()
   const { data, valid } = await r$.$validate()
 
   if (!valid) {

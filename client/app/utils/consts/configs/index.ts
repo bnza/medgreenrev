@@ -12,9 +12,12 @@ import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import zooBone from './data/zooBone'
+import zooBoneAnalysis from './data/zooBoneAnalysis'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
+  '/api/data/analyses/potteries': potteryAnalysis,
+  '/api/data/analyses/zoo/bones': zooBoneAnalysis,
   '/api/data/context_samples': contextSample.config,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/media_objects': mediaObject,
@@ -27,7 +30,6 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/stratigraphic_units/{parentId}/samples':
     sampleStratigraphicUnit.sampleSubResourceConfig,
   '/api/data/potteries': pottery,
-  '/api/data/analyses/potteries': potteryAnalysis,
   '/api/data/samples': sample,
   '/api/data/samples/{parentId}/contexts':
     contextSample.contextSubResourceConfig,
@@ -41,6 +43,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
   '/api/data/zoo/bones': zooBone,
+  '/api/data/zoo/bones/{parentId}/analyses': zooBoneAnalysis,
 } as const
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>

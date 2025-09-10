@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import type { Iri } from '~~/types'
+import {
+  mediaObjectJoinInjectionKey,
+  useMediaObjectJoin,
+} from '~/composables/injection/useMediaObjectJoin'
 
 const model = defineModel<string | null | undefined>({ required: true })
 
+const itemIri = computed(() => model.value as Iri)
+
+const mediaObjectJoin = useMediaObjectJoin(itemIri)
+
+provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
+
 const params = computed(() =>
-  model.value ? { id: extractIdFromIri(model.value as Iri) } : undefined,
+  model.value ? { id: extractIdFromIri(itemIri.value) } : undefined,
 )
 
 const { data: mediaObject } = useGetItemQuery(
@@ -28,7 +38,7 @@ const dataMediaObjectDialogCreatVisible = ref(false)
         <v-tooltip activator="parent" location="bottom"> select </v-tooltip>
       </v-icon>
       <data-media-object-dialog-create
-        :visible="dataMediaObjectDialogCreatVisible"
+        v-model:visible="dataMediaObjectDialogCreatVisible"
         @sync="model = $event?.['@id']"
       />
     </template>

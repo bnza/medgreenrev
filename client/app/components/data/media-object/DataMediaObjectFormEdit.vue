@@ -57,6 +57,21 @@ defineExpose({
 <template>
   <v-form data-testid="data-dialog-form" class="ma-4">
     <v-container fluid>
+      <v-row dense align="center" justify="center">
+        <div style="height: 80px" class="d-flex justify-center align-center">
+          <v-banner
+            v-if="errors && errors.length > 0"
+            class="mb-4"
+            border
+            rounded
+            density="compact"
+            color="error"
+            icon="fas fa-exclamation-triangle"
+            :text="errors.join(', ')"
+            data-testid="data-dialog-form-file-upload-error"
+          />
+        </div>
+      </v-row>
       <v-row dense>
         <v-col cols="12">
           <v-file-upload
@@ -65,22 +80,6 @@ defineExpose({
             data-testid="data-dialog-form-file-upload"
           >
             <template #item="{ file: itemFile, props: itemProps }">
-              <div
-                style="height: 80px"
-                class="d-flex justify-center align-center"
-              >
-                <v-banner
-                  v-if="errors && errors.length > 0"
-                  class="mb-4"
-                  border
-                  rounded
-                  density="compact"
-                  color="error"
-                  icon="fas fa-exclamation-triangle"
-                  :text="errors.join(', ')"
-                  data-testid="data-dialog-form-file-upload-error"
-                />
-              </div>
               <data-media-object-uploading-file
                 v-bind="{
                   file: itemFile,

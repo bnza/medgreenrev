@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-item-page-zoo-bone />
+  <data-collection-page-zoo-bone-analysis path="/api/data/analyses/zoo/bones" />
 </template>

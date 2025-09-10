@@ -3,6 +3,7 @@ import type {
   ApiAclResource,
   GetItemPath,
   GetItemResponseMap,
+  Iri,
   OperationPathParams,
 } from '~~/types'
 
@@ -10,6 +11,7 @@ const props = defineProps<{
   path: Path
   title: string
   identifierProp?: string
+  iri?: Iri
 }>()
 
 defineSlots<{
@@ -20,10 +22,8 @@ defineSlots<{
 
 const { routeId } = useAppRoute()
 const params = computed<OperationPathParams<Path, 'get'> | undefined>(() => {
-  if (routeId) {
-    return { id: routeId } as OperationPathParams<Path, 'get'>
-  }
-  return undefined
+  const id = props.iri ? extractIdFromIri(props.iri) : routeId
+  return id ? ({ id } as OperationPathParams<Path, 'get'>) : undefined
 })
 
 const { data: item, status, error } = useGetItemQuery(props.path, params)
@@ -48,7 +48,13 @@ const isValidItem = (
 </script>
 
 <template>
-  <data-card :title :identifier :loading="status === 'pending'" :parent="false">
+  <data-card
+    :title
+    :identifier
+    :loading="status === 'pending'"
+    :parent="false"
+    :show-back-button="!iri"
+  >
     <template #toolbar-append>
       <slot name="toolbar-append" />
     </template>

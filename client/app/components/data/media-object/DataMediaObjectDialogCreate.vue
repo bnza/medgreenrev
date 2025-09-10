@@ -19,6 +19,9 @@ const submit = async () => {
   try {
     disabled.value = true
     const item = await mediaObjectForm.value?.sync()
+    if (!item) {
+      return
+    }
     emit('sync', item)
     visible.value = false
   } catch (e) {
