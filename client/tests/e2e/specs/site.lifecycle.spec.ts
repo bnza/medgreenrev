@@ -65,6 +65,7 @@ test.describe('Site lifecycle', () => {
       await collectionPom.table
         .getItemNavigationLink('NW', NavigationLinksButton.Update)
         .click()
+      await collectionPom.dataDialogUpdate.expectOldFormData()
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'name' })
         .fill('Newer Shining Site')
@@ -81,16 +82,16 @@ test.describe('Site lifecycle', () => {
         .getByRole('textbox', { name: 'field director' })
         .fill('Some One Else')
 
-      const patchResponsePromise = page.waitForResponse(
-        (response) =>
-          response.url().includes('/api/data/stratigraphic_units/') &&
-          response.request().method() === 'PATCH',
-      )
-      const getResponsePromise = page.waitForResponse(
-        (response) =>
-          response.url().includes('/api/data/stratigraphic_units') &&
-          response.request().method() === 'GET',
-      )
+      // const patchResponsePromise = page.waitForResponse(
+      //   (response) =>
+      //     response.url().includes('/api/data/stratigraphic_units/') &&
+      //     response.request().method() === 'PATCH',
+      // )
+      // const getResponsePromise = page.waitForResponse(
+      //   (response) =>
+      //     response.url().includes('/api/data/stratigraphic_units') &&
+      //     response.request().method() === 'GET',
+      // )
 
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
@@ -98,8 +99,8 @@ test.describe('Site lifecycle', () => {
       )
 
       // Wait for both the PATCH request and the subsequent GET request that refreshes the table
-      await patchResponsePromise
-      await getResponsePromise
+      // await patchResponsePromise
+      // await getResponsePromise
 
       await collectionPom.table.expectRowToHaveText('NW', 'Newer Shining Site')
       await collectionPom.table.expectRowToHaveText(

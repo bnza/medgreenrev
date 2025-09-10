@@ -90,18 +90,17 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.table
         .getItemNavigationLink('POT-2024-001', NavigationLinksButton.Update)
         .click()
+      await collectionPom.dataDialogUpdate.expectOldFormData()
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'notes' })
         .fill(
           'Updated pottery fragment with detailed analysis and cultural significance',
         )
 
-      const responsePromise = page.waitForResponse('**/api/data/potteries/**')
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully updated',
       )
-      await responsePromise
       await collectionPom.table.expectRowToHaveText(
         'POT-2024-001',
         'Updated pottery fragment with detailed analysis and cultural significance',

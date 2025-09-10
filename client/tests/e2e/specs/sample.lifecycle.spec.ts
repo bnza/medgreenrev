@@ -63,29 +63,16 @@ test.describe('Sample lifecycle', () => {
       await collectionPom.table
         .getItemNavigationLink('NI.GE.24.1', NavigationLinksButton.Update)
         .click()
+      await collectionPom.dataDialogUpdate.expectOldFormData()
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'description' })
         .fill('Updated sample with detailed archaeological context')
-
-      const patchResponsePromise = page.waitForResponse(
-        (response) =>
-          response.url().includes('/api/data/samples/') &&
-          response.request().method() === 'PATCH',
-      )
-      const getResponsePromise = page.waitForResponse(
-        (response) =>
-          response.url().includes('/api/data/samples') &&
-          response.request().method() === 'GET',
-      )
+      await page.keyboard.press('Tab')
 
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully updated',
       )
-
-      // Wait for both the PATCH request and the subsequent GET request that refreshes the table
-      await patchResponsePromise
-      await getResponsePromise
 
       await collectionPom.table.expectRowToHaveText(
         'NI.GE.24.1',
