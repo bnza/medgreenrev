@@ -19,6 +19,7 @@ defineEmits<{
     icon
     variant="plain"
     data-testid="auth-user-button"
+    :disabled
     @click="$emit('click')"
   >
     <v-icon icon="fas fa-user" />
