@@ -22,19 +22,14 @@ export function useCreateValidation(
     ({
       stratigraphicUnit:
         parentKey.value === 'stratigraphicUnit' ? parentIri.value : undefined,
-      species: null,
-      // element: null,
-      // part: null,
-      // endsPreserved: null,
-      // side: null,
-      // notes: null,
+      taxonomy: null,
     }) as RequestBody
   const model = ref(getEmptyModel())
 
   const rules = computed(() =>
     inferRules(model, {
       stratigraphicUnit: { required },
-      species: { required },
+      taxonomy: { required },
     }),
   )
   const { r$ } = useRegle(model, rules)

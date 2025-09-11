@@ -9,7 +9,7 @@ withDefaults(
   },
 )
 
-const vocabularyZooSpecies = useVocabularyStore('/api/vocabulary/zoo/species')
+const vocabularyZooTaxonomy = useVocabularyStore('/api/vocabulary/zoo/taxonomy')
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 const vocabularyZooBoneParts = useVocabularyStore(
   '/api/vocabulary/zoo/bone_parts',
@@ -39,8 +39,8 @@ const vocabularyZooBoneParts = useVocabularyStore(
           :text="item.stratigraphicUnit?.code"
         />
         <data-item-info-box-row
-          label="species"
-          :text="vocabularyZooSpecies.getValue(item.species).value"
+          label="taxonomy"
+          :text="vocabularyZooTaxonomy.getValue(item.taxonomy).value"
         />
         <data-item-info-box-row
           label="element"

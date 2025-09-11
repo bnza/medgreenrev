@@ -39,11 +39,11 @@ defineEmits<{
     <v-row>
       <v-col cols="12" md="6">
         <data-autocomplete
-          v-model="item.species"
-          path="/api/vocabulary/zoo/species"
+          v-model="item.taxonomy"
+          path="/api/vocabulary/zoo/taxonomy"
           item-title="scientificName"
           label="species"
-          :error-messages="errors?.species"
+          :error-messages="errors?.taxonomy"
           clearable
         />
       </v-col>

@@ -22,7 +22,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const vocabularyZooSpecies = useVocabularyStore('/api/vocabulary/zoo/species')
+const vocabularyZooTaxonomy = useVocabularyStore('/api/vocabulary/zoo/taxonomy')
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 const vocabularyZooBoneParts = useVocabularyStore(
   '/api/vocabulary/zoo/bone_parts',
@@ -71,17 +71,17 @@ const { updateDialogState } = storeToRefs(
         :text="item.stratigraphicUnit.code"
       />
     </template>
-    <template #[`item.species.value`]="{ item }">
-      {{ vocabularyZooSpecies.getValue(item.species) }}
+    <template #[`item.taxonomy.value`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy) }}
     </template>
-    <template #[`item.species.scientificName`]="{ item }">
-      {{ vocabularyZooSpecies.getValue(item.species, 'scientificName') }}
+    <template #[`item.taxonomy.vernacularName`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName') }}
     </template>
-    <template #[`item.species.class`]="{ item }">
-      {{ vocabularyZooSpecies.getValue(item.species, 'class') }}
+    <template #[`item.taxonomy.class`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'class') }}
     </template>
-    <template #[`item.species.family`]="{ item }">
-      {{ vocabularyZooSpecies.getValue(item.species, 'family') }}
+    <template #[`item.taxonomy.family`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'family') }}
     </template>
     <template #[`item.element.value`]="{ item }">
       {{ vocabularyZooBones.getValue(item.element) }}

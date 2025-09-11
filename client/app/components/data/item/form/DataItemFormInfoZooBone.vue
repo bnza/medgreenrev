@@ -11,7 +11,7 @@ withDefaults(
   },
 )
 
-const vocabularyZooSpecies = useVocabularyStore('/api/vocabulary/zoo/species')
+const vocabularyZooTaxonomy = useVocabularyStore('/api/vocabulary/zoo/taxonomy')
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 </script>
 
@@ -45,22 +45,30 @@ const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
     <v-row>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
-          :model-value="vocabularyZooSpecies.getValue(item.species, 'class')"
+          :model-value="vocabularyZooTaxonomy.getValue(item.taxonomy)"
+          label="taxonomy"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="vocabularyZooTaxonomy.getValue(item.taxonomy, 'class')"
           label="class"
         />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
-          :model-value="vocabularyZooSpecies.getValue(item.species, 'family')"
+          :model-value="vocabularyZooTaxonomy.getValue(item.taxonomy, 'family')"
           label="class"
         />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="
-            vocabularyZooSpecies.getValue(item.species, 'scientificName')
+            vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName')
           "
-          label="scientific name"
+          label="vernacular name"
         />
       </v-col>
     </v-row>

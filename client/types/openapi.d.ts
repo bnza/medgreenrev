@@ -1582,7 +1582,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/potteries/{pottery}/{type}': {
+  '/api/validator/unique/analyses/potteries/{item}/{type}': {
     parameters: {
       query?: never
       header?: never
@@ -1593,7 +1593,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalysespotteries_pottery_type_get']
+    get: operations['api_validatoruniqueanalysespotteries_item_type_get']
     put?: never
     post?: never
     delete?: never
@@ -2034,7 +2034,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/zoo/species': {
+  '/api/vocabulary/zoo/taxonomy': {
     parameters: {
       query?: never
       header?: never
@@ -2042,10 +2042,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of VocZooSpecies resources.
-     * @description Retrieves the collection of VocZooSpecies resources.
+     * Retrieves the collection of VocZooTaxonomy resources.
+     * @description Retrieves the collection of VocZooTaxonomy resources.
      */
-    get: operations['api_vocabularyzoospecies_get_collection']
+    get: operations['api_vocabularyzootaxonomy_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -2054,7 +2054,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/zoo/species/{id}': {
+  '/api/vocabulary/zoo/taxonomy/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -2062,10 +2062,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves a VocZooSpecies resource.
-     * @description Retrieves a VocZooSpecies resource.
+     * Retrieves a VocZooTaxonomy resource.
+     * @description Retrieves a VocZooTaxonomy resource.
      */
-    get: operations['api_vocabularyzoospecies_id_get']
+    get: operations['api_vocabularyzootaxonomy_id_get']
     put?: never
     post?: never
     delete?: never
@@ -4614,7 +4614,7 @@ export interface components {
       code?: string
       value?: string
     }
-    'VocZooSpecies.jsonld': {
+    'VocZooTaxonomy.jsonld': {
       readonly '@context'?:
         | string
         | ({
@@ -4629,7 +4629,7 @@ export interface components {
       readonly id?: number
       code?: string
       value?: string
-      scientificName?: string
+      vernacularName?: string
       class?: string
       family?: string | null
     }
@@ -4643,7 +4643,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      species: string | null
+      taxonomy: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4678,7 +4678,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      species: string | null
+      taxonomy: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4704,7 +4704,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      species: string | null
+      taxonomy: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -7683,9 +7683,35 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
+        'order[item.inventory]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.stratigraphicUnit.site'?: string
+        'item.stratigraphicUnit.site[]'?: string[]
+        'item.stratigraphicUnit'?: string
+        'item.stratigraphicUnit[]'?: string[]
+        'item.decorations.decoration'?: string
+        'item.decorations.decoration[]'?: string[]
+        'item.inventory'?: string
+        'item.culturalContext'?: string
+        'item.culturalContext[]'?: string[]
+        'item.chronologyLower'?: number
+        'item.chronologyLower[]'?: number[]
+        'item.chronologyUpper'?: number
+        'item.chronologyUpper[]'?: number[]
+        'item.shape'?: string
+        'item.shape[]'?: string[]
+        'item.functionalGroup'?: string
+        'item.functionalGroup[]'?: string[]
+        'item.functionalForm'?: string
+        'item.functionalForm[]'?: string[]
+        'item.notes'?: string
+        'item.surfaceTreatment'?: string
+        'item.surfaceTreatment[]'?: string[]
+        'item.innerColor'?: string
+        'item.outerColor'?: string
+        'item.decorationMotif'?: string
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
@@ -7695,6 +7721,35 @@ export interface operations {
          * @example cafè
          */
         summary?: string
+        'item.stratigraphicUnit.number[between]'?: string
+        'item.stratigraphicUnit.number[gt]'?: string
+        'item.stratigraphicUnit.number[gte]'?: string
+        'item.stratigraphicUnit.number[lt]'?: string
+        'item.stratigraphicUnit.number[lte]'?: string
+        'item.stratigraphicUnit.year[between]'?: string
+        'item.stratigraphicUnit.year[gt]'?: string
+        'item.stratigraphicUnit.year[gte]'?: string
+        'item.stratigraphicUnit.year[lt]'?: string
+        'item.stratigraphicUnit.year[lte]'?: string
+        'item.chronologyLower[between]'?: string
+        'item.chronologyLower[gt]'?: string
+        'item.chronologyLower[gte]'?: string
+        'item.chronologyLower[lt]'?: string
+        'item.chronologyLower[lte]'?: string
+        'item.chronologyUpper[between]'?: string
+        'item.chronologyUpper[gt]'?: string
+        'item.chronologyUpper[gte]'?: string
+        'item.chronologyUpper[lt]'?: string
+        'item.chronologyUpper[lte]'?: string
+        'exists[item.notes]'?: boolean
+        'exists[item.culturalContext]'?: boolean
+        'exists[item.chronologyLower]'?: boolean
+        'exists[item.chronologyUpper]'?: boolean
+        'exists[item.innerColor]'?: boolean
+        'exists[item.outerColor]'?: boolean
+        'exists[item.decorationMotif]'?: boolean
+        'exists[item.shape]'?: boolean
+        'exists[item.surfaceTreatment]'?: boolean
         'exists[document]'?: boolean
         'exists[rawData]'?: boolean
         'exists[summary]'?: boolean
@@ -7955,9 +8010,35 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
+        'order[item.inventory]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.stratigraphicUnit.site'?: string
+        'item.stratigraphicUnit.site[]'?: string[]
+        'item.stratigraphicUnit'?: string
+        'item.stratigraphicUnit[]'?: string[]
+        'item.decorations.decoration'?: string
+        'item.decorations.decoration[]'?: string[]
+        'item.inventory'?: string
+        'item.culturalContext'?: string
+        'item.culturalContext[]'?: string[]
+        'item.chronologyLower'?: number
+        'item.chronologyLower[]'?: number[]
+        'item.chronologyUpper'?: number
+        'item.chronologyUpper[]'?: number[]
+        'item.shape'?: string
+        'item.shape[]'?: string[]
+        'item.functionalGroup'?: string
+        'item.functionalGroup[]'?: string[]
+        'item.functionalForm'?: string
+        'item.functionalForm[]'?: string[]
+        'item.notes'?: string
+        'item.surfaceTreatment'?: string
+        'item.surfaceTreatment[]'?: string[]
+        'item.innerColor'?: string
+        'item.outerColor'?: string
+        'item.decorationMotif'?: string
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
@@ -7967,6 +8048,35 @@ export interface operations {
          * @example cafè
          */
         summary?: string
+        'item.stratigraphicUnit.number[between]'?: string
+        'item.stratigraphicUnit.number[gt]'?: string
+        'item.stratigraphicUnit.number[gte]'?: string
+        'item.stratigraphicUnit.number[lt]'?: string
+        'item.stratigraphicUnit.number[lte]'?: string
+        'item.stratigraphicUnit.year[between]'?: string
+        'item.stratigraphicUnit.year[gt]'?: string
+        'item.stratigraphicUnit.year[gte]'?: string
+        'item.stratigraphicUnit.year[lt]'?: string
+        'item.stratigraphicUnit.year[lte]'?: string
+        'item.chronologyLower[between]'?: string
+        'item.chronologyLower[gt]'?: string
+        'item.chronologyLower[gte]'?: string
+        'item.chronologyLower[lt]'?: string
+        'item.chronologyLower[lte]'?: string
+        'item.chronologyUpper[between]'?: string
+        'item.chronologyUpper[gt]'?: string
+        'item.chronologyUpper[gte]'?: string
+        'item.chronologyUpper[lt]'?: string
+        'item.chronologyUpper[lte]'?: string
+        'exists[item.notes]'?: boolean
+        'exists[item.culturalContext]'?: boolean
+        'exists[item.chronologyLower]'?: boolean
+        'exists[item.chronologyUpper]'?: boolean
+        'exists[item.innerColor]'?: boolean
+        'exists[item.outerColor]'?: boolean
+        'exists[item.decorationMotif]'?: boolean
+        'exists[item.shape]'?: boolean
+        'exists[item.surfaceTreatment]'?: boolean
         'exists[document]'?: boolean
         'exists[rawData]'?: boolean
         'exists[summary]'?: boolean
@@ -10860,13 +10970,13 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysespotteries_pottery_type_get: {
+  api_validatoruniqueanalysespotteries_item_type_get: {
     parameters: {
       query?: never
       header?: never
       path: {
         /** @description UniqueValidator identifier */
-        pottery: string
+        item: string
         /** @description UniqueValidator identifier */
         type: string
       }
@@ -11972,7 +12082,7 @@ export interface operations {
       }
     }
   }
-  api_vocabularyzoospecies_get_collection: {
+  api_vocabularyzootaxonomy_get_collection: {
     parameters: {
       query?: never
       header?: never
@@ -11981,14 +12091,14 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description VocZooSpecies collection */
+      /** @description VocZooTaxonomy collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['VocZooSpecies.jsonld'][]
+            member: components['schemas']['VocZooTaxonomy.jsonld'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -12027,25 +12137,25 @@ export interface operations {
       }
     }
   }
-  api_vocabularyzoospecies_id_get: {
+  api_vocabularyzootaxonomy_id_get: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description VocZooSpecies identifier */
+        /** @description VocZooTaxonomy identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description VocZooSpecies resource */
+      /** @description VocZooTaxonomy resource */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocZooSpecies.jsonld']
+          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld']
         }
       }
       /** @description Not found */
@@ -12070,30 +12180,24 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
-        'order[species.value]'?: 'asc' | 'desc'
-        'order[species.scientificName]'?: 'asc' | 'desc'
-        'order[species.family]'?: 'asc' | 'desc'
-        'order[species.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
-        species?: string
-        'species[]'?: string[]
         element?: string
         'element[]'?: string[]
         part?: string
         'part[]'?: string[]
         side?: string
         'side[]'?: string[]
-        'species.family'?: string
-        'species.family[]'?: string[]
-        'species.class'?: string
-        'species.class[]'?: string[]
-        'species.scientificName'?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
@@ -12107,7 +12211,6 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[species]'?: boolean
         /**
          * @description Filter by bitwise AND operation - all specified bits must be set
          * @example 5
@@ -12183,30 +12286,24 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
-        'order[species.value]'?: 'asc' | 'desc'
-        'order[species.scientificName]'?: 'asc' | 'desc'
-        'order[species.family]'?: 'asc' | 'desc'
-        'order[species.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
-        species?: string
-        'species[]'?: string[]
         element?: string
         'element[]'?: string[]
         part?: string
         'part[]'?: string[]
         side?: string
         'side[]'?: string[]
-        'species.family'?: string
-        'species.family[]'?: string[]
-        'species.class'?: string
-        'species.class[]'?: string[]
-        'species.scientificName'?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
@@ -12220,7 +12317,6 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[species]'?: boolean
         /**
          * @description Filter by bitwise AND operation - all specified bits must be set
          * @example 5
@@ -12491,6 +12587,16 @@ export interface operations {
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.stratigraphicUnit.site'?: string
+        'item.stratigraphicUnit.site[]'?: string[]
+        'item.stratigraphicUnit'?: string
+        'item.stratigraphicUnit[]'?: string[]
+        'item.element'?: string
+        'item.element[]'?: string[]
+        'item.part'?: string
+        'item.part[]'?: string[]
+        'item.side'?: string
+        'item.side[]'?: string[]
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string
@@ -12763,6 +12869,16 @@ export interface operations {
         'order[type.value]'?: 'asc' | 'desc'
         'order[document.mimeType]'?: 'asc' | 'desc'
         'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.stratigraphicUnit.site'?: string
+        'item.stratigraphicUnit.site[]'?: string[]
+        'item.stratigraphicUnit'?: string
+        'item.stratigraphicUnit[]'?: string[]
+        'item.element'?: string
+        'item.element[]'?: string[]
+        'item.part'?: string
+        'item.part[]'?: string[]
+        'item.side'?: string
+        'item.side[]'?: string[]
         type?: string
         'type[]'?: string[]
         'document.mimeType'?: string

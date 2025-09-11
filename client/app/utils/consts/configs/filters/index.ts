@@ -171,11 +171,11 @@ const VocabularyPotterySurfaceTreatment: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-const VocabularyZooSpecies: StaticFiltersDefinitionObject = {
+const VocabularyZooTaxonomy: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
   componentKey: 'Vocabulary',
-  path: '/api/vocabulary/zoo/species',
+  path: '/api/vocabulary/zoo/taxonomy',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -269,7 +269,7 @@ export const API_FILTERS = {
   VocabularyPotteryFunctionalGroups,
   VocabularyPotteryShape,
   VocabularyPotterySurfaceTreatment,
-  VocabularyZooSpecies,
+  VocabularyZooTaxonomy,
   VocabularyZooBone,
   VocabularyZooBonePart,
   // VocabularyMimeType,
@@ -756,9 +756,9 @@ const zooBoneStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObjec
       },
       propertyLabel: 'stratigraphic unit (upper chronology)',
     },
-    species: {
+    taxonomy: {
       filters: {
-        VocabularyZooSpecies,
+        VocabularyZooTaxonomy,
       },
     },
     element: {
@@ -821,9 +821,9 @@ const zooBoneAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
       },
     },
     'item.species': {
-      propertyLabel: 'bone (species)',
+      propertyLabel: 'bone (taxonomy)',
       filters: {
-        VocabularyZooSpecies,
+        VocabularyZooTaxonomy,
       },
     },
     'item.element': {

@@ -31,7 +31,7 @@ export const API_RESOURCE_MAP = {
   user: '/api/admin/users',
   vocZooBone: '/api/vocabulary/zoo/bones',
   vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
-  vocZooSpecies: '/api/vocabulary/zoo/species',
+  vocZooTaxonomy: '/api/vocabulary/zoo/taxonomy',
   zooBone: '/api/data/zoo/bones',
   zooBoneAnalysis: '/api/data/analyses/zoo/bones',
 } as const
