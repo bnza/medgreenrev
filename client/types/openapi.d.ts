@@ -6,46 +6,6 @@ import type { Iri } from '~~/types'
  */
 
 export interface paths {
-  '/api/vocabulary/analysis/types': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of AnalysisType resources.
-     * @description Retrieves the collection of AnalysisType resources.
-     */
-    get: operations['api_vocabularyanalysistypes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/analysis/types/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a AnalysisType resource.
-     * @description Retrieves a AnalysisType resource.
-     */
-    get: operations['api_vocabularyanalysistypes_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/contexts': {
     parameters: {
       query?: never
@@ -294,206 +254,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/context/types': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextType resources.
-     * @description Retrieves the collection of ContextType resources.
-     */
-    get: operations['api_vocabularycontexttypes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/context/types/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ContextType resource.
-     * @description Retrieves a ContextType resource.
-     */
-    get: operations['api_vocabularycontexttypes_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/cultural_contexts': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of CulturalContext resources.
-     * @description Retrieves the collection of CulturalContext resources.
-     */
-    get: operations['api_vocabularycultural_contexts_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/cultural_contexts/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a CulturalContext resource.
-     * @description Retrieves a CulturalContext resource.
-     */
-    get: operations['api_vocabularycultural_contexts_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/decorations': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Decoration resources.
-     * @description Retrieves the collection of Decoration resources.
-     */
-    get: operations['api_vocabularypotterydecorations_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/decorations/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a Decoration resource.
-     * @description Retrieves a Decoration resource.
-     */
-    get: operations['api_vocabularypotterydecorations_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/functional_forms': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of FunctionalForm resources.
-     * @description Retrieves the collection of FunctionalForm resources.
-     */
-    get: operations['api_vocabularypotteryfunctional_forms_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/functional_forms/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a FunctionalForm resource.
-     * @description Retrieves a FunctionalForm resource.
-     */
-    get: operations['api_vocabularypotteryfunctional_forms_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/functional_groups': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of FunctionalGroup resources.
-     * @description Retrieves the collection of FunctionalGroup resources.
-     */
-    get: operations['api_vocabularypotteryfunctional_groups_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/functional_groups/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a FunctionalGroup resource.
-     * @description Retrieves a FunctionalGroup resource.
-     */
-    get: operations['api_vocabularypotteryfunctional_groups_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/login': {
     parameters: {
       query?: never
@@ -646,46 +406,6 @@ export interface paths {
      * @description Retrieves the collection of MediaObjectStratigraphicUnit resources.
      */
     get: operations['api_datastratigraphic_units_parentIdmedia_objects_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/media_object/types': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of MediaObjectType resources.
-     * @description Retrieves the collection of MediaObjectType resources.
-     */
-    get: operations['api_vocabularymedia_objecttypes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/media_object/types/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a MediaObjectType resource.
-     * @description Retrieves a MediaObjectType resource.
-     */
-    get: operations['api_vocabularymedia_objecttypes_id_get']
     put?: never
     post?: never
     delete?: never
@@ -1038,86 +758,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/sample/types': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SampleType resources.
-     * @description Retrieves the collection of SampleType resources.
-     */
-    get: operations['api_vocabularysampletypes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/sample/types/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a SampleType resource.
-     * @description Retrieves a SampleType resource.
-     */
-    get: operations['api_vocabularysampletypes_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/shapes': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Shape resources.
-     * @description Retrieves the collection of Shape resources.
-     */
-    get: operations['api_vocabularypotteryshapes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/shapes/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a Shape resource.
-     * @description Retrieves a Shape resource.
-     */
-    get: operations['api_vocabularypotteryshapes_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/sites': {
     parameters: {
       query?: never
@@ -1434,46 +1074,6 @@ export interface paths {
     patch: operations['api_datastratigraphic_units_id_patch']
     trace?: never
   }
-  '/api/vocabulary/stratigraphic_unit/relationships': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of StratigraphicUnitRelation resources.
-     * @description Retrieves the collection of StratigraphicUnitRelation resources.
-     */
-    get: operations['api_vocabularystratigraphic_unitrelationships_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/stratigraphic_unit/relationships/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a StratigraphicUnitRelation resource.
-     * @description Retrieves a StratigraphicUnitRelation resource.
-     */
-    get: operations['api_vocabularystratigraphic_unitrelationships_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/stratigraphic_unit_relationships': {
     parameters: {
       query?: never
@@ -1534,46 +1134,6 @@ export interface paths {
      * @description Retrieves the collection of StratigraphicUnitRelationship resources.
      */
     get: operations['api_datastratigraphic_units_parentIdrelationships_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/surface_treatments': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SurfaceTreatment resources.
-     * @description Retrieves the collection of SurfaceTreatment resources.
-     */
-    get: operations['api_vocabularypotterysurface_treatments_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/pottery/surface_treatments/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a SurfaceTreatment resource.
-     * @description Retrieves a SurfaceTreatment resource.
-     */
-    get: operations['api_vocabularypotterysurface_treatments_id_get']
     put?: never
     post?: never
     delete?: never
@@ -1954,6 +1514,446 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/analysis/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocAnalysisType resources.
+     * @description Retrieves the collection of VocAnalysisType resources.
+     */
+    get: operations['api_vocabularyanalysistypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/analysis/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocAnalysisType resource.
+     * @description Retrieves a VocAnalysisType resource.
+     */
+    get: operations['api_vocabularyanalysistypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/context/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocContextType resources.
+     * @description Retrieves the collection of VocContextType resources.
+     */
+    get: operations['api_vocabularycontexttypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/context/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocContextType resource.
+     * @description Retrieves a VocContextType resource.
+     */
+    get: operations['api_vocabularycontexttypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/cultural_contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocCulturalContext resources.
+     * @description Retrieves the collection of VocCulturalContext resources.
+     */
+    get: operations['api_vocabularycultural_contexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/cultural_contexts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocCulturalContext resource.
+     * @description Retrieves a VocCulturalContext resource.
+     */
+    get: operations['api_vocabularycultural_contexts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/media_object/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocMediaObjectType resources.
+     * @description Retrieves the collection of VocMediaObjectType resources.
+     */
+    get: operations['api_vocabularymedia_objecttypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/media_object/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocMediaObjectType resource.
+     * @description Retrieves a VocMediaObjectType resource.
+     */
+    get: operations['api_vocabularymedia_objecttypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/decorations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocPotteryDecoration resources.
+     * @description Retrieves the collection of VocPotteryDecoration resources.
+     */
+    get: operations['api_vocabularypotterydecorations_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/decorations/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocPotteryDecoration resource.
+     * @description Retrieves a VocPotteryDecoration resource.
+     */
+    get: operations['api_vocabularypotterydecorations_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/functional_forms': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocPotteryFunctionalForm resources.
+     * @description Retrieves the collection of VocPotteryFunctionalForm resources.
+     */
+    get: operations['api_vocabularypotteryfunctional_forms_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/functional_forms/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocPotteryFunctionalForm resource.
+     * @description Retrieves a VocPotteryFunctionalForm resource.
+     */
+    get: operations['api_vocabularypotteryfunctional_forms_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/functional_groups': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocPotteryFunctionalGroup resources.
+     * @description Retrieves the collection of VocPotteryFunctionalGroup resources.
+     */
+    get: operations['api_vocabularypotteryfunctional_groups_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/functional_groups/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocPotteryFunctionalGroup resource.
+     * @description Retrieves a VocPotteryFunctionalGroup resource.
+     */
+    get: operations['api_vocabularypotteryfunctional_groups_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/shapes': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocPotteryShape resources.
+     * @description Retrieves the collection of VocPotteryShape resources.
+     */
+    get: operations['api_vocabularypotteryshapes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/shapes/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocPotteryShape resource.
+     * @description Retrieves a VocPotteryShape resource.
+     */
+    get: operations['api_vocabularypotteryshapes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/surface_treatments': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocPotterySurfaceTreatment resources.
+     * @description Retrieves the collection of VocPotterySurfaceTreatment resources.
+     */
+    get: operations['api_vocabularypotterysurface_treatments_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/pottery/surface_treatments/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocPotterySurfaceTreatment resource.
+     * @description Retrieves a VocPotterySurfaceTreatment resource.
+     */
+    get: operations['api_vocabularypotterysurface_treatments_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/sample/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocSampleType resources.
+     * @description Retrieves the collection of VocSampleType resources.
+     */
+    get: operations['api_vocabularysampletypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/sample/types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocSampleType resource.
+     * @description Retrieves a VocSampleType resource.
+     */
+    get: operations['api_vocabularysampletypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/stratigraphic_unit/relationships': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocStratigraphicUnitRelation resources.
+     * @description Retrieves the collection of VocStratigraphicUnitRelation resources.
+     */
+    get: operations['api_vocabularystratigraphic_unitrelationships_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/stratigraphic_unit/relationships/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocStratigraphicUnitRelation resource.
+     * @description Retrieves a VocStratigraphicUnitRelation resource.
+     */
+    get: operations['api_vocabularystratigraphic_unitrelationships_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/zoo/bones': {
     parameters: {
       query?: never
@@ -2222,22 +2222,6 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
-    'AnalysisType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      group?: string
-      value?: string
-    }
     /** @description Unprocessable entity */
     'ConstraintViolation-json': {
       /**
@@ -2288,7 +2272,7 @@ export interface components {
     }
     'Context-context.acl.read': {
       readonly id?: number & string
-      type?: components['schemas']['ContextType-context.acl.read']
+      type?: components['schemas']['VocContextType-context.acl.read']
       site?: components['schemas']['Site-context.acl.read']
       name?: string
       description?: string | null
@@ -2309,13 +2293,13 @@ export interface components {
     }
     'Context-context_stratigraphic_unit.acl.read': {
       readonly id?: number & string
-      type?: components['schemas']['ContextType-context_stratigraphic_unit.acl.read']
+      type?: components['schemas']['VocContextType-context_stratigraphic_unit.acl.read']
       site?: components['schemas']['Site-context_stratigraphic_unit.acl.read']
       name?: string
     }
     'Context-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
       readonly id?: number & string
-      type?: components['schemas']['ContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      type?: components['schemas']['VocContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       site?: components['schemas']['Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
@@ -2333,7 +2317,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context.acl.read']
+      type?: components['schemas']['VocContextType.jsonld-context.acl.read']
       site?: components['schemas']['Site.jsonld-context.acl.read']
       name?: string
       description?: string | null
@@ -2365,7 +2349,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context_sample.contexts.acl.read_context.acl.read']
+      type?: components['schemas']['VocContextType.jsonld-context_sample.contexts.acl.read_context.acl.read']
       site?: components['schemas']['Site.jsonld-context_sample.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
@@ -2383,7 +2367,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      type?: components['schemas']['VocContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
       site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
       name?: string
       description?: string | null
@@ -2401,7 +2385,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context_stratigraphic_unit.acl.read']
+      type?: components['schemas']['VocContextType.jsonld-context_stratigraphic_unit.acl.read']
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
     }
@@ -2418,7 +2402,7 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['ContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      type?: components['schemas']['VocContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
@@ -2555,139 +2539,6 @@ export interface components {
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
-    'ContextType-context.acl.read': {
-      group?: string
-      value?: string
-    }
-    'ContextType-context_stratigraphic_unit.acl.read': {
-      group?: string
-      value?: string
-    }
-    'ContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      group?: string
-      value?: string
-    }
-    'ContextType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      group?: string
-      value?: string
-    }
-    'ContextType.jsonld-context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'ContextType.jsonld-context_sample.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'ContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'ContextType.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'ContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'CulturalContext.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      id?: number
-      value?: string
-    }
-    'Decoration.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      value?: string
-    }
     /** @description A representation of common errors. */
     Error: {
       /** @description A short, human-readable summary of the problem. */
@@ -2731,36 +2582,6 @@ export interface components {
       /** @description A URI reference that identifies the problem type */
       readonly type?: string
       readonly description?: string | null
-    }
-    'FunctionalForm.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      value?: string
-    }
-    'FunctionalGroup.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      value?: string
     }
     'MediaObject-media_object.update': {
       /**
@@ -2916,22 +2737,6 @@ export interface components {
        */
       mediaObject?: string
       description?: string | null
-    }
-    'MediaObjectType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      group?: string
-      value?: string
     }
     'Pottery-pottery.acl.read': {
       readonly id?: number & string
@@ -3264,7 +3069,7 @@ export interface components {
     'Sample-context_sample.samples.acl.read_sample.acl.read': {
       readonly id?: number & string
       site?: components['schemas']['Site-context_sample.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['SampleType-context_sample.samples.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType-context_sample.samples.acl.read_sample.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3277,7 +3082,7 @@ export interface components {
     'Sample-sample.acl.read': {
       readonly id?: number & string
       site?: components['schemas']['Site-sample.acl.read']
-      type?: components['schemas']['SampleType-sample.acl.read']
+      type?: components['schemas']['VocSampleType-sample.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3290,7 +3095,7 @@ export interface components {
     'Sample-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number & string
       site?: components['schemas']['Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      type?: components['schemas']['SampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      type?: components['schemas']['VocSampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3303,7 +3108,7 @@ export interface components {
     'Sample-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       readonly id?: number & string
       site?: components['schemas']['Site-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['SampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3350,7 +3155,7 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-      type?: components['schemas']['SampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3374,7 +3179,7 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-context_sample.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['SampleType.jsonld-context_sample.samples.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-context_sample.samples.acl.read_sample.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3398,7 +3203,7 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample.acl.read']
-      type?: components['schemas']['SampleType.jsonld-sample.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-sample.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3422,7 +3227,7 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      type?: components['schemas']['SampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3446,7 +3251,7 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['SampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /**
        * @default 0
        * @example 0
@@ -3509,128 +3314,6 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-    }
-    'SampleType-context_sample.samples.acl.read_sample.acl.read': {
-      code?: string
-      value?: string
-    }
-    'SampleType-sample.acl.read': {
-      code?: string
-      value?: string
-    }
-    'SampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      code?: string
-      value?: string
-    }
-    'SampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      code?: string
-      value?: string
-    }
-    'SampleType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      code?: string
-      value?: string
-    }
-    'SampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      value?: string
-    }
-    'SampleType.jsonld-context_sample.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      value?: string
-    }
-    'SampleType.jsonld-sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      value?: string
-    }
-    'SampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      value?: string
-    }
-    'SampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      value?: string
-    }
-    'Shape.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      value?: string
     }
     'Site-context.acl.read': {
       code?: string
@@ -4335,27 +4018,6 @@ export interface components {
       site?: components['schemas']['Site.jsonld-zoo_bone.acl.read']
       readonly code: string
     }
-    'StratigraphicUnitRelation.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      id?: string
-      value?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      invertedBy?: string | null
-      description?: string | null
-    }
     'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': {
       readonly '@context'?:
         | string
@@ -4392,21 +4054,6 @@ export interface components {
        * @example https://example.com/
        */
       rgtStratigraphicUnit: string
-    }
-    'SurfaceTreatment.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number
-      value?: string
     }
     'UniqueValidator.jsonld': {
       readonly '@context'?:
@@ -4581,6 +4228,360 @@ export interface components {
       readonly sitePrivileges?: {
         [key: string]: number
       }
+    }
+    'VocAnalysisType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      group?: string
+      value?: string
+    }
+    'VocContextType-context.acl.read': {
+      group?: string
+      value?: string
+    }
+    'VocContextType-context_stratigraphic_unit.acl.read': {
+      group?: string
+      value?: string
+    }
+    'VocContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld-context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld-context_sample.contexts.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld-context_stratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      group?: string
+      value?: string
+    }
+    /** @description Cultural context vocabulary. */
+    'VocCulturalContext.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      id?: number
+      value?: string
+    }
+    'VocMediaObjectType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      group?: string
+      value?: string
+    }
+    'VocPotteryDecoration.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      value?: string
+    }
+    'VocPotteryFunctionalForm.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      value?: string
+    }
+    'VocPotteryFunctionalGroup.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      value?: string
+    }
+    'VocPotteryShape.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      value?: string
+    }
+    'VocPotterySurfaceTreatment.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      value?: string
+    }
+    'VocSampleType-context_sample.samples.acl.read_sample.acl.read': {
+      code?: string
+      value?: string
+    }
+    'VocSampleType-sample.acl.read': {
+      code?: string
+      value?: string
+    }
+    'VocSampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      code?: string
+      value?: string
+    }
+    'VocSampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      code?: string
+      value?: string
+    }
+    'VocSampleType.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      code?: string
+      value?: string
+    }
+    'VocSampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      value?: string
+    }
+    'VocSampleType.jsonld-context_sample.samples.acl.read_sample.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      value?: string
+    }
+    'VocSampleType.jsonld-sample.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      value?: string
+    }
+    'VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      value?: string
+    }
+    'VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      value?: string
+    }
+    'VocStratigraphicUnitRelation.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      id?: string
+      value?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      invertedBy?: string | null
+      description?: string | null
     }
     'VocZooBone.jsonld': {
       readonly '@id': Iri
@@ -4819,98 +4820,6 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
-  api_vocabularyanalysistypes_get_collection: {
-    parameters: {
-      query?: {
-        /** @description Search case insensitive match across group and value fields */
-        search?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description AnalysisType collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularyanalysistypes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description AnalysisType identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description AnalysisType resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['AnalysisType.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_datacontexts_get_collection: {
     parameters: {
       query?: {
@@ -6007,462 +5916,6 @@ export interface operations {
       }
     }
   }
-  api_vocabularycontexttypes_get_collection: {
-    parameters: {
-      query?: {
-        /** @description Search case insensitive match across group and value fields */
-        search?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextType collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularycontexttypes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextType identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextType resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextType.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_vocabularycultural_contexts_get_collection: {
-    parameters: {
-      query?: {
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        value?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description CulturalContext collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['CulturalContext.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularycultural_contexts_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description CulturalContext identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description CulturalContext resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['CulturalContext.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_vocabularypotterydecorations_get_collection: {
-    parameters: {
-      query?: {
-        value?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Decoration collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['Decoration.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularypotterydecorations_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description Decoration identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Decoration resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Decoration.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_vocabularypotteryfunctional_forms_get_collection: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description FunctionalForm collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['FunctionalForm.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularypotteryfunctional_forms_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description FunctionalForm identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description FunctionalForm resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['FunctionalForm.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_vocabularypotteryfunctional_groups_get_collection: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description FunctionalGroup collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['FunctionalGroup.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularypotteryfunctional_groups_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description FunctionalGroup identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description FunctionalGroup resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['FunctionalGroup.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   login_check_post: {
     parameters: {
       query?: never
@@ -7112,98 +6565,6 @@ export interface operations {
               }[]
             }
           }
-        }
-      }
-    }
-  }
-  api_vocabularymedia_objecttypes_get_collection: {
-    parameters: {
-      query?: {
-        /** @description Search case insensitive match across group and value fields */
-        search?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description MediaObjectType collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['MediaObjectType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularymedia_objecttypes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description MediaObjectType identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description MediaObjectType resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['MediaObjectType.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -8929,190 +8290,6 @@ export interface operations {
       }
     }
   }
-  api_vocabularysampletypes_get_collection: {
-    parameters: {
-      query?: {
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        value?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SampleType collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['SampleType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularysampletypes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SampleType identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SampleType resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SampleType.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_vocabularypotteryshapes_get_collection: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Shape collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['Shape.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularypotteryshapes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description Shape identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Shape resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Shape.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_datasites_get_collection: {
     parameters: {
       query?: {
@@ -10548,95 +9725,6 @@ export interface operations {
       }
     }
   }
-  api_vocabularystratigraphic_unitrelationships_get_collection: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description StratigraphicUnitRelation collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['StratigraphicUnitRelation.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularystratigraphic_unitrelationships_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description StratigraphicUnitRelation identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description StratigraphicUnitRelation resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['StratigraphicUnitRelation.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_datastratigraphic_unit_relationships_get_collection: {
     parameters: {
       query?: {
@@ -10875,97 +9963,6 @@ export interface operations {
               }[]
             }
           }
-        }
-      }
-    }
-  }
-  api_vocabularypotterysurface_treatments_get_collection: {
-    parameters: {
-      query?: {
-        value?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SurfaceTreatment collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['SurfaceTreatment.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_vocabularypotterysurface_treatments_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SurfaceTreatment identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SurfaceTreatment resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SurfaceTreatment.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -11904,6 +10901,1010 @@ export interface operations {
       }
     }
   }
+  api_vocabularyanalysistypes_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Search case insensitive match across group and value fields */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocAnalysisType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocAnalysisType.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyanalysistypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocAnalysisType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocAnalysisType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocAnalysisType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularycontexttypes_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Search case insensitive match across group and value fields */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocContextType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocContextType.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularycontexttypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocContextType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocContextType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocContextType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularycultural_contexts_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocCulturalContext collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocCulturalContext.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularycultural_contexts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocCulturalContext identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocCulturalContext resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocCulturalContext.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularymedia_objecttypes_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Search case insensitive match across group and value fields */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocMediaObjectType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocMediaObjectType.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularymedia_objecttypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocMediaObjectType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocMediaObjectType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocMediaObjectType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularypotterydecorations_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryDecoration collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocPotteryDecoration.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotterydecorations_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocPotteryDecoration identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryDecoration resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocPotteryDecoration.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularypotteryfunctional_forms_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryFunctionalForm collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocPotteryFunctionalForm.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotteryfunctional_forms_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocPotteryFunctionalForm identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryFunctionalForm resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocPotteryFunctionalForm.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularypotteryfunctional_groups_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryFunctionalGroup collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocPotteryFunctionalGroup.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotteryfunctional_groups_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocPotteryFunctionalGroup identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryFunctionalGroup resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocPotteryFunctionalGroup.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularypotteryshapes_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryShape collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocPotteryShape.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotteryshapes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocPotteryShape identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotteryShape resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocPotteryShape.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularypotterysurface_treatments_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotterySurfaceTreatment collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocPotterySurfaceTreatment.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularypotterysurface_treatments_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocPotterySurfaceTreatment identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocPotterySurfaceTreatment resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocPotterySurfaceTreatment.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularysampletypes_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocSampleType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocSampleType.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularysampletypes_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocSampleType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocSampleType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocSampleType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularystratigraphic_unitrelationships_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocStratigraphicUnitRelation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocStratigraphicUnitRelation.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularystratigraphic_unitrelationships_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocStratigraphicUnitRelation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocStratigraphicUnitRelation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocStratigraphicUnitRelation.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularyzoobones_get_collection: {
     parameters: {
       query?: never
@@ -12180,6 +12181,10 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
@@ -12192,12 +12197,19 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
         element?: string
         'element[]'?: string[]
         part?: string
         'part[]'?: string[]
         side?: string
         'side[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
@@ -12286,6 +12298,10 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
@@ -12298,12 +12314,19 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
         element?: string
         'element[]'?: string[]
         part?: string
         'part[]'?: string[]
         side?: string
         'side[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
