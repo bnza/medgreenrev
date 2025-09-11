@@ -5,6 +5,8 @@ export const API_RESOURCE_MAP = {
   context: '/api/data/contexts',
   contextSample: '/api/data/context_samples',
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',
+  contextZooAnalysis: '/api/data/analyses/contexts/zoo',
+  contextZooAnalysisTaxonomy: '/api/data/context_zoo_analysis_taxonomies',
   mediaObject: '/api/data/media_objects',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
   pottery: '/api/data/potteries',
@@ -32,7 +34,7 @@ export const API_RESOURCE_MAP = {
     '/api/vocabulary/stratigraphic_unit/relationships',
   vocZooBone: '/api/vocabulary/zoo/bones',
   vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
-  vocZooTaxonomy: '/api/vocabulary/zoo/taxonomy',
+  vocZooTaxonomy: '/api/vocabulary/zoo/taxonomies',
   zooBone: '/api/data/zoo/bones',
   zooBoneAnalysis: '/api/data/analyses/zoo/bones',
 } as const

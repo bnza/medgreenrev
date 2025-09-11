@@ -1,8 +1,9 @@
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
+import context from './data/context'
 import * as contextSample from './data/contextSample'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
-import context from './data/context'
+import contextZooAnalysis from './data/contextZooAnalysis'
 import mediaObject from './data/mediaObject'
 import pottery from './data/pottery'
 import potteryAnalysis from './data/potteryAnalysis'
@@ -16,6 +17,7 @@ import zooBoneAnalysis from './data/zooBoneAnalysis'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
+  '/api/data/analyses/contexts/zoo': contextZooAnalysis,
   '/api/data/analyses/potteries': potteryAnalysis,
   '/api/data/analyses/zoo/bones': zooBoneAnalysis,
   '/api/data/context_samples': contextSample.config,
@@ -23,6 +25,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/media_objects': mediaObject,
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/contexts': context,
+  '/contexts/{parentId}/analyses/zoo': contextZooAnalysis,
   '/api/data/contexts/{parentId}/samples':
     contextSample.sampleSubResourceConfig,
   '/api/data/contexts/{parentId}/stratigraphic_units':

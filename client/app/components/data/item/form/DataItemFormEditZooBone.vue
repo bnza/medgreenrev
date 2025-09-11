@@ -40,7 +40,7 @@ defineEmits<{
       <v-col cols="12" md="6">
         <data-autocomplete
           v-model="item.taxonomy"
-          path="/api/vocabulary/zoo/taxonomy"
+          path="/api/vocabulary/zoo/taxonomies"
           item-title="scientificName"
           label="species"
           :error-messages="errors?.taxonomy"

@@ -22,7 +22,9 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const vocabularyZooTaxonomy = useVocabularyStore('/api/vocabulary/zoo/taxonomy')
+const vocabularyZooTaxonomy = useVocabularyStore(
+  '/api/vocabulary/zoo/taxonomies',
+)
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 const vocabularyZooBoneParts = useVocabularyStore(
   '/api/vocabulary/zoo/bone_parts',

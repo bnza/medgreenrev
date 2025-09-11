@@ -175,7 +175,7 @@ const VocabularyZooTaxonomy: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
   componentKey: 'Vocabulary',
-  path: '/api/vocabulary/zoo/taxonomy',
+  path: '/api/vocabulary/zoo/taxonomies',
   addToQueryObject: addToQueryObjectArray,
 }
 

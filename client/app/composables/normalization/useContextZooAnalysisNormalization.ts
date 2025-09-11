@@ -2,22 +2,14 @@ import { diff } from 'deep-object-diff'
 
 export function useNormalization() {
   const onPreCreate = (item: any) => {
-    if ('chronologyLower' in item)
-      item.chronologyLower = Number(item.chronologyLower)
-    if ('chronologyUpper' in item)
-      item.chronologyUpper = Number(item.chronologyUpper)
     return item
   }
 
   const onPreUpdate =
     (oldItem: Record<string, any>) => (item: Record<string, any>) => {
       const diffItem = diff(oldItem, item)
-      if (
-        diffItem &&
-        'culturalContexts' in diffItem &&
-        'culturalContexts' in item
-      ) {
-        diffItem.culturalContexts = item.culturalContexts
+      if (diffItem && 'taxonomies' in diffItem && 'taxonomies' in item) {
+        diffItem.taxonomies = item.taxonomies
       }
       return diffItem
     }
