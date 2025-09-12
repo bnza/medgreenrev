@@ -9,7 +9,6 @@
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
-import DataItemInfoBoxSpanPottery from '~/components/data/item/info-box/span/DataItemInfoBoxSpanPottery.vue'
 
 const props = defineProps<{
   path: Path
@@ -18,7 +17,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/analyses/contexts/zoo/{id}'),
 )
@@ -62,7 +61,7 @@ const vocabularyAnalysisStore = useVocabularyStore(
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <!--      <data-dialog-search :path title="Pottery Analysis" />-->
+      <data-dialog-search :path :title="labels[0]" />
       <lazy-data-dialog-create-context-zoo-analysis
         :path
         :parent
