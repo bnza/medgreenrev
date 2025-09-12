@@ -4,17 +4,17 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data/analyses/zoo/bones' | '/api/data/zoo/bones/{parentId}/analyses'
+      '/api/data/analyses/zoo/teeth' | '/api/data/zoo/teeth/{parentId}/analyses'
     >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useZooBoneAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/useZooBoneAnalysisNormalization'
+import { useCreateValidation } from '~/composables/validation/useZooToothAnalysisValidation'
+import { useNormalization } from '~/composables/normalization/useZooToothAnalysisNormalization'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
+  parent?: ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)
@@ -37,7 +37,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-zoo-bone-analysis
+      <lazy-data-item-form-edit-zoo-tooth-analysis
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

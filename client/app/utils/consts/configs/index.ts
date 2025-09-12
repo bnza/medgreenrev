@@ -15,12 +15,14 @@ import user from './data/user'
 import zooBone from './data/zooBone'
 import zooBoneAnalysis from './data/zooBoneAnalysis'
 import zooTooth from './data/zooTooth'
+import zooToothAnalysis from './data/zooToothAnalysis'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/analyses/contexts/zoo': contextZooAnalysis,
   '/api/data/analyses/potteries': potteryAnalysis,
   '/api/data/analyses/zoo/bones': zooBoneAnalysis,
+  '/api/data/analyses/zoo/teeth': zooToothAnalysis,
   '/api/data/context_samples': contextSample.config,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/media_objects': mediaObject,
@@ -51,6 +53,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/zoo/bones': zooBone,
   '/api/data/zoo/bones/{parentId}/analyses': zooBoneAnalysis,
   '/api/data/zoo/teeth': zooTooth,
+  '/api/data/zoo/teeth/{parentId}/analyses': zooToothAnalysis,
 } as const
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>

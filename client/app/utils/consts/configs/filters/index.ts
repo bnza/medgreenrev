@@ -282,6 +282,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/contexts/zoo'
   | '/api/data/analyses/potteries'
   | '/api/data/analyses/zoo/bones'
+  | '/api/data/analyses/zoo/teeth'
   | '/api/data/media_objects'
   | '/api/data/contexts'
   | '/api/data/contexts/{parentId}/analyses/zoo'
@@ -297,6 +298,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/zoo/bones'
   | '/api/data/zoo/bones/{parentId}/analyses'
   | '/api/data/zoo/teeth'
+  | '/api/data/zoo/teeth/{parentId}/analyses'
 >
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
@@ -1023,6 +1025,103 @@ const zooBoneAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
     },
   }
 
+const zooToothAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    'item.stratigraphicUnit.site': {
+      propertyLabel: 'site',
+      filters: {
+        SiteEquals,
+      },
+    },
+    'item.stratigraphicUnit': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'item.stratigraphicUnit.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+    'item.stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+    'item.notes': {
+      propertyLabel: 'teeth (notes)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'item.species': {
+      propertyLabel: 'teeth (taxonomy)',
+      filters: {
+        VocabularyZooTaxonomy,
+      },
+    },
+    'item.element': {
+      propertyLabel: 'teeth (element)',
+      filters: {
+        VocabularyZooBone,
+      },
+    },
+    'item.connected': {
+      filters: {
+        SelectionZooBoneEndsPreserved,
+      },
+      propertyLabel: 'teeth (connected to jaw)',
+    },
+    'item.side': {
+      filters: {
+        SelectionZooBoneSide,
+      },
+    },
+    type: {
+      propertyLabel: 'analysis type',
+      filters: {
+        VocabularyAnalysisType,
+      },
+    },
+    'document.mimeType': {
+      propertyLabel: 'document mime type',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'rawData.mimeType': {
+      propertyLabel: 'raw data mime type',
+      filters: {
+        SearchPartial,
+      },
+    },
+    summary: {
+      propertyLabel: 'summary',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    document: {
+      propertyLabel: 'document',
+      filters: {
+        Exists,
+      },
+    },
+    rawData: {
+      propertyLabel: 'raw data',
+      filters: {
+        Exists,
+      },
+    },
+  }
+
 export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
@@ -1031,6 +1130,7 @@ export const FILTERS_PATHS_MAP: Record<
     contextZooAnalysisStaticFiltersDefinitionObject,
   '/api/data/analyses/potteries': potteryAnalysisStaticFiltersDefinitionObject,
   '/api/data/analyses/zoo/bones': zooBoneAnalysisStaticFiltersDefinitionObject,
+  '/api/data/analyses/zoo/teeth': zooToothAnalysisStaticFiltersDefinitionObject,
   '/api/data/contexts': contextStaticFiltersDefinition,
   '/api/data/contexts/{parentId}/analyses/zoo':
     contextZooAnalysisStaticFiltersDefinitionObject,
@@ -1053,4 +1153,6 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/zoo/bones/{parentId}/analyses':
     zooBoneAnalysisStaticFiltersDefinitionObject,
   '/api/data/zoo/teeth': zooToothStaticFiltersDefinitionObject,
+  '/api/data/zoo/teeth/{parentId}/analyses':
+    zooToothAnalysisStaticFiltersDefinitionObject,
 } as const

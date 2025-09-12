@@ -2402,6 +2402,78 @@ export interface paths {
     patch: operations['api_datazooteeth_id_patch']
     trace?: never
   }
+  '/api/data/analyses/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooToothAnalysis resources.
+     * @description Retrieves the collection of ZooToothAnalysis resources.
+     */
+    get: operations['api_dataanalyseszooteeth_get_collection']
+    put?: never
+    /**
+     * Creates a ZooToothAnalysis resource.
+     * @description Creates a ZooToothAnalysis resource.
+     */
+    post: operations['api_dataanalyseszooteeth_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/zoo/teeth/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooToothAnalysis resource.
+     * @description Retrieves a ZooToothAnalysis resource.
+     */
+    get: operations['api_dataanalyseszooteeth_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the ZooToothAnalysis resource.
+     * @description Removes the ZooToothAnalysis resource.
+     */
+    delete: operations['api_dataanalyseszooteeth_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the ZooToothAnalysis resource.
+     * @description Updates the ZooToothAnalysis resource.
+     */
+    patch: operations['api_dataanalyseszooteeth_id_patch']
+    trace?: never
+  }
+  '/api/data/zoo/teeth/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooToothAnalysis resources.
+     * @description Retrieves the collection of ZooToothAnalysis resources.
+     */
+    get: operations['api_datazooteeth_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -3030,6 +3102,30 @@ export interface components {
       readonly contentThumbnailUrl?: string | null
     }
     'MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      readonly contentThumbnailUrl?: string | null
+    }
+    'MediaObject.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read': {
       readonly '@context'?:
         | string
         | ({
@@ -5065,7 +5161,6 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
-      readonly code?: string
     }
     'ZooBone.jsonld-zoo_bone.acl.read': {
       readonly '@context'?:
@@ -5126,7 +5221,6 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
-      readonly code?: string
     }
     'ZooBone.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
       readonly '@context'?:
@@ -5237,7 +5331,6 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
-      readonly code?: string
     }
     'ZooTooth.jsonld-zoo_tooth.acl.read': {
       readonly '@context'?:
@@ -5288,7 +5381,95 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+    }
+    'ZooTooth.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
       readonly code?: string
+    }
+    ZooToothAnalysis: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      document?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rawData?: string | null
+      summary?: string | null
+    }
+    'ZooToothAnalysis.jsonld': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      document?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      rawData?: string | null
+      summary?: string | null
+    }
+    'ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      item?: components['schemas']['ZooTooth.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      document?:
+        | components['schemas']['MediaObject.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
+        | null
+      rawData?:
+        | components['schemas']['MediaObject.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
+        | null
+      summary?: string | null
     }
   }
   responses: never
@@ -12913,7 +13094,13 @@ export interface operations {
   }
   api_vocabularyzoobones_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /**
+         * @description Filter by teeth - when true, shows only items with code MAX or N
+         * @example true
+         */
+        teeth?: string
+      }
       header?: never
       path?: never
       cookie?: never
@@ -14375,6 +14562,373 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.stratigraphicUnit.site'?: string
+        'item.stratigraphicUnit.site[]'?: string[]
+        'item.stratigraphicUnit'?: string
+        'item.stratigraphicUnit[]'?: string[]
+        'item.element'?: string
+        'item.element[]'?: string[]
+        'item.side'?: string
+        'item.side[]'?: string[]
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'rawData.mimeType'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[document]'?: boolean
+        'exists[rawData]'?: boolean
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooToothAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new ZooToothAnalysis resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld']
+      }
+    }
+    responses: {
+      /** @description ZooToothAnalysis resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooToothAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooToothAnalysis resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooToothAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooToothAnalysis resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooToothAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated ZooToothAnalysis resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['ZooToothAnalysis']
+      }
+    }
+    responses: {
+      /** @description ZooToothAnalysis resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datazooteeth_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.stratigraphicUnit.site'?: string
+        'item.stratigraphicUnit.site[]'?: string[]
+        'item.stratigraphicUnit'?: string
+        'item.stratigraphicUnit[]'?: string[]
+        'item.element'?: string
+        'item.element[]'?: string[]
+        'item.side'?: string
+        'item.side[]'?: string[]
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'rawData.mimeType'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[document]'?: boolean
+        'exists[rawData]'?: boolean
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description ZooToothAnalysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooToothAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }

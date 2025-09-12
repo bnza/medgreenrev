@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useUpdateValidation } from '~/composables/validation/useZooBoneAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/useZooBoneAnalysisNormalization'
+import { useUpdateValidation } from '~/composables/validation/useZooToothAnalysisValidation'
+import { useNormalization } from '~/composables/normalization/useZooToothAnalysisNormalization'
 
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/analyses/zoo/bones/{id}'),
+  useResourceUpdateDialogStore('/api/data/analyses/zoo/teeth/{id}'),
 )
 const { r$, item } = useUpdateValidation(updateDialogState)
 
@@ -17,13 +17,13 @@ defineEmits<{
 <template>
   <data-dialog-update
     v-model:regle="r$"
-    path="/api/data/analyses/zoo/bones/{id}"
-    title="Animal bones Analysis"
+    path="/api/data/analyses/zoo/teeth/{id}"
+    title="Animal teeth analysis"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-zoo-bone-analysis
+      <lazy-data-item-form-edit-zoo-tooth-analysis
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

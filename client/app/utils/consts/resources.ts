@@ -38,6 +38,7 @@ export const API_RESOURCE_MAP = {
   zooBone: '/api/data/zoo/bones',
   zooBoneAnalysis: '/api/data/analyses/zoo/bones',
   zooTooth: '/api/data/zoo/teeth',
+  zooToothAnalysis: '/api/data/analyses/zoo/teeth',
 } as const
 
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP
