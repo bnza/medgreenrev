@@ -2330,6 +2330,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/stratigraphic_units/{parentId}/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooTooth resources.
+     * @description Retrieves the collection of ZooTooth resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdzooteeth_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooTooth resources.
+     * @description Retrieves the collection of ZooTooth resources.
+     */
+    get: operations['api_datazooteeth_get_collection']
+    put?: never
+    /**
+     * Creates a ZooTooth resource.
+     * @description Creates a ZooTooth resource.
+     */
+    post: operations['api_datazooteeth_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/zoo/teeth/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooTooth resource.
+     * @description Retrieves a ZooTooth resource.
+     */
+    get: operations['api_datazooteeth_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the ZooTooth resource.
+     * @description Removes the ZooTooth resource.
+     */
+    delete: operations['api_datazooteeth_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the ZooTooth resource.
+     * @description Updates the ZooTooth resource.
+     */
+    patch: operations['api_datazooteeth_id_patch']
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -2692,8 +2764,7 @@ export interface components {
        */
       rawData?: string | null
       summary?: string | null
-      readonly taxonomies?: string[]
-      culturalContexts?: Record<string, never> | string[]
+      taxonomies?: string[]
     }
     'ContextZooAnalysis.jsonld': {
       readonly id?: number & string
@@ -2718,8 +2789,7 @@ export interface components {
        */
       rawData?: string | null
       summary?: string | null
-      readonly taxonomies?: string[]
-      culturalContexts?: Record<string, never> | string[]
+      taxonomies?: string[]
     }
     'ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
       readonly '@context'?:
@@ -2747,7 +2817,7 @@ export interface components {
         | components['schemas']['MediaObject.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
         | null
       summary?: string | null
-      readonly taxonomies?: components['schemas']['ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read'][]
+      taxonomies?: components['schemas']['ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read'][]
     }
     'ContextZooAnalysisTaxonomy.jsonld': {
       readonly '@id': Iri
@@ -3956,6 +4026,21 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-zoo_tooth.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
     'SiteCulturalContext-site.acl.read': {
       /**
        * Format: iri-reference
@@ -4307,6 +4392,21 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       site?: components['schemas']['Site.jsonld-zoo_bone.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-zoo_tooth.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-zoo_tooth.acl.read']
       readonly code: string
     }
     'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': {
@@ -5116,6 +5216,79 @@ export interface components {
         | components['schemas']['MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
         | null
       summary?: string | null
+    }
+    'ZooTooth-zoo_tooth.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element: string | null
+      connected?: boolean
+      /** @enum {string|null} */
+      side?: 'L' | 'R' | '?' | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'ZooTooth.jsonld-zoo_tooth.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_tooth.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      connected?: boolean
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'ZooTooth.jsonld-zoo_tooth.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element: string | null
+      connected?: boolean
+      /** @enum {string|null} */
+      side?: 'L' | 'R' | '?' | null
+      notes?: string | null
+      readonly code?: string
     }
   }
   responses: never
@@ -6229,6 +6402,63 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[item.site.code]'?: 'asc' | 'desc'
+        'order[item.name]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.site'?: string
+        'item.site[]'?: string[]
+        'item.type'?: string
+        'item.type[]'?: string[]
+        'item.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'item.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'item.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'rawData.mimeType'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[summary]'?: boolean
+        'exists[item.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'item.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'item.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
       }
       header?: never
       path?: never
@@ -6485,6 +6715,63 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[item.site.code]'?: 'asc' | 'desc'
+        'order[item.name]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[document.mimeType]'?: 'asc' | 'desc'
+        'order[rawData.mimeType]'?: 'asc' | 'desc'
+        'item.site'?: string
+        'item.site[]'?: string[]
+        'item.type'?: string
+        'item.type[]'?: string[]
+        'item.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'item.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'item.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        type?: string
+        'type[]'?: string[]
+        'document.mimeType'?: string
+        'rawData.mimeType'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'item.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[summary]'?: boolean
+        'exists[item.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'item.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'item.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
       }
       header?: never
       path: {
@@ -13685,6 +13972,409 @@ export interface operations {
               }[]
             }
           }
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdzooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[connected]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        side?: string
+        'side[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        connected?: boolean
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description ZooTooth identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datazooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[connected]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        side?: string
+        'side[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        connected?: boolean
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datazooteeth_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new ZooTooth resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.create']
+      }
+    }
+    responses: {
+      /** @description ZooTooth resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datazooteeth_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datazooteeth_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datazooteeth_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated ZooTooth resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['ZooTooth-zoo_tooth.create']
+      }
+    }
+    responses: {
+      /** @description ZooTooth resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
         }
       }
     }

@@ -14,6 +14,7 @@ import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import zooBone from './data/zooBone'
 import zooBoneAnalysis from './data/zooBoneAnalysis'
+import zooTooth from './data/zooTooth'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
@@ -43,10 +44,13 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/stratigraphic_units': stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/contexts':
     contextStratigraphicUnit.contextSubResourceConfig,
+  '/api/data/stratigraphic_units/{parentId}/zoo/bones': zooBone,
+  '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
   '/api/data/zoo/bones': zooBone,
   '/api/data/zoo/bones/{parentId}/analyses': zooBoneAnalysis,
+  '/api/data/zoo/teeth': zooTooth,
 } as const
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>

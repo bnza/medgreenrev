@@ -4,8 +4,8 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      | '/api/data/zoo/bones'
-      | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
+      | '/api/data/zoo/teeth'
+      | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
     >
   "
 >
@@ -26,27 +26,13 @@ const vocabularyZooTaxonomy = useVocabularyStore(
   '/api/vocabulary/zoo/taxonomies',
 )
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
-const vocabularyZooBoneParts = useVocabularyStore(
-  '/api/vocabulary/zoo/bone_parts',
-)
-
-const stringifyEndPreserved = (value: number | null | undefined) => {
-  if (!value) {
-    return value
-  }
-  const parts = []
-  if (value & 0b01) parts.push('D') // Distal
-  if (value & 0b10) parts.push('P') // Proximal
-
-  return parts.join(' + ')
-}
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/zoo/bones/{id}'),
+  useResourceDeleteDialogStore('/api/data/zoo/teeth/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/zoo/bones/{id}'),
+  useResourceUpdateDialogStore('/api/data/zoo/teeth/{id}'),
 )
 </script>
 
@@ -88,19 +74,16 @@ const { updateDialogState } = storeToRefs(
     <template #[`item.element.value`]="{ item }">
       {{ vocabularyZooBones.getValue(item.element) }}
     </template>
-    <template #[`item.part.value`]="{ item }">
-      {{ vocabularyZooBoneParts.getValue(item.part) }}
-    </template>
-    <template #[`item.endsPreserved`]="{ item }">
-      {{ stringifyEndPreserved(item.endsPreserved) }}
+    <template #[`item.connected`]="{ item }">
+      {{ item.connected ? 'jaw' : 'loose' }}
     </template>
 
     <template #dialogs="{ refetch }">
       <!--          <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
-      <data-dialog-search :path title="Zooarchaeology (bones)" />
-      <data-dialog-create-zoo-bone :path :parent @refresh="refetch()" />
-      <data-dialog-delete-zoo-bone @refresh="refetch()" />
-      <data-dialog-update-zoo-bone @refresh="refetch()" />
+      <data-dialog-search :path title="Zooarchaeology (teeth)" />
+      <data-dialog-create-zoo-tooth :path :parent @refresh="refetch()" />
+      <data-dialog-delete-zoo-tooth @refresh="refetch()" />
+      <data-dialog-update-zoo-tooth @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

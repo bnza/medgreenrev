@@ -4,14 +4,14 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      | '/api/data/zoo/bones'
-      | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
+      | '/api/data/zoo/teeth'
+      | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
     >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useZooBoneValidation'
-import { useNormalization } from '~/composables/normalization/useZooBoneNormalization'
+import { useCreateValidation } from '~/composables/validation/useZooToothValidation'
+import { useNormalization } from '~/composables/normalization/useZooToothNormalization'
 
 const props = defineProps<{
   path: Path
@@ -33,7 +33,7 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Zoo bones"
+    title="Zoo teeth"
     :parent
     :path
     :on-pre-submit
@@ -41,7 +41,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-zoo-bone
+      <lazy-data-item-form-edit-zoo-tooth
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

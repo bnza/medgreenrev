@@ -107,6 +107,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             to="/data/zoo/bones"
             router
             title="Bones"
+            data-testid="app-nav-drawer-li-zoo-bones"
+          />
+          <v-list-item
+            nuxt
+            to="/data/zoo/teeth"
+            router
+            title="Teeth"
             data-testid="app-nav-drawer-li-sus"
           />
         </v-list-group>

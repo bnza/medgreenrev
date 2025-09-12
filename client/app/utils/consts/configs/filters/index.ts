@@ -293,8 +293,10 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/stratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/potteries'
   | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
+  | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
   | '/api/data/zoo/bones'
   | '/api/data/zoo/bones/{parentId}/analyses'
+  | '/api/data/zoo/teeth'
 >
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
@@ -873,6 +875,51 @@ const zooBoneStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObjec
     },
   }
 
+const zooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    'stratigraphicUnit.site': {
+      filters: {
+        SiteEquals,
+      },
+      propertyLabel: 'site',
+    },
+    stratigraphicUnit: {
+      filters: {
+        StratigraphicUnitEquals,
+      },
+      propertyLabel: 'stratigraphic unit',
+    },
+    'stratigraphicUnit.lowerChronology': {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'stratigraphic unit (lower chronology)',
+    },
+    'stratigraphicUnit.upperChronology': {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'stratigraphic unit (upper chronology)',
+    },
+    taxonomy: {
+      filters: {
+        VocabularyZooTaxonomy,
+      },
+    },
+    element: {
+      filters: {
+        VocabularyZooBone,
+      },
+    },
+    side: {
+      filters: {
+        SelectionZooBoneSide,
+      },
+    },
+  }
+
 const zooBoneAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
     'item.stratigraphicUnit.site': {
@@ -1000,7 +1047,10 @@ export const FILTERS_PATHS_MAP: Record<
     potteryStaticFiltersDefinition,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones':
     zooBoneStaticFiltersDefinitionObject,
+  '/api/data/stratigraphic_units/{parentId}/zoo/teeth':
+    zooToothStaticFiltersDefinitionObject,
   '/api/data/zoo/bones': zooBoneStaticFiltersDefinitionObject,
   '/api/data/zoo/bones/{parentId}/analyses':
     zooBoneAnalysisStaticFiltersDefinitionObject,
+  '/api/data/zoo/teeth': zooToothStaticFiltersDefinitionObject,
 } as const

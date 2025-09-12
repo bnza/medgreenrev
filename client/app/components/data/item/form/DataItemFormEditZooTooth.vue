@@ -2,7 +2,7 @@
 import type { PatchItemRequestMap, ResourceParent } from '~~/types'
 import type { RegleErrorTree } from '@regle/core'
 
-type Item = PatchItemRequestMap['/api/data/zoo/bones/{id}']
+type Item = PatchItemRequestMap['/api/data/zoo/teeth/{id}']
 
 const item = defineModel<Partial<Item>>('item', { required: true })
 
@@ -35,7 +35,6 @@ defineEmits<{
         />
       </v-col>
     </v-row>
-
     <v-row>
       <v-col cols="12" md="6">
         <data-autocomplete
@@ -53,33 +52,25 @@ defineEmits<{
           path="/api/vocabulary/zoo/bones"
           item-title="value"
           label="element"
+          :query-params="{ teeth: true }"
           :error-messages="errors?.element"
-          clearable
-        />
-      </v-col>
-      <v-col cols="12" md="3">
-        <data-autocomplete
-          v-model="item.part"
-          path="/api/vocabulary/zoo/bone_parts"
-          item-title="value"
-          label="part"
-          :error-messages="errors?.part"
           clearable
         />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <data-selection-zoo-bone-ends-preserved
-          v-model="item.endsPreserved"
-          :multiple="false"
-        />
-      </v-col>
-      <v-col cols="12" md="3">
         <data-selection-zoo-bone-side
           v-model="item.side"
           :multiple="false"
           clearable
+        />
+      </v-col>
+      <v-col cols="12" md="3">
+        <v-checkbox
+          v-model="item.connected"
+          :label="item.connected ? 'jaw' : 'loose'"
+          :error-messages="errors?.connected"
         />
       </v-col>
     </v-row>

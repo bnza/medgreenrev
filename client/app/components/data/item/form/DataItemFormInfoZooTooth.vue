@@ -3,7 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap['/api/data/zoo/bones/{id}']
+    item: GetItemResponseMap['/api/data/zoo/teeth/{id}']
     readLink?: boolean
   }>(),
   {
@@ -15,9 +15,6 @@ const vocabularyZooTaxonomy = useVocabularyStore(
   '/api/vocabulary/zoo/taxonomies',
 )
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
-const vocabularyZooBoneParts = useVocabularyStore(
-  '/api/vocabulary/zoo/bone_parts',
-)
 </script>
 
 <template>
@@ -83,15 +80,6 @@ const vocabularyZooBoneParts = useVocabularyStore(
           :model-value="vocabularyZooBones.getValue(item.element)"
           label="element"
         />
-      </v-col>
-      <v-col cols="4" xs="12" class="px-2">
-        <v-text-field
-          :model-value="vocabularyZooBoneParts.getValue(item.part)"
-          label="part"
-        />
-      </v-col>
-      <v-col cols="4" xs="12" class="px-2">
-        <data-selection-zoo-bone-side :model-value="item.side" />
       </v-col>
     </v-row>
   </data-item-form-read>
