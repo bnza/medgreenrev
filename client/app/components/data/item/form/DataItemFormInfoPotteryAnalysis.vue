@@ -1,16 +1,26 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
 
-defineProps<{
-  item: GetItemResponseMap['/api/data/analyses/potteries/{id}']
-}>()
+withDefaults(
+  defineProps<{
+    item: GetItemResponseMap['/api/data/analyses/potteries/{id}']
+    readLink?: boolean
+  }>(),
+  {
+    readLink: true,
+  },
+)
 </script>
 
 <template>
   <data-item-form-read>
     <v-row>
       <v-col cols="6" class="px-2">
-        <v-text-field :model-value="item.item?.inventory" label="pottery" />
+        <v-text-field :model-value="item.item?.inventory" label="pottery">
+          <template v-if="item.item?.['@id']" #append-inner>
+            <data-item-info-box-pottery :iri="item.item?.['@id']" :read-link />
+          </template>
+        </v-text-field>
       </v-col>
       <v-col cols="6" class="px-2">
         <data-autocomplete-hierarchical-vocabulary

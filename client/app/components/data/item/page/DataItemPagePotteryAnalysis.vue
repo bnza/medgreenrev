@@ -15,10 +15,15 @@ const { tab } = storeToRefs(
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-pottery-analysis :item />
       <v-tabs v-model="tab" background-color="transparent">
+        <v-tab value="item">pottery</v-tab>
         <v-tab value="document">document</v-tab>
         <v-tab value="rawData">raw data</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
+        <v-tabs-window-item value="item" data-testid="tab-item">
+          <data-item-page-pottery v-if="item.item" :iri="item.item['@id']" />
+          <loading-component v-else />
+        </v-tabs-window-item>
         <v-tabs-window-item value="document" data-testid="tab-document">
           <data-item-form-info-media-object
             v-if="item.document"
