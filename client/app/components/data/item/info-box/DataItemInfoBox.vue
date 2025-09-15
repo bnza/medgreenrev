@@ -7,12 +7,18 @@ import type {
   OperationPathParams,
 } from '~~/types/index.js'
 
-const props = defineProps<{
-  path: P
-  iri: Iri
-  title: string
-  appPath?: string | undefined
-}>()
+const props = withDefaults(
+  defineProps<{
+    path: P
+    iri: Iri
+    title: string
+    appPath?: string
+    width?: number
+  }>(),
+  {
+    width: 500,
+  },
+)
 
 const visible = ref(false)
 const params = computed(() =>
@@ -54,7 +60,7 @@ const id = computed(() => extractIdFromIri(props.iri))
     <template #default>
       <v-card
         prepend-icon="fas fa-circle-info"
-        width="500"
+        :width
         data-testid="info-box-card"
       >
         <template #title>

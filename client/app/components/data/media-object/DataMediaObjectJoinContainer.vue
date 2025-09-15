@@ -87,12 +87,19 @@ const { deletingMediaObjectJoinItem, isCreateDialogOpen } = mediaObjectJoin
         md="4"
         lg="2"
       >
-        <data-media-object-card
+        <data-item-info-box-media-object
           v-if="isValidItem(item)"
-          v-model="deletingMediaObjectJoinItem"
-          :item
-          :can-update
-        />
+          v-slot="{ props: slotProps }"
+          :iri="item.mediaObject['@id']"
+        >
+          <div v-bind="slotProps">
+            <data-media-object-card
+              v-model="deletingMediaObjectJoinItem"
+              :item
+              :can-update
+            />
+          </div>
+        </data-item-info-box-media-object>
       </v-col>
     </v-row>
     <v-row
