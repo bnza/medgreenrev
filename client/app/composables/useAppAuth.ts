@@ -1,4 +1,4 @@
-import { ApiRole, type ApiSpecialistRole } from '~/utils/consts/auth'
+import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
 
 import { getRoleColor } from '~/utils/acl'
 import type { CollectionAcl, GetItemResponseMap } from '~~/types'
@@ -77,11 +77,16 @@ export default function useAppAuth() {
   const hasSpecialistRole = (role: ApiSpecialistRole) =>
     computed(() => roles.value.includes(role))
 
+  const hasAnySpecialistRole = computed(() =>
+    Object.values(ApiSpecialistRole).some((role) => roles.value.includes(role)),
+  )
+
   return {
     hasRoleAdmin,
     hasRole,
     hasSpecialistRole,
     hasAnySitePrivilege,
+    hasAnySpecialistRole,
     hasSitePrivilege,
     isAuthenticated,
     isCurrentUser,

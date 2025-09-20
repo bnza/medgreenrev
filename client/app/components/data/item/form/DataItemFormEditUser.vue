@@ -39,7 +39,7 @@ const role = computed({
     />
   </v-row>
   <v-row>
-    <v-col data-cy="roles-input-col" cols="3">
+    <v-col data-cy="roles-input-col" cols="4">
       <v-radio-group
         v-model="role"
         :error-messages="flattenRegleErrors(errors?.roles)"
@@ -49,25 +49,71 @@ const role = computed({
         <v-radio label="user" color="success" :value="ApiRole.User" />
       </v-radio-group>
     </v-col>
-    <v-col data-testid="spec-roles-input-col">
+    <v-col cols="4">
       <v-checkbox
         v-model="item.roles"
-        label="geo archeologist"
+        label="anthropologist"
         color="primary"
-        :value="ApiSpecialistRole.GeoArchaeologist"
+        :value="ApiSpecialistRole.Anthropologist"
+        density="compact"
+      />
+      <v-checkbox
+        v-model="item.roles"
+        label="archaeobotanist"
+        color="primary"
+        :value="ApiSpecialistRole.Archaeobotanist"
+        density="compact"
       />
       <v-checkbox
         v-model="item.roles"
         label="ceramic specialist"
         color="primary"
         :value="ApiSpecialistRole.CeramicSpecialist"
+        density="compact"
+      />
+      <v-checkbox
+        v-model="item.roles"
+        label="geo archeologist"
+        color="primary"
+        :value="ApiSpecialistRole.GeoArchaeologist"
+        density="compact"
+      />
+    </v-col>
+    <v-col cols="4">
+      <v-checkbox
+        v-model="item.roles"
+        label="historian"
+        color="primary"
+        :value="ApiSpecialistRole.Historian"
+        density="compact"
+      />
+      <v-checkbox
+        v-model="item.roles"
+        label="material analyst"
+        color="primary"
+        :value="ApiSpecialistRole.MaterialAnalyst"
+        density="compact"
+      />
+      <v-checkbox
+        v-model="item.roles"
+        label="paleoclimatologist"
+        color="primary"
+        :value="ApiSpecialistRole.PaleoClimatologist"
+        density="compact"
       />
       <v-checkbox
         v-model="item.roles"
         label="zoo archaeologist"
         color="primary"
         :value="ApiSpecialistRole.ZooArchaeologist"
+        density="compact"
       />
     </v-col>
   </v-row>
 </template>
+
+<style scoped>
+.v-checkbox ::v-deep(label) {
+  padding-left: 1rem;
+}
+</style>

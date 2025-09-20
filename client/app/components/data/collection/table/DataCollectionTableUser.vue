@@ -48,12 +48,20 @@ const { userData } = storeToRefs(userPasswordDialog())
         <span class="pl-2">{{ getRoleLabel(reduceAppRoles(item.roles)) }}</span>
       </p>
     </template>
-    <template #[`item.geo_archaeologist`]="{ item }">
+    <template #[`item.anthropologist`]="{ item }">
       <v-checkbox-btn
         class="centered-item"
         :model-value="item.roles"
         readonly
-        :value="ApiSpecialistRole.GeoArchaeologist"
+        :value="ApiSpecialistRole.Anthropologist"
+      />
+    </template>
+    <template #[`item.archaoeobotanist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.Archaeobotanist"
       />
     </template>
     <template #[`item.ceramic_specialist`]="{ item }">
@@ -62,6 +70,38 @@ const { userData } = storeToRefs(userPasswordDialog())
         :model-value="item.roles"
         readonly
         :value="ApiSpecialistRole.CeramicSpecialist"
+      />
+    </template>
+    <template #[`item.geo_archaeologist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.GeoArchaeologist"
+      />
+    </template>
+    <template #[`item.historian`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.Historian"
+      />
+    </template>
+    <template #[`item.material_analyst`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.MaterialAnalyst"
+      />
+    </template>
+    <template #[`item.paleoclimatologist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.PaleoClimatologist"
       />
     </template>
     <template #[`item.zoo_archaeologist`]="{ item }">
