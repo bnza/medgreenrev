@@ -22,7 +22,7 @@ const config: Readonly<ResourceConfig> = {
       key: 'role',
       title: 'role',
       sortable: false,
-      width: 100,
+      width: 120,
     },
     {
       key: 'anthropologist',

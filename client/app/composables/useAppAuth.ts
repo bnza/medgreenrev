@@ -4,25 +4,26 @@ import { getRoleColor } from '~/utils/acl'
 import type { CollectionAcl, GetItemResponseMap } from '~~/types'
 
 export default function useAppAuth() {
-  const { data, status } = useAuthState()
+  const { data, status } = useAuth()
   const previousAuthState = ref<typeof status.value>(status.value)
 
-  watch(status, (value, oldValue) => {
-    if (
-      value === 'loading' &&
-      oldValue !== 'loading' &&
-      previousAuthState.value !== oldValue
-    ) {
-      console.log(
-        `auth state changed from ${previousAuthState.value} to ${value}`,
-      )
-      previousAuthState.value = oldValue
+  watch(status, async (value, _oldValue) => {
+    // Only track changes between 'authenticated' and 'unauthenticated'
+    const meaningfulStates = ['authenticated', 'unauthenticated'] as const
+
+    if (meaningfulStates.includes(value as any)) {
+      // Check if we're transitioning from one meaningful state to another
+      if (value !== previousAuthState.value) {
+        console.log(
+          `auth state changed from ${previousAuthState.value} to ${value}`,
+        )
+      }
+      // Update to the new meaningful state
+      previousAuthState.value = value
+      await nextTick()
     }
   })
-  const statusChanged = computed(
-    () =>
-      status.value !== 'loading' && status.value !== previousAuthState.value,
-  )
+
   const isAuthenticated = computed(() => status.value === 'authenticated')
   const userIdentifier = computed(() => data.value?.email)
 
@@ -94,7 +95,7 @@ export default function useAppAuth() {
     roles,
     roleColor,
     siteCollectionAcl,
-    statusChanged,
+    statusChanged: previousAuthState,
     userIdentifier,
   }
 }
