@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-item-page-pottery-analysis />
+  <data-item-page-analysis-pottery />
 </template>

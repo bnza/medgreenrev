@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-zoo-tooth-analysis
+  <data-collection-page-analysis-zoo-tooth
     path="/api/data/analyses/zoo/teeth"
   />
 </template>

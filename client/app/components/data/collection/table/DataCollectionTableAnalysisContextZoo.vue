@@ -3,27 +3,26 @@
   lang="ts"
   generic="
     Path extends
-      | Extract<GetCollectionPath, '/api/data/analyses/zoo/teeth'>
-      | '/api/data/zoo/teeth/{parentId}/analyses'
+      | Extract<GetCollectionPath, '/api/data/analyses/contexts/zoo'>
+      | '/api/data/contexts/{parentId}/analyses/zoo'
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
-import DataItemInfoBoxSpanZooTooth from '~/components/data/item/info-box/span/DataItemInfoBoxSpanZooTooth.vue'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
+  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/analyses/zoo/teeth/{id}'),
+  useResourceDeleteDialogStore('/api/data/analyses/contexts/zoo/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/analyses/zoo/teeth/{id}'),
+  useResourceUpdateDialogStore('/api/data/analyses/contexts/zoo/{id}'),
 )
 
 const vocabularyAnalysisStore = useVocabularyStore(
@@ -42,10 +41,16 @@ const vocabularyAnalysisStore = useVocabularyStore(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #[`item.item.code`]="{ item }">
-      <data-item-info-box-span-zoo-tooth
+    <template #[`item.subject.site.code`]="{ item }">
+      <data-item-info-box-span-site
+        :iri="item.subject.site['@id']"
+        :text="item.subject.site.code"
+      />
+    </template>
+    <template #[`item.subject.name`]="{ item }">
+      <data-item-info-box-span-context
         :iri="item.subject['@id']"
-        :text="item.subject.code"
+        :text="item.subject.name"
       />
     </template>
     <template #[`item.analysis.type.group`]="{ item }">
@@ -65,14 +70,14 @@ const vocabularyAnalysisStore = useVocabularyStore(
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <data-dialog-search :path title="Animal tooth analysis" />
-      <data-dialog-create-zoo-tooth-analysis
+      <data-dialog-search :path :title="labels[0]" />
+      <lazy-data-dialog-create-analysis-context-zoo
         :path
         :parent
         @refresh="refetch()"
       />
-      <data-dialog-delete-zoo-tooth-analysis @refresh="refetch()" />
-      <data-dialog-update-zoo-tooth-analysis @refresh="refetch()" />
+      <data-dialog-delete-analysis-context-zoo @refresh="refetch()" />
+      <data-dialog-update-analysis-context-zoo @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

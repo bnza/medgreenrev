@@ -4,7 +4,7 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      '/api/data/analyses/potteries' | '/api/data/potteries/{parentId}/analyses'
+      '/api/data/analyses/zoo/bones' | '/api/data/zoo/bones/{parentId}/analyses'
     >
   "
 >
@@ -13,7 +13,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
 }>()
 
 const {
@@ -40,12 +40,12 @@ const hasPrivileges = computed(() => {
 const canCreate = computed(
   () =>
     hasPrivileges.value &&
-    hasSpecialistRole(ApiSpecialistRole.CeramicSpecialist).value,
+    hasSpecialistRole(ApiSpecialistRole.ZooArchaeologist).value,
 )
 </script>
 <template>
   <data-collection-page
-    title="Pottery Analyses"
+    title="Animal bone analyses"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
@@ -54,6 +54,6 @@ const canCreate = computed(
       canCreate: canCreate || hasRoleAdmin,
     }"
   >
-    <data-collection-table-pottery-analysis :path :parent />
+    <data-collection-table-analysis-zoo-bone :path :parent />
   </data-collection-page>
 </template>

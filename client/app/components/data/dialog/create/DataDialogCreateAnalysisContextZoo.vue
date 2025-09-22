@@ -4,17 +4,18 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data/analyses/zoo/bones' | '/api/data/zoo/bones/{parentId}/analyses'
+      | '/api/data/analyses/contexts/zoo'
+      | '/api/data/contexts/{parentId}/analyses/zoo'
     >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useZooBoneAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/useZooBoneAnalysisNormalization'
+import { useCreateValidation } from '~/composables/validation/useAnalysisContextZooValidation'
+import { useNormalization } from '~/composables/normalization/useAnalysisContextZooNormalization'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
+  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)
@@ -29,7 +30,7 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Animal bone Analysis"
+    title="Zooarchaeological context analysis"
     :parent
     :path
     :on-pre-submit
@@ -37,7 +38,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-zoo-bone-analysis
+      <lazy-data-item-form-edit-analysis-context-zoo
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

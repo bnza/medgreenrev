@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <lazy-data-item-page-context-zoo-analysis />
+  <lazy-data-item-page-analysis-context-zoo />
 </template>

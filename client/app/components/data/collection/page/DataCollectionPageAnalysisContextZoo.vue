@@ -4,7 +4,8 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      '/api/data/analyses/zoo/bones' | '/api/data/zoo/bones/{parentId}/analyses'
+      | '/api/data/analyses/contexts/zoo'
+      | '/api/data/contexts/{parentId}/analyses/zoo'
     >
   "
 >
@@ -13,7 +14,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
+  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
 
 const {
@@ -26,11 +27,9 @@ const {
 
 const hasPrivileges = computed(() => {
   if (props.parent) {
-    return props.parent.item.stratigraphicUnit?.site?.['@id']
+    return props.parent.item.site?.['@id']
       ? hasSitePrivilege.value(
-          Number(
-            extractIdFromIri(props.parent.item.stratigraphicUnit.site['@id']),
-          ),
+          Number(extractIdFromIri(props.parent.item.site['@id'])),
         )
       : false
   }
@@ -45,7 +44,7 @@ const canCreate = computed(
 </script>
 <template>
   <data-collection-page
-    title="Animal bone analyses"
+    title="Zooarchaeological context analyses"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
@@ -54,6 +53,6 @@ const canCreate = computed(
       canCreate: canCreate || hasRoleAdmin,
     }"
   >
-    <data-collection-table-zoo-bone-analysis :path :parent />
+    <data-collection-table-analysis-context-zoo :path :parent />
   </data-collection-page>
 </template>

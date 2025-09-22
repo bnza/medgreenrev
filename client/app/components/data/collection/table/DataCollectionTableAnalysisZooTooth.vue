@@ -3,26 +3,27 @@
   lang="ts"
   generic="
     Path extends
-      | Extract<GetCollectionPath, '/api/data/analyses/zoo/bones'>
-      | '/api/data/zoo/bones/{parentId}/analyses'
+      | Extract<GetCollectionPath, '/api/data/analyses/zoo/teeth'>
+      | '/api/data/zoo/teeth/{parentId}/analyses'
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
+import DataItemInfoBoxSpanZooTooth from '~/components/data/item/info-box/span/DataItemInfoBoxSpanZooTooth.vue'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
+  parent?: ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/analyses/zoo/bones/{id}'),
+  useResourceDeleteDialogStore('/api/data/analyses/zoo/teeth/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/analyses/zoo/bones/{id}'),
+  useResourceUpdateDialogStore('/api/data/analyses/zoo/teeth/{id}'),
 )
 
 const vocabularyAnalysisStore = useVocabularyStore(
@@ -42,7 +43,7 @@ const vocabularyAnalysisStore = useVocabularyStore(
       />
     </template>
     <template #[`item.item.code`]="{ item }">
-      <data-item-info-box-span-zoo-bone
+      <data-item-info-box-span-zoo-tooth
         :iri="item.subject['@id']"
         :text="item.subject.code"
       />
@@ -64,14 +65,14 @@ const vocabularyAnalysisStore = useVocabularyStore(
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <data-dialog-search :path title="Animal bone analysis" />
-      <data-dialog-create-zoo-bone-analysis
+      <data-dialog-search :path title="Animal tooth analysis" />
+      <data-dialog-create-analysis-zoo-tooth
         :path
         :parent
         @refresh="refetch()"
       />
-      <data-dialog-delete-zoo-bone-analysis @refresh="refetch()" />
-      <data-dialog-update-zoo-bone-analysis @refresh="refetch()" />
+      <data-dialog-delete-analysis-zoo-tooth @refresh="refetch()" />
+      <data-dialog-update-analysis-zoo-tooth @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-pottery-analysis path="/api/data/analyses/potteries" />
+  <data-collection-page-analysis-pottery path="/api/data/analyses/potteries" />
 </template>

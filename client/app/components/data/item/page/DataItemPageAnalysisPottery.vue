@@ -13,7 +13,7 @@ const { tab } = storeToRefs(
 <template>
   <data-item-page :path title="Pottery Analysis" identifier-prop="id">
     <template #default="{ item }: { item: GetItemResponse }">
-      <lazy-data-item-form-info-pottery-analysis :item />
+      <lazy-data-item-form-info-analysis-pottery :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="item">pottery</v-tab>
         <v-tab value="media">media</v-tab>

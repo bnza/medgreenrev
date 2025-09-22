@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-item-page-zoo-bone-analysis />
+  <data-item-page-analysis-zoo-bone />
 </template>

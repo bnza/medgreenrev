@@ -4,17 +4,17 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data/analyses/potteries' | '/api/data/potteries/{parentId}/analyses'
+      '/api/data/analyses/zoo/teeth' | '/api/data/zoo/teeth/{parentId}/analyses'
     >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/usePotteryAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/usePotteryAnalysisNormalization'
+import { useCreateValidation } from '~/composables/validation/useAnalysisZooToothValidation'
+import { useNormalization } from '~/composables/normalization/useAnalysisZooToothNormalization'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+  parent?: ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)
@@ -29,7 +29,7 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Pottery Analysis"
+    title="Animal bone Analysis"
     :parent
     :path
     :on-pre-submit
@@ -37,7 +37,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-pottery-analysis
+      <lazy-data-item-form-edit-analysis-zoo-tooth
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

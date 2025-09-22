@@ -3,27 +3,26 @@
   lang="ts"
   generic="
     Path extends
-      | Extract<GetCollectionPath, '/api/data/analyses/potteries'>
-      | '/api/data/potteries/{parentId}/analyses'
+      | Extract<GetCollectionPath, '/api/data/analyses/zoo/bones'>
+      | '/api/data/zoo/bones/{parentId}/analyses'
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
-import DataItemInfoBoxSpanPottery from '~/components/data/item/info-box/span/DataItemInfoBoxSpanPottery.vue'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/analyses/potteries/{id}'),
+  useResourceDeleteDialogStore('/api/data/analyses/zoo/bones/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/analyses/potteries/{id}'),
+  useResourceUpdateDialogStore('/api/data/analyses/zoo/bones/{id}'),
 )
 
 const vocabularyAnalysisStore = useVocabularyStore(
@@ -42,10 +41,10 @@ const vocabularyAnalysisStore = useVocabularyStore(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #[`item.item.inventory`]="{ item }">
-      <data-item-info-box-span-pottery
+    <template #[`item.item.code`]="{ item }">
+      <data-item-info-box-span-zoo-bone
         :iri="item.subject['@id']"
-        :text="item.subject.inventory"
+        :text="item.subject.code"
       />
     </template>
     <template #[`item.analysis.type.group`]="{ item }">
@@ -65,10 +64,14 @@ const vocabularyAnalysisStore = useVocabularyStore(
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <data-dialog-search :path title="Pottery Analysis" />
-      <data-dialog-create-pottery-analysis :path :parent @refresh="refetch()" />
-      <data-dialog-delete-pottery-analysis @refresh="refetch()" />
-      <data-dialog-update-pottery-analysis @refresh="refetch()" />
+      <data-dialog-search :path title="Animal bone analysis" />
+      <data-dialog-create-analysis-zoo-bone
+        :path
+        :parent
+        @refresh="refetch()"
+      />
+      <data-dialog-delete-analysis-zoo-bone @refresh="refetch()" />
+      <data-dialog-update-analysis-zoo-bone @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

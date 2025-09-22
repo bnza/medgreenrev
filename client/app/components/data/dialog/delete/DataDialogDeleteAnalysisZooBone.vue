@@ -6,12 +6,12 @@ defineEmits<{
 
 <template>
   <data-dialog-delete
-    path="/api/data/analyses/potteries/{id}"
-    title="Pottery Analysis"
+    path="/api/data/analyses/zoo/bones/{id}"
+    title="Animal bone analysis"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <lazy-data-item-form-info-pottery-analysis :item />
+      <lazy-data-item-form-info-analysis-zoo-bone :item />
     </template>
   </data-dialog-delete>
 </template>

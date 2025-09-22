@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useUpdateValidation } from '~/composables/validation/useZooBoneAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/useZooBoneAnalysisNormalization'
+import { useUpdateValidation } from '~/composables/validation/useAnalysisZooBoneValidation'
+import { useNormalization } from '~/composables/normalization/useAnalysisZooBoneNormalization'
 
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/analyses/zoo/bones/{id}'),
@@ -23,7 +23,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-zoo-bone-analysis
+      <lazy-data-item-form-edit-analysis-zoo-bone
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
