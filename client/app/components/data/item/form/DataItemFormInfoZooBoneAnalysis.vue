@@ -16,27 +16,32 @@ withDefaults(
   <data-item-form-read>
     <v-row>
       <v-col cols="6" class="px-2">
-        <v-text-field :model-value="item.item?.code" label="element">
-          <template v-if="item.item?.['@id']" #append-inner>
-            <data-item-info-box-zoo-bone :iri="item.item?.['@id']" :read-link />
+        <v-text-field :model-value="item.subject?.code" label="element">
+          <template v-if="item.subject?.['@id']" #append-inner>
+            <data-item-info-box-zoo-bone
+              :iri="item.subject?.['@id']"
+              :read-link
+            />
           </template>
         </v-text-field>
       </v-col>
-      <v-col cols="6" class="px-2">
-        <data-autocomplete-hierarchical-vocabulary
-          path="/api/vocabulary/analysis/types"
-          :model-value="item.type ?? undefined"
-          label="type"
-          item-title="value"
-        />
-      </v-col>
     </v-row>
     <v-row>
-      <v-col cols="6" class="px-2">
-        <v-text-field :model-value="item.document?.mimeType" label="document" />
+      <v-col cols="2" class="px-2">
+        <v-text-field :model-value="item.analysis?.type?.group" label="group" />
       </v-col>
-      <v-col cols="6" class="px-2">
-        <v-text-field :model-value="item.rawData?.mimeType" label="raw data" />
+      <v-col cols="2" class="px-2">
+        <v-text-field :model-value="item.analysis?.type?.value" label="type" />
+      </v-col>
+      <v-col cols="4" class="px-2">
+        <v-text-field :model-value="item.analysis?.identifier" label="analysis">
+          <template v-if="item.analysis?.['@id']" #append-inner>
+            <data-item-info-box-analysis
+              :iri="item.analysis?.['@id']"
+              :read-link
+            />
+          </template>
+        </v-text-field>
       </v-col>
     </v-row>
     <v-row>

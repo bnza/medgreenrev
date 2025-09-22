@@ -3,15 +3,17 @@
 
 export const API_RESOURCE_MAP = {
   analysis: '/api/data/analyses',
+  analysisContextZoo: '/api/data/analyses/contexts/zoo',
+  analysisContextZooTaxonomy: '/api/data/analysis_context_zoo_taxonomies',
+  analysisPottery: '/api/data/analyses/potteries',
+  analysisZooBone: '/api/data/analyses/zoo/bones',
+  analysisZooTooth: '/api/data/analyses/zoo/teeth',
   context: '/api/data/contexts',
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',
-  contextZooAnalysis: '/api/data/analyses/contexts/zoo',
-  contextZooAnalysisTaxonomy: '/api/data/context_zoo_analysis_taxonomies',
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
   pottery: '/api/data/potteries',
-  potteryAnalysis: '/api/data/analyses/potteries',
   potteryDecoration: '/api/data/pottery_decorations',
   sample: '/api/data/samples',
   sampleStratigraphicUnit: '/api/data/sample_stratigraphic_units',
@@ -37,9 +39,7 @@ export const API_RESOURCE_MAP = {
   vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
   vocZooTaxonomy: '/api/vocabulary/zoo/taxonomies',
   zooBone: '/api/data/zoo/bones',
-  zooBoneAnalysis: '/api/data/analyses/zoo/bones',
   zooTooth: '/api/data/zoo/teeth',
-  zooToothAnalysis: '/api/data/analyses/zoo/teeth',
 } as const
 
 export type ApiResourceKey = keyof typeof API_RESOURCE_MAP

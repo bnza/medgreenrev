@@ -44,12 +44,21 @@ const vocabularyAnalysisStore = useVocabularyStore(
     </template>
     <template #[`item.item.inventory`]="{ item }">
       <data-item-info-box-span-pottery
-        :iri="item.item['@id']"
-        :text="item.item.inventory"
+        :iri="item.subject['@id']"
+        :text="item.subject.inventory"
       />
     </template>
-    <template #[`item.type.value`]="{ item }">
-      {{ vocabularyAnalysisStore.getValue(item.type) }}
+    <template #[`item.analysis.type.group`]="{ item }">
+      {{ vocabularyAnalysisStore.getValue(item.analysis.type['@id'], 'group') }}
+    </template>
+    <template #[`item.analysis.type`]="{ item }">
+      {{ vocabularyAnalysisStore.getValue(item.analysis.type['@id']) }}
+    </template>
+    <template #[`item.analysis.identifier`]="{ item }">
+      <data-item-info-box-span-analysis
+        :iri="item.analysis['@id']"
+        :text="item.analysis.identifier"
+      />
     </template>
     <template #[`item.summary`]="{ item }">
       <text-tooltip-span :text="item.summary" />

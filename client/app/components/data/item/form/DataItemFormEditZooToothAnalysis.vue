@@ -9,7 +9,9 @@ const item = defineModel<Partial<Item>>('item', { required: true })
 interface Props {
   mode: 'create' | 'update'
   errors?: RegleErrorTree<Partial<Item>>
-  parent?: ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
+  parent?:
+    | ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
+    | ResourceParent<'analysis', '/api/data/analyses/{id}'>
 }
 
 defineProps<Props>()
@@ -19,40 +21,20 @@ defineProps<Props>()
   <v-row>
     <v-col cols="6">
       <data-autocomplete
-        v-model="item.item"
-        path="/api/data/zoo/teeth"
-        item-title="code"
-        label="element"
+        v-model="item.subject"
+        path="/api/data/contexts"
+        item-title="name"
+        label="context"
         granted-only
-        :error-messages="errors?.item"
+        :error-messages="errors?.subject"
         :disabled="parent?.key === 'zooTooth' || mode === 'update'"
       />
     </v-col>
     <v-col cols="6" class="px-2">
-      <data-autocomplete-hierarchical-vocabulary
-        v-model="item.type"
-        path="/api/vocabulary/analysis/types"
-        item-title="value"
-        label="type"
-        :error-messages="errors?.type"
-      />
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols="6" class="px-2">
-      <data-media-object-text-field
-        v-model="item.document"
-        label="document"
-        :error-messages="errors?.document"
-        :readonly="false"
-      />
-    </v-col>
-    <v-col cols="6" class="px-2">
-      <data-media-object-text-field
-        v-model="item.rawData"
-        label="raw data"
-        :error-messages="errors?.rawData"
-        :readonly="false"
+      <data-autocomplete-analysis
+        v-model="item.analysis"
+        :error-messages="errors?.analysis"
+        :disabled="parent?.key === 'analysis' || mode === 'update'"
       />
     </v-col>
   </v-row>

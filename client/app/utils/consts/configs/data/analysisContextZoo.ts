@@ -54,7 +54,7 @@ export const config: Readonly<ResourceConfig> = {
     },
   ],
   labels: ['zooarchaeological analyses', 'zooarchaeological analyses'],
-  name: 'contextZooAnalysis',
+  name: 'analysisContextZoo',
 }
 
 export default config

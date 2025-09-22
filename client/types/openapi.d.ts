@@ -58,6 +58,414 @@ export interface paths {
     patch: operations['api_dataanalyses_id_patch']
     trace?: never
   }
+  '/api/data/analyses/contexts/zoo': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextZoo resources.
+     * @description Retrieves the collection of AnalysisContextZoo resources.
+     */
+    get: operations['api_dataanalysescontextszoo_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisContextZoo resource.
+     * @description Creates a AnalysisContextZoo resource.
+     */
+    post: operations['api_dataanalysescontextszoo_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/contexts/zoo/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisContextZoo resource.
+     * @description Retrieves a AnalysisContextZoo resource.
+     */
+    get: operations['api_dataanalysescontextszoo_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisContextZoo resource.
+     * @description Removes the AnalysisContextZoo resource.
+     */
+    delete: operations['api_dataanalysescontextszoo_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisContextZoo resource.
+     * @description Updates the AnalysisContextZoo resource.
+     */
+    patch: operations['api_dataanalysescontextszoo_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/contexts/zoo': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextZoo resources.
+     * @description Retrieves the collection of AnalysisContextZoo resources.
+     */
+    get: operations['api_dataanalyses_parentIdcontextszoo_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/contexts/{parentId}/analyses/zoo': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextZoo resources.
+     * @description Retrieves the collection of AnalysisContextZoo resources.
+     */
+    get: operations['api_datacontexts_parentIdanalyseszoo_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analysis_context_zoo_taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextZooTaxonomy resources.
+     * @description Retrieves the collection of AnalysisContextZooTaxonomy resources.
+     */
+    get: operations['api_dataanalysis_context_zoo_taxonomies_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analysis_context_zoo_taxonomies/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisContextZooTaxonomy resource.
+     * @description Retrieves a AnalysisContextZooTaxonomy resource.
+     */
+    get: operations['api_dataanalysis_context_zoo_taxonomies_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisPottery resources.
+     * @description Retrieves the collection of AnalysisPottery resources.
+     */
+    get: operations['api_dataanalysespotteries_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisPottery resource.
+     * @description Creates a AnalysisPottery resource.
+     */
+    post: operations['api_dataanalysespotteries_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/potteries/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisPottery resource.
+     * @description Retrieves a AnalysisPottery resource.
+     */
+    get: operations['api_dataanalysespotteries_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisPottery resource.
+     * @description Removes the AnalysisPottery resource.
+     */
+    delete: operations['api_dataanalysespotteries_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisPottery resource.
+     * @description Updates the AnalysisPottery resource.
+     */
+    patch: operations['api_dataanalysespotteries_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisPottery resources.
+     * @description Retrieves the collection of AnalysisPottery resources.
+     */
+    get: operations['api_dataanalyses_parentIdpotteries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/potteries/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisPottery resources.
+     * @description Retrieves the collection of AnalysisPottery resources.
+     */
+    get: operations['api_datapotteries_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisZooBone resources.
+     * @description Retrieves the collection of AnalysisZooBone resources.
+     */
+    get: operations['api_dataanalyseszoobones_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisZooBone resource.
+     * @description Creates a AnalysisZooBone resource.
+     */
+    post: operations['api_dataanalyseszoobones_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/zoo/bones/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisZooBone resource.
+     * @description Retrieves a AnalysisZooBone resource.
+     */
+    get: operations['api_dataanalyseszoobones_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisZooBone resource.
+     * @description Removes the AnalysisZooBone resource.
+     */
+    delete: operations['api_dataanalyseszoobones_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisZooBone resource.
+     * @description Updates the AnalysisZooBone resource.
+     */
+    patch: operations['api_dataanalyseszoobones_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisZooBone resources.
+     * @description Retrieves the collection of AnalysisZooBone resources.
+     */
+    get: operations['api_dataanalyses_parentIdzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/zoo/bones/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisZooBone resources.
+     * @description Retrieves the collection of AnalysisZooBone resources.
+     */
+    get: operations['api_datazoobones_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisZooTooth resources.
+     * @description Retrieves the collection of AnalysisZooTooth resources.
+     */
+    get: operations['api_dataanalyseszooteeth_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisZooTooth resource.
+     * @description Creates a AnalysisZooTooth resource.
+     */
+    post: operations['api_dataanalyseszooteeth_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/zoo/teeth/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisZooTooth resource.
+     * @description Retrieves a AnalysisZooTooth resource.
+     */
+    get: operations['api_dataanalyseszooteeth_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisZooTooth resource.
+     * @description Removes the AnalysisZooTooth resource.
+     */
+    delete: operations['api_dataanalyseszooteeth_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisZooTooth resource.
+     * @description Updates the AnalysisZooTooth resource.
+     */
+    patch: operations['api_dataanalyseszooteeth_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisZooTooth resources.
+     * @description Retrieves the collection of AnalysisZooTooth resources.
+     */
+    get: operations['api_dataanalyses_parentIdzooteeth_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/zoo/teeth/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisZooTooth resources.
+     * @description Retrieves the collection of AnalysisZooTooth resources.
+     */
+    get: operations['api_datazooteeth_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/contexts': {
     parameters: {
       query?: never
@@ -210,118 +618,6 @@ export interface paths {
      * @description Retrieves the collection of ContextStratigraphicUnit resources.
      */
     get: operations['api_datastratigraphic_units_parentIdcontexts_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/analyses/contexts/zoo': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextZooAnalysis resources.
-     * @description Retrieves the collection of ContextZooAnalysis resources.
-     */
-    get: operations['api_dataanalysescontextszoo_get_collection']
-    put?: never
-    /**
-     * Creates a ContextZooAnalysis resource.
-     * @description Creates a ContextZooAnalysis resource.
-     */
-    post: operations['api_dataanalysescontextszoo_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/analyses/contexts/zoo/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ContextZooAnalysis resource.
-     * @description Retrieves a ContextZooAnalysis resource.
-     */
-    get: operations['api_dataanalysescontextszoo_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the ContextZooAnalysis resource.
-     * @description Removes the ContextZooAnalysis resource.
-     */
-    delete: operations['api_dataanalysescontextszoo_id_delete']
-    options?: never
-    head?: never
-    /**
-     * Updates the ContextZooAnalysis resource.
-     * @description Updates the ContextZooAnalysis resource.
-     */
-    patch: operations['api_dataanalysescontextszoo_id_patch']
-    trace?: never
-  }
-  '/api/data/contexts/{parentId}/analyses/zoo': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextZooAnalysis resources.
-     * @description Retrieves the collection of ContextZooAnalysis resources.
-     */
-    get: operations['api_datacontexts_parentIdanalyseszoo_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/context_zoo_analysis_taxonomies': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextZooAnalysisTaxonomy resources.
-     * @description Retrieves the collection of ContextZooAnalysisTaxonomy resources.
-     */
-    get: operations['api_datacontext_zoo_analysis_taxonomies_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/context_zoo_analysis_taxonomies/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ContextZooAnalysisTaxonomy resource.
-     * @description Retrieves a ContextZooAnalysisTaxonomy resource.
-     */
-    get: operations['api_datacontext_zoo_analysis_taxonomies_id_get']
     put?: never
     post?: never
     delete?: never
@@ -622,78 +918,6 @@ export interface paths {
      * @description Retrieves the collection of Pottery resources.
      */
     get: operations['api_datastratigraphic_units_parentIdpotteries_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/analyses/potteries': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of PotteryAnalysis resources.
-     * @description Retrieves the collection of PotteryAnalysis resources.
-     */
-    get: operations['api_dataanalysespotteries_get_collection']
-    put?: never
-    /**
-     * Creates a PotteryAnalysis resource.
-     * @description Creates a PotteryAnalysis resource.
-     */
-    post: operations['api_dataanalysespotteries_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/analyses/potteries/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a PotteryAnalysis resource.
-     * @description Retrieves a PotteryAnalysis resource.
-     */
-    get: operations['api_dataanalysespotteries_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the PotteryAnalysis resource.
-     * @description Removes the PotteryAnalysis resource.
-     */
-    delete: operations['api_dataanalysespotteries_id_delete']
-    options?: never
-    head?: never
-    /**
-     * Updates the PotteryAnalysis resource.
-     * @description Updates the PotteryAnalysis resource.
-     */
-    patch: operations['api_dataanalysespotteries_id_patch']
-    trace?: never
-  }
-  '/api/data/potteries/{parentId}/analyses': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of PotteryAnalysis resources.
-     * @description Retrieves the collection of PotteryAnalysis resources.
-     */
-    get: operations['api_datapotteries_parentIdanalyses_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1306,7 +1530,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/potteries/{item}/{type}': {
+  '/api/validator/unique/analyses/potteries/{analysis}/{subject}': {
     parameters: {
       query?: never
       header?: never
@@ -1317,7 +1541,47 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalysespotteries_item_type_get']
+    get: operations['api_validatoruniqueanalysespotteries_analysis_subject_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/zoo/bones/{analysis}/{subject}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalyseszoobones_analysis_subject_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/zoo/teeth/{analysis}/{subject}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalyseszooteeth_analysis_subject_get']
     put?: never
     post?: never
     delete?: never
@@ -1378,6 +1642,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquecontexts_site_name_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/media_objects/analyses/{mediaObject}/{item}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquemedia_objectsanalyses_mediaObject_item_get']
     put?: never
     post?: never
     delete?: never
@@ -2310,78 +2594,6 @@ export interface paths {
     patch: operations['api_datazoobones_id_patch']
     trace?: never
   }
-  '/api/data/analyses/zoo/bones': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ZooBoneAnalysis resources.
-     * @description Retrieves the collection of ZooBoneAnalysis resources.
-     */
-    get: operations['api_dataanalyseszoobones_get_collection']
-    put?: never
-    /**
-     * Creates a ZooBoneAnalysis resource.
-     * @description Creates a ZooBoneAnalysis resource.
-     */
-    post: operations['api_dataanalyseszoobones_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/analyses/zoo/bones/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ZooBoneAnalysis resource.
-     * @description Retrieves a ZooBoneAnalysis resource.
-     */
-    get: operations['api_dataanalyseszoobones_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the ZooBoneAnalysis resource.
-     * @description Removes the ZooBoneAnalysis resource.
-     */
-    delete: operations['api_dataanalyseszoobones_id_delete']
-    options?: never
-    head?: never
-    /**
-     * Updates the ZooBoneAnalysis resource.
-     * @description Updates the ZooBoneAnalysis resource.
-     */
-    patch: operations['api_dataanalyseszoobones_id_patch']
-    trace?: never
-  }
-  '/api/data/zoo/bones/{parentId}/analyses': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ZooBoneAnalysis resources.
-     * @description Retrieves the collection of ZooBoneAnalysis resources.
-     */
-    get: operations['api_datazoobones_parentIdanalyses_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': {
     parameters: {
       query?: never
@@ -2452,78 +2664,6 @@ export interface paths {
      * @description Updates the ZooTooth resource.
      */
     patch: operations['api_datazooteeth_id_patch']
-    trace?: never
-  }
-  '/api/data/analyses/zoo/teeth': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ZooToothAnalysis resources.
-     * @description Retrieves the collection of ZooToothAnalysis resources.
-     */
-    get: operations['api_dataanalyseszooteeth_get_collection']
-    put?: never
-    /**
-     * Creates a ZooToothAnalysis resource.
-     * @description Creates a ZooToothAnalysis resource.
-     */
-    post: operations['api_dataanalyseszooteeth_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/analyses/zoo/teeth/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ZooToothAnalysis resource.
-     * @description Retrieves a ZooToothAnalysis resource.
-     */
-    get: operations['api_dataanalyseszooteeth_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the ZooToothAnalysis resource.
-     * @description Removes the ZooToothAnalysis resource.
-     */
-    delete: operations['api_dataanalyseszooteeth_id_delete']
-    options?: never
-    head?: never
-    /**
-     * Updates the ZooToothAnalysis resource.
-     * @description Updates the ZooToothAnalysis resource.
-     */
-    patch: operations['api_dataanalyseszooteeth_id_patch']
-    trace?: never
-  }
-  '/api/data/zoo/teeth/{parentId}/analyses': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ZooToothAnalysis resources.
-     * @description Retrieves the collection of ZooToothAnalysis resources.
-     */
-    get: operations['api_datazooteeth_parentIdanalyses_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
 }
@@ -2597,7 +2737,7 @@ export interface components {
       responsible?: string | null
       summary?: string | null
     }
-    'Analysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -2616,11 +2756,89 @@ export interface components {
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
+      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       responsible?: string | null
       summary?: string | null
       createdBy?:
-        | components['schemas']['User.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+    }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+        | null
+    }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        | null
+    }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
         | null
     }
     'Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
@@ -2648,6 +2866,230 @@ export interface components {
       createdBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
+    }
+    AnalysisContextZoo: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      taxonomies?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      summary?: string | null
+    }
+    'AnalysisContextZoo.jsonld-analysis_join.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisContextZooTaxonomy.jsonld': {
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    'AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    AnalysisPottery: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      summary?: string | null
+    }
+    'AnalysisPottery.jsonld-analysis_join.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    AnalysisZooBone: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      summary?: string | null
+    }
+    'AnalysisZooBone.jsonld-analysis_join.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    AnalysisZooTooth: {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      summary?: string | null
+    }
+    'AnalysisZooTooth.jsonld-analysis_join.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
     }
     Collection: {
       readonly empty?: boolean
@@ -2743,6 +3185,24 @@ export interface components {
       name?: string
       description?: string | null
     }
+    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      type?: components['schemas']['VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      name?: string
+      description?: string | null
+    }
     'Context.jsonld-context.acl.read': {
       readonly '@context'?:
         | string
@@ -2810,24 +3270,6 @@ export interface components {
       name?: string
       description?: string | null
     }
-    'Context.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-      site?: components['schemas']['Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-      name?: string
-      description?: string | null
-    }
     'ContextStratigraphicUnit-context_stratigraphic_unit.acl.read': {
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit-context_stratigraphic_unit.acl.read']
@@ -2877,96 +3319,6 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-    }
-    ContextZooAnalysis: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
-      summary?: string | null
-      taxonomies?: string[]
-    }
-    'ContextZooAnalysis.jsonld': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
-      summary?: string | null
-      taxonomies?: string[]
-    }
-    'ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      subject?: components['schemas']['Context.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-      analysis?: components['schemas']['Analysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-      summary?: string | null
-      taxonomies?: components['schemas']['ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read'][]
-    }
-    'ContextZooAnalysisTaxonomy.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
-    }
-    'ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
     }
     /** @description A representation of common errors. */
     Error: {
@@ -3122,78 +3474,6 @@ export interface components {
       readonly contentThumbnailUrl?: string | null
       dimensions?: string[] | null
     }
-    'MediaObject.jsonld-pottery_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      contentUrl?: string | null
-      originalFilename?: string
-      sha256?: string
-      mimeType?: string
-      size?: number
-      width?: number | null
-      height?: number | null
-      /** Format: date-time */
-      uploadDate?: string | null
-      readonly contentThumbnailUrl?: string | null
-    }
-    'MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      contentUrl?: string | null
-      originalFilename?: string
-      sha256?: string
-      mimeType?: string
-      size?: number
-      width?: number | null
-      height?: number | null
-      /** Format: date-time */
-      uploadDate?: string | null
-      readonly contentThumbnailUrl?: string | null
-    }
-    'MediaObject.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      contentUrl?: string | null
-      originalFilename?: string
-      sha256?: string
-      mimeType?: string
-      size?: number
-      width?: number | null
-      height?: number | null
-      /** Format: date-time */
-      uploadDate?: string | null
-      readonly contentThumbnailUrl?: string | null
-    }
     'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
@@ -3334,6 +3614,54 @@ export interface components {
       functionalForm?: string
       notes?: string | null
     }
+    'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      inventory?: string
+      decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
     'Pottery.jsonld-pottery.acl.read': {
       readonly '@context'?:
         | string
@@ -3423,95 +3751,6 @@ export interface components {
       functionalForm: string
       notes?: string | null
     }
-    'Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      inventory?: string
-    }
-    PotteryAnalysis: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-    }
-    'PotteryAnalysis.jsonld': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-    }
-    'PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      item?: components['schemas']['Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read']
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      document?:
-        | components['schemas']['MediaObject.jsonld-pottery_analysis.acl.read_media_object_join.read']
-        | null
-      rawData?:
-        | components['schemas']['MediaObject.jsonld-pottery_analysis.acl.read_media_object_join.read']
-        | null
-      summary?: string | null
-    }
     'PotteryDecoration-pottery.acl.read': {
       /**
        * Format: iri-reference
@@ -3537,6 +3776,24 @@ export interface components {
        * @example https://example.com/
        */
       pottery?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      decoration?: string
+    }
+    'PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3833,6 +4090,51 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
     'Site.jsonld-context.acl.read': {
       readonly '@context'?:
         | string
@@ -3891,21 +4193,6 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
       code?: string
       name?: string
     }
@@ -4258,6 +4545,36 @@ export interface components {
       interpretation?: string | null
       readonly code: string
     }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      readonly code: string
+    }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
         | string
@@ -4565,7 +4882,55 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     }
-    'User.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -4770,7 +5135,55 @@ export interface components {
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -4830,6 +5243,21 @@ export interface components {
       group?: string
       value?: string
     }
+    'VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      group?: string
+      value?: string
+    }
     'VocContextType.jsonld-context.acl.read': {
       readonly '@context'?:
         | string
@@ -4861,21 +5289,6 @@ export interface components {
       value?: string
     }
     'VocContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -5168,6 +5581,40 @@ export interface components {
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
     }
+    'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
     'ZooBone.jsonld-zoo_bone.acl.read': {
       readonly '@context'?:
         | string
@@ -5228,95 +5675,6 @@ export interface components {
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
     }
-    'ZooBone.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly code?: string
-    }
-    ZooBoneAnalysis: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-    }
-    'ZooBoneAnalysis.jsonld': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-    }
-    'ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      item?: components['schemas']['ZooBone.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      document?:
-        | components['schemas']['MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
-        | null
-      rawData?:
-        | components['schemas']['MediaObject.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
-        | null
-      summary?: string | null
-    }
     'ZooTooth-zoo_tooth.create': {
       /**
        * Format: iri-reference
@@ -5337,6 +5695,20 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+    }
+    'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly code?: string
     }
     'ZooTooth.jsonld-zoo_tooth.acl.read': {
       readonly '@context'?:
@@ -5387,95 +5759,6 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
-    }
-    'ZooTooth.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly code?: string
-    }
-    ZooToothAnalysis: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-    }
-    'ZooToothAnalysis.jsonld': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-    }
-    'ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      item?: components['schemas']['ZooTooth.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      document?:
-        | components['schemas']['MediaObject.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
-        | null
-      rawData?:
-        | components['schemas']['MediaObject.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
-        | null
-      summary?: string | null
     }
   }
   responses: never
@@ -5756,6 +6039,1844 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextszoo_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[summary]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZoo collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysescontextszoo_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisContextZoo resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisContextZoo resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextszoo_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextZoo identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZoo resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextszoo_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextZoo identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZoo resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextszoo_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextZoo identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisContextZoo resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisContextZoo']
+      }
+    }
+    responses: {
+      /** @description AnalysisContextZoo resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdcontextszoo_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[summary]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisContextZoo identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZoo collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datacontexts_parentIdanalyseszoo_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[summary]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisContextZoo identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZoo collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysis_context_zoo_taxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZooTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextZooTaxonomy.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysis_context_zoo_taxonomies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextZooTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextZooTaxonomy resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextZooTaxonomy.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisPottery resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisPottery resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisPottery resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisPottery resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysespotteries_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisPottery resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisPottery']
+      }
+    }
+    responses: {
+      /** @description AnalysisPottery resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdpotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisPottery identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datapotteries_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisPottery identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisZooBone resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisZooBone resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooBone resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszoobones_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisZooBone resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisZooBone']
+      }
+    }
+    responses: {
+      /** @description AnalysisZooBone resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdzoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisZooBone identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datazoobones_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisZooBone identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisZooTooth resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisZooTooth resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooTooth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooTooth resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyseszooteeth_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisZooTooth resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisZooTooth']
+      }
+    }
+    responses: {
+      /** @description AnalysisZooTooth resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdzooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisZooTooth identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datazooteeth_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        'exists[summary]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisZooTooth identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }
@@ -6512,521 +8633,6 @@ export interface operations {
               }[]
             }
           }
-        }
-      }
-    }
-  }
-  api_dataanalysescontextszoo_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[subject.site.code]'?: 'asc' | 'desc'
-        'order[subject.name]'?: 'asc' | 'desc'
-        'order[analysis.type.value]'?: 'asc' | 'desc'
-        'subject.site'?: string
-        'subject.site[]'?: string[]
-        'subject.type'?: string
-        'subject.type[]'?: string[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'exists[summary]'?: boolean
-        'exists[subject.description]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.name'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.description'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextZooAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_dataanalysescontextszoo_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description The new ContextZooAnalysis resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld']
-      }
-    }
-    responses: {
-      /** @description ContextZooAnalysis resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_dataanalysescontextszoo_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextZooAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextZooAnalysis resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalysescontextszoo_id_delete: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextZooAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextZooAnalysis resource deleted */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalysescontextszoo_id_patch: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextZooAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    /** @description The updated ContextZooAnalysis resource */
-    requestBody: {
-      content: {
-        'application/merge-patch+json': components['schemas']['ContextZooAnalysis']
-      }
-    }
-    responses: {
-      /** @description ContextZooAnalysis resource updated */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_datacontexts_parentIdanalyseszoo_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[subject.site.code]'?: 'asc' | 'desc'
-        'order[subject.name]'?: 'asc' | 'desc'
-        'order[analysis.type.value]'?: 'asc' | 'desc'
-        'subject.site'?: string
-        'subject.site[]'?: string[]
-        'subject.type'?: string
-        'subject.type[]'?: string[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
-        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'exists[summary]'?: boolean
-        'exists[subject.description]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.name'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.description'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
-      }
-      header?: never
-      path: {
-        /** @description ContextZooAnalysis identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextZooAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_datacontext_zoo_analysis_taxonomies_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextZooAnalysisTaxonomy collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextZooAnalysisTaxonomy.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_datacontext_zoo_analysis_taxonomies_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextZooAnalysisTaxonomy identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextZooAnalysisTaxonomy resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysisTaxonomy.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -8316,467 +9922,6 @@ export interface operations {
           'text/csv': components['schemas']['Pottery-pottery.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_dataanalysespotteries_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[item.inventory]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.stratigraphicUnit.site'?: string
-        'item.stratigraphicUnit.site[]'?: string[]
-        'item.stratigraphicUnit'?: string
-        'item.stratigraphicUnit[]'?: string[]
-        'item.decorations.decoration'?: string
-        'item.decorations.decoration[]'?: string[]
-        'item.inventory'?: string
-        'item.culturalContext'?: string
-        'item.culturalContext[]'?: string[]
-        'item.chronologyLower'?: number
-        'item.chronologyLower[]'?: number[]
-        'item.chronologyUpper'?: number
-        'item.chronologyUpper[]'?: number[]
-        'item.shape'?: string
-        'item.shape[]'?: string[]
-        'item.functionalGroup'?: string
-        'item.functionalGroup[]'?: string[]
-        'item.functionalForm'?: string
-        'item.functionalForm[]'?: string[]
-        'item.notes'?: string
-        'item.surfaceTreatment'?: string
-        'item.surfaceTreatment[]'?: string[]
-        'item.innerColor'?: string
-        'item.outerColor'?: string
-        'item.decorationMotif'?: string
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        'item.stratigraphicUnit.number[between]'?: string
-        'item.stratigraphicUnit.number[gt]'?: string
-        'item.stratigraphicUnit.number[gte]'?: string
-        'item.stratigraphicUnit.number[lt]'?: string
-        'item.stratigraphicUnit.number[lte]'?: string
-        'item.stratigraphicUnit.year[between]'?: string
-        'item.stratigraphicUnit.year[gt]'?: string
-        'item.stratigraphicUnit.year[gte]'?: string
-        'item.stratigraphicUnit.year[lt]'?: string
-        'item.stratigraphicUnit.year[lte]'?: string
-        'item.chronologyLower[between]'?: string
-        'item.chronologyLower[gt]'?: string
-        'item.chronologyLower[gte]'?: string
-        'item.chronologyLower[lt]'?: string
-        'item.chronologyLower[lte]'?: string
-        'item.chronologyUpper[between]'?: string
-        'item.chronologyUpper[gt]'?: string
-        'item.chronologyUpper[gte]'?: string
-        'item.chronologyUpper[lt]'?: string
-        'item.chronologyUpper[lte]'?: string
-        'exists[item.notes]'?: boolean
-        'exists[item.culturalContext]'?: boolean
-        'exists[item.chronologyLower]'?: boolean
-        'exists[item.chronologyUpper]'?: boolean
-        'exists[item.innerColor]'?: boolean
-        'exists[item.outerColor]'?: boolean
-        'exists[item.decorationMotif]'?: boolean
-        'exists[item.shape]'?: boolean
-        'exists[item.surfaceTreatment]'?: boolean
-        'exists[document]'?: boolean
-        'exists[rawData]'?: boolean
-        'exists[summary]'?: boolean
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description PotteryAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_dataanalysespotteries_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description The new PotteryAnalysis resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['PotteryAnalysis.jsonld']
-      }
-    }
-    responses: {
-      /** @description PotteryAnalysis resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_dataanalysespotteries_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description PotteryAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description PotteryAnalysis resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalysespotteries_id_delete: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description PotteryAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description PotteryAnalysis resource deleted */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalysespotteries_id_patch: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description PotteryAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    /** @description The updated PotteryAnalysis resource */
-    requestBody: {
-      content: {
-        'application/merge-patch+json': components['schemas']['PotteryAnalysis']
-      }
-    }
-    responses: {
-      /** @description PotteryAnalysis resource updated */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_datapotteries_parentIdanalyses_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[item.inventory]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.stratigraphicUnit.site'?: string
-        'item.stratigraphicUnit.site[]'?: string[]
-        'item.stratigraphicUnit'?: string
-        'item.stratigraphicUnit[]'?: string[]
-        'item.decorations.decoration'?: string
-        'item.decorations.decoration[]'?: string[]
-        'item.inventory'?: string
-        'item.culturalContext'?: string
-        'item.culturalContext[]'?: string[]
-        'item.chronologyLower'?: number
-        'item.chronologyLower[]'?: number[]
-        'item.chronologyUpper'?: number
-        'item.chronologyUpper[]'?: number[]
-        'item.shape'?: string
-        'item.shape[]'?: string[]
-        'item.functionalGroup'?: string
-        'item.functionalGroup[]'?: string[]
-        'item.functionalForm'?: string
-        'item.functionalForm[]'?: string[]
-        'item.notes'?: string
-        'item.surfaceTreatment'?: string
-        'item.surfaceTreatment[]'?: string[]
-        'item.innerColor'?: string
-        'item.outerColor'?: string
-        'item.decorationMotif'?: string
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        'item.stratigraphicUnit.number[between]'?: string
-        'item.stratigraphicUnit.number[gt]'?: string
-        'item.stratigraphicUnit.number[gte]'?: string
-        'item.stratigraphicUnit.number[lt]'?: string
-        'item.stratigraphicUnit.number[lte]'?: string
-        'item.stratigraphicUnit.year[between]'?: string
-        'item.stratigraphicUnit.year[gt]'?: string
-        'item.stratigraphicUnit.year[gte]'?: string
-        'item.stratigraphicUnit.year[lt]'?: string
-        'item.stratigraphicUnit.year[lte]'?: string
-        'item.chronologyLower[between]'?: string
-        'item.chronologyLower[gt]'?: string
-        'item.chronologyLower[gte]'?: string
-        'item.chronologyLower[lt]'?: string
-        'item.chronologyLower[lte]'?: string
-        'item.chronologyUpper[between]'?: string
-        'item.chronologyUpper[gt]'?: string
-        'item.chronologyUpper[gte]'?: string
-        'item.chronologyUpper[lt]'?: string
-        'item.chronologyUpper[lte]'?: string
-        'exists[item.notes]'?: boolean
-        'exists[item.culturalContext]'?: boolean
-        'exists[item.chronologyLower]'?: boolean
-        'exists[item.chronologyUpper]'?: boolean
-        'exists[item.innerColor]'?: boolean
-        'exists[item.outerColor]'?: boolean
-        'exists[item.decorationMotif]'?: boolean
-        'exists[item.shape]'?: boolean
-        'exists[item.surfaceTreatment]'?: boolean
-        'exists[document]'?: boolean
-        'exists[rawData]'?: boolean
-        'exists[summary]'?: boolean
-      }
-      header?: never
-      path: {
-        /** @description PotteryAnalysis identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description PotteryAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['PotteryAnalysis.jsonld-pottery_analysis.acl.read_media_object_join.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -11321,15 +12466,87 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysespotteries_item_type_get: {
+  api_validatoruniqueanalysespotteries_analysis_subject_get: {
     parameters: {
       query?: never
       header?: never
       path: {
         /** @description UniqueValidator identifier */
-        item: string
+        analysis: string
         /** @description UniqueValidator identifier */
-        type: string
+        subject: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalyseszoobones_analysis_subject_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        analysis: string
+        /** @description UniqueValidator identifier */
+        subject: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalyseszooteeth_analysis_subject_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        analysis: string
+        /** @description UniqueValidator identifier */
+        subject: string
       }
       cookie?: never
     }
@@ -11438,6 +12655,42 @@ export interface operations {
         site: string
         /** @description UniqueValidator identifier */
         name: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquemedia_objectsanalyses_mediaObject_item_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        mediaObject: string
+        /** @description UniqueValidator identifier */
+        item: string
       }
       cookie?: never
     }
@@ -13961,377 +15214,6 @@ export interface operations {
       }
     }
   }
-  api_dataanalyseszoobones_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.stratigraphicUnit.site'?: string
-        'item.stratigraphicUnit.site[]'?: string[]
-        'item.stratigraphicUnit'?: string
-        'item.stratigraphicUnit[]'?: string[]
-        'item.element'?: string
-        'item.element[]'?: string[]
-        'item.part'?: string
-        'item.part[]'?: string[]
-        'item.side'?: string
-        'item.side[]'?: string[]
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        'exists[document]'?: boolean
-        'exists[rawData]'?: boolean
-        'exists[summary]'?: boolean
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooBoneAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_dataanalyseszoobones_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description The new ZooBoneAnalysis resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld']
-      }
-    }
-    responses: {
-      /** @description ZooBoneAnalysis resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_dataanalyseszoobones_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ZooBoneAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooBoneAnalysis resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalyseszoobones_id_delete: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ZooBoneAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooBoneAnalysis resource deleted */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalyseszoobones_id_patch: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ZooBoneAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    /** @description The updated ZooBoneAnalysis resource */
-    requestBody: {
-      content: {
-        'application/merge-patch+json': components['schemas']['ZooBoneAnalysis']
-      }
-    }
-    responses: {
-      /** @description ZooBoneAnalysis resource updated */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_datazoobones_parentIdanalyses_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.stratigraphicUnit.site'?: string
-        'item.stratigraphicUnit.site[]'?: string[]
-        'item.stratigraphicUnit'?: string
-        'item.stratigraphicUnit[]'?: string[]
-        'item.element'?: string
-        'item.element[]'?: string[]
-        'item.part'?: string
-        'item.part[]'?: string[]
-        'item.side'?: string
-        'item.side[]'?: string[]
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        'exists[document]'?: boolean
-        'exists[rawData]'?: boolean
-        'exists[summary]'?: boolean
-      }
-      header?: never
-      path: {
-        /** @description ZooBoneAnalysis identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooBoneAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooBoneAnalysis.jsonld-zoo_bone_analysis.acl.read_media_object_join.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
   api_datastratigraphic_units_parentIdzooteeth_get_collection: {
     parameters: {
       query?: {
@@ -14731,373 +15613,6 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_dataanalyseszooteeth_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.stratigraphicUnit.site'?: string
-        'item.stratigraphicUnit.site[]'?: string[]
-        'item.stratigraphicUnit'?: string
-        'item.stratigraphicUnit[]'?: string[]
-        'item.element'?: string
-        'item.element[]'?: string[]
-        'item.side'?: string
-        'item.side[]'?: string[]
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        'exists[document]'?: boolean
-        'exists[rawData]'?: boolean
-        'exists[summary]'?: boolean
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooToothAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_dataanalyseszooteeth_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description The new ZooToothAnalysis resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld']
-      }
-    }
-    responses: {
-      /** @description ZooToothAnalysis resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_dataanalyseszooteeth_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ZooToothAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooToothAnalysis resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalyseszooteeth_id_delete: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ZooToothAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooToothAnalysis resource deleted */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_dataanalyseszooteeth_id_patch: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ZooToothAnalysis identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    /** @description The updated ZooToothAnalysis resource */
-    requestBody: {
-      content: {
-        'application/merge-patch+json': components['schemas']['ZooToothAnalysis']
-      }
-    }
-    responses: {
-      /** @description ZooToothAnalysis resource updated */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_datazooteeth_parentIdanalyses_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.stratigraphicUnit.site'?: string
-        'item.stratigraphicUnit.site[]'?: string[]
-        'item.stratigraphicUnit'?: string
-        'item.stratigraphicUnit[]'?: string[]
-        'item.element'?: string
-        'item.element[]'?: string[]
-        'item.side'?: string
-        'item.side[]'?: string[]
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
-        'exists[document]'?: boolean
-        'exists[rawData]'?: boolean
-        'exists[summary]'?: boolean
-      }
-      header?: never
-      path: {
-        /** @description ZooToothAnalysis identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ZooToothAnalysis collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooToothAnalysis.jsonld-zoo_tooth_analysis.acl.read_media_object_join.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
         }
       }
     }

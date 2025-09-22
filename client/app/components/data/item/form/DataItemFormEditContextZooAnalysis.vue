@@ -15,12 +15,6 @@ interface Props {
 }
 
 defineProps<Props>()
-
-// const subjectIri = computed(() => item.value.subject as Iri)
-//
-// const mediaObjectJoin = useMediaObjectJoin(subjectIri)
-//
-// provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
 </script>
 
 <template>
@@ -42,13 +36,6 @@ defineProps<Props>()
         :error-messages="errors?.analysis"
         :disabled="parent?.key === 'analysis' || mode === 'update'"
       />
-      <!--      <data-autocomplete-hierarchical-vocabulary-->
-      <!--        v-model="item.type"-->
-      <!--        path="/api/vocabulary/analysis/types"-->
-      <!--        item-title="value"-->
-      <!--        label="type"-->
-      <!--        :error-messages="errors?.type"-->
-      <!--      />-->
     </v-col>
   </v-row>
   <v-row>

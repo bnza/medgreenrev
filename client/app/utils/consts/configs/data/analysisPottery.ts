@@ -19,22 +19,23 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'type.value',
-      value: 'type',
-      title: 'type',
-      minWidth: '150',
-    },
-    {
-      key: 'document.mimeType',
-      value: 'document.mimeType',
-      title: 'document',
+      key: 'analysis.type.group',
+      value: 'analysis.type.group',
+      title: 'group',
       maxWidth: '200',
       minWidth: '200',
     },
     {
-      key: 'rawData.mimeType',
-      value: 'rawData.mimeType',
-      title: 'raw data',
+      key: 'analysis.type',
+      value: 'analysis.type.value',
+      title: 'type',
+      maxWidth: '200',
+      minWidth: '200',
+    },
+    {
+      key: 'analysis.identifier',
+      value: 'analysis.identifier',
+      title: 'analysis',
       maxWidth: '200',
       minWidth: '200',
     },
@@ -47,7 +48,7 @@ const config: Readonly<ResourceConfig> = {
     },
   ],
   labels: ['pottery analysis', 'pottery analyses'],
-  name: 'potteryAnalysis',
+  name: 'analysisPottery',
 }
 
 export default config

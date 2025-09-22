@@ -1,34 +1,34 @@
 import analysis from './data/analysis'
+import analysisContextZoo from './data/analysisContextZoo'
+import analysisPottery from './data/analysisPottery'
+import analysisZooBone from './data/analysisZooBone'
+import analysisZooTooth from './data/analysisZooTooth'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
-import contextZooAnalysis from './data/contextZooAnalysis'
 import mediaObject from './data/mediaObject'
 import pottery from './data/pottery'
-import potteryAnalysis from './data/potteryAnalysis'
 import sample from './data/sample'
 import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import zooBone from './data/zooBone'
-import zooBoneAnalysis from './data/zooBoneAnalysis'
 import zooTooth from './data/zooTooth'
-import zooToothAnalysis from './data/zooToothAnalysis'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/analyses': analysis,
-  '/api/data/analyses/contexts/zoo': contextZooAnalysis,
-  '/api/data/analyses/potteries': potteryAnalysis,
-  '/api/data/analyses/zoo/bones': zooBoneAnalysis,
-  '/api/data/analyses/zoo/teeth': zooToothAnalysis,
+  '/api/data/analyses/contexts/zoo': analysisContextZoo,
+  '/api/data/analyses/potteries': analysisPottery,
+  '/api/data/analyses/zoo/bones': analysisZooBone,
+  '/api/data/analyses/zoo/teeth': analysisZooTooth,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/media_objects': mediaObject,
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/contexts': context,
-  '/contexts/{parentId}/analyses/zoo': contextZooAnalysis,
+  '/contexts/{parentId}/analyses/zoo': analysisContextZoo,
   '/api/data/contexts/{parentId}/stratigraphic_units':
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/samples':
@@ -47,9 +47,9 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
   '/api/data/zoo/bones': zooBone,
-  '/api/data/zoo/bones/{parentId}/analyses': zooBoneAnalysis,
+  '/api/data/zoo/bones/{parentId}/analyses': analysisZooBone,
   '/api/data/zoo/teeth': zooTooth,
-  '/api/data/zoo/teeth/{parentId}/analyses': zooToothAnalysis,
+  '/api/data/zoo/teeth/{parentId}/analyses': analysisZooTooth,
 } as const
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>

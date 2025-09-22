@@ -16,34 +16,23 @@ const { tab } = storeToRefs(
       <lazy-data-item-form-info-zoo-bone-analysis :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="element">element</v-tab>
-        <v-tab value="document">document</v-tab>
-        <v-tab value="rawData">raw data</v-tab>
+        <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="element" data-testid="tab-document">
-          <data-item-page-zoo-bone v-if="item.item" :iri="item.item['@id']" />
+          <data-item-page-zoo-bone
+            v-if="item.subject"
+            :iri="item.subject['@id']"
+          />
           <loading-component v-else />
         </v-tabs-window-item>
-        <v-tabs-window-item value="document" data-testid="tab-document">
-          <data-item-form-info-media-object
-            v-if="item.document"
-            :item="item.document"
-          />
-          <resource-not-found
-            v-else
-            title="No media"
-            error="No media found for this resource"
-          />
-        </v-tabs-window-item>
-        <v-tabs-window-item value="rawData" data-testid="tab-raw-data">
-          <data-item-form-info-media-object
-            v-if="item.rawData"
-            :item="item.rawData"
-          />
-          <resource-not-found
-            v-else
-            title="No media"
-            error="No media found for this resource"
+        <v-tabs-window-item value="media" data-testid="tab-media">
+          <data-media-object-join-container
+            path="/api/data/analyses/{parentId}/media_objects"
+            post-path="/api/data/media_object_analyses"
+            delete-path="/api/data/media_object_analyses/{id}"
+            :parent-iri="item.analysis?.['@id']!"
+            :can-update="false"
           />
         </v-tabs-window-item>
       </v-tabs-window>

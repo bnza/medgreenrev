@@ -46,7 +46,7 @@ const config: Readonly<ResourceConfig> = {
     },
   ],
   labels: ['pottery analysis', 'pottery analyses'],
-  name: 'potteryAnalysis',
+  name: 'analysisPottery',
 }
 
 export default config

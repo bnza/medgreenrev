@@ -17,7 +17,7 @@ const { tab } = storeToRefs(
     identifier-prop="id"
   >
     <template #default="{ item }: { item: GetItemResponse }">
-      <lazy-data-item-form-info-context-zoo-pottery-analysis :item />
+      <lazy-data-item-form-info-context-zoo-analysis :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="taxonomies">taxonomies</v-tab>
         <v-tab value="media">media</v-tab>

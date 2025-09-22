@@ -9,24 +9,25 @@ import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery
 import useResourceParent from '~/composables/useResourceParent'
 
 export function useCreateValidation(
-  parent?: ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>,
+  parent?:
+    | ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
+    | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
 ) {
   type RequestBody = PostCollectionRequestMap['/api/data/analyses/zoo/bones']
 
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
   const getEmptyModel = () =>
     ({
-      item: parentKey.value === 'zooBone' ? parentIri.value : undefined,
-      document: null,
-      rawData: null,
+      subject: parentKey.value === 'zooBone' ? parentIri.value : undefined,
+      analysis: parentKey.value === 'analysis' ? parentIri.value : undefined,
       summary: null,
     }) as RequestBody
   const model = ref(getEmptyModel())
 
   const rules = computed(() =>
     inferRules(model, {
-      item: { required },
-      type: { required },
+      subject: { required },
+      analysis: { required },
     }),
   )
   const { r$ } = useRegle(model, rules)
@@ -49,8 +50,8 @@ export function useUpdateValidation(
 
   const rules = computed(() =>
     inferRules(model, {
-      item: { required },
-      type: { required },
+      subject: { required },
+      analysis: { required },
     }),
   )
 
