@@ -1,0 +1,63 @@
+<script
+  setup
+  lang="ts"
+  generic="Path extends Extract<GetCollectionPath, '/api/data/analyses'>"
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
+import useResourceConfig from '~/stores/resource-config'
+
+const props = defineProps<{
+  path: Path
+  parent?:
+    | ResourceParent<'pottery', '/api/data/potteries/{id}'>
+    | ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
+    | ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
+}>()
+
+const { appPath } = useResourceConfig(props.path)
+const { id: parentId } = useResourceParent(props.parent)
+
+const { deleteDialogState } = storeToRefs(
+  useResourceDeleteDialogStore('/api/data/analyses/{id}'),
+)
+const { updateDialogState } = storeToRefs(
+  useResourceUpdateDialogStore('/api/data/analyses/{id}'),
+)
+
+const getStatusText = (status: number | null | undefined) => {
+  switch (status) {
+    case 0:
+      return 'requested'
+    case 1:
+      return 'pending'
+    case 2:
+      return 'completed'
+    default:
+      return 'unknown'
+  }
+}
+</script>
+
+<template>
+  <data-collection-table :path :parent-id>
+    <template #[`item.id`]="{ item }">
+      <navigation-resource-item
+        :id="item.id"
+        :acl="item._acl"
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
+        @update="updateDialogState = { id: item.id }"
+      />
+    </template>
+    <template #[`item.status`]="{ item }">
+      {{ getStatusText(item.status) }}
+    </template>
+    <template #dialogs="{ refetch }">
+      <!--      <data-dialog-download :path title="Context" />-->
+      <!--      <data-dialog-search :path title="Context" />-->
+      <data-dialog-create-analysis :path :parent @refresh="refetch()" />
+      <data-dialog-delete-analysis @refresh="refetch()" />
+      <data-dialog-update-analysis @refresh="refetch()" />
+    </template>
+  </data-collection-table>
+</template>

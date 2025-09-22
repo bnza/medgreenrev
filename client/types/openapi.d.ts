@@ -6,6 +6,58 @@ import type { Iri } from '~~/types'
  */
 
 export interface paths {
+  '/api/data/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Analysis resources.
+     * @description Retrieves the collection of Analysis resources.
+     */
+    get: operations['api_dataanalyses_get_collection']
+    put?: never
+    /**
+     * Creates a Analysis resource.
+     * @description Creates a Analysis resource.
+     */
+    post: operations['api_dataanalyses_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Analysis resource.
+     * @description Retrieves a Analysis resource.
+     */
+    get: operations['api_dataanalyses_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the Analysis resource.
+     * @description Removes the Analysis resource.
+     */
+    delete: operations['api_dataanalyses_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the Analysis resource.
+     * @description Updates the Analysis resource.
+     */
+    patch: operations['api_dataanalyses_id_patch']
+    trace?: never
+  }
   '/api/data/contexts': {
     parameters: {
       query?: never
@@ -453,6 +505,74 @@ export interface paths {
     put?: never
     post?: never
     delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectAnalysis resources.
+     * @description Retrieves the collection of MediaObjectAnalysis resources.
+     */
+    get: operations['api_dataanalyses_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectAnalysis resources.
+     * @description Retrieves the collection of MediaObjectAnalysis resources.
+     */
+    get: operations['api_datamedia_object_analyses_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectAnalysis resource.
+     * @description Creates a MediaObjectAnalysis resource.
+     */
+    post: operations['api_datamedia_object_analyses_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_analyses/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectAnalysis resource.
+     * @description Retrieves a MediaObjectAnalysis resource.
+     */
+    get: operations['api_datamedia_object_analyses_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectAnalysis resource.
+     * @description Removes the MediaObjectAnalysis resource.
+     */
+    delete: operations['api_datamedia_object_analyses_id_delete']
     options?: never
     head?: never
     patch?: never
@@ -1254,6 +1374,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/contexts/zoo/{analysis}/{subject}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysescontextszoo_analysis_subject_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/potteries/{item}/{type}': {
     parameters: {
       query?: never
@@ -1266,6 +1406,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniqueanalysespotteries_item_type_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/{type}/{identifier}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalyses_type_identifier_get']
     put?: never
     post?: never
     delete?: never
@@ -2478,6 +2638,125 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    'Analysis-analysis.acl.read': {
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType-analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?: components['schemas']['User-analysis.acl.read'] | null
+    }
+    'Analysis-analysis.create': {
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      responsible?: string | null
+      summary?: string | null
+    }
+    'Analysis.jsonld-analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
+    }
+    'Analysis.jsonld-analysis.create': {
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      responsible?: string | null
+      summary?: string | null
+    }
+    'Analysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
+        | null
+    }
+    'Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+        | null
+    }
     /** @description Unprocessable entity */
     'ConstraintViolation-json': {
       /**
@@ -2663,7 +2942,7 @@ export interface components {
       name?: string
       description?: string | null
     }
-    'Context.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
+    'Context.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -2676,8 +2955,8 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
-      site?: components['schemas']['Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
+      type?: components['schemas']['VocContextType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
+      site?: components['schemas']['Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
       name?: string
       description?: string | null
     }
@@ -2819,24 +3098,19 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      item?: string
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+      taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-      taxonomies?: string[]
     }
     'ContextZooAnalysis.jsonld': {
       readonly id?: number & string
@@ -2844,26 +3118,21 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      item?: string
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+      taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      document?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      rawData?: string | null
-      summary?: string | null
-      taxonomies?: string[]
     }
-    'ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
+    'ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -2876,20 +3145,10 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      item?: components['schemas']['Context.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      document?:
-        | components['schemas']['MediaObject.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
-        | null
-      rawData?:
-        | components['schemas']['MediaObject.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
-        | null
+      subject?: components['schemas']['Context.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
       summary?: string | null
-      taxonomies?: components['schemas']['ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read'][]
+      taxonomies?: components['schemas']['ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read'][]
     }
     'ContextZooAnalysisTaxonomy.jsonld': {
       readonly '@id': Iri
@@ -2915,7 +3174,7 @@ export interface components {
        */
       taxonomy?: string
     }
-    'ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
+    'ContextZooAnalysisTaxonomy.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -2985,30 +3244,6 @@ export interface components {
       type: string
       description?: string | null
     }
-    'MediaObject.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      contentUrl?: string | null
-      originalFilename?: string
-      sha256?: string
-      mimeType?: string
-      size?: number
-      width?: number | null
-      height?: number | null
-      /** Format: date-time */
-      uploadDate?: string | null
-      readonly contentThumbnailUrl?: string | null
-    }
     'MediaObject.jsonld-media_object.acl.read': {
       readonly '@context'?:
         | string
@@ -3029,6 +3264,40 @@ export interface components {
       type?: string
       uploadedBy?:
         | components['schemas']['User.jsonld-media_object.acl.read']
+        | null
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      description?: string | null
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: string[] | null
+    }
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      uploadedBy?:
+        | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
       contentUrl?: string | null
       originalFilename?: string
@@ -3148,6 +3417,37 @@ export interface components {
       /** Format: date-time */
       uploadDate?: string | null
       readonly contentThumbnailUrl?: string | null
+    }
+    'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      item?: components['schemas']['Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      description?: string | null
+    }
+    'MediaObjectAnalysis.jsonld-media_object_join.create': {
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
     }
     'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       readonly '@context'?:
@@ -3312,8 +3612,8 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      stratigraphicUnit?: string
-      inventory?: string
+      stratigraphicUnit: string
+      inventory: string
       decorations?: string[]
       /**
        * Format: iri-reference
@@ -3339,12 +3639,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      functionalGroup?: string
+      functionalGroup: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      functionalForm?: string
+      functionalForm: string
       notes?: string | null
     }
     'Pottery.jsonld-pottery_analysis.acl.read_media_object_join.read': {
@@ -3931,7 +4231,7 @@ export interface components {
       code?: string
       name?: string
     }
-    'Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
+    'Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -4557,6 +4857,11 @@ export interface components {
       criteria?: string[]
       valid?: number
     }
+    'User-analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
     'User-site.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
@@ -4581,6 +4886,38 @@ export interface components {
       plainPassword: string | null
       repeatPassword: string | null
     }
+    'User.jsonld-analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
     'User.jsonld-media_object.acl.read': {
       readonly '@context'?:
         | string
@@ -4593,6 +4930,22 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
       readonly userIdentifier?: string
     }
     'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
@@ -4716,6 +5069,11 @@ export interface components {
         [key: string]: number
       }
     }
+    'VocAnalysisType-analysis.acl.read': {
+      code?: string
+      group?: string
+      value?: string
+    }
     'VocAnalysisType.jsonld': {
       readonly '@context'?:
         | string
@@ -4729,6 +5087,55 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
       group?: string
       value?: string
     }
@@ -4835,7 +5242,7 @@ export interface components {
       group?: string
       value?: string
     }
-    'VocContextType.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read': {
+    'VocContextType.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -5480,6 +5887,280 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
+  api_dataanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        'order[responsible]'?: 'asc' | 'desc'
+        'order[status]'?: 'asc' | 'desc'
+        'order[summary]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        /**
+         * @description Search by analysis type code OR identifier (case insensitive like) if single value, or by analysis type code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "typeCode." searches only by type code. Format: "typeCode.identifier"
+         * @example XRF.sample001
+         */
+        search?: string
+        /**
+         * @description Filter analyses to only those created by the current user. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Analysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['Analysis-analysis.acl.read'][]
+          'application/ld+json': {
+            member: components['schemas']['Analysis.jsonld-analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalyses_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new Analysis resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['Analysis.jsonld-analysis.create']
+      }
+    }
+    responses: {
+      /** @description Analysis resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Analysis.jsonld-analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Analysis resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Analysis.jsonld-analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyses_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Analysis resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyses_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated Analysis resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['Analysis-analysis.create']
+      }
+    }
+    responses: {
+      /** @description Analysis resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Analysis.jsonld-analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
   api_datacontexts_get_collection: {
     parameters: {
       query?: {
@@ -6584,37 +7265,31 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
-        'order[item.site.code]'?: 'asc' | 'desc'
-        'order[item.name]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.site'?: string
-        'item.site[]'?: string[]
-        'item.type'?: string
-        'item.type[]'?: string[]
-        'item.contextStratigraphicUnits.stratigraphicUnit'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        'item.contextStratigraphicUnits.stratigraphicUnit.year'?: number
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
-        'item.contextStratigraphicUnits.stratigraphicUnit.number'?: number
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
         'exists[summary]'?: boolean
-        'exists[item.description]'?: boolean
+        'exists[subject.description]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -6624,22 +7299,22 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'item.name'?: string
+        'subject.name'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'item.description'?: string
+        'subject.description'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
       }
       header?: never
       path?: never
@@ -6654,7 +7329,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read'][]
+            member: components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -6713,7 +7388,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
+          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
         }
       }
       /** @description Invalid input */
@@ -6758,7 +7433,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
+          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
         }
       }
       /** @description Not found */
@@ -6840,7 +7515,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read']
+          'application/ld+json': components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
         }
       }
       /** @description Invalid input */
@@ -6897,37 +7572,31 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
-        'order[item.site.code]'?: 'asc' | 'desc'
-        'order[item.name]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        'order[document.mimeType]'?: 'asc' | 'desc'
-        'order[rawData.mimeType]'?: 'asc' | 'desc'
-        'item.site'?: string
-        'item.site[]'?: string[]
-        'item.type'?: string
-        'item.type[]'?: string[]
-        'item.contextStratigraphicUnits.stratigraphicUnit'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        'item.contextStratigraphicUnits.stratigraphicUnit.year'?: number
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
-        'item.contextStratigraphicUnits.stratigraphicUnit.number'?: number
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
-        type?: string
-        'type[]'?: string[]
-        'document.mimeType'?: string
-        'rawData.mimeType'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
-        'item.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
         'exists[summary]'?: boolean
-        'exists[item.description]'?: boolean
+        'exists[subject.description]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -6937,22 +7606,22 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'item.name'?: string
+        'subject.name'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'item.description'?: string
+        'subject.description'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
       }
       header?: never
       path: {
@@ -6970,7 +7639,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_media_object_join.read'][]
+            member: components['schemas']['ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -7224,17 +7893,6 @@ export interface operations {
           }
         }
       }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
     }
   }
   api_datamedia_objects_post: {
@@ -7280,17 +7938,6 @@ export interface operations {
           'application/json': components['schemas']['Error']
         }
       }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
       /** @description An error occurred */
       422: {
         headers: {
@@ -7323,17 +7970,6 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
         }
       }
       /** @description Not found */
@@ -7484,6 +8120,242 @@ export interface operations {
         content: {
           'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
         }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectAnalysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_analyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_analyses_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectAnalysis resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectAnalysis resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datamedia_object_analyses_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectAnalysis resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_analyses_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectAnalysis resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
       }
       /** @description Forbidden */
       403: {
@@ -11154,6 +12026,42 @@ export interface operations {
       }
     }
   }
+  api_validatoruniqueanalysescontextszoo_analysis_subject_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        analysis: string
+        /** @description UniqueValidator identifier */
+        subject: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniqueanalysespotteries_item_type_get: {
     parameters: {
       query?: never
@@ -11163,6 +12071,42 @@ export interface operations {
         item: string
         /** @description UniqueValidator identifier */
         type: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalyses_type_identifier_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        type: string
+        /** @description UniqueValidator identifier */
+        identifier: string
       }
       cookie?: never
     }

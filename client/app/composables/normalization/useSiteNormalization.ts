@@ -19,7 +19,7 @@ export function useNormalization() {
       ) {
         diffItem.culturalContexts = item.culturalContexts
       }
-      return diffItem
+      return onPreCreate(diffItem)
     }
 
   return {

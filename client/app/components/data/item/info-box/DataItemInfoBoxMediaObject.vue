@@ -21,7 +21,7 @@ const vocabularyMediaObjectTypesStore = useVocabularyStore(
     path="/api/data/media_objects/{id}"
     title="Media"
     data-testid="data-item-info-box-pottery"
-    :app-path="readLink ? '/data/media_objects' : undefined"
+    :app-path="readLink ? '/data/media' : undefined"
     :width="600"
   >
     <template #activator="props">

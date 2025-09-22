@@ -14,23 +14,23 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <lazy-data-item-form-info-sample :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
-        <v-tab value="contexts">contexts</v-tab>
+        <!--        <v-tab value="contexts">contexts</v-tab>-->
         <v-tab value="stratigraphic-units">stratigraphic units</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="data" data-testid="tab-data">
           <p>Data</p>
         </v-tabs-window-item>
-        <v-tabs-window-item value="contexts" data-testid="tab-window-contexts">
-          <data-collection-page-join-context-sample
-            path="/api/data/samples/{parentId}/contexts"
-            :parent="{
-              key: 'sample',
-              resourceItemPath: '/api/data/samples/{id}',
-              item,
-            }"
-          />
-        </v-tabs-window-item>
+        <!--        <v-tabs-window-item value="contexts" data-testid="tab-window-contexts">-->
+        <!--          <data-collection-page-join-context-sample-->
+        <!--            path="/api/data/samples/{parentId}/contexts"-->
+        <!--            :parent="{-->
+        <!--              key: 'sample',-->
+        <!--              resourceItemPath: '/api/data/samples/{id}',-->
+        <!--              item,-->
+        <!--            }"-->
+        <!--          />-->
+        <!--        </v-tabs-window-item>-->
         <v-tabs-window-item
           value="stratigraphic-units"
           data-testid="tab-window-sus"

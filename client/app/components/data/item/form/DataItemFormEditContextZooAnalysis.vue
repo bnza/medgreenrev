@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import type { Iri, PatchItemRequestMap, ResourceParent } from '~~/types'
-
-import {
-  mediaObjectJoinInjectionKey,
-  useMediaObjectJoin,
-} from '~/composables/injection/useMediaObjectJoin'
+import type { PatchItemRequestMap, ResourceParent } from '~~/types'
 
 type Item = PatchItemRequestMap['/api/data/analyses/contexts/zoo/{id}']
 
@@ -14,57 +9,46 @@ const item = defineModel<Partial<Item>>('item', { required: true })
 interface Props {
   mode: 'create' | 'update'
   errors?: RegleErrorTree<Partial<Item>>
-  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
+  parent?:
+    | ResourceParent<'context', '/api/data/contexts/{id}'>
+    | ResourceParent<'analysis', '/api/data/analyses/{id}'>
 }
 
 defineProps<Props>()
 
-const itemIri = computed(() => item.value.item as Iri)
-
-const mediaObjectJoin = useMediaObjectJoin(itemIri)
-
-provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
+// const subjectIri = computed(() => item.value.subject as Iri)
+//
+// const mediaObjectJoin = useMediaObjectJoin(subjectIri)
+//
+// provide(mediaObjectJoinInjectionKey, mediaObjectJoin)
 </script>
 
 <template>
   <v-row>
     <v-col cols="6">
       <data-autocomplete
-        v-model="item.item"
+        v-model="item.subject"
         path="/api/data/contexts"
         item-title="name"
         label="context"
         granted-only
-        :error-messages="errors?.item"
+        :error-messages="errors?.subject"
         :disabled="parent?.key === 'context' || mode === 'update'"
       />
     </v-col>
     <v-col cols="6" class="px-2">
-      <data-autocomplete-hierarchical-vocabulary
-        v-model="item.type"
-        path="/api/vocabulary/analysis/types"
-        item-title="value"
-        label="type"
-        :error-messages="errors?.type"
+      <data-autocomplete-analysis
+        v-model="item.analysis"
+        :error-messages="errors?.analysis"
+        :disabled="parent?.key === 'analysis' || mode === 'update'"
       />
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols="6" class="px-2">
-      <data-media-object-text-field
-        v-model="item.document"
-        label="document"
-        :error-messages="errors?.document"
-        :readonly="false"
-      />
-    </v-col>
-    <v-col cols="6" class="px-2">
-      <data-media-object-text-field
-        v-model="item.rawData"
-        label="raw data"
-        :error-messages="errors?.rawData"
-        :readonly="false"
-      />
+      <!--      <data-autocomplete-hierarchical-vocabulary-->
+      <!--        v-model="item.type"-->
+      <!--        path="/api/vocabulary/analysis/types"-->
+      <!--        item-title="value"-->
+      <!--        label="type"-->
+      <!--        :error-messages="errors?.type"-->
+      <!--      />-->
     </v-col>
   </v-row>
   <v-row>

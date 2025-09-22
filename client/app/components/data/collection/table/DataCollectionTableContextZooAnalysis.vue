@@ -41,20 +41,29 @@ const vocabularyAnalysisStore = useVocabularyStore(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #[`item.item.site.code`]="{ item }">
+    <template #[`item.subject.site.code`]="{ item }">
       <data-item-info-box-span-site
-        :iri="item.item.site['@id']"
-        :text="item.item.site.code"
+        :iri="item.subject.site['@id']"
+        :text="item.subject.site.code"
       />
     </template>
-    <template #[`item.item.name`]="{ item }">
+    <template #[`item.subject.name`]="{ item }">
       <data-item-info-box-span-context
-        :iri="item.item['@id']"
-        :text="item.item.name"
+        :iri="item.subject['@id']"
+        :text="item.subject.name"
       />
     </template>
-    <template #[`item.type.value`]="{ item }">
-      {{ vocabularyAnalysisStore.getValue(item.type) }}
+    <template #[`item.analysis.type.group`]="{ item }">
+      {{ vocabularyAnalysisStore.getValue(item.analysis.type['@id'], 'group') }}
+    </template>
+    <template #[`item.analysis.type`]="{ item }">
+      {{ vocabularyAnalysisStore.getValue(item.analysis.type['@id']) }}
+    </template>
+    <template #[`item.analysis.identifier`]="{ item }">
+      <data-item-info-box-span-analysis
+        :iri="item.analysis['@id']"
+        :text="item.analysis.identifier"
+      />
     </template>
     <template #[`item.summary`]="{ item }">
       <text-tooltip-span :text="item.summary" />

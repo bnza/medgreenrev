@@ -30,6 +30,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
         </template>
         <v-list-item
           nuxt
+          to="/data/analyses"
+          router
+          title="Analyses"
+          data-testid="app-nav-drawer-li-analyses-analyses"
+        />
+        <v-list-item
+          nuxt
           to="/data/analysis/zoo/bones"
           router
           title="Animal bones"

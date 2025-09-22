@@ -1,3 +1,4 @@
+import analysis from './data/analysis'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
 import * as contextSample from './data/contextSample'
@@ -19,6 +20,7 @@ import zooToothAnalysis from './data/zooToothAnalysis'
 import type { ResourceConfig } from '~~/types'
 
 const RESOURCE_CONFIG_MAP_INTERNAL = {
+  '/api/data/analyses': analysis,
   '/api/data/analyses/contexts/zoo': contextZooAnalysis,
   '/api/data/analyses/potteries': potteryAnalysis,
   '/api/data/analyses/zoo/bones': zooBoneAnalysis,

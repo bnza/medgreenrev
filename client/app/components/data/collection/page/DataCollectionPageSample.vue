@@ -21,7 +21,7 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 <template>
   <data-collection-page
     title="Samples"
-    :parent="false"
+    :parent="Boolean(parent)"
     :path
     :show-back-button="false"
     :acl="{
@@ -31,6 +31,6 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
         : hasAnySitePrivilege,
     }"
   >
-    <data-collection-table-sample :path />
+    <data-collection-table-sample :path :parent />
   </data-collection-page>
 </template>

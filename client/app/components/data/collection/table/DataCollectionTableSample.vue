@@ -8,12 +8,15 @@
     >
   "
 >
-import type { GetCollectionPath } from '~~/types'
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
   path: Path
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
+
+const { id: parentId } = useResourceParent(props.parent)
 
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/samples/{id}'),
@@ -25,7 +28,7 @@ const { appPath } = useResourceConfig(props.path)
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
@@ -37,7 +40,7 @@ const { appPath } = useResourceConfig(props.path)
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path title="Sample" />
-      <lazy-data-dialog-create-sample :path @refresh="refetch()" />
+      <lazy-data-dialog-create-sample :path :parent @refresh="refetch()" />
       <data-dialog-delete-sample @refresh="refetch()" />
       <data-dialog-update-sample @refresh="refetch()" />
     </template>
