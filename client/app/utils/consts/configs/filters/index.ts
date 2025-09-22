@@ -577,86 +577,81 @@ const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionO
     },
   }
 
-const contextZooAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+const analysisContextZooStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
-    'item.site': {
+    'subject.site': {
       propertyLabel: 'site',
       filters: {
         SiteEquals,
       },
     },
-    'item.type': {
+    'subject.type': {
       propertyLabel: 'item type',
       filters: {
         SearchExact,
       },
     },
-    'item.contextStratigraphicUnits.stratigraphicUnit': {
+    'subject.contextStratigraphicUnits.stratigraphicUnit': {
       propertyLabel: 'stratigraphic unit',
       filters: {
         StratigraphicUnitEquals,
       },
     },
-    'item.contextStratigraphicUnits.stratigraphicUnit.year': {
+    'subject.contextStratigraphicUnits.stratigraphicUnit.year': {
       propertyLabel: 'stratigraphic unit (year)',
       filters: {
         SearchExact,
         ...NumericOperations,
       },
     },
-    'item.contextStratigraphicUnits.stratigraphicUnit.number': {
+    'subject.contextStratigraphicUnits.stratigraphicUnit.number': {
       propertyLabel: 'stratigraphic unit (number)',
       filters: {
         SearchExact,
         ...NumericOperations,
       },
     },
-    'item.name': {
+    'subject.name': {
       propertyLabel: 'item name',
       filters: {
         SearchPartial,
       },
     },
-    'item.description': {
+    'subject.description': {
       propertyLabel: 'item description',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    'contextStratigraphicUnits.stratigraphicUnit.interpretation': {
+    'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation': {
       propertyLabel: 'stratigraphic unit (interpretation)',
       filters: {
         SearchPartial,
       },
     },
-    'contextStratigraphicUnits.stratigraphicUnit.description': {
+    'subject.contextStratigraphicUnits.stratigraphicUnit.description': {
       propertyLabel: 'stratigraphic unit (description)',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    type: {
+    'analysis.type': {
       propertyLabel: 'analysis type',
       filters: {
         VocabularyAnalysisType,
       },
     },
-    'document.mimeType': {
-      propertyLabel: 'document mime type',
+    'analysis.summary': {
+      propertyLabel: 'analysis summary',
       filters: {
         SearchPartial,
-      },
-    },
-    'rawData.mimeType': {
-      propertyLabel: 'raw data mime type',
-      filters: {
-        SearchPartial,
+        Exists,
       },
     },
     summary: {
-      propertyLabel: 'analysis summary',
+      propertyLabel: 'summary',
       filters: {
         SearchPartial,
         Exists,
@@ -664,54 +659,54 @@ const contextZooAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefi
     },
   }
 
-const potteryAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+const analysisPotteryStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
-    'item.stratigraphicUnit.site': {
+    'subject.stratigraphicUnit.site': {
       propertyLabel: 'site',
       filters: {
         SiteEquals,
       },
     },
-    'item.stratigraphicUnit': {
+    'subject.stratigraphicUnit': {
       propertyLabel: 'stratigraphic unit',
       filters: {
         StratigraphicUnitEquals,
       },
     },
-    'item.stratigraphicUnit.number': {
+    'subject.stratigraphicUnit.number': {
       propertyLabel: 'stratigraphic unit (number)',
       filters: {
         SearchExact,
         ...NumericOperations,
       },
     },
-    'item.stratigraphicUnit.year': {
+    'subject.stratigraphicUnit.year': {
       propertyLabel: 'stratigraphic unit (year)',
       filters: {
         SearchExact,
         ...NumericOperations,
       },
     },
-    'item.decorations.decoration': {
+    'subject.decorations.decoration': {
       propertyLabel: 'pottery (decoration)',
       filters: {
         VocabularyPotteryDecoration,
       },
     },
-    'item.inventory': {
+    'subject.inventory': {
       propertyLabel: 'pottery (inventory)',
       filters: {
         SearchPartial,
       },
     },
-    'item.culturalContext': {
+    'subject.culturalContext': {
       propertyLabel: 'pottery (cultural context)',
       filters: {
         VocabularyCulturalContext,
         Exists,
       },
     },
-    'item.chronologyLower': {
+    'subject.chronologyLower': {
       propertyLabel: 'pottery (chronology lower)',
       filters: {
         SearchExact,
@@ -719,7 +714,7 @@ const potteryAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
         ...NumericOperations,
       },
     },
-    'item.chronologyUpper': {
+    'subject.chronologyUpper': {
       propertyLabel: 'pottery (chronology upper)',
       filters: {
         SearchExact,
@@ -727,47 +722,47 @@ const potteryAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
         ...NumericOperations,
       },
     },
-    'item.shape': {
+    'subject.shape': {
       propertyLabel: 'pottery shape',
       filters: {
         VocabularyPotteryShape,
         Exists,
       },
     },
-    'item.functionalGroup': {
+    'subject.functionalGroup': {
       propertyLabel: 'pottery functional group',
       filters: {
         VocabularyPotteryFunctionalGroups,
       },
     },
-    'item.functionalForm': {
+    'subject.functionalForm': {
       propertyLabel: 'pottery functional form',
       filters: {
         VocabularyPotteryFunctionalForm,
       },
     },
-    'item.notes': {
+    'subject.notes': {
       propertyLabel: 'pottery notes',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    'item.surfaceTreatment': {
+    'subject.surfaceTreatment': {
       propertyLabel: 'pottery surface treatment',
       filters: {
         VocabularyPotterySurfaceTreatment,
         Exists,
       },
     },
-    'item.innerColor': {
+    'subject.innerColor': {
       propertyLabel: 'pottery inner color',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    'item.outerColor': {
+    'subject.outerColor': {
       propertyLabel: 'pottery outer color',
       filters: {
         SearchPartial,
@@ -781,40 +776,23 @@ const potteryAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
         Exists,
       },
     },
-    type: {
+    'analysis.type': {
       propertyLabel: 'analysis type',
       filters: {
         VocabularyAnalysisType,
       },
     },
-    'document.mimeType': {
-      propertyLabel: 'document mime type',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'rawData.mimeType': {
-      propertyLabel: 'raw data mime type',
-      filters: {
-        SearchPartial,
-      },
-    },
-    summary: {
+    'analysis.summary': {
       propertyLabel: 'analysis summary',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    document: {
-      propertyLabel: 'document',
+    summary: {
+      propertyLabel: 'summary',
       filters: {
-        Exists,
-      },
-    },
-    rawData: {
-      propertyLabel: 'raw data',
-      filters: {
+        SearchPartial,
         Exists,
       },
     },
@@ -922,7 +900,7 @@ const zooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObje
     },
   }
 
-const zooBoneAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+const analysisZooBoneStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
     'item.stratigraphicUnit.site': {
       propertyLabel: 'site',
@@ -992,18 +970,6 @@ const zooBoneAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
         VocabularyAnalysisType,
       },
     },
-    'document.mimeType': {
-      propertyLabel: 'document mime type',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'rawData.mimeType': {
-      propertyLabel: 'raw data mime type',
-      filters: {
-        SearchPartial,
-      },
-    },
     summary: {
       propertyLabel: 'summary',
       filters: {
@@ -1011,112 +977,76 @@ const zooBoneAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
         Exists,
       },
     },
-    document: {
-      propertyLabel: 'document',
-      filters: {
-        Exists,
-      },
-    },
-    rawData: {
-      propertyLabel: 'raw data',
-      filters: {
-        Exists,
-      },
-    },
   }
 
-const zooToothAnalysisStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+const analysisZooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
-    'item.stratigraphicUnit.site': {
+    'subject.stratigraphicUnit.site': {
       propertyLabel: 'site',
       filters: {
         SiteEquals,
       },
     },
-    'item.stratigraphicUnit': {
+    'subject.stratigraphicUnit': {
       propertyLabel: 'stratigraphic unit',
       filters: {
         StratigraphicUnitEquals,
       },
     },
-    'item.stratigraphicUnit.number': {
+    'subject.stratigraphicUnit.number': {
       propertyLabel: 'stratigraphic unit (number)',
       filters: {
         SearchExact,
         ...NumericOperations,
       },
     },
-    'item.stratigraphicUnit.year': {
+    'subject.stratigraphicUnit.year': {
       propertyLabel: 'stratigraphic unit (year)',
       filters: {
         SearchExact,
         ...NumericOperations,
       },
     },
-    'item.notes': {
+    'subject.notes': {
       propertyLabel: 'teeth (notes)',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    'item.species': {
+    'subject.species': {
       propertyLabel: 'teeth (taxonomy)',
       filters: {
         VocabularyZooTaxonomy,
       },
     },
-    'item.element': {
+    'subject.element': {
       propertyLabel: 'teeth (element)',
       filters: {
         VocabularyZooBone,
       },
     },
-    'item.connected': {
+    'subject.connected': {
       filters: {
         SelectionZooBoneEndsPreserved,
       },
       propertyLabel: 'teeth (connected to jaw)',
     },
-    'item.side': {
+    'subject.side': {
       filters: {
         SelectionZooBoneSide,
       },
     },
-    type: {
+    'analysis.type': {
       propertyLabel: 'analysis type',
       filters: {
         VocabularyAnalysisType,
-      },
-    },
-    'document.mimeType': {
-      propertyLabel: 'document mime type',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'rawData.mimeType': {
-      propertyLabel: 'raw data mime type',
-      filters: {
-        SearchPartial,
       },
     },
     summary: {
       propertyLabel: 'summary',
       filters: {
         SearchPartial,
-        Exists,
-      },
-    },
-    document: {
-      propertyLabel: 'document',
-      filters: {
-        Exists,
-      },
-    },
-    rawData: {
-      propertyLabel: 'raw data',
-      filters: {
         Exists,
       },
     },
@@ -1127,17 +1057,17 @@ export const FILTERS_PATHS_MAP: Record<
   ResourceStaticFiltersDefinitionObject
 > = {
   '/api/data/analyses/contexts/zoo':
-    contextZooAnalysisStaticFiltersDefinitionObject,
-  '/api/data/analyses/potteries': potteryAnalysisStaticFiltersDefinitionObject,
-  '/api/data/analyses/zoo/bones': zooBoneAnalysisStaticFiltersDefinitionObject,
-  '/api/data/analyses/zoo/teeth': zooToothAnalysisStaticFiltersDefinitionObject,
+    analysisContextZooStaticFiltersDefinitionObject,
+  '/api/data/analyses/potteries': analysisPotteryStaticFiltersDefinitionObject,
+  '/api/data/analyses/zoo/bones': analysisZooBoneStaticFiltersDefinitionObject,
+  '/api/data/analyses/zoo/teeth': analysisZooToothStaticFiltersDefinitionObject,
   '/api/data/contexts': contextStaticFiltersDefinition,
   '/api/data/contexts/{parentId}/analyses/zoo':
-    contextZooAnalysisStaticFiltersDefinitionObject,
+    analysisContextZooStaticFiltersDefinitionObject,
   '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
   '/api/data/potteries': potteryStaticFiltersDefinition,
   '/api/data/potteries/{parentId}/analyses':
-    potteryAnalysisStaticFiltersDefinitionObject,
+    analysisPotteryStaticFiltersDefinitionObject,
   '/api/data/sites': siteStaticFiltersDefinition,
   '/api/data/sites/{parentId}/contexts': contextStaticFiltersDefinition,
   '/api/data/sites/{parentId}/stratigraphic_units':
@@ -1151,8 +1081,8 @@ export const FILTERS_PATHS_MAP: Record<
     zooToothStaticFiltersDefinitionObject,
   '/api/data/zoo/bones': zooBoneStaticFiltersDefinitionObject,
   '/api/data/zoo/bones/{parentId}/analyses':
-    zooBoneAnalysisStaticFiltersDefinitionObject,
+    analysisZooBoneStaticFiltersDefinitionObject,
   '/api/data/zoo/teeth': zooToothStaticFiltersDefinitionObject,
   '/api/data/zoo/teeth/{parentId}/analyses':
-    zooToothAnalysisStaticFiltersDefinitionObject,
+    analysisZooToothStaticFiltersDefinitionObject,
 } as const
