@@ -68,13 +68,13 @@ export abstract class BaseOperation<P extends keyof paths> {
           if (responseData?.message === 'Expired JWT Token') {
             const { add: addMessage } = useMessagesStore()
             const { pushForcedLogin } = useHistoryStackStore()
+            await signOut({ callbackUrl: '/login', redirect: true })
+            pushForcedLogin()
             addMessage({
               text: 'Session expired. Please login again.',
               color: 'warning',
               timeout: 0,
             })
-            await signOut({ callbackUrl: 'login', redirect: true })
-            pushForcedLogin()
           }
         }
 

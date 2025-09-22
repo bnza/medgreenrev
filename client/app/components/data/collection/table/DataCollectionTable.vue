@@ -20,6 +20,15 @@ const { tableHeightPx } = useResponsiveTable({
   fixedOffset: 120,
   minHeight: 350,
 })
+
+const { statusChanged } = useAppAuth()
+watch(
+  () => statusChanged.value,
+  () => {
+    console.log('statusChanged: refetching data')
+    refetch()
+  },
+)
 </script>
 
 <template>
