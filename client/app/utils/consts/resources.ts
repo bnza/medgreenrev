@@ -4,7 +4,6 @@
 export const API_RESOURCE_MAP = {
   analysis: '/api/data/analyses',
   context: '/api/data/contexts',
-  contextSample: '/api/data/context_samples',
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',
   contextZooAnalysis: '/api/data/analyses/contexts/zoo',
   contextZooAnalysisTaxonomy: '/api/data/context_zoo_analysis_taxonomies',

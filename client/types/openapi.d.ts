@@ -130,94 +130,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/context_samples': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextSample resources.
-     * @description Retrieves the collection of ContextSample resources.
-     */
-    get: operations['api_datacontext_samples_get_collection']
-    put?: never
-    /**
-     * Creates a ContextSample resource.
-     * @description Creates a ContextSample resource.
-     */
-    post: operations['api_datacontext_samples_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/context_samples/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ContextSample resource.
-     * @description Retrieves a ContextSample resource.
-     */
-    get: operations['api_datacontext_samples_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the ContextSample resource.
-     * @description Removes the ContextSample resource.
-     */
-    delete: operations['api_datacontext_samples_id_delete']
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/contexts/{parentId}/samples': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextSample resources.
-     * @description Retrieves the collection of ContextSample resources.
-     */
-    get: operations['api_datacontexts_parentIdsamples_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/samples/{parentId}/contexts': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ContextSample resources.
-     * @description Retrieves the collection of ContextSample resources.
-     */
-    get: operations['api_datasamples_parentIdcontexts_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/context_stratigraphic_units': {
     parameters: {
       query?: never
@@ -1426,26 +1338,6 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniqueanalyses_type_identifier_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/validator/unique/context_sample/{context}/{sample}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a UniqueValidator resource.
-     * @description Retrieves a UniqueValidator resource.
-     */
-    get: operations['api_validatoruniquecontext_sample_context_sample_get']
     put?: never
     post?: never
     delete?: never
@@ -2757,6 +2649,18 @@ export interface components {
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
     }
+    Collection: {
+      readonly empty?: boolean
+      readonly keys?: unknown
+      readonly values?: unknown
+      readonly iterator?: unknown
+    }
+    'Collection.jsonld': {
+      readonly empty?: boolean
+      readonly keys?: unknown
+      readonly values?: unknown
+      readonly iterator?: unknown
+    }
     /** @description Unprocessable entity */
     'ConstraintViolation-json': {
       /**
@@ -2871,42 +2775,6 @@ export interface components {
       name: string
       description?: string | null
     }
-    'Context.jsonld-context_sample.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context_sample.contexts.acl.read_context.acl.read']
-      site?: components['schemas']['Site.jsonld-context_sample.contexts.acl.read_context.acl.read']
-      name?: string
-      description?: string | null
-    }
-    'Context.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-      site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-      name?: string
-      description?: string | null
-    }
     'Context.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
         | string
@@ -2959,88 +2827,6 @@ export interface components {
       site?: components['schemas']['Site.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read']
       name?: string
       description?: string | null
-    }
-    'ContextSample-context_sample.acl.read': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      context?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      sample?: string
-    }
-    'ContextSample-context_sample.samples.acl.read_sample.acl.read': {
-      readonly id?: number & string
-      sample?: components['schemas']['Sample-context_sample.samples.acl.read_sample.acl.read']
-    }
-    'ContextSample.jsonld': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      context: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      sample: string
-    }
-    'ContextSample.jsonld-context_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      context?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      sample?: string
-    }
-    'ContextSample.jsonld-context_sample.contexts.acl.read_context.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      context?: components['schemas']['Context.jsonld-context_sample.contexts.acl.read_context.acl.read']
-    }
-    'ContextSample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      context?: components['schemas']['Context.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-      sample?: components['schemas']['Sample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-    }
-    'ContextSample.jsonld-context_sample.samples.acl.read_sample.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      sample?: components['schemas']['Sample.jsonld-context_sample.samples.acl.read_sample.acl.read']
     }
     'ContextStratigraphicUnit-context_stratigraphic_unit.acl.read': {
       readonly id?: number & string
@@ -3106,11 +2892,6 @@ export interface components {
       analysis?: string
       summary?: string | null
       taxonomies?: string[]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
     }
     'ContextZooAnalysis.jsonld': {
       readonly id?: number & string
@@ -3126,11 +2907,6 @@ export interface components {
       analysis?: string
       summary?: string | null
       taxonomies?: string[]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
     }
     'ContextZooAnalysis.jsonld-context_zoo_analysis.acl.read_context.acl.read_analysis.acl.read': {
       readonly '@context'?:
@@ -3804,21 +3580,8 @@ export interface components {
       year: number
       number?: number
       sampleStratigraphicUnits?: string[]
-      sampleContexts?: string[]
       description?: string | null
-      readonly code?: string
-    }
-    'Sample-context_sample.samples.acl.read_sample.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-context_sample.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['VocSampleType-context_sample.samples.acl.read_sample.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
+      sampleContexts?: components['schemas']['Collection']
       readonly code?: string
     }
     'Sample-sample.acl.read': {
@@ -3879,56 +3642,8 @@ export interface components {
       year: number
       number: number
       sampleStratigraphicUnits?: string[]
-      sampleContexts?: string[]
       description?: string | null
-      readonly code?: string
-    }
-    'Sample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-      type?: components['schemas']['VocSampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      readonly code?: string
-    }
-    'Sample.jsonld-context_sample.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-context_sample.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['VocSampleType.jsonld-context_sample.samples.acl.read_sample.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
+      sampleContexts?: components['schemas']['Collection.jsonld']
       readonly code?: string
     }
     'Sample.jsonld-sample.acl.read': {
@@ -4061,11 +3776,6 @@ export interface components {
       code?: string
       name?: string
     }
-    'Site-context_sample.samples.acl.read_sample.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
     'Site-context_stratigraphic_unit.acl.read': {
       code?: string
       name?: string
@@ -4135,53 +3845,6 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      code?: string
-      name?: string
-    }
-    'Site.jsonld-context_sample.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      name?: string
-    }
-    'Site.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site.jsonld-context_sample.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
       code?: string
       name?: string
     }
@@ -5182,36 +4845,6 @@ export interface components {
       group?: string
       value?: string
     }
-    'VocContextType.jsonld-context_sample.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
     'VocContextType.jsonld-context_stratigraphic_unit.acl.read': {
       readonly '@context'?:
         | string
@@ -5364,10 +4997,6 @@ export interface components {
       readonly id?: number
       value?: string
     }
-    'VocSampleType-context_sample.samples.acl.read_sample.acl.read': {
-      code?: string
-      value?: string
-    }
     'VocSampleType-sample.acl.read': {
       code?: string
       value?: string
@@ -5393,36 +5022,6 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number
-      code?: string
-      value?: string
-    }
-    'VocSampleType.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      code?: string
-      value?: string
-    }
-    'VocSampleType.jsonld-context_sample.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
       code?: string
       value?: string
     }
@@ -6177,8 +5776,6 @@ export interface operations {
         'site[]'?: string[]
         type?: string
         'type[]'?: string[]
-        'contextSamples.sample'?: string
-        'contextSamples.sample[]'?: string[]
         'contextStratigraphicUnits.stratigraphicUnit.year'?: number
         'contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
         'contextStratigraphicUnits.stratigraphicUnit.number'?: number
@@ -6491,8 +6088,6 @@ export interface operations {
         'site[]'?: string[]
         type?: string
         'type[]'?: string[]
-        'contextSamples.sample'?: string
-        'contextSamples.sample[]'?: string[]
         'contextStratigraphicUnits.stratigraphicUnit.year'?: number
         'contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
         'contextStratigraphicUnits.stratigraphicUnit.number'?: number
@@ -6558,342 +6153,6 @@ export interface operations {
           'text/csv': components['schemas']['Context-context.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['Context.jsonld-context.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_datacontext_samples_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[context.name]'?: 'asc' | 'desc'
-        'order[context.type.group]'?: 'asc' | 'desc'
-        'order[context.type.value]'?: 'asc' | 'desc'
-        'order[context.site.code]'?: 'asc' | 'desc'
-        'order[sample.year]'?: 'asc' | 'desc'
-        'order[sample.number]'?: 'asc' | 'desc'
-        'order[sample.site.code]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextSample collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'text/csv': components['schemas']['ContextSample-context_sample.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['ContextSample.jsonld-context_sample.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_datacontext_samples_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description The new ContextSample resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['ContextSample.jsonld']
-      }
-    }
-    responses: {
-      /** @description ContextSample resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextSample.jsonld-context_sample.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
-      }
-    }
-  }
-  api_datacontext_samples_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextSample identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextSample resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ContextSample.jsonld-context_sample.item.acl.read_sample.acl.read_context.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_datacontext_samples_id_delete: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ContextSample identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextSample resource deleted */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_datacontexts_parentIdsamples_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[context.name]'?: 'asc' | 'desc'
-        'order[context.type.group]'?: 'asc' | 'desc'
-        'order[context.type.value]'?: 'asc' | 'desc'
-        'order[context.site.code]'?: 'asc' | 'desc'
-        'order[sample.year]'?: 'asc' | 'desc'
-        'order[sample.number]'?: 'asc' | 'desc'
-        'order[sample.site.code]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path: {
-        /** @description ContextSample identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextSample collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'text/csv': components['schemas']['ContextSample-context_sample.samples.acl.read_sample.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['ContextSample.jsonld-context_sample.samples.acl.read_sample.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_datasamples_parentIdcontexts_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[context.name]'?: 'asc' | 'desc'
-        'order[context.type.group]'?: 'asc' | 'desc'
-        'order[context.type.value]'?: 'asc' | 'desc'
-        'order[context.site.code]'?: 'asc' | 'desc'
-        'order[sample.year]'?: 'asc' | 'desc'
-        'order[sample.number]'?: 'asc' | 'desc'
-        'order[sample.site.code]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path: {
-        /** @description ContextSample identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ContextSample collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextSample.jsonld-context_sample.contexts.acl.read_context.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -12134,42 +11393,6 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquecontext_sample_context_sample_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        context: string
-        /** @description UniqueValidator identifier */
-        sample: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description UniqueValidator resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_validatoruniquecontext_stratigraphic_units_context_stratigraphicUnit_get: {
     parameters: {
       query?: never
@@ -12573,6 +11796,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[email]'?: 'asc' | 'desc'
         /**
          * @description Search case insensitive match the email field
          * @example me

@@ -1,7 +1,6 @@
 import analysis from './data/analysis'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
-import * as contextSample from './data/contextSample'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import contextZooAnalysis from './data/contextZooAnalysis'
@@ -25,22 +24,17 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/analyses/potteries': potteryAnalysis,
   '/api/data/analyses/zoo/bones': zooBoneAnalysis,
   '/api/data/analyses/zoo/teeth': zooToothAnalysis,
-  '/api/data/context_samples': contextSample.config,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/media_objects': mediaObject,
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/contexts': context,
   '/contexts/{parentId}/analyses/zoo': contextZooAnalysis,
-  '/api/data/contexts/{parentId}/samples':
-    contextSample.sampleSubResourceConfig,
   '/api/data/contexts/{parentId}/stratigraphic_units':
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/samples':
     sampleStratigraphicUnit.sampleSubResourceConfig,
   '/api/data/potteries': pottery,
   '/api/data/samples': sample,
-  '/api/data/samples/{parentId}/contexts':
-    contextSample.contextSubResourceConfig,
   '/api/data/samples/{parentId}/stratigraphic_units':
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/sites': site,
@@ -60,5 +54,3 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
 export const RESOURCE_CONFIG_MAP: Readonly<
   Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>
 > = RESOURCE_CONFIG_MAP_INTERNAL as any
-
-export { contextSample }

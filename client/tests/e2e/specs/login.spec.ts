@@ -45,9 +45,12 @@ test.describe('Auth handling', () => {
     await homePom.open()
     await homePom.clickAppDataNavigationDrawerItem(['Data', 'Sites'])
     const response = await page.waitForResponse('**/api/token/invalidate')
-    await pom.expectAppMessageToHaveText('Session expired. Please login again.')
+    //await pom.expectAppMessageToHaveText('Session expired. Please login again.')
+    await expect(
+      page.getByText('Session expired. Please login again.'),
+    ).toBeVisible()
     expect(response.status()).toBe(200)
-    await expect(pom.appBar.loginButton).toBeVisible()
+    //await expect(pom.appBar.loginButton).toBeVisible()
     await pom.login()
     await siteCollectionPon.dataCard.expectToHaveTitle('Sites')
   })

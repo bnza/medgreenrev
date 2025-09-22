@@ -21,16 +21,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tabs-window-item value="data" data-testid="tab-data">
           <p>Data</p>
         </v-tabs-window-item>
-        <!--        <v-tabs-window-item value="contexts" data-testid="tab-window-contexts">-->
-        <!--          <data-collection-page-join-context-sample-->
-        <!--            path="/api/data/samples/{parentId}/contexts"-->
-        <!--            :parent="{-->
-        <!--              key: 'sample',-->
-        <!--              resourceItemPath: '/api/data/samples/{id}',-->
-        <!--              item,-->
-        <!--            }"-->
-        <!--          />-->
-        <!--        </v-tabs-window-item>-->
         <v-tabs-window-item
           value="stratigraphic-units"
           data-testid="tab-window-sus"
