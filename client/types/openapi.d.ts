@@ -5783,6 +5783,24 @@ export interface operations {
         'order[status]'?: 'asc' | 'desc'
         'order[summary]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        type?: string
+        'type[]'?: string[]
+        identifier?: string
+        responsible?: string
+        summary?: string
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        status?: number
+        'status[]'?: number[]
+        'mediaObjectsAnalysis.mediaObject.originalFilename'?: string
+        'mediaObjectsAnalysis.mediaObject.mimeType'?: string
+        'mediaObjectsAnalysis.mediaObject.type.group'?: string
+        'mediaObjectsAnalysis.mediaObject.type.group[]'?: string[]
+        'mediaObjectsAnalysis.mediaObject.type'?: string
+        'mediaObjectsAnalysis.mediaObject.type[]'?: string[]
+        'mediaObjectsAnalysis.mediaObject.uploadedBy.email'?: string
+        'mediaObjectsAnalysis.mediaObject.uploadDate'?: string
+        'mediaObjectsAnalysis.mediaObject.uploadDate[]'?: string
         /**
          * @description Search by analysis type code OR identifier (case insensitive like) if single value, or by analysis type code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "typeCode." searches only by type code. Format: "typeCode.identifier"
          * @example XRF.sample001
@@ -6050,10 +6068,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
         'order[subject.site.code]'?: 'asc' | 'desc'
         'order[subject.name]'?: 'asc' | 'desc'
-        'order[analysis.type.value]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.type'?: string
@@ -6074,13 +6090,8 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'exists[summary]'?: boolean
+        'exists[subject.contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         'exists[subject.description]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -6101,6 +6112,24 @@ export interface operations {
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path?: never
@@ -6357,10 +6386,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
         'order[subject.site.code]'?: 'asc' | 'desc'
         'order[subject.name]'?: 'asc' | 'desc'
-        'order[analysis.type.value]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.type'?: string
@@ -6381,13 +6408,8 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'exists[summary]'?: boolean
+        'exists[subject.contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         'exists[subject.description]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -6408,6 +6430,24 @@ export interface operations {
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -6471,10 +6511,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
         'order[subject.site.code]'?: 'asc' | 'desc'
         'order[subject.name]'?: 'asc' | 'desc'
-        'order[analysis.type.value]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.type'?: string
@@ -6495,13 +6533,8 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'exists[summary]'?: boolean
+        'exists[subject.contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         'exists[subject.description]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        summary?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -6522,6 +6555,24 @@ export interface operations {
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -6679,13 +6730,79 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[subject.inventory]'?: 'asc' | 'desc'
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.decorations.decoration'?: string
+        'subject.decorations.decoration[]'?: string[]
+        'subject.inventory'?: string
+        'subject.culturalContext'?: string
+        'subject.culturalContext[]'?: string[]
+        'subject.chronologyLower'?: number
+        'subject.chronologyLower[]'?: number[]
+        'subject.chronologyUpper'?: number
+        'subject.chronologyUpper[]'?: number[]
+        'subject.shape'?: string
+        'subject.shape[]'?: string[]
+        'subject.functionalGroup'?: string
+        'subject.functionalGroup[]'?: string[]
+        'subject.functionalForm'?: string
+        'subject.functionalForm[]'?: string[]
+        'subject.notes'?: string
+        'subject.surfaceTreatment'?: string
+        'subject.surfaceTreatment[]'?: string[]
+        'subject.innerColor'?: string
+        'subject.outerColor'?: string
+        'subject.decorationMotif'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'subject.chronologyLower[between]'?: string
+        'subject.chronologyLower[gt]'?: string
+        'subject.chronologyLower[gte]'?: string
+        'subject.chronologyLower[lt]'?: string
+        'subject.chronologyLower[lte]'?: string
+        'subject.chronologyUpper[between]'?: string
+        'subject.chronologyUpper[gt]'?: string
+        'subject.chronologyUpper[gte]'?: string
+        'subject.chronologyUpper[lt]'?: string
+        'subject.chronologyUpper[lte]'?: string
+        'exists[subject.notes]'?: boolean
+        'exists[subject.culturalContext]'?: boolean
+        'exists[subject.chronologyLower]'?: boolean
+        'exists[subject.chronologyUpper]'?: boolean
+        'exists[subject.innerColor]'?: boolean
+        'exists[subject.outerColor]'?: boolean
+        'exists[subject.decorationMotif]'?: boolean
+        'exists[subject.shape]'?: boolean
+        'exists[subject.surfaceTreatment]'?: boolean
         'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path?: never
@@ -6942,13 +7059,79 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[subject.inventory]'?: 'asc' | 'desc'
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.decorations.decoration'?: string
+        'subject.decorations.decoration[]'?: string[]
+        'subject.inventory'?: string
+        'subject.culturalContext'?: string
+        'subject.culturalContext[]'?: string[]
+        'subject.chronologyLower'?: number
+        'subject.chronologyLower[]'?: number[]
+        'subject.chronologyUpper'?: number
+        'subject.chronologyUpper[]'?: number[]
+        'subject.shape'?: string
+        'subject.shape[]'?: string[]
+        'subject.functionalGroup'?: string
+        'subject.functionalGroup[]'?: string[]
+        'subject.functionalForm'?: string
+        'subject.functionalForm[]'?: string[]
+        'subject.notes'?: string
+        'subject.surfaceTreatment'?: string
+        'subject.surfaceTreatment[]'?: string[]
+        'subject.innerColor'?: string
+        'subject.outerColor'?: string
+        'subject.decorationMotif'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'subject.chronologyLower[between]'?: string
+        'subject.chronologyLower[gt]'?: string
+        'subject.chronologyLower[gte]'?: string
+        'subject.chronologyLower[lt]'?: string
+        'subject.chronologyLower[lte]'?: string
+        'subject.chronologyUpper[between]'?: string
+        'subject.chronologyUpper[gt]'?: string
+        'subject.chronologyUpper[gte]'?: string
+        'subject.chronologyUpper[lt]'?: string
+        'subject.chronologyUpper[lte]'?: string
+        'exists[subject.notes]'?: boolean
+        'exists[subject.culturalContext]'?: boolean
+        'exists[subject.chronologyLower]'?: boolean
+        'exists[subject.chronologyUpper]'?: boolean
+        'exists[subject.innerColor]'?: boolean
+        'exists[subject.outerColor]'?: boolean
+        'exists[subject.decorationMotif]'?: boolean
+        'exists[subject.shape]'?: boolean
+        'exists[subject.surfaceTreatment]'?: boolean
         'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -7012,13 +7195,79 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[subject.inventory]'?: 'asc' | 'desc'
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.decorations.decoration'?: string
+        'subject.decorations.decoration[]'?: string[]
+        'subject.inventory'?: string
+        'subject.culturalContext'?: string
+        'subject.culturalContext[]'?: string[]
+        'subject.chronologyLower'?: number
+        'subject.chronologyLower[]'?: number[]
+        'subject.chronologyUpper'?: number
+        'subject.chronologyUpper[]'?: number[]
+        'subject.shape'?: string
+        'subject.shape[]'?: string[]
+        'subject.functionalGroup'?: string
+        'subject.functionalGroup[]'?: string[]
+        'subject.functionalForm'?: string
+        'subject.functionalForm[]'?: string[]
+        'subject.notes'?: string
+        'subject.surfaceTreatment'?: string
+        'subject.surfaceTreatment[]'?: string[]
+        'subject.innerColor'?: string
+        'subject.outerColor'?: string
+        'subject.decorationMotif'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'subject.chronologyLower[between]'?: string
+        'subject.chronologyLower[gt]'?: string
+        'subject.chronologyLower[gte]'?: string
+        'subject.chronologyLower[lt]'?: string
+        'subject.chronologyLower[lte]'?: string
+        'subject.chronologyUpper[between]'?: string
+        'subject.chronologyUpper[gt]'?: string
+        'subject.chronologyUpper[gte]'?: string
+        'subject.chronologyUpper[lt]'?: string
+        'subject.chronologyUpper[lte]'?: string
+        'exists[subject.notes]'?: boolean
+        'exists[subject.culturalContext]'?: boolean
+        'exists[subject.chronologyLower]'?: boolean
+        'exists[subject.chronologyUpper]'?: boolean
+        'exists[subject.innerColor]'?: boolean
+        'exists[subject.outerColor]'?: boolean
+        'exists[subject.decorationMotif]'?: boolean
+        'exists[subject.shape]'?: boolean
+        'exists[subject.surfaceTreatment]'?: boolean
         'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -7082,13 +7331,44 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.side'?: string
+        'subject.side[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path?: never
@@ -7345,13 +7625,44 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.side'?: string
+        'subject.side[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -7415,13 +7726,44 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.side'?: string
+        'subject.side[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -7485,13 +7827,32 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.side'?: string
+        'subject.side[]'?: string[]
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
         'exists[summary]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path?: never
@@ -7748,13 +8109,32 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.side'?: string
+        'subject.side[]'?: string[]
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
         'exists[summary]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {
@@ -7818,13 +8198,32 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.side'?: string
+        'subject.side[]'?: string[]
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         summary?: string
         'exists[summary]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
       }
       header?: never
       path: {

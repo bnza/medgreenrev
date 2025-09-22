@@ -279,6 +279,7 @@ export type FilterKey = keyof typeof API_FILTERS
 
 export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
+  | '/api/data/analyses'
   | '/api/data/analyses/contexts/zoo'
   | '/api/data/analyses/potteries'
   | '/api/data/analyses/zoo/bones'
@@ -300,6 +301,68 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/zoo/teeth'
   | '/api/data/zoo/teeth/{parentId}/analyses'
 >
+
+const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
+  type: {
+    filters: {
+      VocabularyAnalysisType,
+    },
+  },
+  identifier: {
+    filters: {
+      SearchPartial,
+    },
+  },
+  responsible: {
+    filters: {
+      SearchPartial,
+      Exists,
+    },
+  },
+  summary: {
+    filters: {
+      SearchPartial,
+      Exists,
+    },
+  },
+  createdBy: {
+    filters: {
+      SearchExact,
+      Exists,
+    },
+  },
+  'mediaObjectsAnalysis.mediaObject.originalFilename': {
+    propertyLabel: 'media (filename)',
+    filters: {
+      SearchPartial,
+    },
+  },
+  'mediaObjectsAnalysis.mediaObject.mimeType': {
+    propertyLabel: 'media (mime type)',
+    filters: {
+      SearchPartial,
+    },
+  },
+  'mediaObjectsAnalysis.mediaObject.group': {
+    propertyLabel: 'media (group)',
+    filters: {
+      SearchPartial,
+    },
+  },
+  'mediaObjectsAnalysis.mediaObject.type': {
+    propertyLabel: 'media (type)',
+    filters: {
+      VocabularyMediaObjectType,
+    },
+  },
+  'mediaObjectsAnalysis.mediaObject.uploadedBy.email': {
+    propertyLabel: 'media (created by)',
+    filters: {
+      SearchPartial,
+    },
+  },
+}
+
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
     filters: {
@@ -1056,6 +1119,7 @@ export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
 > = {
+  '/api/data/analyses': analysisStaticFiltersDefinition,
   '/api/data/analyses/contexts/zoo':
     analysisContextZooStaticFiltersDefinitionObject,
   '/api/data/analyses/potteries': analysisPotteryStaticFiltersDefinitionObject,
