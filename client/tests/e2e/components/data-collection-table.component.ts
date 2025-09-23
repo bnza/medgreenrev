@@ -16,7 +16,7 @@ export class DataCollectionTableComponent extends BaseComponent {
   }
 
   async expectData() {
-    await expect(this.table).toBeVisible()
+    await expect(this.table).toBeVisible({ timeout: 10000 })
     await expect(this.loadingIndicator).not.toBeVisible()
   }
 

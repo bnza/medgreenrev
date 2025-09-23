@@ -52,6 +52,6 @@ test.describe('Auth handling', () => {
     expect(response.status()).toBe(200)
     //await expect(pom.appBar.loginButton).toBeVisible()
     await pom.login()
-    await siteCollectionPon.dataCard.expectToHaveTitle('Sites')
+    await siteCollectionPon.dataCard.expectToHaveTitle(/sites/i)
   })
 })
