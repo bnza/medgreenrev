@@ -34,7 +34,6 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="User"
     :path
     :redirect-option="false"
     :on-pre-submit

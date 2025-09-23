@@ -15,8 +15,6 @@ import type {
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
 
-import useResourceConfig from '~/stores/resource-config'
-
 const props = defineProps<{
   path: Path
   parent?: ResourceParentSiteUserPrivilege

@@ -7,7 +7,6 @@ defineEmits<{
 <template>
   <data-dialog-delete
     path="/api/data/media_objects/{id}"
-    title="Media"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">

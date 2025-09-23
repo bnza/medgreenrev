@@ -10,7 +10,6 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import useResourceConfig from '~/stores/resource-config'
 
 const props = defineProps<{
   path: Path

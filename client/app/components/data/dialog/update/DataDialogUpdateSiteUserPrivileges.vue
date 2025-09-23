@@ -24,7 +24,6 @@ defineEmits<{
   <data-dialog-update
     v-model:regle="r$"
     path="/api/admin/site_user_privileges/{id}"
-    title="Site/User Privilege"
     :fullscreen="false"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"

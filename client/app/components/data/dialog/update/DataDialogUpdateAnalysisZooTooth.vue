@@ -18,7 +18,6 @@ defineEmits<{
   <data-dialog-update
     v-model:regle="r$"
     path="/api/data/analyses/zoo/teeth/{id}"
-    title="Animal teeth analysis"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"
   >

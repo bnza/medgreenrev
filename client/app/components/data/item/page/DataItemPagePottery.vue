@@ -11,7 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <data-item-page :path title="Pottery" identifier-prop="inventory" :iri>
+  <data-item-page :path identifier-prop="inventory" :iri>
     <template #default="{ item }">
       <lazy-data-item-form-info-pottery :item />
       <v-tabs v-if="!iri" v-model="tab" background-color="transparent">

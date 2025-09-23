@@ -7,7 +7,6 @@ defineEmits<{
 <template>
   <data-dialog-delete
     path="/api/data/zoo/bones/{id}"
-    title="Zooarchaeological (bone)"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">

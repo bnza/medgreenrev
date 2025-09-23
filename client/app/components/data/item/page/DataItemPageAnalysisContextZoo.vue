@@ -11,11 +11,7 @@ const { tab } = storeToRefs(
 </script>
 
 <template>
-  <data-item-page
-    :path
-    title="Zooarchaoelogical context analysis"
-    identifier-prop="id"
-  >
+  <data-item-page :path identifier-prop="id">
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-analysis-context-zoo :item />
       <v-tabs v-model="tab" background-color="transparent">

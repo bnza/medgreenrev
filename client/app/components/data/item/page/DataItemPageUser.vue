@@ -5,11 +5,7 @@ const { tab } = storeToRefs(useResourceUiStore('/api/admin/users/{id}'))
 </script>
 
 <template>
-  <data-item-page
-    path="/api/admin/users/{id}"
-    title="User"
-    identifier-prop="email"
-  >
+  <data-item-page path="/api/admin/users/{id}" identifier-prop="email">
     <template #default="{ item }">
       <lazy-data-item-form-info-user :item />
       <v-tabs v-model="tab" background-color="transparent">

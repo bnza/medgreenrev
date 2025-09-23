@@ -23,7 +23,7 @@ export const config: Readonly<ResourceConfig> = {
       title: 'sample',
     },
   ],
-  labels: ['sample/SU join', 'sample/SU joins'],
+  labels: ['sample/SU association', 'sample/SU associations'],
   name: 'sampleStratigraphicUnit',
 }
 

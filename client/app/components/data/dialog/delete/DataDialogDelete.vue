@@ -10,7 +10,7 @@ import useGetItemQuery from '~/composables/queries/useGetItemQuery'
 
 const props = defineProps<{
   path: Path
-  title: string
+  title?: string
 }>()
 
 defineSlots<{
@@ -74,6 +74,9 @@ const submit = async () => {
     addError(e)
   }
 }
+
+const { labels } = useResourceConfig(props.path)
+const title = computed(() => props.title || labels[0])
 </script>
 
 <template>

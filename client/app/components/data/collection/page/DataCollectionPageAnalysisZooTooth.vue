@@ -45,7 +45,6 @@ const canCreate = computed(
 </script>
 <template>
   <data-collection-page
-    title="Animal tooth analyses"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"

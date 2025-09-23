@@ -11,7 +11,7 @@ const tab = ref('data')
   />
   <data-item-page
     path="/api/users/me"
-    :title="data?.email || ''"
+    :title="data?.email"
     identifier-prop="email"
   >
     <template #toolbar-append>

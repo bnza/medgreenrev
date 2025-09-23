@@ -8,8 +8,6 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import useResourceConfig from '~/stores/resource-config'
-import DataItemInfoBoxSpanZooTooth from '~/components/data/item/info-box/span/DataItemInfoBoxSpanZooTooth.vue'
 
 const props = defineProps<{
   path: Path

@@ -20,7 +20,6 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 
 <template>
   <data-collection-page
-    title="Samples"
     :parent="Boolean(parent)"
     :path
     :show-back-button="false"

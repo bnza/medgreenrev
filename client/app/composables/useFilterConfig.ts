@@ -3,7 +3,7 @@ import {
   type SearchableGetCollectionPath,
 } from '~/utils/consts/configs/filters'
 import type { ComponentFiltersMap } from '~~/types/filters'
-import useResourceConfig from '~/stores/resource-config'
+
 import {
   createComponentFiltersMap,
   normalizeResourceFiltersDefinition,

@@ -8,7 +8,6 @@ import type {
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import useResourceConfig from '~/stores/resource-config'
 
 type OnPreSubmit = <T>(item: T) => T
 
@@ -17,7 +16,7 @@ const regle = defineModel<RegleRoot>('regle', { required: true })
 const props = withDefaults(
   defineProps<{
     path: Path
-    title: string
+    title?: string
     redirectOption?: boolean
     onPreSubmit?: OnPreSubmit
     getEmptyModel?: () => Record<string, any>
@@ -65,7 +64,7 @@ const disabled = ref(false)
 const { fullPath } = useRoute()
 const router = useRouter()
 const { push } = useHistoryStackStore()
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
   if (!('id' in newItem)) {
@@ -81,14 +80,6 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
 // Possible redirect handling
 
 const submit = async () => {
-  //   try {
-  //     await regle.value.$validate()
-  //   } catch (e) {
-  //     addError('Unexpected validation error')
-  //     console.error(e)
-  //     return
-  //   }
-
   regle.value.$reset()
   await nextTick()
 
@@ -98,36 +89,6 @@ const submit = async () => {
     console.log('Form is invalid, stopping submission')
     return
   }
-
-  /**
-   *
-   * Evaluates the presence of both `$errors` and `$silentErrors` within the
-   * `regle.value` object to determine the validity of the value. If errors or silent errors
-   * exist, the value is considered invalid.
-   * It's a workaround function, since sometimes in Playwright tests regle.$invalid is set false
-   * even though there are no errors: so it checks for this inconsistency
-   * between the `$invalid` property and the overall error states, and logs a warning if
-   * a mismatch is detected.
-   *
-   * Once validated, the regle.$value model should be fine. It's not an actual TS guard
-   */
-  // const isValidItem = (
-  //   value: any,
-  // ): value is PostCollectionRequestMap[typeof postPath] => {
-  //   const invalid =
-  //     Object.values<string[]>(regle.value.$errors).some(
-  //       (propErrors) => propErrors.length > 0,
-  //     ) &&
-  //     Object.values<string[]>(regle.value.$silentErrors).some(
-  //       (propErrors) => propErrors.length > 0,
-  //     )
-  //   if (invalid !== regle.value.$invalid) {
-  //     console.warn(
-  //       'Regle $invalid value mismatches with $errors and $silentErrors values.',
-  //     )
-  //   }
-  //   return !invalid
-  // }
 
   const isValidItem = (
     value: any,
@@ -173,6 +134,8 @@ watch(visible, (flag) => {
     regle.value.$reset()
   }
 })
+
+const title = computed(() => props.title || labels[0])
 </script>
 
 <template>

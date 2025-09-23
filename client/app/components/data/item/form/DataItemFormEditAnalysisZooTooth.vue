@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import type { PatchItemRequestMap, ResourceParent } from '~~/types'
+import type {
+  PatchItemRequestMap,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
 
-type Item = PatchItemRequestMap['/api/data/analyses/zoo/teeth/{id}']
+type Item = PatchItemRequestMap['/api/data/analyses/zoo/teeth/{id}'] &
+  PostCollectionRequestMap['/api/data/analyses/zoo/teeth']
 
 const item = defineModel<Partial<Item>>('item', { required: true })
 
@@ -22,9 +27,9 @@ defineProps<Props>()
     <v-col cols="6">
       <data-autocomplete
         v-model="item.subject"
-        path="/api/data/contexts"
-        item-title="name"
-        label="context"
+        path="/api/data/zoo/teeth"
+        item-title="code"
+        label="element"
         granted-only
         :error-messages="errors?.subject"
         :disabled="parent?.key === 'zooTooth' || mode === 'update'"

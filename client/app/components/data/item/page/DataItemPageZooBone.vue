@@ -11,12 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <data-item-page
-    :path
-    title="Zooarcheological (bone)"
-    identifier-prop="inventory"
-    :iri
-  >
+  <data-item-page :path identifier-prop="inventory" :iri>
     <template #default="{ item }">
       <lazy-data-item-form-info-zoo-bone :item />
       <v-tabs v-if="!iri" v-model="tab" background-color="transparent">

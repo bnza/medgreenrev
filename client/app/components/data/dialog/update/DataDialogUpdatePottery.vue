@@ -18,7 +18,6 @@ defineEmits<{
   <data-dialog-update
     v-model:regle="r$"
     path="/api/data/potteries/{id}"
-    title="Pottery"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"
   >

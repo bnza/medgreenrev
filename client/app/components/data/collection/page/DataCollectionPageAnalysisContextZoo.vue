@@ -44,7 +44,6 @@ const canCreate = computed(
 </script>
 <template>
   <data-collection-page
-    title="Zooarchaeological context analyses"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"

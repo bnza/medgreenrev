@@ -4,7 +4,7 @@ const sample: ResourceConfig = {
   apiPath: '/api/data/samples',
   appPath: '/data/samples',
   name: 'sample',
-  labels: ['Sample', 'Samples'],
+  labels: ['sample', 'samples'],
   defaultHeaders: [
     {
       key: 'id',
@@ -36,7 +36,7 @@ const sample: ResourceConfig = {
     },
     {
       key: 'description',
-      title: 'Description',
+      title: 'description',
     },
   ] as const,
 }

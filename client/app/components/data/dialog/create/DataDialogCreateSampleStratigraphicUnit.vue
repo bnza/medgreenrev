@@ -29,7 +29,6 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Context/Stratigraphic Unit association"
     :redirect-option="false"
     :parent
     :path

@@ -45,8 +45,8 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['pottery analysis', 'pottery analyses'],
-  name: 'analysisPottery',
+  labels: ['analysis', 'analyses'],
+  name: 'analysis',
 }
 
 export default config

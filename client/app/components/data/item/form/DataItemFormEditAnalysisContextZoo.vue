@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import type { PatchItemRequestMap, ResourceParent } from '~~/types'
+import type {
+  PatchItemRequestMap,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
 
-type Item = PatchItemRequestMap['/api/data/analyses/contexts/zoo/{id}']
+type Item = PatchItemRequestMap['/api/data/analyses/contexts/zoo/{id}'] &
+  PostCollectionRequestMap['/api/data/analyses/contexts/zoo']
 
 const item = defineModel<Partial<Item>>('item', { required: true })
 

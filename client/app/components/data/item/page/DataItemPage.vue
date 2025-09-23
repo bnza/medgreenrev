@@ -9,7 +9,7 @@ import type {
 
 const props = defineProps<{
   path: Path
-  title: string
+  title?: string
   identifierProp?: string
   iri?: Iri
 }>()
@@ -45,6 +45,9 @@ const isValidItem = (
 ): value is GetItemResponseMap[Path] & ApiAclResource => {
   return Boolean(value) && typeof value === 'object'
 }
+
+const { labels } = useResourceConfig(props.path)
+const title = computed(() => props.title || labels[0])
 </script>
 
 <template>

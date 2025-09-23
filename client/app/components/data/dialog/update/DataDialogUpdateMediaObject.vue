@@ -18,7 +18,6 @@ defineEmits<{
   <data-dialog-update
     v-model:regle="r$"
     path="/api/data/media_objects/{id}"
-    title="Media"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"
   >

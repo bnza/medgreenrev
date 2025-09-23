@@ -29,7 +29,6 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Animal bone Analysis"
     :parent
     :path
     :on-pre-submit

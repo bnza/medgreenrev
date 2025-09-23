@@ -11,12 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <data-item-page
-    :path
-    title="Zooarcheological (tooth)"
-    identifier-prop="code"
-    :iri
-  >
+  <data-item-page :path identifier-prop="code" :iri>
     <template #default="{ item }">
       <lazy-data-item-form-info-zoo-tooth :item />
       <v-tabs v-if="!iri" v-model="tab" background-color="transparent">
@@ -28,7 +23,7 @@ defineProps<{
           <p>Data</p>
         </v-tabs-window-item>
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <data-collection-page-zoo-tooth-analysis
+          <data-collection-page-analysis-zoo-tooth
             path="/api/data/zoo/teeth/{parentId}/analyses"
             :parent="{
               key: 'zooTooth',

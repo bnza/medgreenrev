@@ -81,7 +81,7 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['zoo bone', 'zoo bones'],
+  labels: ['animal bone', 'animal bones'],
   name: 'zooBone',
 }
 

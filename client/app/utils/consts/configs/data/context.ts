@@ -39,8 +39,8 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['site', 'sites'],
-  name: 'site',
+  labels: ['context', 'contexts'],
+  name: 'context',
 }
 
 export default config

@@ -4,7 +4,7 @@ const config: Readonly<ResourceConfig> = {
   appPath: '/data/stratigraphic-units',
   apiPath: '/api/data/stratigraphic_units',
   name: 'stratigraphicUnit',
-  labels: ['Stratigraphic Unit', 'Stratigraphic Units'],
+  labels: ['stratigraphic unit', 'stratigraphic snits'],
   defaultHeaders: [
     {
       key: 'id',

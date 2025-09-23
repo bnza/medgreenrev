@@ -7,7 +7,6 @@ defineEmits<{
 <template>
   <data-dialog-delete
     path="/api/data/potteries/{id}"
-    title="Potteries"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">

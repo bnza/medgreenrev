@@ -6,7 +6,6 @@ defineEmits<{
 <template>
   <data-dialog-delete
     path="/api/admin/site_user_privileges/{id}"
-    title="Site/User Privilege"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">

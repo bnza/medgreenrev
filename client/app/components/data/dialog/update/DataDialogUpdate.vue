@@ -14,7 +14,7 @@ const regle = defineModel<RegleRoot>('regle', { required: true })
 const props = withDefaults(
   defineProps<{
     path: Path
-    title: string
+    title?: string
     fullscreen?: boolean
     onPreSubmit: OnPreSubmit
   }>(),
@@ -86,6 +86,9 @@ watch(visible, (flag) => {
     regle.value.$reset()
   }
 })
+
+const { labels } = useResourceConfig(props.path)
+const title = computed(() => props.title || labels[0])
 </script>
 
 <template>

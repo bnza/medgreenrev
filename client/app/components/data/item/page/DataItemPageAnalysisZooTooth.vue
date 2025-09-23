@@ -11,7 +11,7 @@ const { tab } = storeToRefs(
 </script>
 
 <template>
-  <data-item-page :path title="Animal tooth analysis" identifier-prop="id">
+  <data-item-page :path identifier-prop="id">
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-analysis-zoo-tooth :item />
       <v-tabs v-model="tab" background-color="transparent">

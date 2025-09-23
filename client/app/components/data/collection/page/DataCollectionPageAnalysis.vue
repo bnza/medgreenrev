@@ -19,7 +19,6 @@ const canCreate = computed(
 </script>
 <template>
   <data-collection-page
-    title="Analyses"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"

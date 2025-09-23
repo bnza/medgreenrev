@@ -4,11 +4,7 @@ defineEmits<{
 }>()
 </script>
 <template>
-  <data-dialog-delete
-    path="/api/data/sites/{id}"
-    title="Site"
-    @refresh="$emit('refresh')"
-  >
+  <data-dialog-delete path="/api/data/sites/{id}" @refresh="$emit('refresh')">
     <template #default="{ item }">
       <lazy-data-item-form-info-site :item />
     </template>

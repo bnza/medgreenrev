@@ -33,7 +33,6 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Zoo bones"
     :parent
     :path
     :on-pre-submit

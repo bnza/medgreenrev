@@ -20,7 +20,6 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 
 <template>
   <data-collection-page
-    title="Contexts"
     :path
     :parent="Boolean(parent)"
     :show-back-button="!Boolean(parent)"

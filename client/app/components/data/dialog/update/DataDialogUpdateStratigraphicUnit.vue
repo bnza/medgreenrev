@@ -18,7 +18,6 @@ defineEmits<{
   <data-dialog-update
     v-model:regle="r$"
     path="/api/data/stratigraphic_units/{id}"
-    title="Stratigraphic Unit"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"
   >

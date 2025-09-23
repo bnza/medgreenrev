@@ -1,5 +1,4 @@
 import type { GetCollectionPath } from '~~/types'
-import useResourceConfig from '~/stores/resource-config'
 
 const useCollectionTableHeadersStore = <Path extends GetCollectionPath>(
   path: Path,

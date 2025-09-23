@@ -45,7 +45,6 @@ const canCreate = computed(
 </script>
 <template>
   <data-collection-page
-    title="Zooarchaeological (bones)"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"

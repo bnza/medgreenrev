@@ -8,8 +8,6 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import useResourceConfig from '~/stores/resource-config'
-import DataItemInfoBoxSpanPottery from '~/components/data/item/info-box/span/DataItemInfoBoxSpanPottery.vue'
 
 const props = defineProps<{
   path: Path

@@ -29,7 +29,6 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Context"
     :parent
     :path
     :on-pre-submit

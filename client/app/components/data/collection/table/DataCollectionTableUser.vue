@@ -4,7 +4,6 @@
   generic="Path extends Extract<GetCollectionPath, '/api/admin/users'>"
 >
 import type { GetCollectionPath } from '~~/types'
-import useResourceConfig from '~/stores/resource-config'
 import { ApiSpecialistRole } from '~/utils/consts/auth'
 import { getRoleColor, getRoleLabel } from '~/utils/acl'
 

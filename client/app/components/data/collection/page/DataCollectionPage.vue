@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
 import type { CollectionAcl, GetCollectionPath } from '~~/types'
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     path: Path
-    title: string
+    title?: string
     showBackButton?: boolean
     acl: CollectionAcl
     parent: boolean
@@ -18,6 +18,9 @@ defineSlots<{
   default(): any
   dialogs(): any
 }>()
+
+const { labels } = useResourceConfig(props.path)
+const title = computed(() => props.title || labels[1])
 </script>
 
 <template>

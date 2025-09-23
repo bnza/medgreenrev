@@ -53,7 +53,7 @@ export const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['zooarchaeological analyses', 'zooarchaeological analyses'],
+  labels: ['zooarchaeological analysis', 'zooarchaeological analyses'],
   name: 'analysisContextZoo',
 }
 

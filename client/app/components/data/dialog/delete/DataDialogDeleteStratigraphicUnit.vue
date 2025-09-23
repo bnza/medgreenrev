@@ -6,7 +6,6 @@ defineEmits<{
 <template>
   <data-dialog-delete
     path="/api/data/stratigraphic_units/{id}"
-    title="Stratigraphic Unit"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">

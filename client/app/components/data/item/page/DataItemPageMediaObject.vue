@@ -9,7 +9,7 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/media_objects/{id}'))
 </script>
 
 <template>
-  <data-item-page :path title="Media" identifier-prop="originalFilename">
+  <data-item-page :path identifier-prop="originalFilename">
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-media-object :item />
       <v-tabs v-model="tab" background-color="transparent">

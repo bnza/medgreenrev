@@ -1,7 +1,6 @@
 <template>
   <data-collection-page
     path="/api/admin/users"
-    title="Users"
     :parent="false"
     :acl="{ canCreate: true, canExport: false }"
   >

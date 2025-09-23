@@ -25,7 +25,6 @@ const { siteCollectionAcl: acl } = useAppAuth()
 
 <template>
   <data-collection-page
-    title="Site/User Privileges"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"

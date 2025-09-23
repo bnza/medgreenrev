@@ -29,7 +29,6 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    title="Animal bone Analysis"
     :parent
     :path
     :on-pre-submit
@@ -37,7 +36,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-zoo-tooth
+      <data-item-form-edit-analysis-zoo-tooth
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

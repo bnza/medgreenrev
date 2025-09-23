@@ -21,7 +21,6 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :path
-    title="Site"
     :parent="undefined"
     :on-pre-submit
     :get-empty-model
