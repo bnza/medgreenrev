@@ -23,7 +23,7 @@ defineProps<{
           <p>Data</p>
         </v-tabs-window-item>
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <data-collection-page-zoo-bone-analysis
+          <data-collection-page-analysis-zoo-bone
             path="/api/data/zoo/bones/{parentId}/analyses"
             :parent="{
               key: 'zooBone',

@@ -23,7 +23,7 @@ defineProps<{
           <data-item-form-detail-pottery :item />
         </v-tabs-window-item>
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <data-collection-page-pottery-analysis
+          <data-collection-page-analysis-pottery
             path="/api/data/potteries/{parentId}/analyses"
             :parent="{
               key: 'pottery',
