@@ -29,7 +29,7 @@ defineProps<Props>()
         v-model="item.subject"
         path="/api/data/zoo/bones"
         item-title="code"
-        label="context"
+        label="subject"
         granted-only
         :error-messages="errors?.subject"
         :disabled="parent?.key === 'zooBone' || mode === 'update'"
@@ -40,6 +40,13 @@ defineProps<Props>()
         v-model="item.analysis"
         :error-messages="errors?.analysis"
         :disabled="parent?.key === 'analysis' || mode === 'update'"
+        :query-params="{
+          'type.group': [
+            AnalysisGroups.MaterialAnalysis,
+            AnalysisGroups.Microscope,
+            AnalysisGroups.AbsoluteDating,
+          ],
+        }"
       />
     </v-col>
   </v-row>

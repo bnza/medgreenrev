@@ -12,3 +12,14 @@ export const STRATIGRAPHIC_UNIT_RELATIONSHIP_MAP: Record<
   x: 'cuts',
   X: 'cut by',
 } as const
+
+export enum AnalysisGroups {
+  AbsoluteDating = 'absolute dating',
+  Anthropology = 'anthropology',
+  Archaeobotany = 'archaeobotany',
+  SedimentCores = 'sediment cores',
+  MaterialAnalysis = 'material analysis',
+  Micromorphology = 'micromorphology',
+  Microscope = 'microscope',
+  Zooarchaeology = 'zooarchaeology',
+}

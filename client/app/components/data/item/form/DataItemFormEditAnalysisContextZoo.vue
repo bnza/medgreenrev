@@ -5,6 +5,7 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
+import { AnalysisGroups } from '~/utils'
 
 type Item = PatchItemRequestMap['/api/data/analyses/contexts/zoo/{id}'] &
   PostCollectionRequestMap['/api/data/analyses/contexts/zoo']
@@ -29,7 +30,7 @@ defineProps<Props>()
         v-model="item.subject"
         path="/api/data/contexts"
         item-title="name"
-        label="context"
+        label="subject"
         granted-only
         :error-messages="errors?.subject"
         :disabled="parent?.key === 'context' || mode === 'update'"
@@ -40,6 +41,7 @@ defineProps<Props>()
         v-model="item.analysis"
         :error-messages="errors?.analysis"
         :disabled="parent?.key === 'analysis' || mode === 'update'"
+        :query-params="{ 'type.group': [AnalysisGroups.Zooarchaeology] }"
       />
     </v-col>
   </v-row>

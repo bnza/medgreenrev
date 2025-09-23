@@ -26,8 +26,8 @@ defineProps<Props>()
       <data-autocomplete
         v-model="item.subject"
         path="/api/data/potteries"
-        item-title="identifier"
-        label="context"
+        item-title="inventory"
+        label="subject"
         granted-only
         :error-messages="errors?.subject"
         :disabled="parent?.key === 'pottery' || mode === 'update'"
@@ -38,6 +38,13 @@ defineProps<Props>()
         v-model="item.analysis"
         :error-messages="errors?.analysis"
         :disabled="parent?.key === 'pottery' || mode === 'update'"
+        :query-params="{
+          'type.group': [
+            AnalysisGroups.MaterialAnalysis,
+            AnalysisGroups.Microscope,
+            AnalysisGroups.AbsoluteDating,
+          ],
+        }"
       />
     </v-col>
   </v-row>

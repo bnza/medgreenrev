@@ -4,19 +4,12 @@ import type {
   ResourceParent,
 } from '~~/types'
 import { inferRules, useRegle } from '@regle/core'
-import { required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
-import useResourceParent from '~/composables/useResourceParent'
 
-const uniqueSubject = useApiUniqueValidator(
+import useAnalysisSubjectValidation from '~/composables/validation/shared/useAnalysisSubjectValidation'
+
+const analysisSubjectRules = useAnalysisSubjectValidation(
   '/api/validator/unique/analyses/zoo/teeth/{analysis}/{subject}',
-  ['subject', 'analysis'],
-  'Duplicate [subject, analysis] combination',
-)
-const uniqueAnalysis = useApiUniqueValidator(
-  '/api/validator/unique/analyses/zoo/teeth/{analysis}/{subject}',
-  ['analysis', 'subject'],
-  'Duplicate [subject, analysis] combination',
 )
 
 export function useCreateValidation(
@@ -35,16 +28,7 @@ export function useCreateValidation(
   const model = ref(getEmptyModel())
 
   const rules = computed(() =>
-    inferRules(model, {
-      subject: {
-        required,
-        unique: uniqueSubject(() => model.value.analysis),
-      },
-      analysis: {
-        required,
-        unique: uniqueAnalysis(() => model.value.subject),
-      },
-    }),
+    inferRules(model, { ...analysisSubjectRules(model) }),
   )
   const { r$ } = useRegle(model, rules)
 
