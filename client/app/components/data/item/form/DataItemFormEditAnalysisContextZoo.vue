@@ -5,7 +5,7 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { AnalysisGroups } from '~/utils'
+import { type AnalysisCode, AnalysisGroups } from '~/utils'
 
 type Item = PatchItemRequestMap['/api/data/analyses/contexts/zoo/{id}'] &
   PostCollectionRequestMap['/api/data/analyses/contexts/zoo']
@@ -21,6 +21,8 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const analysisCodes: AnalysisCode[] = ['ZOO']
 </script>
 
 <template>
@@ -41,7 +43,7 @@ defineProps<Props>()
         v-model="item.analysis"
         :error-messages="errors?.analysis"
         :disabled="parent?.key === 'analysis' || mode === 'update'"
-        :query-params="{ 'type.group': [AnalysisGroups.Zooarchaeology] }"
+        :query-params="{ 'type.code': analysisCodes }"
       />
     </v-col>
   </v-row>
