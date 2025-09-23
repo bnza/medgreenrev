@@ -8,6 +8,17 @@ import { required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 import useResourceParent from '~/composables/useResourceParent'
 
+const uniqueSubject = useApiUniqueValidator(
+  '/api/validator/unique/analyses/zoo/bones/{analysis}/{subject}',
+  ['subject', 'analysis'],
+  'Duplicate [subject, analysis] combination',
+)
+const uniqueAnalysis = useApiUniqueValidator(
+  '/api/validator/unique/analyses/zoo/bones/{analysis}/{subject}',
+  ['analysis', 'subject'],
+  'Duplicate [subject, analysis] combination',
+)
+
 export function useCreateValidation(
   parent?:
     | ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
@@ -26,8 +37,14 @@ export function useCreateValidation(
 
   const rules = computed(() =>
     inferRules(model, {
-      subject: { required },
-      analysis: { required },
+      subject: {
+        required,
+        unique: uniqueSubject(() => model.value.analysis),
+      },
+      analysis: {
+        required,
+        unique: uniqueAnalysis(() => model.value.subject),
+      },
     }),
   )
   const { r$ } = useRegle(model, rules)
@@ -48,12 +65,7 @@ export function useUpdateValidation(
     params,
   )
 
-  const rules = computed(() =>
-    inferRules(model, {
-      subject: { required },
-      analysis: { required },
-    }),
-  )
+  const rules = computed(() => inferRules(model, {}))
 
   const { r$ } = useRegle(model, rules)
   return {

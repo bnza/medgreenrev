@@ -2867,19 +2867,8 @@ export interface components {
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
     }
-    AnalysisContextZoo: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
+    'AnalysisContextZoo-analysis_join.update': {
       taxonomies?: string[]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
       summary?: string | null
     }
     'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
@@ -2901,12 +2890,12 @@ export interface components {
       summary?: string | null
     }
     'AnalysisContextZoo.jsonld-analysis_join.create': {
-      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       subject?: string
+      taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -2956,18 +2945,7 @@ export interface components {
        */
       taxonomy?: string
     }
-    AnalysisPottery: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+    'AnalysisPottery-analysis_join.update': {
       summary?: string | null
     }
     'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
@@ -2988,7 +2966,6 @@ export interface components {
       summary?: string | null
     }
     'AnalysisPottery.jsonld-analysis_join.create': {
-      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3001,18 +2978,7 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    AnalysisZooBone: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+    'AnalysisZooBone-analysis_join.update': {
       summary?: string | null
     }
     'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
@@ -3033,7 +2999,6 @@ export interface components {
       summary?: string | null
     }
     'AnalysisZooBone.jsonld-analysis_join.create': {
-      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3046,18 +3011,7 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    AnalysisZooTooth: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+    'AnalysisZooTooth-analysis_join.update': {
       summary?: string | null
     }
     'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
@@ -3078,7 +3032,6 @@ export interface components {
       summary?: string | null
     }
     'AnalysisZooTooth.jsonld-analysis_join.create': {
-      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -6320,7 +6273,7 @@ export interface operations {
     /** @description The updated AnalysisContextZoo resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisContextZoo']
+        'application/merge-patch+json': components['schemas']['AnalysisContextZoo-analysis_join.update']
       }
     }
     responses: {
@@ -6993,7 +6946,7 @@ export interface operations {
     /** @description The updated AnalysisPottery resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisPottery']
+        'application/merge-patch+json': components['schemas']['AnalysisPottery-analysis_join.update']
       }
     }
     responses: {
@@ -7559,7 +7512,7 @@ export interface operations {
     /** @description The updated AnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisZooBone']
+        'application/merge-patch+json': components['schemas']['AnalysisZooBone-analysis_join.update']
       }
     }
     responses: {
@@ -7840,13 +7793,13 @@ export interface operations {
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'analysis.type'?: string
         'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
         'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
@@ -8043,7 +7996,7 @@ export interface operations {
     /** @description The updated AnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisZooTooth']
+        'application/merge-patch+json': components['schemas']['AnalysisZooTooth-analysis_join.update']
       }
     }
     responses: {
@@ -8122,13 +8075,13 @@ export interface operations {
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'analysis.type'?: string
         'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
         'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
@@ -8211,13 +8164,13 @@ export interface operations {
          * @example cafè
          */
         summary?: string
-        'exists[summary]'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'analysis.type'?: string
         'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
         'exists[analysis.summary]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
