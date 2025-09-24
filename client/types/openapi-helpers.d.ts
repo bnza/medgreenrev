@@ -1,6 +1,5 @@
 import type { paths, components } from './openapi'
 import type { ApiResourcePath } from '~/utils/consts/resources'
-import type { TypedFormData } from '~/api/TypedFormData'
 
 export type ApiSpec = {
   paths
@@ -141,10 +140,14 @@ export type PostCollectionRequestMap = {
     content: { 'application/ld+json': infer T }
   }
     ? T
-    : paths[K]['post']['requestBody'] extends {
+    : // : paths[K]['post']['requestBody'] extends {
+      //       content: { 'multipart/form-data': infer U }
+      //     }
+      //   ? TypedFormData<FormDataFields<K>> | FormData
+      paths[K]['post']['requestBody'] extends {
           content: { 'multipart/form-data': infer U }
         }
-      ? TypedFormData<FormDataFields<K>> | FormData
+      ? U
       : never
 }
 

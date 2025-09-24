@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="Path extends keyof paths">
 import type {
+  ApiRequestOptions,
   paths,
   PostCollectionRequestMap,
   PostCollectionResponseMap,
@@ -18,6 +19,7 @@ const props = withDefaults(
     path: Path
     title?: string
     redirectOption?: boolean
+    postRequestOptions?: ApiRequestOptions
     onPreSubmit?: OnPreSubmit
     getEmptyModel?: () => Record<string, any>
   }>(),
@@ -25,6 +27,7 @@ const props = withDefaults(
     redirectOption: true,
     onPreSubmit: <T,>(item: T) => item,
     getEmptyModel: () => ({}),
+    postRequestOptions: () => ({}),
   },
 )
 
@@ -55,8 +58,10 @@ const emit = defineEmits<{
 const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
   useResourceUiStore(props.path),
 )
-const { postCollection, invalidatedCacheEntries } =
-  usePostCollectionMutation(postPath)
+const { postCollection, invalidatedCacheEntries } = usePostCollectionMutation(
+  postPath,
+  props.postRequestOptions,
+)
 
 const disabled = ref(false)
 

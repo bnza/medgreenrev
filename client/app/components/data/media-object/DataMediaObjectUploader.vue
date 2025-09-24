@@ -1,38 +1,19 @@
 <script setup lang="ts">
-import { useRegle } from '@regle/core'
-import { required, withMessage } from '@regle/rules'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import type { PostCollectionResponseMap } from '~~/types'
-import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
-import { injectMediaObjectJoin } from '~/composables/injection/useMediaObjectJoin'
+import { useCreateValidation } from '~/composables/validation/useMediaObjectValidation'
+import { useNormalization } from '~/composables/normalization/useMediaObjectNormalization'
 
-const { uploadingFile: file, uploadFileValidationPending } =
-  injectMediaObjectJoin()
+const file = defineModel<File | undefined>('file', { required: true })
+const pending = defineModel<boolean>('pending', { required: true })
 
-const model = ref<{
-  file: File | undefined
-  type?: string
-  description?: string
-}>({
-  file: file.value,
-})
-
-const { maxFileSize } = useMaxFileSizeValidationRule()
-
-const { r$ } = useRegle(model, {
-  file: {
-    required: withMessage((value) => Boolean(value), 'File is required'),
-    maxFileSize,
-  },
-  type: {
-    required,
-  },
-})
+const { r$ } = useCreateValidation()
+const { onPreCreate: onPreSubmit } = useNormalization()
 
 watch(
   () => file.value,
   (value) => {
-    model.value.file = value
+    r$.$value.file = value || null
     if (!value) {
       r$.$reset()
     } else {
@@ -47,8 +28,6 @@ const { postCollection: mediaObjectPostCollection } = usePostCollectionMutation(
   { headers: { 'Content-Type': 'multipart/form-data' } },
 )
 
-const { createFromObject } = useTypedFormData('/api/data/media_objects')
-
 const submit = async (): Promise<
   PostCollectionResponseMap['/api/data/media_objects'] | undefined
 > => {
@@ -60,7 +39,7 @@ const submit = async (): Promise<
     return
   }
 
-  const typedFormData = createFromObject(data)
+  const typedFormData = onPreSubmit(data)
 
   // TypedFormData extends FormData, so it works with your existing API
   // Eventual request error will be handled in the parent form
@@ -76,7 +55,7 @@ defineExpose({
 watch(
   () => r$.$pending,
   (value) => {
-    uploadFileValidationPending.value = value
+    pending.value = value
   },
 )
 </script>
@@ -94,7 +73,7 @@ watch(
       </v-col>
     </v-row>
     <data-item-form-edit-media-object
-      :item="r$.$value as any"
+      :item="r$.$value"
       :errors="r$.$errors as any"
       mode="create"
     />

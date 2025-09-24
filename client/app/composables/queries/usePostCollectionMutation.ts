@@ -6,6 +6,7 @@ import type {
 } from '~~/types'
 import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 import { PostCollectionOperation } from '~/api/operations/PostCollectionOperation'
+import type { TypedFormData } from '~/api/TypedFormData'
 
 export function usePostCollectionMutation<P extends PostCollectionPath>(
   path: P,
@@ -35,7 +36,9 @@ export function usePostCollectionMutation<P extends PostCollectionPath>(
       model,
     }: {
       param?: OperationPathParams<P, 'post'>
-      model: PostCollectionRequestMap[P]
+      model:
+        | PostCollectionRequestMap[P]
+        | TypedFormData<PostCollectionRequestMap[P]>
     }) => {
       return postCollectionOperation.request(param, { ...options, body: model })
     },

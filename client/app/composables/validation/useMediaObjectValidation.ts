@@ -1,16 +1,12 @@
 import type { OperationPathParams } from '~~/types'
 import { inferRules, useRegle } from '@regle/core'
-import { required } from '@regle/rules'
-import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
+import { required, withMessage } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
+import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
 
-const apiInventoryValidator = new GetValidationOperation(
-  '/api/validator/unique/potteries/inventory/{id}',
-)
+const { maxFileSize } = useMaxFileSizeValidationRule()
 
 export function useCreateValidation() {
-  // type RequestBody = PostCollectionRequestMap['/api/data/media_objects']
-
   type MediaObjectFields = {
     file: File | null
     type: string | null
@@ -27,6 +23,10 @@ export function useCreateValidation() {
 
   const rules = computed(() =>
     inferRules(model, {
+      file: {
+        required: withMessage(required, 'File is required'),
+        maxFileSize,
+      },
       type: {
         required,
       },

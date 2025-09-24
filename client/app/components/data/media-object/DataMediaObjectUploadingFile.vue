@@ -93,6 +93,7 @@ const hasDuplicateMediaError = computed(
             <data-item-form-info-media-object
               v-if="mediaObject"
               :item="mediaObject"
+              :download-link="false"
             />
           </v-row>
         </v-container>

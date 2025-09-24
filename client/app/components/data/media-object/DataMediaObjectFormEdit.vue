@@ -7,6 +7,7 @@ const {
   creatingMediaObject: model,
   isNewMediaObject,
   uploadingFile: file,
+  uploadFileValidationPending,
 } = injectMediaObjectJoin()
 
 defineProps<{ errors?: string[] }>()
@@ -57,21 +58,7 @@ defineExpose({
 <template>
   <v-form data-testid="data-dialog-form" class="ma-4">
     <v-container fluid>
-      <v-row dense align="center" justify="center">
-        <div style="height: 80px" class="d-flex justify-center align-center">
-          <v-banner
-            v-if="errors && errors.length > 0"
-            class="mb-4"
-            border
-            rounded
-            density="compact"
-            color="error"
-            icon="fas fa-exclamation-triangle"
-            :text="errors.join(', ')"
-            data-testid="data-dialog-form-file-upload-error"
-          />
-        </div>
-      </v-row>
+      <data-media-object-file-errors-banner-row :errors />
       <v-row dense>
         <v-col cols="12">
           <v-file-upload
@@ -96,6 +83,9 @@ defineExpose({
           <data-media-object-uploader
             v-if="isNewMediaObject"
             ref="mediaObjectUploader"
+            v-model:file="file"
+            v-model:pending="uploadFileValidationPending"
+            data-testid="data-dialog-form-media-object-uploader"
           />
         </v-col>
       </v-row>

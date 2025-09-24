@@ -27,7 +27,14 @@ defineEmits<{
     <template #title>
       <p class="text-body-2 text-white pa-1">{{ fileName }}</p>
     </template>
-    <data-media-object-image :item="item.mediaObject" />
+    <data-item-info-box-media-object
+      v-slot="{ props: slotProps }"
+      :iri="item.mediaObject['@id']"
+    >
+      <div v-bind="slotProps">
+        <data-media-object-image :item="item.mediaObject" />
+      </div>
+    </data-item-info-box-media-object>
     <template #actions>
       <v-btn
         v-if="canUpdate"

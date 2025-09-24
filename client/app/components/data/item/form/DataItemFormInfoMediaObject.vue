@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
 import { useMediaObject } from '~/composables/useMediaObject'
-const props = defineProps<{
-  item: GetItemResponseMap['/api/data/media_objects/{id}']
-}>()
+const props = withDefaults(
+  defineProps<{
+    item: GetItemResponseMap['/api/data/media_objects/{id}']
+    downloadLink?: boolean
+  }>(),
+  {
+    downloadLink: true,
+  },
+)
 const vocabularyMediaObjectTypeStore = useVocabularyStore(
   '/api/vocabulary/media_object/types',
 )
@@ -84,6 +90,7 @@ const { mediaUrl } = useMediaObject(props.item)
                 <template #actions>
                   <v-spacer />
                   <v-btn
+                    v-if="downloadLink"
                     class="mr-4"
                     density="compact"
                     :icon="true"

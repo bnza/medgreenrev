@@ -7,7 +7,7 @@ export function useNormalization() {
 
   const onPreUpdate =
     (oldItem: Record<string, any>) => (item: Record<string, any>) => {
-      return onPreCreate(diff(oldItem, item))
+      return diff(oldItem, item)
     }
 
   return {

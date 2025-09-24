@@ -1,11 +1,11 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/data/analyses'>"
+  generic="Path extends Extract<GetCollectionPath, '/api/data/media_objects'>"
 >
 import type { GetCollectionPath } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisNormalization'
+import { useCreateValidation } from '~/composables/validation/useMediaObjectValidation'
+import { useNormalization } from '~/composables/normalization/useMediaObjectNormalization'
 
 defineProps<{
   path: Path
@@ -26,14 +26,16 @@ const emit = defineEmits<{
     :path
     :on-pre-submit
     :get-empty-model
+    :post-request-options="{
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis
+      <lazy-data-item-form-create-media-object
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
-        mode="create"
       />
     </template>
   </data-dialog-create>

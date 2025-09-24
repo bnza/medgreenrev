@@ -10,7 +10,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <data-item-form-info-media-object :item mode="update" />
+      <data-item-form-info-media-object :item :download-link="false" />
     </template>
   </data-dialog-delete>
 </template>
