@@ -1,10 +1,25 @@
 import type { OperationPathParams } from '~~/types'
-import { inferRules, useRegle } from '@regle/core'
+import { createRule, inferRules, type Maybe, useRegle } from '@regle/core'
 import { required, withMessage } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
+import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 
 const { maxFileSize } = useMaxFileSizeValidationRule()
+
+const apiSha256Validator = new GetValidationOperation(
+  '/api/validator/unique/media_objects/sha256/{id}',
+)
+
+const uniqueFile = createRule({
+  validator: async (value: Maybe<File>) =>
+    value
+      ? await apiSha256Validator.isValid({
+          id: await calculateSHA256FileHash(value),
+        })
+      : true,
+  message: 'Duplicate file',
+})
 
 export function useCreateValidation() {
   type MediaObjectFields = {
@@ -25,6 +40,7 @@ export function useCreateValidation() {
     inferRules(model, {
       file: {
         required: withMessage(required, 'File is required'),
+        uniqueFile,
         maxFileSize,
       },
       type: {

@@ -31,7 +31,7 @@ defineEmits<{
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="4">
+      <v-col cols="12">
         <data-autocomplete-hierarchical-vocabulary
           v-model="item.type"
           path="/api/vocabulary/media_object/types"

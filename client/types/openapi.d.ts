@@ -1670,6 +1670,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/media_objects/sha256/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquemedia_objectssha256_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/media_objects/stratigraphic_units/{mediaObject}/{item}': {
     parameters: {
       query?: never
@@ -5738,6 +5758,10 @@ export interface operations {
         'order[createdBy.email]'?: 'asc' | 'desc'
         type?: string
         'type[]'?: string[]
+        'type.group'?: string
+        'type.group[]'?: string[]
+        'type.code'?: string
+        'type.code[]'?: string[]
         identifier?: string
         responsible?: string
         summary?: string
@@ -13043,6 +13067,40 @@ export interface operations {
         mediaObject: string
         /** @description UniqueValidator identifier */
         item: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquemedia_objectssha256_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        id: string
       }
       cookie?: never
     }

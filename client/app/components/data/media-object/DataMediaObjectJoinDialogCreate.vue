@@ -84,15 +84,8 @@ watch(
     if (!flag) {
       creatingMediaObject.value = undefined
       uploadingFile.value = undefined
-      r$.$reset()
     }
-  },
-)
-
-watch(
-  () => uploadingFile.value,
-  () => {
-    r$.$reset()
+    r$.$reset({ toInitialState: true })
   },
 )
 </script>
@@ -104,7 +97,9 @@ watch(
     data-testid="data-dialog-media-object-join-create"
   >
     <template #default>
+      <loading-component v-if="disabled" class="mt-10" />
       <data-media-object-form-edit
+        v-show="!disabled"
         ref="mediaObjectForm"
         :errors="r$.$errors.mediaObject as any"
       />

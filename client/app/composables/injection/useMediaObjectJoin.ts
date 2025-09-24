@@ -18,15 +18,26 @@ export const useMediaObjectJoin = (itemIri: Ref<Iri | undefined>) => {
 
   const uploadingFile = ref<File | undefined>()
   const isNewMediaObject = computed(
-    () => !creatingMediaObject.value && uploadingFile.value,
+    () => !creatingMediaObject.value && Boolean(uploadingFile.value),
   )
 
   const uploadFileValidationPending = ref(false)
 
-  const creatingMediaObjectJoin = computed(() => ({
+  const creatingMediaObjectJoin = ref({
     mediaObject: creatingMediaObject.value?.['@id'],
     item: itemIri.value,
-  }))
+  })
+
+  watch(
+    () => creatingMediaObject.value,
+    (value) => {
+      console.log(
+        'useMediaObjectJoin creatingMediaObject.value changed: ',
+        value,
+      )
+      creatingMediaObjectJoin.value.mediaObject = value?.['@id']
+    },
+  )
 
   const deletingMediaObjectJoinItem = ref<Iri | undefined>()
 

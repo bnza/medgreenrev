@@ -1,6 +1,9 @@
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 import type { GetCollectionResponseMap } from '~~/types'
 
+type OptionalMediaObject =
+  | GetCollectionResponseMap['/api/data/media_objects']['member'][0]
+  | undefined
 export const useGetMediaObjectBySha256ItemQuery = () => {
   const sha256 = ref<string>('')
   const getCollectionOperation = new GetCollectionOperation(
@@ -14,12 +17,12 @@ export const useGetMediaObjectBySha256ItemQuery = () => {
     enabled: () => Boolean(sha256.value),
   })
 
-  const data = computed(
-    () =>
-      _data.value?.member?.[0] as
-        | GetCollectionResponseMap['/api/data/media_objects']['member'][0]
-        | undefined,
+  const data = computed(() =>
+    sha256.value
+      ? (_data.value?.member?.[0] as OptionalMediaObject)
+      : undefined,
   )
+
   return {
     data,
     ...query,

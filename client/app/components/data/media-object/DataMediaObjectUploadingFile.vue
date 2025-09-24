@@ -10,7 +10,7 @@ const {
 } = injectMediaObjectJoin()
 
 const props = defineProps<{
-  onClickRemove: () => void
+  // onClickRemove: () => void
   errors?: string[]
 }>()
 
@@ -46,10 +46,15 @@ const duplicateMediaError = computed(
 const hasDuplicateMediaError = computed(
   () => duplicateMediaError.value?.length > 0,
 )
+
+const clear = () => {
+  file.value = undefined
+  creatingMediaObject.value = undefined
+}
 </script>
 
 <template>
-  <v-list-item
+  <v-file-upload-item
     variant="outlined"
     rounded
     v-bind="props"
@@ -57,8 +62,6 @@ const hasDuplicateMediaError = computed(
     data-testid="data-dialog-form-file-uploading"
   >
     <template #default>
-      <v-list-item-title class="pl-8">{{ file?.name }}</v-list-item-title>
-      <v-list-item-subtitle class="pl-8">{{ file?.type }}</v-list-item-subtitle>
       <v-form v-if="isValidItem(creatingMediaObject)" class="d-flex">
         <v-container v-if="asyncStatus !== 'loading'" fluid>
           <v-row dense class="mb-4">
@@ -99,14 +102,16 @@ const hasDuplicateMediaError = computed(
         </v-container>
       </v-form>
     </template>
-    <template #append>
+    <template #clear="{ props: clearProps }">
       <v-btn
+        v-bind="clearProps"
+        data-testid="data-dialog-form-file-uploading-clear"
         class="mx-8"
         rounded="circle"
         size="x-small"
         icon="fas fa-close"
-        @click="file = undefined"
+        @click="clear"
       />
     </template>
-  </v-list-item>
+  </v-file-upload-item>
 </template>

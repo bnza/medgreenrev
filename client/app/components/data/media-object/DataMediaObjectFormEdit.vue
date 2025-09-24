@@ -66,11 +66,11 @@ defineExpose({
             clearable
             data-testid="data-dialog-form-file-upload"
           >
-            <template #item="{ file: itemFile, props: itemProps }">
+            <template #item="{ props: itemProps, file: itemFile }">
               <data-media-object-uploading-file
                 v-bind="{
                   file: itemFile,
-                  onClickRemove: itemProps['onClick:remove'],
+                  ...itemProps,
                 }"
                 :errors
               />
