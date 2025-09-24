@@ -110,8 +110,11 @@ const submit = async () => {
 
     const data = await postCollection.mutateAsync({ model })
 
+    const request =
+      model instanceof FormData ? model : structuredClone(toRaw(model))
+
     // Eventual side effects are produced/handled by the parent Dialog
-    emit('success', { request: structuredClone(toRaw(model)), response: data })
+    emit('success', { request, response: data })
 
     // If no cache hits, probably query cache has been deleted
     // so we need to force a refresh of the collection

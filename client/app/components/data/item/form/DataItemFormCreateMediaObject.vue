@@ -42,7 +42,7 @@ defineEmits<{
     </v-row>
     <v-row>
       <v-col cols="12">
-        <v-textarea v-model="item.description" label="summary" rows="3" />
+        <v-textarea v-model="item.description" label="description" rows="3" />
       </v-col>
     </v-row>
   </v-card-text>
