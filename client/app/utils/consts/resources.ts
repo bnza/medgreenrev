@@ -13,6 +13,7 @@ export const API_RESOURCE_MAP = {
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
+  microstratigraphicUnit: '/api/data/microstratigraphic_units',
   pottery: '/api/data/potteries',
   potteryDecoration: '/api/data/pottery_decorations',
   sample: '/api/data/samples',

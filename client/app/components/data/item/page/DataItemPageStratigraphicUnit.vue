@@ -15,6 +15,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tab value="relationships">relationships</v-tab>
         <v-tab value="contexts">contexts</v-tab>
         <v-tab value="samples">samples</v-tab>
+        <v-tab value="mus">MUs</v-tab>
         <v-tab value="potteries">potteries</v-tab>
         <v-tab value="zoo-bones">zoo (bones)</v-tab>
         <v-tab value="zoo-teeth">zoo (teeth)</v-tab>
@@ -43,6 +44,16 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tabs-window-item value="samples" data-testid="tab-samples">
           <data-collection-page-join-sample-stratigraphic-unit
             path="/api/data/stratigraphic_units/{parentId}/samples"
+            :parent="{
+              key: 'stratigraphicUnit',
+              resourceItemPath: '/api/data/stratigraphic_units/{id}',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="mus" data-testid="tab-mus">
+          <data-collection-page-microstratigraphic-unit
+            path="/api/data/stratigraphic_units/{parentId}/microstratigraphic_units"
             :parent="{
               key: 'stratigraphicUnit',
               resourceItemPath: '/api/data/stratigraphic_units/{id}',

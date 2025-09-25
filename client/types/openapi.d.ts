@@ -854,6 +854,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MicrostratigraphicUnit resources.
+     * @description Retrieves the collection of MicrostratigraphicUnit resources.
+     */
+    get: operations['api_datamicrostratigraphic_units_get_collection']
+    put?: never
+    /**
+     * Creates a MicrostratigraphicUnit resource.
+     * @description Creates a MicrostratigraphicUnit resource.
+     */
+    post: operations['api_datamicrostratigraphic_units_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/microstratigraphic_units/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MicrostratigraphicUnit resource.
+     * @description Retrieves a MicrostratigraphicUnit resource.
+     */
+    get: operations['api_datamicrostratigraphic_units_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MicrostratigraphicUnit resource.
+     * @description Removes the MicrostratigraphicUnit resource.
+     */
+    delete: operations['api_datamicrostratigraphic_units_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the MicrostratigraphicUnit resource.
+     * @description Updates the MicrostratigraphicUnit resource.
+     */
+    patch: operations['api_datamicrostratigraphic_units_id_patch']
+    trace?: never
+  }
+  '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MicrostratigraphicUnit resources.
+     * @description Retrieves the collection of MicrostratigraphicUnit resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdmicrostratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/potteries': {
     parameters: {
       query?: never
@@ -1702,6 +1774,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquemedia_objectsstratigraphic_units_mediaObject_item_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/microstratigraphic_units/{stratigraphicUnit}/{identifier}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquemicrostratigraphic_units_stratigraphicUnit_identifier_get']
     put?: never
     post?: never
     delete?: never
@@ -3509,6 +3601,49 @@ export interface components {
       mediaObject?: string
       description?: string | null
     }
+    'MicrostratigraphicUnit-microstratigraphic_unit.acl.read': {
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit-microstratigraphic_unit.acl.read']
+      identifier?: string
+      notes?: string | null
+      readonly code?: string
+    }
+    'MicrostratigraphicUnit-microstratigraphic_unit.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      identifier?: string
+      notes?: string | null
+    }
+    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+      identifier?: string
+      notes?: string | null
+      readonly code?: string
+    }
+    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      identifier: string
+      notes?: string | null
+    }
     'Pottery-pottery.acl.read': {
       readonly id?: number & string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit-pottery.acl.read']
@@ -3547,7 +3682,6 @@ export interface components {
       notes?: string | null
     }
     'Pottery-pottery.create': {
-      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3684,7 +3818,6 @@ export interface components {
       notes?: string | null
     }
     'Pottery.jsonld-pottery.create': {
-      readonly id?: number & string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4014,6 +4147,10 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site-microstratigraphic_unit.acl.read': {
+      code?: string
+      name?: string
+    }
     'Site-pottery.acl.read': {
       code?: string
       name?: string
@@ -4182,6 +4319,21 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-microstratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -4460,6 +4612,10 @@ export interface components {
       interpretation?: string | null
       readonly code: string
     }
+    'StratigraphicUnit-microstratigraphic_unit.acl.read': {
+      site?: components['schemas']['Site-microstratigraphic_unit.acl.read']
+      readonly code: string
+    }
     'StratigraphicUnit-pottery.acl.read': {
       site?: components['schemas']['Site-pottery.acl.read']
       readonly code: string
@@ -4610,6 +4766,21 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-pottery.acl.read': {
@@ -9869,6 +10040,333 @@ export interface operations {
       }
     }
   }
+  api_datamicrostratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.acl.read'][]
+          'application/ld+json': {
+            member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datamicrostratigraphic_units_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MicrostratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.create']
+      }
+    }
+    responses: {
+      /** @description MicrostratigraphicUnit resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datamicrostratigraphic_units_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MicrostratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamicrostratigraphic_units_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MicrostratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamicrostratigraphic_units_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MicrostratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated MicrostratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.create']
+      }
+    }
+    responses: {
+      /** @description MicrostratigraphicUnit resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdmicrostratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description MicrostratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.acl.read'][]
+          'application/ld+json': {
+            member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
   api_datapotteries_get_collection: {
     parameters: {
       query?: {
@@ -13137,6 +13635,42 @@ export interface operations {
         mediaObject: string
         /** @description UniqueValidator identifier */
         item: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquemicrostratigraphic_units_stratigraphicUnit_identifier_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description UniqueValidator identifier */
+        stratigraphicUnit: string
+        /** @description UniqueValidator identifier */
+        identifier: string
       }
       cookie?: never
     }
