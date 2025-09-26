@@ -2,7 +2,7 @@ import type { GetValidationPath } from '~~/types'
 import { required } from '@regle/rules'
 
 export type AnalysisSubjectValidationPath = {
-  [K in GetValidationPath]: K extends `${string}/{analysis}/{subject}`
+  [K in GetValidationPath]: K extends `/api/validator/unique/${string}`
     ? K
     : never
 }[GetValidationPath]

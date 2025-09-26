@@ -260,7 +260,20 @@ test.describe('Pottery lifecycle', () => {
         page.locator('.v-input:has(label:text("inventory"))'),
       ).toContainText(/inventory must be unique/i)
 
-      // Test 8: Valid form submission after fixing validation errors
+      // Test 8: Unique inventory with special char validation - try to create with existing inventory
+      await inventoryField.fill('') // Clearing input
+      await page.keyboard.press('Tab')
+      await expect(
+        page.locator('.v-input:has(label:text("inventory"))'),
+      ).toContainText(/required/i)
+      await inventoryField.fill('ME002/2023') // Assuming this exists in fixtures
+      await page.keyboard.press('Tab')
+      await page.waitForTimeout(1000) // Wait for async validation
+      await expect(
+        page.locator('.v-input:has(label:text("inventory"))'),
+      ).toContainText(/inventory must be unique/i)
+
+      // Test 9: Valid form submission after fixing validation errors
       await inventoryField.fill('POT-VALID-001')
       await chronologyLowerField.fill('-200')
       await chronologyUpperField.fill('-100')

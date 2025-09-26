@@ -9,17 +9,17 @@ import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery
 import useResourceParent from '~/composables/useResourceParent'
 
 const uniqueSite = useApiUniqueValidator(
-  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}',
+  '/api/validator/unique/stratigraphic_units',
   ['site', 'year', 'number'],
   'Duplicate [site, year, number] combination',
 )
 const uniqueYear = useApiUniqueValidator(
-  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}',
+  '/api/validator/unique/stratigraphic_units',
   ['year', 'site', 'number'],
   'Duplicate [year, site, number] combination',
 )
 const uniqueNumber = useApiUniqueValidator(
-  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}',
+  '/api/validator/unique/stratigraphic_units',
   ['number', 'site', 'year'],
   'Duplicate [number, site, year] combination',
 )

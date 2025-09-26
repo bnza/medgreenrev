@@ -1582,7 +1582,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/contexts/zoo/{analysis}/{subject}': {
+  '/api/validator/unique/analyses': {
     parameters: {
       query?: never
       header?: never
@@ -1593,7 +1593,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalysescontextszoo_analysis_subject_get']
+    get: operations['api_validatoruniqueanalyses_get']
     put?: never
     post?: never
     delete?: never
@@ -1602,7 +1602,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/potteries/{analysis}/{subject}': {
+  '/api/validator/unique/analyses/contexts/zoo': {
     parameters: {
       query?: never
       header?: never
@@ -1613,7 +1613,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalysespotteries_analysis_subject_get']
+    get: operations['api_validatoruniqueanalysescontextszoo_get']
     put?: never
     post?: never
     delete?: never
@@ -1622,7 +1622,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/zoo/bones/{analysis}/{subject}': {
+  '/api/validator/unique/analyses/potteries': {
     parameters: {
       query?: never
       header?: never
@@ -1633,7 +1633,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalyseszoobones_analysis_subject_get']
+    get: operations['api_validatoruniqueanalysespotteries_get']
     put?: never
     post?: never
     delete?: never
@@ -1642,7 +1642,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/zoo/teeth/{analysis}/{subject}': {
+  '/api/validator/unique/analyses/zoo/bones': {
     parameters: {
       query?: never
       header?: never
@@ -1653,7 +1653,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalyseszooteeth_analysis_subject_get']
+    get: operations['api_validatoruniqueanalyseszoobones_get']
     put?: never
     post?: never
     delete?: never
@@ -1662,7 +1662,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/{type}/{identifier}': {
+  '/api/validator/unique/analyses/zoo/teeth': {
     parameters: {
       query?: never
       header?: never
@@ -1673,7 +1673,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalyses_type_identifier_get']
+    get: operations['api_validatoruniqueanalyseszooteeth_get']
     put?: never
     post?: never
     delete?: never
@@ -1682,7 +1682,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/context_stratigraphic_units/{context}/{stratigraphicUnit}': {
+  '/api/validator/unique/context_stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -1693,7 +1693,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquecontext_stratigraphic_units_context_stratigraphicUnit_get']
+    get: operations['api_validatoruniquecontext_stratigraphic_units_get']
     put?: never
     post?: never
     delete?: never
@@ -1702,7 +1702,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/contexts/{site}/{name}': {
+  '/api/validator/unique/contexts': {
     parameters: {
       query?: never
       header?: never
@@ -1713,7 +1713,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquecontexts_site_name_get']
+    get: operations['api_validatoruniquecontexts_get']
     put?: never
     post?: never
     delete?: never
@@ -1722,7 +1722,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/media_objects/analyses/{mediaObject}/{item}': {
+  '/api/validator/unique/media_objects/analyses': {
     parameters: {
       query?: never
       header?: never
@@ -1733,7 +1733,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquemedia_objectsanalyses_mediaObject_item_get']
+    get: operations['api_validatoruniquemedia_objectsanalyses_get']
     put?: never
     post?: never
     delete?: never
@@ -1742,7 +1742,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/media_objects/sha256/{id}': {
+  '/api/validator/unique/media_objects/sha256': {
     parameters: {
       query?: never
       header?: never
@@ -1753,7 +1753,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquemedia_objectssha256_id_get']
+    get: operations['api_validatoruniquemedia_objectssha256_get']
     put?: never
     post?: never
     delete?: never
@@ -1762,7 +1762,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/media_objects/stratigraphic_units/{mediaObject}/{item}': {
+  '/api/validator/unique/media_objects/stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -1773,7 +1773,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquemedia_objectsstratigraphic_units_mediaObject_item_get']
+    get: operations['api_validatoruniquemedia_objectsstratigraphic_units_get']
     put?: never
     post?: never
     delete?: never
@@ -1782,7 +1782,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/microstratigraphic_units/{stratigraphicUnit}/{identifier}': {
+  '/api/validator/unique/microstratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -1793,7 +1793,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquemicrostratigraphic_units_stratigraphicUnit_identifier_get']
+    get: operations['api_validatoruniquemicrostratigraphic_units_get']
     put?: never
     post?: never
     delete?: never
@@ -1802,7 +1802,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/potteries/inventory/{id}': {
+  '/api/validator/unique/potteries/inventory': {
     parameters: {
       query?: never
       header?: never
@@ -1813,7 +1813,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquepotteriesinventory_id_get']
+    get: operations['api_validatoruniquepotteriesinventory_get']
     put?: never
     post?: never
     delete?: never
@@ -1822,7 +1822,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/sample_stratigraphic_units/{sample}/{stratigraphicUnit}': {
+  '/api/validator/unique/sample_stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -1833,7 +1833,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquesample_stratigraphic_units_sample_stratigraphicUnit_get']
+    get: operations['api_validatoruniquesample_stratigraphic_units_get']
     put?: never
     post?: never
     delete?: never
@@ -1842,7 +1842,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/samples/{site}/{type}/{year}/{number}': {
+  '/api/validator/unique/samples': {
     parameters: {
       query?: never
       header?: never
@@ -1853,7 +1853,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquesamples_site_type_year_number_get']
+    get: operations['api_validatoruniquesamples_get']
     put?: never
     post?: never
     delete?: never
@@ -1862,7 +1862,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/site_user_privileges/{site}/{user}': {
+  '/api/validator/unique/site_user_privileges': {
     parameters: {
       query?: never
       header?: never
@@ -1873,7 +1873,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquesite_user_privileges_site_user_get']
+    get: operations['api_validatoruniquesite_user_privileges_get']
     put?: never
     post?: never
     delete?: never
@@ -1882,7 +1882,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/sites/code/{id}': {
+  '/api/validator/unique/sites/code': {
     parameters: {
       query?: never
       header?: never
@@ -1893,7 +1893,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquesitescode_id_get']
+    get: operations['api_validatoruniquesitescode_get']
     put?: never
     post?: never
     delete?: never
@@ -1902,7 +1902,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/sites/name/{id}': {
+  '/api/validator/unique/sites/name': {
     parameters: {
       query?: never
       header?: never
@@ -1913,7 +1913,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquesitesname_id_get']
+    get: operations['api_validatoruniquesitesname_get']
     put?: never
     post?: never
     delete?: never
@@ -1922,7 +1922,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/stratigraphic_unit_relationships/{lftStratigraphicUnit}/{rgtStratigraphicUnit}': {
+  '/api/validator/unique/stratigraphic_unit_relationships': {
     parameters: {
       query?: never
       header?: never
@@ -1933,7 +1933,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquestratigraphic_unit_relationships_lftStratigraphicUnit_rgtStratigraphicUnit_get']
+    get: operations['api_validatoruniquestratigraphic_unit_relationships_get']
     put?: never
     post?: never
     delete?: never
@@ -1942,7 +1942,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/stratigraphic_units/{site}/{year}/{number}': {
+  '/api/validator/unique/stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -1953,7 +1953,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquestratigraphic_units_site_year_number_get']
+    get: operations['api_validatoruniquestratigraphic_units_get']
     put?: never
     post?: never
     delete?: never
@@ -13304,16 +13304,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysescontextszoo_analysis_subject_get: {
+  api_validatoruniqueanalyses_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        analysis: string
-        /** @description UniqueValidator identifier */
-        subject: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13340,16 +13335,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysespotteries_analysis_subject_get: {
+  api_validatoruniqueanalysescontextszoo_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        analysis: string
-        /** @description UniqueValidator identifier */
-        subject: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13376,16 +13366,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalyseszoobones_analysis_subject_get: {
+  api_validatoruniqueanalysespotteries_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        analysis: string
-        /** @description UniqueValidator identifier */
-        subject: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13412,16 +13397,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalyseszooteeth_analysis_subject_get: {
+  api_validatoruniqueanalyseszoobones_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        analysis: string
-        /** @description UniqueValidator identifier */
-        subject: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13448,16 +13428,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalyses_type_identifier_get: {
+  api_validatoruniqueanalyseszooteeth_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        type: string
-        /** @description UniqueValidator identifier */
-        identifier: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13484,16 +13459,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquecontext_stratigraphic_units_context_stratigraphicUnit_get: {
+  api_validatoruniquecontext_stratigraphic_units_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        context: string
-        /** @description UniqueValidator identifier */
-        stratigraphicUnit: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13520,16 +13490,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquecontexts_site_name_get: {
+  api_validatoruniquecontexts_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        site: string
-        /** @description UniqueValidator identifier */
-        name: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13556,16 +13521,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquemedia_objectsanalyses_mediaObject_item_get: {
+  api_validatoruniquemedia_objectsanalyses_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        mediaObject: string
-        /** @description UniqueValidator identifier */
-        item: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13592,14 +13552,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquemedia_objectssha256_id_get: {
+  api_validatoruniquemedia_objectssha256_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        id: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13626,16 +13583,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquemedia_objectsstratigraphic_units_mediaObject_item_get: {
+  api_validatoruniquemedia_objectsstratigraphic_units_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        mediaObject: string
-        /** @description UniqueValidator identifier */
-        item: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13662,16 +13614,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquemicrostratigraphic_units_stratigraphicUnit_identifier_get: {
+  api_validatoruniquemicrostratigraphic_units_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        stratigraphicUnit: string
-        /** @description UniqueValidator identifier */
-        identifier: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13698,14 +13645,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquepotteriesinventory_id_get: {
+  api_validatoruniquepotteriesinventory_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        id: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13732,16 +13676,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesample_stratigraphic_units_sample_stratigraphicUnit_get: {
+  api_validatoruniquesample_stratigraphic_units_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        sample: string
-        /** @description UniqueValidator identifier */
-        stratigraphicUnit: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13768,20 +13707,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesamples_site_type_year_number_get: {
+  api_validatoruniquesamples_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        site: string
-        /** @description UniqueValidator identifier */
-        type: string
-        /** @description UniqueValidator identifier */
-        year: string
-        /** @description UniqueValidator identifier */
-        number: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13808,16 +13738,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesite_user_privileges_site_user_get: {
+  api_validatoruniquesite_user_privileges_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        site: string
-        /** @description UniqueValidator identifier */
-        user: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13844,14 +13769,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesitescode_id_get: {
+  api_validatoruniquesitescode_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        id: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13878,14 +13800,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquesitesname_id_get: {
+  api_validatoruniquesitesname_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        id: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13912,16 +13831,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquestratigraphic_unit_relationships_lftStratigraphicUnit_rgtStratigraphicUnit_get: {
+  api_validatoruniquestratigraphic_unit_relationships_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        lftStratigraphicUnit: string
-        /** @description UniqueValidator identifier */
-        rgtStratigraphicUnit: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never
@@ -13948,18 +13862,11 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquestratigraphic_units_site_year_number_get: {
+  api_validatoruniquestratigraphic_units_get: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description UniqueValidator identifier */
-        site: string
-        /** @description UniqueValidator identifier */
-        year: string
-        /** @description UniqueValidator identifier */
-        number: string
-      }
+      path?: never
       cookie?: never
     }
     requestBody?: never

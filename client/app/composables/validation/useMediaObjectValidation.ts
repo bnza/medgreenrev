@@ -8,14 +8,14 @@ import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 const { maxFileSize } = useMaxFileSizeValidationRule()
 
 const apiSha256Validator = new GetValidationOperation(
-  '/api/validator/unique/media_objects/sha256/{id}',
+  '/api/validator/unique/media_objects/sha256',
 )
 
 const uniqueFile = createRule({
   validator: async (value: Maybe<File>) =>
     value
       ? await apiSha256Validator.isValid({
-          id: await calculateSHA256FileHash(value),
+          sha256: await calculateSHA256FileHash(value),
         })
       : true,
   message: 'Duplicate file',

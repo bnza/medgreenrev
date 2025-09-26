@@ -5,22 +5,22 @@ import { integer, maxValue, minValue, required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const apiCodeValidator = new GetValidationOperation(
-  '/api/validator/unique/sites/code/{id}',
+  '/api/validator/unique/sites/code',
 )
 
 const apiNameValidator = new GetValidationOperation(
-  '/api/validator/unique/sites/name/{id}',
+  '/api/validator/unique/sites/name',
 )
 
 const uniqueCode = createRule({
   validator: async (value: Maybe<string>) =>
-    value ? await apiCodeValidator.isValid({ id: value }) : true,
+    value ? await apiCodeValidator.isValid({ code: value }) : true,
   message: 'Code must be unique',
 })
 
 const uniqueName = createRule({
   validator: async (value: Maybe<string>) =>
-    value ? await apiNameValidator.isValid({ id: value }) : true,
+    value ? await apiNameValidator.isValid({ name: value }) : true,
   message: 'Name must be unique',
 })
 

@@ -4,12 +4,12 @@ import { required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const uniqueType = useApiUniqueValidator(
-  '/api/validator/unique/analyses/{type}/{identifier}',
+  '/api/validator/unique/analyses',
   ['type', 'identifier'],
   'Duplicate [type, identifier] combination',
 )
 const uniqueIdentifier = useApiUniqueValidator(
-  '/api/validator/unique/analyses/{type}/{identifier}',
+  '/api/validator/unique/analyses',
   ['identifier', 'type'],
   'Duplicate [type, identifier] combination',
 )

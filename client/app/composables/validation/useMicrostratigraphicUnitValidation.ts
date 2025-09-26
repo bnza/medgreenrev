@@ -9,13 +9,13 @@ import useResourceParent from '~/composables/useResourceParent'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const uniqueStratigraphicUnit = useApiUniqueValidator(
-  '/api/validator/unique/microstratigraphic_units/{stratigraphicUnit}/{identifier}',
+  '/api/validator/unique/microstratigraphic_units',
   ['stratigraphicUnit', 'identifier'],
   'Duplicate [stratigraphic unit, identifier] combination',
 )
 
 const uniqueIdentifier = useApiUniqueValidator(
-  '/api/validator/unique/microstratigraphic_units/{stratigraphicUnit}/{identifier}',
+  '/api/validator/unique/microstratigraphic_units',
   ['identifier', 'stratigraphicUnit'],
   'Duplicate [stratigraphic unit, identifier] combination',
 )

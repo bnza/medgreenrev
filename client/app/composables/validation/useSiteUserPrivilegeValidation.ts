@@ -8,13 +8,13 @@ import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery
 import useResourceParent from '~/composables/useResourceParent'
 
 const uniqueSite = useApiUniqueValidator(
-  '/api/validator/unique/site_user_privileges/{site}/{user}',
+  '/api/validator/unique/site_user_privileges',
   ['site', 'user'],
   'Duplicate [site, user] combination',
 )
 
 const uniqueUser = useApiUniqueValidator(
-  '/api/validator/unique/site_user_privileges/{site}/{user}',
+  '/api/validator/unique/site_user_privileges',
   ['user', 'site'],
   'Duplicate [site, user] combination',
 )

@@ -3,12 +3,12 @@ import { inferRules, useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 
 const uniqueStratigraphicUnit = useApiUniqueValidator(
-  '/api/validator/unique/sample_stratigraphic_units/{sample}/{stratigraphicUnit}',
+  '/api/validator/unique/sample_stratigraphic_units',
   ['stratigraphicUnit', 'sample'],
   'Duplicate [stratigraphic unit, sample] combination',
 )
 const uniqueSample = useApiUniqueValidator(
-  '/api/validator/unique/sample_stratigraphic_units/{sample}/{stratigraphicUnit}',
+  '/api/validator/unique/sample_stratigraphic_units',
   ['sample', 'stratigraphicUnit'],
   'Duplicate [stratigraphic unit, sample] combination',
 )

@@ -33,7 +33,7 @@ const emit = defineEmits<{
 }>()
 
 const uniqueMediaObject = useApiUniqueValidator(
-  '/api/validator/unique/media_objects/stratigraphic_units/{mediaObject}/{item}',
+  '/api/validator/unique/media_objects/stratigraphic_units',
   ['mediaObject', 'item'],
   'Duplicate [media, stratigraphic unit] combination',
 )

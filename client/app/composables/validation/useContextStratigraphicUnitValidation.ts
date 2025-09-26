@@ -4,12 +4,12 @@ import { required } from '@regle/rules'
 import useResourceParent from '~/composables/useResourceParent'
 
 const uniqueContext = useApiUniqueValidator(
-  '/api/validator/unique/context_stratigraphic_units/{context}/{stratigraphicUnit}',
+  '/api/validator/unique/context_stratigraphic_units',
   ['context', 'stratigraphicUnit'],
   'Duplicate [context, stratigraphic unit] combination',
 )
 const uniqueStratigraphicUnit = useApiUniqueValidator(
-  '/api/validator/unique/context_stratigraphic_units/{context}/{stratigraphicUnit}',
+  '/api/validator/unique/context_stratigraphic_units',
   ['stratigraphicUnit', 'context'],
   'Duplicate [context, stratigraphic unit] combination',
 )

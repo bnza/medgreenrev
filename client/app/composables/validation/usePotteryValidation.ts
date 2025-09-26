@@ -10,12 +10,12 @@ import useResourceParent from '~/composables/useResourceParent'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const apiInventoryValidator = new GetValidationOperation(
-  '/api/validator/unique/potteries/inventory/{id}',
+  '/api/validator/unique/potteries/inventory',
 )
 
 const uniqueInventory = createRule({
   validator: async (value: Maybe<string>) =>
-    value ? await apiInventoryValidator.isValid({ id: value }) : true,
+    value ? await apiInventoryValidator.isValid({ inventory: value }) : true,
   message: 'Inventory must be unique',
 })
 

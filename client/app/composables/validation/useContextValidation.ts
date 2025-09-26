@@ -9,12 +9,12 @@ import useResourceParent from '~/composables/useResourceParent'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const uniqueSite = useApiUniqueValidator(
-  '/api/validator/unique/contexts/{site}/{name}',
+  '/api/validator/unique/contexts',
   ['site', 'name'],
   'Duplicate [number, site, year] combination',
 )
 const uniqueName = useApiUniqueValidator(
-  '/api/validator/unique/contexts/{site}/{name}',
+  '/api/validator/unique/contexts',
   ['name', 'site'],
   'Duplicate [number, site, year] combination',
 )

@@ -9,7 +9,7 @@ import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery
 import useAnalysisSubjectValidation from '~/composables/validation/shared/useAnalysisSubjectValidation'
 
 const analysisSubjectRules = useAnalysisSubjectValidation(
-  '/api/validator/unique/analyses/zoo/teeth/{analysis}/{subject}',
+  '/api/validator/unique/analyses/zoo/teeth',
 )
 
 export function useCreateValidation(
