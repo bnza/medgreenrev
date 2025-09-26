@@ -140,11 +140,7 @@ export type PostCollectionRequestMap = {
     content: { 'application/ld+json': infer T }
   }
     ? T
-    : // : paths[K]['post']['requestBody'] extends {
-      //       content: { 'multipart/form-data': infer U }
-      //     }
-      //   ? TypedFormData<FormDataFields<K>> | FormData
-      paths[K]['post']['requestBody'] extends {
+    : paths[K]['post']['requestBody'] extends {
           content: { 'multipart/form-data': infer U }
         }
       ? U
@@ -158,17 +154,7 @@ export type FormDataFields<K extends PostCollectionPath> =
   }
     ? U extends Record<string, any>
       ? {
-          [P in keyof U]: U[P] extends { type: 'string'; format: 'binary' }
-            ? File | Blob
-            : U[P] extends { type: 'string' }
-              ? string
-              : U[P] extends { type: 'number' | 'integer' }
-                ? number | string
-                : U[P] extends { type: 'boolean' }
-                  ? boolean | string
-                  : U[P] extends { type: 'array' }
-                    ? Array<any> | string
-                    : any
+          [P in keyof U]: P extends 'file' ? File : U[P]
         }
       : Record<string, any>
     : Record<string, any>

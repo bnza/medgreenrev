@@ -64,11 +64,7 @@ const vocabularyAnalysisStore = useVocabularyStore(
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
       <data-dialog-search :path title="Animal bone analysis" />
-      <data-dialog-create-analysis-zoo-bone
-        :path
-        :parent
-        @refresh="refetch()"
-      />
+      <data-dialog-create-analysis-zoo-bone :parent @refresh="refetch()" />
       <data-dialog-delete-analysis-zoo-bone @refresh="refetch()" />
       <data-dialog-update-analysis-zoo-bone @refresh="refetch()" />
     </template>

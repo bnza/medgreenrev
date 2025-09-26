@@ -71,7 +71,6 @@ const vocabularyAnalysisStore = useVocabularyStore(
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
       <data-dialog-search :path :title="labels[0]" />
       <lazy-data-dialog-create-analysis-context-zoo
-        :path
         :parent
         @refresh="refetch()"
       />

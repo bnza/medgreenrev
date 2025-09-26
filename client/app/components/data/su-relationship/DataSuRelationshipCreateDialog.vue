@@ -30,7 +30,7 @@ const defaultModel = (): {
 })
 
 const uniqueRelationship = useApiUniqueValidator(
-  '/api/validator/unique/stratigraphic_unit_relationships/{lftStratigraphicUnit}/{rgtStratigraphicUnit}',
+  '/api/validator/unique/stratigraphic_unit_relationships',
   ['rgtStratigraphicUnit', 'lftStratigraphicUnit'],
   'Duplicate stratigraphic unit relationship.',
 )

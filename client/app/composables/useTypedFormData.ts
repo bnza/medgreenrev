@@ -1,17 +1,12 @@
-import type { PostCollectionPath, FormDataFields } from '~~/types'
 import { TypedFormData } from '~/api/TypedFormData'
 
-export function useTypedFormData<K extends PostCollectionPath>(path: K) {
-  type Fields = FormDataFields<K>
-
-  const createFormData = () => new TypedFormData<Fields>()
-
-  const createFromObject = (fields: Partial<Fields>) => {
-    const formData = new TypedFormData<Fields>()
+export function useTypedFormData() {
+  const createFromObject = <K extends Record<string, any>>(fields: K) => {
+    const formData = new TypedFormData<K>()
 
     Object.entries(fields).forEach(([key, value]) => {
       if (value !== undefined) {
-        formData.append(key as keyof Fields, value as Fields[keyof Fields])
+        formData.append(key as keyof K, value as K[keyof K])
       }
     })
 
@@ -19,7 +14,6 @@ export function useTypedFormData<K extends PostCollectionPath>(path: K) {
   }
 
   return {
-    createFormData,
     createFromObject,
   }
 }

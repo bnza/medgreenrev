@@ -1,10 +1,8 @@
-<script setup lang="ts" generic="P extends PostCollectionPath">
-import type { PostCollectionPath } from '~~/types'
+<script setup lang="ts">
 import { useCreateValidation } from '~/composables/validation/useUserValidation'
 import { useNormalization } from '~/composables/normalization/useUserNormalization'
 
 defineProps<{
-  path: P
   parentId?: string
 }>()
 
@@ -23,7 +21,7 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent-id
-    :path
+    path="/api/admin/users"
     :on-pre-submit
     :get-empty-model
     @success="(event) => openUserPasswordDialog(event)"

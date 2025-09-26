@@ -1,9 +1,9 @@
 import { diff } from 'deep-object-diff'
 
-const { createFromObject } = useTypedFormData('/api/data/media_objects')
+const { createFromObject } = useTypedFormData()
 
 export function useNormalization() {
-  const onPreCreate = (item: any) => {
+  const onPreCreate = (item: Record<string, any>) => {
     return createFromObject(item)
   }
 

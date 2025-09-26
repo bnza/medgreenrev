@@ -7,7 +7,7 @@ type Item = FormDataFields<'/api/data/media_objects'>
 const item = defineModel<Partial<Item>>('item', { required: true })
 
 interface Props {
-  errors?: RegleErrorTree<Item>
+  errors?: RegleErrorTree<Partial<Item>>
 }
 
 defineProps<Props>()

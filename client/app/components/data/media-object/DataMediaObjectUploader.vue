@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
-import type { PostCollectionResponseMap } from '~~/types'
+import type {
+  PostCollectionRequestMap,
+  PostCollectionResponseMap,
+} from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useMediaObjectValidation'
 import { useNormalization } from '~/composables/normalization/useMediaObjectNormalization'
+import type { TypedFormData } from '~/api/TypedFormData'
 
 const file = defineModel<File | undefined>('file', { required: true })
 const pending = defineModel<boolean>('pending', { required: true })
@@ -39,7 +43,10 @@ const submit = async (): Promise<
     return
   }
 
-  const typedFormData = onPreSubmit(data)
+  // Data has been validated, so it's supposed to be correct
+  const typedFormData = onPreSubmit(data) as TypedFormData<
+    PostCollectionRequestMap['/api/data/media_objects']
+  >
 
   // TypedFormData extends FormData, so it works with your existing API
   // Eventual request error will be handled in the parent form

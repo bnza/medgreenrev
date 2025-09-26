@@ -60,7 +60,6 @@ const { updateDialogState } = storeToRefs(
       <!--      <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
       <!--      <data-dialog-search :path title="Stratigraphic Unit" />-->
       <data-dialog-create-microstratigraphic-unit
-        :path
         :parent
         @refresh="refetch()"
       />

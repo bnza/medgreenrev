@@ -11,8 +11,15 @@ export class TypedFormData<T extends Record<string, any>> extends FormData {
     super.set(name as string, value as any)
   }
 
-  hasField<K extends keyof T>(name: K): boolean {
-    return this._fields.has(name)
+  toObject(): Partial<T> {
+    const obj: Partial<T> = {}
+    this._fields.forEach((field) => {
+      const value = this.getTyped(field)
+      if (value !== null) {
+        obj[field] = value
+      }
+    })
+    return obj
   }
 
   getTyped<K extends keyof T>(name: K): T[K] | null {
@@ -22,15 +29,5 @@ export class TypedFormData<T extends Record<string, any>> extends FormData {
   override delete<K extends keyof T>(name: K): void {
     this._fields.delete(name)
     super.delete(name as string)
-  }
-
-  // Get all tracked field names
-  getTrackedFields(): (keyof T)[] {
-    return Array.from(this._fields)
-  }
-
-  // Check if all required fields are present
-  hasRequiredFields(requiredFields: (keyof T)[]): boolean {
-    return requiredFields.every((field) => this._fields.has(field))
   }
 }

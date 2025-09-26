@@ -52,11 +52,7 @@ const { updateDialogState } = storeToRefs(
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-delete-site-user-privilege @refresh="refetch()" />
-      <data-dialog-create-site-user-privilege
-        :path
-        :parent
-        @refresh="refetch()"
-      />
+      <data-dialog-create-site-user-privilege :parent @refresh="refetch()" />
       <data-dialog-update-site-user-privileges @refresh="refetch()" />
     </template>
   </data-collection-table>

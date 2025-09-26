@@ -1,15 +1,6 @@
-<script
-  setup
-  lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/data/media_objects'>"
->
-import type { GetCollectionPath } from '~~/types'
+<script setup lang="ts">
 import { useCreateValidation } from '~/composables/validation/useMediaObjectValidation'
 import { useNormalization } from '~/composables/normalization/useMediaObjectNormalization'
-
-defineProps<{
-  path: Path
-}>()
 
 const { getEmptyModel, r$ } = useCreateValidation()
 
@@ -23,7 +14,7 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    :path
+    path="/api/data/media_objects"
     :on-pre-submit
     :get-empty-model
     :post-request-options="{

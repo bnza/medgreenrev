@@ -1,9 +1,11 @@
-import type { OperationPathParams } from '~~/types'
+import type { OperationPathParams, FormDataFields } from '~~/types'
 import { createRule, inferRules, type Maybe, useRegle } from '@regle/core'
 import { required, withMessage } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxFileSizeValidationRule'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
+
+type Item = FormDataFields<'/api/data/media_objects'>
 
 const { maxFileSize } = useMaxFileSizeValidationRule()
 
@@ -22,17 +24,12 @@ const uniqueFile = createRule({
 })
 
 export function useCreateValidation() {
-  type MediaObjectFields = {
-    file: File | null
-    type: string | null
-    description?: string | null
-  }
-
   const getEmptyModel = () =>
     ({
-      file: null,
-      type: null,
-    }) as MediaObjectFields
+      type: undefined,
+      description: undefined,
+      file: undefined,
+    }) as Partial<Item>
 
   const model = ref(getEmptyModel())
 

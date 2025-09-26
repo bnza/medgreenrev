@@ -1,20 +1,9 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    Path extends Extract<
-      GetCollectionPath,
-      | '/api/data/analyses/contexts/zoo'
-      | '/api/data/contexts/{parentId}/analyses/zoo'
-    >
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+<script setup lang="ts">
+import type { ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useAnalysisContextZooValidation'
 import { useNormalization } from '~/composables/normalization/useAnalysisContextZooNormalization'
 
 const props = defineProps<{
-  path: Path
   parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
 }>()
 
@@ -31,7 +20,7 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent
-    :path
+    path="/api/data/analyses/contexts/zoo"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

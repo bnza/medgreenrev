@@ -1,20 +1,9 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    Path extends Extract<
-      GetCollectionPath,
-      | '/api/data/zoo/bones'
-      | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
-    >
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+<script setup lang="ts">
+import type { ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useZooBoneValidation'
 import { useNormalization } from '~/composables/normalization/useZooBoneNormalization'
 
 const props = defineProps<{
-  path: Path
   parent?: ResourceParent<
     'stratigraphicUnit',
     '/api/data/stratigraphic_units/{id}'
@@ -34,7 +23,7 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent
-    :path
+    path="/api/data/zoo/bones"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

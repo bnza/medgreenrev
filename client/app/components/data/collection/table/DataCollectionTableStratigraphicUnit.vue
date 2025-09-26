@@ -47,11 +47,7 @@ const { updateDialogState } = storeToRefs(
     <template #dialogs="{ refetch }">
       <data-dialog-download :path title="StratigraphicUnit" :parent-id />
       <data-dialog-search :path title="Stratigraphic Unit" />
-      <data-dialog-create-stratigraphic-unit
-        :path
-        :parent
-        @refresh="refetch()"
-      />
+      <data-dialog-create-stratigraphic-unit :parent @refresh="refetch()" />
       <data-dialog-delete-stratigraphic-unit @refresh="refetch()" />
       <data-dialog-update-stratigraphic-unit @refresh="refetch()" />
     </template>

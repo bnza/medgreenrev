@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="Path extends keyof paths">
+<script setup lang="ts" generic="Path extends keyof PostCollectionRequestMap">
 import type {
   ApiRequestOptions,
   paths,
@@ -9,8 +9,14 @@ import type {
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
+import { TypedFormData } from '~/api/TypedFormData'
 
-type OnPreSubmit = <T>(item: T) => T
+type OnPreSubmit<Path extends keyof PostCollectionRequestMap> =
+  paths[Path]['post']['requestBody'] extends {
+    content: { 'multipart/form-data': any }
+  }
+    ? <T extends Record<string, any>>(item: T) => TypedFormData<any> | T
+    : <T extends Record<string, any>>(item: T) => T
 
 const regle = defineModel<RegleRoot>('regle', { required: true })
 
@@ -20,12 +26,11 @@ const props = withDefaults(
     title?: string
     redirectOption?: boolean
     postRequestOptions?: ApiRequestOptions
-    onPreSubmit?: OnPreSubmit
+    onPreSubmit: OnPreSubmit<Path>
     getEmptyModel?: () => Record<string, any>
   }>(),
   {
     redirectOption: true,
-    onPreSubmit: <T,>(item: T) => item,
     getEmptyModel: () => ({}),
     postRequestOptions: () => ({}),
   },
@@ -48,7 +53,7 @@ if (!isPostOperation(postPath)) {
 const emit = defineEmits<{
   success: [
     {
-      request: PostCollectionRequestMap[typeof postPath]
+      request: Partial<PostCollectionRequestMap[typeof postPath]>
       response: PostCollectionResponseMap[typeof postPath]
     },
   ]
@@ -110,11 +115,14 @@ const submit = async () => {
 
     const data = await postCollection.mutateAsync({ model })
 
-    const request =
-      model instanceof FormData ? model : structuredClone(toRaw(model))
-
     // Eventual side effects are produced/handled by the parent Dialog
-    emit('success', { request, response: data })
+    emit('success', {
+      request:
+        model instanceof TypedFormData
+          ? model.toObject()
+          : structuredClone(toRaw(model)),
+      response: data,
+    })
 
     // If no cache hits, probably query cache has been deleted
     // so we need to force a refresh of the collection
