@@ -1,15 +1,12 @@
-<script setup lang="ts" generic="M extends 'create' | 'update'">
+<script setup lang="ts">
 import type { RegleErrorTree } from '@regle/core'
-import type { FormDataFields, GetItemResponseMap } from '~~/types'
+import type { GetItemResponseMap } from '~~/types'
 
-type Item = M extends 'create'
-  ? FormDataFields<'/api/data/media_objects'>
-  : GetItemResponseMap['/api/data/media_objects/{id}']
+type Item = GetItemResponseMap['/api/data/media_objects/{id}']
 
 const item = defineModel<Item>('item', { required: true })
 
 interface Props {
-  mode: M
   errors?: RegleErrorTree<Item>
 }
 
@@ -29,7 +26,7 @@ defineProps<Props>()
           />
         </v-col>
       </v-row>
-      <v-row v-if="mode === 'update'" dense>
+      <v-row dense>
         <v-col cols="12">
           <v-text-field
             readonly
@@ -46,7 +43,7 @@ defineProps<Props>()
         </v-col>
       </v-row>
     </v-col>
-    <v-col v-if="mode === 'update'" cols="4">
+    <v-col cols="4">
       <data-media-object-image :item />
     </v-col>
   </v-row>

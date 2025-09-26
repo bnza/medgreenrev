@@ -7,7 +7,6 @@ const {
   creatingMediaObject: model,
   isNewMediaObject,
   uploadingFile: file,
-  uploadFileValidationPending,
 } = injectMediaObjectJoin()
 
 defineProps<{ errors?: string[] }>()
@@ -84,7 +83,6 @@ defineExpose({
             v-if="isNewMediaObject"
             ref="mediaObjectUploader"
             v-model:file="file"
-            v-model:pending="uploadFileValidationPending"
             data-testid="data-dialog-form-media-object-uploader"
           />
         </v-col>

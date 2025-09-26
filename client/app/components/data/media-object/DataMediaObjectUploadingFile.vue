@@ -3,11 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 import useGetMediaObjectBySha256ItemQuery from '~/composables/queries/useGetMediaObjectBySha256ItemQuery'
 import { injectMediaObjectJoin } from '~/composables/injection/useMediaObjectJoin'
 
-const {
-  creatingMediaObject,
-  uploadingFile: file,
-  uploadFileValidationPending,
-} = injectMediaObjectJoin()
+const { creatingMediaObject, uploadingFile: file } = injectMediaObjectJoin()
 
 const props = defineProps<{
   // onClickRemove: () => void
@@ -71,10 +67,6 @@ const clear = () => {
                 rounded
               >
                 <v-container fluid>
-                  <v-row v-if="uploadFileValidationPending" dense>
-                    <v-icon icon="fas fa-spinner" color="primary" />
-                    <span class="ml-2 text-primary">Fetching</span>
-                  </v-row>
                   <v-row v-if="hasDuplicateMediaError" dense>
                     <v-icon icon="fas fa-triangle-exclamation" color="white" />
                     <span class="ml-2 text-white">{{

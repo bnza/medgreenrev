@@ -9,7 +9,6 @@ import { useNormalization } from '~/composables/normalization/useMediaObjectNorm
 import type { TypedFormData } from '~/api/TypedFormData'
 
 const file = defineModel<File | undefined>('file', { required: true })
-const pending = defineModel<boolean>('pending', { required: true })
 
 const { r$ } = useCreateValidation()
 const { onPreCreate: onPreSubmit } = useNormalization()
@@ -17,7 +16,7 @@ const { onPreCreate: onPreSubmit } = useNormalization()
 watch(
   () => file.value,
   (value) => {
-    r$.$value.file = value || null
+    r$.$value.file = value
     if (!value) {
       r$.$reset()
     } else {
@@ -58,13 +57,6 @@ const submit = async (): Promise<
 defineExpose({
   submit,
 })
-
-watch(
-  () => r$.$pending,
-  (value) => {
-    pending.value = value
-  },
-)
 </script>
 
 <template>
@@ -79,10 +71,10 @@ watch(
         />
       </v-col>
     </v-row>
-    <data-item-form-edit-media-object
+    <data-item-form-create-media-object
       :item="r$.$value"
-      :errors="r$.$errors as any"
-      mode="create"
+      :errors="r$.$errors"
+      :show-file-upload="false"
     />
   </v-container>
 </template>

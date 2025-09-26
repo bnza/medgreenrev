@@ -8,9 +8,10 @@ const item = defineModel<Partial<Item>>('item', { required: true })
 
 interface Props {
   errors?: RegleErrorTree<Partial<Item>>
+  showFileUpload?: boolean
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), { showFileUpload: true })
 defineEmits<{
   'update:item': [value: any]
 }>()
@@ -21,7 +22,7 @@ defineEmits<{
     <data-media-object-file-errors-banner-row
       :errors="Array.isArray(errors?.file) ? errors.file : []"
     />
-    <v-row>
+    <v-row v-if="showFileUpload">
       <v-col cols="12">
         <v-file-upload
           v-model="item.file"

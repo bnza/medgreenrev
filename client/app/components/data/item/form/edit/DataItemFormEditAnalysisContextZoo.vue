@@ -5,7 +5,7 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { type AnalysisCode, AnalysisGroups } from '~/utils'
+import type { AnalysisCode } from '~/utils'
 
 type Item = PatchItemRequestMap['/api/data/analyses/contexts/zoo/{id}'] &
   PostCollectionRequestMap['/api/data/analyses/contexts/zoo']
