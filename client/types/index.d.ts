@@ -1,5 +1,4 @@
 export * from './api'
-export * from './component-props'
 export * from './filters'
 export * from './jsonld'
 export * from './openapi'
