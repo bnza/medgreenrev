@@ -37,28 +37,28 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
         />
         <v-list-item
           nuxt
-          to="/data/analysis/zoo/bones"
+          to="/data/analyses/zoo/bones"
           router
           title="Animal bones"
           data-testid="app-nav-drawer-li-analysis-zoo-bones"
         />
         <v-list-item
           nuxt
-          to="/data/analysis/zoo/teeth"
+          to="/data/analyses/zoo/teeth"
           router
           title="Animal teeth"
           data-testid="app-nav-drawer-li-analysis-zoo-teeth"
         />
         <v-list-item
           nuxt
-          to="/data/analysis/potteries"
+          to="/data/analyses/potteries"
           router
           title="Potteries"
           data-testid="app-nav-drawer-li-analysis-potteries"
         />
         <v-list-item
           nuxt
-          to="/data/analysis/context/zoo"
+          to="/data/analyses/context/zoo"
           router
           title="Zooarchaeology"
           data-testid="app-nav-drawer-li-analysis-context-zoo"

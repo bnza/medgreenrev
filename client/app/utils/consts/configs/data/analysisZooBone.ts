@@ -2,7 +2,7 @@ import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
   apiPath: '/api/data/analyses/zoo/bones',
-  appPath: '/data/analysis/zoo/bones',
+  appPath: '/data/analyses/zoo/bones',
   defaultHeaders: [
     {
       key: 'id',
