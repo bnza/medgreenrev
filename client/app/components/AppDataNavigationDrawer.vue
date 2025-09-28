@@ -51,6 +51,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
         />
         <v-list-item
           nuxt
+          to="/data/analyses/samples/microstratigraphic-units"
+          router
+          title="Microstratigraphy"
+          data-testid="app-nav-drawer-li-analysis-sample-mus"
+        />
+        <v-list-item
+          nuxt
           to="/data/analyses/potteries"
           router
           title="Potteries"

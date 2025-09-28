@@ -1,5 +1,6 @@
 import analysis from './data/analysis'
 import analysisContextZoo from './data/analysisContextZoo'
+import analysisSampleMicrostratigraphicUnit from './data/analysisSampleMicrostratigraphicUnit'
 import analysisPottery from './data/analysisPottery'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
@@ -25,6 +26,8 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
   '/api/data/analyses': analysis,
   '/api/data/analyses/contexts/zoo': analysisContextZoo,
+  '/api/data/analyses/samples/microstratigraphic_units':
+    analysisSampleMicrostratigraphicUnit,
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,

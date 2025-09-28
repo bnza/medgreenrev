@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import useResourceUiStore from '~/stores/resource-ui'
-import type { GetItemResponseMap } from '~~/types'
+import type { GetItemResponseMap, Iri } from '~~/types'
 
 const path = '/api/data/samples/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path))
+defineProps<{
+  iri?: Iri
+}>()
 </script>
 
 <template>
-  <data-item-page :path identifier-prop="id">
+  <data-item-page :path identifier-prop="code" :iri>
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-sample :item />
       <v-tabs v-model="tab" background-color="transparent">
-        <v-tab value="data">data</v-tab>
-        <!--        <v-tab value="contexts">contexts</v-tab>-->
         <v-tab value="stratigraphic-units">stratigraphic units</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="data" data-testid="tab-data">
-          <p>Data</p>
-        </v-tabs-window-item>
         <v-tabs-window-item
           value="stratigraphic-units"
           data-testid="tab-window-sus"

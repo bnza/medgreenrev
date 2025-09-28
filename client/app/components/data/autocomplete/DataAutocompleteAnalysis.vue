@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <data-autocomplete
     v-model="model"
+    label="analysis"
     :path="props.path"
     :item-title="props.itemTitle"
     :granted-only
