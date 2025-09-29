@@ -374,6 +374,98 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/sites/anthropology': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSiteAnthropology resources.
+     * @description Retrieves the collection of AnalysisSiteAnthropology resources.
+     */
+    get: operations['api_dataanalysessitesanthropology_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSiteAnthropology resource.
+     * @description Creates a AnalysisSiteAnthropology resource.
+     */
+    post: operations['api_dataanalysessitesanthropology_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sites/anthropology/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSiteAnthropology resource.
+     * @description Retrieves a AnalysisSiteAnthropology resource.
+     */
+    get: operations['api_dataanalysessitesanthropology_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSiteAnthropology resource.
+     * @description Removes the AnalysisSiteAnthropology resource.
+     */
+    delete: operations['api_dataanalysessitesanthropology_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSiteAnthropology resource.
+     * @description Updates the AnalysisSiteAnthropology resource.
+     */
+    patch: operations['api_dataanalysessitesanthropology_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/sites/anthropology': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSiteAnthropology resources.
+     * @description Retrieves the collection of AnalysisSiteAnthropology resources.
+     */
+    get: operations['api_dataanalyses_parentIdsitesanthropology_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sites/anthropology/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSiteAnthropology resources.
+     * @description Retrieves the collection of AnalysisSiteAnthropology resources.
+     */
+    get: operations['api_datasitesanthropology_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/zoo/bones': {
     parameters: {
       query?: never
@@ -1826,6 +1918,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/sites/anthropology': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessitesanthropology_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/zoo/bones': {
     parameters: {
       query?: never
@@ -3171,6 +3283,32 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
         | null
     }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      identifier?: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      responsible?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        | null
+    }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly '@context'?:
         | string
@@ -3381,6 +3519,39 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisSiteAnthropology-analysis_join.update': {
+      summary?: string | null
+    }
+    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      summary?: string | null
+    }
+    'AnalysisSiteAnthropology.jsonld-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -3731,7 +3902,6 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
-      readonly code?: string
     }
     'Individual-individual.create': {
       /**
@@ -3770,7 +3940,6 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
-      readonly code?: string
     }
     'Individual.jsonld-individual.create': {
       /**
@@ -4631,6 +4800,30 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+    }
     'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly '@context'?:
         | string
@@ -4953,6 +5146,24 @@ export interface components {
        * @example https://example.com/
        */
       site?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string
+    }
+    'SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5509,6 +5720,22 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly '@context'?:
         | string
@@ -5763,6 +5990,22 @@ export interface components {
       value?: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -8433,6 +8676,478 @@ export interface operations {
         content: {
           'application/ld+json': {
             member: components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysessitesanthropology_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        subject?: string
+        'subject[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSiteAnthropology collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysessitesanthropology_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSiteAnthropology resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSiteAnthropology resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysessitesanthropology_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSiteAnthropology identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSiteAnthropology resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessitesanthropology_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSiteAnthropology identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSiteAnthropology resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessitesanthropology_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSiteAnthropology identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSiteAnthropology resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.update']
+      }
+    }
+    responses: {
+      /** @description AnalysisSiteAnthropology resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdsitesanthropology_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        subject?: string
+        'subject[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisSiteAnthropology identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSiteAnthropology collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datasitesanthropology_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        subject?: string
+        'subject[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisSiteAnthropology identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSiteAnthropology collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -14738,6 +15453,37 @@ export interface operations {
     }
   }
   api_validatoruniqueanalysessamplesmicrostratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessitesanthropology_get: {
     parameters: {
       query?: never
       header?: never

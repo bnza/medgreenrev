@@ -4,30 +4,28 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/analyses/samples/microstratigraphic_units'
-      | '/api/data/analyses/{parentId}/samples/microstratigraphic_units'
+      | '/api/data/analyses/sites/anthropology'
+      | '/api/data/analyses/{parentId}/sites/anthropology'
     >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
+import DataDialogDeleteAnalysisSiteAnthropology from '~/components/data/dialog/delete/DataDialogDeleteAnalysisSiteAnthropology.vue'
+import DataDialogUpdateAnalysisSiteAnthropology from '~/components/data/dialog/update/DataDialogUpdateAnalysisSiteAnthropology.vue'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'sample', '/api/data/samples/{id}'>
+  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore(
-    '/api/data/analyses/samples/microstratigraphic_units/{id}',
-  ),
+  useResourceDeleteDialogStore('/api/data/analyses/sites/anthropology/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore(
-    '/api/data/analyses/samples/microstratigraphic_units/{id}',
-  ),
+  useResourceUpdateDialogStore('/api/data/analyses/sites/anthropology/{id}'),
 )
 
 const vocabularyAnalysisStore = useVocabularyStore(
@@ -47,7 +45,7 @@ const vocabularyAnalysisStore = useVocabularyStore(
       />
     </template>
     <template #[`item.subject.code`]="{ item }">
-      <data-item-info-box-span-sample
+      <data-item-info-box-span-site
         :iri="item.subject['@id']"
         :text="item.subject.code"
       />
@@ -70,17 +68,13 @@ const vocabularyAnalysisStore = useVocabularyStore(
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
       <!--      <data-dialog-search :path title="Pottery Analysis" />-->
-      <data-dialog-create-analysis-sample-microstratigraphic-unit
+      <data-dialog-create-analysis-site-anthropology
         :path
         :parent
         @refresh="refetch()"
       />
-      <data-dialog-delete-analysis-samples-microstratihgraphic-unit
-        @refresh="refetch()"
-      />
-      <data-dialog-update-analysis-sample-microstratigraphic-unit
-        @refresh="refetch()"
-      />
+      <data-dialog-delete-analysis-site-anthropology @refresh="refetch()" />
+      <data-dialog-update-analysis-site-anthropology @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

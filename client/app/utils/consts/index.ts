@@ -22,6 +22,25 @@ export enum AnalysisGroups {
   Microscope = 'microscope',
 }
 
+// export enum AnalysisCode {
+//   Anthracology = 'ANTHRA',
+//   Carpology = 'CARP',
+//   ADna = 'ADNA',
+//   Isotopes = 'ISO',
+//   Ora = 'ORA',
+//   Xrf = 'XRF',
+//   Xrd = 'XRD',
+//   C14 = 'C14',
+//   Thermoluminescence = 'THL',
+//   ThinSection = 'THS',
+//   Optical = 'OPT',
+//   Sem = 'SEM',
+//   Pollen = 'POL',
+//   SedimentaryDna = 'SDNA',
+//   Anthropology = 'ANTHRO',
+//   Zooarchaeology = 'ZOO',
+// }
+
 export const ANALYSIS_TYPE_MAP: Record<
   string,
   { group: AnalysisGroups; value: string }
