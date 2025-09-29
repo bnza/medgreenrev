@@ -19,7 +19,6 @@ defineProps<{
       </v-tabs>
       <v-tabs-window v-if="!iri" v-model="tab">
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <span>analysis</span>
           <!--          <data-collection-page-analysis-pottery-->
           <!--            path="/api/data/potteries/{parentId}/analyses"-->
           <!--            :parent="{-->

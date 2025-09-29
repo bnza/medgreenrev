@@ -1,8 +1,14 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+  generic="P extends Extract<GetCollectionPath, '/api/data/sites'>"
+>
 import { useCreateValidation } from '~/composables/validation/useSiteValidation'
 import { useNormalization } from '~/composables/normalization/useSiteNormalization'
+import type { GetCollectionPath } from '~~/types'
 
 defineProps<{
+  path: P
   parentId?: string
 }>()
 
@@ -18,7 +24,8 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    path="/api/data/sites"
+    :path
+    post-path="/api/data/sites"
     :parent="undefined"
     :on-pre-submit
     :get-empty-model

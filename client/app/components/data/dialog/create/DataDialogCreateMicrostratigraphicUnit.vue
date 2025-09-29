@@ -1,9 +1,21 @@
-<script setup lang="ts">
-import type { ResourceParent } from '~~/types'
+<script
+  setup
+  lang="ts"
+  generic="
+    P extends Extract<
+      GetCollectionPath,
+      | '/api/data/microstratigraphic_units'
+      | '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units'
+    >
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useMicrostratigraphicUnitValidation'
 import { useNormalization } from '~/composables/normalization/useMicrostratigraphicUnitNormalization'
+import type { P } from 'vitest/dist/chunks/mocker.d.BE_2ls6u'
 
 const props = defineProps<{
+  path: P
   parent?: ResourceParent<
     'stratigraphicUnit',
     '/api/data/stratigraphic_units/{id}'
@@ -22,8 +34,9 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
+    :path
     :parent
-    path="/api/data/microstratigraphic_units"
+    post-path="/api/data/microstratigraphic_units"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

@@ -1,11 +1,16 @@
-<script setup lang="ts" generic="Path extends keyof PostCollectionRequestMap">
+<script
+  setup
+  lang="ts"
+  generic="Path extends PostCollectionPath & GetCollectionPath"
+>
 import type {
   ApiRequestOptions,
+  GetCollectionPath,
   paths,
+  PostCollectionPath,
   PostCollectionRequestMap,
   PostCollectionResponseMap,
 } from '~~/types'
-
 import useResourceUiStore from '~/stores/resource-ui'
 import type { RegleRoot } from '@regle/core'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
@@ -22,7 +27,8 @@ const regle = defineModel<RegleRoot>('regle', { required: true })
 
 const props = withDefaults(
   defineProps<{
-    path: Path
+    postPath: Path
+    path?: GetCollectionPath // Used as resource ui key
     title?: string
     redirectOption?: boolean
     postRequestOptions?: ApiRequestOptions
@@ -36,35 +42,32 @@ const props = withDefaults(
   },
 )
 
+const collectionPath = computed<GetCollectionPath>(
+  () => props.path ?? props.postPath,
+)
+
 defineSlots<{
   default(): any
   actions(): any
 }>()
 
 const { addSuccess, addError } = useMessagesStore()
-const { findApiResourcePath, isPostOperation } = useOpenApiStore()
-
-const postPath = findApiResourcePath(props.path)
-if (!isPostOperation(postPath)) {
-  addError(`${props.path} is not a valid post path.`)
-  throw new Error(`${props.path} is not a valid post path.`)
-}
 
 const emit = defineEmits<{
   success: [
     {
-      request: Partial<PostCollectionRequestMap[typeof postPath]>
-      response: PostCollectionResponseMap[typeof postPath]
+      request: Partial<PostCollectionRequestMap[typeof props.postPath]>
+      response: PostCollectionResponseMap[typeof props.postPath]
     },
   ]
   refresh: []
 }>()
 
 const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
-  useResourceUiStore(props.path),
+  useResourceUiStore(collectionPath.value),
 )
 const { postCollection, invalidatedCacheEntries } = usePostCollectionMutation(
-  postPath,
+  props.postPath,
   props.postRequestOptions,
 )
 
@@ -74,7 +77,7 @@ const disabled = ref(false)
 const { fullPath } = useRoute()
 const router = useRouter()
 const { push } = useHistoryStackStore()
-const { appPath, labels } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.postPath)
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
   if (!('id' in newItem)) {
@@ -102,7 +105,7 @@ const submit = async () => {
 
   const isValidItem = (
     value: any,
-  ): value is PostCollectionRequestMap[typeof postPath] => {
+  ): value is PostCollectionRequestMap[typeof props.postPath] => {
     return valid
   }
 

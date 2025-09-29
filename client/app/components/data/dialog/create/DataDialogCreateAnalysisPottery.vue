@@ -1,9 +1,18 @@
-<script setup lang="ts">
-import type { ResourceParent } from '~~/types'
+<script
+  setup
+  lang="ts"
+  generic="
+    P extends
+      | Extract<GetCollectionPath, '/api/data/analyses/potteries'>
+      | '/api/data/potteries/{parentId}/analyses'
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useAnalysisPotteryValidation'
 import { useNormalization } from '~/composables/normalization/useAnalysisPotteryNormalization'
 
 const props = defineProps<{
+  path: P
   parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
 }>()
 
@@ -20,7 +29,8 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent
-    path="/api/data/analyses/potteries"
+    :path
+    post-path="/api/data/analyses/potteries"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

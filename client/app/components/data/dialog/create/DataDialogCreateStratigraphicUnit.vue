@@ -1,9 +1,20 @@
-<script setup lang="ts">
-import type { ResourceParent } from '~~/types'
+<script
+  setup
+  lang="ts"
+  generic="
+    P extends Extract<
+      GetCollectionPath,
+      | '/api/data/stratigraphic_units'
+      | '/api/data/sites/{parentId}/stratigraphic_units'
+    >
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useStratigraphicUnitValidation'
 import { useNormalization } from '~/composables/normalization/useStratigraphicUnitNormalization'
 
 const props = defineProps<{
+  path: P
   parent?: ResourceParent<'site', '/api/data/sites/{id}'>
 }>()
 
@@ -20,7 +31,8 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent
-    path="/api/data/stratigraphic_units"
+    :path
+    post-path="/api/data/stratigraphic_units"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

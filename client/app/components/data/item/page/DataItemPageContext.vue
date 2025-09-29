@@ -33,7 +33,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
           />
         </v-tabs-window-item>
         <v-tabs-window-item value="zooAnalyses" data-testid="tab-zoo-analyses">
-          <data-collection-page-context-zoo-analysis
+          <data-collection-page-analysis-context-zoo
             path="/api/data/contexts/{parentId}/analyses/zoo"
             :parent="{
               key: 'context',

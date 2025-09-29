@@ -1,5 +1,15 @@
-<script setup lang="ts">
-import type { ResourceParent } from '~~/types'
+<script
+  setup
+  lang="ts"
+  generic="
+    P extends Extract<
+      GetCollectionPath,
+      | '/api/data/zoo/bones'
+      | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
+    >
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useZooBoneValidation'
 import { useNormalization } from '~/composables/normalization/useZooBoneNormalization'
 
@@ -23,7 +33,8 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent
-    path="/api/data/zoo/bones"
+    :path
+    post-path="/api/data/zoo/bones"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

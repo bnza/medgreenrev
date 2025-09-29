@@ -1,7 +1,15 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+  generic="P extends Extract<GetCollectionPath, '/api/data/analyses'>"
+>
 import { useCreateValidation } from '~/composables/validation/useAnalysisValidation'
 import { useNormalization } from '~/composables/normalization/useAnalysisNormalization'
+import type { GetCollectionPath } from '~~/types'
 
+defineProps<{
+  path: P
+}>()
 const { getEmptyModel, r$ } = useCreateValidation()
 
 const { onPreCreate: onPreSubmit } = useNormalization()
@@ -14,7 +22,8 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    path="/api/data/analyses"
+    post-path="/api/data/analyses"
+    :path
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"
