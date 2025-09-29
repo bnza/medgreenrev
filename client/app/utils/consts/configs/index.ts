@@ -8,8 +8,9 @@ import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
-import microstratigraphicUnit from './data/microstratigraphicUnit'
 import mediaObject from './data/mediaObject'
+import microstratigraphicUnit from './data/microstratigraphicUnit'
+import individual from './data/individual'
 import pottery from './data/pottery'
 import sample from './data/sample'
 import site from './data/site'
@@ -37,6 +38,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/media_objects': mediaObject,
   '/api/data/microstratigraphic_units': microstratigraphicUnit,
+  '/api/data/individuals': individual,
   '/api/data/potteries': pottery,
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/samples': sample,

@@ -718,6 +718,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Individual resources.
+     * @description Retrieves the collection of Individual resources.
+     */
+    get: operations['api_dataindividuals_get_collection']
+    put?: never
+    /**
+     * Creates a Individual resource.
+     * @description Creates a Individual resource.
+     */
+    post: operations['api_dataindividuals_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/individuals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Individual resource.
+     * @description Retrieves a Individual resource.
+     */
+    get: operations['api_dataindividuals_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the Individual resource.
+     * @description Removes the Individual resource.
+     */
+    delete: operations['api_dataindividuals_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the Individual resource.
+     * @description Updates the Individual resource.
+     */
+    patch: operations['api_dataindividuals_id_patch']
+    trace?: never
+  }
+  '/api/data/stratigraphic_units/{parentId}/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Individual resources.
+     * @description Retrieves the collection of Individual resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdindividuals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/login': {
     parameters: {
       query?: never
@@ -1834,6 +1906,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/individuals/identifier': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueindividualsidentifier_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/media_objects/analyses': {
     parameters: {
       query?: never
@@ -2298,6 +2390,46 @@ export interface paths {
      * @description Retrieves a VocCulturalContext resource.
      */
     get: operations['api_vocabularycultural_contexts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/individual/age': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocIndividualAge resources.
+     * @description Retrieves the collection of VocIndividualAge resources.
+     */
+    get: operations['api_vocabularyindividualage_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/individual/age/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocIndividualAge resource.
+     * @description Retrieves a VocIndividualAge resource.
+     */
+    get: operations['api_vocabularyindividualage_id_get']
     put?: never
     post?: never
     delete?: never
@@ -3327,18 +3459,6 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    Collection: {
-      readonly empty?: boolean
-      readonly keys?: unknown
-      readonly values?: unknown
-      readonly iterator?: unknown
-    }
-    'Collection.jsonld': {
-      readonly empty?: boolean
-      readonly keys?: unknown
-      readonly values?: unknown
-      readonly iterator?: unknown
-    }
     /** @description Unprocessable entity */
     'ConstraintViolation-json': {
       /**
@@ -3599,6 +3719,74 @@ export interface components {
       /** @description A URI reference that identifies the problem type */
       readonly type?: string
       readonly description?: string | null
+    }
+    'Individual-individual.acl.read': {
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit-individual.acl.read']
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'Individual-individual.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+    }
+    'Individual.jsonld-individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'Individual.jsonld-individual.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      identifier: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      /** @enum {string|null} */
+      sex?: 'F' | 'M' | '?' | null
+      notes?: string | null
     }
     'MediaObject-media_object.update': {
       /**
@@ -4115,7 +4303,6 @@ export interface components {
       number?: number
       sampleStratigraphicUnits?: string[]
       description?: string | null
-      sampleContexts?: components['schemas']['Collection']
       readonly code?: string
     }
     'Sample-sample.acl.read': {
@@ -4177,7 +4364,6 @@ export interface components {
       number: number
       sampleStratigraphicUnits?: string[]
       description?: string | null
-      sampleContexts?: components['schemas']['Collection.jsonld']
       readonly code?: string
     }
     'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
@@ -4339,6 +4525,10 @@ export interface components {
       name?: string
     }
     'Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site-individual.acl.read': {
       code?: string
       name?: string
     }
@@ -4514,6 +4704,21 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
       code?: string
       name?: string
     }
@@ -4823,6 +5028,10 @@ export interface components {
       interpretation?: string | null
       readonly code: string
     }
+    'StratigraphicUnit-individual.acl.read': {
+      site?: components['schemas']['Site-individual.acl.read']
+      readonly code: string
+    }
     'StratigraphicUnit-microstratigraphic_unit.acl.read': {
       site?: components['schemas']['Site-microstratigraphic_unit.acl.read']
       readonly code: string
@@ -4953,6 +5162,21 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-individual.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
@@ -5692,6 +5916,21 @@ export interface components {
     }
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      id?: number
+      value?: string
+    }
+    'VocIndividualAge.jsonld': {
       readonly '@context'?:
         | string
         | ({
@@ -9944,6 +10183,337 @@ export interface operations {
       }
     }
   }
+  api_dataindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        'order[sex]'?: 'asc' | 'desc'
+        'order[age.id]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['Individual-individual.acl.read'][]
+          'application/ld+json': {
+            member: components['schemas']['Individual.jsonld-individual.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataindividuals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new Individual resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['Individual.jsonld-individual.create']
+      }
+    }
+    responses: {
+      /** @description Individual resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Individual.jsonld-individual.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataindividuals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Individual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Individual.jsonld-individual.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataindividuals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Individual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataindividuals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description Individual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated Individual resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['Individual-individual.create']
+      }
+    }
+    responses: {
+      /** @description Individual resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Individual.jsonld-individual.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        'order[sex]'?: 'asc' | 'desc'
+        'order[age.id]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description Individual identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['Individual-individual.acl.read'][]
+          'application/ld+json': {
+            member: components['schemas']['Individual.jsonld-individual.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
   login_check_post: {
     parameters: {
       query?: never
@@ -11717,6 +12287,11 @@ export interface operations {
          * @example ME.GE.34.93
          */
         search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path?: never
@@ -11996,6 +12571,11 @@ export interface operations {
          * @example ME.GE.34.93
          */
         search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: boolean
       }
       header?: never
       path: {
@@ -14312,6 +14892,37 @@ export interface operations {
       }
     }
   }
+  api_validatoruniqueindividualsidentifier_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniquemedia_objectsanalyses_get: {
     parameters: {
       query?: never
@@ -15416,6 +16027,97 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocCulturalContext.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyindividualage_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocIndividualAge collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocIndividualAge.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyindividualage_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocIndividualAge identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocIndividualAge resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocIndividualAge.jsonld']
         }
       }
       /** @description Not found */

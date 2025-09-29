@@ -132,7 +132,7 @@ test.describe('Analysis subject join', () => {
           .fill('')
         await page.waitForTimeout(500)
         await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option').first().click()
+        await page.getByRole('option').nth(2).click()
         await collectionPom.dataDialogCreate.submitForm()
         await collectionPom.expectAppMessageToHaveText(
           'Resource successfully created',
