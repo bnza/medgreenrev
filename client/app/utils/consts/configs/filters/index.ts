@@ -308,9 +308,21 @@ const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
       VocabularyAnalysisType,
     },
   },
+  year: {
+    filters: {
+      SearchExact,
+      ...NumericOperations,
+    },
+  },
   identifier: {
     filters: {
       SearchPartial,
+    },
+  },
+  laboratory: {
+    filters: {
+      SearchPartial,
+      Exists,
     },
   },
   responsible: {
@@ -328,6 +340,12 @@ const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   createdBy: {
     filters: {
       SearchExact,
+      Exists,
+    },
+  },
+  mediaObjectsAnalysis: {
+    propertyLabel: 'media',
+    filters: {
       Exists,
     },
   },

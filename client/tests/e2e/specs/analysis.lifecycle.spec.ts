@@ -40,6 +40,14 @@ test.describe('Analysis lifecycle', () => {
       await page.getByRole('option').filter({ hasText: 'pending' }).click()
 
       await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'year' })
+        .fill('2025')
+
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'laboratory' })
+        .fill('Somewhere')
+
+      await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'responsible' })
         .fill('Some One')
 
@@ -53,6 +61,8 @@ test.describe('Analysis lifecycle', () => {
 
       // Verify the created item details
       await itemPom.expectTextFieldToHaveValue('responsible', 'Some One')
+      await itemPom.expectTextFieldToHaveValue('year', '2025')
+      await itemPom.expectTextFieldToHaveValue('laboratory', 'Somewhere')
       await itemPom.expectTextFieldToHaveValue('identifier', 'UNIQ-ID')
 
       await itemPom.expectTextFieldToHaveValue(
@@ -82,6 +92,12 @@ test.describe('Analysis lifecycle', () => {
       await page
         .getByRole('textbox', { name: /^responsible/ })
         .fill('Some One Else')
+      await collectionPom.dataDialogUpdate.form
+        .getByRole('textbox', { name: 'year' })
+        .fill('2024')
+      await page
+        .getByRole('textbox', { name: /^laboratory/ })
+        .fill('Somewhere Else')
 
       await collectionPom.dataDialogUpdate.submitForm()
 
@@ -95,6 +111,8 @@ test.describe('Analysis lifecycle', () => {
       )
       await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'completed')
       await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'Some One Else')
+      await collectionPom.table.expectRowToHaveText('UNIQ-ID', '2024')
+      await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'Somewhere Else')
 
       // DELETE
       await collectionPom.table
@@ -123,6 +141,9 @@ test.describe('Analysis lifecycle', () => {
         page.locator('.v-input:has(label:text("type"))'),
       ).toContainText(/required/)
       await expect(
+        page.locator('.v-input:has(label:text("year"))'),
+      ).toContainText(/required/)
+      await expect(
         page.locator('.v-input:has(label:text("identifier"))'),
       ).toContainText(/required/)
 
@@ -141,6 +162,9 @@ test.describe('Analysis lifecycle', () => {
       ).toContainText('Duplicate [type, identifier] combination')
 
       // Test 3: Valid form submission after fixing validation errors
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'year' })
+        .fill('2025')
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
         .fill('aDNA.2025.TO999')

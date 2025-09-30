@@ -19,6 +19,12 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
+      key: 'year',
+      value: 'year',
+      title: 'year',
+      minWidth: '100',
+    },
+    {
       key: 'identifier',
       value: 'identifier',
       title: 'identifier',
@@ -29,6 +35,12 @@ const config: Readonly<ResourceConfig> = {
       value: 'type.value',
       title: 'type',
       minWidth: '150',
+    },
+    {
+      key: 'laboratory',
+      value: 'laboratory',
+      title: 'laboratory',
+      minWidth: '100',
     },
     {
       key: 'responsible',

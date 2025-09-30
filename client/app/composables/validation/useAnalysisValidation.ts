@@ -1,6 +1,6 @@
 import type { OperationPathParams, PostCollectionRequestMap } from '~~/types'
 import { inferRules, useRegle } from '@regle/core'
-import { required } from '@regle/rules'
+import { integer, maxValue, minValue, required } from '@regle/rules'
 import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery'
 
 const uniqueType = useApiUniqueValidator(
@@ -21,6 +21,12 @@ export function useCreateValidation() {
   const rules = computed(() =>
     inferRules(model, {
       type: { required, uniqueType: uniqueType(() => model.value.identifier) },
+      year: {
+        required,
+        integer,
+        minValue: minValue(2000),
+        maxValue: maxValue(new Date().getFullYear()),
+      },
       identifier: {
         required,
         uniqueIdentifier: uniqueIdentifier(() => model.value.type),
@@ -61,6 +67,12 @@ export function useUpdateValidation(
               uniqueType: uniqueType(() => model.value.identifier),
             }
           : {}),
+      },
+      year: {
+        required,
+        integer,
+        minValue: minValue(2000),
+        maxValue: maxValue(new Date().getFullYear()),
       },
       identifier: {
         required,

@@ -20,7 +20,7 @@ defineEmits<{
 <template>
   <v-card-text class="px-0">
     <v-row>
-      <v-col cols="4">
+      <v-col cols="4" class="px-2">
         <data-autocomplete-hierarchical-vocabulary
           v-model="item.type"
           path="/api/vocabulary/analysis/types"
@@ -29,7 +29,14 @@ defineEmits<{
           :disabled="mode === 'update'"
         />
       </v-col>
-      <v-col cols="4">
+      <v-col cols="4" class="px-2">
+        <v-text-field
+          v-model="item.year"
+          label="year"
+          :error-messages="errors?.year"
+        />
+      </v-col>
+      <v-col cols="4" class="px-2">
         <v-text-field
           v-model="item.identifier"
           label="identifier"
@@ -39,15 +46,18 @@ defineEmits<{
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="4">
+      <v-col cols="4" class="px-2">
         <data-selection-analysis-status v-model="item.status" />
+      </v-col>
+      <v-col cols="4" class="px-2">
+        <v-text-field v-model="item.laboratory" label="laboratory" />
       </v-col>
       <v-col cols="4">
         <v-text-field v-model="item.responsible" label="responsible" />
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" class="px-2">
         <v-textarea
           v-model="item.summary"
           label="summary"

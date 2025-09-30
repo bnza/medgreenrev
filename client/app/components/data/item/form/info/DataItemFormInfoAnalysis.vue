@@ -36,12 +36,18 @@ const statusText = computed(() => {
         <v-text-field :model-value="type" label="type" />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
+        <v-text-field :model-value="item.year" label="year" />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.identifier" label="identifier" />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="statusText" label="status" />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field :model-value="item.laboratory" label="laboratory" />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.responsible" label="responsible" />

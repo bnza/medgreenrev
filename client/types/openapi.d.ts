@@ -3139,20 +3139,22 @@ export type webhooks = Record<string, never>
 export interface components {
   schemas: {
     'Analysis-analysis.acl.read': {
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType-analysis.acl.read']
+      type: components['schemas']['VocAnalysisType-analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?: components['schemas']['User-analysis.acl.read'] | null
     }
     'Analysis-analysis.create': {
-      identifier?: string
+      identifier: string
       /**
        * @default 0
        * @example 0
@@ -3162,8 +3164,10 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
     }
     'Analysis.jsonld-analysis.acl.read': {
@@ -3178,20 +3182,22 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
     }
     'Analysis.jsonld-analysis.create': {
-      identifier?: string
+      identifier: string
       /**
        * @default 0
        * @example 0
@@ -3201,8 +3207,10 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
     }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
@@ -3217,15 +3225,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
@@ -3243,15 +3253,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
@@ -3269,15 +3281,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
@@ -3295,15 +3309,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
@@ -3321,15 +3337,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
@@ -3347,15 +3365,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
@@ -3373,15 +3393,17 @@ export interface components {
           })
       readonly '@id': Iri
       readonly '@type': string
-      readonly id?: number & string
-      identifier?: string
+      readonly id: number & string
+      identifier: string
       /**
        * @default 0
        * @example 0
        */
       status: number
-      type?: components['schemas']['VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       responsible?: string | null
+      year: number
+      laboratory?: string | null
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
@@ -6661,10 +6683,12 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[responsible]'?: 'asc' | 'desc'
         'order[status]'?: 'asc' | 'desc'
+        'order[laboratory]'?: 'asc' | 'desc'
         'order[summary]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         type?: string
