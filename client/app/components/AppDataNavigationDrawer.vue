@@ -35,48 +35,66 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           title="Analyses"
           data-testid="app-nav-drawer-li-analyses-analyses"
         />
-        <v-list-item
-          nuxt
-          to="/data/analyses/zoo/bones"
-          router
-          title="Animal bones"
-          data-testid="app-nav-drawer-li-analysis-zoo-bones"
-        />
-        <v-list-item
-          nuxt
-          to="/data/analyses/zoo/teeth"
-          router
-          title="Animal teeth"
-          data-testid="app-nav-drawer-li-analysis-zoo-teeth"
-        />
-        <v-list-item
-          nuxt
-          to="/data/analyses/sites/anthropology"
-          router
-          title="Anthropology"
-          data-testid="app-nav-drawer-li-analyses-anthropology"
-        />
-        <v-list-item
-          nuxt
-          to="/data/analyses/samples/microstratigraphic-units"
-          router
-          title="Microstratigraphy"
-          data-testid="app-nav-drawer-li-analysis-sample-mus"
-        />
-        <v-list-item
-          nuxt
-          to="/data/analyses/potteries"
-          router
-          title="Potteries"
-          data-testid="app-nav-drawer-li-analysis-potteries"
-        />
-        <v-list-item
-          nuxt
-          to="/data/analyses/context/zoo"
-          router
-          title="Zooarchaeology"
-          data-testid="app-nav-drawer-li-analysis-context-zoo"
-        />
+        <v-list-group value="Assemblage">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Assemblage"
+              data-testid="app-nav-drawer-li-analyses-assemblage"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/analyses/sites/anthropology"
+            router
+            title="Anthropology"
+            data-testid="app-nav-drawer-li-analyses-anthropology"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/samples/microstratigraphic-units"
+            router
+            title="Microstratigraphy"
+            data-testid="app-nav-drawer-li-analysis-sample-mus"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/context/zoo"
+            router
+            title="Zooarchaeology"
+            data-testid="app-nav-drawer-li-analysis-context-zoo"
+          />
+        </v-list-group>
+        <v-list-group value="Element">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Element"
+              data-testid="app-nav-drawer-li-analyses"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/analyses/zoo/bones"
+            router
+            title="Animal bones"
+            data-testid="app-nav-drawer-li-analysis-zoo-bones"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/zoo/teeth"
+            router
+            title="Animal teeth"
+            data-testid="app-nav-drawer-li-analysis-zoo-teeth"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/potteries"
+            router
+            title="Potteries"
+            data-testid="app-nav-drawer-li-analysis-potteries"
+          />
+        </v-list-group>
       </v-list-group>
       <v-list-group value="Data">
         <template #activator="{ props }">
