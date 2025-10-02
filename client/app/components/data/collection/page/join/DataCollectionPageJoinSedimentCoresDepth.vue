@@ -4,9 +4,9 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/context_samples'
-      | '/api/data/samples/{parentId}/contexts'
-      | '/api/data/contexts/{parentId}/samples'
+      | '/api/data/sediment_cores_stratigraphic_units'
+      | '/api/data/stratigraphic_units/{parentId}/sediment_cores'
+      | '/api/data/sediment_cores/{parentId}/stratigraphic_units'
     >
   "
 >
@@ -15,17 +15,14 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 const props = defineProps<{
   path: P
   parent?:
-    | ResourceParent<'sample', '/api/data/samples/{id}'>
-    | ResourceParent<'context', '/api/data/contexts/{id}'>
+    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
+    | ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>
 }>()
 
 const { item: parentItem } = useResourceParent(props.parent)
 
-const title = computed(() =>
-  props.parent?.key === 'sample' ? 'contexts' : 'samples',
-)
-
 const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
+
 const siteId = computed(() => {
   const id = parentItem.value?.site?.['@id']
   return id ? Number(extractIdFromIri(id)) : undefined
@@ -34,7 +31,6 @@ const siteId = computed(() => {
 
 <template>
   <data-collection-page
-    :title="`Related ${title}`"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
@@ -43,6 +39,6 @@ const siteId = computed(() => {
       canCreate: siteId ? hasSitePrivilege(siteId) : hasAnySitePrivilege,
     }"
   >
-    <data-collection-table-join-context-sample :path :parent />
+    <data-collection-table-join-sediment-core-depth :path :parent />
   </data-collection-page>
 </template>

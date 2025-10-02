@@ -9,11 +9,13 @@ import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
+import * as sedimentCoreDepth from './data/sedimentCoreDepth'
 import mediaObject from './data/mediaObject'
 import microstratigraphicUnit from './data/microstratigraphicUnit'
 import individual from './data/individual'
 import pottery from './data/pottery'
 import sample from './data/sample'
+import sedimentCore from './data/sedimentCore'
 import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
@@ -46,6 +48,11 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/samples': sample,
   '/api/data/samples/{parentId}/stratigraphic_units':
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
+  '/api/data/sediment_cores': sedimentCore,
+  '/api/data/sediment_cores/{parentId}/depths': sedimentCoreDepth.config,
+  '/api/data/sediment_cores/{parentId}/stratigraphic_units':
+    sedimentCoreDepth.stratigraphicUnitSubResourceConfig,
+  '/api/data/sediment_core_depths': sedimentCoreDepth.config,
   '/api/data/sites': site,
   '/api/data/stratigraphic_units': stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/contexts':
@@ -54,6 +61,8 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
     microstratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/samples':
     sampleStratigraphicUnit.sampleSubResourceConfig,
+  '/api/data/stratigraphic_units/{parentId}/sediment_cores':
+    sedimentCoreDepth.sedimentCoreSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones': zooBone,
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
   '/api/data/zoo/bones': zooBone,

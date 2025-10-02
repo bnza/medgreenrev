@@ -45,6 +45,23 @@ export const greaterThanOrEqual = (
     message,
   })
 
+export const greaterThan = (
+  message = 'Value must be greater than its reference value.',
+) =>
+  createRule({
+    validator: (
+      value: Maybe<number | string>,
+      otherValue: Maybe<number | string>,
+    ) => {
+      const valueNumber = Number(value)
+      const otherValueNumber = Number(otherValue)
+      return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
+        ? valueNumber > otherValueNumber
+        : true
+    },
+    message,
+  })
+
 export const lessThanOrEqual = (
   message = 'Value must be must be less than or equal its reference value.',
 ) =>
@@ -57,6 +74,23 @@ export const lessThanOrEqual = (
       const otherValueNumber = Number(otherValue)
       return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
         ? valueNumber <= otherValueNumber
+        : true
+    },
+    message,
+  })
+
+export const lessThan = (
+  message = 'Value must be must be less than its reference value.',
+) =>
+  createRule({
+    validator: (
+      value: Maybe<number | string>,
+      otherValue: Maybe<number | string>,
+    ) => {
+      const valueNumber = Number(value)
+      const otherValueNumber = Number(otherValue)
+      return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
+        ? valueNumber < otherValueNumber
         : true
     },
     message,

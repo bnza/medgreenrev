@@ -1,8 +1,8 @@
 import type { ResourceConfig } from '~~/types'
 
 export const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data/context_stratigraphic_units',
-  appPath: '/data/contexts-stratigraphic-units',
+  apiPath: '/api/data/sediment_core_depths',
+  appPath: '/data/sediment-cores/depths',
   defaultHeaders: [
     {
       key: 'id',
@@ -13,21 +13,42 @@ export const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
-      key: 'stratigraphicUnit',
-      value: 'stratigraphicUnit',
+      key: 'sedimentCore.site.code',
+      value: 'sedimentCore.site.code',
+      title: 'site',
+    },
+    {
+      key: 'stratigraphicUnit.code',
+      value: 'stratigraphicUnit.code',
       title: 'stratigraphic unit',
     },
     {
-      key: 'context',
-      value: 'context',
-      title: 'context',
+      key: 'sedimentCore.code',
+      value: 'sedimentCore.code',
+      title: 'sediment core',
+    },
+    {
+      key: 'depthMin',
+      value: 'depthMin',
+      title: 'depth (min)',
+    },
+    {
+      key: 'depthMax',
+      value: 'depthMax',
+      title: 'depth (max)',
+    },
+    {
+      key: 'notes',
+      value: 'notes',
+      title: 'notes',
+      sortable: false,
     },
   ],
-  labels: ['context/SU association', 'context/SU associations'],
-  name: 'contextStratigraphicUnit',
+  labels: ['sediment core depth', 'sediment core depths'],
+  name: 'sedimentCoreDepth',
 }
 
-export const contextSubResourceConfig = {
+export const sedimentCoreSubResourceConfig: Readonly<ResourceConfig> = {
   ...structuredClone(config),
   ...{
     defaultHeaders: [
@@ -40,28 +61,30 @@ export const contextSubResourceConfig = {
         maxWidth: '200',
       },
       {
-        key: 'site.code',
-        value: 'site.code',
-        title: 'site',
+        key: 'sedimentCore.site.code',
+        value: 'sedimentCore.site.code',
+        title: 'code',
+        sortable: false,
       },
       {
-        key: 'context.type.group',
-        value: 'context.type.group',
-        title: 'group',
+        key: 'sedimentCore.code',
+        value: 'sedimentCore.code',
+        title: 'code',
+        sortable: false,
       },
       {
-        key: 'context.type.value',
-        value: 'context.type.value',
-        title: 'type',
+        key: 'sedimentCore.year',
+        value: 'sedimentCore.year',
+        title: 'year',
       },
       {
-        key: 'context.name',
-        value: 'context.name',
-        title: 'name',
+        key: 'sedimentCore.number',
+        value: 'sedimentCore.number',
+        title: 'number',
       },
       {
-        key: 'context.description',
-        value: 'context.description',
+        key: 'sedimentCore.description',
+        value: 'sedimentCore.description',
         title: 'description',
         sortable: false,
       },
@@ -69,7 +92,7 @@ export const contextSubResourceConfig = {
   },
 }
 
-export const stratigraphicUnitSubResourceConfig = {
+export const stratigraphicUnitSubResourceConfig: Readonly<ResourceConfig> = {
   ...structuredClone(config),
   ...{
     defaultHeaders: [
@@ -83,7 +106,7 @@ export const stratigraphicUnitSubResourceConfig = {
       },
       {
         key: 'stratigraphicUnit.site.code',
-        value: 'stratigraphicUnit.site.code',
+        value: 'site.code',
         title: 'site',
         width: '80',
       },

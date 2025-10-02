@@ -21,10 +21,6 @@ const props = defineProps<{
 
 const { item: parentItem } = useResourceParent(props.parent)
 
-const title = computed(() =>
-  props.parent?.key === 'stratigraphicUnit' ? 'samples' : 'stratigraphic units',
-)
-
 const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 
 const siteId = computed(() => {
@@ -35,7 +31,6 @@ const siteId = computed(() => {
 
 <template>
   <data-collection-page
-    :title="`Related ${title}`"
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"

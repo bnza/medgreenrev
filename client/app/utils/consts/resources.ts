@@ -22,6 +22,8 @@ export const API_RESOURCE_MAP = {
   potteryDecoration: '/api/data/pottery_decorations',
   sample: '/api/data/samples',
   sampleStratigraphicUnit: '/api/data/sample_stratigraphic_units',
+  sedimentCore: '/api/data/sediment_cores',
+  sedimentCoreDepth: '/api/data/sediment_core_depths',
   site: '/api/data/sites',
   siteCulturalContext: '/api/data/site_cultural_contexts',
   siteUserPrivilege: '/api/admin/site_user_privileges',
