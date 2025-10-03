@@ -48,7 +48,7 @@ const config: Readonly<ResourceConfig> = {
     },
   ],
   labels: ['MU analysis', 'MU analyses'],
-  name: 'analysisSampleMicrostratigraphicUnit',
+  name: 'analysisSampleMicrostratigraphy',
 }
 
 export default config

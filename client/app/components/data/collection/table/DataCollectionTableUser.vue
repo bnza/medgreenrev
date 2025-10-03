@@ -113,7 +113,7 @@ const { userData } = storeToRefs(userPasswordDialog())
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-search :path title="User" />-->
-      <data-dialog-create-user @refresh="refetch()" />
+      <data-dialog-create-user :path @refresh="refetch()" />
       <data-dialog-delete-user @refresh="refetch()" />
       <data-dialog-update-user @refresh="refetch()" />
       <data-dialog-user-password mode="reset" />

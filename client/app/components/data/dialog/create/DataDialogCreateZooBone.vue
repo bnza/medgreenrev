@@ -14,6 +14,7 @@ import { useCreateValidation } from '~/composables/validation/useZooBoneValidati
 import { useNormalization } from '~/composables/normalization/useZooBoneNormalization'
 
 const props = defineProps<{
+  path: P
   parent?: ResourceParent<
     'stratigraphicUnit',
     '/api/data/stratigraphic_units/{id}'

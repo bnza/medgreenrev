@@ -12,7 +12,6 @@
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useZooToothValidation'
 import { useNormalization } from '~/composables/normalization/useZooToothNormalization'
-import type { P } from 'vitest/dist/chunks/mocker.d.BE_2ls6u'
 
 const props = defineProps<{
   path: P

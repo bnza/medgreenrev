@@ -80,7 +80,7 @@ const { updateDialogState } = storeToRefs(
     <template #dialogs="{ refetch }">
       <!--          <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
       <data-dialog-search :path title="Zooarchaeology (teeth)" />
-      <data-dialog-create-zoo-tooth :parent @refresh="refetch()" />
+      <data-dialog-create-zoo-tooth :path :parent @refresh="refetch()" />
       <data-dialog-delete-zoo-tooth @refresh="refetch()" />
       <data-dialog-update-zoo-tooth @refresh="refetch()" />
     </template>
