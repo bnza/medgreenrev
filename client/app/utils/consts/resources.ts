@@ -6,8 +6,8 @@ export const API_RESOURCE_MAP = {
   analysisContextZoo: '/api/data/analyses/contexts/zoo',
   analysisContextZooTaxonomy: '/api/data/analysis_context_zoo_taxonomies',
   analysisPottery: '/api/data/analyses/potteries',
-  analysisSampleMicrostratigraphicUnit:
-    '/api/data/analyses/samples/microstratigraphic_units',
+  analysisSampleMicrostratigraphy:
+    '/api/data/analyses/samples/microstratigraphy',
   analysisSiteAnthropology: '/api/data/analyses/sites/anthropology',
   analysisZooBone: '/api/data/analyses/zoo/bones',
   analysisZooTooth: '/api/data/analyses/zoo/teeth',

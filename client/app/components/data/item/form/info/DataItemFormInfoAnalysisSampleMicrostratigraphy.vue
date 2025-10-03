@@ -3,7 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap['/api/data/analyses/samples/microstratigraphic_units/{id}']
+    item: GetItemResponseMap['/api/data/analyses/samples/microstratigraphy/{id}']
     readLink?: boolean
   }>(),
   {

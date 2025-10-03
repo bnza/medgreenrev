@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useUpdateValidation } from '~/composables/validation/useAnalysisSampleMicrostratigraphicUnitValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisSampleMicrostratigraphicUnitNormalization'
+import { useUpdateValidation } from '~/composables/validation/useAnalysisSampleMicrostratigraphyValidation'
+import { useNormalization } from '~/composables/normalization/useAnalysisSampleMicrostratigraphyNormalization'
 
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore(
-    '/api/data/analyses/samples/microstratigraphic_units/{id}',
+    '/api/data/analyses/samples/microstratigraphy/{id}',
   ),
 )
 const { r$, item } = useUpdateValidation(updateDialogState)
@@ -19,12 +19,12 @@ defineEmits<{
 <template>
   <data-dialog-update
     v-model:regle="r$"
-    path="/api/data/analyses/samples/microstratigraphic_units/{id}"
+    path="/api/data/analyses/samples/microstratigraphy/{id}"
     :on-pre-submit="onPreUpdate(item)"
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-sample-microstratigraphic-unit
+      <lazy-data-item-form-edit-analysis-sample-microstratigraphy
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

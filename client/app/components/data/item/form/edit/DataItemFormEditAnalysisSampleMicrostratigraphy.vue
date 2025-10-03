@@ -7,8 +7,8 @@ import type {
 } from '~~/types'
 
 type Item =
-  PatchItemRequestMap['/api/data/analyses/samples/microstratigraphic_units/{id}'] &
-    PostCollectionRequestMap['/api/data/analyses/samples/microstratigraphic_units']
+  PatchItemRequestMap['/api/data/analyses/samples/microstratigraphy/{id}'] &
+    PostCollectionRequestMap['/api/data/analyses/samples/microstratigraphy']
 
 const item = defineModel<Partial<Item>>('item', { required: true })
 

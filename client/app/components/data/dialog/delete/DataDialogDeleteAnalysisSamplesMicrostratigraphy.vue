@@ -6,11 +6,11 @@ defineEmits<{
 
 <template>
   <data-dialog-delete
-    path="/api/data/analyses/samples/microstratigraphic_units/{id}"
+    path="/api/data/analyses/samples/microstratigraphy/{id}"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <lazy-data-item-form-info-analysis-sample-microstratigraphic-unit :item />
+      <lazy-data-item-form-info-analysis-sample-microstratigraphy :item />
     </template>
   </data-dialog-delete>
 </template>

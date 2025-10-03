@@ -6,8 +6,9 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
 <template>
   <v-navigation-drawer
     :model-value="visible"
-    :permanent="true"
+    permanent
     data-testid="app-navigation-drawer"
+    width="350"
   >
     <v-list v-model:opened="dataOpened">
       <v-list-item
@@ -52,7 +53,7 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
-            to="/data/analyses/samples/microstratigraphic-units"
+            to="/data/analyses/samples/microstratigraphy"
             router
             title="Microstratigraphy"
             data-testid="app-nav-drawer-li-analysis-sample-mus"

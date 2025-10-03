@@ -282,7 +282,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/samples/microstratigraphic_units': {
+  '/api/data/analyses/samples/microstratigraphy': {
     parameters: {
       query?: never
       header?: never
@@ -290,23 +290,23 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AnalysisSampleMicrostratigraphicUnit resources.
-     * @description Retrieves the collection of AnalysisSampleMicrostratigraphicUnit resources.
+     * Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
+     * @description Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
      */
-    get: operations['api_dataanalysessamplesmicrostratigraphic_units_get_collection']
+    get: operations['api_dataanalysessamplesmicrostratigraphy_get_collection']
     put?: never
     /**
-     * Creates a AnalysisSampleMicrostratigraphicUnit resource.
-     * @description Creates a AnalysisSampleMicrostratigraphicUnit resource.
+     * Creates a AnalysisSampleMicrostratigraphy resource.
+     * @description Creates a AnalysisSampleMicrostratigraphy resource.
      */
-    post: operations['api_dataanalysessamplesmicrostratigraphic_units_post']
+    post: operations['api_dataanalysessamplesmicrostratigraphy_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/samples/microstratigraphic_units/{id}': {
+  '/api/data/analyses/samples/microstratigraphy/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -314,27 +314,27 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves a AnalysisSampleMicrostratigraphicUnit resource.
-     * @description Retrieves a AnalysisSampleMicrostratigraphicUnit resource.
+     * Retrieves a AnalysisSampleMicrostratigraphy resource.
+     * @description Retrieves a AnalysisSampleMicrostratigraphy resource.
      */
-    get: operations['api_dataanalysessamplesmicrostratigraphic_units_id_get']
+    get: operations['api_dataanalysessamplesmicrostratigraphy_id_get']
     put?: never
     post?: never
     /**
-     * Removes the AnalysisSampleMicrostratigraphicUnit resource.
-     * @description Removes the AnalysisSampleMicrostratigraphicUnit resource.
+     * Removes the AnalysisSampleMicrostratigraphy resource.
+     * @description Removes the AnalysisSampleMicrostratigraphy resource.
      */
-    delete: operations['api_dataanalysessamplesmicrostratigraphic_units_id_delete']
+    delete: operations['api_dataanalysessamplesmicrostratigraphy_id_delete']
     options?: never
     head?: never
     /**
-     * Updates the AnalysisSampleMicrostratigraphicUnit resource.
-     * @description Updates the AnalysisSampleMicrostratigraphicUnit resource.
+     * Updates the AnalysisSampleMicrostratigraphy resource.
+     * @description Updates the AnalysisSampleMicrostratigraphy resource.
      */
-    patch: operations['api_dataanalysessamplesmicrostratigraphic_units_id_patch']
+    patch: operations['api_dataanalysessamplesmicrostratigraphy_id_patch']
     trace?: never
   }
-  '/api/data/analyses/{parentId}/samples/microstratigraphic_units': {
+  '/api/data/analyses/{parentId}/samples/microstratigraphy': {
     parameters: {
       query?: never
       header?: never
@@ -342,10 +342,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AnalysisSampleMicrostratigraphicUnit resources.
-     * @description Retrieves the collection of AnalysisSampleMicrostratigraphicUnit resources.
+     * Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
+     * @description Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
      */
-    get: operations['api_dataanalyses_parentIdsamplesmicrostratigraphic_units_get_collection']
+    get: operations['api_dataanalyses_parentIdsamplesmicrostratigraphy_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -354,7 +354,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/samples/microstratigraphic_units/{parentId}/analyses': {
+  '/api/data/samples/microstratigraphy/{parentId}/analyses': {
     parameters: {
       query?: never
       header?: never
@@ -362,10 +362,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AnalysisSampleMicrostratigraphicUnit resources.
-     * @description Retrieves the collection of AnalysisSampleMicrostratigraphicUnit resources.
+     * Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
+     * @description Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
      */
-    get: operations['api_datasamplesmicrostratigraphic_units_parentIdanalyses_get_collection']
+    get: operations['api_datasamplesmicrostratigraphy_parentIdanalyses_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -2082,7 +2082,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/samples/microstratigraphic_units': {
+  '/api/validator/unique/analyses/samples/microstratigraphy': {
     parameters: {
       query?: never
       header?: never
@@ -2093,7 +2093,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalysessamplesmicrostratigraphic_units_get']
+    get: operations['api_validatoruniqueanalysessamplesmicrostratigraphy_get']
     put?: never
     post?: never
     delete?: never
@@ -3493,7 +3493,7 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -3512,13 +3512,13 @@ export interface components {
        * @example 0
        */
       status: number
-      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       responsible?: string | null
       year: number
       laboratory?: string | null
       summary?: string | null
       createdBy?:
-        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         | null
     }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
@@ -3744,10 +3744,10 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphicUnit-analysis_join.update': {
+    'AnalysisSampleMicrostratigraphy-analysis_join.update': {
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -3760,11 +3760,11 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.create': {
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4781,7 +4781,7 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
-    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -4794,8 +4794,8 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
-      type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /**
        * @default 0
        * @example 0
@@ -5256,7 +5256,7 @@ export interface components {
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -6312,7 +6312,7 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -6597,7 +6597,7 @@ export interface components {
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -6915,7 +6915,7 @@ export interface components {
       code?: string
       value?: string
     }
-    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read': {
+    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -8834,7 +8834,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessamplesmicrostratigraphic_units_get_collection: {
+  api_dataanalysessamplesmicrostratigraphy_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -8888,14 +8888,14 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit collection */
+      /** @description AnalysisSampleMicrostratigraphy collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read'][]
+            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -8934,27 +8934,27 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessamplesmicrostratigraphic_units_post: {
+  api_dataanalysessamplesmicrostratigraphy_post: {
     parameters: {
       query?: never
       header?: never
       path?: never
       cookie?: never
     }
-    /** @description The new AnalysisSampleMicrostratigraphicUnit resource */
+    /** @description The new AnalysisSampleMicrostratigraphy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.create']
       }
     }
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit resource created */
+      /** @description AnalysisSampleMicrostratigraphy resource created */
       201: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         }
       }
       /** @description Invalid input */
@@ -8981,25 +8981,25 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessamplesmicrostratigraphic_units_id_get: {
+  api_dataanalysessamplesmicrostratigraphy_id_get: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphicUnit identifier */
+        /** @description AnalysisSampleMicrostratigraphy identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit resource */
+      /** @description AnalysisSampleMicrostratigraphy resource */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         }
       }
       /** @description Not found */
@@ -9015,19 +9015,19 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessamplesmicrostratigraphic_units_id_delete: {
+  api_dataanalysessamplesmicrostratigraphy_id_delete: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphicUnit identifier */
+        /** @description AnalysisSampleMicrostratigraphy identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit resource deleted */
+      /** @description AnalysisSampleMicrostratigraphy resource deleted */
       204: {
         headers: {
           [name: string]: unknown
@@ -9058,30 +9058,30 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessamplesmicrostratigraphic_units_id_patch: {
+  api_dataanalysessamplesmicrostratigraphy_id_patch: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphicUnit identifier */
+        /** @description AnalysisSampleMicrostratigraphy identifier */
         id: string
       }
       cookie?: never
     }
-    /** @description The updated AnalysisSampleMicrostratigraphicUnit resource */
+    /** @description The updated AnalysisSampleMicrostratigraphy resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSampleMicrostratigraphicUnit-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.update']
       }
     }
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit resource updated */
+      /** @description AnalysisSampleMicrostratigraphy resource updated */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         }
       }
       /** @description Invalid input */
@@ -9130,7 +9130,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalyses_parentIdsamplesmicrostratigraphic_units_get_collection: {
+  api_dataanalyses_parentIdsamplesmicrostratigraphy_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -9180,21 +9180,21 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphicUnit identifier */
+        /** @description AnalysisSampleMicrostratigraphy identifier */
         parentId: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit collection */
+      /** @description AnalysisSampleMicrostratigraphy collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read'][]
+            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -9233,7 +9233,7 @@ export interface operations {
       }
     }
   }
-  api_datasamplesmicrostratigraphic_units_parentIdanalyses_get_collection: {
+  api_datasamplesmicrostratigraphy_parentIdanalyses_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -9283,21 +9283,21 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphicUnit identifier */
+        /** @description AnalysisSampleMicrostratigraphy identifier */
         parentId: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSampleMicrostratigraphicUnit collection */
+      /** @description AnalysisSampleMicrostratigraphy collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': {
-            member: components['schemas']['AnalysisSampleMicrostratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphic_unit_analysis.acl.read'][]
+            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -16926,7 +16926,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysessamplesmicrostratigraphic_units_get: {
+  api_validatoruniqueanalysessamplesmicrostratigraphy_get: {
     parameters: {
       query?: never
       header?: never

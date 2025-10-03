@@ -4,8 +4,8 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/analyses/samples/microstratigraphic_units'
-      | '/api/data/analyses/{parentId}/samples/microstratigraphic_units'
+      | '/api/data/analyses/samples/microstratigraphy'
+      | '/api/data/analyses/{parentId}/samples/microstratigraphy'
     >
   "
 >
@@ -52,9 +52,6 @@ const canCreate = computed(
       canCreate: canCreate || hasRoleAdmin,
     }"
   >
-    <data-collection-table-analysis-sample-microstratigraphic-unit
-      :path
-      :parent
-    />
+    <data-collection-table-analysis-sample-microstratigraphy :path :parent />
   </data-collection-page>
 </template>

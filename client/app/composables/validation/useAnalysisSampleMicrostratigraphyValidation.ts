@@ -8,7 +8,7 @@ import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery
 import useAnalysisSubjectValidation from '~/composables/validation/shared/useAnalysisSubjectValidation'
 
 const analysisSubjectRules = useAnalysisSubjectValidation(
-  '/api/validator/unique/analyses/samples/microstratigraphic_units',
+  '/api/validator/unique/analyses/samples/microstratigraphy',
 )
 export function useCreateValidation(
   parent?:
@@ -16,7 +16,7 @@ export function useCreateValidation(
     | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
 ) {
   type RequestBody =
-    PostCollectionRequestMap['/api/data/analyses/samples/microstratigraphic_units']
+    PostCollectionRequestMap['/api/data/analyses/samples/microstratigraphy']
 
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
   const getEmptyModel = () =>
@@ -41,14 +41,14 @@ export function useCreateValidation(
 export function useUpdateValidation(
   params: Ref<
     | OperationPathParams<
-        '/api/data/analyses/samples/microstratigraphic_units/{id}',
+        '/api/data/analyses/samples/microstratigraphy/{id}',
         'get'
       >
     | undefined
   >,
 ) {
   const { item, responseItem, model } = useGetPatchItemQuery(
-    '/api/data/analyses/samples/microstratigraphic_units/{id}',
+    '/api/data/analyses/samples/microstratigraphy/{id}',
     params,
   )
 

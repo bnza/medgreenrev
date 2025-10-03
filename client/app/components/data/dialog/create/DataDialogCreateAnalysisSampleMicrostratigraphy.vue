@@ -4,14 +4,14 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/analyses/samples/microstratigraphic_units'
-      | '/api/data/analyses/{parentId}/samples/microstratigraphic_units'
+      | '/api/data/analyses/samples/microstratigraphy'
+      | '/api/data/analyses/{parentId}/samples/microstratigraphy'
     >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useAnalysisSampleMicrostratigraphicUnitValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisSampleMicrostratigraphicUnitNormalization'
+import { useCreateValidation } from '~/composables/validation/useAnalysisSampleMicrostratigraphyValidation'
+import { useNormalization } from '~/composables/normalization/useAnalysisSampleMicrostratigraphyNormalization'
 
 const props = defineProps<{
   path: P
@@ -34,13 +34,13 @@ const emit = defineEmits<{
     v-model:regle="r$"
     :parent
     :path
-    post-path="/api/data/analyses/samples/microstratigraphic_units"
+    post-path="/api/data/analyses/samples/microstratigraphy"
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-sample-microstratigraphic-unit
+      <lazy-data-item-form-edit-analysis-sample-microstratigraphy
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"

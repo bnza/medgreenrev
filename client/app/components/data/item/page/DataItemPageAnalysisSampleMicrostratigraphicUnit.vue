@@ -2,20 +2,18 @@
 import useResourceUiStore from '~/stores/resource-ui'
 import type { GetItemResponseMap } from '~~/types'
 
-const path = '/api/data/analyses/samples/microstratigraphic_units/{id}' as const
+const path = '/api/data/analyses/samples/microstratigraphy/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(
-  useResourceUiStore(
-    '/api/data/analyses/samples/microstratigraphic_units/{id}',
-  ),
+  useResourceUiStore('/api/data/analyses/samples/microstratigraphy/{id}'),
 )
 </script>
 
 <template>
   <data-item-page :path identifier-prop="id">
     <template #default="{ item }: { item: GetItemResponse }">
-      <lazy-data-item-form-info-analysis-sample-microstratigraphic-unit :item />
+      <lazy-data-item-form-info-analysis-sample-microstratigraphy :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="subject">sample</v-tab>
         <v-tab value="media">media</v-tab>

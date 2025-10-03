@@ -1,8 +1,8 @@
 import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data/analyses/samples/microstratigraphic_units',
-  appPath: '/data/analyses/samples/microstratigraphic-units',
+  apiPath: '/api/data/analyses/samples/microstratigraphy',
+  appPath: '/data/analyses/samples/microstratigraphy',
   defaultHeaders: [
     {
       key: 'id',
