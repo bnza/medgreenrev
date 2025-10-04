@@ -650,6 +650,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of BotanySeed resources.
+     * @description Retrieves the collection of BotanySeed resources.
+     */
+    get: operations['api_databotanyseeds_get_collection']
+    put?: never
+    /**
+     * Creates a BotanySeed resource.
+     * @description Creates a BotanySeed resource.
+     */
+    post: operations['api_databotanyseeds_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/botany/seeds/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a BotanySeed resource.
+     * @description Retrieves a BotanySeed resource.
+     */
+    get: operations['api_databotanyseeds_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the BotanySeed resource.
+     * @description Removes the BotanySeed resource.
+     */
+    delete: operations['api_databotanyseeds_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the BotanySeed resource.
+     * @description Updates the BotanySeed resource.
+     */
+    patch: operations['api_databotanyseeds_id_patch']
+    trace?: never
+  }
+  '/api/data/stratigraphic_units/{parentId}/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of BotanySeed resources.
+     * @description Retrieves the collection of BotanySeed resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdbotanyseeds_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/contexts': {
     parameters: {
       query?: never
@@ -2654,6 +2726,126 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/botany/elements': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocBotanyElement resources.
+     * @description Retrieves the collection of VocBotanyElement resources.
+     */
+    get: operations['api_vocabularybotanyelements_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/botany/elements/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocBotanyElement resource.
+     * @description Retrieves a VocBotanyElement resource.
+     */
+    get: operations['api_vocabularybotanyelements_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/botany/element_parts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocBotanyElementPart resources.
+     * @description Retrieves the collection of VocBotanyElementPart resources.
+     */
+    get: operations['api_vocabularybotanyelement_parts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/botany/element_parts/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocBotanyElementPart resource.
+     * @description Retrieves a VocBotanyElementPart resource.
+     */
+    get: operations['api_vocabularybotanyelement_parts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/botany/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocBotanyTaxonomy resources.
+     * @description Retrieves the collection of VocBotanyTaxonomy resources.
+     */
+    get: operations['api_vocabularybotanytaxonomies_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/botany/taxonomies/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocBotanyTaxonomy resource.
+     * @description Retrieves a VocBotanyTaxonomy resource.
+     */
+    get: operations['api_vocabularybotanytaxonomies_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/context/types': {
     parameters: {
       query?: never
@@ -3875,6 +4067,84 @@ export interface components {
        */
       analysis?: string
       summary?: string | null
+    }
+    'BotanySeed-botany_seed.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+    }
+    'BotanySeed.jsonld-botany_seed.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'BotanySeed.jsonld-botany_seed.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
     }
     /** @description Unprocessable entity */
     'ConstraintViolation-json': {
@@ -5311,6 +5581,21 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-botany_seed.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
     'Site.jsonld-context.acl.read': {
       readonly '@context'?:
         | string
@@ -5893,6 +6178,21 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-botany_seed.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-botany_seed.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
@@ -6676,6 +6976,54 @@ export interface components {
       code?: string
       group?: string
       value?: string
+    }
+    'VocBotanyElement.jsonld': {
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number
+      value?: string
+    }
+    'VocBotanyElementPart.jsonld': {
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number
+      value?: string
+    }
+    'VocBotanyTaxonomy.jsonld': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number
+      value?: string
+      vernacularName?: string
+      class?: string
+      family?: string | null
     }
     'VocContextType-context.acl.read': {
       group?: string
@@ -10726,6 +11074,395 @@ export interface operations {
         content: {
           'application/ld+json': {
             member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_databotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_databotanyseeds_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new BotanySeed resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.create']
+      }
+    }
+    responses: {
+      /** @description BotanySeed resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_databotanyseeds_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description BotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_databotanyseeds_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description BotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_databotanyseeds_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description BotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated BotanySeed resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['BotanySeed-botany_seed.create']
+      }
+    }
+    responses: {
+      /** @description BotanySeed resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description BotanySeed identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -18122,6 +18859,273 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocAnalysisType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularybotanyelements_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocBotanyElement collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocBotanyElement.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularybotanyelements_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocBotanyElement identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocBotanyElement resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocBotanyElement.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularybotanyelement_parts_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocBotanyElementPart collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocBotanyElementPart.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularybotanyelement_parts_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocBotanyElementPart identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocBotanyElementPart resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocBotanyElementPart.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularybotanytaxonomies_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['VocBotanyTaxonomy.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_vocabularybotanytaxonomies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocBotanyTaxonomy resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld']
         }
       }
       /** @description Not found */

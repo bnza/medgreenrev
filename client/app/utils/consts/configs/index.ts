@@ -5,6 +5,7 @@ import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisPottery from './data/analysisPottery'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
+import botanySeed from './data/botanySeed'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
@@ -36,6 +37,7 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,
+  '/api/data/botany/seeds': botanySeed,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/contexts': context,
   '/api/data/contexts/{parentId}/stratigraphic_units':

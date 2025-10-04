@@ -106,6 +106,22 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             data-testid="app-nav-drawer-li-data"
           />
         </template>
+        <v-list-group value="Botany">
+          <template #activator="{ props: botanyProps }">
+            <v-list-item
+              v-bind="botanyProps"
+              title="Botany"
+              data-testid="app-nav-drawer-li-group-botany"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/botany/seeds"
+            router
+            title="Seeds"
+            data-testid="app-nav-drawer-li-botany-seeds"
+          />
+        </v-list-group>
         <v-list-item
           nuxt
           to="/data/contexts"
