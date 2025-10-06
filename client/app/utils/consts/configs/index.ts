@@ -5,6 +5,7 @@ import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisPottery from './data/analysisPottery'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
+import botanyCharcoal from './data/botanyCharcoal'
 import botanySeed from './data/botanySeed'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
@@ -23,9 +24,9 @@ import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import zooBone from './data/zooBone'
 import zooTooth from './data/zooTooth'
-import type { ResourceConfig } from '~~/types'
+import type { ResourceConfig, GetCollectionPath } from '~~/types'
 
-const RESOURCE_CONFIG_MAP_INTERNAL = {
+export const RESOURCE_CONFIG_MAP = {
   '/api/admin/site_user_privileges': siteUserPrivilege,
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
@@ -37,9 +38,11 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,
+  '/api/data/botany/charcoals': botanyCharcoal,
   '/api/data/botany/seeds': botanySeed,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/contexts': context,
+  '/api/data/contexts/{parentId}/analyses/zoo': analysisContextZoo,
   '/api/data/contexts/{parentId}/stratigraphic_units':
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/media_objects': mediaObject,
@@ -62,8 +65,8 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units':
     microstratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/samples':
-    sampleStratigraphicUnit.sampleSubResourceConfig,
-  '/api/data/stratigraphic_units/{parentId}/sediment_cores':
+    //   sampleStratigraphicUnit.sampleSubResourceConfig,
+    // '/api/data/stratigraphic_units/{parentId}/sediment_cores':
     sedimentCoreDepth.sedimentCoreSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones': zooBone,
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
@@ -71,8 +74,4 @@ const RESOURCE_CONFIG_MAP_INTERNAL = {
   '/api/data/zoo/bones/{parentId}/analyses': analysisZooBone,
   '/api/data/zoo/teeth': zooTooth,
   '/api/data/zoo/teeth/{parentId}/analyses': analysisZooTooth,
-  '/contexts/{parentId}/analyses/zoo': analysisContextZoo,
-} as const
-export const RESOURCE_CONFIG_MAP: Readonly<
-  Record<keyof typeof RESOURCE_CONFIG_MAP_INTERNAL, ResourceConfig>
-> = RESOURCE_CONFIG_MAP_INTERNAL as any
+} as const satisfies Partial<Record<GetCollectionPath, ResourceConfig>>

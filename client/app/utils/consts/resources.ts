@@ -11,6 +11,7 @@ export const API_RESOURCE_MAP = {
   analysisSiteAnthropology: '/api/data/analyses/sites/anthropology',
   analysisZooBone: '/api/data/analyses/zoo/bones',
   analysisZooTooth: '/api/data/analyses/zoo/teeth',
+  botanyCharcoal: '/api/data/botany/charcoals',
   botanySeed: '/api/data/botany/seeds',
   context: '/api/data/contexts',
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',

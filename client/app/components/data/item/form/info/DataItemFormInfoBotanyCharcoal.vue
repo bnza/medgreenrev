@@ -3,7 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap['/api/data/botany/seeds/{id}']
+    item: GetItemResponseMap['/api/data/botany/charcoals/{id}']
     readLink?: boolean
   }>(),
   {

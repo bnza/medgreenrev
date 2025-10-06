@@ -650,6 +650,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of BotanyCharcoal resources.
+     * @description Retrieves the collection of BotanyCharcoal resources.
+     */
+    get: operations['api_databotanycharcoals_get_collection']
+    put?: never
+    /**
+     * Creates a BotanyCharcoal resource.
+     * @description Creates a BotanyCharcoal resource.
+     */
+    post: operations['api_databotanycharcoals_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/botany/charcoals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a BotanyCharcoal resource.
+     * @description Retrieves a BotanyCharcoal resource.
+     */
+    get: operations['api_databotanycharcoals_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the BotanyCharcoal resource.
+     * @description Removes the BotanyCharcoal resource.
+     */
+    delete: operations['api_databotanycharcoals_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the BotanyCharcoal resource.
+     * @description Updates the BotanyCharcoal resource.
+     */
+    patch: operations['api_databotanycharcoals_id_patch']
+    trace?: never
+  }
+  '/api/data/stratigraphic_units/{parentId}/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of BotanyCharcoal resources.
+     * @description Retrieves the collection of BotanyCharcoal resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdbotanycharcoals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/botany/seeds': {
     parameters: {
       query?: never
@@ -4068,6 +4140,84 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
+    'BotanyCharcoal-botany_charcoal.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+    }
+    'BotanyCharcoal.jsonld-botany_charcoal.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'BotanyCharcoal.jsonld-botany_charcoal.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+    }
     'BotanySeed-botany_seed.create': {
       /**
        * Format: iri-reference
@@ -5581,6 +5731,21 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-botany_charcoal.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
     'Site.jsonld-botany_seed.acl.read': {
       readonly '@context'?:
         | string
@@ -6178,6 +6343,21 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-botany_charcoal.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-botany_seed.acl.read': {
@@ -11074,6 +11254,395 @@ export interface operations {
         content: {
           'application/ld+json': {
             member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_databotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_databotanycharcoals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new BotanyCharcoal resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.create']
+      }
+    }
+    responses: {
+      /** @description BotanyCharcoal resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_databotanycharcoals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description BotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_databotanycharcoals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description BotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_databotanycharcoals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description BotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated BotanyCharcoal resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['BotanyCharcoal-botany_charcoal.create']
+      }
+    }
+    responses: {
+      /** @description BotanyCharcoal resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description BotanyCharcoal identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
