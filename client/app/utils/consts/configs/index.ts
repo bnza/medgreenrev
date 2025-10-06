@@ -1,4 +1,5 @@
 import analysis from './data/analysis'
+import analysisContextBotany from './data/analysisContextBotany'
 import analysisContextZoo from './data/analysisContextZoo'
 import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
 import analysisSiteAnthropology from './data/analysisSiteAnthropology'
@@ -31,6 +32,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
   '/api/data/analyses': analysis,
+  '/api/data/analyses/contexts/botany': analysisContextBotany,
   '/api/data/analyses/contexts/zoo': analysisContextZoo,
   '/api/data/analyses/samples/microstratigraphy':
     analysisSampleMicrostratigraphy,
@@ -42,6 +44,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/botany/seeds': botanySeed,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
   '/api/data/contexts': context,
+  '/api/data/contexts/{parentId}/analyses/botany': analysisContextBotany,
   '/api/data/contexts/{parentId}/analyses/zoo': analysisContextZoo,
   '/api/data/contexts/{parentId}/stratigraphic_units':
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,

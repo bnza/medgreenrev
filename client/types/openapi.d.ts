@@ -58,6 +58,138 @@ export interface paths {
     patch: operations['api_dataanalyses_id_patch']
     trace?: never
   }
+  '/api/data/analyses/contexts/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextBotany resources.
+     * @description Retrieves the collection of AnalysisContextBotany resources.
+     */
+    get: operations['api_dataanalysescontextsbotany_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisContextBotany resource.
+     * @description Creates a AnalysisContextBotany resource.
+     */
+    post: operations['api_dataanalysescontextsbotany_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/contexts/botany/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisContextBotany resource.
+     * @description Retrieves a AnalysisContextBotany resource.
+     */
+    get: operations['api_dataanalysescontextsbotany_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisContextBotany resource.
+     * @description Removes the AnalysisContextBotany resource.
+     */
+    delete: operations['api_dataanalysescontextsbotany_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisContextBotany resource.
+     * @description Updates the AnalysisContextBotany resource.
+     */
+    patch: operations['api_dataanalysescontextsbotany_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/contexts/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextBotany resources.
+     * @description Retrieves the collection of AnalysisContextBotany resources.
+     */
+    get: operations['api_dataanalyses_parentIdcontextsbotany_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/contexts/{parentId}/analyses/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextBotany resources.
+     * @description Retrieves the collection of AnalysisContextBotany resources.
+     */
+    get: operations['api_datacontexts_parentIdanalysesbotany_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analysis_context_botany_taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextBotanyTaxonomy resources.
+     * @description Retrieves the collection of AnalysisContextBotanyTaxonomy resources.
+     */
+    get: operations['api_dataanalysis_context_botany_taxonomies_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analysis_context_botany_taxonomies/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisContextBotanyTaxonomy resource.
+     * @description Retrieves a AnalysisContextBotanyTaxonomy resource.
+     */
+    get: operations['api_dataanalysis_context_botany_taxonomies_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/contexts/zoo': {
     parameters: {
       query?: never
@@ -2166,6 +2298,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/contexts/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysescontextsbotany_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/contexts/zoo': {
     parameters: {
       query?: never
@@ -3709,6 +3861,34 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
     }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id: number & string
+      identifier: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+        | null
+    }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       readonly '@context'?:
         | string
@@ -3876,6 +4056,84 @@ export interface components {
       createdBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
+    }
+    'AnalysisContextBotany-analysis_join.update': {
+      taxonomies?: string[]
+      summary?: string | null
+    }
+    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      summary?: string | null
+    }
+    'AnalysisContextBotany.jsonld-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      taxonomies?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisContextBotanyTaxonomy.jsonld': {
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly id?: number & string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    'AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
     }
     'AnalysisContextZoo-analysis_join.update': {
       taxonomies?: string[]
@@ -4355,6 +4613,24 @@ export interface components {
       readonly id?: number & string
       type?: components['schemas']['VocContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       site?: components['schemas']['Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      type?: components['schemas']['VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
     }
@@ -5477,13 +5753,9 @@ export interface components {
       depthMax: string
       notes?: string | null
     }
-    'SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read': {
+    'SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -5542,15 +5814,11 @@ export interface components {
       depthMax: string
       notes?: string | null
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read': {
+    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -5614,6 +5882,11 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
     'Site-site.acl.read': {
       readonly id?: number & string
       code?: string
@@ -5640,6 +5913,21 @@ export interface components {
       name?: string
     }
     'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -5986,6 +6274,22 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      code?: string
+      name?: string
+    }
     'Site.jsonld-site.acl.read': {
       readonly '@context'?:
         | string
@@ -6241,6 +6545,19 @@ export interface components {
     'StratigraphicUnit-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id?: number & string
       site?: components['schemas']['Site-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number & string
+      site?: components['schemas']['Site-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /**
        * @default 0
        * @example 0
@@ -6520,6 +6837,30 @@ export interface components {
       interpretation?: string | null
       readonly code: string
     }
+    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      site?: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      /**
+       * @default 0
+       * @example 0
+       */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
     'StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read': {
       readonly '@context'?:
         | string
@@ -6701,6 +7042,22 @@ export interface components {
       readonly userIdentifier?: string
     }
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -7001,6 +7358,22 @@ export interface components {
       group?: string
       value?: string
     }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       readonly '@context'?:
         | string
@@ -7170,6 +7543,21 @@ export interface components {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number
+      group?: string
+      value?: string
+    }
+    'VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
       group?: string
       value?: string
     }
@@ -8035,6 +8423,668 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation-json']
           'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextsbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[subject.contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysescontextsbotany_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisContextBotany resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisContextBotany resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextsbotany_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotany resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextsbotany_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotany resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextsbotany_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisContextBotany resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisContextBotany-analysis_join.update']
+      }
+    }
+    responses: {
+      /** @description AnalysisContextBotany resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdcontextsbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[subject.contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisContextBotany identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_datacontexts_parentIdanalysesbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[subject.site.code]'?: 'asc' | 'desc'
+        'order[subject.name]'?: 'asc' | 'desc'
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'exists[subject.contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisContextBotany identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysis_context_botany_taxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysis_context_botany_taxonomies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotanyTaxonomy resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextBotanyTaxonomy.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -16215,9 +17265,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read'][]
+          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
           'application/ld+json': {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read'][]
+            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -18007,6 +19057,37 @@ export interface operations {
     }
   }
   api_validatoruniqueanalyses_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysescontextsbotany_get: {
     parameters: {
       query?: never
       header?: never
