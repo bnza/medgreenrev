@@ -33,7 +33,7 @@ const emit = defineEmits<{
 <template>
   <data-dialog-create
     v-model:regle="r$"
-    :parent
+    :path
     post-path="/api/data/potteries"
     :on-pre-submit
     :get-empty-model

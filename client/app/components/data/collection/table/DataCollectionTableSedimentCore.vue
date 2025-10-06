@@ -45,7 +45,11 @@ const { appPath } = useResourceConfig(props.path)
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Sample" />-->
-      <lazy-data-dialog-create-sediment-core :parent @refresh="refetch()" />
+      <lazy-data-dialog-create-sediment-core
+        :path
+        :parent
+        @refresh="refetch()"
+      />
       <data-dialog-delete-sediment-core @refresh="refetch()" />
       <data-dialog-update-sediment-core @refresh="refetch()" />
     </template>

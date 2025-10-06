@@ -15,9 +15,9 @@ withDefaults(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/sediment_cores/{id}"
-    title="Sample"
+    title="Sediment core"
     data-testid="data-item-info-box-sediment_cores"
-    :app-path="readLink ? '/data/sediment_cores' : undefined"
+    :app-path="readLink ? '/data/sediment-cores' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

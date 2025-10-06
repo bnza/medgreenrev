@@ -11,21 +11,20 @@ const { tab } = storeToRefs(useResourceUiStore(path))
     <template #default="{ item }">
       <lazy-data-item-form-info-stratigraphic-unit :item />
       <v-tabs v-model="tab" background-color="transparent">
-        <v-tab value="data">data</v-tab>
         <v-tab value="relationships">relationships</v-tab>
         <v-tab value="contexts">contexts</v-tab>
         <v-tab value="samples">samples</v-tab>
         <v-tab value="mus">MUs</v-tab>
         <v-tab value="individuals">individuals</v-tab>
         <v-tab value="potteries">potteries</v-tab>
+        <v-tab value="core-depths">core (depths)</v-tab>
+        <v-tab value="botany-charcoals">botany (charcoals)</v-tab>
+        <v-tab value="botany-seeds">botany (seeds)</v-tab>
         <v-tab value="zoo-bones">zoo (bones)</v-tab>
         <v-tab value="zoo-teeth">zoo (teeth)</v-tab>
         <v-tab value="media">media</v-tab>
       </v-tabs>
-      <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="data" data-testid="tab-data">
-          <p>Data</p>
-        </v-tabs-window-item>
+      <v-tabs-window v-model="tab" class="w-100 h-100">
         <v-tabs-window-item
           value="relationships"
           data-testid="tab-relationships"
@@ -45,6 +44,16 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tabs-window-item value="samples" data-testid="tab-samples">
           <data-collection-page-join-sample-stratigraphic-unit
             path="/api/data/stratigraphic_units/{parentId}/samples"
+            :parent="{
+              key: 'stratigraphicUnit',
+              resourceItemPath: '/api/data/stratigraphic_units/{id}',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="core-depths" data-testid="tab-core-depths">
+          <data-collection-page-sediment-core-depth
+            path="/api/data/stratigraphic_units/{parentId}/sediment_cores/depths"
             :parent="{
               key: 'stratigraphicUnit',
               resourceItemPath: '/api/data/stratigraphic_units/{id}',
@@ -80,6 +89,38 @@ const { tab } = storeToRefs(useResourceUiStore(path))
               resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item
+          value="botany-charcoals"
+          data-testid="tab-botany-charcoals"
+        >
+          <data-collection-page-botany-charcoal
+            path="/api/data/stratigraphic_units/{parentId}/botany/charcoals"
+            :parent="{
+              key: 'stratigraphicUnit',
+              resourceItemPath: '/api/data/stratigraphic_units/{id}',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="botany-seeds" data-testid="tab-botany-seeds">
+          <data-collection-page-botany-seed
+            path="/api/data/stratigraphic_units/{parentId}/botany/seeds"
+            :parent="{
+              key: 'stratigraphicUnit',
+              resourceItemPath: '/api/data/stratigraphic_units/{id}',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="media" data-testid="tab-media">
+          <data-media-object-join-container
+            path="/api/data/stratigraphic_units/{parentId}/media_objects"
+            post-path="/api/data/media_object_stratigraphic_units"
+            delete-path="/api/data/media_object_stratigraphic_units/{id}"
+            :parent-iri="item['@id']!"
+            :can-update="item._acl?.canUpdate"
           />
         </v-tabs-window-item>
         <v-tabs-window-item value="zoo-bones" data-testid="tab-zoo-bones">

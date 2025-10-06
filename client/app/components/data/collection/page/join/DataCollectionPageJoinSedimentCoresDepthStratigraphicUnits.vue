@@ -5,8 +5,8 @@
     P extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_cores_stratigraphic_units'
-      | '/api/data/stratigraphic_units/{parentId}/sediment_cores'
-      | '/api/data/sediment_cores/{parentId}/stratigraphic_units'
+      | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
+      | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
     >
   "
 >
@@ -39,6 +39,9 @@ const siteId = computed(() => {
       canCreate: siteId ? hasSitePrivilege(siteId) : hasAnySitePrivilege,
     }"
   >
-    <data-collection-table-join-sediment-core-depth :path :parent />
+    <data-collection-table-join-sediment-core-depth-stratigraphic-unit
+      :path
+      :parent
+    />
   </data-collection-page>
 </template>

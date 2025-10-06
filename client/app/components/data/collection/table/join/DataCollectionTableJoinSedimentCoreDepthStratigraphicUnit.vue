@@ -5,8 +5,8 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/sample_stratigraphic_units'
-      | '/api/data/stratigraphic_units/{parentId}/sediment_cores'
-      | '/api/data/sediment_cores/{parentId}/stratigraphic_units'
+      | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
+      | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
     >
   "
 >
@@ -46,6 +46,18 @@ const { id: parentId } = useResourceParent(props.parent)
         :sub-resource-key
         :app-path
         @delete="deleteDialogState = { id: item.id }"
+      />
+    </template>
+    <template #[`item.sedimentCore.site.code`]="{ item }">
+      <data-item-info-box-span-site
+        :iri="item.sedimentCore.site['@id']"
+        :text="item.sedimentCore.site.code"
+      />
+    </template>
+    <template #[`item.sedimentCore.code`]="{ item }">
+      <data-item-info-box-span-sediment-core
+        :iri="item.sedimentCore['@id']"
+        :text="item.sedimentCore.code"
       />
     </template>
     <template #dialogs="{ refetch }">

@@ -5,7 +5,8 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_core_depths'
-      | '/api/data/sediment_cores/{parentId}/depths'
+      | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
+      | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
     >
   "
 >
@@ -48,10 +49,22 @@ const { id: parentId } = useResourceParent(props.parent)
         :text="item.sedimentCore.site.code"
       />
     </template>
+    <template #[`item.stratigraphicUnit.site.code`]="{ item }">
+      <data-item-info-box-span-site
+        :iri="item.stratigraphicUnit.site['@id']"
+        :text="item.stratigraphicUnit.site.code"
+      />
+    </template>
     <template #[`item.stratigraphicUnit.code`]="{ item }">
       <data-item-info-box-span-stratigraphic-unit
         :iri="item.stratigraphicUnit['@id']"
         :text="item.stratigraphicUnit.code"
+      />
+    </template>
+    <template #[`item.sedimentCore.code`]="{ item }">
+      <data-item-info-box-span-stratigraphic-unit
+        :iri="item.sedimentCore['@id']"
+        :text="item.sedimentCore.code"
       />
     </template>
     <template #dialogs="{ refetch }">

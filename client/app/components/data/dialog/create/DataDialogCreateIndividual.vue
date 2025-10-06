@@ -34,7 +34,7 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     post-path="/api/data/individuals"
-    :path="path"
+    :path
     :on-pre-submit
     :get-empty-model
     @refresh="emit('refresh')"

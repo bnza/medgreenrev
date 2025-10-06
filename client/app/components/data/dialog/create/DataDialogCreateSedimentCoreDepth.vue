@@ -5,7 +5,8 @@
     P extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_core_depths'
-      | '/api/data/sediment_cores/{parentId}/depths'
+      | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
+      | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
     >
   "
 >

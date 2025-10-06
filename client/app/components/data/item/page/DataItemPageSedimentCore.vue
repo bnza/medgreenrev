@@ -21,7 +21,7 @@ defineProps<{
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="depths" data-testid="tab-window-depths">
           <data-collection-page-sediment-core-depth
-            path="/api/data/sediment_cores/{parentId}/depths"
+            path="/api/data/sediment_cores/{parentId}/stratigraphic_units/depths"
             :parent="{
               key: 'sedimentCore',
               resourceItemPath: '/api/data/sediment_cores/{id}',

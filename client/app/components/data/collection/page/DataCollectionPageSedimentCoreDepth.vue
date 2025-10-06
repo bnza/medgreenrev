@@ -4,8 +4,9 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/sediment_cores_depths'
-      | '/api/data/sediment_cores/{parentId}/depths'
+      | '/api/data/sediment_core_depths'
+      | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
+      | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
     >
   "
 >
@@ -13,7 +14,9 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>
+  parent?:
+    | ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>
+    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
 }>()
 
 const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
@@ -26,8 +29,8 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
     :show-back-button="false"
     :acl="{
       canExport: isAuthenticated,
-      canCreate: parent?.item.id
-        ? hasSitePrivilege(parent.item.id)
+      canCreate: parent?.item.site?.['@id']
+        ? hasSitePrivilege(parent.item.site['@id'])
         : hasAnySitePrivilege,
     }"
   >

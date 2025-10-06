@@ -1722,7 +1722,7 @@ export interface paths {
     patch: operations['api_datasediment_core_depths_id_patch']
     trace?: never
   }
-  '/api/data/sediment_cores/{parentId}/depths': {
+  '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths': {
     parameters: {
       query?: never
       header?: never
@@ -1733,7 +1733,7 @@ export interface paths {
      * Retrieves the collection of SedimentCoreDepth resources.
      * @description Retrieves the collection of SedimentCoreDepth resources.
      */
-    get: operations['api_datasediment_cores_parentIddepths_get_collection']
+    get: operations['api_datasediment_cores_parentIdstratigraphic_unitsdepths_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1742,7 +1742,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/sediment_cores/{parentId}/sediment_cores': {
+  '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths': {
     parameters: {
       query?: never
       header?: never
@@ -1753,27 +1753,7 @@ export interface paths {
      * Retrieves the collection of SedimentCoreDepth resources.
      * @description Retrieves the collection of SedimentCoreDepth resources.
      */
-    get: operations['api_datasediment_cores_parentIdsediment_cores_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/sediment_cores/{parentId}/stratigraphic_units': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SedimentCoreDepth resources.
-     * @description Retrieves the collection of SedimentCoreDepth resources.
-     */
-    get: operations['api_datasediment_cores_parentIdstratigraphic_units_get_collection']
+    get: operations['api_datastratigraphic_units_parentIdsediment_coresdepths_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -5491,10 +5471,19 @@ export interface components {
     'SedimentCoreDepth-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       readonly id?: number & string
       sedimentCore: components['schemas']['SedimentCore-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
     }
-    'SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+    'SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read': {
       readonly id?: number & string
-      stratigraphicUnit: components['schemas']['StratigraphicUnit-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -5547,12 +5536,21 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read': {
       readonly '@id': Iri
       readonly '@type': string
       readonly id?: number & string
-      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -5613,11 +5611,6 @@ export interface components {
       name?: string
     }
     'Site-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
       code?: string
       name?: string
     }
@@ -5993,22 +5986,6 @@ export interface components {
       code?: string
       name?: string
     }
-    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
     'Site.jsonld-site.acl.read': {
       readonly '@context'?:
         | string
@@ -6264,19 +6241,6 @@ export interface components {
     'StratigraphicUnit-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id?: number & string
       site?: components['schemas']['Site-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /**
        * @default 0
        * @example 0
@@ -6546,30 +6510,6 @@ export interface components {
       readonly '@type': string
       readonly id?: number & string
       site?: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /**
        * @default 0
        * @example 0
@@ -16243,7 +16183,7 @@ export interface operations {
       }
     }
   }
-  api_datasediment_cores_parentIddepths_get_collection: {
+  api_datasediment_cores_parentIdstratigraphic_unitsdepths_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -16275,9 +16215,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
+          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read'][]
           'application/ld+json': {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
+            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sediment_core.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",
@@ -16316,7 +16256,7 @@ export interface operations {
       }
     }
   }
-  api_datasediment_cores_parentIdsediment_cores_get_collection: {
+  api_datastratigraphic_units_parentIdsediment_coresdepths_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -16351,79 +16291,6 @@ export interface operations {
           'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
           'application/ld+json': {
             member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
-          }
-        }
-      }
-    }
-  }
-  api_datasediment_cores_parentIdstratigraphic_units_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[depthMin]'?: 'asc' | 'desc'
-        'order[depthMax]'?: 'asc' | 'desc'
-        'order[sedimentCore.year]'?: 'asc' | 'desc'
-        'order[sedimentCore.number]'?: 'asc' | 'desc'
-        'order[sedimentCore.site.code]'?: 'asc' | 'desc'
-        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
-        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
-        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path: {
-        /** @description SedimentCoreDepth identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SedimentCoreDepth collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
             totalItems?: number
             /** @example {
              *       "@id": "string",

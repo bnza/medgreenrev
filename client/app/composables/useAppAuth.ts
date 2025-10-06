@@ -1,7 +1,7 @@
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
 
 import { getRoleColor } from '~/utils/acl'
-import type { CollectionAcl, GetItemResponseMap } from '~~/types'
+import type { CollectionAcl, GetItemResponseMap, Iri } from '~~/types'
 
 export default function useAppAuth() {
   const { data, status } = useAuth()
@@ -64,11 +64,15 @@ export default function useAppAuth() {
       : false,
   )
 
-  const hasSitePrivilege = computed(
-    () => (siteId: number) =>
+  const hasSitePrivilege = computed(() => (siteIdOrIri: number | Iri) => {
+    const id = isValidIri(siteIdOrIri)
+      ? Number(extractIdFromIri(siteIdOrIri))
+      : siteIdOrIri
+    return (
       hasRoleAdmin.value ||
-      typeof data.value?.sitePrivileges?.[siteId] !== 'undefined',
-  )
+      typeof data.value?.sitePrivileges?.[id] !== 'undefined'
+    )
+  })
 
   const siteCollectionAcl = computed<CollectionAcl>(() => ({
     canCreate: canCreateSite.value,

@@ -54,10 +54,9 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/samples/{parentId}/stratigraphic_units':
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/sediment_cores': sedimentCore,
-  '/api/data/sediment_cores/{parentId}/depths': sedimentCoreDepth.config,
-  '/api/data/sediment_cores/{parentId}/stratigraphic_units':
-    sedimentCoreDepth.stratigraphicUnitSubResourceConfig,
   '/api/data/sediment_core_depths': sedimentCoreDepth.config,
+  '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths':
+    sedimentCoreDepth.stratigraphicUnitSubResourceConfig,
   '/api/data/sites': site,
   '/api/data/stratigraphic_units': stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/contexts':
@@ -65,8 +64,8 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units':
     microstratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/samples':
-    //   sampleStratigraphicUnit.sampleSubResourceConfig,
-    // '/api/data/stratigraphic_units/{parentId}/sediment_cores':
+    sampleStratigraphicUnit.sampleSubResourceConfig,
+  '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths':
     sedimentCoreDepth.sedimentCoreSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones': zooBone,
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
