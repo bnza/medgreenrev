@@ -29,7 +29,14 @@ const title = computed(() => props.title || labels[1])
       <data-toolbar-collection-action-menu :acl :path />
     </template>
     <template #default>
-      <slot />
+      <Suspense suspensible>
+        <template #default>
+          <slot />
+        </template>
+        <template #fallback>
+          <loading-component />
+        </template>
+      </Suspense>
     </template>
     <template #append>
       <slot name="dialogs" />

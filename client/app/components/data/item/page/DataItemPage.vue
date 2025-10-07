@@ -64,8 +64,17 @@ const title = computed(() => props.title || labels[0])
     <loading-component v-if="status === 'pending'" />
     <resource-not-found v-else-if="error" :error :path="props.path" />
     <v-container v-else-if="isValidItem(item)" class="m-0 p-0 card-container">
-      <slot v-bind="{ item }" />
-      <slot name="dialogs" />
+      <template #default>
+        <Suspense suspensible>
+          <template #default>
+            <slot v-bind="{ item }" />
+          </template>
+          <template #fallback>
+            <loading-component />
+          </template>
+        </Suspense>
+        <slot name="dialogs" />
+      </template>
     </v-container>
     <resource-not-found
       v-else
