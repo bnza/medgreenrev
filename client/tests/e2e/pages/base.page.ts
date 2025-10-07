@@ -1,7 +1,6 @@
 import { type Page, type Locator, expect } from '@playwright/test'
 import { AppDataNavigationDrawerComponent } from '~~/tests/e2e/components/app-data-navigation-drawer.component'
 import { AppBarComponent } from '~~/tests/e2e/components/app-bar.component'
-import { DataCardComponent } from '~~/tests/e2e/components/data-card.component'
 
 export abstract class BasePage {
   protected abstract readonly path: string
@@ -26,5 +25,17 @@ export abstract class BasePage {
 
   async expectAppMessageToHaveText(text: string | RegExp, count = 1) {
     await expect(this.appMessage.getByText(text)).toHaveCount(count)
+  }
+
+  async awaitForApiResponse<T>(
+    urlGlob: string,
+    action: () => T | Promise<T>,
+    status: number = 200,
+  ): Promise<T> {
+    const responsePromise = this.page.waitForResponse(urlGlob)
+    const result = await action()
+    const response = await responsePromise
+    expect(response.status()).toBe(status)
+    return result
   }
 }

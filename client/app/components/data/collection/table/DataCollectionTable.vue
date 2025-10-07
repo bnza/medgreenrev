@@ -48,6 +48,7 @@ watch(
     striped="odd"
     :page="pagination.page"
     :sort-by="pagination.sortBy"
+    :search="pagination.search"
     @update:options="pagination = $event"
   >
     <!-- https://mokkapps.de/vue-tips/expose-slots-from-a-child-component-->

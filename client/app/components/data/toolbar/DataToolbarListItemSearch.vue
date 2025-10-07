@@ -14,11 +14,11 @@ const { isSearchDialogOpen: visible } = storeToRefs(
 <template>
   <v-list-item
     data-testid="data-toolbar-menu-search-list-item"
-    title="search"
+    title="advanced search"
     @click="visible = true"
   >
     <template #prepend>
-      <v-icon color="primary" icon="fas fa-magnifying-glass" />
+      <v-icon color="primary" icon="fas fa-magnifying-glass-plus" />
     </template>
   </v-list-item>
 </template>

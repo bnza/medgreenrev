@@ -17,6 +17,7 @@ const props = withDefaults(
 defineSlots<{
   default(): any
   dialogs(): any
+  'search-bar'(): any
 }>()
 
 const { labels } = useResourceConfig(props.path)
@@ -26,6 +27,7 @@ const title = computed(() => props.title || labels[1])
 <template>
   <data-card :title :show-back-button :parent>
     <template #toolbar-append>
+      <slot name="search-bar" />
       <data-toolbar-collection-action-menu :acl :path />
     </template>
     <template #default>

@@ -29,6 +29,10 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
 
       // Fill site field (using autocomplete)
+      await collectionPom.awaitForApiResponse('**/api/data/sites**', () =>
+        collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
+      )
+
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page.getByRole('option').first().click() // Select first available site
 
@@ -95,6 +99,9 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.dataDialogCreate.showCreatedItemCheckbox.uncheck()
 
       // Fill site field again
+      await collectionPom.awaitForApiResponse('**/api/data/sites**', () =>
+        collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
+      )
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page.getByRole('option').first().click()
 
@@ -209,6 +216,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       const itemPom = new StratigraphicUnitsItemPage(page)
       await collectionPom.open()
       await collectionPom.table.expectData()
+      await collectionPom.awaitSearchResults('NI.408')
       await collectionPom.table
         .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
         .click()

@@ -15,7 +15,9 @@ const useCollectionQueryStore = <Path extends GetCollectionPath>(
   path: Path,
 ) => {
   return defineStore(`collection-query:${path}`, () => {
-    const pagination = shallowRef(defaultPagination())
+    const pagination = ref(defaultPagination())
+
+    const searchValue = computed(() => pagination.value.search ?? '')
 
     const paginationQueryObject = computed(() =>
       dataTableOptionsToQsObject(pagination.value),
@@ -40,6 +42,9 @@ const useCollectionQueryStore = <Path extends GetCollectionPath>(
       const queryObject: Record<string, unknown> = {}
       for (const filter of Object.values(filtersState.value)) {
         API_FILTERS[filter.key].addToQueryObject(queryObject, filter)
+      }
+      if (searchValue.value) {
+        queryObject.search = searchValue.value
       }
       return queryObject
     })
