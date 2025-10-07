@@ -10,6 +10,28 @@ export abstract class BaseItemPage extends BaseDataPage {
     await expect(textField).toHaveValue(expectedValue)
   }
 
+  async expectRadioToBeChecked(
+    fieldName: string | RegExp,
+    checked: boolean = true,
+  ) {
+    const input = this.page.getByRole('radio', { name: fieldName })
+    if (checked) {
+      return expect(input).toBeChecked()
+    }
+    return expect(input).not.toBeChecked()
+  }
+
+  async expectCheckboxToBeChecked(
+    fieldName: string | RegExp,
+    checked: boolean = true,
+  ) {
+    const input = this.page.getByRole('checkbox', { name: fieldName })
+    if (checked) {
+      return expect(input).toBeChecked()
+    }
+    return expect(input).not.toBeChecked()
+  }
+
   clickTab(tabName: string) {
     return this.page.getByRole('tab', { name: tabName }).click()
   }

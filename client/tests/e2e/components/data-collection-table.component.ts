@@ -36,7 +36,7 @@ export class DataCollectionTableComponent extends BaseComponent {
    */
   getRowByText(text: string | RegExp) {
     if ('string' === typeof text) {
-      text = new RegExp(`^${text}`)
+      text = new RegExp(`${text}`)
     }
     return this.body
       .getByRole('row')
