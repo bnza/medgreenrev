@@ -13,7 +13,7 @@ import { useNormalization } from '~/composables/normalization/useAnalysisPottery
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+  parent?: ResourceParent<'pottery'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)

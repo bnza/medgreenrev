@@ -33,7 +33,6 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
             path="/api/data/sites/{parentId}/stratigraphic_units"
             :parent="{
               key: 'site',
-              resourceItemPath: '/api/data/sites/{id}',
               item,
             }"
           />
@@ -43,7 +42,6 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
             path="/api/data/sites/{parentId}/contexts"
             :parent="{
               key: 'site',
-              resourceItemPath: '/api/data/sites/{id}',
               item,
             }"
           />
@@ -58,7 +56,6 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
             path="/api/data/sites/{parentId}/samples"
             :parent="{
               key: 'site',
-              resourceItemPath: '/api/data/sites/{id}',
               item,
             }"
           />
@@ -73,7 +70,6 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
             path="/api/admin/sites/{parentId}/site_user_privileges"
             :parent="{
               key: 'site',
-              resourceItemPath: '/api/data/sites/{id}',
               item,
             }"
           />

@@ -14,7 +14,7 @@ const item = defineModel<Partial<Item>>('item', { required: true })
 interface Props {
   mode: 'create' | 'update'
   errors?: RegleErrorTree<Partial<Item>>
-  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+  parent?: ResourceParent<'pottery'>
 }
 
 defineProps<Props>()

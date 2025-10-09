@@ -13,7 +13,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
+  parent?: ResourceParent<'site'>
 }>()
 
 const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()

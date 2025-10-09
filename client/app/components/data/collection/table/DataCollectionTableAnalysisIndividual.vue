@@ -12,7 +12,7 @@ import DataDialogCreateAnalysisIndividual from '~/components/data/dialog/create/
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'individual', '/api/data/individuals/{id}'>
+  parent?: ResourceParent<'individual'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)

@@ -11,9 +11,7 @@ const analysisSubjectRules = useAnalysisSubjectValidation(
   '/api/validator/unique/analyses/samples/microstratigraphy',
 )
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'sample', '/api/data/samples/{id}'>
-    | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
+  parent?: ResourceParent<'sample'> | ResourceParent<'analysis'>,
 ) {
   type RequestBody =
     PostCollectionRequestMap['/api/data/analyses/samples/microstratigraphy']

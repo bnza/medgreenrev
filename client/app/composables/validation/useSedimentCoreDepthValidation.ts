@@ -19,9 +19,7 @@ const uniqueDepthMin = useApiUniqueValidator(
 )
 
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>,
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sedimentCore'>,
 ) {
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
   type RequestBody = PostCollectionRequestMap['/api/data/sediment_core_depths']

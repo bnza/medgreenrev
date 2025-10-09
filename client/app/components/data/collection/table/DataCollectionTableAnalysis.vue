@@ -8,9 +8,9 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 const props = defineProps<{
   path: Path
   parent?:
-    | ResourceParent<'pottery', '/api/data/potteries/{id}'>
-    | ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
-    | ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
+    | ResourceParent<'pottery'>
+    | ResourceParent<'zooBone'>
+    | ResourceParent<'zooTooth'>
 }>()
 
 const { appPath } = useResourceConfig(props.path)

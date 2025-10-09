@@ -15,9 +15,7 @@ const item = defineModel<Partial<Item>>('item', { required: true })
 interface Props {
   mode: 'create' | 'update'
   errors?: RegleErrorTree<Partial<Item>>
-  parent?:
-    | ResourceParent<'context', '/api/data/contexts/{id}'>
-    | ResourceParent<'analysis', '/api/data/analyses/{id}'>
+  parent?: ResourceParent<'context'> | ResourceParent<'analysis'>
 }
 
 defineProps<Props>()

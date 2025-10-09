@@ -14,7 +14,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
+  parent?: ResourceParent<'context'>
 }>()
 
 const {

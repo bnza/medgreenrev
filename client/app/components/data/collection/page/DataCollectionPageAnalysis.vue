@@ -7,7 +7,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'pottery', '/api/data/potteries/{id}'>
+  parent?: ResourceParent<'pottery'>
 }>()
 
 const { hasAnySpecialistRole, isAuthenticated, hasRoleAdmin } = useAppAuth()

@@ -14,10 +14,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<
-    'stratigraphicUnit',
-    '/api/data/stratigraphic_units/{id}'
-  >
+  parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
 const { hasSitePrivilege, isAuthenticated, hasSpecialistRole } = useAppAuth()

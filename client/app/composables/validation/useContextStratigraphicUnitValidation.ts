@@ -15,9 +15,7 @@ const uniqueStratigraphicUnit = useApiUniqueValidator(
 )
 
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'context', '/api/data/contexts/{id}'>,
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'context'>,
 ) {
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
 

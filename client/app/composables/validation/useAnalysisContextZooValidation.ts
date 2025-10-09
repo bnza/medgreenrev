@@ -11,9 +11,7 @@ const analysisSubjectRules = useAnalysisSubjectValidation(
   '/api/validator/unique/analyses/contexts/zoo',
 )
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'context', '/api/data/contexts/{id}'>
-    | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
+  parent?: ResourceParent<'context'> | ResourceParent<'analysis'>,
 ) {
   type RequestBody = PostCollectionRequestMap['/api/data/analyses/contexts/zoo']
 

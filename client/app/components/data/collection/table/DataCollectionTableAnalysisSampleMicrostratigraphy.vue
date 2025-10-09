@@ -13,7 +13,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'sample', '/api/data/samples/{id}'>
+  parent?: ResourceParent<'sample'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)

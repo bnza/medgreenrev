@@ -15,7 +15,7 @@ import DataDialogUpdateAnalysisSiteAnthropology from '~/components/data/dialog/u
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'site', '/api/data/sites/{id}'>
+  parent?: ResourceParent<'site'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)

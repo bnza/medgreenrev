@@ -14,9 +14,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sedimentCore'>
 }>()
 
 const { appPath } = useResourceConfig(props.path)

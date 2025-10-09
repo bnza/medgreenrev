@@ -27,7 +27,6 @@ defineProps<{
             path="/api/data/zoo/bones/{parentId}/analyses"
             :parent="{
               key: 'zooBone',
-              resourceItemPath: '/api/data/zoo/bones/{id}',
               item,
             }"
           />

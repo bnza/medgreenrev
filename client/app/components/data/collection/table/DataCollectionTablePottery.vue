@@ -33,10 +33,7 @@ const vocabularyPotterySurfaceTreatmentStore = useVocabularyStore(
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<
-    'stratigraphicUnit',
-    '/api/data/stratigraphic_units/{id}'
-  >
+  parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
 const { appPath } = useResourceConfig(props.path)

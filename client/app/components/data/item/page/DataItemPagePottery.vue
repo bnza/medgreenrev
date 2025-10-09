@@ -27,7 +27,6 @@ defineProps<{
             path="/api/data/potteries/{parentId}/analyses"
             :parent="{
               key: 'pottery',
-              resourceItemPath: '/api/data/potteries/{id}',
               item,
             }"
           />

@@ -15,9 +15,7 @@ import { useCreateValidation } from '~/composables/validation/useContextStratigr
 
 const props = defineProps<{
   path: P
-  parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'context', '/api/data/contexts/{id}'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'context'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)

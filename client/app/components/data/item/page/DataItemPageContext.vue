@@ -27,7 +27,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/contexts/{parentId}/stratigraphic_units"
             :parent="{
               key: 'context',
-              resourceItemPath: '/api/data/contexts/{id}',
               item,
             }"
           />
@@ -37,7 +36,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/contexts/{parentId}/analyses/zoo"
             :parent="{
               key: 'context',
-              resourceItemPath: '/api/data/contexts/{id}',
               item,
             }"
           />

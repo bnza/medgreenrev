@@ -9,10 +9,7 @@ const item = defineModel<Partial<Item>>('item', { required: true })
 defineProps<{
   mode: 'create' | 'update'
   errors?: RegleErrorTree<Partial<Item>>
-  parent?: ResourceParent<
-    'stratigraphicUnit',
-    '/api/data/stratigraphic_units/{id}'
-  >
+  parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
 defineEmits<{

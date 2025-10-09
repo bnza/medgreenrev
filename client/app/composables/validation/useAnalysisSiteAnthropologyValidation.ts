@@ -11,9 +11,7 @@ const analysisSubjectRules = useAnalysisSubjectValidation(
   '/api/validator/unique/analyses/sites/anthropology',
 )
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'site', '/api/data/sites/{id}'>
-    | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
+  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>,
 ) {
   type RequestBody =
     PostCollectionRequestMap['/api/data/analyses/sites/anthropology']

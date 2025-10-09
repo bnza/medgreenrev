@@ -21,10 +21,7 @@ const uniqueIdentifier = useApiUniqueValidator(
 )
 
 export function useCreateValidation(
-  parent?: ResourceParent<
-    'stratigraphicUnit',
-    '/api/data/stratigraphic_units/{id}'
-  >,
+  parent?: ResourceParent<'stratigraphicUnit'>,
 ) {
   type RequestBody =
     PostCollectionRequestMap['/api/data/microstratigraphic_units']

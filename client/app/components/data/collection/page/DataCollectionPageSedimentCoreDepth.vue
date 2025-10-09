@@ -14,9 +14,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?:
-    | ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
+  parent?: ResourceParent<'sedimentCore'> | ResourceParent<'stratigraphicUnit'>
 }>()
 
 const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()

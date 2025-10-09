@@ -21,7 +21,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/individuals/{parentId}/analyses"
             :parent="{
               key: 'individual',
-              resourceItemPath: '/api/data/individuals/{id}',
               item,
             }"
           />

@@ -13,7 +13,7 @@ import { useNormalization } from '~/composables/normalization/useAnalysisZooToot
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'zooTooth', '/api/data/zoo/teeth/{id}'>
+  parent?: ResourceParent<'zooTooth'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)

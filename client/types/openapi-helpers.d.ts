@@ -1,5 +1,9 @@
 import type { paths, components } from './openapi'
-import type { ApiResourcePath } from '~/utils/consts/resources'
+import type {
+  API_RESOURCE_MAP,
+  type ApiResourceKey,
+  type ApiResourcePath,
+} from '~/utils/consts/resources'
 
 export type ApiSpec = {
   paths
@@ -113,6 +117,10 @@ export type GetItemPath = {
 
 export type ApiResourceItemPath = `${ApiResourcePath}/{id}` & GetItemPath
 
+// Helper type to map from ApiResourceKey to ApiResourceItemPath
+export type ApiResourceKeyToItemPath<K extends ApiResourceKey> =
+  `${(typeof API_RESOURCE_MAP)[K]}/{id}` & ApiResourceItemPath
+
 export type GetValidationPath = {
   [K in keyof paths]: paths[K] extends { get: any }
     ? K extends `/api/validator/unique/${string}`
@@ -179,15 +187,14 @@ export type DeleteItemResponseMap = {
   [K in DeleteItemPath]: paths[K]['delete']['responses']['204']
 }
 
-export type ResourceParent<K extends string, P extends ApiResourceItemPath> = {
+export type ResourceParent<K extends ApiResourceKey> = {
   key: K
-  resourceItemPath: P
-  item: GetItemResponseMap[P]
+  item: GetItemResponseMap[ApiResourceKeyToItemPath<K>]
 }
 
 export type HydraConstraintViolation =
   components['schemas']['ConstraintViolation.jsonld-jsonld']
 
 export type ResourceParentSiteUserPrivilege =
-  | ResourceParent<'site', '/api/data/sites/{id}'>
-  | ResourceParent<'user', '/api/admin/users/{id}'>
+  | ResourceParent<'site'>
+  | ResourceParent<'user'>

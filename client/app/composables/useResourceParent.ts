@@ -1,23 +1,24 @@
-import type { ResourceParent, ApiResourceItemPath } from '~~/types'
+import type { ResourceParent, ApiResourceKey, Iri, GetItemPath } from '~~/types'
+import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 
-export const useResourceParent = <
-  K extends string,
-  P extends ApiResourceItemPath,
->(
-  resourceParent?: ResourceParent<K, P>,
+export const useResourceParent = <K extends ApiResourceKey>(
+  resourceParent?: ResourceParent<K>,
 ) => {
   const key = computed(() => resourceParent?.key)
-  const path = computed(() => resourceParent?.resourceItemPath)
-  const item = computed(() => resourceParent?.item)
-  const id = computed(() =>
-    isPlainObject(item.value) && 'id' in item.value
-      ? String(item.value.id)
+  const path = computed<GetItemPath | undefined>(() =>
+    resourceParent?.key
+      ? `${API_RESOURCE_MAP[resourceParent.key]}/{id}`
       : undefined,
   )
+
+  const item = computed(() => resourceParent?.item)
+
   const iri = computed(() =>
-    isPlainObject(item.value) && '@id' in item.value
-      ? String(item.value['@id'])
-      : undefined,
+    isJsonLdItem(item.value) ? (item.value['@id'] as string) : undefined,
+  )
+
+  const id = computed(() =>
+    iri.value ? extractIdFromIri(iri.value as Iri) : undefined,
   )
 
   return {

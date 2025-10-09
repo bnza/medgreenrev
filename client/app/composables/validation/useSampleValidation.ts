@@ -28,9 +28,7 @@ const uniqueNumber = useApiUniqueValidator(
   ['number', 'site', 'type', 'year'],
   'Duplicate [site, type, year, number] combination',
 )
-export function useCreateValidation(
-  parent?: ResourceParent<'site', '/api/data/sites/{id}'>,
-) {
+export function useCreateValidation(parent?: ResourceParent<'site'>) {
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
 
   type RequestBody = PostCollectionRequestMap['/api/data/samples']

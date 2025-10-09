@@ -12,9 +12,7 @@ const analysisSubjectRules = useAnalysisSubjectValidation(
 )
 
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'pottery', '/api/data/potteries/{id}'>
-    | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
+  parent?: ResourceParent<'pottery'> | ResourceParent<'analysis'>,
 ) {
   type RequestBody = PostCollectionRequestMap['/api/data/analyses/potteries']
 

@@ -18,7 +18,6 @@ const { tab } = storeToRefs(useResourceUiStore('/api/admin/users/{id}'))
             path="/api/admin/users/{parentId}/site_user_privileges"
             :parent="{
               key: 'user',
-              resourceItemPath: '/api/admin/users/{id}',
               item,
             }"
           />

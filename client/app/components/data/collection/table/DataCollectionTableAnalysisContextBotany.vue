@@ -11,12 +11,12 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
+  parent?: ResourceParent<'context'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath, labels } = useResourceConfig(props.path)
+const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/analyses/contexts/botany/{id}'),
 )

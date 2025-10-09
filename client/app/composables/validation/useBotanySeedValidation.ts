@@ -9,10 +9,7 @@ import { useGetPatchItemQuery } from '~/composables/queries/useGetPatchItemQuery
 import useResourceParent from '~/composables/useResourceParent'
 
 export function useCreateValidation(
-  parent?: ResourceParent<
-    'stratigraphicUnit',
-    '/api/data/stratigraphic_units/{id}'
-  >,
+  parent?: ResourceParent<'stratigraphicUnit'>,
 ) {
   type RequestBody = PostCollectionRequestMap['/api/data/botany/seeds']
 

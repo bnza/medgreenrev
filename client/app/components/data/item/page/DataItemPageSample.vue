@@ -27,7 +27,6 @@ defineProps<{
             path="/api/data/samples/{parentId}/stratigraphic_units"
             :parent="{
               key: 'sample',
-              resourceItemPath: '/api/data/samples/{id}',
               item,
             }"
           />

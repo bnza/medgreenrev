@@ -14,9 +14,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: P
-  parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'sample', '/api/data/samples/{id}'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
 const { item: parentItem } = useResourceParent(props.parent)

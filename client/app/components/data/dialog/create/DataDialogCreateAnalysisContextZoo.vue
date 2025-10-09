@@ -13,7 +13,7 @@ import { useNormalization } from '~/composables/normalization/useAnalysisContext
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'context', '/api/data/contexts/{id}'>
+  parent?: ResourceParent<'context'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)

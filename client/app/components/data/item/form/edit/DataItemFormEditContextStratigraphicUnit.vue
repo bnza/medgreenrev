@@ -7,9 +7,7 @@ const item = defineModel<Item>('item', { required: true })
 
 interface Props {
   mode: 'create' | 'update'
-  parent?:
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
-    | ResourceParent<'context', '/api/data/contexts/{id}'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'context'>
   errors?: RegleErrorTree<Item>
 }
 

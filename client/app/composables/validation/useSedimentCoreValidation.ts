@@ -23,9 +23,7 @@ const uniqueNumber = useApiUniqueValidator(
   ['number', 'site', 'year'],
   'Duplicate [site, year, number] combination',
 )
-export function useCreateValidation(
-  parent?: ResourceParent<'site', '/api/data/sites/{id}'>,
-) {
+export function useCreateValidation(parent?: ResourceParent<'site'>) {
   const { key: parentKey, iri: parentIri } = useResourceParent(parent)
 
   type RequestBody = PostCollectionRequestMap['/api/data/sediment_cores']

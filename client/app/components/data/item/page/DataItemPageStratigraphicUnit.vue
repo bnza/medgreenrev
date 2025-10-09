@@ -36,7 +36,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/contexts"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -46,7 +45,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/samples"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -56,7 +54,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/sediment_cores/depths"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -66,7 +63,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/microstratigraphic_units"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -76,7 +72,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/individuals"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -86,7 +81,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/potteries"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -99,7 +93,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/botany/charcoals"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -109,7 +102,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/botany/seeds"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -128,7 +120,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/zoo/bones"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />
@@ -138,7 +129,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             path="/api/data/stratigraphic_units/{parentId}/zoo/teeth"
             :parent="{
               key: 'stratigraphicUnit',
-              resourceItemPath: '/api/data/stratigraphic_units/{id}',
               item,
             }"
           />

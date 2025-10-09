@@ -11,9 +11,7 @@ const analysisSubjectRules = useAnalysisSubjectValidation(
   '/api/validator/unique/analyses/zoo/bones',
 )
 export function useCreateValidation(
-  parent?:
-    | ResourceParent<'zooBone', '/api/data/zoo/bones/{id}'>
-    | ResourceParent<'analysis', '/api/data/analyses/{id}'>,
+  parent?: ResourceParent<'zooBone'> | ResourceParent<'analysis'>,
 ) {
   type RequestBody = PostCollectionRequestMap['/api/data/analyses/zoo/bones']
 

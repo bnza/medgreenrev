@@ -16,9 +16,7 @@ import { useNormalization } from '~/composables/normalization/useSedimentCoreDep
 
 const props = defineProps<{
   path: P
-  parent?:
-    | ResourceParent<'sedimentCore', '/api/data/sediment_cores/{id}'>
-    | ResourceParent<'stratigraphicUnit', '/api/data/stratigraphic_units/{id}'>
+  parent?: ResourceParent<'sedimentCore'> | ResourceParent<'stratigraphicUnit'>
 }>()
 
 const { getEmptyModel, r$ } = useCreateValidation(props.parent)

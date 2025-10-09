@@ -24,7 +24,6 @@ defineProps<{
             path="/api/data/sediment_cores/{parentId}/stratigraphic_units/depths"
             :parent="{
               key: 'sedimentCore',
-              resourceItemPath: '/api/data/sediment_cores/{id}',
               item,
             }"
           />
