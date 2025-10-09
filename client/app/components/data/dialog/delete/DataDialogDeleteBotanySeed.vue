@@ -10,7 +10,7 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <lazy-data-item-form-info-botany-seed :item />
+      <lazy-data-item-form-info-botany-seed :item :read-link="false" />
     </template>
   </data-dialog-delete>
 </template>
