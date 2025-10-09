@@ -7,6 +7,7 @@ export const API_RESOURCE_MAP = {
   analysisContextBotanyTaxonomy: '/api/data/analysis_context_botany_taxonomies',
   analysisContextZoo: '/api/data/analyses/contexts/zoo',
   analysisContextZooTaxonomy: '/api/data/analysis_context_zoo_taxonomies',
+  analysisIndividual: '/api/data/analyses/individuals',
   analysisPottery: '/api/data/analyses/potteries',
   analysisSampleMicrostratigraphy:
     '/api/data/analyses/samples/microstratigraphy',

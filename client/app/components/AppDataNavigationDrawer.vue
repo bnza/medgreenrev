@@ -97,6 +97,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
+            to="/data/analyses/individuals"
+            router
+            title="Human Individuals"
+            data-testid="app-nav-drawer-li-analysis-individuals"
+          />
+          <v-list-item
+            nuxt
             to="/data/analyses/potteries"
             router
             title="Potteries"
@@ -147,7 +154,7 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           nuxt
           to="/data/individuals"
           router
-          title="Individuals"
+          title="Human Individuals"
           data-testid="app-nav-drawer-li-individuals"
         />
         <v-list-item

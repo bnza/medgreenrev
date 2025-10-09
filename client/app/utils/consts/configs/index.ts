@@ -4,6 +4,7 @@ import analysisContextZoo from './data/analysisContextZoo'
 import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
 import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisPottery from './data/analysisPottery'
+import analysisIndividual from './data/analysisIndividual'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
 import botanyCharcoal from './data/botanyCharcoal'
@@ -34,6 +35,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses': analysis,
   '/api/data/analyses/contexts/botany': analysisContextBotany,
   '/api/data/analyses/contexts/zoo': analysisContextZoo,
+  '/api/data/analyses/individuals': analysisIndividual,
   '/api/data/analyses/samples/microstratigraphy':
     analysisSampleMicrostratigraphy,
   '/api/data/analyses/sites/anthropology': analysisSiteAnthropology,
@@ -51,6 +53,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/media_objects': mediaObject,
   '/api/data/microstratigraphic_units': microstratigraphicUnit,
   '/api/data/individuals': individual,
+  '/api/data/individuals/{parentId}/analyses': analysisIndividual,
   '/api/data/potteries': pottery,
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/samples': sample,

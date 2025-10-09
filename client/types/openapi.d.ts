@@ -322,6 +322,98 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisIndividual resources.
+     * @description Retrieves the collection of AnalysisIndividual resources.
+     */
+    get: operations['api_dataanalysesindividuals_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisIndividual resource.
+     * @description Creates a AnalysisIndividual resource.
+     */
+    post: operations['api_dataanalysesindividuals_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/individuals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisIndividual resource.
+     * @description Retrieves a AnalysisIndividual resource.
+     */
+    get: operations['api_dataanalysesindividuals_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisIndividual resource.
+     * @description Removes the AnalysisIndividual resource.
+     */
+    delete: operations['api_dataanalysesindividuals_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisIndividual resource.
+     * @description Updates the AnalysisIndividual resource.
+     */
+    patch: operations['api_dataanalysesindividuals_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisIndividual resources.
+     * @description Retrieves the collection of AnalysisIndividual resources.
+     */
+    get: operations['api_dataanalyses_parentIdindividuals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/individuals/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisIndividual resources.
+     * @description Retrieves the collection of AnalysisIndividual resources.
+     */
+    get: operations['api_dataindividuals_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/potteries': {
     parameters: {
       query?: never
@@ -2338,6 +2430,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysesindividuals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/potteries': {
     parameters: {
       query?: never
@@ -3833,6 +3945,34 @@ export interface components {
       laboratory?: string | null
       summary?: string | null
     }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id: number & string
+      identifier: string
+      /**
+       * @default 0
+       * @example 0
+       */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        | null
+    }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly '@context'?:
         | string
@@ -4212,6 +4352,39 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy?: string
+    }
+    'AnalysisIndividual-analysis_join.update': {
+      summary?: string | null
+    }
+    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      summary?: string | null
+    }
+    'AnalysisIndividual.jsonld-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
     }
     'AnalysisPottery-analysis_join.update': {
       summary?: string | null
@@ -4831,6 +5004,29 @@ export interface components {
        * @example https://example.com/
        */
       stratigraphicUnit?: string
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+    }
+    'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      readonly id?: number & string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       identifier?: string
       /**
        * Format: iri-reference
@@ -5912,6 +6108,21 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      name?: string
+    }
     'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly '@context'?:
         | string
@@ -6596,6 +6807,21 @@ export interface components {
       interpretation?: string | null
       readonly code: string
     }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      readonly code: string
+    }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly '@context'?:
         | string
@@ -7041,6 +7267,22 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly '@context'?:
         | string
@@ -7327,6 +7569,22 @@ export interface components {
       value?: string
     }
     'VocAnalysisType.jsonld-analysis.acl.read': {
+      readonly '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      readonly '@id': Iri
+      readonly '@type': string
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       readonly '@context'?:
         | string
         | ({
@@ -9747,6 +10005,523 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.sex'?: string
+        'subject.sex[]'?: string[]
+        'subject.identifier'?: string
+        'subject.age.id'?: number
+        'subject.age.id[]'?: number[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'exists[subject.notes]'?: boolean
+        'exists[subject.age]'?: boolean
+        'exists[subject.sex]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisIndividual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesindividuals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisIndividual resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisIndividual resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalysesindividuals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisIndividual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisIndividual resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesindividuals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisIndividual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisIndividual resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesindividuals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisIndividual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisIndividual resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisIndividual-analysis_join.update']
+      }
+    }
+    responses: {
+      /** @description AnalysisIndividual resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation-json']
+          'application/json': components['schemas']['ConstraintViolation-json']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.sex'?: string
+        'subject.sex[]'?: string[]
+        'subject.identifier'?: string
+        'subject.age.id'?: number
+        'subject.age.id[]'?: number[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'exists[subject.notes]'?: boolean
+        'exists[subject.age]'?: boolean
+        'exists[subject.sex]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisIndividual identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisIndividual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
+        }
+      }
+    }
+  }
+  api_dataindividuals_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.sex'?: string
+        'subject.sex[]'?: string[]
+        'subject.identifier'?: string
+        'subject.age.id'?: number
+        'subject.age.id[]'?: number[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'exists[subject.notes]'?: boolean
+        'exists[subject.age]'?: boolean
+        'exists[subject.sex]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisIndividual identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisIndividual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': {
+            member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
+            totalItems?: number
+            /** @example {
+             *       "@id": "string",
+             *       "type": "string",
+             *       "first": "string",
+             *       "last": "string",
+             *       "previous": "string",
+             *       "next": "string"
+             *     } */
+            view?: {
+              /** Format: iri-reference */
+              '@id': Iri
+              '@type': string
+              /** Format: iri-reference */
+              first?: string
+              /** Format: iri-reference */
+              last?: string
+              /** Format: iri-reference */
+              previous?: string
+              /** Format: iri-reference */
+              next?: string
+            }
+            search?: {
+              '@type': string
+              template?: string
+              variableRepresentation?: string
+              mapping?: {
+                '@type': string
+                variable?: string
+                property?: string | null
+                required?: boolean
+              }[]
+            }
+          }
         }
       }
     }
@@ -19119,6 +19894,37 @@ export interface operations {
     }
   }
   api_validatoruniqueanalysescontextszoo_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysesindividuals_get: {
     parameters: {
       query?: never
       header?: never

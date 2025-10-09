@@ -17,15 +17,14 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <p>analyses</p>
-          <!--          <data-collection-page-context-zoo-analysis-->
-          <!--            path="/api/data/contexts/{parentId}/analyses/zoo"-->
-          <!--            :parent="{-->
-          <!--              key: 'context',-->
-          <!--              resourceItemPath: '/api/data/contexts/{id}',-->
-          <!--              item,-->
-          <!--            }"-->
-          <!--          />-->
+          <data-collection-page-analysis-individual
+            path="/api/data/individuals/{parentId}/analyses"
+            :parent="{
+              key: 'individual',
+              resourceItemPath: '/api/data/individuals/{id}',
+              item,
+            }"
+          />
         </v-tabs-window-item>
       </v-tabs-window>
     </template>
