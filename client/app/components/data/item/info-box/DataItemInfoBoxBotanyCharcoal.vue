@@ -25,9 +25,8 @@ const vocabularyBotanyElementPart = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/botany/charcoals/{id}"
-    title="Seed (archaeobotany)"
+    :read-link
     data-testid="data-item-info-box-botany-charcoals"
-    :app-path="readLink ? '/data/botany/charcoals' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

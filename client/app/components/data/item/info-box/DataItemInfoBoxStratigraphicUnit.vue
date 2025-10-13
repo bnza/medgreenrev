@@ -15,9 +15,8 @@ withDefaults(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/stratigraphic_units/{id}"
-    title="Stratigraphic unit"
+    :read-link
     data-testid="data-item-info-box-su"
-    :app-path="readLink ? '/data/stratigraphic-units' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

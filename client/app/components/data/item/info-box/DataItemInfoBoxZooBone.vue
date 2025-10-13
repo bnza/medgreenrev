@@ -23,9 +23,8 @@ const vocabularyZooBoneParts = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/zoo/bones/{id}"
-    title="Animal bone"
+    :read-link
     data-testid="data-item-info-box-zoo-bones"
-    :app-path="readLink ? '/data/zoo/bones' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

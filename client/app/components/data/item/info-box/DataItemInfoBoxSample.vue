@@ -17,9 +17,8 @@ const vocabularySampleType = useVocabularyStore('/api/vocabulary/sample/types')
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/samples/{id}"
-    title="Sample"
+    :read-link
     data-testid="data-item-info-box-samples"
-    :app-path="readLink ? '/data/samples' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

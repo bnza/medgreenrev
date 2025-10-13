@@ -19,9 +19,8 @@ const vocabularyMediaObjectTypesStore = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/media_objects/{id}"
-    title="Media"
-    data-testid="data-item-info-box-pottery"
-    :app-path="readLink ? '/data/media' : undefined"
+    :read-link
+    data-testid="data-item-info-box-media-object"
     :width="600"
   >
     <template #activator="props">

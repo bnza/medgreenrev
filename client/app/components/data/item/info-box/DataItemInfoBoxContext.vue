@@ -19,9 +19,8 @@ const vocabularyContextTypesStore = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/contexts/{id}"
-    title="Context"
-    data-testid="data-item-info-box-pottery"
-    :app-path="readLink ? '/data/contexts' : undefined"
+    :read-link
+    data-testid="data-item-info-box-context"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

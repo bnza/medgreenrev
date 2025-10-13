@@ -19,9 +19,8 @@ const vocabularyIndividualAge = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/individuals/{id}"
-    title="Human Individual"
-    data-testid="data-item-info-box-pottery"
-    :app-path="readLink ? '/data/individuals' : undefined"
+    :read-link
+    data-testid="data-item-info-box-individual"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

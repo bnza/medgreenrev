@@ -11,20 +11,20 @@ const props = withDefaults(
   defineProps<{
     path: P
     iri: Iri
-    title: string
-    appPath?: string
     width?: number
+    readLink?: boolean
   }>(),
   {
     width: 500,
+    readLink: true,
   },
 )
-
+const id = extractIdFromIri(props.iri)
 const visible = ref(false)
 const params = computed(() =>
   visible.value
     ? ({
-        id: extractIdFromIri(props.iri),
+        id,
       } as OperationPathParams<P, 'get'>)
     : undefined,
 )
@@ -36,7 +36,7 @@ defineSlots<{
   default(props: { item: GetItemResponseMap[P] | undefined }): any
 }>()
 
-const id = computed(() => extractIdFromIri(props.iri))
+const { labels, appPath } = useResourceConfig(props.path)
 </script>
 
 <template>
@@ -64,7 +64,7 @@ const id = computed(() => extractIdFromIri(props.iri))
         data-testid="info-box-card"
       >
         <template #title>
-          <span data-testid="info-box-card-title">{{ title }} </span>
+          <span data-testid="info-box-card-title">{{ labels[0] }} </span>
         </template>
         <template #text>
           <v-container class="pa-0" fluid>
@@ -83,7 +83,7 @@ const id = computed(() => extractIdFromIri(props.iri))
             />
           </v-container>
         </template>
-        <template v-if="appPath && id" #actions>
+        <template v-if="readLink" #actions>
           <v-spacer />
           <navigation-resource-item-read
             :id

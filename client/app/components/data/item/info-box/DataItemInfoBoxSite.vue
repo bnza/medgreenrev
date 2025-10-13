@@ -19,9 +19,8 @@ const getCulturalContextVocabulary = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/sites/{id}"
-    title="Site"
+    :read-link
     data-testid="data-item-info-box-site"
-    :app-path="readLink ? '/data/sites' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

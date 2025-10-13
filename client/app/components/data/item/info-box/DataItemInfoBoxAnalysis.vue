@@ -19,9 +19,8 @@ const vocabularyAnalysisTypesStore = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/analyses/{id}"
-    title="Analysis"
+    :read-link
     data-testid="data-item-info-box-analysis"
-    :app-path="readLink ? '/data/analyses' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

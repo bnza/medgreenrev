@@ -23,9 +23,8 @@ const vocabularyPotteryFunctionalFormStore = useVocabularyStore(
     v-if="isValidIri(iri)"
     :iri
     path="/api/data/potteries/{id}"
-    title="Pottery"
+    :read-link
     data-testid="data-item-info-box-pottery"
-    :app-path="readLink ? '/data/potteries' : undefined"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />
