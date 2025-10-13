@@ -30,6 +30,7 @@ const emit = defineEmits<{
   <data-dialog-create
     v-model:regle="r$"
     :parent
+    :path
     post-path="/api/data/contexts"
     :on-pre-submit
     :get-empty-model

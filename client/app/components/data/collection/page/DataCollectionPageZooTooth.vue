@@ -22,6 +22,7 @@ const {
   hasSitePrivilege,
   isAuthenticated,
   hasSpecialistRole,
+  hasRoleAdmin,
 } = useAppAuth()
 
 const hasPrivileges = computed(() => {
@@ -35,8 +36,9 @@ const hasPrivileges = computed(() => {
 
 const canCreate = computed(
   () =>
-    hasPrivileges.value &&
-    hasSpecialistRole(ApiSpecialistRole.ZooArchaeologist).value,
+    hasRoleAdmin.value ||
+    (hasPrivileges.value &&
+      hasSpecialistRole(ApiSpecialistRole.ZooArchaeologist).value),
 )
 </script>
 <template>

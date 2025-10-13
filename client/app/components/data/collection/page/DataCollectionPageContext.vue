@@ -20,8 +20,8 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
 
 <template>
   <data-collection-page
-    :path
     :parent="Boolean(parent)"
+    :path
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,

@@ -72,6 +72,7 @@ const vocabularyAnalysisStore = useVocabularyStore(
       <data-dialog-search :path :title="labels[0]" />
       <lazy-data-dialog-create-analysis-context-zoo
         :parent
+        :path
         @refresh="refetch()"
       />
       <data-dialog-delete-analysis-context-zoo @refresh="refetch()" />
