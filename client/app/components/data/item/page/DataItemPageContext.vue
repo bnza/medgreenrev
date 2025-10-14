@@ -15,7 +15,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
         <!--        <v-tab value="samples">samples</v-tab>-->
-        <v-tab value="sus">stratigraphic-units</v-tab>
+        <v-tab value="sus">stratigraphic units</v-tab>
         <v-tab value="zooAnalyses">zoo analyses</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">

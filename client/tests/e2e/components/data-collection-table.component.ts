@@ -53,4 +53,40 @@ export class DataCollectionTableComponent extends BaseComponent {
   expectNotToHaveRowContainingText(text: string | RegExp) {
     return expect(this.getRowByText(text)).toHaveCount(0)
   }
+
+  getTotalItemsCount() {
+    return this.footer.locator('.v-data-table-footer__info').textContent()
+  }
+
+  async getPaginationInfo() {
+    const text = await this.footer
+      .locator('.v-data-table-footer__info')
+      .textContent()
+    return text?.trim() || ''
+  }
+
+  async getCurrentPageRange(key?: 'start' | 'end' | 'total') {
+    const paginationText = await this.getPaginationInfo()
+
+    // Parse text like "1-10 of 63" to extract numbers
+    const match = paginationText.match(/^(\d+)-(\d+) of (\d+)$/)
+
+    const paginationRange: { start?: number; end?: number; total?: number } = {
+      start: undefined,
+      end: undefined,
+      total: undefined,
+    }
+
+    if (match) {
+      paginationRange.start = match[1] ? parseInt(match[1], 10) : undefined
+      paginationRange.end = match[2] ? parseInt(match[2], 10) : undefined
+      paginationRange.total = match[3] ? parseInt(match[3], 10) : undefined
+      if (key) {
+        return paginationRange[key]
+      }
+      return paginationRange
+    }
+
+    return null
+  }
 }

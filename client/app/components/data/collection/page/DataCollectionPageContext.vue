@@ -30,6 +30,9 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
         : hasAnySitePrivilege,
     }"
   >
+    <template #search-bar>
+      <data-collection-search-text-field :path />
+    </template>
     <data-collection-table-context :path :parent />
   </data-collection-page>
 </template>

@@ -1,6 +1,6 @@
 import { BaseDataPage } from '~~/tests/e2e/pages/base-data.page'
 import { DataCollectionTableComponent } from '~~/tests/e2e/components/data-collection-table.component'
-import type { Page } from '@playwright/test'
+import type { Locator, Page } from '@playwright/test'
 import { DataDialogCreateComponent } from '~~/tests/e2e/components/data-dialog-create.component'
 import { DataDialogUpdateComponent } from '~~/tests/e2e/components/data-dialog-update.component'
 import { DataDialogDeleteComponent } from '~~/tests/e2e/components/data-dialog-delete.component'
@@ -24,8 +24,9 @@ export abstract class BaseCollectionPage extends BaseDataPage {
   constructor(
     page: Page,
     actionMenuTestId = 'data-toolbar-collection-action-menu',
+    containerOrTestId: string | Locator = 'data-card',
   ) {
-    super(page, actionMenuTestId)
+    super(page, actionMenuTestId, containerOrTestId)
   }
 
   public async awaitSearchResults(text: string) {

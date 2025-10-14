@@ -4,8 +4,16 @@ import type { Locator, Page } from '@playwright/test'
 
 export abstract class BaseDataPage extends BasePage {
   public readonly dataCard: DataCardComponent
-  constructor(page: Page, actionMenuTestId: string) {
+  constructor(
+    page: Page,
+    actionMenuTestId: string,
+    containerOrTestId: string | Locator = 'data-card',
+  ) {
     super(page)
-    this.dataCard = new DataCardComponent(page, actionMenuTestId)
+    this.dataCard = new DataCardComponent(
+      page,
+      actionMenuTestId,
+      containerOrTestId,
+    )
   }
 }

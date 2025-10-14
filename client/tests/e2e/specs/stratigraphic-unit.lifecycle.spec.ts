@@ -3,6 +3,12 @@ import { loadFixtures, resetFixtureMedia } from '~~/tests/e2e/utils/api'
 import { StratigraphicUnitCollectionPage } from '~~/tests/e2e/pages/stratigraphic-unit-collection.page'
 import { StratigraphicUnitsItemPage } from '~~/tests/e2e/pages/stratigraphic-units-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
+import { SiteCollectionPage } from '~~/tests/e2e/pages/site-collection.page'
+import { SiteItemPage } from '~~/tests/e2e/pages/site-item.page'
+import { SampleCollectionPage } from '~~/tests/e2e/pages/sample-collection.page'
+import { SampleItemPage } from '~~/tests/e2e/pages/sample-item.page'
+import { ContextCollectionPage } from '~~/tests/e2e/pages/context-collection.page'
+import { ContextItemPage } from '~~/tests/e2e/pages/context-item.page'
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -121,6 +127,119 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       )
       await collectionPom.table.expectData()
       await collectionPom.table.expectRowToHaveText('PA.23.3', 'PA.23.3')
+    })
+
+    test.describe('Sub tables', () => {
+      test('Site', async ({ page }) => {
+        const parentCollectionPom = new SiteCollectionPage(page)
+        const parentItemPom = new SiteItemPage(page)
+        const collectionPom = new StratigraphicUnitCollectionPage(
+          page,
+          undefined,
+          'child-data-card',
+        )
+        await parentCollectionPom.open()
+        await parentCollectionPom.table
+          .getItemNavigationLink('TO', NavigationLinksButton.Read)
+          .click()
+        await parentItemPom.page
+          .getByRole('tab', { name: /stratigraphic/i })
+          .click()
+        await collectionPom.dataCard.expectToHaveTitle(/stratigraphic units/i)
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await expect(
+          collectionPom.dataDialogCreate.form.getByLabel('site'),
+        ).toBeDisabled()
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year' })
+          .fill('2025')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'number' })
+          .fill('999')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'interpretation' })
+          .fill(
+            'Test stratigraphic unit for archaeological analysis created from site',
+          )
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+        await collectionPom.table.expectRowToHaveText(
+          'TO.25.999',
+          'Test stratigraphic unit for archaeological analysis created from site',
+        )
+      })
+    })
+
+    test.describe('Associations', () => {
+      test('Samples', async ({ page }) => {
+        const parentCollectionPom = new SampleCollectionPage(page)
+        const parentItemPom = new SampleItemPage(page)
+        const collectionPom = new StratigraphicUnitCollectionPage(
+          page,
+          undefined,
+          'child-data-card',
+        )
+        await parentCollectionPom.open()
+        await parentCollectionPom.awaitSearchResults('TO.CO')
+        await parentCollectionPom.table
+          .getItemNavigationLink(/TO\.CO/, NavigationLinksButton.Read)
+          .click()
+        await parentItemPom.form.waitForLoad()
+        await parentItemPom.page
+          .getByRole('tab', { name: /stratigraphic/i })
+          .click()
+        await collectionPom.dataCard.expectToHaveTitle(
+          /sample\/SU associations/i,
+        )
+        await collectionPom.table.expectData()
+        expect(await collectionPom.table.getCurrentPageRange('total')).toBe(1)
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await expect(
+          collectionPom.dataDialogCreate.form.getByLabel('sample'),
+        ).toBeDisabled()
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('stratigraphic unit')
+          .fill('TO')
+        await page.getByRole('option', { name: /TO/ }).first().click()
+        await collectionPom.dataDialogCreate.submitForm()
+        expect(await collectionPom.table.getCurrentPageRange('total')).toBe(2)
+      })
+      test('Context', async ({ page }) => {
+        const parentCollectionPom = new ContextCollectionPage(page)
+        const parentItemPom = new ContextItemPage(page)
+        const collectionPom = new StratigraphicUnitCollectionPage(
+          page,
+          undefined,
+          'child-data-card',
+        )
+        await parentCollectionPom.open()
+        await parentCollectionPom.awaitSearchResults('floor')
+        await parentCollectionPom.table
+          .getItemNavigationLink(/floor I/, NavigationLinksButton.Read)
+          .click()
+        await parentItemPom.form.waitForLoad()
+        await parentItemPom.page
+          .getByRole('tab', { name: /stratigraphic/i })
+          .click()
+        await collectionPom.dataCard.expectToHaveTitle(
+          /context\/SU associations/i,
+        )
+        await collectionPom.table.expectData()
+        expect(await collectionPom.table.getCurrentPageRange('total')).toBe(2)
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await expect(
+          collectionPom.dataDialogCreate.form.getByLabel('context'),
+        ).toBeDisabled()
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('stratigraphic unit')
+          .fill('SE')
+        await page.getByRole('option', { name: /SE/ }).first().click()
+        await collectionPom.dataDialogCreate.submitForm()
+        expect(await collectionPom.table.getCurrentPageRange('total')).toBe(3)
+      })
     })
 
     test('Data validation', async ({ page }) => {
