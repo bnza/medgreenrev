@@ -12,8 +12,16 @@ const role = computed(() => reduceAppRoles(props.item.roles))
 <template>
   <data-item-form-read>
     <v-row>
-      <v-col cols="4" class="px-2">
+      <v-col cols="8" class="px-2">
         <v-text-field :model-value="item.email" label="email" />
+      </v-col>
+      <v-col cols="4" class="px-2">
+        <v-checkbox
+          :model-value="item.enabled"
+          label="enabled"
+          color="secondary"
+          density="compact"
+        />
       </v-col>
     </v-row>
     <v-row>

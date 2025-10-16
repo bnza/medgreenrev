@@ -25,6 +25,12 @@ const config: Readonly<ResourceConfig> = {
       width: 120,
     },
     {
+      key: 'enabled',
+      title: 'enabled',
+      width: 70,
+      align: 'center',
+    },
+    {
       key: 'anthropologist',
       title: 'anthropologist',
       sortable: false,

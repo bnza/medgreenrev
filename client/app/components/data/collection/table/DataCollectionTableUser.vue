@@ -42,10 +42,18 @@ const { userData } = storeToRefs(userPasswordDialog())
       </navigation-resource-item>
     </template>
     <template #[`item.role`]="{ item }">
-      <p>
+      <p class="role-item">
         <v-icon icon="fas fa-user" :color="getRoleColor(item.roles)" />
         <span class="pl-2">{{ getRoleLabel(reduceAppRoles(item.roles)) }}</span>
       </p>
+    </template>
+    <template #[`item.enabled`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.enabled"
+        readonly
+        color="secondary"
+      />
     </template>
     <template #[`item.anthropologist`]="{ item }">
       <v-checkbox-btn
@@ -125,5 +133,11 @@ const { userData } = storeToRefs(userPasswordDialog())
 .centered-item {
   margin: 0 auto;
   display: block;
+}
+
+.role-item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 </style>

@@ -14,7 +14,7 @@ interface Props {
   errors?: RegleErrorTree<Partial<Item>>
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const role = computed({
   get() {
@@ -27,16 +27,30 @@ const role = computed({
     )
   },
 })
+
+if (props.mode === 'create') {
+  item.value.enabled = true
+}
 </script>
 
 <template>
   <v-row>
-    <v-text-field
-      v-model="item.email"
-      label="email"
-      :disabled="mode === 'update'"
-      :error-messages="errors?.email"
-    />
+    <v-col cols="8">
+      <v-text-field
+        v-model="item.email"
+        label="email"
+        :disabled="mode === 'update'"
+        :error-messages="errors?.email"
+      />
+    </v-col>
+    <v-col cols="4">
+      <v-checkbox
+        v-model="item.enabled"
+        label="enabled"
+        color="secondary"
+        density="compact"
+      />
+    </v-col>
   </v-row>
   <v-row>
     <v-col data-cy="roles-input-col" cols="4">

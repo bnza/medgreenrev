@@ -7245,6 +7245,11 @@ export interface components {
        *     ]
        */
       roles: string[]
+      /**
+       * @default true
+       * @example true
+       */
+      enabled: boolean
     }
     'User.UserPasswordChangeInputDto.jsonld': {
       oldPassword: string | null
@@ -7495,6 +7500,11 @@ export interface components {
        *     ]
        */
       roles: string[]
+      /**
+       * @default true
+       * @example true
+       */
+      enabled: boolean
       readonly userIdentifier?: string
     }
     'User.jsonld-user.create': {
@@ -7510,6 +7520,11 @@ export interface components {
        *     ]
        */
       roles: string[]
+      /**
+       * @default true
+       * @example true
+       */
+      enabled: boolean
     }
     'User.jsonld-user.me.read': {
       readonly '@context'?:
@@ -7535,6 +7550,11 @@ export interface components {
        *     ]
        */
       roles: string[]
+      /**
+       * @default true
+       * @example true
+       */
+      enabled: boolean
       /**
        * @description A map of site IDs (keys) to privilege levels (values).
        * @example {
