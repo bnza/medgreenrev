@@ -40,7 +40,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       )
 
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
-      await page.getByRole('option').first().click() // Select first available site
+      await page.getByRole('option', { name: /Pla/ }).first().click() // Select first available site
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'year' })
@@ -109,7 +109,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
         collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
       )
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /Pla/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'year' })
@@ -251,14 +251,20 @@ test.describe('Stratigraphic Unit lifecycle', () => {
 
       // Test 1: Required field validation - site field
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option', { name: /Sediment/ })
+        .first()
+        .click()
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page.keyboard.press('Backspace')
       await expect(
         page.locator('.v-input:has(label:text("site"))'),
       ).toContainText(/required/)
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option', { name: /Sediment/ })
+        .first()
+        .click()
 
       // Test 3: Required field validation - number field
       await collectionPom.dataDialogCreate.form.getByLabel('number').fill('2')

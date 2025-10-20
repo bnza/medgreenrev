@@ -28,10 +28,10 @@ test.describe('Sample lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('combobox', { name: 'site' })
         .click()
-      await page.getByRole('option').first().click() // Select first available site
+      await page.getByRole('option', { name: 'Nivar' }).first().click() // Select first available site
 
       await collectionPom.dataDialogCreate.form.getByLabel('type').click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /coal/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'year' })
@@ -49,7 +49,7 @@ test.describe('Sample lifecycle', () => {
       )
 
       // Verify the created item details
-      await itemPom.expectTextFieldToHaveValue('code', 'NI.GE.24.1')
+      await itemPom.expectTextFieldToHaveValue('code', 'NI.CO.24.1')
       await itemPom.expectTextFieldToHaveValue('year', '2024')
       await itemPom.expectTextFieldToHaveValue('number', '1')
       await itemPom.expectTextFieldToHaveValue(
@@ -61,7 +61,7 @@ test.describe('Sample lifecycle', () => {
 
       // UPDATE
       await collectionPom.table
-        .getItemNavigationLink('NI.GE.24.1', NavigationLinksButton.Update)
+        .getItemNavigationLink('NI.CO.24.1', NavigationLinksButton.Update)
         .click()
       await collectionPom.dataDialogUpdate.expectOldFormData()
       await collectionPom.dataDialogUpdate.form
@@ -75,23 +75,23 @@ test.describe('Sample lifecycle', () => {
       )
 
       await collectionPom.table.expectRowToHaveText(
-        'NI.GE.24.1',
+        'NI.CO.24.1',
         'Updated sample with detailed archaeological context',
       )
 
       // DELETE
       await collectionPom.table
-        .getItemNavigationLink('NI.GE.24.1', NavigationLinksButton.Delete)
+        .getItemNavigationLink('NI.CO.24.1', NavigationLinksButton.Delete)
         .click()
       await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
         'code',
-        'NI.GE.24.1',
+        'NI.CO.24.1',
       )
       await collectionPom.dataDialogDelete.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully deleted',
       )
-      await collectionPom.table.expectNotToHaveRowContainingText('NI.GE.24.1')
+      await collectionPom.table.expectNotToHaveRowContainingText('NI.CO.24.1')
 
       // CREATE AND NOT REDIRECT TO NEW SAMPLE PAGE
       await collectionPom.dataCard.clickOnActionMenuButton('add new')
@@ -99,10 +99,10 @@ test.describe('Sample lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('combobox', { name: 'site' })
         .click()
-      await page.getByRole('option').first().click() // Select first available site
+      await page.getByRole('option', { name: 'Nivar' }).first().click() // Select first available site
 
       await collectionPom.dataDialogCreate.form.getByLabel('type').click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /coal/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'year' })
@@ -120,7 +120,7 @@ test.describe('Sample lifecycle', () => {
       )
       await collectionPom.table.expectData()
       await collectionPom.table.expectRowToHaveText(
-        'NI.GE.24.2',
+        'NI.CO.24.2',
         'Second test sample for archaeological analysis',
       )
     })

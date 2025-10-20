@@ -32,7 +32,7 @@ test.describe('Microstratigraphic unit lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click() // Select first available stratigraphic unit
+      await page.getByRole('option', { name: 'SC2.24.705' }).click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
@@ -96,7 +96,7 @@ test.describe('Microstratigraphic unit lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: 'SC2.24.705' }).click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
@@ -135,7 +135,7 @@ test.describe('Microstratigraphic unit lifecycle', () => {
         .getByLabel('stratigraphic unit')
         .fill('308')
       await page.waitForTimeout(500)
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /308/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })

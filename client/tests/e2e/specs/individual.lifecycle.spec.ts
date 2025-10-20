@@ -29,7 +29,7 @@ test.describe('Individual lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click() // Select first available stratigraphic unit
+      await page.getByRole('option', { name: /SC/ }).first().click() // Select first available stratigraphic unit
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
@@ -78,7 +78,7 @@ test.describe('Individual lifecycle', () => {
         .filter({ hasText: /^sex/ })
         .locator('i')
         .click()
-      await page.getByRole('option').filter({ hasText: 'M' }).click()
+      await page.getByRole('option', { name: 'M', exact: true }).click()
 
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'notes' })
@@ -140,7 +140,7 @@ test.describe('Individual lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click() // Select first available stratigraphic unit
+      await page.getByRole('option', { name: /SC/ }).first().click()
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
         .fill('UNIQ-ID2')

@@ -30,7 +30,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click() // Select first available stratigraphic unit
+      await page.getByRole('option', { name: /SC/ }).first().click() // Select first available stratigraphic unit
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })
@@ -38,25 +38,31 @@ test.describe('Pottery lifecycle', () => {
 
       // Fill shape field (using autocomplete)
       await collectionPom.dataDialogCreate.form.getByLabel('shape').click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /close/ }).first().click()
 
       // Fill functional group field (using autocomplete)
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional group')
         .click()
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option', { name: /construction/ })
+        .first()
+        .click()
 
       // Fill functional form field (using autocomplete)
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional form')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /basin/ }).first().click()
 
       // Fill cultural context field (using autocomplete)
       await collectionPom.dataDialogCreate.form
         .getByLabel('cultural contexts')
         .click()
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option', { name: /visigothic/ })
+        .first()
+        .click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'chronology lower' })
@@ -128,7 +134,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /SC/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })
@@ -137,12 +143,15 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional group')
         .click()
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option', { name: /others/ })
+        .first()
+        .click()
 
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional form')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /basin/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'notes' })
@@ -170,7 +179,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /SC/ }).first().click()
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
@@ -187,7 +196,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /SC/ }).first().click()
 
       // Test 2: Required field validation - inventory field
       const inventoryField = collectionPom.dataDialogCreate.form.getByRole(
@@ -281,13 +290,16 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional group')
         .click()
-      await page.getByRole('option').first().click()
+      await page
+        .getByRole('option', { name: /construction/ })
+        .first()
+        .click()
 
       // Fill functional form field (using autocomplete)
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional form')
         .click()
-      await page.getByRole('option').first().click()
+      await page.getByRole('option', { name: /basin/ }).first().click()
 
       await collectionPom.dataDialogCreate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
