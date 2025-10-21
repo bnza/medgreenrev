@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     item: GetItemResponseMap['/api/data/contexts/{id}']
     readLink?: boolean

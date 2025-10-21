@@ -92,7 +92,10 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
 }
 // Possible redirect handling
 
+const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
+
 const submit = async () => {
+  status.value = 'pending'
   regle.value.$reset()
   await nextTick()
 
@@ -100,6 +103,7 @@ const submit = async () => {
 
   if (!valid) {
     console.log('Form is invalid, stopping submission')
+    status.value = 'error'
     return
   }
 
@@ -139,18 +143,24 @@ const submit = async () => {
     }
 
     addSuccess('Resource successfully created')
+    status.value = 'success'
+
+    await nextTick()
+
     visible.value = false
   } catch (e) {
     addError(e)
+    status.value = 'error'
   } finally {
     disabled.value = false
   }
 }
 
-watch(visible, (flag) => {
+watch(visible, async (flag) => {
   if (!flag) {
     regle.value.$value = props.getEmptyModel()
     regle.value.$reset()
+    status.value = 'idle'
   }
 })
 
@@ -179,7 +189,8 @@ const title = computed(() => props.title || labels[0])
               </v-col>
             </v-row>
             <async-wrapper>
-              <slot />
+              <slot v-if="status !== 'success'" />
+              <success-component v-else />
             </async-wrapper>
           </v-container>
         </v-sheet>
