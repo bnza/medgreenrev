@@ -1,11 +1,15 @@
 import type { FilterKey } from '~/utils/consts/configs/filters'
-import type { VocabularyGetCollectionPath } from './openapi-helpers'
+import type {
+  ListGetCollectionPath,
+  VocabularyGetCollectionPath,
+} from './openapi-helpers'
 
 export type OperandComponentsKey =
   | 'Boolean'
   | 'Single'
   | 'Numeric'
   | 'NumericRange'
+  | 'Selection'
   | 'SelectionZooBoneEndsPreserved'
   | 'SelectionZooBoneSide'
   | 'Vocabulary'
@@ -33,6 +37,7 @@ type BaseFilterDefinitionObject = {
 }
 
 type ComponentKeyWithPath =
+  | { componentKey: 'Selection'; path: ListGetCollectionPath }
   | { componentKey: 'Vocabulary'; path: VocabularyGetCollectionPath }
   | { componentKey: Exclude<OperandComponentsKey, 'Vocabulary'> }
 

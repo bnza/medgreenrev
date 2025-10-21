@@ -18,13 +18,8 @@ const config: Readonly<ResourceConfig> = {
       title: 'site',
     },
     {
-      key: 'type.group',
-      value: 'type.group',
-      title: 'group',
-    },
-    {
-      key: 'type.value',
-      value: 'type.value',
+      key: 'type',
+      value: 'type',
       title: 'type',
     },
     {

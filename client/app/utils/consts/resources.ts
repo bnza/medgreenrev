@@ -19,6 +19,7 @@ export const API_RESOURCE_MAP = {
   context: '/api/data/contexts',
   contextStratigraphicUnit: '/api/data/context_stratigraphic_units',
   individual: '/api/data/individuals',
+  listContextType: '/api/list/contexts/types',
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',

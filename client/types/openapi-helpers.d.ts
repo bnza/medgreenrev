@@ -53,6 +53,10 @@ export type VocabularyGetCollectionPath = {
     : never
 }[GetCollectionPath]
 
+export type ListGetCollectionPath = {
+  [K in GetCollectionPath]: K extends `${string}/list/${string}` ? K : never
+}[GetCollectionPath]
+
 export type PostCollectionPath = {
   [K in keyof paths]: paths[K] extends { post: any }
     ? paths[K]['post'] extends {

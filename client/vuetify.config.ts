@@ -29,6 +29,9 @@ const VSelect = {
 const VAutocomplete = {
   variant: 'underlined',
 }
+const VCombobox = {
+  variant: 'underlined',
+}
 const VCard = {
   variant: 'flat',
   VCardActions: {
@@ -37,6 +40,7 @@ const VCard = {
   VTextField,
   VAutocomplete,
   VBtnGroup,
+  VCombobox,
   VSelect,
 }
 

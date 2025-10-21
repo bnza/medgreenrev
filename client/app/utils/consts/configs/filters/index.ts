@@ -92,6 +92,13 @@ const NumericRange: StaticFiltersDefinitionObject = {
       `${filter.operands[0]}..${filter.operands[1]}`
   },
 }
+const SelectionContextType: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Selection',
+  path: '/api/list/contexts/types',
+  addToQueryObject: addToQueryObjectMultiple,
+}
 
 const SelectionZooBoneEndsPreserved: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
@@ -258,6 +265,7 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  SelectionContextType,
   SelectionZooBoneEndsPreserved,
   SelectionZooBoneSide,
   VocabularyAnalysisType,
@@ -433,7 +441,7 @@ const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   },
   type: {
     filters: {
-      VocabularyContextType,
+      SelectionContextType,
     },
   },
 }

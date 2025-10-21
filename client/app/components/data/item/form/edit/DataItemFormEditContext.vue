@@ -35,14 +35,12 @@ defineEmits<{
     </v-row>
     <v-row>
       <v-col cols="4">
-        <data-autocomplete-hierarchical-vocabulary
+        <data-selection-list
           v-model="item.type"
-          path="/api/vocabulary/context/types"
+          path="/api/list/contexts/types"
           label="type"
-          :error-messages="errors?.type"
         />
       </v-col>
-
       <v-col cols="8">
         <v-text-field
           v-model="item.name"

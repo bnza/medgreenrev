@@ -129,7 +129,9 @@ const submit = () => {
                 v-model="filter.operands"
                 v-model:valid="valid"
                 :path="
-                  filterDefinition.componentKey === 'Vocabulary'
+                  ['Vocabulary', 'Selection'].includes(
+                    filterDefinition.componentKey,
+                  )
                     ? filterDefinition.path
                     : undefined
                 "

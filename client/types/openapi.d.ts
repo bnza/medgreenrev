@@ -1250,6 +1250,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/list/contexts/types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListContextType resources.
+     * @description Retrieves the collection of ListContextType resources.
+     */
+    get: operations['api_listcontextstypes_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/contexts/types/{value}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListContextType resource.
+     * @description Retrieves a ListContextType resource.
+     */
+    get: operations['api_listcontextstypes_value_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/login': {
     parameters: {
       query?: never
@@ -3870,27 +3910,9 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
-    'Analysis-analysis.acl.read': {
-      readonly id: number & string
-      identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
-      status: number
-      type: components['schemas']['VocAnalysisType-analysis.acl.read']
-      responsible?: string | null
-      year: number
-      laboratory?: string | null
-      summary?: string | null
-      createdBy?: components['schemas']['User-analysis.acl.read'] | null
-    }
     'Analysis-analysis.create': {
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       /**
        * Format: iri-reference
@@ -3902,24 +3924,24 @@ export interface components {
       laboratory?: string | null
       summary?: string | null
     }
-    'Analysis.jsonld-analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
-      identifier: string
+    'Analysis-analysis.create.jsonMergePatch': {
+      identifier?: string
+      /** @default 0 */
+      status: number
       /**
-       * @default 0
-       * @example 0
+       * Format: iri-reference
+       * @example https://example.com/
        */
+      type?: string
+      responsible?: string | null
+      year?: number
+      laboratory?: string | null
+      summary?: string | null
+    }
+    'Analysis.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read']
       responsible?: string | null
@@ -3928,41 +3950,10 @@ export interface components {
       summary?: string | null
       createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
     }
-    'Analysis.jsonld-analysis.create': {
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
-      status: number
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type: string
-      responsible?: string | null
-      year: number
-      laboratory?: string | null
-      summary?: string | null
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
-      identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       responsible?: string | null
@@ -3973,24 +3964,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       responsible?: string | null
@@ -4001,24 +3978,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       responsible?: string | null
@@ -4029,24 +3992,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       responsible?: string | null
@@ -4057,24 +4006,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       responsible?: string | null
@@ -4085,24 +4020,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       responsible?: string | null
@@ -4113,24 +4034,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       responsible?: string | null
@@ -4141,24 +4048,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
         | null
     }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       responsible?: string | null
@@ -4169,24 +4062,10 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
         | null
     }
-    'Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       identifier: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       status: number
       type: components['schemas']['VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       responsible?: string | null
@@ -4197,29 +4076,52 @@ export interface components {
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
     }
-    'AnalysisContextBotany-analysis_join.update': {
+    'AnalysisContextBotany-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      taxonomies?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisContextBotany-analysis_join.update.jsonMergePatch': {
       taxonomies?: string[]
       summary?: string | null
     }
-    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
     }
-    'AnalysisContextBotany.jsonld-analysis_join.create': {
+    'AnalysisContextBotanyTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    'AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    'AnalysisContextZoo-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4233,77 +4135,43 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisContextBotanyTaxonomy.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
-    }
-    'AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
-    }
-    'AnalysisContextZoo-analysis_join.update': {
+    'AnalysisContextZoo-analysis_join.update.jsonMergePatch': {
       taxonomies?: string[]
       summary?: string | null
     }
-    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       summary?: string | null
     }
-    'AnalysisContextZoo.jsonld-analysis_join.create': {
+    'AnalysisContextZooTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    'AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+    }
+    'AnalysisIndividual-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       subject?: string
-      taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4311,69 +4179,16 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisContextZooTaxonomy.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
-    }
-    'AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
-    }
-    'AnalysisIndividual-analysis_join.update': {
+    'AnalysisIndividual-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
-    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
     }
-    'AnalysisIndividual.jsonld-analysis_join.create': {
+    'AnalysisPottery-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4386,27 +4201,16 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisPottery-analysis_join.update': {
+    'AnalysisPottery-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
-    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
     }
-    'AnalysisPottery.jsonld-analysis_join.create': {
+    'AnalysisSampleMicrostratigraphy-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4419,27 +4223,16 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphy-analysis_join.update': {
+    'AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.create': {
+    'AnalysisSiteAnthropology-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4452,27 +4245,16 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisSiteAnthropology-analysis_join.update': {
+    'AnalysisSiteAnthropology-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
-    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     }
-    'AnalysisSiteAnthropology.jsonld-analysis_join.create': {
+    'AnalysisZooBone-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4485,27 +4267,16 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisZooBone-analysis_join.update': {
+    'AnalysisZooBone-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
-    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
     }
-    'AnalysisZooBone.jsonld-analysis_join.create': {
+    'AnalysisZooTooth-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4518,37 +4289,13 @@ export interface components {
       analysis?: string
       summary?: string | null
     }
-    'AnalysisZooTooth-analysis_join.update': {
+    'AnalysisZooTooth-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
-    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       subject?: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
-      summary?: string | null
-    }
-    'AnalysisZooTooth.jsonld-analysis_join.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      subject?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
       summary?: string | null
     }
     'BotanyCharcoal-botany_charcoal.create': {
@@ -4574,19 +4321,31 @@ export interface components {
       part?: string | null
       notes?: string | null
     }
-    'BotanyCharcoal.jsonld-botany_charcoal.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'BotanyCharcoal-botany_charcoal.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+    }
+    'BotanyCharcoal.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
       /**
        * Format: iri-reference
@@ -4605,29 +4364,6 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
-    }
-    'BotanyCharcoal.jsonld-botany_charcoal.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      part?: string | null
-      notes?: string | null
     }
     'BotanySeed-botany_seed.create': {
       /**
@@ -4652,19 +4388,31 @@ export interface components {
       part?: string | null
       notes?: string | null
     }
-    'BotanySeed.jsonld-botany_seed.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'BotanySeed-botany_seed.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+    }
+    'BotanySeed.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
       /**
        * Format: iri-reference
@@ -4684,35 +4432,9 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'BotanySeed.jsonld-botany_seed.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      part?: string | null
-      notes?: string | null
-    }
     /** @description Unprocessable entity */
-    'ConstraintViolation-json': {
-      /**
-       * @default 422
-       * @example 422
-       */
+    ConstraintViolation: {
+      /** @default 422 */
       status: number
       violations?: {
         /** @description The property path of the violation */
@@ -4726,22 +4448,8 @@ export interface components {
       readonly instance?: string | null
     }
     /** @description Unprocessable entity */
-    'ConstraintViolation.jsonld-jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /**
-       * @default 422
-       * @example 422
-       */
+    'ConstraintViolation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      /** @default 422 */
       status: number
       violations?: {
         /** @description The property path of the violation */
@@ -4755,99 +4463,7 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
-    'Context-context.acl.read': {
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType-context.acl.read']
-      site?: components['schemas']['Site-context.acl.read']
-      name?: string
-      description?: string | null
-    }
     'Context-context.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site?: string
-      name?: string
-      description?: string | null
-    }
-    'Context-context_stratigraphic_unit.acl.read': {
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType-context_stratigraphic_unit.acl.read']
-      site?: components['schemas']['Site-context_stratigraphic_unit.acl.read']
-      name?: string
-    }
-    'Context-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
-      site?: components['schemas']['Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
-      name?: string
-      description?: string | null
-    }
-    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
-      name?: string
-      description?: string | null
-    }
-    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
-      name?: string
-      description?: string | null
-    }
-    'Context.jsonld-context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context.acl.read']
-      site?: components['schemas']['Site.jsonld-context.acl.read']
-      name?: string
-      description?: string | null
-    }
-    'Context.jsonld-context.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       type: string
       /**
        * Format: iri-reference
@@ -4857,52 +4473,52 @@ export interface components {
       name: string
       description?: string | null
     }
-    'Context.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context_stratigraphic_unit.acl.read']
+    'Context-context.create.jsonMergePatch': {
+      type?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      type?: string
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      type?: string
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      type?: string
+      site?: components['schemas']['Site.jsonld-context.acl.read']
+      name?: string
+      description?: string | null
+    }
+    'Context.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      type?: string
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
     }
-    'Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      type?: components['schemas']['VocContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+    'Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      type?: string
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
     }
-    'ContextStratigraphicUnit-context_stratigraphic_unit.acl.read': {
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit-context_stratigraphic_unit.acl.read']
-      context?: components['schemas']['Context-context_stratigraphic_unit.acl.read']
-    }
-    'ContextStratigraphicUnit-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly id?: number & string
-      context?: components['schemas']['Context-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
-    }
-    'ContextStratigraphicUnit.jsonld': {
-      readonly id?: number & string
+    ContextStratigraphicUnit: {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -4914,32 +4530,17 @@ export interface components {
        */
       context: string
     }
-    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
     }
-    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
     }
-    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
     /** @description A representation of common errors. */
@@ -4959,18 +4560,7 @@ export interface components {
       readonly type?: string
     }
     /** @description A representation of common errors. */
-    'Error.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Error.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       /** @description A short, human-readable summary of the problem. */
       readonly title?: string
       /** @description A human-readable explanation specific to this occurrence of the problem. */
@@ -4986,80 +4576,58 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
-    'Individual-individual.acl.read': {
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit-individual.acl.read']
-      identifier?: string
+    HydraCollectionBaseSchema: {
+      member: Record<string, never>[]
+      totalItems?: number
       /**
-       * Format: iri-reference
-       * @example https://example.com/
+       * @example {
+       *       "@id": "string",
+       *       "type": "string",
+       *       "first": "string",
+       *       "last": "string",
+       *       "previous": "string",
+       *       "next": "string"
+       *     }
        */
-      age?: string | null
-      sex?: string | null
-      notes?: string | null
+      view?: {
+        /** Format: iri-reference */
+        '@id': Iri
+        '@type': string
+        /** Format: iri-reference */
+        first?: string
+        /** Format: iri-reference */
+        last?: string
+        /** Format: iri-reference */
+        previous?: string
+        /** Format: iri-reference */
+        next?: string
+      }
+      search?: {
+        '@type': string
+        template?: string
+        variableRepresentation?: string
+        mapping?: {
+          '@type': string
+          variable?: string
+          property?: string | null
+          required?: boolean
+        }[]
+      }
+    }
+    HydraItemBaseSchema: {
+      '@context'?:
+        | string
+        | ({
+            '@vocab': string
+            /** @enum {string} */
+            hydra: 'http://www.w3.org/ns/hydra/core#'
+          } & {
+            [key: string]: unknown
+          })
+      '@id': Iri
+      '@type': string
     }
     'Individual-individual.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit?: string
-      identifier?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      age?: string | null
-      sex?: string | null
-      notes?: string | null
-    }
-    'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
-      identifier?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      age?: string | null
-      sex?: string | null
-      notes?: string | null
-    }
-    'Individual.jsonld-individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
-      identifier?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      age?: string | null
-      sex?: string | null
-      notes?: string | null
-    }
-    'Individual.jsonld-individual.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5075,27 +4643,58 @@ export interface components {
       sex?: 'F' | 'M' | '?' | null
       notes?: string | null
     }
-    'MediaObject-media_object.update': {
+    'Individual-individual.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      type: string
+      stratigraphicUnit?: string
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+    }
+    'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+    }
+    'Individual.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+    }
+    'ListContextType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly value?: string
+    }
+    'MediaObject-media_object.update.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
       description?: string | null
     }
-    'MediaObject.jsonld-media_object.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'MediaObject.jsonld-media_object.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5115,21 +4714,10 @@ export interface components {
       uploadDate?: string | null
       description?: string | null
       readonly contentThumbnailUrl?: string | null
-      dimensions?: string[] | null
+      dimensions?: null[] | null
     }
-    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5149,21 +4737,10 @@ export interface components {
       uploadDate?: string | null
       description?: string | null
       readonly contentThumbnailUrl?: string | null
-      dimensions?: string[] | null
+      dimensions?: null[] | null
     }
-    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5183,27 +4760,30 @@ export interface components {
       uploadDate?: string | null
       description?: string | null
       readonly contentThumbnailUrl?: string | null
-      dimensions?: string[] | null
+      dimensions?: null[] | null
     }
-    'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'MediaObjectAnalysis-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       item?: components['schemas']['Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       description?: string | null
     }
-    'MediaObjectAnalysis.jsonld-media_object_join.create': {
-      readonly id?: number & string
+    'MediaObjectStratigraphicUnit-media_object_join.create': {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5216,72 +4796,13 @@ export interface components {
       mediaObject?: string
       description?: string | null
     }
-    'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       item?: components['schemas']['StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       description?: string | null
     }
-    'MediaObjectStratigraphicUnit.jsonld-media_object_join.create': {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      item?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      mediaObject?: string
-      description?: string | null
-    }
-    'MicrostratigraphicUnit-microstratigraphic_unit.acl.read': {
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit-microstratigraphic_unit.acl.read']
-      identifier?: string
-      notes?: string | null
-      readonly code?: string
-    }
     'MicrostratigraphicUnit-microstratigraphic_unit.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit?: string
-      identifier?: string
-      notes?: string | null
-    }
-    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
-      identifier?: string
-      notes?: string | null
-      readonly code?: string
-    }
-    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5290,180 +4811,23 @@ export interface components {
       identifier: string
       notes?: string | null
     }
-    'Pottery-pottery.acl.read': {
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit-pottery.acl.read']
-      inventory?: string
-      decorations?: components['schemas']['PotteryDecoration-pottery.acl.read'][]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      surfaceTreatment?: string | null
-      innerColor?: string | null
-      outerColor?: string | null
-      decorationMotif?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
-      notes?: string | null
-    }
-    'Pottery-pottery.create': {
+    'MicrostratigraphicUnit-microstratigraphic_unit.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       stratigraphicUnit?: string
-      inventory?: string
-      decorations?: string[]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      surfaceTreatment?: string | null
-      innerColor?: string | null
-      outerColor?: string | null
-      decorationMotif?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
+      identifier?: string
       notes?: string | null
     }
-    'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
-      inventory?: string
-      decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      surfaceTreatment?: string | null
-      innerColor?: string | null
-      outerColor?: string | null
-      decorationMotif?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
+    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+      identifier?: string
       notes?: string | null
+      readonly code?: string
     }
-    'Pottery.jsonld-pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
-      inventory?: string
-      decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      surfaceTreatment?: string | null
-      innerColor?: string | null
-      outerColor?: string | null
-      decorationMotif?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
-      notes?: string | null
-    }
-    'Pottery.jsonld-pottery.create': {
+    'Pottery-pottery.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5503,26 +4867,122 @@ export interface components {
       functionalForm: string
       notes?: string | null
     }
-    'PotteryDecoration-pottery.acl.read': {
+    'Pottery-pottery.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      decoration?: string
+      stratigraphicUnit?: string
+      inventory?: string
+      decorations?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
     }
-    'PotteryDecoration.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly id?: number & string
+    'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      inventory?: string
+      decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
+    'Pottery.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
+      inventory?: string
+      decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
+    'PotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5534,36 +4994,14 @@ export interface components {
        */
       decoration?: string
     }
-    'PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       decoration?: string
     }
-    'PotteryDecoration.jsonld-pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'PotteryDecoration.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5571,68 +5009,7 @@ export interface components {
       decoration?: string
     }
     Sample: {
-      readonly id?: number & string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      sampleStratigraphicUnits?: string[]
-      description?: string | null
-      readonly code?: string
-    }
-    'Sample-sample.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sample.acl.read']
-      type?: components['schemas']['VocSampleType-sample.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      readonly code?: string
-    }
-    'Sample-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      type?: components['schemas']['VocSampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      readonly code?: string
-    }
-    'Sample-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-      type?: components['schemas']['VocSampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      readonly code?: string
-    }
-    'Sample.jsonld': {
-      readonly id?: number & string
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5643,127 +5020,74 @@ export interface components {
        * @example https://example.com/
        */
       type: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       year: number
       number: number
       sampleStratigraphicUnits?: string[]
       description?: string | null
       readonly code?: string
     }
-    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Sample.jsonMergePatch': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /** @default 0 */
+      year: number
+      number?: number
+      sampleStratigraphicUnits?: string[]
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       year: number
       number?: number
       description?: string | null
       readonly code?: string
     }
-    'Sample.jsonld-sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Sample.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       site?: components['schemas']['Site.jsonld-sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       year: number
       number?: number
       description?: string | null
       readonly code?: string
     }
-    'Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       year: number
       number?: number
       description?: string | null
       readonly code?: string
     }
-    'Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       year: number
       number?: number
       description?: string | null
       readonly code?: string
     }
-    'SampleStratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      sample?: components['schemas']['Sample-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-    }
-    'SampleStratigraphicUnit-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number & string
-      sample?: components['schemas']['Sample-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-    }
-    'SampleStratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-    }
-    'SampleStratigraphicUnit.jsonld': {
-      readonly id?: number & string
+    SampleStratigraphicUnit: {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5775,36 +5099,21 @@ export interface components {
        */
       stratigraphicUnit: string
     }
-    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
     }
-    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
     }
-    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     }
     SedimentCore: {
-      readonly id: number & string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5816,94 +5125,37 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore-sediment_core.acl.read': {
-      readonly id: number & string
-      site: components['schemas']['Site-sediment_core.acl.read']
-      year: number
-      number: number
-      description?: string | null
-      readonly code?: string
-    }
-    'SedimentCore-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id: number & string
-      site: components['schemas']['Site-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      year: number
-      number: number
-      description?: string | null
-      readonly code?: string
-    }
-    'SedimentCore-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      readonly id: number & string
-      site: components['schemas']['Site-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
-      year: number
-      number: number
-      description?: string | null
-      readonly code?: string
-    }
-    'SedimentCore.jsonld': {
-      readonly id: number & string
+    'SedimentCore.jsonMergePatch': {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      site: string
-      year: number
-      number: number
+      site?: string
+      year?: number
+      number?: number
       sedimentCoresStratigraphicUnits?: string[]
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore.jsonld-sediment_core.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'SedimentCore.jsonld-sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       site: components['schemas']['Site.jsonld-sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       site: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       year: number
       number: number
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id: number & string
+    'SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       site: components['schemas']['Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       year: number
       number: number
@@ -5911,7 +5163,7 @@ export interface components {
       readonly code?: string
     }
     SedimentCoreDepth: {
-      readonly id?: number & string
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5929,67 +5181,27 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'SedimentCoreDepth-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      sedimentCore: components['schemas']['SedimentCore-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      stratigraphicUnit: components['schemas']['StratigraphicUnit-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      /** @example 8.5 */
-      depthMin: string
-      /** @example 9.0 */
-      depthMax: string
-      notes?: string | null
-      readonly code?: string
-    }
-    'SedimentCoreDepth-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      readonly id?: number & string
-      sedimentCore: components['schemas']['SedimentCore-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
-      /** @example 8.5 */
-      depthMin: string
-      /** @example 9.0 */
-      depthMax: string
-      notes?: string | null
-    }
-    'SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      stratigraphicUnit: components['schemas']['StratigraphicUnit-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
-      /** @example 8.5 */
-      depthMin: string
-      /** @example 9.0 */
-      depthMax: string
-      notes?: string | null
-    }
-    'SedimentCoreDepth.jsonld': {
-      readonly id?: number & string
+    'SedimentCoreDepth.jsonMergePatch': {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      sedimentCore: string
+      sedimentCore?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      stratigraphicUnit: string
+      stratigraphicUnit?: string
       /** @example 8.5 */
-      depthMin: string
+      depthMin?: string
       /** @example 9.0 */
-      depthMax: string
+      depthMax?: string
       notes?: string | null
       readonly code?: string
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       /** @example 8.5 */
@@ -5999,10 +5211,8 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       /** @example 8.5 */
       depthMin: string
@@ -6010,89 +5220,14 @@ export interface components {
       depthMax: string
       notes?: string | null
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
-    }
-    'Site-context.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-context_stratigraphic_unit.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-individual.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-microstratigraphic_unit.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-pottery.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-sample.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site-sediment_core.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      code?: string
-      name?: string
-    }
-    'Site-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site-site.acl.read': {
-      readonly id?: number & string
-      code?: string
-      name?: string
-      description?: string | null
-      createdBy?: components['schemas']['User-site.acl.read'] | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext-site.acl.read'][]
     }
     'Site-site.create': {
       code: string
@@ -6103,100 +5238,38 @@ export interface components {
       fieldDirector?: string | null
       culturalContexts?: string[]
     }
-    'Site-sus.acl.read': {
-      readonly id?: number & string
+    'Site-site.create.jsonMergePatch': {
+      code?: string
+      name?: string
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: string[]
+    }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      code?: string
-      name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
       description?: string | null
@@ -6208,312 +5281,92 @@ export interface components {
       fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
     }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-botany_charcoal.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-botany_seed.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-microstratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-sediment_core.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-site.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
       description?: string | null
@@ -6523,100 +5376,29 @@ export interface components {
       fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
     }
-    'Site.jsonld-site.create': {
-      code: string
-      name: string
-      description?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: string[]
-    }
-    'Site.jsonld-site_user_privilege.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
       createdBy?:
         | components['schemas']['User.jsonld-site_user_privilege.acl.read']
         | null
     }
-    'Site.jsonld-sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'Site.jsonld-sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
-    'Site.jsonld-zoo_bone.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'Site.jsonld-zoo_tooth.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'Site.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
     }
-    'SiteCulturalContext-site.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string
-    }
-    'SiteCulturalContext.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly id?: number & string
+    'SiteCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -6628,72 +5410,21 @@ export interface components {
        */
       culturalContext?: string
     }
-    'SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       culturalContext?: string
     }
-    'SiteCulturalContext.jsonld-site.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'SiteCulturalContext.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       culturalContext?: string
     }
-    'SiteUserPrivilege-site_user_privilege.update': {
-      /**
-       * @default 0
-       * @example 0
-       */
-      privilege: number
-    }
-    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string
-      user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
-      site?: components['schemas']['Site.jsonld-site_user_privilege.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      privilege: number
-    }
-    'SiteUserPrivilege.jsonld-site_user_privilege.create': {
+    'SiteUserPrivilege-site_user_privilege.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -6704,493 +5435,164 @@ export interface components {
        * @example https://example.com/
        */
       site: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       privilege: number
     }
-    'StratigraphicUnit-context_stratigraphic_unit.acl.read': {
-      readonly id?: number & string
-      interpretation?: string | null
-      readonly code: string
+    'SiteUserPrivilege-site_user_privilege.update.jsonMergePatch': {
+      /** @default 0 */
+      privilege: number
     }
-    'StratigraphicUnit-individual.acl.read': {
-      site?: components['schemas']['Site-individual.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit-microstratigraphic_unit.acl.read': {
-      site?: components['schemas']['Site-microstratigraphic_unit.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit-pottery.acl.read': {
-      site?: components['schemas']['Site-pottery.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
+    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string
+      user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
+      site?: components['schemas']['Site.jsonld-site_user_privilege.acl.read']
+      /** @default 0 */
+      privilege: number
     }
     'StratigraphicUnit-su.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      site?: string
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-    }
-    'StratigraphicUnit-sus.acl.read': {
-      readonly id?: number & string
-      site?: components['schemas']['Site-sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-botany_charcoal.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-botany_seed.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-botany_seed.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-individual.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      site?: components['schemas']['Site.jsonld-pottery.acl.read']
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
-      /**
-       * @default 0
-       * @example 0
-       */
-      year: number
-      number?: number
-      description?: string | null
-      interpretation?: string | null
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly code: string
-    }
-    'StratigraphicUnit.jsonld-su.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       site: string
-      /**
-       * @default 0
-       * @example 0
-       */
+      /** @default 0 */
       year: number
       number: number
       description?: string | null
       interpretation?: string | null
     }
-    'StratigraphicUnit.jsonld-sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
-      site?: components['schemas']['Site.jsonld-sus.acl.read']
+    'StratigraphicUnit-su.create.jsonMergePatch': {
       /**
-       * @default 0
-       * @example 0
+       * Format: iri-reference
+       * @example https://example.com/
        */
+      site?: string
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+    }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-botany_seed.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      /** @default 0 */
       year: number
       number?: number
       description?: string | null
       interpretation?: string | null
       readonly code: string
     }
-    'StratigraphicUnit.jsonld-zoo_bone.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'StratigraphicUnit.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-individual.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-pottery.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       site?: components['schemas']['Site.jsonld-zoo_bone.acl.read']
       readonly code: string
     }
-    'StratigraphicUnit.jsonld-zoo_tooth.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'StratigraphicUnit.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       site?: components['schemas']['Site.jsonld-zoo_tooth.acl.read']
       readonly code: string
     }
-    'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      lftStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      relationship: string
-      rgtStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
-    }
-    'StratigraphicUnitRelationship.jsonld-su_relationship.create': {
+    'StratigraphicUnitRelationship-su_relationship.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -7207,307 +5609,23 @@ export interface components {
        */
       rgtStratigraphicUnit: string
     }
-    'UniqueValidator.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      criteria?: string[]
+    'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': components['schemas']['HydraItemBaseSchema'] & {
+      lftStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      relationship: string
+      rgtStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
+    }
+    'UniqueValidator.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      criteria?: null[]
       valid?: number
     }
-    'User-analysis.acl.read': {
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
+    'User-user.change-password.jsonMergePatch': {
+      plainPassword?: string | null
     }
-    'User-site.acl.read': {
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User-user.change-password': {
-      plainPassword: string | null
-    }
-    'User-user.update': {
-      /**
-       * @default [
-       *       "ROLE_USER"
-       *     ]
-       * @example [
-       *       "ROLE_USER"
-       *     ]
-       */
-      roles: string[]
-      /**
-       * @default true
-       * @example true
-       */
-      enabled: boolean
-    }
-    'User.UserPasswordChangeInputDto.jsonld': {
-      oldPassword: string | null
-      plainPassword: string | null
-      repeatPassword: string | null
-    }
-    'User.jsonld-analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-media_object.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-site.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-site_user_privilege.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-user.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      /** Format: uuid */
-      readonly id?: string | null
-      email?: string
-      /**
-       * @default [
-       *       "ROLE_USER"
-       *     ]
-       * @example [
-       *       "ROLE_USER"
-       *     ]
-       */
-      roles: string[]
-      /**
-       * @default true
-       * @example true
-       */
-      enabled: boolean
-      readonly userIdentifier?: string
-    }
-    'User.jsonld-user.create': {
+    'User-user.create': {
       /** Format: email */
       email: string
       plainPassword: string | null
@@ -7515,29 +5633,93 @@ export interface components {
        * @default [
        *       "ROLE_USER"
        *     ]
-       * @example [
+       */
+      roles: string[]
+      /** @default true */
+      enabled: boolean
+    }
+    'User-user.update.jsonMergePatch': {
+      /**
+       * @default [
        *       "ROLE_USER"
        *     ]
        */
       roles: string[]
-      /**
-       * @default true
-       * @example true
-       */
+      /** @default true */
       enabled: boolean
     }
-    'User.jsonld-user.me.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'User.UserPasswordChangeInputDto': {
+      oldPassword: string | null
+      plainPassword: string | null
+      repeatPassword: string | null
+    }
+    'User.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-media_object.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-user.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       email?: string
@@ -7545,15 +5727,23 @@ export interface components {
        * @default [
        *       "ROLE_USER"
        *     ]
-       * @example [
+       */
+      roles: string[]
+      /** @default true */
+      enabled: boolean
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-user.me.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      email?: string
+      /**
+       * @default [
        *       "ROLE_USER"
        *     ]
        */
       roles: string[]
-      /**
-       * @default true
-       * @example true
-       */
+      /** @default true */
       enabled: boolean
       /**
        * @description A map of site IDs (keys) to privilege levels (values).
@@ -7566,561 +5756,138 @@ export interface components {
         [key: string]: number
       }
     }
-    'VocAnalysisType-analysis.acl.read': {
-      code?: string
-      group?: string
-      value?: string
-    }
-    'VocAnalysisType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
     }
-    'VocBotanyElement.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
+    'VocBotanyElement.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocBotanyElementPart.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
+    'VocBotanyElementPart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocBotanyTaxonomy.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocBotanyTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
       vernacularName?: string
       class?: string
       family?: string | null
     }
-    'VocContextType-context.acl.read': {
-      group?: string
-      value?: string
-    }
-    'VocContextType-context_stratigraphic_unit.acl.read': {
-      group?: string
-      value?: string
-    }
-    'VocContextType-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocContextType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-context_stratigraphic_unit.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      group?: string
-      value?: string
-    }
-    'VocContextType.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
       group?: string
       value?: string
     }
     /** @description Cultural context vocabulary. */
-    'VocCulturalContext.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value?: string
     }
-    'VocIndividualAge.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value?: string
     }
-    'VocMediaObjectType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocMediaObjectType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       group?: string
       value?: string
     }
-    'VocPotteryDecoration.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocPotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocPotteryFunctionalForm.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocPotteryFunctionalForm.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocPotteryFunctionalGroup.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocPotteryFunctionalGroup.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocPotteryShape.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocPotteryShape.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocPotterySurfaceTreatment.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocPotterySurfaceTreatment.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value?: string
     }
-    'VocSampleType-sample.acl.read': {
-      code?: string
-      value?: string
-    }
-    'VocSampleType-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      code?: string
-      value?: string
-    }
-    'VocSampleType-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      code?: string
-      value?: string
-    }
-    'VocSampleType.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocSampleType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
       value?: string
     }
-    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value?: string
     }
-    'VocSampleType.jsonld-sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocSampleType.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value?: string
     }
-    'VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value?: string
     }
-    'VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value?: string
     }
-    'VocStratigraphicUnitRelation.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocStratigraphicUnitRelation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: string
       value?: string
       /**
@@ -8130,50 +5897,17 @@ export interface components {
       invertedBy?: string | null
       description?: string | null
     }
-    'VocZooBone.jsonld': {
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
+    'VocZooBone.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
       value?: string
     }
-    'VocZooBonePart.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocZooBonePart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
       value?: string
     }
-    'VocZooTaxonomy.jsonld': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'VocZooTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
       value?: string
@@ -8207,19 +5941,34 @@ export interface components {
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
     }
-    'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'ZooBone-zoo_bone.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      /** @enum {string|null} */
+      side?: 'L' | 'R' | '?' | null
+      notes?: string | null
+    }
+    'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -8241,19 +5990,8 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'ZooBone.jsonld-zoo_bone.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'ZooBone.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_bone.acl.read']
       /**
        * Format: iri-reference
@@ -8274,32 +6012,6 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
-    }
-    'ZooBone.jsonld-zoo_bone.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      part?: string | null
-      endsPreserved?: number | null
-      /** @enum {string|null} */
-      side?: 'L' | 'R' | '?' | null
-      notes?: string | null
     }
     'ZooTooth-zoo_tooth.create': {
       /**
@@ -8322,33 +6034,32 @@ export interface components {
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
     }
-    'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
+    'ZooTooth-zoo_tooth.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      connected?: boolean
+      /** @enum {string|null} */
+      side?: 'L' | 'R' | '?' | null
+      notes?: string | null
+    }
+    'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly code?: string
     }
-    'ZooTooth.jsonld-zoo_tooth.acl.read': {
-      readonly '@context'?:
-        | string
-        | ({
-            '@vocab': string
-            /** @enum {string} */
-            hydra: 'http://www.w3.org/ns/hydra/core#'
-          } & {
-            [key: string]: unknown
-          })
-      readonly '@id': Iri
-      readonly '@type': string
-      readonly id?: number & string
+    'ZooTooth.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_tooth.acl.read']
       /**
        * Format: iri-reference
@@ -8364,27 +6075,6 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
-    }
-    'ZooTooth.jsonld-zoo_tooth.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element: string | null
-      connected?: boolean
-      /** @enum {string|null} */
-      side?: 'L' | 'R' | '?' | null
-      notes?: string | null
     }
   }
   responses: never
@@ -8468,42 +6158,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Analysis-analysis.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Analysis.jsonld-analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Analysis.jsonld-analysis.acl.read'][]
           }
         }
       }
@@ -8519,7 +6176,7 @@ export interface operations {
     /** @description The new Analysis resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Analysis.jsonld-analysis.create']
+        'application/ld+json': components['schemas']['Analysis-analysis.create']
       }
     }
     responses: {
@@ -8549,9 +6206,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -8646,7 +6303,7 @@ export interface operations {
     /** @description The updated Analysis resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Analysis-analysis.create']
+        'application/merge-patch+json': components['schemas']['Analysis-analysis.create.jsonMergePatch']
       }
     }
     responses: {
@@ -8698,9 +6355,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -8787,41 +6444,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
           }
         }
       }
@@ -8837,7 +6461,7 @@ export interface operations {
     /** @description The new AnalysisContextBotany resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisContextBotany-analysis_join.create']
       }
     }
     responses: {
@@ -8867,9 +6491,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -8932,22 +6556,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -8964,7 +6580,7 @@ export interface operations {
     /** @description The updated AnalysisContextBotany resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisContextBotany-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisContextBotany-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -9016,9 +6632,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -9108,41 +6724,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
           }
         }
       }
@@ -9233,41 +6816,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
           }
         }
       }
@@ -9293,41 +6843,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld'][]
           }
         }
       }
@@ -9449,41 +6966,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
           }
         }
       }
@@ -9499,7 +6983,7 @@ export interface operations {
     /** @description The new AnalysisContextZoo resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisContextZoo-analysis_join.create']
       }
     }
     responses: {
@@ -9529,9 +7013,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -9594,22 +7078,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -9626,7 +7102,7 @@ export interface operations {
     /** @description The updated AnalysisContextZoo resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisContextZoo-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisContextZoo-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -9678,9 +7154,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -9770,41 +7246,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
           }
         }
       }
@@ -9895,41 +7338,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
           }
         }
       }
@@ -9955,41 +7365,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisContextZooTaxonomy.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisContextZooTaxonomy.jsonld'][]
           }
         }
       }
@@ -10094,41 +7471,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
           }
         }
       }
@@ -10144,7 +7488,7 @@ export interface operations {
     /** @description The new AnalysisIndividual resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisIndividual-analysis_join.create']
       }
     }
     responses: {
@@ -10174,9 +7518,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -10239,22 +7583,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -10271,7 +7607,7 @@ export interface operations {
     /** @description The updated AnalysisIndividual resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisIndividual-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisIndividual-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -10323,9 +7659,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -10398,41 +7734,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
           }
         }
       }
@@ -10506,41 +7809,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
           }
         }
       }
@@ -10639,41 +7909,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
         }
       }
@@ -10689,7 +7926,7 @@ export interface operations {
     /** @description The new AnalysisPottery resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisPottery-analysis_join.create']
       }
     }
     responses: {
@@ -10719,9 +7956,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -10784,22 +8021,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -10816,7 +8045,7 @@ export interface operations {
     /** @description The updated AnalysisPottery resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisPottery-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisPottery-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -10868,9 +8097,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -10971,41 +8200,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
         }
       }
@@ -11107,41 +8303,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
         }
       }
@@ -11207,41 +8370,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
         }
       }
@@ -11257,7 +8387,7 @@ export interface operations {
     /** @description The new AnalysisSampleMicrostratigraphy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.create']
       }
     }
     responses: {
@@ -11287,9 +8417,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -11352,22 +8482,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -11384,7 +8506,7 @@ export interface operations {
     /** @description The updated AnalysisSampleMicrostratigraphy resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -11436,9 +8558,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -11506,41 +8628,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
         }
       }
@@ -11609,41 +8698,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
         }
       }
@@ -11699,41 +8755,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
         }
       }
@@ -11749,7 +8772,7 @@ export interface operations {
     /** @description The new AnalysisSiteAnthropology resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.create']
       }
     }
     responses: {
@@ -11779,9 +8802,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -11844,22 +8867,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -11876,7 +8891,7 @@ export interface operations {
     /** @description The updated AnalysisSiteAnthropology resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -11928,9 +8943,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -11988,41 +9003,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
         }
       }
@@ -12081,41 +9063,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
         }
       }
@@ -12179,41 +9128,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
           }
         }
       }
@@ -12229,7 +9145,7 @@ export interface operations {
     /** @description The new AnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisZooBone-analysis_join.create']
       }
     }
     responses: {
@@ -12259,9 +9175,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -12324,22 +9240,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -12356,7 +9264,7 @@ export interface operations {
     /** @description The updated AnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisZooBone-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisZooBone-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -12408,9 +9316,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -12476,41 +9384,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
           }
         }
       }
@@ -12577,41 +9452,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
           }
         }
       }
@@ -12663,41 +9505,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
           }
         }
       }
@@ -12713,7 +9522,7 @@ export interface operations {
     /** @description The new AnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisZooTooth-analysis_join.create']
       }
     }
     responses: {
@@ -12743,9 +9552,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -12808,22 +9617,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -12840,7 +9641,7 @@ export interface operations {
     /** @description The updated AnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisZooTooth-analysis_join.update']
+        'application/merge-patch+json': components['schemas']['AnalysisZooTooth-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -12892,9 +9693,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -12948,41 +9749,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
           }
         }
       }
@@ -13037,41 +9805,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
           }
         }
       }
@@ -13132,41 +9867,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
           }
         }
       }
@@ -13182,7 +9884,7 @@ export interface operations {
     /** @description The new BotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.create']
+        'application/ld+json': components['schemas']['BotanyCharcoal-botany_charcoal.create']
       }
     }
     responses: {
@@ -13212,9 +9914,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -13309,7 +10011,7 @@ export interface operations {
     /** @description The updated BotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['BotanyCharcoal-botany_charcoal.create']
+        'application/merge-patch+json': components['schemas']['BotanyCharcoal-botany_charcoal.create.jsonMergePatch']
       }
     }
     responses: {
@@ -13361,9 +10063,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -13426,41 +10128,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
           }
         }
       }
@@ -13521,41 +10190,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
           }
         }
       }
@@ -13571,7 +10207,7 @@ export interface operations {
     /** @description The new BotanySeed resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.create']
+        'application/ld+json': components['schemas']['BotanySeed-botany_seed.create']
       }
     }
     responses: {
@@ -13601,9 +10237,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -13698,7 +10334,7 @@ export interface operations {
     /** @description The updated BotanySeed resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['BotanySeed-botany_seed.create']
+        'application/merge-patch+json': components['schemas']['BotanySeed-botany_seed.create.jsonMergePatch']
       }
     }
     responses: {
@@ -13750,9 +10386,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -13815,41 +10451,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
           }
         }
       }
@@ -13865,8 +10468,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[name]'?: 'asc' | 'desc'
-        'order[type.group]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
         type?: string
@@ -13930,42 +10532,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Context-context.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Context.jsonld-context.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Context.jsonld-context.acl.read'][]
           }
         }
       }
@@ -13981,7 +10550,7 @@ export interface operations {
     /** @description The new Context resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Context.jsonld-context.create']
+        'application/ld+json': components['schemas']['Context-context.create']
       }
     }
     responses: {
@@ -14011,9 +10580,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -14108,7 +10677,7 @@ export interface operations {
     /** @description The updated Context resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Context-context.create']
+        'application/merge-patch+json': components['schemas']['Context-context.create.jsonMergePatch']
       }
     }
     responses: {
@@ -14160,9 +10729,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -14177,8 +10746,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[name]'?: 'asc' | 'desc'
-        'order[type.group]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
         type?: string
@@ -14245,42 +10813,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Context-context.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Context.jsonld-context.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Context.jsonld-context.acl.read'][]
           }
         }
       }
@@ -14295,8 +10830,6 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
-        'order[context.type.group]'?: 'asc' | 'desc'
-        'order[context.type.value]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
@@ -14314,42 +10847,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['ContextStratigraphicUnit-context_stratigraphic_unit.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read'][]
           }
         }
       }
@@ -14365,7 +10865,7 @@ export interface operations {
     /** @description The new ContextStratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ContextStratigraphicUnit.jsonld']
+        'application/ld+json': components['schemas']['ContextStratigraphicUnit']
       }
     }
     responses: {
@@ -14395,9 +10895,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -14477,8 +10977,6 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
-        'order[context.type.group]'?: 'asc' | 'desc'
-        'order[context.type.value]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
@@ -14499,41 +10997,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -14548,8 +11013,6 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
-        'order[context.type.group]'?: 'asc' | 'desc'
-        'order[context.type.value]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
@@ -14570,42 +11033,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['ContextStratigraphicUnit-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
           }
         }
       }
@@ -14636,42 +11066,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Individual-individual.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Individual.jsonld-individual.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Individual.jsonld-individual.acl.read'][]
           }
         }
       }
@@ -14687,7 +11084,7 @@ export interface operations {
     /** @description The new Individual resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Individual.jsonld-individual.create']
+        'application/ld+json': components['schemas']['Individual-individual.create']
       }
     }
     responses: {
@@ -14717,9 +11114,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -14814,7 +11211,7 @@ export interface operations {
     /** @description The updated Individual resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Individual-individual.create']
+        'application/merge-patch+json': components['schemas']['Individual-individual.create.jsonMergePatch']
       }
     }
     responses: {
@@ -14866,9 +11263,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -14901,43 +11298,72 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Individual-individual.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Individual.jsonld-individual.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Individual.jsonld-individual.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_listcontextstypes_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListContextType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ListContextType.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listcontextstypes_value_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListContextType identifier */
+        value: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListContextType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListContextType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -15025,41 +11451,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['MediaObject.jsonld-media_object.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MediaObject.jsonld-media_object.acl.read'][]
           }
         }
       }
@@ -15114,9 +11507,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -15211,7 +11604,7 @@ export interface operations {
     /** @description The updated MediaObject resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['MediaObject-media_object.update']
+        'application/merge-patch+json': components['schemas']['MediaObject-media_object.update.jsonMergePatch']
       }
     }
     responses: {
@@ -15263,9 +11656,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -15327,41 +11720,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
           }
         }
       }
@@ -15387,41 +11747,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
           }
         }
       }
@@ -15437,7 +11764,7 @@ export interface operations {
     /** @description The new MediaObjectAnalysis resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['MediaObjectAnalysis.jsonld-media_object_join.create']
+        'application/ld+json': components['schemas']['MediaObjectAnalysis-media_object_join.create']
       }
     }
     responses: {
@@ -15467,9 +11794,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -15532,22 +11859,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -15571,41 +11890,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -15621,7 +11907,7 @@ export interface operations {
     /** @description The new MediaObjectStratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.create']
+        'application/ld+json': components['schemas']['MediaObjectStratigraphicUnit-media_object_join.create']
       }
     }
     responses: {
@@ -15651,9 +11937,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -15716,22 +12002,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -15758,41 +12036,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -15821,42 +12066,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
           }
         }
       }
@@ -15872,7 +12084,7 @@ export interface operations {
     /** @description The new MicrostratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.create']
+        'application/ld+json': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.create']
       }
     }
     responses: {
@@ -15902,9 +12114,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -15999,7 +12211,7 @@ export interface operations {
     /** @description The updated MicrostratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.create']
+        'application/merge-patch+json': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.create.jsonMergePatch']
       }
     }
     responses: {
@@ -16051,9 +12263,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -16084,42 +12296,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
           }
         }
       }
@@ -16218,42 +12397,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Pottery-pottery.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
           }
         }
       }
@@ -16269,7 +12415,7 @@ export interface operations {
     /** @description The new Pottery resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Pottery.jsonld-pottery.create']
+        'application/ld+json': components['schemas']['Pottery-pottery.create']
       }
     }
     responses: {
@@ -16299,9 +12445,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -16396,7 +12542,7 @@ export interface operations {
     /** @description The updated Pottery resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Pottery-pottery.create']
+        'application/merge-patch+json': components['schemas']['Pottery-pottery.create.jsonMergePatch']
       }
     }
     responses: {
@@ -16448,9 +12594,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -16551,42 +12697,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Pottery-pottery.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
           }
         }
       }
@@ -16612,41 +12725,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['PotteryDecoration.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['PotteryDecoration.jsonld'][]
           }
         }
       }
@@ -16733,42 +12813,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Sample-sample.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Sample.jsonld-sample.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Sample.jsonld-sample.acl.read'][]
           }
         }
       }
@@ -16784,7 +12831,7 @@ export interface operations {
     /** @description The new Sample resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Sample.jsonld']
+        'application/ld+json': components['schemas']['Sample']
       }
     }
     responses: {
@@ -16814,9 +12861,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -16911,7 +12958,7 @@ export interface operations {
     /** @description The updated Sample resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Sample']
+        'application/merge-patch+json': components['schemas']['Sample.jsonMergePatch']
       }
     }
     responses: {
@@ -16963,9 +13010,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -17020,42 +13067,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Sample-sample.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Sample.jsonld-sample.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Sample.jsonld-sample.acl.read'][]
           }
         }
       }
@@ -17088,42 +13102,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SampleStratigraphicUnit-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -17139,7 +13120,7 @@ export interface operations {
     /** @description The new SampleStratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SampleStratigraphicUnit.jsonld']
+        'application/ld+json': components['schemas']['SampleStratigraphicUnit']
       }
     }
     responses: {
@@ -17169,9 +13150,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -17283,42 +13264,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SampleStratigraphicUnit-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -17354,42 +13302,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SampleStratigraphicUnit-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
           }
         }
       }
@@ -17438,42 +13353,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCore-sediment_core.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
           }
         }
       }
@@ -17489,7 +13371,7 @@ export interface operations {
     /** @description The new SedimentCore resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SedimentCore.jsonld']
+        'application/ld+json': components['schemas']['SedimentCore']
       }
     }
     responses: {
@@ -17519,9 +13401,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -17616,7 +13498,7 @@ export interface operations {
     /** @description The updated SedimentCore resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['SedimentCore']
+        'application/merge-patch+json': components['schemas']['SedimentCore.jsonMergePatch']
       }
     }
     responses: {
@@ -17668,9 +13550,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -17721,42 +13603,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCore-sediment_core.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
           }
         }
       }
@@ -17791,42 +13640,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -17842,7 +13658,7 @@ export interface operations {
     /** @description The new SedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld']
+        'application/ld+json': components['schemas']['SedimentCoreDepth']
       }
     }
     responses: {
@@ -17872,9 +13688,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -17969,7 +13785,7 @@ export interface operations {
     /** @description The updated SedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['SedimentCoreDepth']
+        'application/merge-patch+json': components['schemas']['SedimentCoreDepth.jsonMergePatch']
       }
     }
     responses: {
@@ -18021,9 +13837,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -18060,42 +13876,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
           }
         }
       }
@@ -18133,42 +13916,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
           }
         }
       }
@@ -18247,42 +13997,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Site-site.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['Site.jsonld-site.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['Site.jsonld-site.acl.read'][]
           }
         }
       }
@@ -18298,7 +14015,7 @@ export interface operations {
     /** @description The new Site resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Site.jsonld-site.create']
+        'application/ld+json': components['schemas']['Site-site.create']
       }
     }
     responses: {
@@ -18328,9 +14045,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -18425,7 +14142,7 @@ export interface operations {
     /** @description The updated Site resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Site-site.create']
+        'application/merge-patch+json': components['schemas']['Site-site.create.jsonMergePatch']
       }
     }
     responses: {
@@ -18477,9 +14194,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -18504,41 +14221,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['SiteCulturalContext.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SiteCulturalContext.jsonld'][]
           }
         }
       }
@@ -18602,41 +14286,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
           }
         }
       }
@@ -18663,7 +14314,7 @@ export interface operations {
     /** @description The new SiteUserPrivilege resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.create']
+        'application/ld+json': components['schemas']['SiteUserPrivilege-site_user_privilege.create']
       }
     }
     responses: {
@@ -18704,9 +14355,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -18780,22 +14431,14 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
     }
   }
@@ -18812,7 +14455,7 @@ export interface operations {
     /** @description The updated SiteUserPrivilege resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['SiteUserPrivilege-site_user_privilege.update']
+        'application/merge-patch+json': components['schemas']['SiteUserPrivilege-site_user_privilege.update.jsonMergePatch']
       }
     }
     responses: {
@@ -18864,9 +14507,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -18898,41 +14541,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
           }
         }
       }
@@ -19020,41 +14630,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
           }
         }
       }
@@ -19098,41 +14675,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
           }
         }
       }
@@ -19265,42 +14809,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['StratigraphicUnit-sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
           }
         }
       }
@@ -19372,42 +14883,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['StratigraphicUnit-sus.acl.read'][]
-          'application/ld+json': {
-            member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'text/csv': unknown
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
           }
         }
       }
@@ -19423,7 +14901,7 @@ export interface operations {
     /** @description The new StratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-su.create']
+        'application/ld+json': components['schemas']['StratigraphicUnit-su.create']
       }
     }
     responses: {
@@ -19453,9 +14931,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -19550,7 +15028,7 @@ export interface operations {
     /** @description The updated StratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['StratigraphicUnit-su.create']
+        'application/merge-patch+json': components['schemas']['StratigraphicUnit-su.create.jsonMergePatch']
       }
     }
     responses: {
@@ -19602,9 +15080,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -19629,41 +15107,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read'][]
           }
         }
       }
@@ -19679,7 +15124,7 @@ export interface operations {
     /** @description The new StratigraphicUnitRelationship resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-su_relationship.create']
+        'application/ld+json': components['schemas']['StratigraphicUnitRelationship-su_relationship.create']
       }
     }
     responses: {
@@ -19709,9 +15154,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -19811,41 +15256,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read'][]
           }
         }
       }
@@ -20684,41 +16096,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['User.jsonld-user.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['User.jsonld-user.acl.read'][]
           }
         }
       }
@@ -20745,7 +16124,7 @@ export interface operations {
     /** @description The new User resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['User.jsonld-user.create']
+        'application/ld+json': components['schemas']['User-user.create']
       }
     }
     responses: {
@@ -20786,9 +16165,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -20803,7 +16182,7 @@ export interface operations {
     /** @description The new User resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['User.UserPasswordChangeInputDto.jsonld']
+        'application/ld+json': components['schemas']['User.UserPasswordChangeInputDto']
       }
     }
     responses: {
@@ -20812,42 +16191,28 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': unknown
-        }
+        content?: never
       }
       /** @description Invalid input */
       400: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Forbidden */
       403: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description An error occurred */
       422: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
+        content?: never
       }
     }
   }
@@ -20952,7 +16317,7 @@ export interface operations {
     /** @description The updated User resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['User-user.update']
+        'application/merge-patch+json': components['schemas']['User-user.update.jsonMergePatch']
       }
     }
     responses: {
@@ -21004,9 +16369,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -21024,7 +16389,7 @@ export interface operations {
     /** @description The updated User resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['User-user.change-password']
+        'application/merge-patch+json': components['schemas']['User-user.change-password.jsonMergePatch']
       }
     }
     responses: {
@@ -21033,53 +16398,35 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': unknown
-        }
+        content?: never
       }
       /** @description Invalid input */
       400: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Forbidden */
       403: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
+        content?: never
       }
       /** @description An error occurred */
       422: {
         headers: {
           [name: string]: unknown
         }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
-        }
+        content?: never
       }
     }
   }
@@ -21143,41 +16490,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocAnalysisType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocAnalysisType.jsonld'][]
           }
         }
       }
@@ -21232,41 +16546,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocBotanyElement.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocBotanyElement.jsonld'][]
           }
         }
       }
@@ -21321,41 +16602,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocBotanyElementPart.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocBotanyElementPart.jsonld'][]
           }
         }
       }
@@ -21410,41 +16658,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocBotanyTaxonomy.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocBotanyTaxonomy.jsonld'][]
           }
         }
       }
@@ -21502,41 +16717,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocContextType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocContextType.jsonld'][]
           }
         }
       }
@@ -21597,41 +16779,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocCulturalContext.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocCulturalContext.jsonld'][]
           }
         }
       }
@@ -21688,41 +16837,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocIndividualAge.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocIndividualAge.jsonld'][]
           }
         }
       }
@@ -21780,41 +16896,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocMediaObjectType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocMediaObjectType.jsonld'][]
           }
         }
       }
@@ -21871,41 +16954,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocPotteryDecoration.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocPotteryDecoration.jsonld'][]
           }
         }
       }
@@ -21960,41 +17010,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocPotteryFunctionalForm.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocPotteryFunctionalForm.jsonld'][]
           }
         }
       }
@@ -22049,41 +17066,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocPotteryFunctionalGroup.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocPotteryFunctionalGroup.jsonld'][]
           }
         }
       }
@@ -22138,41 +17122,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocPotteryShape.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocPotteryShape.jsonld'][]
           }
         }
       }
@@ -22229,41 +17180,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocPotterySurfaceTreatment.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocPotterySurfaceTreatment.jsonld'][]
           }
         }
       }
@@ -22324,41 +17242,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocSampleType.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocSampleType.jsonld'][]
           }
         }
       }
@@ -22413,41 +17298,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocStratigraphicUnitRelation.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocStratigraphicUnitRelation.jsonld'][]
           }
         }
       }
@@ -22508,41 +17360,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocZooBone.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocZooBone.jsonld'][]
           }
         }
       }
@@ -22597,41 +17416,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocZooBonePart.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocZooBonePart.jsonld'][]
           }
         }
       }
@@ -22686,41 +17472,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['VocZooTaxonomy.jsonld'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocZooTaxonomy.jsonld'][]
           }
         }
       }
@@ -22837,41 +17590,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
           }
         }
       }
@@ -22951,41 +17671,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
           }
         }
       }
@@ -23001,7 +17688,7 @@ export interface operations {
     /** @description The new ZooBone resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.create']
+        'application/ld+json': components['schemas']['ZooBone-zoo_bone.create']
       }
     }
     responses: {
@@ -23031,9 +17718,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -23128,7 +17815,7 @@ export interface operations {
     /** @description The updated ZooBone resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['ZooBone-zoo_bone.create']
+        'application/merge-patch+json': components['schemas']['ZooBone-zoo_bone.create.jsonMergePatch']
       }
     }
     responses: {
@@ -23180,9 +17867,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -23252,41 +17939,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
           }
         }
       }
@@ -23354,41 +18008,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': {
-            member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
-            totalItems?: number
-            /** @example {
-             *       "@id": "string",
-             *       "type": "string",
-             *       "first": "string",
-             *       "last": "string",
-             *       "previous": "string",
-             *       "next": "string"
-             *     } */
-            view?: {
-              /** Format: iri-reference */
-              '@id': Iri
-              '@type': string
-              /** Format: iri-reference */
-              first?: string
-              /** Format: iri-reference */
-              last?: string
-              /** Format: iri-reference */
-              previous?: string
-              /** Format: iri-reference */
-              next?: string
-            }
-            search?: {
-              '@type': string
-              template?: string
-              variableRepresentation?: string
-              mapping?: {
-                '@type': string
-                variable?: string
-                property?: string | null
-                required?: boolean
-              }[]
-            }
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
           }
         }
       }
@@ -23404,7 +18025,7 @@ export interface operations {
     /** @description The new ZooTooth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.create']
+        'application/ld+json': components['schemas']['ZooTooth-zoo_tooth.create']
       }
     }
     responses: {
@@ -23434,9 +18055,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -23531,7 +18152,7 @@ export interface operations {
     /** @description The updated ZooTooth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['ZooTooth-zoo_tooth.create']
+        'application/merge-patch+json': components['schemas']['ZooTooth-zoo_tooth.create.jsonMergePatch']
       }
     }
     responses: {
@@ -23583,9 +18204,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld-jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation-json']
-          'application/json': components['schemas']['ConstraintViolation-json']
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }

@@ -10,10 +10,6 @@ const props = withDefaults(
     readLink: true,
   },
 )
-
-const type = computed(
-  () => `${props.item.type?.group}/${props.item.type?.value}`,
-)
 </script>
 
 <template>
@@ -29,7 +25,7 @@ const type = computed(
     </v-row>
     <v-row>
       <v-col cols="4" xs="12" class="px-2">
-        <v-text-field :model-value="type" label="type" />
+        <v-text-field :model-value="item.type" label="type" />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.name" label="name" />
