@@ -46,13 +46,8 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
             }"
           />
         </v-tabs-window-item>
-        <v-tabs-window-item
-          v-if="hasAcl(item, 'canDelete') && item._acl.canDelete"
-          value="samples"
-          data-testid="tab-window-samples"
-        >
+        <v-tabs-window-item value="samples" data-testid="tab-window-samples">
           <data-collection-page-sample
-            v-if="item?.id"
             path="/api/data/sites/{parentId}/samples"
             :parent="{
               key: 'site',
