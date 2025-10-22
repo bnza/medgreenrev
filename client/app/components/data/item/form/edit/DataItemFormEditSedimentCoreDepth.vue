@@ -2,7 +2,7 @@
 import type { RegleErrorTree } from '@regle/core'
 import type { PostCollectionRequestMap, ResourceParent } from '~~/types'
 
-type Item = PostCollectionRequestMap['/api/data/sediment_core_depths']
+type Item = Partial<PostCollectionRequestMap['/api/data/sediment_core_depths']>
 const item = defineModel<Item>('item', { required: true })
 
 interface Props {

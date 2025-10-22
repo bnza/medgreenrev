@@ -1,8 +1,22 @@
 <script setup lang="ts">
-import type { GetCollectionMemberResponseMap, ReadonlyHeaders } from '~~/types'
+import type {
+  GetCollectionMemberResponseMap,
+  ReadonlyHeaders,
+  Iri,
+} from '~~/types'
+
+// Accept either full taxonomy members from the vocabulary collection
+// or lightweight references containing only an '@id'.
+// The component only uses '@id' to resolve full records from the store.
+
+type TaxonomyRef = { '@id': Iri }
+
+type TaxonomyItem =
+  | GetCollectionMemberResponseMap['/api/vocabulary/zoo/taxonomies']
+  | TaxonomyRef
 
 const props = defineProps<{
-  items?: GetCollectionMemberResponseMap['/api/vocabulary/zoo/taxonomies'][]
+  items?: TaxonomyItem[]
 }>()
 
 const vocabularyZooTaxonomy = useVocabularyStore(
