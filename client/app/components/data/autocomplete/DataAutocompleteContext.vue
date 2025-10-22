@@ -18,9 +18,18 @@ const props = withDefaults(defineProps<Props>(), {
     :path="props.path"
     :item-title="props.itemTitle"
     :granted-only
+    :query-params
   >
     <template #selection="{ item }">
       <v-list-item v-if="item.raw.site">
+        <span class="text-secondary font-weight-bold">{{
+          item.raw.site.code
+        }}</span>
+        - {{ item.raw.name }}
+      </v-list-item>
+    </template>
+    <template #item="{ item, props: slotProps }">
+      <v-list-item v-if="item.raw.site" v-bind="slotProps">
         <span class="text-secondary font-weight-bold">{{
           item.raw.site.code
         }}</span>

@@ -26,6 +26,11 @@ defineProps<Props>()
           :error-messages="errors?.sample"
           :disabled="parent?.key === 'sample'"
           :granted-only="true"
+          :query-params="
+            parent?.key === 'stratigraphicUnit'
+              ? { site: parent.item.site?.['@id'] }
+              : {}
+          "
         />
       </v-col>
       <v-col cols="12" md="6">
@@ -37,6 +42,9 @@ defineProps<Props>()
           :error-messages="errors?.stratigraphicUnit"
           :disabled="parent?.key === 'stratigraphicUnit'"
           :granted-only="true"
+          :query-params="
+            parent?.key === 'sample' ? { site: parent.item.site?.['@id'] } : {}
+          "
         />
       </v-col>
     </v-row>

@@ -25,6 +25,9 @@ defineProps<Props>()
         :granted-only="parent?.key !== 'stratigraphicUnit'"
         :error-messages="errors?.stratigraphicUnit"
         :disabled="parent?.key === 'stratigraphicUnit'"
+        :query-params="
+          parent?.key === 'context' ? { site: parent.item.site?.['@id'] } : {}
+        "
       />
     </v-col>
   </v-row>
@@ -38,6 +41,11 @@ defineProps<Props>()
         :granted-only="parent?.key !== 'context'"
         :error-messages="errors?.context"
         :disabled="parent?.key === 'context'"
+        :query-params="
+          parent?.key === 'stratigraphicUnit'
+            ? { site: parent.item.site?.['@id'] }
+            : {}
+        "
       />
     </v-col>
   </v-row>
