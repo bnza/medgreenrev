@@ -39,14 +39,17 @@ type BaseFilterDefinitionObject = {
 type ComponentKeyWithPath =
   | { componentKey: 'Selection'; path: ListGetCollectionPath }
   | { componentKey: 'Vocabulary'; path: VocabularyGetCollectionPath }
-  | { componentKey: Exclude<OperandComponentsKey, 'Vocabulary'> }
+  | { componentKey: Exclude<OperandComponentsKey, 'Vocabulary' | 'Selection'> }
 
 export type FilterDefinitionObject<K extends FilterKey = FilterKey> =
   BaseFilterDefinitionObject & {
     key: K
     property: string
     propertyLabel: string
-  } & ComponentKeyWithPath
+  } & ComponentKeyWithPath & {
+      // Optional path to support template access without narrowing
+      path?: ListGetCollectionPath | VocabularyGetCollectionPath
+    }
 
 export type ExpandedFilter = FilterDefinitionObject & Filter
 

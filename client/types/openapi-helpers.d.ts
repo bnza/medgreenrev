@@ -60,16 +60,16 @@ export type ListGetCollectionPath = {
 export type PostCollectionPath = {
   [K in keyof paths]: paths[K] extends { post: any }
     ? paths[K]['post'] extends {
-        responses:
-          | {
-              201: { content: { 'application/ld+json': any } }
-            }
-          | {
-              204: { content: { 'application/ld+json': any } }
-            }
+        responses: {
+          201: { content: { 'application/ld+json': any } }
+        }
       }
       ? K
-      : never
+      : paths[K]['post'] extends {
+            responses: { 204: any }
+          }
+        ? K
+        : never
     : never
 }[keyof paths]
 
@@ -144,7 +144,13 @@ export type GetCollectionMemberResponseMap = {
 }
 
 export type PostCollectionResponseMap = {
-  [K in PostCollectionPath]: paths[K]['post']['responses']['201']['content']['application/ld+json']
+  [K in PostCollectionPath]: paths[K]['post']['responses'] extends {
+    201: { content: { 'application/ld+json': infer R } }
+  }
+    ? R
+    : paths[K]['post']['responses'] extends { 204: any }
+      ? undefined
+      : never
 }
 
 export type PostCollectionRequestMap = {

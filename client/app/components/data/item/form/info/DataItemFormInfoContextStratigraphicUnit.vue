@@ -26,10 +26,7 @@ defineProps<{
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-text-field
-          label="context type"
-          :model-value="item.context?.type?.value"
-        />
+        <v-text-field label="context type" :model-value="item.context?.type" />
       </v-col>
       <v-col cols="2">
         <v-text-field label="site" :model-value="item.context?.site?.code" />

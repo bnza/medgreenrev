@@ -28,8 +28,8 @@ const {
 
 const hasPrivileges = computed(() => {
   if (props.parent) {
-    return props.parent.item.site?.id
-      ? hasSitePrivilege.value(props.parent.item.site.id)
+    return props.parent.item.site?.['@id']
+      ? hasSitePrivilege.value(props.parent.item.site['@id'])
       : false
   }
   return hasAnySitePrivilege.value

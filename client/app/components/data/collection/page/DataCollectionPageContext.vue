@@ -25,8 +25,8 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,
-      canCreate: parent?.item.id
-        ? hasSitePrivilege(parent.item.id)
+      canCreate: parent?.item?.['@id']
+        ? hasSitePrivilege(parent.item['@id'])
         : hasAnySitePrivilege,
     }"
   >

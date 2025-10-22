@@ -26,8 +26,8 @@ const { hasSitePrivilege, isAuthenticated, hasSpecialistRole } = useAppAuth()
     :show-back-button="!Boolean(parent)"
     :acl="{
       canExport: isAuthenticated,
-      canCreate: parent?.item.site?.id
-        ? hasSitePrivilege(parent.item.site.id)
+      canCreate: parent?.item.site?.['@id']
+        ? hasSitePrivilege(parent.item.site['@id'])
         : hasSpecialistRole(ApiSpecialistRole.GeoArchaeologist).value,
     }"
   >

@@ -18,7 +18,6 @@ const props = withDefaults(defineProps<Props>(), {
     :path="props.path"
     :item-title="props.itemTitle"
     :granted-only
-    :query-params
   >
     <template #selection="{ item }">
       <v-list-item v-if="item.raw.site">

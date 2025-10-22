@@ -1270,7 +1270,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/list/contexts/types/{value}': {
+  '/api/list/contexts/types/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -1281,7 +1281,7 @@ export interface paths {
      * Retrieves a ListContextType resource.
      * @description Retrieves a ListContextType resource.
      */
-    get: operations['api_listcontextstypes_value_get']
+    get: operations['api_listcontextstypes_id_get']
     put?: never
     post?: never
     delete?: never
@@ -6144,7 +6144,7 @@ export interface operations {
          * @description Filter analyses to only those created by the current user. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -10518,7 +10518,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -10796,7 +10796,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path: {
@@ -11334,7 +11334,7 @@ export interface operations {
       }
     }
   }
-  api_listcontextstypes_value_get: {
+  api_listcontextstypes_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -12383,7 +12383,7 @@ export interface operations {
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -12680,7 +12680,7 @@ export interface operations {
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path: {
@@ -12799,7 +12799,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -13050,7 +13050,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path: {
@@ -13339,7 +13339,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -13586,7 +13586,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path: {
@@ -13983,7 +13983,7 @@ export interface operations {
          * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -14792,7 +14792,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path: {
@@ -14869,7 +14869,7 @@ export interface operations {
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
-        granted?: boolean
+        granted?: string
       }
       header?: never
       path?: never
@@ -17568,12 +17568,12 @@ export interface operations {
          * @description Filter by bitwise AND operation - all specified bits must be set
          * @example 5
          */
-        'endsPreserved[and]'?: number
+        'endsPreserved[and]'?: string
         /**
          * @description Filter by bitwise AND operation - any of the specified bits must be set
          * @example 3
          */
-        'endsPreserved[any]'?: number
+        'endsPreserved[any]'?: string
       }
       header?: never
       path: {
@@ -17652,12 +17652,12 @@ export interface operations {
          * @description Filter by bitwise AND operation - all specified bits must be set
          * @example 5
          */
-        'endsPreserved[and]'?: number
+        'endsPreserved[and]'?: string
         /**
          * @description Filter by bitwise AND operation - any of the specified bits must be set
          * @example 3
          */
-        'endsPreserved[any]'?: number
+        'endsPreserved[any]'?: string
       }
       header?: never
       path?: never

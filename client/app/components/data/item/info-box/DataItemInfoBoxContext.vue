@@ -29,17 +29,7 @@ const vocabularyContextTypesStore = useVocabularyStore(
       <v-container v-if="item">
         <data-item-info-box-row label="site" :text="item.site?.name" />
         <data-item-info-box-row label="name" :text="item.name" />
-        <data-item-info-box-row
-          label="group"
-          :text="
-            vocabularyContextTypesStore.getValue(item.type?.['@id'], 'group')
-              .value
-          "
-        />
-        <data-item-info-box-row
-          label="type"
-          :text="vocabularyContextTypesStore.getValue(item.type?.['@id']).value"
-        />
+        <data-item-info-box-row label="type" :text="item.type" />
         <data-item-info-box-row label="description" :text="item.description" />
       </v-container>
     </template>
