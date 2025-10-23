@@ -40,18 +40,13 @@ export const contextSubResourceConfig = {
         maxWidth: '200',
       },
       {
-        key: 'site.code',
-        value: 'site.code',
+        key: 'context.site.code',
+        value: 'context.site.code',
         title: 'site',
       },
       {
-        key: 'context.type.group',
-        value: 'context.type.group',
-        title: 'group',
-      },
-      {
-        key: 'context.type.value',
-        value: 'context.type.value',
+        key: 'context.type',
+        value: 'context.type',
         title: 'type',
       },
       {

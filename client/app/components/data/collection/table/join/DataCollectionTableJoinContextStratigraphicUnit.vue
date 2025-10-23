@@ -44,6 +44,12 @@ const { id: parentId } = useResourceParent(props.parent)
         @delete="deleteDialogState = { id: item.id }"
       />
     </template>
+    <template #[`item.context.site.code`]="{ item }">
+      <data-item-info-box-span-site
+        :iri="item.context.site['@id']"
+        :text="item.context.site.code"
+      />
+    </template>
     <template #[`item.stratigraphicUnit.site.code`]="{ item }">
       <data-item-info-box-span-site
         :iri="item.stratigraphicUnit.site['@id']"

@@ -40,6 +40,12 @@ export const sampleSubResourceConfig: Readonly<ResourceConfig> = {
         maxWidth: '200',
       },
       {
+        key: 'sample.site.code',
+        value: 'sample.sample.code',
+        title: 'code',
+        sortable: false,
+      },
+      {
         key: 'sample.code',
         value: 'sample.code',
         title: 'code',
@@ -84,7 +90,7 @@ export const stratigraphicUnitSubResourceConfig: Readonly<ResourceConfig> = {
       },
       {
         key: 'stratigraphicUnit.site.code',
-        value: 'site.code',
+        value: 'stratigraphicUnit.site.code',
         title: 'site',
         width: '80',
       },
