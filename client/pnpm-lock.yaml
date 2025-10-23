@@ -17,6 +17,9 @@ importers:
       '@pinia/colada-nuxt':
         specifier: ^0.2.2
         version: 0.2.3(@pinia/colada@0.17.6(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3)))(magicast@0.3.5)
+      '@pinia/colada-plugin-retry':
+        specifier: ^0.1.1
+        version: 0.1.1(@pinia/colada@0.17.6(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3)))
       '@pinia/nuxt':
         specifier: ^0.11.2
         version: 0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))
@@ -1337,6 +1340,11 @@ packages:
 
   '@pinia/colada-nuxt@0.2.3':
     resolution: {integrity: sha512-JtyrwnoMV0MAnraMNhPJjO5OLQvtHRCHrer+XuVp7Wb9ZxpagwfCAax8tITAAxaablJ4t62PleU3K1NKJdzY7w==}
+    peerDependencies:
+      '@pinia/colada': '>=0.17.6'
+
+  '@pinia/colada-plugin-retry@0.1.1':
+    resolution: {integrity: sha512-Qo5pvncgQ63hstw4FcjBnXJ5qf0M6BO+Tf8tGhGJ8hiwuzsd5BVZdsSny3txtbU2urXCuGNrL45JNNu61sAelA==}
     peerDependencies:
       '@pinia/colada': '>=0.17.6'
 
@@ -6514,6 +6522,10 @@ snapshots:
       '@pinia/colada': 0.17.6(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
     transitivePeerDependencies:
       - magicast
+
+  '@pinia/colada-plugin-retry@0.1.1(@pinia/colada@0.17.6(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3)))':
+    dependencies:
+      '@pinia/colada': 0.17.6(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))
 
   '@pinia/colada@0.17.6(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))':
     dependencies:

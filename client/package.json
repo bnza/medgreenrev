@@ -30,6 +30,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@pinia/colada": "^0.17.3",
     "@pinia/colada-nuxt": "^0.2.2",
+    "@pinia/colada-plugin-retry": "^0.1.1",
     "@pinia/nuxt": "^0.11.2",
     "@regle/core": "^1.8.0",
     "@regle/rules": "^1.8.0",

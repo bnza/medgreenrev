@@ -1,7 +1,7 @@
 import type { ApiRequestOptions, OperationPathParams, paths } from '~~/types'
 import qs from 'qs'
 
-const { signOut, status } = useAuth()
+const { status, refresh } = useAuth()
 
 export abstract class BaseOperation<P extends keyof paths> {
   public readonly baseURL: string
@@ -66,26 +66,29 @@ export abstract class BaseOperation<P extends keyof paths> {
         ) {
           const responseData = context.response._data
           if (responseData?.message === 'Expired JWT Token') {
-            const { add: addMessage } = useMessagesStore()
-            const { pushForcedLogin } = useHistoryStackStore()
-            await signOut({ callbackUrl: '/login', redirect: true })
-            pushForcedLogin()
-            addMessage({
-              text: 'Session expired. Please login again.',
-              color: 'warning',
-              timeout: 0,
-            })
-          }
-        }
+            console.log('Expired JWT Token. Refreshing')
+            await refresh()
 
-        // Handle the possible MaybeArray<FetchHook> case
-        if (onResponseErrorOption) {
-          if (Array.isArray(onResponseErrorOption)) {
-            // If it's an array, call all handlers
-            await Promise.all(onResponseErrorOption.map((fn) => fn(context)))
-          } else if (typeof onResponseErrorOption === 'function') {
-            // If it's a single function, call it
-            await onResponseErrorOption(context)
+            // const { add: addMessage } = useMessagesStore()
+            // const { pushForcedLogin } = useHistoryStackStore()
+            // await signOut({ callbackUrl: '/login', redirect: true })
+            // pushForcedLogin()
+            // addMessage({
+            //   text: 'Session expired. Please login again.',
+            //   color: 'warning',
+            //   timeout: 0,
+            // })
+          }
+
+          // Handle the possible MaybeArray<FetchHook> case
+          if (onResponseErrorOption) {
+            if (Array.isArray(onResponseErrorOption)) {
+              // If it's an array, call all handlers
+              await Promise.all(onResponseErrorOption.map((fn) => fn(context)))
+            } else if (typeof onResponseErrorOption === 'function') {
+              // If it's a single function, call it
+              await onResponseErrorOption(context)
+            }
           }
         }
       },
