@@ -52,6 +52,9 @@ const canCreate = computed(
       canCreate: canCreate || hasRoleAdmin,
     }"
   >
+    <template #search-bar>
+      <data-collection-search-text-field :path />
+    </template>
     <data-collection-table-individual :path :parent />
   </data-collection-page>
 </template>
