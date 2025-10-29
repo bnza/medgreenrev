@@ -10,14 +10,10 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const {
-    QUERY_KEYS,
-    RESOURCE_QUERY_KEY,
-    toCacheKey,
-    remove,
-    invalidateQueries,
-    caches,
-  } = useAppQueryCache(apiResourcePath, path)
+  const { RESOURCE_QUERY_KEY, toCacheKey, remove, caches } = useAppQueryCache(
+    apiResourcePath,
+    path,
+  )
 
   // After re-get window focus, the query cache is cleared. So we need to manually signal that we need to refetch the data.
   const invalidatedCacheEntriesRaw = ref<any[]>([])
@@ -38,10 +34,10 @@ export function useDeleteItemMutation<P extends DeleteItemPath>(path: P) {
         remove(caches.get(keyHash)!)
       }
 
-      const cacheHits = await invalidateQueries({ key: QUERY_KEYS.root })
-      invalidatedCacheEntriesRaw.value = Array.isArray(cacheHits)
-        ? cacheHits
-        : []
+      // const cacheHits = await invalidateQueries({ key: QUERY_KEYS.root })
+      // invalidatedCacheEntriesRaw.value = Array.isArray(cacheHits)
+      //   ? cacheHits
+      //   : []
     },
   })
 

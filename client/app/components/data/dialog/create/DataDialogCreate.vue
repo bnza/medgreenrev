@@ -122,6 +122,10 @@ const submit = async () => {
 
     const data = await postCollection.mutateAsync({ model })
 
+    status.value = 'success'
+
+    await nextTick()
+
     // Eventual side effects are produced/handled by the parent Dialog
     emit('success', {
       request:
@@ -143,7 +147,6 @@ const submit = async () => {
     }
 
     addSuccess('Resource successfully created')
-    status.value = 'success'
 
     await nextTick()
 
