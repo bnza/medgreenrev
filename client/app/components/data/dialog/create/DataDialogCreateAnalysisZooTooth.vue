@@ -35,7 +35,7 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <data-item-form-edit-analysis-zoo-tooth
+      <lazy-data-item-form-edit-analysis-zoo-tooth
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
