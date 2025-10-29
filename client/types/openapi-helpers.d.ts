@@ -121,6 +121,8 @@ export type GetItemPath = {
 
 export type ApiResourceItemPath = `${ApiResourcePath}/{id}` & GetItemPath
 
+export type ApiListItemPath = `${ApiResourcePath}/{value}` & GetItemPath
+
 // Helper type to map from ApiResourceKey to ApiResourceItemPath
 export type ApiResourceKeyToItemPath<K extends ApiResourceKey> =
   `${(typeof API_RESOURCE_MAP)[K]}/{id}` & ApiResourceItemPath

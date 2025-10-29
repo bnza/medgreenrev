@@ -16,7 +16,7 @@ const config: Readonly<ResourceConfig> = {
       key: 'status',
       value: 'status',
       title: 'status',
-      minWidth: '100',
+      minWidth: '80',
     },
     {
       key: 'year',

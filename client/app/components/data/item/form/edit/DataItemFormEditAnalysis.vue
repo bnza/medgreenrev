@@ -49,11 +49,21 @@ defineEmits<{
       <v-col cols="4" class="px-2">
         <data-selection-analysis-status v-model="item.status" />
       </v-col>
-      <v-col cols="4" class="px-2">
-        <v-text-field v-model="item.laboratory" label="laboratory" />
-      </v-col>
       <v-col cols="4">
-        <v-text-field v-model="item.responsible" label="responsible" />
+        <data-selection-list
+          v-model="item.responsible"
+          path="/api/list/persons"
+          label="responsible"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="8" class="px-2">
+        <data-selection-list
+          v-model="item.laboratory"
+          path="/api/list/analyses/laboratories"
+          label="laboratory"
+        />
       </v-col>
     </v-row>
     <v-row>

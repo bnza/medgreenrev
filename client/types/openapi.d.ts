@@ -1250,6 +1250,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/list/analyses/laboratories': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListAnalysisLaboratory resources.
+     * @description Retrieves the collection of ListAnalysisLaboratory resources.
+     */
+    get: operations['api_listanalyseslaboratories_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/analyses/laboratories/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListAnalysisLaboratory resource.
+     * @description Retrieves a ListAnalysisLaboratory resource.
+     */
+    get: operations['api_listanalyseslaboratories_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/list/contexts/types': {
     parameters: {
       query?: never
@@ -1282,6 +1322,46 @@ export interface paths {
      * @description Retrieves a ListContextType resource.
      */
     get: operations['api_listcontextstypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/persons': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListPerson resources.
+     * @description Retrieves the collection of ListPerson resources.
+     */
+    get: operations['api_listpersons_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/persons/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListPerson resource.
+     * @description Retrieves a ListPerson resource.
+     */
+    get: operations['api_listpersons_id_get']
     put?: never
     post?: never
     delete?: never
@@ -4682,7 +4762,16 @@ export interface components {
       sex?: string | null
       notes?: string | null
     }
+    'ListAnalysisLaboratory.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: string
+      readonly value?: string
+    }
     'ListContextType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: string
+      readonly value?: string
+    }
+    'ListPerson.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: string
       readonly value?: string
     }
     'MediaObject-media_object.update.jsonMergePatch': {
@@ -11053,6 +11142,8 @@ export interface operations {
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        /** @description Search case insensitive match the identifier field */
+        search?: string
       }
       header?: never
       path?: never
@@ -11282,6 +11373,8 @@ export interface operations {
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        /** @description Search case insensitive match the identifier field */
+        search?: string
       }
       header?: never
       path: {
@@ -11302,6 +11395,68 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member?: components['schemas']['Individual.jsonld-individual.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_listanalyseslaboratories_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListAnalysisLaboratory collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ListAnalysisLaboratory.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listanalyseslaboratories_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListAnalysisLaboratory identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListAnalysisLaboratory resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListAnalysisLaboratory.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -11340,7 +11495,7 @@ export interface operations {
       header?: never
       path: {
         /** @description ListContextType identifier */
-        value: string
+        id: string
       }
       cookie?: never
     }
@@ -11353,6 +11508,68 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['ListContextType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_listpersons_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListPerson collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ListPerson.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listpersons_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListPerson identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListPerson resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListPerson.jsonld']
         }
       }
       /** @description Not found */
@@ -13331,8 +13548,8 @@ export interface operations {
          */
         description?: string
         /**
-         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
-         * @example ME.GE.34.93
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
          */
         search?: string
         /**
@@ -13578,8 +13795,8 @@ export interface operations {
          */
         description?: string
         /**
-         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
-         * @example ME.GE.34.93
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
          */
         search?: string
         /**

@@ -36,8 +36,9 @@ defineProps<Props>()
   </v-row>
   <v-row>
     <v-col cols="4" xs="12" class="px-2">
-      <v-text-field
+      <data-selection-list
         v-model="item.fieldDirector"
+        path="/api/list/persons"
         label="field director"
         :error-messages="errors?.fieldDirector"
       />

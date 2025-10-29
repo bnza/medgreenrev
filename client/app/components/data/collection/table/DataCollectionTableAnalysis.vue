@@ -54,7 +54,7 @@ const getStatusText = (status: number | null | undefined) => {
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Context" />-->
       <data-dialog-search :path title="Analysis" />
-      <data-dialog-create-analysis :parent @refresh="refetch()" />
+      <data-dialog-create-analysis :path :parent @refresh="refetch()" />
       <data-dialog-delete-analysis @refresh="refetch()" />
       <data-dialog-update-analysis @refresh="refetch()" />
     </template>

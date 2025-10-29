@@ -12,7 +12,7 @@ const props = withDefaults(
 
 const search = ref('')
 const { items, asyncStatus } = useGetCollectionListQuery(props.path, search)
-const model = defineModel<string | undefined>({ required: true })
+const model = defineModel<string | null | undefined>({ required: true })
 
 const primitiveItems = computed(() => items.value.map((item) => item.value))
 </script>
