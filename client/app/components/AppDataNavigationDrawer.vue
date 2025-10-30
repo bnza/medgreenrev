@@ -73,11 +73,11 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             data-testid="app-nav-drawer-li-analysis-context-zoo"
           />
         </v-list-group>
-        <v-list-group value="Element">
+        <v-list-group value="Subject">
           <template #activator="{ props }">
             <v-list-item
               v-bind="props"
-              title="Element"
+              title="Subject"
               data-testid="app-nav-drawer-li-analyses"
             />
           </template>
@@ -222,6 +222,30 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             data-testid="app-nav-drawer-li-sus"
           />
         </v-list-group>
+      </v-list-group>
+      <v-list-group value="Historical Data">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-magnifying-glass-chart"
+            title="Historical Data"
+            data-testid="app-nav-drawer-li-historical-data"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/data/history/locations"
+          router
+          title="Locations"
+          data-testid="app-nav-drawer-li-historical-data-locations"
+        />
+        <v-list-item
+          nuxt
+          to="/data/history/plants"
+          router
+          title="Plants"
+          data-testid="app-nav-drawer-li-analyses-historical-data-plants"
+        />
       </v-list-group>
       <v-list-group v-if="isAuthenticated" value="Media">
         <template #activator="{ props }">

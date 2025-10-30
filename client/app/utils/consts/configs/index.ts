@@ -14,6 +14,8 @@ import context from './data/context'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import * as sedimentCoreDepth from './data/sedimentCoreDepth'
+import historyLocation from './data/historyLocation'
+import historyPlant from './data/historyPlant'
 import mediaObject from './data/mediaObject'
 import microstratigraphicUnit from './data/microstratigraphicUnit'
 import individual from './data/individual'
@@ -52,6 +54,8 @@ export const RESOURCE_CONFIG_MAP = {
     contextStratigraphicUnit.stratigraphicUnitSubResourceConfig,
   '/api/data/media_objects': mediaObject,
   '/api/data/microstratigraphic_units': microstratigraphicUnit,
+  '/api/data/history/locations': historyLocation,
+  '/api/data/history/plants': historyPlant,
   '/api/data/individuals': individual,
   '/api/data/individuals/{parentId}/analyses': analysisIndividual,
   '/api/data/potteries': pottery,

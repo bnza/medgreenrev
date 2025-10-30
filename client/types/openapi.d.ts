@@ -1178,6 +1178,86 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryLocation resources.
+     * @description Retrieves the collection of HistoryLocation resources.
+     */
+    get: operations['api_datahistorylocations_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/locations/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryLocation resource.
+     * @description Retrieves a HistoryLocation resource.
+     */
+    get: operations['api_datahistorylocations_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryPlant resources.
+     * @description Retrieves the collection of HistoryPlant resources.
+     */
+    get: operations['api_datahistoryplants_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/plants/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryPlant resource.
+     * @description Retrieves a HistoryPlant resource.
+     */
+    get: operations['api_datahistoryplants_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/individuals': {
     parameters: {
       query?: never
@@ -3282,46 +3362,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/context/types': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of VocContextType resources.
-     * @description Retrieves the collection of VocContextType resources.
-     */
-    get: operations['api_vocabularycontexttypes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/context/types/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a VocContextType resource.
-     * @description Retrieves a VocContextType resource.
-     */
-    get: operations['api_vocabularycontexttypes_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/vocabulary/cultural_contexts': {
     parameters: {
       query?: never
@@ -3714,6 +3754,46 @@ export interface paths {
      * @description Retrieves a VocStratigraphicUnitRelation resource.
      */
     get: operations['api_vocabularystratigraphic_unitrelationships_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocZooBone resources.
+     * @description Retrieves the collection of VocZooBone resources.
+     */
+    get: operations['api_vocabularyhistoryplants_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocZooBone resource.
+     * @description Retrieves a VocZooBone resource.
+     */
+    get: operations['api_vocabularyhistory_id_get']
     put?: never
     post?: never
     delete?: never
@@ -4655,6 +4735,29 @@ export interface components {
       /** @description A URI reference that identifies the problem type */
       readonly type?: string
       readonly description?: string | null
+    }
+    'HistoryLocation.jsonld-history_location.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      name?: string
+      readonly n?: number
+      readonly e?: number
+    }
+    'HistoryLocation.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      name?: string
+    }
+    'HistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      plant?: components['schemas']['VocZooBone.jsonld-history_plant.acl.read']
+      location?: components['schemas']['HistoryLocation.jsonld-history_plant.acl.read']
+      chronologyLower?: number
+      chronologyUpper?: number
+      reference?: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
     }
     HydraCollectionBaseSchema: {
       member: Record<string, never>[]
@@ -5916,11 +6019,6 @@ export interface components {
       class?: string
       family?: string | null
     }
-    'VocContextType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
-      group?: string
-      value?: string
-    }
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
@@ -5988,7 +6086,14 @@ export interface components {
     }
     'VocZooBone.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      code?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      value?: string
+    }
+    'VocZooBone.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       value?: string
     }
     'VocZooBonePart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -11126,6 +11231,135 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member?: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_datahistorylocations_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[name]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['HistoryLocation.jsonld-history_location.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datahistorylocations_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryLocation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryLocation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryLocation.jsonld-history_location.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistoryplants_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[plant.value]'?: 'asc' | 'desc'
+        'order[location.name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['HistoryPlant.jsonld-history_plant.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datahistoryplants_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryPlant identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryPlant.jsonld-history_plant.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -16916,65 +17150,6 @@ export interface operations {
       }
     }
   }
-  api_vocabularycontexttypes_get_collection: {
-    parameters: {
-      query?: {
-        /** @description Search case insensitive match across group and value fields */
-        search?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description VocContextType collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member?: components['schemas']['VocContextType.jsonld'][]
-          }
-        }
-      }
-    }
-  }
-  api_vocabularycontexttypes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description VocContextType identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description VocContextType resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['VocContextType.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_vocabularycultural_contexts_get_collection: {
     parameters: {
       query?: {
@@ -17541,6 +17716,62 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocStratigraphicUnitRelation.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryplants_get_collection: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocZooBone.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistory_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocZooBone.jsonld']
         }
       }
       /** @description Not found */
