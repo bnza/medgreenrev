@@ -13,6 +13,7 @@ export type OperandComponentsKey =
   | 'SelectionZooBoneEndsPreserved'
   | 'SelectionZooBoneSide'
   | 'Vocabulary'
+  | 'HistoryLocation'
   | 'Site'
   | 'StratigraphicUnit'
 

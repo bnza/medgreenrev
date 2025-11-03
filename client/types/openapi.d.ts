@@ -1231,7 +1231,11 @@ export interface paths {
      */
     get: operations['api_datahistoryplants_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a HistoryPlant resource.
+     * @description Creates a HistoryPlant resource.
+     */
+    post: operations['api_datahistoryplants_post']
     delete?: never
     options?: never
     head?: never
@@ -1252,10 +1256,18 @@ export interface paths {
     get: operations['api_datahistoryplants_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the HistoryPlant resource.
+     * @description Removes the HistoryPlant resource.
+     */
+    delete: operations['api_datahistoryplants_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the HistoryPlant resource.
+     * @description Updates the HistoryPlant resource.
+     */
+    patch: operations['api_datahistoryplants_id_patch']
     trace?: never
   }
   '/api/data/individuals': {
@@ -1402,6 +1414,46 @@ export interface paths {
      * @description Retrieves a ListContextType resource.
      */
     get: operations['api_listcontextstypes_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/history/references': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListHistoryReference resources.
+     * @description Retrieves the collection of ListHistoryReference resources.
+     */
+    get: operations['api_listhistoryreferences_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/history/references/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListHistoryReference resource.
+     * @description Retrieves a ListHistoryReference resource.
+     */
+    get: operations['api_listhistoryreferences_id_get']
     put?: never
     post?: never
     delete?: never
@@ -3782,7 +3834,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/history/{id}': {
+  '/api/vocabulary/history/plants/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -3793,7 +3845,7 @@ export interface paths {
      * Retrieves a VocZooBone resource.
      * @description Retrieves a VocZooBone resource.
      */
-    get: operations['api_vocabularyhistory_id_get']
+    get: operations['api_vocabularyhistoryplants_id_get']
     put?: never
     post?: never
     delete?: never
@@ -4745,6 +4797,38 @@ export interface components {
     'HistoryLocation.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       name?: string
     }
+    'HistoryPlant-history_plant.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      plant: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      location: string
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
+      notes?: string | null
+    }
+    'HistoryPlant-history_plant.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      plant?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      location?: string
+      chronologyLower?: number
+      chronologyUpper?: number
+      reference?: string
+      notes?: string | null
+    }
     'HistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       plant?: components['schemas']['VocZooBone.jsonld-history_plant.acl.read']
@@ -4870,6 +4954,10 @@ export interface components {
       readonly value?: string
     }
     'ListContextType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: string
+      readonly value?: string
+    }
+    'ListHistoryReference.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
       readonly value?: string
     }
@@ -11243,6 +11331,11 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[name]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'name. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -11310,6 +11403,37 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        plant?: string
+        'plant[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
       }
       header?: never
       path?: never
@@ -11326,6 +11450,53 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member?: components['schemas']['HistoryPlant.jsonld-history_plant.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_datahistoryplants_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new HistoryPlant resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['HistoryPlant-history_plant.create']
+      }
+    }
+    responses: {
+      /** @description HistoryPlant resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryPlant.jsonld-history_plant.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -11360,6 +11531,121 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistoryplants_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryPlant identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistoryplants_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryPlant identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated HistoryPlant resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['HistoryPlant-history_plant.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description HistoryPlant resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryPlant.jsonld-history_plant.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -11742,6 +12028,68 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['ListContextType.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_listhistoryreferences_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListHistoryReference collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ListHistoryReference.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listhistoryreferences_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListHistoryReference identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListHistoryReference resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListHistoryReference.jsonld']
         }
       }
       /** @description Not found */
@@ -16530,7 +16878,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[email]'?: 'asc' | 'desc'
         /**
-         * @description Search case insensitive match the email field
+         * @description Search case sensitive match the email field
          * @example me
          */
         search?: string
@@ -17733,7 +18081,13 @@ export interface operations {
   }
   api_vocabularyhistoryplants_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
       header?: never
       path?: never
       cookie?: never
@@ -17753,7 +18107,7 @@ export interface operations {
       }
     }
   }
-  api_vocabularyhistory_id_get: {
+  api_vocabularyhistoryplants_id_get: {
     parameters: {
       query?: never
       header?: never

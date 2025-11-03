@@ -4,6 +4,7 @@
   generic="Path extends Extract<GetCollectionPath, '/api/data/history/plants'>"
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
+import DataDialogCreateHistoryPlant from '~/components/data/dialog/create/DataDialogCreateHistoryPlant.vue'
 
 const props = defineProps<{
   path: Path
@@ -34,10 +35,10 @@ const { updateDialogState } = storeToRefs(
     </template>
     <template #dialogs="{ refetch }">
       <!--      <data-dialog-download :path title="Context" />-->
-      <!--      <data-dialog-search :path title="Analysis" />-->
-      <!--      <data-dialog-create-analysis :path :parent @refresh="refetch()" />-->
-      <!--      <data-dialog-delete-analysis @refresh="refetch()" />-->
-      <!--      <data-dialog-update-analysis @refresh="refetch()" />-->
+      <data-dialog-search :path title="Plant (historical data)" />
+      <data-dialog-create-history-plant :path :parent @refresh="refetch()" />
+      <data-dialog-delete-history-plant @refresh="refetch()" />
+      <data-dialog-update-history-plant @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

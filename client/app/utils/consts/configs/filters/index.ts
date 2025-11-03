@@ -92,6 +92,7 @@ const NumericRange: StaticFiltersDefinitionObject = {
       `${filter.operands[0]}..${filter.operands[1]}`
   },
 }
+
 const SelectionContextType: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -114,19 +115,19 @@ const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyHistoryPlant: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectArray,
+  path: '/api/vocabulary/history/plants',
+}
+
 const VocabularyCulturalContext: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
   componentKey: 'Vocabulary',
   path: '/api/vocabulary/cultural_contexts',
-  addToQueryObject: addToQueryObjectArray,
-}
-
-const VocabularyContextType: StaticFiltersDefinitionObject = {
-  operationLabel: 'equals',
-  multiple: false,
-  componentKey: 'Vocabulary',
-  path: '/api/vocabulary/context/types',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -210,13 +211,12 @@ const VocabularyAnalysisType: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-// const VocabularyMimeType: StaticFiltersDefinitionObject = {
-//   operationLabel: 'equals',
-//   multiple: false,
-//   componentKey: 'Vocabulary',
-//   path: '/api/vocabulary/mime_types',
-//   addToQueryObject: addToQueryObjectArray,
-// }
+const HistoryLocationEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'HistoryLocation',
+  addToQueryObject: addToQueryObjectMultiple,
+}
 
 const SiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
@@ -259,6 +259,7 @@ export const API_FILTERS = {
   SearchPartial,
   SiteEquals,
   StratigraphicUnitEquals,
+  HistoryLocationEquals,
   NumericEqual,
   NumericGreaterThan,
   NumericGreaterThanOrEqualTo,
@@ -269,8 +270,8 @@ export const API_FILTERS = {
   SelectionZooBoneEndsPreserved,
   SelectionZooBoneSide,
   VocabularyAnalysisType,
-  VocabularyContextType,
   VocabularyCulturalContext,
+  VocabularyHistoryPlant,
   VocabularyMediaObjectType,
   VocabularyPotteryDecoration,
   VocabularyPotteryFunctionalForm,
@@ -292,9 +293,10 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/potteries'
   | '/api/data/analyses/zoo/bones'
   | '/api/data/analyses/zoo/teeth'
-  | '/api/data/media_objects'
+  | '/api/data/history/plants'
   | '/api/data/contexts'
   | '/api/data/contexts/{parentId}/analyses/zoo'
+  | '/api/data/media_objects'
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/sites'
@@ -1141,6 +1143,45 @@ const analysisZooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefini
     },
   }
 
+const historyPlantStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    plant: {
+      filters: {
+        VocabularyHistoryPlant,
+      },
+    },
+    location: {
+      filters: {
+        HistoryLocationEquals,
+      },
+    },
+    reference: {
+      filters: {
+        SearchPartial,
+      },
+    },
+    chronologyLower: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'chronology (lower)',
+    },
+    chronologyUpper: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'chronology (upper)',
+    },
+    notes: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
 export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
@@ -1154,6 +1195,7 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/contexts': contextStaticFiltersDefinition,
   '/api/data/contexts/{parentId}/analyses/zoo':
     analysisContextZooStaticFiltersDefinitionObject,
+  '/api/data/history/plants': historyPlantStaticFiltersDefinitionObject,
   '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
   '/api/data/potteries': potteryStaticFiltersDefinition,
   '/api/data/potteries/{parentId}/analyses':

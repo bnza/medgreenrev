@@ -9,6 +9,7 @@ import DataDialogSearchOperandStratigraphicUnit from '~/components/data/dialog/s
 import DataDialogSearchOperandSelection from '~/components/data/dialog/search/operand/DataDialogSearchOperandSelection.vue'
 import DataSelectionZooBoneEndsPreserved from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneEndsPreserved.vue'
 import DataSelectionZooBoneSide from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneSide.vue'
+import DataDialogSearchOperandHistoryLocation from '~/components/data/dialog/search/operand/DataDialogSearchOperandHistoryLocation.vue'
 
 const componentNameMap: Record<OperandComponentsKey, Component> = {
   Boolean: DataDialogSearchOperandBoolean,
@@ -19,6 +20,7 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   SelectionZooBoneEndsPreserved: DataSelectionZooBoneEndsPreserved,
   SelectionZooBoneSide: DataSelectionZooBoneSide,
   Vocabulary: DataDialogSearchOperandVocabulary,
+  HistoryLocation: DataDialogSearchOperandHistoryLocation,
   Site: DataDialogSearchOperandSite,
   StratigraphicUnit: DataDialogSearchOperandStratigraphicUnit,
 } as const

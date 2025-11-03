@@ -23,6 +23,7 @@ export const API_RESOURCE_MAP = {
   individual: '/api/data/individuals',
   listAnalysisLaboratory: '/api/list/analyses/laboratories',
   listContextType: '/api/list/contexts/types',
+  listHistoryReference: '/api/list/history/references',
   listPerson: '/api/list/persons',
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',

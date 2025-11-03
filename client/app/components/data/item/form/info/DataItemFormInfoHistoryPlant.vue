@@ -15,18 +15,11 @@ withDefaults(
 <template>
   <data-item-form-read>
     <v-row>
-      <v-col cols="6" xs="12" class="px-2">
-        <v-text-field :model-value="item.plant?.value" label="plant" />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="6" xs="12" class="px-2">
+      <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.location?.name" label="location" />
       </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="6" xs="12" class="px-2">
-        <v-text-field :model-value="item.reference" label="reference" />
+      <v-col cols="8" xs="12" class="px-2">
+        <v-text-field :model-value="item.plant?.value" label="plant" />
       </v-col>
     </v-row>
     <v-row>
@@ -41,6 +34,11 @@ withDefaults(
           :model-value="item.chronologyUpper"
           label="chronology (upper)"
         />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" xs="12" class="px-2">
+        <v-text-field :model-value="item.reference" label="reference" />
       </v-col>
     </v-row>
     <v-row>
