@@ -58,6 +58,190 @@ export interface paths {
     patch: operations['api_dataanalyses_id_patch']
     trace?: never
   }
+  '/api/data/analyses/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisBotanyCharcoal resources.
+     * @description Retrieves the collection of AnalysisBotanyCharcoal resources.
+     */
+    get: operations['api_dataanalysesbotanycharcoals_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisBotanyCharcoal resource.
+     * @description Creates a AnalysisBotanyCharcoal resource.
+     */
+    post: operations['api_dataanalysesbotanycharcoals_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/botany/charcoals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisBotanyCharcoal resource.
+     * @description Retrieves a AnalysisBotanyCharcoal resource.
+     */
+    get: operations['api_dataanalysesbotanycharcoals_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisBotanyCharcoal resource.
+     * @description Removes the AnalysisBotanyCharcoal resource.
+     */
+    delete: operations['api_dataanalysesbotanycharcoals_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisBotanyCharcoal resource.
+     * @description Updates the AnalysisBotanyCharcoal resource.
+     */
+    patch: operations['api_dataanalysesbotanycharcoals_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisBotanyCharcoal resources.
+     * @description Retrieves the collection of AnalysisBotanyCharcoal resources.
+     */
+    get: operations['api_dataanalyses_parentIdbotanycharcoals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/botany/charcoals/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisBotanyCharcoal resources.
+     * @description Retrieves the collection of AnalysisBotanyCharcoal resources.
+     */
+    get: operations['api_databotanycharcoals_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisBotanySeed resources.
+     * @description Retrieves the collection of AnalysisBotanySeed resources.
+     */
+    get: operations['api_dataanalysesbotanyseeds_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisBotanySeed resource.
+     * @description Creates a AnalysisBotanySeed resource.
+     */
+    post: operations['api_dataanalysesbotanyseeds_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/botany/seeds/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisBotanySeed resource.
+     * @description Retrieves a AnalysisBotanySeed resource.
+     */
+    get: operations['api_dataanalysesbotanyseeds_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisBotanySeed resource.
+     * @description Removes the AnalysisBotanySeed resource.
+     */
+    delete: operations['api_dataanalysesbotanyseeds_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisBotanySeed resource.
+     * @description Updates the AnalysisBotanySeed resource.
+     */
+    patch: operations['api_dataanalysesbotanyseeds_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisBotanySeed resources.
+     * @description Retrieves the collection of AnalysisBotanySeed resources.
+     */
+    get: operations['api_dataanalyses_parentIdbotanyseeds_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/botany/seeds/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisBotanySeed resources.
+     * @description Retrieves the collection of AnalysisBotanySeed resources.
+     */
+    get: operations['api_databotanyseeds_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/contexts/botany': {
     parameters: {
       query?: never
@@ -2642,6 +2826,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysesbotanycharcoals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysesbotanyseeds_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/contexts/botany': {
     parameters: {
       query?: never
@@ -4190,6 +4414,34 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
     }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
+    }
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
+    }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
@@ -4287,6 +4539,50 @@ export interface components {
       createdBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
+    }
+    'AnalysisBotanyCharcoal-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisBotanyCharcoal-analysis_join.update.jsonMergePatch': {
+      summary?: string | null
+    }
+    'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      summary?: string | null
+    }
+    'AnalysisBotanySeed-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      summary?: string | null
+    }
+    'AnalysisBotanySeed-analysis_join.update.jsonMergePatch': {
+      summary?: string | null
+    }
+    'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      summary?: string | null
     }
     'AnalysisContextBotany-analysis_join.create': {
       /**
@@ -4556,6 +4852,27 @@ export interface components {
       part?: string | null
       notes?: string | null
     }
+    'BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
     'BotanyCharcoal.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
@@ -4622,6 +4939,27 @@ export interface components {
        */
       part?: string | null
       notes?: string | null
+    }
+    'BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
     }
     'BotanySeed.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -5535,6 +5873,14 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    }
     'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
@@ -5762,6 +6108,14 @@ export interface components {
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
     }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      readonly code: string
+    }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
@@ -5948,6 +6302,16 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
@@ -6037,7 +6401,7 @@ export interface components {
       }
     }
     'VocAnalysisType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      id?: number
       code?: string
       group?: string
       value?: string
@@ -6053,6 +6417,16 @@ export interface components {
       value?: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value?: string
+    }
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value?: string
@@ -6640,6 +7014,772 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanycharcoals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisBotanyCharcoal resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisBotanyCharcoal-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisBotanyCharcoal resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanycharcoals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisBotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanyCharcoal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanycharcoals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisBotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanyCharcoal resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesbotanycharcoals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisBotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisBotanyCharcoal resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisBotanyCharcoal-analysis_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisBotanyCharcoal resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisBotanyCharcoal identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_databotanycharcoals_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisBotanyCharcoal identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanyseeds_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisBotanySeed resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisBotanySeed-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisBotanySeed resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanyseeds_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisBotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanySeed resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesbotanyseeds_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisBotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanySeed resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesbotanyseeds_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisBotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisBotanySeed resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisBotanySeed-analysis_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisBotanySeed resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisBotanySeed identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_databotanyseeds_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.element'?: string
+        'subject.element[]'?: string[]
+        'subject.part'?: string
+        'subject.part[]'?: string[]
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        'subject.stratigraphicUnit.year[between]'?: string
+        'subject.stratigraphicUnit.year[gt]'?: string
+        'subject.stratigraphicUnit.year[gte]'?: string
+        'subject.stratigraphicUnit.year[lt]'?: string
+        'subject.stratigraphicUnit.year[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'exists[summary]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisBotanySeed identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisBotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
+          }
         }
       }
     }
@@ -16063,6 +17203,68 @@ export interface operations {
     }
   }
   api_validatoruniqueanalyses_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysesbotanycharcoals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysesbotanyseeds_get: {
     parameters: {
       query?: never
       header?: never

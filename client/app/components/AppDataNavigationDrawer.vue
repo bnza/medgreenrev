@@ -97,6 +97,20 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
+            to="/data/analyses/botany/charcoals"
+            router
+            title="Botany charcoals"
+            data-testid="app-nav-drawer-li-analysis-botany-charcoals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/botany/seeds"
+            router
+            title="Botany seeds"
+            data-testid="app-nav-drawer-li-analysis-botany-seeds"
+          />
+          <v-list-item
+            nuxt
             to="/data/analyses/individuals"
             router
             title="Human Individuals"

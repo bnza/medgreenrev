@@ -7,6 +7,8 @@ import analysisPottery from './data/analysisPottery'
 import analysisIndividual from './data/analysisIndividual'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
+import analysisBotanySeed from './data/analysisBotanySeed'
+import analysisBotanyCharcoal from './data/analysisBotanyCharcoal'
 import botanyCharcoal from './data/botanyCharcoal'
 import botanySeed from './data/botanySeed'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
@@ -44,6 +46,8 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,
+  '/api/data/analyses/botany/seeds': analysisBotanySeed,
+  '/api/data/analyses/botany/charcoals': analysisBotanyCharcoal,
   '/api/data/botany/charcoals': botanyCharcoal,
   '/api/data/botany/seeds': botanySeed,
   '/api/data/context_stratigraphic_units': contextStratigraphicUnit.config,
@@ -83,4 +87,6 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/zoo/bones/{parentId}/analyses': analysisZooBone,
   '/api/data/zoo/teeth': zooTooth,
   '/api/data/zoo/teeth/{parentId}/analyses': analysisZooTooth,
+  '/api/data/botany/seeds/{parentId}/analyses': analysisBotanySeed,
+  '/api/data/botany/charcoals/{parentId}/analyses': analysisBotanyCharcoal,
 } as const satisfies Partial<Record<GetCollectionPath, ResourceConfig>>

@@ -3,6 +3,8 @@
 
 export const API_RESOURCE_MAP = {
   analysis: '/api/data/analyses',
+  analysisBotanyCharcoal: '/api/data/analyses/botany/charcoals',
+  analysisBotanySeed: '/api/data/analyses/botany/seeds',
   analysisContextBotany: '/api/data/analyses/contexts/botany',
   analysisContextBotanyTaxonomy: '/api/data/analysis_context_botany_taxonomies',
   analysisContextZoo: '/api/data/analyses/contexts/zoo',
