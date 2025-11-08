@@ -7,16 +7,23 @@ import type {
   OperationPathParams,
 } from '~~/types'
 
-const props = defineProps<{
-  path: Path
-  title?: string
-  identifierProp?: string
-  iri?: Iri
-}>()
+const props = withDefaults(
+  defineProps<{
+    path: Path
+    title?: string
+    identifierProp?: string
+    iri?: Iri
+    showBackButton?: boolean
+  }>(),
+  {
+    showBackButton: true,
+  },
+)
 
 defineSlots<{
   default(props: { item: GetItemResponseMap[Path] & ApiAclResource }): any
   dialogs(): any
+  error(props: { error: Error | null }): any
   'toolbar-append'(): any
 }>()
 
@@ -56,13 +63,15 @@ const title = computed(() => props.title || labels[0])
     :identifier
     :loading="status === 'pending'"
     :parent="false"
-    :show-back-button="!iri"
+    :show-back-button="showBackButton && !iri"
   >
     <template #toolbar-append>
       <slot name="toolbar-append" />
     </template>
     <loading-component v-if="status === 'pending'" />
-    <resource-not-found v-else-if="error" :error :path="props.path" />
+    <slot v-else-if="status === 'error'" name="error" v-bind="{ error }">
+      <resource-not-found :error :path="props.path" />
+    </slot>
     <v-container v-else-if="isValidItem(item)" class="m-0 p-0 card-container">
       <template #default>
         <Suspense suspensible>

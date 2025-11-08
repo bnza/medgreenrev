@@ -1,3 +1,4 @@
+import * as absDatingAnalysis from './data/absDatingAnalysis'
 import analysis from './data/analysis'
 import analysisContextBotany from './data/analysisContextBotany'
 import analysisContextZoo from './data/analysisContextZoo'
@@ -37,6 +38,19 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/admin/users': user,
   '/api/admin/users/me/site_user_privileges': currentUserSitePrivilege,
   '/api/data/analyses': analysis,
+  '/api/data/analyses/absolute_dating': absDatingAnalysis.default,
+  '/api/data/analyses/absolute_dating/botany/charcoals':
+    absDatingAnalysis.absDatingAnalysisBotanyCharcoal,
+  '/api/data/analyses/absolute_dating/botany/seeds':
+    absDatingAnalysis.absDatingAnalysisBotanySeed,
+  '/api/data/analyses/absolute_dating/individuals':
+    absDatingAnalysis.absDatingAnalysisIndividual,
+  '/api/data/analyses/absolute_dating/potteries':
+    absDatingAnalysis.absDatingAnalysisPottery,
+  '/api/data/analyses/absolute_dating/zoo/bones':
+    absDatingAnalysis.absDatingAnalysisZooBone,
+  '/api/data/analyses/absolute_dating/zoo/teeth':
+    absDatingAnalysis.absDatingAnalysisZooTooth,
   '/api/data/analyses/contexts/botany': analysisContextBotany,
   '/api/data/analyses/contexts/zoo': analysisContextZoo,
   '/api/data/analyses/individuals': analysisIndividual,

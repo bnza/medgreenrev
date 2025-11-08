@@ -15,16 +15,31 @@ const { tab } = storeToRefs(
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-analysis-individual :item />
       <v-tabs v-model="tab" background-color="transparent">
-        <v-tab value="item">individual</v-tab>
+        <v-tab value="subject">subject</v-tab>
+        <v-tab
+          v-if="item.analysis?.type?.group === 'absolute dating'"
+          value="absolute-dating"
+          >absolute dating</v-tab
+        >
         <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="item" data-testid="tab-item">
+        <v-tabs-window-item value="subject" data-testid="tab-item">
           <data-item-page-individual
             v-if="item.subject"
             :iri="item.subject['@id']"
           />
           <loading-component v-else />
+        </v-tabs-window-item>
+        <v-tabs-window-item
+          v-if="item.analysis?.type?.group === 'absolute dating'"
+          value="absolute-dating"
+          data-testid="tab-absolute-dating"
+        >
+          <data-item-page-abs-dating-analysis
+            resource-key="absDatingAnalysisIndividual"
+            :show-back-button="false"
+          />
         </v-tabs-window-item>
         <v-tabs-window-item value="media" data-testid="tab-media">
           <data-media-object-join-container

@@ -8,10 +8,6 @@ withDefaults(
     readLink: true,
   },
 )
-
-const vocabularyContextTypesStore = useVocabularyStore(
-  '/api/vocabulary/context/types',
-)
 </script>
 
 <template>

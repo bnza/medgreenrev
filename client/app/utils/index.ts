@@ -155,3 +155,7 @@ export function formatBitSize(bytes: number | undefined): string | undefined {
     return `${bytes}`
   }
 }
+
+export function capitalizeString(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}

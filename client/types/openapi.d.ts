@@ -6,6 +6,406 @@ import type { Iri } from '~~/types'
  */
 
 export interface paths {
+  '/api/data/analyses/absolute_dating': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysis resources.
+     * @description Retrieves the collection of AbsDatingAnalysis resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysis resource.
+     * @description Retrieves a AbsDatingAnalysis resource.
+     */
+    get: operations['api_dataanalysesabsolute_dating_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisBotanyCharcoal resources.
+     * @description Retrieves the collection of AbsDatingAnalysisBotanyCharcoal resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingbotanycharcoals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/botany/charcoals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisBotanyCharcoal resource.
+     * @description Retrieves a AbsDatingAnalysisBotanyCharcoal resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingbotanycharcoals_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisBotanyCharcoal resources.
+     * @description Retrieves the collection of AbsDatingAnalysisBotanyCharcoal resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdbotanycharcoals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisBotanySeed resources.
+     * @description Retrieves the collection of AbsDatingAnalysisBotanySeed resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingbotanyseeds_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/botany/seeds/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisBotanySeed resource.
+     * @description Retrieves a AbsDatingAnalysisBotanySeed resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingbotanyseeds_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisBotanySeed resources.
+     * @description Retrieves the collection of AbsDatingAnalysisBotanySeed resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdbotanyseeds_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisIndividual resources.
+     * @description Retrieves the collection of AbsDatingAnalysisIndividual resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingindividuals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/individuals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisIndividual resource.
+     * @description Retrieves a AbsDatingAnalysisIndividual resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingindividuals_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisIndividual resources.
+     * @description Retrieves the collection of AbsDatingAnalysisIndividual resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdindividuals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisPottery resources.
+     * @description Retrieves the collection of AbsDatingAnalysisPottery resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingpotteries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/potteries/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisPottery resource.
+     * @description Retrieves a AbsDatingAnalysisPottery resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingpotteries_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisPottery resources.
+     * @description Retrieves the collection of AbsDatingAnalysisPottery resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdpotteries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisZooBone resources.
+     * @description Retrieves the collection of AbsDatingAnalysisZooBone resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/zoo/bones/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisZooBone resource.
+     * @description Retrieves a AbsDatingAnalysisZooBone resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingzoobones_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisZooBone resources.
+     * @description Retrieves the collection of AbsDatingAnalysisZooBone resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisZooTooth resources.
+     * @description Retrieves the collection of AbsDatingAnalysisZooTooth resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingzooteeth_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/zoo/teeth/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisZooTooth resource.
+     * @description Retrieves a AbsDatingAnalysisZooTooth resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingzooteeth_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisZooTooth resources.
+     * @description Retrieves the collection of AbsDatingAnalysisZooTooth resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdzooteeth_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses': {
     parameters: {
       query?: never
@@ -3678,6 +4078,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryPlant resources.
+     * @description Retrieves the collection of VocHistoryPlant resources.
+     */
+    get: operations['api_vocabularyhistoryplants_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/plants/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryPlant resource.
+     * @description Retrieves a VocHistoryPlant resource.
+     */
+    get: operations['api_vocabularyhistoryplants_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/individual/age': {
     parameters: {
       query?: never
@@ -4038,46 +4478,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/vocabulary/history/plants': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of VocZooBone resources.
-     * @description Retrieves the collection of VocZooBone resources.
-     */
-    get: operations['api_vocabularyhistoryplants_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/vocabulary/history/plants/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a VocZooBone resource.
-     * @description Retrieves a VocZooBone resource.
-     */
-    get: operations['api_vocabularyhistoryplants_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/vocabulary/zoo/bones': {
     parameters: {
       query?: never
@@ -4346,6 +4746,134 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    'AbsDatingAnalysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      stratigraphicUnit?:
+        | components['schemas']['StratigraphicUnit.jsonld-abs_dating_analysis.read']
+        | null
+      analysis?:
+        | components['schemas']['Analysis.jsonld-abs_dating_analysis.read']
+        | null
+      subjectId?: number | string
+      subjectType?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanyCharcoal-abs_dating_join.create': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisBotanyCharcoal-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanySeed-abs_dating_join.create': Record<string, never>
+    'AbsDatingAnalysisBotanySeed-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisIndividual-abs_dating_join.create': Record<string, never>
+    'AbsDatingAnalysisIndividual-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisPottery-abs_dating_join.create': Record<string, never>
+    'AbsDatingAnalysisPottery-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooBone-abs_dating_join.create': Record<string, never>
+    'AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooTooth-abs_dating_join.create': Record<string, never>
+    'AbsDatingAnalysisZooTooth-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'Analysis-analysis.create': {
       identifier: string
       /** @default 0 */
@@ -4373,6 +4901,15 @@ export interface components {
       year?: number
       laboratory?: string | null
       summary?: string | null
+    }
+    'Analysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-abs_dating_analysis.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
     }
     'Analysis.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
@@ -5169,7 +5706,7 @@ export interface components {
     }
     'HistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      plant?: components['schemas']['VocZooBone.jsonld-history_plant.acl.read']
+      plant?: components['schemas']['VocHistoryPlant.jsonld-history_plant.acl.read']
       location?: components['schemas']['HistoryLocation.jsonld-history_plant.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
@@ -5865,6 +6402,10 @@ export interface components {
       fieldDirector?: string | null
       culturalContexts?: string[]
     }
+    'Site.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    }
     'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
@@ -6099,6 +6640,10 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+    }
+    'StratigraphicUnit.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      site?: components['schemas']['Site.jsonld-abs_dating_analysis.read']
+      readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
@@ -6406,6 +6951,9 @@ export interface components {
       group?: string
       value?: string
     }
+    'VocAnalysisType.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      value?: string
+    }
     'VocAnalysisType.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
@@ -6486,6 +7034,18 @@ export interface components {
       id?: number
       value?: string
     }
+    'VocHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      value?: string
+    }
+    'VocHistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      value?: string
+    }
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value?: string
@@ -6548,14 +7108,7 @@ export interface components {
     }
     'VocZooBone.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
-      value?: string
-    }
-    'VocZooBone.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
       value?: string
     }
     'VocZooBonePart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -6741,6 +7294,624 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
+  api_dataanalysesabsolute_dating_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'order[analysis.laboratory]'?: 'asc' | 'desc'
+        'order[analysis.responsible]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.year]'?: 'asc' | 'desc'
+        'order[datingLower]'?: 'asc' | 'desc'
+        'order[datingUpper]'?: 'asc' | 'desc'
+        'order[uncalibratedDating]'?: 'asc' | 'desc'
+        'order[error]'?: 'asc' | 'desc'
+        'order[calibrationCurve]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysis.jsonld-abs_dating_analysis.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysis identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysis resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysis.jsonld-abs_dating_analysis.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanycharcoals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanyCharcoal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanyCharcoal identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanyseeds_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanySeed resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanySeed identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisIndividual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingindividuals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisIndividual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisIndividual resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisIndividual identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisIndividual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingpotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingpotteries_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisPottery resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdpotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisPottery identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzoobones_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdzoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooBone identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzooteeth_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooTooth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdzooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooTooth identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read'][]
+          }
+        }
+      }
+    }
+  }
   api_dataanalyses_get_collection: {
     parameters: {
       query?: {
@@ -11248,6 +12419,11 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
@@ -11506,6 +12682,11 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
@@ -11571,6 +12752,11 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
@@ -11829,6 +13015,11 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
         'stratigraphicUnit.site'?: string
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
@@ -18762,6 +19953,68 @@ export interface operations {
       }
     }
   }
+  api_vocabularyhistoryplants_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryPlant collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocHistoryPlant.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryplants_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryPlant identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryPlant resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryPlant.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularyindividualage_get_collection: {
     parameters: {
       query?: {
@@ -19266,68 +20519,6 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocStratigraphicUnitRelation.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_vocabularyhistoryplants_get_collection: {
-    parameters: {
-      query?: {
-        /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
-         * @example oak
-         */
-        search?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description VocZooBone collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member?: components['schemas']['VocZooBone.jsonld'][]
-          }
-        }
-      }
-    }
-  }
-  api_vocabularyhistoryplants_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description VocZooBone identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description VocZooBone resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['VocZooBone.jsonld']
         }
       }
       /** @description Not found */
