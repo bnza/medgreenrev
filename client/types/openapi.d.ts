@@ -46,6 +46,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/{parentId}/absolute_dating': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysis resources.
+     * @description Retrieves the collection of AbsDatingAnalysis resources.
+     */
+    get: operations['api_dataanalyses_parentIdabsolute_dating_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/absolute_dating/botany/charcoals': {
     parameters: {
       query?: never
@@ -59,7 +79,11 @@ export interface paths {
      */
     get: operations['api_dataanalysesabsolute_datingbotanycharcoals_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AbsDatingAnalysisBotanyCharcoal resource.
+     * @description Creates a AbsDatingAnalysisBotanyCharcoal resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingbotanycharcoals_post']
     delete?: never
     options?: never
     head?: never
@@ -80,10 +104,18 @@ export interface paths {
     get: operations['api_dataanalysesabsolute_datingbotanycharcoals_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the AbsDatingAnalysisBotanyCharcoal resource.
+     * @description Removes the AbsDatingAnalysisBotanyCharcoal resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingbotanycharcoals_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the AbsDatingAnalysisBotanyCharcoal resource.
+     * @description Updates the AbsDatingAnalysisBotanyCharcoal resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingbotanycharcoals_id_patch']
     trace?: never
   }
   '/api/data/analyses/absolute_dating/{parentId}/botany/charcoals': {
@@ -119,7 +151,11 @@ export interface paths {
      */
     get: operations['api_dataanalysesabsolute_datingbotanyseeds_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AbsDatingAnalysisBotanySeed resource.
+     * @description Creates a AbsDatingAnalysisBotanySeed resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingbotanyseeds_post']
     delete?: never
     options?: never
     head?: never
@@ -140,10 +176,18 @@ export interface paths {
     get: operations['api_dataanalysesabsolute_datingbotanyseeds_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the AbsDatingAnalysisBotanySeed resource.
+     * @description Removes the AbsDatingAnalysisBotanySeed resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingbotanyseeds_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the AbsDatingAnalysisBotanySeed resource.
+     * @description Updates the AbsDatingAnalysisBotanySeed resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingbotanyseeds_id_patch']
     trace?: never
   }
   '/api/data/analyses/absolute_dating/{parentId}/botany/seeds': {
@@ -179,7 +223,11 @@ export interface paths {
      */
     get: operations['api_dataanalysesabsolute_datingindividuals_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AbsDatingAnalysisIndividual resource.
+     * @description Creates a AbsDatingAnalysisIndividual resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingindividuals_post']
     delete?: never
     options?: never
     head?: never
@@ -200,10 +248,18 @@ export interface paths {
     get: operations['api_dataanalysesabsolute_datingindividuals_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the AbsDatingAnalysisIndividual resource.
+     * @description Removes the AbsDatingAnalysisIndividual resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingindividuals_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the AbsDatingAnalysisIndividual resource.
+     * @description Updates the AbsDatingAnalysisIndividual resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingindividuals_id_patch']
     trace?: never
   }
   '/api/data/analyses/absolute_dating/{parentId}/individuals': {
@@ -239,7 +295,11 @@ export interface paths {
      */
     get: operations['api_dataanalysesabsolute_datingpotteries_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AbsDatingAnalysisPottery resource.
+     * @description Creates a AbsDatingAnalysisPottery resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingpotteries_post']
     delete?: never
     options?: never
     head?: never
@@ -260,10 +320,18 @@ export interface paths {
     get: operations['api_dataanalysesabsolute_datingpotteries_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the AbsDatingAnalysisPottery resource.
+     * @description Removes the AbsDatingAnalysisPottery resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingpotteries_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the AbsDatingAnalysisPottery resource.
+     * @description Updates the AbsDatingAnalysisPottery resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingpotteries_id_patch']
     trace?: never
   }
   '/api/data/analyses/absolute_dating/{parentId}/potteries': {
@@ -299,7 +367,11 @@ export interface paths {
      */
     get: operations['api_dataanalysesabsolute_datingzoobones_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AbsDatingAnalysisZooBone resource.
+     * @description Creates a AbsDatingAnalysisZooBone resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingzoobones_post']
     delete?: never
     options?: never
     head?: never
@@ -320,10 +392,18 @@ export interface paths {
     get: operations['api_dataanalysesabsolute_datingzoobones_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the AbsDatingAnalysisZooBone resource.
+     * @description Removes the AbsDatingAnalysisZooBone resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingzoobones_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the AbsDatingAnalysisZooBone resource.
+     * @description Updates the AbsDatingAnalysisZooBone resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingzoobones_id_patch']
     trace?: never
   }
   '/api/data/analyses/absolute_dating/{parentId}/zoo/bones': {
@@ -359,7 +439,11 @@ export interface paths {
      */
     get: operations['api_dataanalysesabsolute_datingzooteeth_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AbsDatingAnalysisZooTooth resource.
+     * @description Creates a AbsDatingAnalysisZooTooth resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingzooteeth_post']
     delete?: never
     options?: never
     head?: never
@@ -380,10 +464,18 @@ export interface paths {
     get: operations['api_dataanalysesabsolute_datingzooteeth_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the AbsDatingAnalysisZooTooth resource.
+     * @description Removes the AbsDatingAnalysisZooTooth resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingzooteeth_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the AbsDatingAnalysisZooTooth resource.
+     * @description Updates the AbsDatingAnalysisZooTooth resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingzooteeth_id_patch']
     trace?: never
   }
   '/api/data/analyses/absolute_dating/{parentId}/zoo/teeth': {
@@ -4771,12 +4863,36 @@ export interface components {
       string,
       never
     >
+    'AbsDatingAnalysisBotanyCharcoal-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanyCharcoal-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -5082,20 +5198,29 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanyCharcoal-analysis_join.create']
+        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisBotanyCharcoal-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanyCharcoal-analysis_join.update']
+        | null
       summary?: string | null
     }
     'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       summary?: string | null
     }
@@ -5104,12 +5229,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisBotanySeed-analysis_join.update.jsonMergePatch': {
@@ -5126,13 +5251,13 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisContextBotany-analysis_join.update.jsonMergePatch': {
@@ -5171,13 +5296,13 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisContextZoo-analysis_join.update.jsonMergePatch': {
@@ -5216,12 +5341,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisIndividual-analysis_join.update.jsonMergePatch': {
@@ -5238,12 +5363,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisPottery-analysis_join.update.jsonMergePatch': {
@@ -5260,12 +5385,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch': {
@@ -5282,12 +5407,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisSiteAnthropology-analysis_join.update.jsonMergePatch': {
@@ -5304,12 +5429,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisZooBone-analysis_join.update.jsonMergePatch': {
@@ -5326,12 +5451,12 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      subject?: string
+      subject: string
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      analysis?: string
+      analysis: string
       summary?: string | null
     }
     'AnalysisZooTooth-analysis_join.update.jsonMergePatch': {
@@ -7366,6 +7491,47 @@ export interface operations {
       }
     }
   }
+  api_dataanalyses_parentIdabsolute_dating_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'order[analysis.laboratory]'?: 'asc' | 'desc'
+        'order[analysis.responsible]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.year]'?: 'asc' | 'desc'
+        'order[datingLower]'?: 'asc' | 'desc'
+        'order[datingUpper]'?: 'asc' | 'desc'
+        'order[uncalibratedDating]'?: 'asc' | 'desc'
+        'order[error]'?: 'asc' | 'desc'
+        'order[calibrationCurve]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysis collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['AbsDatingAnalysis.jsonld-abs_dating_analysis.read'][]
+          }
+        }
+      }
+    }
+  }
   api_dataanalysesabsolute_datingbotanycharcoals_get_collection: {
     parameters: {
       query?: {
@@ -7389,6 +7555,53 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member?: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanycharcoals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisBotanyCharcoal resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisBotanyCharcoal resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -7423,6 +7636,113 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanycharcoals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanyCharcoal resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanycharcoals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanyCharcoal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisBotanyCharcoal resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisBotanyCharcoal resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -7484,6 +7804,53 @@ export interface operations {
       }
     }
   }
+  api_dataanalysesabsolute_datingbotanyseeds_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisBotanySeed resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisBotanySeed resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_dataanalysesabsolute_datingbotanyseeds_id_get: {
     parameters: {
       query?: never
@@ -7514,6 +7881,113 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanyseeds_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisBotanySeed resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingbotanyseeds_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisBotanySeed identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisBotanySeed resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisBotanySeed-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisBotanySeed resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -7575,6 +8049,53 @@ export interface operations {
       }
     }
   }
+  api_dataanalysesabsolute_datingindividuals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisIndividual resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisIndividual resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_dataanalysesabsolute_datingindividuals_id_get: {
     parameters: {
       query?: never
@@ -7605,6 +8126,113 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingindividuals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisIndividual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisIndividual resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingindividuals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisIndividual identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisIndividual resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisIndividual-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisIndividual resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -7666,6 +8294,53 @@ export interface operations {
       }
     }
   }
+  api_dataanalysesabsolute_datingpotteries_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisPottery resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisPottery-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisPottery resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_dataanalysesabsolute_datingpotteries_id_get: {
     parameters: {
       query?: never
@@ -7696,6 +8371,113 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingpotteries_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisPottery resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingpotteries_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisPottery resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisPottery-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisPottery resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -7757,6 +8539,53 @@ export interface operations {
       }
     }
   }
+  api_dataanalysesabsolute_datingzoobones_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisZooBone resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisZooBone resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_dataanalysesabsolute_datingzoobones_id_get: {
     parameters: {
       query?: never
@@ -7787,6 +8616,113 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzoobones_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooBone resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzoobones_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooBone identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisZooBone resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisZooBone resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -7848,6 +8784,53 @@ export interface operations {
       }
     }
   }
+  api_dataanalysesabsolute_datingzooteeth_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisZooTooth resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisZooTooth resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_dataanalysesabsolute_datingzooteeth_id_get: {
     parameters: {
       query?: never
@@ -7878,6 +8861,113 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzooteeth_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisZooTooth resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingzooteeth_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisZooTooth identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisZooTooth resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisZooTooth-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisZooTooth resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -8232,6 +9322,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never
@@ -8483,6 +9578,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -8549,6 +9649,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -8615,6 +9720,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never
@@ -8866,6 +9976,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -8932,6 +10047,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -12452,6 +13572,11 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never
@@ -12715,6 +13840,11 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -12785,6 +13915,11 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never
@@ -13048,6 +14183,11 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -13995,6 +15135,11 @@ export interface operations {
         'order[age.id]'?: 'asc' | 'desc'
         /** @description Search case insensitive match the identifier field */
         search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never
@@ -14226,6 +15371,11 @@ export interface operations {
         'order[age.id]'?: 'asc' | 'desc'
         /** @description Search case insensitive match the identifier field */
         search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -20769,6 +21919,11 @@ export interface operations {
          * @example 3
          */
         'endsPreserved[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -20853,6 +22008,11 @@ export interface operations {
          * @example 3
          */
         'endsPreserved[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never
@@ -21118,6 +22278,11 @@ export interface operations {
         connected?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path: {
@@ -21190,6 +22355,11 @@ export interface operations {
         connected?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
       }
       header?: never
       path?: never

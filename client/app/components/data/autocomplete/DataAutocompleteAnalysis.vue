@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ApiResourcePath } from '~~/types'
+import type { ApiResourcePath, JsonLdItem } from '~~/types'
 
 const model = defineModel<string>()
 interface Props {
@@ -13,6 +13,10 @@ const props = withDefaults(defineProps<Props>(), {
   itemTitle: 'identifier',
   path: '/api/data/analyses',
 })
+
+const emit = defineEmits<{
+  selected: [item: JsonLdItem | undefined]
+}>()
 </script>
 
 <template>
@@ -23,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
     :item-title="props.itemTitle"
     :granted-only
     :query-params
+    @selected="emit('selected', $event)"
   >
     <template #selection="{ item }">
       <v-list-item v-if="item.raw.identifier">

@@ -8,17 +8,21 @@
     >
   "
 >
-import type { ApiResourceKey, GetCollectionPath } from '~~/types'
+import type {
+  ApiResourceKey,
+  GetCollectionPath,
+  ResourceParent,
+} from '~~/types'
 import { capitalizeString } from '~/utils'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
 
-defineProps<{
+const props = defineProps<{
   path: Path
-  parent?: undefined
+  parent?: ResourceParent<'analysis'>
 }>()
 
-// const { id: parentId } = useResourceParent(props.parent)
+const { id: parentId } = useResourceParent(props.parent)
 
 const getResourceKey = (string: string): ApiResourceKey | undefined => {
   const key = `analysis${capitalizeString(string)}`
@@ -52,7 +56,7 @@ const getStatusText = (status: number | null | undefined) => {
 </script>
 
 <template>
-  <data-collection-table :path :parent-id="undefined">
+  <data-collection-table :path :parent-id>
     <template #[`item.id`]="{ item }">
       <navigation-dynamic-resource-item-read
         :id="item.id"

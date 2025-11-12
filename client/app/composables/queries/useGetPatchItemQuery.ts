@@ -1,4 +1,5 @@
 import type {
+  ApiResourceKey,
   GetItemPath,
   GetItemResponseMap,
   OperationPathParams,
@@ -37,6 +38,7 @@ export type NormalizedPatchItem<P extends GetItemPath> =
 export function useGetPatchItemQuery<P extends GetItemPath & PatchItemPath>(
   path: P,
   params: Ref<OperationPathParams<P, 'get'> | undefined>,
+  typeIriBlacklist: ApiResourceKey[] = [],
 ) {
   const { data, ...rest } = useGetItemQuery(path, params)
 
@@ -46,9 +48,19 @@ export function useGetPatchItemQuery<P extends GetItemPath & PatchItemPath>(
     if (!item) {
       return {} as any
     }
+
+    //Blacklist the object that has the listed @type value (PascalCase resourceKey) from being normalized as IRIs
+    const blacklist = new Set<string>(
+      typeIriBlacklist.map((key) => key.charAt(0).toUpperCase() + key.slice(1)),
+    )
     const normalizedItem = structuredClone(item) as any
+
     Object.keys(item).forEach((key) => {
-      if (key !== '@id' && isApiResourceObject(normalizedItem[key])) {
+      if (
+        key !== '@id' &&
+        isJsonLdItem(normalizedItem[key]) &&
+        !blacklist.has(normalizedItem[key]['@type'])
+      ) {
         normalizedItem[key] = normalizedItem[key]['@id']
       } else if (key !== '@id' && Array.isArray(normalizedItem[key])) {
         normalizedItem[key] = normalizedItem[key].map((innerItem) =>

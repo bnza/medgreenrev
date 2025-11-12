@@ -2,14 +2,18 @@
   setup
   lang="ts"
   generic="
-    P extends Extract<GetCollectionPath, '/api/data/analyses/absolute_dating'>
+    P extends Extract<
+      GetCollectionPath,
+      | '/api/data/analyses/absolute_dating'
+      | '/api/data/analyses/{parentId}/absolute_dating'
+    >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: undefined
+  parent?: ResourceParent<'analysis'>
 }>()
 
 const { hasAnySpecialistRole, isAuthenticated, hasRoleAdmin } = useAppAuth()

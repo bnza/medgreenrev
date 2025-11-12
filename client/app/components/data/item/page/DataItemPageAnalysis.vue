@@ -12,11 +12,27 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <lazy-data-item-form-info-analysis :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="media">media</v-tab>
-        <!--        <v-tab value="samples">samples</v-tab>-->
+        <v-tab
+          v-if="item?.type?.group === 'absolute dating'"
+          value="absolute-dating"
+          >absolute dating</v-tab
+        >
         <!--        <v-tab value="sus">stratigraphic-units</v-tab>-->
         <!--        <v-tab value="zooAnalyses">zoo analyses</v-tab>-->
       </v-tabs>
       <v-tabs-window v-model="tab">
+        <v-tabs-window-item
+          value="absolute-dating"
+          data-testid="tab-absolute-dating"
+        >
+          <data-collection-page-abs-dating-analysis
+            path="/api/data/analyses/{parentId}/absolute_dating"
+            :parent="{
+              key: 'analysis',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
         <v-tabs-window-item value="media" data-testid="tab-media">
           <data-media-object-join-container
             path="/api/data/analyses/{parentId}/media_objects"
@@ -26,36 +42,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
             :can-update="item._acl?.canUpdate"
           />
         </v-tabs-window-item>
-        <!--        <v-tabs-window-item value="samples" data-testid="tab-window-samples">-->
-        <!--          <data-collection-page-join-context-sample-->
-        <!--            path="/api/data/contexts/{parentId}/samples"-->
-        <!--            :parent="{-->
-        <!--              key: 'context',-->
-        <!--              resourceItemPath: '/api/data/contexts/{id}',-->
-        <!--              item,-->
-        <!--            }"-->
-        <!--          />-->
-        <!--        </v-tabs-window-item>-->
-        <!--        <v-tabs-window-item value="sus" data-testid="tab-sus">-->
-        <!--          <data-collection-page-join-context-stratigraphic-unit-->
-        <!--            path="/api/data/contexts/{parentId}/stratigraphic_units"-->
-        <!--            :parent="{-->
-        <!--              key: 'context',-->
-        <!--              resourceItemPath: '/api/data/contexts/{id}',-->
-        <!--              item,-->
-        <!--            }"-->
-        <!--          />-->
-        <!--        </v-tabs-window-item>-->
-        <!--        <v-tabs-window-item value="zooAnalyses" data-testid="tab-zoo-analyses">-->
-        <!--          <data-collection-page-context-zoo-analysis-->
-        <!--            path="/api/data/contexts/{parentId}/analyses/zoo"-->
-        <!--            :parent="{-->
-        <!--              key: 'context',-->
-        <!--              resourceItemPath: '/api/data/contexts/{id}',-->
-        <!--              item,-->
-        <!--            }"-->
-        <!--          />-->
-        <!--        </v-tabs-window-item>-->
       </v-tabs-window>
     </template>
   </data-item-page>

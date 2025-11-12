@@ -4,6 +4,7 @@ import type {
   PatchItemRequestMap,
   PostCollectionRequestMap,
   ResourceParent,
+  JsonLdItem,
 } from '~~/types'
 
 // Merge PATCH and POST shapes as in other edit forms
@@ -21,6 +22,18 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const analysis = ref<(JsonLdItem & { type?: { group: string } }) | undefined>()
+
+const showAbsDatingForm = ref(false)
+
+watch(showAbsDatingForm, (flag) => {
+  if (flag) {
+    if (!item.value.absDatingAnalysis) {
+      item.value.absDatingAnalysis = {}
+    }
+  }
+})
 </script>
 
 <template>
@@ -48,6 +61,7 @@ defineProps<Props>()
             AnalysisGroups.AbsoluteDating,
           ],
         }"
+        @selected="analysis = $event"
       />
     </v-col>
   </v-row>
@@ -60,4 +74,28 @@ defineProps<Props>()
       />
     </v-col>
   </v-row>
+  <v-row justify="end">
+    <v-col cols="4">
+      <v-checkbox
+        v-if="analysis?.type?.group === 'absolute dating'"
+        v-model="showAbsDatingForm"
+        data-testid="show-abs-dating-form"
+        label="edit absolute dating data"
+      />
+    </v-col>
+  </v-row>
+  <data-item-form-edit-abs-dating-analysis
+    v-if="
+      (showAbsDatingForm && analysis?.type?.group === 'absolute dating') ||
+      item.absDatingAnalysis
+    "
+    v-model:item="item.absDatingAnalysis"
+    :mode
+    :errors
+    :parent="
+      item.analysis
+        ? { key: 'analysisBotanyCharcoal', item: { '@id': item.analysis } }
+        : undefined
+    "
+  />
 </template>

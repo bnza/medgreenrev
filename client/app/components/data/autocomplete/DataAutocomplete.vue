@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 import type { ApiResourcePath } from '~/utils/consts/resources'
-import type { GetItemPath, Iri, OperationPathParams } from '~~/types'
+import type {
+  GetItemPath,
+  Iri,
+  JsonLdItem,
+  OperationPathParams,
+} from '~~/types'
 
 const model = defineModel<string | null>()
 
@@ -65,6 +70,14 @@ const loading = computed(
     asyncStatus.value === 'loading' ||
     getItemQuery.asyncStatus.value === 'loading',
 )
+
+const emit = defineEmits<{
+  selected: [item: JsonLdItem | undefined]
+}>()
+
+watch(selectedItem, (newValue) => {
+  emit('selected', newValue)
+})
 </script>
 
 <template>
