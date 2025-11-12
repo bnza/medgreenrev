@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUpdateValidation } from '~/composables/validation/useAnalysisBotanySeedValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisBotanySeedNormalization'
+import { useNormalization } from '~/composables/normalization/useBaseNormalization'
 
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/analyses/botany/seeds/{id}'),
@@ -22,11 +22,14 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-botany-seed
+      <lazy-data-item-form-edit-analysis-subject
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
         mode="update"
+        subject-path="/api/data/botany/seeds"
+        subject-item-title="code"
+        subject-parent-key="botanySeed"
       />
     </template>
   </data-dialog-update>

@@ -9,7 +9,7 @@
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useAnalysisBotanyCharcoalValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisBotanyCharcoalNormalization'
+import { useNormalization } from '~/composables/normalization/useBaseNormalization'
 
 const props = defineProps<{
   path: P
@@ -36,12 +36,15 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-botany-charcoal
+      <lazy-data-item-form-edit-analysis-subject
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
         :parent
         mode="create"
+        subject-path="/api/data/botany/charcoals"
+        subject-item-title="code"
+        subject-parent-key="botanyCharcoal"
       />
     </template>
   </data-dialog-create>

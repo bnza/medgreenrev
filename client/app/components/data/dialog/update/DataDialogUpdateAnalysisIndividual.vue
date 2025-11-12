@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUpdateValidation } from '~/composables/validation/useAnalysisIndividualValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisIndividualNormalization'
+import { useNormalization } from '~/composables/normalization/useBaseNormalization'
 
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/analyses/individuals/{id}'),
@@ -22,11 +22,23 @@ defineEmits<{
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-individual
+      <lazy-data-item-form-edit-analysis-subject
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
         mode="update"
+        subject-path="/api/data/individuals"
+        subject-item-title="identifier"
+        subject-parent-key="individual"
+        :disable-analysis-on-subject-parent="false"
+        :analysis-query-params="{
+          'type.group': [
+            AnalysisGroups.MaterialAnalysis,
+            AnalysisGroups.Microscope,
+            AnalysisGroups.AbsoluteDating,
+          ],
+          'type.value': ['ANTHRO'],
+        }"
       />
     </template>
   </data-dialog-update>

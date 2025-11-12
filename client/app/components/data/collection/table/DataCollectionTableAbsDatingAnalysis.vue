@@ -4,7 +4,8 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data/analyses/absolute_dating'
+      | '/api/data/analyses/absolute_dating'
+      | '/api/data/analyses/{parentId}/absolute_dating'
     >
   "
 >

@@ -9,7 +9,7 @@
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
 import { useCreateValidation } from '~/composables/validation/useAnalysisZooBoneValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisZooBoneNormalization'
+import { useNormalization } from '~/composables/normalization/useBaseNormalization'
 
 const props = defineProps<{
   path: P
@@ -36,12 +36,15 @@ const emit = defineEmits<{
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-zoo-bone
+      <lazy-data-item-form-edit-analysis-subject
         v-if="r$.$value"
         v-model:item="r$.$value"
         :errors="r$.$errors"
         :parent
         mode="create"
+        subject-path="/api/data/zoo/bones"
+        subject-item-title="code"
+        subject-parent-key="zooBone"
       />
     </template>
   </data-dialog-create>
