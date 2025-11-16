@@ -1,49 +1,30 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends Extract<
-      GetCollectionPath,
-      | '/api/data/individuals'
-      | '/api/data/stratigraphic_units/{parentId}/individuals'
-    >
-  "
->
-import { useCreateValidation } from '~/composables/validation/useIndividualValidation'
-import { useNormalization } from '~/composables/normalization/useIndividualNormalization'
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+<script setup lang="ts">
+import type {
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
+const path: PostCollectionPath = '/api/data/individuals' as const
+
+defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
-
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
-  <data-dialog-create
-    v-model:regle="r$"
-    post-path="/api/data/individuals"
-    :path
-    :on-pre-submit
-    :get-empty-model
-    @refresh="emit('refresh')"
-  >
+  <data-dialog-create :item :path :regle="r$" @refresh="emit('refresh')">
     <template #default>
-      <lazy-data-item-form-edit-individual
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        :parent
-        mode="create"
-      />
+      <data-item-form-create-individual :parent />
     </template>
   </data-dialog-create>
 </template>

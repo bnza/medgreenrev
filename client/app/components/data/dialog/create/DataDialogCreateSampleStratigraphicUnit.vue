@@ -1,48 +1,30 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends Extract<
-      GetCollectionPath,
-      | '/api/data/sample_stratigraphic_units'
-      | '/api/data/stratigraphic_units/{parentId}/samples'
-      | '/api/data/samples/{parentId}/stratigraphic_units'
-    >
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useSampleStratigraphicUnitValidation'
+<script setup lang="ts">
+import type {
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
-  parent?: ResourceParent<'sample'> | ResourceParent<'stratigraphicUnit'>
+const path: PostCollectionPath = '/api/data/sample_stratigraphic_units' as const
+
+defineProps<{
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
+
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
-  <data-dialog-create
-    v-model:regle="r$"
-    :redirect-option="false"
-    :parent
-    :path
-    post-path="/api/data/sample_stratigraphic_units"
-    :on-pre-submit="(item) => item"
-    :get-empty-model
-    @refresh="emit('refresh')"
-  >
+  <data-dialog-create :item :path :regle="r$" @refresh="emit('refresh')">
     <template #default>
-      <lazy-data-item-form-edit-sample-stratigraphi-unit
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        :parent
-        mode="create"
-      />
+      <data-item-form-create-sample-stratigraphic-unit :parent />
     </template>
   </data-dialog-create>
 </template>

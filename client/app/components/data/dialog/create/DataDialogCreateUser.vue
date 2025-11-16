@@ -1,45 +1,28 @@
-<script
-  setup
-  lang="ts"
-  generic="P extends Extract<GetCollectionPath, '/api/admin/users'>"
->
-import { useCreateValidation } from '~/composables/validation/useUserValidation'
-import { useNormalization } from '~/composables/normalization/useUserNormalization'
-import type { GetCollectionPath } from '~~/types'
+<script setup lang="ts">
+import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-defineProps<{
-  path: P
-  parentId?: string
-}>()
+const path: PostCollectionPath = '/api/admin/users' as const
 
-const { getEmptyModel, r$ } = useCreateValidation()
-
-const { onPreCreate: onPreSubmit } = useNormalization()
-
-const { openUserPasswordDialog } = useUserPasswordDialog()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-create
-    v-model:regle="r$"
-    :parent-id
-    post-path="/api/admin/users"
-    :on-pre-submit
-    :get-empty-model
-    @success="(event) => openUserPasswordDialog(event)"
+    :item
+    :parent="undefined"
+    :path
+    :regle="r$"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-user
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        mode="create"
-      />
+      <data-item-form-create-user />
     </template>
   </data-dialog-create>
 </template>

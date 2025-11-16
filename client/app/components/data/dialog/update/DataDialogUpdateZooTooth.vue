@@ -1,32 +1,33 @@
 <script setup lang="ts">
-import { useUpdateValidation } from '~/composables/validation/useZooToothValidation'
-import { useNormalization } from '~/composables/normalization/useZooToothNormalization'
+import type { GetItemPath, PatchItemPath, PatchItemRequestMap } from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/zoo/teeth/{id}'),
-)
-const { r$, item } = useUpdateValidation(updateDialogState)
-
-const { onPreUpdate } = useNormalization()
+const path: GetItemPath & PatchItemPath = '/api/data/zoo/teeth/{id}'
 
 defineEmits<{
   refresh: []
 }>()
+
+const { initialValue, fetchedItem } = useUpdateDialog(path)
+
+const { r$ } = useCollectScope<[PatchItemRequestMap[typeof path]]>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-update
-    v-model:regle="r$"
-    path="/api/data/zoo/teeth/{id}"
-    :on-pre-submit="onPreUpdate(item)"
+    :initial-value
+    :item
+    :path
+    :regle="r$"
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-zoo-tooth
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        mode="update"
+      <data-item-form-update-zoo-tooth
+        v-if="initialValue"
+        :initial-value
+        :fetched-item
       />
     </template>
   </data-dialog-update>

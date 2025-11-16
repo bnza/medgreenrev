@@ -1,40 +1,28 @@
-<script
-  setup
-  lang="ts"
-  generic="P extends Extract<GetCollectionPath, '/api/data/analyses'>"
->
-import { useCreateValidation } from '~/composables/validation/useAnalysisValidation'
-import { useNormalization } from '~/composables/normalization/useAnalysisNormalization'
-import type { GetCollectionPath } from '~~/types'
+<script setup lang="ts">
+import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-defineProps<{
-  path: P
-}>()
-const { getEmptyModel, r$ } = useCreateValidation()
+const path: PostCollectionPath = '/api/data/analyses' as const
 
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-create
-    v-model:regle="r$"
-    post-path="/api/data/analyses"
+    :item
+    :parent="undefined"
     :path
-    :on-pre-submit
-    :get-empty-model
+    :regle="r$"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        mode="create"
-      />
+      <data-item-form-create-analysis />
     </template>
   </data-dialog-create>
 </template>

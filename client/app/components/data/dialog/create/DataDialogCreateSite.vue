@@ -1,43 +1,28 @@
-<script
-  setup
-  lang="ts"
-  generic="P extends Extract<GetCollectionPath, '/api/data/sites'>"
->
-import { useCreateValidation } from '~/composables/validation/useSiteValidation'
-import { useNormalization } from '~/composables/normalization/useSiteNormalization'
-import type { GetCollectionPath } from '~~/types'
+<script setup lang="ts">
+import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-defineProps<{
-  path: P
-  parentId?: string
-}>()
+const path: PostCollectionPath = '/api/data/sites' as const
 
-const { getEmptyModel, r$ } = useCreateValidation()
-
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-create
-    v-model:regle="r$"
-    :path
-    post-path="/api/data/sites"
+    :item
     :parent="undefined"
-    :on-pre-submit
-    :get-empty-model
+    :path
+    :regle="r$"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-site
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        mode="create"
-        :errors="r$.$errors"
-      />
+      <data-item-form-create-site />
     </template>
   </data-dialog-create>
 </template>

@@ -1,5 +1,6 @@
-import type { Iri } from '~~/types'
+import type { ApiResourceKey, ApiResourcePath, Iri } from '~~/types'
 import { sha256 } from 'js-sha256'
+import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 
 export * from './validation'
 export * from './guards'
@@ -156,6 +157,17 @@ export function formatBitSize(bytes: number | undefined): string | undefined {
   }
 }
 
-export function capitalizeString(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+export function getResourceKeyFromPath(path: ApiResourcePath): ApiResourceKey {
+  const matches = Object.entries(API_RESOURCE_MAP).filter(
+    ([_key, value]) => value === path,
+  )
+
+  if (matches.length > 1) {
+    console.warn(
+      `Multiple resource keys found for path "${path}":`,
+      matches.map(([key]) => key),
+    )
+  }
+
+  return matches[0]?.[0] as ApiResourceKey
 }

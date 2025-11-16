@@ -1,50 +1,36 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends Extract<
-      GetCollectionPath,
-      | '/api/data/botany/charcoals'
-      | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
-    >
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useBotanyCharcoalValidation'
-import { useNormalization } from '~/composables/normalization/useBotanyCharcoalNormalization'
+<script setup lang="ts">
+import type {
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
+const path: PostCollectionPath = '/api/data/botany/charcoals' as const
+
+defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
-
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-create
-    v-model:regle="r$"
+    :item
     :parent
     :path
-    post-path="/api/data/botany/charcoals"
-    :on-pre-submit
-    :get-empty-model
+    :regle="r$"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-botany-charcoal
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        :parent
-        mode="create"
-      />
+      <data-item-form-create-botany-charcoal :parent />
     </template>
   </data-dialog-create>
 </template>

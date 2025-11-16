@@ -1,59 +1,39 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends
-      | Extract<GetCollectionPath, '/api/data/analyses/individuals'>
-      | '/api/data/individuals/{parentId}/analyses'
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useAnalysisIndividualValidation'
-import { useNormalization } from '~/composables/normalization/useBaseNormalization'
+<script setup lang="ts">
+import type {
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
-  parent?: ResourceParent<'individual'>
+defineProps<{
+  parent?: ResourceParent<'individual' | 'analysis'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
+const path: PostCollectionPath = '/api/data/analyses/individuals' as const
 
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-create
-    v-model:regle="r$"
+    :item
     :parent
     :path
-    post-path="/api/data/analyses/individuals"
-    :on-pre-submit
-    :get-empty-model
+    :regle="r$"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-subject
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
+      <data-item-form-create-analysis-subject
         :parent
-        mode="create"
-        subject-path="/api/data/individuals"
         subject-item-title="identifier"
         subject-parent-key="individual"
-        :disable-analysis-on-subject-parent="false"
-        :analysis-query-params="{
-          'type.group': [
-            AnalysisGroups.MaterialAnalysis,
-            AnalysisGroups.Microscope,
-            AnalysisGroups.AbsoluteDating,
-          ],
-          'type.value': ['ANTHRO'],
-        }"
       />
     </template>
   </data-dialog-create>

@@ -1,48 +1,32 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends
-      | Extract<GetCollectionPath, '/api/data/analyses/zoo/bones'>
-      | '/api/data/zoo/bones/{parentId}/analyses'
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useAnalysisZooBoneValidation'
-import { useNormalization } from '~/composables/normalization/useBaseNormalization'
+<script setup lang="ts">
+import type { PostCollectionRequestMap, ResourceParent } from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
-  parent?: ResourceParent<'zooBone'>
+defineProps<{
+  parent?: ResourceParent<'zooBone' | 'analysis'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
-
-const { onPreCreate: onPreSubmit } = useNormalization()
+const path = '/api/data/analyses/zoo/bones'
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
   <data-dialog-create
-    v-model:regle="r$"
+    :item
     :parent
     :path
-    post-path="/api/data/analyses/zoo/bones"
-    :on-pre-submit
-    :get-empty-model
+    :regle="r$"
     @refresh="emit('refresh')"
   >
     <template #default>
-      <lazy-data-item-form-edit-analysis-subject
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
+      <data-item-form-create-analysis-subject
         :parent
-        mode="create"
-        subject-path="/api/data/zoo/bones"
         subject-item-title="code"
         subject-parent-key="zooBone"
       />

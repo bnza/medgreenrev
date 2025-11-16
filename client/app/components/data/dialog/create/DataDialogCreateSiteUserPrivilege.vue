@@ -1,54 +1,30 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends Extract<
-      GetCollectionPath,
-      | '/api/admin/site_user_privileges'
-      | '/api/admin/sites/{parentId}/site_user_privileges'
-      | '/api/admin/users/{parentId}/site_user_privileges'
-    >
-  "
->
+<script setup lang="ts">
 import type {
-  GetCollectionPath,
-  ResourceParentSiteUserPrivilege,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParent,
 } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useSiteUserPrivilegeValidation'
-import { useNormalization } from '~/composables/normalization/useSiteUserPrivilegeNormalization'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
-  parent?: ResourceParentSiteUserPrivilege
+const path: PostCollectionPath = '/api/data/sediment_cores' as const
+
+defineProps<{
+  parent?: ResourceParent<'site'> | ResourceParent<'user'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
-
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
-  <data-dialog-create
-    v-model:regle="r$"
-    :path
-    post-path="/api/admin/site_user_privileges"
-    :redirect-option="false"
-    :on-pre-submit
-    :get-empty-model
-    @refresh="emit('refresh')"
-  >
+  <data-dialog-create :item :path :regle="r$" @refresh="emit('refresh')">
     <template #default>
-      <lazy-data-item-form-edit-site-user-privilege
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        :parent
-        mode="create"
-      />
+      <data-item-form-create-site-user-privilege :parent />
     </template>
   </data-dialog-create>
 </template>

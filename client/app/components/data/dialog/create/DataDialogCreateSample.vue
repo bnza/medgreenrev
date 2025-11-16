@@ -1,49 +1,30 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    P extends Extract<
-      GetCollectionPath,
-      '/api/data/samples' | '/api/data/sites/{parentId}/samples'
-    >
-  "
->
-import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { useCreateValidation } from '~/composables/validation/useSampleValidation'
-import { useNormalization } from '~/composables/normalization/useSampleNormalization'
+<script setup lang="ts">
+import type {
+  PostCollectionPath,
+  PostCollectionRequestMap,
+  ResourceParent,
+} from '~~/types'
+import { useCollectScope } from '@regle/core'
 
-const props = defineProps<{
-  path: P
+const path: PostCollectionPath = '/api/data/samples' as const
+
+defineProps<{
   parent?: ResourceParent<'site'>
 }>()
 
-const { getEmptyModel, r$ } = useCreateValidation(props.parent)
-
-const { onPreCreate: onPreSubmit } = useNormalization()
+const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
 const emit = defineEmits<{
   refresh: []
 }>()
+
+const item = computed(() => r$.$value[0])
 </script>
 
 <template>
-  <data-dialog-create
-    v-model:regle="r$"
-    :parent
-    :path
-    post-path="/api/data/samples"
-    :on-pre-submit
-    :get-empty-model
-    @refresh="emit('refresh')"
-  >
+  <data-dialog-create :item :path :regle="r$" @refresh="emit('refresh')">
     <template #default>
-      <lazy-data-item-form-edit-sample
-        v-if="r$.$value"
-        v-model:item="r$.$value"
-        :errors="r$.$errors"
-        :parent
-        mode="create"
-      />
+      <data-item-form-create-sample :parent />
     </template>
   </data-dialog-create>
 </template>

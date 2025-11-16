@@ -21,7 +21,7 @@ import type {
  * Apply this type to objects or data types where references need to be transformed into simpler, more manageable forms,
  * such as converting nested `@id` objects or arrays of those objects into plain string identifiers.
  */
-type NormalizeApiResourceProps<T> =
+export type NormalizeApiResourceProps<T> =
   T extends Record<string, any>
     ? {
         [K in keyof T]: T[K] extends { '@id': string }
@@ -32,7 +32,10 @@ type NormalizeApiResourceProps<T> =
       }
     : T
 
-export type NormalizedPatchItem<P extends GetItemPath> =
+export type NormalizedGetItem<P extends GetItemPath> =
+  NormalizeApiResourceProps<GetItemResponseMap[P]>
+
+export type NormalizedPatchItem<P extends PatchItemPath> =
   NormalizeApiResourceProps<GetItemResponseMap[P]>
 
 export function useGetPatchItemQuery<P extends GetItemPath & PatchItemPath>(
@@ -74,15 +77,17 @@ export function useGetPatchItemQuery<P extends GetItemPath & PatchItemPath>(
   const item = computed(() =>
     data.value
       ? normalizePatchItem(data.value)
-      : ({} as PatchItemRequestMap[P]),
+      : ({} as NormalizedPatchItem<P>),
   )
 
-  const model = ref({} as PatchItemRequestMap[P])
+  const model = ref({}) as Ref<PatchItemRequestMap[P]>
 
   watch(
     item,
     (value) => {
-      model.value = structuredClone(toRaw(value))
+      model.value = structuredClone(
+        toRaw(value),
+      ) as unknown as PatchItemRequestMap[P]
     },
     { immediate: true },
   )

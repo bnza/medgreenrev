@@ -1,72 +1,74 @@
-<script setup lang="ts" generic="Path extends PatchItemPath">
+<script setup lang="ts" generic="Path extends PatchItemPath & GetItemPath">
 import type {
+  GetItemPath,
   OperationPathParams,
   PatchItemPath,
   PatchItemRequestMap,
+  RegleAdapter,
 } from '~~/types'
-import type { RegleRoot } from '@regle/core'
+
 import usePatchItemMutation from '~/composables/queries/usePatchItemMutation'
-
-type OnPreSubmit = <T extends Record<string, any>>(item: T) => Partial<T>
-
-const regle = defineModel<RegleRoot>('regle', { required: true })
+import usePreUpdateNormalization from '~/composables/usePreUpdateNormalization'
 
 const props = withDefaults(
   defineProps<{
     path: Path
+    item: PatchItemRequestMap[Path]
+    initialValue?: PatchItemRequestMap[Path]
+    regle: RegleAdapter<PatchItemRequestMap[Path]>
     title?: string
     fullscreen?: boolean
-    onPreSubmit: OnPreSubmit
   }>(),
   {
     fullscreen: true,
   },
 )
 
-defineSlots<{
-  default(): any
-  actions(): any
-}>()
+const { isUpdateDialogOpen: visible, updateDialogState } = storeToRefs(
+  useResourceUpdateDialogStore(props.path),
+)
 
 const emit = defineEmits<{
   refresh: []
 }>()
 
-const { isUpdateDialogOpen: visible } = storeToRefs(
-  useResourceUpdateDialogStore(props.path),
-)
-
-const item = computed(() => regle.value.$value)
-
 const { patchItem } = usePatchItemMutation(props.path)
 const { addSuccess, addError } = useMessagesStore()
 
 const submit = async () => {
-  regle.value.$reset()
+  props.regle.$reset()
   await nextTick()
 
-  const { valid, data: patchData } = await regle.value.$validate()
+  const { valid } = await props.regle.$validate()
 
   const isValidItem = (value: any): value is PatchItemRequestMap[Path] => {
     return valid
   }
 
-  if (
-    !isValidItem(item.value) ||
-    !('id' in item.value) ||
-    !isValidItem(patchData)
-  ) {
+  if (!isValidItem(props.item)) {
     console.log('Form is invalid, stopping submission')
     return
   }
 
-  patchItem.item.value = toRaw(item.value)
+  const id = updateDialogState.value?.id
 
-  const model = toRaw(props.onPreSubmit(patchData))
+  if (!id) {
+    console.error('Invalid ID, stopping submission')
+    return
+  }
+
+  if (!props.initialValue) {
+    console.error('No initial value provided, stopping submission.')
+    return
+  }
+
+  const onPreSubmit = usePreUpdateNormalization(props.path)
+
+  const model = toRaw(onPreSubmit(props.initialValue)(props.item))
   try {
     await patchItem.mutateAsync({
       param: {
-        id: item.value ? item.value.id : undefined,
+        id,
       } as OperationPathParams<Path, 'patch'>,
       model: model,
     })
@@ -82,13 +84,17 @@ const disabled = computed(() => false)
 
 watch(visible, (flag) => {
   if (!flag) {
-    regle.value.$value = {}
-    regle.value.$reset()
+    props.regle.$reset()
   }
 })
 
 const { labels } = useResourceConfig(props.path)
 const title = computed(() => props.title || labels[0])
+
+defineSlots<{
+  default(): any
+  actions(): any
+}>()
 </script>
 
 <template>

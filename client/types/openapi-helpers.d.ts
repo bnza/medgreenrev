@@ -210,3 +210,31 @@ export type HydraConstraintViolation =
 export type ResourceParentSiteUserPrivilege =
   | ResourceParent<'site'>
   | ResourceParent<'user'>
+
+type AnalysisSubjectParentResourceKey = Extract<
+  ApiResourceKey,
+  | 'botanyCharcoal'
+  | 'botanySeed'
+  | 'individual'
+  | 'pottery'
+  | 'zooBone'
+  | 'zooTooth'
+>
+
+type AnalysisSubjectResourceKey<
+  K extends AnalysisSubjectParentResourceKey = AnalysisSubjectParentResourceKey,
+> = Extract<ApiResourceKey, `analysis${Capitalize<K>}`>
+
+export type ApiAnalysisSubjectResourceKey = Extract<
+  ApiResourceKey,
+  | 'analysisBotanyCharcoal'
+  | 'analysisBotanySeed'
+  | 'analysisContextBotany'
+  | 'analysisContextZoo'
+  | 'analysisIndividual'
+  | 'analysisPottery'
+  | 'analysisSampleMicrostratigraphy'
+  | 'analysisSiteAnthropology'
+  | 'analysisZooBone'
+  | 'analysisZooTooth'
+>

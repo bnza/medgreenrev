@@ -14,7 +14,7 @@ import type {
   GetCollectionPath,
   ResourceParent,
 } from '~~/types'
-import { capitalizeString } from '~/utils'
+import { capitalize } from 'vue'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
 
@@ -26,7 +26,7 @@ const props = defineProps<{
 const { id: parentId } = useResourceParent(props.parent)
 
 const getResourceKey = (string: string): ApiResourceKey | undefined => {
-  const key = `analysis${capitalizeString(string)}`
+  const key = `analysis${capitalize(string)}`
   return key in API_RESOURCE_MAP ? (key as ApiResourceKey) : undefined
 }
 

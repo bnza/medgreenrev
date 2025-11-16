@@ -1,50 +1,44 @@
 <script
   setup
   lang="ts"
-  generic="Path extends PostCollectionPath & GetCollectionPath"
+  generic="Path extends PostCollectionPath & ApiResourcePath"
 >
 import type {
   ApiRequestOptions,
+  ApiResourcePath,
   GetCollectionPath,
-  paths,
   PostCollectionPath,
   PostCollectionRequestMap,
   PostCollectionResponseMap,
+  RegleAdapter,
 } from '~~/types'
 import useResourceUiStore from '~/stores/resource-ui'
-import type { RegleRoot } from '@regle/core'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import { TypedFormData } from '~/api/TypedFormData'
-
-type OnPreSubmit<Path extends keyof PostCollectionRequestMap> =
-  paths[Path]['post']['requestBody'] extends {
-    content: { 'multipart/form-data': any }
-  }
-    ? <T extends Record<string, any>>(item: T) => TypedFormData<any> | T
-    : <T extends Record<string, any>>(item: T) => T
-
-const regle = defineModel<RegleRoot>('regle', { required: true })
+import { API_RESOURCE_MAP } from '~/utils/consts/resources'
+import usePreCreateNormalization from '~/composables/usePreCreateNormalization'
 
 const props = withDefaults(
   defineProps<{
-    postPath: Path
-    path?: GetCollectionPath // Used as resource ui key
+    path: GetCollectionPath // Used as a key for useResourceUiStore
+    regle: RegleAdapter<PostCollectionRequestMap[Path]>
+    item: PostCollectionRequestMap[Path]
     title?: string
     redirectOption?: boolean
     postRequestOptions?: ApiRequestOptions
-    onPreSubmit: OnPreSubmit<Path>
-    getEmptyModel?: () => Record<string, any>
   }>(),
   {
     redirectOption: true,
-    getEmptyModel: () => ({}),
     postRequestOptions: () => ({}),
   },
 )
 
-const collectionPath = computed<GetCollectionPath>(
-  () => props.path ?? props.postPath,
-)
+const { findApiResourceKeyFromPath } = useOpenApiStore()
+const resourceKey = findApiResourceKeyFromPath(props.path)
+
+if (!resourceKey) throw new Error(`No resource found for path ${props.path}`)
+
+const postPath = API_RESOURCE_MAP[resourceKey] as Path
 
 defineSlots<{
   default(): any
@@ -56,18 +50,19 @@ const { addSuccess, addError } = useMessagesStore()
 const emit = defineEmits<{
   success: [
     {
-      request: Partial<PostCollectionRequestMap[typeof props.postPath]>
-      response: PostCollectionResponseMap[typeof props.postPath]
+      request: Partial<PostCollectionRequestMap[typeof postPath]>
+      response: PostCollectionResponseMap[typeof postPath]
     },
   ]
   refresh: []
 }>()
 
 const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
-  useResourceUiStore(collectionPath.value),
+  useResourceUiStore(props.path),
 )
+
 const { postCollection, invalidatedCacheEntries } = usePostCollectionMutation(
-  props.postPath,
+  postPath,
   props.postRequestOptions,
 )
 
@@ -77,7 +72,7 @@ const disabled = ref(false)
 const { fullPath } = useRoute()
 const router = useRouter()
 const { push } = useHistoryStackStore()
-const { appPath, labels } = useResourceConfig(props.postPath)
+const { appPath, labels } = useResourceConfig(postPath)
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
   if (!('id' in newItem)) {
@@ -94,12 +89,14 @@ const redirectToNewItem = async (newItem: Record<string, any>) => {
 
 const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
 
+const onPreSubmit = usePreCreateNormalization(resourceKey)
+
 const submit = async () => {
   status.value = 'pending'
-  regle.value.$reset()
+  props.regle.$reset()
   await nextTick()
 
-  const { valid, data: postData } = await regle.value.$validate()
+  const { valid } = await props.regle.$validate()
 
   if (!valid) {
     console.log('Form is invalid, stopping submission')
@@ -108,14 +105,14 @@ const submit = async () => {
   }
 
   const isValidItem = (
-    value: any,
-  ): value is PostCollectionRequestMap[typeof props.postPath] => {
+    _value: any,
+  ): _value is PostCollectionRequestMap[typeof postPath] => {
     return valid
   }
 
-  if (!isValidItem(postData)) return
+  if (!isValidItem(props.item)) return
 
-  const model = props.onPreSubmit(postData)
+  const model = onPreSubmit(structuredClone(toRaw(props.item)))
 
   try {
     disabled.value = true
@@ -161,8 +158,7 @@ const submit = async () => {
 
 watch(visible, async (flag) => {
   if (!flag) {
-    regle.value.$value = props.getEmptyModel()
-    regle.value.$reset()
+    props.regle.$reset({ toOriginalState: true })
     status.value = 'idle'
   }
 })
