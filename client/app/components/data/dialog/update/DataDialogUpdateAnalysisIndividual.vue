@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import type { GetItemPath, PatchItemPath, PatchItemRequestMap } from '~~/types'
+import type {
+  AbsoluteDatingRequestItem,
+  GetItemPath,
+  PatchItemPath,
+  PatchItemRequestMap,
+} from '~~/types'
 import { useCollectScope } from '@regle/core'
+import { isEmptyObject } from '~/utils'
 
 const path: GetItemPath & PatchItemPath = '/api/data/analyses/individuals/{id}'
 
@@ -8,11 +14,20 @@ defineEmits<{
   refresh: []
 }>()
 
-const { initialValue } = useUpdateDialog(path)
+const { initialValue, fetchedItem } = useUpdateDialog(path)
 
-const { r$ } = useCollectScope<[PatchItemRequestMap[typeof path]]>()
+const { r$ } =
+  useCollectScope<
+    [PatchItemRequestMap[typeof path], AbsoluteDatingRequestItem]
+  >()
 
-const item = computed(() => r$.$value[0])
+const item = computed(() => {
+  const base = r$.$value[0] ?? {}
+  base.absDatingAnalysis = isEmptyObject(r$.$value[1]) ? null : r$.$value[1]
+  return base
+})
+
+const isAbsoluteDatingAnalysis = ref(false)
 </script>
 
 <template>
@@ -29,6 +44,13 @@ const item = computed(() => r$.$value[0])
         :initial-value
         subject-item-title="identifier"
         subject-parent-key="individual"
+        @selected="
+          isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'
+        "
+      />
+      <data-item-form-edit-abs-dating-analysis
+        v-if="isAbsoluteDatingAnalysis"
+        :initial-value="fetchedItem?.absDatingAnalysis ?? null"
       />
     </template>
   </data-dialog-update>

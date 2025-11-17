@@ -40,6 +40,9 @@ export const isPlainObject = (
   return proto === null || proto === Object.prototype
 }
 
+export const isEmptyObject = (value: unknown): value is Record<string, never> =>
+  isPlainObject(value) && Object.keys(value).length === 0
+
 export const isJsonLdItem = (value: unknown): value is JsonLdItem =>
   isPlainObject(value) && '@id' in value && '@type' in value
 

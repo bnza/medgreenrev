@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type {
+  AbsoluteDatingRequestItem,
   PostCollectionPath,
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
 import { useCollectScope } from '@regle/core'
+import { isEmptyObject } from '~/utils'
 
 defineProps<{
   parent?: ResourceParent<'botanyCharcoal' | 'analysis'>
@@ -12,13 +14,22 @@ defineProps<{
 
 const path: PostCollectionPath = '/api/data/analyses/botany/charcoals' as const
 
-const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
-
 const emit = defineEmits<{
   refresh: []
 }>()
 
-const item = computed(() => r$.$value[0])
+const { r$ } =
+  useCollectScope<
+    [PostCollectionRequestMap[typeof path], AbsoluteDatingRequestItem]
+  >()
+
+const item = computed(() => {
+  const base = r$.$value[0] ?? {}
+  base.absDatingAnalysis = isEmptyObject(r$.$value[1]) ? null : r$.$value[1]
+  return base
+})
+
+const isAbsoluteDatingAnalysis = ref(false)
 </script>
 
 <template>
@@ -28,12 +39,21 @@ const item = computed(() => r$.$value[0])
     :path
     :regle="r$"
     @refresh="emit('refresh')"
+    @visible="$event ? void 0 : (isAbsoluteDatingAnalysis = false)"
   >
     <template #default>
       <data-item-form-create-analysis-subject
         :parent
         subject-item-title="code"
         subject-parent-key="botanyCharcoal"
+        @selected="
+          isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'
+        "
+      />
+      <data-item-form-edit-abs-dating-analysis
+        v-if="isAbsoluteDatingAnalysis"
+        mode="create"
+        :initial-value="null"
       />
     </template>
   </data-dialog-create>

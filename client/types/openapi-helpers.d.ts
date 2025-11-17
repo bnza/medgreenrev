@@ -238,3 +238,9 @@ export type ApiAnalysisSubjectResourceKey = Extract<
   | 'analysisZooBone'
   | 'analysisZooTooth'
 >
+
+export type AbsoluteDatingRequestItem = NonNullable<
+  PatchItemRequestMap[
+    | '/api/data/analyses/botany/charcoals/{id}'
+    | '/api/data/analyses/botany/seeds/{id}/{id}']['absDatingAnalysis']
+>

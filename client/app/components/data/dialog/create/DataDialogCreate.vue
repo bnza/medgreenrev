@@ -48,6 +48,7 @@ defineSlots<{
 const { addSuccess, addError } = useMessagesStore()
 
 const emit = defineEmits<{
+  visible: [boolean]
   success: [
     {
       request: Partial<PostCollectionRequestMap[typeof postPath]>
@@ -161,6 +162,7 @@ watch(visible, async (flag) => {
     props.regle.$reset({ toOriginalState: true })
     status.value = 'idle'
   }
+  emit('visible', flag)
 })
 
 const title = computed(() => props.title || labels[0])

@@ -2058,6 +2058,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/list/calibration_curves': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListCalibrationCurve resources.
+     * @description Retrieves the collection of ListCalibrationCurve resources.
+     */
+    get: operations['api_listcalibration_curves_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/calibration_curves/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListCalibrationCurve resource.
+     * @description Retrieves a ListCalibrationCurve resource.
+     */
+    get: operations['api_listcalibration_curves_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/list/contexts/types': {
     parameters: {
       query?: never
@@ -4905,6 +4945,22 @@ export interface components {
       string,
       never
     >
+    'AbsDatingAnalysisBotanySeed-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanySeed-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -4918,11 +4974,35 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisIndividual-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisIndividual-abs_dating_join.update.jsonMergePatch': Record<
       string,
       never
     >
+    'AbsDatingAnalysisIndividual-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisIndividual-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -4936,11 +5016,35 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisPottery-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisPottery-abs_dating_join.update.jsonMergePatch': Record<
       string,
       never
     >
+    'AbsDatingAnalysisPottery-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisPottery-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -4954,11 +5058,35 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisZooBone-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch': Record<
       string,
       never
     >
+    'AbsDatingAnalysisZooBone-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooBone-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -4972,17 +5100,49 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisZooTooth-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisZooTooth-abs_dating_join.update.jsonMergePatch': Record<
       string,
       never
     >
+    'AbsDatingAnalysisZooTooth-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooTooth-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -5230,6 +5390,9 @@ export interface components {
        * @example https://example.com/
        */
       subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanySeed-analysis_join.create']
+        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5238,11 +5401,17 @@ export interface components {
       summary?: string | null
     }
     'AnalysisBotanySeed-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanySeed-analysis_join.update']
+        | null
       summary?: string | null
     }
     'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       summary?: string | null
     }
@@ -5342,6 +5511,9 @@ export interface components {
        * @example https://example.com/
        */
       subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual-analysis_join.create']
+        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5350,11 +5522,17 @@ export interface components {
       summary?: string | null
     }
     'AnalysisIndividual-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual-analysis_join.update']
+        | null
       summary?: string | null
     }
     'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
     }
@@ -5364,6 +5542,9 @@ export interface components {
        * @example https://example.com/
        */
       subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisPottery-analysis_join.create']
+        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5372,11 +5553,17 @@ export interface components {
       summary?: string | null
     }
     'AnalysisPottery-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisPottery-analysis_join.update']
+        | null
       summary?: string | null
     }
     'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
     }
@@ -5430,6 +5617,9 @@ export interface components {
        * @example https://example.com/
        */
       subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooBone-analysis_join.create']
+        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5438,11 +5628,17 @@ export interface components {
       summary?: string | null
     }
     'AnalysisZooBone-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooBone-analysis_join.update']
+        | null
       summary?: string | null
     }
     'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
     }
@@ -5452,6 +5648,9 @@ export interface components {
        * @example https://example.com/
        */
       subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooTooth-analysis_join.create']
+        | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5460,11 +5659,17 @@ export interface components {
       summary?: string | null
     }
     'AnalysisZooTooth-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooTooth-analysis_join.update']
+        | null
       summary?: string | null
     }
     'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
     }
@@ -5950,6 +6155,10 @@ export interface components {
       notes?: string | null
     }
     'ListAnalysisLaboratory.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: string
+      readonly value?: string
+    }
+    'ListCalibrationCurve.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
       readonly value?: string
     }
@@ -15447,6 +15656,68 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['ListAnalysisLaboratory.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_listcalibration_curves_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListCalibrationCurve collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['ListCalibrationCurve.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listcalibration_curves_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListCalibrationCurve identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListCalibrationCurve resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListCalibrationCurve.jsonld']
         }
       }
       /** @description Not found */

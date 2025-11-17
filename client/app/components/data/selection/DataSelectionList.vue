@@ -14,7 +14,9 @@ const search = ref('')
 const { items, asyncStatus } = useGetCollectionListQuery(props.path, search)
 const model = defineModel<string | null | undefined>({ required: true })
 
-const primitiveItems = computed(() => items.value.map((item) => item.value))
+const primitiveItems = computed(() =>
+  items.value.filter((item) => Boolean(item)).map((item) => item.value),
+)
 </script>
 
 <template>
