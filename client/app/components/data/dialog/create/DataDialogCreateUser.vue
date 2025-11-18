@@ -11,6 +11,8 @@ const emit = defineEmits<{
 }>()
 
 const item = computed(() => r$.$value[0])
+
+const { openUserPasswordDialog } = useUserPasswordDialog()
 </script>
 
 <template>
@@ -20,6 +22,7 @@ const item = computed(() => r$.$value[0])
     :path
     :regle="r$"
     @refresh="emit('refresh')"
+    @success="(event) => openUserPasswordDialog(event)"
   >
     <template #default>
       <data-item-form-create-user />

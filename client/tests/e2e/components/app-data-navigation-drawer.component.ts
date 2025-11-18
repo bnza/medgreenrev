@@ -4,7 +4,7 @@ import type { Page } from '@playwright/test'
 export class AppDataNavigationDrawerComponent extends BaseComponent {
   async clickOnItem(item: string | string[]): Promise<void> {
     if (typeof item === 'string') {
-      return await this.container.getByText(item).click()
+      return await this.container.getByText(item, { exact: true }).click()
     }
     await Promise.all(item.map((i) => this.clickOnItem(i)))
     return

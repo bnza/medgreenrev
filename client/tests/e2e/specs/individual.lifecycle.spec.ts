@@ -12,7 +12,7 @@ test.describe('Individual lifecycle', () => {
   test.describe('Admin user', () => {
     test.use({ storageState: 'playwright/.auth/admin.json' })
 
-    test('Basic site lifecycle works as expected', async ({ page }) => {
+    test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new IndividualCollectionPage(page)
       const itemPom = new IndividualItemPage(page)
 

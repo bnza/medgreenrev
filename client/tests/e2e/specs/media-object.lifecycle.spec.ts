@@ -13,7 +13,7 @@ test.describe('Media object lifecycle', () => {
   test.describe('Base user', () => {
     test.use({ storageState: 'playwright/.auth/base.json' })
 
-    test('Basic media object lifecycle works as expected', async ({ page }) => {
+    test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new MediaObjectCollectionPage(page)
       const itemPom = new MediaObjectItemPage(page)
 

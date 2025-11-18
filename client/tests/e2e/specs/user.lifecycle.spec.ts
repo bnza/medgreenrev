@@ -1,10 +1,9 @@
 import { test, expect } from '@playwright/test'
-import { loadFixtures, resetFixtureMedia } from '~~/tests/e2e/utils/api'
+import { loadFixtures } from '~~/tests/e2e/utils/api'
 import { UserCollectionPage } from '~~/tests/e2e/pages/user-collection.page'
 import { UserItemPage } from '~~/tests/e2e/pages/user-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
 import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
-import { LoginPage } from '~~/tests/e2e/pages/login.page'
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -14,7 +13,7 @@ test.describe('User lifecycle', () => {
   test.describe('Admin user', () => {
     test.use({ storageState: 'playwright/.auth/admin.json' })
 
-    test('Basic lifecycle works as expected', async ({ page }) => {
+    test('Basic lifecycle works as expected', async ({ page, browser }) => {
       const collectionPom = new UserCollectionPage(page)
       const itemPom = new UserItemPage(page)
 
@@ -59,6 +58,13 @@ test.describe('User lifecycle', () => {
       await itemPom.expectCheckboxToBeChecked(/ceramic/)
       await itemPom.dataCard.backButton.click()
       await collectionPom.table.expectData()
+
+      // Test login with new password
+      const authTestHelper = new AuthTestHelper(browser)
+      await authTestHelper.verifyLoginWithPassword(
+        'user_new@example.com',
+        newPassword!,
+      )
 
       // UPDATE
       await collectionPom.table
@@ -127,6 +133,45 @@ test.describe('User lifecycle', () => {
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
       )
+
+      const newPassword = await itemPom.userPasswordDialog.getPlainPassword()
+
+      expect(newPassword).not.toBeNull()
+
+      const authTestHelper = new AuthTestHelper(browser)
+      await authTestHelper.verifyLoginWithPassword(
+        'user_new@example.com',
+        newPassword!,
+      )
+    })
+    test("Test reset user's password", async ({ page, browser }) => {
+      const collectionPom = new UserCollectionPage(page)
+      const itemPom = new UserItemPage(page)
+
+      // OPEN/CLOSE CREATE DIALOG
+      await collectionPom.open()
+      await collectionPom.table.expectData()
+      await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+      // Fill site field (using autocomplete)
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'email' })
+        .fill('user_new@example.com')
+      await collectionPom.dataDialogCreate.form
+        .getByRole('radio', { name: 'user' })
+        .click()
+
+      await collectionPom.dataDialogCreate.submitForm()
+      await collectionPom.expectAppMessageToHaveText(
+        'Resource successfully created',
+      )
+      await collectionPom.userPasswordDialog.expectCloseButtonClosesDialog()
+
+      await collectionPom.table
+        .getItemNavigationLink('user_new@example.com', 'reset-password-button')
+        .click()
+
+      await collectionPom.userPasswordDialog.resetButton.click()
 
       const newPassword = await itemPom.userPasswordDialog.getPlainPassword()
 

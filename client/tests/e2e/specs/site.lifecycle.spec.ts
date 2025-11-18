@@ -41,7 +41,7 @@ test.describe('Site lifecycle', () => {
         .getByRole('textbox', { name: 'chronology (upper)' })
         .fill('1100')
       await collectionPom.dataDialogCreate.form
-        .getByRole('textbox', { name: 'field director' })
+        .getByRole('combobox', { name: 'field director' })
         .fill('Some One')
       await collectionPom.dataDialogCreate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
@@ -79,7 +79,7 @@ test.describe('Site lifecycle', () => {
         .getByRole('textbox', { name: 'chronology (upper)' })
         .fill('1200')
       await collectionPom.dataDialogUpdate.form
-        .getByRole('textbox', { name: 'field director' })
+        .getByRole('combobox', { name: 'field director' })
         .fill('Some One Else')
 
       // const patchResponsePromise = page.waitForResponse(
@@ -278,7 +278,7 @@ test.describe('Site lifecycle', () => {
         .fill('A new shining site for testing purposes')
       await collectionPom.dataDialogCreate.form
         .getByRole('combobox')
-        .first()
+        .nth(2)
         .click()
       await page.getByRole('option', { name: 'taifa' }).click()
       await page.getByRole('option', { name: 'feudal' }).click()
@@ -300,7 +300,7 @@ test.describe('Site lifecycle', () => {
         .click()
       await collectionPom.dataDialogUpdate.form
         .getByRole('combobox')
-        .first()
+        .nth(2)
         .click()
       await page.getByRole('option', { name: 'taifa' }).click() //uncheck
       await page.getByRole('option', { name: 'emirate' }).click()

@@ -18,9 +18,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
   test.describe('Admin user', () => {
     test.use({ storageState: 'playwright/.auth/admin.json' })
 
-    test('Basic stratigraphic unit lifecycle works as expected', async ({
-      page,
-    }) => {
+    test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new StratigraphicUnitCollectionPage(page)
       const itemPom = new StratigraphicUnitsItemPage(page)
 

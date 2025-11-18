@@ -12,7 +12,7 @@ test.describe('Pottery lifecycle', () => {
   test.describe('Admin user', () => {
     test.use({ storageState: 'playwright/.auth/admin.json' })
 
-    test('Basic pottery lifecycle works as expected', async ({ page }) => {
+    test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new PotteryCollectionPage(page)
       const itemPom = new PotteryItemPage(page)
 

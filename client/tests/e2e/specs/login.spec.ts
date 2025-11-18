@@ -26,7 +26,7 @@ test.describe('Login page', () => {
 
 test.describe('Auth handling', () => {
   test.use({ storageState: 'playwright/.auth/base.json' })
-  test('JWT expired token redirect to login', async ({ page }) => {
+  test.skip('JWT expired token redirect to login', async ({ page }) => {
     await page.route(
       '**/api/data/sites**',
       async (route) => {

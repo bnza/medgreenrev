@@ -12,9 +12,7 @@ test.describe('Microstratigraphic unit lifecycle', () => {
   test.describe('Geo user', () => {
     test.use({ storageState: 'playwright/.auth/geo.json' })
 
-    test('Basic microstratigraphic unit lifecycle works as expected', async ({
-      page,
-    }) => {
+    test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new MicrostratigraphicUnitCollectionPage(page)
       const itemPom = new MicrostratigraphicUnitItemPage(page)
 

@@ -17,7 +17,8 @@ defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
-const { hasSitePrivilege, isAuthenticated, hasSpecialistRole } = useAppAuth()
+const { hasSitePrivilege, isAuthenticated, hasSpecialistRole, hasRoleAdmin } =
+  useAppAuth()
 </script>
 <template>
   <data-collection-page
@@ -28,7 +29,8 @@ const { hasSitePrivilege, isAuthenticated, hasSpecialistRole } = useAppAuth()
       canExport: isAuthenticated,
       canCreate: parent?.item.site?.['@id']
         ? hasSitePrivilege(parent.item.site['@id'])
-        : hasSpecialistRole(ApiSpecialistRole.GeoArchaeologist).value,
+        : hasRoleAdmin ||
+          hasSpecialistRole(ApiSpecialistRole.GeoArchaeologist).value,
     }"
   >
     <data-collection-table-microstratigraphic-unit :path :parent />

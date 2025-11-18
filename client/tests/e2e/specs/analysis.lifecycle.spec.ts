@@ -44,11 +44,11 @@ test.describe('Analysis lifecycle', () => {
         .fill('2025')
 
       await collectionPom.dataDialogCreate.form
-        .getByRole('textbox', { name: 'laboratory' })
+        .getByRole('combobox', { name: 'laboratory' })
         .fill('Somewhere')
 
       await collectionPom.dataDialogCreate.form
-        .getByRole('textbox', { name: 'responsible' })
+        .getByRole('combobox', { name: 'responsible' })
         .fill('Some One')
 
       await collectionPom.dataDialogCreate.form
@@ -90,13 +90,13 @@ test.describe('Analysis lifecycle', () => {
         .getByRole('textbox', { name: 'summary' })
         .fill('Updated summary information about the analysis')
       await page
-        .getByRole('textbox', { name: /^responsible/ })
+        .getByRole('combobox', { name: /^responsible/ })
         .fill('Some One Else')
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'year' })
         .fill('2024')
       await page
-        .getByRole('textbox', { name: /^laboratory/ })
+        .getByRole('combobox', { name: /^laboratory/ })
         .fill('Somewhere Else')
 
       await collectionPom.dataDialogUpdate.submitForm()

@@ -12,7 +12,7 @@ test.describe('Sample lifecycle', () => {
   test.describe('Base user', () => {
     test.use({ storageState: 'playwright/.auth/base.json' })
 
-    test('Basic sample lifecycle works as expected', async ({ page }) => {
+    test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new SampleCollectionPage(page)
       const itemPom = new SampleItemPage(page)
 
