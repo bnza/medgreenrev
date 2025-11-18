@@ -45,24 +45,35 @@ watch(
     search.value = ''
 
     if (newValue) {
+      // When a value is selected, fetch that specific item
       params.value = { id: extractIdFromIri(newValue as Iri) }
+    } else {
+      // When the model is cleared, also clear the item query params so the
+      // previously selected item isn't kept around in the results.
+      params.value = undefined
     }
   },
   { immediate: true },
 )
 
-// Combine items with selected item for display
+// Combine items with selected item for display, de-duplicating by @id
 const displayItems = computed(() => {
   const baseItems = items.value || []
 
-  if (
-    selectedItem.value &&
-    !baseItems.find((item) => item['@id'] === model.value)
-  ) {
-    return [selectedItem.value, ...baseItems]
-  }
+  // If there is a selected item, prefer showing it at the top, but ensure
+  // we do not produce duplicate keys for VVirtualScroll (item-value="@id").
+  const combined = selectedItem.value
+    ? [selectedItem.value, ...baseItems]
+    : baseItems
 
-  return baseItems
+  const seen = new Set<string>()
+  return combined.filter((it) => {
+    const key = it['@id'] as string | undefined
+    if (!key) return true
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 })
 
 const loading = computed(
@@ -90,7 +101,7 @@ watch(selectedItem, (newValue) => {
     :loading
     @update:search="search = $event"
   >
-    <template v-for="(_, name) in $slots" #[name]="slotProps">
+    <template v-for="(_index, name) in $slots" #[name]="slotProps">
       <slot :name v-bind="slotProps || {}" />
     </template>
   </v-autocomplete>
