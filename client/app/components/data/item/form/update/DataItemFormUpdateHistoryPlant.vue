@@ -22,6 +22,7 @@ const { r$ } = useScopedRegle(model, {
     required,
   },
   chronologyLower: {
+    required,
     integer,
     minValue: minValue(-32768),
     maxValue: maxValue(new Date().getFullYear()),
@@ -30,6 +31,7 @@ const { r$ } = useScopedRegle(model, {
     )(() => model.value.chronologyUpper),
   },
   chronologyUpper: {
+    required,
     integer,
     minValue: minValue(-32768),
     maxValue: maxValue(new Date().getFullYear()),

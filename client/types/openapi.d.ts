@@ -1854,6 +1854,58 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryAnimal resources.
+     * @description Retrieves the collection of HistoryAnimal resources.
+     */
+    get: operations['api_datahistoryanimals_get_collection']
+    put?: never
+    /**
+     * Creates a HistoryAnimal resource.
+     * @description Creates a HistoryAnimal resource.
+     */
+    post: operations['api_datahistoryanimals_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/animals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryAnimal resource.
+     * @description Retrieves a HistoryAnimal resource.
+     */
+    get: operations['api_datahistoryanimals_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the HistoryAnimal resource.
+     * @description Removes the HistoryAnimal resource.
+     */
+    delete: operations['api_datahistoryanimals_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the HistoryAnimal resource.
+     * @description Updates the HistoryAnimal resource.
+     */
+    patch: operations['api_datahistoryanimals_id_patch']
+    trace?: never
+  }
   '/api/data/history/locations': {
     parameters: {
       query?: never
@@ -4210,6 +4262,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryAnimal resources.
+     * @description Retrieves the collection of VocHistoryAnimal resources.
+     */
+    get: operations['api_vocabularyhistoryanimals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/animals/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryAnimal resource.
+     * @description Retrieves a VocHistoryAnimal resource.
+     */
+    get: operations['api_vocabularyhistoryanimals_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/history/plants': {
     parameters: {
       query?: never
@@ -5993,6 +6085,55 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
+    'HistoryAnimal-history_animal.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      animal: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      location: string
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
+      notes?: string | null
+    }
+    'HistoryAnimal-history_animal.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      animal?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      location?: string
+      chronologyLower?: number
+      chronologyUpper?: number
+      reference?: string
+      notes?: string | null
+    }
+    'HistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      animal?: components['schemas']['VocHistoryAnimal.jsonld-history_animal.acl.read']
+      location?: components['schemas']['HistoryLocation.jsonld-history_animal.acl.read']
+      chronologyLower?: number
+      chronologyUpper?: number
+      reference?: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+    }
+    'HistoryLocation.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      name?: string
+    }
     'HistoryLocation.jsonld-history_location.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       name?: string
@@ -7366,6 +7507,18 @@ export interface components {
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
+      value?: string
+    }
+    'VocHistoryAnimal.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      value?: string
+    }
+    'VocHistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       value?: string
     }
     'VocHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -15003,6 +15156,266 @@ export interface operations {
       }
     }
   }
+  api_datahistoryanimals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[animal.value]'?: 'asc' | 'desc'
+        'order[location.name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        animal?: string
+        'animal[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datahistoryanimals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new HistoryAnimal resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['HistoryAnimal-history_animal.create']
+      }
+    }
+    responses: {
+      /** @description HistoryAnimal resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datahistoryanimals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryAnimal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistoryanimals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryAnimal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistoryanimals_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryAnimal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated HistoryAnimal resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['HistoryAnimal-history_animal.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description HistoryAnimal resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_datahistorylocations_get_collection: {
     parameters: {
       query?: {
@@ -21359,6 +21772,68 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocCulturalContext.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryanimals_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAnimal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member?: components['schemas']['VocHistoryAnimal.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryanimals_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryAnimal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAnimal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryAnimal.jsonld']
         }
       }
       /** @description Not found */

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useResourceUiStore from '~/stores/resource-ui'
 
-const path = '/api/data/history/plants/{id}' as const
+const path = '/api/data/history/animals/{id}' as const
 
 const { tab } = storeToRefs(useResourceUiStore(path))
 </script>
@@ -9,7 +9,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
 <template>
   <data-item-page :path identifier-prop="identifier">
     <template #default="{ item }">
-      <lazy-data-item-form-info-history-plant :item />
+      <lazy-data-item-form-info-history-animal :item />
       <!--      <v-tabs v-model="tab" background-color="transparent">-->
       <!--        <v-tab value="plants">plants</v-tab>-->
       <!--        <v-tab value="animals">animals</v-tab>-->

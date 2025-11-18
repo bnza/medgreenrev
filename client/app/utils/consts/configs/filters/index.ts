@@ -115,6 +115,14 @@ const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyHistoryAnimals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectArray,
+  path: '/api/vocabulary/history/animals',
+}
+
 const VocabularyHistoryPlant: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -271,6 +279,7 @@ export const API_FILTERS = {
   SelectionZooBoneSide,
   VocabularyAnalysisType,
   VocabularyCulturalContext,
+  VocabularyHistoryAnimals,
   VocabularyHistoryPlant,
   VocabularyMediaObjectType,
   VocabularyPotteryDecoration,
@@ -294,6 +303,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/zoo/bones'
   | '/api/data/analyses/zoo/teeth'
   | '/api/data/history/plants'
+  | '/api/data/history/animals'
   | '/api/data/contexts'
   | '/api/data/contexts/{parentId}/analyses/zoo'
   | '/api/data/media_objects'
@@ -1143,6 +1153,45 @@ const analysisZooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefini
     },
   }
 
+const historyAnimalStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    animal: {
+      filters: {
+        VocabularyHistoryAnimals,
+      },
+    },
+    location: {
+      filters: {
+        HistoryLocationEquals,
+      },
+    },
+    reference: {
+      filters: {
+        SearchPartial,
+      },
+    },
+    chronologyLower: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'chronology (lower)',
+    },
+    chronologyUpper: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'chronology (upper)',
+    },
+    notes: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
 const historyPlantStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
     plant: {
@@ -1195,6 +1244,7 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/contexts': contextStaticFiltersDefinition,
   '/api/data/contexts/{parentId}/analyses/zoo':
     analysisContextZooStaticFiltersDefinitionObject,
+  '/api/data/history/animals': historyAnimalStaticFiltersDefinitionObject,
   '/api/data/history/plants': historyPlantStaticFiltersDefinitionObject,
   '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
   '/api/data/potteries': potteryStaticFiltersDefinition,

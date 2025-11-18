@@ -1,7 +1,7 @@
 <script
   setup
   lang="ts"
-  generic="P extends Extract<GetCollectionPath, '/api/data/history/plants'>"
+  generic="P extends Extract<GetCollectionPath, '/api/data/history/animals'>"
 >
 import type { GetCollectionPath } from '~~/types'
 import { ApiSpecialistRole } from '~/utils/consts/auth'
@@ -26,6 +26,6 @@ const canCreate = computed(
       canCreate: canCreate || hasRoleAdmin,
     }"
   >
-    <data-collection-table-history-plant :path />
+    <data-collection-table-history-animal :path />
   </data-collection-page>
 </template>
