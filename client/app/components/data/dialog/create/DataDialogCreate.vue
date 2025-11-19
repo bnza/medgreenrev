@@ -33,12 +33,14 @@ const props = withDefaults(
   },
 )
 
-const { findApiResourceKeyFromPath } = useOpenApiStore()
+const { findApiResourceKeyFromPath, isPostOperationPath } = useOpenApiStore()
 const resourceKey = findApiResourceKeyFromPath(props.path)
 
 if (!resourceKey) throw new Error(`No resource found for path ${props.path}`)
 
-const postPath = API_RESOURCE_MAP[resourceKey] as Path
+const postPath = isPostOperationPath(props.path)
+  ? props.path
+  : (API_RESOURCE_MAP[resourceKey] as Path)
 
 defineSlots<{
   default(): any

@@ -22,7 +22,7 @@ defineSlots<{
     data-testid="data-dialog"
     :close-on-content-click="false"
     :fullscreen
-    :max-width="fullscreen ? '100%' : '400px'"
+    :max-width="fullscreen ? '100%' : '600px'"
   >
     <data-card v-if="visible" :title :show-back-button="false">
       <template #default>

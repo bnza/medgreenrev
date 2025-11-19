@@ -48,9 +48,7 @@ export type MediaObjectGetCollectionPath = {
 }[GetCollectionPath]
 
 export type VocabularyGetCollectionPath = {
-  [K in GetCollectionPath]: K extends `${string}/vocabulary/${string}`
-    ? K
-    : never
+  [K in GetCollectionPath]: K extends `/api/vocabulary/${string}` ? K : never
 }[GetCollectionPath]
 
 export type ListGetCollectionPath = {

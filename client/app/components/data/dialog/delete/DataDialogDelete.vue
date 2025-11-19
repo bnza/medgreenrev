@@ -8,10 +8,16 @@ import type {
 import useDeleteItemMutation from '~/composables/queries/useDeleteItemMutation'
 import useGetItemQuery from '~/composables/queries/useGetItemQuery'
 
-const props = defineProps<{
-  path: Path
-  title?: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    path: Path
+    title?: string
+    fullscreen?: boolean
+  }>(),
+  {
+    fullscreen: true,
+  },
+)
 
 defineSlots<{
   default(props: { item: GetItemResponseMap[Path] }): any
@@ -84,6 +90,7 @@ const title = computed(() => props.title || labels[0])
     data-testid="data-dialog-delete"
     :visible
     :title="`Delete (${title})`"
+    :fullscreen
   >
     <template #default>
       <data-dialog-delete-alert />

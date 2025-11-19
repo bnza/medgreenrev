@@ -18,6 +18,7 @@ defineSlots<{
   default(): any
   dialogs(): any
   'search-bar'(): any
+  'collection-actions'(): any
 }>()
 
 const { labels } = useResourceConfig(props.path)
@@ -28,7 +29,11 @@ const title = computed(() => props.title || labels[1])
   <data-card :title :show-back-button :parent>
     <template #toolbar-append>
       <slot name="search-bar" />
-      <data-toolbar-collection-action-menu :acl :path />
+      <slot name="collection-actions">
+        <data-toolbar-collection-action-menu :acl :path>
+          <data-toolbar-list-item-create v-if="acl.canCreate" :path />
+        </data-toolbar-collection-action-menu>
+      </slot>
     </template>
     <template #default>
       <Suspense suspensible>

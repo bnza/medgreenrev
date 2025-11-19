@@ -10,13 +10,19 @@ const props = defineProps<{
   acl: CollectionAcl
   path: Path
 }>()
-const { findApiResourcePath, isPostOperation } = useOpenApiStore()
+const { findApiResourcePath, isPostOperationPath } = useOpenApiStore()
 const postPath = computed<PostCollectionPath | ''>(() => {
-  const resourceKey = isApiResourceKey(props.path)
+  if (isPostOperationPath(props.path)) {
+    return props.path
+  }
+  const _postPath = isApiResourceKey(props.path)
     ? props.path
     : findApiResourcePath(props.path)
-  return isPostOperation(resourceKey) ? resourceKey : ''
+  return isPostOperationPath(_postPath) ? _postPath : ''
 })
+defineSlots<{
+  default(): any
+}>()
 </script>
 
 <template>
@@ -27,9 +33,14 @@ const postPath = computed<PostCollectionPath | ''>(() => {
       data-testid="data-toolbar-collection-action-menu"
     >
       <v-list>
-        <data-toolbar-list-item-search :path />
-        <data-toolbar-list-item-download v-if="acl.canExport" :path />
-        <data-toolbar-list-item-create v-if="acl.canCreate && postPath" :path />
+        <slot>
+          <data-toolbar-list-item-search :path />
+          <data-toolbar-list-item-download v-if="acl.canExport" :path />
+          <data-toolbar-list-item-create
+            v-if="acl.canCreate && postPath"
+            :path
+          />
+        </slot>
       </v-list>
     </v-menu>
   </v-btn>

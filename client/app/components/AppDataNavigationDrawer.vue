@@ -308,6 +308,30 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           data-testid="app-nav-drawer-li-users"
         />
       </v-list-group>
+      <v-list-group v-if="isAuthenticated" value="Vocabularies">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-book"
+            title="Vocabularies"
+            data-testid="app-nav-drawer-li-vocabularies"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/data/vocabulary/zoo/taxonomies"
+          router
+          title="Animal taxonomy"
+          data-testid="app-nav-drawer-li-zoo-taxonomy"
+        />
+        <v-list-item
+          nuxt
+          to="/data/vocabulary/botany/taxonomies"
+          router
+          title="Plant taxonomy"
+          data-testid="app-nav-drawer-li-zoo-taxonomy"
+        />
+      </v-list-group>
       <v-list-item
         nuxt
         to="/about"

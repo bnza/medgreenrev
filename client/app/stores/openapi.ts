@@ -79,7 +79,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
   //   isString(path)
   //   && specInternal.value?.paths?.[path]?.get?.responses?.['200']?.content?.['application/ld+json']?.['member'] !== undefined
 
-  const isPostOperation = (path: unknown): path is PostCollectionPath =>
+  const isPostOperationPath = (path: unknown): path is PostCollectionPath =>
     isString(path) && specInternal.value?.paths?.[path]?.post !== undefined
 
   const isValidOperationPath = (
@@ -159,7 +159,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
 
   return {
     getRelatedItemPaths,
-    isPostOperation,
+    isPostOperationPath,
     isValidOperationPathMethod,
     isValidOperationPath,
     isValidOperationPathParams,

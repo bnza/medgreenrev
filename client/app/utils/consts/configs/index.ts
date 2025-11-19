@@ -30,6 +30,8 @@ import site from './data/site'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
+import vocBotanyTaxonomy from './data/vocBotanyTaxonomy'
+import vocZooTaxonomy from './data/vocZooTaxonomy'
 import zooBone from './data/zooBone'
 import zooTooth from './data/zooTooth'
 import type { ResourceConfig, GetCollectionPath } from '~~/types'
@@ -99,10 +101,14 @@ export const RESOURCE_CONFIG_MAP = {
     sedimentCoreDepth.sedimentCoreSubResourceConfig,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones': zooBone,
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
+  '/api/data/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
+  '/api/data/vocabulary/zoo/taxonomies': vocZooTaxonomy,
   '/api/data/zoo/bones': zooBone,
   '/api/data/zoo/bones/{parentId}/analyses': analysisZooBone,
   '/api/data/zoo/teeth': zooTooth,
   '/api/data/zoo/teeth/{parentId}/analyses': analysisZooTooth,
   '/api/data/botany/seeds/{parentId}/analyses': analysisBotanySeed,
   '/api/data/botany/charcoals/{parentId}/analyses': analysisBotanyCharcoal,
+  '/api/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
+  '/api/vocabulary/zoo/taxonomies': vocZooTaxonomy,
 } as const satisfies Partial<Record<GetCollectionPath, ResourceConfig>>
