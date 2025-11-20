@@ -317,20 +317,61 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             data-testid="app-nav-drawer-li-vocabularies"
           />
         </template>
-        <v-list-item
-          nuxt
-          to="/data/vocabulary/zoo/taxonomies"
-          router
-          title="Animal taxonomy"
-          data-testid="app-nav-drawer-li-zoo-taxonomy"
-        />
-        <v-list-item
-          nuxt
-          to="/data/vocabulary/botany/taxonomies"
-          router
-          title="Plant taxonomy"
-          data-testid="app-nav-drawer-li-zoo-taxonomy"
-        />
+        <v-list-group value="Vocabulary Botany">
+          <template #activator="{ props: zooProps }">
+            <v-list-item
+              v-bind="zooProps"
+              title="Botany"
+              data-testid="app-nav-drawer-li-group-voc-botany"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/botany/taxonomies"
+            router
+            title="Taxonomy"
+            data-testid="app-nav-drawer-li-botany-taxonomy"
+          />
+        </v-list-group>
+        <v-list-group value="Vocabulary Historical Data">
+          <template #activator="{ props: histProps }">
+            <v-list-item
+              v-bind="histProps"
+              title="Historical Data"
+              data-testid="app-nav-drawer-li-voc-historical-data"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/animals"
+            router
+            title="Animals"
+            data-testid="app-nav-drawer-li-voc-historical-data-animals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/plants"
+            router
+            title="Plants"
+            data-testid="app-nav-drawer-li-voc-historical-data-plants"
+          />
+        </v-list-group>
+        <v-list-group value="Vocabulary Zoo">
+          <template #activator="{ props: zooProps }">
+            <v-list-item
+              v-bind="zooProps"
+              title="Zoo"
+              data-testid="app-nav-drawer-li-group-voc-zoo"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/zoo/taxonomies"
+            router
+            title="Taxonomy"
+            data-testid="app-nav-drawer-li-zoo-taxonomy"
+          />
+        </v-list-group>
       </v-list-group>
       <v-list-item
         nuxt

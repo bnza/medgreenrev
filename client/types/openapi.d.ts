@@ -4110,7 +4110,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/vocabularies/botany/taxonomies/value': {
+  '/api/validator/unique/vocabulary/botany/taxonomies/value': {
     parameters: {
       query?: never
       header?: never
@@ -4121,7 +4121,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquevocabulariesbotanytaxonomiesvalue_get']
+    get: operations['api_validatoruniquevocabularybotanytaxonomiesvalue_get']
     put?: never
     post?: never
     delete?: never
@@ -4130,7 +4130,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/vocabularies/zoo/taxonomies/code': {
+  '/api/validator/unique/vocabulary/history/animals': {
     parameters: {
       query?: never
       header?: never
@@ -4141,7 +4141,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquevocabularieszootaxonomiescode_get']
+    get: operations['api_validatoruniquevocabularyhistoryanimals_get']
     put?: never
     post?: never
     delete?: never
@@ -4150,7 +4150,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/vocabularies/zoo/taxonomies/value': {
+  '/api/validator/unique/vocabulary/history/plants': {
     parameters: {
       query?: never
       header?: never
@@ -4161,7 +4161,47 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquevocabularieszootaxonomiesvalue_get']
+    get: operations['api_validatoruniquevocabularyhistoryplants_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/vocabulary/zoo/taxonomies/code': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquevocabularyzootaxonomiescode_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/vocabulary/zoo/taxonomies/value': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquevocabularyzootaxonomiesvalue_get']
     put?: never
     post?: never
     delete?: never
@@ -4514,6 +4554,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/vocabulary/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryAnimal resources.
+     * @description Retrieves the collection of VocHistoryAnimal resources.
+     */
+    get: operations['api_datavocabularyhistoryanimals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/history/animals': {
     parameters: {
       query?: never
@@ -4527,7 +4587,11 @@ export interface paths {
      */
     get: operations['api_vocabularyhistoryanimals_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a VocHistoryAnimal resource.
+     * @description Creates a VocHistoryAnimal resource.
+     */
+    post: operations['api_vocabularyhistoryanimals_post']
     delete?: never
     options?: never
     head?: never
@@ -4546,6 +4610,30 @@ export interface paths {
      * @description Retrieves a VocHistoryAnimal resource.
      */
     get: operations['api_vocabularyhistoryanimals_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the VocHistoryAnimal resource.
+     * @description Removes the VocHistoryAnimal resource.
+     */
+    delete: operations['api_vocabularyhistoryanimals_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/vocabulary/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryPlant resources.
+     * @description Retrieves the collection of VocHistoryPlant resources.
+     */
+    get: operations['api_datavocabularyhistoryplants_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -4567,7 +4655,11 @@ export interface paths {
      */
     get: operations['api_vocabularyhistoryplants_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a VocHistoryPlant resource.
+     * @description Creates a VocHistoryPlant resource.
+     */
+    post: operations['api_vocabularyhistoryplants_post']
     delete?: never
     options?: never
     head?: never
@@ -4588,7 +4680,11 @@ export interface paths {
     get: operations['api_vocabularyhistoryplants_id_get']
     put?: never
     post?: never
-    delete?: never
+    /**
+     * Removes the VocHistoryPlant resource.
+     * @description Removes the VocHistoryPlant resource.
+     */
+    delete: operations['api_vocabularyhistoryplants_id_delete']
     options?: never
     head?: never
     patch?: never
@@ -8165,32 +8261,25 @@ export interface components {
       readonly id?: number
       value?: string
     }
-    'VocBotanyTaxonomy-botany_taxonomy.create': {
+    'VocBotanyTaxonomy-voc_botany_taxonomy.create': {
       value: string
       vernacularName: string
       class: string
       family?: string | null
     }
-    'VocBotanyTaxonomy-botany_taxonomy.update.jsonMergePatch': {
+    'VocBotanyTaxonomy-voc_botany_taxonomy.update.jsonMergePatch': {
       vernacularName?: string
       class?: string
       family?: string | null
     }
-    'VocBotanyTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+    'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
       vernacularName: string
       class: string
       family?: string | null
     }
-    'VocBotanyTaxonomy.jsonld-botany_taxonomy.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
-      value: string
-      vernacularName: string
-      class: string
-      family?: string | null
-    }
-    'VocBotanyTaxonomy.jsonld-botany_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
       vernacularName: string
@@ -8202,17 +8291,35 @@ export interface components {
       id?: number
       value?: string
     }
-    'VocHistoryAnimal.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+    'VocHistoryAnimal-voc_history_animal.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       taxonomy?: string | null
-      value?: string
+      value: string
     }
     'VocHistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       value?: string
+    }
+    'VocHistoryAnimal.jsonld-voc_history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      taxonomy?:
+        | components['schemas']['VocZooTaxonomy.jsonld-voc_history_animal.acl.read']
+        | null
+      value?: string
+    }
+    'VocHistoryAnimal.jsonld-voc_history_animal.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      value?: string
+    }
+    'VocHistoryPlant-voc_history_plant.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
+      value: string
     }
     'VocHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
@@ -8224,6 +8331,15 @@ export interface components {
       value?: string
     }
     'VocHistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      value?: string
+    }
+    'VocHistoryPlant.jsonld-voc_history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string | null
       value?: string
     }
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -8308,19 +8424,26 @@ export interface components {
       code?: string
       value?: string
     }
-    'VocZooTaxonomy-zoo_taxonomy.create': {
+    'VocZooTaxonomy-voc_zoo_taxonomy.create': {
       code: string
       value: string
       vernacularName: string
       class: string
       family?: string | null
     }
-    'VocZooTaxonomy-zoo_taxonomy.update.jsonMergePatch': {
+    'VocZooTaxonomy-voc_zoo_taxonomy.update.jsonMergePatch': {
       vernacularName?: string
       class?: string
       family?: string | null
     }
-    'VocZooTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+    'VocZooTaxonomy.jsonld-voc_history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code: string
+      value: string
+      vernacularName: string
+      class: string
+      family?: string | null
+    }
+    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code: string
       value: string
@@ -8328,15 +8451,7 @@ export interface components {
       class: string
       family?: string | null
     }
-    'VocZooTaxonomy.jsonld-zoo_taxonomy.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
-      code: string
-      value: string
-      vernacularName: string
-      class: string
-      family?: string | null
-    }
-    'VocZooTaxonomy.jsonld-zoo_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code: string
       value: string
@@ -22076,7 +22191,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquevocabulariesbotanytaxonomiesvalue_get: {
+  api_validatoruniquevocabularybotanytaxonomiesvalue_get: {
     parameters: {
       query?: never
       header?: never
@@ -22107,7 +22222,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquevocabularieszootaxonomiescode_get: {
+  api_validatoruniquevocabularyhistoryanimals_get: {
     parameters: {
       query?: never
       header?: never
@@ -22138,7 +22253,69 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquevocabularieszootaxonomiesvalue_get: {
+  api_validatoruniquevocabularyhistoryplants_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquevocabularyzootaxonomiescode_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquevocabularyzootaxonomiesvalue_get: {
     parameters: {
       query?: never
       header?: never
@@ -22745,7 +22922,13 @@ export interface operations {
   }
   api_datavocabularybotanytaxonomies_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[vernacularName]'?: 'asc' | 'desc'
+        'order[class]'?: 'asc' | 'desc'
+        'order[family]'?: 'asc' | 'desc'
+      }
       header?: never
       path?: never
       cookie?: never
@@ -22759,7 +22942,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
-            member: components['schemas']['VocBotanyTaxonomy.jsonld-botany_taxonomy.acl.read'][]
+            member: components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.acl.read'][]
           }
         }
       }
@@ -22767,7 +22950,13 @@ export interface operations {
   }
   api_vocabularybotanytaxonomies_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[vernacularName]'?: 'asc' | 'desc'
+        'order[class]'?: 'asc' | 'desc'
+        'order[family]'?: 'asc' | 'desc'
+      }
       header?: never
       path?: never
       cookie?: never
@@ -22781,7 +22970,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
-            member: components['schemas']['VocBotanyTaxonomy.jsonld-botany_taxonomy.read'][]
+            member: components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read'][]
           }
         }
       }
@@ -22797,7 +22986,7 @@ export interface operations {
     /** @description The new VocBotanyTaxonomy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['VocBotanyTaxonomy-botany_taxonomy.create']
+        'application/ld+json': components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.create']
       }
     }
     responses: {
@@ -22807,22 +22996,11 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read']
         }
       }
       /** @description Invalid input */
       400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
         headers: {
           [name: string]: unknown
         }
@@ -22863,7 +23041,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read']
         }
       }
       /** @description Not found */
@@ -22935,7 +23113,7 @@ export interface operations {
     /** @description The updated VocBotanyTaxonomy resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['VocBotanyTaxonomy-botany_taxonomy.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.update.jsonMergePatch']
       }
     }
     responses: {
@@ -22945,7 +23123,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read']
         }
       }
       /** @description Invalid input */
@@ -23056,7 +23234,7 @@ export interface operations {
       }
     }
   }
-  api_vocabularyhistoryanimals_get_collection: {
+  api_datavocabularyhistoryanimals_get_collection: {
     parameters: {
       query?: {
         /**
@@ -23064,6 +23242,12 @@ export interface operations {
          * @example oak
          */
         search?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -23078,8 +23262,89 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
-            member: components['schemas']['VocHistoryAnimal.jsonld'][]
+            member: components['schemas']['VocHistoryAnimal.jsonld-voc_history_animal.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryanimals_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAnimal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryAnimal.jsonld-voc_history_animal.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryanimals_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new VocHistoryAnimal resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['VocHistoryAnimal-voc_history_animal.create']
+      }
+    }
+    responses: {
+      /** @description VocHistoryAnimal resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryAnimal.jsonld-voc_history_animal.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -23102,7 +23367,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocHistoryAnimal.jsonld']
+          'application/ld+json': components['schemas']['VocHistoryAnimal.jsonld-voc_history_animal.read']
         }
       }
       /** @description Not found */
@@ -23118,6 +23383,83 @@ export interface operations {
       }
     }
   }
+  api_vocabularyhistoryanimals_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryAnimal identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAnimal resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datavocabularyhistoryplants_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryPlant collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryPlant.jsonld-voc_history_plant.acl.read'][]
+          }
+        }
+      }
+    }
+  }
   api_vocabularyhistoryplants_get_collection: {
     parameters: {
       query?: {
@@ -23126,6 +23468,12 @@ export interface operations {
          * @example oak
          */
         search?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -23142,6 +23490,53 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
             member: components['schemas']['VocHistoryPlant.jsonld'][]
           }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryplants_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new VocHistoryPlant resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['VocHistoryPlant-voc_history_plant.create']
+      }
+    }
+    responses: {
+      /** @description VocHistoryPlant resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryPlant.jsonld']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }
@@ -23165,6 +23560,49 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocHistoryPlant.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryplants_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryPlant identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryPlant resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
       /** @description Not found */
@@ -23819,7 +24257,18 @@ export interface operations {
   }
   api_datavocabularyzootaxonomies_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[vernacularName]'?: 'asc' | 'desc'
+        'order[class]'?: 'asc' | 'desc'
+        'order[family]'?: 'asc' | 'desc'
+      }
       header?: never
       path?: never
       cookie?: never
@@ -23832,8 +24281,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
-            member: components['schemas']['VocZooTaxonomy.jsonld-zoo_taxonomy.acl.read'][]
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.acl.read'][]
           }
         }
       }
@@ -23841,7 +24290,14 @@ export interface operations {
   }
   api_vocabularyzootaxonomies_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[vernacularName]'?: 'asc' | 'desc'
+        'order[class]'?: 'asc' | 'desc'
+        'order[family]'?: 'asc' | 'desc'
+      }
       header?: never
       path?: never
       cookie?: never
@@ -23855,7 +24311,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
-            member: components['schemas']['VocZooTaxonomy.jsonld-zoo_taxonomy.read'][]
+            member: components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read'][]
           }
         }
       }
@@ -23871,7 +24327,7 @@ export interface operations {
     /** @description The new VocZooTaxonomy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['VocZooTaxonomy-zoo_taxonomy.create']
+        'application/ld+json': components['schemas']['VocZooTaxonomy-voc_zoo_taxonomy.create']
       }
     }
     responses: {
@@ -23881,22 +24337,11 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read']
         }
       }
       /** @description Invalid input */
       400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
         headers: {
           [name: string]: unknown
         }
@@ -23937,7 +24382,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read']
         }
       }
       /** @description Not found */
@@ -24009,7 +24454,7 @@ export interface operations {
     /** @description The updated VocZooTaxonomy resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['VocZooTaxonomy-zoo_taxonomy.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['VocZooTaxonomy-voc_zoo_taxonomy.update.jsonMergePatch']
       }
     }
     responses: {
@@ -24019,7 +24464,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read']
         }
       }
       /** @description Invalid input */

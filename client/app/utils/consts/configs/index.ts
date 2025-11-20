@@ -31,6 +31,8 @@ import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import vocBotanyTaxonomy from './data/vocBotanyTaxonomy'
+import vocHistoryAnimal from './data/vocHistoryAnimal'
+import vocHistoryPlant from './data/vocHistoryPlant'
 import vocZooTaxonomy from './data/vocZooTaxonomy'
 import zooBone from './data/zooBone'
 import zooTooth from './data/zooTooth'
@@ -102,6 +104,8 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/stratigraphic_units/{parentId}/zoo/bones': zooBone,
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
   '/api/data/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
+  '/api/data/vocabulary/history/animals': vocHistoryAnimal,
+  '/api/data/vocabulary/history/plants': vocHistoryPlant,
   '/api/data/vocabulary/zoo/taxonomies': vocZooTaxonomy,
   '/api/data/zoo/bones': zooBone,
   '/api/data/zoo/bones/{parentId}/analyses': analysisZooBone,
@@ -110,5 +114,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/botany/seeds/{parentId}/analyses': analysisBotanySeed,
   '/api/data/botany/charcoals/{parentId}/analyses': analysisBotanyCharcoal,
   '/api/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
+  '/api/vocabulary/history/animals': vocHistoryAnimal,
+  '/api/vocabulary/history/plants': vocHistoryPlant,
   '/api/vocabulary/zoo/taxonomies': vocZooTaxonomy,
 } as const satisfies Partial<Record<GetCollectionPath, ResourceConfig>>

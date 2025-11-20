@@ -38,11 +38,11 @@ watch(
 )
 
 const apiCodeValidator = new GetValidationOperation(
-  '/api/validator/unique/vocabularies/zoo/taxonomies/code',
+  '/api/validator/unique/vocabulary/zoo/taxonomies/code',
 )
 
 const apiValueValidator = new GetValidationOperation(
-  '/api/validator/unique/vocabularies/zoo/taxonomies/value',
+  '/api/validator/unique/vocabulary/zoo/taxonomies/value',
 )
 
 const uniqueCode = createRule({
@@ -54,7 +54,7 @@ const uniqueCode = createRule({
 const uniqueValue = createRule({
   validator: async (value: Maybe<string>) =>
     value ? await apiValueValidator.isValid({ value: value }) : true,
-  message: 'Name must be unique',
+  message: 'Value must be unique',
 })
 
 const { r$ } = useScopedRegle(model, {

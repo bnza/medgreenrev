@@ -3,7 +3,7 @@ import type { GetCollectionPath } from '~~/types'
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
 import DataToolbarListItemCreate from '~/components/data/toolbar/DataToolbarListItemCreate.vue'
 
-const path: GetCollectionPath = '/api/data/vocabulary/zoo/taxonomies'
+const path: GetCollectionPath = '/api/data/history/plants'
 
 const { isAuthenticated, hasSpecialistRole, hasRole, hasRoleAdmin } =
   useAppAuth()
@@ -12,7 +12,7 @@ const canCreate = computed(
   () =>
     hasRoleAdmin.value ||
     (hasRole(ApiRole.Editor).value &&
-      hasSpecialistRole(ApiSpecialistRole.ZooArchaeologist).value),
+      hasSpecialistRole(ApiSpecialistRole.Historian).value),
 )
 
 const acl = computed(() => ({
@@ -29,9 +29,9 @@ const acl = computed(() => ({
   >
     <template v-if="acl.canCreate" #collection-actions>
       <data-toolbar-collection-action-menu :acl :path>
-        <data-toolbar-list-item-create path="/api/vocabulary/zoo/taxonomies" />
+        <data-toolbar-list-item-create path="/api/vocabulary/history/plants" />
       </data-toolbar-collection-action-menu>
     </template>
-    <data-collection-table-vocabulary-zoo-taxonomy />
+    <data-collection-table-vocabulary-history-plant />
   </data-collection-page>
 </template>

@@ -31,13 +31,13 @@ watch(
 )
 
 const apiValueValidator = new GetValidationOperation(
-  '/api/validator/unique/vocabularies/botany/taxonomies/value',
+  '/api/validator/unique/vocabulary/botany/taxonomies/value',
 )
 
 const uniqueValue = createRule({
   validator: async (value: Maybe<string>) =>
     value ? await apiValueValidator.isValid({ value: value }) : true,
-  message: 'Name must be unique',
+  message: 'Value must be unique',
 })
 
 const { r$ } = useScopedRegle(model, {
