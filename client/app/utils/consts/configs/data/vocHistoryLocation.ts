@@ -13,13 +13,13 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
-      key: 'name',
-      value: 'name',
-      title: 'name',
+      key: 'value',
+      value: 'value',
+      title: 'value',
       minWidth: '200',
     },
     {
-      key: 'point.x',
+      key: 'point.y',
       value: 'n',
       title: 'N',
       minWidth: '100',
@@ -34,7 +34,7 @@ const config: Readonly<ResourceConfig> = {
     },
   ],
   labels: ['location (historical data)', 'locations (historical data)'],
-  name: 'historyLocation',
+  name: 'vocHistoryLocation',
 }
 
 export default config

@@ -84,7 +84,7 @@ const EMPTY_POST_MODEL_MAP: {
   }),
   '/api/data/history/plants': (parent) => ({
     location:
-      parent?.key === 'historyLocation' ? parent.item['@id'] : undefined,
+      parent?.key === 'vocHistoryLocation' ? parent.item['@id'] : undefined,
   }),
   '/api/data/individuals': (parent) => ({
     stratigraphicUnit:

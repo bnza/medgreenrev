@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useResourceUiStore from '~/stores/resource-ui'
 
-const path = '/api/data/history/locations/{id}' as const
+const path = '/api/vocabulary/history/locations/{id}' as const
 
 const { tab } = storeToRefs(useResourceUiStore(path))
 </script>

@@ -350,6 +350,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
+            to="/data/vocabulary/history/locations"
+            router
+            title="Locations"
+            data-testid="app-nav-drawer-li-voc-historical-data-locations"
+          />
+          <v-list-item
+            nuxt
             to="/data/vocabulary/history/plants"
             router
             title="Plants"

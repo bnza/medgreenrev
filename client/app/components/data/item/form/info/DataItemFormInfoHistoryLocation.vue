@@ -3,7 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap['/api/data/history/locations/{id}']
+    item: GetItemResponseMap['/api/vocabulary/history/locations/{id}']
     readLink?: boolean
   }>(),
   {
@@ -16,7 +16,7 @@ withDefaults(
   <data-item-form-read>
     <v-row>
       <v-col cols="6" xs="12" class="px-2">
-        <v-text-field :model-value="item.name" label="name" />
+        <v-text-field :model-value="item.value" label="name" />
       </v-col>
     </v-row>
     <v-row>

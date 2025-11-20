@@ -7,7 +7,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'historyLocation'>
+  parent?: ResourceParent<'vocHistoryLocation'>
 }>()
 
 const { appPath } = useResourceConfig(props.path)

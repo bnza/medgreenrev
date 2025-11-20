@@ -1906,46 +1906,6 @@ export interface paths {
     patch: operations['api_datahistoryanimals_id_patch']
     trace?: never
   }
-  '/api/data/history/locations': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of HistoryLocation resources.
-     * @description Retrieves the collection of HistoryLocation resources.
-     */
-    get: operations['api_datahistorylocations_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/history/locations/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a HistoryLocation resource.
-     * @description Retrieves a HistoryLocation resource.
-     */
-    get: operations['api_datahistorylocations_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/history/plants': {
     parameters: {
       query?: never
@@ -4150,6 +4110,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/vocabulary/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquevocabularyhistorylocations_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/vocabulary/history/plants': {
     parameters: {
       query?: never
@@ -4617,6 +4597,74 @@ export interface paths {
      * @description Removes the VocHistoryAnimal resource.
      */
     delete: operations['api_vocabularyhistoryanimals_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/vocabulary/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryLocation resources.
+     * @description Retrieves the collection of VocHistoryLocation resources.
+     */
+    get: operations['api_datavocabularyhistorylocations_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryLocation resources.
+     * @description Retrieves the collection of VocHistoryLocation resources.
+     */
+    get: operations['api_vocabularyhistorylocations_get_collection']
+    put?: never
+    /**
+     * Creates a VocHistoryLocation resource.
+     * @description Creates a VocHistoryLocation resource.
+     */
+    post: operations['api_vocabularyhistorylocations_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/locations/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryLocation resource.
+     * @description Retrieves a VocHistoryLocation resource.
+     */
+    get: operations['api_vocabularyhistorylocations_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the VocHistoryLocation resource.
+     * @description Removes the VocHistoryLocation resource.
+     */
+    delete: operations['api_vocabularyhistorylocations_id_delete']
     options?: never
     head?: never
     patch?: never
@@ -6541,7 +6589,7 @@ export interface components {
     'HistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       animal?: components['schemas']['VocHistoryAnimal.jsonld-history_animal.acl.read']
-      location?: components['schemas']['HistoryLocation.jsonld-history_animal.acl.read']
+      location?: components['schemas']['VocHistoryLocation.jsonld-history_animal.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
       reference?: string
@@ -6551,18 +6599,6 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
-    }
-    'HistoryLocation.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      name?: string
-    }
-    'HistoryLocation.jsonld-history_location.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      name?: string
-      readonly n?: number
-      readonly e?: number
-    }
-    'HistoryLocation.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      name?: string
     }
     'HistoryPlant-history_plant.create': {
       /**
@@ -6599,7 +6635,7 @@ export interface components {
     'HistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       plant?: components['schemas']['VocHistoryPlant.jsonld-history_plant.acl.read']
-      location?: components['schemas']['HistoryLocation.jsonld-history_plant.acl.read']
+      location?: components['schemas']['VocHistoryLocation.jsonld-history_plant.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
       reference?: string
@@ -6913,6 +6949,16 @@ export interface components {
       identifier?: string
       notes?: string | null
       readonly code?: string
+    }
+    'Point.jsonld': {
+      x?: number | string
+      y?: number | string
+      srid?: number | null
+      latitude?: number | string
+      longitude?: number | string
+      readonly type?: string
+      cartesianCoordinate?: number | string
+      geodesicCoordinate?: number | string
     }
     'Pottery-pottery.create': {
       /**
@@ -8182,84 +8228,84 @@ export interface components {
     'VocAnalysisType.csv-analysis.acl.read': {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
-      value?: string
+      value: string
     }
     'VocBotanyElement.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocBotanyElementPart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocBotanyTaxonomy-voc_botany_taxonomy.create': {
       value: string
@@ -8286,10 +8332,16 @@ export interface components {
       class: string
       family?: string | null
     }
+    'VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      vernacularName: string
+      class: string
+      family?: string | null
+    }
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
-      value?: string
+      value: string
     }
     'VocHistoryAnimal-voc_history_animal.create': {
       /**
@@ -8300,18 +8352,48 @@ export interface components {
       value: string
     }
     'VocHistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      value?: string
+      value: string
     }
     'VocHistoryAnimal.jsonld-voc_history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       taxonomy?:
         | components['schemas']['VocZooTaxonomy.jsonld-voc_history_animal.acl.read']
         | null
-      value?: string
+      value: string
     }
     'VocHistoryAnimal.jsonld-voc_history_animal.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
+    }
+    'VocHistoryLocation-voc_history_location.create': {
+      value: string
+      n?: number
+      e?: number
+    }
+    'VocHistoryLocation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      value: string
+      point: components['schemas']['Point.jsonld']
+      n?: number
+      e?: number
+    }
+    'VocHistoryLocation.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    }
+    'VocHistoryLocation.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    }
+    'VocHistoryLocation.jsonld-voc_history_location.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      value: string
+      n?: number
+      e?: number
+    }
+    'VocHistoryLocation.jsonld-voc_history_location.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      value: string
+      n?: number
+      e?: number
     }
     'VocHistoryPlant-voc_history_plant.create': {
       /**
@@ -8328,85 +8410,83 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy?: string | null
-      value?: string
+      value: string
     }
     'VocHistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      value?: string
+      value: string
     }
     'VocHistoryPlant.jsonld-voc_history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
-      value?: string
+      taxonomy?:
+        | components['schemas']['VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read']
+        | null
+      value: string
     }
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
-      value?: string
+      value: string
     }
     'VocMediaObjectType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       group?: string
-      value?: string
+      value: string
     }
     'VocPotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocPotteryFunctionalForm.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocPotteryFunctionalGroup.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocPotteryShape.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocPotterySurfaceTreatment.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value?: string
+      value: string
     }
     'VocSampleType.csv-sample.acl.read': {
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
-      value?: string
+      value: string
     }
     'VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
-      value?: string
+      value: string
     }
     'VocStratigraphicUnitRelation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: string
-      value?: string
+      value: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -8417,12 +8497,12 @@ export interface components {
     'VocZooBone.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
-      value?: string
+      value: string
     }
     'VocZooBonePart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
-      value?: string
+      value: string
     }
     'VocZooTaxonomy-voc_zoo_taxonomy.create': {
       code: string
@@ -16012,7 +16092,7 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[animal.value]'?: 'asc' | 'desc'
-        'order[location.name]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
@@ -16264,73 +16344,6 @@ export interface operations {
       }
     }
   }
-  api_datahistorylocations_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[name]'?: 'asc' | 'desc'
-        /**
-         * @description Case-insensitive contains search; alias 'search' targets 'name. Nested properties are not supported
-         * @example oak
-         */
-        search?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description HistoryLocation collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['HistoryLocation.jsonld-history_location.acl.read'][]
-          }
-        }
-      }
-    }
-  }
-  api_datahistorylocations_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description HistoryLocation identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description HistoryLocation resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HistoryLocation.jsonld-history_location.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_datahistoryplants_get_collection: {
     parameters: {
       query?: {
@@ -16339,7 +16352,7 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[plant.value]'?: 'asc' | 'desc'
-        'order[location.name]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
@@ -22253,6 +22266,37 @@ export interface operations {
       }
     }
   }
+  api_validatoruniquevocabularyhistorylocations_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniquevocabularyhistoryplants_get: {
     parameters: {
       query?: never
@@ -23237,6 +23281,10 @@ export interface operations {
   api_datavocabularyhistoryanimals_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -23261,7 +23309,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocHistoryAnimal.jsonld-voc_history_animal.acl.read'][]
           }
         }
@@ -23426,9 +23474,201 @@ export interface operations {
       }
     }
   }
+  api_datavocabularyhistorylocations_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['VocHistoryLocation.jsonld-voc_history_location.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistorylocations_get_collection: {
+    parameters: {
+      query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryLocation.jsonld-voc_history_location.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistorylocations_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new VocHistoryLocation resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['VocHistoryLocation-voc_history_location.create']
+      }
+    }
+    responses: {
+      /** @description VocHistoryLocation resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryLocation.jsonld']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_vocabularyhistorylocations_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryLocation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryLocation.jsonld-voc_history_location.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistorylocations_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryLocation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_datavocabularyhistoryplants_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -23453,7 +23693,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocHistoryPlant.jsonld-voc_history_plant.acl.read'][]
           }
         }

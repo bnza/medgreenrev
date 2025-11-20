@@ -16,7 +16,7 @@ withDefaults(
   <data-item-form-read>
     <v-row>
       <v-col cols="4" xs="12" class="px-2">
-        <v-text-field :model-value="item.location?.name" label="location" />
+        <v-text-field :model-value="item.location?.value" label="location" />
       </v-col>
       <v-col cols="8" xs="12" class="px-2">
         <v-text-field :model-value="item.plant?.value" label="plant" />

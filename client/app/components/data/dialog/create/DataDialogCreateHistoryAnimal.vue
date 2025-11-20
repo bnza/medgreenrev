@@ -10,7 +10,7 @@ import DataItemFormCreateHistoryAnimal from '~/components/data/item/form/create/
 const path: PostCollectionPath = '/api/data/history/animals' as const
 
 defineProps<{
-  parent?: ResourceParent<'historyLocation'>
+  parent?: ResourceParent<'vocHistoryLocation'>
 }>()
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()

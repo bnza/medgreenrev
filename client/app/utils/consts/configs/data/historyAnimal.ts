@@ -19,9 +19,9 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
-      key: 'location.name',
-      value: 'location.name',
-      title: 'location.name',
+      key: 'location.value',
+      value: 'location.value',
+      title: 'location',
       minWidth: '100',
     },
     {

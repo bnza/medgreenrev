@@ -10,7 +10,7 @@ import { integer, maxValue, minValue, required } from '@regle/rules'
 const path: ApiResourcePath | PostCollectionPath = '/api/data/history/animals'
 
 const props = defineProps<{
-  parent?: ResourceParent<'historyLocation'>
+  parent?: ResourceParent<'vocHistoryLocation'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -48,11 +48,11 @@ const { r$ } = useScopedRegle(model, {
     <v-col cols="4" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.location"
-        path="/api/data/history/locations"
-        item-title="name"
+        path="/api/vocabulary/history/locations"
+        item-title="value"
         label="location"
         :error-messages="r$.$errors?.location"
-        :disabled="parent?.key === 'historyLocation'"
+        :disabled="parent?.key === 'vocHistoryLocation'"
       />
     </v-col>
     <v-col cols="8" xs="12" class="px-2">

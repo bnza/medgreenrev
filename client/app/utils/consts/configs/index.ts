@@ -18,7 +18,6 @@ import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import * as sedimentCoreDepth from './data/sedimentCoreDepth'
 import historyAnimal from './data/historyAnimal'
-import historyLocation from './data/historyLocation'
 import historyPlant from './data/historyPlant'
 import mediaObject from './data/mediaObject'
 import microstratigraphicUnit from './data/microstratigraphicUnit'
@@ -32,6 +31,7 @@ import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import vocBotanyTaxonomy from './data/vocBotanyTaxonomy'
 import vocHistoryAnimal from './data/vocHistoryAnimal'
+import vocHistoryLocation from './data/vocHistoryLocation'
 import vocHistoryPlant from './data/vocHistoryPlant'
 import vocZooTaxonomy from './data/vocZooTaxonomy'
 import zooBone from './data/zooBone'
@@ -78,7 +78,6 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/media_objects': mediaObject,
   '/api/data/microstratigraphic_units': microstratigraphicUnit,
   '/api/data/history/animals': historyAnimal,
-  '/api/data/history/locations': historyLocation,
   '/api/data/history/plants': historyPlant,
   '/api/data/individuals': individual,
   '/api/data/individuals/{parentId}/analyses': analysisIndividual,
@@ -105,6 +104,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': zooTooth,
   '/api/data/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
   '/api/data/vocabulary/history/animals': vocHistoryAnimal,
+  '/api/data/vocabulary/history/locations': vocHistoryLocation,
   '/api/data/vocabulary/history/plants': vocHistoryPlant,
   '/api/data/vocabulary/zoo/taxonomies': vocZooTaxonomy,
   '/api/data/zoo/bones': zooBone,
@@ -115,6 +115,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/botany/charcoals/{parentId}/analyses': analysisBotanyCharcoal,
   '/api/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
   '/api/vocabulary/history/animals': vocHistoryAnimal,
+  '/api/vocabulary/history/locations': vocHistoryLocation,
   '/api/vocabulary/history/plants': vocHistoryPlant,
   '/api/vocabulary/zoo/taxonomies': vocZooTaxonomy,
 } as const satisfies Partial<Record<GetCollectionPath, ResourceConfig>>

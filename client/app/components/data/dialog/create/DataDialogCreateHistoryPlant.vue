@@ -9,7 +9,7 @@ import { useCollectScope } from '@regle/core'
 const path: PostCollectionPath = '/api/data/history/plants' as const
 
 defineProps<{
-  parent?: ResourceParent<'historyLocation'>
+  parent?: ResourceParent<'vocHistoryLocation'>
 }>()
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()

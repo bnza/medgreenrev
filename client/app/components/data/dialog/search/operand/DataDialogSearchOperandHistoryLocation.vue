@@ -50,7 +50,7 @@ watch(
     <data-autocomplete
       v-model="operand"
       item-title="name"
-      path="/api/data/history/locations"
+      path="/api/vocabulary/history/locations"
       :readonly
       :variant
       label="values"

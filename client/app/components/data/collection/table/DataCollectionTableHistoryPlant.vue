@@ -8,7 +8,7 @@ import DataDialogCreateHistoryPlant from '~/components/data/dialog/create/DataDi
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'historyLocation'>
+  parent?: ResourceParent<'vocHistoryLocation'>
 }>()
 
 const { appPath } = useResourceConfig(props.path)

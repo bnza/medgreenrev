@@ -47,8 +47,8 @@ const { r$ } = useScopedRegle(model, {
     <v-col cols="4" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.location"
-        path="/api/data/history/locations"
-        item-title="name"
+        path="/api/vocabulary/history/locations"
+        item-title="value"
         label="location"
         :error-messages="r$.$errors?.location"
         disabled
