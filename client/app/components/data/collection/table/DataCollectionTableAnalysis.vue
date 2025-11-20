@@ -52,7 +52,7 @@ const getStatusText = (status: number | null | undefined) => {
       {{ getStatusText(item.status) }}
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="Context" />-->
+      <data-dialog-download :path title="Analysis" />
       <data-dialog-search :path title="Analysis" />
       <data-dialog-create-analysis :path :parent @refresh="refetch()" />
       <data-dialog-delete-analysis @refresh="refetch()" />

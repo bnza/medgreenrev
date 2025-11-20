@@ -63,7 +63,8 @@ const { updateDialogState } = storeToRefs(
       <text-tooltip-span :text="item.summary" />
     </template>
     <template #dialogs="{ refetch }">
-      <!-- <data-dialog-search :path title="Botany charcoal analysis" /> -->
+      <data-dialog-download :path title="Botany charcoal analysis" />
+      <data-dialog-search :path title="Botany charcoal analysis" />
       <data-dialog-create-analysis-botany-charcoal
         :path
         :parent

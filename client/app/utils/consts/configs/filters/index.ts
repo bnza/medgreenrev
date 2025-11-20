@@ -93,12 +93,28 @@ const NumericRange: StaticFiltersDefinitionObject = {
   },
 }
 
+const SelectionBotanyFamily: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Selection',
+  path: '/api/list/vocabulary/botany/taxonomy_families',
+  addToQueryObject: addToQueryObjectMultiple,
+}
+
+const SelectionBotanyClass: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Selection',
+  path: '/api/list/vocabulary/botany/taxonomy_classes',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const SelectionContextType: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
   componentKey: 'Selection',
   path: '/api/list/contexts/types',
-  addToQueryObject: addToQueryObjectMultiple,
+  addToQueryObject: addToQueryObjectArray,
 }
 
 const SelectionZooBoneEndsPreserved: StaticFiltersDefinitionObject = {
@@ -112,6 +128,22 @@ const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
   componentKey: 'SelectionZooBoneSide',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyElementPart: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/element_parts',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyBotanyTaxonomy: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/taxonomies',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -274,10 +306,14 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  SelectionBotanyClass,
+  SelectionBotanyFamily,
   SelectionContextType,
   SelectionZooBoneEndsPreserved,
   SelectionZooBoneSide,
   VocabularyAnalysisType,
+  VocabularyElementPart,
+  VocabularyBotanyTaxonomy,
   VocabularyCulturalContext,
   VocabularyHistoryAnimals,
   VocabularyHistoryPlant,
@@ -298,6 +334,8 @@ export type FilterKey = keyof typeof API_FILTERS
 export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
   | '/api/data/analyses'
+  | '/api/data/analyses/botany/charcoals'
+  | '/api/data/botany/charcoals/{parentId}/analyses'
   | '/api/data/analyses/contexts/zoo'
   | '/api/data/analyses/potteries'
   | '/api/data/analyses/zoo/bones'
@@ -321,6 +359,89 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/zoo/teeth'
   | '/api/data/zoo/teeth/{parentId}/analyses'
 >
+
+const analysisJoinStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'analysis.type': {
+      propertyLabel: 'analysis (type)',
+      filters: {
+        VocabularyAnalysisType,
+      },
+    },
+    'analysis.summary': {
+      propertyLabel: 'analysis (summary)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'subject.stratigraphicUnit.site': {
+      propertyLabel: 'site',
+      filters: {
+        SiteEquals,
+      },
+    },
+    'subject.stratigraphicUnit': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'subject.stratigraphicUnit.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+    'subject.stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    summary: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
+const analysisBotanyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'subject.taxonomy.family': {
+      propertyLabel: 'taxonomy (family)',
+      filters: {
+        SelectionBotanyFamily,
+      },
+    },
+    'subject.taxonomy.class': {
+      propertyLabel: 'taxonomy (class)',
+      filters: {
+        SelectionBotanyClass,
+      },
+    },
+    'subject.taxonomy': {
+      filters: {
+        VocabularyBotanyTaxonomy,
+      },
+    },
+  }
+
+const analysisBotanyCharcoalStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    ...analysisJoinStaticFiltersDefinition,
+    ...analysisBotanyStaticFiltersDefinition,
+    ...{
+      'subject.part': {
+        propertyLabel: 'part',
+        filters: {
+          VocabularyBotanyTaxonomy,
+        },
+      },
+    },
+  }
 
 const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   type: {
@@ -1236,6 +1357,10 @@ export const FILTERS_PATHS_MAP: Record<
   ResourceStaticFiltersDefinitionObject
 > = {
   '/api/data/analyses': analysisStaticFiltersDefinition,
+  '/api/data/analyses/botany/charcoals':
+    analysisBotanyCharcoalStaticFiltersDefinition,
+  '/api/data/botany/charcoals/{parentId}/analyses':
+    analysisBotanyCharcoalStaticFiltersDefinition,
   '/api/data/analyses/contexts/zoo':
     analysisContextZooStaticFiltersDefinitionObject,
   '/api/data/analyses/potteries': analysisPotteryStaticFiltersDefinitionObject,
