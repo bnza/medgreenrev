@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { GetCollectionPath } from '~~/types'
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
+import DataToolbarListItemCreate from '~/components/data/toolbar/DataToolbarListItemCreate.vue'
 
 const path: GetCollectionPath = '/api/data/vocabulary/botany/taxonomies'
 
@@ -20,12 +21,18 @@ const acl = computed(() => ({
 }))
 </script>
 <template>
-  <data-collection-page :parent="false" :path :show-back-button="false" :acl>
-    <template #collection-actions>
-      <data-toolbar-collection-action-menu
-        :acl
-        path="/api/vocabulary/botany/taxonomies"
-      />
+  <data-collection-page
+    :parent="false"
+    :path
+    :show-back-button="false"
+    :acl="acl.canCreate ? acl : false"
+  >
+    <template v-if="acl.canCreate" #collection-actions>
+      <data-toolbar-collection-action-menu :acl :path>
+        <data-toolbar-list-item-create
+          path="/api/vocabulary/botany/taxonomies"
+        />
+      </data-toolbar-collection-action-menu>
     </template>
     <data-collection-table-vocabulary-botany-taxonomy />
   </data-collection-page>

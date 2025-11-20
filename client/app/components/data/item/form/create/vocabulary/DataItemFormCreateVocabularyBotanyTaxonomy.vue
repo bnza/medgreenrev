@@ -3,10 +3,32 @@ import type { PostCollectionPath } from '~~/types'
 import { createRule, type Maybe, useScopedRegle } from '@regle/core'
 import { required } from '@regle/rules'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
+import { capitalize } from 'vue'
 
 const path: PostCollectionPath = '/api/vocabulary/botany/taxonomies'
 
 const model = generateEmptyPostModel(path)
+
+watch(
+  () => model.value.value,
+  (value) => {
+    model.value.value = value ? capitalize(value) : value
+  },
+)
+
+watch(
+  () => model.value.class,
+  (value) => {
+    model.value.class = value ? capitalize(value) : value
+  },
+)
+
+watch(
+  () => model.value.family,
+  (value) => {
+    model.value.family = value ? capitalize(value) : value
+  },
+)
 
 const apiValueValidator = new GetValidationOperation(
   '/api/validator/unique/vocabularies/botany/taxonomies/value',

@@ -6,7 +6,7 @@ const props = withDefaults(
     path: Path
     title?: string
     showBackButton?: boolean
-    acl: CollectionAcl
+    acl: CollectionAcl | false
     parent: boolean
   }>(),
   {
@@ -30,7 +30,7 @@ const title = computed(() => props.title || labels[1])
     <template #toolbar-append>
       <slot name="search-bar" />
       <slot name="collection-actions">
-        <data-toolbar-collection-action-menu :acl :path>
+        <data-toolbar-collection-action-menu v-if="acl" :acl :path>
           <data-toolbar-list-item-create v-if="acl.canCreate" :path />
         </data-toolbar-collection-action-menu>
       </slot>

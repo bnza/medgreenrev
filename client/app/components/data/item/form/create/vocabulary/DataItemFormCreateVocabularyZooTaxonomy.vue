@@ -3,10 +3,39 @@ import type { PostCollectionPath } from '~~/types'
 import { createRule, type Maybe, useScopedRegle } from '@regle/core'
 import { required } from '@regle/rules'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
+import { capitalize } from 'vue'
 
 const path: PostCollectionPath = '/api/vocabulary/zoo/taxonomies'
 
 const model = generateEmptyPostModel(path)
+
+watch(
+  () => model.value.code,
+  (value) => {
+    model.value.code = value?.toUpperCase()
+  },
+)
+
+watch(
+  () => model.value.value,
+  (value) => {
+    model.value.value = value ? capitalize(value) : value
+  },
+)
+
+watch(
+  () => model.value.class,
+  (value) => {
+    model.value.class = value ? capitalize(value) : value
+  },
+)
+
+watch(
+  () => model.value.family,
+  (value) => {
+    model.value.family = value ? capitalize(value) : value
+  },
+)
 
 const apiCodeValidator = new GetValidationOperation(
   '/api/validator/unique/vocabularies/zoo/taxonomies/code',
