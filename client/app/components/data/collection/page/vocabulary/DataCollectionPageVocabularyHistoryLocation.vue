@@ -28,11 +28,7 @@ const acl = computed(() => ({
     :acl="acl.canCreate ? acl : false"
   >
     <template v-if="acl.canCreate" #collection-actions>
-      <data-toolbar-collection-action-menu :acl :path>
-        <data-toolbar-list-item-create
-          path="/api/vocabulary/history/locations"
-        />
-      </data-toolbar-collection-action-menu>
+      <data-toolbar-list-item-create path="/api/vocabulary/history/locations" />
     </template>
     <data-collection-table-vocabulary-history-location />
   </data-collection-page>

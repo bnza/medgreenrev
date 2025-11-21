@@ -28,11 +28,7 @@ const acl = computed(() => ({
     :acl="acl.canCreate ? acl : false"
   >
     <template v-if="acl.canCreate" #collection-actions>
-      <data-toolbar-collection-action-menu :acl :path>
-        <data-toolbar-list-item-create
-          path="/api/vocabulary/botany/taxonomies"
-        />
-      </data-toolbar-collection-action-menu>
+      <data-toolbar-list-item-create path="/api/vocabulary/botany/taxonomies" />
     </template>
     <data-collection-table-vocabulary-botany-taxonomy />
   </data-collection-page>
