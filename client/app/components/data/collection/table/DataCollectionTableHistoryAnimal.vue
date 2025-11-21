@@ -10,7 +10,7 @@ const props = defineProps<{
   parent?: ResourceParent<'vocHistoryLocation'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { id: parentId } = useResourceParent(props.parent)
 
 const { deleteDialogState } = storeToRefs(
@@ -33,8 +33,8 @@ const { updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="Context" />-->
-      <data-dialog-search :path title="Animal (historical data)" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-history-animal :path :parent @refresh="refetch()" />
       <data-dialog-delete-history-animal @refresh="refetch()" />
       <data-dialog-update-history-animal @refresh="refetch()" />

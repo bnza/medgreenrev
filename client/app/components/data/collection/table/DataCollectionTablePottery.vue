@@ -36,7 +36,7 @@ const props = defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { id: parentId } = useResourceParent(props.parent)
 
 const { deleteDialogState } = storeToRefs(
@@ -92,8 +92,8 @@ const { updateDialogState } = storeToRefs(
       </p>
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path title="Pottery" />
-      <data-dialog-search :path title="Pottery" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <lazy-data-dialog-create-pottery :path :parent @refresh="refetch()" />
       <data-dialog-delete-pottery @refresh="refetch()" />
       <data-dialog-update-pottery @refresh="refetch()" />

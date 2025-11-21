@@ -9,7 +9,7 @@ const props = defineProps<{
   path: Path
 }>()
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/sites/{id}'),
 )
@@ -30,8 +30,8 @@ const { updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path title="Site" />
-      <data-dialog-search :path title="Site" />
+      <data-dialog-download :path :title="labels[1]" />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-site :path @refresh="refetch()" />
       <data-dialog-delete-site @refresh="refetch()" />
       <data-dialog-update-site @refresh="refetch()" />

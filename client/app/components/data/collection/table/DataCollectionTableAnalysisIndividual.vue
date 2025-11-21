@@ -2,9 +2,11 @@
   setup
   lang="ts"
   generic="
-    Path extends
-      | Extract<GetCollectionPath, '/api/data/analyses/individuals'>
+    Path extends Extract<
+      GetCollectionPath,
+      | '/api/data/analyses/individuals'
       | '/api/data/individuals/{parentId}/analyses'
+    >
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
@@ -17,7 +19,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/analyses/individuals/{id}'),
 )
@@ -63,8 +65,8 @@ const vocabularyAnalysisStore = useVocabularyStore(
       <text-tooltip-span :text="item.summary" />
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <!--      <data-dialog-search :path title="Pottery Analysis" />-->
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-analysis-individual
         :path
         :parent

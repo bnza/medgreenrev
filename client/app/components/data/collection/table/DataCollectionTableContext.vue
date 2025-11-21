@@ -15,7 +15,7 @@ const props = defineProps<{
   parent?: ResourceParent<'site'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { id: parentId } = useResourceParent(props.parent)
 
 const { deleteDialogState } = storeToRefs(
@@ -44,8 +44,8 @@ const { updateDialogState } = storeToRefs(
       />
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path title="Context" />
-      <data-dialog-search :path title="Context" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-context :path :parent @refresh="refetch()" />
       <data-dialog-delete-context @refresh="refetch()" />
       <data-dialog-update-context @refresh="refetch()" />

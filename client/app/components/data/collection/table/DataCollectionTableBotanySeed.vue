@@ -28,7 +28,7 @@ const vocabularyBotanyElementParts = useVocabularyStore(
   '/api/vocabulary/botany/element_parts',
 )
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/botany/seeds/{id}'),
 )
@@ -80,8 +80,8 @@ const { updateDialogState } = storeToRefs(
     </template>
 
     <template #dialogs="{ refetch }">
-      <!--          <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
-      <!--      <data-dialog-search :path title="Zooarchaeology (bones)" />-->
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-botany-seed :path :parent @refresh="refetch()" />
       <data-dialog-delete-botany-seed @refresh="refetch()" />
       <data-dialog-update-botany-seed @refresh="refetch()" />

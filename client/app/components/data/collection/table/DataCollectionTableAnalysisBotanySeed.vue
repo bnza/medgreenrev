@@ -16,7 +16,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 
 const vocabularyAnalysisStore = useVocabularyStore(
   '/api/vocabulary/analysis/types',
@@ -63,7 +63,8 @@ const { updateDialogState } = storeToRefs(
       <text-tooltip-span :text="item.summary" />
     </template>
     <template #dialogs="{ refetch }">
-      <!-- <data-dialog-search :path title="Botany seed analysis" /> -->
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-analysis-botany-seed
         :path
         :parent

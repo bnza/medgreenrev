@@ -13,7 +13,7 @@ const props = defineProps<{
     | ResourceParent<'zooTooth'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { id: parentId } = useResourceParent(props.parent)
 
 const { deleteDialogState } = storeToRefs(
@@ -52,8 +52,8 @@ const getStatusText = (status: number | null | undefined) => {
       {{ getStatusText(item.status) }}
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path title="Analysis" />
-      <data-dialog-search :path title="Analysis" />
+      <data-dialog-download :path :title="labels[1]" />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-analysis :path :parent @refresh="refetch()" />
       <data-dialog-delete-analysis @refresh="refetch()" />
       <data-dialog-update-analysis @refresh="refetch()" />

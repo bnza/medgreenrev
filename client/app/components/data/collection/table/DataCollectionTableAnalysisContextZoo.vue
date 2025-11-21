@@ -68,8 +68,8 @@ const vocabularyAnalysisStore = useVocabularyStore(
       <text-tooltip-span :text="item.summary" />
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
-      <data-dialog-search :path :title="labels[0]" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <lazy-data-dialog-create-analysis-context-zoo
         :parent
         :path

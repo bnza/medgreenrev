@@ -23,7 +23,7 @@ const vocabularyZooTaxonomy = useVocabularyStore(
 )
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/zoo/teeth/{id}'),
 )
@@ -75,8 +75,8 @@ const { updateDialogState } = storeToRefs(
     </template>
 
     <template #dialogs="{ refetch }">
-      <!--          <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
-      <data-dialog-search :path title="Zooarchaeology (teeth)" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-zoo-tooth :path :parent @refresh="refetch()" />
       <data-dialog-delete-zoo-tooth @refresh="refetch()" />
       <data-dialog-update-zoo-tooth @refresh="refetch()" />

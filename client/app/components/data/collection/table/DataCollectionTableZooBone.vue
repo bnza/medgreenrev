@@ -37,7 +37,7 @@ const stringifyEndPreserved = (value: number | null | undefined) => {
   return parts.join(' + ')
 }
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/zoo/bones/{id}'),
 )
@@ -92,8 +92,8 @@ const { updateDialogState } = storeToRefs(
     </template>
 
     <template #dialogs="{ refetch }">
-      <!--          <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
-      <data-dialog-search :path title="Zooarchaeology (bones)" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-zoo-bone :path :parent @refresh="refetch()" />
       <data-dialog-delete-zoo-bone @refresh="refetch()" />
       <data-dialog-update-zoo-bone @refresh="refetch()" />

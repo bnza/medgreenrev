@@ -130,12 +130,27 @@ const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
   componentKey: 'SelectionZooBoneSide',
   addToQueryObject: addToQueryObjectArray,
 }
+const VocabularyBotanyElement: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/elements',
+  addToQueryObject: addToQueryObjectArray,
+}
 
-const VocabularyElementPart: StaticFiltersDefinitionObject = {
+const VocabularyBotanyElementPart: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
   componentKey: 'Vocabulary',
   path: '/api/vocabulary/botany/element_parts',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const VocabularyIndividualAge: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/individual/age',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -312,7 +327,9 @@ export const API_FILTERS = {
   SelectionZooBoneEndsPreserved,
   SelectionZooBoneSide,
   VocabularyAnalysisType,
-  VocabularyElementPart,
+  VocabularyBotanyElement,
+  VocabularyBotanyElementPart,
+  VocabularyIndividualAge,
   VocabularyBotanyTaxonomy,
   VocabularyCulturalContext,
   VocabularyHistoryAnimals,
@@ -326,7 +343,6 @@ export const API_FILTERS = {
   VocabularyZooTaxonomy,
   VocabularyZooBone,
   VocabularyZooBonePart,
-  // VocabularyMimeType,
 } as const
 
 export type FilterKey = keyof typeof API_FILTERS
@@ -335,14 +351,24 @@ export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
   | '/api/data/analyses'
   | '/api/data/analyses/botany/charcoals'
+  | '/api/data/analyses/botany/seeds'
+  | '/api/data/analyses/contexts/botany'
+  | '/api/data/analyses/individuals'
+  | '/api/data/analyses/samples/microstratigraphy'
+  | '/api/data/analyses/{parentId}/samples/microstratigraphy'
+  | '/api/data/botany/charcoals'
   | '/api/data/botany/charcoals/{parentId}/analyses'
+  | '/api/data/botany/seeds'
+  | '/api/data/botany/seeds/{parentId}/analyses'
   | '/api/data/analyses/contexts/zoo'
   | '/api/data/analyses/potteries'
   | '/api/data/analyses/zoo/bones'
   | '/api/data/analyses/zoo/teeth'
   | '/api/data/history/plants'
   | '/api/data/history/animals'
+  | '/api/data/individuals/{parentId}/analyses'
   | '/api/data/contexts'
+  | '/api/data/contexts/{parentId}/analyses/botany'
   | '/api/data/contexts/{parentId}/analyses/zoo'
   | '/api/data/media_objects'
   | '/api/data/potteries'
@@ -351,6 +377,8 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/sites/{parentId}/stratigraphic_units'
   | '/api/data/sites/{parentId}/contexts'
   | '/api/data/stratigraphic_units'
+  | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
+  | '/api/data/stratigraphic_units/{parentId}/botany/seeds'
   | '/api/data/stratigraphic_units/{parentId}/potteries'
   | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
   | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
@@ -443,6 +471,9 @@ const analysisBotanyCharcoalStaticFiltersDefinition: ResourceStaticFiltersDefini
     },
   }
 
+const analysisBotanySeedStaticFiltersDefinition =
+  analysisBotanyCharcoalStaticFiltersDefinition
+
 const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   type: {
     filters: {
@@ -521,6 +552,200 @@ const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
     },
   },
 }
+
+const analysisContextJoinStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'subject.description': {
+      propertyLabel: 'context (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'subject.name': {
+      propertyLabel: 'context (name)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'subject.site': {
+      propertyLabel: 'context (site)',
+      filters: {
+        SiteEquals,
+      },
+    },
+    'subject.type': {
+      propertyLabel: 'context (type)',
+      filters: {
+        SelectionContextType,
+      },
+    },
+    'subject.contextStratigraphicUnits.stratigraphicUnit': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'subject.contextStratigraphicUnits.stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    'subject.contextStratigraphicUnits.stratigraphicUnit.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+    'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation': {
+      propertyLabel: 'stratigraphic unit (interpretation)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'subject.contextStratigraphicUnits.stratigraphicUnit.description': {
+      propertyLabel: 'stratigraphic unit (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
+const analysisContextBotanyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    ...analysisContextJoinStaticFiltersDefinition,
+    ...analysisJoinStaticFiltersDefinition,
+  }
+
+const analysisSubjectStratigraphicUnitFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'subject.stratigraphicUnit': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'subject.stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    'subject.stratigraphicUnit.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+    'subject.stratigraphicUnit.interpretation': {
+      propertyLabel: 'stratigraphic unit (interpretation)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'subject.stratigraphicUnit.description': {
+      propertyLabel: 'stratigraphic unit (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
+const analysisSampleStratigraphicUnitFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'subject.description': {
+      propertyLabel: 'sample (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'subject.number': {
+      propertyLabel: 'sample (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+    'subject.year': {
+      propertyLabel: 'sample (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier':
+      {
+        propertyLabel: 'microstratigraphic unit (identifier)',
+        filters: {
+          SearchExact,
+        },
+      },
+    'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes':
+      {
+        propertyLabel: 'microstratigraphic unit (notes)',
+        filters: {
+          SearchPartial,
+          Exists,
+        },
+      },
+    'subject.sampleStratigraphicUnits.stratigraphicUnits': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
+        StratigraphicUnitEquals,
+      },
+    },
+    'subject.sampleStratigraphicUnits.stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    'subject.sampleStratigraphicUnits.stratigraphicUnit.number': {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+    'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation': {
+      propertyLabel: 'stratigraphic unit (interpretation)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'subject.sampleStratigraphicUnits.stratigraphicUnit.description': {
+      propertyLabel: 'stratigraphic unit (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
+const analysisIndividualStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    ...analysisJoinStaticFiltersDefinition,
+    ...analysisSubjectStratigraphicUnitFiltersDefinition,
+    ...{
+      'subject.age': {
+        propertyLabel: 'subject (age)',
+        filters: {
+          VocabularyIndividualAge,
+        },
+      },
+      'subject.identifier': {
+        propertyLabel: 'subject (identifier)',
+        filters: {
+          SearchPartial,
+        },
+      },
+    },
+  }
 
 const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   site: {
@@ -797,6 +1022,74 @@ const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionO
         ...NumericOperations,
       },
     },
+  }
+
+const stratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'stratigraphicUnit.site': {
+      propertyLabel: 'site',
+      filters: {
+        SiteEquals,
+      },
+    },
+    'stratigraphicUnit.interpretation': {
+      propertyLabel: 'stratigraphic unit (interpretation)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'stratigraphicUnit.description': {
+      propertyLabel: 'stratigraphic unit (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    number: {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+  }
+
+const botanyCommonStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    taxonomy: {
+      filters: {
+        VocabularyBotanyTaxonomy,
+      },
+    },
+    element: {
+      filters: {
+        VocabularyBotanyElement,
+      },
+    },
+    part: {
+      filters: {
+        VocabularyBotanyElementPart,
+      },
+      propertyLabel: 'part',
+    },
+  }
+
+const botanyCharcoalStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    ...stratigraphicUnitPropertyStaticFiltersDefinition,
+    ...botanyCommonStaticFiltersDefinitionObject,
+  }
+
+const botanySeedStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    ...stratigraphicUnitPropertyStaticFiltersDefinition,
+    ...botanyCommonStaticFiltersDefinitionObject,
   }
 
 const analysisContextZooStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
@@ -1124,64 +1417,40 @@ const zooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObje
 
 const analysisZooBoneStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
-    'item.stratigraphicUnit.site': {
-      propertyLabel: 'site',
-      filters: {
-        SiteEquals,
-      },
-    },
-    'item.stratigraphicUnit': {
-      propertyLabel: 'stratigraphic unit',
-      filters: {
-        StratigraphicUnitEquals,
-      },
-    },
-    'item.stratigraphicUnit.number': {
-      propertyLabel: 'stratigraphic unit (number)',
-      filters: {
-        SearchExact,
-        ...NumericOperations,
-      },
-    },
-    'item.stratigraphicUnit.year': {
-      propertyLabel: 'stratigraphic unit (year)',
-      filters: {
-        SearchExact,
-        ...NumericOperations,
-      },
-    },
-    'item.notes': {
+    ...analysisJoinStaticFiltersDefinition,
+    ...analysisSubjectStratigraphicUnitFiltersDefinition,
+    'subject.notes': {
       propertyLabel: 'bone (notes)',
       filters: {
         SearchPartial,
         Exists,
       },
     },
-    'item.species': {
+    'subject.species': {
       propertyLabel: 'bone (taxonomy)',
       filters: {
         VocabularyZooTaxonomy,
       },
     },
-    'item.element': {
+    'subject.element': {
       propertyLabel: 'bone (element)',
       filters: {
         VocabularyZooBone,
       },
     },
-    'item.part': {
+    'subject.part': {
       filters: {
         VocabularyZooBonePart,
       },
       propertyLabel: 'bone (part)',
     },
-    'item.endsPreserved': {
+    'subject.endsPreserved': {
       filters: {
         SelectionZooBoneEndsPreserved,
       },
       propertyLabel: 'bone (ends preserved)',
     },
-    'item.side': {
+    'subject.side': {
       filters: {
         SelectionZooBoneSide,
       },
@@ -1203,32 +1472,8 @@ const analysisZooBoneStaticFiltersDefinitionObject: ResourceStaticFiltersDefinit
 
 const analysisZooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
-    'subject.stratigraphicUnit.site': {
-      propertyLabel: 'site',
-      filters: {
-        SiteEquals,
-      },
-    },
-    'subject.stratigraphicUnit': {
-      propertyLabel: 'stratigraphic unit',
-      filters: {
-        StratigraphicUnitEquals,
-      },
-    },
-    'subject.stratigraphicUnit.number': {
-      propertyLabel: 'stratigraphic unit (number)',
-      filters: {
-        SearchExact,
-        ...NumericOperations,
-      },
-    },
-    'subject.stratigraphicUnit.year': {
-      propertyLabel: 'stratigraphic unit (year)',
-      filters: {
-        SearchExact,
-        ...NumericOperations,
-      },
-    },
+    ...analysisJoinStaticFiltersDefinition,
+    ...analysisSubjectStratigraphicUnitFiltersDefinition,
     'subject.notes': {
       propertyLabel: 'teeth (notes)',
       filters: {
@@ -1359,18 +1604,34 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/analyses': analysisStaticFiltersDefinition,
   '/api/data/analyses/botany/charcoals':
     analysisBotanyCharcoalStaticFiltersDefinition,
+  '/api/data/analyses/botany/seeds': analysisBotanySeedStaticFiltersDefinition,
+  '/api/data/analyses/contexts/botany':
+    analysisContextBotanyStaticFiltersDefinition,
+  '/api/data/botany/charcoals': botanyCharcoalStaticFiltersDefinitionObject,
+  '/api/data/botany/seeds': botanySeedStaticFiltersDefinitionObject,
   '/api/data/botany/charcoals/{parentId}/analyses':
     analysisBotanyCharcoalStaticFiltersDefinition,
+  '/api/data/botany/seeds/{parentId}/analyses':
+    analysisBotanySeedStaticFiltersDefinition,
   '/api/data/analyses/contexts/zoo':
     analysisContextZooStaticFiltersDefinitionObject,
+  '/api/data/analyses/individuals': analysisIndividualStaticFiltersDefinition,
   '/api/data/analyses/potteries': analysisPotteryStaticFiltersDefinitionObject,
+  '/api/data/analyses/samples/microstratigraphy':
+    analysisSampleStratigraphicUnitFiltersDefinition,
+  '/api/data/analyses/{parentId}/samples/microstratigraphy':
+    analysisSampleStratigraphicUnitFiltersDefinition,
   '/api/data/analyses/zoo/bones': analysisZooBoneStaticFiltersDefinitionObject,
   '/api/data/analyses/zoo/teeth': analysisZooToothStaticFiltersDefinitionObject,
   '/api/data/contexts': contextStaticFiltersDefinition,
+  '/api/data/contexts/{parentId}/analyses/botany':
+    analysisContextBotanyStaticFiltersDefinition,
   '/api/data/contexts/{parentId}/analyses/zoo':
     analysisContextZooStaticFiltersDefinitionObject,
   '/api/data/history/animals': historyAnimalStaticFiltersDefinitionObject,
   '/api/data/history/plants': historyPlantStaticFiltersDefinitionObject,
+  '/api/data/individuals/{parentId}/analyses':
+    analysisIndividualStaticFiltersDefinition,
   '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
   '/api/data/potteries': potteryStaticFiltersDefinition,
   '/api/data/potteries/{parentId}/analyses':
@@ -1380,6 +1641,10 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/sites/{parentId}/stratigraphic_units':
     stratigraphicUnitStaticFiltersDefinition,
   '/api/data/stratigraphic_units': stratigraphicUnitStaticFiltersDefinition,
+  '/api/data/stratigraphic_units/{parentId}/botany/charcoals':
+    botanyCharcoalStaticFiltersDefinitionObject,
+  '/api/data/stratigraphic_units/{parentId}/botany/seeds':
+    botanySeedStaticFiltersDefinitionObject,
   '/api/data/stratigraphic_units/{parentId}/potteries':
     potteryStaticFiltersDefinition,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones':
