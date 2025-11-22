@@ -29,10 +29,9 @@ const title = computed(() => props.title || labels[1])
   <data-card :title :show-back-button :parent>
     <template #toolbar-append>
       <slot name="search-bar" />
+      <data-toolbar-collection-filter-menu :path />
       <data-toolbar-collection-action-menu v-if="acl" :acl :path>
-        <slot name="collection-actions">
-          <!--          <data-toolbar-list-item-create v-if="acl.canCreate" :path />-->
-        </slot>
+        <slot name="collection-actions" />
       </data-toolbar-collection-action-menu>
     </template>
     <template #default>

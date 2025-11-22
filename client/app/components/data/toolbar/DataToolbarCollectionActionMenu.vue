@@ -4,7 +4,6 @@ import type {
   CollectionAcl,
   PostCollectionPath,
 } from '~~/types'
-import DataToolbarListItemCreate from '~/components/data/toolbar/DataToolbarListItemCreate.vue'
 
 const props = defineProps<{
   acl: CollectionAcl

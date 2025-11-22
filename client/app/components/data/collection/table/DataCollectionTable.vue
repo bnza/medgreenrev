@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
 import type { GetCollectionPath } from '~~/types'
 import useCollectionTableHeadersStore from '~/stores/collection-table-headers'
+import useGetCollectionTotalItemQuery from '~/composables/queries/useGetCollectionTotalItemQuery'
 
 const props = defineProps<{
   path: Path
@@ -12,8 +13,26 @@ const { headers } = storeToRefs(useCollectionTableHeadersStore(props.path))
 const pathParams = computed(() =>
   props.parentId ? { parentId: props.parentId } : undefined,
 )
-const { pagination, items, totalItems, status, refetch } =
-  useGetCollectionQuery(props.path, pathParams)
+
+const {
+  pagination,
+  items,
+  totalItems,
+  status,
+  refetch: refetchFiltered,
+} = useGetCollectionQuery(props.path, pathParams)
+
+const { refetch: refetchUnfiltered } = useGetCollectionTotalItemQuery(
+  props.path,
+  pathParams,
+)
+
+refetchUnfiltered()
+
+const refetch = () => {
+  refetchFiltered()
+  refetchUnfiltered()
+}
 
 const { tableHeightPx } = useResponsiveTable({
   excludeSelectors: ['.v-toolbar'],
