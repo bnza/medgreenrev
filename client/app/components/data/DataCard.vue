@@ -18,6 +18,7 @@ defineSlots<{
   actions(): any
   append(): any
   default(): any
+  title(): any
   'toolbar-append'(): any
 }>()
 </script>
@@ -31,6 +32,9 @@ defineSlots<{
   >
     <template #item>
       <data-card-toolbar v-bind="$props">
+        <template #title>
+          <slot name="title" />
+        </template>
         <template #toolbar-append>
           <slot name="toolbar-append" />
         </template>

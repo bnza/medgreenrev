@@ -2,7 +2,7 @@
 withDefaults(
   defineProps<{
     visible: boolean
-    title: string
+    title?: string
     fullscreen?: boolean
   }>(),
   {
@@ -12,6 +12,7 @@ withDefaults(
 defineSlots<{
   default(): any
   actions(): any
+  title(): any
 }>()
 </script>
 
@@ -25,6 +26,9 @@ defineSlots<{
     :max-width="fullscreen ? '100%' : '600px'"
   >
     <data-card v-if="visible" :title :show-back-button="false">
+      <template #title>
+        <slot name="title" />
+      </template>
       <template #default>
         <slot />
       </template>

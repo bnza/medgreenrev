@@ -61,6 +61,21 @@ watch(visible, (flag) => {
     :visible
     :title="`Search (${title})`"
   >
+    <template #title>
+      <p class="text-grey-lighten-1">
+        <v-icon
+          icon="fas fa-magnifying-glass-plus"
+          size="16"
+          class="text-primary mx-1"
+        />
+        <span
+          data-testid="data-card-toolbar-main-title"
+          class="text-uppercase px-2"
+        >
+          {{ title }}</span
+        >
+      </p>
+    </template>
     <template #default>
       <layout-action-three-buttons>
         <template #default>

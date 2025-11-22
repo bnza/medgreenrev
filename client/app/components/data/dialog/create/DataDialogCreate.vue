@@ -171,12 +171,18 @@ const title = computed(() => props.title || labels[0])
 </script>
 
 <template>
-  <data-dialog
-    v-if="visible"
-    data-testid="data-dialog-create"
-    :visible
-    :title="`New (${title})`"
-  >
+  <data-dialog v-if="visible" data-testid="data-dialog-create" :visible>
+    <template #title>
+      <p class="text-grey-lighten-1">
+        <v-icon icon="fas fa-plus" size="16" class="text-primary mx-1" />
+        <span
+          data-testid="data-card-toolbar-main-title"
+          class="text-uppercase px-2"
+        >
+          {{ title }}</span
+        >
+      </p>
+    </template>
     <template #default>
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">

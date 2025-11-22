@@ -14,6 +14,7 @@ defineSlots<{
   'toolbar-prepend'(): any
   'title-append'(): any
   'toolbar-append'(): any
+  title(): any
 }>()
 </script>
 
@@ -23,8 +24,15 @@ defineSlots<{
       <lazy-navigation-back v-if="showBackButton" />
       <slot name="toolbar-prepend" />
     </template>
-    <template #title
-      ><span data-testid="data-card-toolbar-main-title">{{ title }}</span>
+    <template #title>
+      <slot name="title">
+        <span
+          v-if="title"
+          data-testid="data-card-toolbar-main-title"
+          class="text-uppercase text-grey-lighten-1"
+          >{{ title }}</span
+        >
+      </slot>
       <span
         v-if="identifier"
         class="font-weight-bold text-secondary pl-6"

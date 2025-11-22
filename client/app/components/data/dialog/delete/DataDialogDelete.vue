@@ -92,6 +92,17 @@ const title = computed(() => props.title || labels[0])
     :title="`Delete (${title})`"
     :fullscreen
   >
+    <template #title>
+      <p class="text-grey-lighten-1">
+        <v-icon icon="fas fa-minus" size="16" class="text-error mx-1" />
+        <span
+          data-testid="data-card-toolbar-main-title"
+          class="text-uppercase px-2"
+        >
+          {{ title }}</span
+        >
+      </p>
+    </template>
     <template #default>
       <data-dialog-delete-alert />
       <data-item-form-read>
