@@ -388,6 +388,56 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/zoo/teeth/{parentId}/analyses'
 >
 
+const stratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    'stratigraphicUnit.site': {
+      propertyLabel: 'site',
+      filters: {
+        SiteEquals,
+      },
+    },
+    'stratigraphicUnit.interpretation': {
+      propertyLabel: 'stratigraphic unit (interpretation)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'stratigraphicUnit.description': {
+      propertyLabel: 'stratigraphic unit (description)',
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+    'stratigraphicUnit.year': {
+      propertyLabel: 'stratigraphic unit (year)',
+      filters: {
+        ...NumericOperations,
+        Exists,
+      },
+    },
+    'stratigraphicUnit.chronologyLower': {
+      propertyLabel: 'stratigraphic unit (chronology lower)',
+      filters: {
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    'stratigraphicUnit.chronologyUpper': {
+      propertyLabel: 'stratigraphic unit (chronology upper)',
+      filters: {
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    number: {
+      propertyLabel: 'stratigraphic unit (number)',
+      filters: {
+        ...NumericOperations,
+      },
+    },
+  }
+
 const analysisJoinStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     'analysis.type': {
@@ -918,26 +968,27 @@ const potteryStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
       VocabularyPotteryShape,
     },
   },
-  stratigraphicUnit: {
-    propertyLabel: 'stratigraphic unit',
-    filters: {
-      StratigraphicUnitEquals,
-    },
-  },
-  'stratigraphic.number': {
-    propertyLabel: 'stratigraphic unit (number)',
-    filters: {
-      SearchExact,
-      ...NumericOperations,
-    },
-  },
-  'stratigraphic.year': {
-    propertyLabel: 'stratigraphic unit (year)',
-    filters: {
-      SearchExact,
-      ...NumericOperations,
-    },
-  },
+  ...stratigraphicUnitPropertyStaticFiltersDefinition,
+  // stratigraphicUnit: {
+  //   propertyLabel: 'stratigraphic unit',
+  //   filters: {
+  //     StratigraphicUnitEquals,
+  //   },
+  // },
+  // 'stratigraphic.number': {
+  //   propertyLabel: 'stratigraphic unit (number)',
+  //   filters: {
+  //     SearchExact,
+  //     ...NumericOperations,
+  //   },
+  // },
+  // 'stratigraphic.year': {
+  //   propertyLabel: 'stratigraphic unit (year)',
+  //   filters: {
+  //     SearchExact,
+  //     ...NumericOperations,
+  //   },
+  // },
   surfaceTreatment: {
     propertyLabel: 'surface treatment',
     filters: {
@@ -1012,48 +1063,27 @@ const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionO
         Exists,
       },
     },
+    chronologyLower: {
+      propertyLabel: 'chronology (lower)',
+      filters: {
+        Exists,
+        ...NumericOperations,
+      },
+    },
+    chronologyUpper: {
+      propertyLabel: 'chronology (upper)',
+      filters: {
+        Exists,
+        ...NumericOperations,
+      },
+    },
     year: {
       filters: {
         ...NumericOperations,
-      },
-    },
-    number: {
-      filters: {
-        ...NumericOperations,
-      },
-    },
-  }
-
-const stratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
-  {
-    'stratigraphicUnit.site': {
-      propertyLabel: 'site',
-      filters: {
-        SiteEquals,
-      },
-    },
-    'stratigraphicUnit.interpretation': {
-      propertyLabel: 'stratigraphic unit (interpretation)',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'stratigraphicUnit.description': {
-      propertyLabel: 'stratigraphic unit (description)',
-      filters: {
-        SearchPartial,
-        Exists,
-      },
-    },
-    'stratigraphicUnit.year': {
-      propertyLabel: 'stratigraphic unit (year)',
-      filters: {
-        ...NumericOperations,
         Exists,
       },
     },
     number: {
-      propertyLabel: 'stratigraphic unit (number)',
       filters: {
         ...NumericOperations,
       },

@@ -1,6 +1,9 @@
 import type { ApiPath, paths } from '~~/types'
 
-const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
+const useResourceUiStore = <P extends ApiPath | keyof paths>(
+  path: P,
+  startingPanels: string[] = [],
+) =>
   defineStore(`resource-ui:${path}`, () => {
     const dialogStates = reactive<{ create: boolean; search: boolean }>({
       create: false,
@@ -20,7 +23,7 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(path: P) =>
     const redirectToItem = ref(false)
 
     const tab = ref('')
-    const panels = ref<string[]>([])
+    const panels = ref<string[]>(startingPanels)
     return {
       dialogStates,
       isCreateDialogOpen: isDialogOpenFn('create'),

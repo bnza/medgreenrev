@@ -3,7 +3,9 @@ import useResourceUiStore from '~/stores/resource-ui'
 
 const path = '/api/data/stratigraphic_units/{id}' as const
 
-const { tab } = storeToRefs(useResourceUiStore(path))
+const { tab } = storeToRefs(
+  useResourceUiStore(path, ['description', 'chronology']),
+)
 </script>
 
 <template>
@@ -11,6 +13,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
     <template #default="{ item }">
       <lazy-data-item-form-info-stratigraphic-unit :item />
       <v-tabs v-model="tab" background-color="transparent">
+        <v-tab value="data">data</v-tab>
         <v-tab value="relationships">relationships</v-tab>
         <v-tab value="contexts">contexts</v-tab>
         <v-tab value="samples">samples</v-tab>
@@ -25,6 +28,9 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab" class="w-100 h-100">
+        <v-tabs-window-item value="data" data-testid="tab-window-data">
+          <data-item-form-detail-stratigraphic-unit :item />
+        </v-tabs-window-item>
         <v-tabs-window-item
           value="relationships"
           data-testid="tab-relationships"

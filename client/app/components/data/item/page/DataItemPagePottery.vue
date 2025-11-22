@@ -4,7 +4,7 @@ import type { Iri } from '~~/types'
 
 const path = '/api/data/potteries/{id}' as const
 
-const { tab } = storeToRefs(useResourceUiStore(path))
+const { tab } = storeToRefs(useResourceUiStore(path, ['aspect', 'chronology']))
 defineProps<{
   iri?: Iri
 }>()

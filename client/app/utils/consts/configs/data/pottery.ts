@@ -75,12 +75,6 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '150',
     },
     {
-      key: 'chronologyUpper',
-      value: 'chronologyUpper',
-      title: 'chron.(upper)',
-      minWidth: '100',
-    },
-    {
       key: 'shape.value',
       value: 'shape',
       title: 'shape',

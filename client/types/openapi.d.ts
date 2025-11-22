@@ -5439,6 +5439,14 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -5474,6 +5482,14 @@ export interface components {
       notes?: string | null
     }
     'AbsDatingAnalysisBotanySeed-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -5523,6 +5539,14 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -5558,6 +5582,14 @@ export interface components {
       notes?: string | null
     }
     'AbsDatingAnalysisPottery-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -5607,6 +5639,14 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     }
+    'AbsDatingAnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
@@ -5642,6 +5682,14 @@ export interface components {
       notes?: string | null
     }
     'AbsDatingAnalysisZooTooth-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -5709,6 +5757,146 @@ export interface components {
       laboratory?: string | null
       summary?: string | null
       createdBy?: components['schemas']['User.csv-analysis.acl.read'] | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        | null
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        | null
     }
     'Analysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       identifier: string
@@ -5907,6 +6095,15 @@ export interface components {
         | null
       summary?: string | null
     }
+    'AnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['BotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      summary?: string | null
+    }
     'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
@@ -5938,6 +6135,15 @@ export interface components {
         | null
       summary?: string | null
     }
+    'AnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['BotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      summary?: string | null
+    }
     'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
@@ -5965,12 +6171,26 @@ export interface components {
       taxonomies?: string[]
       summary?: string | null
     }
+    'AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      summary?: string | null
+    }
     'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
+    }
+    'AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
     }
     'AnalysisContextBotanyTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6010,12 +6230,26 @@ export interface components {
       taxonomies?: string[]
       summary?: string | null
     }
+    'AnalysisContextZoo.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      summary?: string | null
+    }
     'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       summary?: string | null
+    }
+    'AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
     }
     'AnalysisContextZooTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6059,6 +6293,15 @@ export interface components {
         | null
       summary?: string | null
     }
+    'AnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Individual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        | null
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      summary?: string | null
+    }
     'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
@@ -6090,6 +6333,15 @@ export interface components {
         | null
       summary?: string | null
     }
+    'AnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      summary?: string | null
+    }
     'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
@@ -6115,6 +6367,12 @@ export interface components {
     'AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
+    'AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      summary?: string | null
+    }
     'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
@@ -6135,6 +6393,12 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSiteAnthropology-analysis_join.update.jsonMergePatch': {
+      summary?: string | null
+    }
+    'AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     }
     'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -6163,6 +6427,15 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooBone-analysis_join.update']
         | null
+      summary?: string | null
+    }
+    'AnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['ZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        | null
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
     }
     'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -6194,6 +6467,15 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooTooth-analysis_join.update']
         | null
+      summary?: string | null
+    }
+    'AnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['ZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        | null
+      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
     }
     'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -6250,6 +6532,48 @@ export interface components {
        */
       part?: string | null
       notes?: string | null
+    }
+    'BotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'BotanyCharcoal.csv-botany_charcoal.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_charcoal.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
     }
     'BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6338,6 +6662,48 @@ export interface components {
        */
       part?: string | null
       notes?: string | null
+    }
+    'BotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'BotanySeed.csv-botany_seed.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_seed.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      notes?: string | null
+      readonly code?: string
     }
     'BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6429,6 +6795,20 @@ export interface components {
        * @example https://example.com/
        */
       site?: string
+      name?: string
+      description?: string | null
+    }
+    'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      readonly id?: number | string
+      type?: string
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      name?: string
+      description?: string | null
+    }
+    'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      readonly id?: number | string
+      type?: string
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
     }
@@ -6586,6 +6966,20 @@ export interface components {
       reference?: string
       notes?: string | null
     }
+    'HistoryAnimal.csv-history_animal.acl.read': {
+      readonly id?: number | string
+      animal?: components['schemas']['VocHistoryAnimal.csv-history_animal.acl.read']
+      location?: components['schemas']['VocHistoryLocation.csv-history_animal.acl.read']
+      chronologyLower?: number
+      chronologyUpper?: number
+      reference?: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+    }
     'HistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       animal?: components['schemas']['VocHistoryAnimal.jsonld-history_animal.acl.read']
@@ -6631,6 +7025,20 @@ export interface components {
       chronologyUpper?: number
       reference?: string
       notes?: string | null
+    }
+    'HistoryPlant.csv-history_plant.acl.read': {
+      readonly id?: number | string
+      plant?: components['schemas']['VocHistoryPlant.csv-history_plant.acl.read']
+      location?: components['schemas']['VocHistoryLocation.csv-history_plant.acl.read']
+      chronologyLower?: number
+      chronologyUpper?: number
+      reference?: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
     }
     'HistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6720,6 +7128,18 @@ export interface components {
        * @example https://example.com/
        */
       stratigraphicUnit?: string
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      sex?: string | null
+      notes?: string | null
+    }
+    'Individual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       identifier?: string
       /**
        * Format: iri-reference
@@ -7040,6 +7460,43 @@ export interface components {
       functionalForm?: string
       notes?: string | null
     }
+    'Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      inventory?: string
+      decorations?: components['schemas']['PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm?: string
+      notes?: string | null
+    }
     'Pottery.csv-pottery.acl.read': {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-pottery.acl.read']
@@ -7151,6 +7608,13 @@ export interface components {
       functionalForm?: string
       notes?: string | null
     }
+    'PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      decoration?: string
+    }
     'PotteryDecoration.csv-pottery.acl.read': {
       /**
        * Format: iri-reference
@@ -7201,6 +7665,16 @@ export interface components {
       year: number
       number: number
       sampleStratigraphicUnits?: string[]
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
       description?: string | null
       readonly code?: string
     }
@@ -7520,6 +7994,60 @@ export interface components {
       fieldDirector?: string | null
       culturalContexts?: string[]
     }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+    }
+    'Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-botany_charcoal.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-botany_seed.acl.read': {
+      code?: string
+      name?: string
+    }
     'Site.csv-context.acl.read': {
       code?: string
       name?: string
@@ -7595,6 +8123,14 @@ export interface components {
     }
     'Site.csv-sus.acl.read': {
       readonly id?: number | string
+      code?: string
+      name?: string
+    }
+    'Site.csv-zoo_bone.acl.read': {
+      code?: string
+      name?: string
+    }
+    'Site.csv-zoo_tooth.acl.read': {
       code?: string
       name?: string
     }
@@ -7760,6 +8296,13 @@ export interface components {
       code?: string
       name?: string
     }
+    'SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string
+    }
     'SiteCulturalContext.csv-site.acl.read': {
       /**
        * Format: iri-reference
@@ -7831,6 +8374,8 @@ export interface components {
       number: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
     }
     'StratigraphicUnit-su.create.jsonMergePatch': {
       /**
@@ -7843,6 +8388,36 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+    }
+    'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-botany_charcoal.acl.read': {
+      site?: components['schemas']['Site.csv-botany_charcoal.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-botany_seed.acl.read': {
+      site?: components['schemas']['Site.csv-botany_seed.acl.read']
+      readonly code: string
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.acl.read': {
       readonly id?: number | string
@@ -7869,6 +8444,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
@@ -7879,6 +8456,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
@@ -7889,6 +8468,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
@@ -7899,6 +8480,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.csv-sus.acl.read': {
@@ -7909,6 +8492,16 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-zoo_bone.acl.read': {
+      site?: components['schemas']['Site.csv-zoo_bone.acl.read']
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-zoo_tooth.acl.read': {
+      site?: components['schemas']['Site.csv-zoo_tooth.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -7956,6 +8549,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -7970,6 +8565,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -7988,6 +8585,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -7998,6 +8597,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -8008,6 +8609,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -8018,6 +8621,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -8031,6 +8636,8 @@ export interface components {
       number?: number
       description?: string | null
       interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -8103,6 +8710,56 @@ export interface components {
       repeatPassword: string | null
     }
     'User.csv-analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
@@ -8230,6 +8887,56 @@ export interface components {
       group?: string
       value: string
     }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
     'VocAnalysisType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       code?: string
@@ -8351,6 +9058,9 @@ export interface components {
       taxonomy?: string | null
       value: string
     }
+    'VocHistoryAnimal.csv-history_animal.acl.read': {
+      value: string
+    }
     'VocHistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       value: string
     }
@@ -8369,6 +9079,12 @@ export interface components {
       value: string
       n?: number
       e?: number
+    }
+    'VocHistoryLocation.csv-history_animal.acl.read': {
+      value: string
+    }
+    'VocHistoryLocation.csv-history_plant.acl.read': {
+      value: string
     }
     'VocHistoryLocation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -8401,6 +9117,9 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy?: string | null
+      value: string
+    }
+    'VocHistoryPlant.csv-history_plant.acl.read': {
       value: string
     }
     'VocHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -8449,6 +9168,10 @@ export interface components {
     }
     'VocPotterySurfaceTreatment.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
+      value: string
+    }
+    'VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      code?: string
       value: string
     }
     'VocSampleType.csv-sample.acl.read': {
@@ -8591,6 +9314,52 @@ export interface components {
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
     }
+    'ZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
+    'ZooBone.csv-zoo_bone.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-zoo_bone.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      endsPreserved?: number | null
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    }
     'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
@@ -8678,6 +9447,27 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+    }
+    'ZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      readonly code?: string
+    }
+    'ZooTooth.csv-zoo_tooth.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-zoo_tooth.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      connected?: boolean
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
     }
     'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly code?: string
@@ -10365,10 +11155,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Analysis.csv-analysis.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Analysis.jsonld-analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['Analysis.csv-analysis.acl.read'][]
         }
       }
     }
@@ -10580,10 +11370,16 @@ export interface operations {
         'subject.stratigraphicUnit.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.taxonomy'?: string
+        'subject.taxonomy[]'?: string[]
         'subject.element'?: string
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
+        'subject.taxonomy.family'?: string
+        'subject.taxonomy.family[]'?: string[]
+        'subject.taxonomy.class'?: string
+        'subject.taxonomy.class[]'?: string[]
         'subject.stratigraphicUnit.number[between]'?: string
         'subject.stratigraphicUnit.number[gt]'?: string
         'subject.stratigraphicUnit.number[gte]'?: string
@@ -10613,6 +11409,11 @@ export interface operations {
          */
         'analysis.name'?: string
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
+        /**
          * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -10633,6 +11434,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
         }
       }
     }
@@ -10836,10 +11638,16 @@ export interface operations {
         'subject.stratigraphicUnit.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.taxonomy'?: string
+        'subject.taxonomy[]'?: string[]
         'subject.element'?: string
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
+        'subject.taxonomy.family'?: string
+        'subject.taxonomy.family[]'?: string[]
+        'subject.taxonomy.class'?: string
+        'subject.taxonomy.class[]'?: string[]
         'subject.stratigraphicUnit.number[between]'?: string
         'subject.stratigraphicUnit.number[gt]'?: string
         'subject.stratigraphicUnit.number[gte]'?: string
@@ -10869,6 +11677,11 @@ export interface operations {
          */
         'analysis.name'?: string
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
+        /**
          * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -10892,6 +11705,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
         }
       }
     }
@@ -10907,10 +11721,16 @@ export interface operations {
         'subject.stratigraphicUnit.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.taxonomy'?: string
+        'subject.taxonomy[]'?: string[]
         'subject.element'?: string
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
+        'subject.taxonomy.family'?: string
+        'subject.taxonomy.family[]'?: string[]
+        'subject.taxonomy.class'?: string
+        'subject.taxonomy.class[]'?: string[]
         'subject.stratigraphicUnit.number[between]'?: string
         'subject.stratigraphicUnit.number[gt]'?: string
         'subject.stratigraphicUnit.number[gte]'?: string
@@ -10939,6 +11759,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
         /**
          * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -10963,6 +11788,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read'][]
         }
       }
     }
@@ -10978,10 +11804,16 @@ export interface operations {
         'subject.stratigraphicUnit.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.taxonomy'?: string
+        'subject.taxonomy[]'?: string[]
         'subject.element'?: string
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
+        'subject.taxonomy.family'?: string
+        'subject.taxonomy.family[]'?: string[]
+        'subject.taxonomy.class'?: string
+        'subject.taxonomy.class[]'?: string[]
         'subject.stratigraphicUnit.number[between]'?: string
         'subject.stratigraphicUnit.number[gt]'?: string
         'subject.stratigraphicUnit.number[gte]'?: string
@@ -11010,6 +11842,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
         /**
          * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -11031,6 +11868,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
         }
       }
     }
@@ -11234,10 +12072,16 @@ export interface operations {
         'subject.stratigraphicUnit.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.taxonomy'?: string
+        'subject.taxonomy[]'?: string[]
         'subject.element'?: string
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
+        'subject.taxonomy.family'?: string
+        'subject.taxonomy.family[]'?: string[]
+        'subject.taxonomy.class'?: string
+        'subject.taxonomy.class[]'?: string[]
         'subject.stratigraphicUnit.number[between]'?: string
         'subject.stratigraphicUnit.number[gt]'?: string
         'subject.stratigraphicUnit.number[gte]'?: string
@@ -11267,6 +12111,11 @@ export interface operations {
          */
         'analysis.name'?: string
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
+        /**
          * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -11290,6 +12139,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
         }
       }
     }
@@ -11305,10 +12155,16 @@ export interface operations {
         'subject.stratigraphicUnit.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.taxonomy'?: string
+        'subject.taxonomy[]'?: string[]
         'subject.element'?: string
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
+        'subject.taxonomy.family'?: string
+        'subject.taxonomy.family[]'?: string[]
+        'subject.taxonomy.class'?: string
+        'subject.taxonomy.class[]'?: string[]
         'subject.stratigraphicUnit.number[between]'?: string
         'subject.stratigraphicUnit.number[gt]'?: string
         'subject.stratigraphicUnit.number[gte]'?: string
@@ -11338,6 +12194,11 @@ export interface operations {
          */
         'analysis.name'?: string
         /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
+        /**
          * @description Filter entries to only those from subjets belonging to SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -11361,6 +12222,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read'][]
         }
       }
     }
@@ -11434,6 +12296,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -11450,6 +12317,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
         }
       }
     }
@@ -11711,6 +12579,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -11730,6 +12603,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
         }
       }
     }
@@ -11803,6 +12677,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -11822,6 +12701,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
         }
       }
     }
@@ -11956,6 +12836,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -11972,6 +12857,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisContextZoo.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
         }
       }
     }
@@ -12233,6 +13119,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -12252,6 +13143,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisContextZoo.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
         }
       }
     }
@@ -12325,6 +13217,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -12344,6 +13241,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisContextZoo.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
         }
       }
     }
@@ -12461,6 +13359,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -12477,6 +13380,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
         }
       }
     }
@@ -12721,6 +13625,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -12740,6 +13649,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
         }
       }
     }
@@ -12796,6 +13706,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -12815,6 +13730,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read'][]
         }
       }
     }
@@ -12899,6 +13815,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -12915,6 +13836,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
         }
       }
     }
@@ -13187,6 +14109,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -13206,6 +14133,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
         }
       }
     }
@@ -13290,6 +14218,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -13309,6 +14242,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
         }
       }
     }
@@ -13322,6 +14256,20 @@ export interface operations {
         itemsPerPage?: number
         'subject.site'?: string
         'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier[]'?: string[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
@@ -13341,7 +14289,9 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes'?: string
+        'exists[subject.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes]'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -13360,6 +14310,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -13376,6 +14331,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
         }
       }
     }
@@ -13577,6 +14533,20 @@ export interface operations {
         itemsPerPage?: number
         'subject.site'?: string
         'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier[]'?: string[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
@@ -13596,7 +14566,9 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes'?: string
+        'exists[subject.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes]'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -13615,6 +14587,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -13634,6 +14611,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
         }
       }
     }
@@ -13647,6 +14625,20 @@ export interface operations {
         itemsPerPage?: number
         'subject.site'?: string
         'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier[]'?: string[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
@@ -13666,7 +14658,9 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes'?: string
+        'exists[subject.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes]'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -13685,6 +14679,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -13704,6 +14703,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
         }
       }
     }
@@ -13745,6 +14745,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -13761,6 +14766,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
         }
       }
     }
@@ -13990,6 +14996,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -14009,6 +15020,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
         }
       }
     }
@@ -14050,6 +15062,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -14069,6 +15086,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
         }
       }
     }
@@ -14118,6 +15136,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -14134,6 +15157,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
         }
       }
     }
@@ -14371,6 +15395,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -14390,6 +15419,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
         }
       }
     }
@@ -14439,6 +15469,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -14458,6 +15493,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read'][]
         }
       }
     }
@@ -14495,6 +15531,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path?: never
@@ -14511,6 +15552,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
         }
       }
     }
@@ -14736,6 +15778,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -14755,6 +15802,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
         }
       }
     }
@@ -14792,6 +15840,11 @@ export interface operations {
          * @example cafè
          */
         'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.summary'?: string
       }
       header?: never
       path: {
@@ -14811,6 +15864,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
           }
+          'text/csv': components['schemas']['AnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read'][]
         }
       }
     }
@@ -14838,6 +15892,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -14859,7 +15917,19 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         /**
@@ -14883,6 +15953,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
           }
+          'text/csv': components['schemas']['BotanyCharcoal.csv-botany_charcoal.acl.read'][]
         }
       }
     }
@@ -15106,6 +16177,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -15127,7 +16202,19 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         /**
@@ -15154,6 +16241,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
           }
+          'text/csv': components['schemas']['BotanyCharcoal.csv-botany_charcoal.acl.read'][]
         }
       }
     }
@@ -15181,6 +16269,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -15202,7 +16294,19 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         /**
@@ -15226,6 +16330,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
           }
+          'text/csv': components['schemas']['BotanySeed.csv-botany_seed.acl.read'][]
         }
       }
     }
@@ -15449,6 +16554,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -15470,7 +16579,19 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         /**
@@ -15497,6 +16618,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
           }
+          'text/csv': components['schemas']['BotanySeed.csv-botany_seed.acl.read'][]
         }
       }
     }
@@ -16144,6 +17266,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read'][]
           }
+          'text/csv': components['schemas']['HistoryAnimal.csv-history_animal.acl.read'][]
         }
       }
     }
@@ -16404,6 +17527,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['HistoryPlant.jsonld-history_plant.acl.read'][]
           }
+          'text/csv': components['schemas']['HistoryPlant.csv-history_plant.acl.read'][]
         }
       }
     }
@@ -16419,6 +17543,7 @@ export interface operations {
     requestBody: {
       content: {
         'application/ld+json': components['schemas']['HistoryPlant-history_plant.create']
+        'text/csv': components['schemas']['HistoryPlant-history_plant.create']
       }
     }
     responses: {
@@ -16429,6 +17554,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HistoryPlant.jsonld-history_plant.acl.read']
+          'text/csv': components['schemas']['HistoryPlant.csv-history_plant.acl.read']
         }
       }
       /** @description Invalid input */
@@ -16636,10 +17762,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Individual.csv-individual.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Individual.jsonld-individual.acl.read'][]
           }
+          'text/csv': components['schemas']['Individual.csv-individual.acl.read'][]
         }
       }
     }
@@ -16875,10 +18001,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Individual.csv-individual.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Individual.jsonld-individual.acl.read'][]
           }
+          'text/csv': components['schemas']['Individual.csv-individual.acl.read'][]
         }
       }
     }
@@ -18139,10 +19265,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
           }
+          'text/csv': components['schemas']['MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read'][]
         }
       }
     }
@@ -18369,10 +19495,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
           }
+          'text/csv': components['schemas']['MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read'][]
         }
       }
     }
@@ -18400,6 +19526,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         'decorations.decoration'?: string
         'decorations.decoration[]'?: string[]
         inventory?: string
@@ -18431,6 +19561,16 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'chronologyLower[between]'?: string
         'chronologyLower[gt]'?: string
         'chronologyLower[gte]'?: string
@@ -18441,6 +19581,8 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -18470,10 +19612,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Pottery.csv-pottery.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
           }
+          'text/csv': components['schemas']['Pottery.csv-pottery.acl.read'][]
         }
       }
     }
@@ -18697,6 +19839,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         'decorations.decoration'?: string
         'decorations.decoration[]'?: string[]
         inventory?: string
@@ -18728,6 +19874,16 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'chronologyLower[between]'?: string
         'chronologyLower[gt]'?: string
         'chronologyLower[gte]'?: string
@@ -18738,6 +19894,8 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -18770,10 +19928,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Pottery.csv-pottery.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
           }
+          'text/csv': components['schemas']['Pottery.csv-pottery.acl.read'][]
         }
       }
     }
@@ -18886,10 +20044,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Sample.csv-sample.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Sample.jsonld-sample.acl.read'][]
           }
+          'text/csv': components['schemas']['Sample.csv-sample.acl.read'][]
         }
       }
     }
@@ -19140,10 +20298,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Sample.csv-sample.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Sample.jsonld-sample.acl.read'][]
           }
+          'text/csv': components['schemas']['Sample.csv-sample.acl.read'][]
         }
       }
     }
@@ -19426,10 +20584,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
           }
+          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
         }
       }
     }
@@ -19676,10 +20834,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
           }
+          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
         }
       }
     }
@@ -20070,10 +21228,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['Site.csv-site.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['Site.jsonld-site.acl.read'][]
           }
+          'text/csv': components['schemas']['Site.csv-site.acl.read'][]
         }
       }
     }
@@ -20824,8 +21982,14 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
         'stratigraphicUnitContexts.context'?: string
         'stratigraphicUnitContexts.context[]'?: string[]
         'stratigraphicUnitSamples.sample'?: string
@@ -20845,6 +22009,16 @@ export interface operations {
         'year[gte]'?: string
         'year[lt]'?: string
         'year[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -20855,6 +22029,8 @@ export interface operations {
          * @example cafè
          */
         interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
@@ -20882,10 +22058,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['StratigraphicUnit.csv-sus.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
           }
+          'text/csv': components['schemas']['StratigraphicUnit.csv-sus.acl.read'][]
         }
       }
     }
@@ -20901,8 +22077,14 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
         'stratigraphicUnitContexts.context'?: string
         'stratigraphicUnitContexts.context[]'?: string[]
         'stratigraphicUnitSamples.sample'?: string
@@ -20922,6 +22104,16 @@ export interface operations {
         'year[gte]'?: string
         'year[lt]'?: string
         'year[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -20932,6 +22124,8 @@ export interface operations {
          * @example cafè
          */
         interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
@@ -20956,10 +22150,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['StratigraphicUnit.csv-sus.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
           }
+          'text/csv': components['schemas']['StratigraphicUnit.csv-sus.acl.read'][]
         }
       }
     }
@@ -24778,6 +25972,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -24801,7 +25999,19 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         /**
@@ -24838,6 +26048,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
           }
+          'text/csv': components['schemas']['ZooBone.csv-zoo_bone.acl.read'][]
         }
       }
     }
@@ -24867,6 +26078,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -24890,7 +26105,19 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         /**
@@ -24924,6 +26151,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
           }
+          'text/csv': components['schemas']['ZooBone.csv-zoo_bone.acl.read'][]
         }
       }
     }
@@ -25149,6 +26377,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -25170,8 +26402,20 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         connected?: boolean
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -25197,6 +26441,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
           }
+          'text/csv': components['schemas']['ZooTooth.csv-zoo_tooth.acl.read'][]
         }
       }
     }
@@ -25226,6 +26471,10 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -25247,8 +26496,20 @@ export interface operations {
         'stratigraphicUnit.year[gte]'?: string
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
         connected?: boolean
         'exists[notes]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
         'exists[element]'?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -25271,6 +26532,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
           }
+          'text/csv': components['schemas']['ZooTooth.csv-zoo_tooth.acl.read'][]
         }
       }
     }

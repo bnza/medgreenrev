@@ -38,6 +38,16 @@ const config: Readonly<ResourceConfig> = {
       title: 'year',
     },
     {
+      key: 'chronologyLower',
+      value: 'chronologyLower',
+      title: 'chron.(lower)',
+    },
+    {
+      key: 'chronologyUpper',
+      value: 'chronologyUpper',
+      title: 'chron.(upper)',
+    },
+    {
       key: 'interpretation',
       value: 'interpretation',
       title: 'interpretation',

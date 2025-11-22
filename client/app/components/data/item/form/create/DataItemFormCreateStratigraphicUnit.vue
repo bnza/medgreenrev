@@ -58,6 +58,22 @@ const { r$ } = useScopedRegle(model, {
       () => model.value.year || 0,
     ),
   },
+  chronologyLower: {
+    integer,
+    minValue: minValue(-32768),
+    maxValue: maxValue(new Date().getFullYear()),
+    lessThanOrEqual: lessThanOrEqual(
+      'Lower chronology must be greater than or equal upper chronology.',
+    )(() => model.value.chronologyUpper),
+  },
+  chronologyUpper: {
+    integer,
+    minValue: minValue(-32768),
+    maxValue: maxValue(new Date().getFullYear()),
+    greaterOrEqualThan: greaterThanOrEqual(
+      'Upper chronology must be less than or equal lower chronology.',
+    )(() => model.value.chronologyLower),
+  },
 })
 </script>
 
@@ -86,6 +102,22 @@ const { r$ } = useScopedRegle(model, {
         v-model.number="r$.$value.number"
         label="number"
         :error-messages="r$.$errors?.number"
+      />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12" xs="5" class="px-2">
+      <v-text-field
+        v-model.number="r$.$value.chronologyLower"
+        label="chronology (lower)"
+        :error-messages="r$.$errors?.chronologyLower"
+      />
+    </v-col>
+    <v-col cols="12" xs="5" class="px-2">
+      <v-text-field
+        v-model.number="r$.$value.chronologyUpper"
+        label="chronology (upper)"
+        :error-messages="r$.$errors?.chronologyUpper"
       />
     </v-col>
   </v-row>

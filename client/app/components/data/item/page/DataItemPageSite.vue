@@ -6,7 +6,9 @@ import { hasAcl } from '~/utils/acl'
 const path = '/api/data/sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
+const { tab } = storeToRefs(
+  useResourceUiStore('/api/data/sites/{id}', ['chronology']),
+)
 </script>
 
 <template>
