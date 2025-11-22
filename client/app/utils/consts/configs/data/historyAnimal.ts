@@ -50,7 +50,7 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['animal (historical data)', 'animal (historical data)'],
+  labels: ['animal (historical data)', 'animals (historical data)'],
   name: 'historyAnimal',
 }
 
