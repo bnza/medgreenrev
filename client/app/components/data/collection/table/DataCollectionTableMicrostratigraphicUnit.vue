@@ -18,7 +18,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/microstratigraphic_units/{id}'),
 )
@@ -54,8 +54,8 @@ const { updateDialogState } = storeToRefs(
       <text-tooltip-span :text="item.notes" />
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="StratigraphicUnit" :parent-id />-->
-      <!--      <data-dialog-search :path title="Stratigraphic Unit" />-->
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-microstratigraphic-unit
         :path
         :parent

@@ -381,6 +381,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/contexts/{parentId}/analyses/zoo'
   | '/api/data/individuals'
   | '/api/data/media_objects'
+  | '/api/data/microstratigraphic_units'
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/samples/{parentId}/analyses/microstratigraphy'
@@ -391,6 +392,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
   | '/api/data/stratigraphic_units/{parentId}/botany/seeds'
   | '/api/data/stratigraphic_units/{parentId}/individuals'
+  | '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/potteries'
   | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
   | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
@@ -1668,6 +1670,24 @@ const historyPlantStaticFiltersDefinitionObject: ResourceStaticFiltersDefinition
     },
   }
 
+const microstratigraphicUnitStaticDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    ...stratigraphicUnitPropertyStaticFiltersDefinition,
+    ...{
+      identifier: {
+        filters: {
+          SearchPartial,
+        },
+      },
+      notes: {
+        filters: {
+          SearchPartial,
+          Exists,
+        },
+      },
+    },
+  }
+
 export const FILTERS_PATHS_MAP: Record<
   SearchableGetCollectionPath,
   ResourceStaticFiltersDefinitionObject
@@ -1705,6 +1725,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/individuals/{parentId}/analyses':
     analysisIndividualStaticFiltersDefinition,
   '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
+  '/api/data/microstratigraphic_units':
+    microstratigraphicUnitStaticDefinitionObject,
   '/api/data/potteries': potteryStaticFiltersDefinition,
   '/api/data/potteries/{parentId}/analyses':
     analysisPotteryStaticFiltersDefinitionObject,
@@ -1721,6 +1743,8 @@ export const FILTERS_PATHS_MAP: Record<
     botanySeedStaticFiltersDefinitionObject,
   '/api/data/stratigraphic_units/{parentId}/individuals':
     individualStaticFiltersDefinitionObject,
+  '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units':
+    microstratigraphicUnitStaticDefinitionObject,
   '/api/data/stratigraphic_units/{parentId}/potteries':
     potteryStaticFiltersDefinition,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones':
