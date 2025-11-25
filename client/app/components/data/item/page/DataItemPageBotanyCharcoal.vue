@@ -19,15 +19,13 @@ defineProps<{
       </v-tabs>
       <v-tabs-window v-if="!iri" v-model="tab">
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <p>Analyses</p>
-          <!--          <data-collection-page-analysis-zoo-bone-->
-          <!--            path="/api/data/botany/charcoals/{parentId}/analyses"-->
-          <!--            :parent="{-->
-          <!--              key: 'zooBone',-->
-          <!--              resourceItemPath: '/api/data/botany/charcoals/{id}',-->
-          <!--              item,-->
-          <!--            }"-->
-          <!--          />-->
+          <data-collection-page-analysis-botany-charcoal
+            path="/api/data/botany/charcoals/{parentId}/analyses"
+            :parent="{
+              key: 'botanyCharcoal',
+              item,
+            }"
+          />
         </v-tabs-window-item>
       </v-tabs-window>
     </template>

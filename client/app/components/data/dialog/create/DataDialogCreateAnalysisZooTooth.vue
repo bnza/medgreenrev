@@ -50,9 +50,7 @@ const isAbsoluteDatingAnalysis = ref(false)
       />
       <data-item-form-edit-abs-dating-analysis
         v-if="isAbsoluteDatingAnalysis"
-        mode="create"
         :initial-value="null"
-      />e>
-    </template></data-dialog-create
-  >
+      /> </template
+  ></data-dialog-create>
 </template>
