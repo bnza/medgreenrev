@@ -16,7 +16,6 @@
 >
 import type { ApiResourceKey, ResourceParent } from '~~/types'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
-import { useScopedRegle } from '@regle/core'
 
 interface Item {
   subject?: string
@@ -52,7 +51,7 @@ const path = computed(() => API_RESOURCE_MAP[props.subjectParentKey])
 
 const model = ref(structuredClone(props.initialValue))
 
-const { r$ } = useScopedRegle(model, {})
+const { r$ } = useScopedRegleItem(model, {}, { scopeKey: 'base' })
 </script>
 
 <template>

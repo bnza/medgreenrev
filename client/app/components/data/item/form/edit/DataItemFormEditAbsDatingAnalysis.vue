@@ -15,9 +15,9 @@
   "
 >
 import type { ApiResourceKey } from '~~/types'
-import { useScopedRegle } from '@regle/core'
 import { integer, maxValue, minValue, required } from '@regle/rules'
 import { isEmptyObject } from '~/utils'
+import { useScopedRegleItem } from '~/composables/validation/useCollectScopeRecord'
 
 type Item = {
   datingLower?: number
@@ -27,8 +27,6 @@ type Item = {
   calibrationCurve?: string
   notes?: string | null
 }
-
-// const item = defineModel<Partial<Item>>('item', { required: true })
 
 interface Props {
   initialValue: Partial<Item> | null
@@ -47,7 +45,7 @@ watch(
   },
 )
 
-const { r$ } = useScopedRegle(
+const { r$ } = useScopedRegleItem(
   model,
   computed(() =>
     showForm.value
@@ -88,6 +86,7 @@ const { r$ } = useScopedRegle(
         }
       : {},
   ),
+  { scopeKey: 'absDating' },
 )
 
 watch(

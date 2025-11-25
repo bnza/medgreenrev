@@ -43,12 +43,15 @@ export const baseNormalizePatchItem = <P extends GetItemPath & PatchItemPath>(
 export const useUpdateDialog = <P extends GetItemPath & PatchItemPath>(
   path: P,
   normalizePatchItem: NormalizedPatchItem<P> = baseNormalizePatchItem,
+  typeIriBlacklist: ApiResourceKey[] = [],
 ) => {
   const { updateDialogState } = storeToRefs(useResourceUpdateDialogStore(path))
 
   const { data } = useGetItemQuery(path, updateDialogState)
 
-  const initialValue = computed(() => normalizePatchItem(data))
+  const initialValue = computed(() =>
+    normalizePatchItem(data, typeIriBlacklist),
+  )
 
   const fetchedItem = computed(() => data.value)
 

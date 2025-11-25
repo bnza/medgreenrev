@@ -5,8 +5,6 @@ import type {
   PatchItemPath,
   PatchItemRequestMap,
 } from '~~/types'
-import { useCollectScope } from '@regle/core'
-import { isEmptyObject } from '~/utils'
 
 const path: GetItemPath & PatchItemPath = '/api/data/analyses/potteries/{id}'
 
@@ -14,16 +12,20 @@ defineEmits<{
   refresh: []
 }>()
 
-const { initialValue, fetchedItem } = useUpdateDialog(path)
+const { initialValue, fetchedItem } = useUpdateDialog(path, undefined, [
+  'absDatingAnalysisPottery',
+])
 
-const { r$ } =
-  useCollectScope<
-    [PatchItemRequestMap[typeof path], AbsoluteDatingRequestItem]
-  >()
+const { r$ } = useCollectScopeRecord<{
+  base: PatchItemRequestMap[typeof path]
+  absDating: AbsoluteDatingRequestItem
+}>()
 
 const item = computed(() => {
-  const base = r$.$value[0] ?? {}
-  base.absDatingAnalysis = isEmptyObject(r$.$value[1]) ? null : r$.$value[1]
+  const base = r$.$value.base ?? {}
+  base.absDatingAnalysis = isEmptyObject(r$.$value.absDating)
+    ? null
+    : r$.$value.absDating
   return base
 })
 

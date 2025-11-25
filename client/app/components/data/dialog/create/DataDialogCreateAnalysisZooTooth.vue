@@ -4,8 +4,8 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { useCollectScope } from '@regle/core'
 import { isEmptyObject } from '~/utils'
+import { useCollectScopeRecord } from '~/composables'
 
 defineProps<{
   parent?: ResourceParent<'zooTooth' | 'analysis'>
@@ -13,18 +13,20 @@ defineProps<{
 
 const path = '/api/data/analyses/zoo/teeth'
 
-const { r$ } =
-  useCollectScope<
-    [PostCollectionRequestMap[typeof path], AbsoluteDatingRequestItem]
-  >()
-
 const emit = defineEmits<{
   refresh: []
 }>()
 
+const { r$ } = useCollectScopeRecord<{
+  base: PostCollectionRequestMap[typeof path]
+  absDating: AbsoluteDatingRequestItem
+}>()
+
 const item = computed(() => {
-  const base = r$.$value[0] ?? {}
-  base.absDatingAnalysis = isEmptyObject(r$.$value[1]) ? null : r$.$value[1]
+  const base = r$.$value.base ?? {}
+  base.absDatingAnalysis = isEmptyObject(r$.$value.absDating)
+    ? null
+    : r$.$value.absDating
   return base
 })
 

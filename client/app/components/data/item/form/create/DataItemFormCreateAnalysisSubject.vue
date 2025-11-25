@@ -9,7 +9,7 @@ import type {
   ResourceParent,
 } from '~~/types'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
-import { inferRules, useScopedRegle } from '@regle/core'
+import { inferRules } from '@regle/core'
 import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerateValidationCreateRules'
 import { generateEmptyAnalysisSubjectModel } from '~/utils/postModel'
 import { capitalize } from 'vue'
@@ -43,7 +43,7 @@ const rules = inferRules(
   generateAnalysisSubjectValidationRules(resourceKey, model),
 )
 
-const { r$ } = useScopedRegle(model, rules)
+const { r$ } = useScopedRegleItem(model, rules, { scopeKey: 'base' })
 
 const emit = defineEmits<{
   selected: [any]
