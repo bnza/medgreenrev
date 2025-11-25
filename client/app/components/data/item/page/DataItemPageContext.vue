@@ -14,12 +14,25 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <lazy-data-item-form-info-context :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="sus">stratigraphic units</v-tab>
+        <v-tab value="botanyAnalyses">botany analyses</v-tab>
         <v-tab value="zooAnalyses">zoo analyses</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="sus" data-testid="tab-sus">
           <data-collection-page-join-context-stratigraphic-unit
             path="/api/data/contexts/{parentId}/stratigraphic_units"
+            :parent="{
+              key: 'context',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item
+          value="botanyAnalyses"
+          data-testid="tab-botany-analyses"
+        >
+          <data-collection-page-analysis-context-botany
+            path="/api/data/contexts/{parentId}/analyses/botany"
             :parent="{
               key: 'context',
               item,

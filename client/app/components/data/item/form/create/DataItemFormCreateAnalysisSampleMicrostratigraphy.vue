@@ -10,11 +10,11 @@ import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerat
 const path: ApiResourcePath | PostCollectionPath =
   '/api/data/analyses/samples/microstratigraphy'
 
-defineProps<{
+const props = defineProps<{
   parent?: ResourceParent<'sample'> | ResourceParent<'analysis'>
 }>()
 
-const model = generateEmptyPostModel(path)
+const model = generateEmptyPostModel(path, props.parent)
 
 const rules = inferRules(
   model,

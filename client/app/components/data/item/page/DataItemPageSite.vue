@@ -20,6 +20,7 @@ const { tab } = storeToRefs(
         <v-tab value="sus">stratigraphic units</v-tab>
         <v-tab value="contexts">contexts</v-tab>
         <v-tab value="samples">samples</v-tab>
+        <v-tab value="anthroAnalyses">anthropological analyses</v-tab>
         <v-tab
           v-if="hasAcl(item, 'canDelete') && item._acl.canDelete"
           value="privileges"
@@ -51,6 +52,18 @@ const { tab } = storeToRefs(
         <v-tabs-window-item value="samples" data-testid="tab-window-samples">
           <data-collection-page-sample
             path="/api/data/sites/{parentId}/samples"
+            :parent="{
+              key: 'site',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item
+          value="anthroAnalyses"
+          data-testid="tab-window-anthro-analyses"
+        >
+          <data-collection-page-analysis-site-anthropology
+            path="/api/data/sites/{parentId}/analyses/anthropology"
             :parent="{
               key: 'site',
               item,

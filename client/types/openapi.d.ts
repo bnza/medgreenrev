@@ -1254,7 +1254,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/samples/microstratigraphy/{parentId}/analyses': {
+  '/api/data/samples/{parentId}/analyses/microstratigraphy': {
     parameters: {
       query?: never
       header?: never
@@ -1265,7 +1265,7 @@ export interface paths {
      * Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
      * @description Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
      */
-    get: operations['api_datasamplesmicrostratigraphy_parentIdanalyses_get_collection']
+    get: operations['api_datasamples_parentIdanalysesmicrostratigraphy_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1346,7 +1346,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/sites/anthropology/{parentId}/analyses': {
+  '/api/data/sites/{parentId}/analyses/anthropology': {
     parameters: {
       query?: never
       header?: never
@@ -1357,7 +1357,7 @@ export interface paths {
      * Retrieves the collection of AnalysisSiteAnthropology resources.
      * @description Retrieves the collection of AnalysisSiteAnthropology resources.
      */
-    get: operations['api_datasitesanthropology_parentIdanalyses_get_collection']
+    get: operations['api_datasites_parentIdanalysesanthropology_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -14616,7 +14616,7 @@ export interface operations {
       }
     }
   }
-  api_datasamplesmicrostratigraphy_parentIdanalyses_get_collection: {
+  api_datasamples_parentIdanalysesmicrostratigraphy_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -15025,7 +15025,7 @@ export interface operations {
       }
     }
   }
-  api_datasitesanthropology_parentIdanalyses_get_collection: {
+  api_datasites_parentIdanalysesanthropology_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */

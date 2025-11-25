@@ -15,7 +15,7 @@ const config: Readonly<ResourceConfig> = {
     {
       key: 'subject.code',
       value: 'subject.code',
-      title: 'sample',
+      title: 'site',
       minWidth: '100',
     },
     {

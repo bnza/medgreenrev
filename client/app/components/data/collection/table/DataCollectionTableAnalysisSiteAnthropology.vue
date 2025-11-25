@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/analyses/sites/anthropology'
       | '/api/data/analyses/{parentId}/sites/anthropology'
+      | '/api/data/sites/{parentId}/analyses/anthropology'
     >
   "
 >
@@ -15,7 +16,7 @@ import DataDialogUpdateAnalysisSiteAnthropology from '~/components/data/dialog/u
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)

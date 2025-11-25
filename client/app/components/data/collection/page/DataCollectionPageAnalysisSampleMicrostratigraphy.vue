@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/analyses/samples/microstratigraphy'
       | '/api/data/analyses/{parentId}/samples/microstratigraphy'
+      | '/api/data/samples/{parentId}/analyses/microstratigraphy'
     >
   "
 >
@@ -14,7 +15,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'sample'>
+  parent?: ResourceParent<'sample'> | ResourceParent<'analysis'>
 }>()
 
 const {
@@ -26,7 +27,7 @@ const {
 } = useAppAuth()
 
 const hasPrivileges = computed(() => {
-  if (props.parent) {
+  if (props.parent && props.parent.key === 'sample') {
     return props.parent.item.site?.['@id']
       ? hasSitePrivilege.value(
           Number(extractIdFromIri(props.parent.item.site['@id'])),

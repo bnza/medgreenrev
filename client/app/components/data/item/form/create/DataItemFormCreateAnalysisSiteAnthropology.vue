@@ -11,11 +11,11 @@ import type { AnalysisCode } from '~/utils'
 const path: ApiResourcePath | PostCollectionPath =
   '/api/data/analyses/sites/anthropology'
 
-defineProps<{
+const props = defineProps<{
   parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
 }>()
 
-const model = generateEmptyPostModel(path)
+const model = generateEmptyPostModel(path, props.parent)
 
 const rules = inferRules(
   model,
@@ -30,9 +30,9 @@ const analysisCodes: AnalysisCode[] = ['ANTHRO']
 <template>
   <v-row>
     <v-col cols="6">
-      <data-autocomplete
+      <data-autocomplete-site
         v-model="r$.$value.subject"
-        path="/api/data/samples"
+        path="/api/data/sites"
         item-title="code"
         label="subject"
         granted-only

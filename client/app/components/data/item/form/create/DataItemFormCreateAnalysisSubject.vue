@@ -36,7 +36,9 @@ const resourceKey =
   `analysis${capitalize(props.subjectParentKey)}` as const satisfies ApiAnalysisSubjectResourceKey
 const subjectPath = API_RESOURCE_MAP[props.subjectParentKey]
 
-const model = ref(generateEmptyAnalysisSubjectModel(resourceKey, props.parent))
+const model = ref(
+  generateEmptyAnalysisSubjectModel(props.subjectParentKey, props.parent),
+)
 
 const rules = inferRules(
   model,

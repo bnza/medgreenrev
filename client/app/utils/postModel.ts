@@ -4,7 +4,6 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { capitalize } from 'vue'
 
 export const generateEmptyAnalysisSubjectModel = (
   subjectKey: ApiResourceKey,
@@ -18,7 +17,7 @@ export const generateEmptyAnalysisSubjectModel = (
     ...(parent?.key === 'analysis'
       ? { analysis: parent.item['@id'] as string }
       : {}),
-    ...(parent?.key && `analysis${capitalize(parent.key)}` === subjectKey
+    ...(parent?.key === subjectKey
       ? { subject: parent.item['@id'] as string }
       : {}),
     summary: null,

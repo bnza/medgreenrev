@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/analyses/sites/anthropology'
       | '/api/data/analyses/{parentId}/sites/anthropology'
+      | '/api/data/sites/{parentId}/analyses/anthropology'
     >
   "
 >
@@ -14,7 +15,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
 }>()
 
 const {
