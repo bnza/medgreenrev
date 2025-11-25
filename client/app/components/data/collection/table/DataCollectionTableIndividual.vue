@@ -16,7 +16,7 @@ const props = defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 const { id: parentId } = useResourceParent(props.parent)
 
 const { deleteDialogState } = storeToRefs(
@@ -58,8 +58,8 @@ const vocabularyIndividualAge = useVocabularyStore(
       {{ vocabularyIndividualAge.getValue(item.age) }}
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="Context" />-->
-      <!--      <data-dialog-search :path />-->
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-individual :path :parent @refresh="refetch()" />
       <data-dialog-delete-individual @refresh="refetch()" />
       <data-dialog-update-individual @refresh="refetch()" />

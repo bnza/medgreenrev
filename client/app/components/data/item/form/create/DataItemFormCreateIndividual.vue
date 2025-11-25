@@ -63,7 +63,6 @@ const { r$ } = useScopedRegle(model, {
       <v-col cols="12" md="4">
         <data-selection-individual-sex
           v-model="r$.$value.sex"
-          path="/api/vocabulary/pottery/shapes"
           item-title="value"
           label="sex"
         />

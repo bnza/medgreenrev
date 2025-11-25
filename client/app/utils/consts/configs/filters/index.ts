@@ -124,12 +124,20 @@ const SelectionZooBoneEndsPreserved: StaticFiltersDefinitionObject = {
   addToQueryObject: addOperatorToQueryObjectSingle('any'),
 }
 
+const SelectionIndividualSex: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'SelectionIndividualSex',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
   componentKey: 'SelectionZooBoneSide',
   addToQueryObject: addToQueryObjectArray,
 }
+
 const VocabularyBotanyElement: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -324,6 +332,7 @@ export const API_FILTERS = {
   SelectionBotanyClass,
   SelectionBotanyFamily,
   SelectionContextType,
+  SelectionIndividualSex,
   SelectionZooBoneEndsPreserved,
   SelectionZooBoneSide,
   VocabularyAnalysisType,
@@ -370,6 +379,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/contexts'
   | '/api/data/contexts/{parentId}/analyses/botany'
   | '/api/data/contexts/{parentId}/analyses/zoo'
+  | '/api/data/individuals'
   | '/api/data/media_objects'
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
@@ -380,6 +390,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/stratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
   | '/api/data/stratigraphic_units/{parentId}/botany/seeds'
+  | '/api/data/stratigraphic_units/{parentId}/individuals'
   | '/api/data/stratigraphic_units/{parentId}/potteries'
   | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
   | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
@@ -1550,6 +1561,35 @@ const analysisZooToothStaticFiltersDefinitionObject: ResourceStaticFiltersDefini
     },
   }
 
+const individualStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
+    ...stratigraphicUnitPropertyStaticFiltersDefinition,
+    ...{
+      identifier: {
+        filters: {
+          SearchPartial,
+        },
+      },
+      age: {
+        filters: {
+          VocabularyIndividualAge,
+          Exists,
+        },
+      },
+      sex: {
+        filters: {
+          SelectionIndividualSex,
+        },
+      },
+      notes: {
+        filters: {
+          SearchPartial,
+          Exists,
+        },
+      },
+    },
+  }
+
 const historyAnimalStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
     animal: {
@@ -1661,6 +1701,7 @@ export const FILTERS_PATHS_MAP: Record<
     analysisContextZooStaticFiltersDefinitionObject,
   '/api/data/history/animals': historyAnimalStaticFiltersDefinitionObject,
   '/api/data/history/plants': historyPlantStaticFiltersDefinitionObject,
+  '/api/data/individuals': individualStaticFiltersDefinitionObject,
   '/api/data/individuals/{parentId}/analyses':
     analysisIndividualStaticFiltersDefinition,
   '/api/data/media_objects': mediaObjectStaticFiltersDefinition,
@@ -1678,6 +1719,8 @@ export const FILTERS_PATHS_MAP: Record<
     botanyCharcoalStaticFiltersDefinitionObject,
   '/api/data/stratigraphic_units/{parentId}/botany/seeds':
     botanySeedStaticFiltersDefinitionObject,
+  '/api/data/stratigraphic_units/{parentId}/individuals':
+    individualStaticFiltersDefinitionObject,
   '/api/data/stratigraphic_units/{parentId}/potteries':
     potteryStaticFiltersDefinition,
   '/api/data/stratigraphic_units/{parentId}/zoo/bones':

@@ -12,6 +12,7 @@ export type OperandComponentsKey =
   | 'Selection'
   | 'SelectionZooBoneEndsPreserved'
   | 'SelectionZooBoneSide'
+  | 'SelectionIndividualSex'
   | 'Vocabulary'
   | 'HistoryLocation'
   | 'Site'
