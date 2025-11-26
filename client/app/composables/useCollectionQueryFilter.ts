@@ -98,7 +98,7 @@ export const useCollectionQueryFilter = (
    * Automatically updates based on current filter state and filter multiplicity rules.
    */
   const availableProperties = computed(() =>
-    Object.keys(availableFiltersMap.value),
+    Object.keys(availableFiltersMap.value).sort(),
   )
 
   /**
