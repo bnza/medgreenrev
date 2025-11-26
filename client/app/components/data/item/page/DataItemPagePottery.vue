@@ -17,6 +17,7 @@ defineProps<{
       <v-tabs v-if="!iri" v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
         <v-tab value="analyses">analyses</v-tab>
+        <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-if="!iri" v-model="tab">
         <v-tabs-window-item value="data" data-testid="tab-data">
@@ -29,6 +30,15 @@ defineProps<{
               key: 'pottery',
               item,
             }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="media" data-testid="tab-media">
+          <data-media-object-join-container
+            path="/api/data/potteries/{parentId}/media_objects"
+            post-path="/api/data/media_object_potteries"
+            delete-path="/api/data/media_object_potteries/{id}"
+            :parent-iri="item['@id']!"
+            :can-update="item._acl?.canUpdate"
           />
         </v-tabs-window-item>
       </v-tabs-window>

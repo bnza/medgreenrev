@@ -2550,6 +2550,74 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/media_object_potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectPottery resources.
+     * @description Retrieves the collection of MediaObjectPottery resources.
+     */
+    get: operations['api_datamedia_object_potteries_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectPottery resource.
+     * @description Creates a MediaObjectPottery resource.
+     */
+    post: operations['api_datamedia_object_potteries_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_potteries/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectPottery resource.
+     * @description Retrieves a MediaObjectPottery resource.
+     */
+    get: operations['api_datamedia_object_potteries_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectPottery resource.
+     * @description Removes the MediaObjectPottery resource.
+     */
+    delete: operations['api_datamedia_object_potteries_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/potteries/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectPottery resources.
+     * @description Retrieves the collection of MediaObjectPottery resources.
+     */
+    get: operations['api_datapotteries_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/media_object_stratigraphic_units': {
     parameters: {
       query?: never
@@ -7315,6 +7383,30 @@ export interface components {
     'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       item?: components['schemas']['Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      description?: string | null
+    }
+    'MediaObjectPottery-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       description?: string | null
     }
@@ -19175,6 +19267,179 @@ export interface operations {
       }
     }
   }
+  api_datamedia_object_potteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_potteries_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectPottery resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectPottery-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectPottery resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datamedia_object_potteries_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPottery resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_potteries_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectPottery identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPottery resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  api_datapotteries_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectPottery identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read'][]
+          }
+        }
+      }
+    }
+  }
   api_datamedia_object_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
@@ -19755,6 +20020,15 @@ export interface operations {
         innerColor?: string
         outerColor?: string
         decorationMotif?: string
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string
@@ -20068,6 +20342,15 @@ export interface operations {
         innerColor?: string
         outerColor?: string
         decorationMotif?: string
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
         'stratigraphicUnit.number[between]'?: string
         'stratigraphicUnit.number[gt]'?: string
         'stratigraphicUnit.number[gte]'?: string

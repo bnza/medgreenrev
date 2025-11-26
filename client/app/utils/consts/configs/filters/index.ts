@@ -538,6 +538,46 @@ const analysisBotanyCharcoalStaticFiltersDefinition: ResourceStaticFiltersDefini
 const analysisBotanySeedStaticFiltersDefinition =
   analysisBotanyCharcoalStaticFiltersDefinition
 
+const mediaObjectsPropertyStaticFilterDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    mediaObjects: {
+      propertyLabel: 'media',
+      filters: {
+        Exists,
+      },
+    },
+    'mediaObjects.mediaObject.originalFilename': {
+      propertyLabel: 'media (filename)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'mediaObjects.mediaObject.mimeType': {
+      propertyLabel: 'media (mime type)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'mediaObjects.mediaObject.group': {
+      propertyLabel: 'media (group)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'mediaObjects.mediaObject.type': {
+      propertyLabel: 'media (type)',
+      filters: {
+        VocabularyMediaObjectType,
+      },
+    },
+    'mediaObjects.mediaObject.uploadedBy.email': {
+      propertyLabel: 'media (created by)',
+      filters: {
+        SearchPartial,
+      },
+    },
+  }
+
 const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   type: {
     filters: {
@@ -579,42 +619,7 @@ const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
       Exists,
     },
   },
-  mediaObjects: {
-    propertyLabel: 'media',
-    filters: {
-      Exists,
-    },
-  },
-  'mediaObjects.mediaObject.originalFilename': {
-    propertyLabel: 'media (filename)',
-    filters: {
-      SearchPartial,
-    },
-  },
-  'mediaObjects.mediaObject.mimeType': {
-    propertyLabel: 'media (mime type)',
-    filters: {
-      SearchPartial,
-    },
-  },
-  'mediaObjects.mediaObject.group': {
-    propertyLabel: 'media (group)',
-    filters: {
-      SearchPartial,
-    },
-  },
-  'mediaObjects.mediaObject.type': {
-    propertyLabel: 'media (type)',
-    filters: {
-      VocabularyMediaObjectType,
-    },
-  },
-  'mediaObjects.mediaObject.uploadedBy.email': {
-    propertyLabel: 'media (created by)',
-    filters: {
-      SearchPartial,
-    },
-  },
+  ...mediaObjectsPropertyStaticFilterDefinition,
 }
 
 const analysisContextJoinStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -983,26 +988,7 @@ const potteryStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
     },
   },
   ...stratigraphicUnitPropertyStaticFiltersDefinition,
-  // stratigraphicUnit: {
-  //   propertyLabel: 'stratigraphic unit',
-  //   filters: {
-  //     StratigraphicUnitEquals,
-  //   },
-  // },
-  // 'stratigraphic.number': {
-  //   propertyLabel: 'stratigraphic unit (number)',
-  //   filters: {
-  //     SearchExact,
-  //     ...NumericOperations,
-  //   },
-  // },
-  // 'stratigraphic.year': {
-  //   propertyLabel: 'stratigraphic unit (year)',
-  //   filters: {
-  //     SearchExact,
-  //     ...NumericOperations,
-  //   },
-  // },
+  ...mediaObjectsPropertyStaticFilterDefinition,
   surfaceTreatment: {
     propertyLabel: 'surface treatment',
     filters: {

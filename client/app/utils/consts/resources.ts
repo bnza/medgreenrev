@@ -43,6 +43,7 @@ export const API_RESOURCE_MAP = {
   listVocZooTaxonomyFamily: '/api/list/vocabulary/zoo/taxonomy_families',
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',
+  mediaObjectPottery: '/api/data/media_object_potteries',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
   microstratigraphicUnit: '/api/data/microstratigraphic_units',
   pottery: '/api/data/potteries',
