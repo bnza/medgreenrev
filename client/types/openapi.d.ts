@@ -11114,15 +11114,15 @@ export interface operations {
         'createdBy.email[]'?: string[]
         status?: number
         'status[]'?: number[]
-        'mediaObjectsAnalysis.mediaObject.originalFilename'?: string
-        'mediaObjectsAnalysis.mediaObject.mimeType'?: string
-        'mediaObjectsAnalysis.mediaObject.type.group'?: string
-        'mediaObjectsAnalysis.mediaObject.type.group[]'?: string[]
-        'mediaObjectsAnalysis.mediaObject.type'?: string
-        'mediaObjectsAnalysis.mediaObject.type[]'?: string[]
-        'mediaObjectsAnalysis.mediaObject.uploadedBy.email'?: string
-        'mediaObjectsAnalysis.mediaObject.uploadDate'?: string
-        'mediaObjectsAnalysis.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
         'year[between]'?: string
         'year[gt]'?: string
         'year[gte]'?: string
@@ -11131,7 +11131,7 @@ export interface operations {
         'exists[laboratory]'?: boolean
         'exists[summary]'?: boolean
         'exists[responsible]'?: boolean
-        'exists[mediaObjectsAnalysis]'?: boolean
+        'exists[mediaObjects]'?: boolean
         /**
          * @description Search by analysis type code OR identifier (case insensitive like) if single value, or by analysis type code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "typeCode." searches only by type code. Format: "typeCode.identifier"
          * @example XRF.sample001

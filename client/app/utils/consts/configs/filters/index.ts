@@ -579,37 +579,37 @@ const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
       Exists,
     },
   },
-  mediaObjectsAnalysis: {
+  mediaObjects: {
     propertyLabel: 'media',
     filters: {
       Exists,
     },
   },
-  'mediaObjectsAnalysis.mediaObject.originalFilename': {
+  'mediaObjects.mediaObject.originalFilename': {
     propertyLabel: 'media (filename)',
     filters: {
       SearchPartial,
     },
   },
-  'mediaObjectsAnalysis.mediaObject.mimeType': {
+  'mediaObjects.mediaObject.mimeType': {
     propertyLabel: 'media (mime type)',
     filters: {
       SearchPartial,
     },
   },
-  'mediaObjectsAnalysis.mediaObject.group': {
+  'mediaObjects.mediaObject.group': {
     propertyLabel: 'media (group)',
     filters: {
       SearchPartial,
     },
   },
-  'mediaObjectsAnalysis.mediaObject.type': {
+  'mediaObjects.mediaObject.type': {
     propertyLabel: 'media (type)',
     filters: {
       VocabularyMediaObjectType,
     },
   },
-  'mediaObjectsAnalysis.mediaObject.uploadedBy.email': {
+  'mediaObjects.mediaObject.uploadedBy.email': {
     propertyLabel: 'media (created by)',
     filters: {
       SearchPartial,
