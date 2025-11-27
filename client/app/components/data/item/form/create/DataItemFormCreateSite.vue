@@ -3,8 +3,25 @@ import type { ApiResourcePath, PostCollectionPath } from '~~/types'
 import { createRule, type Maybe, useScopedRegle } from '@regle/core'
 import { integer, maxValue, minValue, required } from '@regle/rules'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
+import { capitalize } from 'vue'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/sites'
+
+const model = generateEmptyPostModel(path)
+
+watch(
+  () => model.value.code,
+  (value) => {
+    model.value.code = value?.toUpperCase()
+  },
+)
+
+watch(
+  () => model.value.name,
+  (value) => {
+    model.value.name = value ? capitalize(value) : value
+  },
+)
 
 const apiCodeValidator = new GetValidationOperation(
   '/api/validator/unique/sites/code',
@@ -26,7 +43,6 @@ const uniqueName = createRule({
   message: 'Name must be unique',
 })
 
-const model = generateEmptyPostModel(path)
 const { r$ } = useScopedRegle(
   model,
   computed(() => ({
@@ -62,14 +78,14 @@ const { r$ } = useScopedRegle(
   <v-row>
     <v-col cols="4" xs="12" class="px-2">
       <v-text-field
-        v-model="r$.$value.code"
+        v-model.trim="r$.$value.code"
         label="code"
         :error-messages="r$.$errors?.code"
       />
     </v-col>
     <v-col cols="8" xs="12" class="px-2">
       <v-text-field
-        v-model="r$.$value.name"
+        v-model.trim="r$.$value.name"
         label="name"
         :error-messages="r$.$errors?.name"
       />
@@ -113,7 +129,7 @@ const { r$ } = useScopedRegle(
   </v-row>
   <v-row>
     <v-col cols="12" xs="12" class="px-2">
-      <v-textarea v-model="r$.$value.description" label="description" />
+      <v-textarea v-model.trim="r$.$value.description" label="description" />
     </v-col>
   </v-row>
 </template>
