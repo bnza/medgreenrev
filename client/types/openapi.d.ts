@@ -7296,6 +7296,8 @@ export interface components {
        */
       type?: string
       description?: string | null
+      /** @default true */
+      public: boolean
     }
     'MediaObject.jsonld-media_object.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -7317,6 +7319,8 @@ export interface components {
       /** Format: date-time */
       uploadDate?: string | null
       description?: string | null
+      /** @default true */
+      public: boolean
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
     }
@@ -7340,6 +7344,8 @@ export interface components {
       /** Format: date-time */
       uploadDate?: string | null
       description?: string | null
+      /** @default true */
+      public: boolean
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
     }
@@ -7363,6 +7369,8 @@ export interface components {
       /** Format: date-time */
       uploadDate?: string | null
       description?: string | null
+      /** @default true */
+      public: boolean
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
     }
@@ -18824,6 +18832,7 @@ export interface operations {
         'uploadedBy.email'?: string
         uploadDate?: string
         'uploadDate[]'?: string
+        public?: boolean
         'size[between]'?: string
         'size[gt]'?: string
         'size[gte]'?: string
@@ -18868,6 +18877,7 @@ export interface operations {
         'multipart/form-data': {
           /** Format: binary */
           file: string
+          public?: boolean
           /**
            * Format: iri-reference
            * @example /api/vocabulary/media_object/types/1
@@ -20070,6 +20080,7 @@ export interface operations {
         'exists[decorationMotif]'?: boolean
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
+        'exists[mediaObjects]'?: boolean
         /** @description Search case insensitive match the inventory field */
         search?: string
         /**
@@ -20392,6 +20403,7 @@ export interface operations {
         'exists[decorationMotif]'?: boolean
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
+        'exists[mediaObjects]'?: boolean
         /** @description Search case insensitive match the inventory field */
         search?: string
         /**
@@ -22482,6 +22494,15 @@ export interface operations {
         'stratigraphicUnitSamples.sample'?: string
         'stratigraphicUnitSamples.sample[]'?: string[]
         'stratigraphicUnitContexts.context.name'?: string
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
         number?: number
         'number[]'?: number[]
         year?: number
@@ -22519,6 +22540,7 @@ export interface operations {
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
          * @example 2025 123
@@ -22577,6 +22599,15 @@ export interface operations {
         'stratigraphicUnitSamples.sample'?: string
         'stratigraphicUnitSamples.sample[]'?: string[]
         'stratigraphicUnitContexts.context.name'?: string
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
         number?: number
         'number[]'?: number[]
         year?: number
@@ -22614,6 +22645,7 @@ export interface operations {
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
         /**
          * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
          * @example 2025 123

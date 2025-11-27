@@ -4,9 +4,16 @@ const useCollectionTableHeadersStore = <Path extends GetCollectionPath>(
   path: Path,
 ) => {
   return defineStore(`collection-table-headers:${path}`, () => {
-    const config = useResourceConfig(path)
+    const { isAuthenticated } = useAppAuth()
+    const { defaultHeaders, protectedFields } = useResourceConfig(path)
 
-    const headers = computed(() => config.defaultHeaders)
+    const headers = computed(() =>
+      isAuthenticated.value
+        ? defaultHeaders
+        : defaultHeaders.filter(
+            (header) => protectedFields?.includes(header.value) === false,
+          ),
+    )
 
     return {
       headers,

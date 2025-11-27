@@ -37,6 +37,14 @@ const vocabularyMediaObjectTypeStore = useVocabularyStore(
     <template #[`item.thumbnail`]="{ item }">
       <data-media-object-image :item :size="100" />
     </template>
+    <template #[`item.public`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.public"
+        color="primary"
+        readonly
+      />
+    </template>
     <template #[`item.type.group`]="{ item }">
       {{ vocabularyMediaObjectTypeStore.getValue(item.type, 'group') }}
     </template>

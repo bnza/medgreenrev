@@ -30,6 +30,14 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '300',
     },
     {
+      key: 'public',
+      value: 'public',
+      title: 'public',
+      width: '100',
+      minWidth: '100',
+      maxWidth: '100',
+    },
+    {
       key: 'mimeType',
       value: 'mimeType',
       title: 'mime type',
@@ -87,6 +95,7 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
+  protectedFields: ['public'],
   labels: ['media', 'media'],
   name: 'mediaObject',
 }

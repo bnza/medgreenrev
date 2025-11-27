@@ -274,7 +274,7 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
         </v-list-group>
       </v-list-group>
-      <v-list-group v-if="isAuthenticated" value="Media">
+      <v-list-group value="Media">
         <template #activator="{ props }">
           <v-list-item
             v-bind="props"

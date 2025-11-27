@@ -17,6 +17,12 @@ const { r$ } = useScopedRegle(model, {
 </script>
 
 <template>
+  <v-row justify="end">
+    <v-col cols="2">
+      <v-checkbox v-model="r$.$value.public" label="public" />
+    </v-col>
+    <v-col cols="4" />
+  </v-row>
   <v-row>
     <v-col cols="8">
       <v-row dense>

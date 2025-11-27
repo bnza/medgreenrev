@@ -402,6 +402,80 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/zoo/teeth/{parentId}/analyses'
 >
 
+const mediaObjectsPropertyStaticFilterDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    mediaObjects: {
+      propertyLabel: 'media',
+      filters: {
+        Exists,
+      },
+    },
+    'mediaObjects.mediaObject.originalFilename': {
+      propertyLabel: 'media (filename)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'mediaObjects.mediaObject.mimeType': {
+      propertyLabel: 'media (mime type)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'mediaObjects.mediaObject.group': {
+      propertyLabel: 'media (group)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'mediaObjects.mediaObject.type': {
+      propertyLabel: 'media (type)',
+      filters: {
+        VocabularyMediaObjectType,
+      },
+    },
+    'mediaObjects.mediaObject.uploadedBy.email': {
+      propertyLabel: 'media (created by)',
+      filters: {
+        SearchPartial,
+      },
+    },
+  }
+
+const mediaObjectStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    mimeType: {
+      propertyLabel: 'mime type',
+      filters: {
+        SearchPartial,
+      },
+    },
+    originalFilename: {
+      propertyLabel: 'name',
+      filters: {
+        SearchPartial,
+      },
+    },
+    type: {
+      propertyLabel: 'type',
+      filters: {
+        VocabularyMediaObjectType,
+      },
+    },
+    'uploadedBy.email': {
+      propertyLabel: 'uploaded by',
+      filters: {
+        SearchPartial,
+      },
+    },
+    description: {
+      filters: {
+        SearchPartial,
+        Exists,
+      },
+    },
+  }
+
 const stratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     'stratigraphicUnit.site': {
@@ -537,46 +611,6 @@ const analysisBotanyCharcoalStaticFiltersDefinition: ResourceStaticFiltersDefini
 
 const analysisBotanySeedStaticFiltersDefinition =
   analysisBotanyCharcoalStaticFiltersDefinition
-
-const mediaObjectsPropertyStaticFilterDefinition: ResourceStaticFiltersDefinitionObject =
-  {
-    mediaObjects: {
-      propertyLabel: 'media',
-      filters: {
-        Exists,
-      },
-    },
-    'mediaObjects.mediaObject.originalFilename': {
-      propertyLabel: 'media (filename)',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'mediaObjects.mediaObject.mimeType': {
-      propertyLabel: 'media (mime type)',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'mediaObjects.mediaObject.group': {
-      propertyLabel: 'media (group)',
-      filters: {
-        SearchPartial,
-      },
-    },
-    'mediaObjects.mediaObject.type': {
-      propertyLabel: 'media (type)',
-      filters: {
-        VocabularyMediaObjectType,
-      },
-    },
-    'mediaObjects.mediaObject.uploadedBy.email': {
-      propertyLabel: 'media (created by)',
-      filters: {
-        SearchPartial,
-      },
-    },
-  }
 
 const analysisStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   type: {
@@ -873,40 +907,6 @@ const contextStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   },
 }
 
-const mediaObjectStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
-  {
-    mimeType: {
-      propertyLabel: 'mime type',
-      filters: {
-        SearchPartial,
-      },
-    },
-    originalFilename: {
-      propertyLabel: 'name',
-      filters: {
-        SearchPartial,
-      },
-    },
-    type: {
-      propertyLabel: 'type',
-      filters: {
-        VocabularyMediaObjectType,
-      },
-    },
-    'uploadedBy.email': {
-      propertyLabel: 'uploaded by',
-      filters: {
-        SearchPartial,
-      },
-    },
-    description: {
-      filters: {
-        SearchPartial,
-        Exists,
-      },
-    },
-  }
-
 const potteryStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
   culturalContext: {
     propertyLabel: 'cultural context',
@@ -1088,6 +1088,7 @@ const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionO
         ...NumericOperations,
       },
     },
+    ...mediaObjectsPropertyStaticFilterDefinition,
   }
 
 const botanyCommonStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =

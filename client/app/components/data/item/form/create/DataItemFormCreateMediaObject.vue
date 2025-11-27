@@ -18,7 +18,7 @@ defineEmits<{
 }>()
 
 const model = (
-  props.showFileUpload ? {} : { file: props.file }
+  props.showFileUpload ? { public: true } : { public: true, file: props.file }
 ) as FormDataFields<Path>
 
 const { maxFileSize } = useMaxFileSizeValidationRule()
@@ -73,6 +73,15 @@ watch(
           v-model="r$.$value.file"
           clearable
           data-testid="data-dialog-form-file-upload"
+        />
+      </v-col>
+    </v-row>
+    <v-row justify="end">
+      <v-col cols="4">
+        <v-checkbox
+          v-model="r$.$value.public"
+          data-testid="show-created-item-checkbox"
+          label="public"
         />
       </v-col>
     </v-row>

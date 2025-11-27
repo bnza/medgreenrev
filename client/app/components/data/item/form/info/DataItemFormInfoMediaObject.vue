@@ -14,10 +14,22 @@ const vocabularyMediaObjectTypeStore = useVocabularyStore(
   '/api/vocabulary/media_object/types',
 )
 const { mediaUrl } = useMediaObject(props.item)
+
+const { isAuthenticated } = useAppAuth()
 </script>
 
 <template>
   <data-item-form-read class="w-100">
+    <v-row justify="end">
+      <v-col cols="2">
+        <v-checkbox
+          v-if="isAuthenticated"
+          :model-value="item?.public"
+          label="public"
+        />
+      </v-col>
+      <v-col cols="6" />
+    </v-row>
     <v-row>
       <v-col cols="6">
         <v-container fluid class="pa-0">
