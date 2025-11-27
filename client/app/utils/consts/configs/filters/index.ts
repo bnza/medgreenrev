@@ -316,7 +316,15 @@ const Exists: StaticFiltersDefinitionObject = {
   },
 } as const
 
+const Boolean: StaticFiltersDefinitionObject = {
+  operationLabel: 'is',
+  multiple: false,
+  componentKey: 'Boolean',
+  addToQueryObject: addToQueryObjectSingle,
+}
+
 export const API_FILTERS = {
+  Boolean,
   Exists,
   SearchExact,
   SearchPartial,
@@ -444,6 +452,11 @@ const mediaObjectsPropertyStaticFilterDefinition: ResourceStaticFiltersDefinitio
 
 const mediaObjectStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
+    public: {
+      filters: {
+        Boolean,
+      },
+    },
     mimeType: {
       propertyLabel: 'mime type',
       filters: {

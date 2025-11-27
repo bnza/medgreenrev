@@ -82,6 +82,7 @@ export const createComponentFiltersMap = (
 export const createAvailableFiltersMap = (
   componentFiltersMap: ComponentFiltersMap,
   filters: FilterState,
+  hiddenFields: string[] = [],
 ) => {
   const result: ComponentFiltersMap = {}
 
@@ -94,6 +95,8 @@ export const createAvailableFiltersMap = (
     for (const [operationLabel, filterDefinition] of Object.entries(
       operations,
     )) {
+      if (hiddenFields.includes(filterDefinition.property)) continue
+
       // Check if there's an existing filter with the same prop and key
       const matchingFilter = Object.values(filters).find(
         (filter) =>

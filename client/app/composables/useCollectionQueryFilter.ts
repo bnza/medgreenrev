@@ -76,6 +76,14 @@ export const useCollectionQueryFilter = (
   const { componentFiltersMap, resourceFiltersDefinition } =
     useFilterConfig(path)
 
+  const { isAuthenticated } = useAppAuth()
+
+  const { protectedFields } = useResourceConfig(path)
+
+  const hiddenFields = computed(() =>
+    isAuthenticated.value ? [] : (protectedFields ?? []),
+  )
+
   /**
    * Available filters map that excludes already-used single-instance filters.
    * This computed property ensures that:
@@ -84,7 +92,11 @@ export const useCollectionQueryFilter = (
    * - Properties with no available operations are completely hidden
    */
   const availableFiltersMap = computed(() =>
-    createAvailableFiltersMap(componentFiltersMap.value, filters.value),
+    createAvailableFiltersMap(
+      componentFiltersMap.value,
+      filters.value,
+      hiddenFields.value,
+    ),
   )
 
   /** Currently selected property label in the filter form */
