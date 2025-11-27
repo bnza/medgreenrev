@@ -11,10 +11,13 @@ const path: ApiResourcePath | PostCollectionPath =
   '/api/data/microstratigraphic_units'
 
 const props = defineProps<{
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
-const model = generateEmptyPostModel(path, props.parent)
+const model = generateEmptyPostModel(
+  path,
+  props.parent?.key === 'stratigraphicUnit' ? props.parent : undefined,
+)
 
 const uniqueStratigraphicUnit = useApiUniqueValidator(
   '/api/validator/unique/microstratigraphic_units',
@@ -51,6 +54,11 @@ const { r$ } = useScopedRegle(model, {
           item-title="code"
           :error-messages="r$.$errors?.stratigraphicUnit"
           :disabled="parent?.key === 'stratigraphicUnit'"
+          :query-param="
+            parent?.key === 'sample'
+              ? { 'stratigraphicUnitSamples.sample': parent.item['@id'] }
+              : {}
+          "
           granted-only
         />
       </v-col>

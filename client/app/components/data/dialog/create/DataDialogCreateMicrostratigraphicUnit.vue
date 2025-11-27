@@ -9,7 +9,7 @@ import { useCollectScope } from '@regle/core'
 const path: PostCollectionPath = '/api/data/microstratigraphic_units' as const
 
 defineProps<{
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()

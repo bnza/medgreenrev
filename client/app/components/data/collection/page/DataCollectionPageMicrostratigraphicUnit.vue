@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/microstratigraphic_units'
       | '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units'
+      | '/api/data/samples/{parentId}/microstratigraphic_units'
     >
   "
 >
@@ -14,7 +15,7 @@ import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
 const { hasSitePrivilege, isAuthenticated, hasSpecialistRole, hasRoleAdmin } =

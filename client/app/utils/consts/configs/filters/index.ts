@@ -393,6 +393,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/samples/{parentId}/analyses/microstratigraphy'
+  | '/api/data/samples/{parentId}/microstratigraphic_units'
   | '/api/data/sites'
   | '/api/data/sites/{parentId}/stratigraphic_units'
   | '/api/data/sites/{parentId}/contexts'
@@ -1732,6 +1733,8 @@ export const FILTERS_PATHS_MAP: Record<
     analysisPotteryStaticFiltersDefinitionObject,
   '/api/data/samples/{parentId}/analyses/microstratigraphy':
     analysisSampleStratigraphicUnitFiltersDefinition,
+  '/api/data/samples/{parentId}/microstratigraphic_units':
+    microstratigraphicUnitStaticDefinitionObject,
   '/api/data/sites': siteStaticFiltersDefinition,
   '/api/data/sites/{parentId}/contexts': contextStaticFiltersDefinition,
   '/api/data/sites/{parentId}/stratigraphic_units':

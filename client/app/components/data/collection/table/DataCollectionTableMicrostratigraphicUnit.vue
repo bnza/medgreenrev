@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/microstratigraphic_units'
       | '/api/data/stratigraphic_units/{parentId}/microstratigraphic_units'
+      | '/api/data/samples/{parentId}/microstratigraphic_units'
     >
   "
 >
@@ -13,7 +14,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
