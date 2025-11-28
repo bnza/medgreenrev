@@ -6976,6 +6976,10 @@ export interface components {
       readonly id?: number | string
       context?: components['schemas']['Context.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
     }
+    'ContextStratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+    }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
@@ -8180,6 +8184,11 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    }
     'Site.csv-individual.acl.read': {
       code?: string
       name?: string
@@ -8542,6 +8551,18 @@ export interface components {
     'StratigraphicUnit.csv-context_stratigraphic_unit.acl.read': {
       readonly id?: number | string
       interpretation?: string | null
+      readonly code: string
+    }
+    'StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      site?: components['schemas']['Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
       readonly code: string
     }
     'StratigraphicUnit.csv-individual.acl.read': {
@@ -17115,10 +17136,56 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'context.site'?: string
+        'context.site[]'?: string[]
+        'context.site.code'?: string
+        'context.site.code[]'?: string[]
+        'context.name'?: string
+        'context.type'?: string
+        'context.type[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'context.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sample.description'?: string
       }
       header?: never
       path?: never
@@ -17132,10 +17199,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['ContextStratigraphicUnit.csv-context_stratigraphic_unit.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read'][]
           }
+          'text/csv': components['schemas']['ContextStratigraphicUnit.csv-context_stratigraphic_unit.acl.read'][]
         }
       }
     }
@@ -17262,10 +17329,56 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'context.site'?: string
+        'context.site[]'?: string[]
+        'context.site.code'?: string
+        'context.site.code[]'?: string[]
+        'context.name'?: string
+        'context.type'?: string
+        'context.type[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'context.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sample.description'?: string
       }
       header?: never
       path: {
@@ -17285,6 +17398,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
           }
+          'text/csv': components['schemas']['ContextStratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read'][]
         }
       }
     }
@@ -17298,10 +17412,56 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[context.name]'?: 'asc' | 'desc'
+        'order[context.type]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'context.site'?: string
+        'context.site[]'?: string[]
+        'context.site.code'?: string
+        'context.site.code[]'?: string[]
+        'context.name'?: string
+        'context.type'?: string
+        'context.type[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'context.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sample.description'?: string
       }
       header?: never
       path: {
@@ -17318,10 +17478,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['ContextStratigraphicUnit.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
           }
+          'text/csv': components['schemas']['ContextStratigraphicUnit.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read'][]
         }
       }
     }
@@ -20618,11 +20778,58 @@ export interface operations {
         'type[]'?: string[]
         'sampleStratigraphicUnits.stratigraphicUnit'?: string
         'sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[description]'?: boolean
+        'exists[sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.analysesMicrostratigraphicUnits.summary'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.analysesMicrostratigraphicUnits.analysis.summary'?: string
         /**
          * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
          * @example ME.GE.34.93
@@ -20869,11 +21076,58 @@ export interface operations {
         'type[]'?: string[]
         'sampleStratigraphicUnits.stratigraphicUnit'?: string
         'sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[description]'?: boolean
+        'exists[sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.analysesMicrostratigraphicUnits.summary'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.analysesMicrostratigraphicUnits.analysis.summary'?: string
         /**
          * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
          * @example ME.GE.34.93
@@ -20922,6 +21176,64 @@ export interface operations {
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'sample.site'?: string
+        'sample.site[]'?: string[]
+        'sample.site.code'?: string
+        'sample.site.code[]'?: string[]
+        'sample.year'?: number
+        'sample.year[]'?: number[]
+        'sample.number'?: number
+        'sample.number[]'?: number[]
+        'sample.type'?: string
+        'sample.type[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'sample.year[between]'?: string
+        'sample.year[gt]'?: string
+        'sample.year[gte]'?: string
+        'sample.year[lt]'?: string
+        'sample.year[lte]'?: string
+        'sample.number[between]'?: string
+        'sample.number[gt]'?: string
+        'sample.number[gte]'?: string
+        'sample.number[lt]'?: string
+        'sample.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sample.description'?: string
       }
       header?: never
       path?: never
@@ -20935,10 +21247,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SampleStratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
           }
+          'text/csv': components['schemas']['SampleStratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read'][]
         }
       }
     }
@@ -21081,6 +21393,64 @@ export interface operations {
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'sample.site'?: string
+        'sample.site[]'?: string[]
+        'sample.site.code'?: string
+        'sample.site.code[]'?: string[]
+        'sample.year'?: number
+        'sample.year[]'?: number[]
+        'sample.number'?: number
+        'sample.number[]'?: number[]
+        'sample.type'?: string
+        'sample.type[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'sample.year[between]'?: string
+        'sample.year[gt]'?: string
+        'sample.year[gte]'?: string
+        'sample.year[lt]'?: string
+        'sample.year[lte]'?: string
+        'sample.number[between]'?: string
+        'sample.number[gt]'?: string
+        'sample.number[gte]'?: string
+        'sample.number[lt]'?: string
+        'sample.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sample.description'?: string
       }
       header?: never
       path: {
@@ -21119,6 +21489,64 @@ export interface operations {
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'sample.site'?: string
+        'sample.site[]'?: string[]
+        'sample.site.code'?: string
+        'sample.site.code[]'?: string[]
+        'sample.year'?: number
+        'sample.year[]'?: number[]
+        'sample.number'?: number
+        'sample.number[]'?: number[]
+        'sample.type'?: string
+        'sample.type[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'sample.year[between]'?: string
+        'sample.year[gt]'?: string
+        'sample.year[gte]'?: string
+        'sample.year[lt]'?: string
+        'sample.year[lte]'?: string
+        'sample.number[between]'?: string
+        'sample.number[gt]'?: string
+        'sample.number[gte]'?: string
+        'sample.number[lt]'?: string
+        'sample.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sample.description'?: string
       }
       header?: never
       path: {
@@ -21135,10 +21563,10 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SampleStratigraphicUnit.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
           }
+          'text/csv': components['schemas']['SampleStratigraphicUnit.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read'][]
         }
       }
     }

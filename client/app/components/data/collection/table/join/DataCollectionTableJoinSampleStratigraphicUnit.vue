@@ -21,7 +21,7 @@ const subResourceKey = computed(() =>
   props.parent?.key === 'stratigraphicUnit' ? 'sample' : 'stratigraphicUnit',
 )
 
-const { appPath } = useResourceConfig(
+const { appPath, labels } = useResourceConfig(
   props.parent
     ? props.parent.key === 'stratigraphicUnit'
       ? '/api/data/samples'
@@ -51,6 +51,8 @@ const { id: parentId } = useResourceParent(props.parent)
       />
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-download :path :title="subResourceKey" :parent-id />
       <data-dialog-create-sample-stratigraphic-unit
         :path

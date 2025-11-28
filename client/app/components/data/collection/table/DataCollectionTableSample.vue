@@ -23,7 +23,7 @@ const { deleteDialogState } = storeToRefs(
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/samples/{id}'),
 )
-const { appPath } = useResourceConfig(props.path)
+const { appPath, labels } = useResourceConfig(props.path)
 </script>
 
 <template>
@@ -38,7 +38,8 @@ const { appPath } = useResourceConfig(props.path)
       />
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path title="Sample" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-sample :path :parent @refresh="refetch()" />
       <data-dialog-delete-sample @refresh="refetch()" />
       <data-dialog-update-sample @refresh="refetch()" />

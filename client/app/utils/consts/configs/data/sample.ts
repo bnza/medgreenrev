@@ -37,6 +37,7 @@ const sample: ResourceConfig = {
     {
       key: 'description',
       title: 'description',
+      sortable: false,
     },
   ] as const,
 }
