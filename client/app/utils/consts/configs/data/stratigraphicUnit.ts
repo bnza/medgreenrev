@@ -21,6 +21,18 @@ const config: Readonly<ResourceConfig> = {
       width: '80',
     },
     {
+      key: 'area',
+      value: 'area',
+      title: 'area',
+      width: '80',
+    },
+    {
+      key: 'building',
+      value: 'building',
+      title: 'building',
+      width: '80',
+    },
+    {
       key: 'code',
       value: 'code',
       title: 'code',

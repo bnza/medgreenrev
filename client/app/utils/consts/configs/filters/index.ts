@@ -93,6 +93,22 @@ const NumericRange: StaticFiltersDefinitionObject = {
   },
 }
 
+const SelectionArea: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Selection',
+  path: '/api/list/areas',
+  addToQueryObject: addToQueryObjectArray,
+}
+
+const SelectionBuilding: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Selection',
+  path: '/api/list/buildings',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const SelectionBotanyFamily: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -345,6 +361,8 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  SelectionArea,
+  SelectionBuilding,
   SelectionBotanyClass,
   SelectionBotanyFamily,
   SelectionContextType,
@@ -513,6 +531,18 @@ const stratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDef
       propertyLabel: 'site',
       filters: {
         SiteEquals,
+      },
+    },
+    'stratigraphicUnit.area': {
+      propertyLabel: 'area',
+      filters: {
+        SelectionArea,
+      },
+    },
+    'stratigraphicUnit.building': {
+      propertyLabel: 'building',
+      filters: {
+        SelectionArea,
       },
     },
     'stratigraphicUnit.interpretation': {
@@ -1239,6 +1269,16 @@ const stratigraphicUnitStaticFiltersDefinition: ResourceStaticFiltersDefinitionO
     site: {
       filters: {
         SiteEquals,
+      },
+    },
+    area: {
+      filters: {
+        SelectionArea,
+      },
+    },
+    building: {
+      filters: {
+        SelectionArea,
       },
     },
     interpretation: {

@@ -4,10 +4,18 @@ import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 export function useGetCollectionListQuery(
   path: ListGetCollectionPath,
   value: Ref<string | undefined>,
+  queryParams?: Ref<Record<string, any>>,
 ) {
   const getCollectionOperation = new GetCollectionOperation(path)
+  const baseQuery = computed(() =>
+    queryParams && queryParams.value ? { query: { ...queryParams.value } } : {},
+  )
   const optionsQuery = computed(() =>
-    value.value ? { query: { value: value.value } } : {},
+    value.value
+      ? 'query' in baseQuery.value
+        ? { ...baseQuery.value, query: { value: value.value } }
+        : { query: { value: value.value } }
+      : baseQuery.value,
   )
   const query = useQuery({
     key: () => [path, optionsQuery.value],

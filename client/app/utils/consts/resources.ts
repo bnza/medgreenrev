@@ -33,6 +33,8 @@ export const API_RESOURCE_MAP = {
   historyPlant: '/api/data/history/plants',
   individual: '/api/data/individuals',
   listAnalysisLaboratory: '/api/list/analyses/laboratories',
+  listArea: '/api/list/areas',
+  listBuildings: '/api/list/buildings',
   listCalibrationCurve: '/api/list/calibration_curves',
   listContextType: '/api/list/contexts/types',
   listHistoryReference: '/api/list/history/references',

@@ -2070,6 +2070,86 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/list/areas': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListArea resources.
+     * @description Retrieves the collection of ListArea resources.
+     */
+    get: operations['api_listareas_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/areas/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListArea resource.
+     * @description Retrieves a ListArea resource.
+     */
+    get: operations['api_listareas_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/buildings': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListBuildings resources.
+     * @description Retrieves the collection of ListBuildings resources.
+     */
+    get: operations['api_listbuildings_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/buildings/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListBuildings resource.
+     * @description Retrieves a ListBuildings resource.
+     */
+    get: operations['api_listbuildings_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/list/calibration_curves': {
     parameters: {
       query?: never
@@ -7281,6 +7361,25 @@ export interface components {
       readonly id?: string
       readonly value?: string
     }
+    'ListArea.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      readonly site: string
+      readonly value: string
+    }
+    'ListBuildings.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      readonly site: string
+      readonly area?: string
+      readonly value: string
+    }
     'ListCalibrationCurve.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
       readonly value?: string
@@ -8498,6 +8597,8 @@ export interface components {
        * @example https://example.com/
        */
       site: string
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number: number
@@ -8512,6 +8613,8 @@ export interface components {
        * @example https://example.com/
        */
       site?: string
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8521,41 +8624,45 @@ export interface components {
       chronologyUpper?: number | null
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-botany_charcoal.acl.read': {
-      site?: components['schemas']['Site.csv-botany_charcoal.acl.read']
+      site: components['schemas']['Site.csv-botany_charcoal.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-botany_seed.acl.read': {
-      site?: components['schemas']['Site.csv-botany_seed.acl.read']
+      site: components['schemas']['Site.csv-botany_seed.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.acl.read': {
       readonly id?: number | string
+      area?: string | null
+      building?: string | null
       interpretation?: string | null
       readonly code: string
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8566,20 +8673,22 @@ export interface components {
       readonly code: string
     }
     'StratigraphicUnit.csv-individual.acl.read': {
-      site?: components['schemas']['Site.csv-individual.acl.read']
+      site: components['schemas']['Site.csv-individual.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
-      site?: components['schemas']['Site.csv-microstratigraphic_unit.acl.read']
+      site: components['schemas']['Site.csv-microstratigraphic_unit.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-pottery.acl.read': {
-      site?: components['schemas']['Site.csv-pottery.acl.read']
+      site: components['schemas']['Site.csv-pottery.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      site: components['schemas']['Site.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8591,7 +8700,9 @@ export interface components {
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['Site.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8603,7 +8714,9 @@ export interface components {
     }
     'StratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['Site.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8615,7 +8728,9 @@ export interface components {
     }
     'StratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['Site.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8627,7 +8742,9 @@ export interface components {
     }
     'StratigraphicUnit.csv-sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sus.acl.read']
+      site: components['schemas']['Site.csv-sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8638,53 +8755,57 @@ export interface components {
       readonly code: string
     }
     'StratigraphicUnit.csv-zoo_bone.acl.read': {
-      site?: components['schemas']['Site.csv-zoo_bone.acl.read']
+      site: components['schemas']['Site.csv-zoo_bone.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.csv-zoo_tooth.acl.read': {
-      site?: components['schemas']['Site.csv-zoo_tooth.acl.read']
+      site: components['schemas']['Site.csv-zoo_tooth.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-abs_dating_analysis.read']
+      site: components['schemas']['Site.jsonld-abs_dating_analysis.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
+      site: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-botany_seed.acl.read']
+      site: components['schemas']['Site.jsonld-botany_seed.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
+      area?: string | null
+      building?: string | null
       interpretation?: string | null
       readonly code: string
     }
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8695,12 +8816,14 @@ export interface components {
       readonly code: string
     }
     'StratigraphicUnit.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-individual.acl.read']
+      site: components['schemas']['Site.jsonld-individual.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      site: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8711,16 +8834,18 @@ export interface components {
       readonly code: string
     }
     'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
+      site: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-pottery.acl.read']
+      site: components['schemas']['Site.jsonld-pottery.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      site: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8732,7 +8857,9 @@ export interface components {
     }
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8744,7 +8871,9 @@ export interface components {
     }
     'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8756,7 +8885,9 @@ export interface components {
     }
     'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8771,7 +8902,9 @@ export interface components {
     }
     'StratigraphicUnit.jsonld-sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sus.acl.read']
+      site: components['schemas']['Site.jsonld-sus.acl.read']
+      area?: string | null
+      building?: string | null
       /** @default 0 */
       year: number
       number?: number
@@ -8782,11 +8915,11 @@ export interface components {
       readonly code: string
     }
     'StratigraphicUnit.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-zoo_bone.acl.read']
+      site: components['schemas']['Site.jsonld-zoo_bone.acl.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
-      site?: components['schemas']['Site.jsonld-zoo_tooth.acl.read']
+      site: components['schemas']['Site.jsonld-zoo_tooth.acl.read']
       readonly code: string
     }
     'StratigraphicUnitRelationship-su_relationship.create': {
@@ -18457,6 +18590,134 @@ export interface operations {
       }
     }
   }
+  api_listareas_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        site?: string
+        'site[]'?: string[]
+        value?: string
+        'value[]'?: string[]
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListArea collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ListArea.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listareas_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListArea identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListArea resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListArea.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_listbuildings_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+        'value[]'?: string[]
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListBuildings collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ListBuildings.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listbuildings_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListBuildings identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListBuildings resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListBuildings.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_listcalibration_curves_get_collection: {
     parameters: {
       query?: {
@@ -23009,6 +23270,8 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
+        'order[area]'?: 'asc' | 'desc'
+        'order[building]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -23114,6 +23377,8 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
+        'order[area]'?: 'asc' | 'desc'
+        'order[building]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'

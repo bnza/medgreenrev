@@ -23,6 +23,14 @@ withDefaults(
         </v-text-field>
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
+        <v-text-field :model-value="item.area" label="area" />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field :model-value="item.building" label="building" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.year" label="year" />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">

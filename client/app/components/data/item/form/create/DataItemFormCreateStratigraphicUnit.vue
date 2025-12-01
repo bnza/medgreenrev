@@ -75,11 +75,19 @@ const { r$ } = useScopedRegle(model, {
     )(() => model.value.chronologyLower),
   },
 })
+
+const areaQueryParams = computed(() =>
+  r$.$value.site ? { site: r$.$value.site } : {},
+)
+const buildingQueryParams = computed(() => ({
+  ...areaQueryParams.value,
+  ...(r$.$value.area ? { area: r$.$value.area } : {}),
+}))
 </script>
 
 <template>
   <v-row>
-    <v-col cols="4">
+    <v-col cols="4" class="px-2">
       <data-autocomplete-site
         v-model="r$.$value.site"
         path="/api/data/sites"
@@ -90,6 +98,24 @@ const { r$ } = useScopedRegle(model, {
         :disabled="parent?.key === 'site'"
       />
     </v-col>
+    <v-col cols="4" class="px-2">
+      <data-selection-list
+        v-model="r$.$value.area"
+        path="/api/list/areas"
+        label="area"
+        :query-params="areaQueryParams"
+      />
+    </v-col>
+    <v-col cols="4" class="px-2">
+      <data-selection-list
+        v-model="r$.$value.building"
+        path="/api/list/buildings"
+        label="building"
+        :query-params="buildingQueryParams"
+      />
+    </v-col>
+  </v-row>
+  <v-row>
     <v-col cols="4" class="px-2">
       <v-text-field
         v-model.number="r$.$value.year"

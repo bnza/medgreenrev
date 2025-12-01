@@ -6,17 +6,27 @@ const props = withDefaults(
   defineProps<{
     path: Path
     combobox?: boolean
+    queryParams?: Record<string, any>
   }>(),
   { combobox: true },
 )
 
 const search = ref('')
-const { items, asyncStatus } = useGetCollectionListQuery(props.path, search)
+const innerQueryParams = toRef(props, 'queryParams')
+watch(innerQueryParams, () => (search.value = ''), { deep: true })
+const { items, asyncStatus } = useGetCollectionListQuery(
+  props.path,
+  search,
+  innerQueryParams,
+)
+
 const model = defineModel<string | null | undefined>({ required: true })
 
-const primitiveItems = computed(() =>
-  items.value.filter((item) => Boolean(item)).map((item) => item.value),
-)
+const primitiveItems = computed(() => [
+  ...new Set(
+    items.value.filter((item) => Boolean(item)).map((item) => item.value),
+  ),
+])
 </script>
 
 <template>
@@ -26,6 +36,7 @@ const primitiveItems = computed(() =>
     v-model:search="search"
     :items="primitiveItems"
     :loading="asyncStatus === 'loading'"
+    clearable
   />
   <v-autocomplete
     v-else
@@ -33,5 +44,6 @@ const primitiveItems = computed(() =>
     v-model:search="search"
     :items="primitiveItems"
     :loading="asyncStatus === 'loading'"
+    clearable
   />
 </template>
