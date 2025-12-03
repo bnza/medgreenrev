@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "compare:query-params": "npx tsx bin/compare-query-params.ts",
     "dev": "nuxt dev",
     "eslint:check": "eslint --ext .js,.ts,.tsx,.vue,.mjs --fix-dry-run",
     "generate": "nuxt generate",
