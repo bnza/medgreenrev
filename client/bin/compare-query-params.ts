@@ -94,6 +94,7 @@ const collectPathQueryParamNames = (spec: OpenAPISpec, apiPath: string) => {
     .filter((p) => p.in === 'query' && typeof p.name === 'string')
     .map((p) => p.name as string)
     .filter((n) => !IGNORED_PARAM_NAMES.has(n))
+    .filter((n) => !n.startsWith('order'))
   // Dedupe and sort for stability
   return Array.from(new Set(names)).sort()
 }
@@ -122,11 +123,16 @@ async function main() {
   const allPaths = Object.keys(FILTERS_PATHS_MAP)
   const argv = process.argv.slice(2)
   const hasHelp = argv.includes('-h') || argv.includes('--help')
+  let onlyError = argv.includes('--only-error') || argv.includes('-E')
 
   let requestedPath: string | undefined
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
     if (arg === '-h' || arg === '--help') continue
+    if (arg === '--only-error' || arg === '-E') {
+      onlyError = true
+      continue
+    }
     if (arg === '--path' || arg === '-p') {
       requestedPath = argv[i + 1]
       i++
@@ -139,16 +145,22 @@ async function main() {
     // First non-flag positional argument treated as path
     if (!arg.startsWith('-') && !requestedPath) {
       requestedPath = arg
-      continue
     }
   }
 
   const printUsage = () => {
     console.log(
-      'Usage: npx tsx bin/compare-query-params.ts [--path <API_PATH>]',
+      'Usage: npx tsx bin/compare-query-params.ts [--path <API_PATH>] [--only-error|-E]',
     )
     console.log('       npx tsx bin/compare-query-params.ts <API_PATH>')
     console.log('\nCompare client vs API query parameters per path.')
+    console.log('\nOptions:')
+    console.log(
+      '  --path, -p <API_PATH>    Compare only the specified API path',
+    )
+    console.log(
+      '  --only-error, -E         Show only parameters present in client but not in API, and only for paths where such differences exist',
+    )
     console.log('\nAvailable paths:')
     for (const p of allPaths.sort()) console.log('  ' + p)
   }
@@ -177,7 +189,6 @@ async function main() {
 
   for (const [apiPath, resourceDef] of entries) {
     clientFilters[apiPath] = []
-    // console.log(`\n=== ${apiPath} ===`)
 
     if (isObject(resourceDef)) {
       for (const [property, def] of Object.entries(resourceDef)) {
@@ -197,7 +208,10 @@ async function main() {
                 operands: ['provided-value'],
               })
               clientFilters[apiPath].push(
-                stringify(queryObject, { encode: false }).split('=')[0],
+                stringify(queryObject, {
+                  encode: false,
+                  arrayFormat: 'brackets',
+                }).split('=')[0],
               )
             } catch (e) {
               // Keep going if a particular filter application fails
@@ -241,8 +255,17 @@ async function main() {
     apiFilters[apiPath] = collectPathQueryParamNames(openApiSpec, apiPath)
   }
 
-  // Step 3: Diff per path and print lines with prefixes (-, =, +)
+  // Step 3: Diff per path and print colored lines
   const paths = Object.keys(clientFilters).sort()
+
+  if (!onlyError) {
+    console.log(
+      `${COLOR.yellow} Present in API but not in client${COLOR.reset}`,
+    )
+    console.log(`${COLOR.green} Present in both${COLOR.reset}`)
+    console.log(`${COLOR.red} Present in client but not in API${COLOR.reset}`)
+  }
+  const summary: [number, number] = [0, 0] // [onlyApiCount, onliClientCount]
   for (const apiPath of paths) {
     const client = new Set(clientFilters[apiPath] ?? [])
     const api = new Set(apiFilters[apiPath] ?? [])
@@ -257,13 +280,37 @@ async function main() {
       .filter((n) => !api.has(n))
       .sort()
 
+    if (onlyApi.length > 0) ++summary[0]
+    if (onlyClient.length > 0) ++summary[1]
+
+    // If onlyError flag is set, skip paths without client-only differences
+    if (onlyError && onlyClient.length === 0) continue
+
     console.log(`\n=== ${apiPath} ===`)
-    for (const name of onlyApi)
-      console.log(`${COLOR.yellow}- ${name}${COLOR.reset}`)
-    for (const name of both)
-      console.log(`${COLOR.green}= ${name}${COLOR.reset}`)
-    for (const name of onlyClient)
-      console.log(`${COLOR.red}+ ${name}${COLOR.reset}`)
+    if (onlyError) {
+      for (const name of onlyClient)
+        console.log(`${COLOR.red}${name}${COLOR.reset}`)
+    } else {
+      for (const name of onlyApi)
+        console.log(`${COLOR.yellow}${name}${COLOR.reset}`)
+      for (const name of both)
+        console.log(`${COLOR.green}${name}${COLOR.reset}`)
+      for (const name of onlyClient)
+        console.log(`${COLOR.red}${name}${COLOR.reset}`)
+    }
+  }
+
+  console.log(`\n${paths.length} API paths checked.`)
+  if (summary[0] || summary[1]) {
+    console.log(`Found issues:`)
+    console.log(
+      `${COLOR.yellow}${summary[0]}${COLOR.reset} path with missing client correspondence`,
+    )
+    console.log(
+      `${COLOR.red}${summary[1]}${COLOR.reset} path with missing API correspondence`,
+    )
+  } else {
+    console.log(`No issues found`)
   }
 }
 
