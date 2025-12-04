@@ -1,5 +1,8 @@
 import type { ResourceStaticFiltersDefinitionObject } from '~~/types'
-import { generateResourceDefinition } from '~/utils/consts/configs/filters/definitions'
+import {
+  API_FILTERS,
+  generateResourceDefinition,
+} from '~/utils/consts/configs/filters/definitions'
 
 import { propertyStaticFiltersDefinition as analysisPropertyStaticDefinition } from './analysis'
 import {
@@ -18,6 +21,18 @@ import {
   taxonomyStaticFiltersDefinition as zooTaxonomyPropertyStaticDefinition,
 } from './zoo'
 
+const { Exists, SearchPartial } = API_FILTERS
+
+const summaryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    summary: {
+      filters: {
+        Exists,
+        SearchPartial,
+      },
+    },
+  }
+
 const analysisBotanyPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     ...generateResourceDefinition(analysisPropertyStaticDefinition, [
@@ -28,6 +43,11 @@ const analysisBotanyPropertyStaticFiltersDefinition: ResourceStaticFiltersDefini
       'subject',
       'subject',
     ]),
+    ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
+      'subject',
+      'subject',
+    ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisContextBotanyPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -41,9 +61,10 @@ const analysisContextBotanyPropertyStaticFiltersDefinition: ResourceStaticFilter
       'subject',
     ]),
     ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
-      'subject.taxonomies',
-      'subject',
+      'taxonomies',
+      '',
     ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisContextZooPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -57,9 +78,10 @@ const analysisContextZooPropertyStaticFiltersDefinition: ResourceStaticFiltersDe
       'subject',
     ]),
     ...generateResourceDefinition(zooTaxonomyPropertyStaticDefinition, [
-      'subject.taxonomies',
-      'subject',
+      'taxonomies',
+      '',
     ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisIndividualPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -72,6 +94,7 @@ const analysisIndividualPropertyStaticFiltersDefinition: ResourceStaticFiltersDe
       'subject',
       'subject',
     ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisPotteryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -84,6 +107,7 @@ const analysisPotteryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefin
       'subject',
       'subject',
     ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -103,6 +127,7 @@ const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: Resou
         'microstratigraphic unit',
       ],
     ),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisZooBonePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -115,6 +140,7 @@ const analysisZooBonePropertyStaticFiltersDefinition: ResourceStaticFiltersDefin
       'subject',
       'subject',
     ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 const analysisZooToothPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -127,6 +153,7 @@ const analysisZooToothPropertyStaticFiltersDefinition: ResourceStaticFiltersDefi
       'subject',
       'subject',
     ]),
+    ...summaryPropertyStaticFiltersDefinition,
   }
 
 export const staticFiltersDefinitionBotany = {

@@ -19,6 +19,7 @@ const {
 export const taxonomyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     taxonomy: {
+      propertyLabel: 'taxonomy',
       filters: {
         VocabularyBotanyTaxonomy,
       },

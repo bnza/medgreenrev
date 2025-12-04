@@ -8,7 +8,7 @@ export const generateResourceDefinition = <
   T extends ResourceStaticFiltersDefinitionObject,
 >(
   resourceDefinition: T,
-  prefix: [string, string] = ['', ''],
+  prefix: [string, string] = ['', ''], // [propertyPrefix, propertyLabelPrefix]
   blacklistedProperties: (keyof T)[] = [],
 ): ResourceStaticFiltersDefinitionObject => {
   return Object.fromEntries(
@@ -113,6 +113,13 @@ const NumericRange: StaticFiltersDefinitionObject = {
     queryObject[filter.property].between =
       `${filter.operands[0]}..${filter.operands[1]}`
   },
+}
+
+const SelectionAnalysisStatus: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'SelectionAnalysisStatus',
+  addToQueryObject: addToQueryObjectArray,
 }
 
 const SelectionArea: StaticFiltersDefinitionObject = {
@@ -399,6 +406,7 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  SelectionAnalysisStatus,
   SelectionArea,
   SelectionBuilding,
   SelectionBotanyClass,

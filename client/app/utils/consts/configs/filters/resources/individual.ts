@@ -50,6 +50,7 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     },
     sex: {
       filters: {
+        Exists,
         SelectionIndividualSex,
       },
     },

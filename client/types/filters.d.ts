@@ -10,6 +10,7 @@ export type OperandComponentsKey =
   | 'Numeric'
   | 'NumericRange'
   | 'Selection'
+  | 'SelectionAnalysisStatus'
   | 'SelectionZooBoneEndsPreserved'
   | 'SelectionZooBoneSide'
   | 'SelectionIndividualSex'

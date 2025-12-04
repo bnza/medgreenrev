@@ -6,14 +6,19 @@ import {
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as mediaObjectPropertyStaticDefinition } from '~/utils/consts/configs/filters/resources/mediaObject'
 
-const { Exists, SearchExact, SearchPartial, VocabularyAnalysisType } =
-  API_FILTERS
+const {
+  Exists,
+  SearchExact,
+  SearchPartial,
+  SelectionAnalysisStatus,
+  VocabularyAnalysisType,
+} = API_FILTERS
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
-    createdBy: {
+    'createdBy.email': {
+      propertyLabel: 'created by',
       filters: {
-        Exists,
         SearchExact,
       },
     },
@@ -32,6 +37,11 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
       filters: {
         Exists,
         SearchPartial,
+      },
+    },
+    status: {
+      filters: {
+        SelectionAnalysisStatus,
       },
     },
     summary: {

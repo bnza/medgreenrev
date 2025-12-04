@@ -1,13 +1,11 @@
 import type { ResourceStaticFiltersDefinitionObject } from '~~/types'
 import {
-  NumericOperations,
   API_FILTERS,
   generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 
-const { Exists, SearchExact, SearchPartial, SiteEquals, SelectionContextType } =
-  API_FILTERS
+const { Exists, SearchPartial, SiteEquals, SelectionContextType } = API_FILTERS
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -30,12 +28,6 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     type: {
       filters: {
         SelectionContextType,
-      },
-    },
-    year: {
-      filters: {
-        SearchExact,
-        ...NumericOperations,
       },
     },
   }

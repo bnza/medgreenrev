@@ -57,7 +57,6 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     },
     year: {
       filters: {
-        Exists,
         ...NumericOperations,
       },
     },
