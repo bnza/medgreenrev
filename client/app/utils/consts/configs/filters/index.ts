@@ -98,12 +98,13 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/history/plants': resourceFilterDefinitions.historyPlant,
   '/api/data/individuals': resourceFilterDefinitions.individual,
   '/api/data/individuals/{parentId}/analyses':
-    resourceFilterDefinitions.analysis,
+    resourceFilterDefinitions.analysisIndividualParentSubject,
   '/api/data/media_objects': resourceFilterDefinitions.mediaObject,
   '/api/data/microstratigraphic_units':
     resourceFilterDefinitions.microstratigraphicUnit,
   '/api/data/potteries': resourceFilterDefinitions.pottery,
-  '/api/data/potteries/{parentId}/analyses': resourceFilterDefinitions.analysis,
+  '/api/data/potteries/{parentId}/analyses':
+    resourceFilterDefinitions.analysisPotteryParentSubject,
   '/api/data/samples': resourceFilterDefinitions.sample,
   '/api/data/samples/{parentId}/analyses/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnitParentSubject,
@@ -138,7 +139,9 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth':
     resourceFilterDefinitions.zooToothParentStratigraphicUnit,
   '/api/data/zoo/bones': resourceFilterDefinitions.zooBone,
-  '/api/data/zoo/bones/{parentId}/analyses': resourceFilterDefinitions.analysis,
+  '/api/data/zoo/bones/{parentId}/analyses':
+    resourceFilterDefinitions.analysisZooBoneParentSubject,
   '/api/data/zoo/teeth': resourceFilterDefinitions.zooTooth,
-  '/api/data/zoo/teeth/{parentId}/analyses': resourceFilterDefinitions.analysis,
+  '/api/data/zoo/teeth/{parentId}/analyses':
+    resourceFilterDefinitions.analysisZooToothParentSubject,
 } as const

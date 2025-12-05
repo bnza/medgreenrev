@@ -54,8 +54,8 @@ const existsPropertiesStaticFiltersDefinition: ResourceStaticFiltersDefinitionOb
 export const staticFiltersDefinition = {
   ...propertyStaticFiltersDefinition,
   ...generateResourceDefinition(analysisPropertyStaticDefinition, [
-    'analysis',
-    'analysis',
+    'analysesMicrostratigraphicUnits.analysis',
+    'microstratigraphic analysis',
   ]),
   ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
     'sampleStratigraphicUnits.stratigraphicUnit',
