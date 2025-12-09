@@ -10,7 +10,7 @@
     >
   "
 >
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: P

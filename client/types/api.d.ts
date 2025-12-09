@@ -21,11 +21,6 @@ export type CollectionAcl = {
   canExport?: boolean
 }
 
-export type CollectionAcl = {
-  canCreate: boolean
-  canExport: boolean
-}
-
 export interface ApiAclResource {
   _acl: BaseAcl
 }

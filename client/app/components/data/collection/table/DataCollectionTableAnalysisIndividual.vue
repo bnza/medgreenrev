@@ -27,6 +27,10 @@ const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/analyses/individuals/{id}'),
 )
 
+const vocabularyAnalysisStore = useVocabularyStore(
+  '/api/vocabulary/analysis/types',
+)
+
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
