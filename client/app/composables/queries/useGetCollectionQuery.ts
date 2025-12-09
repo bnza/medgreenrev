@@ -42,6 +42,7 @@ export function useGetCollectionQuery(
   })
   const items = computed(() => query.data.value?.member ?? [])
   const totalItems = computed(() => query.data.value?.totalItems ?? 0)
+  const acl = computed(() => query.data.value?._acl ?? { canCreate: false })
 
   watch(
     () => totalItems.value,
@@ -51,6 +52,7 @@ export function useGetCollectionQuery(
   )
 
   return {
+    acl,
     items,
     ...query,
     totalItems,

@@ -18,6 +18,11 @@ export type BaseAcl = {
 
 export type CollectionAcl = {
   canCreate: boolean
+  canExport?: boolean
+}
+
+export type CollectionAcl = {
+  canCreate: boolean
   canExport: boolean
 }
 

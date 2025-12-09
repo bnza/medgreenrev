@@ -3,7 +3,7 @@
   lang="ts"
   generic="Path extends Extract<GetCollectionPath, '/api/data/media_objects'>"
 >
-import type { GetCollectionPath } from '~~/types'
+import type { CollectionAcl, GetCollectionPath } from '~~/types'
 
 const props = defineProps<{
   path: Path
@@ -21,10 +21,12 @@ const { updateDialogState } = storeToRefs(
 const vocabularyMediaObjectTypeStore = useVocabularyStore(
   '/api/vocabulary/media_object/types',
 )
+
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"

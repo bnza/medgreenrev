@@ -17,7 +17,8 @@ defineProps<{
   parent?: ResourceParent<'sedimentCore'> | ResourceParent<'stratigraphicUnit'>
 }>()
 
-const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 
 <template>
@@ -25,13 +26,12 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
     :parent="Boolean(parent)"
     :path
     :show-back-button="false"
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate: parent?.item.site?.['@id']
-        ? hasSitePrivilege(parent.item.site['@id'])
-        : hasAnySitePrivilege,
-    }"
+    :acl
   >
-    <data-collection-table-sediment-core-depth :path :parent />
+    <data-collection-table-sediment-core-depth
+      v-model:acl="acl"
+      :path
+      :parent
+    />
   </data-collection-page>
 </template>

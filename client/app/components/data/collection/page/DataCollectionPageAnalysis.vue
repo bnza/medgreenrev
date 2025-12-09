@@ -10,23 +10,17 @@ defineProps<{
   parent?: ResourceParent<'pottery'>
 }>()
 
-const { hasAnySpecialistRole, isAuthenticated, hasRoleAdmin } = useAppAuth()
+const { isAuthenticated } = useAppAuth()
 
-const canCreate = computed(
-  () => hasAnySpecialistRole.value,
-  // && hasSpecialistRole(ApiSpecialistRole.CeramicSpecialist).value,
-)
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 <template>
   <data-collection-page
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate: canCreate || hasRoleAdmin,
-    }"
+    :acl
   >
-    <data-collection-table-analysis :path :parent />
+    <data-collection-table-analysis v-model:acl="acl" :path :parent />
   </data-collection-page>
 </template>

@@ -10,7 +10,7 @@
     >
   "
 >
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 import DataDialogDeleteAnalysisSiteAnthropology from '~/components/data/dialog/delete/DataDialogDeleteAnalysisSiteAnthropology.vue'
 import DataDialogUpdateAnalysisSiteAnthropology from '~/components/data/dialog/update/DataDialogUpdateAnalysisSiteAnthropology.vue'
 
@@ -32,10 +32,12 @@ const { updateDialogState } = storeToRefs(
 const vocabularyAnalysisStore = useVocabularyStore(
   '/api/vocabulary/analysis/types',
 )
+
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path :parent-id>
+  <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"

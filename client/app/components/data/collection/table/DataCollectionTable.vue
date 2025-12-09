@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
-import type { GetCollectionPath } from '~~/types'
+import type { CollectionAcl, GetCollectionPath } from '~~/types'
 import useCollectionTableHeadersStore from '~/stores/collection-table-headers'
 import useGetCollectionTotalItemQuery from '~/composables/queries/useGetCollectionTotalItemQuery'
 
@@ -15,6 +15,7 @@ const pathParams = computed(() =>
 )
 
 const {
+  acl,
   pagination,
   items,
   totalItems,
@@ -48,6 +49,15 @@ watch(
     refetch()
   },
 )
+
+const emit = defineEmits<{
+  acl: [CollectionAcl]
+}>()
+
+watch(
+  () => acl.value,
+  (acl) => emit('acl', acl),
+)
 </script>
 
 <template>
@@ -71,7 +81,7 @@ watch(
     @update:options="pagination = $event"
   >
     <!-- https://mokkapps.de/vue-tips/expose-slots-from-a-child-component-->
-    <template v-for="(_, name) in $slots" #[name]="slotProps">
+    <template v-for="(_index, name) in $slots" #[name]="slotProps">
       <slot :name v-bind="slotProps || {}" />
     </template>
   </v-data-table-server>

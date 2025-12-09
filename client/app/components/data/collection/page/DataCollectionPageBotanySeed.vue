@@ -10,47 +10,22 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { ApiSpecialistRole } from '~/utils/consts/auth'
 
-const props = defineProps<{
+defineProps<{
   path: P
   parent?: ResourceParent<'stratigraphicUnit'>
 }>()
 
-const {
-  hasAnySitePrivilege,
-  hasRoleAdmin,
-  hasSitePrivilege,
-  isAuthenticated,
-  hasSpecialistRole,
-} = useAppAuth()
-
-const hasPrivileges = computed(() => {
-  if (props.parent) {
-    return props.parent.item.site?.['@id']
-      ? hasSitePrivilege.value(props.parent.item.site['@id'])
-      : false
-  }
-  return hasAnySitePrivilege.value
-})
-
-const canCreate = computed(
-  () =>
-    hasRoleAdmin.value ||
-    (hasPrivileges.value &&
-      hasSpecialistRole(ApiSpecialistRole.Archaeobotanist).value),
-)
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 <template>
   <data-collection-page
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate,
-    }"
+    :acl
   >
-    <data-collection-table-botany-seed :path :parent />
+    <data-collection-table-botany-seed v-model:acl="acl" :path :parent />
   </data-collection-page>
 </template>

@@ -15,7 +15,8 @@ defineProps<{
   parent?: ResourceParent<'site'>
 }>()
 
-const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 
 <template>
@@ -23,16 +24,11 @@ const { hasAnySitePrivilege, hasSitePrivilege, isAuthenticated } = useAppAuth()
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate: parent?.item?.['@id']
-        ? hasSitePrivilege(parent.item['@id'])
-        : hasAnySitePrivilege,
-    }"
+    :acl
   >
     <template #search-bar>
       <data-collection-search-text-field :path />
     </template>
-    <data-collection-table-context :path :parent />
+    <data-collection-table-context v-model:acl="acl" :path :parent />
   </data-collection-page>
 </template>

@@ -11,6 +11,7 @@
   "
 >
 import type {
+  CollectionAcl,
   GetCollectionPath,
   ResourceParentSiteUserPrivilege,
 } from '~~/types'
@@ -29,10 +30,12 @@ const { deleteDialogState } = storeToRefs(
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/admin/site_user_privileges/{id}'),
 )
+
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path :parent-id>
+  <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <v-btn-group>
         <navigation-resource-item-delete

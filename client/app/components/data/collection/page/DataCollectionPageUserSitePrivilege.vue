@@ -20,7 +20,8 @@ defineProps<{
   parent?: ResourceParentSiteUserPrivilege
 }>()
 
-const { siteCollectionAcl: acl } = useAppAuth()
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 
 <template>
@@ -30,6 +31,10 @@ const { siteCollectionAcl: acl } = useAppAuth()
     :show-back-button="!Boolean(parent)"
     :acl
   >
-    <data-collection-table-site-user-privilege :path :parent />
+    <data-collection-table-site-user-privilege
+      v-model:acl="acl"
+      :path
+      :parent
+    />
   </data-collection-page>
 </template>

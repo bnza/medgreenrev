@@ -1,6 +1,7 @@
 import { BaseOperation } from '~/api/operations/BaseOperation'
 import type {
   ApiRequestOptions,
+  CollectionAcl,
   GetCollectionPath,
   GetCollectionResponseMap,
   OperationPathParams,
@@ -25,10 +26,13 @@ export class GetCollectionOperation<
 
   request(options?: ApiRequestOptions) {
     const { urlPath, options: preparedOptions } = this.prepareRequest(options)
-    return this._request<GetCollectionResponseMap[P]>(urlPath, {
-      ...preparedOptions,
-      method: 'get',
-    })
+    return this._request<GetCollectionResponseMap[P] & { _acl: CollectionAcl }>(
+      urlPath,
+      {
+        ...preparedOptions,
+        method: 'get',
+      },
+    )
   }
 
   async requestCsv(options?: ApiRequestOptions): Promise<string> {

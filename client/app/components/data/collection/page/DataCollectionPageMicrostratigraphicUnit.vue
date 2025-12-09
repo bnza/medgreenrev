@@ -11,29 +11,26 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 defineProps<{
   path: P
   parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
 }>()
 
-const { hasSitePrivilege, isAuthenticated, hasSpecialistRole, hasRoleAdmin } =
-  useAppAuth()
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 <template>
   <data-collection-page
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate: parent?.item.site?.['@id']
-        ? hasSitePrivilege(parent.item.site['@id'])
-        : hasRoleAdmin ||
-          hasSpecialistRole(ApiSpecialistRole.GeoArchaeologist).value,
-    }"
+    :acl
   >
-    <data-collection-table-microstratigraphic-unit :path :parent />
+    <data-collection-table-microstratigraphic-unit
+      v-model:acl="acl"
+      :path
+      :parent
+    />
   </data-collection-page>
 </template>

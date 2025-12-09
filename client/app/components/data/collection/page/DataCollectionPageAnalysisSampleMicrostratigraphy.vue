@@ -11,48 +11,26 @@
   "
 >
 import type { GetCollectionPath, ResourceParent } from '~~/types'
-import { ApiSpecialistRole } from '~/utils/consts/auth'
 
-const props = defineProps<{
+defineProps<{
   path: P
   parent?: ResourceParent<'sample'> | ResourceParent<'analysis'>
 }>()
 
-const {
-  hasAnySitePrivilege,
-  hasSitePrivilege,
-  isAuthenticated,
-  hasSpecialistRole,
-  hasRoleAdmin,
-} = useAppAuth()
-
-const hasPrivileges = computed(() => {
-  if (props.parent && props.parent.key === 'sample') {
-    return props.parent.item.site?.['@id']
-      ? hasSitePrivilege.value(
-          Number(extractIdFromIri(props.parent.item.site['@id'])),
-        )
-      : false
-  }
-  return hasAnySitePrivilege.value
-})
-
-const canCreate = computed(
-  () =>
-    hasPrivileges.value &&
-    hasSpecialistRole(ApiSpecialistRole.GeoArchaeologist).value,
-)
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 <template>
   <data-collection-page
     :parent="Boolean(parent)"
     :path
     :show-back-button="!Boolean(parent)"
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate: canCreate || hasRoleAdmin,
-    }"
+    :acl
   >
-    <data-collection-table-analysis-sample-microstratigraphy :path :parent />
+    <data-collection-table-analysis-sample-microstratigraphy
+      v-model:acl="acl"
+      :path
+      :parent
+    />
   </data-collection-page>
 </template>

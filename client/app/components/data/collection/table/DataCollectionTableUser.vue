@@ -3,7 +3,7 @@
   lang="ts"
   generic="Path extends Extract<GetCollectionPath, '/api/admin/users'>"
 >
-import type { GetCollectionPath } from '~~/types'
+import type { CollectionAcl, GetCollectionPath } from '~~/types'
 import { ApiSpecialistRole } from '~/utils/consts/auth'
 import { getRoleColor, getRoleLabel } from '~/utils/acl'
 
@@ -20,10 +20,12 @@ const { updateDialogState } = storeToRefs(
 )
 const { isCurrentUser } = useAppAuth()
 const { userData } = storeToRefs(userPasswordDialog())
+
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"

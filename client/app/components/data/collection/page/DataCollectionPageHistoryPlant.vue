@@ -4,28 +4,16 @@
   generic="P extends Extract<GetCollectionPath, '/api/data/history/plants'>"
 >
 import type { GetCollectionPath } from '~~/types'
-import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 defineProps<{
   path: P
 }>()
 
-const { hasSpecialistRole, isAuthenticated, hasRoleAdmin } = useAppAuth()
-
-const canCreate = computed(
-  () => hasSpecialistRole(ApiSpecialistRole.Historian).value,
-)
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 <template>
-  <data-collection-page
-    :parent="false"
-    :path
-    show-back-button
-    :acl="{
-      canExport: isAuthenticated,
-      canCreate: canCreate || hasRoleAdmin,
-    }"
-  >
-    <data-collection-table-history-plant :path />
+  <data-collection-page :parent="false" :path show-back-button :acl>
+    <data-collection-table-history-plant v-model:acl="acl" :path />
   </data-collection-page>
 </template>

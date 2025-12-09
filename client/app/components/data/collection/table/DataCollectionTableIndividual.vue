@@ -9,7 +9,7 @@
     >
   "
 >
-import type { GetCollectionPath, ResourceParent } from '~~/types'
+import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: P
@@ -29,10 +29,12 @@ const { updateDialogState } = storeToRefs(
 const vocabularyIndividualAge = useVocabularyStore(
   '/api/vocabulary/individual/age',
 )
+
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path :parent-id>
+  <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
