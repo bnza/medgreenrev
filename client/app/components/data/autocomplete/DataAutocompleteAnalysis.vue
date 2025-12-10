@@ -10,7 +10,7 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   grantedOnly: false,
-  itemTitle: 'identifier',
+  itemTitle: 'code',
   path: '/api/data/analyses',
 })
 
@@ -30,11 +30,11 @@ const emit = defineEmits<{
     @selected="emit('selected', $event)"
   >
     <template #selection="{ item }">
-      <v-list-item v-if="item.raw.identifier">
+      <v-list-item v-if="item.raw.code">
         <span class="text-secondary font-weight-bold">{{
           item.raw.type.code
         }}</span>
-        - {{ item.raw.identifier }}
+        - {{ item.raw.code }}
       </v-list-item>
     </template>
   </data-autocomplete>

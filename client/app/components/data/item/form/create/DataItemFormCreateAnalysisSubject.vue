@@ -13,6 +13,7 @@ import { inferRules } from '@regle/core'
 import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerateValidationCreateRules'
 import { generateEmptyAnalysisSubjectModel } from '~/utils/postModel'
 import { capitalize } from 'vue'
+import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 interface Props {
   parent?: ResourceParent<TParent | 'analysis'>
@@ -45,6 +46,22 @@ const rules = inferRules(
   generateAnalysisSubjectValidationRules(resourceKey, model),
 )
 
+const { hasSpecialistRole } = useAppAuth()
+
+const roleMap: Record<AnalysisSubjectParentResourceKey, ApiSpecialistRole> = {
+  botanyCharcoal: ApiSpecialistRole.Archaeobotanist,
+  botanySeed: ApiSpecialistRole.Archaeobotanist,
+  individual: ApiSpecialistRole.Anthropologist,
+  pottery: ApiSpecialistRole.CeramicSpecialist,
+  zooBone: ApiSpecialistRole.ZooArchaeologist,
+  zooTooth: ApiSpecialistRole.ZooArchaeologist,
+}
+
+const role = computed<ApiSpecialistRole>(() => roleMap[props.subjectParentKey])
+
+// If the current logged user has any of the specialist roles related to AnalysisSubjectParentResourceKey
+const grantedOnlySubjects = computed(() => hasSpecialistRole(role.value).value)
+
 const { r$ } = useScopedRegleItem(model, rules, { scopeKey: 'base' })
 
 const emit = defineEmits<{
@@ -60,7 +77,7 @@ const emit = defineEmits<{
         :path="subjectPath"
         :item-title="subjectItemTitle"
         label="subject"
-        granted-only
+        :granted-only="grantedOnlySubjects"
         :error-messages="r$.$errors?.subject"
         :disabled="parent?.key === subjectParentKey"
       />
@@ -71,6 +88,7 @@ const emit = defineEmits<{
         :error-messages="r$.$errors?.analysis"
         :disabled="parent?.key === 'analysis'"
         :query-params="analysisQueryParams"
+        :granted-only="!grantedOnlySubjects"
         @selected="emit('selected', $event)"
       />
     </v-col>
