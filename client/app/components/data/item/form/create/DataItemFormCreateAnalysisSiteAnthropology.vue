@@ -24,7 +24,7 @@ const rules = inferRules(
 
 const { r$ } = useScopedRegle(model, rules)
 
-const analysisCodes: AnalysisCode[] = ['ANTHRO']
+const analysisCodes: AnalysisCode[] = ['ANTH']
 </script>
 
 <template>

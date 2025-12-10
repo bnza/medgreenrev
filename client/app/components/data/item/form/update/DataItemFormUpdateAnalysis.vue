@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useScopedRegle } from '@regle/core'
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
-import { integer, maxValue, minValue, required } from '@regle/rules'
 
 type Path = '/api/data/analyses/{id}'
 const props = defineProps<{
@@ -11,14 +10,7 @@ const props = defineProps<{
 
 const model = ref(structuredClone(props.initialValue))
 
-const { r$ } = useScopedRegle(model, {
-  year: {
-    required,
-    integer,
-    minValue: minValue(2000),
-    maxValue: maxValue(new Date().getFullYear()),
-  },
-})
+const { r$ } = useScopedRegle(model, {})
 </script>
 
 <template>
@@ -38,6 +30,7 @@ const { r$ } = useScopedRegle(model, {
           v-model.number="r$.$value.year"
           label="year"
           :error-messages="r$.$errors.year"
+          disabled
         />
       </v-col>
       <v-col cols="4" class="px-2">

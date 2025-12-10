@@ -7,7 +7,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
 </script>
 
 <template>
-  <data-item-page :path identifier-prop="identifier">
+  <data-item-page :path identifier-prop="code">
     <template #default="{ item }">
       <lazy-data-item-form-info-analysis :item />
       <v-tabs v-model="tab" background-color="transparent">
@@ -17,8 +17,6 @@ const { tab } = storeToRefs(useResourceUiStore(path))
           value="absolute-dating"
           >absolute dating</v-tab
         >
-        <!--        <v-tab value="sus">stratigraphic-units</v-tab>-->
-        <!--        <v-tab value="zooAnalyses">zoo analyses</v-tab>-->
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item

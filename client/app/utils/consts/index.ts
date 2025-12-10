@@ -23,7 +23,7 @@ export enum AnalysisGroups {
 }
 
 // export enum AnalysisCode {
-//   Anthracology = 'ANTHRA',
+//   Anthracology = 'ANTX',
 //   Carpology = 'CARP',
 //   ADna = 'ADNA',
 //   Isotopes = 'ISO',
@@ -37,7 +37,7 @@ export enum AnalysisGroups {
 //   Sem = 'SEM',
 //   Pollen = 'POL',
 //   SedimentaryDna = 'SDNA',
-//   Anthropology = 'ANTHRO',
+//   Anthropology = 'ANTH',
 //   Zooarchaeology = 'ZOO',
 // }
 
@@ -45,7 +45,7 @@ export const ANALYSIS_TYPE_MAP: Record<
   string,
   { group: AnalysisGroups; value: string }
 > = {
-  ANTHRA: { group: AnalysisGroups.Assemblage, value: 'anthracology' },
+  ANTX: { group: AnalysisGroups.Assemblage, value: 'anthracology' },
   CARP: { group: AnalysisGroups.Assemblage, value: 'carpology' },
   ADNA: { group: AnalysisGroups.MaterialAnalysis, value: 'aDNA' },
   ISO: { group: AnalysisGroups.MaterialAnalysis, value: 'isotopes' },
@@ -59,7 +59,7 @@ export const ANALYSIS_TYPE_MAP: Record<
   SEM: { group: AnalysisGroups.Microscope, value: 'SEM' },
   POL: { group: AnalysisGroups.SedimentCores, value: 'pollen' },
   SDNA: { group: AnalysisGroups.SedimentCores, value: 'sedimentary DNA' },
-  ANTHRO: { group: AnalysisGroups.Assemblage, value: 'anthropology' },
+  ANTH: { group: AnalysisGroups.Assemblage, value: 'anthropology' },
   ZOO: { group: AnalysisGroups.Assemblage, value: 'zooarchaeology' },
 } as const
 

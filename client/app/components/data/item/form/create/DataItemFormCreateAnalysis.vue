@@ -7,13 +7,18 @@ const path: ApiResourcePath | PostCollectionPath = '/api/data/analyses'
 
 const uniqueType = useApiUniqueValidator(
   '/api/validator/unique/analyses',
-  ['type', 'identifier'],
-  'Duplicate [type, identifier] combination',
+  ['type', 'year', 'identifier'],
+  'Duplicate [type, year, identifier] combination',
+)
+const uniqueYear = useApiUniqueValidator(
+  '/api/validator/unique/analyses',
+  ['year', 'type', 'identifier'],
+  'Duplicate [type, year, identifier] combination',
 )
 const uniqueIdentifier = useApiUniqueValidator(
   '/api/validator/unique/analyses',
-  ['identifier', 'type'],
-  'Duplicate [type, identifier] combination',
+  ['identifier', 'type', 'year'],
+  'Duplicate [type, year, identifier] combination',
 )
 
 const model = generateEmptyPostModel(path)
@@ -22,17 +27,27 @@ const { r$ } = useScopedRegle(
   computed(() => ({
     type: {
       required,
-      uniqueType: uniqueType(() => model.value.identifier),
+      uniqueType: uniqueType(
+        () => model.value.year,
+        () => model.value.identifier,
+      ),
     },
     year: {
       required,
       integer,
+      uniqueYear: uniqueYear(
+        () => model.value.type,
+        () => model.value.identifier,
+      ),
       minValue: minValue(2000),
       maxValue: maxValue(new Date().getFullYear()),
     },
     identifier: {
       required,
-      uniqueIdentifier: uniqueIdentifier(() => model.value.type),
+      uniqueIdentifier: uniqueIdentifier(
+        () => model.value.type,
+        () => model.value.year,
+      ),
     },
   })),
 )
