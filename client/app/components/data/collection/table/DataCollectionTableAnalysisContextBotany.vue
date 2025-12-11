@@ -63,7 +63,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.analysis.identifier`]="{ item }">
       <data-item-info-box-span-analysis
         :iri="item.analysis['@id']"
-        :text="item.analysis.identifier"
+        :text="item.analysis.code"
       />
     </template>
     <template #[`item.summary`]="{ item }">

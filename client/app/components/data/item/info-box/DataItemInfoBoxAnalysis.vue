@@ -40,6 +40,7 @@ const vocabularyAnalysisTypesStore = useVocabularyStore(
             vocabularyAnalysisTypesStore.getValue(item.type?.['@id']).value
           "
         />
+        <data-item-info-box-row label="year" :text="item.year" />
         <data-item-info-box-row label="identifier" :text="item.identifier" />
         <data-item-info-box-row label="responsible" :text="item.responsible" />
         <data-item-info-box-row label="summary" :text="item.summary" />

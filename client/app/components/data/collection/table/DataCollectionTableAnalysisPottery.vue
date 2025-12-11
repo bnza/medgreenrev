@@ -45,7 +45,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.subject.inventory`]="{ item }">
       <data-item-info-box-span-pottery
         :iri="item.subject['@id']"
-        :text="item.subject.inventory"
+        :text="item.subject.code"
       />
     </template>
     <template #[`item.analysis.type.group`]="{ item }">
