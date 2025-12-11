@@ -187,7 +187,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
           .click()
         await parentItemPom.form.waitForLoad()
         await parentItemPom.page
-          .getByRole('tab', { name: /stratigraphic/i })
+          .getByRole('tab', { name: 'stratigraphic units', exact: true })
           .click()
         await collectionPom.dataCard.expectToHaveTitle(
           /sample\/SU associations/i,

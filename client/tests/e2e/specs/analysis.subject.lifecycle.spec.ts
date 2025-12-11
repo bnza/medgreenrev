@@ -35,7 +35,7 @@ test.describe('Analysis subject join', () => {
           .click()
 
         await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /thin/ }).first().click()
+        await page.getByRole('option', { name: /ths/i }).first().click()
 
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'summary' })
@@ -119,7 +119,7 @@ test.describe('Analysis subject join', () => {
           .getByLabel('analysis')
           .fill('4')
         await page.waitForTimeout(500)
-        await page.getByRole('option', { name: /thin/ }).first().click()
+        await page.getByRole('option', { name: /ths/i }).first().click()
         await page.keyboard.press('Tab')
 
         await expect(
@@ -135,7 +135,7 @@ test.describe('Analysis subject join', () => {
           .fill('')
         await page.waitForTimeout(500)
         await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /thin/ }).nth(2).click()
+        await page.getByRole('option', { name: /ths/i }).nth(2).click()
         await collectionPom.dataDialogCreate.submitForm()
         await collectionPom.expectAppMessageToHaveText(
           'Resource successfully created',

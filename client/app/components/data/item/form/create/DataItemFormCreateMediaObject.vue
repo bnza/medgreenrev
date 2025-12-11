@@ -78,11 +78,7 @@ watch(
     </v-row>
     <v-row justify="end">
       <v-col cols="4">
-        <v-checkbox
-          v-model="r$.$value.public"
-          data-testid="show-created-item-checkbox"
-          label="public"
-        />
+        <v-checkbox v-model="r$.$value.public" label="public" />
       </v-col>
     </v-row>
     <v-row>

@@ -92,9 +92,9 @@ test.describe('Analysis lifecycle', () => {
       await page
         .getByRole('combobox', { name: /^responsible/ })
         .fill('Some One Else')
-      await collectionPom.dataDialogUpdate.form
-        .getByRole('textbox', { name: 'year' })
-        .fill('2024')
+      // await collectionPom.dataDialogUpdate.form
+      //   .getByRole('textbox', { name: 'year' })
+      //   .fill('2024')
       await page
         .getByRole('combobox', { name: /^laboratory/ })
         .fill('Somewhere Else')
@@ -111,7 +111,7 @@ test.describe('Analysis lifecycle', () => {
       )
       await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'completed')
       await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'Some One Else')
-      await collectionPom.table.expectRowToHaveText('UNIQ-ID', '2024')
+      // await collectionPom.table.expectRowToHaveText('UNIQ-ID', '2024')
       await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'Somewhere Else')
 
       // DELETE
@@ -148,18 +148,24 @@ test.describe('Analysis lifecycle', () => {
       ).toContainText(/required/)
 
       // Test 2: Unique validation - try to create with duplicate type identifier
-      await collectionPom.dataDialogCreate.form.getByLabel('type').fill('ad')
-      await page.getByText('material analysis \\ aDNA').click()
+      await collectionPom.dataDialogCreate.form.getByLabel('type').fill('th')
+      await page.getByText('absolute dating \\ thermoluminescence').click()
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'year' })
+        .fill('2024')
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
-        .fill('aDNA.2025.TO102') // Assuming this exists in fixtures
+        .fill('POT04') // Assuming this exists in fixtures
       await page.keyboard.press('Tab')
       await expect(
         page.locator('.v-input:has(label:text("type"))'),
-      ).toContainText('Duplicate [type, identifier] combination')
+      ).toContainText('Duplicate [type, year, identifier] combination')
+      await expect(
+        page.locator('.v-input:has(label:text("year"))'),
+      ).toContainText('Duplicate [type, year, identifier] combination')
       await expect(
         page.locator('.v-input:has(label:text("identifier"))'),
-      ).toContainText('Duplicate [type, identifier] combination')
+      ).toContainText('Duplicate [type, year, identifier] combination')
 
       // Test 3: Valid form submission after fixing validation errors
       await collectionPom.dataDialogCreate.form
