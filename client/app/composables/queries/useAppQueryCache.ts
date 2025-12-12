@@ -1,6 +1,6 @@
 import type { ApiResourcePath } from '~/utils/consts/resources'
 import type { ApiPath } from '~~/types'
-import type { EntryKey } from '@pinia/colada'
+import { toCacheKey } from '@pinia/colada'
 
 type QueryRootKey = ApiResourcePath
 export default function useAppQueryCache(
@@ -9,21 +9,6 @@ export default function useAppQueryCache(
 ) {
   const { invalidateQueries, remove, caches } = useQueryCache()
   const { statusChanged } = useAppAuth()
-
-  // copy of the internal @pinia/colada toCacheKey function which declared in index.d.ts but actually not exported
-  // @TODO check if bug has been fixed
-  const toCacheKey = (key: EntryKey | undefined) =>
-    key &&
-    JSON.stringify(key, (_, val) =>
-      !val || typeof val !== 'object' || Array.isArray(val)
-        ? val
-        : Object.keys(val)
-            .sort()
-            .reduce<Record<string, any>>((result, key2) => {
-              result[key2] = val[key2]
-              return result
-            }, {}),
-    )
 
   resourcePath = resourcePath || rootKey
 
