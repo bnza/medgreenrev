@@ -50,3 +50,14 @@ setup('authenticate as geo archaeologist user', async ({ page }) => {
   )
   await page.context().storageState({ path: geoFile })
 })
+
+const matFile = 'playwright/.auth/mat.json'
+setup('authenticate as material analyst user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.MAT)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: matFile })
+})

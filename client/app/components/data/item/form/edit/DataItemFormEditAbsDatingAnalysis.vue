@@ -146,6 +146,7 @@ const deleteAbsoluteDatingData = async () => {
       />
       <v-btn
         v-else
+        data-testid="remove-created-item-abs-data-button"
         text="remove absolute dating data"
         color="secondary"
         @click="isDeleteDialogOpen = true"

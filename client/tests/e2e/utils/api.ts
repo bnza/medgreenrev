@@ -6,6 +6,7 @@ export const credentials = {
   EDITOR: { email: 'user_editor@example.com', password: '0001' },
   BASE: { email: 'user_base@example.com', password: '0000' },
   GEO: { email: 'user_geo@example.com', password: '0003' },
+  MAT: { email: 'user_mat@example.com', password: '0010' },
 }
 
 export function loadFixtures() {

@@ -14,7 +14,12 @@
     >
   "
 >
-import type { ApiResourceKey, ResourceParent } from '~~/types'
+import type {
+  ApiResourceKey,
+  Iri,
+  OperationPathParams,
+  ResourceParent,
+} from '~~/types'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 
 interface Item {
@@ -52,6 +57,30 @@ const path = computed(() => API_RESOURCE_MAP[props.subjectParentKey])
 const model = ref(structuredClone(props.initialValue))
 
 const { r$ } = useScopedRegleItem(model, {}, { scopeKey: 'base' })
+
+const analysisId = ref<
+  OperationPathParams<'/api/data/analyses/{id}', 'get'> | undefined
+>()
+
+const { data } = useGetItemQuery('/api/data/analyses/{id}', analysisId)
+
+watch(
+  () => props.initialValue.analysis,
+  (value) => {
+    analysisId.value = value
+      ? { id: extractIdFromIri(value as Iri) }
+      : undefined
+  },
+  { immediate: true },
+)
+
+watch(
+  () => data.value,
+  (value) => {
+    emit('selected', value)
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -67,11 +96,7 @@ const { r$ } = useScopedRegleItem(model, {}, { scopeKey: 'base' })
       />
     </v-col>
     <v-col cols="6" class="px-2">
-      <data-autocomplete-analysis
-        v-model="r$.$value.analysis"
-        disabled
-        @selected="emit('selected', $event)"
-      />
+      <data-autocomplete-analysis v-model="r$.$value.analysis" disabled />
     </v-col>
   </v-row>
   <v-row>

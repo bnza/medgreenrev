@@ -31,6 +31,12 @@ const item = computed(() => {
 })
 
 const isAbsoluteDatingAnalysis = ref(false)
+
+const setAbsDatingFormStatus = (
+  analysis: { type: { group: string } } | undefined,
+) => {
+  isAbsoluteDatingAnalysis.value = analysis?.type.group === 'absolute dating'
+}
 </script>
 
 <template>
@@ -47,9 +53,7 @@ const isAbsoluteDatingAnalysis = ref(false)
         :initial-value
         subject-item-title="code"
         subject-parent-key="botanyCharcoal"
-        @selected="
-          isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'
-        "
+        @selected="setAbsDatingFormStatus($event)"
       />
       <data-item-form-edit-abs-dating-analysis
         v-if="isAbsoluteDatingAnalysis"
