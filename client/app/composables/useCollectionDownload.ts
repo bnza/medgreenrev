@@ -1,4 +1,4 @@
-import useCollectionQueryStore from '~/stores/collection-query'
+import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 import type { GetCollectionPath, OperationPathParams } from '~~/types'
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
 

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
-import { useOpenApiStore } from '~/stores/openapi'
+import { useOpenApiStore } from '~/stores/useOpenapiStore'
 import openApiFixture from '../../fixtures/openapi.response.json'
 import type { paths } from '~~/types'
 

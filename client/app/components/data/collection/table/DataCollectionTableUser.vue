@@ -19,7 +19,7 @@ const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/admin/users/{id}'),
 )
 const { isCurrentUser } = useAppAuth()
-const { userData } = storeToRefs(userPasswordDialog())
+const { userData } = storeToRefs(useUserPasswordDialog())
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>

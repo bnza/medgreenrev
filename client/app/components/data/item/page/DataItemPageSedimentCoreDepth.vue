@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap, Iri } from '~~/types'
 
 const path = '/api/data/sediment_core_depths/{id}' as const

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Filter, SearchableGetCollectionPath } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 
 const props = defineProps<{
   path: SearchableGetCollectionPath

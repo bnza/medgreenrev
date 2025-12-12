@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
 
 const { panels } = storeToRefs(useResourceUiStore('/api/data/potteries/{id}'))

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
 import type { CollectionAcl, GetCollectionPath } from '~~/types'
-import useCollectionTableHeadersStore from '~/stores/collection-table-headers'
+import useCollectionTableHeadersStore from '~/stores/useCollectionTableHeadersStore'
 import useGetCollectionTotalItemQuery from '~/composables/queries/useGetCollectionTotalItemQuery'
 
 const props = defineProps<{

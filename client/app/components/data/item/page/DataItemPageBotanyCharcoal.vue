@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { Iri } from '~~/types'
 
 const path = '/api/data/botany/charcoals/{id}' as const

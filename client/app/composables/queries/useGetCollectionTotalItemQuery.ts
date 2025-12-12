@@ -1,6 +1,6 @@
 import type { GetCollectionPath, OperationPathParams } from '~~/types'
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
-import useCollectionQueryStore from '~/stores/collection-query'
+import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 
 export function useGetCollectionTotalItemQuery(
   path: GetCollectionPath,

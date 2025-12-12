@@ -1,5 +1,5 @@
 import type { SearchableGetCollectionPath } from '~/utils/consts/configs/filters'
-import useCollectionQueryStore from '~/stores/collection-query'
+import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 import type { FilterState } from '~~/types'
 import { diff } from 'deep-object-diff'
 

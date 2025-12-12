@@ -12,7 +12,7 @@ import type {
   PostCollectionResponseMap,
   RegleAdapter,
 } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import { TypedFormData } from '~/api/TypedFormData'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'

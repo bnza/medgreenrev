@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 
 const { tab } = storeToRefs(useResourceUiStore('/api/admin/users/{id}'))
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="Path extends keyof paths">
 import type { paths } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 
 const props = defineProps<{
   path: Path

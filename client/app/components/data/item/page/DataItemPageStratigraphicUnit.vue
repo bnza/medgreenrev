@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 
 const path = '/api/data/stratigraphic_units/{id}' as const
 

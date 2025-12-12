@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { GetCollectionPath } from '~~/types'
-import useCollectionQueryStore from '~/stores/collection-query'
+import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 
 const props = defineProps<{ path: GetCollectionPath }>()
 

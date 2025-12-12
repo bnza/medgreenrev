@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
 import type { GetCollectionPath } from '~~/types'
-import useResourceUiStore from '~/stores/resource-ui'
+import useResourceUiStore from '~/stores/useResourceUiStore'
 
 const props = defineProps<{
   path: Path
