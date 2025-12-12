@@ -54,6 +54,7 @@ describe('useOpenApiStore', () => {
         // Verify that both endpoints have the same tag
         //@ts-expect-error Property get does not exist on type
         const targetTags = openApiFixture.paths[targetPath]?.get?.tags || []
+        // @ts-expect-error Property get does not exist on type
         const resultTags = openApiFixture.paths[result!]?.get?.tags || []
 
         expect(targetTags).to.include('Site')
