@@ -68,16 +68,6 @@ export abstract class BaseOperation<P extends keyof paths> {
           if (responseData?.message === 'Expired JWT Token') {
             console.log('Expired JWT Token. Refreshing')
             await refresh()
-
-            // const { add: addMessage } = useMessagesStore()
-            // const { pushForcedLogin } = useHistoryStackStore()
-            // await signOut({ callbackUrl: '/login', redirect: true })
-            // pushForcedLogin()
-            // addMessage({
-            //   text: 'Session expired. Please login again.',
-            //   color: 'warning',
-            //   timeout: 0,
-            // })
           }
 
           // Handle the possible MaybeArray<FetchHook> case

@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     },
   },
   build: {
-    transpile: ['vue3-openlayers'],
+    transpile: ['ol', 'ol-ext', 'ol-contextmenu', 'vue3-openlayers'],
   },
   auth: {
     provider: {
@@ -60,7 +60,7 @@ export default defineNuxtConfig({
       : 'http://localhost/api',
   },
   compatibilityDate: '2024-04-03',
-  css: ['~/assets/styles/index.css'],
+  css: ['~/assets/styles/index.css', 'vue3-openlayers/styles.css'],
   devtools: {
     enabled: process.env.NODE_ENV === 'development',
   },
@@ -94,13 +94,10 @@ export default defineNuxtConfig({
     client: true,
     server: true,
   },
-  // vite: {
-  //   build: {
-  //     sourcemap: true,
-  //   },
-  //   optimizeDeps: {
-  //     include: ['ol > geotiff'],
-  //   },
-  // },
+  vite: {
+    optimizeDeps: {
+      include: ['ol > geotiff', 'ol-ext'],
+    },
+  },
   ssr: false,
 })

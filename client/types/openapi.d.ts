@@ -4790,6 +4790,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/features/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryLocation resources.
+     * @description Retrieves the collection of VocHistoryLocation resources.
+     */
+    get: operations['api_featureshistorylocations.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/history/locations': {
     parameters: {
       query?: never
@@ -7100,14 +7120,14 @@ export interface components {
     /** @description A representation of common errors. */
     Error: {
       /** @description A short, human-readable summary of the problem. */
-      readonly title?: string
+      readonly title?: string | null
       /** @description A human-readable explanation specific to this occurrence of the problem. */
-      readonly detail?: string
+      readonly detail?: string | null
       /**
        * @default 400
        * @example 404
        */
-      status: number
+      status: number | null
       /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
       readonly instance?: string | null
       /** @description A URI reference that identifies the problem type */
@@ -7116,14 +7136,14 @@ export interface components {
     /** @description A representation of common errors. */
     'Error.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       /** @description A short, human-readable summary of the problem. */
-      readonly title?: string
+      readonly title?: string | null
       /** @description A human-readable explanation specific to this occurrence of the problem. */
-      readonly detail?: string
+      readonly detail?: string | null
       /**
        * @default 400
        * @example 404
        */
-      status: number
+      status: number | null
       /** @description A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced. */
       readonly instance?: string | null
       /** @description A URI reference that identifies the problem type */
@@ -9378,11 +9398,17 @@ export interface components {
       n?: number
       e?: number
     }
+    'VocHistoryLocation-voc_history_location.json.read': {
+      readonly id?: number | string
+    }
     'VocHistoryLocation.csv-history_animal.acl.read': {
       value: string
     }
     'VocHistoryLocation.csv-history_plant.acl.read': {
       value: string
+    }
+    'VocHistoryLocation.geojson-voc_history_location.json.read': {
+      readonly id?: number | string
     }
     'VocHistoryLocation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -28595,6 +28621,35 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocHistoryLocation.jsonld-voc_history_location.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  'api_featureshistorylocations.__format_get_collection': {
+    parameters: {
+      query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['VocHistoryLocation.geojson-voc_history_location.json.read'][]
+          'application/json': components['schemas']['VocHistoryLocation-voc_history_location.json.read'][]
         }
       }
     }

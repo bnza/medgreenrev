@@ -10,6 +10,7 @@ const { toggleVisible } = useDataNavigationDrawerStore()
         @click.stop="toggleVisible()"
       />
     </template>
+    <ui-mode-switcher />
     <template #append>
       <auth-app-bar-icon />
     </template>

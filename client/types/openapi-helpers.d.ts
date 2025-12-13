@@ -37,6 +37,20 @@ export type GetCollectionPath = {
     : never
 }[keyof paths]
 
+// Paths whose GET 200 responses include 'application/geo+json' content type
+// Simplified: only check for the presence of the media type key in the content map
+export type GetFeatureCollectionPath = {
+  [K in keyof paths]: paths[K] extends { get: any }
+    ? paths[K]['get'] extends { responses: { 200: { content: infer C } } }
+      ? C extends Record<string, any>
+        ? 'application/geo+json' extends keyof C
+          ? K
+          : never
+        : never
+      : never
+    : never
+}[keyof paths]
+
 export type MediaObjectGetCollectionPath = {
   [K in GetCollectionPath]: GetCollectionResponseMap[K] extends {
     member: (infer T)[]
