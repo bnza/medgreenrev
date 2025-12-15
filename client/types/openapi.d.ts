@@ -4798,10 +4798,30 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of VocHistoryLocation resources.
-     * @description Retrieves the collection of VocHistoryLocation resources.
+     * GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection streamed from GeoServer.
      */
     get: operations['api_featureshistorylocations.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryLocation resource.
+     * @description Retrieves a VocHistoryLocation resource.
+     */
+    get: operations['api_featuresnumber_matchedhistorylocations_get']
     put?: never
     post?: never
     delete?: never
@@ -9401,6 +9421,12 @@ export interface components {
     'VocHistoryLocation-voc_history_location.json.read': {
       readonly id?: number | string
     }
+    'VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'VocHistoryLocation.csv-history_animal.acl.read': {
       value: string
     }
@@ -9814,6 +9840,40 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
+    GeoJSONPoint: {
+      /** @enum {string} */
+      type: 'Point'
+      coordinates: number[]
+    }
+    GeoJSONFeature: {
+      /** @enum {string} */
+      type: 'Feature'
+      id?: string
+      geometry: components['schemas']['GeoJSONPoint']
+      geometry_name?: string
+      properties: {
+        [key: string]: unknown
+      }
+    }
+    GeoJSONFeatureCollection: {
+      /** @enum {string} */
+      type: 'FeatureCollection'
+      features: components['schemas']['GeoJSONFeature'][]
+      totalFeatures?: number
+      numberMatched?: number
+      numberReturned?: number
+      /** Format: date-time */
+      timeStamp?: string
+      crs?: {
+        type?: string
+        properties?: {
+          name?: string
+        }
+      }
+    } & {
+      [key: string]: unknown
+    }
+    MatchingFeaturesIds: number[] | true
   }
   responses: never
   parameters: never
@@ -28628,6 +28688,8 @@ export interface operations {
   'api_featureshistorylocations.__format_get_collection': {
     parameters: {
       query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         /**
@@ -28642,14 +28704,45 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description VocHistoryLocation collection */
+      /** @description GeoJSON FeatureCollection, depending on the requested format return a geojson FeatureCollection or an array of IDs. */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/geo+json': components['schemas']['VocHistoryLocation.geojson-voc_history_location.json.read'][]
-          'application/json': components['schemas']['VocHistoryLocation-voc_history_location.json.read'][]
+          'application/geo+json': components['schemas']['GeoJSONFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesIds']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedhistorylocations_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

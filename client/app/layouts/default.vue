@@ -1,13 +1,14 @@
 <script setup lang="ts">
 defineProps<{ status: 'idle' | 'pending' | 'error' | 'success' }>()
-const { state } = storeToRefs(useAppUiModeStore())
+const { state: mode } = storeToRefs(useAppUiModeStore())
 </script>
 
 <template>
   <app-bar />
-  <app-data-navigation-drawer />
+  <app-data-navigation-drawer v-if="mode === 'default'" />
+  <app-map-navigation-drawer v-if="mode === 'map'" />
   <KeepAlive>
-    <Suspense v-if="state === 'map'">
+    <Suspense v-if="mode === 'map'">
       <template #default>
         <lazy-app-map />
       </template>
@@ -17,6 +18,6 @@ const { state } = storeToRefs(useAppUiModeStore())
     </Suspense>
   </KeepAlive>
   <KeepAlive>
-    <NuxtPage v-if="state === 'default'" />
+    <NuxtPage v-if="mode === 'default'" />
   </KeepAlive>
 </template>

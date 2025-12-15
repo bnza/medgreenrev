@@ -20,7 +20,9 @@ export function useGetFeatureCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const { queryObject } = storeToRefs(useCollectionQueryStore(apiResourcePath))
+  const { filterQueryObject } = storeToRefs(
+    useCollectionQueryStore(apiResourcePath),
+  )
 
   const _projection = computed(() =>
     typeof projection.value === 'string'
@@ -38,7 +40,7 @@ export function useGetFeatureCollectionQuery(
 
   const key = computed(() =>
     RESOURCE_QUERY_KEY.byFilter({
-      ...queryObject.value,
+      ...filterQueryObject.value,
       ..._bbox.value,
     }),
   )
@@ -47,7 +49,7 @@ export function useGetFeatureCollectionQuery(
     key: () => key.value,
     query: () =>
       getCollectionOperation.request({
-        query: { ...queryObject.value, ..._bbox.value },
+        query: { ...filterQueryObject.value, ..._bbox.value },
       }),
   })
 }

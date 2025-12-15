@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Map, Layers, Sources } from 'vue3-openlayers'
+import { Map, Layers } from 'vue3-openlayers'
 import MapLayerVectorApiHistoryLocation from '~/components/map/layer/vector/api/MapLayerVectorApiHistoryLocation.vue'
 
 const mapStore = useMapStore()
@@ -33,6 +33,8 @@ const onMoveEnd = () => {
 onMounted(() => {
   updateMapState()
 })
+
+// url = 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
 </script>
 
 <template>
@@ -51,9 +53,10 @@ onMounted(() => {
       :zoom="zoom"
       :min-zoom="6"
     />
-    <Layers.OlTileLayer>
-      <Sources.OlSourceOsm />
-    </Layers.OlTileLayer>
-    <map-layer-vector-api-history-location />
+    <Layers.OlLayerGroup>
+      <map-layer-tile-base-map-esri />
+      <map-layer-tile-base-map-osm />
+      <map-layer-vector-api-history-location />
+    </Layers.OlLayerGroup>
   </Map.OlMap>
 </template>

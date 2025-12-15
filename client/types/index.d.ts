@@ -1,6 +1,7 @@
 export * from './api'
 export * from './filters'
 export * from './jsonld'
+export * from './map'
 export * from './openapi'
 export * from './openapi-helpers'
 export * from './regle'

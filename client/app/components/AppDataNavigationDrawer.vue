@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { visible, dataOpened } = storeToRefs(useDataNavigationDrawerStore())
+const { visible, dataOpened } = storeToRefs(useAppNavigationDrawerStore())
 const { hasRoleAdmin, isAuthenticated } = useAppAuth()
 </script>
 

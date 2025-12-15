@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { toggleVisible } = useDataNavigationDrawerStore()
+const { toggleVisible } = useAppNavigationDrawerStore()
 </script>
 
 <template>
