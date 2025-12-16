@@ -1,5 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <map-layer-vector-api-base path="/api/features/history/locations" />
+  <map-layer-vector-api-base
+    path="/api/features/history/locations"
+    :label-options="{
+      placement: 'point',
+      labelProperty: 'value',
+      visible: true,
+    }"
+  />
 </template>

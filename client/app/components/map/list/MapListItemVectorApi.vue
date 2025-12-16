@@ -7,7 +7,7 @@ const props = defineProps<{
   title: string
 }>()
 
-const { visible } = storeToRefs(useMapVectorApiStore(props.path))
+const { visible, labelVisible } = storeToRefs(useMapVectorApiStore(props.path))
 </script>
 
 <template>
@@ -18,5 +18,12 @@ const { visible } = storeToRefs(useMapVectorApiStore(props.path))
       </v-list-item-action>
     </template>
     <v-list-item-title>{{ title }}</v-list-item-title>
+    <template #append="appendProps">
+      <slot name="append" v-bind="appendProps">
+        <map-list-menu-base>
+          <v-checkbox-btn v-model="labelVisible" label="Show labels" />
+        </map-list-menu-base>
+      </slot>
+    </template>
   </v-list-item>
 </template>
