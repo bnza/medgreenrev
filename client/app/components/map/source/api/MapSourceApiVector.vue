@@ -71,6 +71,10 @@ defineExpose({
   status,
   error,
 })
+
+defineSlots<{
+  default(): any
+}>()
 </script>
 
 <template>
@@ -79,5 +83,7 @@ defineExpose({
     :loader="loader"
     :format="format"
     :strategy="bbox"
-  />
+  >
+    <slot />
+  </Sources.OlSourceVector>
 </template>

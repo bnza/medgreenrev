@@ -22,6 +22,22 @@ export type TextLabelStyleOptions = Omit<
   'labelProperty' | 'visible'
 >
 
+export const DEFAULT_TEXT_LABEL_OPTIONS = {
+  fill: {
+    color: '#222',
+  },
+  stroke: {
+    color: '#fff',
+    width: 3,
+  },
+  offsetX: 10,
+  offsetY: -10,
+  textAlign: 'left',
+  textBaseline: 'bottom',
+  overflow: true,
+  declutterMode: 'declutter',
+} as const
+
 function makeLabelStyle(
   text: string,
   resolution: number,
@@ -31,19 +47,32 @@ function makeLabelStyle(
   },
 ) {
   const scale = resolution < 10 ? 1.5 : 1.2
+  const {
+    fill,
+    stroke,
+    offsetX,
+    offsetY,
+    textBaseline,
+    textAlign,
+    overflow,
+    declutterMode,
+  } = DEFAULT_TEXT_LABEL_OPTIONS
   return new Style({
     text: new Text({
       text,
-      fill: new Fill({ color: '#222' }),
+      fill: new Fill({ color: fill.color }),
       font: `${size}px Montserrat, Manrope, sans-serif`,
       scale,
-      stroke: new Stroke({ color: '#fff', width: 3 }),
-      textAlign: 'left',
-      textBaseline: 'bottom',
-      overflow: true,
-      offsetX: 10,
-      offsetY: -10,
-      declutterMode: 'declutter',
+      stroke: new Stroke({
+        color: stroke.color,
+        width: stroke.width,
+      }),
+      textAlign,
+      textBaseline,
+      overflow,
+      offsetX,
+      offsetY,
+      declutterMode,
       placement,
     }),
   })
