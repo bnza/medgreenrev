@@ -1,32 +1,15 @@
 <script setup lang="ts">
 import type { GetCollectionPath } from '~~/types'
-import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
 import DataToolbarListItemCreate from '~/components/data/toolbar/DataToolbarListItemCreate.vue'
 
 const path: GetCollectionPath = '/api/data/vocabulary/history/locations'
 
-const { isAuthenticated, hasSpecialistRole, hasRole, hasRoleAdmin } =
-  useAppAuth()
+const { isAuthenticated } = useAppAuth()
 
-const canCreate = computed(
-  () =>
-    hasRoleAdmin.value ||
-    (hasRole(ApiRole.Editor).value &&
-      hasSpecialistRole(ApiSpecialistRole.Historian).value),
-)
-
-const acl = computed(() => ({
-  canExport: isAuthenticated.value,
-  canCreate: canCreate.value,
-}))
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
 </script>
 <template>
-  <data-collection-page
-    :parent="false"
-    :path
-    :show-back-button="false"
-    :acl="acl.canCreate ? acl : false"
-  >
+  <data-collection-page :parent="false" :path :show-back-button="false" :acl>
     <template v-if="acl.canCreate" #collection-actions>
       <data-toolbar-list-item-create path="/api/vocabulary/history/locations" />
     </template>

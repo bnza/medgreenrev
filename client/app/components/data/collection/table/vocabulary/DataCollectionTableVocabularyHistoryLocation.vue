@@ -1,13 +1,10 @@
 <script setup lang="ts">
 const path = '/api/data/vocabulary/history/locations'
 
-const { appPath } = useResourceConfig(path)
+const { appPath, labels } = useResourceConfig(path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/vocabulary/history/locations/{id}'),
 )
-// const { updateDialogState } = storeToRefs(
-//   useResourceUpdateDialogStore('/api/vocabulary/history/locations/{id}'),
-// )
 </script>
 
 <template>
@@ -19,12 +16,6 @@ const { deleteDialogState } = storeToRefs(
           app-path="/data/history/locations"
           :disabled="!item._acl.canRead"
         />
-        <!--        <navigation-resource-item-update-->
-        <!--          :id="item.id"-->
-        <!--          :disabled="!item._acl.canUpdate"-->
-        <!--          :app-path-->
-        <!--          @update="updateDialogState = { id: item.id }"-->
-        <!--        />-->
         <navigation-resource-item-delete
           :id="item.id"
           :disabled="!item._acl.canDelete"
@@ -35,11 +26,11 @@ const { deleteDialogState } = storeToRefs(
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-create-vocabulary-history-location @refresh="refetch()" />
+      <data-dialog-search :path :title="labels[1]" />
       <data-dialog-delete-vocabulary
         path="/api/vocabulary/history/locations/{id}"
         @refresh="refetch()"
       />
-      <!--      <data-dialog-update-vocabulary-zoo-taxonomy @refresh="refetch()" />-->
     </template>
   </data-collection-table>
 </template>

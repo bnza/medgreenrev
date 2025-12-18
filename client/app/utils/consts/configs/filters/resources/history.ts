@@ -15,13 +15,16 @@ const {
   VocabularyHistoryPlant,
 } = API_FILTERS
 
-const historyStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
-  {
-    location: {
-      filters: {
-        HistoryLocationEquals,
-      },
+const historyLocation: ResourceStaticFiltersDefinitionObject = {
+  value: {
+    filters: {
+      SearchPartial,
     },
+  },
+}
+
+const historyEntityStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
+  {
     reference: {
       filters: {
         SearchPartial,
@@ -51,7 +54,12 @@ const historyStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObjec
 
 export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObject =
   {
-    ...historyStaticFiltersDefinitionObject,
+    location: {
+      filters: {
+        HistoryLocationEquals,
+      },
+    },
+    ...historyEntityStaticFiltersDefinitionObject,
     animal: {
       filters: {
         VocabularyHistoryAnimal,
@@ -61,7 +69,12 @@ export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObjec
 
 export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject =
   {
-    ...historyStaticFiltersDefinitionObject,
+    location: {
+      filters: {
+        HistoryLocationEquals,
+      },
+    },
+    ...historyEntityStaticFiltersDefinitionObject,
     ...generateResourceDefinition(botanyTaxonomyStaticFilterDefinition, [
       'plant',
       'plant',
@@ -71,4 +84,17 @@ export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject
         VocabularyHistoryPlant,
       },
     },
+  }
+
+export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObject =
+  {
+    ...historyLocation,
+    ...generateResourceDefinition(historyEntityStaticFiltersDefinitionObject, [
+      'plants',
+      'plants',
+    ]),
+    ...generateResourceDefinition(botanyTaxonomyStaticFilterDefinition, [
+      'plants.plant',
+      'plants.plant',
+    ]),
   }

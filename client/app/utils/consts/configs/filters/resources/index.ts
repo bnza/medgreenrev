@@ -31,6 +31,7 @@ export {
 export {
   staticFiltersDefinitionPlant as historyPlant,
   staticFiltersDefinitionAnimal as historyAnimal,
+  staticFiltersDefinitionLocation as historyLocation,
 } from './history'
 export {
   staticFiltersDefinition as individual,

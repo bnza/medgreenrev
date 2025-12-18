@@ -54,6 +54,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/stratigraphic_units/{parentId}/samples'
   | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
   | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
+  | '/api/data/vocabulary/history/locations'
   | '/api/data/zoo/bones'
   | '/api/data/zoo/bones/{parentId}/analyses'
   | '/api/data/zoo/teeth'
@@ -97,6 +98,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/context_stratigraphic_units':
     resourceFilterDefinitions.contextStratigraphicUnit,
   '/api/data/history/animals': resourceFilterDefinitions.historyAnimal,
+  '/api/data/vocabulary/history/locations':
+    resourceFilterDefinitions.historyLocation,
   '/api/data/history/locations/{parentId}/animals':
     resourceFilterDefinitions.historyAnimal,
   '/api/data/history/plants': resourceFilterDefinitions.historyPlant,
