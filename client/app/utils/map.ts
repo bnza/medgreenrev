@@ -4,6 +4,8 @@ import { toFunction as toStyleFunction } from 'ol/style/Style'
 import { Style, Text, Fill, Stroke } from 'ol/style'
 import type { FeatureLike } from 'ol/Feature'
 import type { TextPlacement } from 'ol/style/Text'
+import { API_FEATURES_RESOURCE_MAP } from '~/utils/consts/resources'
+import type { GetItemPath } from '~~/types'
 
 export type NormalizedStyleFunction = (
   feature: FeatureLike,
@@ -134,4 +136,10 @@ export function decorateStyle(
     const styles = styleFns.flatMap((fn) => fn(feature, resolution))
     return [...baseStyles, ...styles]
   }
+}
+
+export function featurePathToItemPathValue<
+  P extends keyof typeof API_FEATURES_RESOURCE_MAP,
+>(p: P): Extract<GetItemPath, `${(typeof API_FEATURES_RESOURCE_MAP)[P]}/{id}`> {
+  return `${API_FEATURES_RESOURCE_MAP[p]}/{id}` as const
 }

@@ -1,42 +1,20 @@
 <script setup lang="ts" generic="P extends GetItemPath">
 import { mergeProps } from 'vue'
-import type {
-  GetItemPath,
-  GetItemResponseMap,
-  Iri,
-  OperationPathParams,
-} from '~~/types/index.js'
+import type { GetItemPath, GetItemResponseMap, Iri } from '~~/types/index.js'
 
-const props = withDefaults(
-  defineProps<{
-    path: P
-    iri: Iri
-    width?: number
-    readLink?: boolean
-  }>(),
-  {
-    width: 500,
-    readLink: true,
-  },
-)
-const id = extractIdFromIri(props.iri)
+defineProps<{
+  path: P
+  iri: Iri
+  width?: number
+  readLink?: boolean
+}>()
 const visible = ref(false)
-const params = computed(() =>
-  visible.value
-    ? ({
-        id,
-      } as OperationPathParams<P, 'get'>)
-    : undefined,
-)
-
-const { data: item, status } = useGetItemQuery(props.path, params)
 
 defineSlots<{
+  actions(): any
   activator(props: Record<string, unknown>): any
   default(props: { item: GetItemResponseMap[P] | undefined }): any
 }>()
-
-const { labels, appPath } = useResourceConfig(props.path)
 </script>
 
 <template>
@@ -58,40 +36,11 @@ const { labels, appPath } = useResourceConfig(props.path)
       </v-tooltip>
     </template>
     <template #default>
-      <v-card
-        prepend-icon="fas fa-circle-info"
-        :width
-        data-testid="info-box-card"
-      >
-        <template #title>
-          <span data-testid="info-box-card-title">{{ labels[0] }} </span>
+      <data-item-info-box-data-card v-if="visible" v-bind="$props">
+        <template #default="{ item }">
+          <slot v-bind="{ item: item as GetItemResponseMap[P] | undefined }" />
         </template>
-        <template #text>
-          <v-container class="pa-0" fluid>
-            <v-skeleton-loader
-              v-if="status === 'pending'"
-              type="list-item-avatar-two-line"
-            />
-            <v-alert
-              v-else-if="status === 'error'"
-              icon="fas fa-circle-exclamation"
-              text="Data fetch failed"
-              data-testid="info-box-card-error"
-            />
-            <slot
-              v-bind="{ item: item as GetItemResponseMap[P] | undefined }"
-            />
-          </v-container>
-        </template>
-        <template v-if="readLink" #actions>
-          <v-spacer />
-          <navigation-resource-item-read
-            :id
-            :disabled="status !== 'success'"
-            :app-path
-          />
-        </template>
-      </v-card>
+      </data-item-info-box-data-card>
     </template>
   </v-menu>
 </template>

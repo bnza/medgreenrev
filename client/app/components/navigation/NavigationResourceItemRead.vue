@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { VTooltip } from 'vuetify/components'
+
 const props = withDefaults(
   defineProps<{
     appPath: string
@@ -13,6 +15,14 @@ const { push } = useHistoryStackStore()
 
 const to = computed(() => `${props.appPath}/${props.id}`)
 const { fullPath } = useRoute()
+const { state: uiMode } = storeToRefs(useAppUiModeStore())
+
+const showTooltip = ref(false)
+const viewItem = () => {
+  push(fullPath)
+  uiMode.value = 'default'
+  showTooltip.value = false
+}
 </script>
 
 <template>
@@ -24,9 +34,15 @@ const { fullPath } = useRoute()
     nuxt
     :to
     data-testid="read-item-button"
-    @click="push(fullPath)"
+    @click="viewItem"
   >
     <v-icon color="primary" icon="fas fa-arrow-right" size="xsmall" />
-    <v-tooltip activator="parent" location="bottom">View item</v-tooltip>
+    <v-tooltip
+      ref="tooltip"
+      v-model="showTooltip"
+      activator="parent"
+      location="bottom"
+      >View item</v-tooltip
+    >
   </v-btn>
 </template>

@@ -3,6 +3,8 @@ import { Interactions, Styles } from 'vue3-openlayers'
 import { click as clickSelectCondition } from 'ol/events/condition'
 import type { SelectEvent } from 'ol/interaction/Select'
 import type { GetFeatureCollectionPath } from '~~/types'
+import type Feature from 'ol/Feature.js'
+import type { Geometry } from 'ol/geom'
 
 const { fill, stroke, offsetX, offsetY, textBaseline, textAlign, overflow } =
   DEFAULT_TEXT_LABEL_OPTIONS
@@ -17,11 +19,16 @@ const interactionSelectRef = useTemplateRef<
 
 const text = ref<string>('Pippo')
 
-const { labelOptions } = storeToRefs(useMapVectorApiStore(props.path))
+const { labelOptions } = useMapVectorApiStore(props.path)
+
+const emit = defineEmits<{
+  featureSelected: [Feature<Geometry> | null]
+}>()
 
 const onSelect = (event: SelectEvent) => {
-  const selected = event.selected[0]
-  text.value = selected?.get(labelOptions.value.labelProperty) ?? ''
+  const selected = event.selected[0] ?? null
+  text.value = selected?.get(labelOptions.labelProperty) ?? ''
+  emit('featureSelected', selected)
 }
 </script>
 

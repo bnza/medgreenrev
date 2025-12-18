@@ -22,7 +22,6 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { stringify } from 'qs'
 import dotenv from 'dotenv'
 
-// @ts-expect-error Vue complains about import.meta.url
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const projectRoot = path.resolve(__dirname, '..')
@@ -138,12 +137,12 @@ async function main() {
       i++
       continue
     }
-    if (arg.startsWith('--path=')) {
+    if (arg?.startsWith('--path=')) {
       requestedPath = arg.slice('--path='.length)
       continue
     }
     // First non-flag positional argument treated as path
-    if (!arg.startsWith('-') && !requestedPath) {
+    if (!arg?.startsWith('-') && !requestedPath) {
       requestedPath = arg
     }
   }
@@ -207,12 +206,14 @@ async function main() {
                 key,
                 operands: ['provided-value'],
               })
-              clientFilters[apiPath].push(
-                stringify(queryObject, {
-                  encode: false,
-                  arrayFormat: 'brackets',
-                }).split('=')[0],
-              )
+              const queryItem = stringify(queryObject, {
+                encode: false,
+                arrayFormat: 'brackets',
+              }).split('=')[0]
+
+              if (queryItem) {
+                clientFilters[apiPath].push(queryItem)
+              }
             } catch (e) {
               // Keep going if a particular filter application fails
               console.warn(
@@ -315,7 +316,6 @@ async function main() {
 }
 
 // Execute only when run directly
-// @ts-expect-error Vue complains about import.meta.url
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main().catch((err) => {
     console.error('[compare-query-params] Error:', err)
