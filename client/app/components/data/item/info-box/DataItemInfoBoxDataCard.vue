@@ -18,12 +18,14 @@ const props = withDefaults(
     readLink: true,
   },
 )
-const id =
-  typeof props.iri === 'number' ? props.iri : extractIdFromIri(props.iri)
+const id = computed(() =>
+  typeof props.iri === 'number' ? props.iri : extractIdFromIri(props.iri),
+)
+
 const params = computed(
   () =>
     ({
-      id,
+      id: id.value,
     }) as OperationPathParams<P, 'get'>,
 )
 
