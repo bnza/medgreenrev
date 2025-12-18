@@ -1906,6 +1906,46 @@ export interface paths {
     patch: operations['api_datahistoryanimals_id_patch']
     trace?: never
   }
+  '/api/data/history/locations/{parentId}/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryAnimal resources.
+     * @description Retrieves the collection of HistoryAnimal resources.
+     */
+    get: operations['api_datahistorylocations_parentIdanimals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/locations/{parentId}/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryPlant resources.
+     * @description Retrieves the collection of HistoryPlant resources.
+     */
+    get: operations['api_datahistorylocations_parentIdplants_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/history/plants': {
     parameters: {
       query?: never
@@ -20049,6 +20089,150 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datahistorylocations_parentIdanimals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[animal.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        animal?: string
+        'animal[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+      }
+      header?: never
+      path: {
+        /** @description HistoryAnimal identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read'][]
+          }
+          'text/csv': components['schemas']['HistoryAnimal.csv-history_animal.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datahistorylocations_parentIdplants_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[plant.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        plant?: string
+        'plant[]'?: string[]
+        'plant.taxonomy'?: string
+        'plant.taxonomy[]'?: string[]
+        'plant.taxonomy.family'?: string
+        'plant.taxonomy.family[]'?: string[]
+        'plant.taxonomy.class'?: string
+        'plant.taxonomy.class[]'?: string[]
+        'plant.taxonomy.vernacularName'?: string
+        location?: string
+        'location[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[plant.taxonomy.family]'?: boolean
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+      }
+      header?: never
+      path: {
+        /** @description HistoryPlant identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['HistoryPlant.jsonld-history_plant.acl.read'][]
+          }
+          'text/csv': components['schemas']['HistoryPlant.csv-history_plant.acl.read'][]
         }
       }
     }

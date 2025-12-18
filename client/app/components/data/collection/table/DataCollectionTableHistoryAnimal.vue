@@ -1,7 +1,13 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/data/history/animals'>"
+  generic="
+    Path extends Extract<
+      GetCollectionPath,
+      | '/api/data/history/animals'
+      | '/api/data/history/locations/{parentId}/animals'
+    >
+  "
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 

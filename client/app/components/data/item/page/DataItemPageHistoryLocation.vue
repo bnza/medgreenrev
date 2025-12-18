@@ -11,15 +11,21 @@ const { tab } = storeToRefs(useResourceUiStore(path))
     <template #default="{ item }">
       <lazy-data-item-form-info-history-location :item />
       <v-tabs v-model="tab" background-color="transparent">
-        <v-tab value="plants">plants</v-tab>
         <v-tab value="animals">animals</v-tab>
+        <v-tab value="plants">plants</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="plants" data-testid="tab-plants">
-          <p>Plants</p>
-        </v-tabs-window-item>
         <v-tabs-window-item value="animals" data-testid="tab-animals">
-          <p>Animals</p>
+          <data-collection-page-history-animal
+            path="/api/data/history/locations/{parentId}/animals"
+            :parent="{ key: 'vocHistoryLocation', item }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="plants" data-testid="tab-plants">
+          <data-collection-page-history-plant
+            path="/api/data/history/locations/{parentId}/plants"
+            :parent="{ key: 'vocHistoryLocation', item }"
+          />
         </v-tabs-window-item>
       </v-tabs-window>
     </template>

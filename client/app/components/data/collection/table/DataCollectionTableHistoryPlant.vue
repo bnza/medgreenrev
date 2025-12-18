@@ -1,7 +1,13 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/data/history/plants'>"
+  generic="
+    Path extends Extract<
+      GetCollectionPath,
+      | '/api/data/history/plants'
+      | '/api/data/history/locations/{parentId}/plants'
+    >
+  "
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 import DataDialogCreateHistoryPlant from '~/components/data/dialog/create/DataDialogCreateHistoryPlant.vue'
