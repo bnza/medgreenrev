@@ -4,7 +4,6 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { useCollectScope } from '@regle/core'
 
 const path: PostCollectionPath = '/api/data/sample_stratigraphic_units' as const
 

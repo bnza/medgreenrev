@@ -4,7 +4,6 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { useCollectScope } from '@regle/core'
 import DataItemFormCreateHistoryAnimal from '~/components/data/item/form/create/DataItemFormCreateHistoryAnimal.vue'
 
 const path: PostCollectionPath = '/api/data/history/animals' as const

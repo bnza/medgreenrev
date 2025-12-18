@@ -4,7 +4,6 @@ import type {
   PostCollectionPath,
   ResourceParent,
 } from '~~/types'
-import { useScopedRegle } from '@regle/core'
 import { required } from '@regle/rules'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/botany/seeds'

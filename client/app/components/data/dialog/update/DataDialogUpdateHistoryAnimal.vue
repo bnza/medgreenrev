@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { GetItemPath, PatchItemPath, PatchItemRequestMap } from '~~/types'
-import { useCollectScope } from '@regle/core'
 import DataItemFormUpdateHistoryAnimal from '~/components/data/item/form/update/DataItemFormUpdateHistoryAnimal.vue'
 
 const path: GetItemPath & PatchItemPath = '/api/data/history/animals/{id}'

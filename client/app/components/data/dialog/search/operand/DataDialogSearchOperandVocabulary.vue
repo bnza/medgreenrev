@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { VocabularyGetCollectionPath } from '~~/types'
-import { useRegle } from '@regle/core'
 import { required, minLength, withMessage } from '@regle/rules'
 
 const props = withDefaults(

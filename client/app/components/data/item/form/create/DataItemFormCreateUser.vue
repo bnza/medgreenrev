@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ApiResourcePath, PostCollectionPath } from '~~/types'
-import { useScopedRegle } from '@regle/core'
 import { email, minLength, required } from '@regle/rules'
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
 import { mergeRole } from '~/utils/acl'

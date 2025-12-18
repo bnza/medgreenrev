@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useScopedRegle } from '@regle/core'
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
 import { required } from '@regle/rules'
 

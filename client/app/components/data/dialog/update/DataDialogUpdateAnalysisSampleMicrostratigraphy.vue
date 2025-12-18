@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { GetItemPath, PatchItemPath, PatchItemRequestMap } from '~~/types'
-import { useCollectScope } from '@regle/core'
 
 const path: GetItemPath & PatchItemPath =
   '/api/data/analyses/samples/microstratigraphy/{id}'

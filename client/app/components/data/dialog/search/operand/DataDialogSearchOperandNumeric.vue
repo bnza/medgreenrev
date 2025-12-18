@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRegle } from '@regle/core'
 import { required, numeric } from '@regle/rules'
 
 const props = withDefaults(

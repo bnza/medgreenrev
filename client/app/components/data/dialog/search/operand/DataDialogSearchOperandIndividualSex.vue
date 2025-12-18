@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRegle } from '@regle/core'
 import { minLength, required, withMessage } from '@regle/rules'
 
 const operands = defineModel<string[]>({ required: true })

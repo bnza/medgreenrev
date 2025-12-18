@@ -9,7 +9,6 @@ import type {
   ResourceParent,
 } from '~~/types'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
-import { inferRules } from '@regle/core'
 import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerateValidationCreateRules'
 import { generateEmptyAnalysisSubjectModel } from '~/utils/postModel'
 import { capitalize } from 'vue'

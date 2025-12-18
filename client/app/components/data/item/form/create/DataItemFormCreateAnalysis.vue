@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ApiResourcePath, PostCollectionPath } from '~~/types'
-import { useScopedRegle } from '@regle/core'
 import { integer, maxValue, minValue, required } from '@regle/rules'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/analyses'

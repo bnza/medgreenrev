@@ -74,6 +74,7 @@ export default defineNuxtConfig({
         },
       },
     ],
+    '@regle/nuxt',
     '@sidebase/nuxt-auth',
     'vuetify-nuxt-module',
     '@pinia/nuxt',

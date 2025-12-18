@@ -6,7 +6,6 @@ import type {
   PostCollectionResponseMap,
 } from '~~/types'
 import type { TypedFormData } from '~/api/TypedFormData'
-import { useCollectScope } from '@regle/core'
 import usePreCreateNormalization from '~/composables/usePreCreateNormalization'
 
 const file = defineModel<File | undefined>('file', { required: true })

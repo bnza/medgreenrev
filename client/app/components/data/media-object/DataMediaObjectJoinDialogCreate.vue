@@ -5,7 +5,6 @@ import type {
   PostCollectionPath,
   PostCollectionRequestMap,
 } from '~~/types'
-import { useRegle } from '@regle/core'
 import { required, withMessage } from '@regle/rules'
 import type { DataMediaObjectFormEdit } from '#components'
 import { injectMediaObjectJoin } from '~/composables/injection/useMediaObjectJoin'

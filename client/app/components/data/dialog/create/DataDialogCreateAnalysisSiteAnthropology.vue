@@ -4,7 +4,6 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { useCollectScope } from '@regle/core'
 
 defineProps<{
   parent?: ResourceParent<'site'> | ResourceParent<'analysis'>

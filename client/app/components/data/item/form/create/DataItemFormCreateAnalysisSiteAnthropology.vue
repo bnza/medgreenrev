@@ -4,7 +4,6 @@ import type {
   PostCollectionPath,
   ResourceParent,
 } from '~~/types'
-import { inferRules, useScopedRegle } from '@regle/core'
 import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerateValidationCreateRules'
 import type { AnalysisCode } from '~/utils'
 

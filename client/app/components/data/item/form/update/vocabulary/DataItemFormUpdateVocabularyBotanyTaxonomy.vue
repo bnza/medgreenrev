@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
-import { useScopedRegle } from '@regle/core'
 import { required } from '@regle/rules'
 
 type Path = '/api/vocabulary/botany/taxonomies/{id}'

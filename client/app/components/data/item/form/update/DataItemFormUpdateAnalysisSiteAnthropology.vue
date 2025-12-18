@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useScopedRegle } from '@regle/core'
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
 
 type Path = '/api/data/analyses/sites/anthropology/{id}'

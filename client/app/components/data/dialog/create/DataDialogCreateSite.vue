@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
-import { useCollectScope } from '@regle/core'
 
 const path: PostCollectionPath = '/api/data/sites' as const
 

@@ -34,6 +34,7 @@
     "@pinia/colada-plugin-retry": "^0.1.2",
     "@pinia/nuxt": "^0.11.3",
     "@regle/core": "^1.14.0",
+    "@regle/nuxt": "^1.14.5",
     "@regle/rules": "^1.14.0",
     "@sidebase/nuxt-auth": "^1.1.1",
     "@types/jsonld": "^1.5.15",

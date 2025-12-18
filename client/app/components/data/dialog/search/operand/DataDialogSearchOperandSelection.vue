@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ListGetCollectionPath } from '~~/types'
-import { useRegle } from '@regle/core'
 import { required } from '@regle/rules'
 
 const props = withDefaults(
