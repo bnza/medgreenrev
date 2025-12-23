@@ -22,7 +22,7 @@ const getSource = () => sourceRef.value?.source
 const bboxExtent = ref<Extent>()
 const bboxProjection = ref<ProjectionLike>()
 
-const { data, status, error, refetch } = useGetFeatureCollectionQuery(
+const { data, status, error } = useGetFeatureCollectionQuery(
   props.path,
   bboxExtent,
   bboxProjection,
@@ -43,26 +43,21 @@ const loader = (
   extent: Extent,
   resolution: number,
   projection: ProjectionLike,
-  success?: (features: Array<Feature<OLGeometry>>) => void,
-  failure?: () => void,
+  _success?: (features: Array<Feature<OLGeometry>>) => void,
+  _failure?: () => void,
 ) => {
   bboxExtent.value = extent
   bboxProjection.value = projection
-  refetch()
-    .then(() => {
-      if (data.value && data.value.features && success) {
-        success(addFeatures(data.value))
-      } else if (success) {
-        success([])
-      }
-    })
-    .catch((err) => {
-      console.error('Error in vector source loader:', err)
-      if (failure) {
-        failure()
-      }
-    })
 }
+
+watch(
+  () => status.value,
+  (value) => {
+    if (value === 'success' && data.value) {
+      return addFeatures(data.value)
+    }
+  },
+)
 
 defineExpose({
   sourceRef,

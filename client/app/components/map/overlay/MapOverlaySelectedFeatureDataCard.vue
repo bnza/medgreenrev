@@ -9,8 +9,6 @@ import type {
 } from '~~/types'
 import { getCenter } from 'ol/extent'
 
-import { API_FEATURES_RESOURCE_MAP } from '~/utils/consts/resources'
-
 const props = defineProps<{
   path: P
   feature: Feature<Geometry> | null
@@ -32,12 +30,15 @@ const position = computed(() => {
   return getCenter(geometry.getExtent())
 })
 
-const getItemPath: GetItemPath = `${API_FEATURES_RESOURCE_MAP[props.path]}/{id}`
+const { findApiResourcePath } = useOpenApiStore()
+const apiResourcePath = findApiResourcePath(props.path)
+
+const getItemPath: GetItemPath | undefined = apiResourcePath
+  ? `${apiResourcePath}/{id}`
+  : undefined
 
 defineSlots<{
-  default(props: {
-    item: GetItemResponseMap[typeof getItemPath] | undefined
-  }): any
+  default(props: { item: GetItemResponseMap[GetItemPath] | undefined }): any
 }>()
 
 const id = computed(() => {

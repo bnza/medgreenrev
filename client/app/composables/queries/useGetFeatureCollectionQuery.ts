@@ -4,16 +4,19 @@ import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 import { GetFeatureCollectionOperation } from '~/api/operations/GetFeatureCollectionOperation'
 import type { Extent } from 'ol/extent'
 import type { ProjectionLike } from 'ol/proj'
+import { API_FEATURES_RESOURCE_MAP } from '~/utils/consts/resources'
 
 export function useGetFeatureCollectionQuery(
   path: GetFeatureCollectionPath,
   bbox: Ref<Extent | undefined>,
   projection: Ref<ProjectionLike>,
 ) {
-  const getCollectionOperation = new GetFeatureCollectionOperation(path)
+  const getFeatureCollectionOperation = new GetFeatureCollectionOperation(path)
+  const getCollectionPath = API_FEATURES_RESOURCE_MAP[path]
 
   const openApiStore = useOpenApiStore()
   const apiResourcePath = openApiStore.findApiResourcePath(path)
+
   if (!apiResourcePath) {
     throw new Error(`Resource key not found for path ${path}`)
   }
@@ -21,7 +24,7 @@ export function useGetFeatureCollectionQuery(
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
   const { filterQueryObject } = storeToRefs(
-    useCollectionQueryStore(apiResourcePath),
+    useCollectionQueryStore(getCollectionPath),
   )
 
   const _projection = computed(() =>
@@ -30,7 +33,7 @@ export function useGetFeatureCollectionQuery(
       : (projection.value?.getCode() ?? undefined),
   )
 
-  const _bbox = computed(() =>
+  const bboxQueryObject = computed(() =>
     bbox.value
       ? {
           bbox: [...bbox.value, _projection.value].filter(Boolean).join(','),
@@ -38,20 +41,21 @@ export function useGetFeatureCollectionQuery(
       : {},
   )
 
-  const key = computed(() =>
-    RESOURCE_QUERY_KEY.byFilter({
-      ...filterQueryObject.value,
-      ..._bbox.value,
+  const featureQuery = defineQueryOptions(({ queryObject, bboxObject }) => ({
+    key: RESOURCE_QUERY_KEY.byFilter({
+      ...queryObject,
+      ...bboxObject,
     }),
-  )
-
-  return useQuery({
-    key: () => key.value,
     query: () =>
-      getCollectionOperation.request({
-        query: { ...filterQueryObject.value, ..._bbox.value },
+      getFeatureCollectionOperation.request({
+        query: { ...queryObject, ...bboxObject },
       }),
-  })
+  }))
+
+  return useQuery(featureQuery, () => ({
+    queryObject: filterQueryObject.value,
+    bboxObject: bboxQueryObject.value,
+  }))
 }
 
 export default useGetFeatureCollectionQuery
