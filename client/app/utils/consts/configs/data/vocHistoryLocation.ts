@@ -1,7 +1,7 @@
 import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data/history/locations',
+  apiPath: '/api/data/vocabulary/history/locations',
   appPath: '/data/history/locations',
   defaultHeaders: [
     {

@@ -7,7 +7,32 @@ const props = defineProps<{
   title: string
 }>()
 
-const { visible, labelVisible } = storeToRefs(useMapVectorApiStore(props.path))
+const mapVectorApiStore = useMapVectorApiStore(props.path)
+
+const { visible, isSettingsDialogOpen } = storeToRefs(mapVectorApiStore)
+
+const isMenuOpen = ref(false)
+
+const openSettingsDialog = () => {
+  isMenuOpen.value = false
+  isSettingsDialogOpen.value = true
+}
+
+const { state: uiMode } = storeToRefs(useAppUiModeStore())
+// const getCollectionPath = API_FEATURES_RESOURCE_MAP[props.path]
+const router = useRouter()
+const { isSearchDialogOpen } = storeToRefs(
+  useResourceUiStore(mapVectorApiStore.resourceConfig.apiPath),
+)
+const openSearchDialog = () => {
+  uiMode.value = 'default'
+  router.push(mapVectorApiStore.resourceConfig.appPath)
+  isSearchDialogOpen.value = true
+}
+
+// const zoomToExtent = () => {
+//   console.log('zoomToExtent')
+// }
 </script>
 
 <template>
@@ -21,7 +46,21 @@ const { visible, labelVisible } = storeToRefs(useMapVectorApiStore(props.path))
     <template #append="appendProps">
       <slot name="append" v-bind="appendProps">
         <map-list-menu-base>
-          <v-checkbox-btn v-model="labelVisible" label="Show labels" />
+          <v-list-item @click="openSearchDialog">
+            <v-list-item-title>Search</v-list-item-title>
+            <template #append
+              ><v-icon icon="fas fa-magnifying-glass"
+            /></template>
+          </v-list-item>
+          <!--          <v-list-item @click="zoomToExtent">-->
+          <!--            <v-list-item-title>Zoom to layer extent</v-list-item-title>-->
+          <!--            <template #append><v-icon icon="fas fa-expand" /></template>-->
+          <!--          </v-list-item>-->
+          <v-list-item @click="openSettingsDialog">
+            <v-list-item-title>Settings</v-list-item-title>
+            <template #append><v-icon icon="fas fa-cog" /></template>
+            <map-dialog-vector-api :path />
+          </v-list-item>
         </map-list-menu-base>
       </slot>
     </template>

@@ -6,7 +6,9 @@ const props = defineProps<{
   baseMap: BaseMap
 }>()
 
-const { visible, opacity } = storeToRefs(useMapBaseMapStore(props.baseMap))
+const { visible, isSettingsDialogOpen } = storeToRefs(
+  useMapBaseMapStore(props.baseMap),
+)
 </script>
 
 <template>
@@ -20,7 +22,11 @@ const { visible, opacity } = storeToRefs(useMapBaseMapStore(props.baseMap))
     <template #append="appendProps">
       <slot name="append" v-bind="appendProps">
         <map-list-menu-base>
-          <map-opacity-slider v-model="opacity" />
+          <v-list-item @click="isSettingsDialogOpen = true">
+            <v-list-item-title>Settings</v-list-item-title>
+            <template #append><v-icon icon="fas fa-cog" /></template>
+            <map-dialog-base-map :base-map :title />
+          </v-list-item>
         </map-list-menu-base>
       </slot>
     </template>
