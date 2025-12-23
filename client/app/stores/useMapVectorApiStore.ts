@@ -25,17 +25,17 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
 
     const { findApiResourcePath } = useOpenApiStore()
 
-    const resourceKey = findApiResourcePath(path)
+    const resourcePath = computed(() => findApiResourcePath(path))
 
-    const isResourceConfig = (
-      value: ApiResourcePath | undefined,
-    ): value is ApiResourcePath => typeof value !== 'undefined'
+    const isResourcePath = (
+      value: Ref<ApiResourcePath | undefined>,
+    ): value is Ref<ApiResourcePath> => typeof value.value !== 'undefined'
 
-    if (!isResourceConfig(resourceKey)) {
+    if (!isResourcePath(resourcePath)) {
       throw new Error(`Unknown resource key for path ${path}`)
     }
 
-    const resourceConfig = useResourceConfig(resourceKey)
+    const resourceConfig = useResourceConfig(resourcePath.value)
 
     return {
       visible,
@@ -44,5 +44,6 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
       labelVisible,
       isSettingsDialogOpen,
       resourceConfig,
+      resourcePath,
     }
   })()

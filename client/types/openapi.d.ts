@@ -4830,6 +4830,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/features/extent_matched/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryLocation resource.
+     * @description Retrieves a VocHistoryLocation resource.
+     */
+    get: operations['api_featuresextent_matchedhistorylocations_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/features/history/locations': {
     parameters: {
       query?: never
@@ -9460,6 +9480,34 @@ export interface components {
     }
     'VocHistoryLocation-voc_history_location.json.read': {
       readonly id?: number | string
+    }
+    'VocHistoryLocation.WfsGetFeatureCollectionExtentMatched.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent?: number[]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs?: {
+        type?: string
+        properties?: {
+          name?: string
+        }
+      }
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: string
     }
     'VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly numberMatched?: number
@@ -28844,6 +28892,48 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
+        'plants.plant'?: string
+        'plants.plant[]'?: string[]
+        'plants.plant.taxonomy'?: string
+        'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.family'?: string
+        'plants.plant.taxonomy.family[]'?: string[]
+        'plants.plant.taxonomy.class'?: string
+        'plants.plant.taxonomy.class[]'?: string[]
+        'plants.plant.taxonomy.vernacularName'?: string
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
+        'plants.chronologyLower[between]'?: string
+        'plants.chronologyLower[gt]'?: string
+        'plants.chronologyLower[gte]'?: string
+        'plants.chronologyLower[lt]'?: string
+        'plants.chronologyLower[lte]'?: string
+        'plants.chronologyUpper[between]'?: string
+        'plants.chronologyUpper[gt]'?: string
+        'plants.chronologyUpper[gte]'?: string
+        'plants.chronologyUpper[lt]'?: string
+        'plants.chronologyUpper[lte]'?: string
+        'exists[plants.plant.taxonomy.family]'?: boolean
+        'exists[plants.notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.notes'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -28869,6 +28959,37 @@ export interface operations {
       }
     }
   }
+  api_featuresextent_matchedhistorylocations_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryLocation.WfsGetFeatureCollectionExtentMatched.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   'api_featureshistorylocations.__format_get_collection': {
     parameters: {
       query?: {
@@ -28876,6 +28997,48 @@ export interface operations {
         bbox?: string
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
+        'plants.plant'?: string
+        'plants.plant[]'?: string[]
+        'plants.plant.taxonomy'?: string
+        'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.family'?: string
+        'plants.plant.taxonomy.family[]'?: string[]
+        'plants.plant.taxonomy.class'?: string
+        'plants.plant.taxonomy.class[]'?: string[]
+        'plants.plant.taxonomy.vernacularName'?: string
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
+        'plants.chronologyLower[between]'?: string
+        'plants.chronologyLower[gt]'?: string
+        'plants.chronologyLower[gte]'?: string
+        'plants.chronologyLower[lt]'?: string
+        'plants.chronologyLower[lte]'?: string
+        'plants.chronologyUpper[between]'?: string
+        'plants.chronologyUpper[gt]'?: string
+        'plants.chronologyUpper[gte]'?: string
+        'plants.chronologyUpper[lt]'?: string
+        'plants.chronologyUpper[lte]'?: string
+        'exists[plants.plant.taxonomy.family]'?: boolean
+        'exists[plants.notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.notes'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -28936,6 +29099,48 @@ export interface operations {
       query?: {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
+        'plants.plant'?: string
+        'plants.plant[]'?: string[]
+        'plants.plant.taxonomy'?: string
+        'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.family'?: string
+        'plants.plant.taxonomy.family[]'?: string[]
+        'plants.plant.taxonomy.class'?: string
+        'plants.plant.taxonomy.class[]'?: string[]
+        'plants.plant.taxonomy.vernacularName'?: string
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
+        'plants.chronologyLower[between]'?: string
+        'plants.chronologyLower[gt]'?: string
+        'plants.chronologyLower[gte]'?: string
+        'plants.chronologyLower[lt]'?: string
+        'plants.chronologyLower[lte]'?: string
+        'plants.chronologyUpper[between]'?: string
+        'plants.chronologyUpper[gt]'?: string
+        'plants.chronologyUpper[gte]'?: string
+        'plants.chronologyUpper[lt]'?: string
+        'plants.chronologyUpper[lte]'?: string
+        'exists[plants.plant.taxonomy.family]'?: boolean
+        'exists[plants.notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.notes'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak

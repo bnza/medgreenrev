@@ -4,7 +4,7 @@ import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 import { GetFeatureCollectionOperation } from '~/api/operations/GetFeatureCollectionOperation'
 import type { Extent } from 'ol/extent'
 import type { ProjectionLike } from 'ol/proj'
-import { API_FEATURES_RESOURCE_MAP } from '~/utils/consts/resources'
+import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
 
 export function useGetFeatureCollectionQuery(
   path: GetFeatureCollectionPath,
@@ -12,19 +12,20 @@ export function useGetFeatureCollectionQuery(
   projection: Ref<ProjectionLike>,
 ) {
   const getFeatureCollectionOperation = new GetFeatureCollectionOperation(path)
-  const getCollectionPath = API_FEATURES_RESOURCE_MAP[path]
+  const mapVectorApiStore = useMapVectorApiStore(path)
 
-  const openApiStore = useOpenApiStore()
-  const apiResourcePath = openApiStore.findApiResourcePath(path)
-
-  if (!apiResourcePath) {
+  if (!mapVectorApiStore.resourceConfig) {
     throw new Error(`Resource key not found for path ${path}`)
   }
 
-  const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(
+    mapVectorApiStore.resourcePath,
+    path,
+  )
 
+  // The composable uses the resourceConfig to sync the fetch with tha actual filtered endpoint
   const { filterQueryObject } = storeToRefs(
-    useCollectionQueryStore(getCollectionPath),
+    useCollectionQueryStore(mapVectorApiStore.resourceConfig.apiPath),
   )
 
   const _projection = computed(() =>

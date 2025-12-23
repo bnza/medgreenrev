@@ -99,7 +99,7 @@ export type ApiResourcePath =
 // Map of feature collection endpoints (GeoJSON) to their related API resource collection path
 // Keys are OpenAPI paths that return 200 with 'application/geo+json'
 export const API_FEATURES_RESOURCE_MAP = {
-  '/api/features/history/locations': '/api/data/vocabulary/history/locations',
+  '/api/features/history/locations': '/api/vocabulary/history/locations',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP
