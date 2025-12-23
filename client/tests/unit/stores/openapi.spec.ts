@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
+import { nextTick } from 'vue'
 import { useOpenApiStore } from '~/stores/useOpenapiStore'
 import openApiFixture from '../../fixtures/openapi.response.json'
 import type { paths } from '~~/types'
@@ -12,8 +13,46 @@ describe('useOpenApiStore', () => {
       setActivePinia(createPinia())
       store = useOpenApiStore()
 
-      // Set the fixture data as the internal spec
-      store.specInternal = openApiFixture as any
+      // Set the fixture data as the internal spec (deep clone to avoid mutation leakage)
+      store.specInternal = JSON.parse(JSON.stringify(openApiFixture)) as any
+    })
+
+    describe('caching', () => {
+      it('should return cached value even if spec is mutated (proving cache exists)', () => {
+        const targetPath = '/api/data/sites/{id}' as keyof paths
+
+        // First call
+        const firstResult = store.findApiResourcePath(targetPath)
+        expect(firstResult).to.equal('/api/data/sites')
+
+        // Mutate the spec WITHOUT triggering reactivity (shallowRef doesn't see inner mutations)
+        delete store.specInternal!.paths!['/api/data/sites']
+
+        const secondResult = store.findApiResourcePath(targetPath)
+        expect(secondResult).to.equal('/api/data/sites') // Still returns cached value
+      })
+
+      it('should clear cache when specInternal is updated', async () => {
+        const targetPath = '/api/data/sites/{id}' as keyof paths
+
+        // First call to populate cache
+        store.findApiResourcePath(targetPath)
+
+        // Update specInternal to trigger watch and clear cache
+        store.specInternal = {
+          ...openApiFixture,
+          paths: {
+            ...openApiFixture.paths,
+            '/api/data/sites': undefined,
+          },
+        } as any
+
+        await nextTick()
+
+        // Second call should return undefined because cache was cleared and spec was updated
+        const result = store.findApiResourcePath(targetPath)
+        expect(result).to.equal(undefined)
+      })
     })
 
     describe('when target path is already an API resource path', () => {

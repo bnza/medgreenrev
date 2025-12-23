@@ -13,6 +13,17 @@ import {
 export const useOpenApiStore = defineStore('openapi', () => {
   const specInternal = shallowRef<Readonly<OpenAPIV3_1.Document>>()
 
+  const apiResourcePathCache = new Map<
+    keyof paths,
+    ApiResourcePath | undefined
+  >()
+  const relatedItemPathsCache = new Map<keyof paths, (keyof paths)[]>()
+
+  watch(specInternal, () => {
+    apiResourcePathCache.clear()
+    relatedItemPathsCache.clear()
+  })
+
   const ready = computed(() => Boolean(specInternal.value))
 
   /**
@@ -25,6 +36,10 @@ export const useOpenApiStore = defineStore('openapi', () => {
   const findApiResourcePath = (
     targetPath: keyof paths,
   ): ApiResourcePath | undefined => {
+    if (apiResourcePathCache.has(targetPath)) {
+      return apiResourcePathCache.get(targetPath)
+    }
+
     const openApiSpec = specInternal.value
     if (!openApiSpec) return undefined
     const targetOperation = openApiSpec.paths?.[targetPath]?.get
@@ -40,13 +55,20 @@ export const useOpenApiStore = defineStore('openapi', () => {
       const hasSameTag = operation.tags?.some((tag) => targetTags.includes(tag))
       return hasSameTag && isApiResourcePath(path)
     })
-    return found?.[0] as ApiResourcePath | undefined
+
+    const result = found?.[0] as ApiResourcePath | undefined
+    apiResourcePathCache.set(targetPath, result)
+    return result
   }
 
   /**
    * Returns an array of item paths that share at least one tag with the provided itemPath.
    */
   const getRelatedItemPaths = (itemPath: keyof paths): (keyof paths)[] => {
+    if (relatedItemPathsCache.has(itemPath)) {
+      return relatedItemPathsCache.get(itemPath) ?? []
+    }
+
     const openApiSpec = specInternal.value
     if (!openApiSpec) return []
 
@@ -62,7 +84,9 @@ export const useOpenApiStore = defineStore('openapi', () => {
       .map(([path]) => path as keyof paths)
 
     // Remove duplicates by converting to a Set then back to array
-    return Array.from(new Set(matchedPaths))
+    const result = Array.from(new Set(matchedPaths))
+    relatedItemPathsCache.set(itemPath, result)
+    return result
   }
 
   const findApiResourceKeyFromPath = (
@@ -74,10 +98,6 @@ export const useOpenApiStore = defineStore('openapi', () => {
       ([_, value]) => value === apiResourcePath,
     )?.[0] as ApiResourceKey | undefined
   }
-
-  // const isGetCollectionOperation = (path: unknown): path is GetCollectionPath =>
-  //   isString(path)
-  //   && specInternal.value?.paths?.[path]?.get?.responses?.['200']?.content?.['application/ld+json']?.['member'] !== undefined
 
   const isPostOperationPath = (path: unknown): path is PostCollectionPath =>
     isString(path) && specInternal.value?.paths?.[path]?.post !== undefined
@@ -142,19 +162,19 @@ export const useOpenApiStore = defineStore('openapi', () => {
 
   const fetchSpec = async () => {
     status.value = 'pending'
-    await $fetch<OpenAPIV3_1.Document>('/api/docs.jsonopenapi', {
-      baseURL: useNuxtApp().$config.public.apiBaseUrl,
-    })
-      .then((response) => {
-        const { specInternal } = storeToRefs(useOpenApiStore())
-        specInternal.value = response
-        status.value = 'success'
-      })
-      .catch((e) => {
-        status.value = 'error'
-        console.error('openapi', e)
-        addError('Failed to load API spec: \n' + e.message)
-      })
+    try {
+      specInternal.value = await $fetch<OpenAPIV3_1.Document>(
+        '/api/docs.jsonopenapi',
+        {
+          baseURL: useNuxtApp().$config.public.apiBaseUrl,
+        },
+      )
+      status.value = 'success'
+    } catch (e: any) {
+      status.value = 'error'
+      console.error('openapi', e)
+      addError('Failed to load API spec: \n' + e.message)
+    }
   }
 
   return {
