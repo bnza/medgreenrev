@@ -7,6 +7,11 @@ type Crs = {
   }
 }
 
+export type ExtentResponse = {
+  extent: [number, number, number, number]
+  crs: Crs
+}
+
 type WFS20FeatureCollectionAttributes = {
   numberMatched: number
   numberReturned: number

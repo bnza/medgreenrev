@@ -1,17 +1,29 @@
-import type { GetFeatureCollectionPath } from '~~/types'
+import type {
+  GetFeatureCollectionExtentPath,
+  GetFeatureCollectionPath,
+} from '~~/types'
 import useAppQueryCache from './useAppQueryCache'
 import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
-import { GetFeatureCollectionOperation } from '~/api/operations/GetFeatureCollectionOperation'
-import type { Extent } from 'ol/extent'
+import { GetFeatureCollectionExtentOperation } from '~/api/operations/GetFeatureCollectionExtentOperation'
 import type { ProjectionLike } from 'ol/proj'
 import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
 
-export function useGetFeatureCollectionQuery(
+const FEATURE_COLLECTION_PATH_MAP = {
+  '/api/features/history/locations':
+    '/api/features/extent_matched/history/locations',
+} as const satisfies Record<
+  GetFeatureCollectionPath,
+  GetFeatureCollectionExtentPath
+>
+
+export function useGetFeatureCollectionExtentQuery(
   path: GetFeatureCollectionPath,
-  bbox: Ref<Extent | undefined>,
-  projection: Ref<ProjectionLike>,
+  enabled: Ref<boolean>,
+  projection: ProjectionLike,
 ) {
-  const getFeatureCollectionOperation = new GetFeatureCollectionOperation(path)
+  const getFeatureCollectionOperation = new GetFeatureCollectionExtentOperation(
+    FEATURE_COLLECTION_PATH_MAP[path],
+  )
   const mapVectorApiStore = useMapVectorApiStore(path)
 
   if (!mapVectorApiStore.resourceConfig) {
@@ -28,35 +40,22 @@ export function useGetFeatureCollectionQuery(
     useCollectionQueryStore(mapVectorApiStore.resourceConfig.apiPath),
   )
 
-  const _projection = computed(() =>
-    typeof projection.value === 'string'
-      ? projection.value
-      : (projection.value?.getCode() ?? undefined),
-  )
-
-  const bboxQueryObject = computed(() =>
-    bbox.value
-      ? {
-          bbox: [...bbox.value, _projection.value].filter(Boolean).join(','),
-        }
-      : {},
-  )
-
-  const featureQuery = defineQueryOptions(({ queryObject, bboxObject }) => ({
+  const featureQuery = defineQueryOptions(({ queryObject, enabled }) => ({
     key: RESOURCE_QUERY_KEY.byFilter({
       ...queryObject,
-      ...bboxObject,
+      crs: projection,
     }),
+    enabled,
     query: () =>
       getFeatureCollectionOperation.request({
-        query: { ...queryObject, ...bboxObject },
+        query: { ...queryObject, crs: projection },
       }),
   }))
 
   return useQuery(featureQuery, () => ({
     queryObject: filterQueryObject.value,
-    bboxObject: bboxQueryObject.value,
+    enabled: enabled.value,
   }))
 }
 
-export default useGetFeatureCollectionQuery
+export default useGetFeatureCollectionExtentQuery

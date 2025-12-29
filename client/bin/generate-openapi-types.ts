@@ -14,9 +14,12 @@ const schemaUrl = `${apiBaseUrl}/api/docs.jsonopenapi`
 
 console.log(`Fetching OpenAPI schema from: ${schemaUrl}`)
 
-execSync(`openapi-typescript ${schemaUrl} --output types/openapi.d.ts`, {
-  stdio: 'inherit',
-})
+execSync(
+  `openapi-typescript ${schemaUrl} --array-length --output types/openapi.d.ts`,
+  {
+    stdio: 'inherit',
+  },
+)
 
 // Post-process the generated types to fix JSON-LD properties
 console.log('Post-processing generated types to fix JSON-LD properties...')

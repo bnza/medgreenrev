@@ -9490,7 +9490,7 @@ export interface components {
        *       5020082.443572257
        *     ]
        */
-      readonly extent?: number[]
+      readonly extent: [number, number, number, number]
       /**
        * @example {
        *       "type": "name",
@@ -9499,15 +9499,17 @@ export interface components {
        *       }
        *     }
        */
-      readonly crs?: {
-        type?: string
-        properties?: {
-          name?: string
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
         }
       }
-      readonly timeStamp?: string
-      typeName?: string
-      readonly id?: string
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
     }
     'VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly numberMatched?: number
@@ -9931,7 +9933,7 @@ export interface components {
     GeoJSONPoint: {
       /** @enum {string} */
       type: 'Point'
-      coordinates: number[]
+      coordinates: [number, number, ...number[]]
     }
     GeoJSONFeature: {
       /** @enum {string} */

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { GetFeatureCollectionPath } from '~~/types'
 import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
+import useGetFeatureCollectionExtentQuery from '~/composables/queries/useGetFeatureCollectionExtentQuery'
 
 const props = defineProps<{
   path: GetFeatureCollectionPath
@@ -30,9 +31,25 @@ const openSearchDialog = () => {
   isSearchDialogOpen.value = true
 }
 
-// const zoomToExtent = () => {
-//   console.log('zoomToExtent')
-// }
+const extentQueryEnabled = ref(false)
+const { data: extentData, refresh: refreshExtent } =
+  useGetFeatureCollectionExtentQuery(
+    props.path,
+    extentQueryEnabled,
+    'EPSG:3857',
+  )
+
+const { updateBbox } = useMapStore()
+
+const zoomToExtent = async () => {
+  extentQueryEnabled.value = true
+  await refreshExtent()
+  const newExtent = extentData.value?.extent
+
+  if (newExtent) {
+    updateBbox(newExtent)
+  }
+}
 </script>
 
 <template>
@@ -52,10 +69,10 @@ const openSearchDialog = () => {
               ><v-icon icon="fas fa-magnifying-glass"
             /></template>
           </v-list-item>
-          <!--          <v-list-item @click="zoomToExtent">-->
-          <!--            <v-list-item-title>Zoom to layer extent</v-list-item-title>-->
-          <!--            <template #append><v-icon icon="fas fa-expand" /></template>-->
-          <!--          </v-list-item>-->
+          <v-list-item @click="zoomToExtent">
+            <v-list-item-title>Zoom to layer extent</v-list-item-title>
+            <template #append><v-icon icon="fas fa-expand" /></template>
+          </v-list-item>
           <v-list-item @click="openSettingsDialog">
             <v-list-item-title>Settings</v-list-item-title>
             <template #append><v-icon icon="fas fa-cog" /></template>

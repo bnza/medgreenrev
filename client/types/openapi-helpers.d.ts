@@ -4,6 +4,7 @@ import type {
   type ApiResourceKey,
   type ApiResourcePath,
 } from '~/utils/consts/resources'
+import type { ExtentResponse } from '~~/types/map'
 
 export type ApiSpec = {
   paths
@@ -46,6 +47,20 @@ export type GetFeatureCollectionPath = {
         ? 'application/geo+json' extends keyof C
           ? K
           : never
+        : never
+      : never
+    : never
+}[keyof paths]
+
+export type GetFeatureCollectionExtentPath = {
+  [K in keyof paths]: paths[K] extends { get: any }
+    ? paths[K]['get'] extends {
+        responses: {
+          200: { content: { 'application/ld+json': infer Response } }
+        }
+      }
+      ? Response extends ExtentResponse
+        ? K
         : never
       : never
     : never

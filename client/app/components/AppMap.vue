@@ -3,13 +3,16 @@ import { Map, Layers } from 'vue3-openlayers'
 import MapLayerVectorApiHistoryLocation from '~/components/map/layer/vector/api/MapLayerVectorApiHistoryLocation.vue'
 
 const mapStore = useMapStore()
-const { center, projection, zoom, rotation } = storeToRefs(mapStore)
+const { center, projection, zoom, rotation, extentArray } =
+  storeToRefs(mapStore)
 
 const viewRef = useTemplateRef<typeof Map.OlView>('viewRef')
 const mapRef = useTemplateRef<typeof Map.OlMap>('mapRef')
 
+const isUpdating = ref(false)
 const updateMapState = () => {
   if (viewRef.value && mapRef.value) {
+    isUpdating.value = true
     const olView = viewRef.value.view
     const olMap = mapRef.value.map
 
@@ -23,8 +26,21 @@ const updateMapState = () => {
       olView.getZoom(),
       olView.getRotation(),
     )
+    isUpdating.value = false
   }
 }
+
+watch(
+  () => extentArray.value,
+  (value, oldValue) => {
+    if (value === oldValue) {
+      return
+    }
+    if (!isUpdating.value && value) {
+      viewRef?.value?.view?.fit(value)
+    }
+  },
+)
 
 const onMoveEnd = () => {
   updateMapState()
