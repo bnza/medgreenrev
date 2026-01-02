@@ -10,7 +10,8 @@ const props = defineProps<{
 
 const mapVectorApiStore = useMapVectorApiStore(props.path)
 
-const { visible, isSettingsDialogOpen } = storeToRefs(mapVectorApiStore)
+const { visible, isSettingsDialogOpen, markerOptions } =
+  storeToRefs(mapVectorApiStore)
 
 const isMenuOpen = ref(false)
 
@@ -57,6 +58,7 @@ const zoomToExtent = async () => {
     <template #prepend="{}">
       <v-list-item-action start>
         <v-checkbox-btn v-model="visible" />
+        <map-list-item-marker-circle :options="markerOptions" />
       </v-list-item-action>
     </template>
     <v-list-item-title>{{ title }}</v-list-item-title>
