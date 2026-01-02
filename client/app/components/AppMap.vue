@@ -73,6 +73,7 @@ onMounted(() => {
       <map-layer-tile-base-map-esri />
       <map-layer-tile-base-map-osm />
       <map-layer-vector-api-history-location />
+      <map-layer-vector-api-site />
     </Layers.OlLayerGroup>
   </Map.OlMap>
 </template>

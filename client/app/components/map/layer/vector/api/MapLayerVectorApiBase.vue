@@ -8,6 +8,7 @@ import type { FeaturePathToItemPath } from '~/utils/consts/resources'
 
 const props = defineProps<{
   path: P
+  idPrefix: string
   labelOptions: TextLabelOptions
 }>()
 
@@ -55,6 +56,7 @@ const selectedFeature: Ref<Feature<Geometry> | null> = ref(null)
         <map-interaction-select-layer-vector-api
           ref="interactionSelectRef"
           :path
+          :id-prefix
           @feature-selected="selectedFeature = $event"
         />
       </map-source-api-vector>

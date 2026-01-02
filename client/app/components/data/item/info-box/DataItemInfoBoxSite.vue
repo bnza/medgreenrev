@@ -8,10 +8,6 @@ withDefaults(
     readLink: true,
   },
 )
-
-const getCulturalContextVocabulary = useVocabularyStore(
-  '/api/vocabulary/cultural_contexts',
-)
 </script>
 
 <template>
@@ -26,17 +22,7 @@ const getCulturalContextVocabulary = useVocabularyStore(
       <slot v-bind="{ props }" />
     </template>
     <template #default="{ item }">
-      <v-container v-if="item">
-        <data-item-info-box-row label="name" :text="item.name" />
-        <data-item-info-box-row label="description" :text="item.description" />
-        <data-item-info-box-row
-          label="cultural contexts"
-          :text="
-            getCulturalContextVocabulary.getValuesText(item.culturalContexts)
-              .value
-          "
-        />
-      </v-container>
+      <data-item-info-box-content-site :item />
     </template>
   </data-item-info-box>
 </template>

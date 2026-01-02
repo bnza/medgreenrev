@@ -11,13 +11,14 @@ const { fill, stroke, offsetX, offsetY, textBaseline, textAlign, overflow } =
 
 const props = defineProps<{
   path: GetFeatureCollectionPath
+  idPrefix: string
 }>()
 
 const interactionSelectRef = useTemplateRef<
   typeof Interactions.OlInteractionSelect
 >('interactionSelectRef')
 
-const text = ref<string>('Pippo')
+const text = ref<string>('')
 
 const { labelOptions } = useMapVectorApiStore(props.path)
 
@@ -30,12 +31,19 @@ const onSelect = (event: SelectEvent) => {
   text.value = selected?.get(labelOptions.labelProperty) ?? ''
   emit('featureSelected', selected)
 }
+
+const filterRegex = new RegExp(`^${props.idPrefix}.`)
+const filter = (feature: Feature<Geometry>) => {
+  const id = feature.getId()
+  return typeof id === 'string' && filterRegex.test(id)
+}
 </script>
 
 <template>
   <Interactions.OlInteractionSelect
     ref="interactionSelectRef"
     :condition="clickSelectCondition"
+    :filter
     @select="onSelect"
   >
     <Styles.OlStyle :z-index="Infinity">

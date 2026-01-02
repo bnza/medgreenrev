@@ -100,6 +100,7 @@ export type ApiResourcePath =
 // Keys are OpenAPI paths that return 200 with 'application/geo+json'
 export const API_FEATURES_RESOURCE_MAP = {
   '/api/features/history/locations': '/api/vocabulary/history/locations',
+  '/api/features/sites': '/api/data/sites',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP

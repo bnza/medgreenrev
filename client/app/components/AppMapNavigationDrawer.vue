@@ -25,6 +25,7 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
           title="Historical Locations"
           path="/api/features/history/locations"
         />
+        <map-list-item-vector-api title="Sites" path="/api/features/sites" />
       </v-list-group>
       <v-list-group value="Base Maps">
         <template #activator="{ props }">

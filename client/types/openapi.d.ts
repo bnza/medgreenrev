@@ -3386,6 +3386,66 @@ export interface paths {
     patch: operations['api_datasites_id_patch']
     trace?: never
   }
+  '/api/features/extent_matched/sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Site resource.
+     * @description Retrieves a Site resource.
+     */
+    get: operations['api_featuresextent_matchedsites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Site resource.
+     * @description Retrieves a Site resource.
+     */
+    get: operations['api_featuresnumber_matchedsites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection streamed from GeoServer.
+     */
+    get: operations['api_featuressites.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/site_cultural_contexts': {
     parameters: {
       query?: never
@@ -8331,6 +8391,8 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: string[]
+      n?: number
+      e?: number
     }
     'Site-site.create.jsonMergePatch': {
       code?: string
@@ -8340,7 +8402,14 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: string[]
+      n?: number
+      e?: number
     }
+    'Site-voc_history_location.json.read': Record<string, never>
+    'Site.WfsGetFeatureCollectionExtentMatched.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] &
+      Record<string, never>
+    'Site.WfsGetFeatureCollectionNumberMatched.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] &
+      Record<string, never>
     'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       code?: string
       name?: string
@@ -8382,6 +8451,8 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+      n?: number
+      e?: number
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       code?: string
@@ -8472,6 +8543,8 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.csv-site.acl.read'][]
+      n?: number
+      e?: number
     }
     'Site.csv-sus.acl.read': {
       readonly id?: number | string
@@ -8486,6 +8559,7 @@ export interface components {
       code?: string
       name?: string
     }
+    'Site.geojson-voc_history_location.json.read': Record<string, never>
     'Site.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
@@ -8531,6 +8605,8 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+      n?: number
+      e?: number
     }
     'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
@@ -8626,6 +8702,8 @@ export interface components {
       chronologyUpper?: number | null
       fieldDirector?: string | null
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
+      n?: number
+      e?: number
     }
     'Site.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -25583,6 +25661,145 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedsites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Site resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionExtentMatched.jsonld-site.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedsites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Site resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionNumberMatched.jsonld-site.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuressites.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        'culturalContexts.culturalContext'?: string
+        'culturalContexts.culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        fieldDirector?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[fieldDirector]'?: boolean
+        'exists[culturalContexts]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+        /**
+         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection, depending on the requested format return a geojson FeatureCollection or an array of IDs. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesIds']
         }
       }
     }
