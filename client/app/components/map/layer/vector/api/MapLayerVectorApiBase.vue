@@ -10,13 +10,23 @@ const props = defineProps<{
   path: P
   idPrefix: string
   labelOptions: TextLabelOptions
+  markerOptions?: Partial<StyleCircleOptions>
 }>()
 
-const { visible, opacity, labelOptions } = storeToRefs(
-  useMapVectorApiStore(props.path),
-)
+const mapVectorApiStore = useMapVectorApiStore(props.path)
+const {
+  visible,
+  opacity,
+  labelOptions: storedLabelOptions,
+  markerOptions: storedMarkerOptions,
+} = storeToRefs(mapVectorApiStore)
 
-labelOptions.value = { ...labelOptions.value, ...props.labelOptions }
+storedLabelOptions.value = {
+  ...storedLabelOptions.value,
+  ...props.labelOptions,
+}
+
+mapVectorApiStore.mergeMarkerOptions(props.markerOptions)
 
 type GetItemResponse = GetItemResponseMap[FeaturePathToItemPath<P>] | undefined
 
@@ -72,8 +82,9 @@ const selectedFeature: Ref<Feature<Geometry> | null> = ref(null)
       </map-overlay-selected-feature-data-card>
       <Styles.OlStyle>
         <slot name="style">
-          <Styles.OlStyleCircle :radius="4">
-            <Styles.OlStyleFill color="red" />
+          <Styles.OlStyleCircle :radius="storedMarkerOptions.radius">
+            <Styles.OlStyleFill v-bind="storedMarkerOptions.fill" />
+            <Styles.OlStyleStroke v-bind="storedMarkerOptions.stroke" />
           </Styles.OlStyleCircle>
         </slot>
       </Styles.OlStyle> </slot

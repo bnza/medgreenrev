@@ -7,6 +7,9 @@
       labelProperty: 'value',
       visible: true,
     }"
+    :marker-options="{
+      fill: { color: 'blue' },
+    }"
   >
     <template #popUpContent="{ item }">
       <data-item-info-box-content-history-location :item />

@@ -1,3 +1,4 @@
+<script setup lang="ts"></script>
 <template>
   <map-layer-vector-api-base
     path="/api/features/sites"
@@ -6,6 +7,10 @@
       placement: 'point',
       labelProperty: 'name',
       visible: true,
+    }"
+    :marker-options="{
+      radius: 5,
+      fill: { color: 'red' },
     }"
   >
     <template #popUpContent="{ item }">
