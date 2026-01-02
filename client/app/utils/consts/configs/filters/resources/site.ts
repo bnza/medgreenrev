@@ -53,6 +53,11 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
         Exists,
       },
     },
+    name: {
+      filters: {
+        SearchPartial,
+      },
+    },
   }
 
 const existsPropertiesStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =

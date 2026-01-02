@@ -8383,6 +8383,9 @@ export interface components {
       depthMax: string
       notes?: string | null
     }
+    'Site-feature_collection.json.read': {
+      readonly id?: number | string
+    }
     'Site-site.create': {
       code: string
       name: string
@@ -8405,11 +8408,42 @@ export interface components {
       n?: number
       e?: number
     }
-    'Site-voc_history_location.json.read': Record<string, never>
-    'Site.WfsGetFeatureCollectionExtentMatched.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] &
-      Record<string, never>
-    'Site.WfsGetFeatureCollectionNumberMatched.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] &
-      Record<string, never>
+    'Site.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'Site.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       code?: string
       name?: string
@@ -8559,7 +8593,9 @@ export interface components {
       code?: string
       name?: string
     }
-    'Site.geojson-voc_history_location.json.read': Record<string, never>
+    'Site.geojson-feature_collection.json.read': {
+      readonly id?: number | string
+    }
     'Site.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
@@ -9551,15 +9587,15 @@ export interface components {
       readonly id?: number
       value: string
     }
+    'VocHistoryLocation-feature_collection.json.read': {
+      readonly id?: number | string
+    }
     'VocHistoryLocation-voc_history_location.create': {
       value: string
       n?: number
       e?: number
     }
-    'VocHistoryLocation-voc_history_location.json.read': {
-      readonly id?: number | string
-    }
-    'VocHistoryLocation.WfsGetFeatureCollectionExtentMatched.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+    'VocHistoryLocation.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * @example [
        *       -574545.7563392848,
@@ -9589,7 +9625,7 @@ export interface components {
       typeName: string
       readonly id: string
     }
-    'VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+    'VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly numberMatched?: number
       readonly timeStamp?: string
       typeName?: string
@@ -9601,7 +9637,7 @@ export interface components {
     'VocHistoryLocation.csv-history_plant.acl.read': {
       value: string
     }
-    'VocHistoryLocation.geojson-voc_history_location.json.read': {
+    'VocHistoryLocation.geojson-feature_collection.json.read': {
       readonly id?: number | string
     }
     'VocHistoryLocation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -25680,7 +25716,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionExtentMatched.jsonld-site.acl.read']
+          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
         }
       }
       /** @description Not found */
@@ -25711,7 +25747,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionNumberMatched.jsonld-site.acl.read']
+          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
         }
       }
       /** @description Not found */
@@ -29193,7 +29229,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocHistoryLocation.WfsGetFeatureCollectionExtentMatched.jsonld']
+          'application/ld+json': components['schemas']['VocHistoryLocation.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
         }
       }
       /** @description Not found */
@@ -29297,7 +29333,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld']
+          'application/ld+json': components['schemas']['VocHistoryLocation.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
         }
       }
       /** @description Not found */
