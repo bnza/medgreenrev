@@ -5,7 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-vocabulary-botany-taxonomy
-    path="/api/data/vocabulary/botany/taxonomies"
-  />
+  <data-collection-page-vocabulary-botany-taxonomy />
 </template>

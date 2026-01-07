@@ -4,6 +4,7 @@ import type {
   CollectionAcl,
   PostCollectionPath,
 } from '~~/types'
+import { isSearchableGetCollectionPath } from '~/utils/consts/configs/filters'
 
 const props = defineProps<{
   acl: CollectionAcl
@@ -21,6 +22,7 @@ const postPath = computed<PostCollectionPath | ''>(() => {
 })
 defineSlots<{
   default(): any
+  create(): any
 }>()
 </script>
 
@@ -33,12 +35,17 @@ defineSlots<{
     >
       <v-list>
         <slot>
-          <data-toolbar-list-item-search :path />
-          <data-toolbar-list-item-download v-if="acl.canExport" :path />
-          <data-toolbar-list-item-create
-            v-if="acl.canCreate && postPath"
+          <data-toolbar-list-item-search
+            v-if="isSearchableGetCollectionPath(path)"
             :path
           />
+          <data-toolbar-list-item-download v-if="acl.canExport" :path />
+          <slot name="create">
+            <data-toolbar-list-item-create
+              v-if="acl.canCreate && postPath"
+              :path
+            />
+          </slot>
         </slot>
       </v-list>
     </v-menu>

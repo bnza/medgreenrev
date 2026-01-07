@@ -5,7 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-vocabulary-history-animal
-    path="/api/data/vocabulary/history/animals"
-  />
+  <data-collection-page-vocabulary-history-animal />
 </template>

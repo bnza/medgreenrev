@@ -5,7 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-vocabulary-zoo-taxonomy
-    path="/api/data/vocabulary/zoo/taxonomies"
-  />
+  <data-collection-page-vocabulary-zoo-taxonomy />
 </template>

@@ -19,6 +19,7 @@ defineSlots<{
   dialogs(): any
   'search-bar'(): any
   'collection-actions'(): any
+  'collection-create-action'(): any
 }>()
 
 const { labels } = useResourceConfig(props.path)
@@ -31,7 +32,12 @@ const title = computed(() => props.title || labels[1])
       <slot name="search-bar" />
       <data-toolbar-collection-filter-menu :path />
       <data-toolbar-collection-action-menu v-if="acl" :acl :path>
-        <slot name="collection-actions" />
+        <template #default>
+          <slot name="collection-actions" />
+        </template>
+        <template #create>
+          <slot name="collection-create-action" />
+        </template>
       </data-toolbar-collection-action-menu>
     </template>
     <template #default>

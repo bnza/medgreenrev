@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { CollectionAcl } from '~~/types'
+
 const path = '/api/data/vocabulary/zoo/taxonomies'
 
 const { appPath } = useResourceConfig(path)
@@ -8,10 +10,11 @@ const { deleteDialogState } = storeToRefs(
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/vocabulary/zoo/taxonomies/{id}'),
 )
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path>
+  <data-collection-table :path @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <v-btn-group>
         <navigation-resource-item-update

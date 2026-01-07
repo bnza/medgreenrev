@@ -154,3 +154,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/zoo/teeth/{parentId}/analyses':
     resourceFilterDefinitions.analysisZooToothParentSubject,
 } as const
+
+export const isSearchableGetCollectionPath = (
+  value: unknown,
+): value is SearchableGetCollectionPath =>
+  typeof value === 'string' && value in FILTERS_PATHS_MAP

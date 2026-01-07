@@ -5,7 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-vocabulary-history-location
-    path="/api/data/vocabulary/history/locations"
-  />
+  <data-collection-page-vocabulary-history-location />
 </template>

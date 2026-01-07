@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import type { GetCollectionPath } from '~~/types'
-import DataToolbarListItemCreate from '~/components/data/toolbar/DataToolbarListItemCreate.vue'
 
 const path: GetCollectionPath = '/api/data/vocabulary/history/locations'
 
-const { isAuthenticated } = useAppAuth()
-
-const acl = ref({ canExport: isAuthenticated, canCreate: false })
+const acl = ref({ canExport: false, canCreate: false })
 </script>
 <template>
   <data-collection-page :parent="false" :path :show-back-button="false" :acl>
-    <template v-if="acl.canCreate" #collection-actions>
+    <template v-if="acl.canCreate" #collection-create-action>
       <data-toolbar-list-item-create path="/api/vocabulary/history/locations" />
     </template>
-    <data-collection-table-vocabulary-history-location />
+    <data-collection-table-vocabulary-history-location v-model:acl="acl" />
   </data-collection-page>
 </template>
