@@ -14,6 +14,11 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
   <data-collection-table :path @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <v-btn-group>
+        <navigation-map-location-coordinate
+          :x="item.e"
+          :y="item.n"
+          icon-size="x-small"
+        />
         <navigation-resource-item-read
           :id="item.id"
           app-path="/data/history/locations"

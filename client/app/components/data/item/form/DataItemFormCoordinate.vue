@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { transform } from 'ol/proj'
-
 const props = withDefaults(
   defineProps<{
     x: number | undefined
@@ -8,6 +6,7 @@ const props = withDefaults(
     sourceSrs?: string
     destinationSrs?: string
     zoom?: number
+    iconSize?: string | number
     labelX?: string
     labelY?: string
     hintTemplate?: string
@@ -19,29 +18,11 @@ const props = withDefaults(
     labelX: 'coordinate E',
     labelY: 'coordinate N',
     hintTemplate: 'Decimal Degrees WGS84',
+    iconSize: 'default',
   },
 )
 
-const { state: mode } = storeToRefs(useAppUiModeStore())
-const { updateView } = useMapStore()
-
-const coordinates = computed(() => [props.x, props.y])
-
 const hint = computed(() => `${props.hintTemplate} (${props.sourceSrs})`)
-
-const isValidCoordinate = computed(() => isValid2DCoordinate(coordinates.value))
-
-const goToLocation = () => {
-  mode.value = 'map'
-  if (!isValid2DCoordinate(coordinates.value)) {
-    console.warn('Invalid coordinate provided:', coordinates.value)
-    return
-  }
-  updateView(
-    transform(coordinates.value, props.sourceSrs, props.destinationSrs),
-    props.zoom,
-  )
-}
 </script>
 
 <template>
@@ -55,18 +36,7 @@ const goToLocation = () => {
         persistent-hint
       >
         <template #prepend>
-          <v-btn
-            class="mr-4"
-            density="compact"
-            :icon="true"
-            :disabled="!isValidCoordinate"
-            @click="goToLocation()"
-          >
-            <v-icon icon="fas fa-location" color="primary" />
-            <v-tooltip activator="parent" location="bottom"
-              >go to location</v-tooltip
-            >
-          </v-btn>
+          <navigation-map-location-coordinate v-bind="props" />
         </template>
       </v-text-field>
     </v-col>

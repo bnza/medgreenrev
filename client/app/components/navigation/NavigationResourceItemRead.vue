@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { VTooltip } from 'vuetify/components'
-
 const props = withDefaults(
   defineProps<{
     appPath: string
@@ -37,11 +35,7 @@ const viewItem = () => {
     @click="viewItem"
   >
     <v-icon color="primary" icon="fas fa-arrow-right" size="xsmall" />
-    <v-tooltip
-      ref="tooltip"
-      v-model="showTooltip"
-      activator="parent"
-      location="bottom"
+    <v-tooltip v-model="showTooltip" activator="parent" location="bottom"
       >View item</v-tooltip
     >
   </v-btn>
