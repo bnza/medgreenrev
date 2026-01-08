@@ -44,23 +44,25 @@ const { r$ } = useScopedRegle(model, {
         />
       </v-col>
     </v-row>
-    <v-container>
-      <v-row>
-        <v-col cols="6" xs="12" class="px-2">
-          <v-text-field
-            v-model.number="r$.$value.n"
-            label="N"
-            :error-messages="r$.$errors?.n"
-          />
-        </v-col>
-        <v-col cols="6" xs="12" class="px-2">
-          <v-text-field
-            v-model.number="r$.$value.e"
-            label="E"
-            :error-messages="r$.$errors?.e"
-          />
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row>
+      <v-col cols="6" xs="12" class="px-2">
+        <v-text-field
+          v-model.number="r$.$value.n"
+          label="coordinate N"
+          :error-messages="r$.$errors?.n"
+          hint="Decimal Degrees WGS84 (EPSG:4326)"
+          persistent-hint
+        />
+      </v-col>
+      <v-col cols="6" xs="12" class="px-2">
+        <v-text-field
+          v-model.number="r$.$value.e"
+          label="coordinate E"
+          :error-messages="r$.$errors?.e"
+          hint="Decimal Degrees WGS84 (EPSG:4326)"
+          persistent-hint
+        />
+      </v-col>
+    </v-row>
   </v-container>
 </template>

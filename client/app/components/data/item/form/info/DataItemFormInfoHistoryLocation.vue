@@ -19,13 +19,6 @@ withDefaults(
         <v-text-field :model-value="item.value" label="name" />
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="3" xs="12" class="px-2">
-        <v-text-field :model-value="item.n" label="N" />
-      </v-col>
-      <v-col cols="3" xs="12" class="px-2">
-        <v-text-field :model-value="item.e" label="E" />
-      </v-col>
-    </v-row>
+    <data-item-form-coordinate :x="item.e" :y="item.n" />
   </data-item-form-read>
 </template>

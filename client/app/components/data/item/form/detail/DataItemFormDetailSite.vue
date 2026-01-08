@@ -18,6 +18,17 @@ const culturalContexts = computed(
 <template>
   <v-expansion-panels v-model="panels" multiple color="grey-darken-3" flat>
     <v-expansion-panel
+      title="location"
+      value="location"
+      data-testid="location-panel"
+    >
+      <template #text>
+        <v-container class="pa-0" fluid>
+          <data-item-form-coordinate :x="item.e" :y="item.n" />
+        </v-container>
+      </template>
+    </v-expansion-panel>
+    <v-expansion-panel
       title="chronology"
       value="chronology"
       data-testid="chronology-panel"

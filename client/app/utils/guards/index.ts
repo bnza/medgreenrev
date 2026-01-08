@@ -11,6 +11,7 @@ import {
   type ApiResourcePath,
 } from '~/utils/consts/resources'
 import { isAppPathItemPage } from '~/utils'
+import type { Coordinate } from 'ol/coordinate'
 
 export const isApiResourceKey = (value: unknown): value is ApiResourceKey =>
   typeof value === 'string' && Object.keys(API_RESOURCE_MAP).includes(value)
@@ -107,3 +108,8 @@ export function isFetchError(
     'status' in error
   )
 }
+
+export const isValid2DCoordinate = (value: unknown): value is Coordinate =>
+  Array.isArray(value) &&
+  typeof value[0] === 'number' &&
+  typeof value[1] === 'number'
