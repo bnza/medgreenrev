@@ -4,6 +4,7 @@ import type {
   OperationPathParams,
   paths,
   PostCollectionPath,
+  GetExportCsvCollectionPath,
 } from '~~/types'
 import {
   API_RESOURCE_MAP,
@@ -102,6 +103,16 @@ export const useOpenApiStore = defineStore('openapi', () => {
   const isPostOperationPath = (path: unknown): path is PostCollectionPath =>
     isString(path) && specInternal.value?.paths?.[path]?.post !== undefined
 
+  const isGetExportCsvCollectionPath = (
+    path: unknown,
+  ): path is GetExportCsvCollectionPath => {
+    if (!isString(path)) return false
+    const response200 =
+      specInternal.value?.paths?.[path]?.get?.responses?.['200']
+    if (!response200 || '$ref' in response200) return false
+    return response200.content?.['text/csv'] !== undefined
+  }
+
   const isValidOperationPath = (
     path: unknown,
   ): path is keyof OpenAPIV3_1.Document['paths'] => {
@@ -180,6 +191,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
   return {
     getRelatedItemPaths,
     isPostOperationPath,
+    isGetExportCsvCollectionPath,
     isValidOperationPathMethod,
     isValidOperationPath,
     isValidOperationPathParams,

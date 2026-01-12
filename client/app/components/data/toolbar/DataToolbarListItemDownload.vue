@@ -1,5 +1,5 @@
-<script setup lang="ts" generic="Path extends GetCollectionPath">
-import type { GetCollectionPath } from '~~/types'
+<script setup lang="ts" generic="Path extends GetExportCsvCollectionPath">
+import type { GetExportCsvCollectionPath } from '~~/types'
 
 const props = defineProps<{
   path: Path

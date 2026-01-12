@@ -38,6 +38,16 @@ export type GetCollectionPath = {
     : never
 }[keyof paths]
 
+export type GetExportCsvCollectionPath = {
+  [K in GetCollectionPath]: paths[K]['get'] extends {
+    responses: {
+      200: { content: { 'text/csv': any } }
+    }
+  }
+    ? K
+    : never
+}[GetCollectionPath]
+
 // Paths whose GET 200 responses include 'application/geo+json' content type
 // Simplified: only check for the presence of the media type key in the content map
 export type GetFeatureCollectionPath = {
