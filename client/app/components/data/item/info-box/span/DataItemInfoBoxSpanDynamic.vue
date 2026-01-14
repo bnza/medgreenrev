@@ -75,6 +75,20 @@ const text = computed(() => item.value?.code ?? item.value?.['@id'])
 </script>
 
 <template>
-  <component :is="infoBoxComponent" v-if="infoBoxComponent" :iri :text />
+  <v-progress-circular
+    v-if="status === 'pending'"
+    indeterminate
+    size="14"
+    width="1.5"
+    class="ml-2"
+  />
+  <v-icon
+    v-else-if="status === 'error'"
+    icon="fa-solid fa-circle-exclamation"
+    color="error"
+    size="x-small"
+    class="ml-1"
+  />
+  <component :is="infoBoxComponent" v-else-if="infoBoxComponent" :iri :text />
   <span v-else>Unsupported resource key: {{ props.resourceKey }}</span>
 </template>
