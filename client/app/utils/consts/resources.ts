@@ -29,6 +29,7 @@ export const API_RESOURCE_MAP = {
   analysisSampleMicrostratigraphy:
     '/api/data/analyses/samples/microstratigraphy',
   analysisSiteAnthropology: '/api/data/analyses/sites/anthropology',
+  analysisSubject: '/api/data/analysis_subjects',
   analysisZooBone: '/api/data/analyses/zoo/bones',
   analysisZooTooth: '/api/data/analyses/zoo/teeth',
   botanyCharcoal: '/api/data/botany/charcoals',

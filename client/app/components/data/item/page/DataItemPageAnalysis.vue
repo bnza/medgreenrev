@@ -12,6 +12,7 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <lazy-data-item-form-info-analysis :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="media">media</v-tab>
+        <v-tab value="subjects">subjects</v-tab>
         <v-tab
           v-if="item?.type?.group === 'absolute dating'"
           value="absolute-dating"
@@ -19,6 +20,15 @@ const { tab } = storeToRefs(useResourceUiStore(path))
         >
       </v-tabs>
       <v-tabs-window v-model="tab">
+        <v-tabs-window-item value="subjects" data-testid="tab-subjects">
+          <data-collection-page-analysis-subject
+            path="/api/data/analyses/{parentId}/subjects"
+            :parent="{
+              key: 'analysis',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
         <v-tabs-window-item
           value="absolute-dating"
           data-testid="tab-absolute-dating"

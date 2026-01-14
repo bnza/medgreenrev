@@ -1366,6 +1366,66 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/{parentId}/subjects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSubject resources.
+     * @description Retrieves the collection of AnalysisSubject resources.
+     */
+    get: operations['api_dataanalyses_parentIdsubjects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analysis_subjects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSubject resources.
+     * @description Retrieves the collection of AnalysisSubject resources.
+     */
+    get: operations['api_dataanalysis_subjects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analysis_subjects/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSubject resource.
+     * @description Retrieves a AnalysisSubject resource.
+     */
+    get: operations['api_dataanalysis_subjects_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/zoo/bones': {
     parameters: {
       query?: never
@@ -6759,6 +6819,17 @@ export interface components {
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     }
+    'AnalysisSubject.jsonld-analysis_subject.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string | null
+      subjectId?: number | string
+      joinResourceName?: string
+      resourceName?: string
+    }
     'AnalysisZooBone-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -7903,6 +7974,7 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+      readonly code?: string
     }
     'Pottery.csv-pottery.acl.read': {
       readonly id?: number | string
@@ -7940,6 +8012,7 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+      readonly code?: string
     }
     'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -7977,6 +8050,7 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+      readonly code?: string
     }
     'Pottery.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -8014,6 +8088,7 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+      readonly code?: string
     }
     'PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /**
@@ -16888,6 +16963,107 @@ export interface operations {
             member: components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
           }
           'text/csv': components['schemas']['AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdsubjects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'order[analysis.laboratory]'?: 'asc' | 'desc'
+        'order[analysis.responsible]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.year]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description AnalysisSubject identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSubject collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSubject.jsonld-analysis_subject.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysis_subjects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'order[analysis.laboratory]'?: 'asc' | 'desc'
+        'order[analysis.responsible]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.year]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSubject collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSubject.jsonld-analysis_subject.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysis_subjects_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSubject identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSubject resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSubject.jsonld-analysis_subject.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

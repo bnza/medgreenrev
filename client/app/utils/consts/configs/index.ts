@@ -4,8 +4,9 @@ import analysisContextBotany from './data/analysisContextBotany'
 import analysisContextZoo from './data/analysisContextZoo'
 import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
 import analysisSiteAnthropology from './data/analysisSiteAnthropology'
-import analysisPottery from './data/analysisPottery'
 import analysisIndividual from './data/analysisIndividual'
+import analysisPottery from './data/analysisPottery'
+import analysisSubject from './data/analysisSubject'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
 import analysisBotanySeed from './data/analysisBotanySeed'
@@ -68,7 +69,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses/sites/anthropology': analysisSiteAnthropology,
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,
-
+  '/api/data/analyses/{parentId}/subjects': analysisSubject,
   '/api/data/botany/charcoals': botanyCharcoal,
   '/api/data/botany/charcoals/{parentId}/analyses': analysisBotanyCharcoal,
   '/api/data/botany/seeds': botanySeed,
