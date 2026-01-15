@@ -13,7 +13,10 @@ export const isAppPathItemPage = (path: string): boolean => {
   // Digits pattern
   const digitsPattern = /\d+$/
 
-  return digitsPattern.test(path) || uuidPattern.test(path)
+  return (
+    path.startsWith('/api/') &&
+    (digitsPattern.test(path) || uuidPattern.test(path))
+  )
 }
 
 export const extractIdFromIri = (iri: Iri) => {

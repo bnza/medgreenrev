@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { createRule, type Maybe, useScopedRegle } from '@regle/core'
+import { useScopedRegle } from '@regle/core'
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
-import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 import { integer, maxValue, minValue, required } from '@regle/rules'
 
 type Path = '/api/data/potteries/{id}'
@@ -12,31 +11,44 @@ const props = defineProps<{
 
 const model = ref(structuredClone(props.initialValue))
 
+const stratigraphicUnitChanged = computed(
+  () => props.initialValue.stratigraphicUnit !== model.value.stratigraphicUnit,
+)
+
 const inventoryChanged = computed(
   () => props.initialValue.inventory !== model.value.inventory,
 )
 
-const apiInventoryValidator = new GetValidationOperation(
-  '/api/validator/unique/potteries/inventory',
+const uniqueSite = useApiUniqueValidator(
+  '/api/validator/unique/potteries',
+  ['stratigraphicUnit', 'inventory'],
+  'Duplicate [site, inventory] combination',
 )
 
-const uniqueInventory = createRule({
-  validator: async (value: Maybe<string>) =>
-    value ? await apiInventoryValidator.isValid({ inventory: value }) : true,
-  message: 'Inventory must be unique',
-})
+const uniqueInventory = useApiUniqueValidator(
+  '/api/validator/unique/potteries',
+  ['inventory', 'stratigraphicUnit'],
+  'Duplicate [site, inventory] combination',
+)
 
 const { r$ } = useScopedRegle(
   model,
   computed(() => ({
     stratigraphicUnit: {
       required,
+      ...(stratigraphicUnitChanged.value
+        ? {
+            uniqueSite: uniqueSite(() => model.value.inventory),
+          }
+        : {}),
     },
     inventory: {
       required,
       ...(inventoryChanged.value
         ? {
-            unique: uniqueInventory,
+            uniqueInventory: uniqueInventory(
+              () => model.value.stratigraphicUnit,
+            ),
           }
         : {}),
     },

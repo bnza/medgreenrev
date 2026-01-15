@@ -4,9 +4,8 @@ import type {
   PostCollectionPath,
   ResourceParent,
 } from '~~/types'
-import { createRule, type Maybe, useScopedRegle } from '@regle/core'
+import { useScopedRegle } from '@regle/core'
 import { integer, maxValue, minValue, required } from '@regle/rules'
-import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/potteries'
 
@@ -16,23 +15,26 @@ const props = defineProps<{
 
 const model = generateEmptyPostModel(path, props.parent)
 
-const apiInventoryValidator = new GetValidationOperation(
-  '/api/validator/unique/potteries/inventory',
+const uniqueSite = useApiUniqueValidator(
+  '/api/validator/unique/potteries',
+  ['stratigraphicUnit', 'inventory'],
+  'Duplicate [site, inventory] combination',
 )
 
-const uniqueInventory = createRule({
-  validator: async (value: Maybe<string>) =>
-    value ? await apiInventoryValidator.isValid({ inventory: value }) : true,
-  message: 'Inventory must be unique',
-})
+const uniqueInventory = useApiUniqueValidator(
+  '/api/validator/unique/potteries',
+  ['inventory', 'stratigraphicUnit'],
+  'Duplicate [site, inventory] combination',
+)
 
 const { r$ } = useScopedRegle(model, {
   stratigraphicUnit: {
     required,
+    uniqueSite: uniqueSite(() => model.value.inventory),
   },
   inventory: {
     required,
-    unique: uniqueInventory,
+    uniqueSite: uniqueInventory(() => model.value.stratigraphicUnit),
   },
   functionalGroup: {
     required,

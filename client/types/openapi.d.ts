@@ -4198,7 +4198,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/potteries/inventory': {
+  '/api/validator/unique/potteries': {
     parameters: {
       query?: never
       header?: never
@@ -4209,7 +4209,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniquepotteriesinventory_get']
+    get: operations['api_validatoruniquepotteries_get']
     put?: never
     post?: never
     delete?: never
@@ -7941,7 +7941,7 @@ export interface components {
     'Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
-      inventory?: string
+      inventory: string
       decorations?: components['schemas']['PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
       /**
        * Format: iri-reference
@@ -7979,7 +7979,7 @@ export interface components {
     'Pottery.csv-pottery.acl.read': {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-pottery.acl.read']
-      inventory?: string
+      inventory: string
       decorations?: components['schemas']['PotteryDecoration.csv-pottery.acl.read'][]
       /**
        * Format: iri-reference
@@ -8017,7 +8017,7 @@ export interface components {
     'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
-      inventory?: string
+      inventory: string
       decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
       /**
        * Format: iri-reference
@@ -8055,7 +8055,7 @@ export interface components {
     'Pottery.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
-      inventory?: string
+      inventory: string
       decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
       /**
        * Format: iri-reference
@@ -27734,7 +27734,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniquepotteriesinventory_get: {
+  api_validatoruniquepotteries_get: {
     parameters: {
       query?: never
       header?: never

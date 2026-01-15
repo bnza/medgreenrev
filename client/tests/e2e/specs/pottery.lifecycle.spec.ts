@@ -178,8 +178,9 @@ test.describe('Pottery lifecycle', () => {
       // Test 1: Required field validation - stratigraphic unit field
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
-        .click()
-      await page.getByRole('option', { name: /SC/ }).first().click()
+        .fill('ME')
+
+      await page.getByRole('option', { name: /ME/ }).first().click()
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
@@ -195,8 +196,8 @@ test.describe('Pottery lifecycle', () => {
       // Fix the validation error
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
-        .click()
-      await page.getByRole('option', { name: /SC/ }).first().click()
+        .fill('ME')
+      await page.getByRole('option', { name: /ME/ }).first().click()
 
       // Test 2: Required field validation - inventory field
       const inventoryField = collectionPom.dataDialogCreate.form.getByRole(
@@ -267,7 +268,7 @@ test.describe('Pottery lifecycle', () => {
       await page.waitForTimeout(1000) // Wait for async validation
       await expect(
         page.locator('.v-input:has(label:text("inventory"))'),
-      ).toContainText(/inventory must be unique/i)
+      ).toContainText(/Duplicate/i)
 
       // Test 8: Unique inventory with special char validation - try to create with existing inventory
       await inventoryField.fill('') // Clearing input
@@ -280,7 +281,7 @@ test.describe('Pottery lifecycle', () => {
       await page.waitForTimeout(1000) // Wait for async validation
       await expect(
         page.locator('.v-input:has(label:text("inventory"))'),
-      ).toContainText(/inventory must be unique/i)
+      ).toContainText(/Duplicate/i)
 
       // Test 9: Valid form submission after fixing validation errors
       await inventoryField.fill('POT-VALID-001')
