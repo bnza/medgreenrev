@@ -263,7 +263,7 @@ test.describe('Pottery lifecycle', () => {
       )
 
       // Test 7: Unique inventory validation - try to create with existing inventory
-      await inventoryField.fill('ME050.2023') // Assuming this exists in fixtures
+      await inventoryField.fill('50.2023') // Assuming this exists in fixtures
       await page.keyboard.press('Tab')
       await page.waitForTimeout(1000) // Wait for async validation
       await expect(
@@ -276,7 +276,7 @@ test.describe('Pottery lifecycle', () => {
       await expect(
         page.locator('.v-input:has(label:text("inventory"))'),
       ).toContainText(/required/i)
-      await inventoryField.fill('ME002/2023') // Assuming this exists in fixtures
+      await inventoryField.fill('2/2023') // Assuming this exists in fixtures
       await page.keyboard.press('Tab')
       await page.waitForTimeout(1000) // Wait for async validation
       await expect(
