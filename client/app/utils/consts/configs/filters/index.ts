@@ -45,6 +45,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/sites/{parentId}/contexts'
   | '/api/data/sites/{parentId}/samples'
   | '/api/data/stratigraphic_units'
+  | '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy'
   | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
   | '/api/data/stratigraphic_units/{parentId}/botany/seeds'
   | '/api/data/stratigraphic_units/{parentId}/contexts'
@@ -129,6 +130,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/sites/{parentId}/stratigraphic_units':
     resourceFilterDefinitions.stratigraphicUnit,
   '/api/data/stratigraphic_units': resourceFilterDefinitions.stratigraphicUnit,
+  '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy':
+    resourceFilterDefinitions.analysisSampleMicrostratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/botany/charcoals':
     resourceFilterDefinitions.botanyParentStratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/botany/seeds':

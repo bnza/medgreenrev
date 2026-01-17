@@ -275,7 +275,7 @@ const CREATION_RULES: {
   },
   '/api/data/individuals': (_model) => {
     const validator = new GetValidationOperation(
-      '/api/validator/unique/individuals/identifier',
+      '/api/validator/unique/individuals',
     )
     const uniqueIdentifier = createRule({
       validator: async (value: Maybe<string>) =>
@@ -361,7 +361,7 @@ const CREATION_RULES: {
   },
   '/api/data/potteries': (model) => {
     const validator = new GetValidationOperation(
-      '/api/validator/unique/individuals/identifier',
+      '/api/validator/unique/individuals',
     )
     const uniqueInventory = createRule({
       validator: async (value: Maybe<string>) =>

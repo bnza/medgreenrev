@@ -10,7 +10,10 @@ const path: ApiResourcePath | PostCollectionPath =
   '/api/data/analyses/samples/microstratigraphy'
 
 const props = defineProps<{
-  parent?: ResourceParent<'sample'> | ResourceParent<'analysis'>
+  parent?:
+    | ResourceParent<'sample'>
+    | ResourceParent<'analysis'>
+    | ResourceParent<'stratigraphicUnit'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -24,6 +27,14 @@ const rules = inferRules(
 )
 
 const { r$ } = useScopedRegle(model, rules)
+
+const sampleQueryParams = computed(() =>
+  props.parent?.key === 'stratigraphicUnit'
+    ? {
+        'sampleStratigraphicUnits.stratigraphicUnit': props.parent.item['@id'],
+      }
+    : {},
+)
 </script>
 
 <template>
@@ -37,6 +48,7 @@ const { r$ } = useScopedRegle(model, rules)
         granted-only
         :error-messages="r$.$errors?.subject"
         :disabled="parent?.key === 'sample'"
+        :query-params="sampleQueryParams"
       />
     </v-col>
     <v-col cols="6" class="px-2">

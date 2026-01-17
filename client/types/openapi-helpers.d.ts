@@ -238,7 +238,9 @@ export type DeleteItemResponseMap = {
 
 export type ResourceParent<K extends ApiResourceKey> = {
   key: K
-  item: GetItemResponseMap[ApiResourceKeyToItemPath<K>]
+  item: Partial<GetItemResponseMap[ApiResourceKeyToItemPath<K>]> & {
+    '@id': string
+  }
 }
 
 export type HydraConstraintViolation =

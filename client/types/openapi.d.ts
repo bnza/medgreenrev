@@ -1274,6 +1274,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
+     * @description Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
+     */
+    get: operations['api_datastratigraphic_units_parentIdanalysessamplesmicrostratigraphy_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/sites/anthropology': {
     parameters: {
       query?: never
@@ -6147,6 +6167,21 @@ export interface components {
       createdBy?: components['schemas']['User.csv-analysis.acl.read'] | null
       readonly code: string
     }
+    'Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+        | null
+      readonly code: string
+    }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       readonly id: number | string
       identifier: string
@@ -6318,6 +6353,21 @@ export interface components {
       laboratory?: string | null
       summary?: string | null
       createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
+      readonly code: string
+    }
+    'Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+        | null
       readonly code: string
     }
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -6779,10 +6829,22 @@ export interface components {
     'AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
+    'AnalysisSampleMicrostratigraphy.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      summary?: string | null
+    }
     'AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      summary?: string | null
+    }
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis?: components['schemas']['Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     }
     'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -7840,15 +7902,15 @@ export interface components {
     }
     'MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
       readonly id?: number | string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-microstratigraphic_unit.acl.read']
-      identifier?: string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-microstratigraphic_unit.acl.read']
+      identifier: string
       notes?: string | null
       readonly code?: string
     }
     'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
-      identifier?: string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+      identifier: string
       notes?: string | null
       readonly code?: string
     }
@@ -8154,6 +8216,16 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
+    'Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      site?: components['schemas']['Site.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      type?: components['schemas']['VocSampleType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
@@ -8210,6 +8282,16 @@ export interface components {
       year: number
       number?: number
       sampleStratigraphicUnits?: string[]
+      description?: string | null
+      readonly code?: string
+    }
+    'Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
       description?: string | null
       readonly code?: string
     }
@@ -8523,6 +8605,11 @@ export interface components {
       typeName?: string
       readonly id?: unknown
     }
+    'Site.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       code?: string
       name?: string
@@ -8676,6 +8763,11 @@ export interface components {
       readonly id?: number | string
     }
     'Site.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    }
+    'Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     }
@@ -8982,7 +9074,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -8995,6 +9087,8 @@ export interface components {
     }
     'StratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
       site: components['schemas']['Site.csv-microstratigraphic_unit.acl.read']
+      /** @default 0 */
+      year: number
       readonly code: string
     }
     'StratigraphicUnit.csv-pottery.acl.read': {
@@ -9008,7 +9102,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9022,7 +9116,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9036,7 +9130,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9050,7 +9144,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9064,7 +9158,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9125,7 +9219,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9143,7 +9237,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9152,6 +9246,8 @@ export interface components {
     }
     'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
+      /** @default 0 */
+      year: number
       readonly code: string
     }
     'StratigraphicUnit.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -9165,7 +9261,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9179,7 +9275,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9193,7 +9289,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9207,7 +9303,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9224,7 +9320,7 @@ export interface components {
       building?: string | null
       /** @default 0 */
       year: number
-      number?: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -9305,6 +9401,11 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     }
+    'User.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
@@ -9361,6 +9462,11 @@ export interface components {
       readonly userIdentifier?: string
     }
     'User.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    }
+    'User.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
@@ -9478,6 +9584,11 @@ export interface components {
       group?: string
       value: string
     }
+    'VocAnalysisType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      code?: string
+      group?: string
+      value: string
+    }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       code?: string
       group?: string
@@ -9538,6 +9649,11 @@ export interface components {
       value: string
     }
     'VocAnalysisType.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value: string
+    }
+    'VocAnalysisType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
@@ -9803,6 +9919,10 @@ export interface components {
       readonly id?: number
       value: string
     }
+    'VocSampleType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      code?: string
+      value: string
+    }
     'VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
       value: string
@@ -9821,6 +9941,10 @@ export interface components {
     }
     'VocSampleType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
+      code?: string
+      value: string
+    }
+    'VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value: string
     }
@@ -16521,6 +16645,159 @@ export interface operations {
             member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
           'text/csv': components['schemas']['AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datastratigraphic_units_parentIdanalysessamplesmicrostratigraphy_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.identifier[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes'?: string
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.description'?: string
+        'exists[subject.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnits.notes]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path: {
+        /** @description AnalysisSampleMicrostratigraphy identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleMicrostratigraphy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSampleMicrostratigraphy.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
         }
       }
     }

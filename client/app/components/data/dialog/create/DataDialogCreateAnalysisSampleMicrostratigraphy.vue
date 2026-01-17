@@ -6,7 +6,10 @@ import type {
 } from '~~/types'
 
 defineProps<{
-  parent?: ResourceParent<'sample'> | ResourceParent<'analysis'>
+  parent?:
+    | ResourceParent<'sample'>
+    | ResourceParent<'analysis'>
+    | ResourceParent<'stratigraphicUnit'>
 }>()
 
 const path: PostCollectionPath =

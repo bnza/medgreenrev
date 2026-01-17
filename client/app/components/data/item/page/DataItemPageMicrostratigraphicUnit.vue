@@ -19,14 +19,10 @@ defineProps<{
       </v-tabs>
       <v-tabs-window v-if="!iri" v-model="tab">
         <v-tabs-window-item value="analyses" data-testid="tab-analyses">
-          <!--          <data-collection-page-analysis-pottery-->
-          <!--            path="/api/data/potteries/{parentId}/analyses"-->
-          <!--            :parent="{-->
-          <!--              key: 'pottery',-->
-          <!--              resourceItemPath: '/api/data/potteries/{id}',-->
-          <!--              item,-->
-          <!--            }"-->
-          <!--          />-->
+          <data-collection-page-analysis-sample-microstratigraphy
+            path="/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy"
+            :parent="{ key: 'stratigraphicUnit', item: item.stratigraphicUnit }"
+          />
         </v-tabs-window-item>
       </v-tabs-window>
     </template>
