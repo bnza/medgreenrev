@@ -129,21 +129,22 @@ test.describe('Individual lifecycle', () => {
 
       // Test 2: Unique validation - try to create with duplicate identifier
       await collectionPom.dataDialogCreate.form
+        .getByLabel('stratigraphic unit')
+        .fill('NI')
+      await page.getByRole('option', { name: /NI/ }).first().click()
+      await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
-        .fill('NI-408-001') // Assuming this exists in fixtures
+        .fill('408-001') // Assuming this exists in fixtures
       await page.keyboard.press('Tab')
       await expect(
         page.locator('.v-input:has(label:text("identifier"))'),
-      ).toContainText('Identifier must be unique')
+      ).toContainText(/Duplicate/)
 
       // Test 3: Valid form submission after fixing validation errors
       await collectionPom.dataDialogCreate.form
-        .getByLabel('stratigraphic unit')
-        .click()
-      await page.getByRole('option', { name: /SC/ }).first().click()
-      await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'identifier' })
         .fill('UNIQ-ID2')
+      await page.keyboard.press('Tab')
       await collectionPom.dataDialogCreate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',

@@ -4,9 +4,8 @@ import type {
   PostCollectionPath,
   ResourceParent,
 } from '~~/types'
-import { createRule, type Maybe, useScopedRegle } from '@regle/core'
+import { useScopedRegle } from '@regle/core'
 import { required } from '@regle/rules'
-import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/individuals'
 
@@ -16,23 +15,26 @@ const props = defineProps<{
 
 const model = generateEmptyPostModel(path, props.parent)
 
-const apiIdentifierValidator = new GetValidationOperation(
-  '/api/validator/unique/individuals/identifier',
+const uniqueSite = useApiUniqueValidator(
+  '/api/validator/unique/individuals',
+  ['stratigraphicUnit', 'identifier'],
+  'Duplicate [site, identifier] combination',
 )
 
-const uniqueIdentifier = createRule({
-  validator: async (value: Maybe<string>) =>
-    value ? await apiIdentifierValidator.isValid({ identifier: value }) : true,
-  message: 'Identifier must be unique',
-})
+const uniqueIdentifier = useApiUniqueValidator(
+  '/api/validator/unique/individuals',
+  ['identifier', 'stratigraphicUnit'],
+  'Duplicate [site, identifier] combination',
+)
 
 const { r$ } = useScopedRegle(model, {
   stratigraphicUnit: {
     required,
+    uniqueSite: uniqueSite(() => model.value.identifier),
   },
   identifier: {
     required,
-    unique: uniqueIdentifier,
+    uniqueIdentifier: uniqueIdentifier(() => model.value.stratigraphicUnit),
   },
 })
 </script>

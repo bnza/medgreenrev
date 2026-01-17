@@ -4098,7 +4098,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/individuals/identifier': {
+  '/api/validator/unique/individuals': {
     parameters: {
       query?: never
       header?: never
@@ -4109,7 +4109,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueindividualsidentifier_get']
+    get: operations['api_validatoruniqueindividuals_get']
     put?: never
     post?: never
     delete?: never
@@ -7575,6 +7575,7 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
+      readonly code: string
     }
     'Individual.csv-individual.acl.read': {
       readonly id?: number | string
@@ -7587,6 +7588,7 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
+      readonly code: string
     }
     'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -7599,6 +7601,7 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
+      readonly code: string
     }
     'Individual.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -7611,6 +7614,7 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
+      readonly code: string
     }
     'ListAnalysisLaboratory.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
@@ -27579,7 +27583,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueindividualsidentifier_get: {
+  api_validatoruniqueindividuals_get: {
     parameters: {
       query?: never
       header?: never
