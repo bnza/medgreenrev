@@ -4,6 +4,7 @@ import {
   API_FILTERS,
   generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
+import { taxonomyStaticFiltersDefinition as zooTaxonomyStaticFilterDefinition } from './zoo'
 import { taxonomyStaticFiltersDefinition as botanyTaxonomyStaticFilterDefinition } from './botany'
 
 const {
@@ -90,11 +91,19 @@ export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObj
   {
     ...historyLocation,
     ...generateResourceDefinition(historyEntityStaticFiltersDefinitionObject, [
+      'animals',
+      'animals',
+    ]),
+    ...generateResourceDefinition(zooTaxonomyStaticFilterDefinition, [
+      'animals.animal',
+      'animals',
+    ]),
+    ...generateResourceDefinition(historyEntityStaticFiltersDefinitionObject, [
       'plants',
       'plants',
     ]),
     ...generateResourceDefinition(botanyTaxonomyStaticFilterDefinition, [
       'plants.plant',
-      'plants.plant',
+      'plants',
     ]),
   }
