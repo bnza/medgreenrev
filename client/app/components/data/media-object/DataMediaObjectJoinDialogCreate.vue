@@ -39,9 +39,7 @@ const uniqueMediaObject = useApiUniqueValidator(
 
 const { r$ } = useRegle(model, {
   mediaObject: {
-    //@ts-expect-error something wrong with regle (Vue: Property [" TypeError"] is missing in type)
     required: withMessage(required, 'File is required'),
-    //@ts-expect-error something wrong with regle (Vue: Property [" TypeError"] is missing in type)
     uniqueMediaObject: uniqueMediaObject(() => model.value.item),
   },
 })
