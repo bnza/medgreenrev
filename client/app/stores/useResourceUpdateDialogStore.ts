@@ -1,7 +1,7 @@
-import type { DeleteItemPath, GetItemPath, OperationPathParams } from '~~/types'
+import type { PatchItemPath, GetItemPath, OperationPathParams } from '~~/types'
 
 export const useResourceUpdateDialogStore = <
-  P extends DeleteItemPath | GetItemPath,
+  P extends PatchItemPath | GetItemPath,
 >(
   path: P,
 ) =>

@@ -8,6 +8,8 @@ const { tab } = storeToRefs(useResourceUiStore(path, ['aspect', 'chronology']))
 defineProps<{
   iri?: Iri
 }>()
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -42,6 +44,10 @@ defineProps<{
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-pottery @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-pottery @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

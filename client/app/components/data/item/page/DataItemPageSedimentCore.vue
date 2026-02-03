@@ -9,6 +9,8 @@ const { tab } = storeToRefs(useResourceUiStore(path))
 defineProps<{
   iri?: Iri
 }>()
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -29,6 +31,10 @@ defineProps<{
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-sediment-core @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-sediment-core @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

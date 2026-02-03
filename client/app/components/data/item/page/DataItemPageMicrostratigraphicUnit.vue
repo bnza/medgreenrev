@@ -8,6 +8,8 @@ const { tab } = storeToRefs(useResourceUiStore(path))
 defineProps<{
   iri?: Iri
 }>()
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -25,6 +27,12 @@ defineProps<{
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-microstratigraphic-unit
+        @refresh="redirectToCollectionPath()"
+      />
+      <data-dialog-update-microstratigraphic-unit @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

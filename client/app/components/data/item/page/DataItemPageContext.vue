@@ -6,6 +6,8 @@ const path = '/api/data/contexts/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -49,6 +51,10 @@ const { tab } = storeToRefs(useResourceUiStore(path))
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-context @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-context @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

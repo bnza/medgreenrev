@@ -127,6 +127,63 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.table.expectRowToHaveText('PA.23.3', 'PA.23.3')
     })
 
+    test('Item page actions', async ({ page }) => {
+      const collectionPom = new StratigraphicUnitCollectionPage(page)
+      const itemPom = new StratigraphicUnitsItemPage(page)
+
+      // OPEN/CLOSE CREATE DIALOG
+      await collectionPom.open()
+      await collectionPom.table.expectData()
+      await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+      await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+
+      // Fill site field (using autocomplete)
+      await collectionPom.awaitForApiResponse('**/api/data/sites**', () =>
+        collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
+      )
+
+      await collectionPom.dataDialogCreate.form.getByLabel('site').click()
+      await page.getByRole('option', { name: /Pla/ }).first().click() // Select first available site
+
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'year' })
+        .fill('2023')
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'number' })
+        .fill('001')
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'interpretation' })
+        .fill('Test stratigraphic unit for archaeological analysis')
+
+      await collectionPom.dataDialogCreate.submitForm()
+      await collectionPom.expectAppMessageToHaveText(
+        'Resource successfully created',
+      )
+
+      // UPDATE
+      await itemPom.actionMenuButton.click()
+      await page.getByText('edit item').first().click()
+      await collectionPom.dataDialogUpdate.expectOldFormData()
+      await collectionPom.dataDialogUpdate.form
+        .getByRole('textbox', { name: 'interpretation' })
+        .fill('Updated stratigraphic unit interpretation with new findings')
+
+      await collectionPom.dataDialogUpdate.submitForm()
+      await collectionPom.expectAppMessageToHaveText(
+        'Resource successfully updated',
+      )
+
+      // DELETE
+      await itemPom.actionMenuButton.click()
+      await page.getByText('delete item').first().click()
+      await collectionPom.dataDialogDelete.submitForm()
+      await collectionPom.expectAppMessageToHaveText(
+        'Resource successfully deleted',
+      )
+      await collectionPom.table.expectNotToHaveRowContainingText('PA.23.1')
+    })
+
     test.describe('Sub tables', () => {
       test('Site', async ({ page }) => {
         const parentCollectionPom = new SiteCollectionPage(page)

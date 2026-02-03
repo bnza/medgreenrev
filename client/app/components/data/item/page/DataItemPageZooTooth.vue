@@ -8,6 +8,8 @@ const { tab } = storeToRefs(useResourceUiStore(path))
 defineProps<{
   iri?: Iri
 }>()
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -28,6 +30,10 @@ defineProps<{
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-zoo-tooth @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-zoo-tooth @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

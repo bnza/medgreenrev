@@ -5,7 +5,9 @@ import type { GetItemResponseMap } from '~~/types'
 const path = '/api/data/media_objects/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(useResourceUiStore('/api/data/media_objects/{id}'))
+const { tab } = storeToRefs(useResourceUiStore(path))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -23,6 +25,10 @@ const { tab } = storeToRefs(useResourceUiStore('/api/data/media_objects/{id}'))
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-media-object @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-media-object @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

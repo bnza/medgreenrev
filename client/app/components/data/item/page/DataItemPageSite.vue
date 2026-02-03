@@ -6,9 +6,9 @@ import { hasAcl } from '~/utils/acl'
 const path = '/api/data/sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(
-  useResourceUiStore('/api/data/sites/{id}', ['chronology']),
-)
+const { tab } = storeToRefs(useResourceUiStore(path, ['chronology']))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -85,6 +85,10 @@ const { tab } = storeToRefs(
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-site @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-site @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

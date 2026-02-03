@@ -7,6 +7,8 @@ const path = '/api/data/analyses/botany/seeds/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -50,6 +52,12 @@ const { tab } = storeToRefs(useResourceUiStore(path))
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-analysis-botany-seed
+        @refresh="redirectToCollectionPath()"
+      />
+      <data-dialog-update-analysis-botany-seed @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

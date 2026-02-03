@@ -4,6 +4,8 @@ import useResourceUiStore from '~/stores/useResourceUiStore'
 const path = '/api/data/history/plants/{id}' as const
 
 const { tab } = storeToRefs(useResourceUiStore(path))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -22,6 +24,10 @@ const { tab } = storeToRefs(useResourceUiStore(path))
       <!--          <p>Animals</p>-->
       <!--        </v-tabs-window-item>-->
       <!--      </v-tabs-window>-->
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-history-plant @refresh="redirectToCollectionPath()" />
+      <data-dialog-update-history-plant @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

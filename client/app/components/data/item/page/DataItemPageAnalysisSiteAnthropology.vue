@@ -5,9 +5,9 @@ import type { GetItemResponseMap } from '~~/types'
 const path = '/api/data/analyses/sites/anthropology/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(
-  useResourceUiStore('/api/data/analyses/sites/anthropology/{id}'),
-)
+const { tab } = storeToRefs(useResourceUiStore(path))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -33,6 +33,12 @@ const { tab } = storeToRefs(
           />
         </v-tabs-window-item>
       </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-analysis-site-anthropology
+        @refresh="redirectToCollectionPath()"
+      />
+      <data-dialog-update-analysis-site-anthropology @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

@@ -5,9 +5,9 @@ import type { GetItemResponseMap } from '~~/types'
 const path = '/api/data/analyses/samples/microstratigraphy/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(
-  useResourceUiStore('/api/data/analyses/samples/microstratigraphy/{id}'),
-)
+const { tab } = storeToRefs(useResourceUiStore(path))
+
+const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>
 
 <template>
@@ -34,7 +34,16 @@ const { tab } = storeToRefs(
             :parent-iri="item.analysis?.['@id']!"
             :can-update="false"
           />
-        </v-tabs-window-item> </v-tabs-window
-    ></template>
+        </v-tabs-window-item>
+      </v-tabs-window>
+    </template>
+    <template #dialogs="{ refetch }">
+      <data-dialog-delete-analysis-samples-microstratigraphy
+        @refresh="redirectToCollectionPath()"
+      />
+      <data-dialog-update-analysis-sample-microstratigraphy
+        @refresh="refetch()"
+      />
+    </template>
   </data-item-page>
 </template>

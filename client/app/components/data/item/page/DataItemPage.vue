@@ -20,20 +20,18 @@ const props = withDefaults(
   },
 )
 
-defineSlots<{
-  default(props: { item: GetItemResponseMap[Path] & ApiAclResource }): any
-  dialogs(): any
-  error(props: { error: Error | null }): any
-  'toolbar-append'(): any
-}>()
-
 const { routeId } = useAppRoute()
 const params = computed<OperationPathParams<Path, 'get'> | undefined>(() => {
   const id = props.iri ? extractIdFromIri(props.iri) : routeId
   return id ? ({ id } as OperationPathParams<Path, 'get'>) : undefined
 })
 
-const { data: item, status, error } = useGetItemQuery(props.path, params)
+const {
+  data: item,
+  status,
+  error,
+  refetch,
+} = useGetItemQuery(props.path, params)
 
 const identifier = computed(() => {
   if (
@@ -55,6 +53,13 @@ const isValidItem = (
 
 const { labels } = useResourceConfig(props.path)
 const title = computed(() => props.title || labels[0])
+
+defineSlots<{
+  default(props: { item: GetItemResponseMap[Path] & ApiAclResource }): any
+  dialogs(props: { refetch: typeof refetch }): any
+  error(props: { error: Error | null }): any
+  'toolbar-append'(): any
+}>()
 </script>
 
 <template>
@@ -66,7 +71,14 @@ const title = computed(() => props.title || labels[0])
     :show-back-button="showBackButton && !iri"
   >
     <template #toolbar-append>
-      <slot name="toolbar-append" />
+      <slot name="toolbar-append">
+        <data-toolbar-item-action-menu
+          v-if="isValidItem(item)"
+          :acl="item?._acl"
+          :path="props.path"
+          :item="item"
+        />
+      </slot>
     </template>
     <loading-component v-if="status === 'pending'" />
     <slot v-else-if="status === 'error'" name="error" v-bind="{ error }">
@@ -82,7 +94,7 @@ const title = computed(() => props.title || labels[0])
             <loading-component />
           </template>
         </Suspense>
-        <slot name="dialogs" />
+        <slot name="dialogs" v-bind="{ refetch }" />
       </template>
     </v-container>
     <resource-not-found

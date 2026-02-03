@@ -5854,8 +5854,21 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5867,15 +5880,22 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
-    'AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
+    })
     'AbsDatingAnalysisBotanySeed-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisBotanySeed-abs_dating_join.update.jsonMergePatch': Record<
       string,
@@ -5904,8 +5924,21 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5917,15 +5950,22 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
-    'AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
+    })
     'AbsDatingAnalysisIndividual-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisIndividual-abs_dating_join.update.jsonMergePatch': Record<
       string,
@@ -5954,8 +5994,21 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -5967,15 +6020,22 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
-    'AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
+    })
     'AbsDatingAnalysisPottery-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisPottery-abs_dating_join.update.jsonMergePatch': Record<
       string,
@@ -6004,8 +6064,21 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -6017,15 +6090,22 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
-    'AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
+    })
     'AbsDatingAnalysisZooBone-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch': Record<
       string,
@@ -6054,8 +6134,21 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -6067,15 +6160,22 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
-    'AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
+    })
     'AbsDatingAnalysisZooTooth-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisZooTooth-abs_dating_join.update.jsonMergePatch': Record<
       string,
@@ -6104,8 +6204,21 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -6117,15 +6230,22 @@ export interface components {
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
-    'AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    }
+    })
     'Analysis-analysis.create': {
       identifier: string
       /** @default 0 */
@@ -6166,6 +6286,12 @@ export interface components {
       summary?: string | null
       createdBy?: components['schemas']['User.csv-analysis.acl.read'] | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id: number | string
@@ -6181,6 +6307,12 @@ export interface components {
         | components['schemas']['User.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       readonly id: number | string
@@ -6196,6 +6328,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly id: number | string
@@ -6211,6 +6349,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       readonly id: number | string
@@ -6226,6 +6370,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       readonly id: number | string
@@ -6241,6 +6391,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       readonly id: number | string
@@ -6256,6 +6412,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       readonly id: number | string
@@ -6271,6 +6433,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id: number | string
@@ -6286,6 +6454,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       readonly id: number | string
@@ -6301,6 +6475,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly id: number | string
@@ -6316,6 +6496,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       readonly id: number | string
@@ -6331,6 +6517,12 @@ export interface components {
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
         | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Analysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       identifier: string
@@ -6342,7 +6534,14 @@ export interface components {
       laboratory?: string | null
       readonly code: string
     }
-    'Analysis.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'Analysis.jsonld-analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6354,8 +6553,15 @@ export interface components {
       summary?: string | null
       createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6369,8 +6575,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6384,8 +6597,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6399,8 +6619,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6414,8 +6641,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6429,8 +6663,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6444,8 +6685,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6459,8 +6707,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6474,8 +6729,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6489,8 +6751,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6504,8 +6773,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6519,8 +6795,15 @@ export interface components {
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
         | null
       readonly code: string
-    }
-    'Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       identifier: string
       /** @default 0 */
@@ -6534,7 +6817,7 @@ export interface components {
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
       readonly code: string
-    }
+    })
     'AnalysisBotanyCharcoal-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6565,8 +6848,21 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       absDatingAnalysis?:
@@ -6574,7 +6870,7 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisBotanySeed-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6605,8 +6901,21 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       absDatingAnalysis?:
@@ -6614,7 +6923,7 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisContextBotany-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6639,20 +6948,39 @@ export interface components {
       taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       taxonomy?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'AnalysisContextBotanyTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6667,13 +6995,20 @@ export interface components {
        */
       taxonomy?: string
     }
-    'AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       taxonomy?: string
-    }
+    })
     'AnalysisContextZoo-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6698,20 +7033,39 @@ export interface components {
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       taxonomy?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'AnalysisContextZooTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -6726,13 +7080,20 @@ export interface components {
        */
       taxonomy?: string
     }
-    'AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       taxonomy?: string
-    }
+    })
     'AnalysisIndividual-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6763,8 +7124,21 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       absDatingAnalysis?:
@@ -6772,7 +7146,7 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisPottery-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6803,8 +7177,21 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       absDatingAnalysis?:
@@ -6812,7 +7199,7 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisSampleMicrostratigraphy-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6834,25 +7221,51 @@ export interface components {
       subject?: components['schemas']['Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis?: components['schemas']['Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisSampleMicrostratigraphy.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
-    }
-    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisSiteAnthropology-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6874,13 +7287,26 @@ export interface components {
       subject?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisSubject.jsonld-analysis_subject.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       /**
@@ -6922,8 +7348,21 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       absDatingAnalysis?:
@@ -6931,7 +7370,7 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'AnalysisZooTooth-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -6962,8 +7401,21 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       absDatingAnalysis?:
@@ -6971,7 +7423,7 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
-    }
+    })
     'BotanyCharcoal-botany_charcoal.create': {
       /**
        * Format: iri-reference
@@ -7038,6 +7490,12 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'BotanyCharcoal.csv-botany_charcoal.acl.read': {
       readonly id?: number | string
@@ -7059,8 +7517,21 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       /**
@@ -7080,8 +7551,15 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
-    }
-    'BotanyCharcoal.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'BotanyCharcoal.jsonld-botany_charcoal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
       /**
@@ -7101,7 +7579,7 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
-    }
+    })
     'BotanySeed-botany_seed.create': {
       /**
        * Format: iri-reference
@@ -7168,6 +7646,12 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'BotanySeed.csv-botany_seed.acl.read': {
       readonly id?: number | string
@@ -7189,8 +7673,21 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       /**
@@ -7210,8 +7707,15 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
-    }
-    'BotanySeed.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'BotanySeed.jsonld-botany_seed.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
       /**
@@ -7231,16 +7735,22 @@ export interface components {
       part?: string | null
       notes?: string | null
       readonly code?: string
-    }
+    })
     /** @description Unprocessable entity */
     ConstraintViolation: {
       /** @default 422 */
       status: number
       violations?: {
         /** @description The property path of the violation */
-        propertyPath?: string
+        propertyPath: string
         /** @description The message associated with the violation */
-        message?: string
+        message: string
+        /** @description The code of the violation */
+        code?: string
+        /** @description An extra hint to understand the violation */
+        hint?: string
+        /** @description The serialized payload of the violation */
+        payload?: unknown[]
       }[]
       readonly detail?: string
       readonly type?: string
@@ -7253,9 +7763,15 @@ export interface components {
       status: number
       violations?: {
         /** @description The property path of the violation */
-        propertyPath?: string
+        propertyPath: string
         /** @description The message associated with the violation */
-        message?: string
+        message: string
+        /** @description The code of the violation */
+        code?: string
+        /** @description An extra hint to understand the violation */
+        hint?: string
+        /** @description The serialized payload of the violation */
+        payload?: unknown[]
       }[]
       readonly detail?: string
       readonly description?: string
@@ -7289,6 +7805,12 @@ export interface components {
       site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       readonly id?: number | string
@@ -7296,6 +7818,12 @@ export interface components {
       site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Context.csv-context.acl.read': {
       readonly id?: number | string
@@ -7303,12 +7831,24 @@ export interface components {
       site?: components['schemas']['Site.csv-context.acl.read']
       name?: string
       description?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Context.csv-context_stratigraphic_unit.acl.read': {
       readonly id?: number | string
       type?: string
       site?: components['schemas']['Site.csv-context_stratigraphic_unit.acl.read']
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Context.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
       readonly id?: number | string
@@ -7316,41 +7856,82 @@ export interface components {
       site?: components['schemas']['Site.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
-    }
-    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
-    }
-    'Context.jsonld-context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Context.jsonld-context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
       site?: components['schemas']['Site.jsonld-context.acl.read']
       name?: string
       description?: string | null
-    }
-    'Context.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Context.jsonld-context_stratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
-    }
-    'Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
       site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
-    }
+    })
     ContextStratigraphicUnit: {
       readonly id?: number | string
       /**
@@ -7368,28 +7949,67 @@ export interface components {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.csv-context_stratigraphic_unit.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'ContextStratigraphicUnit.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
       readonly id?: number | string
       context?: components['schemas']['Context.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'ContextStratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
-    }
-    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
-    }
-    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-    }
+    })
     /** @description A representation of common errors. */
     Error: {
       /** @description A short, human-readable summary of the problem. */
@@ -7468,8 +8088,21 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'HistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'HistoryAnimal.jsonld-history_animal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       animal?: components['schemas']['VocHistoryAnimal.jsonld-history_animal.acl.read']
       location?: components['schemas']['VocHistoryLocation.jsonld-history_animal.acl.read']
@@ -7482,7 +8115,7 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
-    }
+    })
     'HistoryPlant-history_plant.create': {
       /**
        * Format: iri-reference
@@ -7528,8 +8161,21 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'HistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'HistoryPlant.jsonld-history_plant.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       plant?: components['schemas']['VocHistoryPlant.jsonld-history_plant.acl.read']
       location?: components['schemas']['VocHistoryLocation.jsonld-history_plant.acl.read']
@@ -7542,7 +8188,7 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
-    }
+    })
     HydraCollectionBaseSchema: components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
       /**
        * @example {
@@ -7638,6 +8284,12 @@ export interface components {
       sex?: string | null
       notes?: string | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Individual.csv-individual.acl.read': {
       readonly id?: number | string
@@ -7651,8 +8303,21 @@ export interface components {
       sex?: string | null
       notes?: string | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       identifier?: string
@@ -7664,8 +8329,15 @@ export interface components {
       sex?: string | null
       notes?: string | null
       readonly code: string
-    }
-    'Individual.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Individual.jsonld-individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
       identifier?: string
@@ -7677,7 +8349,7 @@ export interface components {
       sex?: string | null
       notes?: string | null
       readonly code: string
-    }
+    })
     'ListAnalysisLaboratory.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
       readonly value?: string
@@ -7743,7 +8415,14 @@ export interface components {
       /** @default true */
       public: boolean
     }
-    'MediaObject.jsonld-media_object.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'MediaObject.jsonld-media_object.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       /**
        * Format: iri-reference
@@ -7767,8 +8446,15 @@ export interface components {
       public: boolean
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
-    }
-    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       /**
        * Format: iri-reference
@@ -7792,8 +8478,15 @@ export interface components {
       public: boolean
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
-    }
-    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       /**
        * Format: iri-reference
@@ -7817,7 +8510,7 @@ export interface components {
       public: boolean
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
-    }
+    })
     'MediaObjectAnalysis-media_object_join.create': {
       readonly id?: number | string
       /**
@@ -7832,12 +8525,19 @@ export interface components {
       mediaObject?: string
       description?: string | null
     }
-    'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'MediaObjectAnalysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       item?: components['schemas']['Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       description?: string | null
-    }
+    })
     'MediaObjectPottery-media_object_join.create': {
       readonly id?: number | string
       /**
@@ -7852,7 +8552,14 @@ export interface components {
       mediaObject?: string
       description?: string | null
     }
-    'MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'MediaObjectPottery.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       /**
        * Format: iri-reference
@@ -7861,7 +8568,7 @@ export interface components {
       item?: string
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       description?: string | null
-    }
+    })
     'MediaObjectStratigraphicUnit-media_object_join.create': {
       readonly id?: number | string
       /**
@@ -7876,12 +8583,19 @@ export interface components {
       mediaObject?: string
       description?: string | null
     }
-    'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'MediaObjectStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       item?: components['schemas']['StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       description?: string | null
-    }
+    })
     'MicrostratigraphicUnit-microstratigraphic_unit.create': {
       /**
        * Format: iri-reference
@@ -7906,14 +8620,27 @@ export interface components {
       identifier: string
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
       identifier: string
       notes?: string | null
       readonly code?: string
-    }
+    })
     'Point.jsonld': {
       x?: number | string
       y?: number | string
@@ -8041,6 +8768,12 @@ export interface components {
       functionalForm?: string
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Pottery.csv-pottery.acl.read': {
       readonly id?: number | string
@@ -8079,8 +8812,21 @@ export interface components {
       functionalForm?: string
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
@@ -8117,8 +8863,15 @@ export interface components {
       functionalForm?: string
       notes?: string | null
       readonly code?: string
-    }
-    'Pottery.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Pottery.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory: string
@@ -8155,13 +8908,19 @@ export interface components {
       functionalForm?: string
       notes?: string | null
       readonly code?: string
-    }
+    })
     'PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       decoration?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'PotteryDecoration.csv-pottery.acl.read': {
       /**
@@ -8169,6 +8928,12 @@ export interface components {
        * @example https://example.com/
        */
       decoration?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'PotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -8183,20 +8948,34 @@ export interface components {
        */
       decoration?: string
     }
-    'PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       decoration?: string
-    }
-    'PotteryDecoration.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'PotteryDecoration.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       decoration?: string
-    }
+    })
     Sample: {
       readonly id?: number | string
       /**
@@ -8225,6 +9004,12 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
@@ -8235,6 +9020,12 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Sample.csv-sample.acl.read': {
       readonly id?: number | string
@@ -8245,6 +9036,12 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Sample.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -8255,6 +9052,12 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Sample.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       readonly id?: number | string
@@ -8265,6 +9068,12 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Sample.jsonMergePatch': {
       readonly id?: number | string
@@ -8285,7 +9094,14 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
-    'Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site?: components['schemas']['Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
@@ -8294,8 +9110,15 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
-    }
-    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
@@ -8304,8 +9127,15 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
-    }
-    'Sample.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Sample.jsonld-sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site?: components['schemas']['Site.jsonld-sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample.acl.read']
@@ -8314,8 +9144,15 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
-    }
-    'Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
@@ -8324,8 +9161,15 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
-    }
-    'Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
@@ -8334,7 +9178,7 @@ export interface components {
       number?: number
       description?: string | null
       readonly code?: string
-    }
+    })
     SampleStratigraphicUnit: {
       readonly id?: number | string
       /**
@@ -8352,28 +9196,67 @@ export interface components {
       readonly id?: number | string
       sample?: components['schemas']['Sample.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SampleStratigraphicUnit.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       readonly id?: number | string
       sample?: components['schemas']['Sample.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SampleStratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
-    }
-    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
-    }
-    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-    }
+    })
     SedimentCore: {
       readonly id: number | string
       /**
@@ -8394,6 +9277,12 @@ export interface components {
       number: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id: number | string
@@ -8402,6 +9291,12 @@ export interface components {
       number: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCore.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       readonly id: number | string
@@ -8410,6 +9305,12 @@ export interface components {
       number: number
       description?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCore.jsonMergePatch': {
       readonly id?: number | string
@@ -8424,30 +9325,51 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore.jsonld-sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'SedimentCore.jsonld-sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       site: components['schemas']['Site.jsonld-sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
       readonly code?: string
-    }
-    'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       site: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       year: number
       number: number
       description?: string | null
       readonly code?: string
-    }
-    'SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       site: components['schemas']['Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
       readonly code?: string
-    }
+    })
     SedimentCoreDepth: {
       readonly id?: number | string
       /**
@@ -8477,6 +9399,12 @@ export interface components {
       depthMax: string
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCoreDepth.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       readonly id?: number | string
@@ -8486,6 +9414,12 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCoreDepth.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -8495,6 +9429,12 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCoreDepth.jsonMergePatch': {
       readonly id?: number | string
@@ -8515,7 +9455,14 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
@@ -8525,8 +9472,15 @@ export interface components {
       depthMax: string
       notes?: string | null
       readonly code?: string
-    }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       /** @example 8.5 */
@@ -8534,8 +9488,15 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
-    }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       /** @example 8.5 */
@@ -8543,7 +9504,7 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
-    }
+    })
     'Site-feature_collection.json.read': {
       readonly id?: number | string
     }
@@ -8609,35 +9570,83 @@ export interface components {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       readonly id?: number | string
@@ -8653,85 +9662,199 @@ export interface components {
       culturalContexts?: components['schemas']['SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
       n?: number
       e?: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-botany_charcoal.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-botany_seed.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-context.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-context_stratigraphic_unit.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-individual.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-microstratigraphic_unit.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-pottery.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sample.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sediment_core.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-site.acl.read': {
       readonly id?: number | string
@@ -8745,19 +9868,43 @@ export interface components {
       culturalContexts?: components['schemas']['SiteCulturalContext.csv-site.acl.read'][]
       n?: number
       e?: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-sus.acl.read': {
       readonly id?: number | string
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-zoo_bone.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.csv-zoo_tooth.acl.read': {
       code?: string
       name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'Site.geojson-feature_collection.json.read': {
       readonly id?: number | string
@@ -8766,41 +9913,104 @@ export interface components {
       code?: string
       name?: string
     }
-    'Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
@@ -8814,92 +10024,232 @@ export interface components {
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
       n?: number
       e?: number
-    }
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-botany_charcoal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-botany_seed.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-context_stratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-microstratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
@@ -8911,34 +10261,68 @@ export interface components {
       culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
       n?: number
       e?: number
-    }
-    'Site.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-site_user_privilege.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
       createdBy?:
         | components['schemas']['User.jsonld-site_user_privilege.acl.read']
         | null
-    }
-    'Site.jsonld-sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       code?: string
       name?: string
-    }
-    'Site.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-zoo_bone.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
-    'Site.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'Site.jsonld-zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       name?: string
-    }
+    })
     'SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       culturalContext?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SiteCulturalContext.csv-site.acl.read': {
       /**
@@ -8946,6 +10330,12 @@ export interface components {
        * @example https://example.com/
        */
       culturalContext?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SiteCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
@@ -8960,20 +10350,34 @@ export interface components {
        */
       culturalContext?: string
     }
-    'SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       culturalContext?: string
-    }
-    'SiteCulturalContext.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'SiteCulturalContext.jsonld-site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       culturalContext?: string
-    }
+    })
     'SiteUserPrivilege-site_user_privilege.create': {
       /**
        * Format: iri-reference
@@ -8992,14 +10396,21 @@ export interface components {
       /** @default 0 */
       privilege: number
     }
-    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string
       user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
       site?: components['schemas']['Site.jsonld-site_user_privilege.acl.read']
       /** @default 0 */
       privilege: number
-    }
+    })
     'StratigraphicUnit-su.create': {
       /**
        * Format: iri-reference
@@ -9035,30 +10446,72 @@ export interface components {
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-botany_charcoal.acl.read': {
       site: components['schemas']['Site.csv-botany_charcoal.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-botany_seed.acl.read': {
       site: components['schemas']['Site.csv-botany_seed.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.acl.read': {
       readonly id?: number | string
@@ -9066,6 +10519,12 @@ export interface components {
       building?: string | null
       interpretation?: string | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -9080,20 +10539,42 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-individual.acl.read': {
       site: components['schemas']['Site.csv-individual.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
       site: components['schemas']['Site.csv-microstratigraphic_unit.acl.read']
-      /** @default 0 */
-      year: number
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-pottery.acl.read': {
       site: components['schemas']['Site.csv-pottery.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -9108,6 +10589,12 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -9122,6 +10609,12 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -9136,6 +10629,12 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
@@ -9150,6 +10649,12 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-sus.acl.read': {
       readonly id?: number | string
@@ -9164,55 +10669,136 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-zoo_bone.acl.read': {
       site: components['schemas']['Site.csv-zoo_bone.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.csv-zoo_tooth.acl.read': {
       site: components['schemas']['Site.csv-zoo_tooth.acl.read']
       readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'StratigraphicUnit.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-abs_dating_analysis.read']
       readonly code: string
     }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-botany_charcoal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-botany_charcoal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-botany_seed.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-botany_seed.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-botany_seed.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       area?: string | null
       building?: string | null
       interpretation?: string | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
@@ -9225,12 +10811,26 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-individual.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       area?: string | null
@@ -9243,18 +10843,37 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
-      /** @default 0 */
-      year: number
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-pottery.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       area?: string | null
@@ -9267,8 +10886,15 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
@@ -9281,8 +10907,15 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       area?: string | null
@@ -9295,8 +10928,15 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
@@ -9309,11 +10949,18 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
+    })
     'StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly code: string
     }
-    'StratigraphicUnit.jsonld-sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'StratigraphicUnit.jsonld-sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['Site.jsonld-sus.acl.read']
       area?: string | null
@@ -9326,15 +10973,29 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-zoo_bone.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-zoo_bone.acl.read']
       readonly code: string
-    }
-    'StratigraphicUnit.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'StratigraphicUnit.jsonld-zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['Site.jsonld-zoo_tooth.acl.read']
       readonly code: string
-    }
+    })
     'StratigraphicUnitRelationship-su_relationship.create': {
       /**
        * Format: iri-reference
@@ -9400,149 +11061,353 @@ export interface components {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'User.csv-site.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'User.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'User.jsonld-analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-media_object.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-media_object.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly userIdentifier?: string
-    }
-    'User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly userIdentifier?: string
-    }
-    'User.jsonld-site.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-site_user_privilege.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-site_user_privilege.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
-    }
-    'User.jsonld-user.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'User.jsonld-user.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
       email?: string
@@ -9555,7 +11420,7 @@ export interface components {
       /** @default true */
       enabled: boolean
       readonly userIdentifier?: string
-    }
+    })
     'User.jsonld-user.me.read': components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
@@ -9583,61 +11448,133 @@ export interface components {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       code?: string
       group?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocAnalysisType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
@@ -9648,71 +11585,162 @@ export interface components {
     'VocAnalysisType.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       value: string
     }
-    'VocAnalysisType.jsonld-analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocAnalysisType.jsonld-analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
-    'VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocAnalysisType.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       group?: string
       value: string
-    }
+    })
     'VocBotanyElement.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
@@ -9732,13 +11760,20 @@ export interface components {
       class?: string
       family?: string | null
     }
-    'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
       vernacularName: string
       class: string
       family?: string | null
-    }
+    })
     'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
@@ -9746,12 +11781,19 @@ export interface components {
       class: string
       family?: string | null
     }
-    'VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
       vernacularName: string
       class: string
       family?: string | null
-    }
+    })
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
@@ -9767,17 +11809,37 @@ export interface components {
     }
     'VocHistoryAnimal.csv-history_animal.acl.read': {
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'VocHistoryAnimal.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocHistoryAnimal.jsonld-history_animal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
-    }
-    'VocHistoryAnimal.jsonld-voc_history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocHistoryAnimal.jsonld-voc_history_animal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       taxonomy?:
         | components['schemas']['VocZooTaxonomy.jsonld-voc_history_animal.acl.read']
         | null
       value: string
-    }
+    })
     'VocHistoryAnimal.jsonld-voc_history_animal.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
@@ -9828,9 +11890,21 @@ export interface components {
     }
     'VocHistoryLocation.csv-history_animal.acl.read': {
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocHistoryLocation.csv-history_plant.acl.read': {
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocHistoryLocation.geojson-feature_collection.json.read': {
       readonly id?: number | string
@@ -9842,18 +11916,39 @@ export interface components {
       n?: number
       e?: number
     }
-    'VocHistoryLocation.jsonld-history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocHistoryLocation.jsonld-history_animal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
-    }
-    'VocHistoryLocation.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocHistoryLocation.jsonld-history_plant.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
-    }
-    'VocHistoryLocation.jsonld-voc_history_location.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocHistoryLocation.jsonld-voc_history_location.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       value: string
       n?: number
       e?: number
-    }
+    })
     'VocHistoryLocation.jsonld-voc_history_location.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       value: string
@@ -9870,6 +11965,12 @@ export interface components {
     }
     'VocHistoryPlant.csv-history_plant.acl.read': {
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
@@ -9880,16 +11981,30 @@ export interface components {
       taxonomy?: string | null
       value: string
     }
-    'VocHistoryPlant.jsonld-history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocHistoryPlant.jsonld-history_plant.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
-    }
-    'VocHistoryPlant.jsonld-voc_history_plant.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocHistoryPlant.jsonld-voc_history_plant.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       taxonomy?:
         | components['schemas']['VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read']
         | null
       value: string
-    }
+    })
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value: string
@@ -9922,48 +12037,113 @@ export interface components {
     'VocSampleType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocSampleType.csv-sample.acl.read': {
       code?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocSampleType.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       code?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocSampleType.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       code?: string
       value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocSampleType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
       value: string
     }
-    'VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value: string
-    }
-    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value: string
-    }
-    'VocSampleType.jsonld-sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocSampleType.jsonld-sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value: string
-    }
-    'VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value: string
-    }
-    'VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code?: string
       value: string
-    }
+    })
     'VocStratigraphicUnitRelation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: string
       value: string
@@ -9996,21 +12176,35 @@ export interface components {
       class?: string
       family?: string | null
     }
-    'VocZooTaxonomy.jsonld-voc_history_animal.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'VocZooTaxonomy.jsonld-voc_history_animal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       code: string
       value: string
       vernacularName: string
       class: string
       family?: string | null
-    }
-    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code: string
       value: string
       vernacularName: string
       class: string
       family?: string | null
-    }
+    })
     'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code: string
@@ -10093,6 +12287,12 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'ZooBone.csv-zoo_bone.acl.read': {
       readonly id?: number | string
@@ -10116,8 +12316,21 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       /**
@@ -10139,8 +12352,15 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
-    }
-    'ZooBone.jsonld-zoo_bone.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'ZooBone.jsonld-zoo_bone.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_bone.acl.read']
       /**
@@ -10162,7 +12382,7 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
-    }
+    })
     'ZooTooth-zoo_tooth.create': {
       /**
        * Format: iri-reference
@@ -10207,6 +12427,12 @@ export interface components {
     }
     'ZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'ZooTooth.csv-zoo_tooth.acl.read': {
       readonly id?: number | string
@@ -10225,11 +12451,31 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
-    'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly code?: string
-    }
-    'ZooTooth.jsonld-zoo_tooth.acl.read': components['schemas']['HydraItemBaseSchema'] & {
+    })
+    'ZooTooth.jsonld-zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_tooth.acl.read']
       /**
@@ -10246,7 +12492,7 @@ export interface components {
       side?: string | null
       notes?: string | null
       readonly code?: string
-    }
+    })
     GeoJSONPoint: {
       /** @enum {string} */
       type: 'Point'
@@ -10535,14 +12781,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -10780,14 +13034,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -11025,14 +13287,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -11270,14 +13540,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -11515,14 +13793,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -11760,14 +14046,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -12401,14 +14695,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -13012,14 +15314,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -13630,14 +15940,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -14323,14 +16641,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -14998,14 +17324,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -15604,14 +17938,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -16260,14 +18602,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -16991,14 +19341,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -17603,14 +19961,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -18242,14 +20608,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -22775,14 +25149,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -22918,14 +25300,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -23091,14 +25481,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -26527,14 +28925,22 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
     }
   }
@@ -28640,21 +31046,33 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Forbidden */
       403: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description An error occurred */
       422: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
       }
     }
   }
@@ -28847,28 +31265,44 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Forbidden */
       403: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description Not found */
       404: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
       }
       /** @description An error occurred */
       422: {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
       }
     }
   }
@@ -29406,17 +31840,17 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
-         * @example oak
-         */
-        search?: string
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -29440,17 +31874,17 @@ export interface operations {
   api_vocabularyhistoryanimals_get_collection: {
     parameters: {
       query?: {
-        /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
-         * @example oak
-         */
-        search?: string
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -29604,8 +32038,29 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
+        'animals.animal'?: string
+        'animals.animal[]'?: string[]
+        'animals.chronologyLower'?: number
+        'animals.chronologyLower[]'?: number[]
+        'animals.chronologyUpper'?: number
+        'animals.chronologyUpper[]'?: number[]
+        'animals.createdBy.email'?: string
+        'animals.createdBy.email[]'?: string[]
+        'animals.animal.taxonomy.value'?: string
+        'animals.animal.taxonomy.value[]'?: string[]
+        'animals.animal.taxonomy.class'?: string
+        'animals.animal.taxonomy.class[]'?: string[]
+        'animals.animal.taxonomy.family'?: string
+        'animals.animal.taxonomy.family[]'?: string[]
+        'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
         'plants.plant.taxonomy.family'?: string
@@ -29613,12 +32068,6 @@ export interface operations {
         'plants.plant.taxonomy.class'?: string
         'plants.plant.taxonomy.class[]'?: string[]
         'plants.plant.taxonomy.vernacularName'?: string
-        'plants.chronologyLower'?: number
-        'plants.chronologyLower[]'?: number[]
-        'plants.chronologyUpper'?: number
-        'plants.chronologyUpper[]'?: number[]
-        'plants.createdBy.email'?: string
-        'plants.createdBy.email[]'?: string[]
         'plants.chronologyLower[between]'?: string
         'plants.chronologyLower[gt]'?: string
         'plants.chronologyLower[gte]'?: string
@@ -29629,6 +32078,18 @@ export interface operations {
         'plants.chronologyUpper[gte]'?: string
         'plants.chronologyUpper[lt]'?: string
         'plants.chronologyUpper[lte]'?: string
+        'animals.chronologyLower[between]'?: string
+        'animals.chronologyLower[gt]'?: string
+        'animals.chronologyLower[gte]'?: string
+        'animals.chronologyLower[lt]'?: string
+        'animals.chronologyLower[lte]'?: string
+        'animals.chronologyUpper[between]'?: string
+        'animals.chronologyUpper[gt]'?: string
+        'animals.chronologyUpper[gte]'?: string
+        'animals.chronologyUpper[lt]'?: string
+        'animals.chronologyUpper[lte]'?: string
+        'exists[animals.animal.taxonomy.family]'?: boolean
+        'exists[animals.notes]'?: boolean
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
@@ -29636,6 +32097,16 @@ export interface operations {
          * @example cafè
          */
         value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.notes'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -29709,8 +32180,29 @@ export interface operations {
         bbox?: string
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
+        'animals.animal'?: string
+        'animals.animal[]'?: string[]
+        'animals.chronologyLower'?: number
+        'animals.chronologyLower[]'?: number[]
+        'animals.chronologyUpper'?: number
+        'animals.chronologyUpper[]'?: number[]
+        'animals.createdBy.email'?: string
+        'animals.createdBy.email[]'?: string[]
+        'animals.animal.taxonomy.value'?: string
+        'animals.animal.taxonomy.value[]'?: string[]
+        'animals.animal.taxonomy.class'?: string
+        'animals.animal.taxonomy.class[]'?: string[]
+        'animals.animal.taxonomy.family'?: string
+        'animals.animal.taxonomy.family[]'?: string[]
+        'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
         'plants.plant.taxonomy.family'?: string
@@ -29718,12 +32210,6 @@ export interface operations {
         'plants.plant.taxonomy.class'?: string
         'plants.plant.taxonomy.class[]'?: string[]
         'plants.plant.taxonomy.vernacularName'?: string
-        'plants.chronologyLower'?: number
-        'plants.chronologyLower[]'?: number[]
-        'plants.chronologyUpper'?: number
-        'plants.chronologyUpper[]'?: number[]
-        'plants.createdBy.email'?: string
-        'plants.createdBy.email[]'?: string[]
         'plants.chronologyLower[between]'?: string
         'plants.chronologyLower[gt]'?: string
         'plants.chronologyLower[gte]'?: string
@@ -29734,6 +32220,18 @@ export interface operations {
         'plants.chronologyUpper[gte]'?: string
         'plants.chronologyUpper[lt]'?: string
         'plants.chronologyUpper[lte]'?: string
+        'animals.chronologyLower[between]'?: string
+        'animals.chronologyLower[gt]'?: string
+        'animals.chronologyLower[gte]'?: string
+        'animals.chronologyLower[lt]'?: string
+        'animals.chronologyLower[lte]'?: string
+        'animals.chronologyUpper[between]'?: string
+        'animals.chronologyUpper[gt]'?: string
+        'animals.chronologyUpper[gte]'?: string
+        'animals.chronologyUpper[lt]'?: string
+        'animals.chronologyUpper[lte]'?: string
+        'exists[animals.animal.taxonomy.family]'?: boolean
+        'exists[animals.notes]'?: boolean
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
@@ -29741,6 +32239,16 @@ export interface operations {
          * @example cafè
          */
         value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.notes'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -29811,8 +32319,29 @@ export interface operations {
       query?: {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
+        'animals.animal'?: string
+        'animals.animal[]'?: string[]
+        'animals.chronologyLower'?: number
+        'animals.chronologyLower[]'?: number[]
+        'animals.chronologyUpper'?: number
+        'animals.chronologyUpper[]'?: number[]
+        'animals.createdBy.email'?: string
+        'animals.createdBy.email[]'?: string[]
+        'animals.animal.taxonomy.value'?: string
+        'animals.animal.taxonomy.value[]'?: string[]
+        'animals.animal.taxonomy.class'?: string
+        'animals.animal.taxonomy.class[]'?: string[]
+        'animals.animal.taxonomy.family'?: string
+        'animals.animal.taxonomy.family[]'?: string[]
+        'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
         'plants.plant.taxonomy.family'?: string
@@ -29820,12 +32349,6 @@ export interface operations {
         'plants.plant.taxonomy.class'?: string
         'plants.plant.taxonomy.class[]'?: string[]
         'plants.plant.taxonomy.vernacularName'?: string
-        'plants.chronologyLower'?: number
-        'plants.chronologyLower[]'?: number[]
-        'plants.chronologyUpper'?: number
-        'plants.chronologyUpper[]'?: number[]
-        'plants.createdBy.email'?: string
-        'plants.createdBy.email[]'?: string[]
         'plants.chronologyLower[between]'?: string
         'plants.chronologyLower[gt]'?: string
         'plants.chronologyLower[gte]'?: string
@@ -29836,6 +32359,18 @@ export interface operations {
         'plants.chronologyUpper[gte]'?: string
         'plants.chronologyUpper[lt]'?: string
         'plants.chronologyUpper[lte]'?: string
+        'animals.chronologyLower[between]'?: string
+        'animals.chronologyLower[gt]'?: string
+        'animals.chronologyLower[gte]'?: string
+        'animals.chronologyLower[lt]'?: string
+        'animals.chronologyLower[lte]'?: string
+        'animals.chronologyUpper[between]'?: string
+        'animals.chronologyUpper[gt]'?: string
+        'animals.chronologyUpper[gte]'?: string
+        'animals.chronologyUpper[lt]'?: string
+        'animals.chronologyUpper[lte]'?: string
+        'exists[animals.animal.taxonomy.family]'?: boolean
+        'exists[animals.notes]'?: boolean
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
@@ -29843,6 +32378,16 @@ export interface operations {
          * @example cafè
          */
         value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.notes'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
