@@ -7750,7 +7750,9 @@ export interface components {
         /** @description An extra hint to understand the violation */
         hint?: string
         /** @description The serialized payload of the violation */
-        payload?: unknown[]
+        payload?: {
+          [key: string]: unknown
+        }
       }[]
       readonly detail?: string
       readonly type?: string
@@ -7771,7 +7773,9 @@ export interface components {
         /** @description An extra hint to understand the violation */
         hint?: string
         /** @description The serialized payload of the violation */
-        payload?: unknown[]
+        payload?: {
+          [key: string]: unknown
+        }
       }[]
       readonly detail?: string
       readonly description?: string
