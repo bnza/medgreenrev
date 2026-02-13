@@ -48,7 +48,7 @@ watch(
   <v-col cols="4">
     <data-autocomplete
       v-model="operand"
-      item-title="name"
+      item-title="value"
       path="/api/vocabulary/history/locations"
       :readonly
       :variant
