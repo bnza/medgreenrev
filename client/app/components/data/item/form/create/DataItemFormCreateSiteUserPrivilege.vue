@@ -10,7 +10,7 @@ const path: ApiResourcePath | PostCollectionPath =
   '/api/admin/site_user_privileges'
 
 const props = defineProps<{
-  parent?: ResourceParent<'site'> | ResourceParent<'user'>
+  parent?: ResourceParent<'archaeologicalSite'> | ResourceParent<'user'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -56,11 +56,11 @@ const { r$ } = useScopedRegle(model, {
     <v-col cols="6">
       <data-autocomplete-site
         v-model="r$.$value.site"
-        path="/api/data/sites"
+        path="/api/data/archaeological_sites"
         item-title="name"
         label="site"
         :error-messages="r$.$errors?.site"
-        :disabled="parent?.key === 'site'"
+        :disabled="parent?.key === 'archaeologicalSite'"
       />
     </v-col>
     <v-col cols="6">

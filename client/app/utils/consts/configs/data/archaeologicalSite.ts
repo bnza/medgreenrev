@@ -1,8 +1,8 @@
 import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data/sites',
-  appPath: '/data/sites',
+  apiPath: '/api/data/archaeological_sites',
+  appPath: '/data/sites/archaeological',
   defaultHeaders: [
     {
       key: 'id',
@@ -40,8 +40,8 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['site', 'sites'],
-  name: 'site',
+  labels: ['archaeological site', 'archaeological sites'],
+  name: 'archaeologicalSite',
 }
 
 export default config

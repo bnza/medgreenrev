@@ -14,7 +14,7 @@ withDefaults(
   <data-item-info-box
     v-if="isValidIri(iri)"
     :iri
-    path="/api/data/sites/{id}"
+    path="/api/data/archaeological_sites/{id}"
     :read-link
     data-testid="data-item-info-box-site"
   >

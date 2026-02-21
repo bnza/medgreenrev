@@ -28,10 +28,12 @@ export const API_RESOURCE_MAP = {
   analysisPottery: '/api/data/analyses/potteries',
   analysisSampleMicrostratigraphy:
     '/api/data/analyses/samples/microstratigraphy',
-  analysisSiteAnthropology: '/api/data/analyses/sites/anthropology',
+  analysisSiteAnthropology:
+    '/api/data/analyses/archaeological_sites/anthropology',
   analysisSubject: '/api/data/analysis_subjects',
   analysisZooBone: '/api/data/analyses/zoo/bones',
   analysisZooTooth: '/api/data/analyses/zoo/teeth',
+  archaeologicalSite: '/api/data/archaeological_sites',
   botanyCharcoal: '/api/data/botany/charcoals',
   botanySeed: '/api/data/botany/seeds',
   context: '/api/data/contexts',
@@ -61,7 +63,6 @@ export const API_RESOURCE_MAP = {
   sampleStratigraphicUnit: '/api/data/sample_stratigraphic_units',
   sedimentCore: '/api/data/sediment_cores',
   sedimentCoreDepth: '/api/data/sediment_core_depths',
-  site: '/api/data/sites',
   siteCulturalContext: '/api/data/site_cultural_contexts',
   siteUserPrivilege: '/api/admin/site_user_privileges',
   stratigraphicUnit: '/api/data/stratigraphic_units',
@@ -100,8 +101,8 @@ export type ApiResourcePath =
 // Map of feature collection endpoints (GeoJSON) to their related API resource collection path
 // Keys are OpenAPI paths that return 200 with 'application/geo+json'
 export const API_FEATURES_RESOURCE_MAP = {
+  '/api/features/archaeological_sites': '/api/data/archaeological_sites',
   '/api/features/history/locations': '/api/vocabulary/history/locations',
-  '/api/features/sites': '/api/data/sites',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP

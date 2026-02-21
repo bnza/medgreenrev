@@ -46,7 +46,7 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           </template>
           <v-list-item
             nuxt
-            to="/data/analyses/sites/anthropology"
+            to="/data/analyses/sites/anthropology/anthropology"
             router
             title="Anthropology"
             data-testid="app-nav-drawer-li-analyses-anthropology"
@@ -133,6 +133,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
         </v-list-group>
       </v-list-group>
       <v-list-group value="Data">
+        <v-list-item
+          nuxt
+          to="/data/sites/archaeological"
+          router
+          title="Archaological Sites"
+          data-testid="app-nav-drawer-li-sites"
+        />
         <template #activator="{ props }">
           <v-list-item
             v-bind="props"
@@ -235,13 +242,6 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           router
           title="Sediment Cores"
           data-testid="app-nav-drawer-li-sediment-cores"
-        />
-        <v-list-item
-          nuxt
-          to="/data/sites"
-          router
-          title="Sites"
-          data-testid="app-nav-drawer-li-sites"
         />
         <v-list-item
           nuxt

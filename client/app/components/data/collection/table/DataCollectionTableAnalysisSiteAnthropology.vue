@@ -4,9 +4,9 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/analyses/sites/anthropology'
-      | '/api/data/analyses/{parentId}/sites/anthropology'
-      | '/api/data/sites/{parentId}/analyses/anthropology'
+      | '/api/data/analyses/archaeological_sites/anthropology'
+      | '/api/data/analyses/{parentId}/archaeological_sites/anthropology'
+      | '/api/data/archaeological_sites/{parentId}/analyses/anthropology'
     >
   "
 >
@@ -16,17 +16,21 @@ import DataDialogUpdateAnalysisSiteAnthropology from '~/components/data/dialog/u
 
 const props = defineProps<{
   path: P
-  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
+  parent?: ResourceParent<'archaeologicalSite'> | ResourceParent<'analysis'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/analyses/sites/anthropology/{id}'),
+  useResourceDeleteDialogStore(
+    '/api/data/analyses/archaeological_sites/anthropology/{id}',
+  ),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/analyses/sites/anthropology/{id}'),
+  useResourceUpdateDialogStore(
+    '/api/data/analyses/archaeological_sites/anthropology/{id}',
+  ),
 )
 
 const vocabularyAnalysisStore = useVocabularyStore(

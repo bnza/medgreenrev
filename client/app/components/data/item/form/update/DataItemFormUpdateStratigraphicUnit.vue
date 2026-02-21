@@ -43,7 +43,7 @@ const buildingQueryParams = computed(() => ({
     <v-col cols="4" class="px-2">
       <data-autocomplete-site
         :model-value="r$.$value.site"
-        path="/api/data/sites"
+        path="/api/data/archaeological_sites"
         item-title="name"
         label="site"
         granted-only

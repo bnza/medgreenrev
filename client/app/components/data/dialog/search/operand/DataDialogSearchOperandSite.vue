@@ -49,7 +49,7 @@ watch(
     <data-autocomplete-site
       v-model="operand"
       item-title="name"
-      path="/api/data/sites"
+      path="/api/data/archaeological_sites"
       :readonly
       :variant
       label="values"

@@ -11,7 +11,8 @@ import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
 const FEATURE_COLLECTION_PATH_MAP = {
   '/api/features/history/locations':
     '/api/features/extent_matched/history/locations',
-  '/api/features/sites': '/api/features/extent_matched/sites',
+  '/api/features/archaeological_sites':
+    '/api/features/extent_matched/archaeological_sites',
 } as const satisfies Record<
   GetFeatureCollectionPath,
   GetFeatureCollectionExtentPath

@@ -5,7 +5,7 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/stratigraphic_units'
-      | '/api/data/sites/{parentId}/stratigraphic_units'
+      | '/api/data/archaeological_sites/{parentId}/stratigraphic_units'
     >
   "
 >
@@ -13,7 +13,7 @@ import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'archaeologicalSite'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)

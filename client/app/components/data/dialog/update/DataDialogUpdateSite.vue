@@ -2,7 +2,7 @@
 import type { GetItemPath, PatchItemPath, PatchItemRequestMap } from '~~/types'
 import { useCollectScope } from '@regle/core'
 
-const path: GetItemPath & PatchItemPath = '/api/data/sites/{id}'
+const path: GetItemPath & PatchItemPath = '/api/data/archaeological_sites/{id}'
 
 defineEmits<{
   refresh: []

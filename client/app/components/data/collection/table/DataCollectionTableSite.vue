@@ -1,7 +1,9 @@
 <script
   setup
   lang="ts"
-  generic="Path extends Extract<GetCollectionPath, '/api/data/sites'>"
+  generic="
+    Path extends Extract<GetCollectionPath, '/api/data/archaeological_sites'>
+  "
 >
 import type { CollectionAcl, GetCollectionPath } from '~~/types'
 
@@ -11,10 +13,10 @@ const props = defineProps<{
 
 const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/sites/{id}'),
+  useResourceDeleteDialogStore('/api/data/archaeological_sites/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/sites/{id}'),
+  useResourceUpdateDialogStore('/api/data/archaeological_sites/{id}'),
 )
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })

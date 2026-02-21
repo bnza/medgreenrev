@@ -3,7 +3,7 @@ import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
 import { hasAcl } from '~/utils/acl'
 
-const path = '/api/data/sites/{id}' as const
+const path = '/api/data/archaeological_sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path, ['chronology']))
@@ -33,27 +33,27 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
         </v-tabs-window-item>
         <v-tabs-window-item value="sus" data-testid="tab-window-sus">
           <data-collection-page-stratigraphic-unit
-            path="/api/data/sites/{parentId}/stratigraphic_units"
+            path="/api/data/archaeological_sites/{parentId}/stratigraphic_units"
             :parent="{
-              key: 'site',
+              key: 'archaeologicalSite',
               item,
             }"
           />
         </v-tabs-window-item>
         <v-tabs-window-item value="contexts" data-testid="tab-window-contexts">
           <data-collection-page-context
-            path="/api/data/sites/{parentId}/contexts"
+            path="/api/data/archaeological_sites/{parentId}/contexts"
             :parent="{
-              key: 'site',
+              key: 'archaeologicalSite',
               item,
             }"
           />
         </v-tabs-window-item>
         <v-tabs-window-item value="samples" data-testid="tab-window-samples">
           <data-collection-page-sample
-            path="/api/data/sites/{parentId}/samples"
+            path="/api/data/archaeological_sites/{parentId}/samples"
             :parent="{
-              key: 'site',
+              key: 'archaeologicalSite',
               item,
             }"
           />
@@ -63,9 +63,9 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
           data-testid="tab-window-anthro-analyses"
         >
           <data-collection-page-analysis-site-anthropology
-            path="/api/data/sites/{parentId}/analyses/anthropology"
+            path="/api/data/archaeological_sites/{parentId}/analyses/anthropology"
             :parent="{
-              key: 'site',
+              key: 'archaeologicalSite',
               item,
             }"
           />
@@ -77,9 +77,9 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
         >
           <data-collection-page-user-site-privilege
             v-if="item?.id"
-            path="/api/admin/sites/{parentId}/site_user_privileges"
+            path="/api/admin/archaeological_sites/{parentId}/site_user_privileges"
             :parent="{
-              key: 'site',
+              key: 'archaeologicalSite',
               item,
             }"
           />

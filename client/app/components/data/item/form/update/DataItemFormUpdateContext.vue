@@ -22,7 +22,7 @@ const { r$ } = useScopedRegle(model, {
       <v-col cols="12">
         <data-autocomplete-site
           v-model="r$.$value.site"
-          path="/api/data/sites"
+          path="/api/data/archaeological_sites"
           item-title="name"
           label="site"
           granted-only

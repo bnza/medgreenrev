@@ -247,7 +247,7 @@ export type HydraConstraintViolation =
   components['schemas']['ConstraintViolation.jsonld-jsonld']
 
 export type ResourceParentSiteUserPrivilege =
-  | ResourceParent<'site'>
+  | ResourceParent<'archaeologicalSite'>
   | ResourceParent<'user'>
 
 type AnalysisSubjectParentResourceKey = Extract<

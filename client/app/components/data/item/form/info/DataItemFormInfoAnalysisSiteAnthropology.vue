@@ -3,7 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap['/api/data/analyses/sites/anthropology/{id}']
+    item: GetItemResponseMap['/api/data/analyses/archaeological_sites/anthropology/{id}']
     readLink?: boolean
   }>(),
   {

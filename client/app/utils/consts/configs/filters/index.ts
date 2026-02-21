@@ -40,10 +40,10 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/samples/{parentId}/microstratigraphic_units'
   | '/api/data/samples/{parentId}/stratigraphic_units'
   | '/api/data/sample_stratigraphic_units'
-  | '/api/data/sites'
-  | '/api/data/sites/{parentId}/stratigraphic_units'
-  | '/api/data/sites/{parentId}/contexts'
-  | '/api/data/sites/{parentId}/samples'
+  | '/api/data/archaeological_sites'
+  | '/api/data/archaeological_sites/{parentId}/stratigraphic_units'
+  | '/api/data/archaeological_sites/{parentId}/contexts'
+  | '/api/data/archaeological_sites/{parentId}/samples'
   | '/api/data/stratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy'
   | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
@@ -124,10 +124,12 @@ export const FILTERS_PATHS_MAP: Record<
     resourceFilterDefinitions.sampleStratigraphicUnitParentSample,
   '/api/data/sample_stratigraphic_units':
     resourceFilterDefinitions.sampleStratigraphicUnit,
-  '/api/data/sites': resourceFilterDefinitions.site,
-  '/api/data/sites/{parentId}/contexts': resourceFilterDefinitions.context,
-  '/api/data/sites/{parentId}/samples': resourceFilterDefinitions.sample,
-  '/api/data/sites/{parentId}/stratigraphic_units':
+  '/api/data/archaeological_sites': resourceFilterDefinitions.site,
+  '/api/data/archaeological_sites/{parentId}/contexts':
+    resourceFilterDefinitions.context,
+  '/api/data/archaeological_sites/{parentId}/samples':
+    resourceFilterDefinitions.sample,
+  '/api/data/archaeological_sites/{parentId}/stratigraphic_units':
     resourceFilterDefinitions.stratigraphicUnit,
   '/api/data/stratigraphic_units': resourceFilterDefinitions.stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy':

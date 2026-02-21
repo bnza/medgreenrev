@@ -2,7 +2,7 @@ import { BaseItemPage } from '~~/tests/e2e/pages/base-item.page'
 import { expect, type Page } from '@playwright/test'
 
 export class SiteItemPage extends BaseItemPage {
-  protected readonly path = '/data/sites/[id]'
+  protected readonly path = '/data/sites/archaeological/[id]'
 
   constructor(page: Page) {
     super(page, 'site-action-menu')

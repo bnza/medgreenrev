@@ -3,9 +3,11 @@ import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
 import DataSelectionVocabulary from '~/components/data/selection/DataSelectionVocabulary.vue'
 
-const { panels } = storeToRefs(useResourceUiStore('/api/data/sites/{id}'))
+const { panels } = storeToRefs(
+  useResourceUiStore('/api/data/archaeological_sites/{id}'),
+)
 const props = defineProps<{
-  item: GetItemResponseMap['/api/data/sites/{id}']
+  item: GetItemResponseMap['/api/data/archaeological_sites/{id}']
 }>()
 const culturalContexts = computed(
   () =>

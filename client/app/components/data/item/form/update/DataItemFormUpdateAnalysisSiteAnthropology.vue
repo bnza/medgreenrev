@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
 
-type Path = '/api/data/analyses/sites/anthropology/{id}'
+type Path = '/api/data/analyses/archaeological_sites/anthropology/{id}'
 const props = defineProps<{
   initialValue: PatchItemRequestMap[Path]
   fetchedItem?: GetItemResponseMap[Path]
@@ -17,7 +17,7 @@ const { r$ } = useScopedRegle(model, {})
     <v-col cols="6">
       <data-autocomplete-site
         :model-value="fetchedItem?.subject?.['@id']"
-        path="/api/data/sites"
+        path="/api/data/archaeological_sites"
         item-title="code"
         label="subject"
         disabled

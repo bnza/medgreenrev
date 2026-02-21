@@ -23,7 +23,7 @@ type SubjectApiResourceKey = Extract<
   | 'individual'
   | 'pottery'
   | 'sample'
-  | 'site'
+  | 'archaeologicalSite'
   | 'zooBone'
   | 'zooTooth'
 >
@@ -40,7 +40,7 @@ const componentMap: Record<SubjectApiResourceKey, Component> = {
   individual: DataItemInfoBoxSpanIndividual,
   pottery: DataItemInfoBoxSpanPottery,
   sample: DataItemInfoBoxSpanSample,
-  site: DataItemInfoBoxSpanSite,
+  archaeologicalSite: DataItemInfoBoxSpanSite,
   zooBone: DataItemInfoBoxSpanZooBone,
   zooTooth: DataItemInfoBoxSpanZooTooth,
 }

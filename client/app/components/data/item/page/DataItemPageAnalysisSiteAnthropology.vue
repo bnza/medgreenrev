@@ -2,7 +2,8 @@
 import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
 
-const path = '/api/data/analyses/sites/anthropology/{id}' as const
+const path =
+  '/api/data/analyses/archaeological_sites/anthropology/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path))

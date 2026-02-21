@@ -19,21 +19,21 @@ describe('useOpenApiStore', () => {
 
     describe('caching', () => {
       it('should return cached value even if spec is mutated (proving cache exists)', () => {
-        const targetPath = '/api/data/sites/{id}' as keyof paths
+        const targetPath = '/api/data/archaeological_sites/{id}' as keyof paths
 
         // First call
         const firstResult = store.findApiResourcePath(targetPath)
-        expect(firstResult).to.equal('/api/data/sites')
+        expect(firstResult).to.equal('/api/data/archaeological_sites')
 
         // Mutate the spec WITHOUT triggering reactivity (shallowRef doesn't see inner mutations)
-        delete store.specInternal!.paths!['/api/data/sites']
+        delete store.specInternal!.paths!['/api/data/archaeological_sites']
 
         const secondResult = store.findApiResourcePath(targetPath)
-        expect(secondResult).to.equal('/api/data/sites') // Still returns cached value
+        expect(secondResult).to.equal('/api/data/archaeological_sites') // Still returns cached value
       })
 
       it('should clear cache when specInternal is updated', async () => {
-        const targetPath = '/api/data/sites/{id}' as keyof paths
+        const targetPath = '/api/data/archaeological_sites/{id}' as keyof paths
 
         // First call to populate cache
         store.findApiResourcePath(targetPath)
@@ -43,7 +43,7 @@ describe('useOpenApiStore', () => {
           ...openApiFixture,
           paths: {
             ...openApiFixture.paths,
-            '/api/data/sites': undefined,
+            '/api/data/archaeological_sites': undefined,
           },
         } as any
 
@@ -57,10 +57,10 @@ describe('useOpenApiStore', () => {
 
     describe('when target path is already an API resource path', () => {
       it('should return the same path for single resource endpoints', () => {
-        const targetPath = '/api/data/sites' as keyof paths
+        const targetPath = '/api/data/archaeological_sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).to.equal('/api/data/sites')
+        expect(result).to.equal('/api/data/archaeological_sites')
       })
 
       it('should return the same path for site user privileges resource', () => {
@@ -73,10 +73,10 @@ describe('useOpenApiStore', () => {
 
     describe('when target path is a collection endpoint', () => {
       it('should find corresponding resource path for sites collection', () => {
-        const targetPath = '/api/data/sites/{id}' as keyof paths
+        const targetPath = '/api/data/archaeological_sites/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
-        expect(result).to.equal('/api/data/sites')
+        expect(result).to.equal('/api/data/archaeological_sites')
       })
 
       it('should find corresponding resource path for site user privileges collection', () => {
@@ -87,7 +87,7 @@ describe('useOpenApiStore', () => {
       })
 
       it('should match endpoints by shared tags', () => {
-        const targetPath = '/api/data/sites/{id}' as keyof paths
+        const targetPath = '/api/data/archaeological_sites/{id}' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         // Verify that both endpoints have the same tag
@@ -98,7 +98,7 @@ describe('useOpenApiStore', () => {
 
         expect(targetTags).to.include('Site')
         expect(resultTags).to.include('Site')
-        expect(result).to.equal('/api/data/sites')
+        expect(result).to.equal('/api/data/archaeological_sites')
       })
     })
 
@@ -121,7 +121,7 @@ describe('useOpenApiStore', () => {
     describe.skip('when openApi spec conditions are not met', () => {
       it('should return undefined when specInternal is not set', () => {
         store.specInternal = undefined as any
-        const targetPath = '/api/data/sites' as keyof paths
+        const targetPath = '/api/data/archaeological_sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         expect(result).to.equal(undefined)
@@ -157,7 +157,7 @@ describe('useOpenApiStore', () => {
         }
         store.specInternal = specWithoutPaths as any
 
-        const targetPath = '/api/data/sites' as keyof paths
+        const targetPath = '/api/data/archaeological_sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         expect(result).to.equal(undefined)
@@ -227,9 +227,10 @@ describe('useOpenApiStore', () => {
         const mockSpec = {
           ...openApiFixture,
           paths: {
-            '/api/data/sites': openApiFixture.paths['/api/data/sites'],
-            '/api/data/sites/{id}':
-              openApiFixture.paths['/api/data/sites/{id}'],
+            '/api/data/archaeological_sites':
+              openApiFixture.paths['/api/data/archaeological_sites'],
+            '/api/data/archaeological_sites/{id}':
+              openApiFixture.paths['/api/data/archaeological_sites/{id}'],
             '/api/data/sites2/{id}': {
               get: {
                 operationId: 'api_sites2_id_get',
@@ -252,18 +253,18 @@ describe('useOpenApiStore', () => {
         }
         store.specInternal = mockSpec as any
 
-        const targetPath = '/api/data/sites' as keyof paths
+        const targetPath = '/api/data/archaeological_sites' as keyof paths
         const result = store.findApiResourcePath(targetPath)
 
         // Should return one of the matching resource paths
-        expect(result).to.match(/^\/api\/sites.*\{id\}$/)
+        expect(result).to.match(/^\/api\/archaeological_sites.*\{id\}$/)
       })
     })
 
     describe('real fixture data validation', () => {
       it('should correctly identify Site tag relationships', () => {
-        const resourcePath = '/api/data/sites' as keyof paths
-        const itemPath = '/api/data/sites/{id}' as keyof paths
+        const resourcePath = '/api/data/archaeological_sites' as keyof paths
+        const itemPath = '/api/data/archaeological_sites/{id}' as keyof paths
 
         const collectionTags =
           //@ts-expect-error Property get does not exist on type
@@ -312,9 +313,9 @@ describe('useOpenApiStore', () => {
         expect(store.ready).to.equal(true)
 
         const result = store.findApiResourcePath(
-          '/api/data/sites/{id}' as keyof paths,
+          '/api/data/archaeological_sites/{id}' as keyof paths,
         )
-        expect(result).to.equal('/api/data/sites')
+        expect(result).to.equal('/api/data/archaeological_sites')
       })
     })
   })

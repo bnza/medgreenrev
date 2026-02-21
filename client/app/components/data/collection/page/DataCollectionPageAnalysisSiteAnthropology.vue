@@ -4,9 +4,9 @@
   generic="
     P extends Extract<
       GetCollectionPath,
-      | '/api/data/analyses/sites/anthropology'
-      | '/api/data/analyses/{parentId}/sites/anthropology'
-      | '/api/data/sites/{parentId}/analyses/anthropology'
+      | '/api/data/analyses/archaeological_sites/anthropology'
+      | '/api/data/analyses/{parentId}/archaeological_sites/anthropology'
+      | '/api/data/archaeological_sites/{parentId}/analyses/anthropology'
     >
   "
 >
@@ -14,7 +14,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
+  parent?: ResourceParent<'archaeologicalSite'> | ResourceParent<'analysis'>
 }>()
 
 const { isAuthenticated } = useAppAuth()

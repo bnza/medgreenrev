@@ -10,7 +10,7 @@ const path: ApiResourcePath | PostCollectionPath =
   '/api/data/stratigraphic_units'
 
 const props = defineProps<{
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'archaeologicalSite'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -89,12 +89,12 @@ const buildingQueryParams = computed(() => ({
     <v-col cols="4" class="px-2">
       <data-autocomplete-site
         v-model="r$.$value.site"
-        path="/api/data/sites"
+        path="/api/data/archaeological_sites"
         item-title="name"
         label="site"
         granted-only
         :error-messages="r$.$errors?.site"
-        :disabled="parent?.key === 'site'"
+        :disabled="parent?.key === 'archaeologicalSite'"
       />
     </v-col>
     <v-col cols="4" class="px-2">

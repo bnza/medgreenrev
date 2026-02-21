@@ -8,7 +8,7 @@ import type {
 const path: PostCollectionPath = '/api/data/sediment_cores' as const
 
 defineProps<{
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'archaeologicalSite'>
 }>()
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()

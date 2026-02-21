@@ -6,7 +6,7 @@ defineEmits<{
 
 <template>
   <data-dialog-delete
-    path="/api/data/analyses/sites/anthropology/{id}"
+    path="/api/data/analyses/archaeological_sites/anthropology/{id}"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">

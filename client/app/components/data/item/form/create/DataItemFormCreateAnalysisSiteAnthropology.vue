@@ -8,10 +8,10 @@ import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerat
 import type { AnalysisCode } from '~/utils'
 
 const path: ApiResourcePath | PostCollectionPath =
-  '/api/data/analyses/sites/anthropology'
+  '/api/data/analyses/archaeological_sites/anthropology'
 
 const props = defineProps<{
-  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
+  parent?: ResourceParent<'archaeologicalSite'> | ResourceParent<'analysis'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -31,12 +31,12 @@ const analysisCodes: AnalysisCode[] = ['ANTH']
     <v-col cols="6">
       <data-autocomplete-site
         v-model="r$.$value.subject"
-        path="/api/data/sites"
+        path="/api/data/archaeological_sites"
         item-title="code"
         label="subject"
         granted-only
         :error-messages="r$.$errors?.subject"
-        :disabled="parent?.key === 'site'"
+        :disabled="parent?.key === 'archaeologicalSite'"
       />
     </v-col>
     <v-col cols="6" class="px-2">

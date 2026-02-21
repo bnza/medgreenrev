@@ -6,11 +6,11 @@ import type {
 } from '~~/types'
 
 defineProps<{
-  parent?: ResourceParent<'site'> | ResourceParent<'analysis'>
+  parent?: ResourceParent<'archaeologicalSite'> | ResourceParent<'analysis'>
 }>()
 
 const path: PostCollectionPath =
-  '/api/data/analyses/sites/anthropology' as const
+  '/api/data/analyses/archaeological_sites/anthropology' as const
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 

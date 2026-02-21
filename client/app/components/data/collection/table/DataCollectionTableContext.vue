@@ -4,7 +4,8 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data/contexts' | '/api/data/sites/{parentId}/contexts'
+      | '/api/data/contexts'
+      | '/api/data/archaeological_sites/{parentId}/contexts'
     >
   "
 >
@@ -12,7 +13,7 @@ import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'archaeologicalSite'>
 }>()
 
 const { appPath, labels } = useResourceConfig(props.path)

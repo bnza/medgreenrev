@@ -1603,7 +1603,7 @@
         "deprecated": false
       }
     },
-    "\/api\/data\/sites": {
+    "\/api\/data\/archaeological_sites": {
       "get": {
         "operationId": "api_datasites_get_collection",
         "tags": ["Site"],
@@ -2288,7 +2288,7 @@
         "deprecated": false
       }
     },
-    "\/api\/data\/sites\/{id}": {
+    "\/api\/data\/archaeological_sites\/{id}": {
       "get": {
         "operationId": "api_datasites_id_get",
         "tags": ["Site"],
@@ -3339,7 +3339,7 @@
         "deprecated": false
       }
     },
-    "\/api\/admin\/sites\/{parentId}\/site_user_privileges": {
+    "\/api\/admin\/archaeological_sites\/{parentId}\/site_user_privileges": {
       "get": {
         "operationId": "api_adminsites_parentIdsite_user_privileges_get_collection",
         "tags": ["SiteUserPrivilege"],
@@ -3575,7 +3575,7 @@
         "deprecated": false
       }
     },
-    "\/api\/admin\/sites\/{parentId}\/site_user_privileges\/{id}": {
+    "\/api\/admin\/archaeological_sites\/{parentId}\/site_user_privileges\/{id}": {
       "get": {
         "operationId": "api_adminsites_parentIdsite_user_privileges_id_get",
         "tags": ["SiteUserPrivilege"],
@@ -4219,7 +4219,7 @@
         "deprecated": false
       }
     },
-    "\/api\/data\/sites\/{parentId}\/stratigraphic_units": {
+    "\/api\/data\/archaeological_sites\/{parentId}\/stratigraphic_units": {
       "get": {
         "operationId": "api_datasites_parentIdstratigraphic_units_get_collection",
         "tags": ["StratigraphicUnit"],
@@ -5070,7 +5070,7 @@
         "deprecated": false
       }
     },
-    "\/api\/validator\/unique\/sites\/code\/{id}": {
+    "\/api\/validator\/unique\/archaeological_sites\/code\/{id}": {
       "get": {
         "operationId": "api_validatoruniquesitescode_id_get",
         "tags": ["UniqueValidator"],
@@ -5128,7 +5128,7 @@
         "deprecated": false
       }
     },
-    "\/api\/validator\/unique\/sites\/name\/{id}": {
+    "\/api\/validator\/unique\/archaeological_sites\/name\/{id}": {
       "get": {
         "operationId": "api_validatoruniquesitesname_id_get",
         "tags": ["UniqueValidator"],

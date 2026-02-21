@@ -2,8 +2,8 @@ import type { GetItemResponseMap } from '~~/types'
 
 export type ResourceParentSite = [
   'site',
-  '/api/data/sites/{id}',
-  GetItemResponseMap['/api/data/sites/{id}'],
+  '/api/data/archaeological_sites/{id}',
+  GetItemResponseMap['/api/data/archaeological_sites/{id}'],
 ]
 export type ResourceParentUser = [
   'user',

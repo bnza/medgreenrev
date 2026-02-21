@@ -5,7 +5,7 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/admin/site_user_privileges'
-      | '/api/admin/sites/{parentId}/site_user_privileges'
+      | '/api/admin/archaeological_sites/{parentId}/site_user_privileges'
       | '/api/admin/users/{parentId}/site_user_privileges'
     >
   "

@@ -26,7 +26,7 @@ import individual from './data/individual'
 import pottery from './data/pottery'
 import sample from './data/sample'
 import sedimentCore from './data/sedimentCore'
-import site from './data/site'
+import site from './data/archaeologicalSite'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
@@ -66,7 +66,8 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/samples/microstratigraphy':
     analysisSampleMicrostratigraphy,
-  '/api/data/analyses/sites/anthropology': analysisSiteAnthropology,
+  '/api/data/analyses/archaeological_sites/anthropology':
+    analysisSiteAnthropology,
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,
   '/api/data/analyses/{parentId}/subjects': analysisSubject,
@@ -101,7 +102,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths':
     sedimentCoreDepth.stratigraphicUnitSubResourceConfig,
 
-  '/api/data/sites': site,
+  '/api/data/archaeological_sites': site,
 
   '/api/data/stratigraphic_units': stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/contexts':

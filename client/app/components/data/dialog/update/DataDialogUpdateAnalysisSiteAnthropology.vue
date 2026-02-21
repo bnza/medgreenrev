@@ -3,7 +3,7 @@ import type { GetItemPath, PatchItemPath, PatchItemRequestMap } from '~~/types'
 import { useCollectScope } from '@regle/core'
 
 const path: GetItemPath & PatchItemPath =
-  '/api/data/analyses/sites/anthropology/{id}'
+  '/api/data/analyses/archaeological_sites/anthropology/{id}'
 
 defineEmits<{
   refresh: []

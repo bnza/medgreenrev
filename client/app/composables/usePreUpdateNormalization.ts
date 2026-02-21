@@ -23,17 +23,18 @@ const NORMALIZATION_FN_MAP: Partial<
       }
       return diffItem
     },
-  site: (oldItem: Record<string, any>) => (item: Record<string, any>) => {
-    const diffItem = diff(oldItem, item)
-    if (
-      diffItem &&
-      'culturalContexts' in diffItem &&
-      'culturalContexts' in item
-    ) {
-      diffItem.culturalContexts = item.culturalContexts
-    }
-    return diffItem
-  },
+  archaeologicalSite:
+    (oldItem: Record<string, any>) => (item: Record<string, any>) => {
+      const diffItem = diff(oldItem, item)
+      if (
+        diffItem &&
+        'culturalContexts' in diffItem &&
+        'culturalContexts' in item
+      ) {
+        diffItem.culturalContexts = item.culturalContexts
+      }
+      return diffItem
+    },
   siteUserPrivilege:
     (_oldItem: Record<string, any>) =>
     <T extends Record<string, any>>(item: T) => {

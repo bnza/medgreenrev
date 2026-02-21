@@ -2,7 +2,7 @@
 import type { GetItemResponseMap } from '~~/types'
 
 defineProps<{
-  item: GetItemResponseMap['/api/data/sites/{id}'] | undefined
+  item: GetItemResponseMap['/api/data/archaeological_sites/{id}'] | undefined
 }>()
 
 const getCulturalContextVocabulary = useVocabularyStore(

@@ -33,8 +33,9 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
 
       // Fill site field (using autocomplete)
-      await collectionPom.awaitForApiResponse('**/api/data/sites**', () =>
-        collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
+      await collectionPom.awaitForApiResponse(
+        '**/api/data/archaeological_sites**',
+        () => collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
       )
 
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
@@ -103,8 +104,9 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.dataDialogCreate.showCreatedItemCheckbox.uncheck()
 
       // Fill site field again
-      await collectionPom.awaitForApiResponse('**/api/data/sites**', () =>
-        collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
+      await collectionPom.awaitForApiResponse(
+        '**/api/data/archaeological_sites**',
+        () => collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
       )
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page.getByRole('option', { name: /Pla/ }).first().click()
@@ -139,8 +141,9 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
 
       // Fill site field (using autocomplete)
-      await collectionPom.awaitForApiResponse('**/api/data/sites**', () =>
-        collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
+      await collectionPom.awaitForApiResponse(
+        '**/api/data/archaeological_sites**',
+        () => collectionPom.dataDialogCreate.form.getByLabel('site').fill('pa'),
       )
 
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()

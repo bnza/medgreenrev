@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 <template>
   <map-layer-vector-api-base
-    path="/api/features/sites"
-    id-prefix="sites"
+    path="/api/features/archaeological_sites"
+    id-prefix="archaeological_sites"
     :label-options="{
       placement: 'point',
       labelProperty: 'name',

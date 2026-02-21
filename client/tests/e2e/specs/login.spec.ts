@@ -28,7 +28,7 @@ test.describe('Auth handling', () => {
   test.use({ storageState: 'playwright/.auth/base.json' })
   test.skip('JWT expired token redirect to login', async ({ page }) => {
     await page.route(
-      '**/api/data/sites**',
+      '**/api/data/archaeological_sites**',
       async (route) => {
         // Mock JSON response
         await route.fulfill({
@@ -52,6 +52,6 @@ test.describe('Auth handling', () => {
     expect(response.status()).toBe(200)
     //await expect(pom.appBar.loginButton).toBeVisible()
     await pom.login()
-    await siteCollectionPon.dataCard.expectToHaveTitle(/sites/i)
+    await siteCollectionPon.dataCard.expectToHaveTitle(/archaeological_sites/i)
   })
 })

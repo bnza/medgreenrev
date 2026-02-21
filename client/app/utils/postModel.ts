@@ -31,7 +31,7 @@ const EMPTY_POST_MODEL_MAP: {
 } = {
   '/api/admin/site_user_privileges': (parent) => ({
     user: parent?.key === 'user' ? parent.item['@id'] : undefined,
-    site: parent?.key === 'site' ? parent.item['@id'] : undefined,
+    site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),
   '/api/admin/users': (_parent) => ({
     enabled: true,
@@ -64,8 +64,8 @@ const EMPTY_POST_MODEL_MAP: {
   '/api/data/analyses/samples/microstratigraphy': (parent) => {
     return generateEmptyAnalysisSubjectModel('sample', parent)
   },
-  '/api/data/analyses/sites/anthropology': (parent) => {
-    return generateEmptyAnalysisSubjectModel('site', parent)
+  '/api/data/analyses/archaeological_sites/anthropology': (parent) => {
+    return generateEmptyAnalysisSubjectModel('archaeologicalSite', parent)
   },
   '/api/data/botany/seeds': (parent) => ({
     stratigraphicUnit:
@@ -75,7 +75,7 @@ const EMPTY_POST_MODEL_MAP: {
     part: null,
   }),
   '/api/data/contexts': (parent) => ({
-    site: parent?.key === 'site' ? parent.item['@id'] : undefined,
+    site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),
   '/api/data/context_stratigraphic_units': (parent) => ({
     context: parent?.key === 'context' ? parent.item['@id'] : undefined,
@@ -109,10 +109,10 @@ const EMPTY_POST_MODEL_MAP: {
     sample: parent?.key === 'sample' ? parent.item['@id'] : undefined,
   }),
   '/api/data/samples': (parent) => ({
-    site: parent?.key === 'site' ? parent.item['@id'] : undefined,
+    site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),
   '/api/data/sediment_cores': (parent) => ({
-    site: parent?.key === 'site' ? parent.item['@id'] : undefined,
+    site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),
   '/api/data/sediment_core_depths': (parent) => ({
     stratigraphicUnit:
@@ -121,7 +121,7 @@ const EMPTY_POST_MODEL_MAP: {
       parent?.key === 'sedimentCore' ? parent.item['@id'] : undefined,
   }),
   '/api/data/stratigraphic_units': (parent) => ({
-    site: parent?.key === 'site' ? parent.item['@id'] : undefined,
+    site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),
   '/api/data/zoo/bones': (parent) => ({
     stratigraphicUnit:

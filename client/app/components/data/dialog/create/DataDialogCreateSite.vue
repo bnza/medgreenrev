@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
 
-const path: PostCollectionPath = '/api/data/sites' as const
+const path: PostCollectionPath = '/api/data/archaeological_sites' as const
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 

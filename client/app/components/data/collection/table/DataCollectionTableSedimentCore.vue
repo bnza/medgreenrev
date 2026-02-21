@@ -4,7 +4,8 @@
   generic="
     Path extends Extract<
       GetCollectionPath,
-      '/api/data/sediment_cores' | '/api/data/sites/{parentId}/sediment_cores'
+      | '/api/data/sediment_cores'
+      | '/api/data/archaeological_sites/{parentId}/sediment_cores'
     >
   "
 >
@@ -12,7 +13,7 @@ import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'site'>
+  parent?: ResourceParent<'archaeologicalSite'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)

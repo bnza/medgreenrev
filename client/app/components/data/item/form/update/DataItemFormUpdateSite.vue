@@ -4,7 +4,7 @@ import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
 import { decimal, integer, maxValue, minValue, required } from '@regle/rules'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 
-type Path = '/api/data/sites/{id}'
+type Path = '/api/data/archaeological_sites/{id}'
 const props = defineProps<{
   initialValue: PatchItemRequestMap[Path]
   fetchedItem?: GetItemResponseMap[Path]
@@ -13,7 +13,7 @@ const props = defineProps<{
 const model = ref(structuredClone(props.initialValue))
 
 const apiNameValidator = new GetValidationOperation(
-  '/api/validator/unique/sites/name',
+  '/api/validator/unique/archaeological_sites/name',
 )
 
 const uniqueName = createRule({

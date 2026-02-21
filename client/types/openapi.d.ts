@@ -1294,7 +1294,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/sites/anthropology': {
+  '/api/data/analyses/archaeological_sites/anthropology': {
     parameters: {
       query?: never
       header?: never
@@ -1305,20 +1305,20 @@ export interface paths {
      * Retrieves the collection of AnalysisSiteAnthropology resources.
      * @description Retrieves the collection of AnalysisSiteAnthropology resources.
      */
-    get: operations['api_dataanalysessitesanthropology_get_collection']
+    get: operations['api_dataanalysesarchaeological_sitesanthropology_get_collection']
     put?: never
     /**
      * Creates a AnalysisSiteAnthropology resource.
      * @description Creates a AnalysisSiteAnthropology resource.
      */
-    post: operations['api_dataanalysessitesanthropology_post']
+    post: operations['api_dataanalysesarchaeological_sitesanthropology_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/sites/anthropology/{id}': {
+  '/api/data/analyses/archaeological_sites/anthropology/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -1329,24 +1329,24 @@ export interface paths {
      * Retrieves a AnalysisSiteAnthropology resource.
      * @description Retrieves a AnalysisSiteAnthropology resource.
      */
-    get: operations['api_dataanalysessitesanthropology_id_get']
+    get: operations['api_dataanalysesarchaeological_sitesanthropology_id_get']
     put?: never
     post?: never
     /**
      * Removes the AnalysisSiteAnthropology resource.
      * @description Removes the AnalysisSiteAnthropology resource.
      */
-    delete: operations['api_dataanalysessitesanthropology_id_delete']
+    delete: operations['api_dataanalysesarchaeological_sitesanthropology_id_delete']
     options?: never
     head?: never
     /**
      * Updates the AnalysisSiteAnthropology resource.
      * @description Updates the AnalysisSiteAnthropology resource.
      */
-    patch: operations['api_dataanalysessitesanthropology_id_patch']
+    patch: operations['api_dataanalysesarchaeological_sitesanthropology_id_patch']
     trace?: never
   }
-  '/api/data/analyses/{parentId}/sites/anthropology': {
+  '/api/data/analyses/{parentId}/archaeological_sites/anthropology': {
     parameters: {
       query?: never
       header?: never
@@ -1357,7 +1357,7 @@ export interface paths {
      * Retrieves the collection of AnalysisSiteAnthropology resources.
      * @description Retrieves the collection of AnalysisSiteAnthropology resources.
      */
-    get: operations['api_dataanalyses_parentIdsitesanthropology_get_collection']
+    get: operations['api_dataanalyses_parentIdarchaeological_sitesanthropology_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1366,7 +1366,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/sites/{parentId}/analyses/anthropology': {
+  '/api/data/archaeological_sites/{parentId}/analyses/anthropology': {
     parameters: {
       query?: never
       header?: never
@@ -1377,7 +1377,7 @@ export interface paths {
      * Retrieves the collection of AnalysisSiteAnthropology resources.
      * @description Retrieves the collection of AnalysisSiteAnthropology resources.
      */
-    get: operations['api_datasites_parentIdanalysesanthropology_get_collection']
+    get: operations['api_dataarchaeological_sites_parentIdanalysesanthropology_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1630,6 +1630,118 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/archaeological_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ArchaeologicalSite resources.
+     * @description Retrieves the collection of ArchaeologicalSite resources.
+     */
+    get: operations['api_dataarchaeological_sites_get_collection']
+    put?: never
+    /**
+     * Creates a ArchaeologicalSite resource.
+     * @description Creates a ArchaeologicalSite resource.
+     */
+    post: operations['api_dataarchaeological_sites_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/archaeological_sites/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ArchaeologicalSite resource.
+     * @description Retrieves a ArchaeologicalSite resource.
+     */
+    get: operations['api_dataarchaeological_sites_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the ArchaeologicalSite resource.
+     * @description Removes the ArchaeologicalSite resource.
+     */
+    delete: operations['api_dataarchaeological_sites_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the ArchaeologicalSite resource.
+     * @description Updates the ArchaeologicalSite resource.
+     */
+    patch: operations['api_dataarchaeological_sites_id_patch']
+    trace?: never
+  }
+  '/api/features/archaeological_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection streamed from GeoServer.
+     */
+    get: operations['api_featuresarchaeological_sites.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/archaeological_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ArchaeologicalSite resource.
+     * @description Retrieves a ArchaeologicalSite resource.
+     */
+    get: operations['api_featuresextent_matchedarchaeological_sites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/archaeological_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ArchaeologicalSite resource.
+     * @description Retrieves a ArchaeologicalSite resource.
+     */
+    get: operations['api_featuresnumber_matchedarchaeological_sites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/botany/charcoals': {
     parameters: {
       query?: never
@@ -1774,6 +1886,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/archaeological_sites/{parentId}/contexts': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Context resources.
+     * @description Retrieves the collection of Context resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdcontexts_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/contexts': {
     parameters: {
       query?: never
@@ -1824,26 +1956,6 @@ export interface paths {
      * @description Updates the Context resource.
      */
     patch: operations['api_datacontexts_id_patch']
-    trace?: never
-  }
-  '/api/data/sites/{parentId}/contexts': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Context resources.
-     * @description Retrieves the collection of Context resources.
-     */
-    get: operations['api_datasites_parentIdcontexts_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
   '/api/data/context_stratigraphic_units': {
@@ -3090,6 +3202,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/archaeological_sites/{parentId}/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Sample resources.
+     * @description Retrieves the collection of Sample resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdsamples_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/samples': {
     parameters: {
       query?: never
@@ -3140,26 +3272,6 @@ export interface paths {
      * @description Updates the Sample resource.
      */
     patch: operations['api_datasamples_id_patch']
-    trace?: never
-  }
-  '/api/data/sites/{parentId}/samples': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Sample resources.
-     * @description Retrieves the collection of Sample resources.
-     */
-    get: operations['api_datasites_parentIdsamples_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
   '/api/data/sample_stratigraphic_units': {
@@ -3414,118 +3526,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/sites': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of Site resources.
-     * @description Retrieves the collection of Site resources.
-     */
-    get: operations['api_datasites_get_collection']
-    put?: never
-    /**
-     * Creates a Site resource.
-     * @description Creates a Site resource.
-     */
-    post: operations['api_datasites_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/data/sites/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a Site resource.
-     * @description Retrieves a Site resource.
-     */
-    get: operations['api_datasites_id_get']
-    put?: never
-    post?: never
-    /**
-     * Removes the Site resource.
-     * @description Removes the Site resource.
-     */
-    delete: operations['api_datasites_id_delete']
-    options?: never
-    head?: never
-    /**
-     * Updates the Site resource.
-     * @description Updates the Site resource.
-     */
-    patch: operations['api_datasites_id_patch']
-    trace?: never
-  }
-  '/api/features/extent_matched/sites': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a Site resource.
-     * @description Retrieves a Site resource.
-     */
-    get: operations['api_featuresextent_matchedsites_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/features/number_matched/sites': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a Site resource.
-     * @description Retrieves a Site resource.
-     */
-    get: operations['api_featuresnumber_matchedsites_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/features/sites': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * GeoServer FeatureCollection (GeoJSON)
-     * @description Returns a GeoJSON FeatureCollection streamed from GeoServer.
-     */
-    get: operations['api_featuressites.__format_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/site_cultural_contexts': {
     parameters: {
       query?: never
@@ -3558,6 +3558,46 @@ export interface paths {
      * @description Retrieves a SiteCulturalContext resource.
      */
     get: operations['api_datasite_cultural_contexts_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/admin/archaeological_sites/{parentId}/site_user_privileges': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SiteUserPrivilege resources.
+     * @description Retrieves the collection of SiteUserPrivilege resources.
+     */
+    get: operations['api_adminarchaeological_sites_parentIdsite_user_privileges_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/admin/archaeological_sites/{parentId}/site_user_privileges/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SiteUserPrivilege resource.
+     * @description Retrieves a SiteUserPrivilege resource.
+     */
+    get: operations['api_adminarchaeological_sites_parentIdsite_user_privileges_id_get']
     put?: never
     post?: never
     delete?: never
@@ -3616,46 +3656,6 @@ export interface paths {
      * @description Updates the SiteUserPrivilege resource.
      */
     patch: operations['api_adminsite_user_privileges_id_patch']
-    trace?: never
-  }
-  '/api/admin/sites/{parentId}/site_user_privileges': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SiteUserPrivilege resources.
-     * @description Retrieves the collection of SiteUserPrivilege resources.
-     */
-    get: operations['api_adminsites_parentIdsite_user_privileges_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/admin/sites/{parentId}/site_user_privileges/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a SiteUserPrivilege resource.
-     * @description Retrieves a SiteUserPrivilege resource.
-     */
-    get: operations['api_adminsites_parentIdsite_user_privileges_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
   '/api/admin/users/me/site_user_privileges': {
@@ -3718,7 +3718,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/sites/{parentId}/stratigraphic_units': {
+  '/api/data/archaeological_sites/{parentId}/stratigraphic_units': {
     parameters: {
       query?: never
       header?: never
@@ -3729,7 +3729,7 @@ export interface paths {
      * Retrieves the collection of StratigraphicUnit resources.
      * @description Retrieves the collection of StratigraphicUnit resources.
      */
-    get: operations['api_datasites_parentIdstratigraphic_units_get_collection']
+    get: operations['api_dataarchaeological_sites_parentIdstratigraphic_units_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -3878,6 +3878,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/archaeological_sites/anthropology': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysesarchaeological_sitesanthropology_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/botany/charcoals': {
     parameters: {
       query?: never
@@ -4018,26 +4038,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/sites/anthropology': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a UniqueValidator resource.
-     * @description Retrieves a UniqueValidator resource.
-     */
-    get: operations['api_validatoruniqueanalysessitesanthropology_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/validator/unique/analyses/zoo/bones': {
     parameters: {
       query?: never
@@ -4070,6 +4070,46 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniqueanalyseszooteeth_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/archaeological_sites/code': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquearchaeological_sitescode_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/archaeological_sites/name': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquearchaeological_sitesname_get']
     put?: never
     post?: never
     delete?: never
@@ -4330,46 +4370,6 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquesite_user_privileges_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/validator/unique/sites/code': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a UniqueValidator resource.
-     * @description Retrieves a UniqueValidator resource.
-     */
-    get: operations['api_validatoruniquesitescode_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/validator/unique/sites/name': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a UniqueValidator resource.
-     * @description Retrieves a UniqueValidator resource.
-     */
-    get: operations['api_validatoruniquesitesname_get']
     put?: never
     post?: never
     delete?: never
@@ -7284,7 +7284,7 @@ export interface components {
     }
     'AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       readonly id?: number | string
-      subject?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      subject?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
       /** @description Access control metadata */
@@ -7303,7 +7303,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      subject?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+      subject?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     })
@@ -7423,6 +7423,812 @@ export interface components {
         | null
       analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
+    })
+    'ArchaeologicalSite-feature_collection.json.read': {
+      readonly id?: number | string
+    }
+    'ArchaeologicalSite-site.create': {
+      code: string
+      name: string
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: string[]
+      n?: number
+      e?: number
+    }
+    'ArchaeologicalSite-site.create.jsonMergePatch': {
+      code?: string
+      name?: string
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: string[]
+      n?: number
+      e?: number
+    }
+    'ArchaeologicalSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'ArchaeologicalSite.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
+    'ArchaeologicalSite.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+      n?: number
+      e?: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-botany_charcoal.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-botany_seed.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-context.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-context_stratigraphic_unit.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-individual.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-microstratigraphic_unit.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-pottery.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sample.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sediment_core.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-site.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?: components['schemas']['User.csv-site.acl.read'] | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.csv-site.acl.read'][]
+      n?: number
+      e?: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-sus.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-zoo_bone.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.csv-zoo_tooth.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'ArchaeologicalSite.geojson-feature_collection.json.read': {
+      readonly id?: number | string
+    }
+    'ArchaeologicalSite.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    }
+    'ArchaeologicalSite.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
+        | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
+      n?: number
+      e?: number
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-botany_charcoal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-botany_seed.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-context_stratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-microstratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?: components['schemas']['User.jsonld-site.acl.read'] | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
+      n?: number
+      e?: number
+    })
+    'ArchaeologicalSite.jsonld-site_user_privilege.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      createdBy?:
+        | components['schemas']['User.jsonld-site_user_privilege.acl.read']
+        | null
+    })
+    'ArchaeologicalSite.jsonld-sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-zoo_bone.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
     })
     'BotanyCharcoal-botany_charcoal.create': {
       /**
@@ -7806,7 +8612,7 @@ export interface components {
     'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
       /** @description Access control metadata */
@@ -7819,7 +8625,7 @@ export interface components {
     'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
       /** @description Access control metadata */
@@ -7832,7 +8638,7 @@ export interface components {
     'Context.csv-context.acl.read': {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.csv-context.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-context.acl.read']
       name?: string
       description?: string | null
       /** @description Access control metadata */
@@ -7845,7 +8651,7 @@ export interface components {
     'Context.csv-context_stratigraphic_unit.acl.read': {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.csv-context_stratigraphic_unit.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.acl.read']
       name?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -7857,7 +8663,7 @@ export interface components {
     'Context.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
       /** @description Access control metadata */
@@ -7877,7 +8683,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
     })
@@ -7891,7 +8697,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
     })
@@ -7905,7 +8711,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.jsonld-context.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-context.acl.read']
       name?: string
       description?: string | null
     })
@@ -7919,7 +8725,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
     })
     'Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
@@ -7932,7 +8738,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       type?: string
-      site?: components['schemas']['Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
     })
@@ -9001,7 +9807,7 @@ export interface components {
     }
     'Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
       year: number
@@ -9017,7 +9823,7 @@ export interface components {
     }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
       year: number
@@ -9033,7 +9839,7 @@ export interface components {
     }
     'Sample.csv-sample.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sample.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-sample.acl.read']
       type?: components['schemas']['VocSampleType.csv-sample.acl.read']
       /** @default 0 */
       year: number
@@ -9049,7 +9855,7 @@ export interface components {
     }
     'Sample.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['VocSampleType.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /** @default 0 */
       year: number
@@ -9065,7 +9871,7 @@ export interface components {
     }
     'Sample.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       readonly id?: number | string
-      site?: components['schemas']['Site.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /** @default 0 */
       year: number
@@ -9107,7 +9913,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
       year: number
@@ -9124,7 +9930,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
       year: number
@@ -9141,7 +9947,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sample.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample.acl.read']
       /** @default 0 */
       year: number
@@ -9158,7 +9964,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /** @default 0 */
       year: number
@@ -9175,7 +9981,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site?: components['schemas']['Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /** @default 0 */
       year: number
@@ -9276,7 +10082,7 @@ export interface components {
     }
     'SedimentCore.csv-sediment_core.acl.read': {
       readonly id: number | string
-      site: components['schemas']['Site.csv-sediment_core.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -9290,7 +10096,7 @@ export interface components {
     }
     'SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id: number | string
-      site: components['schemas']['Site.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       year: number
       number: number
       description?: string | null
@@ -9304,7 +10110,7 @@ export interface components {
     }
     'SedimentCore.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       readonly id: number | string
-      site: components['schemas']['Site.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -9338,7 +10144,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      site: components['schemas']['Site.jsonld-sediment_core.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -9353,7 +10159,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      site: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       year: number
       number: number
       description?: string | null
@@ -9368,7 +10174,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      site: components['schemas']['Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -9509,812 +10315,6 @@ export interface components {
       depthMax: string
       notes?: string | null
     })
-    'Site-feature_collection.json.read': {
-      readonly id?: number | string
-    }
-    'Site-site.create': {
-      code: string
-      name: string
-      description?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: string[]
-      n?: number
-      e?: number
-    }
-    'Site-site.create.jsonMergePatch': {
-      code?: string
-      name?: string
-      description?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: string[]
-      n?: number
-      e?: number
-    }
-    'Site.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * @example [
-       *       -574545.7563392848,
-       *       4371056.783165679,
-       *       58028.027939854575,
-       *       5020082.443572257
-       *     ]
-       */
-      readonly extent: [number, number, number, number]
-      /**
-       * @example {
-       *       "type": "name",
-       *       "properties": {
-       *         "name": "urn:ogc:def:crs:EPSG::3857"
-       *       }
-       *     }
-       */
-      readonly crs: {
-        /** @enum {string} */
-        type: 'name'
-        properties: {
-          name: string
-        }
-      }
-      /** Format: date-time */
-      readonly timeStamp: string
-      typeName: string
-      readonly id: string
-    }
-    'Site.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly numberMatched?: number
-      readonly timeStamp?: string
-      typeName?: string
-      readonly id?: unknown
-    }
-    'Site.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      description?: string | null
-      createdBy?:
-        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
-        | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
-      n?: number
-      e?: number
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-botany_charcoal.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-botany_seed.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-context.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-context_stratigraphic_unit.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-individual.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-microstratigraphic_unit.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-pottery.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sample.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sediment_core.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-site.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      description?: string | null
-      createdBy?: components['schemas']['User.csv-site.acl.read'] | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.csv-site.acl.read'][]
-      n?: number
-      e?: number
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-zoo_bone.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.csv-zoo_tooth.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'Site.geojson-feature_collection.json.read': {
-      readonly id?: number | string
-    }
-    'Site.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    }
-    'Site.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      description?: string | null
-      createdBy?:
-        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read']
-        | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read'][]
-      n?: number
-      e?: number
-    })
-    'Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-botany_charcoal.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-botany_seed.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-context.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-context_stratigraphic_unit.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-individual.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-microstratigraphic_unit.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-pottery.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sample.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sediment_core.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-site.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      description?: string | null
-      createdBy?: components['schemas']['User.jsonld-site.acl.read'] | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-site.acl.read'][]
-      n?: number
-      e?: number
-    })
-    'Site.jsonld-site_user_privilege.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      createdBy?:
-        | components['schemas']['User.jsonld-site_user_privilege.acl.read']
-        | null
-    })
-    'Site.jsonld-sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-zoo_bone.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'Site.jsonld-zoo_tooth.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
     'SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_site.acl.read_site_anthropology.acl.read': {
       /**
        * Format: iri-reference
@@ -10411,7 +10411,7 @@ export interface components {
       /** Format: uuid */
       readonly id?: string
       user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
-      site?: components['schemas']['Site.jsonld-site_user_privilege.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-site_user_privilege.acl.read']
       /** @default 0 */
       privilege: number
     })
@@ -10448,7 +10448,7 @@ export interface components {
       chronologyUpper?: number | null
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10458,7 +10458,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10468,7 +10468,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
-      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10478,7 +10478,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
-      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10488,7 +10488,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      site: components['schemas']['Site.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10498,7 +10498,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-botany_charcoal.acl.read': {
-      site: components['schemas']['Site.csv-botany_charcoal.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-botany_charcoal.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10508,7 +10508,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-botany_seed.acl.read': {
-      site: components['schemas']['Site.csv-botany_seed.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-botany_seed.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10532,7 +10532,7 @@ export interface components {
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site: components['schemas']['Site.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10551,7 +10551,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-individual.acl.read': {
-      site: components['schemas']['Site.csv-individual.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-individual.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10561,7 +10561,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
-      site: components['schemas']['Site.csv-microstratigraphic_unit.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-microstratigraphic_unit.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10571,7 +10571,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-pottery.acl.read': {
-      site: components['schemas']['Site.csv-pottery.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-pottery.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10582,7 +10582,7 @@ export interface components {
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site: components['schemas']['Site.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10602,7 +10602,7 @@ export interface components {
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site: components['schemas']['Site.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10622,7 +10622,7 @@ export interface components {
     }
     'StratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site: components['schemas']['Site.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10642,7 +10642,7 @@ export interface components {
     }
     'StratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       readonly id?: number | string
-      site: components['schemas']['Site.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10662,7 +10662,7 @@ export interface components {
     }
     'StratigraphicUnit.csv-sus.acl.read': {
       readonly id?: number | string
-      site: components['schemas']['Site.csv-sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10681,7 +10681,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-zoo_bone.acl.read': {
-      site: components['schemas']['Site.csv-zoo_bone.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-zoo_bone.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10691,7 +10691,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-zoo_tooth.acl.read': {
-      site: components['schemas']['Site.csv-zoo_tooth.acl.read']
+      site: components['schemas']['ArchaeologicalSite.csv-zoo_tooth.acl.read']
       readonly code: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10701,7 +10701,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-abs_dating_analysis.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-abs_dating_analysis.read']
       readonly code: string
     }
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
@@ -10712,7 +10712,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
@@ -10723,7 +10723,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
@@ -10734,7 +10734,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
@@ -10745,7 +10745,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
@@ -10756,7 +10756,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-botany_charcoal.acl.read': {
@@ -10767,7 +10767,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-botany_charcoal.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-botany_charcoal.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-botany_seed.acl.read': {
@@ -10778,7 +10778,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-botany_seed.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-botany_seed.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
@@ -10804,7 +10804,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10824,7 +10824,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-individual.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-individual.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
@@ -10836,7 +10836,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10856,7 +10856,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-microstratigraphic_unit.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-microstratigraphic_unit.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-pottery.acl.read': {
@@ -10867,7 +10867,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-pottery.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-pottery.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
@@ -10879,7 +10879,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10900,7 +10900,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10921,7 +10921,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10942,7 +10942,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10966,7 +10966,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      site: components['schemas']['Site.jsonld-sus.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -10986,7 +10986,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-zoo_bone.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-zoo_bone.acl.read']
       readonly code: string
     })
     'StratigraphicUnit.jsonld-zoo_tooth.acl.read': {
@@ -10997,7 +10997,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      site: components['schemas']['Site.jsonld-zoo_tooth.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-zoo_tooth.acl.read']
       readonly code: string
     })
     'StratigraphicUnitRelationship-su_relationship.create': {
@@ -19156,7 +19156,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessitesanthropology_get_collection: {
+  api_dataanalysesarchaeological_sitesanthropology_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -19240,7 +19240,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessitesanthropology_post: {
+  api_dataanalysesarchaeological_sitesanthropology_post: {
     parameters: {
       query?: never
       header?: never
@@ -19287,7 +19287,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessitesanthropology_id_get: {
+  api_dataanalysesarchaeological_sitesanthropology_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -19321,7 +19321,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessitesanthropology_id_delete: {
+  api_dataanalysesarchaeological_sitesanthropology_id_delete: {
     parameters: {
       query?: never
       header?: never
@@ -19364,7 +19364,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessitesanthropology_id_patch: {
+  api_dataanalysesarchaeological_sitesanthropology_id_patch: {
     parameters: {
       query?: never
       header?: never
@@ -19436,7 +19436,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalyses_parentIdsitesanthropology_get_collection: {
+  api_dataanalyses_parentIdarchaeological_sitesanthropology_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -19523,7 +19523,7 @@ export interface operations {
       }
     }
   }
-  api_datasites_parentIdanalysesanthropology_get_collection: {
+  api_dataarchaeological_sites_parentIdanalysesanthropology_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -21003,6 +21003,422 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        'culturalContexts.culturalContext'?: string
+        'culturalContexts.culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        fieldDirector?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[fieldDirector]'?: boolean
+        'exists[culturalContexts]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+        /**
+         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ArchaeologicalSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ArchaeologicalSite.jsonld-site.acl.read'][]
+          }
+          'text/csv': components['schemas']['ArchaeologicalSite.csv-site.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new ArchaeologicalSite resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['ArchaeologicalSite-site.create']
+      }
+    }
+    responses: {
+      /** @description ArchaeologicalSite resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-site.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ArchaeologicalSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ArchaeologicalSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-site.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ArchaeologicalSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ArchaeologicalSite resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ArchaeologicalSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated ArchaeologicalSite resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['ArchaeologicalSite-site.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description ArchaeologicalSite resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-site.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  'api_featuresarchaeological_sites.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        'culturalContexts.culturalContext'?: string
+        'culturalContexts.culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        fieldDirector?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[fieldDirector]'?: boolean
+        'exists[culturalContexts]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+        /**
+         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection, depending on the requested format return a geojson FeatureCollection or an array of IDs. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesIds']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedarchaeological_sites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ArchaeologicalSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ArchaeologicalSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedarchaeological_sites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ArchaeologicalSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ArchaeologicalSite.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_databotanycharcoals_get_collection: {
     parameters: {
       query?: {
@@ -21949,6 +22365,114 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_parentIdcontexts_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[contextStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[contextStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[contextStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'contextStratigraphicUnits.stratigraphicUnit.area'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'contextStratigraphicUnits.stratigraphicUnit.building'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.number'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.site'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'contextStratigraphicUnits.stratigraphicUnit.year'?: number
+        'contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        type?: string
+        'type[]'?: string[]
+        'exists[description]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
+         * @example TO.fill 90
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description Context identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Context collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['Context.csv-context.acl.read'][]
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['Context.jsonld-context.acl.read'][]
+          }
+        }
+      }
+    }
+  }
   api_datacontexts_get_collection: {
     parameters: {
       query?: {
@@ -22246,114 +22770,6 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
-        }
-      }
-    }
-  }
-  api_datasites_parentIdcontexts_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'exists[contextStratigraphicUnits.stratigraphicUnit.description]'?: boolean
-        'exists[contextStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
-        'exists[contextStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
-        'exists[contextStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
-        'contextStratigraphicUnits.stratigraphicUnit.area'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
-        'contextStratigraphicUnits.stratigraphicUnit.building'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
-        'contextStratigraphicUnits.stratigraphicUnit.number'?: number
-        'contextStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
-        'contextStratigraphicUnits.stratigraphicUnit.site'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
-        'contextStratigraphicUnits.stratigraphicUnit.year'?: number
-        'contextStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.number[between]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.year[between]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
-        'contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'contextStratigraphicUnits.stratigraphicUnit.description'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[name]'?: 'asc' | 'desc'
-        'order[type]'?: 'asc' | 'desc'
-        site?: string
-        'site[]'?: string[]
-        type?: string
-        'type[]'?: string[]
-        'exists[description]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        name?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Search by name (case insensitive like) if single value, or by site code end AND name (both conditions must match) if value contains dot. Edge cases: ".name" searches only by name, "code." searches only by site code. Format: "siteCode.namePattern"
-         * @example TO.fill 90
-         */
-        search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path: {
-        /** @description Context identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Context collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'text/csv': components['schemas']['Context.csv-context.acl.read'][]
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['Context.jsonld-context.acl.read'][]
-          }
         }
       }
     }
@@ -26642,6 +27058,157 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_parentIdsamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analysesMicrostratigraphicUnits.analysis.laboratory]'?: boolean
+        'exists[analysesMicrostratigraphicUnits.analysis.responsible]'?: boolean
+        'exists[analysesMicrostratigraphicUnits.analysis.summary]'?: boolean
+        'analysesMicrostratigraphicUnits.analysis.createdBy.email'?: string
+        'analysesMicrostratigraphicUnits.analysis.createdBy.email[]'?: string[]
+        'analysesMicrostratigraphicUnits.analysis.identifier'?: string
+        'analysesMicrostratigraphicUnits.analysis.laboratory'?: string
+        'analysesMicrostratigraphicUnits.analysis.responsible'?: string
+        'analysesMicrostratigraphicUnits.analysis.status'?: number
+        'analysesMicrostratigraphicUnits.analysis.status[]'?: number[]
+        'analysesMicrostratigraphicUnits.analysis.type'?: string
+        'analysesMicrostratigraphicUnits.analysis.type[]'?: string[]
+        'analysesMicrostratigraphicUnits.analysis.type.code'?: string
+        'analysesMicrostratigraphicUnits.analysis.type.code[]'?: string[]
+        'analysesMicrostratigraphicUnits.analysis.type.group'?: string
+        'analysesMicrostratigraphicUnits.analysis.type.group[]'?: string[]
+        'analysesMicrostratigraphicUnits.analysis.year'?: number
+        'analysesMicrostratigraphicUnits.analysis.year[]'?: number[]
+        'analysesMicrostratigraphicUnits.analysis.year[between]'?: string
+        'analysesMicrostratigraphicUnits.analysis.year[gt]'?: string
+        'analysesMicrostratigraphicUnits.analysis.year[gte]'?: string
+        'analysesMicrostratigraphicUnits.analysis.year[lt]'?: string
+        'analysesMicrostratigraphicUnits.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analysesMicrostratigraphicUnits.analysis.summary'?: string
+        'exists[sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[type.code]'?: 'asc' | 'desc'
+        'order[type.value]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        type?: string
+        'type[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'exists[description]'?: boolean
+        'exists[sampleStratigraphicUnits]'?: boolean
+        'exists[analysesMicrostratigraphicUnits]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
+         * @example ME.GE.34.93
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Sample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['Sample.jsonld-sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['Sample.csv-sample.acl.read'][]
+        }
+      }
+    }
+  }
   api_datasamples_get_collection: {
     parameters: {
       query?: {
@@ -26982,157 +27549,6 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
-        }
-      }
-    }
-  }
-  api_datasites_parentIdsamples_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'exists[analysesMicrostratigraphicUnits.analysis.laboratory]'?: boolean
-        'exists[analysesMicrostratigraphicUnits.analysis.responsible]'?: boolean
-        'exists[analysesMicrostratigraphicUnits.analysis.summary]'?: boolean
-        'analysesMicrostratigraphicUnits.analysis.createdBy.email'?: string
-        'analysesMicrostratigraphicUnits.analysis.createdBy.email[]'?: string[]
-        'analysesMicrostratigraphicUnits.analysis.identifier'?: string
-        'analysesMicrostratigraphicUnits.analysis.laboratory'?: string
-        'analysesMicrostratigraphicUnits.analysis.responsible'?: string
-        'analysesMicrostratigraphicUnits.analysis.status'?: number
-        'analysesMicrostratigraphicUnits.analysis.status[]'?: number[]
-        'analysesMicrostratigraphicUnits.analysis.type'?: string
-        'analysesMicrostratigraphicUnits.analysis.type[]'?: string[]
-        'analysesMicrostratigraphicUnits.analysis.type.code'?: string
-        'analysesMicrostratigraphicUnits.analysis.type.code[]'?: string[]
-        'analysesMicrostratigraphicUnits.analysis.type.group'?: string
-        'analysesMicrostratigraphicUnits.analysis.type.group[]'?: string[]
-        'analysesMicrostratigraphicUnits.analysis.year'?: number
-        'analysesMicrostratigraphicUnits.analysis.year[]'?: number[]
-        'analysesMicrostratigraphicUnits.analysis.year[between]'?: string
-        'analysesMicrostratigraphicUnits.analysis.year[gt]'?: string
-        'analysesMicrostratigraphicUnits.analysis.year[gte]'?: string
-        'analysesMicrostratigraphicUnits.analysis.year[lt]'?: string
-        'analysesMicrostratigraphicUnits.analysis.year[lte]'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'analysesMicrostratigraphicUnits.analysis.summary'?: string
-        'exists[sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
-        'exists[sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
-        'exists[sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
-        'exists[sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
-        'sampleStratigraphicUnits.stratigraphicUnit.area'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
-        'sampleStratigraphicUnits.stratigraphicUnit.building'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
-        'sampleStratigraphicUnits.stratigraphicUnit.number'?: number
-        'sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
-        'sampleStratigraphicUnits.stratigraphicUnit.site'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
-        'sampleStratigraphicUnits.stratigraphicUnit.year'?: number
-        'sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'sampleStratigraphicUnits.stratigraphicUnit.description'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[year]'?: 'asc' | 'desc'
-        'order[number]'?: 'asc' | 'desc'
-        'order[type.code]'?: 'asc' | 'desc'
-        'order[type.value]'?: 'asc' | 'desc'
-        site?: string
-        'site[]'?: string[]
-        type?: string
-        'type[]'?: string[]
-        number?: number
-        'number[]'?: number[]
-        year?: number
-        'year[]'?: number[]
-        'sampleStratigraphicUnits.stratigraphicUnit'?: string
-        'sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        'year[between]'?: string
-        'year[gt]'?: string
-        'year[gte]'?: string
-        'year[lt]'?: string
-        'year[lte]'?: string
-        'number[between]'?: string
-        'number[gt]'?: string
-        'number[gte]'?: string
-        'number[lt]'?: string
-        'number[lte]'?: string
-        'exists[description]'?: boolean
-        'exists[sampleStratigraphicUnits]'?: boolean
-        'exists[analysesMicrostratigraphicUnits]'?: boolean
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
-         * @example ME.GE.34.93
-         */
-        search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path: {
-        /** @description Sample identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Sample collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['Sample.jsonld-sample.acl.read'][]
-          }
-          'text/csv': components['schemas']['Sample.csv-sample.acl.read'][]
         }
       }
     }
@@ -28283,422 +28699,6 @@ export interface operations {
       }
     }
   }
-  api_datasites_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[code]'?: 'asc' | 'desc'
-        'order[name]'?: 'asc' | 'desc'
-        'order[chronologyLower]'?: 'asc' | 'desc'
-        'order[chronologyUpper]'?: 'asc' | 'desc'
-        code?: string
-        'code[]'?: string[]
-        'culturalContexts.culturalContext'?: string
-        'culturalContexts.culturalContext[]'?: string[]
-        chronologyLower?: number
-        'chronologyLower[]'?: number[]
-        chronologyUpper?: number
-        'chronologyUpper[]'?: number[]
-        'chronologyLower[between]'?: string
-        'chronologyLower[gt]'?: string
-        'chronologyLower[gte]'?: string
-        'chronologyLower[lt]'?: string
-        'chronologyLower[lte]'?: string
-        'chronologyUpper[between]'?: string
-        'chronologyUpper[gt]'?: string
-        'chronologyUpper[gte]'?: string
-        'chronologyUpper[lt]'?: string
-        'chronologyUpper[lte]'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        name?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        fieldDirector?: string
-        'exists[chronologyLower]'?: boolean
-        'exists[chronologyUpper]'?: boolean
-        'exists[description]'?: boolean
-        'exists[fieldDirector]'?: boolean
-        'exists[culturalContexts]'?: boolean
-        /**
-         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
-         * @example me
-         */
-        search?: string
-        /**
-         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Site collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['Site.jsonld-site.acl.read'][]
-          }
-          'text/csv': components['schemas']['Site.csv-site.acl.read'][]
-        }
-      }
-    }
-  }
-  api_datasites_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description The new Site resource */
-    requestBody: {
-      content: {
-        'application/ld+json': components['schemas']['Site-site.create']
-      }
-    }
-    responses: {
-      /** @description Site resource created */
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Site.jsonld-site.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation']
-          'application/json': components['schemas']['ConstraintViolation']
-        }
-      }
-    }
-  }
-  api_datasites_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description Site identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Site resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Site.jsonld-site.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_datasites_id_delete: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description Site identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Site resource deleted */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_datasites_id_patch: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description Site identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    /** @description The updated Site resource */
-    requestBody: {
-      content: {
-        'application/merge-patch+json': components['schemas']['Site-site.create.jsonMergePatch']
-      }
-    }
-    responses: {
-      /** @description Site resource updated */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Site.jsonld-site.acl.read']
-        }
-      }
-      /** @description Invalid input */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description An error occurred */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
-          'application/problem+json': components['schemas']['ConstraintViolation']
-          'application/json': components['schemas']['ConstraintViolation']
-        }
-      }
-    }
-  }
-  api_featuresextent_matchedsites_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Site resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_featuresnumber_matchedsites_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Site resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Site.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  'api_featuressites.__format_get_collection': {
-    parameters: {
-      query?: {
-        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
-        bbox?: string
-        'order[id]'?: 'asc' | 'desc'
-        'order[code]'?: 'asc' | 'desc'
-        'order[name]'?: 'asc' | 'desc'
-        'order[chronologyLower]'?: 'asc' | 'desc'
-        'order[chronologyUpper]'?: 'asc' | 'desc'
-        code?: string
-        'code[]'?: string[]
-        'culturalContexts.culturalContext'?: string
-        'culturalContexts.culturalContext[]'?: string[]
-        chronologyLower?: number
-        'chronologyLower[]'?: number[]
-        chronologyUpper?: number
-        'chronologyUpper[]'?: number[]
-        'chronologyLower[between]'?: string
-        'chronologyLower[gt]'?: string
-        'chronologyLower[gte]'?: string
-        'chronologyLower[lt]'?: string
-        'chronologyLower[lte]'?: string
-        'chronologyUpper[between]'?: string
-        'chronologyUpper[gt]'?: string
-        'chronologyUpper[gte]'?: string
-        'chronologyUpper[lt]'?: string
-        'chronologyUpper[lte]'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        name?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        fieldDirector?: string
-        'exists[chronologyLower]'?: boolean
-        'exists[chronologyUpper]'?: boolean
-        'exists[description]'?: boolean
-        'exists[fieldDirector]'?: boolean
-        'exists[culturalContexts]'?: boolean
-        /**
-         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
-         * @example me
-         */
-        search?: string
-        /**
-         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description GeoJSON FeatureCollection, depending on the requested format return a geojson FeatureCollection or an array of IDs. */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/geo+json': components['schemas']['GeoJSONFeatureCollection']
-          'application/json': components['schemas']['MatchingFeaturesIds']
-        }
-      }
-    }
-  }
   api_datasite_cultural_contexts_get_collection: {
     parameters: {
       query?: {
@@ -28745,6 +28745,98 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['SiteCulturalContext.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_adminarchaeological_sites_parentIdsite_user_privileges_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[user.email]'?: 'asc' | 'desc'
+        'order[privilege]'?: 'asc' | 'desc'
+      }
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_adminarchaeological_sites_parentIdsite_user_privileges_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SiteUserPrivilege identifier */
+        parentId: string
+        /** @description SiteUserPrivilege identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SiteUserPrivilege resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
       /** @description Not found */
@@ -29020,98 +29112,6 @@ export interface operations {
       }
     }
   }
-  api_adminsites_parentIdsite_user_privileges_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[user.email]'?: 'asc' | 'desc'
-        'order[privilege]'?: 'asc' | 'desc'
-      }
-      header?: never
-      path: {
-        /** @description SiteUserPrivilege identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SiteUserPrivilege collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read'][]
-          }
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_adminsites_parentIdsite_user_privileges_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SiteUserPrivilege identifier */
-        parentId: string
-        /** @description SiteUserPrivilege identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SiteUserPrivilege resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_adminusersmesite_user_privileges_get_collection: {
     parameters: {
       query?: {
@@ -29246,7 +29246,7 @@ export interface operations {
       }
     }
   }
-  api_datasites_parentIdstratigraphic_units_get_collection: {
+  api_dataarchaeological_sites_parentIdstratigraphic_units_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -29898,6 +29898,37 @@ export interface operations {
       }
     }
   }
+  api_validatoruniqueanalysesarchaeological_sitesanthropology_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniqueanalysesbotanycharcoals_get: {
     parameters: {
       query?: never
@@ -30115,37 +30146,6 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysessitesanthropology_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description UniqueValidator resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
   api_validatoruniqueanalyseszoobones_get: {
     parameters: {
       query?: never
@@ -30178,6 +30178,68 @@ export interface operations {
     }
   }
   api_validatoruniqueanalyseszooteeth_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquearchaeological_sitescode_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquearchaeological_sitesname_get: {
     parameters: {
       query?: never
       header?: never
@@ -30581,68 +30643,6 @@ export interface operations {
     }
   }
   api_validatoruniquesite_user_privileges_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description UniqueValidator resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_validatoruniquesitescode_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description UniqueValidator resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_validatoruniquesitesname_get: {
     parameters: {
       query?: never
       header?: never

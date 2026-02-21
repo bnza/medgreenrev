@@ -39,7 +39,8 @@ const validationPaths: Record<
   analysisPottery: '/api/validator/unique/analyses/potteries',
   analysisSampleMicrostratigraphy:
     '/api/validator/unique/analyses/samples/microstratigraphy',
-  analysisSiteAnthropology: '/api/validator/unique/analyses/sites/anthropology',
+  analysisSiteAnthropology:
+    '/api/validator/unique/analyses/archaeological_sites/anthropology',
   analysisZooBone: '/api/validator/unique/analyses/zoo/bones',
   analysisZooTooth: '/api/validator/unique/analyses/zoo/teeth',
 } as const
@@ -187,7 +188,7 @@ const CREATION_RULES: {
       model,
     )
   },
-  '/api/data/analyses/sites/anthropology': (model) => {
+  '/api/data/analyses/archaeological_sites/anthropology': (model) => {
     return generateAnalysisSubjectValidationRules(
       'analysisSiteAnthropology',
       model,
@@ -592,13 +593,13 @@ const CREATION_RULES: {
         >,
     )
   },
-  '/api/data/sites': (model) => {
+  '/api/data/archaeological_sites': (model) => {
     const apiCodeValidator = new GetValidationOperation(
-      '/api/validator/unique/sites/code',
+      '/api/validator/unique/archaeological_sites/code',
     )
 
     const apiNameValidator = new GetValidationOperation(
-      '/api/validator/unique/sites/name',
+      '/api/validator/unique/archaeological_sites/name',
     )
 
     const uniqueCode = createRule({
@@ -641,7 +642,7 @@ const CREATION_RULES: {
             )(() => model.value.chronologyLower),
           },
         }) satisfies RegleComputedRules<
-          Partial<PostCollectionRequestMap['/api/data/sites']>
+          Partial<PostCollectionRequestMap['/api/data/archaeological_sites']>
         >,
     )
   },
