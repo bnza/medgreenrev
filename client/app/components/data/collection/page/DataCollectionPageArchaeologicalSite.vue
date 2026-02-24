@@ -14,7 +14,7 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
         path="/api/data/archaeological_sites"
       />
     </template>
-    <data-collection-table-site
+    <data-collection-table-archaeological-site
       v-model:acl="acl"
       path="/api/data/archaeological_sites"
     />

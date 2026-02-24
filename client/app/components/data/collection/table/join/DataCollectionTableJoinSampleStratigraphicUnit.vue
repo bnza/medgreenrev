@@ -45,7 +45,7 @@ const { id: parentId } = useResourceParent(props.parent)
       />
     </template>
     <template #[`item.stratigraphicUnit.site.code`]="{ item }">
-      <data-item-info-box-span-site
+      <data-item-info-box-span-archaeological-site
         :iri="item.stratigraphicUnit.site['@id']"
         :text="item.stratigraphicUnit.site.code"
       />

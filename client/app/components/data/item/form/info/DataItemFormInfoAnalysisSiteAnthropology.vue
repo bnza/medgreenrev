@@ -18,7 +18,10 @@ withDefaults(
       <v-col cols="4" class="px-2">
         <v-text-field :model-value="item.subject?.code" label="site">
           <template v-if="item.subject?.['@id']" #append-inner>
-            <data-item-info-box-site :iri="item.subject?.['@id']" :read-link />
+            <data-item-info-box-archaeological-site
+              :iri="item.subject?.['@id']"
+              :read-link
+            />
           </template>
         </v-text-field>
       </v-col>

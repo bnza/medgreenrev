@@ -16,7 +16,7 @@ withDefaults(
     :iri
     path="/api/data/archaeological_sites/{id}"
     :read-link
-    data-testid="data-item-info-box-site"
+    data-testid="data-item-info-box-archaeological-site"
   >
     <template #activator="props">
       <slot v-bind="{ props }" />

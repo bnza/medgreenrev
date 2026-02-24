@@ -14,7 +14,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
 <template>
   <data-item-page :path identifier-prop="code">
     <template #default="{ item }: { item: GetItemResponse }">
-      <lazy-data-item-form-info-site :item />
+      <lazy-data-item-form-info-archaeological-site :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="data">data</v-tab>
         <v-tab value="sus">stratigraphic units</v-tab>
@@ -29,7 +29,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="data" data-testid="tab-window-data">
-          <data-item-form-detail-site :item />
+          <data-item-form-detail-archaeological-site :item />
         </v-tabs-window-item>
         <v-tabs-window-item value="sus" data-testid="tab-window-sus">
           <data-collection-page-stratigraphic-unit
@@ -87,8 +87,10 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-delete-site @refresh="redirectToCollectionPath()" />
-      <data-dialog-update-site @refresh="refetch()" />
+      <data-dialog-delete-archaeological-site
+        @refresh="redirectToCollectionPath()"
+      />
+      <data-dialog-update-archaeological-site @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

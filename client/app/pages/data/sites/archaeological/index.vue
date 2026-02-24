@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <data-collection-page-site />
+  <data-collection-page-archaeological-site />
 </template>

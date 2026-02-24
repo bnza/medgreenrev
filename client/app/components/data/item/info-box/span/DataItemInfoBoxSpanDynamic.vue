@@ -10,7 +10,7 @@ import {
   DataItemInfoBoxSpanIndividual,
   DataItemInfoBoxSpanPottery,
   DataItemInfoBoxSpanSample,
-  DataItemInfoBoxSpanSite,
+  DataItemInfoBoxSpanArchaeologicalSite,
   DataItemInfoBoxSpanZooBone,
   DataItemInfoBoxSpanZooTooth,
 } from '#components'
@@ -40,7 +40,7 @@ const componentMap: Record<SubjectApiResourceKey, Component> = {
   individual: DataItemInfoBoxSpanIndividual,
   pottery: DataItemInfoBoxSpanPottery,
   sample: DataItemInfoBoxSpanSample,
-  archaeologicalSite: DataItemInfoBoxSpanSite,
+  archaeologicalSite: DataItemInfoBoxSpanArchaeologicalSite,
   zooBone: DataItemInfoBoxSpanZooBone,
   zooTooth: DataItemInfoBoxSpanZooTooth,
 }

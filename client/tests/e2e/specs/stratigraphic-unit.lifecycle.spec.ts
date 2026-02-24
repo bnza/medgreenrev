@@ -310,7 +310,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       // Test 1: Required field validation - site field
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page
-        .getByRole('option', { name: /Sediment/ })
+        .getByRole('option', { name: /Medina/ })
         .first()
         .click()
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
@@ -320,7 +320,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       ).toContainText(/required/)
       await collectionPom.dataDialogCreate.form.getByLabel('site').click()
       await page
-        .getByRole('option', { name: /Sediment/ })
+        .getByRole('option', { name: /Medina/ })
         .first()
         .click()
 

@@ -43,7 +43,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.subject.site.code`]="{ item }">
-      <data-item-info-box-span-site
+      <data-item-info-box-span-archaeological-site
         :iri="item.subject.site['@id']"
         :text="item.subject.site.code"
       />

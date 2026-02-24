@@ -26,7 +26,7 @@ const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
           label="site"
         >
           <template v-if="item.stratigraphicUnit?.site?.['@id']" #append-inner>
-            <data-item-info-box-site
+            <data-item-info-box-archaeological-site
               :iri="item.stratigraphicUnit?.site?.['@id']"
               :read-link
             />

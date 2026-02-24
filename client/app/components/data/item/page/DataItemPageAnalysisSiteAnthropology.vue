@@ -21,7 +21,10 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="subject" data-testid="tab-item">
-          <data-item-page-site v-if="item.subject" :iri="item.subject['@id']" />
+          <data-item-page-archaeological-site
+            v-if="item.subject"
+            :iri="item.subject['@id']"
+          />
           <loading-component v-else />
         </v-tabs-window-item>
         <v-tabs-window-item value="media" data-testid="tab-media">

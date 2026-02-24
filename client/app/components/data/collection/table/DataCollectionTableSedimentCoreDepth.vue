@@ -44,13 +44,13 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.sedimentCore.site.code`]="{ item }">
-      <data-item-info-box-span-site
+      <data-item-info-box-span-archaeological-site
         :iri="item.sedimentCore.site['@id']"
         :text="item.sedimentCore.site.code"
       />
     </template>
     <template #[`item.stratigraphicUnit.site.code`]="{ item }">
-      <data-item-info-box-span-site
+      <data-item-info-box-span-archaeological-site
         :iri="item.stratigraphicUnit.site['@id']"
         :text="item.stratigraphicUnit.site.code"
       />

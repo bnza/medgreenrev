@@ -25,7 +25,7 @@ test.describe('Analysis subject join', () => {
         await collectionPom.dataCard.clickOnActionMenuButton('add new')
         await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
         await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
-        await page.getByRole('option', { name: /SC/ }).first().click()
+        await page.getByRole('option', { name: /TO/ }).first().click()
         await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
         await page.getByRole('option', { name: /AD/ }).first().click()
         await expect(

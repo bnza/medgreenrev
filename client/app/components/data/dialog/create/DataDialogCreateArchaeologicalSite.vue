@@ -21,7 +21,7 @@ const item = computed(() => r$.$value[0])
     @refresh="emit('refresh')"
   >
     <template #default>
-      <data-item-form-create-site />
+      <data-item-form-create-archaeological-site />
     </template>
   </data-dialog-create>
 </template>

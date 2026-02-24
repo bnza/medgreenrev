@@ -24,7 +24,7 @@ const item = computed(() => r$.$value[0])
     @refresh="$emit('refresh')"
   >
     <template #default>
-      <data-item-form-update-site
+      <data-item-form-update-archaeological-site
         v-if="initialValue"
         :initial-value
         :fetched-item

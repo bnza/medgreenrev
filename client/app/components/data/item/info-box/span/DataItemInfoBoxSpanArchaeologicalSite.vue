@@ -6,9 +6,12 @@ const props = defineProps<{
 </script>
 
 <template>
-  <data-item-info-box-site v-slot="{ props: slotProps }" :iri="props.iri">
+  <data-item-info-box-archaeological-site
+    v-slot="{ props: slotProps }"
+    :iri="props.iri"
+  >
     <span class="text-secondary font-weight-bold" v-bind="slotProps">
       {{ props.text }}
     </span>
-  </data-item-info-box-site>
+  </data-item-info-box-archaeological-site>
 </template>

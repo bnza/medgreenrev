@@ -30,7 +30,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option', { name: /SC/ }).first().click() // Select first available stratigraphic unit
+      await page.getByRole('option', { name: /TO/ }).first().click() // Select first available stratigraphic unit
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })
@@ -134,7 +134,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option', { name: /SC/ }).first().click()
+      await page.getByRole('option', { name: /TO/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })

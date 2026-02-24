@@ -44,9 +44,9 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" />
       <data-dialog-search :path :title="labels[1]" />
-      <data-dialog-create-site :path @refresh="refetch()" />
-      <data-dialog-delete-site @refresh="refetch()" />
-      <data-dialog-update-site @refresh="refetch()" />
+      <data-dialog-create-archaeological-site :path @refresh="refetch()" />
+      <data-dialog-delete-archaeological-site @refresh="refetch()" />
+      <data-dialog-update-archaeological-site @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>
