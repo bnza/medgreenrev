@@ -6,7 +6,8 @@ import {
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as mediaObjectPropertyStaticDefinition } from './mediaObject'
 
-const { Exists, SearchPartial, SelectionArea, SiteEquals } = API_FILTERS
+const { Exists, SearchPartial, SelectionArea, ArchaeologicalSiteEquals } =
+  API_FILTERS
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -52,7 +53,7 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     },
     site: {
       filters: {
-        SiteEquals,
+        ArchaeologicalSiteEquals,
       },
     },
     year: {

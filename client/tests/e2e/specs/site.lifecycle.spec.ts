@@ -8,11 +8,13 @@ test.beforeEach(async () => {
   loadFixtures()
 })
 
-test.describe('Site lifecycle', () => {
+test.describe('Archaeological site lifecycle', () => {
   test.describe('Admin user', () => {
     test.use({ storageState: 'playwright/.auth/admin.json' })
 
-    test('Basic site lifecycle works as expected', async ({ page }) => {
+    test('Basic archaeological site lifecycle works as expected', async ({
+      page,
+    }) => {
       const collectionPom = new SiteCollectionPage(page)
       const itemPom = new SiteItemPage(page)
 

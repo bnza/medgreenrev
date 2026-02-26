@@ -2,7 +2,7 @@ import type { ResourceConfig } from '~~/types'
 
 const config: Readonly<ResourceConfig> = {
   apiPath: '/api/data/analyses/archaeological_sites/anthropology',
-  appPath: '/data/analyses/archaeological_sites/anthropology',
+  appPath: '/data/analyses/sites/archaeology/anthropology',
   defaultHeaders: [
     {
       key: 'id',

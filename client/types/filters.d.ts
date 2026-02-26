@@ -16,7 +16,8 @@ export type OperandComponentsKey =
   | 'SelectionIndividualSex'
   | 'Vocabulary'
   | 'HistoryLocation'
-  | 'Site'
+  | 'ArchaeologicalSite'
+  | 'SamplingSite'
   | 'StratigraphicUnit'
 
 export type Filter = {

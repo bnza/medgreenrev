@@ -11,6 +11,7 @@ import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
 import analysisBotanySeed from './data/analysisBotanySeed'
 import analysisBotanyCharcoal from './data/analysisBotanyCharcoal'
+import archaeologicalSite from './data/archaeologicalSite'
 import botanyCharcoal from './data/botanyCharcoal'
 import botanySeed from './data/botanySeed'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
@@ -25,8 +26,9 @@ import microstratigraphicUnit from './data/microstratigraphicUnit'
 import individual from './data/individual'
 import pottery from './data/pottery'
 import sample from './data/sample'
+import samplingSite from './data/samplingSite'
+import samplingStratigraphicUnit from './data/samplingStratigraphicUnit'
 import sedimentCore from './data/sedimentCore'
-import site from './data/archaeologicalSite'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
@@ -71,6 +73,9 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses/zoo/bones': analysisZooBone,
   '/api/data/analyses/zoo/teeth': analysisZooTooth,
   '/api/data/analyses/{parentId}/subjects': analysisSubject,
+
+  '/api/data/archaeological_sites': archaeologicalSite,
+
   '/api/data/botany/charcoals': botanyCharcoal,
   '/api/data/botany/charcoals/{parentId}/analyses': analysisBotanyCharcoal,
   '/api/data/botany/seeds': botanySeed,
@@ -97,12 +102,14 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/samples/{parentId}/stratigraphic_units':
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
 
+  '/api/data/sampling_sites': samplingSite,
+
   '/api/data/sediment_core_depths': sedimentCoreDepth.config,
   '/api/data/sediment_cores': sedimentCore,
   '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths':
     sedimentCoreDepth.stratigraphicUnitSubResourceConfig,
 
-  '/api/data/archaeological_sites': site,
+  '/api/data/sampling_stratigraphic_units': samplingStratigraphicUnit,
 
   '/api/data/stratigraphic_units': stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/contexts':

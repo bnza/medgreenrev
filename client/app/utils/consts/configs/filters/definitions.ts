@@ -350,10 +350,17 @@ const HistoryLocationEquals: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectMultiple,
 }
 
-const SiteEquals: StaticFiltersDefinitionObject = {
+const ArchaeologicalSiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
-  componentKey: 'Site',
+  componentKey: 'ArchaeologicalSite',
+  addToQueryObject: addToQueryObjectMultiple,
+}
+
+const SamplingSiteEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'SamplingSite',
   addToQueryObject: addToQueryObjectMultiple,
 }
 
@@ -397,7 +404,7 @@ export const API_FILTERS = {
   Exists,
   SearchExact,
   SearchPartial,
-  SiteEquals,
+  ArchaeologicalSiteEquals,
   StratigraphicUnitEquals,
   HistoryLocationEquals,
   NumericEqual,
@@ -406,6 +413,7 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  SamplingSiteEquals,
   SelectionAnalysisStatus,
   SelectionArea,
   SelectionBuilding,

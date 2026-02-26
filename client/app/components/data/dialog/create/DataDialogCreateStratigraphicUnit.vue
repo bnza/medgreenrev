@@ -5,7 +5,7 @@ import type {
   ResourceParent,
 } from '~~/types'
 
-const path: PostCollectionPath = '/api/data/sediment_cores' as const
+const path: PostCollectionPath = '/api/data/stratigraphic_units' as const
 
 defineProps<{
   parent?: ResourceParent<'archaeologicalSite'>

@@ -9,7 +9,7 @@ import { maxValue, minValue, required } from '@regle/rules'
 const path: ApiResourcePath | PostCollectionPath = '/api/data/sediment_cores'
 
 const props = defineProps<{
-  parent?: ResourceParent<'archaeologicalSite'>
+  parent?: ResourceParent<'samplingSite'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -62,12 +62,11 @@ const { r$ } = useScopedRegle(model, {
     <v-col cols="4">
       <data-autocomplete-site
         v-model="r$.$value.site"
-        path="/api/data/archaeological_sites"
+        path="/api/data/sampling_sites"
         item-title="name"
         label="site"
-        granted-only
         :error-messages="r$.$errors?.site"
-        :disabled="parent?.key === 'archaeologicalSite'"
+        :disabled="parent?.key === 'samplingSite'"
       />
     </v-col>
   </v-row>

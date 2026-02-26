@@ -22,7 +22,6 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
         <v-tab value="mus">MUs</v-tab>
         <v-tab value="individuals">individuals</v-tab>
         <v-tab value="potteries">potteries</v-tab>
-        <v-tab value="core-depths">core (depths)</v-tab>
         <v-tab value="botany-charcoals">botany (charcoals)</v-tab>
         <v-tab value="botany-seeds">botany (seeds)</v-tab>
         <v-tab value="zoo-bones">zoo (bones)</v-tab>

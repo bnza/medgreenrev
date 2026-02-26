@@ -5,7 +5,7 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_cores'
-      | '/api/data/archaeological_sites/{parentId}/sediment_cores'
+      | '/api/data/sampling_sites/{parentId}/sediment_cores'
     >
   "
 >
@@ -13,7 +13,7 @@ import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'archaeologicalSite'>
+  parent?: ResourceParent<'samplingSite'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
@@ -41,7 +41,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.site.code`]="{ item }">
-      <data-item-info-box-span-archaeological-site
+      <data-item-info-box-span-sampling-site
         :iri="item.site['@id']"
         :text="item.site.code"
       />

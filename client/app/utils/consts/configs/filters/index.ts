@@ -12,6 +12,10 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/individuals'
   | '/api/data/analyses/samples/microstratigraphy'
   | '/api/data/analyses/{parentId}/samples/microstratigraphy'
+  | '/api/data/archaeological_sites'
+  | '/api/data/archaeological_sites/{parentId}/stratigraphic_units'
+  | '/api/data/archaeological_sites/{parentId}/contexts'
+  | '/api/data/archaeological_sites/{parentId}/samples'
   | '/api/data/botany/charcoals'
   | '/api/data/botany/charcoals/{parentId}/analyses'
   | '/api/data/botany/seeds'
@@ -40,10 +44,9 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/samples/{parentId}/microstratigraphic_units'
   | '/api/data/samples/{parentId}/stratigraphic_units'
   | '/api/data/sample_stratigraphic_units'
-  | '/api/data/archaeological_sites'
-  | '/api/data/archaeological_sites/{parentId}/stratigraphic_units'
-  | '/api/data/archaeological_sites/{parentId}/contexts'
-  | '/api/data/archaeological_sites/{parentId}/samples'
+  | '/api/data/sampling_sites'
+  | '/api/data/sampling_sites/{parentId}/stratigraphic_units'
+  | '/api/data/sampling_stratigraphic_units'
   | '/api/data/stratigraphic_units'
   | '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy'
   | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
@@ -83,6 +86,14 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/analyses/zoo/teeth': resourceFilterDefinitions.analysisZooTooth,
   '/api/data/analyses/{parentId}/samples/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnitParentAnalysis,
+  '/api/data/archaeological_sites':
+    resourceFilterDefinitions.archaeologicalSite,
+  '/api/data/archaeological_sites/{parentId}/contexts':
+    resourceFilterDefinitions.context,
+  '/api/data/archaeological_sites/{parentId}/samples':
+    resourceFilterDefinitions.sample,
+  '/api/data/archaeological_sites/{parentId}/stratigraphic_units':
+    resourceFilterDefinitions.stratigraphicUnit,
   '/api/data/botany/charcoals': resourceFilterDefinitions.botany,
   '/api/data/botany/charcoals/{parentId}/analyses':
     resourceFilterDefinitions.analysisBotanyParentSubject,
@@ -122,15 +133,13 @@ export const FILTERS_PATHS_MAP: Record<
     resourceFilterDefinitions.microstratigraphicUnitParentStratigraphicUnit,
   '/api/data/samples/{parentId}/stratigraphic_units':
     resourceFilterDefinitions.sampleStratigraphicUnitParentSample,
+  '/api/data/sampling_sites': resourceFilterDefinitions.samplingSite,
+  '/api/data/sampling_sites/{parentId}/stratigraphic_units':
+    resourceFilterDefinitions.samplingStratigraphicUnit,
   '/api/data/sample_stratigraphic_units':
     resourceFilterDefinitions.sampleStratigraphicUnit,
-  '/api/data/archaeological_sites': resourceFilterDefinitions.site,
-  '/api/data/archaeological_sites/{parentId}/contexts':
-    resourceFilterDefinitions.context,
-  '/api/data/archaeological_sites/{parentId}/samples':
-    resourceFilterDefinitions.sample,
-  '/api/data/archaeological_sites/{parentId}/stratigraphic_units':
-    resourceFilterDefinitions.stratigraphicUnit,
+  '/api/data/sampling_stratigraphic_units':
+    resourceFilterDefinitions.samplingStratigraphicUnit,
   '/api/data/stratigraphic_units': resourceFilterDefinitions.stratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/analyses/samples/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnit,

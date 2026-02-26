@@ -7,13 +7,23 @@ describe('isAppPathItemPage', () => {
     expect(isAppPathItemPage(path)).to.equal(true)
   })
 
-  it('should return true for a valid UUID v4', () => {
+  it('should return false for a valid UUID v4 that not starts with "/api"', () => {
     const path = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
+    expect(isAppPathItemPage(path)).to.equal(false)
+  })
+
+  it('should return true for a valid UUID v4', () => {
+    const path = '/api/f47ac10b-58cc-4372-a567-0e02b2c3d479'
     expect(isAppPathItemPage(path)).to.equal(true)
   })
 
+  it('should return true for a string ending with digits that not starts with "/api"', () => {
+    const path = 'items/12345'
+    expect(isAppPathItemPage(path)).to.equal(false)
+  })
+
   it('should return true for a string ending with digits', () => {
-    const path = '/items/12345'
+    const path = '/api/items/12345'
     expect(isAppPathItemPage(path)).to.equal(true)
   })
 
@@ -32,8 +42,8 @@ describe('isAppPathItemPage', () => {
     expect(isAppPathItemPage(path)).to.equal(false)
   })
 
-  it('should return true for a path containing only digits', () => {
+  it('should return false for a path containing only digits', () => {
     const path = '12345'
-    expect(isAppPathItemPage(path)).to.equal(true)
+    expect(isAppPathItemPage(path)).to.equal(false)
   })
 })

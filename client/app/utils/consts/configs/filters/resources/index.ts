@@ -18,6 +18,7 @@ export {
   staticFiltersDefinitionZooTooth as analysisZooTooth,
   staticFiltersDefinitionZooToothParentSubject as analysisZooToothParentSubject,
 } from './analysisSubject'
+export { staticFiltersDefinition as archaeologicalSite } from './archaeologicalSite'
 export {
   staticFiltersDefinition as botany,
   staticFiltersDefinitionParentStratigraphicUnit as botanyParentStratigraphicUnit,
@@ -49,12 +50,13 @@ export {
   staticFiltersDefinitionParentAnalysis as potteryParentAnalysis,
 } from './pottery'
 export { staticFiltersDefinition as sample } from './sample'
-export { staticFiltersDefinition as site } from './site'
+export { staticFiltersDefinition as samplingSite } from './samplingSite'
 export {
   staticFiltersDefinition as sampleStratigraphicUnit,
   staticFiltersDefinitionParentSample as sampleStratigraphicUnitParentSample,
   staticFiltersDefinitionParentStratigraphicUnit as sampleStratigraphicUnitParentStratigraphicUnit,
 } from './sampleStratigraphicUnit'
+export { staticFiltersDefinition as samplingStratigraphicUnit } from './samplingStratigraphicUnit'
 export { staticFiltersDefinition as stratigraphicUnit } from './stratigraphicUnit'
 export {
   staticFiltersDefinitionBone as zooBone,

@@ -3,7 +3,7 @@ import type { Page } from '@playwright/test'
 import { DataMediaObjectJoinContainerComponent } from '~~/tests/e2e/components/data-media-object-join-container'
 
 export class StratigraphicUnitsItemPage extends BaseItemPage {
-  protected readonly path = '/data/stratigraphic_units/[id]'
+  protected readonly path = '/data/stratigraphic_units/archaeology/[id]'
   public readonly mediaContainer = new DataMediaObjectJoinContainerComponent(
     this.page,
     'media-object-join-container',

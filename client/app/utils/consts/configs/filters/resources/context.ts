@@ -5,7 +5,12 @@ import {
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 
-const { Exists, SearchPartial, SiteEquals, SelectionContextType } = API_FILTERS
+const {
+  Exists,
+  SearchPartial,
+  ArchaeologicalSiteEquals,
+  SelectionContextType,
+} = API_FILTERS
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -22,7 +27,7 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     },
     site: {
       filters: {
-        SiteEquals,
+        ArchaeologicalSiteEquals,
       },
     },
     type: {

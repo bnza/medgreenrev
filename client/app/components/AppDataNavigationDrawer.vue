@@ -46,7 +46,7 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           </template>
           <v-list-item
             nuxt
-            to="/data/analyses/sites/anthropology/anthropology"
+            to="/data/analyses/sites/archaeology/anthropology"
             router
             title="Anthropology"
             data-testid="app-nav-drawer-li-analyses-anthropology"
@@ -133,13 +133,6 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
         </v-list-group>
       </v-list-group>
       <v-list-group value="Data">
-        <v-list-item
-          nuxt
-          to="/data/sites/archaeological"
-          router
-          title="Archaological Sites"
-          data-testid="app-nav-drawer-li-sites"
-        />
         <template #activator="{ props }">
           <v-list-item
             v-bind="props"
@@ -148,41 +141,145 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             data-testid="app-nav-drawer-li-data"
           />
         </template>
-        <v-list-group value="Botany">
-          <template #activator="{ props: botanyProps }">
+        <v-list-group value="Archaeology">
+          <template #activator="{ props: archProps }">
             <v-list-item
-              v-bind="botanyProps"
-              title="Botany"
-              data-testid="app-nav-drawer-li-group-botany"
+              v-bind="archProps"
+              title="Archaeology"
+              data-testid="app-nav-drawer-li-group-arch"
+            />
+          </template>
+          <v-list-group value="Botany">
+            <template #activator="{ props: botanyProps }">
+              <v-list-item
+                v-bind="botanyProps"
+                title="Botany"
+                data-testid="app-nav-drawer-li-group-botany"
+              />
+            </template>
+            <v-list-item
+              nuxt
+              to="/data/botany/charcoals"
+              router
+              title="Charcoals"
+              data-testid="app-nav-drawer-li-botany-charcoals"
+            />
+            <v-list-item
+              nuxt
+              to="/data/botany/seeds"
+              router
+              title="Seeds"
+              data-testid="app-nav-drawer-li-botany-seeds"
+            />
+          </v-list-group>
+          <v-list-item
+            nuxt
+            to="/data/contexts"
+            router
+            title="Contexts"
+            data-testid="app-nav-drawer-li-contexts"
+          />
+          <v-list-item
+            nuxt
+            to="/data/individuals"
+            router
+            title="Human Individuals"
+            data-testid="app-nav-drawer-li-individuals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/microstratigraphic-units"
+            router
+            title="Microstratigraphic Units"
+            data-testid="app-nav-drawer-li-mus"
+          />
+          <v-list-item
+            nuxt
+            to="/data/potteries"
+            router
+            title="Potteries"
+            data-testid="app-nav-drawer-li-potteries"
+          />
+          <v-list-item
+            nuxt
+            to="/data/samples"
+            router
+            title="Samples"
+            data-testid="app-nav-drawer-li-samples"
+          />
+          <v-list-item
+            nuxt
+            to="/data/sites/archaeology"
+            router
+            title="Sites"
+            data-testid="app-nav-drawer-li-arch-sites"
+          />
+          <v-list-item
+            nuxt
+            to="/data/stratigraphic-units/archaeology"
+            router
+            title="Stratigraphic Units"
+            data-testid="app-nav-drawer-li-sus"
+          />
+          <v-list-group value="Zoo">
+            <template #activator="{ props: zooProps }">
+              <v-list-item
+                v-bind="zooProps"
+                title="Zoo"
+                data-testid="app-nav-drawer-li-group-zoo"
+              />
+            </template>
+            <v-list-item
+              nuxt
+              to="/data/zoo/bones"
+              router
+              title="Bones"
+              data-testid="app-nav-drawer-li-zoo-bones"
+            />
+            <v-list-item
+              nuxt
+              to="/data/zoo/teeth"
+              router
+              title="Teeth"
+              data-testid="app-nav-drawer-li-sus"
+            />
+          </v-list-group>
+        </v-list-group>
+        <v-list-group value="Sampling">
+          <template #activator="{ props: samplingProps }">
+            <v-list-item
+              v-bind="samplingProps"
+              title="Sampling"
+              data-testid="app-nav-drawer-li-group-sampling"
             />
           </template>
           <v-list-item
             nuxt
-            to="/data/botany/charcoals"
+            to="/data/sites/sampling"
             router
-            title="Charcoals"
-            data-testid="app-nav-drawer-li-botany-charcoals"
+            title="Sites"
+            data-testid="app-nav-drawer-li-sampling-sites"
           />
           <v-list-item
             nuxt
-            to="/data/botany/seeds"
+            to="/data/sediment-cores"
             router
-            title="Seeds"
-            data-testid="app-nav-drawer-li-botany-seeds"
+            title="Sediment Cores"
+            data-testid="app-nav-drawer-li-sediment-cores"
+          />
+          <v-list-item
+            nuxt
+            to="/data/stratigraphic-units/sampling"
+            router
+            title="Stratigraphic Units"
+            data-testid="app-nav-drawer-li-sampling-stratigraphic-units"
           />
         </v-list-group>
-        <v-list-item
-          nuxt
-          to="/data/contexts"
-          router
-          title="Contexts"
-          data-testid="app-nav-drawer-li-contexts"
-        />
-        <v-list-group value="Historical Data">
+        <v-list-group value="History">
           <template #activator="{ props: histProps }">
             <v-list-item
               v-bind="histProps"
-              title="Historical Data"
+              title="Written sources"
               data-testid="app-nav-drawer-li-historical-data"
             />
           </template>
@@ -206,71 +303,6 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             router
             title="Plants"
             data-testid="app-nav-drawer-li-analyses-historical-data-plants"
-          />
-        </v-list-group>
-        <v-list-item
-          nuxt
-          to="/data/individuals"
-          router
-          title="Human Individuals"
-          data-testid="app-nav-drawer-li-individuals"
-        />
-        <v-list-item
-          nuxt
-          to="/data/microstratigraphic-units"
-          router
-          title="Microstratigraphic Units"
-          data-testid="app-nav-drawer-li-mus"
-        />
-        <v-list-item
-          nuxt
-          to="/data/potteries"
-          router
-          title="Potteries"
-          data-testid="app-nav-drawer-li-potteries"
-        />
-        <v-list-item
-          nuxt
-          to="/data/samples"
-          router
-          title="Samples"
-          data-testid="app-nav-drawer-li-samples"
-        />
-        <v-list-item
-          nuxt
-          to="/data/sediment-cores"
-          router
-          title="Sediment Cores"
-          data-testid="app-nav-drawer-li-sediment-cores"
-        />
-        <v-list-item
-          nuxt
-          to="/data/stratigraphic-units"
-          router
-          title="Stratigraphic Units"
-          data-testid="app-nav-drawer-li-sus"
-        />
-        <v-list-group value="Zoo">
-          <template #activator="{ props: zooProps }">
-            <v-list-item
-              v-bind="zooProps"
-              title="Zoo"
-              data-testid="app-nav-drawer-li-group-zoo"
-            />
-          </template>
-          <v-list-item
-            nuxt
-            to="/data/zoo/bones"
-            router
-            title="Bones"
-            data-testid="app-nav-drawer-li-zoo-bones"
-          />
-          <v-list-item
-            nuxt
-            to="/data/zoo/teeth"
-            router
-            title="Teeth"
-            data-testid="app-nav-drawer-li-sus"
           />
         </v-list-group>
       </v-list-group>

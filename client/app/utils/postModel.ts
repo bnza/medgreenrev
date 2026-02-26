@@ -111,8 +111,11 @@ const EMPTY_POST_MODEL_MAP: {
   '/api/data/samples': (parent) => ({
     site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),
+  '/api/data/sampling_stratigraphic_units': (parent) => ({
+    site: parent?.key === 'samplingSite' ? parent.item['@id'] : undefined,
+  }),
   '/api/data/sediment_cores': (parent) => ({
-    site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
+    site: parent?.key === 'samplingSite' ? parent.item['@id'] : undefined,
   }),
   '/api/data/sediment_core_depths': (parent) => ({
     stratigraphicUnit:

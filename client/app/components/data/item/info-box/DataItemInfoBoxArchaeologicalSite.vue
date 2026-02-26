@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DataItemInfoBoxContentArchaeologicalSite from '~/components/data/item/info-box/content/DataItemInfoBoxContentArchaeologicalSite.vue'
+
 withDefaults(
   defineProps<{
     iri: string
@@ -22,7 +24,7 @@ withDefaults(
       <slot v-bind="{ props }" />
     </template>
     <template #default="{ item }">
-      <data-item-info-box-content-site :item />
+      <data-item-info-box-content-archaeological-site :item />
     </template>
   </data-item-info-box>
 </template>

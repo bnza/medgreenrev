@@ -2930,6 +2930,74 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/media_object_sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectSamplingStratigraphicUnit resources.
+     * @description Retrieves the collection of MediaObjectSamplingStratigraphicUnit resources.
+     */
+    get: operations['api_datamedia_object_sampling_stratigraphic_units_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectSamplingStratigraphicUnit resource.
+     * @description Creates a MediaObjectSamplingStratigraphicUnit resource.
+     */
+    post: operations['api_datamedia_object_sampling_stratigraphic_units_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_sampling_stratigraphic_units/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectSamplingStratigraphicUnit resource.
+     * @description Retrieves a MediaObjectSamplingStratigraphicUnit resource.
+     */
+    get: operations['api_datamedia_object_sampling_stratigraphic_units_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectSamplingStratigraphicUnit resource.
+     * @description Removes the MediaObjectSamplingStratigraphicUnit resource.
+     */
+    delete: operations['api_datamedia_object_sampling_stratigraphic_units_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sampling_stratigraphic_units/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectSamplingStratigraphicUnit resources.
+     * @description Retrieves the collection of MediaObjectSamplingStratigraphicUnit resources.
+     */
+    get: operations['api_datasampling_stratigraphic_units_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/media_object_stratigraphic_units': {
     parameters: {
       query?: never
@@ -3362,6 +3430,150 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SamplingSite resources.
+     * @description Retrieves the collection of SamplingSite resources.
+     */
+    get: operations['api_datasampling_sites_get_collection']
+    put?: never
+    /**
+     * Creates a SamplingSite resource.
+     * @description Creates a SamplingSite resource.
+     */
+    post: operations['api_datasampling_sites_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sampling_sites/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SamplingSite resource.
+     * @description Retrieves a SamplingSite resource.
+     */
+    get: operations['api_datasampling_sites_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the SamplingSite resource.
+     * @description Removes the SamplingSite resource.
+     */
+    delete: operations['api_datasampling_sites_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the SamplingSite resource.
+     * @description Updates the SamplingSite resource.
+     */
+    patch: operations['api_datasampling_sites_id_patch']
+    trace?: never
+  }
+  '/api/data/sampling_sites/{parentId}/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SamplingStratigraphicUnit resources.
+     * @description Retrieves the collection of SamplingStratigraphicUnit resources.
+     */
+    get: operations['api_datasampling_sites_parentIdstratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SamplingStratigraphicUnit resources.
+     * @description Retrieves the collection of SamplingStratigraphicUnit resources.
+     */
+    get: operations['api_datasampling_stratigraphic_units_get_collection']
+    put?: never
+    /**
+     * Creates a SamplingStratigraphicUnit resource.
+     * @description Creates a SamplingStratigraphicUnit resource.
+     */
+    post: operations['api_datasampling_stratigraphic_units_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sampling_stratigraphic_units/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SamplingStratigraphicUnit resource.
+     * @description Retrieves a SamplingStratigraphicUnit resource.
+     */
+    get: operations['api_datasampling_stratigraphic_units_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the SamplingStratigraphicUnit resource.
+     * @description Removes the SamplingStratigraphicUnit resource.
+     */
+    delete: operations['api_datasampling_stratigraphic_units_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the SamplingStratigraphicUnit resource.
+     * @description Updates the SamplingStratigraphicUnit resource.
+     */
+    patch: operations['api_datasampling_stratigraphic_units_id_patch']
+    trace?: never
+  }
+  '/api/data/sampling_sites/{parentId}/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SedimentCore resources.
+     * @description Retrieves the collection of SedimentCore resources.
+     */
+    get: operations['api_datasampling_sites_parentIdsediment_cores_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/sediment_cores': {
     parameters: {
       query?: never
@@ -3412,26 +3624,6 @@ export interface paths {
      * @description Updates the SedimentCore resource.
      */
     patch: operations['api_datasediment_cores_id_patch']
-    trace?: never
-  }
-  '/api/data/sites/{parentId}/sediment_cores': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SedimentCore resources.
-     * @description Retrieves the collection of SedimentCore resources.
-     */
-    get: operations['api_datasites_parentIdsediment_cores_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
   '/api/data/sediment_core_depths': {
@@ -4310,6 +4502,66 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquesamples_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/sampling_sites/code': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesampling_sitescode_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/sampling_sites/name': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesampling_sitesname_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquesampling_stratigraphic_units_get']
     put?: never
     post?: never
     delete?: never
@@ -7733,48 +7985,6 @@ export interface components {
         canDelete: boolean
       }
     }
-    'ArchaeologicalSite.csv-sediment_core.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'ArchaeologicalSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'ArchaeologicalSite.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'ArchaeologicalSite.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      code?: string
-      name?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
     'ArchaeologicalSite.csv-site.acl.read': {
       readonly id?: number | string
       code?: string
@@ -8104,52 +8314,6 @@ export interface components {
       name?: string
     })
     'ArchaeologicalSite.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'ArchaeologicalSite.jsonld-sediment_core.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'ArchaeologicalSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      code?: string
-      name?: string
-    })
-    'ArchaeologicalSite.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      code?: string
-      name?: string
-    })
-    'ArchaeologicalSite.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9289,6 +9453,38 @@ export interface components {
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
     })
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      uploadedBy?:
+        | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read']
+        | null
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      description?: string | null
+      /** @default true */
+      public: boolean
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: (string | null)[] | null
+    })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9377,6 +9573,37 @@ export interface components {
        */
       item?: string
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      description?: string | null
+    })
+    'MediaObjectSamplingStratigraphicUnit-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectSamplingStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read']
       description?: string | null
     })
     'MediaObjectStratigraphicUnit-media_object_join.create': {
@@ -10067,6 +10294,211 @@ export interface components {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     })
+    'SamplingSite-sampling_site.create': {
+      code: string
+      name: string
+      description?: string | null
+      n?: number
+      e?: number
+    }
+    'SamplingSite-sampling_site.create.jsonMergePatch': {
+      code?: string
+      name?: string
+      description?: string | null
+      n?: number
+      e?: number
+    }
+    'SamplingSite.csv-sampling_site.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      n?: number
+      e?: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingSite.csv-sampling_su.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingSite.csv-sediment_core.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingSite.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingSite.jsonld-sampling_site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      n?: number
+      e?: number
+    })
+    'SamplingSite.jsonld-sampling_su.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'SamplingSite.jsonld-sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'SamplingSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'SamplingSite.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'SamplingStratigraphicUnit-sampling_su.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site: string
+      number: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+    }
+    'SamplingStratigraphicUnit-sampling_su.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      number?: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+    }
+    'SamplingStratigraphicUnit.csv-sampling_su.acl.read': {
+      readonly id?: number | string
+      site: components['schemas']['SamplingSite.csv-sampling_su.acl.read']
+      number: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingStratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
+      site: components['schemas']['SamplingSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SamplingStratigraphicUnit.jsonld-sampling_su.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site: components['schemas']['SamplingSite.jsonld-sampling_su.acl.read']
+      number: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      readonly code: string
+    })
+    'SamplingStratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      site: components['schemas']['SamplingSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      readonly code: string
+    })
     SedimentCore: {
       readonly id: number | string
       /**
@@ -10082,7 +10514,7 @@ export interface components {
     }
     'SedimentCore.csv-sediment_core.acl.read': {
       readonly id: number | string
-      site: components['schemas']['ArchaeologicalSite.csv-sediment_core.acl.read']
+      site: components['schemas']['SamplingSite.csv-sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -10094,9 +10526,9 @@ export interface components {
         canDelete: boolean
       }
     }
-    'SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+    'SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       readonly id: number | string
-      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['SamplingSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       year: number
       number: number
       description?: string | null
@@ -10110,7 +10542,7 @@ export interface components {
     }
     'SedimentCore.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       readonly id: number | string
-      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
+      site: components['schemas']['SamplingSite.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -10144,13 +10576,13 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core.acl.read']
+      site: components['schemas']['SamplingSite.jsonld-sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
       readonly code?: string
     })
-    'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+    'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10159,7 +10591,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      site: components['schemas']['SamplingSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       year: number
       number: number
       description?: string | null
@@ -10174,7 +10606,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
+      site: components['schemas']['SamplingSite.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       year: number
       number: number
       description?: string | null
@@ -10199,10 +10631,10 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+    'SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       readonly id?: number | string
-      sedimentCore: components['schemas']['SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      sedimentCore: components['schemas']['SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -10231,9 +10663,13 @@ export interface components {
         canDelete: boolean
       }
     }
-    'SedimentCoreDepth.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+    'SedimentCoreDepth.csv-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read': {
       readonly id?: number | string
-      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -10265,7 +10701,7 @@ export interface components {
       notes?: string | null
       readonly code?: string
     }
-    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
+    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10274,8 +10710,8 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+      sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -10299,7 +10735,7 @@ export interface components {
       depthMax: string
       notes?: string | null
     })
-    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
+    'SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10308,7 +10744,11 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -10620,46 +11060,6 @@ export interface components {
         canDelete: boolean
       }
     }
-    'StratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      area?: string | null
-      building?: string | null
-      /** @default 0 */
-      year: number
-      number: number
-      description?: string | null
-      interpretation?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      readonly code: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'StratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
-      site: components['schemas']['ArchaeologicalSite.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
-      area?: string | null
-      building?: string | null
-      /** @default 0 */
-      year: number
-      number: number
-      description?: string | null
-      interpretation?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      readonly code: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
     'StratigraphicUnit.csv-sus.acl.read': {
       readonly id?: number | string
       site: components['schemas']['ArchaeologicalSite.csv-sus.acl.read']
@@ -10901,48 +11301,6 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
-      area?: string | null
-      building?: string | null
-      /** @default 0 */
-      year: number
-      number: number
-      description?: string | null
-      interpretation?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      readonly code: string
-    })
-    'StratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
-      area?: string | null
-      building?: string | null
-      /** @default 0 */
-      year: number
-      number: number
-      description?: string | null
-      interpretation?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      readonly code: string
-    })
-    'StratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
-      site: components['schemas']['ArchaeologicalSite.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
       /** @default 0 */
@@ -11368,6 +11726,16 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id?: string | null
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly userIdentifier?: string
     })
     'User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
@@ -25769,6 +26137,187 @@ export interface operations {
       }
     }
   }
+  api_datamedia_object_sampling_stratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSamplingStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectSamplingStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_sampling_stratigraphic_units_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectSamplingStratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectSamplingStratigraphicUnit-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectSamplingStratigraphicUnit resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectSamplingStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datamedia_object_sampling_stratigraphic_units_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectSamplingStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSamplingStratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectSamplingStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_sampling_stratigraphic_units_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectSamplingStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSamplingStratigraphicUnit resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasampling_stratigraphic_units_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectSamplingStratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSamplingStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectSamplingStratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read'][]
+          }
+        }
+      }
+    }
+  }
   api_datamedia_object_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
@@ -28085,6 +28634,614 @@ export interface operations {
       }
     }
   }
+  api_datasampling_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        'exists[description]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SamplingSite.jsonld-sampling_site.acl.read'][]
+          }
+          'text/csv': components['schemas']['SamplingSite.csv-sampling_site.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datasampling_sites_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new SamplingSite resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['SamplingSite-sampling_site.create']
+      }
+    }
+    responses: {
+      /** @description SamplingSite resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datasampling_sites_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasampling_sites_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingSite resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasampling_sites_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated SamplingSite resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['SamplingSite-sampling_site.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description SamplingSite resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datasampling_sites_parentIdstratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description SamplingStratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SamplingStratigraphicUnit.jsonld-sampling_su.acl.read'][]
+          }
+          'text/csv': components['schemas']['SamplingStratigraphicUnit.csv-sampling_su.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datasampling_stratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SamplingStratigraphicUnit.jsonld-sampling_su.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datasampling_stratigraphic_units_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new SamplingStratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['SamplingStratigraphicUnit-sampling_su.create']
+      }
+    }
+    responses: {
+      /** @description SamplingStratigraphicUnit resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingStratigraphicUnit.jsonld-sampling_su.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datasampling_stratigraphic_units_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SamplingStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingStratigraphicUnit.jsonld-sampling_su.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasampling_stratigraphic_units_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SamplingStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasampling_stratigraphic_units_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SamplingStratigraphicUnit identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated SamplingStratigraphicUnit resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['SamplingStratigraphicUnit-sampling_su.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description SamplingStratigraphicUnit resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingStratigraphicUnit.jsonld-sampling_su.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datasampling_sites_parentIdsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description SedimentCore identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
+          }
+          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
+        }
+      }
+    }
+  }
   api_datasediment_cores_get_collection: {
     parameters: {
       query?: {
@@ -28332,60 +29489,6 @@ export interface operations {
       }
     }
   }
-  api_datasites_parentIdsediment_cores_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[year]'?: 'asc' | 'desc'
-        'order[number]'?: 'asc' | 'desc'
-        site?: string
-        'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
-        search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path: {
-        /** @description SedimentCore identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SedimentCore collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
-          }
-          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
-        }
-      }
-    }
-  }
   api_datasediment_core_depths_get_collection: {
     parameters: {
       query?: {
@@ -28399,7 +29502,6 @@ export interface operations {
         'order[sedimentCore.year]'?: 'asc' | 'desc'
         'order[sedimentCore.number]'?: 'asc' | 'desc'
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
-        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
@@ -28415,9 +29517,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
+          'text/csv': components['schemas']['SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read'][]
+            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read'][]
           }
         }
       }
@@ -28443,7 +29545,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
         }
       }
       /** @description Invalid input */
@@ -28488,7 +29590,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
         }
       }
       /** @description Not found */
@@ -28570,7 +29672,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sus.acl.read']
+          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
         }
       }
       /** @description Invalid input */
@@ -28632,7 +29734,6 @@ export interface operations {
         'order[sedimentCore.year]'?: 'asc' | 'desc'
         'order[sedimentCore.number]'?: 'asc' | 'desc'
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
-        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
@@ -28651,9 +29752,9 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'text/csv': components['schemas']['SedimentCoreDepth.csv-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
+          'text/csv': components['schemas']['SedimentCoreDepth.csv-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read'][]
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sus.acl.read'][]
+            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read'][]
           }
         }
       }
@@ -28672,7 +29773,6 @@ export interface operations {
         'order[sedimentCore.year]'?: 'asc' | 'desc'
         'order[sedimentCore.number]'?: 'asc' | 'desc'
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
-        'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
       }
@@ -30550,6 +31650,99 @@ export interface operations {
     }
   }
   api_validatoruniquesamples_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesampling_sitescode_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesampling_sitesname_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquesampling_stratigraphic_units_get: {
     parameters: {
       query?: never
       header?: never
