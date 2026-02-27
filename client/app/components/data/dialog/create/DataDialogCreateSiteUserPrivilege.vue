@@ -21,7 +21,13 @@ const item = computed(() => r$.$value[0])
 </script>
 
 <template>
-  <data-dialog-create :item :path :regle="r$" @refresh="emit('refresh')">
+  <data-dialog-create
+    :item
+    :path
+    :redirect-option="false"
+    :regle="r$"
+    @refresh="emit('refresh')"
+  >
     <template #default>
       <data-item-form-create-site-user-privilege :parent />
     </template>

@@ -5,10 +5,12 @@ import { AppBarComponent } from '~~/tests/e2e/components/app-bar.component'
 export abstract class BasePage {
   protected abstract readonly path: string
   public readonly appMessage: Locator
+  public readonly appNavBarIcon: Locator
 
   public readonly appDataNavigationDrawer: AppDataNavigationDrawerComponent
   public readonly appBar: AppBarComponent
   constructor(public readonly page: Page) {
+    this.appNavBarIcon = this.page.getByTestId('app-bar-nav-icon')
     this.appMessage = this.page.getByTestId('app-message')
     this.appBar = new AppBarComponent(page)
     this.appDataNavigationDrawer = new AppDataNavigationDrawerComponent(page)

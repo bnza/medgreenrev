@@ -81,7 +81,7 @@ const role = computed({
       />
       <v-checkbox
         v-model="r$.$value.roles"
-        label="geo archeologist"
+        label="geo archaeologist"
         color="primary"
         :value="ApiSpecialistRole.GeoArchaeologist"
         density="compact"

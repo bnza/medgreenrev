@@ -23,11 +23,9 @@ test.describe('User lifecycle', () => {
       await collectionPom.dataCard.clickOnActionMenuButton('add new')
       await collectionPom.dataDialogCreate.closeDialog()
 
-      // CREATE AND REDIRECT TO NEW STRATIGRAPHIC UNIT PAGE
+      // CREATE AND REDIRECT
       await collectionPom.dataCard.clickOnActionMenuButton('add new')
       await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
-
-      // Fill site field (using autocomplete)
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'email' })
