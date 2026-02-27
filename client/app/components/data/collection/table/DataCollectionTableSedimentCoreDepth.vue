@@ -44,25 +44,25 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.sedimentCore.site.code`]="{ item }">
-      <data-item-info-box-span-archaeological-site
+      <data-item-info-box-span-sampling-site
         :iri="item.sedimentCore.site['@id']"
         :text="item.sedimentCore.site.code"
       />
     </template>
     <template #[`item.stratigraphicUnit.site.code`]="{ item }">
-      <data-item-info-box-span-archaeological-site
+      <data-item-info-box-span-sampling-site
         :iri="item.stratigraphicUnit.site['@id']"
         :text="item.stratigraphicUnit.site.code"
       />
     </template>
     <template #[`item.stratigraphicUnit.code`]="{ item }">
-      <data-item-info-box-span-stratigraphic-unit
+      <data-item-info-box-span-sampling-stratigraphic-unit
         :iri="item.stratigraphicUnit['@id']"
         :text="item.stratigraphicUnit.code"
       />
     </template>
     <template #[`item.sedimentCore.code`]="{ item }">
-      <data-item-info-box-span-stratigraphic-unit
+      <data-item-info-box-span-sediment-core
         :iri="item.sedimentCore['@id']"
         :text="item.sedimentCore.code"
       />

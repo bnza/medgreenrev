@@ -44,10 +44,10 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-delete-stratigraphic-unit-->
-      <!--        @refresh="redirectToCollectionPath()"-->
-      <!--      />-->
-      <!--      <data-dialog-update-stratigraphic-unit @refresh="refetch()" />-->
+      <data-dialog-delete-sampling-stratigraphic-unit
+        @refresh="redirectToCollectionPath()"
+      />
+      <data-dialog-update-sampling-stratigraphic-unit @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

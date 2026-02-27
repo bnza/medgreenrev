@@ -75,12 +75,11 @@ const { r$ } = useScopedRegle(model, {
       <v-col cols="12" md="6">
         <data-autocomplete-stratigraphic-unit
           v-model="r$.$value.stratigraphicUnit"
-          path="/api/data/stratigraphic_units"
+          path="/api/data/sampling_stratigraphic_units"
           label="stratigraphic unit"
           item-title="code"
           :error-messages="r$.$errors?.stratigraphicUnit"
           :disabled="parent?.key === 'stratigraphicUnit'"
-          granted-only
           :query-params="
             parent?.key === 'sedimentCore'
               ? { site: parent.item.site?.['@id'] }

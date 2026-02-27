@@ -18,7 +18,7 @@ withDefaults(
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.sedimentCore.site.name" label="site">
           <template v-if="item.sedimentCore.site['@id']" #append-inner>
-            <data-item-info-box-archaeological-site
+            <data-item-info-box-sampling-site
               :iri="item.sedimentCore.site['@id']"
               :read-link
             />
@@ -41,7 +41,7 @@ withDefaults(
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.stratigraphicUnit.code" label="SU">
           <template v-if="item.stratigraphicUnit['@id']" #append-inner>
-            <data-item-info-box-stratigraphic-unit
+            <data-item-info-box-sampling-stratigraphic-unit
               :iri="item.stratigraphicUnit['@id']"
               :read-link
             />

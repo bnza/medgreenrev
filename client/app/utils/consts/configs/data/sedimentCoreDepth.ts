@@ -128,11 +128,6 @@ export const stratigraphicUnitSubResourceConfig: Readonly<ResourceConfig> = {
         sortable: false,
       },
       {
-        key: 'stratigraphicUnit.year',
-        value: 'stratigraphicUnit.year',
-        title: 'SU (year)',
-      },
-      {
         key: 'stratigraphicUnit.number',
         value: 'stratigraphicUnit.number',
         title: 'SU (number)',
