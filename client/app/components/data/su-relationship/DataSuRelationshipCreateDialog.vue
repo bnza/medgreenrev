@@ -90,7 +90,7 @@ const submit = async () => {
     }
 
     submitStatus.value = 'success'
-    addSuccess('new relationship successfully created')
+    addSuccess('New relationship successfully created')
     creatingRelationshipType.value = undefined
   } catch (e) {
     submitStatus.value = 'error'

@@ -393,6 +393,76 @@ test.describe('Stratigraphic Unit lifecycle', () => {
   })
   test.describe('Base user', () => {
     test.use({ storageState: 'playwright/.auth/base.json' })
+    test('Relationships', async ({ page }) => {
+      const collectionPom = new StratigraphicUnitCollectionPage(page)
+      const itemPom = new StratigraphicUnitsItemPage(page)
+      await collectionPom.open()
+      await collectionPom.table.expectData()
+      await collectionPom.awaitSearchResults('NI.408')
+      await collectionPom.table
+        .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
+        .click()
+
+      await itemPom.form.waitForLoad()
+      await itemPom.clickTab('relationships')
+      await expect(page.getByTestId('add-relationship-button')).toHaveCount(0)
+      await page.getByTestId('enable-editing-button').click()
+      await page.getByTestId('add-relationship-button').first().click()
+      await expect(page.getByTestId('add-su-relationship-card')).toHaveText(
+        /NI\.25\.408/,
+      )
+      await expect(page.getByTestId('add-su-relationship-card')).toHaveText(
+        /cover\sto/,
+      )
+      await page
+        .getByTestId('add-su-relationship-card')
+        .getByLabel('stratigraphic unit')
+        .click()
+      await page.getByRole('option').filter({ hasText: 'NI.25.408' }).click()
+      await expect(page.getByTestId('add-su-relationship-card')).toHaveText(
+        /Self referencing relationships are not allowed/,
+      )
+      await page
+        .getByTestId('add-su-relationship-card')
+        .getByLabel('stratigraphic unit')
+        .click()
+      await page.getByRole('option').filter({ hasText: 'NI.25.407' }).click()
+      await expect(page.getByTestId('add-su-relationship-card')).toHaveText(
+        /Duplicate stratigraphic unit relationship/,
+      )
+
+      await page
+        .getByTestId('add-su-relationship-card')
+        .getByLabel('stratigraphic unit')
+        .click()
+      await page.getByRole('option').filter({ hasText: 'NI.25.406' }).click()
+
+      page.getByRole('button', { name: 'submit' }).click()
+
+      await collectionPom.expectAppMessageToHaveText(
+        'New relationship successfully created',
+      )
+
+      await expect(
+        page.getByTestId('su-relationship-card').first(),
+      ).toContainText(/25\.406/)
+
+      page
+        .getByTestId('su-relationship-card')
+        .first()
+        .getByTestId('delete-relationship-button')
+        .click()
+
+      page.getByRole('button', { name: 'delete' }).click()
+
+      await collectionPom.expectAppMessageToHaveText(
+        'Successfully deleted item',
+      )
+
+      await expect(
+        page.getByTestId('su-relationship-card').first(),
+      ).not.toContainText(/25\.406/)
+    })
     test('Media object', async ({ page }) => {
       resetFixtureMedia()
       const collectionPom = new StratigraphicUnitCollectionPage(page)
