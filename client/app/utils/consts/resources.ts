@@ -87,6 +87,7 @@ export const API_RESOURCE_MAP = {
   vocPotteryFunctionalGroup: '/api/vocabulary/pottery/functional_groups',
   vocPotteryShape: '/api/vocabulary/pottery/shapes',
   vocPotterySurfaceTreatment: '/api/vocabulary/pottery/surface_treatments',
+  vocRegions: '/api/vocabulary/regions',
   vocSampleType: '/api/vocabulary/sample/types',
   vocStratigraphicUnitRelation:
     '/api/vocabulary/stratigraphic_unit/relationships',

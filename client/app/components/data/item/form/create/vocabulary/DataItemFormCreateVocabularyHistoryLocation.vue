@@ -28,6 +28,7 @@ const uniqueValue = createRule({
 
 const { r$ } = useScopedRegle(model, {
   value: { required, unique: uniqueValue },
+  region: { required },
   n: { required, decimal, minValue: minValue(-90), maxValue: maxValue(90) },
   e: { required, decimal, minValue: minValue(-180), maxValue: maxValue(180) },
 })
@@ -41,6 +42,17 @@ const { r$ } = useScopedRegle(model, {
           v-model="r$.$value.value"
           label="value"
           :error-messages="r$.$errors?.value"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" xs="12" sm="6" class="px-2">
+        <data-autocomplete
+          v-model="r$.$value.region"
+          path="/api/vocabulary/regions"
+          label="region"
+          item-title="value"
+          :error-messages="r$.$errors?.region"
         />
       </v-col>
     </v-row>

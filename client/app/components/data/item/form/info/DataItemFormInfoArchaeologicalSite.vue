@@ -24,6 +24,16 @@ defineProps<{
       </v-col>
     </v-row>
     <v-row>
+      <v-col cols="12" xs="12" sm="4" class="px-2">
+        <data-autocomplete
+          path="/api/vocabulary/regions"
+          :model-value="item.region?.['@id']"
+          label="region"
+          item-title="value"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="12" xs="12" class="px-2">
         <v-textarea :model-value="item.description" label="description" />
       </v-col>

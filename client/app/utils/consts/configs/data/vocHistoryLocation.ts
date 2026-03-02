@@ -19,6 +19,12 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
+      key: 'region.value',
+      value: 'region.value',
+      title: 'region',
+      minWidth: '200',
+    },
+    {
       key: 'point.y',
       value: 'n',
       title: 'N',

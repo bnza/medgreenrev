@@ -5,6 +5,10 @@ import { HistoryAnimalCollectionPage } from '~~/tests/e2e/pages/history-animal-c
 import { HistoryAnimalItemPage } from '~~/tests/e2e/pages/history-animal-item.page'
 import { HistoryPlantCollectionPage } from '~~/tests/e2e/pages/history-plant-collection.page'
 import { HistoryPlantItemPage } from '~~/tests/e2e/pages/history-plant-item.page'
+import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
+import { LoginPage } from '~~/tests/e2e/pages/login.page'
+import { HistoryLocationCollectionPage } from '~~/tests/e2e/pages/history-location-collection.page'
+import { HistoryLocationItemPage } from '~~/tests/e2e/pages/history-location-item.page'
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -25,7 +29,7 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataCard.clickOnActionMenuButton('add new')
         await collectionPom.dataDialogCreate.closeDialog()
 
-        // CREATE AND REDIRECT TO NEW SITE PAGE
+        // CREATE AND REDIRECT TO NEW ITEM PAGE
         await collectionPom.dataCard.clickOnActionMenuButton('add new')
         await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
 
@@ -351,6 +355,172 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.submitForm()
         await collectionPom.expectAppMessageToHaveText(
           'Resource successfully created',
+        )
+      })
+    })
+  })
+  test.describe('Locations', () => {
+    test.describe('Admin user', () => {
+      test.use({ storageState: 'playwright/.auth/admin.json' })
+
+      test('Data validation', async ({ page }) => {
+        const collectionPom = new HistoryLocationCollectionPage(page)
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+        // Required field type - identifier
+
+        await collectionPom.dataDialogCreate.submitButton.click()
+        await expect(
+          page.locator('.v-input:has(label:text("value"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("region"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate N"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate E"))'),
+        ).toContainText(/required/)
+
+        // Coordinate N - valid values
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate N' })
+          .fill('not a decimal')
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate N"))'),
+        ).toContainText(/The value must be decimal/)
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate N' })
+          .fill('100')
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate N"))'),
+        ).toContainText(/The value must be less than or equal to 90/)
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate N' })
+          .fill('-100')
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate N"))'),
+        ).toContainText(/The value must be greater than or equal to -90/)
+
+        // Coordinate E - valid values
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate E' })
+          .fill('not a decimal')
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate E"))'),
+        ).toContainText(/The value must be decimal/)
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate E' })
+          .fill('200')
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate E"))'),
+        ).toContainText(/The value must be less than or equal to 180/)
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate E' })
+          .fill('-200')
+        await expect(
+          page.locator('.v-input:has(label:text("coordinate E"))'),
+        ).toContainText(/The value must be greater than or equal to -180/)
+
+        // Valid form submission after fixing validation errors
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'value' })
+          .fill('New location')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('combobox', { name: 'region' })
+          .click()
+        await page.getByRole('option', { name: /andalusia/i }).click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate N' })
+          .fill('37.5')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate E' })
+          .fill('-4.5')
+
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+      })
+    })
+    test.describe('Editor/historian user', () => {
+      test('Basic lifecycle works as expected', async ({ page, browser }) => {
+        const collectionPom = new HistoryLocationCollectionPage(page)
+        const authTestHelper = new AuthTestHelper(browser)
+        const credentials = await authTestHelper.createUser('editor', [
+          'historian',
+        ])
+        const loginPage = new LoginPage(page)
+        await loginPage.open()
+        await loginPage.login(credentials)
+
+        // Navigate to the site collection page
+        await collectionPom.appNavBarIcon.click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Data', { exact: true })
+          .click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Written sources', { exact: true })
+          .click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Locations', { exact: true })
+          .first()
+          .click()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'value' })
+          .fill('New location')
+        await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+        await page.getByRole('option', { name: /andalusia/i }).click()
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate E' })
+          .fill('37.5')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate N' })
+          .fill('-4.5')
+
+        await collectionPom.dataDialogCreate.submitForm()
+
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+
+        await collectionPom.table.expectRowToHaveText(
+          'New location',
+          'Andalusia',
+        )
+        await collectionPom.table.expectRowToHaveText('New location', '37.5')
+        await collectionPom.table.expectRowToHaveText('New location', '-4.5')
+
+        // DELETE
+        await collectionPom.table
+          .getItemNavigationLink('New location', NavigationLinksButton.Delete)
+          .click()
+        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
+          'value',
+          'New location',
+        )
+        await collectionPom.dataDialogDelete.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully deleted',
+        )
+        await collectionPom.table.expectNotToHaveRowContainingText(
+          'New location',
         )
       })
     })

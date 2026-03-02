@@ -19,6 +19,16 @@ withDefaults(
         <v-text-field :model-value="item.value" label="name" />
       </v-col>
     </v-row>
+    <v-row>
+      <v-col cols="12" xs="12" sm="6" class="px-2">
+        <data-autocomplete
+          path="/api/vocabulary/regions"
+          :model-value="item.region?.['@id']"
+          label="region"
+          item-title="value"
+        />
+      </v-col>
+    </v-row>
     <data-item-form-coordinate :x="item.e" :y="item.n" />
   </data-item-form-read>
 </template>

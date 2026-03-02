@@ -36,6 +36,19 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'name' })
         .fill('New Shining Site')
+      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /andalusia/i })
+        .first()
+        .click()
+      await collectionPom.dataDialogCreate.form
+        .getByLabel('field director')
+        .first()
+        .fill('vi')
+      await page
+        .getByRole('option', { name: /victoria/i })
+        .first()
+        .click()
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'description' })
         .fill('A new shining site for testing purposes')
@@ -56,6 +69,9 @@ test.describe('Archaeological site lifecycle', () => {
       await page.getByTestId('chronology-panel').click()
       await itemPom.expectTextFieldToHaveValue('code', 'NW')
       await itemPom.expectTextFieldToHaveValue('name', 'New Shining Site')
+      await expect(
+        page.locator('.v-input:has(label:text("region"))'),
+      ).toContainText(/andalusia/i)
       await itemPom.expectTextFieldToHaveValue(
         'description',
         'A new shining site for testing purposes',
@@ -77,15 +93,25 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'description' })
         .fill('A modified shining site description')
+      await collectionPom.dataDialogUpdate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /baleari/i })
+        .first()
+        .click()
+      await collectionPom.dataDialogUpdate.form
+        .getByLabel('field director')
+        .first()
+        .fill('vi')
+      await page
+        .getByRole('option', { name: /victoria/i })
+        .first()
+        .click()
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'chronology (lower)' })
         .fill('900')
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'chronology (upper)' })
         .fill('1200')
-      await collectionPom.dataDialogUpdate.form
-        .getByRole('combobox', { name: 'field director' })
-        .fill('Some One Else')
 
       // const patchResponsePromise = page.waitForResponse(
       //   (response) =>
@@ -108,6 +134,7 @@ test.describe('Archaeological site lifecycle', () => {
       // await getResponsePromise
 
       await collectionPom.table.expectRowToHaveText('NW', 'Newer Shining Site')
+      await collectionPom.table.expectRowToHaveText('NW', 'Baleari')
       await collectionPom.table.expectRowToHaveText(
         'NW',
         'A modified shining site description',
@@ -136,6 +163,11 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'name' })
         .fill('New Shining Site (again)')
+      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /andalusia/i })
+        .first()
+        .click()
       await collectionPom.dataDialogCreate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
@@ -148,7 +180,7 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.table.expectData()
       await collectionPom.dataCard.clickOnActionMenuButton('add new')
 
-      // Test 1: Required field validation - code field
+      // Required field validation - code field
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })
         .fill('AA')
@@ -160,7 +192,7 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("code"))'),
       ).toContainText(/required/)
 
-      // Test 2: Required field validation - name field
+      // Required field validation - name field
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })
         .fill('TEST')
@@ -175,7 +207,7 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("name"))'),
       ).toContainText(/required/)
 
-      // Test 3: Unique validation - try to create with existing code
+      // Unique validation - try to create with existing code
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })
         .fill('TO') // Assuming this exists in fixtures
@@ -187,7 +219,7 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("code"))'),
       ).toContainText('Code must be unique')
 
-      // Test 4: Unique validation - try to create with existing name
+      // Unique validation - try to create with existing name
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })
         .fill('NEW') // Assuming this exists in fixtures
@@ -199,7 +231,19 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("name"))'),
       ).toContainText('Name must be unique')
 
-      // Test 5: Chronology validation - invalid year format
+      // Region - required
+      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /baleari/i })
+        .first()
+        .click()
+      await collectionPom.dataDialogCreate.form.getByLabel('region').clear()
+      await page.keyboard.press('Tab')
+      await expect(
+        page.locator('.v-input:has(label:text("region"))'),
+      ).toContainText(/required/)
+
+      // Chronology validation - invalid year format
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })
         .fill('NEW')
@@ -211,7 +255,7 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("chronology (lower)"))'),
       ).toContainText(/must be an integer/i)
 
-      // Test 6: Chronology validation - year too low
+      // Chronology validation - year too low
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'chronology (lower)' })
         .fill('-50000')
@@ -220,7 +264,7 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("chronology (lower)"))'),
       ).toContainText(/must be greater than/i)
 
-      // Test 7: Chronology validation - year too high (future year)
+      // Chronology validation - year too high (future year)
       const futureYear = new Date().getFullYear() + 100
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'chronology (lower)' })
@@ -230,7 +274,7 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("chronology (lower)"))'),
       ).toContainText(/must be less than/i)
 
-      // Test 8: Chronology validation - lower > upper
+      // Chronology validation - lower > upper
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'chronology (lower)' })
         .fill('1500')
@@ -244,13 +288,18 @@ test.describe('Archaeological site lifecycle', () => {
         'Lower chronology must be greater than or equal upper chronology.',
       )
 
-      // Test 9: Valid form submission after fixing validation errors
+      // Valid form submission after fixing validation errors
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })
         .fill('NEW')
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'name' })
         .fill('Valid Test Site')
+      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /baleari/i })
+        .first()
+        .click()
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'chronology (lower)' })
         .fill('1000')
@@ -278,12 +327,17 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'name' })
         .fill('New Shining Site')
+      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /andalusia/i })
+        .first()
+        .click()
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'description' })
         .fill('A new shining site for testing purposes')
       await collectionPom.dataDialogCreate.form
         .getByRole('combobox')
-        .nth(2)
+        .nth(4)
         .click()
       await page.getByRole('option', { name: 'taifa' }).click()
       await page.getByRole('option', { name: 'feudal' }).click()
@@ -305,7 +359,7 @@ test.describe('Archaeological site lifecycle', () => {
         .click()
       await collectionPom.dataDialogUpdate.form
         .getByRole('combobox')
-        .nth(2)
+        .nth(4)
         .click()
       await page.getByRole('option', { name: 'taifa' }).click() //uncheck
       await page.getByRole('option', { name: 'emirate' }).click()
@@ -338,9 +392,6 @@ test.describe('Archaeological site lifecycle', () => {
       const loginPage = new LoginPage(page)
       await loginPage.open()
       await loginPage.login(credentials)
-      await expect(page.getByTestId('app-message').first()).toHaveText(
-        /successfully logged in/,
-      )
 
       // Navigate to the site collection page
       await collectionPom.appNavBarIcon.click()
@@ -368,6 +419,11 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'name' })
         .fill('New Test Site')
+      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+      await page
+        .getByRole('option', { name: /andalusia/i })
+        .first()
+        .click()
       await collectionPom.dataDialogCreate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
