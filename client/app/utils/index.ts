@@ -174,3 +174,7 @@ export function getResourceKeyFromPath(path: ApiResourcePath): ApiResourceKey {
 
   return matches[0]?.[0] as ApiResourceKey
 }
+
+export const CLOSE_MAP_OVERLAY_INJECTION_KEY = Symbol() as InjectionKey<
+  () => void
+>

@@ -32,6 +32,13 @@ const onSelect = (event: SelectEvent) => {
   emit('featureSelected', selected)
 }
 
+const clearSelection = () => {
+  onSelect({ selected: [], deselected: [], type: 'select' } as any)
+  interactionSelectRef.value?.select.getFeatures().clear()
+}
+
+defineExpose({ clearSelection })
+
 const filterRegex = new RegExp(`^${props.idPrefix}.`)
 const filter = (feature: Feature<Geometry>) => {
   const id = feature.getId()

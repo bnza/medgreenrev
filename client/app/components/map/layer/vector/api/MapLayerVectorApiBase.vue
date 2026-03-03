@@ -51,6 +51,12 @@ const { textLabelStyleFn, styleFns } = storeToRefs(
 styleFns.value = [textLabelStyleFn]
 
 const selectedFeature: Ref<Feature<Geometry> | null> = ref(null)
+
+const interactionSelectRef = useTemplateRef('interactionSelectRef')
+
+provide(CLOSE_MAP_OVERLAY_INJECTION_KEY, () => {
+  interactionSelectRef.value?.clearSelection()
+})
 </script>
 
 <template>

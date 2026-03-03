@@ -16,7 +16,10 @@ const { fullPath } = useRoute()
 const { state: uiMode } = storeToRefs(useAppUiModeStore())
 
 const showTooltip = ref(false)
+
+const closeOverlay = inject(CLOSE_MAP_OVERLAY_INJECTION_KEY, null)
 const viewItem = () => {
+  closeOverlay?.()
   push(fullPath)
   uiMode.value = 'default'
   showTooltip.value = false
