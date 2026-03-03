@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
-import DataSelectionVocabulary from '~/components/data/selection/DataSelectionVocabulary.vue'
 
 const { panels } = storeToRefs(
   useResourceUiStore('/api/data/archaeological_sites/{id}'),

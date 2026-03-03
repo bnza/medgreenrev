@@ -6,7 +6,9 @@ import { hasAcl } from '~/utils/acl'
 const path = '/api/data/archaeological_sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(useResourceUiStore(path, ['chronology']))
+const { tab } = storeToRefs(
+  useResourceUiStore(path, ['location', 'chronology']),
+)
 
 const redirectToCollectionPath = useRedirectToCollectionPath(path)
 </script>

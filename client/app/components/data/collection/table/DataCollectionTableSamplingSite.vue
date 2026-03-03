@@ -30,13 +30,13 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
       >
-        <!--        <template #prepend>-->
-        <!--          <navigation-map-location-coordinate-->
-        <!--            :x="item.e"-->
-        <!--            :y="item.n"-->
-        <!--            icon-size="x-small"-->
-        <!--          />-->
-        <!--        </template>-->
+        <template #prepend>
+          <navigation-map-location-coordinate
+            :x="item.e"
+            :y="item.n"
+            icon-size="x-small"
+          />
+        </template>
       </navigation-resource-item>
     </template>
     <template #dialogs="{ refetch }">

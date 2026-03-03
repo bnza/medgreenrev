@@ -26,9 +26,13 @@ const router = useRouter()
 const { isSearchDialogOpen } = storeToRefs(
   useResourceUiStore(mapVectorApiStore.resourceConfig.apiPath),
 )
-const openSearchDialog = () => {
+
+const openAttributeTable = () => {
   uiMode.value = 'default'
   router.push(mapVectorApiStore.resourceConfig.appPath)
+}
+const openSearchDialog = () => {
+  openAttributeTable()
   isSearchDialogOpen.value = true
 }
 
@@ -65,6 +69,10 @@ const zoomToExtent = async () => {
     <template #append="appendProps">
       <slot name="append" v-bind="appendProps">
         <map-list-menu-base>
+          <v-list-item @click="openAttributeTable">
+            <v-list-item-title>Open table</v-list-item-title>
+            <template #append><v-icon icon="fas fa-table-list" /></template>
+          </v-list-item>
           <v-list-item @click="openSearchDialog">
             <v-list-item-title>Search</v-list-item-title>
             <template #append
