@@ -14,7 +14,7 @@
     }"
   >
     <template #popUpContent="{ item }">
-      <data-item-info-box-content-site :item />
+      <data-item-info-box-content-sampling-site :item />
     </template>
   </map-layer-vector-api-base>
 </template>

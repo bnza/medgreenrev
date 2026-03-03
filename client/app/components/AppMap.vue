@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Map, Layers } from 'vue3-openlayers'
 import MapLayerVectorApiHistoryLocation from '~/components/map/layer/vector/api/MapLayerVectorApiHistoryLocation.vue'
+import MapLayerVectorApiArchaeologicalSite from '~/components/map/layer/vector/api/MapLayerVectorApiArchaeologicalSite.vue'
 
 const mapStore = useMapStore()
 const { center, projection, zoom, rotation, extentArray } =
@@ -73,7 +74,8 @@ onMounted(() => {
       <map-layer-tile-base-map-esri />
       <map-layer-tile-base-map-osm />
       <map-layer-vector-api-history-location />
-      <map-layer-vector-api-site />
+      <map-layer-vector-api-sampling-site />
+      <map-layer-vector-api-archaeological-site />
     </Layers.OlLayerGroup>
   </Map.OlMap>
 </template>

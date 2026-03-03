@@ -108,6 +108,7 @@ export type ApiResourcePath =
 export const API_FEATURES_RESOURCE_MAP = {
   '/api/features/archaeological_sites': '/api/data/archaeological_sites',
   '/api/features/history/locations': '/api/vocabulary/history/locations',
+  '/api/features/sampling_sites': '/api/data/sampling_sites',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP

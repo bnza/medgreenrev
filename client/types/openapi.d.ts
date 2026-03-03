@@ -3482,6 +3482,66 @@ export interface paths {
     patch: operations['api_datasampling_sites_id_patch']
     trace?: never
   }
+  '/api/features/extent_matched/sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SamplingSite resource.
+     * @description Retrieves a SamplingSite resource.
+     */
+    get: operations['api_featuresextent_matchedsampling_sites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SamplingSite resource.
+     * @description Retrieves a SamplingSite resource.
+     */
+    get: operations['api_featuresnumber_matchedsampling_sites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection streamed from GeoServer.
+     */
+    get: operations['api_featuressampling_sites.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/sampling_sites/{parentId}/stratigraphic_units': {
     parameters: {
       query?: never
@@ -10352,6 +10412,7 @@ export interface components {
       readonly id?: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     })
+    'SamplingSite-feature_collection.json.read': Record<string, never>
     'SamplingSite-sampling_site.create': {
       code: string
       name: string
@@ -10375,6 +10436,42 @@ export interface components {
       region?: string
       n?: number
       e?: number
+    }
+    'SamplingSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'SamplingSite.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'SamplingSite.csv-sampling_site.acl.read': {
       readonly id?: number | string
@@ -10441,6 +10538,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SamplingSite.geojson-feature_collection.json.read': Record<string, never>
     'SamplingSite.jsonld-sampling_site.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -29169,6 +29267,116 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedsampling_sites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedsampling_sites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingSite.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuressampling_sites.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        region?: string
+        'region[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        'exists[description]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection, depending on the requested format return a geojson FeatureCollection or an array of IDs. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesIds']
         }
       }
     }

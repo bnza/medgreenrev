@@ -13,6 +13,7 @@ const FEATURE_COLLECTION_PATH_MAP = {
     '/api/features/extent_matched/history/locations',
   '/api/features/archaeological_sites':
     '/api/features/extent_matched/archaeological_sites',
+  '/api/features/sampling_sites': '/api/features/extent_matched/sampling_sites',
 } as const satisfies Record<
   GetFeatureCollectionPath,
   GetFeatureCollectionExtentPath
