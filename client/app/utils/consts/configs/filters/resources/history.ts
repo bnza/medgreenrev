@@ -14,10 +14,22 @@ const {
   SearchPartial,
   VocabularyHistoryAnimal,
   VocabularyHistoryPlant,
+  VocabularyRegion,
 } = API_FILTERS
 
 const historyLocation: ResourceStaticFiltersDefinitionObject = {
   value: {
+    filters: {
+      SearchPartial,
+    },
+  },
+  region: {
+    filters: {
+      VocabularyRegion,
+    },
+  },
+  'region.value': {
+    propertyLabel: 'region',
     filters: {
       SearchPartial,
     },

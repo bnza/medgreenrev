@@ -311,6 +311,14 @@ const VocabularyPotterySurfaceTreatment: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
+const VocabularyRegion: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/regions',
+  addToQueryObject: addToQueryObjectArray,
+}
+
 const VocabularyZooTaxonomy: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -439,6 +447,7 @@ export const API_FILTERS = {
   VocabularyPotteryFunctionalGroups,
   VocabularyPotteryShape,
   VocabularyPotterySurfaceTreatment,
+  VocabularyRegion,
   VocabularySampleType,
   VocabularyZooTaxonomy,
   VocabularyZooBone,

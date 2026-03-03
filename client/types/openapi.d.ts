@@ -21635,6 +21635,8 @@ export interface operations {
         'code[]'?: string[]
         'culturalContexts.culturalContext'?: string
         'culturalContexts.culturalContext[]'?: string[]
+        region?: string
+        'region[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -21664,6 +21666,11 @@ export interface operations {
          * @example cafè
          */
         fieldDirector?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
@@ -21911,6 +21918,8 @@ export interface operations {
         'code[]'?: string[]
         'culturalContexts.culturalContext'?: string
         'culturalContexts.culturalContext[]'?: string[]
+        region?: string
+        'region[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -21940,6 +21949,11 @@ export interface operations {
          * @example cafè
          */
         fieldDirector?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
         'exists[chronologyLower]'?: boolean
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
@@ -23872,21 +23886,24 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[animal.value]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[createdBy.email]'?: 'asc' | 'desc'
         animal?: string
         'animal[]'?: string[]
-        location?: string
-        'location[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
         'chronologyUpper[]'?: number[]
         'createdBy.email'?: string
         'createdBy.email[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        'location.region'?: string
+        'location.region[]'?: string[]
         'chronologyLower[between]'?: string
         'chronologyLower[gt]'?: string
         'chronologyLower[gte]'?: string
@@ -23902,12 +23919,17 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        reference?: string
+        'location.region.value'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
       }
       header?: never
       path?: never
@@ -24133,21 +24155,24 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[animal.value]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[createdBy.email]'?: 'asc' | 'desc'
         animal?: string
         'animal[]'?: string[]
-        location?: string
-        'location[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
         'chronologyUpper[]'?: number[]
         'createdBy.email'?: string
         'createdBy.email[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        'location.region'?: string
+        'location.region[]'?: string[]
         'chronologyLower[between]'?: string
         'chronologyLower[gt]'?: string
         'chronologyLower[gte]'?: string
@@ -24163,12 +24188,17 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        reference?: string
+        'location.region.value'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
       }
       header?: never
       path: {
@@ -24200,12 +24230,13 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[plant.value]'?: 'asc' | 'desc'
-        'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
-        'order[reference]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[plant.value]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
         plant?: string
         'plant[]'?: string[]
         'plant.taxonomy'?: string
@@ -24239,12 +24270,17 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        reference?: string
+        'location.region.value'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
       }
       header?: never
       path: {
@@ -24276,12 +24312,13 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[plant.value]'?: 'asc' | 'desc'
-        'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
-        'order[reference]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[plant.value]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
         plant?: string
         'plant[]'?: string[]
         'plant.taxonomy'?: string
@@ -24315,12 +24352,17 @@ export interface operations {
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
-        reference?: string
+        'location.region.value'?: string
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
          */
         notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
       }
       header?: never
       path?: never
@@ -28896,6 +28938,8 @@ export interface operations {
         'order[region.value]'?: 'asc' | 'desc'
         code?: string
         'code[]'?: string[]
+        region?: string
+        'region[]'?: string[]
         /**
          * @description Filter using case insensitive unaccented string matching
          * @example cafè
@@ -28906,6 +28950,11 @@ export interface operations {
          * @example cafè
          */
         description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
         'exists[description]'?: boolean
       }
       header?: never
@@ -33516,6 +33565,8 @@ export interface operations {
         'plants.plant.taxonomy.class'?: string
         'plants.plant.taxonomy.class[]'?: string[]
         'plants.plant.taxonomy.vernacularName'?: string
+        region?: string
+        'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
         'plants.chronologyLower[gt]'?: string
         'plants.chronologyLower[gte]'?: string
@@ -33565,6 +33616,11 @@ export interface operations {
          * @example cafè
          */
         'plants.notes'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -33659,6 +33715,8 @@ export interface operations {
         'plants.plant.taxonomy.class'?: string
         'plants.plant.taxonomy.class[]'?: string[]
         'plants.plant.taxonomy.vernacularName'?: string
+        region?: string
+        'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
         'plants.chronologyLower[gt]'?: string
         'plants.chronologyLower[gte]'?: string
@@ -33708,6 +33766,11 @@ export interface operations {
          * @example cafè
          */
         'plants.notes'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -33799,6 +33862,8 @@ export interface operations {
         'plants.plant.taxonomy.class'?: string
         'plants.plant.taxonomy.class[]'?: string[]
         'plants.plant.taxonomy.vernacularName'?: string
+        region?: string
+        'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
         'plants.chronologyLower[gt]'?: string
         'plants.chronologyLower[gte]'?: string
@@ -33848,6 +33913,11 @@ export interface operations {
          * @example cafè
          */
         'plants.notes'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak

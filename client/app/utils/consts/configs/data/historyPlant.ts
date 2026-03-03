@@ -25,6 +25,12 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
+      key: 'location.region.value',
+      value: 'location.region.value',
+      title: 'region',
+      minWidth: '100',
+    },
+    {
       key: 'chronologyLower',
       value: 'chronologyLower',
       title: 'chronology (lower)',

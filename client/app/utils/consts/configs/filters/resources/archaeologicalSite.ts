@@ -4,8 +4,13 @@ import {
   API_FILTERS,
 } from '~/utils/consts/configs/filters/definitions'
 
-const { Exists, SearchExact, SearchPartial, VocabularyCulturalContext } =
-  API_FILTERS
+const {
+  Exists,
+  SearchExact,
+  SearchPartial,
+  VocabularyCulturalContext,
+  VocabularyRegion,
+} = API_FILTERS
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -54,6 +59,17 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
       },
     },
     name: {
+      filters: {
+        SearchPartial,
+      },
+    },
+    region: {
+      filters: {
+        VocabularyRegion,
+      },
+    },
+    'region.value': {
+      propertyLabel: 'region',
       filters: {
         SearchPartial,
       },
