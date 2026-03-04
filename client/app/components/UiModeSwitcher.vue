@@ -11,7 +11,13 @@ const text = computed(() => (state.value === 'map' ? 'Map mode' : 'Data mode'))
 <template>
   <v-tooltip :text>
     <template #activator="{ props }">
-      <v-btn class="mr-6" :icon v-bind="props" @click="toggle" />
+      <v-btn
+        class="mr-6"
+        :icon
+        v-bind="props"
+        data-testid="ui-mode-switcher"
+        @click="toggle"
+      />
     </template>
   </v-tooltip>
 </template>

@@ -6,6 +6,7 @@ export class AppBarComponent extends BaseComponent {
   public readonly authUserButton = this.page.getByTestId('auth-user-button')
   public readonly appBarNavIcon = this.page.getByTestId('app-bar-nav-icon')
   public readonly loginButton = this.page.getByTestId('login-button')
+  public readonly uiModeSwitcher = this.page.getByTestId('ui-mode-switcher')
   public readonly authUserMenu = new AuthUserMenuComponent(this.page)
   constructor(page: Page) {
     super(page, 'app-bar')

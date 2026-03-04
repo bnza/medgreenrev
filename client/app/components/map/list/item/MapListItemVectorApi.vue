@@ -58,7 +58,7 @@ const zoomToExtent = async () => {
 </script>
 
 <template>
-  <v-list-item>
+  <v-list-item :data-testid="`map-list-item-vector-api-${path}`">
     <template #prepend="{}">
       <v-list-item-action start>
         <v-checkbox-btn v-model="visible" />

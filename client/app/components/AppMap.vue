@@ -60,6 +60,7 @@ onMounted(() => {
     :load-tiles-while-animating="true"
     :load-tiles-while-interacting="true"
     style="height: 100%; width: 100%"
+    data-testid="app-map"
     @moveend="onMoveEnd"
   >
     <Map.OlView

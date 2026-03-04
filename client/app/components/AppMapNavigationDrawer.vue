@@ -40,7 +40,7 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             v-bind="props"
             prepend-icon="fas fa-earth-europe"
             title="Base Maps"
-            data-testid="app-map-nav-drawer-li-data"
+            data-testid="app-map-nav-drawer-li-base-maps"
           />
         </template>
         <map-list-item-base-map title="OpenStreetMap" base-map="osm" />
