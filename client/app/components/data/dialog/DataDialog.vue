@@ -14,6 +14,10 @@ defineSlots<{
   actions(): any
   title(): any
 }>()
+
+defineEmits<{
+  (e: 'update:visible', value: boolean): void
+}>()
 </script>
 
 <template>
@@ -24,6 +28,7 @@ defineSlots<{
     :close-on-content-click="false"
     :fullscreen
     :max-width="fullscreen ? '100%' : '600px'"
+    @update:model-value="$emit('update:visible', $event)"
   >
     <data-card v-if="visible" :title :show-back-button="false">
       <template #title>

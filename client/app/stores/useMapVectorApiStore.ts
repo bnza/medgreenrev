@@ -39,6 +39,7 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
     }
 
     const isSettingsDialogOpen = ref(false)
+    const isExportDialogOpen = ref(false)
 
     const labelVisible = computed<boolean>({
       get: () => {
@@ -71,6 +72,7 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
       markerOptions,
       mergeMarkerOptions,
       isSettingsDialogOpen,
+      isExportDialogOpen,
       resourceConfig,
       resourcePath,
     }

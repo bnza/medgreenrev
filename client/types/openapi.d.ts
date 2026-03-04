@@ -1702,6 +1702,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/features/export/archaeological_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportarchaeological_sites_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/features/extent_matched/archaeological_sites': {
     parameters: {
       query?: never
@@ -3480,6 +3500,26 @@ export interface paths {
      * @description Updates the SamplingSite resource.
      */
     patch: operations['api_datasampling_sites_id_patch']
+    trace?: never
+  }
+  '/api/features/export/sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportsampling_sites_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
     trace?: never
   }
   '/api/features/extent_matched/sampling_sites': {
@@ -5274,6 +5314,26 @@ export interface paths {
      * @description Retrieves the collection of VocHistoryLocation resources.
      */
     get: operations['api_datavocabularyhistorylocations_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/history/locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexporthistorylocations_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -12495,7 +12555,7 @@ export interface components {
     'VocHistoryLocation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       value: string
-      point: components['schemas']['Point.jsonld']
+      point?: components['schemas']['Point.jsonld']
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -22086,6 +22146,103 @@ export interface operations {
       }
     }
   }
+  api_featuresexportarchaeological_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        'culturalContexts.culturalContext'?: string
+        'culturalContexts.culturalContext[]'?: string[]
+        region?: string
+        'region[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        fieldDirector?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[fieldDirector]'?: boolean
+        'exists[culturalContexts]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+        /**
+         * @description Filter sites to only those where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ArchaeologicalSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['ArchaeologicalSite.jsonld-archaeological_site.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_featuresextent_matchedarchaeological_sites_get: {
     parameters: {
       query?: never
@@ -29271,6 +29428,66 @@ export interface operations {
       }
     }
   }
+  api_featuresexportsampling_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        region?: string
+        'region[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        'exists[description]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['SamplingSite.jsonld-sampling_site.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_featuresextent_matchedsampling_sites_get: {
     parameters: {
       query?: never
@@ -33850,6 +34067,136 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocHistoryLocation.jsonld-voc_history_location.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_featuresexporthistorylocations_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        'animals.animal'?: string
+        'animals.animal[]'?: string[]
+        'animals.chronologyLower'?: number
+        'animals.chronologyLower[]'?: number[]
+        'animals.chronologyUpper'?: number
+        'animals.chronologyUpper[]'?: number[]
+        'animals.createdBy.email'?: string
+        'animals.createdBy.email[]'?: string[]
+        'animals.animal.taxonomy.value'?: string
+        'animals.animal.taxonomy.value[]'?: string[]
+        'animals.animal.taxonomy.class'?: string
+        'animals.animal.taxonomy.class[]'?: string[]
+        'animals.animal.taxonomy.family'?: string
+        'animals.animal.taxonomy.family[]'?: string[]
+        'animals.animal.taxonomy.vernacularName'?: string
+        'plants.plant'?: string
+        'plants.plant[]'?: string[]
+        'plants.chronologyLower'?: number
+        'plants.chronologyLower[]'?: number[]
+        'plants.chronologyUpper'?: number
+        'plants.chronologyUpper[]'?: number[]
+        'plants.createdBy.email'?: string
+        'plants.createdBy.email[]'?: string[]
+        'plants.plant.taxonomy'?: string
+        'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.family'?: string
+        'plants.plant.taxonomy.family[]'?: string[]
+        'plants.plant.taxonomy.class'?: string
+        'plants.plant.taxonomy.class[]'?: string[]
+        'plants.plant.taxonomy.vernacularName'?: string
+        region?: string
+        'region[]'?: string[]
+        'plants.chronologyLower[between]'?: string
+        'plants.chronologyLower[gt]'?: string
+        'plants.chronologyLower[gte]'?: string
+        'plants.chronologyLower[lt]'?: string
+        'plants.chronologyLower[lte]'?: string
+        'plants.chronologyUpper[between]'?: string
+        'plants.chronologyUpper[gt]'?: string
+        'plants.chronologyUpper[gte]'?: string
+        'plants.chronologyUpper[lt]'?: string
+        'plants.chronologyUpper[lte]'?: string
+        'animals.chronologyLower[between]'?: string
+        'animals.chronologyLower[gt]'?: string
+        'animals.chronologyLower[gte]'?: string
+        'animals.chronologyLower[lt]'?: string
+        'animals.chronologyLower[lte]'?: string
+        'animals.chronologyUpper[between]'?: string
+        'animals.chronologyUpper[gt]'?: string
+        'animals.chronologyUpper[gte]'?: string
+        'animals.chronologyUpper[lt]'?: string
+        'animals.chronologyUpper[lte]'?: string
+        'exists[animals.animal.taxonomy.family]'?: boolean
+        'exists[animals.notes]'?: boolean
+        'exists[plants.plant.taxonomy.family]'?: boolean
+        'exists[plants.notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        value?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'animals.notes'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.reference'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'plants.notes'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryLocation.jsonld'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

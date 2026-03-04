@@ -62,6 +62,23 @@ export type GetFeatureCollectionPath = {
     : never
 }[keyof paths]
 
+export type GetExportFeatureCollectionPath = {
+  [K in keyof paths]: paths[K] extends { get: any }
+    ? paths[K]['get'] extends { parameters: { query?: { outputFormat?: any } } }
+      ? K extends `/api/features/export/${string}`
+        ? K
+        : never
+      : never
+    : never
+}[keyof paths]
+
+export type FeaturePathToExportPath<P extends GetFeatureCollectionPath> =
+  P extends `/api/features/${infer R}`
+    ? `/api/features/export/${R}` extends GetExportFeatureCollectionPath
+      ? `/api/features/export/${R}`
+      : never
+    : never
+
 export type GetFeatureCollectionExtentPath = {
   [K in keyof paths]: paths[K] extends { get: any }
     ? paths[K]['get'] extends {

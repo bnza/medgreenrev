@@ -8,9 +8,11 @@ const props = defineProps<{
   title: string
 }>()
 
+const { isAuthenticated } = useAppAuth()
+
 const mapVectorApiStore = useMapVectorApiStore(props.path)
 
-const { visible, isSettingsDialogOpen, markerOptions } =
+const { visible, isSettingsDialogOpen, isExportDialogOpen, markerOptions } =
   storeToRefs(mapVectorApiStore)
 
 const isMenuOpen = ref(false)
@@ -18,6 +20,11 @@ const isMenuOpen = ref(false)
 const openSettingsDialog = () => {
   isMenuOpen.value = false
   isSettingsDialogOpen.value = true
+}
+
+const openExportDialog = () => {
+  isMenuOpen.value = false
+  isExportDialogOpen.value = true
 }
 
 const { state: uiMode } = storeToRefs(useAppUiModeStore())
@@ -28,10 +35,12 @@ const { isSearchDialogOpen } = storeToRefs(
 )
 
 const openAttributeTable = () => {
+  isMenuOpen.value = false
   uiMode.value = 'default'
   router.push(mapVectorApiStore.resourceConfig.appPath)
 }
 const openSearchDialog = () => {
+  isMenuOpen.value = false
   openAttributeTable()
   isSearchDialogOpen.value = true
 }
@@ -47,6 +56,7 @@ const { data: extentData, refresh: refreshExtent } =
 const { updateBbox } = useMapStore()
 
 const zoomToExtent = async () => {
+  isMenuOpen.value = false
   extentQueryEnabled.value = true
   await refreshExtent()
   const newExtent = extentData.value?.extent
@@ -68,7 +78,7 @@ const zoomToExtent = async () => {
     <v-list-item-title>{{ title }}</v-list-item-title>
     <template #append="appendProps">
       <slot name="append" v-bind="appendProps">
-        <map-list-menu-base>
+        <map-list-menu-base v-model="isMenuOpen">
           <v-list-item @click="openAttributeTable">
             <v-list-item-title>Open table</v-list-item-title>
             <template #append><v-icon icon="fas fa-table-list" /></template>
@@ -83,12 +93,17 @@ const zoomToExtent = async () => {
             <v-list-item-title>Zoom to layer extent</v-list-item-title>
             <template #append><v-icon icon="fas fa-expand" /></template>
           </v-list-item>
+          <v-list-item v-if="isAuthenticated" @click="openExportDialog">
+            <v-list-item-title>Download</v-list-item-title>
+            <template #append><v-icon icon="fas fa-download" /></template>
+          </v-list-item>
           <v-list-item @click="openSettingsDialog">
             <v-list-item-title>Settings</v-list-item-title>
             <template #append><v-icon icon="fas fa-cog" /></template>
-            <map-dialog-vector-api :path />
           </v-list-item>
         </map-list-menu-base>
+        <map-dialog-export-feature-collection :path />
+        <map-dialog-vector-api :path />
       </slot>
     </template>
   </v-list-item>

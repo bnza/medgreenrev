@@ -3,6 +3,7 @@
 
 import type {
   GetCollectionPath,
+  GetExportFeatureCollectionPath,
   GetFeatureCollectionPath,
   GetItemPath,
 } from '~~/types'
@@ -110,6 +111,16 @@ export const API_FEATURES_RESOURCE_MAP = {
   '/api/features/history/locations': '/api/vocabulary/history/locations',
   '/api/features/sampling_sites': '/api/data/sampling_sites',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
+
+export const API_FEATURES_RESOURCE_EXPORT_MAP = {
+  '/api/features/archaeological_sites':
+    '/api/features/export/archaeological_sites',
+  '/api/features/history/locations': '/api/features/export/history/locations',
+  '/api/features/sampling_sites': '/api/features/export/sampling_sites',
+} as const satisfies Record<
+  GetFeatureCollectionPath,
+  GetExportFeatureCollectionPath
+>
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP
 export type FeaturePathToApiResourcePath<P extends GetFeatureCollectionPath> =
