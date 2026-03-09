@@ -42,18 +42,12 @@ defineSlots<{
 }>()
 
 const id = computed(() => {
-  const featureId = props.feature?.getId()
-  if (!featureId) {
-    return null
+  const id = props.feature?.get('id') as number | undefined
+  if (id) {
+    return id
   }
-  if (typeof featureId === 'string') {
-    const pattern = /\.(\d+)$/
-    if (pattern.test(featureId)) {
-      return Number(pattern.exec(featureId)?.at(1))
-    }
-    return null
-  }
-  return featureId
+  console.error('Feature has no id')
+  return null
 })
 </script>
 
