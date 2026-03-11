@@ -63,13 +63,6 @@ try {
 
   const paths: Record<string, PathItem> = openApi.paths || {}
 
-  // Set of known API resource paths from the index
-  const apiResourcePaths = new Set(
-    Object.values(Object.fromEntries(resourceEntries)),
-  )
-
-  const isApiResourcePath = (p: string) => apiResourcePaths.has(p)
-
   const hasGeoJson200 = (pi?: PathItem) => {
     const content = pi?.get?.responses?.[200]?.content
     return (
@@ -78,34 +71,107 @@ try {
     )
   }
 
-  const getTags = (p: string) => paths[p]?.get?.tags || []
-
   const featurePaths = Object.keys(paths).filter((p) => hasGeoJson200(paths[p]))
 
-  const candidateResourcePaths = Array.from(apiResourcePaths).filter(
-    (p): p is string => typeof p === 'string' && Boolean(paths[p]?.get),
+  // Set of known API resource paths from the index
+  const apiResourcePaths = new Set(
+    Object.values(Object.fromEntries(resourceEntries)),
   )
 
-  const intersect = (a: string[], b: string[]) => a.filter((t) => b.includes(t))
+  /**
+   * Maps GeoJSON feature collection endpoints to their corresponding API resource collection paths.
+   *
+   * It uses a tag-based heuristic to match endpoints:
+   * 1. Filters all OpenAPI paths that return 'application/geo+json' (feature collections).
+   * 2. For each feature collection path, it finds all regular API resource collection paths (from the API index).
+   * 3. It calculates a score based on the intersection of OpenAPI tags between the feature path and candidate resource paths.
+   * 4. The resource path with the highest positive tag intersection score is selected as the mapping target.
+   *
+   * @param paths - The OpenAPI paths object.
+   * @param apiResourcePaths - A set of known API resource paths from the API index.
+   * @param featurePaths - All OpenAPI paths that return GeoJSON.
+   * @returns An array of tuples mapping feature collection paths to API resource paths, sorted by feature path.
+   */
+  const getFeaturesResourceEntries = (
+    paths: Record<string, PathItem>,
+    apiResourcePaths: Set<string>,
+    featurePaths: string[],
+  ): [string, string][] => {
+    const isApiResourcePath = (p: string) => apiResourcePaths.has(p)
 
-  const featuresResourceEntries: [string, string][] = []
-  for (const featPath of featurePaths) {
-    const featTags = getTags(featPath)
-    const matches = candidateResourcePaths
-      .map((rp) => ({ rp, score: intersect(getTags(rp), featTags).length }))
-      .filter((x) => x.score > 0)
-      .sort((a, b) => b.score - a.score)
+    const getTags = (p: string) => paths[p]?.get?.tags || []
 
-    const best = matches[0]?.rp
-    if (best && isApiResourcePath(best)) {
-      featuresResourceEntries.push([featPath, best])
+    const candidateResourcePaths = Array.from(apiResourcePaths).filter(
+      (p): p is string => typeof p === 'string' && Boolean(paths[p]?.get),
+    )
+
+    const intersect = (a: string[], b: string[]) =>
+      a.filter((t) => b.includes(t))
+
+    const entries: [string, string][] = []
+    for (const featPath of featurePaths) {
+      const featTags = getTags(featPath)
+      const matches = candidateResourcePaths
+        .map((rp) => ({ rp, score: intersect(getTags(rp), featTags).length }))
+        .filter((x) => x.score > 0)
+        .sort((a, b) => b.score - a.score)
+
+      const best = matches[0]?.rp
+      if (best && isApiResourcePath(best)) {
+        entries.push([featPath, best])
+      }
     }
+
+    // Sort entries for stable output
+    return entries.sort((a, b) => a[0].localeCompare(b[0]))
   }
 
-  // Sort entries for stable output
-  featuresResourceEntries.sort((a, b) => a[0].localeCompare(b[0]))
+  const featuresResourceEntries = getFeaturesResourceEntries(
+    paths,
+    apiResourcePaths,
+    featurePaths,
+  )
 
   const featuresMapEntries = featuresResourceEntries
+    .map(([key, value]) => `  '${key}': '${value}'`)
+    .join(',\n')
+
+  /**
+   * Maps GeoJSON feature collection endpoints to their corresponding export endpoints.
+   *
+   * @param paths - The OpenAPI paths object.
+   * @param featurePaths - All OpenAPI paths that return GeoJSON.
+   * @returns An array of tuples mapping feature collection paths to export feature collection paths.
+   */
+  const getFeaturesExportResourceEntries = (
+    paths: Record<string, PathItem>,
+    featurePaths: string[],
+  ): [string, string][] => {
+    const entries: [string, string][] = []
+    for (const featPath of featurePaths) {
+      if (
+        featPath.startsWith('/api/features/') &&
+        !featPath.startsWith('/api/features/export/')
+      ) {
+        const exportPath = featPath.replace(
+          '/api/features/',
+          '/api/features/export/',
+        )
+        if (paths[exportPath]?.get) {
+          entries.push([featPath, exportPath])
+        }
+      }
+    }
+
+    return entries.sort((a, b) => a[0].localeCompare(b[0]))
+  }
+
+  const featuresExportResourceEntries = getFeaturesExportResourceEntries(
+    paths,
+    featurePaths,
+  )
+
+  const featuresExportMapEntries = featuresExportResourceEntries
     .map(([key, value]) => `  '${key}': '${value}'`)
     .join(',\n')
 
@@ -117,7 +183,12 @@ try {
   const tsContent = `// Auto-generated from API index at ${indexUrl}
 // Do not edit this file manually
 
-import type { GetCollectionPath, GetFeatureCollectionPath, GetItemPath } from '~~/types'
+import type {
+  GetCollectionPath,
+  GetExportFeatureCollectionPath,
+  GetFeatureCollectionPath,
+  GetItemPath,
+} from '~~/types'
 
 export const API_RESOURCE_MAP = {
 ${resourceMapEntries}
@@ -133,6 +204,13 @@ export type ApiResourcePath =
 export const API_FEATURES_RESOURCE_MAP = {
     ${featuresMapEntries}
 } as const satisfies ${satisfiesClause}
+
+export const API_FEATURES_RESOURCE_EXPORT_MAP = {
+    ${featuresExportMapEntries}
+} as const satisfies Record<
+  GetFeatureCollectionPath,
+  GetExportFeatureCollectionPath
+>
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP
 export type FeaturePathToApiResourcePath${extendsFeatureCollectionClause} = FeaturesMap[P]
@@ -151,7 +229,7 @@ ${templateString}
   writeFileSync(outputPath, tsContent, 'utf8')
 
   console.log(
-    `Generated ${outputPath} with ${resourceEntries.length} resource entries and ${featuresResourceEntries.length} feature mappings`,
+    `Generated ${outputPath} with ${resourceEntries.length} resource entries, ${featuresResourceEntries.length} feature mappings, and ${featuresExportResourceEntries.length} feature export mappings`,
   )
   console.log('Resource keys:', resourceEntries.map(([key]) => key).join(', '))
 } catch (error) {
