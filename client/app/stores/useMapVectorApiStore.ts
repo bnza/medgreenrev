@@ -1,5 +1,6 @@
 import type { ApiResourcePath, GetFeatureCollectionPath } from '~~/types'
 import type { TextLabelOptions } from '~/utils/map'
+import { isAggregatedFeatureCollectionPath } from '~/utils/guards'
 
 export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
   path: P,
@@ -38,6 +39,11 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
       }
     }
 
+    const showNumberMatched = ref(false)
+    const isAggregatable = computed(() =>
+      isAggregatedFeatureCollectionPath(path),
+    )
+
     const isSettingsDialogOpen = ref(false)
     const isExportDialogOpen = ref(false)
 
@@ -71,6 +77,8 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
       labelVisible,
       markerOptions,
       mergeMarkerOptions,
+      showNumberMatched,
+      isAggregatable,
       isSettingsDialogOpen,
       isExportDialogOpen,
       resourceConfig,

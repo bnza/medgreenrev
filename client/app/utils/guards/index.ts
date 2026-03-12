@@ -1,6 +1,7 @@
 import { ApiRole, ApiSpecialistRole } from '~/utils/consts/auth'
 import type {
   ApiResourceKey,
+  GetAggregatedFeatureCollectionPath,
   HydraConstraintViolation,
   Iri,
   JsonLdItem,
@@ -8,6 +9,7 @@ import type {
 } from '~~/types'
 import {
   API_RESOURCE_MAP,
+  API_AGGREGATED_FEATURES_RESOURCE_PATHS,
   type ApiResourcePath,
 } from '~/utils/consts/resources'
 import { isAppPathItemPage } from '~/utils'
@@ -113,3 +115,9 @@ export const isValid2DCoordinate = (value: unknown): value is Coordinate =>
   Array.isArray(value) &&
   typeof value[0] === 'number' &&
   typeof value[1] === 'number'
+
+export const isAggregatedFeatureCollectionPath = (
+  value: unknown,
+): value is GetAggregatedFeatureCollectionPath =>
+  isString(value) &&
+  (API_AGGREGATED_FEATURES_RESOURCE_PATHS as string[]).includes(value)

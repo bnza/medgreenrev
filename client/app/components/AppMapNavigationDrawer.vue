@@ -33,6 +33,10 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
           title="Sampling Sites"
           path="/api/features/sampling_sites"
         />
+        <map-list-item-vector-api
+          title="Botany Charcoal"
+          path="/api/features/botany/charcoals"
+        />
       </v-list-group>
       <v-list-group value="Base Maps">
         <template #activator="{ props }">

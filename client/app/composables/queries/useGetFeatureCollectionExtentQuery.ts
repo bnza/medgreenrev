@@ -1,23 +1,10 @@
-import type {
-  GetFeatureCollectionExtentPath,
-  GetFeatureCollectionPath,
-} from '~~/types'
+import type { GetFeatureCollectionPath } from '~~/types'
 import useAppQueryCache from './useAppQueryCache'
 import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 import { GetFeatureCollectionExtentOperation } from '~/api/operations/GetFeatureCollectionExtentOperation'
 import type { ProjectionLike } from 'ol/proj'
 import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
-
-const FEATURE_COLLECTION_PATH_MAP = {
-  '/api/features/history/locations':
-    '/api/features/extent_matched/history/locations',
-  '/api/features/archaeological_sites':
-    '/api/features/extent_matched/archaeological_sites',
-  '/api/features/sampling_sites': '/api/features/extent_matched/sampling_sites',
-} as const satisfies Record<
-  GetFeatureCollectionPath,
-  GetFeatureCollectionExtentPath
->
+import { API_FEATURES_EXTENT_RESOURCE_MAP } from '~/utils/consts/resources'
 
 export function useGetFeatureCollectionExtentQuery(
   path: GetFeatureCollectionPath,
@@ -25,7 +12,7 @@ export function useGetFeatureCollectionExtentQuery(
   projection: ProjectionLike,
 ) {
   const getFeatureCollectionOperation = new GetFeatureCollectionExtentOperation(
-    FEATURE_COLLECTION_PATH_MAP[path],
+    API_FEATURES_EXTENT_RESOURCE_MAP[path],
   )
   const mapVectorApiStore = useMapVectorApiStore(path)
 

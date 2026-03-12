@@ -12,8 +12,14 @@ const { isAuthenticated } = useAppAuth()
 
 const mapVectorApiStore = useMapVectorApiStore(props.path)
 
-const { visible, isSettingsDialogOpen, isExportDialogOpen, markerOptions } =
-  storeToRefs(mapVectorApiStore)
+const {
+  visible,
+  isSettingsDialogOpen,
+  isExportDialogOpen,
+  markerOptions,
+  isAggregatable,
+  showNumberMatched,
+} = storeToRefs(mapVectorApiStore)
 
 const isMenuOpen = ref(false)
 
@@ -79,6 +85,14 @@ const zoomToExtent = async () => {
     <template #append="appendProps">
       <slot name="append" v-bind="appendProps">
         <map-list-menu-base v-model="isMenuOpen">
+          <v-list-item v-if="isAggregatable">
+            <v-switch
+              v-model="showNumberMatched"
+              label="Show counts"
+              density="compact"
+              hide-details
+            />
+          </v-list-item>
           <v-list-item @click="openAttributeTable">
             <v-list-item-title>Open table</v-list-item-title>
             <template #append><v-icon icon="fas fa-table-list" /></template>

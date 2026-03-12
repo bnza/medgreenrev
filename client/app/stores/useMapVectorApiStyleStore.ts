@@ -1,65 +1,64 @@
 import type { GetFeatureCollectionPath } from '~~/types'
-import type VectorLayer from 'ol/layer/Vector'
-import {
-  decorateStyle,
-  makeTextLabelStyleFn,
-  normalizeBaseStyle,
-  type NormalizedStyleFunction,
-} from '~/utils/map'
+import { makeTextLabelStyleFn, type NormalizedStyleFunction } from '~/utils/map'
+import type { FeatureLike } from 'ol/Feature'
+import { Style } from 'ol/style'
 
 export const useMapVectorApiStyleStore = <P extends GetFeatureCollectionPath>(
   path: P,
-  vectorLayer: ComputedRef<VectorLayer<any> | null>,
 ) =>
   defineStore(`map-text-label:${path}`, () => {
-    const baseStyleFn = ref<NormalizedStyleFunction | null>(null)
-
     const styleFns = ref<Array<Ref<NormalizedStyleFunction>>>([])
 
     const rawStyleFns = computed(() =>
       styleFns.value.map((styleFn) => styleFn.value),
     )
 
-    const decoratedStyleFn = computed(() => {
-      if (!vectorLayer.value) {
-        return null
-      }
-
-      // Pass the base style as a readonly value and set the decorated style function on the layer
-      return baseStyleFn.value
-        ? decorateStyle(baseStyleFn.value, rawStyleFns.value)
-        : null
-    })
-
-    const { labelOptions } = storeToRefs(useMapVectorApiStore(path))
+    const { labelOptions, showNumberMatched } = storeToRefs(
+      useMapVectorApiStore(path),
+    )
 
     const textLabelStyleFn = computed(() =>
-      makeTextLabelStyleFn(labelOptions.value),
+      makeTextLabelStyleFn(labelOptions.value, showNumberMatched.value),
     )
 
-    const setStyle = () => {
-      vectorLayer.value?.setStyle(decoratedStyleFn.value)
-    }
+    const overrideStyleFunction = computed(() => {
+      // Capture reactive dependencies
+      const fns = rawStyleFns.value
+      const showCount = showNumberMatched.value
+      const options = labelOptions.value
 
-    watch(
-      () => vectorLayer.value,
-      (newValue, oldValue) => {
-        if (!oldValue) {
-          const rawBase = vectorLayer.value?.getStyle() ?? null
-          baseStyleFn.value = baseStyleFn.value ?? normalizeBaseStyle(rawBase)
+      return (
+        feature: FeatureLike,
+        baseStyle: Style,
+        resolution: number,
+      ): Style | Style[] => {
+        const labelStyles = fns.flatMap((fn) => fn(feature, resolution))
+        if (labelStyles.length === 0) return baseStyle
+
+        // Optimization: if we have a baseStyle with an image, we should probably keep it.
+        // OlStyle usually provides the Style created from OlStyleCircle etc as baseStyle.
+        const baseClone = baseStyle.clone()
+        const styles: Style[] = [baseClone]
+
+        for (const s of labelStyles) {
+          const text = s.getText()
+          if (text) {
+            styles.push(
+              new Style({
+                text: text.clone(),
+                zIndex: s.getZIndex(),
+              }),
+            )
+          }
         }
-      },
-    )
 
-    watch(() => decoratedStyleFn.value, setStyle, {
-      immediate: true,
-      deep: true,
+        return styles
+      }
     })
 
     return {
-      baseStyleFn,
-      setStyle,
       styleFns,
       textLabelStyleFn,
+      overrideStyleFunction,
     }
   })()

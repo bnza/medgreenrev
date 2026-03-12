@@ -1834,6 +1834,86 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/features/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuresbotanycharcoals.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportbotanycharcoals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a BotanyCharcoal resource.
+     * @description Retrieves a BotanyCharcoal resource.
+     */
+    get: operations['api_featuresextent_matchedbotanycharcoals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a BotanyCharcoal resource.
+     * @description Retrieves a BotanyCharcoal resource.
+     */
+    get: operations['api_featuresnumber_matchedbotanycharcoals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/botany/seeds': {
     parameters: {
       query?: never
@@ -1898,6 +1978,86 @@ export interface paths {
      * @description Retrieves the collection of BotanySeed resources.
      */
     get: operations['api_datastratigraphic_units_parentIdbotanyseeds_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuresbotanyseeds.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportbotanyseeds_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a BotanySeed resource.
+     * @description Retrieves a BotanySeed resource.
+     */
+    get: operations['api_featuresextent_matchedbotanyseeds_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a BotanySeed resource.
+     * @description Retrieves a BotanySeed resource.
+     */
+    get: operations['api_featuresnumber_matchedbotanyseeds_get']
     put?: never
     post?: never
     delete?: never
@@ -2138,6 +2298,86 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/features/export/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexporthistoryanimals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryAnimal resource.
+     * @description Retrieves a HistoryAnimal resource.
+     */
+    get: operations['api_featuresextent_matchedhistoryanimals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featureshistoryanimals.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/history/animals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryAnimal resource.
+     * @description Retrieves a HistoryAnimal resource.
+     */
+    get: operations['api_featuresnumber_matchedhistoryanimals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/history/locations/{parentId}/plants': {
     parameters: {
       query?: never
@@ -2210,6 +2450,86 @@ export interface paths {
     patch: operations['api_datahistoryplants_id_patch']
     trace?: never
   }
+  '/api/features/export/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexporthistoryplants_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryPlant resource.
+     * @description Retrieves a HistoryPlant resource.
+     */
+    get: operations['api_featuresextent_matchedhistoryplants_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featureshistoryplants.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/history/plants': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryPlant resource.
+     * @description Retrieves a HistoryPlant resource.
+     */
+    get: operations['api_featuresnumber_matchedhistoryplants_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/individuals': {
     parameters: {
       query?: never
@@ -2274,6 +2594,86 @@ export interface paths {
      * @description Retrieves the collection of Individual resources.
      */
     get: operations['api_datastratigraphic_units_parentIdindividuals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportindividuals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Individual resource.
+     * @description Retrieves a Individual resource.
+     */
+    get: operations['api_featuresextent_matchedindividuals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuresindividuals.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Individual resource.
+     * @description Retrieves a Individual resource.
+     */
+    get: operations['api_featuresnumber_matchedindividuals_get']
     put?: never
     post?: never
     delete?: never
@@ -3178,6 +3578,86 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/features/export/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportmicrostratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MicrostratigraphicUnit resource.
+     * @description Retrieves a MicrostratigraphicUnit resource.
+     */
+    get: operations['api_featuresextent_matchedmicrostratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuresmicrostratigraphic_units.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MicrostratigraphicUnit resource.
+     * @description Retrieves a MicrostratigraphicUnit resource.
+     */
+    get: operations['api_featuresnumber_matchedmicrostratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/potteries': {
     parameters: {
       query?: never
@@ -3242,6 +3722,86 @@ export interface paths {
      * @description Retrieves the collection of Pottery resources.
      */
     get: operations['api_datastratigraphic_units_parentIdpotteries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportpotteries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Pottery resource.
+     * @description Retrieves a Pottery resource.
+     */
+    get: operations['api_featuresextent_matchedpotteries_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a Pottery resource.
+     * @description Retrieves a Pottery resource.
+     */
+    get: operations['api_featuresnumber_matchedpotteries_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featurespotteries.__format_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -6142,6 +6702,86 @@ export interface paths {
     patch: operations['api_datazoobones_id_patch']
     trace?: never
   }
+  '/api/features/export/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooBone resource.
+     * @description Retrieves a ZooBone resource.
+     */
+    get: operations['api_featuresextent_matchedzoobones_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooBone resource.
+     * @description Retrieves a ZooBone resource.
+     */
+    get: operations['api_featuresnumber_matchedzoobones_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featureszoobones.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/stratigraphic_units/{parentId}/zoo/teeth': {
     parameters: {
       query?: never
@@ -6212,6 +6852,86 @@ export interface paths {
      * @description Updates the ZooTooth resource.
      */
     patch: operations['api_datazooteeth_id_patch']
+    trace?: never
+  }
+  '/api/features/export/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportzooteeth_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooTooth resource.
+     * @description Retrieves a ZooTooth resource.
+     */
+    get: operations['api_featuresextent_matchedzooteeth_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ZooTooth resource.
+     * @description Retrieves a ZooTooth resource.
+     */
+    get: operations['api_featuresnumber_matchedzooteeth_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featureszooteeth.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
     trace?: never
   }
 }
@@ -8618,6 +9338,43 @@ export interface components {
       part?: string | null
       notes?: string | null
     }
+    'BotanyCharcoal-feature_collection.json.read': Record<string, never>
+    'BotanyCharcoal.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'BotanyCharcoal.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'BotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
@@ -8672,6 +9429,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'BotanyCharcoal.geojson-feature_collection.json.read': Record<string, never>
     'BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8774,6 +9532,43 @@ export interface components {
       part?: string | null
       notes?: string | null
     }
+    'BotanySeed-feature_collection.json.read': Record<string, never>
+    'BotanySeed.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'BotanySeed.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'BotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
@@ -8828,6 +9623,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'BotanySeed.geojson-feature_collection.json.read': Record<string, never>
     'BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9195,6 +9991,7 @@ export interface components {
       readonly type?: string
       readonly description?: string | null
     }
+    'HistoryAnimal-feature_collection.json.read': Record<string, never>
     'HistoryAnimal-history_animal.create': {
       /**
        * Format: iri-reference
@@ -9227,6 +10024,42 @@ export interface components {
       reference?: string
       notes?: string | null
     }
+    'HistoryAnimal.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'HistoryAnimal.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'HistoryAnimal.csv-history_animal.acl.read': {
       readonly id?: number | string
       animal?: components['schemas']['VocHistoryAnimal.csv-history_animal.acl.read']
@@ -9247,6 +10080,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'HistoryAnimal.geojson-feature_collection.json.read': Record<string, never>
     'HistoryAnimal.jsonld-history_animal.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9268,6 +10102,7 @@ export interface components {
        */
       createdBy?: string | null
     })
+    'HistoryPlant-feature_collection.json.read': Record<string, never>
     'HistoryPlant-history_plant.create': {
       /**
        * Format: iri-reference
@@ -9300,6 +10135,42 @@ export interface components {
       reference?: string
       notes?: string | null
     }
+    'HistoryPlant.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'HistoryPlant.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'HistoryPlant.csv-history_plant.acl.read': {
       readonly id?: number | string
       plant?: components['schemas']['VocHistoryPlant.csv-history_plant.acl.read']
@@ -9320,6 +10191,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'HistoryPlant.geojson-feature_collection.json.read': Record<string, never>
     'HistoryPlant.jsonld-history_plant.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9393,6 +10265,7 @@ export interface components {
       '@id': Iri
       '@type': string
     }
+    'Individual-feature_collection.json.read': Record<string, never>
     'Individual-individual.create': {
       /**
        * Format: iri-reference
@@ -9423,6 +10296,42 @@ export interface components {
       age?: string | null
       sex?: string | null
       notes?: string | null
+    }
+    'Individual.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'Individual.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'Individual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       readonly id?: number | string
@@ -9462,6 +10371,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'Individual.geojson-feature_collection.json.read': Record<string, never>
     'Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9811,6 +10721,7 @@ export interface components {
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       description?: string | null
     })
+    'MicrostratigraphicUnit-feature_collection.json.read': Record<string, never>
     'MicrostratigraphicUnit-microstratigraphic_unit.create': {
       /**
        * Format: iri-reference
@@ -9829,6 +10740,42 @@ export interface components {
       identifier?: string
       notes?: string | null
     }
+    'MicrostratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'MicrostratigraphicUnit.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-microstratigraphic_unit.acl.read']
@@ -9842,6 +10789,10 @@ export interface components {
         canDelete: boolean
       }
     }
+    'MicrostratigraphicUnit.geojson-feature_collection.json.read': Record<
+      string,
+      never
+    >
     'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9866,6 +10817,7 @@ export interface components {
       cartesianCoordinate?: number | string
       geodesicCoordinate?: number | string
     }
+    'Pottery-feature_collection.json.read': Record<string, never>
     'Pottery-pottery.create': {
       /**
        * Format: iri-reference
@@ -9945,6 +10897,42 @@ export interface components {
        */
       functionalForm?: string
       notes?: string | null
+    }
+    'Pottery.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'Pottery.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly id?: number | string
@@ -10034,6 +11022,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'Pottery.geojson-feature_collection.json.read': Record<string, never>
     'Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -12990,6 +13979,7 @@ export interface components {
       class: string
       family?: string | null
     }
+    'ZooBone-feature_collection.json.read': Record<string, never>
     'ZooBone-zoo_bone.create': {
       /**
        * Format: iri-reference
@@ -13041,6 +14031,42 @@ export interface components {
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
+    }
+    'ZooBone.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'ZooBone.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'ZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly id?: number | string
@@ -13100,6 +14126,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'ZooBone.geojson-feature_collection.json.read': Record<string, never>
     'ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13160,6 +14187,7 @@ export interface components {
       notes?: string | null
       readonly code?: string
     })
+    'ZooTooth-feature_collection.json.read': Record<string, never>
     'ZooTooth-zoo_tooth.create': {
       /**
        * Format: iri-reference
@@ -13202,6 +14230,42 @@ export interface components {
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
     }
+    'ZooTooth.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'ZooTooth.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'ZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       readonly code?: string
       /** @description Access control metadata */
@@ -13235,6 +14299,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'ZooTooth.geojson-feature_collection.json.read': Record<string, never>
     'ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13303,7 +14368,42 @@ export interface components {
     } & {
       [key: string]: unknown
     }
+    GeoJSONAggregatedFeature: {
+      /** @enum {string} */
+      type: 'Feature'
+      id?: string
+      geometry: components['schemas']['GeoJSONPoint']
+      geometry_name?: string
+      properties: {
+        number_matched: number
+      } & {
+        [key: string]: unknown
+      }
+    }
+    GeoJSONAggregatedFeatureCollection: {
+      /** @enum {string} */
+      type: 'FeatureCollection'
+      features: components['schemas']['GeoJSONAggregatedFeature'][]
+      totalFeatures?: number
+      numberMatched?: number
+      numberReturned?: number
+      /** Format: date-time */
+      timeStamp?: string
+      crs?: {
+        type?: string
+        properties?: {
+          name?: string
+        }
+      }
+    } & {
+      [key: string]: unknown
+    }
     MatchingFeaturesIds: number[] | true
+    MatchingFeaturesParentIdCounts:
+      | {
+          [key: string]: number
+        }
+      | true
   }
   responses: never
   parameters: never
@@ -22778,6 +23878,194 @@ export interface operations {
       }
     }
   }
+  'api_featuresbotanycharcoals.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_featuresexportbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedbotanycharcoals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanyCharcoal.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedbotanycharcoals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanyCharcoal.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_databotanyseeds_get_collection: {
     parameters: {
       query?: {
@@ -23247,6 +24535,194 @@ export interface operations {
             member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
           }
           'text/csv': components['schemas']['BotanySeed.csv-botany_seed.acl.read'][]
+        }
+      }
+    }
+  }
+  'api_featuresbotanyseeds.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_featuresexportbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedbotanyseeds_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanySeed.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedbotanyseeds_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['BotanySeed.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -24478,6 +25954,218 @@ export interface operations {
       }
     }
   }
+  api_featuresexporthistoryanimals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[animal.value]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        animal?: string
+        'animal[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        'location.region'?: string
+        'location.region[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'location.region.value'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedhistoryanimals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryAnimal.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featureshistoryanimals.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[animal.value]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        animal?: string
+        'animal[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        location?: string
+        'location[]'?: string[]
+        'location.region'?: string
+        'location.region[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'location.region.value'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedhistoryanimals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryAnimal resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryAnimal.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_datahistorylocations_parentIdplants_get_collection: {
     parameters: {
       query?: {
@@ -24833,6 +26521,230 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresexporthistoryplants_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[plant.value]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        plant?: string
+        'plant[]'?: string[]
+        'plant.taxonomy'?: string
+        'plant.taxonomy[]'?: string[]
+        'plant.taxonomy.family'?: string
+        'plant.taxonomy.family[]'?: string[]
+        'plant.taxonomy.class'?: string
+        'plant.taxonomy.class[]'?: string[]
+        'plant.taxonomy.vernacularName'?: string
+        location?: string
+        'location[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[plant.taxonomy.family]'?: boolean
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'location.region.value'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['HistoryPlant.jsonld-history_plant.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedhistoryplants_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryPlant.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featureshistoryplants.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[location.region.value]'?: 'asc' | 'desc'
+        'order[location.value]'?: 'asc' | 'desc'
+        'order[plant.value]'?: 'asc' | 'desc'
+        'order[reference]'?: 'asc' | 'desc'
+        plant?: string
+        'plant[]'?: string[]
+        'plant.taxonomy'?: string
+        'plant.taxonomy[]'?: string[]
+        'plant.taxonomy.family'?: string
+        'plant.taxonomy.family[]'?: string[]
+        'plant.taxonomy.class'?: string
+        'plant.taxonomy.class[]'?: string[]
+        'plant.taxonomy.vernacularName'?: string
+        location?: string
+        'location[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'createdBy.email'?: string
+        'createdBy.email[]'?: string[]
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[plant.taxonomy.family]'?: boolean
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'location.region.value'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedhistoryplants_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryPlant resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryPlant.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -25296,6 +27208,184 @@ export interface operations {
             member: components['schemas']['Individual.jsonld-individual.acl.read'][]
           }
           'text/csv': components['schemas']['Individual.csv-individual.acl.read'][]
+        }
+      }
+    }
+  }
+  api_featuresexportindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        'order[sex]'?: 'asc' | 'desc'
+        'order[age.id]'?: 'asc' | 'desc'
+        age?: string
+        'age[]'?: string[]
+        sex?: string
+        'sex[]'?: string[]
+        identifier?: string
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'exists[age]'?: boolean
+        'exists[sex]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[analyses]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /** @description Search case insensitive match the identifier field */
+        search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['Individual.jsonld-individual.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedindividuals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Individual.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuresindividuals.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        'order[sex]'?: 'asc' | 'desc'
+        'order[age.id]'?: 'asc' | 'desc'
+        age?: string
+        'age[]'?: string[]
+        sex?: string
+        'sex[]'?: string[]
+        identifier?: string
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'exists[age]'?: boolean
+        'exists[sex]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[analyses]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /** @description Search case insensitive match the identifier field */
+        search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedindividuals_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Individual.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -27511,6 +29601,152 @@ export interface operations {
       }
     }
   }
+  api_featuresexportmicrostratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        identifier?: string
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedmicrostratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MicrostratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuresmicrostratigraphic_units.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        identifier?: string
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedmicrostratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MicrostratigraphicUnit.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_datapotteries_get_collection: {
     parameters: {
       query?: {
@@ -28088,6 +30324,258 @@ export interface operations {
             member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
           }
           'text/csv': components['schemas']['Pottery.csv-pottery.acl.read'][]
+        }
+      }
+    }
+  }
+  api_featuresexportpotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[inventory]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[culturalContext.id]'?: 'asc' | 'desc'
+        'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalGroup.value]'?: 'asc' | 'desc'
+        'order[functionalForm.value]'?: 'asc' | 'desc'
+        'order[surfaceTreatment.value]'?: 'asc' | 'desc'
+        'order[innerColor]'?: 'asc' | 'desc'
+        'order[outerColor]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'decorations.decoration'?: string
+        'decorations.decoration[]'?: string[]
+        inventory?: string
+        culturalContext?: string
+        'culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        shape?: string
+        'shape[]'?: string[]
+        functionalGroup?: string
+        'functionalGroup[]'?: string[]
+        functionalForm?: string
+        'functionalForm[]'?: string[]
+        notes?: string
+        surfaceTreatment?: string
+        'surfaceTreatment[]'?: string[]
+        innerColor?: string
+        outerColor?: string
+        decorationMotif?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[analyses]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[culturalContext]'?: boolean
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[innerColor]'?: boolean
+        'exists[outerColor]'?: boolean
+        'exists[decorationMotif]'?: boolean
+        'exists[shape]'?: boolean
+        'exists[surfaceTreatment]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /** @description Search case insensitive match the inventory field */
+        search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Pottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedpotteries_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Pottery resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Pottery.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedpotteries_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Pottery resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Pottery.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featurespotteries.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[inventory]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[culturalContext.id]'?: 'asc' | 'desc'
+        'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalGroup.value]'?: 'asc' | 'desc'
+        'order[functionalForm.value]'?: 'asc' | 'desc'
+        'order[surfaceTreatment.value]'?: 'asc' | 'desc'
+        'order[innerColor]'?: 'asc' | 'desc'
+        'order[outerColor]'?: 'asc' | 'desc'
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'decorations.decoration'?: string
+        'decorations.decoration[]'?: string[]
+        inventory?: string
+        culturalContext?: string
+        'culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        shape?: string
+        'shape[]'?: string[]
+        functionalGroup?: string
+        'functionalGroup[]'?: string[]
+        functionalForm?: string
+        'functionalForm[]'?: string[]
+        notes?: string
+        surfaceTreatment?: string
+        'surfaceTreatment[]'?: string[]
+        innerColor?: string
+        outerColor?: string
+        decorationMotif?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[analyses]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[culturalContext]'?: boolean
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[innerColor]'?: boolean
+        'exists[outerColor]'?: boolean
+        'exists[decorationMotif]'?: boolean
+        'exists[shape]'?: boolean
+        'exists[surfaceTreatment]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /** @description Search case insensitive match the inventory field */
+        search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
         }
       }
     }
@@ -36284,6 +38772,234 @@ export interface operations {
       }
     }
   }
+  api_featuresexportzoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        endsPreserved?: number
+        'endsPreserved[]'?: number[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        side?: string
+        'side[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.code'?: string
+        'taxonomy.code[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter by bitwise AND operation - all specified bits must be set
+         * @example 5
+         */
+        'endsPreserved[and]'?: string
+        /**
+         * @description Filter by bitwise AND operation - any of the specified bits must be set
+         * @example 3
+         */
+        'endsPreserved[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedzoobones_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBone.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedzoobones_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooBone.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featureszoobones.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        endsPreserved?: number
+        'endsPreserved[]'?: number[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        side?: string
+        'side[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.code'?: string
+        'taxonomy.code[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter by bitwise AND operation - all specified bits must be set
+         * @example 5
+         */
+        'endsPreserved[and]'?: string
+        /**
+         * @description Filter by bitwise AND operation - any of the specified bits must be set
+         * @example 3
+         */
+        'endsPreserved[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
   api_datastratigraphic_units_parentIdzooteeth_get_collection: {
     parameters: {
       query?: {
@@ -36781,6 +39497,226 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresexportzooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[connected]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        side?: string
+        'side[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.code'?: string
+        'taxonomy.code[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        connected?: boolean
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter by bitwise AND operation - all specified bits must be set
+         * @example 5
+         */
+        'connected[and]'?: string
+        /**
+         * @description Filter by bitwise AND operation - any of the specified bits must be set
+         * @example 3
+         */
+        'connected[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedzooteeth_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooTooth.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedzooteeth_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ZooTooth.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featureszooteeth.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[connected]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        side?: string
+        'side[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.code'?: string
+        'taxonomy.code[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        connected?: boolean
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter by bitwise AND operation - all specified bits must be set
+         * @example 5
+         */
+        'connected[and]'?: string
+        /**
+         * @description Filter by bitwise AND operation - any of the specified bits must be set
+         * @example 3
+         */
+        'connected[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
         }
       }
     }

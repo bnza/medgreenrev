@@ -1,75 +1,26 @@
-# Nuxt 3 Minimal Starter
+# MEDREENREV PROJECT webapp client
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Server setup
 
-## Setup
+Install nvm and pnpm
 
-Make sure to install the dependencies:
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
-```bash
-# npm
-npm install
+nvm install lts/jod
 
-# pnpm
-pnpm install
+nvm alias default lts/jod
 
-# yarn
-yarn install
-
-# bun
-bun install
+npm install -g pnpm
 ```
 
-## Development Server
+## Installation
 
-Start the development server on `http://localhost:3000`:
+Clone the repository
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```shell
+git clone https://github.com/bnza/mgr-client.git
+cd mgr-client
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

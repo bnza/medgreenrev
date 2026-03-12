@@ -51,12 +51,13 @@ const loader = (
 }
 
 watch(
-  () => status.value,
-  (value) => {
-    if (value === 'success' && data.value) {
-      return addFeatures(data.value)
+  [status, data, () => sourceRef.value?.source],
+  () => {
+    if (status.value === 'success' && data.value) {
+      addFeatures(data.value)
     }
   },
+  { immediate: true },
 )
 
 defineExpose({

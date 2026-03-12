@@ -73,6 +73,51 @@ try {
 
   const featurePaths = Object.keys(paths).filter((p) => hasGeoJson200(paths[p]))
 
+  const isAggregatedPath = (p: string) => {
+    const operation = paths[p]?.get
+    if (!operation) return false
+
+    // Check responses in OpenAPI
+    const responses = operation.responses as any
+    const content = responses?.[200]?.content
+    const geoJsonSchema = content?.['application/geo+json']
+    if (!geoJsonSchema) return false
+
+    // Try to resolve schema reference if it exists
+    let schema = geoJsonSchema.schema
+    if (schema?.$ref) {
+      const refPath = schema.$ref.split('/')
+      let current = openApi
+      for (let i = 1; i < refPath.length; i++) {
+        current = current?.[refPath[i]]
+      }
+      schema = current
+    }
+
+    if (!schema) return false
+
+    // Check if it's a FeatureCollection with number_matched features
+    const featuresSchema = schema.properties?.features?.items
+    let itemSchema = featuresSchema
+    if (itemSchema?.$ref) {
+      const refPath = itemSchema.$ref.split('/')
+      let current = openApi
+      for (let i = 1; i < refPath.length; i++) {
+        current = current?.[refPath[i]]
+      }
+      itemSchema = current
+    }
+
+    // Check if the feature item schema has a number_matched property
+    // Schema path: itemSchema.properties (Feature fields) → .properties (GeoJSON properties field) → .properties (object schema keys) → .number_matched
+    return Boolean(
+      itemSchema?.properties?.properties?.properties?.number_matched,
+    )
+  }
+
+  const aggregatedFeaturePaths = featurePaths.filter(isAggregatedPath)
+  console.log('Aggregated paths found:', aggregatedFeaturePaths)
+
   // Set of known API resource paths from the index
   const apiResourcePaths = new Set(
     Object.values(Object.fromEntries(resourceEntries)),
@@ -175,6 +220,49 @@ try {
     .map(([key, value]) => `  '${key}': '${value}'`)
     .join(',\n')
 
+  /**
+   * Maps GeoJSON feature collection endpoints to their corresponding extent endpoints.
+   *
+   * @param paths - The OpenAPI paths object.
+   * @param featurePaths - All OpenAPI paths that return GeoJSON.
+   * @returns An array of tuples mapping feature collection paths to extent feature collection paths.
+   */
+  const getFeaturesExtentResourceEntries = (
+    paths: Record<string, PathItem>,
+    featurePaths: string[],
+  ): [string, string][] => {
+    const entries: [string, string][] = []
+    for (const featPath of featurePaths) {
+      if (
+        featPath.startsWith('/api/features/') &&
+        !featPath.startsWith('/api/features/extent_matched/')
+      ) {
+        const extentPath = featPath.replace(
+          '/api/features/',
+          '/api/features/extent_matched/',
+        )
+        if (paths[extentPath]?.get) {
+          entries.push([featPath, extentPath])
+        }
+      }
+    }
+
+    return entries.sort((a, b) => a[0].localeCompare(b[0]))
+  }
+
+  const featuresExtentResourceEntries = getFeaturesExtentResourceEntries(
+    paths,
+    featurePaths,
+  )
+
+  const featuresExtentMapEntries = featuresExtentResourceEntries
+    .map(([key, value]) => `  '${key}': '${value}'`)
+    .join(',\n')
+
+  const aggregatedFeaturePathsEntries = aggregatedFeaturePaths
+    .map((p) => `  '${p}'`)
+    .join(',\n')
+
   const extendsFeatureCollectionClause = '<P extends GetFeatureCollectionPath>'
   const satisfiesClause = 'Record<GetFeatureCollectionPath, GetCollectionPath>'
   const templateString =
@@ -186,7 +274,9 @@ try {
 import type {
   GetCollectionPath,
   GetExportFeatureCollectionPath,
+  GetFeatureCollectionExtentPath,
   GetFeatureCollectionPath,
+  GetAggregatedFeatureCollectionPath,
   GetItemPath,
 } from '~~/types'
 
@@ -211,6 +301,17 @@ export const API_FEATURES_RESOURCE_EXPORT_MAP = {
   GetFeatureCollectionPath,
   GetExportFeatureCollectionPath
 >
+
+export const API_FEATURES_EXTENT_RESOURCE_MAP = {
+    ${featuresExtentMapEntries}
+} as const satisfies Record<
+  GetFeatureCollectionPath,
+  GetFeatureCollectionExtentPath
+>
+
+export const API_AGGREGATED_FEATURES_RESOURCE_PATHS: GetAggregatedFeatureCollectionPath[] = [
+${aggregatedFeaturePathsEntries}
+]
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP
 export type FeaturePathToApiResourcePath${extendsFeatureCollectionClause} = FeaturesMap[P]

@@ -4,7 +4,9 @@
 import type {
   GetCollectionPath,
   GetExportFeatureCollectionPath,
+  GetFeatureCollectionExtentPath,
   GetFeatureCollectionPath,
+  GetAggregatedFeatureCollectionPath,
   GetItemPath,
 } from '~~/types'
 
@@ -108,19 +110,75 @@ export type ApiResourcePath =
 // Keys are OpenAPI paths that return 200 with 'application/geo+json'
 export const API_FEATURES_RESOURCE_MAP = {
   '/api/features/archaeological_sites': '/api/data/archaeological_sites',
+  '/api/features/botany/charcoals': '/api/data/botany/charcoals',
+  '/api/features/botany/seeds': '/api/data/botany/seeds',
+  '/api/features/history/animals': '/api/data/history/animals',
   '/api/features/history/locations': '/api/vocabulary/history/locations',
+  '/api/features/history/plants': '/api/data/history/plants',
+  '/api/features/individuals': '/api/data/individuals',
+  '/api/features/microstratigraphic_units':
+    '/api/data/microstratigraphic_units',
+  '/api/features/potteries': '/api/data/potteries',
   '/api/features/sampling_sites': '/api/data/sampling_sites',
+  '/api/features/zoo/bones': '/api/data/zoo/bones',
+  '/api/features/zoo/teeth': '/api/data/zoo/teeth',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
 
 export const API_FEATURES_RESOURCE_EXPORT_MAP = {
   '/api/features/archaeological_sites':
     '/api/features/export/archaeological_sites',
+  '/api/features/botany/charcoals': '/api/features/export/botany/charcoals',
+  '/api/features/botany/seeds': '/api/features/export/botany/seeds',
+  '/api/features/history/animals': '/api/features/export/history/animals',
   '/api/features/history/locations': '/api/features/export/history/locations',
+  '/api/features/history/plants': '/api/features/export/history/plants',
+  '/api/features/individuals': '/api/features/export/individuals',
+  '/api/features/microstratigraphic_units':
+    '/api/features/export/microstratigraphic_units',
+  '/api/features/potteries': '/api/features/export/potteries',
   '/api/features/sampling_sites': '/api/features/export/sampling_sites',
+  '/api/features/zoo/bones': '/api/features/export/zoo/bones',
+  '/api/features/zoo/teeth': '/api/features/export/zoo/teeth',
 } as const satisfies Record<
   GetFeatureCollectionPath,
   GetExportFeatureCollectionPath
 >
+
+export const API_FEATURES_EXTENT_RESOURCE_MAP = {
+  '/api/features/archaeological_sites':
+    '/api/features/extent_matched/archaeological_sites',
+  '/api/features/botany/charcoals':
+    '/api/features/extent_matched/botany/charcoals',
+  '/api/features/botany/seeds': '/api/features/extent_matched/botany/seeds',
+  '/api/features/history/animals':
+    '/api/features/extent_matched/history/animals',
+  '/api/features/history/locations':
+    '/api/features/extent_matched/history/locations',
+  '/api/features/history/plants': '/api/features/extent_matched/history/plants',
+  '/api/features/individuals': '/api/features/extent_matched/individuals',
+  '/api/features/microstratigraphic_units':
+    '/api/features/extent_matched/microstratigraphic_units',
+  '/api/features/potteries': '/api/features/extent_matched/potteries',
+  '/api/features/sampling_sites': '/api/features/extent_matched/sampling_sites',
+  '/api/features/zoo/bones': '/api/features/extent_matched/zoo/bones',
+  '/api/features/zoo/teeth': '/api/features/extent_matched/zoo/teeth',
+} as const satisfies Record<
+  GetFeatureCollectionPath,
+  GetFeatureCollectionExtentPath
+>
+
+export const API_AGGREGATED_FEATURES_RESOURCE_PATHS: GetAggregatedFeatureCollectionPath[] =
+  [
+    '/api/features/botany/charcoals',
+    '/api/features/botany/seeds',
+    '/api/features/history/animals',
+    '/api/features/history/plants',
+    '/api/features/individuals',
+    '/api/features/microstratigraphic_units',
+    '/api/features/potteries',
+    '/api/features/zoo/bones',
+    '/api/features/zoo/teeth',
+  ]
 
 type FeaturesMap = typeof API_FEATURES_RESOURCE_MAP
 export type FeaturePathToApiResourcePath<P extends GetFeatureCollectionPath> =

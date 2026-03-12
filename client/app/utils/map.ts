@@ -17,6 +17,11 @@ export type TextLabelOptions = {
   visible: boolean
   placement?: TextPlacement
   size?: number
+  textAlign?: CanvasTextAlign
+  textBaseline?: CanvasTextBaseline
+  offsetX?: number
+  offsetY?: number
+  overflow?: boolean
 }
 
 export type StyleCircleOptions = {
@@ -43,31 +48,30 @@ export const DEFAULT_TEXT_LABEL_OPTIONS = {
   textAlign: 'left',
   textBaseline: 'bottom',
   overflow: true,
-  declutterMode: 'declutter',
 } as const
 
 function makeLabelStyle(
   text: string,
   resolution: number,
-  { placement, size }: TextLabelStyleOptions | undefined = {
+  options: TextLabelStyleOptions | undefined = {
     placement: 'point',
     size: 12,
   },
 ) {
-  const scale = resolution < 10 ? 1.5 : 1.2
   const {
-    fill,
-    stroke,
-    offsetX,
-    offsetY,
-    textBaseline,
-    textAlign,
-    overflow,
-    declutterMode,
-  } = DEFAULT_TEXT_LABEL_OPTIONS
+    placement,
+    size = 12,
+    textAlign: optionsTextAlign,
+    textBaseline: optionsTextBaseline,
+    offsetX: optionsOffsetX,
+    offsetY: optionsOffsetY,
+  } = options || {}
+  const scale = resolution < 10 ? 1.5 : 1.2
+  const { fill, stroke, offsetX, offsetY, textBaseline, textAlign } =
+    DEFAULT_TEXT_LABEL_OPTIONS
   return new Style({
     text: new Text({
-      text,
+      text: String(text),
       fill: new Fill({ color: fill.color }),
       font: `${size}px Montserrat, Manrope, sans-serif`,
       scale,
@@ -75,21 +79,48 @@ function makeLabelStyle(
         color: stroke.color,
         width: stroke.width,
       }),
-      textAlign,
-      textBaseline,
-      overflow,
-      offsetX,
-      offsetY,
-      declutterMode,
+      textAlign: optionsTextAlign ?? textAlign,
+      textBaseline: optionsTextBaseline ?? textBaseline,
+      overflow: true,
+      offsetX: optionsOffsetX ?? offsetX,
+      offsetY: optionsOffsetY ?? offsetY,
       placement,
     }),
   })
 }
 
-export function makeTextLabelStyleFn(options: TextLabelOptions) {
+export function makeTextLabelStyleFn(
+  options: TextLabelOptions,
+  showNumberMatched: boolean = false,
+) {
   return (feature: FeatureLike, resolution: number) => {
-    const text = (feature.get(options.labelProperty) ?? '') as string
-    return options.visible ? [makeLabelStyle(text, resolution, options)] : []
+    if (!options.visible) return []
+    const styles: Style[] = []
+
+    // Standard Label
+    const text = feature.get(options.labelProperty)
+    if (text !== undefined && text !== null) {
+      styles.push(makeLabelStyle(String(text), resolution, options))
+    }
+
+    // Number Matched Label (Centered)
+    if (showNumberMatched) {
+      const numberMatched = feature.get('number_matched')
+      if (numberMatched !== undefined && numberMatched !== null) {
+        styles.push(
+          makeLabelStyle(String(numberMatched), resolution, {
+            ...options,
+            textAlign: 'center',
+            textBaseline: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            overflow: true,
+          }),
+        )
+      }
+    }
+
+    return styles
   }
 }
 

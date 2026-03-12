@@ -19,7 +19,12 @@ const {
   opacity,
   labelOptions: storedLabelOptions,
   markerOptions: storedMarkerOptions,
+  showNumberMatched,
 } = storeToRefs(mapVectorApiStore)
+
+const effectiveRadius = computed(() =>
+  showNumberMatched.value ? 12 : storedMarkerOptions.value.radius,
+)
 
 storedLabelOptions.value = {
   ...storedLabelOptions.value,
@@ -41,11 +46,8 @@ const geoJsonFormat = new GeoJSON({
   dataProjection: 'EPSG:3857', // Configure the dataProjection
 })
 
-const layerRef = useTemplateRef<typeof Layers.OlVectorLayer>('layerRef')
-const olLayer = computed(() => layerRef.value?.vectorLayer ?? null)
-
-const { textLabelStyleFn, styleFns } = storeToRefs(
-  useMapVectorApiStyleStore(props.path, olLayer),
+const { textLabelStyleFn, styleFns, overrideStyleFunction } = storeToRefs(
+  useMapVectorApiStyleStore(props.path),
 )
 
 styleFns.value = [textLabelStyleFn]
@@ -53,6 +55,15 @@ styleFns.value = [textLabelStyleFn]
 const selectedFeature: Ref<Feature<Geometry> | null> = ref(null)
 
 const interactionSelectRef = useTemplateRef('interactionSelectRef')
+const layerRef = useTemplateRef('layerRef')
+
+watch(showNumberMatched, (newValue) => {
+  const layer = layerRef.value?.vectorLayer
+  if (layer && typeof layer.setDeclutter === 'function') {
+    layer.setDeclutter(!newValue)
+    layer.changed()
+  }
+})
 
 provide(CLOSE_MAP_OVERLAY_INJECTION_KEY, () => {
   interactionSelectRef.value?.clearSelection()
@@ -64,7 +75,7 @@ provide(CLOSE_MAP_OVERLAY_INJECTION_KEY, () => {
     ref="layerRef"
     :opacity
     :visible
-    :declutter="true"
+    :declutter="!showNumberMatched"
     :properties="{ path }"
   >
     <slot :format="geoJsonFormat">
@@ -86,13 +97,14 @@ provide(CLOSE_MAP_OVERLAY_INJECTION_KEY, () => {
           />
         </template>
       </map-overlay-selected-feature-data-card>
-      <Styles.OlStyle>
+      <Styles.OlStyle :override-style-function="overrideStyleFunction">
         <slot name="style">
-          <Styles.OlStyleCircle :radius="storedMarkerOptions.radius">
+          <Styles.OlStyleCircle :radius="effectiveRadius">
             <Styles.OlStyleFill v-bind="storedMarkerOptions.fill" />
             <Styles.OlStyleStroke v-bind="storedMarkerOptions.stroke" />
           </Styles.OlStyleCircle>
         </slot>
-      </Styles.OlStyle> </slot
-  ></Layers.OlVectorLayer>
+      </Styles.OlStyle>
+    </slot>
+  </Layers.OlVectorLayer>
 </template>

@@ -62,6 +62,18 @@ export type GetFeatureCollectionPath = {
     : never
 }[keyof paths]
 
+export type GetAggregatedFeatureCollectionPath = {
+  [K in GetFeatureCollectionPath]: paths[K]['get'] extends {
+    responses: { 200: { content: { 'application/geo+json': infer Response } } }
+  }
+    ? Response extends { features: (infer Feature)[] }
+      ? Feature extends { properties: { number_matched: number } }
+        ? K
+        : never
+      : never
+    : never
+}[GetFeatureCollectionPath]
+
 export type GetExportFeatureCollectionPath = {
   [K in keyof paths]: paths[K] extends { get: any }
     ? paths[K]['get'] extends { parameters: { query?: { outputFormat?: any } } }
