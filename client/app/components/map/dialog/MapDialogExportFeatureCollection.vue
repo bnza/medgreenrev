@@ -5,11 +5,14 @@ import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 import { API_FEATURES_RESOURCE_EXPORT_MAP } from '~/utils/consts/resources'
 import useGetCollectionTotalItemQuery from '~/composables/queries/useGetCollectionTotalItemQuery'
 
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
 const props = defineProps<{
   path: P
+  groupKey: FeatureAggregationResourceKey
 }>()
 
-const mapVectorApiStore = useMapVectorApiStore(props.path)
+const mapVectorApiStore = useMapVectorApiStore(props.path, props.groupKey)
 const { isExportDialogOpen } = storeToRefs(mapVectorApiStore)
 
 const formats = [

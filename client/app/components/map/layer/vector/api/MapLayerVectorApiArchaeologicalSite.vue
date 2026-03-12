@@ -1,7 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
+defineProps<{
+  groupKey: FeatureAggregationResourceKey
+}>()
+</script>
+
 <template>
   <map-layer-vector-api-base
     path="/api/features/archaeological_sites"
+    :group-key="groupKey"
     id-prefix="archaeological_sites"
     :label-options="{
       placement: 'point',

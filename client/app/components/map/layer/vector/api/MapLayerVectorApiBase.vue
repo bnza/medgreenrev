@@ -6,14 +6,17 @@ import type Feature from 'ol/Feature.js'
 import type { Geometry } from 'ol/geom'
 import type { FeaturePathToItemPath } from '~/utils/consts/resources'
 
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
 const props = defineProps<{
   path: P
+  groupKey: FeatureAggregationResourceKey
   idPrefix: string
   labelOptions: TextLabelOptions
   markerOptions?: Partial<StyleCircleOptions>
 }>()
 
-const mapVectorApiStore = useMapVectorApiStore(props.path)
+const mapVectorApiStore = useMapVectorApiStore(props.path, props.groupKey)
 const {
   visible,
   opacity,
@@ -47,7 +50,7 @@ const geoJsonFormat = new GeoJSON({
 })
 
 const { textLabelStyleFn, styleFns, overrideStyleFunction } = storeToRefs(
-  useMapVectorApiStyleStore(props.path),
+  useMapVectorApiStyleStore(props.path, props.groupKey),
 )
 
 styleFns.value = [textLabelStyleFn]
@@ -79,10 +82,15 @@ provide(CLOSE_MAP_OVERLAY_INJECTION_KEY, () => {
     :properties="{ path }"
   >
     <slot :format="geoJsonFormat">
-      <map-source-api-vector :format="geoJsonFormat" :path>
+      <map-source-api-vector
+        :format="geoJsonFormat"
+        :path
+        :group-key="groupKey"
+      >
         <map-interaction-select-layer-vector-api
           ref="interactionSelectRef"
           :path
+          :group-key="groupKey"
           :id-prefix
           @feature-selected="selectedFeature = $event"
         />

@@ -10,10 +10,12 @@ import type { GetFeatureCollectionPath } from '~~/types'
 import { Sources } from 'vue3-openlayers'
 import useGetFeatureCollectionQuery from '~/composables/queries/useGetFeatureCollectionQuery'
 import { bbox } from 'ol/loadingstrategy.js'
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
 
 const props = defineProps<{
   format: GeoJSON
   path: GetFeatureCollectionPath
+  groupKey: FeatureAggregationResourceKey
 }>()
 
 const sourceRef = ref<{ source: VectorSource | null } | null>(null)
@@ -24,6 +26,7 @@ const bboxProjection = ref<ProjectionLike>()
 
 const { data, status, error } = useGetFeatureCollectionQuery(
   props.path,
+  props.groupKey,
   bboxExtent,
   bboxProjection,
 )

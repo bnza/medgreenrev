@@ -6,11 +6,14 @@ import type { GetFeatureCollectionPath } from '~~/types'
 import type Feature from 'ol/Feature.js'
 import type { Geometry } from 'ol/geom'
 
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
 const { fill, stroke, offsetX, offsetY, textBaseline, textAlign, overflow } =
   DEFAULT_TEXT_LABEL_OPTIONS
 
 const props = defineProps<{
   path: GetFeatureCollectionPath
+  groupKey: FeatureAggregationResourceKey
   idPrefix: string
 }>()
 
@@ -20,7 +23,7 @@ const interactionSelectRef = useTemplateRef<
 
 const text = ref<string>('')
 
-const { labelOptions } = useMapVectorApiStore(props.path)
+const { labelOptions } = useMapVectorApiStore(props.path, props.groupKey)
 
 const emit = defineEmits<{
   featureSelected: [Feature<Geometry> | null]

@@ -3,8 +3,11 @@ import { makeTextLabelStyleFn, type NormalizedStyleFunction } from '~/utils/map'
 import type { FeatureLike } from 'ol/Feature'
 import { Style } from 'ol/style'
 
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
 export const useMapVectorApiStyleStore = <P extends GetFeatureCollectionPath>(
   path: P,
+  groupKey: FeatureAggregationResourceKey,
 ) =>
   defineStore(`map-text-label:${path}`, () => {
     const styleFns = ref<Array<Ref<NormalizedStyleFunction>>>([])
@@ -14,7 +17,7 @@ export const useMapVectorApiStyleStore = <P extends GetFeatureCollectionPath>(
     )
 
     const { labelOptions, showNumberMatched } = storeToRefs(
-      useMapVectorApiStore(path),
+      useMapVectorApiStore(path, groupKey),
     )
 
     const textLabelStyleFn = computed(() =>

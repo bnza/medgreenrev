@@ -1,6 +1,15 @@
+<script setup lang="ts">
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
+defineProps<{
+  groupKey: FeatureAggregationResourceKey
+}>()
+</script>
+
 <template>
   <map-layer-vector-api-base
     path="/api/features/botany/charcoals"
+    :group-key="groupKey"
     id-prefix="botany_charcoals"
     :label-options="{
       placement: 'point',
@@ -8,7 +17,8 @@
       visible: true,
     }"
     :marker-options="{
-      fill: { color: 'blue' },
+      radius: 5,
+      fill: { color: 'red' },
     }"
   >
     <!--    <template #popUpContent="{ item }">-->

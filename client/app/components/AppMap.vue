@@ -75,10 +75,12 @@ onMounted(() => {
     <Layers.OlLayerGroup>
       <map-layer-tile-base-map-esri />
       <map-layer-tile-base-map-osm />
-      <map-layer-vector-api-botany-charcoal />
-      <map-layer-vector-api-history-location />
-      <map-layer-vector-api-sampling-site />
-      <map-layer-vector-api-archaeological-site />
+      <map-layer-vector-api-botany-charcoal group-key="archaeologicalSite" />
+      <map-layer-vector-api-history-location group-key="vocHistoryLocation" />
+      <map-layer-vector-api-sampling-site group-key="samplingSite" />
+      <map-layer-vector-api-archaeological-site
+        group-key="archaeologicalSite"
+      />
     </Layers.OlLayerGroup>
   </Map.OlMap>
 </template>

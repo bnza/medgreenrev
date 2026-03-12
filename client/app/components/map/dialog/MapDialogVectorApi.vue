@@ -1,11 +1,14 @@
 <script setup lang="ts" generic="P extends GetFeatureCollectionPath">
 import type { GetFeatureCollectionPath } from '~~/types'
 
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
 const props = defineProps<{
   path: P
+  groupKey: FeatureAggregationResourceKey
 }>()
 
-const mapVectorApiStore = useMapVectorApiStore(props.path)
+const mapVectorApiStore = useMapVectorApiStore(props.path, props.groupKey)
 
 const { visible, labelVisible, isSettingsDialogOpen } =
   storeToRefs(mapVectorApiStore)

@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import type { GetFeatureCollectionPath } from '~~/types'
 import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
 import useGetFeatureCollectionExtentQuery from '~/composables/queries/useGetFeatureCollectionExtentQuery'
 
 const props = defineProps<{
   path: GetFeatureCollectionPath
+  groupKey: FeatureAggregationResourceKey
   title: string
 }>()
 
 const { isAuthenticated } = useAppAuth()
 
-const mapVectorApiStore = useMapVectorApiStore(props.path)
+const mapVectorApiStore = useMapVectorApiStore(props.path, props.groupKey)
 
 const {
   visible,
@@ -34,7 +36,7 @@ const openExportDialog = () => {
 }
 
 const { state: uiMode } = storeToRefs(useAppUiModeStore())
-// const getCollectionPath = API_FEATURES_RESOURCE_MAP[props.path]
+
 const router = useRouter()
 const { isSearchDialogOpen } = storeToRefs(
   useResourceUiStore(mapVectorApiStore.resourceConfig.apiPath),
@@ -55,6 +57,7 @@ const extentQueryEnabled = ref(false)
 const { data: extentData, refresh: refreshExtent } =
   useGetFeatureCollectionExtentQuery(
     props.path,
+    props.groupKey,
     extentQueryEnabled,
     'EPSG:3857',
   )
@@ -116,8 +119,8 @@ const zoomToExtent = async () => {
             <template #append><v-icon icon="fas fa-cog" /></template>
           </v-list-item>
         </map-list-menu-base>
-        <map-dialog-export-feature-collection :path />
-        <map-dialog-vector-api :path />
+        <map-dialog-export-feature-collection :path :group-key="groupKey" />
+        <map-dialog-vector-api :path :group-key="groupKey" />
       </slot>
     </template>
   </v-list-item>

@@ -6,13 +6,16 @@ import type { Extent } from 'ol/extent'
 import type { ProjectionLike } from 'ol/proj'
 import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
 
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
 export function useGetFeatureCollectionQuery(
   path: GetFeatureCollectionPath,
+  groupKey: FeatureAggregationResourceKey,
   bbox: Ref<Extent | undefined>,
   projection: Ref<ProjectionLike>,
 ) {
   const getFeatureCollectionOperation = new GetFeatureCollectionOperation(path)
-  const mapVectorApiStore = useMapVectorApiStore(path)
+  const mapVectorApiStore = useMapVectorApiStore(path, groupKey)
 
   if (!mapVectorApiStore.resourceConfig) {
     throw new Error(`Resource key not found for path ${path}`)

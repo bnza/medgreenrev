@@ -1,7 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
+defineProps<{
+  groupKey: FeatureAggregationResourceKey
+}>()
+</script>
+
 <template>
   <map-layer-vector-api-base
     path="/api/features/sampling_sites"
+    :group-key="groupKey"
     id-prefix="sampling_sites"
     :label-options="{
       placement: 'point',

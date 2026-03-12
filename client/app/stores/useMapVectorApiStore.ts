@@ -1,12 +1,19 @@
 import type { ApiResourcePath, GetFeatureCollectionPath } from '~~/types'
 import type { TextLabelOptions } from '~/utils/map'
 import { isAggregatedFeatureCollectionPath } from '~/utils/guards'
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
 
 export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
   path: P,
+  groupKey: FeatureAggregationResourceKey,
 ) =>
   defineStore(`map-vector-api:${path}`, () => {
-    const visible = ref(true)
+    const exclusivityStore = useMapLayerExclusiveVisibilityStore()
+
+    const visible = computed<boolean>({
+      get: () => exclusivityStore.isActive(groupKey, path),
+      set: () => exclusivityStore.setActive(groupKey, path),
+    })
     const opacity = ref(100)
     const labelOptions: Ref<TextLabelOptions> = ref({
       labelProperty: 'value',
@@ -72,6 +79,7 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
 
     return {
       visible,
+      groupKey,
       opacity,
       labelOptions,
       labelVisible,
