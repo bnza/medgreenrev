@@ -1,7 +1,10 @@
 import type { ApiResourcePath, GetFeatureCollectionPath } from '~~/types'
 import type { TextLabelOptions } from '~/utils/map'
 import { isAggregatedFeatureCollectionPath } from '~/utils/guards'
-import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+import {
+  GROUP_KEY_FEATURE_PATH_MAP,
+  type FeatureAggregationResourceKey,
+} from '~/stores/useMapLayerExclusiveVisibilityStore'
 
 export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
   path: P,
@@ -51,6 +54,10 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
       isAggregatedFeatureCollectionPath(path),
     )
 
+    const parentFeaturePath = computed(() =>
+      isAggregatable.value ? GROUP_KEY_FEATURE_PATH_MAP[groupKey] : null,
+    )
+
     const isSettingsDialogOpen = ref(false)
     const isExportDialogOpen = ref(false)
 
@@ -91,5 +98,6 @@ export const useMapVectorApiStore = <P extends GetFeatureCollectionPath>(
       isExportDialogOpen,
       resourceConfig,
       resourcePath,
+      parentFeaturePath,
     }
   })()

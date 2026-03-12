@@ -5,6 +5,15 @@ export type FeatureAggregationResourceKey = Extract<
   'archaeologicalSite' | 'vocHistoryLocation' | 'samplingSite'
 >
 
+export const GROUP_KEY_FEATURE_PATH_MAP: Record<
+  FeatureAggregationResourceKey,
+  GetFeatureCollectionPath
+> = {
+  archaeologicalSite: '/api/features/archaeological_sites',
+  vocHistoryLocation: '/api/features/history/locations',
+  samplingSite: '/api/features/sampling_sites',
+} as const
+
 export const useMapLayerExclusiveVisibilityStore = defineStore(
   'map-layer-exclusive-visibility',
   () => {

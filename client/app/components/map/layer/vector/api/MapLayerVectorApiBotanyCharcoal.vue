@@ -21,8 +21,11 @@ defineProps<{
       fill: { color: 'red' },
     }"
   >
-    <!--    <template #popUpContent="{ item }">-->
-    <!--      <data-item-info-box-content-history-location :item />-->
-    <!--    </template>-->
+    <template #aggregatedPopUpContent="{ item }">
+      <data-item-info-box-content-archaeological-site
+        v-if="item"
+        :item="item as any"
+      />
+    </template>
   </map-layer-vector-api-base>
 </template>

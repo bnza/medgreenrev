@@ -8,6 +8,7 @@ const props = withDefaults(
     showBackButton?: boolean
     acl: CollectionAcl | false
     parent: boolean
+    filterPath?: Path
   }>(),
   {
     showBackButton: true,
@@ -30,12 +31,16 @@ const title = computed(() => props.title || labels[1])
   <data-card :title :show-back-button :parent>
     <template #toolbar-append>
       <slot name="search-bar" />
-      <data-toolbar-collection-filter-menu :path />
-      <data-toolbar-collection-action-menu v-if="acl" :acl :path>
+      <data-toolbar-collection-filter-menu :path="filterPath ?? path" />
+      <data-toolbar-collection-action-menu
+        v-if="acl"
+        :acl
+        :path="filterPath ?? path"
+      >
         <template #default>
           <slot name="collection-actions" />
         </template>
-        <template #create>
+        <template v-if="!filterPath" #create>
           <slot name="collection-create-action" />
         </template>
       </data-toolbar-collection-action-menu>

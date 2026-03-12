@@ -1,7 +1,11 @@
 <script setup lang="ts" generic="P extends GetFeatureCollectionPath">
 import { Layers, Styles } from 'vue3-openlayers'
 import GeoJSON from 'ol/format/GeoJSON.js'
-import type { GetFeatureCollectionPath, GetItemResponseMap } from '~~/types'
+import type {
+  GetFeatureCollectionPath,
+  GetItemResponseMap,
+  GetItemPath,
+} from '~~/types'
 import type Feature from 'ol/Feature.js'
 import type { Geometry } from 'ol/geom'
 import type { FeaturePathToItemPath } from '~/utils/consts/resources'
@@ -23,7 +27,10 @@ const {
   labelOptions: storedLabelOptions,
   markerOptions: storedMarkerOptions,
   showNumberMatched,
+  parentFeaturePath,
 } = storeToRefs(mapVectorApiStore)
+
+const { isAggregatable } = mapVectorApiStore
 
 const effectiveRadius = computed(() =>
   showNumberMatched.value ? 12 : storedMarkerOptions.value.radius,
@@ -38,10 +45,13 @@ mapVectorApiStore.mergeMarkerOptions(props.markerOptions)
 
 type GetItemResponse = GetItemResponseMap[FeaturePathToItemPath<P>] | undefined
 
+type ParentItemResponse = GetItemResponseMap[GetItemPath] | undefined
+
 // Explicitly define the types for the slots
 defineSlots<{
   default(props: { format: GeoJSON }): any
   popUpContent(props: { item: GetItemResponse }): any
+  aggregatedPopUpContent(props: { item: ParentItemResponse }): any
   style(): any
 }>()
 
@@ -95,7 +105,26 @@ provide(CLOSE_MAP_OVERLAY_INJECTION_KEY, () => {
           @feature-selected="selectedFeature = $event"
         />
       </map-source-api-vector>
-      <map-overlay-selected-feature-data-card :path :feature="selectedFeature">
+      <map-overlay-selected-aggregated-feature-data-card
+        v-if="isAggregatable && parentFeaturePath"
+        :parent-path="parentFeaturePath"
+        :child-path="path"
+        :feature="selectedFeature"
+      >
+        <template #default="{ item }">
+          <slot
+            name="aggregatedPopUpContent"
+            v-bind="{
+              item: item as ParentItemResponse,
+            }"
+          />
+        </template>
+      </map-overlay-selected-aggregated-feature-data-card>
+      <map-overlay-selected-feature-data-card
+        v-else
+        :path
+        :feature="selectedFeature"
+      >
         <template #default="{ item }">
           <slot
             name="popUpContent"

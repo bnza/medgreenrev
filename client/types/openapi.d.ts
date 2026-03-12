@@ -1762,6 +1762,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/archaeological_sites/{parentId}/botany/charcoals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of BotanyCharcoal resources.
+     * @description Retrieves the collection of BotanyCharcoal resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdbotanycharcoals_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/botany/charcoals': {
     parameters: {
       query?: never
@@ -1906,6 +1926,26 @@ export interface paths {
      * @description Retrieves a BotanyCharcoal resource.
      */
     get: operations['api_featuresnumber_matchedbotanycharcoals_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/archaeological_sites/{parentId}/botany/seeds': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of BotanySeed resources.
+     * @description Retrieves the collection of BotanySeed resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdbotanyseeds_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -2522,6 +2562,26 @@ export interface paths {
      * @description Retrieves a HistoryPlant resource.
      */
     get: operations['api_featuresnumber_matchedhistoryplants_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/archaeological_sites/{parentId}/individuals': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Individual resources.
+     * @description Retrieves the collection of Individual resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdindividuals_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -3486,6 +3546,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/archaeological_sites/{parentId}/microstratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MicrostratigraphicUnit resources.
+     * @description Retrieves the collection of MicrostratigraphicUnit resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdmicrostratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/microstratigraphic_units': {
     parameters: {
       query?: never
@@ -3650,6 +3730,26 @@ export interface paths {
      * @description Retrieves a MicrostratigraphicUnit resource.
      */
     get: operations['api_featuresnumber_matchedmicrostratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/archaeological_sites/{parentId}/potteries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of Pottery resources.
+     * @description Retrieves the collection of Pottery resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdpotteries_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -6630,6 +6730,26 @@ export interface paths {
     patch: operations['api_vocabularyzootaxonomies_id_patch']
     trace?: never
   }
+  '/api/data/archaeological_sites/{parentId}/zoo/bones': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooBone resources.
+     * @description Retrieves the collection of ZooBone resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdzoobones_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/stratigraphic_units/{parentId}/zoo/bones': {
     parameters: {
       query?: never
@@ -6774,6 +6894,26 @@ export interface paths {
      * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
      */
     get: operations['api_featureszoobones.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/archaeological_sites/{parentId}/zoo/teeth': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ZooTooth resources.
+     * @description Retrieves the collection of ZooTooth resources.
+     */
+    get: operations['api_dataarchaeological_sites_parentIdzooteeth_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -23405,6 +23545,146 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_parentIdbotanycharcoals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description BotanyCharcoal identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanyCharcoal collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read'][]
+          }
+          'text/csv': components['schemas']['BotanyCharcoal.csv-botany_charcoal.acl.read'][]
+        }
+      }
+    }
+  }
   api_databotanycharcoals_get_collection: {
     parameters: {
       query?: {
@@ -24062,6 +24342,146 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_parentIdbotanyseeds_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description BotanySeed identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description BotanySeed collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['BotanySeed.jsonld-botany_seed.acl.read'][]
+          }
+          'text/csv': components['schemas']['BotanySeed.csv-botany_seed.acl.read'][]
         }
       }
     }
@@ -26749,6 +27169,141 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_parentIdindividuals_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        'order[sex]'?: 'asc' | 'desc'
+        'order[age.id]'?: 'asc' | 'desc'
+        age?: string
+        'age[]'?: string[]
+        sex?: string
+        'sex[]'?: string[]
+        identifier?: string
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'exists[age]'?: boolean
+        'exists[sex]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[analyses]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /** @description Search case insensitive match the identifier field */
+        search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description Individual identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Individual collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['Individual.jsonld-individual.acl.read'][]
+          }
+          'text/csv': components['schemas']['Individual.csv-individual.acl.read'][]
+        }
+      }
+    }
+  }
   api_dataindividuals_get_collection: {
     parameters: {
       query?: {
@@ -29135,6 +29690,97 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_parentIdmicrostratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[identifier]'?: 'asc' | 'desc'
+        identifier?: string
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+      }
+      header?: never
+      path: {
+        /** @description MicrostratigraphicUnit identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MicrostratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read'][]
+          }
+          'text/csv': components['schemas']['MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read'][]
+        }
+      }
+    }
+  }
   api_datamicrostratigraphic_units_get_collection: {
     parameters: {
       query?: {
@@ -29743,6 +30389,200 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_parentIdpotteries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[inventory]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[culturalContext.id]'?: 'asc' | 'desc'
+        'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalGroup.value]'?: 'asc' | 'desc'
+        'order[functionalForm.value]'?: 'asc' | 'desc'
+        'order[surfaceTreatment.value]'?: 'asc' | 'desc'
+        'order[innerColor]'?: 'asc' | 'desc'
+        'order[outerColor]'?: 'asc' | 'desc'
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'decorations.decoration'?: string
+        'decorations.decoration[]'?: string[]
+        inventory?: string
+        culturalContext?: string
+        'culturalContext[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        shape?: string
+        'shape[]'?: string[]
+        functionalGroup?: string
+        'functionalGroup[]'?: string[]
+        functionalForm?: string
+        'functionalForm[]'?: string[]
+        notes?: string
+        surfaceTreatment?: string
+        'surfaceTreatment[]'?: string[]
+        innerColor?: string
+        outerColor?: string
+        decorationMotif?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'exists[analyses]'?: boolean
+        'exists[notes]'?: boolean
+        'exists[culturalContext]'?: boolean
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[innerColor]'?: boolean
+        'exists[outerColor]'?: boolean
+        'exists[decorationMotif]'?: boolean
+        'exists[shape]'?: boolean
+        'exists[surfaceTreatment]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /** @description Search case insensitive match the inventory field */
+        search?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description Pottery identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description Pottery collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['Pottery.jsonld-pottery.acl.read'][]
+          }
+          'text/csv': components['schemas']['Pottery.csv-pottery.acl.read'][]
         }
       }
     }
@@ -38263,6 +39103,164 @@ export interface operations {
       }
     }
   }
+  api_dataarchaeological_sites_parentIdzoobones_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        element?: string
+        'element[]'?: string[]
+        endsPreserved?: number
+        'endsPreserved[]'?: number[]
+        notes?: string
+        part?: string
+        'part[]'?: string[]
+        side?: string
+        'side[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.code'?: string
+        'taxonomy.code[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[part]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter by bitwise AND operation - all specified bits must be set
+         * @example 5
+         */
+        'endsPreserved[and]'?: string
+        /**
+         * @description Filter by bitwise AND operation - any of the specified bits must be set
+         * @example 3
+         */
+        'endsPreserved[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description ZooBone identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooBone collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ZooBone.jsonld-zoo_bone.acl.read'][]
+          }
+          'text/csv': components['schemas']['ZooBone.csv-zoo_bone.acl.read'][]
+        }
+      }
+    }
+  }
   api_datastratigraphic_units_parentIdzoobones_get_collection: {
     parameters: {
       query?: {
@@ -38996,6 +39994,160 @@ export interface operations {
         content: {
           'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
           'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_dataarchaeological_sites_parentIdzooteeth_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[element.value]'?: 'asc' | 'desc'
+        'order[connected]'?: 'asc' | 'desc'
+        'order[side]'?: 'asc' | 'desc'
+        /**
+         * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
+         * @example MO 123
+         */
+        search?: string
+        element?: string
+        'element[]'?: string[]
+        notes?: string
+        side?: string
+        'side[]'?: string[]
+        taxonomy?: string
+        'taxonomy[]'?: string[]
+        'taxonomy.code'?: string
+        'taxonomy.code[]'?: string[]
+        'taxonomy.family'?: string
+        'taxonomy.family[]'?: string[]
+        'taxonomy.class'?: string
+        'taxonomy.class[]'?: string[]
+        'taxonomy.vernacularName'?: string
+        connected?: boolean
+        'exists[notes]'?: boolean
+        'exists[element]'?: boolean
+        'exists[taxonomy.family]'?: boolean
+        /**
+         * @description Filter by bitwise AND operation - all specified bits must be set
+         * @example 5
+         */
+        'connected[and]'?: string
+        /**
+         * @description Filter by bitwise AND operation - any of the specified bits must be set
+         * @example 3
+         */
+        'connected[any]'?: string
+        /**
+         * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description ZooTooth identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ZooTooth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read'][]
+          }
+          'text/csv': components['schemas']['ZooTooth.csv-zoo_tooth.acl.read'][]
         }
       }
     }

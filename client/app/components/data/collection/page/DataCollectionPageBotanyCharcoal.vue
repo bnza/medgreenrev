@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/botany/charcoals'
       | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
+      | '/api/data/archaeological_sites/{parentId}/botany/charcoals'
     >
   "
 >
@@ -14,7 +15,10 @@ import DataCollectionTableBotanyCharcoal from '~/components/data/collection/tabl
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'stratigraphicUnit'>
+    | ResourceParent<'archaeologicalSite'>
+  filterPath?: GetCollectionPath
 }>()
 
 const { isAuthenticated } = useAppAuth()
@@ -26,7 +30,13 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
     :path
     :show-back-button="!Boolean(parent)"
     :acl
+    :filter-path
   >
-    <data-collection-table-botany-charcoal v-model:acl="acl" :path :parent />
+    <data-collection-table-botany-charcoal
+      v-model:acl="acl"
+      :path
+      :parent
+      :filter-path
+    />
   </data-collection-page>
 </template>

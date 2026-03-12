@@ -6,14 +6,19 @@
       GetCollectionPath,
       | '/api/data/botany/charcoals'
       | '/api/data/stratigraphic_units/{parentId}/botany/charcoals'
+      | '/api/data/archaeological_sites/{parentId}/botany/charcoals'
     >
   "
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
+import type { SearchableGetCollectionPath } from '~/utils/consts/configs/filters'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'stratigraphicUnit'>
+    | ResourceParent<'archaeologicalSite'>
+  filterPath?: GetCollectionPath
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
@@ -36,11 +41,21 @@ const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/botany/charcoals/{id}'),
 )
 
+const searchPath = computed(
+  () => (props.filterPath ?? props.path) as SearchableGetCollectionPath,
+)
+
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
+  <data-collection-table
+    :path
+    :parent-id
+    :filter-path
+    :compact="parent?.key === 'archaeologicalSite' ? false : undefined"
+    @acl="acl = { ...acl, ...$event }"
+  >
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
@@ -82,9 +97,18 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     </template>
 
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path :title="labels[1]" :parent-id />
-      <data-dialog-search :path :title="labels[1]" />
-      <data-dialog-create-botany-charchoal :path :parent @refresh="refetch()" />
+      <data-dialog-download
+        :path="filterPath ?? path"
+        :title="labels[1]"
+        :parent-id
+      />
+      <data-dialog-search :path="searchPath" :title="labels[1]" />
+      <data-dialog-create-botany-charchoal
+        v-if="parent?.key !== 'archaeologicalSite'"
+        :path
+        :parent
+        @refresh="refetch()"
+      />
       <data-dialog-delete-botany-charcoal @refresh="refetch()" />
       <data-dialog-update-botany-charcoal @refresh="refetch()" />
     </template>

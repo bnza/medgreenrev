@@ -6,6 +6,7 @@ import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 export function useGetCollectionQuery(
   path: GetCollectionPath,
   params?: Ref<OperationPathParams<typeof path, 'get'> | undefined>,
+  filterPath?: GetCollectionPath,
 ) {
   const getCollectionOperation = new GetCollectionOperation(path)
 
@@ -17,11 +18,13 @@ export function useGetCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const {
-    pagination,
-    queryObject,
-    totalItems: storeTotalItems,
-  } = storeToRefs(useCollectionQueryStore(path))
+  const { pagination, totalItems: storeTotalItems } = storeToRefs(
+    useCollectionQueryStore(path),
+  )
+
+  const { queryObject } = storeToRefs(
+    useCollectionQueryStore(filterPath ?? path),
+  )
 
   const key = computed(() =>
     RESOURCE_QUERY_KEY.byFilter({

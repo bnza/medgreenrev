@@ -6,9 +6,13 @@ import useGetCollectionTotalItemQuery from '~/composables/queries/useGetCollecti
 const props = defineProps<{
   path: Path
   parentId?: string
+  filterPath?: GetCollectionPath
+  compact?: boolean
 }>()
 
-const { headers } = storeToRefs(useCollectionTableHeadersStore(props.path))
+const { headers } = storeToRefs(
+  useCollectionTableHeadersStore(props.filterPath ?? props.path),
+)
 
 const pathParams = computed(() =>
   props.parentId ? { parentId: props.parentId } : undefined,
@@ -21,7 +25,7 @@ const {
   totalItems,
   status,
   refetch: refetchFiltered,
-} = useGetCollectionQuery(props.path, pathParams)
+} = useGetCollectionQuery(props.path, pathParams, props.filterPath)
 
 const { refetch: refetchUnfiltered } = useGetCollectionTotalItemQuery(
   props.path,
@@ -72,7 +76,7 @@ watch(
     :items-per-page="pagination.itemsPerPage"
     :items-per-page-options="[10, 25, 50, 100]"
     :loading="status === 'pending'"
-    :height="parentId ? '350px' : tableHeightPx"
+    :height="parentId && compact !== false ? '350px' : tableHeightPx"
     multi-sort
     striped="odd"
     :page="pagination.page"

@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
-import { useMapLayerExclusiveVisibilityStore } from '~/stores/useMapLayerExclusiveVisibilityStore'
+import {
+  useMapLayerExclusiveVisibilityStore,
+  GROUP_KEY_FEATURE_PATH_MAP,
+} from '~/stores/useMapLayerExclusiveVisibilityStore'
 
 describe('useMapLayerExclusiveVisibilityStore', () => {
   let store: ReturnType<typeof useMapLayerExclusiveVisibilityStore>
@@ -116,6 +119,36 @@ describe('useMapLayerExclusiveVisibilityStore', () => {
       expect(
         store.isActive('archaeologicalSite', '/api/features/botany/charcoals'),
       ).toBe(false)
+    })
+  })
+
+  describe('GROUP_KEY_FEATURE_PATH_MAP', () => {
+    it('should map archaeologicalSite to archaeological_sites feature path', () => {
+      expect(GROUP_KEY_FEATURE_PATH_MAP.archaeologicalSite).toBe(
+        '/api/features/archaeological_sites',
+      )
+    })
+
+    it('should map vocHistoryLocation to history/locations feature path', () => {
+      expect(GROUP_KEY_FEATURE_PATH_MAP.vocHistoryLocation).toBe(
+        '/api/features/history/locations',
+      )
+    })
+
+    it('should map samplingSite to sampling_sites feature path', () => {
+      expect(GROUP_KEY_FEATURE_PATH_MAP.samplingSite).toBe(
+        '/api/features/sampling_sites',
+      )
+    })
+
+    it('should be consistent with store default activeLayers', () => {
+      for (const [key, path] of Object.entries(GROUP_KEY_FEATURE_PATH_MAP)) {
+        expect(
+          store.activeLayers.get(
+            key as keyof typeof GROUP_KEY_FEATURE_PATH_MAP,
+          ),
+        ).toBe(path)
+      }
     })
   })
 })
