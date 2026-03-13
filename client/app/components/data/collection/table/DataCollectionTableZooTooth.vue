@@ -91,7 +91,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     </template>
 
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
       <data-dialog-search :path="searchPath" :title="labels[1]" />
       <data-dialog-create-zoo-tooth
         v-if="parent?.key !== 'archaeologicalSite'"

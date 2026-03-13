@@ -19,9 +19,13 @@ export const useCollectionDownload = (
   resourceName: string,
   path: GetCollectionPath,
   params: Ref<OperationPathParams<typeof path, 'get'> | undefined>,
+  filterPath?: GetCollectionPath,
 ) => {
   const { addError, addSuccess } = useMessagesStore()
-  const { totalItems, queryObject } = storeToRefs(useCollectionQueryStore(path))
+  const { totalItems } = storeToRefs(useCollectionQueryStore(path))
+  const { queryObject } = storeToRefs(
+    useCollectionQueryStore(filterPath ?? path),
+  )
 
   const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
 

@@ -52,7 +52,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
       <data-dialog-search :path="searchPath" :title="labels[1]" />
       <data-dialog-create-history-plant :path :parent @refresh="refetch()" />
       <data-dialog-delete-history-plant @refresh="refetch()" />

@@ -108,7 +108,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       </p>
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-download :path :title="labels[1]" :parent-id />
+      <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
       <data-dialog-search :path="searchPath" :title="labels[1]" />
       <lazy-data-dialog-create-pottery
         v-if="parent?.key !== 'archaeologicalSite'"

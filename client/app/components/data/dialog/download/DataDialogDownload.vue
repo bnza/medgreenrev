@@ -6,11 +6,13 @@ const props = defineProps<{
   path: P
   title: string
   parentId?: string
+  filterPath?: GetCollectionPath
 }>()
 
-const { visible, params } = storeToRefs(
-  useResourceDownloadDialogStore(props.path),
+const { visible } = storeToRefs(
+  useResourceDownloadDialogStore(props.filterPath ?? props.path),
 )
+const { params } = storeToRefs(useResourceDownloadDialogStore(props.path))
 
 watch(
   () => props.parentId,
@@ -31,6 +33,7 @@ const { totalItems, status, downloadAndFeedback } = useCollectionDownload(
   props.title,
   props.path,
   params,
+  props.filterPath,
 )
 const disabled = computed(
   () => totalItems.value === 0 || status.value === 'pending',
