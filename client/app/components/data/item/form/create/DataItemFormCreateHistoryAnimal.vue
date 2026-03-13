@@ -39,6 +39,9 @@ const { r$ } = useScopedRegle(model, {
       'Upper chronology must be less than or equal lower chronology.',
     )(() => model.value.chronologyLower),
   },
+  reference: {
+    required,
+  },
 })
 </script>
 
@@ -86,6 +89,7 @@ const { r$ } = useScopedRegle(model, {
         v-model="r$.$value.reference"
         path="/api/list/history/references"
         label="reference"
+        :error-messages="r$.$errors?.reference"
       />
     </v-col>
   </v-row>

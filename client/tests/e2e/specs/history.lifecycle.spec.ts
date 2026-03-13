@@ -8,7 +8,6 @@ import { HistoryPlantItemPage } from '~~/tests/e2e/pages/history-plant-item.page
 import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
 import { LoginPage } from '~~/tests/e2e/pages/login.page'
 import { HistoryLocationCollectionPage } from '~~/tests/e2e/pages/history-location-collection.page'
-import { HistoryLocationItemPage } from '~~/tests/e2e/pages/history-location-item.page'
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -142,6 +141,9 @@ test.describe('History item lifecycle', () => {
         ).toContainText(/required/)
         await expect(
           page.locator('.v-input:has(label:text("chronology (upper)"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("reference"))'),
         ).toContainText(/required/)
 
         // Test 3: Chronology validation - lower > upper
@@ -314,6 +316,9 @@ test.describe('History item lifecycle', () => {
         ).toContainText(/required/)
         await expect(
           page.locator('.v-input:has(label:text("chronology (upper)"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("reference"))'),
         ).toContainText(/required/)
 
         // Test 3: Chronology validation - lower > upper

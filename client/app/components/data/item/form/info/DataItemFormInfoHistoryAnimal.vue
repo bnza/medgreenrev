@@ -18,18 +18,26 @@ withDefaults(
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field :model-value="item.location?.value" label="location" />
       </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="item.location?.region?.value"
+          label="region"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="8" xs="12" class="px-2">
         <v-text-field :model-value="item.animal?.value" label="animal" />
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="6" xs="12" class="px-2">
+      <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="item.chronologyLower"
           label="chronology (lower)"
         />
       </v-col>
-      <v-col cols="6" xs="12" class="px-2">
+      <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="item.chronologyUpper"
           label="chronology (upper)"
