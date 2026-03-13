@@ -6,14 +6,19 @@
       GetCollectionPath,
       | '/api/data/zoo/teeth'
       | '/api/data/stratigraphic_units/{parentId}/zoo/teeth'
+      | '/api/data/archaeological_sites/{parentId}/zoo/teeth'
     >
   "
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
+import type { SearchableGetCollectionPath } from '~/utils/consts/configs/filters'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'stratigraphicUnit'>
+    | ResourceParent<'archaeologicalSite'>
+  filterPath?: GetCollectionPath
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
@@ -31,11 +36,20 @@ const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/zoo/teeth/{id}'),
 )
 
+const searchPath = computed(
+  () => (props.filterPath ?? props.path) as SearchableGetCollectionPath,
+)
+
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
+  <data-collection-table
+    :path
+    :parent-id
+    :filter-path
+    @acl="acl = { ...acl, ...$event }"
+  >
     <template #[`item.id`]="{ item }">
       <navigation-resource-item
         :id="item.id"
@@ -78,8 +92,13 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
 
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id />
-      <data-dialog-search :path :title="labels[1]" />
-      <data-dialog-create-zoo-tooth :path :parent @refresh="refetch()" />
+      <data-dialog-search :path="searchPath" :title="labels[1]" />
+      <data-dialog-create-zoo-tooth
+        v-if="parent?.key !== 'archaeologicalSite'"
+        :path
+        :parent
+        @refresh="refetch()"
+      />
       <data-dialog-delete-zoo-tooth @refresh="refetch()" />
       <data-dialog-update-zoo-tooth @refresh="refetch()" />
     </template>

@@ -14,6 +14,7 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 defineProps<{
   path: P
   parent?: ResourceParent<'vocHistoryLocation'>
+  filterPath?: GetCollectionPath
 }>()
 
 const { isAuthenticated } = useAppAuth()
@@ -25,7 +26,13 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
     :path
     :show-back-button="!Boolean(parent)"
     :acl
+    :filter-path
   >
-    <data-collection-table-history-animal v-model:acl="acl" :path :parent />
+    <data-collection-table-history-animal
+      v-model:acl="acl"
+      :path
+      :parent
+      :filter-path
+    />
   </data-collection-page>
 </template>

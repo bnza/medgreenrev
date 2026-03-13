@@ -17,7 +17,7 @@ defineProps<{
       visible: true,
     }"
     :marker-options="{
-      fill: { color: 'blue' },
+      fill: { color: 'orange' },
     }"
   >
     <template #popUpContent="{ item }">

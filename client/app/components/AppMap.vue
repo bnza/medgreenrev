@@ -76,6 +76,16 @@ onMounted(() => {
       <map-layer-tile-base-map-esri />
       <map-layer-tile-base-map-osm />
       <map-layer-vector-api-botany-charcoal group-key="archaeologicalSite" />
+      <map-layer-vector-api-botany-seed group-key="archaeologicalSite" />
+      <map-layer-vector-api-history-animal group-key="vocHistoryLocation" />
+      <map-layer-vector-api-history-plant group-key="vocHistoryLocation" />
+      <map-layer-vector-api-individual group-key="archaeologicalSite" />
+      <map-layer-vector-api-microstratigraphic-unit
+        group-key="archaeologicalSite"
+      />
+      <map-layer-vector-api-pottery group-key="archaeologicalSite" />
+      <map-layer-vector-api-zoo-bone group-key="archaeologicalSite" />
+      <map-layer-vector-api-zoo-tooth group-key="archaeologicalSite" />
       <map-layer-vector-api-history-location group-key="vocHistoryLocation" />
       <map-layer-vector-api-sampling-site group-key="samplingSite" />
       <map-layer-vector-api-archaeological-site

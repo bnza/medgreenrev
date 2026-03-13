@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/zoo/bones'
       | '/api/data/stratigraphic_units/{parentId}/zoo/bones'
+      | '/api/data/archaeological_sites/{parentId}/zoo/bones'
     >
   "
 >
@@ -14,7 +15,10 @@ import DataCollectionTableZooBone from '~/components/data/collection/table/DataC
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'stratigraphicUnit'>
+    | ResourceParent<'archaeologicalSite'>
+  filterPath?: GetCollectionPath
 }>()
 
 const { isAuthenticated } = useAppAuth()
@@ -26,7 +30,13 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
     :path
     :show-back-button="!Boolean(parent)"
     :acl
+    :filter-path
   >
-    <data-collection-table-zoo-bone v-model:acl="acl" :path :parent />
+    <data-collection-table-zoo-bone
+      v-model:acl="acl"
+      :path
+      :parent
+      :filter-path
+    />
   </data-collection-page>
 </template>

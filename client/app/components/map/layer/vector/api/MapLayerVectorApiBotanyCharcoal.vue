@@ -18,7 +18,7 @@ defineProps<{
     }"
     :marker-options="{
       radius: 5,
-      fill: { color: 'red' },
+      fill: { color: '#0A2472' },
     }"
   >
     <template #aggregatedPopUpContent="{ item }">

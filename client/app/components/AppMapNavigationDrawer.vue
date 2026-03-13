@@ -39,6 +39,36 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             path="/api/features/botany/charcoals"
             group-key="archaeologicalSite"
           />
+          <map-list-item-vector-api
+            title="Botany Seed"
+            path="/api/features/botany/seeds"
+            group-key="archaeologicalSite"
+          />
+          <map-list-item-vector-api
+            title="Individual"
+            path="/api/features/individuals"
+            group-key="archaeologicalSite"
+          />
+          <map-list-item-vector-api
+            title="Microstratigraphic Unit"
+            path="/api/features/microstratigraphic_units"
+            group-key="archaeologicalSite"
+          />
+          <map-list-item-vector-api
+            title="Pottery"
+            path="/api/features/potteries"
+            group-key="archaeologicalSite"
+          />
+          <map-list-item-vector-api
+            title="Zoo Bone"
+            path="/api/features/zoo/bones"
+            group-key="archaeologicalSite"
+          />
+          <map-list-item-vector-api
+            title="Zoo Tooth"
+            path="/api/features/zoo/teeth"
+            group-key="archaeologicalSite"
+          />
         </v-list-group>
         <v-list-group value="Historical Locations">
           <template #activator="{ props }">
@@ -51,6 +81,16 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
           <map-list-item-vector-api
             title="Historical Locations"
             path="/api/features/history/locations"
+            group-key="vocHistoryLocation"
+          />
+          <map-list-item-vector-api
+            title="History Animal"
+            path="/api/features/history/animals"
+            group-key="vocHistoryLocation"
+          />
+          <map-list-item-vector-api
+            title="History Plant"
+            path="/api/features/history/plants"
             group-key="vocHistoryLocation"
           />
         </v-list-group>

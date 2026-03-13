@@ -6,6 +6,7 @@
       GetCollectionPath,
       | '/api/data/individuals'
       | '/api/data/stratigraphic_units/{parentId}/individuals'
+      | '/api/data/archaeological_sites/{parentId}/individuals'
     >
   "
 >
@@ -13,7 +14,10 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'stratigraphicUnit'>
+    | ResourceParent<'archaeologicalSite'>
+  filterPath?: GetCollectionPath
 }>()
 
 const { isAuthenticated } = useAppAuth()
@@ -25,10 +29,16 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
     :path
     :show-back-button="!Boolean(parent)"
     :acl
+    :filter-path
   >
     <template #search-bar>
       <data-collection-search-text-field :path />
     </template>
-    <data-collection-table-individual v-model:acl="acl" :path :parent />
+    <data-collection-table-individual
+      v-model:acl="acl"
+      :path
+      :parent
+      :filter-path
+    />
   </data-collection-page>
 </template>

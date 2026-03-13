@@ -8,9 +8,9 @@ defineProps<{
 
 <template>
   <map-layer-vector-api-base
-    path="/api/features/archaeological_sites"
+    path="/api/features/zoo/teeth"
     :group-key="groupKey"
-    id-prefix="archaeological_sites"
+    id-prefix="zoo_teeth"
     :label-options="{
       placement: 'point',
       labelProperty: 'name',
@@ -18,11 +18,14 @@ defineProps<{
     }"
     :marker-options="{
       radius: 5,
-      fill: { color: 'blue' },
+      fill: { color: '#DBEAFE' },
     }"
   >
-    <template #popUpContent="{ item }">
-      <data-item-info-box-content-sampling-site :item />
+    <template #aggregatedPopUpContent="{ item }">
+      <data-item-info-box-content-archaeological-site
+        v-if="item"
+        :item="item as any"
+      />
     </template>
   </map-layer-vector-api-base>
 </template>

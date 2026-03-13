@@ -64,7 +64,9 @@ const numberMatched = computed(
   () => props.feature?.get('number_matched') as number | null | undefined,
 )
 
-const childSegment = props.childPath.replace('/api/features/', '')
+const childSegment = props.childPath
+  .replace('/api/features/', '')
+  .replace(/^history\//, '')
 
 const subCollectionRoute = computed(() => {
   if (!parentResourceConfig?.appPath || !id.value) return null
