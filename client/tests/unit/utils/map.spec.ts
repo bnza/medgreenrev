@@ -31,8 +31,8 @@ describe('makeTextLabelStyleFn', () => {
 
     expect(styles).toHaveLength(1)
     expect(styles[0]).toBeInstanceOf(Style)
-    expect(styles[0].getText()).toBeInstanceOf(Text)
-    expect(styles[0].getText()!.getText()).toBe('Cabrera')
+    expect(styles[0]?.getText()).toBeInstanceOf(Text)
+    expect(styles[0]?.getText()!.getText()).toBe('Cabrera')
   })
 
   it('returns two Styles when showNumberMatched is true', () => {
@@ -43,14 +43,14 @@ describe('makeTextLabelStyleFn', () => {
     expect(styles).toHaveLength(2)
 
     // First style: standard label
-    expect(styles[0].getText()!.getText()).toBe('Cabrera')
+    expect(styles[0]?.getText()!.getText()).toBe('Cabrera')
 
     // Second style: centered count
-    expect(styles[1].getText()!.getText()).toBe('8')
-    expect(styles[1].getText()!.getTextAlign()).toBe('center')
-    expect(styles[1].getText()!.getTextBaseline()).toBe('middle')
-    expect(styles[1].getText()!.getOffsetX()).toBe(0)
-    expect(styles[1].getText()!.getOffsetY()).toBe(0)
+    expect(styles[1]?.getText()!.getText()).toBe('8')
+    expect(styles[1]?.getText()!.getTextAlign()).toBe('center')
+    expect(styles[1]?.getText()!.getTextBaseline()).toBe('middle')
+    expect(styles[1]?.getText()!.getOffsetX()).toBe(0)
+    expect(styles[1]?.getText()!.getOffsetY()).toBe(0)
   })
 
   it('returns empty array when visible is false', () => {
@@ -89,8 +89,8 @@ describe('decorateStyle', () => {
 
     // Should have: circle + name label + count label
     expect(result).toHaveLength(3)
-    expect(result[0].getImage()).toBeInstanceOf(CircleStyle)
-    expect(result[1].getText()!.getText()).toBe('Cabrera')
-    expect(result[2].getText()!.getText()).toBe('8')
+    expect(result[0]?.getImage()).toBeInstanceOf(CircleStyle)
+    expect(result[1]?.getText()!.getText()).toBe('Cabrera')
+    expect(result[2]?.getText()!.getText()).toBe('8')
   })
 })
