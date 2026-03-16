@@ -70,11 +70,11 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             group-key="archaeologicalSite"
           />
         </v-list-group>
-        <v-list-group value="Historical Locations">
+        <v-list-group value="Written Sources">
           <template #activator="{ props }">
             <v-list-item
               v-bind="props"
-              title="Historical Locations"
+              title="Written Sources"
               data-testid="app-map-nav-drawer-li-historical-locations"
             />
           </template>
@@ -84,12 +84,12 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             group-key="vocHistoryLocation"
           />
           <map-list-item-vector-api
-            title="History Animal"
+            title="Animals"
             path="/api/features/history/animals"
             group-key="vocHistoryLocation"
           />
           <map-list-item-vector-api
-            title="History Plant"
+            title="Plants"
             path="/api/features/history/plants"
             group-key="vocHistoryLocation"
           />

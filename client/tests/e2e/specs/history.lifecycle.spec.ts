@@ -36,7 +36,10 @@ test.describe('History item lifecycle', () => {
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
         await collectionPom.dataDialogCreate.form.getByLabel('language').click()
-        await page.getByRole('option', { name: /^arab/ }).first().click() // Select arab
+        await page
+          .getByRole('option', { name: /^arabic/ })
+          .first()
+          .click() // Select arabic
 
         await collectionPom.dataDialogCreate.form.getByLabel('animal').click()
         await page.getByRole('option', { name: /^asno/ }).first().click() // Select asno
@@ -67,7 +70,7 @@ test.describe('History item lifecycle', () => {
 
         // Verify the created item details
         await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
-        await itemPom.expectTextFieldToHaveValue('language', 'arab')
+        await itemPom.expectTextFieldToHaveValue('language', 'arabic')
         await itemPom.expectTextFieldToHaveValue('animal', 'asno')
         await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
         await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
@@ -172,7 +175,10 @@ test.describe('History item lifecycle', () => {
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
         await collectionPom.dataDialogCreate.form.getByLabel('language').click()
-        await page.getByRole('option', { name: /^arab/ }).first().click() // Select arab
+        await page
+          .getByRole('option', { name: /^arabic/ })
+          .first()
+          .click() // Select arabic
 
         await collectionPom.dataDialogCreate.form.getByLabel('animal').click()
         await page.getByRole('option', { name: /^asno/ }).first().click() // Select asno
