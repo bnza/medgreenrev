@@ -57,6 +57,7 @@ export const API_RESOURCE_MAP = {
   listVocZooTaxonomyFamily: '/api/list/vocabulary/zoo/taxonomy_families',
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',
+  mediaObjectHistoryLocation: '/api/data/media_object_history_locations',
   mediaObjectPottery: '/api/data/media_object_potteries',
   mediaObjectSamplingStratigraphicUnit:
     '/api/data/media_object_sampling_stratigraphic_units',

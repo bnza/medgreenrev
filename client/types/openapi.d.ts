@@ -3342,6 +3342,74 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/history/locations/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectHistoryLocation resources.
+     * @description Retrieves the collection of MediaObjectHistoryLocation resources.
+     */
+    get: operations['api_datahistorylocations_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_history_locations': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectHistoryLocation resources.
+     * @description Retrieves the collection of MediaObjectHistoryLocation resources.
+     */
+    get: operations['api_datamedia_object_history_locations_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectHistoryLocation resource.
+     * @description Creates a MediaObjectHistoryLocation resource.
+     */
+    post: operations['api_datamedia_object_history_locations_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_history_locations/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectHistoryLocation resource.
+     * @description Retrieves a MediaObjectHistoryLocation resource.
+     */
+    get: operations['api_datamedia_object_history_locations_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectHistoryLocation resource.
+     * @description Removes the MediaObjectHistoryLocation resource.
+     */
+    delete: operations['api_datamedia_object_history_locations_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/media_object_potteries': {
     parameters: {
       query?: never
@@ -10649,6 +10717,38 @@ export interface components {
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
     })
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      uploadedBy?:
+        | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read']
+        | null
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      description?: string | null
+      /** @default true */
+      public: boolean
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: (string | null)[] | null
+    })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10770,6 +10870,37 @@ export interface components {
       readonly id?: number | string
       item?: components['schemas']['Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
+      description?: string | null
+    })
+    'MediaObjectHistoryLocation-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectHistoryLocation.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read']
       description?: string | null
     })
     'MediaObjectPottery-media_object_join.create': {
@@ -13112,6 +13243,16 @@ export interface components {
       readonly userIdentifier?: string
     })
     'User.jsonld-media_object.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -29117,6 +29258,187 @@ export interface operations {
     requestBody?: never
     responses: {
       /** @description MediaObjectAnalysis resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistorylocations_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectHistoryLocation identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectHistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectHistoryLocation.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_history_locations_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectHistoryLocation collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectHistoryLocation.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_history_locations_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectHistoryLocation resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectHistoryLocation-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectHistoryLocation resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectHistoryLocation.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datamedia_object_history_locations_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectHistoryLocation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectHistoryLocation resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectHistoryLocation.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_history_locations_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectHistoryLocation identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectHistoryLocation resource deleted */
       204: {
         headers: {
           [name: string]: unknown
