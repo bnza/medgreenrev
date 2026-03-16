@@ -35,6 +35,9 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form.getByLabel('location').click()
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
+        await collectionPom.dataDialogCreate.form.getByLabel('language').click()
+        await page.getByRole('option', { name: /^arab/ }).first().click() // Select arab
+
         await collectionPom.dataDialogCreate.form.getByLabel('animal').click()
         await page.getByRole('option', { name: /^asno/ }).first().click() // Select asno
 
@@ -64,6 +67,7 @@ test.describe('History item lifecycle', () => {
 
         // Verify the created item details
         await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
+        await itemPom.expectTextFieldToHaveValue('language', 'arab')
         await itemPom.expectTextFieldToHaveValue('animal', 'asno')
         await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
         await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
@@ -134,6 +138,9 @@ test.describe('History item lifecycle', () => {
           page.locator('.v-input:has(label:text("location"))'),
         ).toContainText(/required/)
         await expect(
+          page.locator('.v-input:has(label:text("language"))'),
+        ).toContainText(/required/)
+        await expect(
           page.locator('.v-input:has(label:text("animal"))'),
         ).toContainText(/required/)
         await expect(
@@ -163,6 +170,9 @@ test.describe('History item lifecycle', () => {
         // Test 3: Valid form submission after fixing validation errors
         await collectionPom.dataDialogCreate.form.getByLabel('location').click()
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
+
+        await collectionPom.dataDialogCreate.form.getByLabel('language').click()
+        await page.getByRole('option', { name: /^arab/ }).first().click() // Select arab
 
         await collectionPom.dataDialogCreate.form.getByLabel('animal').click()
         await page.getByRole('option', { name: /^asno/ }).first().click() // Select asno
@@ -212,6 +222,9 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form.getByLabel('location').click()
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
+        await collectionPom.dataDialogCreate.form.getByLabel('language').click()
+        await page.getByRole('option', { name: /^lat/ }).first().click() // Select latin
+
         await collectionPom.dataDialogCreate.form.getByLabel('plant').click()
         await page.getByRole('option', { name: /^albu/ }).first().click() // Select albudeca
 
@@ -239,6 +252,7 @@ test.describe('History item lifecycle', () => {
 
         // Verify the created item details
         await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
+        await itemPom.expectTextFieldToHaveValue('language', 'latin')
         await itemPom.expectTextFieldToHaveValue('plant', 'albudeca')
         await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
         await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
@@ -309,6 +323,9 @@ test.describe('History item lifecycle', () => {
           page.locator('.v-input:has(label:text("location"))'),
         ).toContainText(/required/)
         await expect(
+          page.locator('.v-input:has(label:text("language"))'),
+        ).toContainText(/required/)
+        await expect(
           page.locator('.v-input:has(label:text("plant"))'),
         ).toContainText(/required/)
         await expect(
@@ -338,6 +355,9 @@ test.describe('History item lifecycle', () => {
         // Test 3: Valid form submission after fixing validation errors
         await collectionPom.dataDialogCreate.form.getByLabel('location').click()
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
+
+        await collectionPom.dataDialogCreate.form.getByLabel('language').click()
+        await page.getByRole('option', { name: /^lat/ }).first().click() // Select latin
 
         await collectionPom.dataDialogCreate.form.getByLabel('plant').click()
         await page.getByRole('option', { name: /^albu/ }).first().click() // Select albudeca

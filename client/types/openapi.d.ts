@@ -6030,6 +6030,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/history/languages': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryLanguage resources.
+     * @description Retrieves the collection of VocHistoryLanguage resources.
+     */
+    get: operations['api_vocabularyhistorylanguages_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/languages/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryLanguage resource.
+     * @description Retrieves a VocHistoryLanguage resource.
+     */
+    get: operations['api_vocabularyhistorylanguages_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/vocabulary/history/locations': {
     parameters: {
       query?: never
@@ -10205,6 +10245,11 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
+      language: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       animal: string
       /**
        * Format: iri-reference
@@ -10217,6 +10262,11 @@ export interface components {
       notes?: string | null
     }
     'HistoryAnimal-history_animal.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      language?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10270,6 +10320,7 @@ export interface components {
     }
     'HistoryAnimal.csv-history_animal.acl.read': {
       readonly id?: number | string
+      language: components['schemas']['VocHistoryLanguage.csv-history_animal.acl.read']
       animal?: components['schemas']['VocHistoryAnimal.csv-history_animal.acl.read']
       location?: components['schemas']['VocHistoryLocation.csv-history_animal.acl.read']
       chronologyLower?: number
@@ -10298,6 +10349,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
+      language: components['schemas']['VocHistoryLanguage.jsonld-history_animal.acl.read']
       animal?: components['schemas']['VocHistoryAnimal.jsonld-history_animal.acl.read']
       location?: components['schemas']['VocHistoryLocation.jsonld-history_animal.acl.read']
       chronologyLower?: number
@@ -10316,6 +10368,11 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
+      language: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       plant: string
       /**
        * Format: iri-reference
@@ -10328,6 +10385,11 @@ export interface components {
       notes?: string | null
     }
     'HistoryPlant-history_plant.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      language?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10381,6 +10443,7 @@ export interface components {
     }
     'HistoryPlant.csv-history_plant.acl.read': {
       readonly id?: number | string
+      language: components['schemas']['VocHistoryLanguage.csv-history_plant.acl.read']
       plant?: components['schemas']['VocHistoryPlant.csv-history_plant.acl.read']
       location?: components['schemas']['VocHistoryLocation.csv-history_plant.acl.read']
       chronologyLower?: number
@@ -10409,6 +10472,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
+      language: components['schemas']['VocHistoryLanguage.jsonld-history_plant.acl.read']
       plant?: components['schemas']['VocHistoryPlant.jsonld-history_plant.acl.read']
       location?: components['schemas']['VocHistoryLocation.jsonld-history_plant.acl.read']
       chronologyLower?: number
@@ -13750,6 +13814,48 @@ export interface components {
       readonly id?: number
       value: string
     }
+    'VocHistoryLanguage.csv-history_animal.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocHistoryLanguage.csv-history_plant.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocHistoryLanguage.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      value: string
+    }
+    'VocHistoryLanguage.jsonld-history_animal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
+    'VocHistoryLanguage.jsonld-history_plant.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
     'VocHistoryLocation-feature_collection.json.read': {
       readonly id?: number | string
     }
@@ -26179,6 +26285,7 @@ export interface operations {
         itemsPerPage?: number
         'order[animal.value]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
@@ -26192,6 +26299,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         'createdBy.email'?: string
         'createdBy.email[]'?: string[]
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         'location.region'?: string
@@ -26448,6 +26557,7 @@ export interface operations {
         itemsPerPage?: number
         'order[animal.value]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
@@ -26461,6 +26571,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         'createdBy.email'?: string
         'createdBy.email[]'?: string[]
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         'location.region'?: string
@@ -26522,6 +26634,7 @@ export interface operations {
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
         'order[animal.value]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
@@ -26535,6 +26648,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         'createdBy.email'?: string
         'createdBy.email[]'?: string[]
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         'location.region'?: string
@@ -26634,6 +26749,7 @@ export interface operations {
         bbox?: string
         'order[animal.value]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
@@ -26647,6 +26763,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         'createdBy.email'?: string
         'createdBy.email[]'?: string[]
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         'location.region'?: string
@@ -26737,6 +26855,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
@@ -26750,6 +26869,8 @@ export interface operations {
         'plant.taxonomy.class'?: string
         'plant.taxonomy.class[]'?: string[]
         'plant.taxonomy.vernacularName'?: string
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         chronologyLower?: number
@@ -26819,6 +26940,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
@@ -26832,6 +26954,8 @@ export interface operations {
         'plant.taxonomy.class'?: string
         'plant.taxonomy.class[]'?: string[]
         'plant.taxonomy.vernacularName'?: string
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         chronologyLower?: number
@@ -27094,6 +27218,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
@@ -27107,6 +27232,8 @@ export interface operations {
         'plant.taxonomy.class'?: string
         'plant.taxonomy.class[]'?: string[]
         'plant.taxonomy.vernacularName'?: string
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         chronologyLower?: number
@@ -27212,6 +27339,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
@@ -27225,6 +27353,8 @@ export interface operations {
         'plant.taxonomy.class'?: string
         'plant.taxonomy.class[]'?: string[]
         'plant.taxonomy.vernacularName'?: string
+        language?: string
+        'language[]'?: string[]
         location?: string
         'location[]'?: string[]
         chronologyLower?: number
@@ -37585,6 +37715,64 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistorylanguages_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLanguage collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryLanguage.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistorylanguages_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryLanguage identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryLanguage resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryLanguage.jsonld']
         }
       }
       /** @description Not found */

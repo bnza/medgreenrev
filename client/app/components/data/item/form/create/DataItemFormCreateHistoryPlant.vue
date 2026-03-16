@@ -18,6 +18,9 @@ const { r$ } = useScopedRegle(model, {
   plant: {
     required,
   },
+  language: {
+    required,
+  },
   location: {
     required,
   },
@@ -57,6 +60,19 @@ const { r$ } = useScopedRegle(model, {
         :disabled="parent?.key === 'vocHistoryLocation'"
       />
     </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="8" xs="12" class="px-2">
+      <data-autocomplete
+        v-model="r$.$value.language"
+        path="/api/vocabulary/history/languages"
+        item-title="value"
+        label="language"
+        :error-messages="r$.$errors?.language"
+      />
+    </v-col>
+  </v-row>
+  <v-row>
     <v-col cols="8" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.plant"

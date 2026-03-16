@@ -239,6 +239,14 @@ const VocabularyHistoryAnimal: StaticFiltersDefinitionObject = {
   path: '/api/vocabulary/history/animals',
 }
 
+const VocabularyHistoryLanguage: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectArray,
+  path: '/api/vocabulary/history/languages',
+}
+
 const VocabularyHistoryPlant: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -440,6 +448,7 @@ export const API_FILTERS = {
   VocabularyBotanyTaxonomy,
   VocabularyCulturalContext,
   VocabularyHistoryAnimal,
+  VocabularyHistoryLanguage,
   VocabularyHistoryPlant,
   VocabularyMediaObjectType,
   VocabularyPotteryDecoration,

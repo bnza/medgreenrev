@@ -82,6 +82,7 @@ export const API_RESOURCE_MAP = {
   vocBotanyTaxonomy: '/api/vocabulary/botany/taxonomies',
   vocCulturalContext: '/api/vocabulary/cultural_contexts',
   vocHistoryAnimal: '/api/vocabulary/history/animals',
+  vocHistoryLanguage: '/api/vocabulary/history/languages',
   vocHistoryLocation: '/api/vocabulary/history/locations',
   vocHistoryPlant: '/api/vocabulary/history/plants',
   vocIndividualAge: '/api/vocabulary/individual/age',

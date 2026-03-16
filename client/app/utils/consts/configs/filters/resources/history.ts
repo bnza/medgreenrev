@@ -13,6 +13,7 @@ const {
   SearchExact,
   SearchPartial,
   VocabularyHistoryAnimal,
+  VocabularyHistoryLanguage,
   VocabularyHistoryPlant,
   VocabularyRegion,
 } = API_FILTERS
@@ -38,11 +39,6 @@ const historyLocation: ResourceStaticFiltersDefinitionObject = {
 
 const historyEntityStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitionObject =
   {
-    reference: {
-      filters: {
-        SearchPartial,
-      },
-    },
     chronologyLower: {
       filters: {
         SearchExact,
@@ -57,10 +53,20 @@ const historyEntityStaticFiltersDefinitionObject: ResourceStaticFiltersDefinitio
       },
       propertyLabel: 'chronology (upper)',
     },
+    language: {
+      filters: {
+        VocabularyHistoryLanguage,
+      },
+    },
     notes: {
       filters: {
         SearchPartial,
         Exists,
+      },
+    },
+    reference: {
+      filters: {
+        SearchPartial,
       },
     },
   }

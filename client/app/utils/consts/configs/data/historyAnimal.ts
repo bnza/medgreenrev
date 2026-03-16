@@ -13,6 +13,12 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
+      key: 'language.value',
+      value: 'language.value',
+      title: 'language',
+      minWidth: '200',
+    },
+    {
       key: 'animal.value',
       value: 'animal.value',
       title: 'animal',

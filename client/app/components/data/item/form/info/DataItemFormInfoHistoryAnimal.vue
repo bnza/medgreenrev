@@ -27,6 +27,11 @@ withDefaults(
     </v-row>
     <v-row>
       <v-col cols="8" xs="12" class="px-2">
+        <v-text-field :model-value="item.language?.value" label="language" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="8" xs="12" class="px-2">
         <v-text-field :model-value="item.animal?.value" label="animal" />
       </v-col>
     </v-row>
