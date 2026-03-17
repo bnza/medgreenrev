@@ -175,7 +175,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
     status.value = 'pending'
     try {
       specInternal.value = await $fetch<OpenAPIV3_1.Document>(
-        '/docs.jsonopenapi',
+        '/docs.jsonopenapi.json',
         {
           baseURL: useNuxtApp().$config.public.apiBaseUrl,
         },
