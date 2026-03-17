@@ -18,11 +18,11 @@ export function useGetCollectionQuery(
 
   const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
 
-  const { pagination, totalItems: storeTotalItems } = storeToRefs(
+  const { totalItems: storeTotalItems } = storeToRefs(
     useCollectionQueryStore(path),
   )
 
-  const { queryObject } = storeToRefs(
+  const { pagination, queryObject } = storeToRefs(
     useCollectionQueryStore(filterPath ?? path),
   )
 
