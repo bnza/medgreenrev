@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { Interactions, Styles } from 'vue3-openlayers'
-import { singleClick as clickSelectCondition } from 'ol/events/condition'
+import { click as clickCondition } from 'ol/events/condition'
 import type { SelectEvent } from 'ol/interaction/Select'
 import type { GetFeatureCollectionPath } from '~~/types'
 import type Feature from 'ol/Feature.js'
 import type { Geometry } from 'ol/geom'
-
 import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
 
 const { fill, stroke, offsetX, offsetY, textBaseline, textAlign, overflow } =
@@ -47,12 +46,16 @@ const filter = (feature: Feature<Geometry>) => {
   const id = feature.getId()
   return typeof id === 'string' && filterRegex.test(id)
 }
+
+const hitTolerance =
+  typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0 ? 10 : 0
 </script>
 
 <template>
   <Interactions.OlInteractionSelect
     ref="interactionSelectRef"
-    :condition="clickSelectCondition"
+    :condition="clickCondition"
+    :hit-tolerance
     :filter
     @select="onSelect"
   >
