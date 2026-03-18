@@ -116,7 +116,6 @@ try {
   }
 
   const aggregatedFeaturePaths = featurePaths.filter(isAggregatedPath)
-  console.log('Aggregated paths found:', aggregatedFeaturePaths)
 
   // Set of known API resource paths from the index
   const apiResourcePaths = new Set(

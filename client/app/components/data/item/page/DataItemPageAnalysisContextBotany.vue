@@ -15,10 +15,26 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-analysis-context-botany :item />
       <v-tabs v-model="tab" background-color="transparent">
+        <v-tab value="analysis">analysis</v-tab>
+        <v-tab value="context">context</v-tab>
         <v-tab value="taxonomies">taxonomies</v-tab>
         <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
+        <v-tabs-window-item value="analysis" data-testid="tab-item-analysis">
+          <data-item-page-analysis
+            v-if="item.analysis"
+            :iri="item.analysis['@id']"
+          />
+          <loading-component v-else />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="context" data-testid="tab-item-context">
+          <data-item-page-context
+            v-if="item.subject"
+            :iri="item.subject['@id']"
+          />
+          <loading-component v-else />
+        </v-tabs-window-item>
         <v-tabs-window-item value="taxonomies" data-testid="tab-taxonomies">
           <data-taxonomy-botany-table :items="item.taxonomies" />
         </v-tabs-window-item>

@@ -15,6 +15,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-analysis-zoo-tooth :item />
       <v-tabs v-model="tab" background-color="transparent">
+        <v-tab value="analysis">analysis</v-tab>
         <v-tab value="subject">subject</v-tab>
         <v-tab
           v-if="item.analysis?.type?.group === 'absolute dating'"
@@ -24,7 +25,14 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
         <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="subject" data-testid="tab-document">
+        <v-tabs-window-item value="analysis" data-testid="tab-item-analysis">
+          <data-item-page-analysis
+            v-if="item.analysis"
+            :iri="item.analysis['@id']"
+          />
+          <loading-component v-else />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="subject" data-testid="tab-item-subject">
           <data-item-page-zoo-tooth
             v-if="item.subject"
             :iri="item.subject['@id']"

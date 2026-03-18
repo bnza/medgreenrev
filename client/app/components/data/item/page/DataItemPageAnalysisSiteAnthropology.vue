@@ -16,11 +16,19 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-analysis-site-anthropology :item />
       <v-tabs v-model="tab" background-color="transparent">
+        <v-tab value="analysis">analysis</v-tab>
         <v-tab value="subject">site</v-tab>
         <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="subject" data-testid="tab-item">
+        <v-tabs-window-item value="analysis" data-testid="tab-item-analysis">
+          <data-item-page-analysis
+            v-if="item.analysis"
+            :iri="item.analysis['@id']"
+          />
+          <loading-component v-else />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="subject" data-testid="tab-item-subject">
           <data-item-page-archaeological-site
             v-if="item.subject"
             :iri="item.subject['@id']"

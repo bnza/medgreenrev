@@ -8226,7 +8226,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8248,7 +8248,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisBotanySeed-analysis_join.create': {
@@ -8279,7 +8279,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8301,7 +8301,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisContextBotany-analysis_join.create': {
@@ -8326,7 +8326,7 @@ export interface components {
       readonly id?: number | string
       subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8346,7 +8346,7 @@ export interface components {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
@@ -8411,7 +8411,7 @@ export interface components {
       readonly id?: number | string
       subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8431,7 +8431,7 @@ export interface components {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
@@ -8502,7 +8502,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8524,7 +8524,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
     })
     'AnalysisPottery-analysis_join.create': {
@@ -8555,7 +8555,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8577,7 +8577,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
     })
     'AnalysisSampleMicrostratigraphy-analysis_join.create': {
@@ -8599,7 +8599,7 @@ export interface components {
     'AnalysisSampleMicrostratigraphy.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       subject?: components['schemas']['Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
-      analysis?: components['schemas']['Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8611,7 +8611,7 @@ export interface components {
     'AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8630,7 +8630,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
-      analysis?: components['schemas']['Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
@@ -8643,7 +8643,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisSiteAnthropology-analysis_join.create': {
@@ -8665,7 +8665,7 @@ export interface components {
     'AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       readonly id?: number | string
       subject?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8684,7 +8684,7 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     })
     'AnalysisSubject.jsonld-analysis_subject.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -8726,7 +8726,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8748,7 +8748,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
     })
     'AnalysisZooTooth-analysis_join.create': {
@@ -8779,7 +8779,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8801,7 +8801,7 @@ export interface components {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
         | null
-      analysis?: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
     })
     'ArchaeologicalSite-archaeological_site.create': {
