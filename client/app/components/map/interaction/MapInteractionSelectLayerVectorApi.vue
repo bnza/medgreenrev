@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Interactions, Styles } from 'vue3-openlayers'
-import { click as clickSelectCondition } from 'ol/events/condition'
+import { singleClick as clickSelectCondition } from 'ol/events/condition'
 import type { SelectEvent } from 'ol/interaction/Select'
 import type { GetFeatureCollectionPath } from '~~/types'
 import type Feature from 'ol/Feature.js'
