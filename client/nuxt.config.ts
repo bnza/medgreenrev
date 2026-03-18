@@ -1,4 +1,8 @@
 export default defineNuxtConfig({
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
   app: {
     baseURL: '/app',
     head: {
@@ -87,7 +91,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBaseUrl: 'http://localhost',
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost',
       clientMaxBodySize: '10M',
     },
   },
