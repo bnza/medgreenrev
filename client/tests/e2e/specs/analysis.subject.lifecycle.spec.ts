@@ -76,6 +76,7 @@ test.describe('Analysis subject join', () => {
         )
         await itemPom.page
           .getByRole('tab', { name: 'absolute dating', exact: true })
+          .first()
           .click()
         await itemPom.expectTextFieldToHaveValue('dating (lower)', '700')
         await itemPom.expectTextFieldToHaveValue('dating (upper)', '750')

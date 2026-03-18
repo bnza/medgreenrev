@@ -15,8 +15,14 @@ export abstract class BaseItemPage extends BaseDataPage {
 
   public readonly dataDialogDelete = new DataDialogDeleteComponent(this.page)
 
-  async expectTextFieldToHaveValue(fieldName: string, expectedValue: string) {
-    const textField = this.page.getByRole('textbox', { name: fieldName })
+  async expectTextFieldToHaveValue(
+    fieldName: string,
+    expectedValue: string,
+    nth: number = 0,
+  ) {
+    const textField = this.page
+      .getByRole('textbox', { name: fieldName })
+      .nth(nth)
     await expect(textField).toHaveValue(expectedValue)
   }
 
