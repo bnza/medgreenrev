@@ -103,12 +103,7 @@ export function isHydraConstraintViolation(
 export function isFetchError(
   error: unknown,
 ): error is { data: unknown; status: number } & Error {
-  return (
-    error instanceof Error &&
-    error.constructor.name === 'FetchError' &&
-    'data' in error &&
-    'status' in error
-  )
+  return error instanceof Error && 'data' in error && 'status' in error
 }
 
 export const isValid2DCoordinate = (value: unknown): value is Coordinate =>
