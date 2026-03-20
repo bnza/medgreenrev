@@ -105,6 +105,14 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :value="ApiSpecialistRole.MaterialAnalyst"
       />
     </template>
+    <template #[`item.microstratigraphist`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.Microstratigraphist"
+      />
+    </template>
     <template #[`item.paleoclimatologist`]="{ item }">
       <v-checkbox-btn
         class="centered-item"

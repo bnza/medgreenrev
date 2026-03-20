@@ -73,6 +73,13 @@ const config: Readonly<ResourceConfig> = {
       align: 'center',
     },
     {
+      key: 'microstratigraphist',
+      title: 'microstratigraphist',
+      sortable: false,
+      width: 70,
+      align: 'center',
+    },
+    {
       key: 'paleoclimatologist',
       title: 'paleoclimatologist',
       sortable: false,

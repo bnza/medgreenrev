@@ -72,3 +72,14 @@ setup('authenticate as material analyst user', async ({ page }) => {
   )
   await page.context().storageState({ path: matFile })
 })
+
+const mstFile = 'playwright/.auth/mst.json'
+setup('authenticate as microstratigraphist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.MST)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: mstFile })
+})

@@ -14,6 +14,7 @@ export enum ApiSpecialistRole {
   GeoArchaeologist = 'ROLE_GEO_ARCHAEOLOGIST',
   Historian = 'ROLE_HISTORIAN',
   MaterialAnalyst = 'ROLE_MATERIAL_ANALYST',
+  Microstratigraphist = 'ROLE_MICROSTRATIGRAPHIST',
   PaleoClimatologist = 'ROLE_PALEOCLIMATOLOGIST',
   ZooArchaeologist = 'ROLE_ZOO_ARCHAEOLOGIST',
 }
@@ -60,6 +61,7 @@ export const ROLE_LABELS = {
   [ApiSpecialistRole.GeoArchaeologist]: 'GeoArchaeologist',
   [ApiSpecialistRole.Historian]: 'Historian',
   [ApiSpecialistRole.MaterialAnalyst]: 'MaterialAnalyst',
+  [ApiSpecialistRole.Microstratigraphist]: 'Microstratigraphist',
   [ApiSpecialistRole.PaleoClimatologist]: 'PaleoClimatologist',
   [ApiSpecialistRole.ZooArchaeologist]: 'ZooArchaeologist',
 } as const satisfies Record<ApiRole | ApiSpecialistRole, string>

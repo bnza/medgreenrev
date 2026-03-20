@@ -47,7 +47,7 @@ const role = computed({
     </v-col>
   </v-row>
   <v-row>
-    <v-col data-cy="roles-input-col" cols="4">
+    <v-col data-cy="roles-input-col" cols="3" class="px-2">
       <v-radio-group
         v-model="role"
         :error-messages="flattenRegleErrors(r$.$errors?.roles)"
@@ -57,7 +57,7 @@ const role = computed({
         <v-radio label="user" color="success" :value="ApiRole.User" />
       </v-radio-group>
     </v-col>
-    <v-col cols="4">
+    <v-col cols="3" class="px-2">
       <v-checkbox
         v-model="r$.$value.roles"
         label="anthropologist"
@@ -79,6 +79,8 @@ const role = computed({
         :value="ApiSpecialistRole.CeramicSpecialist"
         density="compact"
       />
+    </v-col>
+    <v-col cols="3" class="px-2">
       <v-checkbox
         v-model="r$.$value.roles"
         label="geo archaeologist"
@@ -86,8 +88,6 @@ const role = computed({
         :value="ApiSpecialistRole.GeoArchaeologist"
         density="compact"
       />
-    </v-col>
-    <v-col cols="4">
       <v-checkbox
         v-model="r$.$value.roles"
         label="historian"
@@ -100,6 +100,15 @@ const role = computed({
         label="material analyst"
         color="primary"
         :value="ApiSpecialistRole.MaterialAnalyst"
+        density="compact"
+      />
+    </v-col>
+    <v-col cols="3" class="px-2">
+      <v-checkbox
+        v-model="r$.$value.roles"
+        label="microstratigraphist"
+        color="primary"
+        :value="ApiSpecialistRole.Microstratigraphist"
         density="compact"
       />
       <v-checkbox

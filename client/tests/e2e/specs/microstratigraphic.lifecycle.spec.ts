@@ -9,8 +9,8 @@ test.beforeEach(async () => {
 })
 
 test.describe('Microstratigraphic unit lifecycle', () => {
-  test.describe('Geo user', () => {
-    test.use({ storageState: 'playwright/.auth/geo.json' })
+  test.describe('Miscrostratigraphist user', () => {
+    test.use({ storageState: 'playwright/.auth/mst.json' })
 
     test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new MicrostratigraphicUnitCollectionPage(page)

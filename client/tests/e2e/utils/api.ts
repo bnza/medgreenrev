@@ -8,6 +8,7 @@ export const credentials = {
   GEO: { email: 'user_geo@example.com', password: '0003' },
   HIS: { email: 'user_his@example.com', password: '0008' },
   MAT: { email: 'user_mat@example.com', password: '0010' },
+  MST: { email: 'user_mst@example.com', password: '0011' },
 }
 
 export function loadFixtures() {

@@ -25,14 +25,14 @@ const role = computed(() => reduceAppRoles(props.item.roles))
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="4" class="px-2" data-testid="roles-input-col">
+      <v-col cols="3" class="px-2" data-testid="roles-input-col">
         <v-radio-group :model-value="role">
           <v-radio label="administrator" color="error" :value="ApiRole.Admin" />
           <v-radio label="editor" color="warning" :value="ApiRole.Editor" />
           <v-radio label="user" color="success" :value="ApiRole.User" />
         </v-radio-group>
       </v-col>
-      <v-col cols="4" class="px-2">
+      <v-col cols="3" class="px-2">
         <v-checkbox
           :model-value="item.roles"
           label="anthropologist"
@@ -54,6 +54,8 @@ const role = computed(() => reduceAppRoles(props.item.roles))
           :value="ApiSpecialistRole.CeramicSpecialist"
           density="compact"
         />
+      </v-col>
+      <v-col cols="3" class="px-2">
         <v-checkbox
           :model-value="item.roles"
           label="geo archeologist"
@@ -61,8 +63,6 @@ const role = computed(() => reduceAppRoles(props.item.roles))
           :value="ApiSpecialistRole.GeoArchaeologist"
           density="compact"
         />
-      </v-col>
-      <v-col cols="4" class="px-2">
         <v-checkbox
           :model-value="item.roles"
           label="historian"
@@ -75,6 +75,15 @@ const role = computed(() => reduceAppRoles(props.item.roles))
           label="material analyst"
           color="primary"
           :value="ApiSpecialistRole.MaterialAnalyst"
+          density="compact"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+          :model-value="item.roles"
+          label="microstratigraphist"
+          color="primary"
+          :value="ApiSpecialistRole.Microstratigraphist"
           density="compact"
         />
         <v-checkbox
