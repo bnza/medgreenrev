@@ -113,7 +113,7 @@ const CREATION_RULES: {
       () =>
         ({
           email: { required, email },
-          roles: { required, minLength: minLength(1) },
+          roles: { required, minLength: minLength(1), $each: {} },
         }) satisfies RegleComputedRules<
           Partial<PostCollectionRequestMap['/api/admin/users']>
         >,

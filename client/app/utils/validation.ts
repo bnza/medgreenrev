@@ -98,7 +98,7 @@ export const lessThan = (
 
 export const asyncConditionalRule = (
   condition: Ref<boolean>,
-  rule: RegleRuleDefinition<string, [], true, boolean>,
+  rule: RegleRuleDefinition<string, string, [], true>,
 ) =>
   createRule({
     validator: async (value: Maybe<string>) => {

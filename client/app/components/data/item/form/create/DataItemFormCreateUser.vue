@@ -11,7 +11,7 @@ const { r$ } = useScopedRegle(
   model,
   computed(() => ({
     email: { required, email },
-    roles: { required, minLength: minLength(1) },
+    roles: { required, minLength: minLength(1), $each: {} },
   })),
 )
 

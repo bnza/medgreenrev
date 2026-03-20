@@ -103,4 +103,8 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
+  experimental: {
+    // Payload extraction is not needed in SPA mode (no pre-rendered pages with embedded payloads)
+    payloadExtraction: false,
+  },
 })

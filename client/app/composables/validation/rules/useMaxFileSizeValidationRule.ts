@@ -8,7 +8,12 @@ export const useMaxFileSizeValidationRule = () => {
     type: 'maxFileSize',
     validator: (value: Maybe<File>, maxSize: number) => {
       if (!value) return true
-      return value.size <= maxSize
+      const valid = value.size <= maxSize
+      if (valid) return true
+      return {
+        $valid: false,
+        fileSize: value.size,
+      }
     },
     message: (context) =>
       `File size must not exceed ${configClientMaxBodySize}: ${formatBitSize(context.$value?.size)} given`,
