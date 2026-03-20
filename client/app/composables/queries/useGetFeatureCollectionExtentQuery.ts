@@ -45,10 +45,12 @@ export function useGetFeatureCollectionExtentQuery(
       }),
   }))
 
-  return useQuery(featureQuery, () => ({
-    queryObject: filterQueryObject.value,
-    enabled: enabled.value,
-  }))
+  return useQuery(() =>
+    featureQuery({
+      queryObject: filterQueryObject.value,
+      enabled: enabled.value,
+    }),
+  )
 }
 
 export default useGetFeatureCollectionExtentQuery

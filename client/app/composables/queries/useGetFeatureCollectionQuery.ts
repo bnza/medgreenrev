@@ -56,10 +56,12 @@ export function useGetFeatureCollectionQuery(
       }),
   }))
 
-  return useQuery(featureQuery, () => ({
-    queryObject: filterQueryObject.value,
-    bboxObject: bboxQueryObject.value,
-  }))
+  return useQuery(() =>
+    featureQuery({
+      queryObject: filterQueryObject.value,
+      bboxObject: bboxQueryObject.value,
+    }),
+  )
 }
 
 export default useGetFeatureCollectionQuery
