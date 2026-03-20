@@ -28,8 +28,6 @@ export default defineNuxtConfig({
       refresh: {
         isEnabled: true,
         refreshOnlyToken: false,
-        enableOnWindowFocus: true,
-        enablePeriodically: 30 * 60 * 1000,
         endpoint: {
           path: '/token/refresh',
         },
@@ -55,7 +53,7 @@ export default defineNuxtConfig({
       enableOnWindowFocus: true,
 
       // Whether to refresh the session every `X` milliseconds. Set this to `false` to turn it off. The session will only be refreshed if a session already exists.
-      enablePeriodically: false,
+      enablePeriodically: 30 * 60 * 1000,
     },
     disableServerSideAuth: false,
     globalAppMiddleware: false,
