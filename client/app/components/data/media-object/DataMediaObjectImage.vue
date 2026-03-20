@@ -39,8 +39,7 @@ defineEmits<{
 
 <template>
   <v-img
-    :lazy-src="mediaThumbnailUrl"
-    :src="mediaThumbnailUrl"
+    :src="retrySrc"
     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.3)"
     :height="size"
     :width="size"

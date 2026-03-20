@@ -507,6 +507,38 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await itemPom.mediaContainer.dataDialogCreate.submitForm()
       await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(2)
 
+      // CREATE (image media)
+      await page.route(
+        '**/media/**/*.thumb.jpeg',
+        (route) => route.fulfill({ status: 404 }),
+        { times: 1 },
+      )
+      await itemPom.mediaContainer.openCreateDialog()
+      await itemPom.mediaContainer.dataDialogCreate.expectDialogToBeVisible()
+      await itemPom.mediaContainer.dataDialogCreate.setFileInput(
+        'input/logo-big-recortado.png',
+      )
+      await itemPom.mediaContainer.dataDialogCreate.form
+        .getByLabel('type')
+        .click()
+      await page
+        .getByRole('listbox')
+        .getByText('drawing', { exact: true })
+        .click()
+      await itemPom.mediaContainer.dataDialogCreate.form
+        .getByLabel('description')
+        .fill('An image media object')
+      const thumbResponsePromise = page.waitForResponse(
+        (response) =>
+          response.url().includes('.thumb.jpeg') &&
+          response.url().includes('_retry') &&
+          response.status() === 200,
+      )
+      await itemPom.mediaContainer.dataDialogCreate.submitForm()
+      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(3)
+      const thumbResponse = await thumbResponsePromise
+      expect(thumbResponse.status()).toBe(200)
+
       // DELETE
       await itemPom.mediaContainer.cards
         .first()
@@ -515,7 +547,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await itemPom.mediaContainer.dataDialogDelete
         .getByRole('button', { name: /delete/i })
         .click()
-      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(1)
+      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(2)
     })
   })
 })
