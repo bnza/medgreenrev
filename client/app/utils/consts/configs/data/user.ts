@@ -52,6 +52,13 @@ const config: Readonly<ResourceConfig> = {
       align: 'center',
     },
     {
+      key: 'field_director',
+      title: 'field director',
+      sortable: false,
+      width: 70,
+      align: 'center',
+    },
+    {
       key: 'geo_archaeologist',
       title: 'geo archaeologist',
       sortable: false,
@@ -75,6 +82,13 @@ const config: Readonly<ResourceConfig> = {
     {
       key: 'microstratigraphist',
       title: 'microstratigraphist',
+      sortable: false,
+      width: 70,
+      align: 'center',
+    },
+    {
+      key: 'mine_expert',
+      title: 'mine expert',
       sortable: false,
       width: 70,
       align: 'center',

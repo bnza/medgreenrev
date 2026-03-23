@@ -378,91 +378,93 @@ test.describe('Archaeological site lifecycle', () => {
     })
   })
   test.describe('Editor user', () => {
-    test("Editor use can manage site related user's privileges", async ({
-      page,
-      browser,
-    }) => {
-      // create a new user and login
-      const collectionPom = new SiteCollectionPage(page)
-      const itemPom = new SiteItemPage(page)
-      const authTestHelper = new AuthTestHelper(browser)
-      const credentials = await authTestHelper.createUser('editor', [
-        'geo archaeologist',
-      ])
-      const loginPage = new LoginPage(page)
-      await loginPage.open()
-      await loginPage.login(credentials)
-
-      // Navigate to the site collection page
-      await collectionPom.appNavBarIcon.click()
-      await page
-        .getByTestId('app-navigation-drawer')
-        .getByText('Data', { exact: true })
-        .click()
-      await page
-        .getByTestId('app-navigation-drawer')
-        .getByText('Archaeology', { exact: true })
-        .click()
-      await page
-        .getByTestId('app-navigation-drawer')
-        .getByText('Sites')
-        .first()
-        .click()
-      await collectionPom.table.expectData()
-      await collectionPom.dataCard.clickOnActionMenuButton('add new')
-
-      // create a new site
-      await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
-      await collectionPom.dataDialogCreate.form
-        .getByRole('textbox', { name: 'code' })
-        .fill('NW')
-      await collectionPom.dataDialogCreate.form
-        .getByRole('textbox', { name: 'name' })
-        .fill('New Test Site')
-      await collectionPom.dataDialogCreate.form.getByLabel('region').click()
-      await page
-        .getByRole('option', { name: /andalusia/i })
-        .first()
-        .click()
-      await collectionPom.dataDialogCreate.submitForm()
-      await collectionPom.expectAppMessageToHaveText(
-        'Resource successfully created',
-      )
-
-      // Manage privileges for the new site
-      await itemPom.clickTab('users privileges')
-      const privilegesCollectionPom = new StratigraphicUnitCollectionPage(
+    ;['field director', 'anthropologist'].forEach((role) => {
+      test(`Editor user with role "${role}" can manage site related user's privileges`, async ({
         page,
-        undefined,
-        'child-data-card',
-      )
-      await privilegesCollectionPom.table.expectData()
-      await privilegesCollectionPom.dataCard.clickOnActionMenuButton('add new')
-      await privilegesCollectionPom.dataDialogCreate.form
-        .getByLabel('user')
-        .click()
-      await page.getByRole('option', { name: /zoo/ }).first().click()
-      await privilegesCollectionPom.dataDialogCreate.submitForm()
-      await collectionPom.expectAppMessageToHaveText(
-        'Resource successfully created',
-      )
-      await privilegesCollectionPom.table
-        .getItemNavigationLink(
-          'user_zoo@example.com',
-          NavigationLinksButton.Delete,
+        browser,
+      }) => {
+        // create a new user and login
+        const collectionPom = new SiteCollectionPage(page)
+        const itemPom = new SiteItemPage(page)
+        const authTestHelper = new AuthTestHelper(browser)
+        const credentials = await authTestHelper.createUser('editor', [role])
+        const loginPage = new LoginPage(page)
+        await loginPage.open()
+        await loginPage.login(credentials)
+
+        // Navigate to the site collection page
+        await collectionPom.appNavBarIcon.click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Data', { exact: true })
+          .click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Archaeology', { exact: true })
+          .click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Sites')
+          .first()
+          .click()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+        // create a new site
+        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'code' })
+          .fill('NW')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'name' })
+          .fill('New Test Site')
+        await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+        await page
+          .getByRole('option', { name: /andalusia/i })
+          .first()
+          .click()
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
         )
-        .click()
-      await privilegesCollectionPom.dataDialogDelete.expectTextFieldToHaveValue(
-        'user',
-        'user_zoo@example.com',
-      )
-      await privilegesCollectionPom.dataDialogDelete.submitForm()
-      await privilegesCollectionPom.expectAppMessageToHaveText(
-        'Resource successfully deleted',
-      )
-      await collectionPom.table.expectNotToHaveRowContainingText(
-        'user_zoo@example.com',
-      )
+
+        // Manage privileges for the new site
+        await itemPom.clickTab('users privileges')
+        const privilegesCollectionPom = new StratigraphicUnitCollectionPage(
+          page,
+          undefined,
+          'child-data-card',
+        )
+        await privilegesCollectionPom.table.expectData()
+        await privilegesCollectionPom.dataCard.clickOnActionMenuButton(
+          'add new',
+        )
+        await privilegesCollectionPom.dataDialogCreate.form
+          .getByLabel('user')
+          .click()
+        await page.getByRole('option', { name: /zoo/ }).first().click()
+        await privilegesCollectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+        await privilegesCollectionPom.table
+          .getItemNavigationLink(
+            'user_zoo@example.com',
+            NavigationLinksButton.Delete,
+          )
+          .click()
+        await privilegesCollectionPom.dataDialogDelete.expectTextFieldToHaveValue(
+          'user',
+          'user_zoo@example.com',
+        )
+        await privilegesCollectionPom.dataDialogDelete.submitForm()
+        await privilegesCollectionPom.expectAppMessageToHaveText(
+          'Resource successfully deleted',
+        )
+        await collectionPom.table.expectNotToHaveRowContainingText(
+          'user_zoo@example.com',
+        )
+      })
     })
   })
 })

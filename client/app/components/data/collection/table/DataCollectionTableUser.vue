@@ -81,6 +81,14 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :value="ApiSpecialistRole.CeramicSpecialist"
       />
     </template>
+    <template #[`item.field_director`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.FieldDirector"
+      />
+    </template>
     <template #[`item.geo_archaeologist`]="{ item }">
       <v-checkbox-btn
         class="centered-item"
@@ -111,6 +119,14 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :model-value="item.roles"
         readonly
         :value="ApiSpecialistRole.Microstratigraphist"
+      />
+    </template>
+    <template #[`item.mine_expert`]="{ item }">
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item.roles"
+        readonly
+        :value="ApiSpecialistRole.MineExpert"
       />
     </template>
     <template #[`item.paleoclimatologist`]="{ item }">

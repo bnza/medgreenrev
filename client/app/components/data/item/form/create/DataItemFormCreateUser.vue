@@ -79,6 +79,13 @@ const role = computed({
         :value="ApiSpecialistRole.CeramicSpecialist"
         density="compact"
       />
+      <v-checkbox
+        v-model="r$.$value.roles"
+        label="field director"
+        color="primary"
+        :value="ApiSpecialistRole.FieldDirector"
+        density="compact"
+      />
     </v-col>
     <v-col cols="3" class="px-2">
       <v-checkbox
@@ -102,13 +109,20 @@ const role = computed({
         :value="ApiSpecialistRole.MaterialAnalyst"
         density="compact"
       />
-    </v-col>
-    <v-col cols="3" class="px-2">
       <v-checkbox
         v-model="r$.$value.roles"
         label="microstratigraphist"
         color="primary"
         :value="ApiSpecialistRole.Microstratigraphist"
+        density="compact"
+      />
+    </v-col>
+    <v-col cols="3" class="px-2">
+      <v-checkbox
+        v-model="r$.$value.roles"
+        label="mine expert"
+        color="primary"
+        :value="ApiSpecialistRole.MineExpert"
         density="compact"
       />
       <v-checkbox
