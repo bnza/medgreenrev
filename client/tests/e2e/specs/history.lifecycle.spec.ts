@@ -468,7 +468,7 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form
           .getByRole('combobox', { name: 'region' })
           .click()
-        await page.getByRole('option', { name: /andalusia/i }).click()
+        await page.getByRole('option', { name: /catalan/i }).click()
 
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'coordinate N' })
@@ -517,7 +517,7 @@ test.describe('History item lifecycle', () => {
           .getByRole('textbox', { name: 'value' })
           .fill('New location')
         await collectionPom.dataDialogCreate.form.getByLabel('region').click()
-        await page.getByRole('option', { name: /andalusia/i }).click()
+        await page.getByRole('option', { name: /catalan/i }).click()
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'coordinate E' })
           .fill('37.5')
@@ -531,10 +531,7 @@ test.describe('History item lifecycle', () => {
           'Resource successfully created',
         )
 
-        await collectionPom.table.expectRowToHaveText(
-          'New location',
-          'Andalusia',
-        )
+        await collectionPom.table.expectRowToHaveText('New location', 'Catalan')
         await collectionPom.table.expectRowToHaveText('New location', '37.5')
         await collectionPom.table.expectRowToHaveText('New location', '-4.5')
 

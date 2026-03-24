@@ -38,7 +38,7 @@ test.describe('Archaeological site lifecycle', () => {
         .fill('New Shining Site')
       await collectionPom.dataDialogCreate.form.getByLabel('region').click()
       await page
-        .getByRole('option', { name: /andalusia/i })
+        .getByRole('option', { name: /catalan/i })
         .first()
         .click()
       await collectionPom.dataDialogCreate.form
@@ -65,13 +65,13 @@ test.describe('Archaeological site lifecycle', () => {
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
       )
-      // await itemPom.expectAppDataCardToHaveResourceLabelAsTitle()
+
       await page.getByTestId('chronology-panel').click()
       await itemPom.expectTextFieldToHaveValue('code', 'NW')
       await itemPom.expectTextFieldToHaveValue('name', 'New Shining Site')
       await expect(
         page.locator('.v-input:has(label:text("region"))'),
-      ).toContainText(/andalusia/i)
+      ).toContainText(/catalan area/i)
       await itemPom.expectTextFieldToHaveValue(
         'description',
         'A new shining site for testing purposes',
@@ -113,17 +113,6 @@ test.describe('Archaeological site lifecycle', () => {
         .getByRole('textbox', { name: 'chronology (upper)' })
         .fill('1200')
 
-      // const patchResponsePromise = page.waitForResponse(
-      //   (response) =>
-      //     response.url().includes('/api/data/stratigraphic_units/') &&
-      //     response.request().method() === 'PATCH',
-      // )
-      // const getResponsePromise = page.waitForResponse(
-      //   (response) =>
-      //     response.url().includes('/api/data/stratigraphic_units') &&
-      //     response.request().method() === 'GET',
-      // )
-
       await collectionPom.dataDialogUpdate.submitForm()
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully updated',
@@ -134,7 +123,7 @@ test.describe('Archaeological site lifecycle', () => {
       // await getResponsePromise
 
       await collectionPom.table.expectRowToHaveText('NW', 'Newer Shining Site')
-      await collectionPom.table.expectRowToHaveText('NW', 'Baleari')
+      await collectionPom.table.expectRowToHaveText('NW', 'Balearic islands')
       await collectionPom.table.expectRowToHaveText(
         'NW',
         'A modified shining site description',
@@ -165,7 +154,7 @@ test.describe('Archaeological site lifecycle', () => {
         .fill('New Shining Site (again)')
       await collectionPom.dataDialogCreate.form.getByLabel('region').click()
       await page
-        .getByRole('option', { name: /andalusia/i })
+        .getByRole('option', { name: /catalan/i })
         .first()
         .click()
       await collectionPom.dataDialogCreate.submitForm()

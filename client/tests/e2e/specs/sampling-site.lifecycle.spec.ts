@@ -35,7 +35,7 @@ test.describe('Sampling site lifecycle', () => {
         .fill('New Sampling Site')
       await collectionPom.dataDialogCreate.form.getByLabel('region').click()
       await page
-        .getByRole('option', { name: /andalusia/i })
+        .getByRole('option', { name: /catalan/i })
         .first()
         .click()
       await collectionPom.dataDialogCreate.form
@@ -56,7 +56,7 @@ test.describe('Sampling site lifecycle', () => {
       await itemPom.expectTextFieldToHaveValue('name', 'New Sampling Site')
       await expect(
         page.locator('.v-input:has(label:text("region"))'),
-      ).toContainText(/andalusia/i)
+      ).toContainText(/catalan/i)
       await itemPom.expectTextFieldToHaveValue(
         'description',
         'A new sampling site for testing purposes',
@@ -76,7 +76,7 @@ test.describe('Sampling site lifecycle', () => {
         .fill('Newer Sampling Site')
       await collectionPom.dataDialogUpdate.form.getByLabel('region').click()
       await page
-        .getByRole('option', { name: /baleari/i })
+        .getByRole('option', { name: /balearic/i })
         .first()
         .click()
       await collectionPom.dataDialogUpdate.form
@@ -95,7 +95,7 @@ test.describe('Sampling site lifecycle', () => {
       )
 
       await collectionPom.table.expectRowToHaveText('SS', 'Newer Sampling Site')
-      await collectionPom.table.expectRowToHaveText('SS', 'Baleari')
+      await collectionPom.table.expectRowToHaveText('SS', 'Balearic islands')
       await collectionPom.table.expectRowToHaveText(
         'SS',
         'A modified sampling site description',
@@ -126,7 +126,7 @@ test.describe('Sampling site lifecycle', () => {
         .fill('New Sampling Site (again)')
       await collectionPom.dataDialogCreate.form.getByLabel('region').click()
       await page
-        .getByRole('option', { name: /baleari/i })
+        .getByRole('option', { name: /balearic/i })
         .first()
         .click()
       await collectionPom.dataDialogCreate.submitForm()
