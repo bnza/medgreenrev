@@ -3410,6 +3410,142 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/media_object_paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectPaleoclimateSample resources.
+     * @description Retrieves the collection of MediaObjectPaleoclimateSample resources.
+     */
+    get: operations['api_datamedia_object_paleoclimate_samples_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectPaleoclimateSample resource.
+     * @description Creates a MediaObjectPaleoclimateSample resource.
+     */
+    post: operations['api_datamedia_object_paleoclimate_samples_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_paleoclimate_samples/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectPaleoclimateSample resource.
+     * @description Retrieves a MediaObjectPaleoclimateSample resource.
+     */
+    get: operations['api_datamedia_object_paleoclimate_samples_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectPaleoclimateSample resource.
+     * @description Removes the MediaObjectPaleoclimateSample resource.
+     */
+    delete: operations['api_datamedia_object_paleoclimate_samples_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/paleoclimate_samples/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectPaleoclimateSample resources.
+     * @description Retrieves the collection of MediaObjectPaleoclimateSample resources.
+     */
+    get: operations['api_datapaleoclimate_samples_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_paleoclimate_sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectPaleoclimateSamplingSite resources.
+     * @description Retrieves the collection of MediaObjectPaleoclimateSamplingSite resources.
+     */
+    get: operations['api_datamedia_object_paleoclimate_sampling_sites_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectPaleoclimateSamplingSite resource.
+     * @description Creates a MediaObjectPaleoclimateSamplingSite resource.
+     */
+    post: operations['api_datamedia_object_paleoclimate_sampling_sites_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_paleoclimate_sampling_sites/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectPaleoclimateSamplingSite resource.
+     * @description Retrieves a MediaObjectPaleoclimateSamplingSite resource.
+     */
+    get: operations['api_datamedia_object_paleoclimate_sampling_sites_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectPaleoclimateSamplingSite resource.
+     * @description Removes the MediaObjectPaleoclimateSamplingSite resource.
+     */
+    delete: operations['api_datamedia_object_paleoclimate_sampling_sites_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/paleoclimate_sampling_sites/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectPaleoclimateSamplingSite resources.
+     * @description Retrieves the collection of MediaObjectPaleoclimateSamplingSite resources.
+     */
+    get: operations['api_datapaleoclimate_sampling_sites_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/media_object_potteries': {
     parameters: {
       query?: never
@@ -3798,6 +3934,290 @@ export interface paths {
      * @description Retrieves a MicrostratigraphicUnit resource.
      */
     get: operations['api_featuresnumber_matchedmicrostratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of PaleoclimateSample resources.
+     * @description Retrieves the collection of PaleoclimateSample resources.
+     */
+    get: operations['api_datapaleoclimate_samples_get_collection']
+    put?: never
+    /**
+     * Creates a PaleoclimateSample resource.
+     * @description Creates a PaleoclimateSample resource.
+     */
+    post: operations['api_datapaleoclimate_samples_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/paleoclimate_samples/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PaleoclimateSample resource.
+     * @description Retrieves a PaleoclimateSample resource.
+     */
+    get: operations['api_datapaleoclimate_samples_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the PaleoclimateSample resource.
+     * @description Removes the PaleoclimateSample resource.
+     */
+    delete: operations['api_datapaleoclimate_samples_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the PaleoclimateSample resource.
+     * @description Updates the PaleoclimateSample resource.
+     */
+    patch: operations['api_datapaleoclimate_samples_id_patch']
+    trace?: never
+  }
+  '/api/data/paleoclimate_sampling_sites/{parentId}/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of PaleoclimateSample resources.
+     * @description Retrieves the collection of PaleoclimateSample resources.
+     */
+    get: operations['api_datapaleoclimate_sampling_sites_parentIdsamples_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportpaleoclimate_samples_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PaleoclimateSample resource.
+     * @description Retrieves a PaleoclimateSample resource.
+     */
+    get: operations['api_featuresextent_matchedpaleoclimate_samples_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PaleoclimateSample resource.
+     * @description Retrieves a PaleoclimateSample resource.
+     */
+    get: operations['api_featuresnumber_matchedpaleoclimate_samples_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featurespaleoclimate_samples.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/paleoclimate_sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of PaleoclimateSamplingSite resources.
+     * @description Retrieves the collection of PaleoclimateSamplingSite resources.
+     */
+    get: operations['api_datapaleoclimate_sampling_sites_get_collection']
+    put?: never
+    /**
+     * Creates a PaleoclimateSamplingSite resource.
+     * @description Creates a PaleoclimateSamplingSite resource.
+     */
+    post: operations['api_datapaleoclimate_sampling_sites_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/paleoclimate_sampling_sites/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PaleoclimateSamplingSite resource.
+     * @description Retrieves a PaleoclimateSamplingSite resource.
+     */
+    get: operations['api_datapaleoclimate_sampling_sites_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the PaleoclimateSamplingSite resource.
+     * @description Removes the PaleoclimateSamplingSite resource.
+     */
+    delete: operations['api_datapaleoclimate_sampling_sites_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the PaleoclimateSamplingSite resource.
+     * @description Updates the PaleoclimateSamplingSite resource.
+     */
+    patch: operations['api_datapaleoclimate_sampling_sites_id_patch']
+    trace?: never
+  }
+  '/api/features/export/paleoclimate_sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportpaleoclimate_sampling_sites_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/paleoclimate_sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PaleoclimateSamplingSite resource.
+     * @description Retrieves a PaleoclimateSamplingSite resource.
+     */
+    get: operations['api_featuresextent_matchedpaleoclimate_sampling_sites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/paleoclimate_sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a PaleoclimateSamplingSite resource.
+     * @description Retrieves a PaleoclimateSamplingSite resource.
+     */
+    get: operations['api_featuresnumber_matchedpaleoclimate_sampling_sites_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/paleoclimate_sampling_sites': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection streamed from GeoServer.
+     */
+    get: operations['api_featurespaleoclimate_sampling_sites.__format_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -5270,6 +5690,66 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquemicrostratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/paleoclimate_samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquepaleoclimate_samples_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/paleoclimate_sampling_sites/code': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquepaleoclimate_sampling_sitescode_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/paleoclimate_sampling_sites/name': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquepaleoclimate_sampling_sitesname_get']
     put?: never
     post?: never
     delete?: never
@@ -10489,7 +10969,7 @@ export interface components {
       /**
        * @example {
        *       "@id": "string",
-       *       "type": "string",
+       *       "@type": "string",
        *       "first": "string",
        *       "last": "string",
        *       "previous": "string",
@@ -10967,6 +11447,68 @@ export interface components {
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read']
       description?: string | null
     })
+    'MediaObjectPaleoclimateSample-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectPaleoclimateSample.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      description?: string | null
+    })
+    'MediaObjectPaleoclimateSamplingSite-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectPaleoclimateSamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+      description?: string | null
+    })
     'MediaObjectPottery-media_object_join.create': {
       readonly id?: number | string
       /**
@@ -11141,6 +11683,317 @@ export interface components {
       identifier: string
       notes?: string | null
       readonly code?: string
+    })
+    'PaleoclimateSample-feature_collection.json.read': Record<string, never>
+    'PaleoclimateSample-paleoclimate_sample.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site: string
+      number: number
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      length?: number | null
+      /** @default false */
+      temperatureRecord: boolean
+      /** @default false */
+      precipitationRecord: boolean
+      /** @default false */
+      stableIsotopes: boolean
+      /** @default false */
+      traceElements: boolean
+      /** @default false */
+      petrographicDescriptions: boolean
+      /** @default false */
+      fluidInclusions: boolean
+    }
+    'PaleoclimateSample-paleoclimate_sample.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      number?: number
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      length?: number | null
+      /** @default false */
+      temperatureRecord: boolean
+      /** @default false */
+      precipitationRecord: boolean
+      /** @default false */
+      stableIsotopes: boolean
+      /** @default false */
+      traceElements: boolean
+      /** @default false */
+      petrographicDescriptions: boolean
+      /** @default false */
+      fluidInclusions: boolean
+    }
+    'PaleoclimateSample.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'PaleoclimateSample.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
+    'PaleoclimateSample.csv-paleoclimate_sample.acl.read': {
+      readonly id?: number | string
+      site: components['schemas']['PaleoclimateSamplingSite.csv-paleoclimate_sample.acl.read']
+      number: number
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      length?: number | null
+      /** @default false */
+      temperatureRecord: boolean
+      /** @default false */
+      precipitationRecord: boolean
+      /** @default false */
+      stableIsotopes: boolean
+      /** @default false */
+      traceElements: boolean
+      /** @default false */
+      petrographicDescriptions: boolean
+      /** @default false */
+      fluidInclusions: boolean
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'PaleoclimateSample.geojson-feature_collection.json.read': Record<
+      string,
+      never
+    >
+    'PaleoclimateSample.jsonld-paleoclimate_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site: components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sample.acl.read']
+      number: number
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      length?: number | null
+      /** @default false */
+      temperatureRecord: boolean
+      /** @default false */
+      precipitationRecord: boolean
+      /** @default false */
+      stableIsotopes: boolean
+      /** @default false */
+      traceElements: boolean
+      /** @default false */
+      petrographicDescriptions: boolean
+      /** @default false */
+      fluidInclusions: boolean
+      readonly code: string
+    })
+    'PaleoclimateSample.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site: components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read']
+      number: number
+      description?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      length?: number | null
+      /** @default false */
+      temperatureRecord: boolean
+      /** @default false */
+      precipitationRecord: boolean
+      /** @default false */
+      stableIsotopes: boolean
+      /** @default false */
+      traceElements: boolean
+      /** @default false */
+      petrographicDescriptions: boolean
+      /** @default false */
+      fluidInclusions: boolean
+      readonly code: string
+    })
+    'PaleoclimateSamplingSite-feature_collection.json.read': Record<
+      string,
+      never
+    >
+    'PaleoclimateSamplingSite-paleoclimate_sampling_sites.create': {
+      code: string
+      name: string
+      description?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region: string
+      n?: number
+      e?: number
+    }
+    'PaleoclimateSamplingSite-paleoclimate_sampling_sites.create.jsonMergePatch': {
+      code?: string
+      name?: string
+      description?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region?: string
+      n?: number
+      e?: number
+    }
+    'PaleoclimateSamplingSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'PaleoclimateSamplingSite.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
+    'PaleoclimateSamplingSite.csv-paleoclimate_sample.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'PaleoclimateSamplingSite.csv-paleoclimate_sampling_sites.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      region: components['schemas']['VocRegions.csv-paleoclimate_sampling_sites.acl.read']
+      n?: number
+      e?: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'PaleoclimateSamplingSite.geojson-feature_collection.json.read': Record<
+      string,
+      never
+    >
+    'PaleoclimateSamplingSite.jsonld-paleoclimate_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'PaleoclimateSamplingSite.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      region: components['schemas']['VocRegions.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read']
+      n?: number
+      e?: number
+    })
+    'PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      region: components['schemas']['VocRegions.jsonld-paleoclimate_sampling_sites.acl.read']
+      n?: number
+      e?: number
     })
     'Point.jsonld': {
       x?: number | string
@@ -14103,6 +14956,16 @@ export interface components {
       }
     }
     /** @description Project's regions vocabulary. */
+    'VocRegions.csv-paleoclimate_sampling_sites.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    /** @description Project's regions vocabulary. */
     'VocRegions.csv-sampling_site.acl.read': {
       value: string
       /** @description Access control metadata */
@@ -14116,6 +14979,7 @@ export interface components {
     'VocRegions.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
+      description?: string | null
     }
     /** @description Project's regions vocabulary. */
     'VocRegions.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
@@ -14162,6 +15026,28 @@ export interface components {
       value: string
     })
     /** @description Project's regions vocabulary. */
+    'VocRegions.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
+    /** @description Project's regions vocabulary. */
+    'VocRegions.jsonld-paleoclimate_sampling_sites.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
+    /** @description Project's regions vocabulary. */
     'VocRegions.jsonld-sampling_site.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -14182,10 +15068,12 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
+      description?: string | null
     })
     /** @description Project's regions vocabulary. */
     'VocRegions.jsonld-voc_history_location.read': components['schemas']['HydraItemBaseSchema'] & {
       value: string
+      description?: string | null
     }
     'VocSampleType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
@@ -29599,6 +30487,368 @@ export interface operations {
       }
     }
   }
+  api_datamedia_object_paleoclimate_samples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectPaleoclimateSample.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_samples_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectPaleoclimateSample resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectPaleoclimateSample-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectPaleoclimateSample resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectPaleoclimateSample.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_samples_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectPaleoclimateSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectPaleoclimateSample.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_samples_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectPaleoclimateSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSample resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_samples_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectPaleoclimateSample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectPaleoclimateSample.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_sampling_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSamplingSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectPaleoclimateSamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_sampling_sites_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectPaleoclimateSamplingSite resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectPaleoclimateSamplingSite-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectPaleoclimateSamplingSite resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectPaleoclimateSamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_sampling_sites_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectPaleoclimateSamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectPaleoclimateSamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_paleoclimate_sampling_sites_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectPaleoclimateSamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSamplingSite resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description MediaObjectPaleoclimateSamplingSite identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectPaleoclimateSamplingSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectPaleoclimateSamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read'][]
+          }
+        }
+      }
+    }
+  }
   api_datamedia_object_potteries_get_collection: {
     parameters: {
       query?: {
@@ -30841,6 +32091,1116 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_samples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[length]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[temperatureRecord]'?: 'asc' | 'desc'
+        'order[precipitationRecord]'?: 'asc' | 'desc'
+        'order[stableIsotopes]'?: 'asc' | 'desc'
+        'order[traceElements]'?: 'asc' | 'desc'
+        'order[petrographicDescriptions]'?: 'asc' | 'desc'
+        'order[fluidInclusions]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        length?: number
+        'length[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'length[between]'?: string
+        'length[gt]'?: string
+        'length[gte]'?: string
+        'length[lt]'?: string
+        'length[lte]'?: string
+        temperatureRecord?: boolean
+        precipitationRecord?: boolean
+        stableIsotopes?: boolean
+        traceElements?: boolean
+        petrographicDescriptions?: boolean
+        fluidInclusions?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['PaleoclimateSample.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_samples_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new PaleoclimateSample resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['PaleoclimateSample-paleoclimate_sample.create']
+      }
+    }
+    responses: {
+      /** @description PaleoclimateSample resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSample.jsonld-paleoclimate_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_samples_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PaleoclimateSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSample.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_samples_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PaleoclimateSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_samples_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PaleoclimateSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated PaleoclimateSample resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['PaleoclimateSample-paleoclimate_sample.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description PaleoclimateSample resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSample.jsonld-paleoclimate_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_parentIdsamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[length]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[temperatureRecord]'?: 'asc' | 'desc'
+        'order[precipitationRecord]'?: 'asc' | 'desc'
+        'order[stableIsotopes]'?: 'asc' | 'desc'
+        'order[traceElements]'?: 'asc' | 'desc'
+        'order[petrographicDescriptions]'?: 'asc' | 'desc'
+        'order[fluidInclusions]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        length?: number
+        'length[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'length[between]'?: string
+        'length[gt]'?: string
+        'length[gte]'?: string
+        'length[lt]'?: string
+        'length[lte]'?: string
+        temperatureRecord?: boolean
+        precipitationRecord?: boolean
+        stableIsotopes?: boolean
+        traceElements?: boolean
+        petrographicDescriptions?: boolean
+        fluidInclusions?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path: {
+        /** @description PaleoclimateSample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['PaleoclimateSample.jsonld-paleoclimate_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['PaleoclimateSample.csv-paleoclimate_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_featuresexportpaleoclimate_samples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[length]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[temperatureRecord]'?: 'asc' | 'desc'
+        'order[precipitationRecord]'?: 'asc' | 'desc'
+        'order[stableIsotopes]'?: 'asc' | 'desc'
+        'order[traceElements]'?: 'asc' | 'desc'
+        'order[petrographicDescriptions]'?: 'asc' | 'desc'
+        'order[fluidInclusions]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        length?: number
+        'length[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'length[between]'?: string
+        'length[gt]'?: string
+        'length[gte]'?: string
+        'length[lt]'?: string
+        'length[lte]'?: string
+        temperatureRecord?: boolean
+        precipitationRecord?: boolean
+        stableIsotopes?: boolean
+        traceElements?: boolean
+        petrographicDescriptions?: boolean
+        fluidInclusions?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['PaleoclimateSample.jsonld-paleoclimate_sample.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedpaleoclimate_samples_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSample.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedpaleoclimate_samples_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSample.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featurespaleoclimate_samples.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[length]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[temperatureRecord]'?: 'asc' | 'desc'
+        'order[precipitationRecord]'?: 'asc' | 'desc'
+        'order[stableIsotopes]'?: 'asc' | 'desc'
+        'order[traceElements]'?: 'asc' | 'desc'
+        'order[petrographicDescriptions]'?: 'asc' | 'desc'
+        'order[fluidInclusions]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        length?: number
+        'length[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        'length[between]'?: string
+        'length[gt]'?: string
+        'length[gte]'?: string
+        'length[lt]'?: string
+        'length[lte]'?: string
+        temperatureRecord?: boolean
+        precipitationRecord?: boolean
+        stableIsotopes?: boolean
+        traceElements?: boolean
+        petrographicDescriptions?: boolean
+        fluidInclusions?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        region?: string
+        'region[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSamplingSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read'][]
+          }
+          'text/csv': components['schemas']['PaleoclimateSamplingSite.csv-paleoclimate_sampling_sites.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new PaleoclimateSamplingSite resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['PaleoclimateSamplingSite-paleoclimate_sampling_sites.create']
+      }
+    }
+    responses: {
+      /** @description PaleoclimateSamplingSite resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PaleoclimateSamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PaleoclimateSamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSamplingSite resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datapaleoclimate_sampling_sites_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description PaleoclimateSamplingSite identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated PaleoclimateSamplingSite resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['PaleoclimateSamplingSite-paleoclimate_sampling_sites.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description PaleoclimateSamplingSite resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresexportpaleoclimate_sampling_sites_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        region?: string
+        'region[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSamplingSite collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedpaleoclimate_sampling_sites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedpaleoclimate_sampling_sites_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description PaleoclimateSamplingSite resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featurespaleoclimate_sampling_sites.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[code]'?: 'asc' | 'desc'
+        'order[name]'?: 'asc' | 'desc'
+        'order[region.value]'?: 'asc' | 'desc'
+        code?: string
+        'code[]'?: string[]
+        region?: string
+        'region[]'?: string[]
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        name?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'region.value'?: string
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection, depending on the requested format return a geojson FeatureCollection or an array of IDs. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesIds']
         }
       }
     }
@@ -32991,6 +35351,11 @@ export interface operations {
          */
         'region.value'?: string
         'exists[description]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -33237,6 +35602,11 @@ export interface operations {
          */
         'region.value'?: string
         'exists[description]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -33359,6 +35729,11 @@ export interface operations {
          */
         'region.value'?: string
         'exists[description]'?: boolean
+        /**
+         * @description Search case insensitive match across code (starts with) and name (contains). Up to two characters only code is matched.
+         * @example me
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -36061,6 +38436,99 @@ export interface operations {
     }
   }
   api_validatoruniquemicrostratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquepaleoclimate_samples_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquepaleoclimate_sampling_sitescode_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquepaleoclimate_sampling_sitesname_get: {
     parameters: {
       query?: never
       header?: never

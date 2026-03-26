@@ -87,6 +87,12 @@ onMounted(() => {
       <map-layer-vector-api-zoo-bone group-key="archaeologicalSite" />
       <map-layer-vector-api-zoo-tooth group-key="archaeologicalSite" />
       <map-layer-vector-api-history-location group-key="vocHistoryLocation" />
+      <map-layer-vector-api-paleoclimate-sample
+        group-key="paleoclimateSamplingSite"
+      />
+      <map-layer-vector-api-paleoclimate-sampling-site
+        group-key="paleoclimateSamplingSite"
+      />
       <map-layer-vector-api-sampling-site group-key="samplingSite" />
       <map-layer-vector-api-archaeological-site
         group-key="archaeologicalSite"

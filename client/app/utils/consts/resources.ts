@@ -58,11 +58,16 @@ export const API_RESOURCE_MAP = {
   mediaObject: '/api/data/media_objects',
   mediaObjectAnalysis: '/api/data/media_object_analyses',
   mediaObjectHistoryLocation: '/api/data/media_object_history_locations',
+  mediaObjectPaleoclimateSample: '/api/data/media_object_paleoclimate_samples',
+  mediaObjectPaleoclimateSamplingSite:
+    '/api/data/media_object_paleoclimate_sampling_sites',
   mediaObjectPottery: '/api/data/media_object_potteries',
   mediaObjectSamplingStratigraphicUnit:
     '/api/data/media_object_sampling_stratigraphic_units',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
   microstratigraphicUnit: '/api/data/microstratigraphic_units',
+  paleoclimateSample: '/api/data/paleoclimate_samples',
+  paleoclimateSamplingSite: '/api/data/paleoclimate_sampling_sites',
   pottery: '/api/data/potteries',
   potteryDecoration: '/api/data/pottery_decorations',
   sample: '/api/data/samples',
@@ -120,6 +125,9 @@ export const API_FEATURES_RESOURCE_MAP = {
   '/api/features/individuals': '/api/data/individuals',
   '/api/features/microstratigraphic_units':
     '/api/data/microstratigraphic_units',
+  '/api/features/paleoclimate_samples': '/api/data/paleoclimate_samples',
+  '/api/features/paleoclimate_sampling_sites':
+    '/api/data/paleoclimate_sampling_sites',
   '/api/features/potteries': '/api/data/potteries',
   '/api/features/sampling_sites': '/api/data/sampling_sites',
   '/api/features/zoo/bones': '/api/data/zoo/bones',
@@ -137,6 +145,10 @@ export const API_FEATURES_RESOURCE_EXPORT_MAP = {
   '/api/features/individuals': '/api/features/export/individuals',
   '/api/features/microstratigraphic_units':
     '/api/features/export/microstratigraphic_units',
+  '/api/features/paleoclimate_samples':
+    '/api/features/export/paleoclimate_samples',
+  '/api/features/paleoclimate_sampling_sites':
+    '/api/features/export/paleoclimate_sampling_sites',
   '/api/features/potteries': '/api/features/export/potteries',
   '/api/features/sampling_sites': '/api/features/export/sampling_sites',
   '/api/features/zoo/bones': '/api/features/export/zoo/bones',
@@ -160,6 +172,10 @@ export const API_FEATURES_EXTENT_RESOURCE_MAP = {
   '/api/features/individuals': '/api/features/extent_matched/individuals',
   '/api/features/microstratigraphic_units':
     '/api/features/extent_matched/microstratigraphic_units',
+  '/api/features/paleoclimate_samples':
+    '/api/features/extent_matched/paleoclimate_samples',
+  '/api/features/paleoclimate_sampling_sites':
+    '/api/features/extent_matched/paleoclimate_sampling_sites',
   '/api/features/potteries': '/api/features/extent_matched/potteries',
   '/api/features/sampling_sites': '/api/features/extent_matched/sampling_sites',
   '/api/features/zoo/bones': '/api/features/extent_matched/zoo/bones',
@@ -177,6 +193,7 @@ export const API_AGGREGATED_FEATURES_RESOURCE_PATHS: GetAggregatedFeatureCollect
     '/api/features/history/plants',
     '/api/features/individuals',
     '/api/features/microstratigraphic_units',
+    '/api/features/paleoclimate_samples',
     '/api/features/potteries',
     '/api/features/zoo/bones',
     '/api/features/zoo/teeth',

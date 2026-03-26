@@ -373,6 +373,13 @@ const ArchaeologicalSiteEquals: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectMultiple,
 }
 
+const PaleoclimateSamplingSiteEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'PaleoclimateSamplingSite',
+  addToQueryObject: addToQueryObjectMultiple,
+}
+
 const SamplingSiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -429,6 +436,7 @@ export const API_FILTERS = {
   NumericLessThan,
   NumericLessThanOrEqualTo,
   NumericRange,
+  PaleoclimateSamplingSiteEquals,
   SamplingSiteEquals,
   SelectionAnalysisStatus,
   SelectionArea,

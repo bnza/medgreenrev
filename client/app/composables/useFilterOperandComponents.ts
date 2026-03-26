@@ -13,6 +13,7 @@ import DataDialogSearchOperandAnalysisStatus from '~/components/data/dialog/sear
 import DataSelectionZooBoneEndsPreserved from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneEndsPreserved.vue'
 import DataSelectionZooBoneSide from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneSide.vue'
 import DataDialogSearchOperandHistoryLocation from '~/components/data/dialog/search/operand/DataDialogSearchOperandHistoryLocation.vue'
+import DataDialogSearchOperandPaleoclimateSamplingSite from '~/components/data/dialog/search/operand/DataDialogSearchOperandPaleoclimateSamplingSite.vue'
 
 const componentNameMap: Record<OperandComponentsKey, Component> = {
   Boolean: DataDialogSearchOperandBoolean,
@@ -27,6 +28,7 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   Vocabulary: DataDialogSearchOperandVocabulary,
   HistoryLocation: DataDialogSearchOperandHistoryLocation,
   ArchaeologicalSite: DataDialogSearchOperandArchaeologicalSite,
+  PaleoclimateSamplingSite: DataDialogSearchOperandPaleoclimateSamplingSite,
   SamplingSite: DataDialogSearchOperandSamplingSite,
   StratigraphicUnit: DataDialogSearchOperandStratigraphicUnit,
 } as const

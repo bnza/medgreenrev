@@ -1,34 +1,36 @@
 import * as absDatingAnalysis from './data/absDatingAnalysis'
 import analysis from './data/analysis'
+import analysisBotanyCharcoal from './data/analysisBotanyCharcoal'
+import analysisBotanySeed from './data/analysisBotanySeed'
 import analysisContextBotany from './data/analysisContextBotany'
 import analysisContextZoo from './data/analysisContextZoo'
-import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
-import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisIndividual from './data/analysisIndividual'
 import analysisPottery from './data/analysisPottery'
+import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
+import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisSubject from './data/analysisSubject'
 import analysisZooBone from './data/analysisZooBone'
 import analysisZooTooth from './data/analysisZooTooth'
-import analysisBotanySeed from './data/analysisBotanySeed'
-import analysisBotanyCharcoal from './data/analysisBotanyCharcoal'
 import archaeologicalSite from './data/archaeologicalSite'
 import botanyCharcoal from './data/botanyCharcoal'
 import botanySeed from './data/botanySeed'
-import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import context from './data/context'
 import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
-import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
-import * as sedimentCoreDepth from './data/sedimentCoreDepth'
+import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import historyAnimal from './data/historyAnimal'
 import historyPlant from './data/historyPlant'
+import individual from './data/individual'
 import mediaObject from './data/mediaObject'
 import microstratigraphicUnit from './data/microstratigraphicUnit'
-import individual from './data/individual'
+import paleoclimateSample from './data/paleoclimateSample'
+import paleoclimateSamplingSite from './data/paleoclimateSamplingSite'
 import pottery from './data/pottery'
 import sample from './data/sample'
+import * as sampleStratigraphicUnit from './data/sampleStratigraphicUnit'
 import samplingSite from './data/samplingSite'
 import samplingStratigraphicUnit from './data/samplingStratigraphicUnit'
 import sedimentCore from './data/sedimentCore'
+import * as sedimentCoreDepth from './data/sedimentCoreDepth'
 import siteUserPrivilege from './data/siteUserPrivilege'
 import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
@@ -95,8 +97,17 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/individuals/{parentId}/analyses': analysisIndividual,
 
   '/api/data/media_objects': mediaObject,
+
   '/api/data/microstratigraphic_units': microstratigraphicUnit,
+
+  '/api/data/paleoclimate_samples': paleoclimateSample,
+
+  '/api/data/paleoclimate_sampling_sites': paleoclimateSamplingSite,
+  '/api/data/paleoclimate_sampling_sites/{parentId}/samples':
+    paleoclimateSample,
+
   '/api/data/potteries': pottery,
+
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/samples': sample,
   '/api/data/samples/{parentId}/stratigraphic_units':

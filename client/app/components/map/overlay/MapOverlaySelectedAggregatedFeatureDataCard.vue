@@ -67,6 +67,7 @@ const numberMatched = computed(
 const childSegment = props.childPath
   .replace('/api/features/', '')
   .replace(/^history\//, '')
+  .replace(/^paleoclimate_/, '')
 
 const subCollectionRoute = computed(() => {
   if (!parentResourceConfig?.appPath || !id.value) return null

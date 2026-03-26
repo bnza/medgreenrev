@@ -44,6 +44,8 @@ export {
   staticFiltersDefinition as microstratigraphicUnit,
   staticFiltersDefinitionParentStratigraphicUnit as microstratigraphicUnitParentStratigraphicUnit,
 } from './microstratigraphicUnit'
+export { staticFiltersDefinition as paleoclimateSample } from './paleoclimateSample'
+export { staticFiltersDefinition as paleoclimateSamplingSite } from './paleoclimateSamplingSite'
 export {
   staticFiltersDefinition as pottery,
   staticFiltersDefinitionParentStratigraphicUnit as potteryParentStratigraphicUnit,

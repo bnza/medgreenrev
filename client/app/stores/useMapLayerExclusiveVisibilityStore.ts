@@ -2,7 +2,10 @@ import type { ApiResourceKey, GetFeatureCollectionPath } from '~~/types'
 
 export type FeatureAggregationResourceKey = Extract<
   ApiResourceKey,
-  'archaeologicalSite' | 'vocHistoryLocation' | 'samplingSite'
+  | 'archaeologicalSite'
+  | 'vocHistoryLocation'
+  | 'samplingSite'
+  | 'paleoclimateSamplingSite'
 >
 
 export const GROUP_KEY_FEATURE_PATH_MAP: Record<
@@ -12,6 +15,7 @@ export const GROUP_KEY_FEATURE_PATH_MAP: Record<
   archaeologicalSite: '/api/features/archaeological_sites',
   vocHistoryLocation: '/api/features/history/locations',
   samplingSite: '/api/features/sampling_sites',
+  paleoclimateSamplingSite: '/api/features/paleoclimate_sampling_sites',
 } as const
 
 export const useMapLayerExclusiveVisibilityStore = defineStore(
@@ -22,6 +26,10 @@ export const useMapLayerExclusiveVisibilityStore = defineStore(
         ['archaeologicalSite', '/api/features/archaeological_sites'],
         ['vocHistoryLocation', '/api/features/history/locations'],
         ['samplingSite', '/api/features/sampling_sites'],
+        [
+          'paleoclimateSamplingSite',
+          '/api/features/paleoclimate_sampling_sites',
+        ],
       ]),
     )
 

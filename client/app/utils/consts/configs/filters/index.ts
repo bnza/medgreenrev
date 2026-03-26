@@ -35,6 +35,9 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/individuals'
   | '/api/data/media_objects'
   | '/api/data/microstratigraphic_units'
+  | '/api/data/paleoclimate_samples'
+  | '/api/data/paleoclimate_sampling_sites'
+  | '/api/data/paleoclimate_sampling_sites/{parentId}/samples'
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/samples'
@@ -117,6 +120,12 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/media_objects': resourceFilterDefinitions.mediaObject,
   '/api/data/microstratigraphic_units':
     resourceFilterDefinitions.microstratigraphicUnit,
+  '/api/data/paleoclimate_samples':
+    resourceFilterDefinitions.paleoclimateSample,
+  '/api/data/paleoclimate_sampling_sites':
+    resourceFilterDefinitions.paleoclimateSamplingSite,
+  '/api/data/paleoclimate_sampling_sites/{parentId}/samples':
+    resourceFilterDefinitions.paleoclimateSamplingSite,
   '/api/data/potteries': resourceFilterDefinitions.pottery,
   '/api/data/potteries/{parentId}/analyses':
     resourceFilterDefinitions.analysisPotteryParentSubject,

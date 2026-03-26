@@ -70,6 +70,39 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             group-key="archaeologicalSite"
           />
         </v-list-group>
+        <v-list-group value="Paleoclimate Sampling Sites">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Paleoclimate Sampling Sites"
+              data-testid="app-map-nav-drawer-li-paleoclimate sampling-sites"
+            />
+          </template>
+          <map-list-item-vector-api
+            title="Sites"
+            path="/api/features/paleoclimate_sampling_sites"
+            group-key="paleoclimateSamplingSite"
+          />
+          <map-list-item-vector-api
+            title="Sites"
+            path="/api/features/paleoclimate_samples"
+            group-key="paleoclimateSamplingSite"
+          />
+        </v-list-group>
+        <v-list-group value="Sampling Sites">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Sampling Sites"
+              data-testid="app-map-nav-drawer-li-sampling-sites"
+            />
+          </template>
+          <map-list-item-vector-api
+            title="Sampling Sites"
+            path="/api/features/sampling_sites"
+            group-key="samplingSite"
+          />
+        </v-list-group>
         <v-list-group value="Written Sources">
           <template #activator="{ props }">
             <v-list-item
@@ -92,20 +125,6 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             title="Plants"
             path="/api/features/history/plants"
             group-key="vocHistoryLocation"
-          />
-        </v-list-group>
-        <v-list-group value="Sampling Sites">
-          <template #activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              title="Sampling Sites"
-              data-testid="app-map-nav-drawer-li-sampling-sites"
-            />
-          </template>
-          <map-list-item-vector-api
-            title="Sampling Sites"
-            path="/api/features/sampling_sites"
-            group-key="samplingSite"
           />
         </v-list-group>
       </v-list-group>

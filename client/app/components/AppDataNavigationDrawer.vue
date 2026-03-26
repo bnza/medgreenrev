@@ -245,6 +245,29 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             />
           </v-list-group>
         </v-list-group>
+        <v-list-group value="Paleoclimate">
+          <template #activator="{ props: paleoclimateProps }">
+            <v-list-item
+              v-bind="paleoclimateProps"
+              title="Paleoclimate"
+              data-testid="app-nav-drawer-li-group-paleoclimate"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/paleoclimate/samples"
+            router
+            title="Samples"
+            data-testid="app-nav-drawer-li-paleoclimate-samples"
+          />
+          <v-list-item
+            nuxt
+            to="/data/sites/paleoclimate-sampling"
+            router
+            title="Sites (sampling)"
+            data-testid="app-nav-drawer-li-paleoclimate-sampling-sites"
+          />
+        </v-list-group>
         <v-list-group value="Sampling">
           <template #activator="{ props: samplingProps }">
             <v-list-item

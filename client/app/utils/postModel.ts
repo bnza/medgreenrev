@@ -99,6 +99,12 @@ const EMPTY_POST_MODEL_MAP: {
     stratigraphicUnit:
       parent?.key === 'stratigraphicUnit' ? parent.item['@id'] : undefined,
   }),
+  '/api/data/paleoclimate_samples': (parent) => ({
+    site:
+      parent?.key === 'paleoclimateSamplingSite'
+        ? parent.item['@id']
+        : undefined,
+  }),
   '/api/data/potteries': (parent) => ({
     stratigraphicUnit:
       parent?.key === 'stratigraphicUnit' ? parent.item['@id'] : undefined,

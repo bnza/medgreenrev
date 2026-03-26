@@ -17,6 +17,7 @@ export type OperandComponentsKey =
   | 'Vocabulary'
   | 'HistoryLocation'
   | 'ArchaeologicalSite'
+  | 'PaleoclimateSamplingSite'
   | 'SamplingSite'
   | 'StratigraphicUnit'
 
