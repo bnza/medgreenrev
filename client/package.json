@@ -34,9 +34,9 @@
     "@pinia/colada-nuxt": "^0.3.2",
     "@pinia/colada-plugin-retry": "^0.2.3",
     "@pinia/nuxt": "^0.11.3",
-    "@regle/core": "^1.20.4",
-    "@regle/nuxt": "^1.20.4",
-    "@regle/rules": "^1.20.4",
+    "@regle/core": "^1.21.1",
+    "@regle/nuxt": "^1.21.1",
+    "@regle/rules": "^1.21.1",
     "@sidebase/nuxt-auth": "^1.2.0",
     "@types/jsonld": "^1.5.15",
     "deep-object-diff": "^1.1.9",
@@ -51,7 +51,7 @@
     "vue": "latest",
     "vue-router": "latest",
     "vue3-openlayers": "^11.6.2",
-    "vuetify": "^3.12.3",
+    "vuetify": "^3.12.4",
     "vuetify-nuxt-module": "^0.18.9"
   },
   "devDependencies": {
