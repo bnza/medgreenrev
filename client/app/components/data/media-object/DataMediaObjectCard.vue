@@ -25,7 +25,7 @@ defineEmits<{
     color="surface-variant"
   >
     <template #title>
-      <p class="text-body-2 text-white pa-1">{{ fileName }}</p>
+      <p class="text-body-medium text-white pa-1">{{ fileName }}</p>
     </template>
     <data-item-info-box-media-object
       v-slot="{ props: slotProps }"

@@ -187,7 +187,7 @@ const title = computed(() => props.title || labels[0])
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
-            <v-row justify="end">
+            <v-row class="justify-end">
               <v-col cols="4">
                 <v-checkbox
                   v-if="redirectOption"

@@ -59,17 +59,12 @@ const submit = async () => {
     <template #default>
       <v-card-text style="min-height: 200px">
         <v-container v-if="status === 'pending'">
-          <v-row align-content="center" class="fill-height" justify="center">
-            <v-col class="text-subtitle-1 text-center" cols="12">
+          <v-row class="fill-height justify-center align-content-center">
+            <v-col class="text-body-large text-center" cols="12">
               Download in progress
             </v-col>
             <v-col cols="6">
-              <v-progress-linear
-                color="warning"
-                height="6"
-                indeterminate
-                rounded
-              />
+              <v-progress-linear color="warning" height="6" indeterminate rounded />
             </v-col>
           </v-row>
         </v-container>
@@ -79,25 +74,20 @@ const submit = async () => {
           text="No items to download"
         />
         <v-container v-else>
-          <v-row class="mx-4 pt-4" justify="center">
+          <v-row class="mx-4 pt-4 justify-center">
             <v-spacer />
             <v-col cols="12" sm="2">
               <v-icon icon="fas fa-circle-info" size="large" color="info" />
             </v-col>
             <v-spacer />
           </v-row>
-          <v-row dense class="my-0 py-0 mx-4 pt-8 text-center" justify="center">
+          <v-row density="compact" class="my-0 py-0 mx-4 pt-8 text-center justify-center">
             Are you sure you want to download
           </v-row>
-          <v-row
-            data-testid="download-resource-total-items"
-            dense
-            class="my-0 pt-0 mx-4 text-center text-secondary font-weight-bold"
-            justify="center"
-          >
+          <v-row data-testid="download-resource-total-items" density="compact" class="my-0 pt-0 mx-4 text-center text-secondary font-weight-bold justify-center">
             {{ totalItems }}
           </v-row>
-          <v-row dense class="my-0 pt-0 mx-4 text-center" justify="center">
+          <v-row density="compact" class="my-0 pt-0 mx-4 text-center justify-center">
             selected items?
           </v-row>
         </v-container>

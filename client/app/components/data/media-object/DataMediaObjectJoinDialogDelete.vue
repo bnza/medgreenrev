@@ -42,26 +42,21 @@ const submit = async () => {
     <v-card data-testid="delete-media-object-card">
       <v-card-text class="text-center">
         <v-container v-if="status === 'pending'" style="height: 150px">
-          <v-row align-content="center" class="fill-height" justify="center">
-            <v-col class="text-subtitle-1 text-center" cols="12">
+          <v-row class="fill-height justify-center align-content-center">
+            <v-col class="text-body-large text-center" cols="12">
               Deleting
             </v-col>
             <v-col cols="6">
-              <v-progress-linear
-                color="warning"
-                height="6"
-                indeterminate
-                rounded
-              />
+              <v-progress-linear color="warning" height="6" indeterminate rounded />
             </v-col>
           </v-row>
         </v-container>
         <v-container v-else style="height: 150px">
-          <v-row align-content="center" class="fill-height" justify="center">
-            <v-col class="text-subtitle-1 text-center" cols="12">
+          <v-row class="fill-height justify-center align-content-center">
+            <v-col class="text-body-large text-center" cols="12">
               <v-icon icon="fas fa-triangle-exclamation" color="error" />
-              <br />
-              <br />
+              <br>
+              <br>
               Are you sure you want to delete this media object association?
             </v-col>
           </v-row>

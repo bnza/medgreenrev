@@ -119,41 +119,19 @@ const toggleShow = (index: number) => {
 <template>
   <v-form>
     <v-container>
-      <v-row class="mx-4 pt-4" justify="center">
+      <v-row class="mx-4 pt-4 justify-center">
         <v-col cols="12">
-          <v-text-field
-            v-model="r$.$value.oldPassword"
-            label="old password"
-            autocomplete="new-password"
-            :error-messages="r$.$errors.oldPassword"
-            :type="fieldTypes[Form.OldPassword]"
-            :append-inner-icon="icons[Form.OldPassword]"
-            @click:append-inner="toggleShow(Form.OldPassword)"
-          />
+          <v-text-field v-model="r$.$value.oldPassword" label="old password" autocomplete="new-password" :error-messages="r$.$errors.oldPassword" :type="fieldTypes[Form.OldPassword]" :append-inner-icon="icons[Form.OldPassword]" @click:append-inner="toggleShow(Form.OldPassword);" />
         </v-col>
       </v-row>
-      <v-row class="mx-4 pt-4" justify="center">
+      <v-row class="mx-4 pt-4 justify-center">
         <v-col cols="12">
-          <v-text-field
-            v-model="r$.$value.plainPassword"
-            label="new password"
-            :error-messages="r$.$errors.plainPassword"
-            :type="fieldTypes[Form.NewPassword]"
-            :append-inner-icon="icons[Form.NewPassword]"
-            @click:append-inner="toggleShow(Form.NewPassword)"
-          />
+          <v-text-field v-model="r$.$value.plainPassword" label="new password" :error-messages="r$.$errors.plainPassword" :type="fieldTypes[Form.NewPassword]" :append-inner-icon="icons[Form.NewPassword]" @click:append-inner="toggleShow(Form.NewPassword);" />
         </v-col>
       </v-row>
-      <v-row class="mx-4 pt-4" justify="center">
+      <v-row class="mx-4 pt-4 justify-center">
         <v-col cols="12">
-          <v-text-field
-            v-model="r$.$value.repeatPassword"
-            label="repeat password"
-            :error-messages="r$.$errors.repeatPassword"
-            :type="fieldTypes[Form.RepeatPassword]"
-            :append-inner-icon="icons[Form.RepeatPassword]"
-            @click:append-inner="toggleShow(Form.RepeatPassword)"
-          />
+          <v-text-field v-model="r$.$value.repeatPassword" label="repeat password" :error-messages="r$.$errors.repeatPassword" :type="fieldTypes[Form.RepeatPassword]" :append-inner-icon="icons[Form.RepeatPassword]" @click:append-inner="toggleShow(Form.RepeatPassword);" />
         </v-col>
       </v-row>
     </v-container>

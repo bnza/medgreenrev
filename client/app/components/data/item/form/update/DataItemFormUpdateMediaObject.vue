@@ -16,7 +16,7 @@ const { r$ } = useScopedRegle(model, {
 </script>
 
 <template>
-  <v-row justify="end">
+  <v-row class="justify-end">
     <v-col cols="2">
       <v-checkbox v-model="r$.$value.public" label="public" />
     </v-col>
@@ -24,7 +24,7 @@ const { r$ } = useScopedRegle(model, {
   </v-row>
   <v-row>
     <v-col cols="8">
-      <v-row dense>
+      <v-row density="compact">
         <v-col cols="12">
           <data-autocomplete-hierarchical-vocabulary
             v-model="r$.$value.type"
@@ -34,7 +34,7 @@ const { r$ } = useScopedRegle(model, {
           />
         </v-col>
       </v-row>
-      <v-row dense>
+      <v-row density="compact">
         <v-col cols="12">
           <v-text-field
             readonly
@@ -45,7 +45,7 @@ const { r$ } = useScopedRegle(model, {
           />
         </v-col>
       </v-row>
-      <v-row dense>
+      <v-row density="compact">
         <v-col cols="12">
           <v-textarea v-model="r$.$value.description" label="description" />
         </v-col>

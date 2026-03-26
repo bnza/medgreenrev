@@ -21,8 +21,8 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <template #selection="{ item }">
       <v-list-item>
-        <span class="text-secondary font-weight-bold">{{ item.raw.code }}</span>
-        - {{ item.raw.name }}
+        <span class="text-secondary font-weight-bold">{{ item.code }}</span>
+        - {{ item.name }}
       </v-list-item>
     </template>
   </data-autocomplete>

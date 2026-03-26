@@ -39,7 +39,7 @@ defineEmits<{
       </template>
       <template #actions>
         <v-container>
-          <v-row justify="space-around">
+          <v-row class="justify-space-around">
             <slot name="actions" />
           </v-row>
         </v-container>

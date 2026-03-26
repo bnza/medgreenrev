@@ -136,7 +136,7 @@ const deleteAbsoluteDatingData = async () => {
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <v-row justify="end">
+  <v-row class="justify-end">
     <v-col cols="4">
       <v-checkbox
         v-if="!initialValue || isEmptyObject(r$.$value)"

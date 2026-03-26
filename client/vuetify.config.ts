@@ -19,6 +19,10 @@ const VBtnGroup = {
 const VBtn = {
   variant: 'tonal',
   rounded: 'lg',
+  class: 'text-uppercase',
+}
+const VTab = {
+  class: 'text-uppercase',
 }
 const VTextField = {
   variant: 'underlined',
@@ -59,6 +63,7 @@ export default defineVuetifyConfiguration({
   defaults: {
     VCard,
     VBtn,
+    VTab,
     VTextField,
     VAutocomplete,
   },

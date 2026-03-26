@@ -60,20 +60,20 @@ const clear = () => {
     <template #default>
       <v-form v-if="isValidItem(creatingMediaObject)" class="d-flex">
         <v-container v-if="asyncStatus !== 'loading'" fluid>
-          <v-row dense class="mb-4">
+          <v-row density="compact" class="mb-4">
             <v-col cols="12" sm="6">
               <v-sheet
                 :color="hasDuplicateMediaError ? 'error' : 'info'"
                 rounded
               >
                 <v-container fluid>
-                  <v-row v-if="hasDuplicateMediaError" dense>
+                  <v-row v-if="hasDuplicateMediaError" density="compact">
                     <v-icon icon="fas fa-triangle-exclamation" color="white" />
                     <span class="ml-2 text-white">{{
                       duplicateMediaError.join(', ')
                     }}</span>
                   </v-row>
-                  <v-row v-else dense>
+                  <v-row v-else density="compact">
                     <v-icon icon="fas fa-info-circle" color="primary" />
                     <span class="ml-2 text-primary"
                       >Media already archived. You can anyway proceed to
@@ -84,7 +84,7 @@ const clear = () => {
               </v-sheet>
             </v-col>
           </v-row>
-          <v-row dense class="pa-0">
+          <v-row density="compact" class="pa-0">
             <data-item-form-info-media-object
               v-if="mediaObject"
               :item="mediaObject"

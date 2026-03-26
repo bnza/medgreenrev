@@ -93,17 +93,12 @@ const disabled = computed(
     <template #default>
       <v-card-text style="min-height: 200px">
         <v-container v-if="status === 'pending'">
-          <v-row align-content="center" class="fill-height" justify="center">
-            <v-col class="text-subtitle-1 text-center" cols="12">
+          <v-row class="fill-height justify-center align-content-center">
+            <v-col class="text-body-large text-center" cols="12">
               Download in progress
             </v-col>
             <v-col cols="6">
-              <v-progress-linear
-                color="warning"
-                height="6"
-                indeterminate
-                rounded
-              />
+              <v-progress-linear color="warning" height="6" indeterminate rounded />
             </v-col>
           </v-row>
         </v-container>
@@ -113,28 +108,18 @@ const disabled = computed(
           text="No items to download"
         />
         <v-container v-else>
-          <v-row dense class="my-0 py-0 mx-4" justify="center">
+          <v-row density="compact" class="my-0 py-0 mx-4 justify-center">
             <v-col cols="12">
-              <v-select
-                v-model="selectedFormat"
-                :items="formats"
-                label="Output format"
-                hide-details
-                variant="outlined"
-              />
+              <v-select v-model="selectedFormat" :items="formats" label="Output format" hide-details variant="outlined" />
             </v-col>
           </v-row>
-          <v-row dense class="my-0 py-0 mx-4 pt-8 text-center" justify="center">
+          <v-row density="compact" class="my-0 py-0 mx-4 pt-8 text-center justify-center">
             Are you sure you want to download
           </v-row>
-          <v-row
-            dense
-            class="my-0 pt-0 mx-4 text-center text-secondary font-weight-bold"
-            justify="center"
-          >
+          <v-row density="compact" class="my-0 pt-0 mx-4 text-center text-secondary font-weight-bold justify-center">
             {{ totalItems }}
           </v-row>
-          <v-row dense class="my-0 pt-0 mx-4 text-center" justify="center">
+          <v-row density="compact" class="my-0 pt-0 mx-4 text-center justify-center">
             selected items?
           </v-row>
         </v-container>

@@ -55,7 +55,7 @@ const errors = computed(() =>
 
 <template>
   <v-container fluid data-testid="data-media-object-uploader">
-    <v-row v-for="error of errors" :key="error" dense justify="center">
+    <v-row class="justify-center" v-for="error in errors" :key="error" density="compact">
       <v-col cols="12" sm="6">
         <v-banner
           type="error"

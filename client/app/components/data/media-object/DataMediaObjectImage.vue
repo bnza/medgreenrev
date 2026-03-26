@@ -49,13 +49,9 @@ defineEmits<{
     @click="$emit('click', item['@id'])"
   >
     <template #placeholder>
-      <v-row align-content="center" class="fill-height" justify="center">
-        <v-progress-circular
-          v-if="mediaThumbnailUrl"
-          color="warning"
-          indeterminate
-        />
-        <v-icon v-else :icon :size="iconSize" :color="iconColor" />
+      <v-row class="fill-height justify-center align-content-center">
+        <v-progress-circular v-if="mediaThumbnailUrl" color="warning" indeterminate />
+        <v-icon v-else :icon="icon" :size="iconSize" :color="iconColor" />
       </v-row>
     </template>
   </v-img>

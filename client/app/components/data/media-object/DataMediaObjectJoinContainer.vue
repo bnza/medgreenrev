@@ -60,7 +60,7 @@ const { deletingMediaObjectJoinItem, isCreateDialogOpen } = mediaObjectJoin
       :path="deletePath"
       @refresh="refetch()"
     />
-    <v-row dense justify="end" style="min-height: 48px">
+    <v-row class="justify-end" density="compact" style="min-height: 48px">
       <v-col cols="1" xs="1">
         <v-btn
           v-if="canUpdate"
@@ -95,16 +95,10 @@ const { deletingMediaObjectJoinItem, isCreateDialogOpen } = mediaObjectJoin
         />
       </v-col>
     </v-row>
-    <v-row
-      v-else
-      no-gutters
-      justify="center"
-      align="center"
-      style="height: 200px"
-    >
+    <v-row class="align-center justify-center" v-else no-gutters style="height: 200px">
       <v-empty-state>
         <template #text>
-          <p class="text-body-2 text-grey-lighten-1 pa-1">
+          <p class="text-body-medium text-grey-lighten-1 pa-1">
             No media association found
           </p>
         </template>

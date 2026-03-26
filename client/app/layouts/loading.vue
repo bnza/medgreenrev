@@ -9,10 +9,10 @@ defineProps<{ status: 'idle' | 'pending' | 'error' | 'success' }>()
     title="Application error"
   />
   <v-container v-else>
-    <v-row justify="center" style="margin-top: 78px">
+    <v-row class="justify-center" style="margin-top: 78px">
       <home-page-logo />
     </v-row>
-    <v-row justify="center">
+    <v-row class="justify-center">
       <v-progress-linear
         indeterminate
         color="warning"

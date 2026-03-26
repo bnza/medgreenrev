@@ -13,16 +13,16 @@ const props = defineProps<Props>()
 <template>
   <data-autocomplete v-model="model" :path="props.path" item-title="value">
     <template #item="{ item, props: itemProps }">
-      <v-list-item v-if="item.raw.value" v-bind="itemProps">
-        <span class="text-body-2 text-grey-lighten-1"
-          >{{ item.raw.group }} \ {{ item.raw.value }}</span
+      <v-list-item v-if="item.value" v-bind="itemProps">
+        <span class="text-body-medium text-grey-lighten-1"
+          >{{ item.group }} \ {{ item.value }}</span
         >
       </v-list-item>
     </template>
     <template #selection="{ item }">
-      <v-list-item v-if="item.raw.value">
-        <span class="text-grey-lighten-1">{{ item.raw.group }} \ </span
-        >{{ item.raw.value }}
+      <v-list-item v-if="item.value">
+        <span class="text-grey-lighten-1">{{ item.group }} \ </span
+        >{{ item.value }}
       </v-list-item>
     </template>
   </data-autocomplete>

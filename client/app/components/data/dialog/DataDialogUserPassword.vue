@@ -27,19 +27,14 @@ const copyToClipboard = useCopyToClipboard()
       </template>
       <template #default>
         <v-container v-if="submitStatus === 'pending'" style="height: 350px">
-          <v-row align-content="center" class="fill-height" justify="center">
-            <v-col class="text-subtitle-1 text-center" cols="12">
+          <v-row class="fill-height justify-center align-content-center">
+            <v-col class="text-body-large text-center" cols="12">
               <v-card-text>
                 {{ mode === 'reset' ? 'Resetting' : 'Changing' }} password
               </v-card-text>
             </v-col>
             <v-col cols="6">
-              <v-progress-linear
-                color="warning"
-                height="6"
-                indeterminate
-                rounded
-              />
+              <v-progress-linear color="warning" height="6" indeterminate rounded />
             </v-col>
           </v-row>
         </v-container>

@@ -20,19 +20,19 @@ const props = withDefaults(defineProps<Props>(), {
     :granted-only
   >
     <template #selection="{ item }">
-      <v-list-item v-if="item.raw.site">
+      <v-list-item v-if="item.site">
         <span class="text-secondary font-weight-bold">{{
-          item.raw.site.code
+          item.site.code
         }}</span>
-        - {{ item.raw.name }}
+        - {{ item.name }}
       </v-list-item>
     </template>
     <template #item="{ item, props: slotProps }">
-      <v-list-item v-if="item.raw.site" v-bind="slotProps">
+      <v-list-item v-if="item.site" v-bind="slotProps">
         <span class="text-secondary font-weight-bold">{{
-          item.raw.site.code
+          item.site.code
         }}</span>
-        - {{ item.raw.name }}
+        - {{ item.name }}
       </v-list-item>
     </template>
   </data-autocomplete>

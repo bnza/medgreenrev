@@ -4,13 +4,10 @@ defineProps<{ plainPassword: string }>()
 
 <template>
   <v-container>
-    <v-row class="mx-4 pt-4" justify="center">
+    <v-row class="mx-4 pt-4 justify-center">
       <v-col cols="12" sm="8">
         <div class="text-center">
-          <div
-            id="plainPassword"
-            class="text-secondary border pa-4 font-weight-bold"
-          >
+          <div id="plainPassword" class="text-secondary border pa-4 font-weight-bold">
             {{ plainPassword }}
           </div>
         </div>

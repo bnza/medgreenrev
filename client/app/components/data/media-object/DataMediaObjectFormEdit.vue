@@ -58,7 +58,7 @@ defineExpose({
   <v-form data-testid="data-dialog-form" class="ma-4">
     <v-container fluid>
       <data-media-object-file-errors-banner-row :errors />
-      <v-row dense>
+      <v-row density="compact">
         <v-col cols="12">
           <v-file-upload
             v-model="file"
@@ -77,7 +77,7 @@ defineExpose({
           </v-file-upload>
         </v-col>
       </v-row>
-      <v-row dense>
+      <v-row density="compact">
         <v-col cols="12">
           <data-media-object-uploader
             v-if="isNewMediaObject"

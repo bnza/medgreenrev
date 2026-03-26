@@ -20,7 +20,7 @@ const { isAuthenticated } = useAppAuth()
 
 <template>
   <data-item-form-read class="w-100">
-    <v-row justify="end">
+    <v-row class="justify-end">
       <v-col cols="2">
         <v-checkbox
           v-if="isAuthenticated"
@@ -33,7 +33,7 @@ const { isAuthenticated } = useAppAuth()
     <v-row>
       <v-col cols="6">
         <v-container fluid class="pa-0">
-          <v-row dense>
+          <v-row density="compact">
             <v-col cols="12">
               <v-text-field
                 :model-value="item?.originalFilename"
@@ -44,7 +44,7 @@ const { isAuthenticated } = useAppAuth()
               />
             </v-col>
           </v-row>
-          <v-row dense>
+          <v-row density="compact">
             <v-col cols="6">
               <v-text-field
                 :model-value="
@@ -79,7 +79,7 @@ const { isAuthenticated } = useAppAuth()
               />
             </v-col>
           </v-row>
-          <v-row dense>
+          <v-row density="compact">
             <v-col cols="12">
               <v-text-field
                 :model-value="item?.sha256"
@@ -95,26 +95,15 @@ const { isAuthenticated } = useAppAuth()
       </v-col>
       <v-col cols="6">
         <v-container fluid class="pa-0">
-          <v-row justify="center" align="center">
+          <v-row class="align-center justify-center">
             <v-col cols="6">
               <v-card class="pa-0" width="300" flat rounded variant="outlined">
-                <data-media-object-image :item :size="300" />
+                <data-media-object-image :item="item" :size="300" />
                 <template #actions>
                   <v-spacer />
-                  <v-btn
-                    v-if="downloadLink"
-                    class="mr-4"
-                    density="compact"
-                    :icon="true"
-                    data-testid="download-media-button"
-                    :href="mediaUrl"
-                    target="_blank"
-                    download
-                  >
+                  <v-btn v-if="downloadLink" class="mr-4" density="compact" :icon="true" data-testid="download-media-button" :href="mediaUrl" target="_blank" download>
                     <v-icon icon="fas fa-download" />
-                    <v-tooltip activator="parent" location="bottom"
-                      >download</v-tooltip
-                    >
+                    <v-tooltip activator="parent" location="bottom">download</v-tooltip>
                   </v-btn>
                 </template>
               </v-card>

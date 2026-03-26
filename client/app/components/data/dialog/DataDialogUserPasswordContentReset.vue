@@ -42,14 +42,10 @@ watch(triggered, (flag) => {
 <template>
   <v-card-text>
     <v-container>
-      <v-row class="mx-4 pt-4" justify="center">
+      <v-row class="mx-4 pt-4 justify-center">
         <v-spacer />
         <v-col cols="12" sm="2">
-          <v-icon
-            icon="fas fa-triangle-exclamation"
-            size="large"
-            color="warning"
-          />
+          <v-icon icon="fas fa-triangle-exclamation" size="large" color="warning" />
         </v-col>
         <v-spacer />
       </v-row>

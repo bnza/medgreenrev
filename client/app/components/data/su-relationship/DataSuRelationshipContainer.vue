@@ -34,7 +34,7 @@ const toggleReadonly = () => (isReadonly.value = !isReadonly.value)
   <v-container data-testid="su-relationships-container" fluid>
     <data-su-relationship-create-dialog @refresh="refetch()" />
     <data-su-relationship-delete-dialog @refresh="refetch()" />
-    <v-row dense justify="end" style="min-height: 48px">
+    <v-row class="justify-end" density="compact" style="min-height: 48px">
       <v-col cols="1">
         <v-btn
           v-if="canUpdate"

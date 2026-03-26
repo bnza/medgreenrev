@@ -24,11 +24,11 @@ const props = withDefaults(defineProps<Props>(), {
     :query-params="props.queryParam"
   >
     <template #selection="{ item }">
-      <v-list-item v-if="item.raw.site">
+      <v-list-item v-if="item.site">
         <span class="text-secondary font-weight-bold">{{
-          item.raw.site.code
+          item.site.code
         }}</span>
-        - {{ item.raw.code }}
+        - {{ item.code }}
       </v-list-item>
     </template>
   </data-autocomplete>

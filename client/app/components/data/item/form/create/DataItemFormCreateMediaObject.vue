@@ -76,7 +76,7 @@ watch(
         />
       </v-col>
     </v-row>
-    <v-row justify="end">
+    <v-row class="justify-end">
       <v-col cols="4">
         <v-checkbox v-model="r$.$value.public" label="public" />
       </v-col>

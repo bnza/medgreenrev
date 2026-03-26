@@ -8,7 +8,7 @@ const isLongText = props.text ? String(props.text).length > 200 : false
 </script>
 
 <template>
-  <v-row v-if="text" dense>
+  <v-row v-if="text" density="compact">
     <v-col cols="4" class="text-secondary text-end text-no-wrap"
       >{{ label }}:</v-col
     >

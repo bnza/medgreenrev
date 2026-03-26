@@ -116,7 +116,7 @@ const reset = () => {
       <v-card-text>
         <v-form>
           <v-container>
-            <v-row dense justify="center">
+            <v-row class="justify-center" density="compact">
               <v-col
                 justify="center"
                 class="text-center text-secondary font-weight-bold"

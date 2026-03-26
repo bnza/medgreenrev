@@ -8,7 +8,7 @@ defineSlots<{
 
 <template>
   <v-container>
-    <v-row justify="space-around">
+    <v-row class="justify-space-around">
       <v-col class="d-flex justify-center" cols="2">
         <slot name="left-one" />
       </v-col>

@@ -30,11 +30,11 @@ const emit = defineEmits<{
     @selected="emit('selected', $event)"
   >
     <template #selection="{ item }">
-      <v-list-item v-if="item.raw.code">
+      <v-list-item v-if="item.code">
         <span class="text-secondary font-weight-bold">{{
-          item.raw.type.code
+          item.type.code
         }}</span>
-        - {{ item.raw.code }}
+        - {{ item.code }}
       </v-list-item>
     </template>
   </data-autocomplete>
