@@ -16,7 +16,7 @@ const centuries = props.item.centuries?.map(
       <v-col cols="12" xs="12" sm="4" class="px-2">
         <data-autocomplete
           path="/api/vocabulary/history/written_source_types"
-          :model-value="item.writtenSourceType"
+          :model-value="item.writtenSourceType['@id']"
           label="type"
           item-title="value"
           multiple

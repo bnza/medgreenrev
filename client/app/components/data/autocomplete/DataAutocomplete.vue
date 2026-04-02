@@ -8,7 +8,7 @@ import type {
   OperationPathParams,
 } from '~~/types'
 
-const model = defineModel<string | null>()
+const model = defineModel<string[] | string | null>()
 
 interface Props {
   path: ApiResourcePath

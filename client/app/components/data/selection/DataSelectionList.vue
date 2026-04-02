@@ -17,7 +17,7 @@ watch(innerQueryParams, () => (search.value = ''), { deep: true })
 const { items, asyncStatus } = useGetCollectionListQuery(
   props.path,
   search,
-  innerQueryParams,
+  innerQueryParams.value ?? undefined,
 )
 
 const model = defineModel<string | null | undefined>({ required: true })

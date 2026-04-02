@@ -5,8 +5,11 @@
     Path extends Extract<GetCollectionPath, '/api/data/history/written_sources'>
   "
 >
-import type { CollectionAcl, GetCollectionPath } from '~~/types'
-import DataDialogUpdateHistoryWrittenSource from '~/components/data/dialog/update/DataDialogUpdateHistoryWrittenSource.vue'
+import type {
+  CollectionAcl,
+  GetCollectionPath,
+  GetCollectionMemberResponseMap,
+} from '~~/types'
 
 const props = defineProps<{
   path: Path
@@ -22,6 +25,14 @@ const { updateDialogState } = storeToRefs(
 )
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })
+const formatCenturies = (
+  centuries: { chronologyLower: number; value: string }[],
+): string => {
+  return centuries
+    .sort((a, b) => a.chronologyLower - b.chronologyLower)
+    .map((c) => c.value)
+    .join(', ')
+}
 </script>
 
 <template>
@@ -36,15 +47,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.centuries.century.chronologyLower`]="{ item }">
-      <span v-if="item.centuries">{{
-        (item.centuries ?? [])
-          .sort(
-            (a: { chronologyLower: number }, b: { chronologyLower: number }) =>
-              a.chronologyLower - b.chronologyLower,
-          )
-          .map((c: { value: string }) => c.value)
-          .join(', ')
-      }}</span>
+      <span v-if="item.centuries">{{ formatCenturies(item.centuries) }}</span>
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-create-history-written-source @refresh="refetch()" />

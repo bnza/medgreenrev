@@ -11353,11 +11353,7 @@ export interface components {
     }
     'HistoryWrittenSource.csv-history_written_source.acl.read': {
       readonly id?: number | string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      writtenSourceType: string
+      writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.csv-history_written_source.acl.read']
       author: components['schemas']['VocHistoryAuthor.csv-history_written_source.acl.read']
       title: string
       subtitle?: string | null
@@ -11372,11 +11368,7 @@ export interface components {
       }
     }
     'HistoryWrittenSource.csv-history_written_sources_cited_works.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      writtenSourceType: string
+      writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.csv-history_written_sources_cited_works.acl.read']
       author: components['schemas']['VocHistoryAuthor.csv-history_written_sources_cited_works.acl.read']
       title: string
       /** @description Access control metadata */
@@ -11395,11 +11387,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      writtenSourceType: string
+      writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.jsonld-history_written_source.acl.read']
       author: components['schemas']['VocHistoryAuthor.jsonld-history_written_source.acl.read']
       title: string
       subtitle?: string | null
@@ -11415,11 +11403,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      writtenSourceType: string
+      writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.jsonld-history_written_sources_cited_works.acl.read']
       author: components['schemas']['VocHistoryAuthor.jsonld-history_written_sources_cited_works.acl.read']
       title: string
     })
@@ -15517,10 +15501,48 @@ export interface components {
         | null
       value: string
     })
+    'VocHistoryWrittenSourceType.csv-history_written_source.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocHistoryWrittenSourceType.csv-history_written_sources_cited_works.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocHistoryWrittenSourceType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
     }
+    'VocHistoryWrittenSourceType.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
+    'VocHistoryWrittenSourceType.jsonld-history_written_sources_cited_works.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value: string
@@ -18039,7 +18061,7 @@ export interface operations {
         'exists[mediaObjects]'?: boolean
         'exists[mediaObjects.mediaObject.description]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
@@ -18316,12 +18338,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -18369,17 +18391,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -18651,12 +18673,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -18704,17 +18726,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -18793,12 +18815,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -18846,17 +18868,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -18935,12 +18957,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -18988,17 +19010,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -19270,12 +19292,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -19323,17 +19345,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -19412,12 +19434,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -19465,17 +19487,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -19554,12 +19576,12 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -19580,12 +19602,12 @@ export interface operations {
         'exists[taxonomies.taxonomy.family]'?: boolean
         'exists[subject.description]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.name
          * @example cafè
          */
         'subject.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -19619,17 +19641,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -19896,12 +19918,12 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -19922,12 +19944,12 @@ export interface operations {
         'exists[taxonomies.taxonomy.family]'?: boolean
         'exists[subject.description]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.name
          * @example cafè
          */
         'subject.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -19961,17 +19983,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -20045,12 +20067,12 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -20071,12 +20093,12 @@ export interface operations {
         'exists[taxonomies.taxonomy.family]'?: boolean
         'exists[subject.description]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.name
          * @example cafè
          */
         'subject.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -20110,17 +20132,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -20255,12 +20277,12 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -20281,12 +20303,12 @@ export interface operations {
         'exists[taxonomies]'?: boolean
         'exists[taxonomies.taxonomy.family]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.name
          * @example cafè
          */
         'subject.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -20320,17 +20342,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -20597,12 +20619,12 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -20623,12 +20645,12 @@ export interface operations {
         'exists[taxonomies]'?: boolean
         'exists[taxonomies.taxonomy.family]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.name
          * @example cafè
          */
         'subject.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -20662,17 +20684,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -20746,12 +20768,12 @@ export interface operations {
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -20772,12 +20794,12 @@ export interface operations {
         'exists[taxonomies]'?: boolean
         'exists[taxonomies.taxonomy.family]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.name
          * @example cafè
          */
         'subject.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -20811,17 +20833,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -20956,12 +20978,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -20974,7 +20996,7 @@ export interface operations {
         'exists[subject.age]'?: boolean
         'exists[subject.sex]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -21008,12 +21030,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
@@ -21280,12 +21302,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -21298,7 +21320,7 @@ export interface operations {
         'exists[subject.age]'?: boolean
         'exists[subject.sex]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -21332,12 +21354,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
@@ -21411,12 +21433,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -21429,7 +21451,7 @@ export interface operations {
         'exists[subject.age]'?: boolean
         'exists[subject.sex]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -21463,12 +21485,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
@@ -21542,12 +21564,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -21622,12 +21644,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
@@ -21894,12 +21916,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -21974,12 +21996,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
@@ -22053,12 +22075,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -22133,12 +22155,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
@@ -22212,12 +22234,12 @@ export interface operations {
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -22245,7 +22267,7 @@ export interface operations {
         'subject.number[lt]'?: string
         'subject.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -22281,17 +22303,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -22558,12 +22580,12 @@ export interface operations {
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -22591,7 +22613,7 @@ export interface operations {
         'subject.number[lt]'?: string
         'subject.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -22627,17 +22649,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -22711,12 +22733,12 @@ export interface operations {
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -22744,7 +22766,7 @@ export interface operations {
         'subject.number[lt]'?: string
         'subject.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -22780,17 +22802,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -22864,12 +22886,12 @@ export interface operations {
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -22897,7 +22919,7 @@ export interface operations {
         'subject.number[lt]'?: string
         'subject.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
@@ -22933,17 +22955,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -22981,12 +23003,12 @@ export interface operations {
         subject?: string
         'subject[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
@@ -23020,17 +23042,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -23261,12 +23283,12 @@ export interface operations {
         subject?: string
         'subject[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
@@ -23300,17 +23322,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -23348,12 +23370,12 @@ export interface operations {
         subject?: string
         'subject[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
          * @example cafè
          */
         'subject.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.microstratigraphicUnit.notes'?: string
@@ -23387,17 +23409,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -23572,12 +23594,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -23640,17 +23662,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -23917,12 +23939,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -23985,17 +24007,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -24069,12 +24091,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -24137,17 +24159,17 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -24221,12 +24243,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -24246,7 +24268,7 @@ export interface operations {
         'subject.taxonomy.family[]'?: string[]
         'subject.taxonomy.vernacularName'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
@@ -24292,12 +24314,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -24564,12 +24586,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -24589,7 +24611,7 @@ export interface operations {
         'subject.taxonomy.family[]'?: string[]
         'subject.taxonomy.vernacularName'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
@@ -24635,12 +24657,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -24714,12 +24736,12 @@ export interface operations {
         'subject.stratigraphicUnit.year[lt]'?: string
         'subject.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
@@ -24739,7 +24761,7 @@ export interface operations {
         'subject.taxonomy.family[]'?: string[]
         'subject.taxonomy.vernacularName'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
@@ -24785,12 +24807,12 @@ export interface operations {
         'analysis.year[lt]'?: string
         'analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
          * @example cafè
          */
         'analysis.name'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
@@ -24852,22 +24874,22 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: fieldDirector
          * @example cafè
          */
         fieldDirector?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -25135,22 +25157,22 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: fieldDirector
          * @example cafè
          */
         fieldDirector?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -25220,22 +25242,22 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: fieldDirector
          * @example cafè
          */
         fieldDirector?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -25378,7 +25400,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -25421,12 +25443,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -25518,7 +25540,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -25561,12 +25583,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -25851,7 +25873,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -25894,12 +25916,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -26179,7 +26201,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -26222,12 +26244,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -26319,7 +26341,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -26362,12 +26384,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -26652,7 +26674,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -26695,12 +26717,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -26995,12 +27017,12 @@ export interface operations {
         'contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -27014,12 +27036,12 @@ export interface operations {
         'type[]'?: string[]
         'exists[description]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
@@ -27103,12 +27125,12 @@ export interface operations {
         'contextStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'contextStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'contextStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'contextStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -27122,12 +27144,12 @@ export interface operations {
         'type[]'?: string[]
         'exists[description]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
@@ -27428,12 +27450,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -27451,7 +27473,7 @@ export interface operations {
         'exists[context.description]'?: boolean
         'exists[stratigraphicUnit.mediaObjects]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: context.description
          * @example cafè
          */
         'context.description'?: string
@@ -27659,12 +27681,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -27682,7 +27704,7 @@ export interface operations {
         'exists[context.description]'?: boolean
         'exists[stratigraphicUnit.mediaObjects]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: context.description
          * @example cafè
          */
         'context.description'?: string
@@ -27780,12 +27802,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -27803,7 +27825,7 @@ export interface operations {
         'exists[context.description]'?: boolean
         'exists[stratigraphicUnit.mediaObjects]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: context.description
          * @example cafè
          */
         'context.description'?: string
@@ -27872,17 +27894,17 @@ export interface operations {
         'chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28144,17 +28166,17 @@ export interface operations {
         'chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28221,17 +28243,17 @@ export interface operations {
         'chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28336,17 +28358,17 @@ export interface operations {
         'chronologyUpper[lte]'?: string
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28447,17 +28469,17 @@ export interface operations {
         'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28532,17 +28554,17 @@ export interface operations {
         'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28810,17 +28832,17 @@ export interface operations {
         'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -28931,17 +28953,17 @@ export interface operations {
         'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: location.region.value
          * @example cafè
          */
         'location.region.value'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: reference
          * @example cafè
          */
         reference?: string
@@ -29011,28 +29033,42 @@ export interface operations {
         'author[]'?: string[]
         writtenSourceType?: string
         'writtenSourceType[]'?: string[]
-        title?: string
-        publicationDetails?: string
         'centuries.century'?: string
         'centuries.century[]'?: string[]
         'citedWorks.citedWork'?: string
         'citedWorks.citedWork[]'?: string[]
+        'exists[subtitle]'?: boolean
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
-         * @example cafè
-         */
-        'location.region.value'?: string
-        /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: title
          * @example cafè
          */
-        reference?: string
+        title?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subtitle
+         * @example cafè
+         */
+        subtitle?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: publicationDetails
+         * @example cafè
+         */
+        publicationDetails?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: author.value
+         * @example cafè
+         */
+        'author.value'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Searches across: title, author.value, author.variant
+         * @example cafè
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -29262,6 +29298,35 @@ export interface operations {
         'order[citedWork.value]'?: 'asc' | 'desc'
         'order[yearCompleted]'?: 'asc' | 'desc'
         'order[yearCompletedUpper]'?: 'asc' | 'desc'
+        writtenSource?: string
+        'writtenSource[]'?: string[]
+        citedWork?: string
+        'citedWork[]'?: string[]
+        'writtenSource.author'?: string
+        'writtenSource.author[]'?: string[]
+        'writtenSource.centuries.century'?: string
+        'writtenSource.centuries.century[]'?: string[]
+        'exists[writtenSource.subtitle]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: writtenSource.title
+         * @example cafè
+         */
+        'writtenSource.title'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: writtenSource.subtitle
+         * @example cafè
+         */
+        'writtenSource.subtitle'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: writtenSource.publicationDetails
+         * @example cafè
+         */
+        'writtenSource.publicationDetails'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Searches across: writtenSource.title, writtenSource.author.value, writtenSource.author.variant
+         * @example cafè
+         */
+        search?: string
         yearCompleted?: string
         'yearCompleted[gt]'?: string
         'yearCompleted[gte]'?: string
@@ -29304,6 +29369,35 @@ export interface operations {
         'order[citedWork.value]'?: 'asc' | 'desc'
         'order[yearCompleted]'?: 'asc' | 'desc'
         'order[yearCompletedUpper]'?: 'asc' | 'desc'
+        writtenSource?: string
+        'writtenSource[]'?: string[]
+        citedWork?: string
+        'citedWork[]'?: string[]
+        'writtenSource.author'?: string
+        'writtenSource.author[]'?: string[]
+        'writtenSource.centuries.century'?: string
+        'writtenSource.centuries.century[]'?: string[]
+        'exists[writtenSource.subtitle]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: writtenSource.title
+         * @example cafè
+         */
+        'writtenSource.title'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: writtenSource.subtitle
+         * @example cafè
+         */
+        'writtenSource.subtitle'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: writtenSource.publicationDetails
+         * @example cafè
+         */
+        'writtenSource.publicationDetails'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Searches across: writtenSource.title, writtenSource.author.value, writtenSource.author.variant
+         * @example cafè
+         */
+        search?: string
         yearCompleted?: string
         'yearCompleted[gt]'?: string
         'yearCompleted[gte]'?: string
@@ -29558,7 +29652,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -29601,12 +29695,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -29627,7 +29721,7 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[analyses]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -29693,7 +29787,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -29736,12 +29830,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -29762,7 +29856,7 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[analyses]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -30021,7 +30115,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -30064,12 +30158,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -30090,7 +30184,7 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[analyses]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -30147,7 +30241,7 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[analyses]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -30242,7 +30336,7 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[analyses]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -32637,12 +32731,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -32654,7 +32748,7 @@ export interface operations {
         'stratigraphicUnit[]'?: string[]
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -32728,12 +32822,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -32745,7 +32839,7 @@ export interface operations {
         'stratigraphicUnit[]'?: string[]
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -33012,12 +33106,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -33029,7 +33123,7 @@ export interface operations {
         'stratigraphicUnit[]'?: string[]
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -33103,12 +33197,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -33120,7 +33214,7 @@ export interface operations {
         'stratigraphicUnit[]'?: string[]
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -33161,7 +33255,7 @@ export interface operations {
         'stratigraphicUnit[]'?: string[]
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -33240,7 +33334,7 @@ export interface operations {
         'stratigraphicUnit[]'?: string[]
         'exists[notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
@@ -33374,12 +33468,12 @@ export interface operations {
         petrographicDescriptions?: boolean
         fluidInclusions?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -33661,12 +33755,12 @@ export interface operations {
         petrographicDescriptions?: boolean
         fluidInclusions?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -33752,12 +33846,12 @@ export interface operations {
         petrographicDescriptions?: boolean
         fluidInclusions?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -33912,12 +34006,12 @@ export interface operations {
         petrographicDescriptions?: boolean
         fluidInclusions?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -33984,17 +34078,17 @@ export interface operations {
         region?: string
         'region[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -34236,17 +34330,17 @@ export interface operations {
         region?: string
         'region[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -34364,17 +34458,17 @@ export interface operations {
         region?: string
         'region[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -34435,7 +34529,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -34502,12 +34596,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -34629,7 +34723,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -34696,12 +34790,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -35016,7 +35110,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -35083,12 +35177,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -35523,7 +35617,7 @@ export interface operations {
         'analysesMicrostratigraphicUnits.analysis.year[lt]'?: string
         'analysesMicrostratigraphicUnits.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysesMicrostratigraphicUnits.analysis.summary
          * @example cafè
          */
         'analysesMicrostratigraphicUnits.analysis.summary'?: string
@@ -35566,12 +35660,12 @@ export interface operations {
         'sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -35605,7 +35699,7 @@ export interface operations {
         'exists[sampleStratigraphicUnits]'?: boolean
         'exists[analysesMicrostratigraphicUnits]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
@@ -35674,7 +35768,7 @@ export interface operations {
         'analysesMicrostratigraphicUnits.analysis.year[lt]'?: string
         'analysesMicrostratigraphicUnits.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analysesMicrostratigraphicUnits.analysis.summary
          * @example cafè
          */
         'analysesMicrostratigraphicUnits.analysis.summary'?: string
@@ -35717,12 +35811,12 @@ export interface operations {
         'sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
         'sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
@@ -35756,7 +35850,7 @@ export interface operations {
         'exists[sampleStratigraphicUnits]'?: boolean
         'exists[analysesMicrostratigraphicUnits]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
@@ -36057,12 +36151,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -36094,7 +36188,7 @@ export interface operations {
         'sample.number[lt]'?: string
         'sample.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: sample.description
          * @example cafè
          */
         'sample.description'?: string
@@ -36315,12 +36409,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -36352,7 +36446,7 @@ export interface operations {
         'sample.number[lt]'?: string
         'sample.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: sample.description
          * @example cafè
          */
         'sample.description'?: string
@@ -36452,12 +36546,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -36489,7 +36583,7 @@ export interface operations {
         'sample.number[lt]'?: string
         'sample.number[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: sample.description
          * @example cafè
          */
         'sample.description'?: string
@@ -36535,17 +36629,17 @@ export interface operations {
         region?: string
         'region[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -36786,17 +36880,17 @@ export interface operations {
         region?: string
         'region[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -36913,17 +37007,17 @@ export interface operations {
         region?: string
         'region[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: name
          * @example cafè
          */
         name?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -36987,12 +37081,12 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -37059,12 +37153,12 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -37282,7 +37376,7 @@ export interface operations {
         'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
         'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
@@ -37336,7 +37430,7 @@ export interface operations {
         'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
         'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
@@ -38503,12 +38597,12 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -38629,12 +38723,12 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
          * @example cafè
          */
         interpretation?: string
@@ -41202,7 +41296,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
@@ -41466,7 +41560,16 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[variant]'?: 'asc' | 'desc'
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: value
+         * @example cafè
+         */
         value?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: variant
+         * @example cafè
+         */
+        variant?: string
       }
       header?: never
       path?: never
@@ -41493,7 +41596,16 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[variant]'?: 'asc' | 'desc'
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: value
+         * @example cafè
+         */
         value?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: variant
+         * @example cafè
+         */
+        variant?: string
       }
       header?: never
       path?: never
@@ -41821,32 +41933,32 @@ export interface operations {
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.reference
          * @example cafè
          */
         'animals.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.notes
          * @example cafè
          */
         'animals.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.reference
          * @example cafè
          */
         'plants.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.notes
          * @example cafè
          */
         'plants.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -41940,32 +42052,32 @@ export interface operations {
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.reference
          * @example cafè
          */
         'animals.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.notes
          * @example cafè
          */
         'animals.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.reference
          * @example cafè
          */
         'plants.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.notes
          * @example cafè
          */
         'plants.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -42101,32 +42213,32 @@ export interface operations {
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.reference
          * @example cafè
          */
         'animals.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.notes
          * @example cafè
          */
         'animals.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.reference
          * @example cafè
          */
         'plants.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.notes
          * @example cafè
          */
         'plants.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -42248,32 +42360,32 @@ export interface operations {
         'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.reference
          * @example cafè
          */
         'animals.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: animals.notes
          * @example cafè
          */
         'animals.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.reference
          * @example cafè
          */
         'plants.reference'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: plants.notes
          * @example cafè
          */
         'plants.notes'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: region.value
          * @example cafè
          */
         'region.value'?: string
@@ -43085,7 +43197,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
@@ -43147,7 +43259,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
          */
         value?: string
@@ -43729,7 +43841,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -43772,12 +43884,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -43887,7 +43999,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -43930,12 +44042,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -44045,7 +44157,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -44088,12 +44200,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -44624,7 +44736,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -44667,12 +44779,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -44778,7 +44890,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -44821,12 +44933,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
@@ -44932,7 +45044,7 @@ export interface operations {
         'analyses.analysis.year[lt]'?: string
         'analyses.analysis.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
          * @example cafè
          */
         'analyses.analysis.summary'?: string
@@ -44975,12 +45087,12 @@ export interface operations {
         'stratigraphicUnit.year[lt]'?: string
         'stratigraphicUnit.year[lte]'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.description'?: string
         /**
-         * @description Filter using case insensitive unaccented string matching
+         * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
