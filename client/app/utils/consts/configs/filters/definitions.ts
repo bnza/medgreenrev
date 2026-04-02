@@ -247,6 +247,38 @@ const VocabularyHistoryLanguage: StaticFiltersDefinitionObject = {
   path: '/api/vocabulary/history/languages',
 }
 
+const VocabularyHistoryAuthor: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectMultiple,
+  path: '/api/vocabulary/history/authors',
+}
+
+const VocabularyHistoryWrittenSourceType: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectArray,
+  path: '/api/vocabulary/history/written_source_types',
+}
+
+const VocabularyCentury: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectMultiple,
+  path: '/api/vocabulary/centuries',
+}
+
+const VocabularyHistoryCitedWork: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'Vocabulary',
+  addToQueryObject: addToQueryObjectMultiple,
+  path: '/api/vocabulary/history/cited_works',
+}
+
 const VocabularyHistoryPlant: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -372,6 +404,12 @@ const ArchaeologicalSiteEquals: StaticFiltersDefinitionObject = {
   componentKey: 'ArchaeologicalSite',
   addToQueryObject: addToQueryObjectMultiple,
 }
+const HistoryWrittenSourceEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'HistoryWrittenSource',
+  addToQueryObject: addToQueryObjectMultiple,
+}
 
 const PaleoclimateSamplingSiteEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
@@ -430,6 +468,7 @@ export const API_FILTERS = {
   ArchaeologicalSiteEquals,
   StratigraphicUnitEquals,
   HistoryLocationEquals,
+  HistoryWrittenSourceEquals,
   NumericEqual,
   NumericGreaterThan,
   NumericGreaterThanOrEqualTo,
@@ -456,8 +495,12 @@ export const API_FILTERS = {
   VocabularyBotanyTaxonomy,
   VocabularyCulturalContext,
   VocabularyHistoryAnimal,
+  VocabularyHistoryAuthor,
   VocabularyHistoryLanguage,
   VocabularyHistoryPlant,
+  VocabularyHistoryWrittenSourceType,
+  VocabularyCentury,
+  VocabularyHistoryCitedWork,
   VocabularyMediaObjectType,
   VocabularyPotteryDecoration,
   VocabularyPotteryFunctionalForm,

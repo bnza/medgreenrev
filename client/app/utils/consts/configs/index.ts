@@ -19,7 +19,9 @@ import * as contextStratigraphicUnit from './data/contextStratigraphicUnit'
 import currentUserSitePrivilege from './data/currentUserSitePrivilege'
 import historyAnimal from './data/historyAnimal'
 import historyPlant from './data/historyPlant'
+import historyWrittenSource from './data/historyWrittenSource'
 import individual from './data/individual'
+import historyWrittenSourceCitedWork from './data/historyWrittenSourceCitedWork'
 import mediaObject from './data/mediaObject'
 import microstratigraphicUnit from './data/microstratigraphicUnit'
 import paleoclimateSample from './data/paleoclimateSample'
@@ -36,6 +38,7 @@ import stratigraphicUnit from './data/stratigraphicUnit'
 import user from './data/user'
 import vocBotanyTaxonomy from './data/vocBotanyTaxonomy'
 import vocHistoryAnimal from './data/vocHistoryAnimal'
+import vocHistoryAuthor from './data/vocHistoryAuthor'
 import vocHistoryLocation from './data/vocHistoryLocation'
 import vocHistoryPlant from './data/vocHistoryPlant'
 import vocZooTaxonomy from './data/vocZooTaxonomy'
@@ -92,6 +95,9 @@ export const RESOURCE_CONFIG_MAP = {
 
   '/api/data/history/animals': historyAnimal,
   '/api/data/history/plants': historyPlant,
+  '/api/data/history/written_sources': historyWrittenSource,
+  '/api/data/history/written_sources_cited_works':
+    historyWrittenSourceCitedWork,
 
   '/api/data/individuals': individual,
   '/api/data/individuals/{parentId}/analyses': analysisIndividual,
@@ -136,6 +142,7 @@ export const RESOURCE_CONFIG_MAP = {
 
   '/api/data/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
   '/api/data/vocabulary/history/animals': vocHistoryAnimal,
+  '/api/data/vocabulary/history/authors': vocHistoryAuthor,
   '/api/data/vocabulary/history/locations': vocHistoryLocation,
   '/api/data/vocabulary/history/plants': vocHistoryPlant,
   '/api/data/vocabulary/zoo/taxonomies': vocZooTaxonomy,
@@ -147,6 +154,7 @@ export const RESOURCE_CONFIG_MAP = {
 
   '/api/vocabulary/botany/taxonomies': vocBotanyTaxonomy,
   '/api/vocabulary/history/animals': vocHistoryAnimal,
+  '/api/vocabulary/history/authors': vocHistoryAuthor,
   '/api/vocabulary/history/locations': vocHistoryLocation,
   '/api/vocabulary/history/plants': vocHistoryPlant,
   '/api/vocabulary/zoo/taxonomies': vocZooTaxonomy,

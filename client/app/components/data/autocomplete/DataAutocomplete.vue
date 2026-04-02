@@ -45,8 +45,11 @@ watch(
     search.value = ''
 
     if (newValue) {
+      if (!isValidIri(newValue)) {
+        return
+      }
       // When a value is selected, fetch that specific item
-      params.value = { id: extractIdFromIri(newValue as Iri) }
+      params.value = { id: extractIdFromIri(newValue) }
     } else {
       // When the model is cleared, also clear the item query params so the
       // previously selected item isn't kept around in the results.

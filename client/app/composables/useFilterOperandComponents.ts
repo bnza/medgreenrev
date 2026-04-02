@@ -11,6 +11,7 @@ import DataDialogSearchOperandSelection from '~/components/data/dialog/search/op
 import DataDialogSearchOperandIndividualSex from '~/components/data/dialog/search/operand/DataDialogSearchOperandIndividualSex.vue'
 import DataDialogSearchOperandAnalysisStatus from '~/components/data/dialog/search/operand/DataDialogSearchOperandAnalysisStatus.vue'
 import DataSelectionZooBoneEndsPreserved from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneEndsPreserved.vue'
+import DataDialogSearchOperandWrittenSource from '~/components/data/dialog/search/operand/DataDialogSearchOperandWrittenSource.vue'
 import DataSelectionZooBoneSide from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneSide.vue'
 import DataDialogSearchOperandHistoryLocation from '~/components/data/dialog/search/operand/DataDialogSearchOperandHistoryLocation.vue'
 import DataDialogSearchOperandPaleoclimateSamplingSite from '~/components/data/dialog/search/operand/DataDialogSearchOperandPaleoclimateSamplingSite.vue'
@@ -27,6 +28,7 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   SelectionIndividualSex: DataDialogSearchOperandIndividualSex,
   Vocabulary: DataDialogSearchOperandVocabulary,
   HistoryLocation: DataDialogSearchOperandHistoryLocation,
+  HistoryWrittenSource: DataDialogSearchOperandWrittenSource,
   ArchaeologicalSite: DataDialogSearchOperandArchaeologicalSite,
   PaleoclimateSamplingSite: DataDialogSearchOperandPaleoclimateSamplingSite,
   SamplingSite: DataDialogSearchOperandSamplingSite,

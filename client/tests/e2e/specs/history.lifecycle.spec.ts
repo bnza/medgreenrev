@@ -8,6 +8,10 @@ import { HistoryPlantItemPage } from '~~/tests/e2e/pages/history-plant-item.page
 import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
 import { LoginPage } from '~~/tests/e2e/pages/login.page'
 import { HistoryLocationCollectionPage } from '~~/tests/e2e/pages/history-location-collection.page'
+import { HistoryWrittenSourceCollectionPage } from '~~/tests/e2e/pages/history-written-source-collection.page'
+import { HistoryWrittenSourceItemPage } from '~~/tests/e2e/pages/history-written-source-item.page'
+import { HistoryWrittenSourceCitedWorkCollectionPage } from '~~/tests/e2e/pages/history-written-source-cited-work-collection.page'
+import { HistoryWrittenSourceCitedWorkItemPage } from '~~/tests/e2e/pages/history-written-source-cited-work-item.page'
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -504,6 +508,7 @@ test.describe('History item lifecycle', () => {
         await page
           .getByTestId('app-navigation-drawer')
           .getByText('Written sources', { exact: true })
+          .first()
           .click()
         await page
           .getByTestId('app-navigation-drawer')
@@ -549,6 +554,339 @@ test.describe('History item lifecycle', () => {
         )
         await collectionPom.table.expectNotToHaveRowContainingText(
           'New location',
+        )
+      })
+    })
+  })
+  test.describe('Written Sources', () => {
+    test.describe('Historian user', () => {
+      test.use({ storageState: 'playwright/.auth/his.json' })
+
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        const collectionPom = new HistoryWrittenSourceCollectionPage(page)
+        const itemPom = new HistoryWrittenSourceItemPage(page)
+
+        // OPEN/CLOSE CREATE DIALOG
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.closeDialog()
+
+        // CREATE AND REDIRECT TO NEW ITEM PAGE
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('written source type')
+          .click({ force: true })
+        await page
+          .getByRole('listbox')
+          .getByRole('option', { name: 'agr' })
+          .first()
+          .click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('author')
+          .click({ force: true })
+        await page
+          .getByRole('listbox')
+          .getByRole('option', { name: 'Al-Buntī', includeHidden: false })
+          .first()
+          .click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'title', exact: true })
+          .fill('Test written source title')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'subtitle' })
+          .fill('Test subtitle')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'publication details' })
+          .fill('Test publication details')
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('centuries')
+          .click({ force: true })
+        await page
+          .getByRole('listbox')
+          .getByRole('option', { name: 'XIII', includeHidden: false })
+          .first()
+          .click()
+        await page.keyboard.press('Escape')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'notes' })
+          .fill('Some notes about the written source')
+
+        await collectionPom.dataDialogCreate.submitForm()
+
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+
+        // Verify the created item details
+        await itemPom.expectTextFieldToHaveValue(
+          'title',
+          'Test written source title',
+        )
+        await itemPom.expectTextFieldToHaveValue(
+          'publication details',
+          'Test publication details',
+        )
+        await itemPom.expectTextFieldToHaveValue(
+          'notes',
+          'Some notes about the written source',
+        )
+        await itemPom.dataCard.backButton.click()
+        await collectionPom.table.expectData()
+
+        // UPDATE
+
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Update)
+          .click()
+        await collectionPom.dataDialogUpdate.expectOldFormData()
+
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'title', exact: true })
+          .fill('Updated written source title')
+
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'publication details' })
+          .fill('Updated publication details')
+
+        await collectionPom.dataDialogUpdate.submitForm()
+
+        // Verify updated item details
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully updated',
+        )
+        await collectionPom.table.expectRowToHaveText(
+          0,
+          'Updated written source title',
+        )
+        await collectionPom.table.expectRowToHaveText(
+          0,
+          'Updated publication details',
+        )
+
+        // DELETE
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Delete)
+          .click()
+        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
+          'title',
+          'Updated written source title',
+        )
+        await collectionPom.dataDialogDelete.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully deleted',
+        )
+      })
+
+      test('Data validation', async ({ page }) => {
+        const collectionPom = new HistoryWrittenSourceCollectionPage(page)
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+        // Test 1: Required fields validation
+        await collectionPom.dataDialogCreate.submitButton.click()
+        await expect(
+          page.locator('.v-input:has(label:text-is("written source type"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text-is("author"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text-is("title"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text-is("publication details"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text-is("centuries"))'),
+        ).toContainText(/required/)
+
+        // Test 2: Valid form submission after fixing validation errors
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('written source type')
+          .click()
+        await page.getByRole('listbox').getByRole('option').first().click()
+
+        await collectionPom.dataDialogCreate.form.getByLabel('author').click()
+        await page.getByRole('listbox').getByRole('option').first().click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'title', exact: true })
+          .fill('Test written source title')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'publication details' })
+          .fill('Test publication details')
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('centuries')
+          .click({ force: true })
+        await page.getByRole('listbox').getByRole('option').first().click()
+        await page.keyboard.press('Escape')
+
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+      })
+    })
+  })
+
+  test.describe('Written Source Cited Works', () => {
+    test.describe('Historian user', () => {
+      test.use({ storageState: 'playwright/.auth/his.json' })
+
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        const collectionPom = new HistoryWrittenSourceCitedWorkCollectionPage(
+          page,
+        )
+        const itemPom = new HistoryWrittenSourceCitedWorkItemPage(page)
+
+        // OPEN/CLOSE CREATE DIALOG
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.closeDialog()
+
+        // CREATE AND REDIRECT TO NEW ITEM PAGE
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('written source', { exact: true })
+          .click()
+        await page.getByRole('listbox').getByRole('option').first().click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('cited work')
+          .click({ force: true })
+        await page.getByRole('listbox').getByRole('option').first().click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year completed' })
+          .first()
+          .fill('1050')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year completed (upper)' })
+          .fill('1150')
+
+        await collectionPom.dataDialogCreate.submitForm()
+
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+
+        // Verify the created item details
+        await itemPom.expectTextFieldToHaveValue('year completed', '1050')
+        await itemPom.expectTextFieldToHaveValue(
+          'year completed (upper)',
+          '1150',
+        )
+        await itemPom.dataCard.backButton.click()
+        await collectionPom.table.expectData()
+
+        // UPDATE
+
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Update)
+          .click()
+        await collectionPom.dataDialogUpdate.expectOldFormData()
+
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'year completed' })
+          .first()
+          .fill('1060')
+
+        await collectionPom.dataDialogUpdate.submitForm()
+
+        // Verify updated item details
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully updated',
+        )
+        await collectionPom.table.expectRowToHaveText(0, '1060')
+
+        // DELETE
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Delete)
+          .click()
+        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
+          'year completed',
+          '1060',
+        )
+        await collectionPom.dataDialogDelete.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully deleted',
+        )
+      })
+
+      test('Data validation', async ({ page }) => {
+        const collectionPom = new HistoryWrittenSourceCitedWorkCollectionPage(
+          page,
+        )
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+        // Test 1: Required fields validation
+        await collectionPom.dataDialogCreate.submitButton.click()
+        await expect(
+          page.locator('.v-input:has(label:text-is("written source"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text-is("cited work"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text-is("year completed"))').first(),
+        ).toContainText(/required/)
+
+        // Test 2: Year completed validation - lower > upper
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year completed' })
+          .first()
+          .fill('1500')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year completed (upper)' })
+          .fill('1000')
+        await page.keyboard.press('Tab')
+        await expect(
+          page.locator('.v-input:has(label:text-is("year completed"))').first(),
+        ).toContainText(
+          'Year completed must be greater than or equal year completed upper.',
+        )
+
+        // Test 3: Valid form submission after fixing validation errors
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('written source', { exact: true })
+          .click()
+        await page.getByRole('listbox').getByRole('option').first().click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('cited work')
+          .click()
+        await page.getByRole('listbox').getByRole('option').first().click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year completed' })
+          .first()
+          .fill('1050')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'year completed (upper)' })
+          .fill('1150')
+
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
         )
       })
     })

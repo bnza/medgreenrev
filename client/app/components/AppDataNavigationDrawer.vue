@@ -327,6 +327,20 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             title="Plants"
             data-testid="app-nav-drawer-li-analyses-historical-data-plants"
           />
+          <v-list-item
+            nuxt
+            to="/data/history/written-sources"
+            router
+            title="Written sources"
+            data-testid="app-nav-drawer-li-historical-data-sources"
+          />
+          <v-list-item
+            nuxt
+            to="/data/history/written-sources/cited-works"
+            router
+            title="Cited works (written sources)"
+            data-testid="app-nav-drawer-li-historical-data-cited-works"
+          />
         </v-list-group>
       </v-list-group>
       <v-list-group value="Media">
@@ -402,6 +416,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             router
             title="Animals"
             data-testid="app-nav-drawer-li-voc-historical-data-animals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/authors"
+            router
+            title="Authors"
+            data-testid="app-nav-drawer-li-voc-historical-data-authors"
           />
           <v-list-item
             nuxt

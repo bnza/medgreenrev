@@ -28,73 +28,53 @@ export const flattenRegleErrors = (
   return recurse(errors)
 }
 
-export const greaterThanOrEqual = (
-  message = 'Value must be greater than or equal to its reference value.',
-) =>
+const toMaybeNumber = (value: Maybe<number | string>): Maybe<number> => {
+  if (typeof value === 'number') return value
+  if (typeof value === 'string') {
+    return value.trim() === '' ? undefined : Number(value)
+  }
+  return undefined
+}
+
+type Operator = '<' | '<=' | '>' | '>='
+
+const operators: Record<Operator, (a: number, b: number) => boolean> = {
+  '<': (a, b) => a < b,
+  '<=': (a, b) => a <= b,
+  '>': (a, b) => a > b,
+  '>=': (a, b) => a >= b,
+}
+
+const createComparisonRule = (operator: Operator, message: string) =>
   createRule({
     validator: (
       value: Maybe<number | string>,
       otherValue: Maybe<number | string>,
     ) => {
-      const valueNumber = Number(value)
-      const otherValueNumber = Number(otherValue)
+      const valueNumber = toMaybeNumber(value)
+      const otherValueNumber = toMaybeNumber(otherValue)
       return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
-        ? valueNumber >= otherValueNumber
+        ? operators[operator](valueNumber!, otherValueNumber!)
         : true
     },
     message,
   })
+
+export const greaterThanOrEqual = (
+  message = 'Value must be greater than or equal to its reference value.',
+) => createComparisonRule('>=', message)
 
 export const greaterThan = (
   message = 'Value must be greater than its reference value.',
-) =>
-  createRule({
-    validator: (
-      value: Maybe<number | string>,
-      otherValue: Maybe<number | string>,
-    ) => {
-      const valueNumber = Number(value)
-      const otherValueNumber = Number(otherValue)
-      return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
-        ? valueNumber > otherValueNumber
-        : true
-    },
-    message,
-  })
+) => createComparisonRule('>', message)
 
 export const lessThanOrEqual = (
   message = 'Value must be must be less than or equal its reference value.',
-) =>
-  createRule({
-    validator: (
-      value: Maybe<number | string>,
-      otherValue: Maybe<number | string>,
-    ) => {
-      const valueNumber = Number(value)
-      const otherValueNumber = Number(otherValue)
-      return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
-        ? valueNumber <= otherValueNumber
-        : true
-    },
-    message,
-  })
+) => createComparisonRule('<=', message)
 
 export const lessThan = (
   message = 'Value must be must be less than its reference value.',
-) =>
-  createRule({
-    validator: (
-      value: Maybe<number | string>,
-      otherValue: Maybe<number | string>,
-    ) => {
-      const valueNumber = Number(value)
-      const otherValueNumber = Number(otherValue)
-      return Number.isFinite(valueNumber) && Number.isFinite(otherValueNumber)
-        ? valueNumber < otherValueNumber
-        : true
-    },
-    message,
-  })
+) => createComparisonRule('<', message)
 
 export const asyncConditionalRule = (
   condition: Ref<boolean>,

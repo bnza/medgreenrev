@@ -6,7 +6,10 @@ export class DataDialogDeleteComponent extends DataDialogComponent {
     super(page, 'data-dialog-delete')
   }
   async expectTextFieldToHaveValue(fieldName: string, expectedValue: string) {
-    const textField = this.container.getByRole('textbox', { name: fieldName })
+    const textField = this.container.getByRole('textbox', {
+      name: fieldName,
+      exact: true,
+    })
     await expect(textField).toHaveValue(expectedValue)
   }
 }

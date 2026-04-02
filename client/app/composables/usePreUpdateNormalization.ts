@@ -35,6 +35,23 @@ const NORMALIZATION_FN_MAP: Partial<
       }
       return diffItem
     },
+  historyWrittenSource:
+    (oldItem: Record<string, any>) => (item: Record<string, any>) => {
+      const diffItem = diff(oldItem, item)
+      if (diffItem && 'centuries' in diffItem && 'centuries' in item) {
+        diffItem.centuries = item.centuries
+      }
+      return diffItem
+    },
+  historyWrittenSourceCitedWork:
+    (oldItem: Record<string, any>) => (item: Record<string, any>) => {
+      const diffItem = diff(oldItem, item)
+      if (diffItem && 'yearCompletedUpper' in diffItem) {
+        diffItem.yearCompletedUpper =
+          diffItem.yearCompletedUpper !== '' ? item.yearCompletedUpper : null
+      }
+      return diffItem
+    },
   siteUserPrivilege:
     (_oldItem: Record<string, any>) =>
     <T extends Record<string, any>>(item: T) => {

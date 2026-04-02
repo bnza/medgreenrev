@@ -10,12 +10,17 @@ import { taxonomyStaticFiltersDefinition as botanyTaxonomyStaticFilterDefinition
 const {
   Exists,
   HistoryLocationEquals,
+  HistoryWrittenSourceEquals,
   SearchExact,
   SearchPartial,
   VocabularyHistoryAnimal,
+  VocabularyHistoryAuthor,
   VocabularyHistoryLanguage,
   VocabularyHistoryPlant,
+  VocabularyHistoryWrittenSourceType,
   VocabularyRegion,
+  VocabularyCentury,
+  VocabularyHistoryCitedWork,
 } = API_FILTERS
 
 const historyLocation: ResourceStaticFiltersDefinitionObject = {
@@ -124,4 +129,115 @@ export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObj
       'plants.plant',
       'plants',
     ]),
+  }
+
+export const staticFiltersDefinitionWrittenSource: ResourceStaticFiltersDefinitionObject =
+  {
+    author: {
+      filters: {
+        VocabularyHistoryAuthor,
+      },
+    },
+    writtenSourceType: {
+      filters: {
+        VocabularyHistoryWrittenSourceType,
+      },
+      propertyLabel: 'type',
+    },
+    title: {
+      filters: {
+        SearchPartial,
+      },
+    },
+    publicationDetails: {
+      filters: {
+        SearchPartial,
+      },
+      propertyLabel: 'publication details',
+    },
+    'centuries.century': {
+      filters: {
+        VocabularyCentury,
+      },
+      propertyLabel: 'century',
+    },
+    'citedWorks.citedWork': {
+      filters: {
+        VocabularyHistoryCitedWork,
+      },
+      propertyLabel: 'cited work',
+    },
+    notes: {
+      filters: {
+        Exists,
+        SearchPartial,
+      },
+    },
+    reference: {
+      filters: {
+        SearchPartial,
+      },
+    },
+  }
+
+export const staticFiltersDefinitionWrittenSourceCitedWork: ResourceStaticFiltersDefinitionObject =
+  {
+    citedWork: {
+      filters: {
+        VocabularyHistoryCitedWork,
+      },
+      propertyLabel: 'cited work',
+    },
+    writtenSource: {
+      filters: {
+        HistoryWrittenSourceEquals,
+      },
+      propertyLabel: 'written source',
+    },
+    'writtenSource.author': {
+      filters: {
+        VocabularyHistoryAuthor,
+      },
+      propertyLabel: 'written source (author)',
+    },
+    'writtenSource.centuries.century': {
+      filters: {
+        VocabularyCentury,
+      },
+      propertyLabel: 'written source (century)',
+    },
+    'writtenSource.title': {
+      filters: {
+        SearchPartial,
+      },
+      propertyLabel: 'written source (title)',
+    },
+    'writtenSource.subtitle': {
+      filters: {
+        Exists,
+        SearchPartial,
+      },
+      propertyLabel: 'written source (subtitle)',
+    },
+    'writtenSource.publicationDetails': {
+      filters: {
+        SearchPartial,
+      },
+      propertyLabel: 'written source (publication details)',
+    },
+    yearCompleted: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'year completed',
+    },
+    yearCompletedUpper: {
+      filters: {
+        Exists,
+        SearchExact,
+        ...NumericOperations,
+      },
+      propertyLabel: 'year completed (upper)',
+    },
   }

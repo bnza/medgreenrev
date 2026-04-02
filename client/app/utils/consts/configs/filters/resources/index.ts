@@ -33,6 +33,8 @@ export {
   staticFiltersDefinitionPlant as historyPlant,
   staticFiltersDefinitionAnimal as historyAnimal,
   staticFiltersDefinitionLocation as historyLocation,
+  staticFiltersDefinitionWrittenSource as historyWrittenSource,
+  staticFiltersDefinitionWrittenSourceCitedWork as historyWrittenSourceCitedWork,
 } from './history'
 export {
   staticFiltersDefinition as individual,

@@ -28,6 +28,9 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/contexts/{parentId}/stratigraphic_units'
   | '/api/data/history/animals'
   | '/api/data/history/plants'
+  | '/api/data/history/written_sources'
+  | '/api/data/history/written_sources/{parentId}/cited_works'
+  | '/api/data/history/written_sources_cited_works'
   | '/api/data/individuals/{parentId}/analyses'
   | '/api/data/contexts'
   | '/api/data/contexts/{parentId}/analyses/botany'
@@ -114,6 +117,12 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/vocabulary/history/locations':
     resourceFilterDefinitions.historyLocation,
   '/api/data/history/plants': resourceFilterDefinitions.historyPlant,
+  '/api/data/history/written_sources':
+    resourceFilterDefinitions.historyWrittenSource,
+  '/api/data/history/written_sources/{parentId}/cited_works':
+    resourceFilterDefinitions.historyWrittenSourceCitedWork,
+  '/api/data/history/written_sources_cited_works':
+    resourceFilterDefinitions.historyWrittenSourceCitedWork,
   '/api/data/individuals': resourceFilterDefinitions.individual,
   '/api/data/individuals/{parentId}/analyses':
     resourceFilterDefinitions.analysisIndividualParentSubject,

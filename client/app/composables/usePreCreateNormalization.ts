@@ -5,6 +5,13 @@ const { createFromObject } = useTypedFormData()
 const NORMALIZATION_FN_MAP: Partial<
   Record<ApiResourceKey, (item: Record<string, any>) => any>
 > = {
+  historyWrittenSourceCitedWork: (item: Record<string, any>) => {
+    return {
+      ...item,
+      yearCompletedUpper:
+        item.yearCompletedUpper !== '' ? item.yearCompletedUpper : null,
+    }
+  },
   mediaObject: (item: Record<string, any>) => {
     return createFromObject(item)
   },

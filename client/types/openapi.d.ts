@@ -2570,6 +2570,130 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/history/written_sources': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryWrittenSource resources.
+     * @description Retrieves the collection of HistoryWrittenSource resources.
+     */
+    get: operations['api_datahistorywritten_sources_get_collection']
+    put?: never
+    /**
+     * Creates a HistoryWrittenSource resource.
+     * @description Creates a HistoryWrittenSource resource.
+     */
+    post: operations['api_datahistorywritten_sources_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/written_sources/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryWrittenSource resource.
+     * @description Retrieves a HistoryWrittenSource resource.
+     */
+    get: operations['api_datahistorywritten_sources_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the HistoryWrittenSource resource.
+     * @description Removes the HistoryWrittenSource resource.
+     */
+    delete: operations['api_datahistorywritten_sources_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the HistoryWrittenSource resource.
+     * @description Updates the HistoryWrittenSource resource.
+     */
+    patch: operations['api_datahistorywritten_sources_id_patch']
+    trace?: never
+  }
+  '/api/data/history/written_sources/{parentId}/cited_works': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryWrittenSourceCitedWork resources.
+     * @description Retrieves the collection of HistoryWrittenSourceCitedWork resources.
+     */
+    get: operations['api_datahistorywritten_sources_parentIdcited_works_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/written_sources_cited_works': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of HistoryWrittenSourceCitedWork resources.
+     * @description Retrieves the collection of HistoryWrittenSourceCitedWork resources.
+     */
+    get: operations['api_datahistorywritten_sources_cited_works_get_collection']
+    put?: never
+    /**
+     * Creates a HistoryWrittenSourceCitedWork resource.
+     * @description Creates a HistoryWrittenSourceCitedWork resource.
+     */
+    post: operations['api_datahistorywritten_sources_cited_works_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/history/written_sources_cited_works/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a HistoryWrittenSourceCitedWork resource.
+     * @description Retrieves a HistoryWrittenSourceCitedWork resource.
+     */
+    get: operations['api_datahistorywritten_sources_cited_works_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the HistoryWrittenSourceCitedWork resource.
+     * @description Removes the HistoryWrittenSourceCitedWork resource.
+     */
+    delete: operations['api_datahistorywritten_sources_cited_works_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the HistoryWrittenSourceCitedWork resource.
+     * @description Updates the HistoryWrittenSourceCitedWork resource.
+     */
+    patch: operations['api_datahistorywritten_sources_cited_works_id_patch']
+    trace?: never
+  }
   '/api/data/archaeological_sites/{parentId}/individuals': {
     parameters: {
       query?: never
@@ -6402,6 +6526,46 @@ export interface paths {
     patch: operations['api_vocabularybotanytaxonomies_id_patch']
     trace?: never
   }
+  '/api/vocabulary/centuries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocCentury resources.
+     * @description Retrieves the collection of VocCentury resources.
+     */
+    get: operations['api_vocabularycenturies_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/centuries/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocCentury resource.
+     * @description Retrieves a VocCentury resource.
+     */
+    get: operations['api_vocabularycenturies_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/cultural_contexts': {
     parameters: {
       query?: never
@@ -6505,6 +6669,114 @@ export interface paths {
      * @description Removes the VocHistoryAnimal resource.
      */
     delete: operations['api_vocabularyhistoryanimals_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/vocabulary/history/authors': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryAuthor resources.
+     * @description Retrieves the collection of VocHistoryAuthor resources.
+     */
+    get: operations['api_datavocabularyhistoryauthors_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/authors': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryAuthor resources.
+     * @description Retrieves the collection of VocHistoryAuthor resources.
+     */
+    get: operations['api_vocabularyhistoryauthors_get_collection']
+    put?: never
+    /**
+     * Creates a VocHistoryAuthor resource.
+     * @description Creates a VocHistoryAuthor resource.
+     */
+    post: operations['api_vocabularyhistoryauthors_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/authors/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryAuthor resource.
+     * @description Retrieves a VocHistoryAuthor resource.
+     */
+    get: operations['api_vocabularyhistoryauthors_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the VocHistoryAuthor resource.
+     * @description Removes the VocHistoryAuthor resource.
+     */
+    delete: operations['api_vocabularyhistoryauthors_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/cited_works': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryHistoryCitedWork resources.
+     * @description Retrieves the collection of VocHistoryHistoryCitedWork resources.
+     */
+    get: operations['api_vocabularyhistorycited_works_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/cited_works/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryHistoryCitedWork resource.
+     * @description Retrieves a VocHistoryHistoryCitedWork resource.
+     */
+    get: operations['api_vocabularyhistorycited_works_id_get']
+    put?: never
+    post?: never
+    delete?: never
     options?: never
     head?: never
     patch?: never
@@ -6761,6 +7033,46 @@ export interface paths {
      * @description Removes the VocHistoryPlant resource.
      */
     delete: operations['api_vocabularyhistoryplants_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/written_source_types': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocHistoryWrittenSourceType resources.
+     * @description Retrieves the collection of VocHistoryWrittenSourceType resources.
+     */
+    get: operations['api_vocabularyhistorywritten_source_types_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/history/written_source_types/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocHistoryWrittenSourceType resource.
+     * @description Retrieves a VocHistoryWrittenSourceType resource.
+     */
+    get: operations['api_vocabularyhistorywritten_source_types_id_get']
+    put?: never
+    post?: never
+    delete?: never
     options?: never
     head?: never
     patch?: never
@@ -7316,6 +7628,46 @@ export interface paths {
      * @description Updates the VocZooTaxonomy resource.
      */
     patch: operations['api_vocabularyzootaxonomies_id_patch']
+    trace?: never
+  }
+  '/api/data/written_source_centuries': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of WrittenSourceCentury resources.
+     * @description Retrieves the collection of WrittenSourceCentury resources.
+     */
+    get: operations['api_datawritten_source_centuries_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/written_source_centuries/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a WrittenSourceCentury resource.
+     * @description Retrieves a WrittenSourceCentury resource.
+     */
+    get: operations['api_datawritten_source_centuries_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
     trace?: never
   }
   '/api/data/archaeological_sites/{parentId}/zoo/bones': {
@@ -10964,6 +11316,167 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+    })
+    'HistoryWrittenSource-history_written_source.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      author: string
+      title: string
+      subtitle?: string | null
+      publicationDetails: string
+      notes?: string | null
+      centuries?: string[]
+    }
+    'HistoryWrittenSource-history_written_source.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      author?: string
+      title?: string
+      subtitle?: string | null
+      publicationDetails?: string
+      notes?: string | null
+      centuries?: string[]
+    }
+    'HistoryWrittenSource.csv-history_written_source.acl.read': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType: string
+      author: components['schemas']['VocHistoryAuthor.csv-history_written_source.acl.read']
+      title: string
+      subtitle?: string | null
+      publicationDetails: string
+      notes?: string | null
+      centuries?: components['schemas']['WrittenSourceCentury.csv-history_written_source.acl.read'][]
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryWrittenSource.csv-history_written_sources_cited_works.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType: string
+      author: components['schemas']['VocHistoryAuthor.csv-history_written_sources_cited_works.acl.read']
+      title: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryWrittenSource.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType: string
+      author: components['schemas']['VocHistoryAuthor.jsonld-history_written_source.acl.read']
+      title: string
+      subtitle?: string | null
+      publicationDetails: string
+      notes?: string | null
+      centuries?: components['schemas']['WrittenSourceCentury.jsonld-history_written_source.acl.read'][]
+    })
+    'HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType: string
+      author: components['schemas']['VocHistoryAuthor.jsonld-history_written_sources_cited_works.acl.read']
+      title: string
+    })
+    'HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSource: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      citedWork: string
+      yearCompleted: number
+      yearCompletedUpper: number | null
+    }
+    'HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSource?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      citedWork?: string
+      yearCompleted?: number
+      yearCompletedUpper?: number | null
+    }
+    'HistoryWrittenSourceCitedWork.csv-history_written_sources_cited_works.acl.read': {
+      readonly id?: number | string
+      writtenSource: components['schemas']['HistoryWrittenSource.csv-history_written_sources_cited_works.acl.read']
+      citedWork: components['schemas']['VocHistoryHistoryCitedWork.csv-history_written_sources_cited_works.acl.read']
+      yearCompleted: number
+      yearCompletedUpper: number | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      writtenSource: components['schemas']['HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read']
+      citedWork: components['schemas']['VocHistoryHistoryCitedWork.jsonld-history_written_sources_cited_works.acl.read']
+      yearCompleted: number
+      yearCompletedUpper: number | null
     })
     HydraCollectionBaseSchema: components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
       /**
@@ -14617,6 +15130,38 @@ export interface components {
       class: string
       family?: string | null
     })
+    /** @description Century vocabulary. */
+    'VocCentury.csv-history_written_source.acl.read': {
+      value: string
+      chronologyLower: number
+      chronologyUpper: number
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    /** @description Century vocabulary. */
+    'VocCentury.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      id?: number
+      value: string
+      chronologyLower: number
+      chronologyUpper: number
+    }
+    /** @description Century vocabulary. */
+    'VocCentury.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      chronologyLower: number
+      chronologyUpper: number
+    })
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
@@ -14667,6 +15212,92 @@ export interface components {
       readonly id?: number
       value: string
     }
+    'VocHistoryAuthor-voc_history_author.create': {
+      value: string
+      variant?: string | null
+    }
+    'VocHistoryAuthor.csv-history_written_source.acl.read': {
+      value: string
+      variant?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocHistoryAuthor.csv-history_written_sources_cited_works.acl.read': {
+      value: string
+      variant?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocHistoryAuthor.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      variant?: string | null
+    })
+    'VocHistoryAuthor.jsonld-history_written_sources_cited_works.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      variant?: string | null
+    })
+    'VocHistoryAuthor.jsonld-voc_history_author.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      value: string
+      variant?: string | null
+    })
+    'VocHistoryAuthor.jsonld-voc_history_author.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      value: string
+      variant?: string | null
+    }
+    'VocHistoryHistoryCitedWork.csv-history_written_sources_cited_works.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocHistoryHistoryCitedWork.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      value: string
+    }
+    'VocHistoryHistoryCitedWork.jsonld-history_written_sources_cited_works.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
     'VocHistoryLanguage.csv-history_animal.acl.read': {
       value: string
       /** @description Access control metadata */
@@ -14886,6 +15517,10 @@ export interface components {
         | null
       value: string
     })
+    'VocHistoryWrittenSourceType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      value: string
+    }
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value: string
@@ -15254,6 +15889,38 @@ export interface components {
       class: string
       family?: string | null
     }
+    'WrittenSourceCentury.csv-history_written_source.acl.read': {
+      century?: components['schemas']['VocCentury.csv-history_written_source.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'WrittenSourceCentury.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSource?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      century?: string
+    }
+    'WrittenSourceCentury.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      century?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read']
+    })
     'ZooBone-feature_collection.json.read': Record<string, never>
     'ZooBone-zoo_bone.create': {
       /**
@@ -28328,6 +28995,538 @@ export interface operations {
       }
     }
   }
+  api_datahistorywritten_sources_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[author.value]'?: 'asc' | 'desc'
+        'order[title]'?: 'asc' | 'desc'
+        'order[writtenSourceType.value]'?: 'asc' | 'desc'
+        'order[centuries.century.chronologyLower]'?: 'asc' | 'desc'
+        'order[centuries.century.chronologyUpper]'?: 'asc' | 'desc'
+        author?: string
+        'author[]'?: string[]
+        writtenSourceType?: string
+        'writtenSourceType[]'?: string[]
+        title?: string
+        publicationDetails?: string
+        'centuries.century'?: string
+        'centuries.century[]'?: string[]
+        'citedWorks.citedWork'?: string
+        'citedWorks.citedWork[]'?: string[]
+        'exists[notes]'?: boolean
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        'location.region.value'?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        notes?: string
+        /**
+         * @description Filter using case insensitive unaccented string matching
+         * @example cafè
+         */
+        reference?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSource collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['HistoryWrittenSource.jsonld-history_written_source.acl.read'][]
+          }
+          'text/csv': components['schemas']['HistoryWrittenSource.csv-history_written_source.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new HistoryWrittenSource resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['HistoryWrittenSource-history_written_source.create']
+      }
+    }
+    responses: {
+      /** @description HistoryWrittenSource resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryWrittenSource.jsonld-history_written_source.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryWrittenSource identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSource resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryWrittenSource.jsonld-history_written_source.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryWrittenSource identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSource resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryWrittenSource identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated HistoryWrittenSource resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['HistoryWrittenSource-history_written_source.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description HistoryWrittenSource resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryWrittenSource.jsonld-history_written_source.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_parentIdcited_works_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[writtenSource.author.value]'?: 'asc' | 'desc'
+        'order[writtenSource.title]'?: 'asc' | 'desc'
+        'order[citedWork.value]'?: 'asc' | 'desc'
+        'order[yearCompleted]'?: 'asc' | 'desc'
+        'order[yearCompletedUpper]'?: 'asc' | 'desc'
+        yearCompleted?: string
+        'yearCompleted[gt]'?: string
+        'yearCompleted[gte]'?: string
+        'yearCompleted[lt]'?: string
+        'yearCompleted[lte]'?: string
+        'yearCompleted[between]'?: string
+      }
+      header?: never
+      path: {
+        /** @description HistoryWrittenSourceCitedWork identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSourceCitedWork collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read'][]
+          }
+          'text/csv': components['schemas']['HistoryWrittenSourceCitedWork.csv-history_written_sources_cited_works.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_cited_works_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[writtenSource.author.value]'?: 'asc' | 'desc'
+        'order[writtenSource.title]'?: 'asc' | 'desc'
+        'order[citedWork.value]'?: 'asc' | 'desc'
+        'order[yearCompleted]'?: 'asc' | 'desc'
+        'order[yearCompletedUpper]'?: 'asc' | 'desc'
+        yearCompleted?: string
+        'yearCompleted[gt]'?: string
+        'yearCompleted[gte]'?: string
+        'yearCompleted[lt]'?: string
+        'yearCompleted[lte]'?: string
+        'yearCompleted[between]'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSourceCitedWork collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read'][]
+          }
+          'text/csv': components['schemas']['HistoryWrittenSourceCitedWork.csv-history_written_sources_cited_works.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_cited_works_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new HistoryWrittenSourceCitedWork resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create']
+      }
+    }
+    responses: {
+      /** @description HistoryWrittenSourceCitedWork resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_cited_works_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryWrittenSourceCitedWork identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSourceCitedWork resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_cited_works_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryWrittenSourceCitedWork identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description HistoryWrittenSourceCitedWork resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datahistorywritten_sources_cited_works_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description HistoryWrittenSourceCitedWork identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated HistoryWrittenSourceCitedWork resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description HistoryWrittenSourceCitedWork resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
   api_dataarchaeological_sites_parentIdindividuals_get_collection: {
     parameters: {
       query?: {
@@ -39940,6 +41139,65 @@ export interface operations {
       }
     }
   }
+  api_vocabularycenturies_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+        'value[]'?: string[]
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocCentury collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocCentury.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularycenturies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocCentury identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocCentury resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocCentury.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularycultural_contexts_get_collection: {
     parameters: {
       query?: {
@@ -40183,6 +41441,246 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datavocabularyhistoryauthors_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[variant]'?: 'asc' | 'desc'
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAuthor collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryauthors_get_collection: {
+    parameters: {
+      query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[variant]'?: 'asc' | 'desc'
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAuthor collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryauthors_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new VocHistoryAuthor resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['VocHistoryAuthor-voc_history_author.create']
+      }
+    }
+    responses: {
+      /** @description VocHistoryAuthor resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryauthors_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryAuthor identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAuthor resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryauthors_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryAuthor identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryAuthor resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistorycited_works_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryHistoryCitedWork collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryHistoryCitedWork.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistorycited_works_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryHistoryCitedWork identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryHistoryCitedWork resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryHistoryCitedWork.jsonld']
         }
       }
       /** @description Not found */
@@ -41109,6 +42607,64 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistorywritten_source_types_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryWrittenSourceType collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocHistoryWrittenSourceType.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyhistorywritten_source_types_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryWrittenSourceType identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocHistoryWrittenSourceType resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryWrittenSourceType.jsonld']
         }
       }
       /** @description Not found */
@@ -42077,6 +43633,67 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datawritten_source_centuries_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description WrittenSourceCentury collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['WrittenSourceCentury.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_datawritten_source_centuries_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description WrittenSourceCentury identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description WrittenSourceCentury resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['WrittenSourceCentury.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }

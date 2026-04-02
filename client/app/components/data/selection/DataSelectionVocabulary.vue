@@ -23,6 +23,7 @@ const model = defineModel<
 
 <template>
   <v-select
+    v-bind="$attrs"
     v-model="model"
     :items
     :loading="asyncStatus === 'loading'"
