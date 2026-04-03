@@ -4,6 +4,6 @@ import { Sources } from 'vue3-openlayers'
 
 <template>
   <map-layer-tile-base-map base-map="osm">
-    <Sources.OlSourceOsm />
+    <Sources.OlSourceOSM />
   </map-layer-tile-base-map>
 </template>

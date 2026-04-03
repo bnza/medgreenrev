@@ -4,7 +4,7 @@ import { Sources } from 'vue3-openlayers'
 
 <template>
   <map-layer-tile-base-map base-map="esri">
-    <Sources.OlSourceXyz
+    <Sources.OlSourceXYZ
       attribution="@ Tiles ESRI"
       url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
     />

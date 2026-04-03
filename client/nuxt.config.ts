@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       : 'http://localhost/api',
   },
   compatibilityDate: '2024-04-03',
-  css: ['~/assets/styles/index.css', 'vue3-openlayers/styles.css'],
+  css: ['~/assets/styles/index.css', 'vue3-openlayers/vue3-openlayers.css'],
   devtools: {
     enabled: process.env.NODE_ENV === 'development',
   },
@@ -100,6 +100,12 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: ['ol > geotiff', 'ol-ext'],
+    },
+    resolve: {
+      alias: {
+        // Temporary patch until vue3-openlayers fixes the problem with ol-contextmenu CSS import
+        'ol-contextmenu/ol-contextmenu.css': '~/assets/styles/empty.css',
+      },
     },
   },
   ssr: false,
