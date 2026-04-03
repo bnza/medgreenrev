@@ -6,7 +6,7 @@ server {
     root /srv/api/public;
     index index.php index.html index.htm;
 
-    client_max_body_size 10M;
+    client_max_body_size ${CLIENT_BODY_SIZE};
 
     location /.well-known/acme-challenge/ {
         root /var/www/certbot/;
@@ -27,13 +27,13 @@ server {
     root /srv/api/public;
     index index.php index.html index.htm;
 
-    client_max_body_size 10M;
+    client_max_body_size ${CLIENT_BODY_SIZE};
 
     ssl_certificate /etc/nginx/ssl/live/${NGINX_HOST}/fullchain.pem;
     ssl_certificate_key /etc/nginx/ssl/live/${NGINX_HOST}/privkey.pem;
 
     location /app/ {
-        alias /srv/client/;
+        alias /srv/client_output/;
     }
 
     location /media/ {

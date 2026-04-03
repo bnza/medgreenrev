@@ -5,3 +5,10 @@
 .php-cs-fixer.cache
 /.junie
 /.http/
+
+# Client
+client/node_modules
+client/.pnpm-store
+client/.nuxt
+client/.output
+client/.env

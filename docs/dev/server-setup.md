@@ -199,7 +199,7 @@ mount -a
 ### Directory setup
 
 ```shell
-sudo mkdir -p /mnt/data/{sw,volumes/static}
+sudo mkdir -p /mnt/data/{sw,volumes/static/media}
 ```
 
 set the permissions:
@@ -207,6 +207,7 @@ set the permissions:
 ```shell
 sudo chown -R :$USER /mnt/data/sw
 sudo chmod g+w /mnt/data/sw
+sudo chown 82:82 /mnt/data/volumes/static/media
 ```
 
 ## SSL Certificate Setup (Certbot)

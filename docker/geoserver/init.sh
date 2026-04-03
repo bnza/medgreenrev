@@ -34,7 +34,7 @@ else
     echo "Setting proxyBaseUrl to ${PROXY_BASE_URL}"
 
     if [ -f "${GLOBAL_XML}" ]; then
-        sed -i "s|__PROXY_BASE_URL__|${PROXY_BASE_URL}|g" "${GLOBAL_XML}"
+        sed -i "s|<proxyBaseUrl>.*</proxyBaseUrl>|<proxyBaseUrl>${PROXY_BASE_URL}</proxyBaseUrl>|g" "${GLOBAL_XML}"
     else
         echo "WARNING: ${GLOBAL_XML} not found. Cannot set proxyBaseUrl."
     fi
