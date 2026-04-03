@@ -1,0 +1,56 @@
+import type { GetFeatureCollectionPath } from '~~/types'
+import useAppQueryCache from './useAppQueryCache'
+import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
+import { GetFeatureCollectionExtentOperation } from '~/api/operations/GetFeatureCollectionExtentOperation'
+import type { ProjectionLike } from 'ol/proj'
+import { useMapVectorApiStore } from '~/stores/useMapVectorApiStore'
+import { API_FEATURES_EXTENT_RESOURCE_MAP } from '~/utils/consts/resources'
+
+import type { FeatureAggregationResourceKey } from '~/stores/useMapLayerExclusiveVisibilityStore'
+
+export function useGetFeatureCollectionExtentQuery(
+  path: GetFeatureCollectionPath,
+  groupKey: FeatureAggregationResourceKey,
+  enabled: Ref<boolean>,
+  projection: ProjectionLike,
+) {
+  const getFeatureCollectionOperation = new GetFeatureCollectionExtentOperation(
+    API_FEATURES_EXTENT_RESOURCE_MAP[path],
+  )
+  const mapVectorApiStore = useMapVectorApiStore(path, groupKey)
+
+  if (!mapVectorApiStore.resourceConfig) {
+    throw new Error(`Resource key not found for path ${path}`)
+  }
+
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(
+    mapVectorApiStore.resourcePath,
+    path,
+  )
+
+  // The composable uses the resourceConfig to sync the fetch with the actual filtered endpoint
+  const { filterQueryObject } = storeToRefs(
+    useCollectionQueryStore(mapVectorApiStore.resourceConfig.apiPath),
+  )
+
+  const featureQuery = defineQueryOptions(({ queryObject, enabled }) => ({
+    key: RESOURCE_QUERY_KEY.byFilter({
+      ...queryObject,
+      crs: projection,
+    }),
+    enabled,
+    query: () =>
+      getFeatureCollectionOperation.request({
+        query: { ...queryObject, crs: projection },
+      }),
+  }))
+
+  return useQuery(() =>
+    featureQuery({
+      queryObject: filterQueryObject.value,
+      enabled: enabled.value,
+    }),
+  )
+}
+
+export default useGetFeatureCollectionExtentQuery

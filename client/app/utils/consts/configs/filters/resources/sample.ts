@@ -1,0 +1,70 @@
+import type { ResourceStaticFiltersDefinitionObject } from '~~/types'
+import {
+  NumericOperations,
+  API_FILTERS,
+  generateResourceDefinition,
+} from '~/utils/consts/configs/filters/definitions'
+import { propertyStaticFiltersDefinition as analysisPropertyStaticDefinition } from './analysis'
+import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
+
+const {
+  Exists,
+  SearchExact,
+  SearchPartial,
+  ArchaeologicalSiteEquals,
+  VocabularySampleType,
+} = API_FILTERS
+
+export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    description: {
+      filters: {
+        SearchPartial,
+      },
+    },
+    number: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+    site: {
+      filters: {
+        ArchaeologicalSiteEquals,
+      },
+    },
+    type: {
+      filters: {
+        VocabularySampleType,
+      },
+    },
+    year: {
+      filters: {
+        SearchExact,
+        ...NumericOperations,
+      },
+    },
+  }
+
+const existsPropertiesStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    analysesMicrostratigraphicUnits: {
+      propertyLabel: 'microstratigraphic analysis',
+      filters: {
+        Exists,
+      },
+    },
+  }
+
+export const staticFiltersDefinition = {
+  ...propertyStaticFiltersDefinition,
+  ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+    'analysesMicrostratigraphicUnits.analysis',
+    'microstratigraphic analysis',
+  ]),
+  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
+    'sampleStratigraphicUnits.stratigraphicUnit',
+    'stratigraphic unit',
+  ]),
+  ...existsPropertiesStaticFiltersDefinition,
+}

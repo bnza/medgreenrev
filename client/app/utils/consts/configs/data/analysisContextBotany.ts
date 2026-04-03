@@ -1,0 +1,60 @@
+import type { ResourceConfig } from '~~/types'
+
+export const config: Readonly<ResourceConfig> = {
+  apiPath: '/api/data/analyses/contexts/botany',
+  appPath: '/data/analyses/context/botany',
+  defaultHeaders: [
+    {
+      key: 'id',
+      value: 'id',
+      title: 'ID',
+      align: 'center',
+      width: '200',
+      maxWidth: '200',
+    },
+    {
+      key: 'subject.site.code',
+      value: 'subject.site.code',
+      title: 'site',
+      minWidth: '100',
+    },
+    {
+      key: 'subject.name',
+      value: 'subject.name',
+      title: 'context',
+      minWidth: '100',
+    },
+    {
+      key: 'analysis.type.group',
+      value: 'analysis.type.group',
+      title: 'group',
+      maxWidth: '200',
+      minWidth: '200',
+    },
+    {
+      key: 'analysis.type',
+      value: 'analysis.type.value',
+      title: 'type',
+      maxWidth: '200',
+      minWidth: '200',
+    },
+    {
+      key: 'analysis.identifier',
+      value: 'analysis.identifier',
+      title: 'analysis',
+      maxWidth: '200',
+      minWidth: '200',
+    },
+    {
+      key: 'summary',
+      value: 'summary',
+      title: 'summary',
+      minWidth: '300',
+      sortable: false,
+    },
+  ],
+  labels: ['archaeobotanical analysis', 'archaeobotanical analyses'],
+  name: 'analysisContextBotany',
+}
+
+export default config

@@ -1,0 +1,35 @@
+<script
+  setup
+  lang="ts"
+  generic="
+    P extends Extract<
+      GetCollectionPath,
+      | '/api/data/sediment_cores'
+      | '/api/data/sampling_sites/{parentId}/sediment_cores'
+    >
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
+
+defineProps<{
+  path: P
+  parent?: ResourceParent<'samplingSite'>
+}>()
+
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
+</script>
+
+<template>
+  <data-collection-page
+    :parent="Boolean(parent)"
+    :path
+    :show-back-button="false"
+    :acl
+  >
+    <template #search-bar>
+      <data-collection-search-text-field :path />
+    </template>
+    <data-collection-table-sediment-core v-model:acl="acl" :path :parent />
+  </data-collection-page>
+</template>

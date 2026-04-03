@@ -1,0 +1,107 @@
+<script
+  setup
+  lang="ts"
+  generic="
+    TParent extends Extract<
+      ApiResourceKey,
+      | 'botanyCharcoal'
+      | 'botanySeed'
+      | 'context'
+      | 'individual'
+      | 'pottery'
+      | 'zooBone'
+      | 'zooTooth'
+    >
+  "
+>
+import type {
+  ApiResourceKey,
+  Iri,
+  OperationPathParams,
+  ResourceParent,
+} from '~~/types'
+import { API_RESOURCE_MAP } from '~/utils/consts/resources'
+
+interface Item {
+  subject?: string
+  analysis?: string
+  summary?: string | null
+}
+
+interface Props {
+  initialValue: Item
+  parent?: ResourceParent<TParent | 'analysis'>
+  subjectItemTitle: string
+  subjectParentKey: TParent
+  analysisParentKey?: string
+  analysisQueryParams?: Record<string, any>
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  analysisParentKey: 'analysis',
+  analysisQueryParams: () => ({
+    'type.group': [
+      AnalysisGroups.MaterialAnalysis,
+      AnalysisGroups.Microscope,
+      AnalysisGroups.AbsoluteDating,
+    ],
+  }),
+})
+
+const emit = defineEmits<{
+  selected: [any]
+}>()
+
+const path = computed(() => API_RESOURCE_MAP[props.subjectParentKey])
+
+const model = ref(structuredClone(props.initialValue))
+
+const { r$ } = useScopedRegleItem(model, {}, { scopeKey: 'base' })
+
+const analysisId = ref<
+  OperationPathParams<'/api/data/analyses/{id}', 'get'> | undefined
+>()
+
+const { data } = useGetItemQuery('/api/data/analyses/{id}', analysisId)
+
+watch(
+  () => props.initialValue.analysis,
+  (value) => {
+    analysisId.value = value
+      ? { id: extractIdFromIri(value as Iri) }
+      : undefined
+  },
+  { immediate: true },
+)
+
+watch(
+  () => data.value,
+  (value) => {
+    emit('selected', value)
+  },
+  { immediate: true },
+)
+</script>
+
+<template>
+  <v-row>
+    <v-col cols="6">
+      <data-autocomplete
+        v-model="r$.$value.subject"
+        :path
+        :item-title="subjectItemTitle"
+        label="subject"
+        granted-only
+        disabled
+      />
+    </v-col>
+    <v-col cols="6" class="px-2">
+      <data-autocomplete-analysis v-model="r$.$value.analysis" disabled />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12" class="px-2">
+      <v-textarea v-model="r$.$value.summary" label="summary" />
+    </v-col>
+  </v-row>
+</template>

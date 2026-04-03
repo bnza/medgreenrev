@@ -1,0 +1,85 @@
+import { test as setup, expect } from '@playwright/test'
+import { LoginPage } from '~~/tests/e2e/pages/login.page'
+import { loadFixtures, credentials } from '~~/tests/e2e/utils/api'
+
+setup.beforeAll(() => {
+  loadFixtures()
+})
+
+const adminFile = 'playwright/.auth/admin.json'
+
+setup('authenticate as admin user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.ADMIN)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: adminFile })
+})
+
+const editorFile = 'playwright/.auth/editor.json'
+setup('authenticate as editor user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.EDITOR)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: editorFile })
+})
+
+const baseFile = 'playwright/.auth/base.json'
+setup('authenticate as base user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.BASE)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: baseFile })
+})
+
+const geoFile = 'playwright/.auth/geo.json'
+setup('authenticate as geo archaeologist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.GEO)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: geoFile })
+})
+
+const hisFile = 'playwright/.auth/his.json'
+setup('authenticate as historian user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.HIS)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: hisFile })
+})
+
+const matFile = 'playwright/.auth/mat.json'
+setup('authenticate as material analyst user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.MAT)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: matFile })
+})
+
+const mstFile = 'playwright/.auth/mst.json'
+setup('authenticate as microstratigraphist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.MST)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: mstFile })
+})

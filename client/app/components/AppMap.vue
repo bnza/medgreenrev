@@ -1,0 +1,102 @@
+<script setup lang="ts">
+import { Map, Layers } from 'vue3-openlayers'
+import MapLayerVectorApiHistoryLocation from '~/components/map/layer/vector/api/MapLayerVectorApiHistoryLocation.vue'
+import MapLayerVectorApiArchaeologicalSite from '~/components/map/layer/vector/api/MapLayerVectorApiArchaeologicalSite.vue'
+import MapLayerVectorApiBotanyCharcoal from '~/components/map/layer/vector/api/MapLayerVectorApiBotanyCharcoal.vue'
+
+const mapStore = useMapStore()
+const { center, projection, zoom, rotation, extentArray } =
+  storeToRefs(mapStore)
+
+const viewRef = useTemplateRef<typeof Map.OlView>('viewRef')
+const mapRef = useTemplateRef<typeof Map.OlMap>('mapRef')
+
+const isUpdating = ref(false)
+const updateMapState = () => {
+  if (viewRef.value && mapRef.value) {
+    isUpdating.value = true
+    const olView = viewRef.value.view
+    const olMap = mapRef.value.map
+
+    // Get the extent from the view and map size
+    const extent = olView.calculateExtent(olMap.getSize())
+    mapStore.updateBbox(extent)
+
+    // Update view state directly from the view object
+    mapStore.updateView(
+      olView.getCenter(),
+      olView.getZoom(),
+      olView.getRotation(),
+    )
+    isUpdating.value = false
+  }
+}
+
+watch(
+  () => extentArray.value,
+  (value, oldValue) => {
+    if (value === oldValue) {
+      return
+    }
+    if (!isUpdating.value && value) {
+      viewRef?.value?.view?.fit(value)
+    }
+  },
+)
+
+const onMoveEnd = () => {
+  updateMapState()
+}
+
+onMounted(() => {
+  updateMapState()
+})
+
+// url = 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+</script>
+
+<template>
+  <Map.OlMap
+    ref="mapRef"
+    :load-tiles-while-animating="true"
+    :load-tiles-while-interacting="true"
+    style="height: 100%; width: 100%"
+    data-testid="app-map"
+    @moveend="onMoveEnd"
+  >
+    <Map.OlView
+      ref="viewRef"
+      :center="center"
+      :projection="projection"
+      :rotation="rotation"
+      :zoom="zoom"
+      :min-zoom="6"
+    />
+    <Layers.OlLayerGroup>
+      <map-layer-tile-base-map-esri />
+      <map-layer-tile-base-map-osm />
+      <map-layer-vector-api-botany-charcoal group-key="archaeologicalSite" />
+      <map-layer-vector-api-botany-seed group-key="archaeologicalSite" />
+      <map-layer-vector-api-history-animal group-key="vocHistoryLocation" />
+      <map-layer-vector-api-history-plant group-key="vocHistoryLocation" />
+      <map-layer-vector-api-individual group-key="archaeologicalSite" />
+      <map-layer-vector-api-microstratigraphic-unit
+        group-key="archaeologicalSite"
+      />
+      <map-layer-vector-api-pottery group-key="archaeologicalSite" />
+      <map-layer-vector-api-zoo-bone group-key="archaeologicalSite" />
+      <map-layer-vector-api-zoo-tooth group-key="archaeologicalSite" />
+      <map-layer-vector-api-history-location group-key="vocHistoryLocation" />
+      <map-layer-vector-api-paleoclimate-sample
+        group-key="paleoclimateSamplingSite"
+      />
+      <map-layer-vector-api-paleoclimate-sampling-site
+        group-key="paleoclimateSamplingSite"
+      />
+      <map-layer-vector-api-sampling-site group-key="samplingSite" />
+      <map-layer-vector-api-archaeological-site
+        group-key="archaeologicalSite"
+      />
+    </Layers.OlLayerGroup>
+  </Map.OlMap>
+</template>

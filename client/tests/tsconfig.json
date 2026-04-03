@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    //    "paths": {
+    //      "@fixtures": [
+    //        "./fixtures"
+    //      ]
+    //    }
+    //    "types": [
+    //      "vitest/globals"
+    //    ]
+  },
+  //  "types": [
+  //    "vitest"
+  //  ],
+  "include": ["./**/*", "../.nuxt/types/**/*"]
+  //"include": ["./**/*", "../app/**/*", "../.nuxt/types/**/*"]
+}

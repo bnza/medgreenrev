@@ -1,0 +1,116 @@
+export default defineNuxtConfig({
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
+  app: {
+    baseURL: '/app',
+    head: {
+      link: [
+        {
+          rel: 'icon',
+          href: '/app/favicon.png',
+        },
+      ],
+    },
+  },
+  build: {
+    transpile: ['ol', 'ol-ext', 'ol-contextmenu', 'vue3-openlayers'],
+  },
+  auth: {
+    provider: {
+      type: 'local',
+      endpoints: {
+        signIn: { path: '/login', method: 'post' },
+        signOut: { path: '/token/invalidate' },
+        getSession: { path: '/users/me', method: 'get' },
+      },
+      refresh: {
+        isEnabled: true,
+        refreshOnlyToken: false,
+        endpoint: {
+          path: '/token/refresh',
+        },
+        token: {
+          signInResponseRefreshTokenPointer: '/refresh_token',
+          refreshRequestTokenPointer: '/refresh_token',
+        },
+      },
+      pages: {
+        login: '/login',
+      },
+      session: {
+        dataType: {
+          id: 'string',
+          email: 'string',
+          roles: 'ApiRole[]',
+          sitePrivileges: 'Record<number,number>[]',
+        },
+      },
+    },
+    sessionRefresh: {
+      // Whether to refresh the session every time the browser window is refocused.
+      enableOnWindowFocus: true,
+
+      // Whether to refresh the session every `X` milliseconds. Set this to `false` to turn it off. The session will only be refreshed if a session already exists.
+      enablePeriodically: 30 * 60 * 1000,
+    },
+    disableServerSideAuth: false,
+    globalAppMiddleware: false,
+    baseURL: process.env.NUXT_PUBLIC_API_BASE_URL
+      ? process.env.NUXT_PUBLIC_API_BASE_URL + '/api'
+      : 'http://localhost/api',
+  },
+  compatibilityDate: '2024-04-03',
+  css: ['~/assets/styles/index.css', 'vue3-openlayers/vue3-openlayers.css'],
+  devtools: {
+    enabled: process.env.NODE_ENV === 'development',
+  },
+  modules: [
+    '@nuxt/eslint',
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Montserrat: true,
+        },
+      },
+    ],
+    '@regle/nuxt',
+    '@sidebase/nuxt-auth',
+    'vuetify-nuxt-module',
+    '@pinia/nuxt',
+    '@pinia/colada-nuxt',
+  ],
+  router: {
+    options: {
+      hashMode: true,
+    },
+  },
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost',
+      clientMaxBodySize: '10M',
+    },
+  },
+  sourcemap: {
+    client: true,
+    server: true,
+  },
+  vite: {
+    optimizeDeps: {
+      include: ['ol > geotiff', 'ol-ext'],
+    },
+    resolve: {
+      alias: {
+        // Temporary patch until vue3-openlayers fixes the problem with ol-contextmenu CSS import
+        'ol-contextmenu/ol-contextmenu.css': '~/assets/styles/empty.css',
+      },
+    },
+  },
+  ssr: false,
+  experimental: {
+    // Payload extraction is not needed in SPA mode (no pre-rendered pages with embedded payloads)
+    payloadExtraction: false,
+  },
+})

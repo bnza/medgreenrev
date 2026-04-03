@@ -1,0 +1,86 @@
+<script setup lang="ts">
+import type { GetItemResponseMap } from '~~/types'
+
+withDefaults(
+  defineProps<{
+    item: GetItemResponseMap['/api/data/zoo/teeth/{id}']
+    readLink?: boolean
+  }>(),
+  {
+    readLink: true,
+  },
+)
+
+const vocabularyZooTaxonomy = useVocabularyStore(
+  '/api/vocabulary/zoo/taxonomies',
+)
+const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
+</script>
+
+<template>
+  <data-item-form-read>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="item.stratigraphicUnit?.site?.name"
+          label="site"
+        >
+          <template v-if="item.stratigraphicUnit?.site?.['@id']" #append-inner>
+            <data-item-info-box-archaeological-site
+              :iri="item.stratigraphicUnit?.site?.['@id']"
+              :read-link
+            />
+          </template>
+        </v-text-field>
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field :model-value="item.stratigraphicUnit?.code" label="SU">
+          <template v-if="item.stratigraphicUnit?.['@id']" #append-inner>
+            <data-item-info-box-stratigraphic-unit
+              :iri="item.stratigraphicUnit?.['@id']"
+              :read-link
+            />
+          </template>
+        </v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="vocabularyZooTaxonomy.getValue(item.taxonomy)"
+          label="taxonomy"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="vocabularyZooTaxonomy.getValue(item.taxonomy, 'class')"
+          label="class"
+        />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="vocabularyZooTaxonomy.getValue(item.taxonomy, 'family')"
+          label="class"
+        />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="
+            vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName')
+          "
+          label="vernacular name"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="vocabularyZooBones.getValue(item.element)"
+          label="element"
+        />
+      </v-col>
+    </v-row>
+  </data-item-form-read>
+</template>

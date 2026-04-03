@@ -1,0 +1,77 @@
+import type { ResourceConfig } from '~~/types'
+
+const config: Readonly<ResourceConfig> = {
+  appPath: '/data/stratigraphic-units/archaeology',
+  apiPath: '/api/data/stratigraphic_units',
+  name: 'stratigraphicUnit',
+  labels: ['stratigraphic unit', 'stratigraphic units'],
+  defaultHeaders: [
+    {
+      key: 'id',
+      value: 'id',
+      title: 'ID',
+      align: 'center',
+      width: '200',
+      maxWidth: '200',
+    },
+    {
+      key: 'site.code',
+      value: 'site.code',
+      title: 'site',
+      width: '80',
+    },
+    {
+      key: 'area',
+      value: 'area',
+      title: 'area',
+      width: '80',
+    },
+    {
+      key: 'building',
+      value: 'building',
+      title: 'building',
+      width: '80',
+    },
+    {
+      key: 'code',
+      value: 'code',
+      title: 'code',
+      width: '200',
+      sortable: false,
+    },
+    {
+      key: 'number',
+      value: 'number',
+      title: 'number',
+    },
+    {
+      key: 'year',
+      value: 'year',
+      title: 'year',
+    },
+    {
+      key: 'chronologyLower',
+      value: 'chronologyLower',
+      title: 'chron.(lower)',
+    },
+    {
+      key: 'chronologyUpper',
+      value: 'chronologyUpper',
+      title: 'chron.(upper)',
+    },
+    {
+      key: 'interpretation',
+      value: 'interpretation',
+      title: 'interpretation',
+      sortable: false,
+    },
+    {
+      key: 'description',
+      value: 'description',
+      title: 'description',
+      sortable: false,
+    },
+  ],
+}
+
+export default config

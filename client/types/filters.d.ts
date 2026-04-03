@@ -1,0 +1,92 @@
+import type { FilterKey } from '~/utils/consts/configs/filters'
+import type {
+  ListGetCollectionPath,
+  VocabularyGetCollectionPath,
+} from './openapi-helpers'
+
+export type OperandComponentsKey =
+  | 'Boolean'
+  | 'Single'
+  | 'Numeric'
+  | 'NumericRange'
+  | 'Selection'
+  | 'SelectionAnalysisStatus'
+  | 'SelectionZooBoneEndsPreserved'
+  | 'SelectionZooBoneSide'
+  | 'SelectionIndividualSex'
+  | 'Vocabulary'
+  | 'HistoryLocation'
+  | 'HistoryWrittenSource'
+  | 'ArchaeologicalSite'
+  | 'PaleoclimateSamplingSite'
+  | 'SamplingSite'
+  | 'StratigraphicUnit'
+
+export type Filter = {
+  property: string
+  key: FilterKey
+  operands: Array<string | number | boolean>
+}
+
+export interface FilterState {
+  [id: string]: Filter
+}
+
+export type AddToQueryObject = (
+  queryObject: Record<string, any>,
+  filter: Filter,
+) => void
+
+type BaseFilterDefinitionObject = {
+  multiple: boolean
+  operationLabel: string
+}
+
+type ComponentKeyWithPath =
+  | { componentKey: 'Selection'; path: ListGetCollectionPath }
+  | { componentKey: 'Vocabulary'; path: VocabularyGetCollectionPath }
+  | { componentKey: Exclude<OperandComponentsKey, 'Vocabulary' | 'Selection'> }
+
+export type FilterDefinitionObject<K extends FilterKey = FilterKey> =
+  BaseFilterDefinitionObject & {
+    key: K
+    property: string
+    propertyLabel: string
+  } & ComponentKeyWithPath & {
+      // Optional path to support template access without narrowing
+      path?: ListGetCollectionPath | VocabularyGetCollectionPath
+    }
+
+export type ExpandedFilter = FilterDefinitionObject & Filter
+
+type StaticFiltersDefinitionObject = BaseFilterDefinitionObject & {
+  addToQueryObject: AddToQueryObject
+  propertyLabel?: string
+} & ComponentKeyWithPath
+
+type ResourcePropertyFiltersDefinitionObject = Partial<
+  Record<FilterKey, FilterDefinitionObject>
+>
+
+type ResourcePropertyStaticFiltersDefinitionObject = {
+  filters: Partial<Record<FilterKey, StaticFiltersDefinitionObject>>
+  propertyLabel?: string
+}
+
+type ResourceStaticFiltersDefinitionObject = Record<
+  string, // property
+  ResourcePropertyStaticFiltersDefinitionObject
+>
+
+type ResourceFiltersDefinitionObject = Record<
+  string, // property
+  ResourcePropertyFiltersDefinitionObject
+>
+
+type ComponentFiltersMap = Record<
+  string, // propertyLabel
+  Record<
+    string, // operationLabel
+    FilterDefinitionObject
+  >
+>

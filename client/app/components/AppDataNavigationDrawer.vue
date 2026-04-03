@@ -1,0 +1,470 @@
+<script setup lang="ts">
+const { visible, dataOpened } = storeToRefs(useAppNavigationDrawerStore())
+const { hasRoleAdmin, isAuthenticated } = useAppAuth()
+</script>
+
+<template>
+  <v-navigation-drawer
+    :model-value="visible"
+    permanent
+    data-testid="app-navigation-drawer"
+    width="350"
+  >
+    <v-list v-model:opened="dataOpened">
+      <v-list-item
+        nuxt
+        to="/"
+        router
+        exact
+        prepend-icon="fas fa-house"
+        data-testid="app-navigation-drawer-li-home"
+        title="Home"
+      />
+      <v-list-group value="Analyses">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-magnifying-glass-chart"
+            title="Analyses"
+            data-testid="app-nav-drawer-li-analyses"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/data/analyses"
+          router
+          title="Analyses"
+          data-testid="app-nav-drawer-li-analyses-analyses"
+        />
+        <v-list-group value="Assemblage">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Assemblage"
+              data-testid="app-nav-drawer-li-analyses-assemblage"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/analyses/sites/archaeology/anthropology"
+            router
+            title="Anthropology"
+            data-testid="app-nav-drawer-li-analyses-anthropology"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/context/botany"
+            router
+            title="Archaeobotany"
+            data-testid="app-nav-drawer-li-analyses-archaeobotany"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/samples/microstratigraphy"
+            router
+            title="Microstratigraphy"
+            data-testid="app-nav-drawer-li-analysis-sample-mus"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/context/zoo"
+            router
+            title="Zooarchaeology"
+            data-testid="app-nav-drawer-li-analysis-context-zoo"
+          />
+        </v-list-group>
+        <v-list-group value="Subject">
+          <template #activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              title="Subject"
+              data-testid="app-nav-drawer-li-analyses"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/analyses/absolute-dating"
+            router
+            title="Absolute dating"
+            data-testid="app-nav-drawer-li-analysis-absolute-dating"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/zoo/bones"
+            router
+            title="Animal bones"
+            data-testid="app-nav-drawer-li-analysis-zoo-bones"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/zoo/teeth"
+            router
+            title="Animal teeth"
+            data-testid="app-nav-drawer-li-analysis-zoo-teeth"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/botany/charcoals"
+            router
+            title="Botany charcoals"
+            data-testid="app-nav-drawer-li-analysis-botany-charcoals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/botany/seeds"
+            router
+            title="Botany seeds"
+            data-testid="app-nav-drawer-li-analysis-botany-seeds"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/individuals"
+            router
+            title="Human Individuals"
+            data-testid="app-nav-drawer-li-analysis-individuals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/potteries"
+            router
+            title="Potteries"
+            data-testid="app-nav-drawer-li-analysis-potteries"
+          />
+        </v-list-group>
+      </v-list-group>
+      <v-list-group value="Data">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-table-list"
+            title="Data"
+            data-testid="app-nav-drawer-li-data"
+          />
+        </template>
+        <v-list-group value="Archaeology">
+          <template #activator="{ props: archProps }">
+            <v-list-item
+              v-bind="archProps"
+              title="Archaeology"
+              data-testid="app-nav-drawer-li-group-arch"
+            />
+          </template>
+          <v-list-group value="Botany">
+            <template #activator="{ props: botanyProps }">
+              <v-list-item
+                v-bind="botanyProps"
+                title="Botany"
+                data-testid="app-nav-drawer-li-group-botany"
+              />
+            </template>
+            <v-list-item
+              nuxt
+              to="/data/botany/charcoals"
+              router
+              title="Charcoals"
+              data-testid="app-nav-drawer-li-botany-charcoals"
+            />
+            <v-list-item
+              nuxt
+              to="/data/botany/seeds"
+              router
+              title="Seeds"
+              data-testid="app-nav-drawer-li-botany-seeds"
+            />
+          </v-list-group>
+          <v-list-item
+            nuxt
+            to="/data/contexts"
+            router
+            title="Contexts"
+            data-testid="app-nav-drawer-li-contexts"
+          />
+          <v-list-item
+            nuxt
+            to="/data/individuals"
+            router
+            title="Human Individuals"
+            data-testid="app-nav-drawer-li-individuals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/microstratigraphic-units"
+            router
+            title="Microstratigraphic Units"
+            data-testid="app-nav-drawer-li-mus"
+          />
+          <v-list-item
+            nuxt
+            to="/data/potteries"
+            router
+            title="Potteries"
+            data-testid="app-nav-drawer-li-potteries"
+          />
+          <v-list-item
+            nuxt
+            to="/data/samples"
+            router
+            title="Samples"
+            data-testid="app-nav-drawer-li-samples"
+          />
+          <v-list-item
+            nuxt
+            to="/data/sites/archaeology"
+            router
+            title="Sites"
+            data-testid="app-nav-drawer-li-arch-sites"
+          />
+          <v-list-item
+            nuxt
+            to="/data/stratigraphic-units/archaeology"
+            router
+            title="Stratigraphic Units"
+            data-testid="app-nav-drawer-li-sus"
+          />
+          <v-list-group value="Zoo">
+            <template #activator="{ props: zooProps }">
+              <v-list-item
+                v-bind="zooProps"
+                title="Zoo"
+                data-testid="app-nav-drawer-li-group-zoo"
+              />
+            </template>
+            <v-list-item
+              nuxt
+              to="/data/zoo/bones"
+              router
+              title="Bones"
+              data-testid="app-nav-drawer-li-zoo-bones"
+            />
+            <v-list-item
+              nuxt
+              to="/data/zoo/teeth"
+              router
+              title="Teeth"
+              data-testid="app-nav-drawer-li-sus"
+            />
+          </v-list-group>
+        </v-list-group>
+        <v-list-group value="Paleoclimate">
+          <template #activator="{ props: paleoclimateProps }">
+            <v-list-item
+              v-bind="paleoclimateProps"
+              title="Paleoclimate"
+              data-testid="app-nav-drawer-li-group-paleoclimate"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/paleoclimate/samples"
+            router
+            title="Samples"
+            data-testid="app-nav-drawer-li-paleoclimate-samples"
+          />
+          <v-list-item
+            nuxt
+            to="/data/sites/paleoclimate-sampling"
+            router
+            title="Sites (sampling)"
+            data-testid="app-nav-drawer-li-paleoclimate-sampling-sites"
+          />
+        </v-list-group>
+        <v-list-group value="Sampling">
+          <template #activator="{ props: samplingProps }">
+            <v-list-item
+              v-bind="samplingProps"
+              title="Sampling"
+              data-testid="app-nav-drawer-li-group-sampling"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/sites/sampling"
+            router
+            title="Sites"
+            data-testid="app-nav-drawer-li-sampling-sites"
+          />
+          <v-list-item
+            nuxt
+            to="/data/sediment-cores"
+            router
+            title="Sediment Cores"
+            data-testid="app-nav-drawer-li-sediment-cores"
+          />
+          <v-list-item
+            nuxt
+            to="/data/stratigraphic-units/sampling"
+            router
+            title="Stratigraphic Units"
+            data-testid="app-nav-drawer-li-sampling-stratigraphic-units"
+          />
+        </v-list-group>
+        <v-list-group value="History">
+          <template #activator="{ props: histProps }">
+            <v-list-item
+              v-bind="histProps"
+              title="Written sources"
+              data-testid="app-nav-drawer-li-historical-data"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/history/animals"
+            router
+            title="Animals"
+            data-testid="app-nav-drawer-li-analyses-historical-data-animals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/history/locations"
+            router
+            title="Locations"
+            data-testid="app-nav-drawer-li-historical-data-locations"
+          />
+          <v-list-item
+            nuxt
+            to="/data/history/plants"
+            router
+            title="Plants"
+            data-testid="app-nav-drawer-li-analyses-historical-data-plants"
+          />
+          <v-list-item
+            nuxt
+            to="/data/history/written-sources"
+            router
+            title="Written sources"
+            data-testid="app-nav-drawer-li-historical-data-sources"
+          />
+          <v-list-item
+            nuxt
+            to="/data/history/written-sources/cited-works"
+            router
+            title="Cited works (written sources)"
+            data-testid="app-nav-drawer-li-historical-data-cited-works"
+          />
+        </v-list-group>
+      </v-list-group>
+      <v-list-group value="Media">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-file"
+            title="Media"
+            data-testid="app-nav-drawer-li-media"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/data/media"
+          router
+          title="Media"
+          data-testid="app-nav-drawer-li-media-media"
+        />
+      </v-list-group>
+      <v-list-group v-if="hasRoleAdmin" value="Admin">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-screwdriver-wrench"
+            title="Admin"
+            data-testid="app-nav-drawer-li-admin"
+          />
+        </template>
+        <v-list-item
+          nuxt
+          to="/admin/users"
+          router
+          title="Users"
+          data-testid="app-nav-drawer-li-users"
+        />
+      </v-list-group>
+      <v-list-group v-if="isAuthenticated" value="Vocabularies">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="fas fa-book"
+            title="Vocabularies"
+            data-testid="app-nav-drawer-li-vocabularies"
+          />
+        </template>
+        <v-list-group value="Vocabulary Botany">
+          <template #activator="{ props: zooProps }">
+            <v-list-item
+              v-bind="zooProps"
+              title="Botany"
+              data-testid="app-nav-drawer-li-group-voc-botany"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/botany/taxonomies"
+            router
+            title="Taxonomy"
+            data-testid="app-nav-drawer-li-botany-taxonomy"
+          />
+        </v-list-group>
+        <v-list-group value="Vocabulary Historical Data">
+          <template #activator="{ props: histProps }">
+            <v-list-item
+              v-bind="histProps"
+              title="Historical Data"
+              data-testid="app-nav-drawer-li-voc-historical-data"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/animals"
+            router
+            title="Animals"
+            data-testid="app-nav-drawer-li-voc-historical-data-animals"
+          />
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/authors"
+            router
+            title="Authors"
+            data-testid="app-nav-drawer-li-voc-historical-data-authors"
+          />
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/locations"
+            router
+            title="Locations"
+            data-testid="app-nav-drawer-li-voc-historical-data-locations"
+          />
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/history/plants"
+            router
+            title="Plants"
+            data-testid="app-nav-drawer-li-voc-historical-data-plants"
+          />
+        </v-list-group>
+        <v-list-group value="Vocabulary Zoo">
+          <template #activator="{ props: zooProps }">
+            <v-list-item
+              v-bind="zooProps"
+              title="Zoo"
+              data-testid="app-nav-drawer-li-group-voc-zoo"
+            />
+          </template>
+          <v-list-item
+            nuxt
+            to="/data/vocabulary/zoo/taxonomies"
+            router
+            title="Taxonomy"
+            data-testid="app-nav-drawer-li-zoo-taxonomy"
+          />
+        </v-list-group>
+      </v-list-group>
+      <v-list-item
+        nuxt
+        to="/about"
+        router
+        exact
+        prepend-icon="fas fa-info"
+        data-testid="app-navigation-drawer-li-about"
+        title="About"
+      />
+    </v-list>
+  </v-navigation-drawer>
+</template>
