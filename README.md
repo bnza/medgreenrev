@@ -31,7 +31,7 @@ docker compose run --rm --service-ports node pnpm dev
 
 ### User
 
-- [Authorization](docs/user/authorization.md)
+- [Index](docs/user/index.md)
 
 ## Development
 
