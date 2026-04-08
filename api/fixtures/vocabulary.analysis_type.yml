@@ -9,6 +9,11 @@ App\Entity\Vocabulary\Analysis\Type:
         code: THL
         group: absolute dating
         value: thermoluminescence
+    voc__analysis__type__osl:
+      id: 103
+      code: OSL
+      group: absolute dating
+      value: optical simulated luminescence
     voc__analysis__type__anthracology:
         id: 201
         code: ANTX
@@ -54,6 +59,11 @@ App\Entity\Vocabulary\Analysis\Type:
         code: XRD
         group: material analysis
         value: XRD
+    voc__analysis__type__geo:
+      id: 306
+      code: GEO
+      group: material analysis
+      value: geochemistry
     voc__analysis__type__thin_section:
         id: 401
         code: THS

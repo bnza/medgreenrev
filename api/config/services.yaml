@@ -42,6 +42,10 @@ services:
         arguments: [ '@.inner' ]
         public: false
     
+    App\Command\GenerateVocabularyDocsCommand:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
     App\Service\FixturesMediaReset:
         arguments:
             $sourcePath: '%kernel.project_dir%/fixtures/media'

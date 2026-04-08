@@ -14,3 +14,15 @@ App\Entity\Vocabulary\Sample\Type:
     voc__sample__type__MA:
         code: GE
         value: generic material for specialized analyses
+    voc__sample__type__PA:
+        code: PA
+        value: palynology
+    voc__sample__type__AD:
+        code: AD
+        value: aDNA
+    voc__sample__type__GC:
+        code: GC
+        value: geochemistry
+    voc__sample__type__OC:
+        code: OC
+        value: organic chemistry

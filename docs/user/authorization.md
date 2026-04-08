@@ -3,6 +3,28 @@
 This document outlines the authorization rules and security conditions for the MGR-API. It details who can perform
 specific actions (Read, Create, Update, Delete) on different resources within the system.
 
+## Index
+
+- [General Principles](#general-principles)
+- [Archaeological Data](#archaeological-data)
+    - [Archaeological Sites](#archaeological-sites)
+    - [Analysis Records](#analysis-records)
+    - [Contexts](#contexts)
+    - [Stratigraphic Units (SU)](#stratigraphic-units-su)
+    - [Samples](#samples)
+    - [Specialist Data Items (Botany, Zoo, Pottery, etc.)](#specialist-data-items-botany-zoo-pottery-etc)
+    - [Sediment Cores](#sediment-cores)
+    - [Paleoclimate Data](#paleoclimate-data)
+    - [Historical Items](#historical-items)
+    - [Taxonomies and Vocabularies](#taxonomies-and-vocabularies)
+- [Media and Files](#media-and-files)
+    - [Media Objects (Uploads)](#media-objects-uploads)
+    - [Media Associations (Joins)](#media-associations-joins)
+- [Security and Administration](#security-and-administration)
+    - [Users](#users)
+    - [Site User Privileges (Managing Access)](#site-user-privileges-managing-access)
+- [Relationships and Joins](#relationships-and-joins)
+
 ## General Principles
 
 1. **Administrator Access**: Users with `ROLE_ADMIN` generally have full access to all resources unless otherwise
@@ -24,7 +46,7 @@ specific actions (Read, Create, Update, Delete) on different resources within th
 
 ## Archaeological Data
 
-### Archaeological Sites
+### <a name="archaeological-sites"></a>Archaeological Sites
 
 * **Read**: Publicly accessible.
 * **Create**: Requires authentication, `ROLE_EDITOR`, and a specialist role (Field Director or Anthropologist).
@@ -34,7 +56,7 @@ specific actions (Read, Create, Update, Delete) on different resources within th
     * The user must have `ROLE_EDITOR`.
     * The user must have site-specific **Editor** privileges for that site.
 
-### Analysis Records
+### <a name="analysis-records"></a>Analysis Records
 
 * **Read**: Publicly accessible.
 * **Create**: Requires `ROLE_ADMIN` or a specialist role (Archaeobotanist, Zoo-archaeologist, Anthropologist, Ceramic
@@ -45,22 +67,22 @@ specific actions (Read, Create, Update, Delete) on different resources within th
 
 * **Update / Delete**: Requires `ROLE_ADMIN` or being the original creator of the analysis record.
 
-### Contexts
+### <a name="contexts"></a>Contexts
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` or site-specific **User** privileges on the related site.
 
-### Stratigraphic Units (SU)
+### <a name="stratigraphic-units-su"></a>Stratigraphic Units (SU)
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` or site-specific **User** privileges on the related site.
 
-### Samples
+### <a name="samples"></a>Samples
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` or site-specific **User** privileges on the related site.
 
-### Specialist Data Items (Botany, Zoo, Pottery, etc.)
+### <a name="specialist-data-items-botany-zoo-pottery-etc"></a>Specialist Data Items (Botany, Zoo, Pottery, etc.)
 
 Specialist data includes detailed analyses of different materials. The following rules apply to items like:
 
@@ -78,14 +100,14 @@ For all these specialist items:
     * The user must have the corresponding specialist role (e.g., `ROLE_ARCHAEOBOTANIST` for botany).
     * The user must have site-specific **User** privileges on the related site (via the parent Stratigraphic Unit).
 
-### Sediment Cores
+### <a name="sediment-cores"></a>Sediment Cores
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` OR both of the following:
     * The user must have `ROLE_GEO_ARCHAEOLOGIST`.
     * The user must have site-specific **User** privileges on the related site.
 
-### Paleoclimate Data
+### <a name="paleoclimate-data"></a>Paleoclimate Data
 
 #### Paleoclimate Sampling Sites
 
@@ -99,7 +121,7 @@ For all these specialist items:
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` or `ROLE_PALEOCLIMATOLOGIST`.
 
-### Historical Items
+### <a name="historical-items"></a>Historical Items
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete (Data Items)**: Requires `ROLE_ADMIN` or `ROLE_HISTORIAN`.
@@ -107,7 +129,7 @@ For all these specialist items:
 * **Create / Update / Delete (Vocabularies)**: Requires `ROLE_ADMIN` OR a combination of `ROLE_EDITOR` AND `ROLE_HISTORIAN`.
     * Applies to: History Animals, History Plants, History Locations, and History Authors.
 
-### Taxonomies and Vocabularies
+### <a name="taxonomies-and-vocabularies"></a>Taxonomies and Vocabularies
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` OR a combination of `ROLE_EDITOR` AND the relevant specialist
@@ -117,13 +139,13 @@ For all these specialist items:
 
 ## Media and Files
 
-### Media Objects (Uploads)
+### <a name="media-objects-uploads"></a>Media Objects (Uploads)
 
 * **Read**: Publicly accessible.
 * **Create**: Any fully authenticated user can upload media.
 * **Update / Delete**: Requires `ROLE_ADMIN` or being the original uploader.
 
-### Media Associations (Joins)
+### <a name="media-associations-joins"></a>Media Associations (Joins)
 
 * **Read**: Requires full authentication.
 * **Create / Update / Delete**: Delegated to the **Update** permission of the resource the media is being attached to (
@@ -133,14 +155,14 @@ For all these specialist items:
 
 ## Security and Administration
 
-### Users
+### <a name="users"></a>Users
 
 * **Read**: Requires `ROLE_ADMIN`.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN`.
     * *Self-Restriction*: An administrator cannot perform these actions on their own account to prevent accidental
       lockout or privilege escalation.
 
-### Site User Privileges (Managing Access)
+### <a name="site-user-privileges-managing-access"></a>Site User Privileges (Managing Access)
 
 * **Read**: Requires `ROLE_ADMIN` or `ROLE_EDITOR`.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` OR all of the following:
