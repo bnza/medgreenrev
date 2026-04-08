@@ -1,3 +1,5 @@
+[Back to User Documentation](index.md)
+
 # Authorization and Security Policies
 
 This document outlines the authorization rules and security conditions for the MGR-API. It details who can perform

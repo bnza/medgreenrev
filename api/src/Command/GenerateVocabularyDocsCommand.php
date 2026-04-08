@@ -274,8 +274,8 @@ class GenerateVocabularyDocsCommand extends Command
             usort($entries, fn ($a, $b) => strcasecmp($a['title'], $b['title']));
         }
         unset($entries);
-
-        $md = "### Vocabulary Index\n\n";
+        $md = "[Back to User Documentation](../index.md)\n\n";
+        $md .= "### Vocabulary Index\n\n";
 
         // Ungrouped first
         foreach ($ungrouped as $entry) {
