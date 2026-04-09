@@ -12,6 +12,5 @@
 | OC | organic chemistry |
 | PA | palynology |
 | PH | phytolite |
-| SE | sediment core |
 
 [Back to Vocabulary Index](index.md)

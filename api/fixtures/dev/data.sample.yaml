@@ -14,13 +14,13 @@ App\Entity\Data\Sample:
         description: 'terrain sample (micro morphology)'
     sample_ca_91:
         site: '@site_ca'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2023
         number: 91
         description: 'generic terrain sample'
     sample_ca_12:
         site: '@site_ca'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2023
         number: 12
         description: 'terrain sample (with small seeds)'
@@ -32,7 +32,7 @@ App\Entity\Data\Sample:
         description: 'charcoals + shells'
     sample_to_78:
         site: '@site_to'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2024
         number: 78
         description: 'generic terrain sample contain sparse charcoal'
@@ -55,13 +55,13 @@ App\Entity\Data\Sample:
         description: 'charcoal sample'
     sample_se_118:
         site: '@site_se'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2024
         number: 118
         description: 'generic terrain sample'
     sample_me_5:
         site: '@site_me'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         number: 5
         description: 'terrain sample (with small seeds)'
     sample_ca_84:
@@ -78,7 +78,7 @@ App\Entity\Data\Sample:
         description: 'pollen'
     sample_ni_127:
         site: '@site_ni'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2023
         number: 127
         description: 'generic terrain sample, contains sparse charcoal'
@@ -96,13 +96,13 @@ App\Entity\Data\Sample:
         description: 'charcoal sample'
     sample_ca_71:
         site: '@site_ca'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2025
         number: 71
         description: 'generic terrain sample'
     sample_to_149:
         site: '@site_to'
-        type: '@voc__sample__type__SE'
+        type: '@voc__sample__type__MA'
         year: 2025
         number: 149
         description: 'terrain sample (with small seeds)'
