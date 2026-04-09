@@ -44,7 +44,7 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
         // Pick a mid substring for partial search (case-insensitive)
         $start = (int) max(0, floor(strlen($value) / 3) - 1);
         $len = max(2, min(5, strlen($value) - $start));
-        $token = substr($value, $start, $len);
+        $token = mb_substr($value, $start, $len);
 
         // 3) Search via alias (?search=... -> mapped field)
         $searched = $this->apiRequest($client, 'GET', $collectionUrl, [
@@ -83,8 +83,15 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
     public static function provideCollections(): array
     {
         return [
-            'locations by name' => ['/api/data/vocabulary/history/locations', 'value'],
-            'plants by value' => ['/api/vocabulary/history/plants', 'value'],
+            'botany elements by value' => ['/api/vocabulary/botany/elements', 'value'],
+            'botany element parts by value' => ['/api/vocabulary/botany/element_parts', 'value'],
+            'botany taxonomies by value' => ['/api/vocabulary/botany/taxonomies', 'value'],
+            'zoo bones by value' => ['/api/vocabulary/zoo/bones', 'value'],
+            'zoo bone parts by value' => ['/api/vocabulary/zoo/bone_parts', 'value'],
+            'zoo taxonomies by value' => ['/api/vocabulary/zoo/taxonomies', 'value'],
+            'history animals by value' => ['/api/vocabulary/history/animals', 'value'],
+            'history locations by value' => ['/api/vocabulary/history/locations', 'value'],
+            'history plants by value' => ['/api/vocabulary/history/plants', 'value'],
         ];
     }
 }

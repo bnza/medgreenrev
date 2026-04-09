@@ -11,6 +11,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Doctrine\Filter\SearchPropertyAliasFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -60,6 +61,12 @@ use Symfony\Component\Validator\Constraints as Assert;
     paginationEnabled: false,
 )]
 #[ApiFilter(OrderFilter::class, properties: ['id', 'code', 'value', 'vernacularName', 'class', 'family'])]
+#[ApiFilter(
+    SearchPropertyAliasFilter::class,
+    properties: [
+        'search' => 'value',
+    ]
+)]
 #[UniqueEntity(
     fields: ['value'],
     message: 'Duplicate taxonomy value: {{ value }}.',

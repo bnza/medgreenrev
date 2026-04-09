@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use App\Doctrine\Filter\BoneTeethFilter;
+use App\Doctrine\Filter\SearchPropertyAliasFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
@@ -31,6 +32,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
     ],
     routePrefix: 'vocabulary',
     paginationEnabled: false
+)]
+#[ApiFilter(
+    SearchPropertyAliasFilter::class,
+    properties: [
+        'search' => 'value',
+    ]
 )]
 #[ApiFilter(BoneTeethFilter::class, properties: ['teeth'])]
 class Bone
