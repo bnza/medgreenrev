@@ -184,6 +184,78 @@ class ApiResourceSampleStratigraphicUnitTest extends ApiTestCase
         $this->assertNotEmpty($uniqueViolation, 'Should have a uniqueness violation');
     }
 
+    public function testDeleteLastJoinEntryReturnsValidationError(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_admin');
+
+        // Create a fresh sample — it will have exactly one join entry
+        $site = $this->getFixtureSites(['code' => 'ME'])[0];
+        $su = $this->getFixtureStratigraphicUnits(['site' => $site['@id']])[0];
+        $type = $this->getFixtureSampleTypes()[0];
+
+        $response = $this->apiRequest($client, 'POST', '/api/data/samples', [
+            'token' => $token,
+            'json' => [
+                'site' => $site['@id'],
+                'type' => $type['@id'],
+                'year' => 2025,
+                'number' => random_int(9000, 9999),
+                'description' => 'Sample for delete validation test',
+                'stratigraphicUnit' => $su['@id'],
+            ],
+        ]);
+        $this->assertSame(201, $response->getStatusCode());
+        $sample = $response->toArray();
+
+        // Get the single join entry for this sample
+        $sampleSus = $this->getFixtureSampleStratigraphicUnits(['sample' => $sample['@id']]);
+        $this->assertCount(1, $sampleSus, 'Newly created sample should have exactly one join entry');
+
+        // Try to delete the last (only) join entry — should fail with 422
+        $response = $this->apiRequest($client, 'DELETE', $sampleSus[0]['@id'], [
+            'token' => $token,
+        ]);
+
+        $this->assertSame(422, $response->getStatusCode());
+        $data = $response->toArray(false);
+        $this->assertArrayHasKey('violations', $data);
+        $this->assertNotEmpty($data['violations']);
+    }
+
+    public function testDeleteNonLastJoinEntrySucceeds(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_admin');
+
+        // Find a sample that has more than one stratigraphic unit join entry
+        $sampleSus = $this->getFixtureSampleStratigraphicUnits();
+        $this->assertNotEmpty($sampleSus, 'Fixture sample stratigraphic units should exist');
+
+        // Group by sample to find one with multiple join entries
+        $bySample = [];
+        foreach ($sampleSus as $su) {
+            $sampleId = $su['sample']['@id'];
+            $bySample[$sampleId][] = $su;
+        }
+
+        $entryToDelete = null;
+        foreach ($bySample as $entries) {
+            if (count($entries) > 1) {
+                $entryToDelete = $entries[0];
+                break;
+            }
+        }
+
+        $this->assertNotNull($entryToDelete, 'Should have a sample with more than one stratigraphic unit join entry');
+
+        $response = $this->apiRequest($client, 'DELETE', $entryToDelete['@id'], [
+            'token' => $token,
+        ]);
+
+        $this->assertSame(204, $response->getStatusCode());
+    }
+
     /**
      * Helper method to get fixture sample stratigraphic units.
      */
@@ -230,5 +302,19 @@ class ApiResourceSampleStratigraphicUnitTest extends ApiTestCase
         }
 
         return null;
+    }
+
+    /**
+     * Helper method to get fixture sample types.
+     */
+    protected function getFixtureSampleTypes(array $queryParams = []): array
+    {
+        $client = self::createClient();
+        $response = $this->apiRequest($client, 'GET', '/api/vocabulary/sample/types', [
+            'query' => $queryParams,
+        ]);
+        $this->assertSame(200, $response->getStatusCode());
+
+        return $response->toArray()['member'];
     }
 }

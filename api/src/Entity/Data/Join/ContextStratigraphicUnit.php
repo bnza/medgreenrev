@@ -65,7 +65,11 @@ use Symfony\Component\Validator\Constraints as Assert;
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:context_stratigraphic_unit:create']],
         ),
-        new Delete(),
+        new Delete(
+            security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:context_stratigraphic_unit:delete']],
+            validate: true,
+        ),
     ],
     routePrefix: 'data',
     normalizationContext: [
@@ -93,6 +97,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'context' => 'exact',
         'context.site' => 'exact',
         'context.site.code' => 'exact',
         'context.name' => 'ipartial',
@@ -115,6 +120,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiStratigraphicUnitSubresourceFilters('stratigraphicUnit')]
 #[ApiMediaObjectSubresourceFilters('stratigraphicUnit.mediaObjects.mediaObject')]
 #[AppAssert\BelongToTheSameSite(groups: ['validation:context_stratigraphic_unit:create'])]
+#[AppAssert\NotLastJoinEntry(
+    joinCollection: 'contextStratigraphicUnits',
+    parentProperty: 'context',
+    groups: ['validation:context_stratigraphic_unit:delete'],
+)]
 class ContextStratigraphicUnit
 {
     #[ORM\Id,

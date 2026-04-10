@@ -10816,8 +10816,13 @@ export interface components {
       site: string
       name: string
       description?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
     }
-    'Context-context.create.jsonMergePatch': {
+    'Context-context.update.jsonMergePatch': {
       type?: string
       /**
        * Format: iri-reference
@@ -12865,8 +12870,7 @@ export interface components {
        */
       decoration?: string
     })
-    Sample: {
-      readonly id?: number | string
+    'Sample-sample.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -12880,9 +12884,28 @@ export interface components {
       /** @default 0 */
       year: number
       number: number
-      sampleStratigraphicUnits?: string[]
       description?: string | null
-      readonly code?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+    }
+    'Sample-sample.update.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
     }
     'Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
@@ -12963,25 +12986,6 @@ export interface components {
         canUpdate: boolean
         canDelete: boolean
       }
-    }
-    'Sample.jsonMergePatch': {
-      readonly id?: number | string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type?: string
-      /** @default 0 */
-      year: number
-      number?: number
-      sampleStratigraphicUnits?: string[]
-      description?: string | null
-      readonly code?: string
     }
     'Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       /** @description Access control metadata */
@@ -16470,7 +16474,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AbsDatingAnalysis identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -18748,7 +18752,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisBotanyCharcoal identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -18890,7 +18894,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisBotanyCharcoal identifier */
+        /** @description Charcoal identifier */
         parentId: string
       }
       cookie?: never
@@ -19367,7 +19371,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisBotanySeed identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -19509,7 +19513,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisBotanySeed identifier */
+        /** @description Seed identifier */
         parentId: string
       }
       cookie?: never
@@ -20000,7 +20004,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisContextBotany identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -20149,7 +20153,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisContextBotany identifier */
+        /** @description Context identifier */
         parentId: string
       }
       cookie?: never
@@ -20701,7 +20705,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisContextZoo identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -20850,7 +20854,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisContextZoo identifier */
+        /** @description Context identifier */
         parentId: string
       }
       cookie?: never
@@ -21366,7 +21370,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisIndividual identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -21497,7 +21501,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisIndividual identifier */
+        /** @description Individual identifier */
         parentId: string
       }
       cookie?: never
@@ -22008,7 +22012,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisPottery identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -22167,7 +22171,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisPottery identifier */
+        /** @description Pottery identifier */
         parentId: string
       }
       cookie?: never
@@ -22666,7 +22670,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphy identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -22819,7 +22823,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphy identifier */
+        /** @description Sample identifier */
         parentId: string
       }
       cookie?: never
@@ -22972,7 +22976,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSampleMicrostratigraphy identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -23339,7 +23343,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSiteAnthropology identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -23426,7 +23430,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSiteAnthropology identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -23462,7 +23466,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisSubject identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -24024,7 +24028,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisZooBone identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -24176,7 +24180,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisZooBone identifier */
+        /** @description Bone identifier */
         parentId: string
       }
       cookie?: never
@@ -24669,7 +24673,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisZooTooth identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -24819,7 +24823,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AnalysisZooTooth identifier */
+        /** @description Tooth identifier */
         parentId: string
       }
       cookie?: never
@@ -25488,7 +25492,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description BotanyCharcoal identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -25961,7 +25965,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description BotanyCharcoal identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -26289,7 +26293,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description BotanySeed identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -26762,7 +26766,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description BotanySeed identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -27058,7 +27062,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description Context identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -27321,7 +27325,7 @@ export interface operations {
     /** @description The updated Context resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Context-context.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['Context-context.update.jsonMergePatch']
       }
     }
     responses: {
@@ -27463,6 +27467,8 @@ export interface operations {
         'order[context.name]'?: 'asc' | 'desc'
         'order[context.type]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
+        context?: string
+        'context[]'?: string[]
         'context.site'?: string
         'context.site[]'?: string[]
         'context.site.code'?: string
@@ -27598,6 +27604,17 @@ export interface operations {
         }
         content?: never
       }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
       /** @description Not found */
       404: {
         headers: {
@@ -27694,6 +27711,8 @@ export interface operations {
         'order[context.name]'?: 'asc' | 'desc'
         'order[context.type]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
+        context?: string
+        'context[]'?: string[]
         'context.site'?: string
         'context.site[]'?: string[]
         'context.site.code'?: string
@@ -27711,7 +27730,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description ContextStratigraphicUnit identifier */
+        /** @description Context identifier */
         parentId: string
       }
       cookie?: never
@@ -27815,6 +27834,8 @@ export interface operations {
         'order[context.name]'?: 'asc' | 'desc'
         'order[context.type]'?: 'asc' | 'desc'
         'order[context.site.code]'?: 'asc' | 'desc'
+        context?: string
+        'context[]'?: string[]
         'context.site'?: string
         'context.site[]'?: string[]
         'context.site.code'?: string
@@ -27832,7 +27853,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description ContextStratigraphicUnit identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -28183,7 +28204,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description HistoryAnimal identifier */
+        /** @description Location identifier */
         parentId: string
       }
       cookie?: never
@@ -28486,7 +28507,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description HistoryPlant identifier */
+        /** @description Location identifier */
         parentId: string
       }
       cookie?: never
@@ -29336,7 +29357,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description HistoryWrittenSourceCitedWork identifier */
+        /** @description WrittenSource identifier */
         parentId: string
       }
       cookie?: never
@@ -29735,7 +29756,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description Individual identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -30198,7 +30219,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description Individual identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -31428,7 +31449,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectAnalysis identifier */
+        /** @description Analysis identifier */
         parentId: string
       }
       cookie?: never
@@ -31609,7 +31630,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectHistoryLocation identifier */
+        /** @description Location identifier */
         parentId: string
       }
       cookie?: never
@@ -31941,7 +31962,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectPaleoclimateSample identifier */
+        /** @description PaleoclimateSample identifier */
         parentId: string
       }
       cookie?: never
@@ -32122,7 +32143,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectPaleoclimateSamplingSite identifier */
+        /** @description PaleoclimateSamplingSite identifier */
         parentId: string
       }
       cookie?: never
@@ -32303,7 +32324,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectPottery identifier */
+        /** @description Pottery identifier */
         parentId: string
       }
       cookie?: never
@@ -32484,7 +32505,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectSamplingStratigraphicUnit identifier */
+        /** @description SamplingStratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -32665,7 +32686,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MediaObjectStratigraphicUnit identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -32755,7 +32776,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MicrostratigraphicUnit identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -33221,7 +33242,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description MicrostratigraphicUnit identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -33771,7 +33792,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description PaleoclimateSample identifier */
+        /** @description PaleoclimateSamplingSite identifier */
         parentId: string
       }
       cookie?: never
@@ -34671,7 +34692,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description Pottery identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -35252,7 +35273,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description Pottery identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -35716,7 +35737,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description Sample identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -35895,7 +35916,7 @@ export interface operations {
     /** @description The new Sample resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Sample']
+        'application/ld+json': components['schemas']['Sample-sample.create']
       }
     }
     responses: {
@@ -36022,7 +36043,7 @@ export interface operations {
     /** @description The updated Sample resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Sample.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['Sample-sample.update.jsonMergePatch']
       }
     }
     responses: {
@@ -36167,6 +36188,8 @@ export interface operations {
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sample?: string
+        'sample[]'?: string[]
         'sample.site'?: string
         'sample.site[]'?: string[]
         'sample.site.code'?: string
@@ -36425,6 +36448,8 @@ export interface operations {
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sample?: string
+        'sample[]'?: string[]
         'sample.site'?: string
         'sample.site[]'?: string[]
         'sample.site.code'?: string
@@ -36455,7 +36480,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SampleStratigraphicUnit identifier */
+        /** @description Sample identifier */
         parentId: string
       }
       cookie?: never
@@ -36562,6 +36587,8 @@ export interface operations {
         'order[stratigraphicUnit.year]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sample?: string
+        'sample[]'?: string[]
         'sample.site'?: string
         'sample.site[]'?: string[]
         'sample.site.code'?: string
@@ -36592,7 +36619,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SampleStratigraphicUnit identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -37097,7 +37124,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SamplingStratigraphicUnit identifier */
+        /** @description SamplingSite identifier */
         parentId: string
       }
       cookie?: never
@@ -37393,7 +37420,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SedimentCore identifier */
+        /** @description SamplingSite identifier */
         parentId: string
       }
       cookie?: never
@@ -37911,7 +37938,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SedimentCoreDepth identifier */
+        /** @description SedimentCore identifier */
         parentId: string
       }
       cookie?: never
@@ -37950,7 +37977,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SedimentCoreDepth identifier */
+        /** @description SamplingStratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -38046,7 +38073,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SiteUserPrivilege identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -38082,7 +38109,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        /** @description SiteUserPrivilege identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
         /** @description SiteUserPrivilege identifier */
         id: string
@@ -38440,7 +38467,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SiteUserPrivilege identifier */
+        /** @description User identifier */
         parentId: string
       }
       cookie?: never
@@ -38476,7 +38503,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        /** @description SiteUserPrivilege identifier */
+        /** @description User identifier */
         parentId: string
         /** @description SiteUserPrivilege identifier */
         id: string
@@ -38623,7 +38650,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description StratigraphicUnit identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -39119,7 +39146,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        /** @description StratigraphicUnitRelationship identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -40871,7 +40898,13 @@ export interface operations {
   }
   api_vocabularybotanyelements_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
       header?: never
       path?: never
       cookie?: never
@@ -40927,7 +40960,13 @@ export interface operations {
   }
   api_vocabularybotanyelement_parts_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
       header?: never
       path?: never
       cookie?: never
@@ -40989,6 +41028,11 @@ export interface operations {
         'order[vernacularName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -41017,6 +41061,11 @@ export interface operations {
         'order[vernacularName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -43377,6 +43426,11 @@ export interface operations {
     parameters: {
       query?: {
         /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+        /**
          * @description Filter by teeth - when true, shows only items with code MAX or N
          * @example true
          */
@@ -43437,7 +43491,13 @@ export interface operations {
   }
   api_vocabularyzoobone_parts_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
       header?: never
       path?: never
       cookie?: never
@@ -43504,6 +43564,11 @@ export interface operations {
         'order[vernacularName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -43533,6 +43598,11 @@ export interface operations {
         'order[vernacularName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -43947,7 +44017,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description ZooBone identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -44105,7 +44175,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description ZooBone identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never
@@ -44838,7 +44908,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description ZooTooth identifier */
+        /** @description ArchaeologicalSite identifier */
         parentId: string
       }
       cookie?: never
@@ -44992,7 +45062,7 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description ZooTooth identifier */
+        /** @description StratigraphicUnit identifier */
         parentId: string
       }
       cookie?: never

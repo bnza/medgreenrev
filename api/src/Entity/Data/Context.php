@@ -20,6 +20,7 @@ use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\ContextStratigraphicUnit;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
+use App\State\ContextPostProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -53,11 +54,15 @@ use Symfony\Component\Validator\Constraints as Assert;
             ]
         ),
         new Post(
+            denormalizationContext: ['groups' => ['context:create']],
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:context:create']],
+            processor: ContextPostProcessor::class,
         ),
         new Patch(
+            denormalizationContext: ['groups' => ['context:update']],
             security: 'is_granted("update", object)',
+            validationContext: ['groups' => ['validation:context:update']],
         ),
         new Delete(
             security: 'is_granted("delete", object)',
@@ -65,7 +70,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
     routePrefix: 'data',
     normalizationContext: ['groups' => ['context:acl:read']],
-    denormalizationContext: ['groups' => ['context:create']],
     order: ['id' => 'DESC'],
 )]
 #[ApiFilter(
@@ -126,9 +130,11 @@ class Context
         'context:export',
         'context_stratigraphic_unit:acl:read',
         'context:create',
+        'context:update',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:context:create',
+        'validation:context:update',
     ])]
     private string $type;
 
@@ -139,9 +145,11 @@ class Context
         'context:export',
         'context_stratigraphic_unit:acl:read',
         'context:create',
+        'context:update',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:context:create',
+        'validation:context:update',
     ])]
     private ArchaeologicalSite $site;
 
@@ -160,9 +168,11 @@ class Context
         'context:export',
         'context_stratigraphic_unit:acl:read',
         'context:create',
+        'context:update',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:context:create',
+        'validation:context:update',
     ])]
     private string $name;
 
@@ -171,8 +181,13 @@ class Context
         'context:acl:read',
         'context:export',
         'context:create',
+        'context:update',
     ])]
     private ?string $description;
+
+    #[Groups(['context:create'])]
+    #[Assert\NotBlank(groups: ['validation:context:create'])]
+    private StratigraphicUnit $stratigraphicUnit;
 
     public function __construct()
     {
@@ -230,6 +245,18 @@ class Context
     public function setDescription(string $description): Context
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getStratigraphicUnit(): ?StratigraphicUnit
+    {
+        return $this->stratigraphicUnit ?? null;
+    }
+
+    public function setStratigraphicUnit(StratigraphicUnit $stratigraphicUnit): Context
+    {
+        $this->stratigraphicUnit = $stratigraphicUnit;
 
         return $this;
     }

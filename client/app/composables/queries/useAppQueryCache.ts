@@ -14,8 +14,8 @@ export default function useAppQueryCache(
 
   const QUERY_KEYS = {
     root: [rootKey] as const,
-    bySearch: (value: string, grantedOnly: boolean) =>
-      [...QUERY_KEYS.root, value, grantedOnly] as const,
+    bySearch: (value: string, grantedOnly: boolean, queryParams: Record<string, any> = {}) =>
+      [...QUERY_KEYS.root, value, grantedOnly, queryParams] as const,
   } as const
 
   const RESOURCE_QUERY_KEY = {

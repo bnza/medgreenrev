@@ -3,7 +3,6 @@ import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 import type { ApiResourcePath } from '~/utils/consts/resources'
 import type {
   GetItemPath,
-  Iri,
   JsonLdItem,
   OperationPathParams,
 } from '~~/types'
@@ -27,7 +26,7 @@ const { items, asyncStatus } = useAutocompleteQuery(
   props.path,
   search,
   props.grantedOnly,
-  props.queryParams,
+  toRef(props, 'queryParams'),
 )
 
 // Fetch the selected item if it's not in the current items list

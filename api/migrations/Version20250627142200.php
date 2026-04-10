@@ -209,6 +209,68 @@ final class Version20250627142200 extends AbstractMigration
                     FOR EACH ROW EXECUTE FUNCTION validate_individual_identifier_site_uniqueness();
                 SQL
         );
+
+        // Enforce: at least one join row on sample_stratigraphic_units
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION check_last_sample_stratigraphic_unit()
+                RETURNS TRIGGER AS $$
+                BEGIN
+                    IF NOT EXISTS (SELECT 1 FROM samples WHERE id = OLD.sample_id) THEN
+                        RETURN OLD;  -- parent is gone, cascade is fine
+                    END IF;
+                    IF NOT EXISTS (
+                        SELECT 1 FROM sample_stratigraphic_units
+                        WHERE sample_id = OLD.sample_id AND id != OLD.id
+                    ) THEN
+                        RAISE EXCEPTION 'Cannot delete the last stratigraphic unit for sample %', OLD.sample_id;
+                    END IF;
+                    RETURN OLD;
+                END;
+                $$ LANGUAGE plpgsql;
+            SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE CONSTRAINT TRIGGER trg_check_last_sample_stratigraphic_unit
+                AFTER DELETE ON sample_stratigraphic_units
+                DEFERRABLE INITIALLY DEFERRED
+                FOR EACH ROW
+                EXECUTE FUNCTION check_last_sample_stratigraphic_unit();
+            SQL
+        );
+
+        // Enforce: at least one join row on context_stratigraphic_units
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION check_last_context_stratigraphic_unit()
+                RETURNS TRIGGER AS $$
+                BEGIN
+                    IF NOT EXISTS (SELECT 1 FROM contexts WHERE id = OLD.context_id) THEN
+                        RETURN OLD;  -- parent is gone, cascade is fine
+                    END IF;
+                    IF NOT EXISTS (
+                        SELECT 1 FROM context_stratigraphic_units
+                        WHERE context_id = OLD.context_id AND id != OLD.id
+                    ) THEN
+                        RAISE EXCEPTION 'Cannot delete the last stratigraphic unit for context %', OLD.context_id;
+                    END IF;
+                    RETURN OLD;
+                END;
+                $$ LANGUAGE plpgsql;
+            SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE CONSTRAINT TRIGGER trg_check_last_context_stratigraphic_unit
+                AFTER DELETE ON context_stratigraphic_units
+                DEFERRABLE INITIALLY DEFERRED
+                FOR EACH ROW
+                EXECUTE FUNCTION check_last_context_stratigraphic_unit();
+            SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -296,5 +358,10 @@ final class Version20250627142200 extends AbstractMigration
                     DROP FUNCTION IF EXISTS validate_individual_identifier_site_uniqueness;
                 SQL
         );
+
+        $this->addSql('DROP TRIGGER IF EXISTS trg_check_last_sample_stratigraphic_unit ON sample_stratigraphic_units');
+        $this->addSql('DROP FUNCTION IF EXISTS check_last_sample_stratigraphic_unit()');
+        $this->addSql('DROP TRIGGER IF EXISTS trg_check_last_context_stratigraphic_unit ON context_stratigraphic_units');
+        $this->addSql('DROP FUNCTION IF EXISTS check_last_context_stratigraphic_unit()');
     }
 }

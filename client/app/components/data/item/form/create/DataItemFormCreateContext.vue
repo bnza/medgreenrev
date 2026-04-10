@@ -29,6 +29,9 @@ const { r$ } = useScopedRegle(model, {
   type: { required },
   site: { required, uniqueYear: uniqueSite(() => model.value.name) },
   name: { required, uniqueName: uniqueName(() => model.value.site) },
+  stratigraphicUnit: {
+    required,
+  },
 })
 </script>
 
@@ -44,6 +47,18 @@ const { r$ } = useScopedRegle(model, {
           granted-only
           :error-messages="r$.$errors?.site"
           :disabled="parent?.key === 'archaeologicalSite'"
+        />
+      </v-col>
+      <v-col cols="4">
+        <data-autocomplete-stratigraphic-unit
+            v-model="r$.$value.stratigraphicUnit"
+            path="/api/data/stratigraphic_units"
+            item-title="code"
+            label="stratigraphic unit"
+            granted-only
+            :query-param="r$.$value.site ? { site: r$.$value.site } : undefined"
+            :error-messages="r$.$errors?.stratigraphicUnit"
+            :disabled="!r$.$value.site"
         />
       </v-col>
     </v-row>

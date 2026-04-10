@@ -4,7 +4,7 @@ import type {
   PostCollectionPath,
   ResourceParent,
 } from '~~/types'
-import { maxValue, minValue, required } from '@regle/rules'
+import { maxValue, minValue, required, integer } from '@regle/rules'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/samples'
 
@@ -52,7 +52,11 @@ const { r$ } = useScopedRegle(model, {
       () => model.value.number,
     ),
   },
+  stratigraphicUnit: {
+    required,
+  },
   year: {
+    integer,
     uniqueYear: uniqueYear(
       () => model.value.site,
       () => model.value.type,
@@ -84,6 +88,18 @@ const { r$ } = useScopedRegle(model, {
         granted-only
         :error-messages="r$.$errors?.site"
         :disabled="parent?.key === 'archaeologicalSite'"
+      />
+    </v-col>
+    <v-col cols="4">
+      <data-autocomplete-stratigraphic-unit
+          v-model="r$.$value.stratigraphicUnit"
+          path="/api/data/stratigraphic_units"
+          item-title="code"
+          label="stratigraphic unit"
+          granted-only
+          :query-param="r$.$value.site ? { site: r$.$value.site } : undefined"
+          :error-messages="r$.$errors?.stratigraphicUnit"
+          :disabled="!r$.$value.site"
       />
     </v-col>
   </v-row>

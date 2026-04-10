@@ -192,4 +192,73 @@ class ApiResourceContextStratigraphicUnitTest extends ApiTestCase
         });
         $this->assertNotEmpty($uniqueViolation, 'Should have a uniqueness violation');
     }
+
+    public function testDeleteLastJoinEntryReturnsValidationError(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_admin');
+
+        // Create a fresh context — it will have exactly one join entry
+        $site = $this->getFixtureSites(['code' => 'ME'])[0];
+        $su = $this->getFixtureStratigraphicUnits(['site' => $site['@id']])[0];
+
+        $response = $this->apiRequest($client, 'POST', '/api/data/contexts', [
+            'token' => $token,
+            'json' => [
+                'site' => $site['@id'],
+                'type' => 'floor',
+                'name' => 'delete test '.uniqid(),
+                'description' => 'Context for delete validation test',
+                'stratigraphicUnit' => $su['@id'],
+            ],
+        ]);
+        $this->assertSame(201, $response->getStatusCode());
+        $context = $response->toArray();
+
+        // Get the single join entry for this context
+        $contextSus = $this->getFixtureContextStratigraphicUnits(['context' => $context['@id']]);
+        $this->assertCount(1, $contextSus, 'Newly created context should have exactly one join entry');
+
+        // Try to delete the last (only) join entry — should fail with 422
+        $response = $this->apiRequest($client, 'DELETE', $contextSus[0]['@id'], [
+            'token' => $token,
+        ]);
+
+        $this->assertSame(422, $response->getStatusCode());
+        $data = $response->toArray(false);
+        $this->assertArrayHasKey('violations', $data);
+        $this->assertNotEmpty($data['violations']);
+    }
+
+    public function testDeleteNonLastJoinEntrySucceeds(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_admin');
+
+        $contextSus = $this->getFixtureContextStratigraphicUnits();
+        $this->assertNotEmpty($contextSus, 'Fixture context stratigraphic units should exist');
+
+        // Group by context to find one with multiple join entries
+        $byContext = [];
+        foreach ($contextSus as $su) {
+            $contextId = $su['context']['@id'];
+            $byContext[$contextId][] = $su;
+        }
+
+        $entryToDelete = null;
+        foreach ($byContext as $entries) {
+            if (count($entries) > 1) {
+                $entryToDelete = $entries[0];
+                break;
+            }
+        }
+
+        $this->assertNotNull($entryToDelete, 'Should have a context with more than one stratigraphic unit join entry');
+
+        $response = $this->apiRequest($client, 'DELETE', $entryToDelete['@id'], [
+            'token' => $token,
+        ]);
+
+        $this->assertSame(204, $response->getStatusCode());
+    }
 }

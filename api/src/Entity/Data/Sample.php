@@ -22,6 +22,7 @@ use App\Entity\Data\Join\SampleStratigraphicUnit;
 use App\Entity\Vocabulary\Sample\Type;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
+use App\State\SamplePostProcessor;
 use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -57,10 +58,14 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Post(
             securityPostDenormalize: 'is_granted("create", object)',
+            denormalizationContext: ['groups' => ['sample:create']],
             validationContext: ['groups' => ['validation:sample:create']],
+            processor: SamplePostProcessor::class,
         ),
         new Patch(
             security: 'is_granted("update", object)',
+            denormalizationContext: ['groups' => ['sample:update']],
+            validationContext: ['groups' => ['validation:sample:update']],
         ),
         new Delete(
             security: 'is_granted("delete", object)',
@@ -132,9 +137,12 @@ class Sample
     #[Groups([
         'sample:acl:read',
         'sample:export',
+        'sample:create',
+        'sample:update',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:sample:create',
+        'validation:sample:update',
     ])]
     private ArchaeologicalSite $site;
 
@@ -143,9 +151,12 @@ class Sample
     #[Groups([
         'sample:acl:read',
         'sample:export',
+        'sample:create',
+        'sample:update',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:sample:create',
+        'validation:sample:update',
     ])]
     private Type $type;
 
@@ -153,16 +164,18 @@ class Sample
     #[Groups([
         'sample:acl:read',
         'sample:export',
+        'sample:create',
+        'sample:update',
     ])]
     #[Assert\AtLeastOneOf([
-        new Assert\EqualTo(value: 0, groups: ['validation:sample:create']),
+        new Assert\EqualTo(value: 0, groups: ['validation:sample:create', 'validation:sample:update']),
         new Assert\Sequentially([
             new Assert\GreaterThanOrEqual(value: 2000),
             new AppAssert\IsLessThanOrEqualToCurrentYear(),
         ],
-            groups: ['validation:sample:create']),
+            groups: ['validation:sample:create', 'validation:sample:update']),
     ],
-        groups: ['validation:sample:create']
+        groups: ['validation:sample:create', 'validation:sample:update']
     )]
     private int $year = 0;
 
@@ -170,9 +183,12 @@ class Sample
     #[Groups([
         'sample:acl:read',
         'sample:export',
+        'sample:create',
+        'sample:update',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:sample:create',
+        'validation:sample:update',
     ])]
     private int $number;
 
@@ -186,8 +202,14 @@ class Sample
     #[Groups([
         'sample:acl:read',
         'sample:export',
+        'sample:create',
+        'sample:update',
     ])]
     private ?string $description;
+
+    #[Groups(['sample:create'])]
+    #[Assert\NotBlank(groups: ['validation:sample:create'])]
+    private StratigraphicUnit $stratigraphicUnit;
 
     public function __construct()
     {
@@ -255,6 +277,18 @@ class Sample
     public function setDescription(?string $description): Sample
     {
         $this->description = $description ?? null;
+
+        return $this;
+    }
+
+    public function getStratigraphicUnit(): ?StratigraphicUnit
+    {
+        return $this->stratigraphicUnit ?? null;
+    }
+
+    public function setStratigraphicUnit(StratigraphicUnit $stratigraphicUnit): Sample
+    {
+        $this->stratigraphicUnit = $stratigraphicUnit;
 
         return $this;
     }

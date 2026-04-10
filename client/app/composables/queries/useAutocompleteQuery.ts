@@ -6,21 +6,21 @@ export function useAutocompleteQuery(
   path: ApiResourcePath,
   search: Ref<string>,
   grantedOnly: boolean,
-  queryParams: Record<string, any> = {},
+  queryParams?: Ref<Record<string, any>>,
 ) {
   const { QUERY_KEYS } = useAppQueryCache(path)
   const getCollectionOperation = new GetCollectionOperation(path)
 
   const requestOptions = computed(() => ({
     query: {
-      ...queryParams,
+      ...queryParams?.value ?? {},
       ...(search.value && { search: search.value }),
       ...(grantedOnly && { granted: grantedOnly }),
     },
   }))
 
   const queryOptions = defineQueryOptions((_search: Ref<string>) => ({
-    key: QUERY_KEYS.bySearch(_search.value, grantedOnly),
+    key: QUERY_KEYS.bySearch(_search.value ?? '', grantedOnly, queryParams?.value),
     query: () => getCollectionOperation.request(requestOptions.value),
   }))
 

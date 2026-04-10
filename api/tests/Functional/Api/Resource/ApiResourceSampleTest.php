@@ -8,7 +8,7 @@ use App\Tests\Functional\Api\ApiTestProviderTrait;
 use App\Tests\Functional\ApiTestRequestTrait;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class ApiResourceContextTest extends ApiTestCase
+class ApiResourceSampleTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
@@ -28,11 +28,11 @@ class ApiResourceContextTest extends ApiTestCase
         parent::tearDown();
     }
 
-    public function testGetCollectionReturnsContexts(): void
+    public function testGetCollectionReturnsSamples(): void
     {
         $client = self::createClient();
 
-        $response = $this->apiRequest($client, 'GET', '/api/data/contexts');
+        $response = $this->apiRequest($client, 'GET', '/api/data/samples');
         $this->assertSame(200, $response->getStatusCode());
         $data = $response->toArray();
         $this->assertIsArray($data['member']);
@@ -43,27 +43,29 @@ class ApiResourceContextTest extends ApiTestCase
         $this->assertArrayHasKey('id', $firstItem);
         $this->assertArrayHasKey('site', $firstItem);
         $this->assertArrayHasKey('type', $firstItem);
-        $this->assertArrayHasKey('name', $firstItem);
+        $this->assertArrayHasKey('number', $firstItem);
     }
 
-    public function testPostCreatesContext(): void
+    public function testPostCreatesSample(): void
     {
         $client = self::createClient();
         $token = $this->getUserToken($client, 'user_admin');
 
         $site = $this->getFixtureSites(['code' => 'ME'])[0];
         $su = $this->getFixtureStratigraphicUnits(['site' => $site['@id']])[0];
+        $type = $this->getFixtureSampleTypes()[0];
 
         // Prepare payload with valid data
         $payload = [
             'site' => $site['@id'],
-            'type' => 'some type',
-            'name' => 'Test context '.uniqid(),
+            'type' => $type['@id'],
+            'year' => 2025,
+            'number' => random_int(9000, 9999),
             'description' => 'Test description',
             'stratigraphicUnit' => $su['@id'],
         ];
 
-        $response = $this->apiRequest($client, 'POST', '/api/data/contexts', [
+        $response = $this->apiRequest($client, 'POST', '/api/data/samples', [
             'token' => $token,
             'json' => $payload,
         ]);
@@ -72,62 +74,63 @@ class ApiResourceContextTest extends ApiTestCase
         $createdData = $response->toArray();
         $this->assertArrayHasKey('id', $createdData);
         $this->assertEquals($payload['site'], $createdData['site']['@id']);
-        $this->assertEquals($payload['type'], $createdData['type']);
-        $this->assertEquals($payload['name'], $createdData['name']);
+        $this->assertEquals($payload['type'], $createdData['type']['@id']);
+        $this->assertEquals($payload['year'], $createdData['year']);
+        $this->assertEquals($payload['number'], $createdData['number']);
     }
 
-    public function testGetItemReturnsContext(): void
+    public function testGetItemReturnsSample(): void
     {
         $client = self::createClient();
 
-        $newContext = $this->createContext($client, 'user_admin');
-        $createdId = $newContext['id'];
+        $newSample = $this->createSample($client, 'user_admin');
+        $createdId = $newSample['id'];
 
-        $response = $this->apiRequest($client, 'GET', "/api/data/contexts/$createdId");
+        $response = $this->apiRequest($client, 'GET', "/api/data/samples/$createdId");
         $this->assertSame(200, $response->getStatusCode());
         $data = $response->toArray();
         $this->assertEquals($createdId, $data['id']);
-        foreach (['name', 'description'] as $field) {
-            $this->assertEquals($newContext[$field], $data[$field]);
+        foreach (['description'] as $field) {
+            $this->assertEquals($newSample[$field], $data[$field]);
         }
     }
 
-    public function testPatchUpdatesContext(): void
+    public function testPatchUpdatesSample(): void
     {
         $client = self::createClient();
 
-        $newContext = $this->createContext($client, 'user_admin');
-        $createdId = $newContext['id'];
-        $newName = 'Updated context name '.uniqid();
+        $newSample = $this->createSample($client, 'user_admin');
+        $createdId = $newSample['id'];
+        $newDescription = 'Updated sample description '.uniqid();
 
         $token = $this->getUserToken($client, 'user_admin');
 
         // PATCH
-        $responsePatch = $this->apiRequest($client, 'PATCH', "/api/data/contexts/$createdId", [
+        $responsePatch = $this->apiRequest($client, 'PATCH', "/api/data/samples/$createdId", [
             'token' => $token,
-            'json' => ['name' => $newName],
+            'json' => ['description' => $newDescription],
         ]);
         $this->assertSame(200, $responsePatch->getStatusCode());
         $patchedData = $responsePatch->toArray();
-        $this->assertEquals($newName, $patchedData['name']);
+        $this->assertEquals($newDescription, $patchedData['description']);
     }
 
-    public function testDeleteRemovesContext(): void
+    public function testDeleteRemovesSample(): void
     {
         $client = self::createClient();
-        $newContext = $this->createContext($client, 'user_admin');
+        $newSample = $this->createSample($client, 'user_admin');
 
-        $createdId = $newContext['id'];
+        $createdId = $newSample['id'];
         $token = $this->getUserToken($client, 'user_admin');
 
         // DELETE
-        $responseDelete = $this->apiRequest($client, 'DELETE', "/api/data/contexts/$createdId", [
+        $responseDelete = $this->apiRequest($client, 'DELETE', "/api/data/samples/$createdId", [
             'token' => $token,
         ]);
         $this->assertSame(204, $responseDelete->getStatusCode());
 
         // Confirm deletion
-        $responseGet = $this->apiRequest($client, 'GET', "/api/data/contexts/$createdId");
+        $responseGet = $this->apiRequest($client, 'GET', "/api/data/samples/$createdId");
         $this->assertSame(404, $responseGet->getStatusCode());
     }
 
@@ -136,15 +139,16 @@ class ApiResourceContextTest extends ApiTestCase
         $client = self::createClient();
         $token = $this->getUserToken($client, 'user_admin');
 
-        $type = 'some type';
+        $type = $this->getFixtureSampleTypes()[0];
 
         $payload = [
-            'type' => $type,
-            'name' => 'Test context',
+            'type' => $type['@id'],
+            'year' => 2025,
+            'number' => 1,
             'description' => 'Test description',
         ];
 
-        $response = $this->apiRequest($client, 'POST', '/api/data/contexts', [
+        $response = $this->apiRequest($client, 'POST', '/api/data/samples', [
             'token' => $token,
             'json' => $payload,
         ]);
@@ -163,15 +167,16 @@ class ApiResourceContextTest extends ApiTestCase
     {
         $client = self::createClient();
         $token = $this->getUserToken($client, 'user_admin');
-        $site = $this->getFixtureSites()[0];
+        $site = $this->getFixtureSites(['code' => 'ME'])[0];
 
         $payload = [
             'site' => $site['@id'],
-            'name' => 'Test context',
+            'year' => 2025,
+            'number' => 1,
             'description' => 'Test description',
         ];
 
-        $response = $this->apiRequest($client, 'POST', '/api/data/contexts', [
+        $response = $this->apiRequest($client, 'POST', '/api/data/samples', [
             'token' => $token,
             'json' => $payload,
         ]);
@@ -186,20 +191,21 @@ class ApiResourceContextTest extends ApiTestCase
         $this->assertNotEmpty($typeViolation);
     }
 
-    public function testPostValidationFailsWithMissingName(): void
+    public function testPostValidationFailsWithMissingNumber(): void
     {
         $client = self::createClient();
         $token = $this->getUserToken($client, 'user_admin');
-        $site = $this->getFixtureSites()[0];
-        $type = 'some type';
+        $site = $this->getFixtureSites(['code' => 'ME'])[0];
+        $type = $this->getFixtureSampleTypes()[0];
 
         $payload = [
             'site' => $site['@id'],
-            'type' => $type,
+            'type' => $type['@id'],
+            'year' => 2025,
             'description' => 'Test description',
         ];
 
-        $response = $this->apiRequest($client, 'POST', '/api/data/contexts', [
+        $response = $this->apiRequest($client, 'POST', '/api/data/samples', [
             'token' => $token,
             'json' => $payload,
         ]);
@@ -209,12 +215,23 @@ class ApiResourceContextTest extends ApiTestCase
         $this->assertArrayHasKey('violations', $data);
         $this->assertGreaterThan(0, count($data['violations']));
 
-        // Check that name validation failed
-        $nameViolation = array_filter($data['violations'], fn ($violation) => 'name' === $violation['propertyPath']);
-        $this->assertNotEmpty($nameViolation);
+        // Check that number validation failed
+        $numberViolation = array_filter($data['violations'], fn ($violation) => 'number' === $violation['propertyPath']);
+        $this->assertNotEmpty($numberViolation);
     }
 
-    private function createContext(Client $client, string $username = 'user_admin', array $payload = [], bool $test = true): array
+    protected function getFixtureSampleTypes(array $queryParams = []): array
+    {
+        $client = self::createClient();
+        $response = $this->apiRequest($client, 'GET', '/api/vocabulary/sample/types', [
+            'query' => $queryParams,
+        ]);
+        $this->assertSame(200, $response->getStatusCode());
+
+        return $response->toArray()['member'];
+    }
+
+    private function createSample(Client $client, string $username = 'user_admin', array $payload = [], bool $test = true): array
     {
         $token = $this->getUserToken($client, $username);
         $originalPayload = [...$payload];
@@ -223,10 +240,13 @@ class ApiResourceContextTest extends ApiTestCase
             $payload['site'] = $this->getFixtureSites(['code' => 'ME'])[0]['@id'];
         }
         if (!array_key_exists('type', $payload)) {
-            $payload['type'] = 'fill';
+            $payload['type'] = $this->getFixtureSampleTypes()[0]['@id'];
         }
-        if (!array_key_exists('name', $payload)) {
-            $payload['name'] = 'Test context '.uniqid();
+        if (!array_key_exists('year', $payload)) {
+            $payload['year'] = 2025;
+        }
+        if (!array_key_exists('number', $payload)) {
+            $payload['number'] = random_int(9000, 9999);
         }
         if (!array_key_exists('description', $payload)) {
             $payload['description'] = 'Test description '.uniqid();
@@ -235,7 +255,7 @@ class ApiResourceContextTest extends ApiTestCase
             $payload['stratigraphicUnit'] = $this->getFixtureStratigraphicUnits(['site' => $payload['site']])[0]['@id'];
         }
 
-        $response = $this->apiRequest($client, 'POST', '/api/data/contexts', [
+        $response = $this->apiRequest($client, 'POST', '/api/data/samples', [
             'token' => $token,
             'json' => $payload,
         ]);
@@ -250,7 +270,7 @@ class ApiResourceContextTest extends ApiTestCase
             if (array_key_exists('type', $originalPayload)) {
                 $this->assertEquals($originalPayload['type'], $createdData['type']['@id']);
             }
-            foreach (['name', 'description'] as $field) {
+            foreach (['description'] as $field) {
                 if (array_key_exists($field, $originalPayload)) {
                     $this->assertEquals($originalPayload[$field], $createdData[$field]);
                 }

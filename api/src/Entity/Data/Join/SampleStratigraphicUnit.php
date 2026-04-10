@@ -66,6 +66,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Delete(
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:sample_stratigraphic_unit:delete']],
+            validate: true,
         ),
     ],
     routePrefix: 'data',
@@ -91,6 +93,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'sample' => 'exact',
         'sample.site' => 'exact',
         'sample.site.code' => 'exact',
         'sample.year' => 'exact',
@@ -126,6 +129,11 @@ use Symfony\Component\Validator\Constraints as Assert;
     groups: ['validation:sample_stratigraphic_unit:create']
 )]
 #[AppAssert\BelongToTheSameSite(groups: ['validation:sample_stratigraphic_unit:create'])]
+#[AppAssert\NotLastJoinEntry(
+    joinCollection: 'sampleStratigraphicUnits',
+    parentProperty: 'sample',
+    groups: ['validation:sample_stratigraphic_unit:delete'],
+)]
 class SampleStratigraphicUnit
 {
     #[ORM\Id,
