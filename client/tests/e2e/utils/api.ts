@@ -14,7 +14,7 @@ export const credentials = {
 export function loadFixtures() {
   console.info('Loading fixtures...')
   execSync(
-    `docker exec ${process.env.API_CONTAINER_ID} bin/console hautelook:fixtures:load --env=dev --quiet >> /dev/null`,
+    `docker exec ${process.env.API_CONTAINER_ID} bin/console hautelook:fixtures:load --purge-with-truncate --env=dev --quiet >> /dev/null`,
   )
 }
 

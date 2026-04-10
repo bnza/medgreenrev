@@ -4,11 +4,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 
 dotenv.config()
 
-const apiBaseUrl = process.env.NUXT_PUBLIC_API_BASE_URL
-if (!apiBaseUrl) {
-  console.error('NUXT_PUBLIC_API_BASE_URL is not defined in your .env file.')
-  process.exit(1)
-}
+const apiBaseUrl = 'http://nginx'
 
 const schemaUrl = `${apiBaseUrl}/api/docs.jsonopenapi`
 
