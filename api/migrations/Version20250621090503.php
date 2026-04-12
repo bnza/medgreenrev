@@ -281,7 +281,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE TABLE sampling_sus (id BIGINT NOT NULL, number INT NOT NULL, description TEXT DEFAULT NULL, interpretation TEXT DEFAULT NULL, chronology_lower SMALLINT DEFAULT NULL, chronology_upper SMALLINT DEFAULT NULL, site_id BIGINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_B3FA8DFBF6BD1646 ON sampling_sus (site_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_B3FA8DFBF6BD164696901F54 ON sampling_sus (site_id, number)');
-        $this->addSql('CREATE TABLE sediment_core_depths (id BIGINT NOT NULL, depth_min NUMERIC(5, 1) NOT NULL, depth_max NUMERIC(5, 1) NOT NULL, notes TEXT DEFAULT NULL, sediment_core_id BIGINT NOT NULL, su_id BIGINT NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE sediment_core_depths (id BIGINT NOT NULL, depth_min NUMERIC(5, 1) NOT NULL, depth_max NUMERIC(5, 1) NOT NULL, notes TEXT DEFAULT NULL, pollen BOOLEAN NOT NULL, sedimentary_dna BOOLEAN NOT NULL, phytoliths BOOLEAN NOT NULL, geochemistry BOOLEAN NOT NULL, organic_chemistry BOOLEAN NOT NULL, plant_macro_remains BOOLEAN NOT NULL, osl_dating BOOLEAN NOT NULL, micro_charcoal BOOLEAN NOT NULL, sediment_core_id BIGINT NOT NULL, su_id BIGINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_129F0C525BB434F5 ON sediment_core_depths (sediment_core_id)');
         $this->addSql('CREATE INDEX IDX_129F0C52BDB1218E ON sediment_core_depths (su_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_129F0C525BB434F56740129F ON sediment_core_depths (sediment_core_id, depth_min)');

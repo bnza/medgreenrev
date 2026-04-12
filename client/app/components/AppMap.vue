@@ -94,6 +94,8 @@ onMounted(() => {
         group-key="paleoclimateSamplingSite"
       />
       <map-layer-vector-api-sampling-site group-key="samplingSite" />
+      <map-layer-vector-api-sediment-core group-key="samplingSite" />
+      <map-layer-vector-api-sediment-core-depth group-key="samplingSite" />
       <map-layer-vector-api-archaeological-site
         group-key="archaeologicalSite"
       />

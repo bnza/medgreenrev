@@ -2,7 +2,11 @@
 
 namespace App\Entity\Data\Join;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
@@ -12,8 +16,14 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
+use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Entity\Data\SedimentCore;
+use App\Metadata\ExportFeatureCollection;
+use App\Metadata\GetAggregatedFeatureCollection;
+use App\State\GeoserverAggregatedExtentMatchedProvider;
+use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\Validator as AppAssert;
 use BcMath\Number;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,12 +38,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\UniqueConstraint(columns: ['sediment_core_id', 'depth_min'])]
 #[ApiResource(
     operations: [
-        new Get(),
+        new Get(
+            uriTemplate: '/data/sediment_core_depths/{id}',
+        ),
         new GetCollection(
+            uriTemplate: '/data/sediment_core_depths',
             formats: ['csv' => 'text/csv', 'jsonld' => 'application/ld+json'],
         ),
         new GetCollection(
-            uriTemplate: '/stratigraphic_units/{parentId}/sediment_cores/depths',
+            uriTemplate: '/data/stratigraphic_units/{parentId}/sediment_cores/depths',
             formats: ['csv' => 'text/csv', 'jsonld' => 'application/ld+json'],
             uriVariables: [
                 'parentId' => new Link(
@@ -46,7 +59,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             ],
         ),
         new GetCollection(
-            uriTemplate: '/sediment_cores/{parentId}/stratigraphic_units/depths',
+            uriTemplate: '/data/sediment_cores/{parentId}/stratigraphic_units/depths',
             formats: ['csv' => 'text/csv', 'jsonld' => 'application/ld+json'],
             uriVariables: [
                 'parentId' => new Link(
@@ -59,17 +72,52 @@ use Symfony\Component\Validator\Constraints as Assert;
             ],
         ),
         new Post(
+            uriTemplate: '/data/sediment_core_depths',
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:sediment_core_depth:create']],
         ),
         new Patch(
+            uriTemplate: '/data/sediment_core_depths/{id}',
             security: 'is_granted("update", object)',
         ),
         new Delete(
+            uriTemplate: '/data/sediment_core_depths/{id}',
             security: 'is_granted("delete", object)',
         ),
+
+        // Aggregated WFS Feature Collection (grouped by parent site)
+        new GetAggregatedFeatureCollection(
+            uriTemplate: '/features/sediment_core_depths.{_format}',
+            typeName: 'mgr:sampling_sites',
+            parentAccessor: 'sedimentCore.site',
+            entityTypeName: 'mgr:sediment_core_depths',
+            propertyNames: ['id', 'code', 'name'],
+        ),
+
+        // Number of matched features (aggregated)
+        new Get(
+            uriTemplate: '/features/number_matched/sediment_core_depths',
+            defaults: ['typeName' => 'mgr:sampling_sites', 'parentAccessor' => 'sedimentCore.site'],
+            normalizationContext: ['groups' => ['wfs_number_matched:read']],
+            output: WfsGetFeatureCollectionNumberMatched::class,
+            provider: GeoserverAggregatedNumberMatchedProvider::class,
+        ),
+
+        // Bounding box extent of matched features (aggregated)
+        new Get(
+            uriTemplate: '/features/extent_matched/sediment_core_depths',
+            defaults: ['typeName' => 'mgr:sampling_sites', 'parentAccessor' => 'sedimentCore.site'],
+            normalizationContext: ['groups' => ['wfs_extent_matched:read']],
+            output: WfsGetFeatureCollectionExtentMatched::class,
+            provider: GeoserverAggregatedExtentMatchedProvider::class,
+        ),
+
+        // Export feature collection
+        new ExportFeatureCollection(
+            uriTemplate: '/features/export/sediment_core_depths',
+            typeName: 'mgr:sediment_core_depths',
+        ),
     ],
-    routePrefix: 'data',
     normalizationContext: [
         'groups' => ['sediment_core_depth:acl:read', 'sediment_core:acl:read', 'sampling_su:read'],
     ],
@@ -91,6 +139,46 @@ use Symfony\Component\Validator\Constraints as Assert;
         'stratigraphicUnit.site.code',
     ],
 )]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'sedimentCore' => 'exact',
+        'sedimentCore.site' => 'exact',
+        'sedimentCore.site.code' => 'exact',
+        'sedimentCore.year' => 'exact',
+        'sedimentCore.number' => 'exact',
+        'stratigraphicUnit' => 'exact',
+        'stratigraphicUnit.site' => 'exact',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'depthMin',
+        'depthMax',
+        'sedimentCore.year',
+        'sedimentCore.number',
+        'stratigraphicUnit.year',
+        'stratigraphicUnit.number',
+        'stratigraphicUnit.chronologyLower',
+        'stratigraphicUnit.chronologyUpper',
+    ]
+)]
+#[ApiFilter(ExistsFilter::class, properties: [
+    'notes',
+])]
+#[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'geochemistry',
+        'microCharcoal',
+        'organicChemistry',
+        'oslDating',
+        'phytoliths',
+        'plantMacroRemains',
+        'pollen',
+        'sedimentaryDna',
+    ])]
 #[UniqueEntity(
     fields: ['sedimentCore', 'depthMin'],
     message: 'Duplicate [sediment core, min depth] combination.',
@@ -177,6 +265,78 @@ class SedimentCoreDepth
     ])]
     private ?string $notes = null;
 
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $geochemistry = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $microCharcoal = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $organicChemistry = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $oslDating = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $phytoliths = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $plantMacroRemains = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $pollen = false;
+
+    #[ORM\Column(type: 'boolean')]
+    #[Groups([
+        'sediment_core_depth:create',
+        'sediment_core_depth:acl:read',
+        'sediment_core_depth:export',
+        'sampling_su:read',
+    ])]
+    private bool $sedimentaryDna = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -244,6 +404,102 @@ class SedimentCoreDepth
     public function setNotes(?string $notes): SedimentCoreDepth
     {
         $this->notes = $notes ?? null;
+
+        return $this;
+    }
+
+    public function isPollen(): bool
+    {
+        return $this->pollen;
+    }
+
+    public function setPollen(bool $pollen): SedimentCoreDepth
+    {
+        $this->pollen = $pollen;
+
+        return $this;
+    }
+
+    public function isSedimentaryDna(): bool
+    {
+        return $this->sedimentaryDna;
+    }
+
+    public function setSedimentaryDna(bool $sedimentaryDna): SedimentCoreDepth
+    {
+        $this->sedimentaryDna = $sedimentaryDna;
+
+        return $this;
+    }
+
+    public function isPhytoliths(): bool
+    {
+        return $this->phytoliths;
+    }
+
+    public function setPhytoliths(bool $phytoliths): SedimentCoreDepth
+    {
+        $this->phytoliths = $phytoliths;
+
+        return $this;
+    }
+
+    public function isGeochemistry(): bool
+    {
+        return $this->geochemistry;
+    }
+
+    public function setGeochemistry(bool $geochemistry): SedimentCoreDepth
+    {
+        $this->geochemistry = $geochemistry;
+
+        return $this;
+    }
+
+    public function isOrganicChemistry(): bool
+    {
+        return $this->organicChemistry;
+    }
+
+    public function setOrganicChemistry(bool $organicChemistry): SedimentCoreDepth
+    {
+        $this->organicChemistry = $organicChemistry;
+
+        return $this;
+    }
+
+    public function isPlantMacroRemains(): bool
+    {
+        return $this->plantMacroRemains;
+    }
+
+    public function setPlantMacroRemains(bool $plantMacroRemains): SedimentCoreDepth
+    {
+        $this->plantMacroRemains = $plantMacroRemains;
+
+        return $this;
+    }
+
+    public function isOslDating(): bool
+    {
+        return $this->oslDating;
+    }
+
+    public function setOslDating(bool $oslDating): SedimentCoreDepth
+    {
+        $this->oslDating = $oslDating;
+
+        return $this;
+    }
+
+    public function isMicroCharcoal(): bool
+    {
+        return $this->microCharcoal;
+    }
+
+    public function setMicroCharcoal(bool $microCharcoal): SedimentCoreDepth
+    {
+        $this->microCharcoal = $microCharcoal;
 
         return $this;
     }

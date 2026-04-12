@@ -105,6 +105,58 @@ const { r$ } = useScopedRegle(model, {
       </v-col>
     </v-row>
     <v-row>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.geochemistry"
+            label="geochemistry"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.microCharcoal"
+            label="microcharcoal"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.organicChemistry"
+            label="organic chemistry"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.oslDating"
+            label="OSL dating"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.phytoliths"
+            label="phytoliths"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.phytoliths"
+            label="plant micro-remains"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.pollen"
+            label="pollen"
+        />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox
+            v-model="r$.$value.sedimentaryDna"
+            label="sedimentaryDna"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="12">
         <v-textarea v-model="r$.$value.notes" label="notes" rows="3" />
       </v-col>

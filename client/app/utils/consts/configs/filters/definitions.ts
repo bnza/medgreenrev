@@ -425,6 +425,13 @@ const SamplingSiteEquals: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectMultiple,
 }
 
+const SamplingStratigraphicUnitEquals: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: true,
+  componentKey: 'SamplingStratigraphicUnit',
+  addToQueryObject: addToQueryObjectMultiple,
+}
+
 const StratigraphicUnitEquals: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -477,6 +484,7 @@ export const API_FILTERS = {
   NumericRange,
   PaleoclimateSamplingSiteEquals,
   SamplingSiteEquals,
+  SamplingStratigraphicUnitEquals,
   SelectionAnalysisStatus,
   SelectionArea,
   SelectionBuilding,

@@ -6,6 +6,7 @@ import DataDialogSearchOperandVocabulary from '~/components/data/dialog/search/o
 import DataDialogSearchOperandNumericRange from '~/components/data/dialog/search/operand/DataDialogSearchOperandNumericRange.vue'
 import DataDialogSearchOperandArchaeologicalSite from '~/components/data/dialog/search/operand/DataDialogSearchOperandArchaeologicalSite.vue'
 import DataDialogSearchOperandSamplingSite from '~/components/data/dialog/search/operand/DataDialogSearchOperandSamplingSite.vue'
+import DataDialogSearchOperandSamplingStratigraphicUnit from '~/components/data/dialog/search/operand/DataDialogSearchOperandSamplingStratigraphicUnit.vue'
 import DataDialogSearchOperandStratigraphicUnit from '~/components/data/dialog/search/operand/DataDialogSearchOperandStratigraphicUnit.vue'
 import DataDialogSearchOperandSelection from '~/components/data/dialog/search/operand/DataDialogSearchOperandSelection.vue'
 import DataDialogSearchOperandIndividualSex from '~/components/data/dialog/search/operand/DataDialogSearchOperandIndividualSex.vue'
@@ -32,6 +33,7 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   ArchaeologicalSite: DataDialogSearchOperandArchaeologicalSite,
   PaleoclimateSamplingSite: DataDialogSearchOperandPaleoclimateSamplingSite,
   SamplingSite: DataDialogSearchOperandSamplingSite,
+  SamplingStratigraphicUnit: DataDialogSearchOperandSamplingStratigraphicUnit,
   StratigraphicUnit: DataDialogSearchOperandStratigraphicUnit,
 } as const
 

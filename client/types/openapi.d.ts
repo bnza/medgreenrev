@@ -4926,26 +4926,6 @@ export interface paths {
     patch: operations['api_datasampling_stratigraphic_units_id_patch']
     trace?: never
   }
-  '/api/data/sampling_sites/{parentId}/sediment_cores': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SedimentCore resources.
-     * @description Retrieves the collection of SedimentCore resources.
-     */
-    get: operations['api_datasampling_sites_parentIdsediment_cores_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/data/sediment_cores': {
     parameters: {
       query?: never
@@ -4959,11 +4939,7 @@ export interface paths {
      */
     get: operations['api_datasediment_cores_get_collection']
     put?: never
-    /**
-     * Creates a SedimentCore resource.
-     * @description Creates a SedimentCore resource.
-     */
-    post: operations['api_datasediment_cores_post']
+    post?: never
     delete?: never
     options?: never
     head?: never
@@ -4983,7 +4959,11 @@ export interface paths {
      */
     get: operations['api_datasediment_cores_id_get']
     put?: never
-    post?: never
+    /**
+     * Creates a SedimentCore resource.
+     * @description Creates a SedimentCore resource.
+     */
+    post: operations['api_datasediment_cores_id_post']
     /**
      * Removes the SedimentCore resource.
      * @description Removes the SedimentCore resource.
@@ -4996,6 +4976,106 @@ export interface paths {
      * @description Updates the SedimentCore resource.
      */
     patch: operations['api_datasediment_cores_id_patch']
+    trace?: never
+  }
+  '/api/features/export/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportsediment_cores_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SedimentCore resource.
+     * @description Retrieves a SedimentCore resource.
+     */
+    get: operations['api_featuresextent_matchedsediment_cores_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SedimentCore resource.
+     * @description Retrieves a SedimentCore resource.
+     */
+    get: operations['api_featuresnumber_matchedsediment_cores_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuressediment_cores.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/sampling_sites/{parentId}/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SedimentCore resources.
+     * @description Retrieves the collection of SedimentCore resources.
+     */
+    get: operations['api_sampling_sites_parentIdsediment_cores_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
     trace?: never
   }
   '/api/data/sediment_core_depths': {
@@ -5082,6 +5162,86 @@ export interface paths {
      * @description Retrieves the collection of SedimentCoreDepth resources.
      */
     get: operations['api_datastratigraphic_units_parentIdsediment_coresdepths_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/export/sediment_core_depths': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportsediment_core_depths_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/sediment_core_depths': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SedimentCoreDepth resource.
+     * @description Retrieves a SedimentCoreDepth resource.
+     */
+    get: operations['api_featuresextent_matchedsediment_core_depths_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/sediment_core_depths': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SedimentCoreDepth resource.
+     * @description Retrieves a SedimentCoreDepth resource.
+     */
+    get: operations['api_featuresnumber_matchedsediment_core_depths_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/sediment_core_depths': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuressediment_core_depths.__format_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -13462,6 +13622,43 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
+    'SedimentCore-feature_collection.json.read': Record<string, never>
+    'SedimentCore.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'SedimentCore.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
+    }
     'SedimentCore.csv-sediment_core.acl.read': {
       readonly id: number | string
       site: components['schemas']['SamplingSite.csv-sediment_core.acl.read']
@@ -13504,6 +13701,7 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SedimentCore.geojson-feature_collection.json.read': Record<string, never>
     'SedimentCore.jsonMergePatch': {
       readonly id?: number | string
       /**
@@ -13579,7 +13777,60 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
       readonly code?: string
+    }
+    'SedimentCoreDepth-feature_collection.json.read': Record<string, never>
+    'SedimentCoreDepth.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'SedimentCoreDepth.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       readonly id?: number | string
@@ -13590,6 +13841,22 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
       readonly code?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13628,6 +13895,10 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SedimentCoreDepth.geojson-feature_collection.json.read': Record<
+      string,
+      never
+    >
     'SedimentCoreDepth.jsonMergePatch': {
       readonly id?: number | string
       /**
@@ -13645,6 +13916,22 @@ export interface components {
       /** @example 9.0 */
       depthMax?: string
       notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
       readonly code?: string
     }
     'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
@@ -13663,6 +13950,22 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
       readonly code?: string
     })
     'SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
@@ -37387,60 +37690,6 @@ export interface operations {
       }
     }
   }
-  api_datasampling_sites_parentIdsediment_cores_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[year]'?: 'asc' | 'desc'
-        'order[number]'?: 'asc' | 'desc'
-        site?: string
-        'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        /**
-         * @description Case insensitive unaccented string matching. Filters on: description
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
-        search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path: {
-        /** @description SamplingSite identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SedimentCore collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
-          }
-          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
-        }
-      }
-    }
-  }
   api_datasediment_cores_get_collection: {
     parameters: {
       query?: {
@@ -37492,11 +37741,48 @@ export interface operations {
       }
     }
   }
-  api_datasediment_cores_post: {
+  api_datasediment_cores_id_get: {
     parameters: {
       query?: never
       header?: never
-      path?: never
+      path: {
+        /** @description SedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SedimentCore.jsonld-sediment_core.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasediment_cores_id_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SedimentCore identifier */
+        id: string
+      }
       cookie?: never
     }
     /** @description The new SedimentCore resource */
@@ -37535,40 +37821,6 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
-        }
-      }
-    }
-  }
-  api_datasediment_cores_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SedimentCore identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SedimentCore resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SedimentCore.jsonld-sediment_core.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -37688,6 +37940,228 @@ export interface operations {
       }
     }
   }
+  api_featuresexportsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedsediment_cores_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SedimentCore.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedsediment_cores_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SedimentCore.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuressediment_cores.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_sampling_sites_parentIdsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description SamplingSite identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
+          }
+          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
+        }
+      }
+    }
+  }
   api_datasediment_core_depths_get_collection: {
     parameters: {
       query?: {
@@ -37703,6 +38177,64 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sedimentCore?: string
+        'sedimentCore[]'?: string[]
+        'sedimentCore.site'?: string
+        'sedimentCore.site[]'?: string[]
+        'sedimentCore.site.code'?: string
+        'sedimentCore.site.code[]'?: string[]
+        'sedimentCore.year'?: number
+        'sedimentCore.year[]'?: number[]
+        'sedimentCore.number'?: number
+        'sedimentCore.number[]'?: number[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'depthMin[between]'?: string
+        'depthMin[gt]'?: string
+        'depthMin[gte]'?: string
+        'depthMin[lt]'?: string
+        'depthMin[lte]'?: string
+        'depthMax[between]'?: string
+        'depthMax[gt]'?: string
+        'depthMax[gte]'?: string
+        'depthMax[lt]'?: string
+        'depthMax[lte]'?: string
+        'sedimentCore.year[between]'?: string
+        'sedimentCore.year[gt]'?: string
+        'sedimentCore.year[gte]'?: string
+        'sedimentCore.year[lt]'?: string
+        'sedimentCore.year[lte]'?: string
+        'sedimentCore.number[between]'?: string
+        'sedimentCore.number[gt]'?: string
+        'sedimentCore.number[gte]'?: string
+        'sedimentCore.number[lt]'?: string
+        'sedimentCore.number[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        geochemistry?: boolean
+        microCharcoal?: boolean
+        organicChemistry?: boolean
+        oslDating?: boolean
+        phytoliths?: boolean
+        plantMacroRemains?: boolean
+        pollen?: boolean
+        sedimentaryDna?: boolean
       }
       header?: never
       path?: never
@@ -37935,6 +38467,64 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sedimentCore?: string
+        'sedimentCore[]'?: string[]
+        'sedimentCore.site'?: string
+        'sedimentCore.site[]'?: string[]
+        'sedimentCore.site.code'?: string
+        'sedimentCore.site.code[]'?: string[]
+        'sedimentCore.year'?: number
+        'sedimentCore.year[]'?: number[]
+        'sedimentCore.number'?: number
+        'sedimentCore.number[]'?: number[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'depthMin[between]'?: string
+        'depthMin[gt]'?: string
+        'depthMin[gte]'?: string
+        'depthMin[lt]'?: string
+        'depthMin[lte]'?: string
+        'depthMax[between]'?: string
+        'depthMax[gt]'?: string
+        'depthMax[gte]'?: string
+        'depthMax[lt]'?: string
+        'depthMax[lte]'?: string
+        'sedimentCore.year[between]'?: string
+        'sedimentCore.year[gt]'?: string
+        'sedimentCore.year[gte]'?: string
+        'sedimentCore.year[lt]'?: string
+        'sedimentCore.year[lte]'?: string
+        'sedimentCore.number[between]'?: string
+        'sedimentCore.number[gt]'?: string
+        'sedimentCore.number[gte]'?: string
+        'sedimentCore.number[lt]'?: string
+        'sedimentCore.number[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        geochemistry?: boolean
+        microCharcoal?: boolean
+        organicChemistry?: boolean
+        oslDating?: boolean
+        phytoliths?: boolean
+        plantMacroRemains?: boolean
+        pollen?: boolean
+        sedimentaryDna?: boolean
       }
       header?: never
       path: {
@@ -37974,6 +38564,64 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sedimentCore?: string
+        'sedimentCore[]'?: string[]
+        'sedimentCore.site'?: string
+        'sedimentCore.site[]'?: string[]
+        'sedimentCore.site.code'?: string
+        'sedimentCore.site.code[]'?: string[]
+        'sedimentCore.year'?: number
+        'sedimentCore.year[]'?: number[]
+        'sedimentCore.number'?: number
+        'sedimentCore.number[]'?: number[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'depthMin[between]'?: string
+        'depthMin[gt]'?: string
+        'depthMin[gte]'?: string
+        'depthMin[lt]'?: string
+        'depthMin[lte]'?: string
+        'depthMax[between]'?: string
+        'depthMax[gt]'?: string
+        'depthMax[gte]'?: string
+        'depthMax[lt]'?: string
+        'depthMax[lte]'?: string
+        'sedimentCore.year[between]'?: string
+        'sedimentCore.year[gt]'?: string
+        'sedimentCore.year[gte]'?: string
+        'sedimentCore.year[lt]'?: string
+        'sedimentCore.year[lte]'?: string
+        'sedimentCore.number[between]'?: string
+        'sedimentCore.number[gt]'?: string
+        'sedimentCore.number[gte]'?: string
+        'sedimentCore.number[lt]'?: string
+        'sedimentCore.number[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        geochemistry?: boolean
+        microCharcoal?: boolean
+        organicChemistry?: boolean
+        oslDating?: boolean
+        phytoliths?: boolean
+        plantMacroRemains?: boolean
+        pollen?: boolean
+        sedimentaryDna?: boolean
       }
       header?: never
       path: {
@@ -37994,6 +38642,260 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
           }
+        }
+      }
+    }
+  }
+  api_featuresexportsediment_core_depths_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[depthMin]'?: 'asc' | 'desc'
+        'order[depthMax]'?: 'asc' | 'desc'
+        'order[sedimentCore.year]'?: 'asc' | 'desc'
+        'order[sedimentCore.number]'?: 'asc' | 'desc'
+        'order[sedimentCore.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sedimentCore?: string
+        'sedimentCore[]'?: string[]
+        'sedimentCore.site'?: string
+        'sedimentCore.site[]'?: string[]
+        'sedimentCore.site.code'?: string
+        'sedimentCore.site.code[]'?: string[]
+        'sedimentCore.year'?: number
+        'sedimentCore.year[]'?: number[]
+        'sedimentCore.number'?: number
+        'sedimentCore.number[]'?: number[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'depthMin[between]'?: string
+        'depthMin[gt]'?: string
+        'depthMin[gte]'?: string
+        'depthMin[lt]'?: string
+        'depthMin[lte]'?: string
+        'depthMax[between]'?: string
+        'depthMax[gt]'?: string
+        'depthMax[gte]'?: string
+        'depthMax[lt]'?: string
+        'depthMax[lte]'?: string
+        'sedimentCore.year[between]'?: string
+        'sedimentCore.year[gt]'?: string
+        'sedimentCore.year[gte]'?: string
+        'sedimentCore.year[lt]'?: string
+        'sedimentCore.year[lte]'?: string
+        'sedimentCore.number[between]'?: string
+        'sedimentCore.number[gt]'?: string
+        'sedimentCore.number[gte]'?: string
+        'sedimentCore.number[lt]'?: string
+        'sedimentCore.number[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        geochemistry?: boolean
+        microCharcoal?: boolean
+        organicChemistry?: boolean
+        oslDating?: boolean
+        phytoliths?: boolean
+        plantMacroRemains?: boolean
+        pollen?: boolean
+        sedimentaryDna?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCoreDepth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedsediment_core_depths_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCoreDepth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SedimentCoreDepth.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedsediment_core_depths_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCoreDepth resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SedimentCoreDepth.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuressediment_core_depths.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[depthMin]'?: 'asc' | 'desc'
+        'order[depthMax]'?: 'asc' | 'desc'
+        'order[sedimentCore.year]'?: 'asc' | 'desc'
+        'order[sedimentCore.number]'?: 'asc' | 'desc'
+        'order[sedimentCore.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        sedimentCore?: string
+        'sedimentCore[]'?: string[]
+        'sedimentCore.site'?: string
+        'sedimentCore.site[]'?: string[]
+        'sedimentCore.site.code'?: string
+        'sedimentCore.site.code[]'?: string[]
+        'sedimentCore.year'?: number
+        'sedimentCore.year[]'?: number[]
+        'sedimentCore.number'?: number
+        'sedimentCore.number[]'?: number[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'depthMin[between]'?: string
+        'depthMin[gt]'?: string
+        'depthMin[gte]'?: string
+        'depthMin[lt]'?: string
+        'depthMin[lte]'?: string
+        'depthMax[between]'?: string
+        'depthMax[gt]'?: string
+        'depthMax[gte]'?: string
+        'depthMax[lt]'?: string
+        'depthMax[lte]'?: string
+        'sedimentCore.year[between]'?: string
+        'sedimentCore.year[gt]'?: string
+        'sedimentCore.year[gte]'?: string
+        'sedimentCore.year[lt]'?: string
+        'sedimentCore.year[lte]'?: string
+        'sedimentCore.number[between]'?: string
+        'sedimentCore.number[gt]'?: string
+        'sedimentCore.number[gte]'?: string
+        'sedimentCore.number[lt]'?: string
+        'sedimentCore.number[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[notes]'?: boolean
+        geochemistry?: boolean
+        microCharcoal?: boolean
+        organicChemistry?: boolean
+        oslDating?: boolean
+        phytoliths?: boolean
+        plantMacroRemains?: boolean
+        pollen?: boolean
+        sedimentaryDna?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
         }
       }
     }

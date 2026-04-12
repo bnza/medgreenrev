@@ -16,7 +16,13 @@ use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
 use App\Doctrine\Filter\SearchSedimentCoreFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
+use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
+use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\SedimentCoreDepth;
+use App\Metadata\ExportFeatureCollection;
+use App\Metadata\GetAggregatedFeatureCollection;
+use App\State\GeoserverAggregatedExtentMatchedProvider;
+use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -36,8 +42,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource(
     operations: [
-        new Get(),
+        new Get(
+            uriTemplate: '/data/sediment_cores/{id}',
+        ),
         new GetCollection(
+            uriTemplate: '/data/sediment_cores',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
         ),
         new GetCollection(
@@ -51,17 +60,52 @@ use Symfony\Component\Validator\Constraints as Assert;
             ]
         ),
         new Post(
+            uriTemplate: '/data/sediment_cores/{id}',
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:sediment_core:create']],
         ),
         new Patch(
+            uriTemplate: '/data/sediment_cores/{id}',
             security: 'is_granted("update", object)',
         ),
         new Delete(
+            uriTemplate: '/data/sediment_cores/{id}',
             security: 'is_granted("delete", object)',
         ),
+
+        // Aggregated WFS Feature Collection (grouped by parent site)
+        new GetAggregatedFeatureCollection(
+            uriTemplate: '/features/sediment_cores.{_format}',
+            typeName: 'mgr:sampling_sites',
+            parentAccessor: 'site',
+            entityTypeName: 'mgr:sediment_cores',
+            propertyNames: ['id', 'code', 'name'],
+        ),
+
+        // Number of matched features (aggregated)
+        new Get(
+            uriTemplate: '/features/number_matched/sediment_cores',
+            defaults: ['typeName' => 'mgr:sampling_sites', 'parentAccessor' => 'site'],
+            normalizationContext: ['groups' => ['wfs_number_matched:read']],
+            output: WfsGetFeatureCollectionNumberMatched::class,
+            provider: GeoserverAggregatedNumberMatchedProvider::class,
+        ),
+
+        // Bounding box extent of matched features (aggregated)
+        new Get(
+            uriTemplate: '/features/extent_matched/sediment_cores',
+            defaults: ['typeName' => 'mgr:sampling_sites', 'parentAccessor' => 'site'],
+            normalizationContext: ['groups' => ['wfs_extent_matched:read']],
+            output: WfsGetFeatureCollectionExtentMatched::class,
+            provider: GeoserverAggregatedExtentMatchedProvider::class,
+        ),
+
+        // Export feature collection
+        new ExportFeatureCollection(
+            uriTemplate: '/features/export/sediment_cores',
+            typeName: 'mgr:sediment_cores',
+        ),
     ],
-    routePrefix: 'data',
     normalizationContext: ['groups' => ['sediment_core:acl:read']],
     order: ['id' => 'DESC'],
 )]

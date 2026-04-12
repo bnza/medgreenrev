@@ -68,3 +68,5 @@ export {
   staticFiltersDefinitionTooth as zooTooth,
   staticFiltersDefinitionToothParentStratigraphicUnit as zooToothParentStratigraphicUnit,
 } from './zoo'
+export { staticFiltersDefinition as sedimentCore } from './sedimentCore'
+export { staticFiltersDefinition as sedimentCoreDepth } from './sedimentCoreDepth'

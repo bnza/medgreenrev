@@ -17,8 +17,6 @@ const props = defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sedimentCore'>
 }>()
 
-const { appPath } = useResourceConfig(props.path)
-
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/sediment_core_depths/{id}'),
 )
@@ -28,6 +26,7 @@ const { updateDialogState } = storeToRefs(
 )
 
 const { id: parentId } = useResourceParent(props.parent)
+const { appPath, labels } = useResourceConfig(props.path)
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
@@ -67,8 +66,30 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :text="item.sedimentCore.code"
       />
     </template>
+
+    <template
+      v-for="flag in [
+        'geochemistry',
+        'microCharcoal',
+        'organicChemistry',
+        'oslDating',
+        'phytoliths',
+        'plantMacroRemains',
+        'pollen',
+        'sedimentaryDna',
+      ]"
+      #[`item.${flag}`]="{ item }"
+    >
+      <v-checkbox-btn
+        class="centered-item"
+        :model-value="item[flag]"
+        readonly
+      />
+    </template>
+
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path :title="subResourceKey" :parent-id />-->
+      <data-dialog-search :path :parent-id :title="labels[1]" />
+      <data-dialog-download :path :title="labels[1]" :parent-id />
       <data-dialog-create-sediment-core-depth
         :path
         :parent

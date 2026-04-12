@@ -5,30 +5,25 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_cores'
-      | '/api/data/sampling_sites/{parentId}/sediment_cores'
+      | '/api/sampling_sites/{parentId}/sediment_cores'
     >
   "
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
-
 const props = defineProps<{
   path: Path
   parent?: ResourceParent<'samplingSite'>
 }>()
-
 const { id: parentId } = useResourceParent(props.parent)
-
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore('/api/data/sediment_cores/{id}'),
 )
 const { updateDialogState } = storeToRefs(
   useResourceUpdateDialogStore('/api/data/sediment_cores/{id}'),
 )
-const { appPath } = useResourceConfig(props.path)
-
+const { appPath, labels } = useResourceConfig(props.path)
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
-
 <template>
   <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
@@ -47,7 +42,8 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path title="Sample" />-->
+      <data-dialog-download :path :title="labels[1]" />
+      <data-dialog-search :path :title="labels[1]" />
       <lazy-data-dialog-create-sediment-core
         :path
         :parent

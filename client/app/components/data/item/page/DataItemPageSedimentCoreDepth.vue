@@ -18,19 +18,11 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
     <template #default="{ item }: { item: GetItemResponse }">
       <lazy-data-item-form-info-sediment-core-depth :item />
       <v-tabs v-model="tab" background-color="transparent">
-        <v-tab value="samples">samples</v-tab>
+        <v-tab value="data">data</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="samples" data-testid="tab-window-samples">
-          <p>samples</p>
-          <!--          <data-collection-page-sediment-core-depth-->
-          <!--            path="/api/data/sediment_cores/{parentId}/depths"-->
-          <!--            :parent="{-->
-          <!--              key: 'sedimentCore',-->
-          <!--              resourceItemPath: '/api/data/sediment_cores/{id}',-->
-          <!--              item,-->
-          <!--            }"-->
-          <!--          />-->
+        <v-tabs-window-item value="data" data-testid="tab-window-data">
+          <data-item-form-detail-sediment-core-depth :item="item" />
         </v-tabs-window-item>
       </v-tabs-window>
     </template>

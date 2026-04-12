@@ -20,6 +20,7 @@ export type OperandComponentsKey =
   | 'ArchaeologicalSite'
   | 'PaleoclimateSamplingSite'
   | 'SamplingSite'
+  | 'SamplingStratigraphicUnit'
   | 'StratigraphicUnit'
 
 export type Filter = {

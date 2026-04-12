@@ -1,0 +1,16 @@
+<layer>
+  <name>sediment_core_depths</name>
+  <id>LayerInfoImpl-54de7f08:19d80a3e079:-7ffd</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--290e1ee0:19b6ef53ed9:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-54de7f08:19d80a3e079:-7ffe</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-04-12 07:42:39.971 UTC</dateCreated>
+</layer>

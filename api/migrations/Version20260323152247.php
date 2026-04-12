@@ -189,6 +189,34 @@ final class Version20260323152247 extends AbstractMigration
 
         $this->addSql(
             <<<'SQL'
+                CREATE OR REPLACE VIEW geoserver.vw_sediment_cores AS
+                SELECT
+                    sc.id, s.code || '.SC.' || RIGHT(sc.year::text, 2) || '.' || sc.number AS code,
+                    sc.year, sc.number, sc.description,
+                    sc.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                FROM sediment_cores sc
+                JOIN sampling_sites s ON sc.site_id = s.id;
+            SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW geoserver.vw_sediment_core_depths AS
+                SELECT
+                    d.id, d.sediment_core_id, d.su_id,
+                    d.depth_min, d.depth_max, d.notes,
+                    d.pollen, d.sedimentary_dna, d.phytoliths,
+                    d.geochemistry, d.organic_chemistry, d.plant_macro_remains,
+                    d.osl_dating, d.micro_charcoal,
+                    sc.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                FROM sediment_core_depths d
+                JOIN sediment_cores sc ON d.sediment_core_id = sc.id
+                JOIN sampling_sites s ON sc.site_id = s.id;
+            SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_history_animals AS
                 SELECT
                     a.id, a.chronology_lower, a.chronology_upper, a.reference, a.notes,

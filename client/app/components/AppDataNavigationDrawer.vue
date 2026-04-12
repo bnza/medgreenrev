@@ -292,6 +292,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
+            to="/data/sediment-cores/depths"
+            router
+            title="Sediment Core Depths"
+            data-testid="app-nav-drawer-li-sediment-cores"
+          />
+          <v-list-item
+            nuxt
             to="/data/stratigraphic-units/sampling"
             router
             title="Stratigraphic Units"

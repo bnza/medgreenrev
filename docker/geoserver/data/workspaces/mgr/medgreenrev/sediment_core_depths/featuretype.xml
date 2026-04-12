@@ -1,0 +1,41 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-54de7f08:19d80a3e079:-7ffe</id>
+  <name>sediment_core_depths</name>
+  <nativeName>vw_sediment_core_depths</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--2b6c573:19b6f98f189:-7fff</id>
+  </namespace>
+  <title>Sediment Core Depths</title>
+  <keywords>
+    <string>features</string>
+    <string>vw_sediment_core_depths</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-4.357623220595</minx>
+    <maxx>6.5546484918731</maxx>
+    <miny>36.944297738005</miny>
+    <maxy>38.170153367256</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-4.357623220595</minx>
+    <maxx>6.5546484918731</maxx>
+    <miny>36.944297738005</miny>
+    <maxy>38.170153367256</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--74932c3f:19d1b651079:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

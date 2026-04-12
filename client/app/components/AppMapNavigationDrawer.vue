@@ -102,6 +102,16 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             path="/api/features/sampling_sites"
             group-key="samplingSite"
           />
+          <map-list-item-vector-api
+            title="Sediment Cores"
+            path="/api/features/sediment_cores"
+            group-key="samplingSite"
+          />
+          <map-list-item-vector-api
+            title="Sediment Core Depths"
+            path="/api/features/sediment_core_depths"
+            group-key="samplingSite"
+          />
         </v-list-group>
         <v-list-group value="Written Sources">
           <template #activator="{ props }">
