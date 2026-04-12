@@ -10,6 +10,7 @@ use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
+use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
@@ -49,6 +50,7 @@ class ValidatorPermittedAnalysisTypeTest extends ApiTestCase
             [AnalysisContextBotany::class, '/api/data/contexts', '/api/data/analyses/contexts/botany'],
             [AnalysisContextZoo::class, '/api/data/contexts', '/api/data/analyses/contexts/zoo'],
             [AnalysisIndividual::class, '/api/data/individuals', '/api/data/analyses/individuals'],
+            [AnalysisSample::class, '/api/data/samples', '/api/data/analyses/samples'],
             [AnalysisSampleMicrostratigraphy::class, '/api/data/samples', '/api/data/analyses/samples/microstratigraphy'],
             [AnalysisSiteAnthropology::class, '/api/data/archaeological_sites', '/api/data/analyses/archaeological_sites/anthropology'],
             [AnalysisPottery::class, '/api/data/potteries', '/api/data/analyses/potteries'],

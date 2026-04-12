@@ -8,6 +8,7 @@
       | 'absDatingAnalysisBotanySeed'
       | 'absDatingAnalysisIndividual'
       | 'absDatingAnalysisPottery'
+      | 'absDatingAnalysisSample'
       | 'absDatingAnalysisZooBone'
       | 'absDatingAnalysisZooTooth'
     >

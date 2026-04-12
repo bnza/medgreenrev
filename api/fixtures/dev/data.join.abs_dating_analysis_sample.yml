@@ -1,0 +1,31 @@
+App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisSample:
+    abs_dating_sample_1:
+        analysis: '@analysis_sample_26'
+        datingLower: 1020
+        datingUpper: 1180
+        uncalibratedDating: 920
+        error: 45
+        calibrationCurve: 'IntCal20'
+        notes: 'Quartz grains from construction fill at ME site. Single-aliquot regenerative dose protocol applied to fine-grain fraction.'
+    abs_dating_sample_2:
+        analysis: '@analysis_sample_27'
+        datingLower: 880
+        datingUpper: 1050
+        uncalibratedDating: 1060
+        error: 55
+        calibrationCurve: 'IntCal20'
+    abs_dating_sample_3:
+        analysis: '@analysis_sample_28'
+        datingLower: 1150
+        datingUpper: 1310
+        uncalibratedDating: 780
+        error: 40
+        calibrationCurve: 'IntCal20'
+        notes: 'Alluvial sand from TO site terrace deposit. Equivalent dose measured on coarse quartz using blue LED stimulation.'
+    abs_dating_sample_4:
+        analysis: '@analysis_sample_29'
+        datingLower: 960
+        datingUpper: 1130
+        uncalibratedDating: 990
+        error: 50
+        calibrationCurve: 'IntCal20'

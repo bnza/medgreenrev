@@ -10,10 +10,10 @@ App\Entity\Vocabulary\Analysis\Type:
         group: absolute dating
         value: thermoluminescence
     voc__analysis__type__osl:
-      id: 103
-      code: OSL
-      group: absolute dating
-      value: optical simulated luminescence
+        id: 103
+        code: OSL
+        group: absolute dating
+        value: optical simulated luminescence
     voc__analysis__type__anthracology:
         id: 201
         code: ANTX
@@ -59,11 +59,6 @@ App\Entity\Vocabulary\Analysis\Type:
         code: XRD
         group: material analysis
         value: XRD
-    voc__analysis__type__geo:
-      id: 306
-      code: GEO
-      group: material analysis
-      value: geochemistry
     voc__analysis__type__thin_section:
         id: 401
         code: THS
@@ -82,10 +77,15 @@ App\Entity\Vocabulary\Analysis\Type:
     voc__analysis__type__pollen:
         id: 601
         code: POL
-        group: sediment cores
+        group: sediment
         value: pollen
     voc__analysis__type__sedimentary_dna:
         id: 602
         code: SDNA
-        group: sediment cores
+        group: sediment
         value: sedimentary DNA
+    voc__analysis__type__geo:
+      id: 603
+      code: GEO
+      group: sediment
+      value: geochemistry

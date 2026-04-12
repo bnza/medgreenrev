@@ -1,0 +1,117 @@
+App\Entity\Data\Join\Analysis\AnalysisSample:
+    analysis_sample_1:
+        subject: '@sample_me_23'
+        analysis: '@analysis_46'
+        summary: 'XRF screening of charcoal-bearing sediment from ME site revealed elevated phosphorus and potassium consistent with ash-rich occupation deposits.'
+    analysis_sample_2:
+        subject: '@sample_me_47'
+        analysis: '@analysis_47'
+        summary: 'Sediment aDNA extraction from terrain sample yielded degraded plant and microbial sequences indicating organic-rich medieval floor deposits.'
+    analysis_sample_3:
+        subject: '@sample_ca_91'
+        analysis: '@analysis_48'
+        summary: 'Pollen spectrum dominated by Cerealia-type and Plantago lanceolata indicating open agricultural landscape around CA site.'
+    analysis_sample_4:
+        subject: '@sample_ca_12'
+        analysis: '@analysis_49'
+        summary: 'Geochemical survey of seed-bearing terrain sample shows phosphate enrichment suggesting proximity to midden or animal penning area.'
+    analysis_sample_5:
+        subject: '@sample_to_134'
+        analysis: '@analysis_50'
+        summary: 'Sedimentary DNA metabarcoding detected Ovis, Bos and Triticum sequences in occupation fill from TO site.'
+    analysis_sample_6:
+        subject: '@sample_to_78'
+        analysis: '@analysis_46'
+        summary: 'XRF elemental mapping of floor deposit sample identified iron and manganese anomalies linked to metalworking debris.'
+    analysis_sample_7:
+        subject: '@sample_ni_29'
+        analysis: '@analysis_51'
+        summary: 'Stable carbon and nitrogen isotope values from soil carbonates suggest semi-arid conditions during site occupation at NI.'
+    analysis_sample_8:
+        subject: '@sample_ni_145'
+        analysis: '@analysis_52'
+        summary: 'XRD mineralogy confirms quartz-dominated matrix with secondary calcite and clay minerals typical of alluvial terrace deposits.'
+    analysis_sample_9:
+        subject: '@sample_se_63'
+        analysis: '@analysis_53'
+        summary: 'Organic residue analysis detected degraded lipid biomarkers consistent with animal fat processing in hearth-adjacent deposits.'
+    analysis_sample_10:
+        subject: '@sample_se_118'
+        analysis: '@analysis_48'
+        summary: 'Pollen assemblage from waterlogged context at SE site records Quercus and Corylus woodland with cereal cultivation indicators.'
+    analysis_sample_11:
+        subject: '@sample_me_5'
+        analysis: '@analysis_54'
+        summary: 'Palynological assessment pending for waterlogged deposit sample from ME site lower stratigraphic sequence.'
+    analysis_sample_12:
+        subject: '@sample_ca_84'
+        analysis: '@analysis_55'
+        summary: 'ICP-OES trace element profiling of burial fill reveals calcium and strontium enrichment from skelite decomposition.'
+    analysis_sample_13:
+        subject: '@sample_to_39'
+        analysis: '@analysis_49'
+        summary: 'Multi-element geochemical analysis of floor deposit from TO site identifies distinct activity zones through element ratios.'
+    analysis_sample_14:
+        subject: '@sample_ni_127'
+        analysis: '@analysis_46'
+        summary: 'XRF analysis of sediment sample from NI site detected copper and zinc traces suggesting nearby craft production.'
+    analysis_sample_15:
+        subject: '@sample_se_16'
+        analysis: '@analysis_50'
+        summary: 'Sedimentary DNA analysis of SE site deposit recovered Hordeum and Secale sequences confirming cereal storage context.'
+    analysis_sample_16:
+        subject: '@sample_me_102'
+        analysis: '@analysis_52'
+        summary: 'XRD analysis of clay-rich construction fill from ME site confirms local sourcing of building materials.'
+    analysis_sample_17:
+        subject: '@sample_ca_71'
+        analysis: '@analysis_47'
+        summary: 'Ancient DNA extraction from CA site terrain sample yielded mammalian mitochondrial fragments consistent with pastoral activity.'
+    analysis_sample_18:
+        subject: '@sample_to_149'
+        analysis: '@analysis_53'
+        summary: 'ORA lipid biomarker analysis of midden deposit from TO site identified plant wax and dairy fat signatures.'
+    analysis_sample_19:
+        subject: '@sample_ni_58'
+        analysis: '@analysis_55'
+        summary: 'Geochemical profiling of NI site burial context reveals anomalous lead and mercury concentrations in upper fill.'
+    analysis_sample_20:
+        subject: '@sample_se_93'
+        analysis: '@analysis_51'
+        summary: 'Isotope analysis of soil carbonates from SE site indicates seasonal waterlogging and variable redox conditions.'
+    analysis_sample_21:
+        subject: '@sample_se_101'
+        analysis: '@analysis_46'
+        summary: 'XRF elemental scan of SE site sediment sample shows iron-rich laminations consistent with periodic flooding events.'
+    analysis_sample_22:
+        subject: '@sample_me_156'
+        analysis: '@analysis_54'
+        summary: 'Palynological assessment of ME site deposit scheduled for pollen extraction and identification.'
+    analysis_sample_23:
+        subject: '@sample_ca_142'
+        analysis: '@analysis_48'
+        summary: 'Pollen analysis of CA site sediment core documents transition from woodland to open pastoral landscape.'
+    analysis_sample_24:
+        subject: '@sample_to_88'
+        analysis: '@analysis_47'
+        summary: 'Sediment aDNA from TO site destruction layer yielded fungal and bacterial sequences indicating post-abandonment decay.'
+    analysis_sample_25:
+        subject: '@sample_se_94'
+        analysis: '@analysis_49'
+        summary: 'Geochemical multi-element survey of SE site floor deposit identifies phosphate and potassium hotspots from domestic refuse.'
+    analysis_sample_26:
+        subject: '@sample_me_102'
+        analysis: '@analysis_56'
+        summary: 'OSL dating of quartz-rich sediment from ME site construction fill provides terminus ante quem for building phase.'
+    analysis_sample_27:
+        subject: '@sample_ca_91'
+        analysis: '@analysis_56'
+        summary: 'Luminescence dating of aeolian sand deposit overlying CA site occupation surface constrains abandonment chronology.'
+    analysis_sample_28:
+        subject: '@sample_to_134'
+        analysis: '@analysis_57'
+        summary: 'OSL analysis of alluvial sediment from TO site terrace establishes baseline chronology for fluvial deposition events.'
+    analysis_sample_29:
+        subject: '@sample_ni_29'
+        analysis: '@analysis_57'
+        summary: 'Optically stimulated luminescence dating of colluvial deposit at NI site dates slope erosion episode post-occupation.'

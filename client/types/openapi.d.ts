@@ -354,6 +354,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/absolute_dating/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisSample resources.
+     * @description Retrieves the collection of AbsDatingAnalysisSample resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingsamples_get_collection']
+    put?: never
+    /**
+     * Creates a AbsDatingAnalysisSample resource.
+     * @description Creates a AbsDatingAnalysisSample resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingsamples_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/samples/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisSample resource.
+     * @description Retrieves a AbsDatingAnalysisSample resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingsamples_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AbsDatingAnalysisSample resource.
+     * @description Removes the AbsDatingAnalysisSample resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingsamples_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AbsDatingAnalysisSample resource.
+     * @description Updates the AbsDatingAnalysisSample resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingsamples_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisSample resources.
+     * @description Retrieves the collection of AbsDatingAnalysisSample resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdsamples_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/absolute_dating/zoo/bones': {
     parameters: {
       query?: never
@@ -1174,6 +1246,98 @@ export interface paths {
      * @description Retrieves the collection of AnalysisPottery resources.
      */
     get: operations['api_datapotteries_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSample resources.
+     * @description Retrieves the collection of AnalysisSample resources.
+     */
+    get: operations['api_dataanalysessamples_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSample resource.
+     * @description Creates a AnalysisSample resource.
+     */
+    post: operations['api_dataanalysessamples_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/samples/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSample resource.
+     * @description Retrieves a AnalysisSample resource.
+     */
+    get: operations['api_dataanalysessamples_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSample resource.
+     * @description Removes the AnalysisSample resource.
+     */
+    delete: operations['api_dataanalysessamples_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSample resource.
+     * @description Updates the AnalysisSample resource.
+     */
+    patch: operations['api_dataanalysessamples_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSample resources.
+     * @description Retrieves the collection of AnalysisSample resources.
+     */
+    get: operations['api_dataanalyses_parentIdsamples_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/samples/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSample resources.
+     * @description Retrieves the collection of AnalysisSample resources.
+     */
+    get: operations['api_datasamples_parentIdanalyses_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -8478,6 +8642,76 @@ export interface components {
       calibrationCurve?: string
       notes?: string | null
     })
+    'AbsDatingAnalysisSample-abs_dating_join.create': Record<string, never>
+    'AbsDatingAnalysisSample-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisSample-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisSample-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    })
+    'AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    })
     'AbsDatingAnalysisZooBone-abs_dating_join.create': Record<string, never>
     'AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch': Record<
       string,
@@ -8719,6 +8953,27 @@ export interface components {
       summary?: string | null
       createdBy?:
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
         | null
       readonly code: string
       /** @description Access control metadata */
@@ -8989,6 +9244,28 @@ export interface components {
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+      readonly code: string
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
         | null
       readonly code: string
     })
@@ -9572,6 +9849,59 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
     })
+    'AnalysisSample-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSample-analysis_join.create']
+        | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    }
+    'AnalysisSample-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSample-analysis_join.update']
+        | null
+      summary?: string | null
+    }
+    'AnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      summary?: string | null
+    })
     'AnalysisSampleMicrostratigraphy-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -9898,6 +10228,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       readonly id?: number | string
       code?: string
@@ -10207,6 +10548,18 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       code?: string
       name?: string
     })
@@ -13083,6 +13436,22 @@ export interface components {
         canDelete: boolean
       }
     }
+    'Sample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
@@ -13158,6 +13527,23 @@ export interface components {
       readonly id?: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    })
+    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       /** @default 0 */
       year: number
       number?: number
@@ -13888,6 +14274,22 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13999,6 +14401,22 @@ export interface components {
       /** @example 9.0 */
       depthMax: string
       notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
     })
     'SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       /**
@@ -14708,6 +15126,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'User.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
@@ -14844,6 +15273,18 @@ export interface components {
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -15115,6 +15556,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      code?: string
+      group?: string
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       code?: string
       group?: string
@@ -15249,6 +15701,18 @@ export interface components {
       value: string
     })
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value: string
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -16049,6 +16513,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      code?: string
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       code?: string
       value: string
@@ -16095,6 +16569,17 @@ export interface components {
       value: string
     }
     'VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      value: string
+    })
+    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -17804,6 +18289,259 @@ export interface operations {
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsamples_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisSample resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisSample-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisSample resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsamples_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsamples_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSample resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsamples_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisSample resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSample-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisSample resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdsamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read'][]
           }
         }
       }
@@ -22491,6 +23229,646 @@ export interface operations {
             member: components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
           }
           'text/csv': components['schemas']['AnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
+         * @example cafè
+         */
+        'subject.description'?: string
+        'exists[subject.description]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessamples_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSample resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSample-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSample resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessamples_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSample resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessamples_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSample resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessamples_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSample identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSample resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSample-analysis_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisSample resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdsamples_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
+         * @example cafè
+         */
+        'subject.description'?: string
+        'exists[subject.description]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datasamples_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
+         * @example cafè
+         */
+        'subject.description'?: string
+        'exists[subject.description]'?: boolean
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSample collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
         }
       }
     }

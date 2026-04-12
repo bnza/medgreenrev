@@ -17,6 +17,7 @@ use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
 use App\Doctrine\Filter\SearchSampleFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
+use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\SampleStratigraphicUnit;
 use App\Entity\Vocabulary\Sample\Type;
@@ -195,6 +196,9 @@ class Sample
     #[ORM\OneToMany(targetEntity: SampleStratigraphicUnit::class, mappedBy: 'sample')]
     private Collection $sampleStratigraphicUnits;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSample::class, mappedBy: 'subject')]
+    private Collection $analyses;
+
     #[ORM\OneToMany(targetEntity: AnalysisSampleMicrostratigraphy::class, mappedBy: 'subject')]
     private Collection $analysesMicrostratigraphicUnits;
 
@@ -214,6 +218,7 @@ class Sample
     public function __construct()
     {
         $this->sampleStratigraphicUnits = new ArrayCollection();
+        $this->analyses = new ArrayCollection();
     }
 
     public function getId(): int
@@ -291,6 +296,11 @@ class Sample
         $this->stratigraphicUnit = $stratigraphicUnit;
 
         return $this;
+    }
+
+    public function getAnalyses(): Collection
+    {
+        return $this->analyses;
     }
 
     public function getSampleStratigraphicUnits(): Collection

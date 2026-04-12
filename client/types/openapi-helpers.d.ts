@@ -285,6 +285,7 @@ type AnalysisSubjectParentResourceKey = Extract<
   | 'botanySeed'
   | 'individual'
   | 'pottery'
+  | 'sample'
   | 'zooBone'
   | 'zooTooth'
 >

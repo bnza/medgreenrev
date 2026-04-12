@@ -25,6 +25,7 @@ use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
+use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
@@ -146,10 +147,11 @@ class Analysis
     public const string GROUP_MATERIAL_ANALYSIS = 'material analysis';
     public const string GROUP_MICROMORPHOLOGY = 'micromorphology';
     public const string GROUP_MICROSCOPE = 'microscope';
-    public const string GROUP_SEDIMENT_CORES = 'sediment cores';
+    public const string GROUP_SEDIMENT = 'sediment';
 
     public const string TYPE_C14 = 'C14';
     public const string TYPE_THL = 'THL';
+    public const string TYPE_OSL = 'OSL';
     public const string TYPE_ANTX = 'ANTX';
     public const string TYPE_ANTH = 'ANTH';
     public const string TYPE_CARP = 'CARP';
@@ -162,6 +164,7 @@ class Analysis
     public const string TYPE_THS = 'THS';
     public const string TYPE_OPT = 'OPT';
     public const string TYPE_SEM = 'SEM';
+    public const string TYPE_GEO = 'GEO';
     public const string TYPE_POL = 'POL';
     public const string TYPE_SDNA = 'SDNA';
 
@@ -174,6 +177,10 @@ class Analysis
         self::TYPE_THL => [
             'group' => self::GROUP_ABS_DATING,
             'value' => 'thermoluminescence',
+        ],
+        self::TYPE_OSL => [
+            'group' => self::GROUP_ABS_DATING,
+            'value' => 'optical simulated luminescence',
         ],
         self::TYPE_ANTX => [
             'group' => self::GROUP_ASSEMBLAGE,
@@ -223,12 +230,16 @@ class Analysis
             'group' => self::GROUP_MICROSCOPE,
             'value' => 'SEM',
         ],
+        self::TYPE_GEO => [
+            'group' => self::GROUP_SEDIMENT,
+            'value' => 'geochemistry',
+        ],
         self::TYPE_POL => [
-            'group' => self::GROUP_SEDIMENT_CORES,
+            'group' => self::GROUP_SEDIMENT,
             'value' => 'pollen',
         ],
         self::TYPE_SDNA => [
-            'group' => self::GROUP_SEDIMENT_CORES,
+            'group' => self::GROUP_SEDIMENT,
             'value' => 'sedimentary DNA',
         ],
     ];
@@ -351,6 +362,9 @@ class Analysis
     #[ORM\OneToMany(targetEntity: AnalysisPottery::class, mappedBy: 'analysis')]
     private Collection $subjectPottery;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSample::class, mappedBy: 'analysis')]
+    private Collection $subjectSamples;
+
     #[ORM\OneToMany(targetEntity: AnalysisSampleMicrostratigraphy::class, mappedBy: 'analysis')]
     private Collection $subjectSampleMicrostratigraphy;
 
@@ -372,6 +386,7 @@ class Analysis
         $this->subjectContextZoo = new ArrayCollection();
         $this->subjectIndividuals = new ArrayCollection();
         $this->subjectPottery = new ArrayCollection();
+        $this->subjectSamples = new ArrayCollection();
         $this->subjectSampleMicrostratigraphy = new ArrayCollection();
         $this->subjectSiteAnthropology = new ArrayCollection();
         $this->subjectZooBones = new ArrayCollection();
@@ -478,6 +493,11 @@ class Analysis
     public function getSubjectPottery(): Collection
     {
         return $this->subjectPottery;
+    }
+
+    public function getSubjectSamples(): Collection
+    {
+        return $this->subjectSamples;
     }
 
     public function getSubjectSampleMicrostratigraphy(): Collection

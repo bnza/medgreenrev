@@ -6,6 +6,7 @@ import analysisContextBotany from './data/analysisContextBotany'
 import analysisContextZoo from './data/analysisContextZoo'
 import analysisIndividual from './data/analysisIndividual'
 import analysisPottery from './data/analysisPottery'
+import analysisSample from './data/analysisSample'
 import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
 import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisSubject from './data/analysisSubject'
@@ -61,6 +62,8 @@ export const RESOURCE_CONFIG_MAP = {
     absDatingAnalysis.absDatingAnalysisIndividual,
   '/api/data/analyses/absolute_dating/potteries':
     absDatingAnalysis.absDatingAnalysisPottery,
+  '/api/data/analyses/absolute_dating/samples':
+    absDatingAnalysis.absDatingAnalysisSample,
   '/api/data/analyses/absolute_dating/zoo/bones':
     absDatingAnalysis.absDatingAnalysisZooBone,
   '/api/data/analyses/absolute_dating/zoo/teeth':
@@ -71,6 +74,7 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses/contexts/zoo': analysisContextZoo,
   '/api/data/analyses/individuals': analysisIndividual,
   '/api/data/analyses/potteries': analysisPottery,
+  '/api/data/analyses/samples': analysisSample,
   '/api/data/analyses/samples/microstratigraphy':
     analysisSampleMicrostratigraphy,
   '/api/data/analyses/archaeological_sites/anthropology':
@@ -116,6 +120,7 @@ export const RESOURCE_CONFIG_MAP = {
 
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/samples': sample,
+  '/api/data/samples/{parentId}/analyses': analysisSample,
   '/api/data/samples/{parentId}/stratigraphic_units':
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
 

@@ -130,6 +130,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             title="Potteries"
             data-testid="app-nav-drawer-li-analysis-potteries"
           />
+          <v-list-item
+            nuxt
+            to="/data/analyses/samples"
+            router
+            title="Samples"
+            data-testid="app-nav-drawer-li-analysis-samples"
+          />
         </v-list-group>
       </v-list-group>
       <v-list-group value="Data">

@@ -45,6 +45,7 @@ class ApiAnalysisJoinResource extends ApiResource
             operations: array_merge([
                 new Get(
                     uriTemplate: "/analyses/$templateParentResourcePath/{id}",
+                    requirements: ['id' => '\d+'],
                 ),
                 new GetCollection(
                     uriTemplate: "/analyses/$templateParentResourcePath",
@@ -82,6 +83,7 @@ class ApiAnalysisJoinResource extends ApiResource
                 ),
                 new Patch(
                     uriTemplate: "/analyses/$templateParentResourcePath/{id}",
+                    requirements: ['id' => '\d+'],
                     denormalizationContext: [
                         'groups' => ['analysis_join:update'],
                     ],
@@ -90,6 +92,7 @@ class ApiAnalysisJoinResource extends ApiResource
                 ),
                 new Delete(
                     uriTemplate: "/analyses/$templateParentResourcePath/{id}",
+                    requirements: ['id' => '\d+'],
                     security: "is_granted('delete', object)",
                     output: false
                 ),

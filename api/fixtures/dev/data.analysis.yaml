@@ -371,3 +371,106 @@ App\Entity\Data\Analysis:
         status: 1
         summary: 'Thin-section petrography for SE site samples'
         createdBy: '@user_geo'
+
+    analysis_46:
+        type: '@voc__analysis__type__xrf'
+        identifier: 'SMP01'
+        year: 2025
+        responsible: 'Amit Croft'
+        status: 2
+        summary: 'XRF elemental analysis of soil samples from medieval occupation layers to characterise geochemical signatures.'
+        createdBy: '@user_mat'
+    analysis_47:
+        type: '@voc__analysis__type__adna'
+        identifier: 'SMP02'
+        year: 2025
+        responsible: 'Kerri Edge'
+        status: 1
+        summary: 'Ancient DNA extraction from sediment samples targeting environmental and faunal genetic markers.'
+        createdBy: '@user_mat'
+    analysis_48:
+        type: '@voc__analysis__type__pollen'
+        identifier: 'SMP03'
+        year: 2024
+        responsible: 'Francis Deacon'
+        status: 2
+        summary: 'Pollen analysis of stratified sediment cores documenting vegetation change across medieval settlement phases.'
+        createdBy: '@user_geo'
+    analysis_49:
+        type: '@voc__analysis__type__geo'
+        identifier: 'SMP04'
+        year: 2025
+        responsible: 'Francis Deacon'
+        status: 0
+        summary: 'Geochemical multi-element survey of floor deposits to identify activity areas and phosphate enrichment zones.'
+        createdBy: '@user_geo'
+    analysis_50:
+        type: '@voc__analysis__type__sedimentary_dna'
+        identifier: 'SMP05'
+        year: 2025
+        responsible: 'Kerri Edge'
+        laboratory: 'Institute for Evolutionary Anthropology, Somewhere'
+        status: 1
+        summary: 'Sedimentary DNA metabarcoding of occupation deposits targeting plant and animal taxa presence.'
+        createdBy: '@user_mat'
+    analysis_51:
+        type: '@voc__analysis__type__isotopes'
+        identifier: 'SMP06'
+        year: 2024
+        responsible: 'Amit Croft'
+        laboratory: 'York'
+        status: 2
+        summary: 'Stable isotope analysis of soil carbonates for palaeoenvironmental reconstruction.'
+        createdBy: '@user_mat'
+    analysis_52:
+        type: '@voc__analysis__type__xrd'
+        identifier: 'SMP07'
+        year: 2025
+        responsible: 'Amit Croft'
+        status: 2
+        summary: 'X-ray diffraction mineralogical characterisation of clay-rich sediment samples from construction fills.'
+        createdBy: '@user_mat'
+    analysis_53:
+        type: '@voc__analysis__type__ora'
+        identifier: 'SMP08'
+        year: 2025
+        responsible: 'Amit Croft'
+        laboratory: 'York'
+        status: 1
+        summary: 'Organic residue analysis of soil samples from hearth and midden contexts detecting lipid biomarkers.'
+        createdBy: '@user_mat'
+    analysis_54:
+        type: '@voc__analysis__type__pollen'
+        identifier: 'SMP09'
+        year: 2025
+        responsible: 'Francis Deacon'
+        status: 0
+        summary: 'Palynological assessment of waterlogged deposits for land-use and crop cultivation evidence.'
+        createdBy: '@user_geo'
+    analysis_55:
+        type: '@voc__analysis__type__geo'
+        identifier: 'SMP10'
+        year: 2024
+        responsible: 'Francis Deacon'
+        status: 2
+        summary: 'Geochemical profiling of burial fills using ICP-OES for trace element distribution mapping.'
+        createdBy: '@user_geo'
+
+    analysis_56:
+        type: '@voc__analysis__type__osl'
+        identifier: 'SMP.OSL.01'
+        year: 2025
+        responsible: 'Francis Deacon'
+        laboratory: 'Durham Luminescence Dating Laboratory'
+        status: 2
+        summary: 'OSL dating of quartz grains from stratified sediment samples to establish depositional chronology of medieval occupation layers.'
+        createdBy: '@user_geo'
+    analysis_57:
+        type: '@voc__analysis__type__osl'
+        identifier: 'SMP.OSL.02'
+        year: 2024
+        responsible: 'Amit Croft'
+        laboratory: 'Oxford Luminescence Research Group'
+        status: 1
+        summary: 'Optically stimulated luminescence analysis of alluvial terrace sediments for absolute dating of site formation processes.'
+        createdBy: '@user_mat'

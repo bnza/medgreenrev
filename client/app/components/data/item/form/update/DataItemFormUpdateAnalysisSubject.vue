@@ -9,6 +9,7 @@
       | 'context'
       | 'individual'
       | 'pottery'
+      | 'sample'
       | 'zooBone'
       | 'zooTooth'
     >
