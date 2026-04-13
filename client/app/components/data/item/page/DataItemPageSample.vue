@@ -20,6 +20,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="stratigraphic-units">stratigraphic units</v-tab>
         <v-tab value="microstratigraphic-units">microstratigraphic units</v-tab>
+        <v-tab value="analyses">analyses</v-tab>
         <v-tab value="microAnalyses">microstratigraphical analyses</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
@@ -41,6 +42,15 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
         >
           <data-collection-page-microstratigraphic-unit
             path="/api/data/samples/{parentId}/microstratigraphic_units"
+            :parent="{
+              key: 'sample',
+              item,
+            }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="analyses" data-testid="tab-window-analyses">
+          <data-collection-page-analysis-sample
+            path="/api/data/samples/{parentId}/analyses"
             :parent="{
               key: 'sample',
               item,

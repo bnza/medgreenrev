@@ -14,6 +14,7 @@ import { propertyStaticFiltersDefinition as individualPropertyStaticDefinition }
 import { propertyStaticFiltersDefinition as microstratigraphicUnitPropertyStaticDefinition } from './microstratigraphicUnit'
 import { propertyStaticFiltersDefinition as potteryPropertyStaticDefinition } from './pottery'
 import { propertyStaticFiltersDefinition as samplePropertyStaticDefinition } from './sample'
+import { propertyStaticFiltersDefinition as sedimentCorePropertyStaticDefinition } from './sedimentCore'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 import {
   propertyBoneStaticFiltersDefinition as zooBonePropertyStaticDefinition,
@@ -143,6 +144,19 @@ const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: Resou
     ...summaryPropertyStaticFiltersDefinition,
   }
 
+const analysisSedimentCorePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+      'analysis',
+      'analysis',
+    ]),
+    ...generateResourceDefinition(sedimentCorePropertyStaticDefinition, [
+      'subject',
+      'subject',
+    ]),
+    ...summaryPropertyStaticFiltersDefinition,
+  }
+
 const analysisZooBonePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     ...generateResourceDefinition(analysisPropertyStaticDefinition, [
@@ -265,6 +279,18 @@ export const staticFiltersDefinitionSampleMicrostratigraphicUnitParentSubject =
   {
     ...analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition,
   }
+
+export const staticFiltersDefinitionSedimentCore = {
+  ...analysisSedimentCorePropertyStaticFiltersDefinition,
+  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
+    'subject.sedimentCoresStratigraphicUnits.stratigraphicUnit',
+    'stratigraphic unit',
+  ]),
+}
+
+export const staticFiltersDefinitionSedimentCoreParentSubject = {
+  ...analysisSedimentCorePropertyStaticFiltersDefinition,
+}
 
 export const staticFiltersDefinitionZooBone = {
   ...analysisZooBonePropertyStaticFiltersDefinition,

@@ -2,7 +2,6 @@
 
 namespace App\Service\CollectionVoter\Voter\Data;
 
-use App\Entity\Auth\User;
 use App\Entity\Data\SedimentCore;
 use App\Entity\Data\StratigraphicUnit;
 use App\Service\CollectionVoter\Voter\AbstractCollectionVoter;
@@ -12,14 +11,8 @@ readonly class SedimentCoreDepthCollectionVoter extends AbstractCollectionVoter
 {
     protected function voteOnSubCollection(object $parent, TokenInterface $token): bool
     {
-        $user = $token->getUser();
-        if ($parent instanceof SedimentCore && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST'])
-                && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getSite());
-        }
-        if ($parent instanceof StratigraphicUnit && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST'])
-                && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getSite());
+        if (in_array(get_class($parent), [SedimentCore::class, StratigraphicUnit::class])) {
+            return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST']);
         }
 
         return false;

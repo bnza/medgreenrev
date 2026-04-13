@@ -10,6 +10,7 @@
       | 'individual'
       | 'pottery'
       | 'sample'
+      | 'sedimentCore'
       | 'zooBone'
       | 'zooTooth'
     >

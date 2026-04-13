@@ -1,5 +1,5 @@
 import type {
-  ApiAnalysisSubjectResourceKey,
+  AnalysisSubjectResourceKey,
   FormDataFields,
   GetValidationPath,
   PostCollectionPath,
@@ -27,10 +27,7 @@ import useMaxFileSizeValidationRule from '~/composables/validation/rules/useMaxF
 
 const { maxFileSize } = useMaxFileSizeValidationRule()
 
-const validationPaths: Record<
-  ApiAnalysisSubjectResourceKey,
-  GetValidationPath
-> = {
+const validationPaths: Record<AnalysisSubjectResourceKey, GetValidationPath> = {
   analysisBotanyCharcoal: '/api/validator/unique/analyses/botany/charcoals',
   analysisBotanySeed: '/api/validator/unique/analyses/botany/seeds',
   analysisContextBotany: '/api/validator/unique/analyses/contexts/botany',
@@ -40,6 +37,7 @@ const validationPaths: Record<
   analysisSample: '/api/validator/unique/analyses/samples',
   analysisSampleMicrostratigraphy:
     '/api/validator/unique/analyses/samples/microstratigraphy',
+  analysisSedimentCore: '/api/validator/unique/analyses/sediment_cores',
   analysisSiteAnthropology:
     '/api/validator/unique/analyses/archaeological_sites/anthropology',
   analysisZooBone: '/api/validator/unique/analyses/zoo/bones',
@@ -47,7 +45,7 @@ const validationPaths: Record<
 } as const
 
 export const generateAnalysisSubjectValidationRules = (
-  resourceKey: ApiAnalysisSubjectResourceKey,
+  resourceKey: AnalysisSubjectResourceKey,
   model: Ref<Partial<{ analysis: string; subject: string }>>,
 ) => {
   const path = validationPaths[resourceKey]

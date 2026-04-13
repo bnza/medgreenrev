@@ -1684,4 +1684,53 @@ class ValidatorUniqueEndpointTest extends ApiTestCase
 
         return $data['member'] ?? [];
     }
+
+    public function testValidatorUniqueAnalysesSedimentCoresEndpointReturnFalseWhenCombinationExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing sediment core analyses
+        $analyses = $this->getAnalysisSedimentCores();
+        $this->assertNotEmpty($analyses, 'Should have at least one analysis sediment core for testing');
+
+        $firstAnalysis = $analyses[0];
+
+        // Extract ID and subject ID
+        $subjectId = basename($firstAnalysis['subject']['@id']);
+        $analysisId = basename($firstAnalysis['analysis']['@id']);
+
+        // Test existing combination - should return valid: false (0)
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/sediment_cores?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing sediment core analysis combination should not be unique');
+    }
+
+    public function testValidatorUniqueAnalysesSedimentCoresEndpointReturnTrueWhenCombinationNotExists(): void
+    {
+        $client = self::createClient();
+
+        // Get sediment cores and analysis types to create a non-existing combination
+        $sedimentCores = $this->getSedimentCores(null);
+        $analyses = $this->getAnalyses();
+
+        $this->assertNotEmpty($sedimentCores, 'Should have at least one sediment core for testing');
+        $this->assertNotEmpty($analyses, 'Should have at least one analysis for testing');
+
+        // Use high IDs that are unlikely to exist in combination
+        $analysisId = 999999;
+        $subjectId = 9999;
+
+        // Test non-existing combination - should return valid: true (1)
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/sediment_cores?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing sediment core analysis combination should be unique');
+    }
 }

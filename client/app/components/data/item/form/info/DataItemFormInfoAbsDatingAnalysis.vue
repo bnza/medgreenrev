@@ -8,11 +8,11 @@
     >
   "
 >
-import type { GetItemPath, GetItemResponseMap } from '~~/types'
+import type { AbsoluteDatingResponseItem, GetItemPath } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap[P]
+    item: AbsoluteDatingResponseItem
     readLink?: boolean
   }>(),
   {

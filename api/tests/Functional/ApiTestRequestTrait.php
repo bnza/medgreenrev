@@ -273,6 +273,11 @@ trait ApiTestRequestTrait
         return $this->getResourceCollectionMember('/api/data/analyses/potteries');
     }
 
+    public function getAnalysisSedimentCores(): array
+    {
+        return $this->getResourceCollectionMember('/api/data/analyses/sediment_cores', null);
+    }
+
     protected function getSampleAnalyses(): array
     {
         return $this->getResourceCollectionMember('/api/data/analyses/samples');

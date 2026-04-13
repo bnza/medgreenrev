@@ -426,6 +426,78 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/absolute_dating/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
+     * @description Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
+     */
+    get: operations['api_dataanalysesabsolute_datingsediment_cores_get_collection']
+    put?: never
+    /**
+     * Creates a AbsDatingAnalysisSedimentCore resource.
+     * @description Creates a AbsDatingAnalysisSedimentCore resource.
+     */
+    post: operations['api_dataanalysesabsolute_datingsediment_cores_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/sediment_cores/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AbsDatingAnalysisSedimentCore resource.
+     * @description Retrieves a AbsDatingAnalysisSedimentCore resource.
+     */
+    get: operations['api_dataanalysesabsolute_datingsediment_cores_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AbsDatingAnalysisSedimentCore resource.
+     * @description Removes the AbsDatingAnalysisSedimentCore resource.
+     */
+    delete: operations['api_dataanalysesabsolute_datingsediment_cores_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AbsDatingAnalysisSedimentCore resource.
+     * @description Updates the AbsDatingAnalysisSedimentCore resource.
+     */
+    patch: operations['api_dataanalysesabsolute_datingsediment_cores_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/absolute_dating/{parentId}/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
+     * @description Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
+     */
+    get: operations['api_dataanalysesabsolute_dating_parentIdsediment_cores_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/absolute_dating/zoo/bones': {
     parameters: {
       query?: never
@@ -1450,6 +1522,98 @@ export interface paths {
      * @description Retrieves the collection of AnalysisSampleMicrostratigraphy resources.
      */
     get: operations['api_datastratigraphic_units_parentIdanalysessamplesmicrostratigraphy_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCore resources.
+     * @description Retrieves the collection of AnalysisSedimentCore resources.
+     */
+    get: operations['api_dataanalysessediment_cores_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSedimentCore resource.
+     * @description Creates a AnalysisSedimentCore resource.
+     */
+    post: operations['api_dataanalysessediment_cores_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sediment_cores/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSedimentCore resource.
+     * @description Retrieves a AnalysisSedimentCore resource.
+     */
+    get: operations['api_dataanalysessediment_cores_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSedimentCore resource.
+     * @description Removes the AnalysisSedimentCore resource.
+     */
+    delete: operations['api_dataanalysessediment_cores_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSedimentCore resource.
+     * @description Updates the AnalysisSedimentCore resource.
+     */
+    patch: operations['api_dataanalysessediment_cores_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCore resources.
+     * @description Retrieves the collection of AnalysisSedimentCore resources.
+     */
+    get: operations['api_dataanalyses_parentIdsediment_cores_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sediment_cores/{parentId}/analyses': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCore resources.
+     * @description Retrieves the collection of AnalysisSedimentCore resources.
+     */
+    get: operations['api_datasediment_cores_parentIdanalyses_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -5946,6 +6110,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessediment_cores_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/zoo/bones': {
     parameters: {
       query?: never
@@ -8557,26 +8741,21 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read': {
+      analysis?: components['schemas']['AnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
       notes?: string | null
-    })
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
     'AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8718,6 +8897,74 @@ export interface components {
       notes?: string | null
     })
     'AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    })
+    'AbsDatingAnalysisSedimentCore-abs_dating_join.create': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisSedimentCore-abs_dating_join.update.jsonMergePatch': Record<
+      string,
+      never
+    >
+    'AbsDatingAnalysisSedimentCore-analysis_join.create': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisSedimentCore-analysis_join.update': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
+    'AbsDatingAnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read': {
+      analysis?: components['schemas']['AnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
+    'AbsDatingAnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -8994,6 +9241,27 @@ export interface components {
       summary?: string | null
       createdBy?:
         | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        | null
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
         | null
       readonly code: string
       /** @description Access control metadata */
@@ -9286,6 +9554,28 @@ export interface components {
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        | null
+      readonly code: string
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
         | null
       readonly code: string
     })
@@ -9800,6 +10090,18 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
+        | null
+    })
     'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9986,6 +10288,71 @@ export interface components {
       readonly id?: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCore-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject: string
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCore-analysis_join.create']
+        | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    }
+    'AnalysisSedimentCore-analysis_join.update.jsonMergePatch': {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCore-analysis_join.update']
+        | null
+      summary?: string | null
+    }
+    'AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['SedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'AnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+        | null
+    })
+    'AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['SedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
       summary?: string | null
     })
     'AnalysisSiteAnthropology-analysis_join.create': {
@@ -13777,6 +14144,16 @@ export interface components {
       typeName?: string
       readonly id?: unknown
     }
+    'SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'SamplingSite.csv-sampling_site.acl.read': {
       readonly id?: number | string
       code?: string
@@ -13843,6 +14220,17 @@ export interface components {
       }
     }
     'SamplingSite.geojson-feature_collection.json.read': Record<string, never>
+    'SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
     'SamplingSite.jsonld-sampling_site.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -14025,6 +14413,7 @@ export interface components {
       year: number
       number: number
       sedimentCoresStratigraphicUnits?: string[]
+      analyses?: string[]
       description?: string | null
       readonly code?: string
     }
@@ -14064,6 +14453,20 @@ export interface components {
       readonly timeStamp?: string
       typeName?: string
       readonly id?: unknown
+    }
+    'SedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      readonly id: number | string
+      site: components['schemas']['SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCore.csv-sediment_core.acl.read': {
       readonly id: number | string
@@ -14118,9 +14521,25 @@ export interface components {
       year?: number
       number?: number
       sedimentCoresStratigraphicUnits?: string[]
+      analyses?: string[]
       description?: string | null
       readonly code?: string
     }
+    'SedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+    })
     'SedimentCore.jsonld-sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15157,6 +15576,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'User.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
@@ -15305,6 +15735,18 @@ export interface components {
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -15587,6 +16029,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+      code?: string
+      group?: string
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       code?: string
       group?: string
@@ -15733,6 +16186,18 @@ export interface components {
       value: string
     })
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value: string
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -17829,7 +18294,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read'][]
           }
         }
       }
@@ -17855,7 +18320,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
         }
       }
       /** @description Invalid input */
@@ -17900,7 +18365,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
         }
       }
       /** @description Not found */
@@ -17982,7 +18447,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
         }
       }
       /** @description Invalid input */
@@ -18055,7 +18520,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individuals.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read'][]
           }
         }
       }
@@ -18562,6 +19027,259 @@ export interface operations {
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsediment_cores_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AbsDatingAnalysisSedimentCore resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore-abs_dating_join.create']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisSedimentCore resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsediment_cores_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsediment_cores_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSedimentCore resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_datingsediment_cores_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AbsDatingAnalysisSedimentCore resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSedimentCore-abs_dating_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AbsDatingAnalysisSedimentCore resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysesabsolute_dating_parentIdsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AbsDatingAnalysisSedimentCore identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AbsDatingAnalysisSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read'][]
           }
         }
       }
@@ -24694,6 +25412,460 @@ export interface operations {
             member: components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
           }
           'text/csv': components['schemas']['AnalysisSampleMicrostratigraphy.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_cores_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSedimentCore resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSedimentCore-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSedimentCore resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_cores_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_cores_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCore resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_cores_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSedimentCore resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSedimentCore-analysis_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisSedimentCore resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datasediment_cores_parentIdanalyses_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.interpretation'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description SedimentCore identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
         }
       }
     }
@@ -41743,6 +42915,37 @@ export interface operations {
     }
   }
   api_validatoruniqueanalysessamplesmicrostratigraphy_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessediment_cores_get: {
     parameters: {
       query?: never
       header?: never

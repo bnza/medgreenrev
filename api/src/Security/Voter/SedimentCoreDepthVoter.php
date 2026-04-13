@@ -3,27 +3,27 @@
 namespace App\Security\Voter;
 
 use App\Entity\Auth\User;
-use App\Entity\Data\SedimentCore;
-use App\Security\Utils\SitePrivilegeManager;
+use App\Entity\Data\Join\SedimentCoreDepth;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Vote;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class SedimentCoreVoter extends Voter
+class SedimentCoreDepthVoter extends Voter
 {
     use ApiOperationVoterTrait;
 
     public function __construct(
         private readonly AccessDecisionManagerInterface $accessDecisionManager,
-        private readonly SitePrivilegeManager $sitePrivilegeManager,
+        private readonly Security $security,
     ) {
     }
 
     protected function supports(string $attribute, mixed $subject): bool
     {
         return $this->isAttributeSupported($attribute)
-            && $subject instanceof SedimentCore;
+            && $subject instanceof SedimentCoreDepth;
     }
 
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token, ?Vote $vote = null): bool
@@ -42,6 +42,10 @@ class SedimentCoreVoter extends Voter
             return false;
         }
 
-        return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST']);
+        if (!$this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST'])) {
+            return false;
+        }
+
+        return $this->security->isGranted($attribute, $subject->getStratigraphicUnit());
     }
 }

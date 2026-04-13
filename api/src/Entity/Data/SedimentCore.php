@@ -18,6 +18,7 @@ use App\Doctrine\Filter\SearchSedimentCoreFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCore;
 use App\Entity\Data\Join\SedimentCoreDepth;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
@@ -190,6 +191,9 @@ class SedimentCore
     #[ORM\OneToMany(targetEntity: SedimentCoreDepth::class, mappedBy: 'sedimentCore')]
     private Collection $sedimentCoresStratigraphicUnits;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSedimentCore::class, mappedBy: 'subject')]
+    private Collection $analyses;
+
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups([
         'sediment_core:acl:read',
@@ -200,6 +204,7 @@ class SedimentCore
     public function __construct()
     {
         $this->sedimentCoresStratigraphicUnits = new ArrayCollection();
+        $this->analyses = new ArrayCollection();
     }
 
     public function getId(): int
@@ -263,6 +268,18 @@ class SedimentCore
     public function setSedimentCoresStratigraphicUnits(Collection $sedimentCoresStratigraphicUnits): SedimentCore
     {
         $this->sedimentCoresStratigraphicUnits = $sedimentCoresStratigraphicUnits;
+
+        return $this;
+    }
+
+    public function getAnalyses(): Collection
+    {
+        return $this->analyses;
+    }
+
+    public function setAnalyses(Collection $analyses): SedimentCore
+    {
+        $this->analyses = $analyses;
 
         return $this;
     }

@@ -23,6 +23,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/botany/seeds/{parentId}/analyses'
   | '/api/data/analyses/contexts/zoo'
   | '/api/data/analyses/potteries'
+  | '/api/data/analyses/sediment_cores'
   | '/api/data/analyses/zoo/bones'
   | '/api/data/analyses/zoo/teeth'
   | '/api/data/context_stratigraphic_units'
@@ -45,6 +46,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/samples'
+  | '/api/data/sediment_cores/{parentId}/analyses'
   | '/api/data/samples/{parentId}/analyses'
   | '/api/data/samples/{parentId}/analyses/microstratigraphy'
   | '/api/data/samples/{parentId}/microstratigraphic_units'
@@ -92,6 +94,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/analyses/individuals':
     resourceFilterDefinitions.analysisIndividual,
   '/api/data/analyses/potteries': resourceFilterDefinitions.analysisPottery,
+  '/api/data/analyses/sediment_cores':
+    resourceFilterDefinitions.analysisSedimentCore,
   '/api/data/analyses/samples': resourceFilterDefinitions.analysisSample,
   '/api/data/analyses/samples/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnit,
@@ -147,6 +151,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/potteries': resourceFilterDefinitions.pottery,
   '/api/data/potteries/{parentId}/analyses':
     resourceFilterDefinitions.analysisPotteryParentSubject,
+  '/api/data/sediment_cores/{parentId}/analyses':
+    resourceFilterDefinitions.analysisSedimentCoreParentSubject,
   '/api/data/samples': resourceFilterDefinitions.sample,
   '/api/data/samples/{parentId}/analyses':
     resourceFilterDefinitions.analysisSampleParentSubject,

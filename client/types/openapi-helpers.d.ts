@@ -5,6 +5,7 @@ import type {
   type ApiResourcePath,
 } from '~/utils/consts/resources'
 import type { ExtentResponse } from '~~/types/map'
+import analysis from '~/utils/consts/configs/data/analysis'
 
 export type ApiSpec = {
   paths
@@ -286,35 +287,54 @@ type AnalysisSubjectParentResourceKey = Extract<
   | 'individual'
   | 'pottery'
   | 'sample'
+  | 'sedimentCore'
   | 'zooBone'
   | 'zooTooth'
 >
 
-type AnalysisSubjectResourceKey<
-  K extends AnalysisSubjectParentResourceKey = AnalysisSubjectParentResourceKey,
-> = Extract<ApiResourceKey, `analysis${Capitalize<K>}`>
-
-export type ApiAnalysisSubjectResourceKey = Extract<
+type AnalysisAssemblageResourceKey = Extract<
   ApiResourceKey,
-  | 'analysisBotanyCharcoal'
-  | 'analysisBotanySeed'
   | 'analysisContextBotany'
   | 'analysisContextZoo'
-  | 'analysisIndividual'
-  | 'analysisPottery'
-  | 'analysisSample'
   | 'analysisSampleMicrostratigraphy'
   | 'analysisSiteAnthropology'
-  | 'analysisZooBone'
-  | 'analysisZooTooth'
 >
 
+export type AnalysisSubjectWithAbsDatingResourceKey = Extract<
+  ApiResourceKey,
+  `analysis${Capitalize<AnalysisSubjectParentResourceKey>}`
+>
+
+export type AnalysisSubjectResourceKey =
+  | AnalysisSubjectWithAbsDatingResourceKey
+  | AnalysisAssemblageResourceKey
+
+type AnalysisSubjectWithAbsDatingResourceMap = Pick<
+  typeof API_RESOURCE_MAP,
+  AnalysisSubjectWithAbsDatingResourceKey
+>
+
+type AnalysisSubjectWithAbsDatingResourcePath =
+  AnalysisSubjectWithAbsDatingResourceMap[AnalysisSubjectWithAbsDatingResourceKey]
+type AnalysisSubjectWithAbsDatingResourceItemPath =
+  `${AnalysisSubjectWithAbsDatingResourcePath}/{id}`
+
+type AbsDatingAnalysisSubjectResourceKey = Extract<
+  ApiResourceKey,
+  `absDating${Capitalize<AnalysisSubjectWithAbsDatingResourceKey>}`
+>
+
+type AbsoluteDatingResourceMap = Pick<
+  typeof API_RESOURCE_MAP,
+  AbsDatingAnalysisSubjectResourceKey
+>
+type AbsoluteDatingResourcePath =
+  AbsoluteDatingResourceMap[AbsDatingAnalysisSubjectResourceKey]
+type AbsoluteDatingResourceItemPath = `${AbsoluteDatingResourcePath}/{id}`
+
+export type AbsoluteDatingResponseItem =
+  GetItemResponseMap[AbsoluteDatingResourceItemPath]
+
 export type AbsoluteDatingRequestItem = NonNullable<
-  PatchItemRequestMap[
-    | '/api/data/analyses/botany/charcoals/{id}'
-    | '/api/data/analyses/botany/seeds/{id}'
-    | '/api/data/analyses/individuals/{id}'
-    | '/api/data/analyses/potteries/{id}'
-    | '/api/data/analyses/zoo/bones/{id}'
-    | '/api/data/analyses/zoo/teeth/{id}']['absDatingAnalysis']
+  PatchItemRequestMap[AnalysisSubjectWithAbsDatingResourceItemPath]['absDatingAnalysis']
 >

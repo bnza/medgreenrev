@@ -19,6 +19,8 @@ export const API_RESOURCE_MAP = {
   absDatingAnalysisIndividual: '/api/data/analyses/absolute_dating/individuals',
   absDatingAnalysisPottery: '/api/data/analyses/absolute_dating/potteries',
   absDatingAnalysisSample: '/api/data/analyses/absolute_dating/samples',
+  absDatingAnalysisSedimentCore:
+    '/api/data/analyses/absolute_dating/sediment_cores',
   absDatingAnalysisZooBone: '/api/data/analyses/absolute_dating/zoo/bones',
   absDatingAnalysisZooTooth: '/api/data/analyses/absolute_dating/zoo/teeth',
   analysis: '/api/data/analyses',
@@ -33,6 +35,7 @@ export const API_RESOURCE_MAP = {
   analysisSample: '/api/data/analyses/samples',
   analysisSampleMicrostratigraphy:
     '/api/data/analyses/samples/microstratigraphy',
+  analysisSedimentCore: '/api/data/analyses/sediment_cores',
   analysisSiteAnthropology:
     '/api/data/analyses/archaeological_sites/anthropology',
   analysisSubject: '/api/data/analysis_subjects',

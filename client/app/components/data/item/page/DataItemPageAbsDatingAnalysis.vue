@@ -1,20 +1,9 @@
 <script
   setup
   lang="ts"
-  generic="
-    RK extends Extract<
-      ApiResourceKey,
-      | 'absDatingAnalysisBotanyCharcoal'
-      | 'absDatingAnalysisBotanySeed'
-      | 'absDatingAnalysisIndividual'
-      | 'absDatingAnalysisPottery'
-      | 'absDatingAnalysisSample'
-      | 'absDatingAnalysisZooBone'
-      | 'absDatingAnalysisZooTooth'
-    >
-  "
+  generic="RK extends AbsDatingAnalysisSubjectResourceKey"
 >
-import type { ApiResourceKey, GetItemResponseMap } from '~~/types'
+import type { AbsDatingAnalysisSubjectResourceKey } from '~~/types'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 
 const props = withDefaults(
@@ -24,13 +13,11 @@ const props = withDefaults(
 const resourcePath = API_RESOURCE_MAP[props.resourceKey]
 
 const path = `${resourcePath}/{id}` as const
-
-type GetItemResponse = GetItemResponseMap[typeof path]
 </script>
 
 <template>
   <data-item-page :path identifier-prop="id" :show-back-button>
-    <template #default="{ item }: { item: GetItemResponse }">
+    <template #default="{ item }">
       <lazy-data-item-form-info-abs-dating-analysis :item />
     </template>
     <template #error>

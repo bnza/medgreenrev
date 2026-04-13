@@ -474,3 +474,29 @@ App\Entity\Data\Analysis:
         status: 1
         summary: 'Optically stimulated luminescence analysis of alluvial terrace sediments for absolute dating of site formation processes.'
         createdBy: '@user_mat'
+
+    analysis_58:
+        type: '@voc__analysis__type__osl'
+        identifier: 'CORE.OSL.01'
+        year: 2026
+        responsible: 'Francis Deacon'
+        laboratory: 'Durham Luminescence Dating Laboratory'
+        status: 2
+        summary: 'OSL dating of quartz-rich sediment from deep core sample at SC1 site.'
+        createdBy: '@user_geo'
+    analysis_59:
+        type: '@voc__analysis__type__pollen'
+        identifier: 'CORE.POL.01'
+        year: 2026
+        responsible: 'Francis Deacon'
+        status: 0
+        summary: 'Pollen spectrum analysis from lower strata of sediment core SC1.'
+        createdBy: '@user_geo'
+    analysis_60:
+        type: '@voc__analysis__type__xrf'
+        identifier: 'CORE.XRF.01'
+        year: 2026
+        responsible: 'Amit Croft'
+        status: 1
+        summary: 'XRF elemental scan of sediment core SC1 to detect geochemical changes in depositional history.'
+        createdBy: '@user_mat'

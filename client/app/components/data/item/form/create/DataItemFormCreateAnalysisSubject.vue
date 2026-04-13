@@ -5,7 +5,7 @@
 >
 import type {
   AnalysisSubjectParentResourceKey,
-  ApiAnalysisSubjectResourceKey,
+  AnalysisSubjectResourceKey,
   ResourceParent,
 } from '~~/types'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
@@ -13,7 +13,6 @@ import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerat
 import { generateEmptyAnalysisSubjectModel } from '~/utils/postModel'
 import { capitalize } from 'vue'
 import { ApiSpecialistRole } from '~/utils/consts/auth'
-import { boolean } from '@regle/rules'
 
 interface Props {
   parent?: ResourceParent<TParent | 'analysis'>
@@ -34,7 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const resourceKey =
-  `analysis${capitalize(props.subjectParentKey)}` as const satisfies ApiAnalysisSubjectResourceKey
+  `analysis${capitalize(props.subjectParentKey)}` as const satisfies AnalysisSubjectResourceKey
 const subjectPath = API_RESOURCE_MAP[props.subjectParentKey]
 
 const model = ref(
@@ -57,6 +56,7 @@ const roleMap: Record<
   individual: ApiSpecialistRole.Anthropologist,
   pottery: ApiSpecialistRole.CeramicSpecialist,
   sample: null,
+  sedimentCore: ApiSpecialistRole.GeoArchaeologist,
   zooBone: ApiSpecialistRole.ZooArchaeologist,
   zooTooth: ApiSpecialistRole.ZooArchaeologist,
 }

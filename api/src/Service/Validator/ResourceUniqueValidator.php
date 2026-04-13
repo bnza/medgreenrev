@@ -15,6 +15,7 @@ use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCore;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -79,6 +80,7 @@ class ResourceUniqueValidator
         AnalysisPottery::class => [['subject', 'analysis']],
         AnalysisSample::class => [['subject', 'analysis']],
         AnalysisSampleMicrostratigraphy::class => [['subject', 'analysis']],
+        AnalysisSedimentCore::class => [['subject', 'analysis']],
         AnalysisSiteAnthropology::class => [['subject', 'analysis']],
         AnalysisZooBone::class => [['subject', 'analysis']],
         AnalysisZooTooth::class => [['subject', 'analysis']],
