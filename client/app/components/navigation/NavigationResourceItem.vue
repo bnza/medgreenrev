@@ -4,7 +4,7 @@ import type { BaseAcl } from '~~/types'
 defineProps<{
   appPath: string
   id: string | number
-  acl: BaseAcl
+  acl?: BaseAcl
 }>()
 defineEmits<{
   delete: []
@@ -17,7 +17,7 @@ defineSlots<{
 </script>
 
 <template>
-  <v-btn-group>
+  <v-btn-group v-if="acl">
     <slot name="prepend" />
     <navigation-resource-item-read :id :app-path :disabled="!acl.canRead" />
     <navigation-resource-item-update
@@ -29,5 +29,18 @@ defineSlots<{
       @delete="$emit('delete')"
     />
     <slot name="append" />
+  </v-btn-group>
+  <v-btn-group v-else>
+    <v-btn
+      density="compact"
+      icon
+      variant="text"
+      data-testid="update-item-button"
+    >
+      <v-icon color="error" icon="far fa-circle-xmark" size="small" />
+      <v-tooltip activator="parent" location="bottom"
+        >ACL not provided. Contact your system admin</v-tooltip
+      >
+    </v-btn>
   </v-btn-group>
 </template>

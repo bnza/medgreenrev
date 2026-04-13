@@ -21,6 +21,7 @@ use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
+use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -63,6 +64,7 @@ final class AccessControlledResourceItemNormalizer implements NormalizerInterfac
         AnalysisContextZoo::class => true,
         AnalysisIndividual::class => true,
         AnalysisSample::class => true,
+        AnalysisSampleMicrostratigraphy::class => true,
         AnalysisSiteAnthropology::class => true,
         AnalysisPottery::class => true,
         AnalysisZooBone::class => true,
