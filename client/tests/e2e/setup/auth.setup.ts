@@ -51,6 +51,20 @@ setup('authenticate as geo archaeologist user', async ({ page }) => {
   await page.context().storageState({ path: geoFile })
 })
 
+const botFile = 'playwright/.auth/bot.json'
+setup(
+  'authenticate as archaeobotanist archaeologist user',
+  async ({ page }) => {
+    const loginPage = new LoginPage(page)
+    await loginPage.open()
+    await loginPage.login(credentials.BOT)
+    await expect(page.getByTestId('app-message').first()).toHaveText(
+      /successfully logged in/,
+    )
+    await page.context().storageState({ path: botFile })
+  },
+)
+
 const hisFile = 'playwright/.auth/his.json'
 setup('authenticate as historian user', async ({ page }) => {
   const loginPage = new LoginPage(page)

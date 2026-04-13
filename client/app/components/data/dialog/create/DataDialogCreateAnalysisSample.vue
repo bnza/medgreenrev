@@ -32,6 +32,13 @@ const item = computed(() => {
 })
 
 const isAbsoluteDatingAnalysis = ref(false)
+const analysisQueryParams = {
+  'type.group': [
+    AnalysisGroups.MaterialAnalysis,
+    AnalysisGroups.Sediment,
+    AnalysisGroups.AbsoluteDating,
+  ],
+} as const
 </script>
 
 <template>
@@ -45,8 +52,9 @@ const isAbsoluteDatingAnalysis = ref(false)
     <template #default>
       <data-item-form-create-analysis-subject
         :parent
-        subject-item-title="inventory"
+        subject-item-title="code"
         subject-parent-key="sample"
+        :analysis-query-params
         @selected="
           isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'
         "

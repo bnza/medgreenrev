@@ -302,6 +302,7 @@ export type ApiAnalysisSubjectResourceKey = Extract<
   | 'analysisContextZoo'
   | 'analysisIndividual'
   | 'analysisPottery'
+  | 'analysisSample'
   | 'analysisSampleMicrostratigraphy'
   | 'analysisSiteAnthropology'
   | 'analysisZooBone'

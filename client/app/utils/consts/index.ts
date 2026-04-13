@@ -16,7 +16,7 @@ export const STRATIGRAPHIC_UNIT_RELATIONSHIP_MAP: Record<
 export enum AnalysisGroups {
   Assemblage = 'assemblage',
   AbsoluteDating = 'absolute dating',
-  SedimentCores = 'sediment cores',
+  Sediment = 'sediment cores',
   MaterialAnalysis = 'material analysis',
   Micromorphology = 'micromorphology',
   Microscope = 'microscope',
@@ -38,8 +38,8 @@ export const ANALYSIS_TYPE_MAP: Record<
   TIN: { group: AnalysisGroups.Micromorphology, value: 'thin section' },
   OPT: { group: AnalysisGroups.Microscope, value: 'optical' },
   SEM: { group: AnalysisGroups.Microscope, value: 'SEM' },
-  POL: { group: AnalysisGroups.SedimentCores, value: 'pollen' },
-  SDNA: { group: AnalysisGroups.SedimentCores, value: 'sedimentary DNA' },
+  POL: { group: AnalysisGroups.Sediment, value: 'pollen' },
+  SDNA: { group: AnalysisGroups.Sediment, value: 'sedimentary DNA' },
   ANTH: { group: AnalysisGroups.Assemblage, value: 'anthropology' },
   ZOO: { group: AnalysisGroups.Assemblage, value: 'zooarchaeology' },
 } as const

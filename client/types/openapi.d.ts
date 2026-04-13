@@ -5090,6 +5090,26 @@ export interface paths {
     patch: operations['api_datasampling_stratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/data/sampling_sites/{parentId}/sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SedimentCore resources.
+     * @description Retrieves the collection of SedimentCore resources.
+     */
+    get: operations['api_datasampling_sites_parentIdsediment_cores_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/sediment_cores': {
     parameters: {
       query?: never
@@ -5103,7 +5123,11 @@ export interface paths {
      */
     get: operations['api_datasediment_cores_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a SedimentCore resource.
+     * @description Creates a SedimentCore resource.
+     */
+    post: operations['api_datasediment_cores_post']
     delete?: never
     options?: never
     head?: never
@@ -5123,11 +5147,7 @@ export interface paths {
      */
     get: operations['api_datasediment_cores_id_get']
     put?: never
-    /**
-     * Creates a SedimentCore resource.
-     * @description Creates a SedimentCore resource.
-     */
-    post: operations['api_datasediment_cores_id_post']
+    post?: never
     /**
      * Removes the SedimentCore resource.
      * @description Removes the SedimentCore resource.
@@ -5214,26 +5234,6 @@ export interface paths {
      * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
      */
     get: operations['api_featuressediment_cores.__format_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/sampling_sites/{parentId}/sediment_cores': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of SedimentCore resources.
-     * @description Retrieves the collection of SedimentCore resources.
-     */
-    get: operations['api_sampling_sites_parentIdsediment_cores_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -5898,6 +5898,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniqueanalysespotteries_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/samples': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessamples_get']
     put?: never
     post?: never
     delete?: never
@@ -39068,6 +39088,60 @@ export interface operations {
       }
     }
   }
+  api_datasampling_sites_parentIdsediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
+        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
+         * @example GVR 2023 5
+         */
+        search?: string
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path: {
+        /** @description SamplingSite identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
+          }
+          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
+        }
+      }
+    }
+  }
   api_datasediment_cores_get_collection: {
     parameters: {
       query?: {
@@ -39119,48 +39193,11 @@ export interface operations {
       }
     }
   }
-  api_datasediment_cores_id_get: {
+  api_datasediment_cores_post: {
     parameters: {
       query?: never
       header?: never
-      path: {
-        /** @description SedimentCore identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SedimentCore resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['SedimentCore.jsonld-sediment_core.acl.read']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_datasediment_cores_id_post: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description SedimentCore identifier */
-        id: string
-      }
+      path?: never
       cookie?: never
     }
     /** @description The new SedimentCore resource */
@@ -39199,6 +39236,40 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datasediment_cores_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description SedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SedimentCore.jsonld-sediment_core.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
         }
       }
     }
@@ -39482,60 +39553,6 @@ export interface operations {
         content: {
           'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
           'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
-        }
-      }
-    }
-  }
-  api_sampling_sites_parentIdsediment_cores_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        'order[id]'?: 'asc' | 'desc'
-        'order[site.code]'?: 'asc' | 'desc'
-        'order[year]'?: 'asc' | 'desc'
-        'order[number]'?: 'asc' | 'desc'
-        site?: string
-        'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
-        /**
-         * @description Case insensitive unaccented string matching. Filters on: description
-         * @example cafè
-         */
-        description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
-        search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
-      }
-      header?: never
-      path: {
-        /** @description SamplingSite identifier */
-        parentId: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description SedimentCore collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['SedimentCore.jsonld-sediment_core.acl.read'][]
-          }
-          'text/csv': components['schemas']['SedimentCore.csv-sediment_core.acl.read'][]
         }
       }
     }
@@ -41664,6 +41681,37 @@ export interface operations {
     }
   }
   api_validatoruniqueanalysespotteries_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessamples_get: {
     parameters: {
       query?: never
       header?: never

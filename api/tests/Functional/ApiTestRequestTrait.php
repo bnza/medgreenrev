@@ -273,6 +273,11 @@ trait ApiTestRequestTrait
         return $this->getResourceCollectionMember('/api/data/analyses/potteries');
     }
 
+    protected function getSampleAnalyses(): array
+    {
+        return $this->getResourceCollectionMember('/api/data/analyses/samples');
+    }
+
     protected function getSamples(): array
     {
         return $this->getResourceCollectionMember('/api/data/samples');

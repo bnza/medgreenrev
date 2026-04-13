@@ -9,6 +9,8 @@ export {
   staticFiltersDefinitionIndividual as analysisIndividual,
   staticFiltersDefinitionIndividualParentSubject as analysisIndividualParentSubject,
   staticFiltersDefinitionPottery as analysisPottery,
+  staticFiltersDefinitionSample as analysisSample,
+  staticFiltersDefinitionSampleParentSubject as analysisSampleParentSubject,
   staticFiltersDefinitionPotteryParentSubject as analysisPotteryParentSubject,
   staticFiltersDefinitionSampleMicrostratigraphicUnit as analysisSampleMicrostratigraphicUnit,
   staticFiltersDefinitionSampleMicrostratigraphicUnitParentAnalysis as analysisSampleMicrostratigraphicUnitParentAnalysis,

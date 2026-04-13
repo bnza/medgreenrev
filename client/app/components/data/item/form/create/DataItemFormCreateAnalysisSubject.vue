@@ -13,6 +13,7 @@ import { generateAnalysisSubjectValidationRules } from '~/composables/useGenerat
 import { generateEmptyAnalysisSubjectModel } from '~/utils/postModel'
 import { capitalize } from 'vue'
 import { ApiSpecialistRole } from '~/utils/consts/auth'
+import { boolean } from '@regle/rules'
 
 interface Props {
   parent?: ResourceParent<TParent | 'analysis'>
@@ -45,21 +46,29 @@ const rules = inferRules(
   generateAnalysisSubjectValidationRules(resourceKey, model),
 )
 
-const { hasSpecialistRole } = useAppAuth()
+const { hasSpecialistRole, hasAnySpecialistRole } = useAppAuth()
 
-const roleMap: Record<AnalysisSubjectParentResourceKey, ApiSpecialistRole> = {
+const roleMap: Record<
+  AnalysisSubjectParentResourceKey,
+  ApiSpecialistRole | null
+> = {
   botanyCharcoal: ApiSpecialistRole.Archaeobotanist,
   botanySeed: ApiSpecialistRole.Archaeobotanist,
   individual: ApiSpecialistRole.Anthropologist,
   pottery: ApiSpecialistRole.CeramicSpecialist,
+  sample: null,
   zooBone: ApiSpecialistRole.ZooArchaeologist,
   zooTooth: ApiSpecialistRole.ZooArchaeologist,
 }
 
-const role = computed<ApiSpecialistRole>(() => roleMap[props.subjectParentKey])
+const role = computed<ApiSpecialistRole | null>(
+  () => roleMap[props.subjectParentKey],
+)
 
 // If the current logged user has any of the specialist roles related to AnalysisSubjectParentResourceKey
-const grantedOnlySubjects = computed(() => hasSpecialistRole(role.value).value)
+const grantedOnlySubjects = computed<boolean>(() =>
+  role.value ? hasSpecialistRole(role.value).value : hasAnySpecialistRole.value,
+)
 
 const { r$ } = useScopedRegleItem(model, rules, { scopeKey: 'base' })
 

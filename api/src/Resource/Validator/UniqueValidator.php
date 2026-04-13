@@ -15,6 +15,7 @@ use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
+use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
@@ -79,6 +80,12 @@ use App\State\ValidatorUniqueProvider;
             uriTemplate: '/validator/unique/analyses/potteries',
             defaults: [
                 'resource' => AnalysisPottery::class,
+            ],
+        ),
+        new Get(
+            uriTemplate: '/validator/unique/analyses/samples',
+            defaults: [
+                'resource' => AnalysisSample::class,
             ],
         ),
         new Get(

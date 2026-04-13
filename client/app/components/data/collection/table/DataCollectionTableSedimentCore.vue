@@ -5,7 +5,7 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_cores'
-      | '/api/sampling_sites/{parentId}/sediment_cores'
+      | '/api/data/sampling_sites/{parentId}/sediment_cores'
     >
   "
 >

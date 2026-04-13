@@ -10,6 +10,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/botany/seeds'
   | '/api/data/analyses/contexts/botany'
   | '/api/data/analyses/individuals'
+  | '/api/data/analyses/samples'
   | '/api/data/analyses/samples/microstratigraphy'
   | '/api/data/analyses/{parentId}/samples/microstratigraphy'
   | '/api/data/archaeological_sites'
@@ -44,11 +45,13 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/potteries'
   | '/api/data/potteries/{parentId}/analyses'
   | '/api/data/samples'
+  | '/api/data/samples/{parentId}/analyses'
   | '/api/data/samples/{parentId}/analyses/microstratigraphy'
   | '/api/data/samples/{parentId}/microstratigraphic_units'
   | '/api/data/samples/{parentId}/stratigraphic_units'
   | '/api/data/sample_stratigraphic_units'
   | '/api/data/sampling_sites'
+  | '/api/data/sampling_sites/{parentId}/sediment_cores'
   | '/api/data/sampling_sites/{parentId}/stratigraphic_units'
   | '/api/data/sampling_stratigraphic_units'
   | '/api/data/stratigraphic_units'
@@ -89,6 +92,7 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/analyses/individuals':
     resourceFilterDefinitions.analysisIndividual,
   '/api/data/analyses/potteries': resourceFilterDefinitions.analysisPottery,
+  '/api/data/analyses/samples': resourceFilterDefinitions.analysisSample,
   '/api/data/analyses/samples/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnit,
   '/api/data/analyses/zoo/bones': resourceFilterDefinitions.analysisZooBone,
@@ -144,6 +148,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/potteries/{parentId}/analyses':
     resourceFilterDefinitions.analysisPotteryParentSubject,
   '/api/data/samples': resourceFilterDefinitions.sample,
+  '/api/data/samples/{parentId}/analyses':
+    resourceFilterDefinitions.analysisSampleParentSubject,
   '/api/data/samples/{parentId}/analyses/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnitParentSubject,
   '/api/data/samples/{parentId}/microstratigraphic_units':
@@ -154,7 +160,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/sampling_sites/{parentId}/stratigraphic_units':
     resourceFilterDefinitions.samplingStratigraphicUnit,
   '/api/data/sediment_cores': resourceFilterDefinitions.sedimentCore,
-   '/api/sampling_sites/{parentId}/sediment_cores': resourceFilterDefinitions.sedimentCore,
+  '/api/data/sampling_sites/{parentId}/sediment_cores':
+    resourceFilterDefinitions.sedimentCore,
   '/api/data/sediment_core_depths': resourceFilterDefinitions.sedimentCoreDepth,
   '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths':
     resourceFilterDefinitions.sedimentCoreDepth,

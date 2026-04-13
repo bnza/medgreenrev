@@ -4,6 +4,8 @@ import { AnalysisBotanyCharcoalCollectionPage } from '~~/tests/e2e/pages/analysi
 import { AnalysisBotanyCharcoalItemPage } from '~~/tests/e2e/pages/analysis-botany-charcoal-item.page'
 import { AnalysisSampleMicrostratigraphicUnitCollectionPage } from '~~/tests/e2e/pages/analysis-sample-microstratigraphic-unit-collection.page'
 import { AnalysisSampleMicrostratigraphicUnitItemPage } from '~~/tests/e2e/pages/analysis-sample-microstratigraphic-unit-item.page'
+import { AnalysisSampleCollectionPage } from '~~/tests/e2e/pages/analysis-sample-collection.page'
+import { AnalysisSampleItemPage } from '~~/tests/e2e/pages/analysis-sample-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
 
 test.beforeEach(async () => {
@@ -172,6 +174,82 @@ test.describe('Analysis subject join', () => {
             'No associated absolute dating information for this subject',
           ),
         ).toBeVisible()
+      })
+    })
+  })
+  test.describe('Sample', () => {
+    test.describe('Archaeobotanist user', () => {
+      test.use({ storageState: 'playwright/.auth/bot.json' })
+
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        const collectionPom = new AnalysisSampleCollectionPage(page)
+        const itemPom = new AnalysisSampleItemPage(page)
+
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+
+        // CREATE AND REDIRECT TO NEW SITE PAGE
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+
+        await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
+        await page.getByRole('option', { name: /TO/ }).first().click()
+
+        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
+        await page.getByRole('option', { name: /OSL/ }).first().click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'summary' })
+          .fill('Some summary information about the analysis on the subject')
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+
+        // Verify the created item details
+        await itemPom.expectTextFieldToHaveValue(
+          'summary',
+          'Some summary information about the analysis on the subject',
+        )
+        await itemPom.dataCard.backButton.click()
+        await collectionPom.table.expectData()
+
+        // UPDATE
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Update)
+          .click()
+        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
+
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'summary' })
+          .fill('Updated summary information about the analysis on the subject')
+
+        await collectionPom.dataDialogUpdate.submitForm()
+
+        // Verify updated item details
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully updated',
+        )
+        await collectionPom.table.expectRowToHaveText(
+          0,
+          'Updated summary information about the analysis on the subject',
+        )
+
+        // DELETE
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Delete)
+          .click()
+        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
+          'summary',
+          'Updated summary information about the analysis on the subject',
+        )
+        await collectionPom.dataDialogDelete.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully deleted',
+        )
+        await collectionPom.table.expectNotToHaveRowContainingText(
+          'Updated summary information about the analysis on the subject',
+        )
       })
     })
   })

@@ -110,6 +110,19 @@ const analysisPotteryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefin
     ...summaryPropertyStaticFiltersDefinition,
   }
 
+const analysisSamplePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+      'analysis',
+      'analysis',
+    ]),
+    ...generateResourceDefinition(samplePropertyStaticDefinition, [
+      'subject',
+      'subject',
+    ]),
+    ...summaryPropertyStaticFiltersDefinition,
+  }
+
 const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     ...generateResourceDefinition(analysisPropertyStaticDefinition, [
@@ -214,6 +227,18 @@ export const staticFiltersDefinitionPottery = {
 
 export const staticFiltersDefinitionPotteryParentSubject = {
   ...analysisPotteryPropertyStaticFiltersDefinition,
+}
+
+export const staticFiltersDefinitionSample = {
+  ...analysisSamplePropertyStaticFiltersDefinition,
+  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
+    'subject.stratigraphicUnits.stratigraphicUnit',
+    'stratigraphic unit',
+  ]),
+}
+
+export const staticFiltersDefinitionSampleParentSubject = {
+  ...analysisSamplePropertyStaticFiltersDefinition,
 }
 
 export const staticFiltersDefinitionSampleMicrostratigraphicUnit = {

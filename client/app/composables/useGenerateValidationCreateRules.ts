@@ -37,6 +37,7 @@ const validationPaths: Record<
   analysisContextZoo: '/api/validator/unique/analyses/contexts/zoo',
   analysisIndividual: '/api/validator/unique/analyses/individuals',
   analysisPottery: '/api/validator/unique/analyses/potteries',
+  analysisSample: '/api/validator/unique/analyses/samples',
   analysisSampleMicrostratigraphy:
     '/api/validator/unique/analyses/samples/microstratigraphy',
   analysisSiteAnthropology:

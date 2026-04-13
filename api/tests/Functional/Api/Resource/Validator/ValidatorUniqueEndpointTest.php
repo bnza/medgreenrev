@@ -1161,6 +1161,55 @@ class ValidatorUniqueEndpointTest extends ApiTestCase
         $this->assertSame(1, $responseData['valid'], 'Non-existing pottery-analysis type combination should be unique');
     }
 
+    public function testValidatorUniqueAnalysesSamplesEndpointReturnFalseWhenCombinationExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing sample analyses
+        $sampleAnalyses = $this->getSampleAnalyses();
+        $this->assertNotEmpty($sampleAnalyses, 'Should have at least one sample analysis for testing');
+
+        $firstSampleAnalysis = $sampleAnalyses[0];
+
+        // Extract sample ID and analysis ID from the existing analysis
+        $subjectId = basename($firstSampleAnalysis['subject']['@id']);
+        $analysisId = basename($firstSampleAnalysis['analysis']['@id']);
+
+        // Test existing sample-analysis combination - should return valid: false (0)
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/samples?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing sample-analysis combination should not be unique');
+    }
+
+    public function testValidatorUniqueAnalysesSamplesEndpointReturnTrueWhenCombinationNotExists(): void
+    {
+        $client = self::createClient();
+
+        // Get samples and analysis types to create a non-existing combination
+        $samples = $this->getSamples();
+        $analysisTypes = $this->getVocabulary(['analysis', 'types']);
+
+        $this->assertNotEmpty($samples, 'Should have at least one sample for testing');
+        $this->assertNotEmpty($analysisTypes, 'Should have at least one analysis type for testing');
+
+        // Use high IDs that are unlikely to exist in combination
+        $analysisId = 999999;
+        $subjectId = 9999;
+
+        // Test non-existing sample-analysis combination - should return valid: true (1)
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/samples?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing sample-analysis combination should be unique');
+    }
+
     public function testValidatorUniqueMediaObjectStratigraphicUnitsEndpointReturnFalseWhenCombinationExists(): void
     {
         $client = self::createClient();

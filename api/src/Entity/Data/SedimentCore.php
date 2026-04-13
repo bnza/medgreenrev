@@ -50,7 +50,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
         ),
         new GetCollection(
-            uriTemplate: '/sampling_sites/{parentId}/sediment_cores',
+            uriTemplate: '/data/sampling_sites/{parentId}/sediment_cores',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
             uriVariables: [
                 'parentId' => new Link(
@@ -60,7 +60,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             ]
         ),
         new Post(
-            uriTemplate: '/data/sediment_cores/{id}',
+            uriTemplate: '/data/sediment_cores',
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:sediment_core:create']],
         ),

@@ -42,8 +42,8 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #[`item.subject.inventory`]="{ item }">
-      <data-item-info-box-span-pottery
+    <template #[`item.subject.code`]="{ item }">
+      <data-item-info-box-span-sample
         :iri="item.subject['@id']"
         :text="item.subject.code"
       />
