@@ -8546,6 +8546,24 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    'AbsDatingAnalysis.csv-abs_dating_analysis.read': {
+      readonly id?: number | string
+      stratigraphicUnit?:
+        | components['schemas']['StratigraphicUnit.csv-abs_dating_analysis.read']
+        | null
+      analysis?:
+        | components['schemas']['Analysis.csv-abs_dating_analysis.read']
+        | null
+      subjectId?: number | string
+      subjectType?: string
+      resourceLabel?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      notes?: string | null
+    }
     'AbsDatingAnalysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       stratigraphicUnit?:
@@ -8556,6 +8574,7 @@ export interface components {
         | null
       subjectId?: number | string
       subjectType?: string
+      resourceLabel?: string
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9146,6 +9165,16 @@ export interface components {
       year?: number
       laboratory?: string | null
       summary?: string | null
+    }
+    'Analysis.csv-abs_dating_analysis.read': {
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-abs_dating_analysis.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      readonly code: string
     }
     'Analysis.csv-analysis.acl.read': {
       readonly id: number | string
@@ -10583,6 +10612,10 @@ export interface components {
       readonly timeStamp?: string
       typeName?: string
       readonly id?: unknown
+    }
+    'ArchaeologicalSite.csv-abs_dating_analysis.read': {
+      code?: string
+      name?: string
     }
     'ArchaeologicalSite.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       readonly id?: number | string
@@ -14989,6 +15022,10 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
     }
+    'StratigraphicUnit.csv-abs_dating_analysis.read': {
+      site: components['schemas']['ArchaeologicalSite.csv-abs_dating_analysis.read']
+      readonly code: string
+    }
     'StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       site: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       readonly code: string
@@ -15973,6 +16010,9 @@ export interface components {
       readonly sitePrivileges?: {
         [key: string]: number
       }
+    }
+    'VocAnalysisType.csv-abs_dating_analysis.read': {
+      value: string
     }
     'VocAnalysisType.csv-analysis.acl.read': {
       code?: string
@@ -17661,6 +17701,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[resourceLabel]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
         'order[analysis.responsible]'?: 'asc' | 'desc'
@@ -17672,6 +17713,48 @@ export interface operations {
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'analysis.type.value'?: string
+        'analysis.type.value[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        'datingLower[between]'?: string
+        'datingLower[gt]'?: string
+        'datingLower[gte]'?: string
+        'datingLower[lt]'?: string
+        'datingLower[lte]'?: string
+        'datingUpper[between]'?: string
+        'datingUpper[gt]'?: string
+        'datingUpper[gte]'?: string
+        'datingUpper[lt]'?: string
+        'datingUpper[lte]'?: string
+        'uncalibratedDating[between]'?: string
+        'uncalibratedDating[gt]'?: string
+        'uncalibratedDating[gte]'?: string
+        'uncalibratedDating[lt]'?: string
+        'uncalibratedDating[lte]'?: string
+        'error[between]'?: string
+        'error[gt]'?: string
+        'error[gte]'?: string
+        'error[lt]'?: string
+        'error[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.laboratory
+         * @example cafè
+         */
+        'analysis.laboratory'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.responsible
+         * @example cafè
+         */
+        'analysis.responsible'?: string
       }
       header?: never
       path?: never
@@ -17688,6 +17771,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AbsDatingAnalysis.jsonld-abs_dating_analysis.read'][]
           }
+          'text/csv': components['schemas']['AbsDatingAnalysis.csv-abs_dating_analysis.read'][]
         }
       }
     }
@@ -17733,6 +17817,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[resourceLabel]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
         'order[analysis.responsible]'?: 'asc' | 'desc'
@@ -17744,6 +17829,48 @@ export interface operations {
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'analysis.type.value'?: string
+        'analysis.type.value[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        'datingLower[between]'?: string
+        'datingLower[gt]'?: string
+        'datingLower[gte]'?: string
+        'datingLower[lt]'?: string
+        'datingLower[lte]'?: string
+        'datingUpper[between]'?: string
+        'datingUpper[gt]'?: string
+        'datingUpper[gte]'?: string
+        'datingUpper[lt]'?: string
+        'datingUpper[lte]'?: string
+        'uncalibratedDating[between]'?: string
+        'uncalibratedDating[gt]'?: string
+        'uncalibratedDating[gte]'?: string
+        'uncalibratedDating[lt]'?: string
+        'uncalibratedDating[lte]'?: string
+        'error[between]'?: string
+        'error[gt]'?: string
+        'error[gte]'?: string
+        'error[lt]'?: string
+        'error[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.laboratory
+         * @example cafè
+         */
+        'analysis.laboratory'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.responsible
+         * @example cafè
+         */
+        'analysis.responsible'?: string
       }
       header?: never
       path: {

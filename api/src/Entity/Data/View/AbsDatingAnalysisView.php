@@ -3,11 +3,14 @@
 namespace App\Entity\Data\View;
 
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
+use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\StratigraphicUnit;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,10 +28,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
             requirements: ['id' => '\d+']
         ),
         new GetCollection(
-            uriTemplate: '/analyses/absolute_dating'
+            uriTemplate: '/analyses/absolute_dating',
+            formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv']
         ),
         new GetCollection(
             uriTemplate: '/analyses/{parentId}/absolute_dating',
+            formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
             uriVariables: [
                 'parentId' => new Link(
                     toProperty: 'analysis',
@@ -46,6 +51,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'resourceLabel',
         'analysis.identifier',
         'analysis.laboratory',
         'analysis.responsible',
@@ -57,6 +63,30 @@ use Symfony\Component\Serializer\Attribute\Groups;
         'error',
         'calibrationCurve',
         'stratigraphicUnit.site.code',
+    ]
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'stratigraphicUnit' => 'exact',
+        'stratigraphicUnit.site' => 'exact',
+        'analysis.type.value' => 'exact',
+        'analysis.identifier' => 'ipartial',
+    ]
+)]
+#[ApiFilter(RangeFilter::class,
+    properties: [
+        'analysis.year',
+        'datingLower',
+        'datingUpper',
+        'uncalibratedDating',
+        'error',
+    ]
+)]
+#[ApiFilter(UnaccentedSearchFilter::class,
+    properties: [
+        'analysis.laboratory',
+        'analysis.responsible',
     ]
 )]
 class AbsDatingAnalysisView
@@ -81,6 +111,10 @@ class AbsDatingAnalysisView
     #[ORM\Column(type: 'string')]
     #[Groups(['abs_dating_analysis:read'])]
     private string $subjectType;
+
+    #[ORM\Column(type: 'string')]
+    #[Groups(['abs_dating_analysis:read'])]
+    private string $resourceLabel;
 
     #[ORM\Column(type: 'smallint')]
     #[Groups(['abs_dating_analysis:read'])]
@@ -143,6 +177,18 @@ class AbsDatingAnalysisView
     public function setSubjectType(string $subjectType): AbsDatingAnalysisView
     {
         $this->subjectType = $subjectType;
+
+        return $this;
+    }
+
+    public function getResourceLabel(): string
+    {
+        return $this->resourceLabel;
+    }
+
+    public function setResourceLabel(string $resourceLabel): AbsDatingAnalysisView
+    {
+        $this->resourceLabel = $resourceLabel;
 
         return $this;
     }

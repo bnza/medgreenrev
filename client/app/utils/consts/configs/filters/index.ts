@@ -6,6 +6,8 @@ export { type FilterKey, API_FILTERS } from './definitions'
 export type SearchableGetCollectionPath = Extract<
   GetCollectionPath,
   | '/api/data/analyses'
+  | '/api/data/analyses/absolute_dating'
+  | '/api/data/analyses/{parentId}/absolute_dating'
   | '/api/data/analyses/botany/charcoals'
   | '/api/data/analyses/botany/seeds'
   | '/api/data/analyses/contexts/botany'
@@ -84,6 +86,10 @@ export const FILTERS_PATHS_MAP: Record<
   ResourceStaticFiltersDefinitionObject
 > = {
   '/api/data/analyses': resourceFilterDefinitions.analysis,
+  '/api/data/analyses/absolute_dating':
+    resourceFilterDefinitions.absDatingAnalysis,
+  '/api/data/analyses/{parentId}/absolute_dating':
+    resourceFilterDefinitions.absDatingAnalysis,
   '/api/data/analyses/botany/charcoals':
     resourceFilterDefinitions.analysisBotany,
   '/api/data/analyses/botany/seeds': resourceFilterDefinitions.analysisBotany,

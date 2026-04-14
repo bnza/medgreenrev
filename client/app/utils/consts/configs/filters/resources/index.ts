@@ -1,3 +1,4 @@
+export { staticFiltersDefinition as absDatingAnalysis } from './absDatingAnalysis'
 export { staticFiltersDefinition as analysis } from './analysis'
 export {
   staticFiltersDefinitionBotany as analysisBotany,

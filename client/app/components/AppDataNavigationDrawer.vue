@@ -60,24 +60,17 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
-            to="/data/analyses/samples/microstratigraphy"
-            router
-            title="Microstratigraphy"
-            data-testid="app-nav-drawer-li-analysis-sample-mus"
-          />
-          <v-list-item
-            nuxt
             to="/data/analyses/context/zoo"
             router
             title="Zooarchaeology"
             data-testid="app-nav-drawer-li-analysis-context-zoo"
           />
         </v-list-group>
-        <v-list-group value="Subject">
+        <v-list-group value="Specimen">
           <template #activator="{ props }">
             <v-list-item
               v-bind="props"
-              title="Subject"
+              title="Specimen"
               data-testid="app-nav-drawer-li-analyses"
             />
           </template>
@@ -136,6 +129,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             router
             title="Samples"
             data-testid="app-nav-drawer-li-analysis-samples"
+          />
+          <v-list-item
+            nuxt
+            to="/data/analyses/samples/microstratigraphy"
+            router
+            title="Samples (Microstratigraphy)"
+            data-testid="app-nav-drawer-li-analysis-sample-mus"
           />
           <v-list-item
             nuxt

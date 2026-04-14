@@ -13,8 +13,8 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '100',
     },
     {
-      key: 'subjectType',
-      value: 'subjectType',
+      key: 'resourceLabel',
+      value: 'resourceLabel',
       title: 'subject',
       minWidth: '200',
     },

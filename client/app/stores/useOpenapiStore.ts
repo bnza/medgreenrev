@@ -110,6 +110,7 @@ export const useOpenApiStore = defineStore('openapi', () => {
     const response200 =
       specInternal.value?.paths?.[path]?.get?.responses?.['200']
     if (!response200 || '$ref' in response200) return false
+    console.log(response200)
     return response200.content?.['text/csv'] !== undefined
   }
 

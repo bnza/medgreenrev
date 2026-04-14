@@ -72,7 +72,7 @@ However, there are **related DB-level constraints** specifically for the **absol
 
 ##### 1. Per-table trigger: Enforce abs_dating group on INSERT/UPDATE
 
-For each of the 6 join tables (`analysis_botany_charcoals`, `analysis_botany_seeds`, `analysis_individuals`, `analysis_potteries`, `analysis_zoo_bones`, `analysis_zoo_teeth`), the migration creates:
+For each of the 8 join tables (`analysis_botany_charcoals`, `analysis_botany_seeds`, `analysis_individuals`, `analysis_potteries`, `analysis_samples`, `analysis_sediment_cores`, `analysis_zoo_bones`, `analysis_zoo_teeth`), the migration creates:
 
 - **Function** `validate_abs_dating_{table}_group()` — a PL/pgSQL trigger function that:
   - JOINs from the join table → `analyses` → `vocabulary.analysis_types`
@@ -85,7 +85,7 @@ This ensures that **abs_dating child rows can only reference analyses whose type
 
 ##### 2. Trigger on `analyses`: Prevent group change when abs_dating children exist
 
-- **Function** `prevent_analysis_group_change_if_abs_child()` — checks via UNION across all 6 join tables whether the analysis has any abs_dating children.
+- **Function** `prevent_analysis_group_change_if_abs_child()` — checks via UNION across all 8 join tables whether the analysis has any abs_dating children.
 - **Trigger** `trg_analysis_block_incompatible_group` — fires `BEFORE UPDATE ON analyses`
 - If a child row exists and the new `analysis_type_id` maps to a group ≠ `absolute dating`, it raises an exception.
 
@@ -149,6 +149,8 @@ The following table shows which analysis type codes (and their groups) are allow
 | `AnalysisBotanyCharcoal` | Botany Charcoal | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
 | `AnalysisZooBone` | Zoo Bone | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
 | `AnalysisZooTooth` | Zoo Tooth | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| `AnalysisSample` | Sample | absolute dating, material analysis, sediment | `C14`, `THL`, `OSL`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA` |
+| `AnalysisSedimentCore` | Sediment Core | absolute dating, microscope, material analysis, sediment | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA` |
 | `AnalysisSampleMicrostratigraphy` | Sample (Microstratigraphy) | micromorphology | `THS` |
 | `AnalysisContextZoo` | Context (Zoo) | *(by type code)* | `ZOO` |
 | `AnalysisContextBotany` | Context (Botany) | *(by type code)* | `CARP`, `ANTX` |

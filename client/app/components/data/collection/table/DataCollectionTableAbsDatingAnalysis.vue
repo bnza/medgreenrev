@@ -11,35 +11,25 @@
 >
 import type {
   ApiResourceKey,
+  CollectionAcl,
   GetCollectionPath,
   ResourceParent,
 } from '~~/types'
 import { capitalize } from 'vue'
 import { API_RESOURCE_MAP } from '~/utils/consts/resources'
-import { RESOURCE_CONFIG_MAP } from '~/utils/consts/configs'
 
 const props = defineProps<{
   path: Path
   parent?: ResourceParent<'analysis'>
 }>()
 
+const { labels } = useResourceConfig(props.path)
+
 const { id: parentId } = useResourceParent(props.parent)
 
 const getResourceKey = (string: string): ApiResourceKey | undefined => {
   const key = `analysis${capitalize(string)}`
   return key in API_RESOURCE_MAP ? (key as ApiResourceKey) : undefined
-}
-
-const getResourceLabel = (resourceKey: string) => {
-  if (isApiResourceKey(resourceKey)) {
-    const resourcePath = API_RESOURCE_MAP[resourceKey]
-    if (resourcePath in RESOURCE_CONFIG_MAP) {
-      // @ts-expect-error some resourcePath are not in RESOURCE_CONFIG_MAP, but we just checked that they are
-      return RESOURCE_CONFIG_MAP[resourcePath].labels[0]
-    }
-    return resourceKey
-  }
-  return resourceKey
 }
 
 const getStatusText = (status: number | null | undefined) => {
@@ -54,18 +44,17 @@ const getStatusText = (status: number | null | undefined) => {
       return 'unknown'
   }
 }
+
+const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 
 <template>
-  <data-collection-table :path :parent-id>
+  <data-collection-table :path :parent-id @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
       <navigation-dynamic-resource-item-read
         :id="item.id"
         :resource-key="getResourceKey(item.subjectType)"
       />
-    </template>
-    <template #[`item.subjectType`]="{ item }">
-      {{ getResourceLabel(item.subjectType) }}
     </template>
     <template #[`item.analysis.identifier`]="{ item }">
       <data-item-info-box-span-analysis
@@ -88,12 +77,9 @@ const getStatusText = (status: number | null | undefined) => {
     <template #[`item.analysis.status`]="{ item }">
       {{ getStatusText(item.analysis.status) }}
     </template>
-    <!--    <template #dialogs="{ refetch }">-->
-    <!--      &lt;!&ndash;      <data-dialog-download :path title="Context" />&ndash;&gt;-->
-    <!--      <data-dialog-search :path title="Analysis" />-->
-    <!--      <data-dialog-create-analysis :path :parent @refresh="refetch()" />-->
-    <!--      <data-dialog-delete-analysis @refresh="refetch()" />-->
-    <!--      <data-dialog-update-analysis @refresh="refetch()" />-->
-    <!--    </template>-->
+    <template #dialogs>
+      <data-dialog-download :path :title="labels[1]" />
+      <data-dialog-search :path :title="labels[1]" />
+    </template>
   </data-collection-table>
 </template>

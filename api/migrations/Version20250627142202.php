@@ -16,8 +16,32 @@ final class Version20250627142202 extends AbstractMigration
         'analysis_botany_seeds',
         'analysis_individuals',
         'analysis_potteries',
+        'analysis_samples',
+        'analysis_sediment_cores',
         'analysis_zoo_bones',
         'analysis_zoo_teeth',
+    ];
+
+    private const array TABLE_SU_JOIN = [
+        'analysis_samples' => [
+            'junction' => 'sample_stratigraphic_units',
+            'fk' => 'sample_id',
+            'su_column' => 'su_id',
+        ],
+    ];
+
+    private const array RESOURCE_LABELS = [
+        'botanyCharcoal' => 'botany charcoal',
+        'botanySeed' => 'botany seed',
+        'individual' => 'human individual',
+        'pottery' => 'pottery',
+        'sample' => 'sample',
+        'zooBone' => 'animal bone',
+        'zooTooth' => 'animal tooth',
+    ];
+
+    private const array VIEW_EXCLUDED_TABLES = [
+        'analysis_sediment_cores',
     ];
 
     public function getDescription(): string
@@ -220,18 +244,30 @@ final class Version20250627142202 extends AbstractMigration
     {
         // strip 'analysis_' prefix from table name
         $subject_table = substr($analysisTableName, 9);
-        $subjectType = new UnicodeString(
-            'zoo_bones' === $subject_table
-                ? 'zoo_bone'
-                : $inflector->singularize($subject_table)[0]
-        )->camel();
+        $singular = match ($subject_table) {
+            'zoo_bones' => 'zoo_bone',
+            'sediment_cores' => 'sediment_core',
+            default => $inflector->singularize($subject_table)[0],
+        };
+        $subjectType = (new UnicodeString($singular))->camel();
+        $resourceLabel = self::RESOURCE_LABELS[(string) $subjectType] ?? (string) $subjectType;
+
+        if (isset(self::TABLE_SU_JOIN[$analysisTableName])) {
+            $junction = self::TABLE_SU_JOIN[$analysisTableName];
+            $joinClause = "JOIN {$junction['junction']} sj ON aj.subject_id = sj.{$junction['fk']}";
+            $suColumn = "sj.{$junction['su_column']} as stratigraphic_unit_id";
+        } else {
+            $joinClause = "JOIN {$subject_table} s ON aj.subject_id = s.id";
+            $suColumn = 's.stratigraphic_unit_id';
+        }
 
         return <<<SQL
                     SELECT
                         aj.id,
                         aj.subject_id,
                         '$subjectType' as subject_type,
-                        s.stratigraphic_unit_id,
+                        '{$resourceLabel}' as resource_label,
+                        {$suColumn},
                         aj.analysis_id,
                         abs.dating_lower,
                         abs.dating_upper,
@@ -242,7 +278,7 @@ final class Version20250627142202 extends AbstractMigration
                     FROM analysis_{$subject_table} aj
                     LEFT JOIN analyses a ON aj.analysis_id = a.id
                     LEFT JOIN abs_dating_analysis_{$subject_table} abs ON aj.id = abs.id
-                    JOIN {$subject_table} s ON aj.subject_id = s.id
+                    {$joinClause}
                     WHERE a.analysis_type_id < 200
             SQL;
     }
@@ -252,6 +288,9 @@ final class Version20250627142202 extends AbstractMigration
         $inflector = new EnglishInflector();
         $chunks = [];
         foreach (self::TABLES as $analysisTableName) {
+            if (in_array($analysisTableName, self::VIEW_EXCLUDED_TABLES, true)) {
+                continue;
+            }
             $chunks[] = $this->generateUnionViewSelectChunk($analysisTableName, $inflector);
         }
         $query = implode(" UNION \n", $chunks);
