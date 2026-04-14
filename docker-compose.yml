@@ -64,10 +64,10 @@ services:
     environment:
       - CLIENT_BODY_SIZE=${CLIENT_BODY_SIZE:-10M}
     healthcheck:
-      test: [ "CMD", "php", "-v" ]
-      interval: 10s
+      test: [ "CMD-SHELL", "test -S /var/run/php/php-fpm.sock" ]
+      interval: 5s
       timeout: 3s
-      retries: 3
+      retries: 5
       start_period: 30s
   geoserver:
     build:
