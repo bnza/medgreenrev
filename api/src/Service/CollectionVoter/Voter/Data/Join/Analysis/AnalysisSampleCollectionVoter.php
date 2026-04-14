@@ -3,7 +3,7 @@
 namespace App\Service\CollectionVoter\Voter\Data\Join\Analysis;
 
 use App\Entity\Auth\User;
-use App\Entity\Data\Pottery;
+use App\Entity\Data\Sample;
 use App\Service\CollectionVoter\Voter\AbstractCollectionVoter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
@@ -12,9 +12,9 @@ readonly class AnalysisSampleCollectionVoter extends AbstractCollectionVoter
     protected function voteOnSubCollection(object $parent, TokenInterface $token): bool
     {
         $user = $token->getUser();
-        if ($parent instanceof Pottery && $user instanceof User) {
+        if ($parent instanceof Sample && $user instanceof User) {
             return $this->roleProvider->hasSpecialistRole($token->getUser())
-                && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getStratigraphicUnit()->getSite());
+                && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getSite());
         }
 
         return false;
