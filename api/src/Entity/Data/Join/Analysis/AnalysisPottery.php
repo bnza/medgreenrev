@@ -103,7 +103,7 @@ class AnalysisPottery extends BaseAnalysisJoin
     #[Assert\NotBlank(groups: ['validation:analysis_join:create'])]
     private ?Pottery $subject = null;
 
-    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisPottery::class, mappedBy: 'analysis', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisPottery::class, mappedBy: 'analysis', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups([
         'analysis_pottery:acl:read',
         'analysis_pottery:export',

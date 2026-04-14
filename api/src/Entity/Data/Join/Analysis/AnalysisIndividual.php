@@ -78,7 +78,7 @@ class AnalysisIndividual extends BaseAnalysisJoin
     #[Assert\NotBlank(groups: ['validation:analysis_join:create'])]
     private ?Individual $subject = null;
 
-    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisIndividual::class, mappedBy: 'analysis', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisIndividual::class, mappedBy: 'analysis', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups([
         'analysis_individual:acl:read',
         'analysis_individual:export',

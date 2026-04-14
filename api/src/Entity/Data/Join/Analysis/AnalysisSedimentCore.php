@@ -103,7 +103,7 @@ class AnalysisSedimentCore extends BaseAnalysisJoin
     #[Assert\NotBlank(groups: ['validation:analysis_join:create'])]
     private ?SedimentCore $subject = null;
 
-    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisSedimentCore::class, mappedBy: 'analysis', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisSedimentCore::class, mappedBy: 'analysis', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups([
         'analysis_sediment_core:acl:read',
         'analysis_sediment_core:export',

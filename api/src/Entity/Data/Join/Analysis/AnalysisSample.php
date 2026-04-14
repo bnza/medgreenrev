@@ -88,7 +88,7 @@ class AnalysisSample extends BaseAnalysisJoin
     ])]
     private Sample $subject;
 
-    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisSample::class, mappedBy: 'analysis', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisSample::class, mappedBy: 'analysis', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups([
         'analysis_sample:acl:read',
         'analysis_sample:export',

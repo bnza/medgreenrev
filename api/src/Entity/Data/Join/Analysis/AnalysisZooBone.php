@@ -87,7 +87,7 @@ class AnalysisZooBone extends BaseAnalysisJoin
     ])]
     private Bone $subject;
 
-    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisZooBone::class, mappedBy: 'analysis', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: AbsDatingAnalysisZooBone::class, mappedBy: 'analysis', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups([
         'zoo_bone_analysis:acl:read',
         'zoo_bone_analysis:export',
