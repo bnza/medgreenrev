@@ -54,14 +54,14 @@ class ApiResourceArchaeologicalSiteTest extends ApiTestCase
         $this->assertSame(200, $siteResponse->getStatusCode());
         $siteData = $siteResponse->toArray();
         $this->assertCount(1, $siteData['member']);
-        $this->assertSame('TEG', $siteData['member'][0]['code']);
+        $this->assertSame('TG', $siteData['member'][0]['code']);
 
         $siteResponse = $this->apiRequest($client, 'GET', '/api/data/archaeological_sites?name=galmes'); // Matches "Galmès" in name
 
         $this->assertSame(200, $siteResponse->getStatusCode());
         $siteData = $siteResponse->toArray();
         $this->assertCount(1, $siteData['member']);
-        $this->assertSame('TEG', $siteData['member'][0]['code']);
+        $this->assertSame('TG', $siteData['member'][0]['code']);
     }
 
     public function testCreateUpdateSite(): void
