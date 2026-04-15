@@ -156,7 +156,7 @@ The following table shows which analysis type codes (and their groups) are allow
 | `AnalysisContextBotany` | Context (Botany) | *(by type code)* | `CARP`, `ANTX` |
 | `AnalysisSiteAnthropology` | Site (Anthropology) | *(by type code)* | `ANTH` |
 
-> **Note**: `AnalysisContextZoo`, `AnalysisContextBotany`, and `AnalysisSiteAnthropology` filter by **specific type codes** (not by group). The remaining entities filter by **group**, so they automatically include any future types added to those groups.
+> **Note**: Zooarchaeological, archaeobotanical, and anthropological analyses filter by **specific type codes** (from the **assemblage** group). The remaining resources filter by **group**, so they automatically include any future types added to those groups.
 
 ---
 

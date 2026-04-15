@@ -8,6 +8,14 @@ Re-thinking the “Green Revolution” in the Medieval Western Mediterranean (6t
 
 - [Authorization](authorization.md)
 - [Site permissions management](site-permissions-management.md)
+- Data Entry
+    - Analyses
+      - [Analyses](analyses.md)
+    - Data
+      - [Microstratigraphic Units](mu.md)
+      - [Stratigraphic Units](su.md)
+    - Media
+      - [Media](media.md)
 - [Vocabulary](./vocabulary/index.md)
 
 ## Admin Documentation

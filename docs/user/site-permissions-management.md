@@ -19,11 +19,11 @@ As defined in the [Authorization and Security Policies](authorization.md#general
 
 As an admin user or creator of the site to grant or modify access for a user on a specific site:
 
-1.  Navigate to the **Date / Archaeology / Sites** section in the administration interface.
-2.  Select the site you want to manage and click on the right sided arrow on the left side of the row.
+1.  Navigate to the **Data / Archaeology / Sites** section using the left-hand navigation menu.
+2.  Select the site you want to manage, possibly using the search bar, and click on the right-sided arrow on the left side of the row.
 3.  Click the **User Privileges** tab. 
-4.  Click the **...** button next to the user you want to manage and select the **add new** option.
-5.  Select the user from the dropdown list.
+4.  Click the vertical **...** button in the top bar of the tab content and select the **add new** option in the dropdown menu.
+5.  Select the user you want to grant editing to the site from the dropdown list.
 
 ### Visual Guide
 
