@@ -40,4 +40,4 @@ The following GIF demonstrates the process for both the operations:
 
 ## Analyses association
 
-Sample can be associated with .
+Sample can be associated with both `specimen analyses` and `microstragraphical analyses` see the dedicated [Analyses](analyses.md) document for more information.
