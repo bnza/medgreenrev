@@ -299,9 +299,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'password' => $this->password,
+            'roles' => $this->roles,
+            'enabled' => $this->enabled,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id = $data['id'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+        $this->roles = $data['roles'];
+        $this->enabled = $data['enabled'];
+        $this->sitePrivileges = new ArrayCollection();
+    }
+
+    #[\Deprecated]
     public function eraseCredentials(): void
     {
-        $this->plainPassword = null;
     }
 
     public function isEnabled(): bool
