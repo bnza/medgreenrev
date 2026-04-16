@@ -8,17 +8,17 @@ import { required } from '@regle/rules'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/botany/charcoals'
 
-defineProps<{
+const props = defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'analysis'>
 }>()
 
-const model = generateEmptyPostModel(path)
+const model = generateEmptyPostModel(path, props.parent)
 
 const { r$ } = useScopedRegle(model, {
   stratigraphicUnit: { required },
   element: { required },
   taxonomy: { required },
-  part: { required },
+  // part: { required },
 })
 </script>
 

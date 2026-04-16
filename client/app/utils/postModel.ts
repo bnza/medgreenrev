@@ -67,6 +67,13 @@ const EMPTY_POST_MODEL_MAP: {
   '/api/data/analyses/archaeological_sites/anthropology': (parent) => {
     return generateEmptyAnalysisSubjectModel('archaeologicalSite', parent)
   },
+  '/api/data/botany/charcoals': (parent) => ({
+    stratigraphicUnit:
+      parent?.key === 'stratigraphicUnit' ? parent.item['@id'] : undefined,
+    taxonomy: null,
+    element: null,
+    part: null,
+  }),
   '/api/data/botany/seeds': (parent) => ({
     stratigraphicUnit:
       parent?.key === 'stratigraphicUnit' ? parent.item['@id'] : undefined,

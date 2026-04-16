@@ -14,7 +14,7 @@ const { r$ } = useScopedRegle(model, {
   stratigraphicUnit: { required },
   element: { required },
   taxonomy: { required },
-  part: { required },
+  // part: { required },
 })
 </script>
 
