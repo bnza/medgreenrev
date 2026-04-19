@@ -23,7 +23,8 @@
 
 #### Individual
 
-- [Age](vocabulary.individual_age.md)
+- [Age](vocabulary.individual.age.md)
+- [Sex](vocabulary.individual.sex.md)
 
 #### MediaObject
 
@@ -39,7 +40,7 @@
 
 #### Sample
 
-- [Type](vocabulary.sample_type.md)
+- [Type](vocabulary.sample.type.md)
 
 #### StratigraphicUnit
 
