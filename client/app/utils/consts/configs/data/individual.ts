@@ -32,7 +32,7 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'sex',
+      key: 'sex.id',
       value: 'sex',
       title: 'sex',
       minWidth: '150',

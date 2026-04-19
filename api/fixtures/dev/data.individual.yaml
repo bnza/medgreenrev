@@ -3,54 +3,54 @@ App\Entity\Data\Individual:
     ind_ca_204_1:
         stratigraphicUnit: '@su_ca_204'
         identifier: '204-001'
-        age: '@voc__individual__age__middle_adult'
-        sex: 'F'
+        age: '@voc__individual__age__adult'
+        sex: '@voc__individual__sex__female'
         notes: 'Complete adult female skeleton with evidence of healed fracture on left femur'
     
     ind_ca_204_2:
         stratigraphicUnit: '@su_ca_204'
         identifier: '204-002'
-        age: '@voc__individual__age__old_adult'
-        sex: 'M'
+        age: '@voc__individual__age__adult'
+        sex: '@voc__individual__sex__male'
         notes: 'Well-preserved male skeleton showing signs of arthritis in vertebrae'
     
     ind_ca_204_3:
         stratigraphicUnit: '@su_ca_204'
         identifier: '204-003'
-        sex: '?'
+        sex: '@voc__individual__sex__undetermined'
 
     # su_ni_403 - partial skeletal remains (2 individuals)
     ind_ni_403_1:
         stratigraphicUnit: '@su_ni_403'
         identifier: '403-001'
-        age: '@voc__individual__age__young_adult'
-        sex: 'M'
+        age: '@voc__individual__age__adult'
+        sex: '@voc__individual__sex__male'
         notes: 'Partial remains including skull and long bones, evidence of trauma'
     
     ind_ni_403_2:
         stratigraphicUnit: '@su_ni_403'
         identifier: '403-002'
-        age: '@voc__individual__age__infant'
+        age: '@voc__individual__age__subadult'
 
     # su_me_107 - articulated adult skeleton (1 individual)
     ind_me_107_1:
         stratigraphicUnit: '@su_me_107'
         identifier: '107-001'
-        age: '@voc__individual__age__middle_adult'
-        sex: 'F'
+        age: '@voc__individual__age__adult'
+        sex: '@voc__individual__sex__female'
         notes: 'Articulated adult skeleton in supine position with grave goods'
 
     # su_ca_208 - fragmented human remains (3 individuals)
     ind_ca_208_1:
         stratigraphicUnit: '@su_ca_208'
         identifier: '208-001'
-        age: '@voc__individual__age__old_adult'
-        sex: 'M'
+        age: '@voc__individual__age__undetermined'
+        sex: '@voc__individual__sex__male'
     
     ind_ca_208_2:
         stratigraphicUnit: '@su_ca_208'
         identifier: '208-002'
-        age: '@voc__individual__age__child'
+        age: '@voc__individual__age__subadult'
         notes: 'Fragmented child remains'
     
     ind_ca_208_3:
@@ -62,36 +62,36 @@ App\Entity\Data\Individual:
     ind_ni_408_1:
         stratigraphicUnit: '@su_ni_408'
         identifier: '408-001'
-        age: '@voc__individual__age__juvenile'
-        sex: '?'
+        age: '@voc__individual__age__subadult'
+        sex: '@voc__individual__sex__undetermined'
         notes: 'Juvenile remains approximately 12-15 years old'
     
     ind_ni_408_2:
         stratigraphicUnit: '@su_ni_408'
         identifier: '408-002'
-        age: '@voc__individual__age__child'
-        sex: 'F'
+        age: '@voc__individual__age__subadult'
+        sex: '@voc__individual__sex__female'
     
     # su_ni_408 - juvenile skeletal remains (2 individuals)
     ind_ni_409_1:
         stratigraphicUnit: '@su_ni_408'
         identifier: '409-002'
-        age: '@voc__individual__age__infant'
-        sex: '?'
+        age: '@voc__individual__age__subadult'
+        sex: '@voc__individual__sex__undetermined'
         notes: 'Indeterminable partial infant human remain'
 
     # su_to_309 - articulated adult human remains (1 individual)
     ind_to_309_1:
         stratigraphicUnit: '@su_to_309'
         identifier: '309-001'
-        age: '@voc__individual__age__middle_adult'
-        sex: 'M'
+        age: '@voc__individual__age__adult'
+        sex: '@voc__individual__sex__male'
         notes: 'Complete articulated adult male skeleton in extended burial position'
 
     # su_to_310 - disarticulated skeletal elements (1 individual)
     ind_to_310_1:
         stratigraphicUnit: '@su_to_310'
         identifier: '310-001'
-        age: '@voc__individual__age__young_adult'
-        sex: 'F'
+        age: '@voc__individual__age__undetermined'
+        sex: '@voc__individual__sex__female'
         notes: 'Disarticulated remains suggesting secondary burial or post-mortem disturbance'

@@ -37,15 +37,18 @@ test.describe('Individual lifecycle', () => {
 
       await collectionPom.dataDialogCreate.form
         .getByRole('combobox')
-        .filter({ hasText: /sex/ })
+        .filter({ hasText: 'sex' })
         .click()
-      await page.getByRole('option').filter({ hasText: 'F' }).click()
+      await page.getByRole('option').filter({ hasText: 'female' }).click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('combobox')
         .filter({ hasText: 'age' })
         .click()
-      await page.getByRole('option').filter({ hasText: 'old adult' }).click()
+      await page
+        .getByRole('option')
+        .filter({ hasText: /^adult$/ })
+        .click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'notes' })
@@ -57,8 +60,8 @@ test.describe('Individual lifecycle', () => {
 
       // Verify the created item details
       await itemPom.expectTextFieldToHaveValue('identifier', 'UNIQ-ID')
-      await itemPom.expectTextFieldToHaveValue('sex', 'F')
-      await itemPom.expectTextFieldToHaveValue('age', 'old adult')
+      await itemPom.expectTextFieldToHaveValue('sex', 'female')
+      await itemPom.expectTextFieldToHaveValue('age', 'adult')
       await itemPom.expectTextFieldToHaveValue(
         'notes',
         'Some summary information about the individual',
@@ -73,12 +76,13 @@ test.describe('Individual lifecycle', () => {
         .click()
       await collectionPom.dataDialogUpdate.expectOldFormData()
 
-      await page
-        .getByRole('combobox')
-        .filter({ hasText: /^sex/ })
-        .locator('i')
+      await collectionPom.dataDialogUpdate.form
+        .getByRole('combobox', { name: 'sex' })
         .click()
-      await page.getByRole('option', { name: 'M', exact: true }).click()
+      await page
+        .getByRole('option')
+        .filter({ hasText: /^male$/ })
+        .click()
 
       await collectionPom.dataDialogUpdate.form
         .getByRole('textbox', { name: 'notes' })
@@ -94,8 +98,8 @@ test.describe('Individual lifecycle', () => {
         'UNIQ-ID',
         'Updated summary information about the individual',
       )
-      await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'M')
-      await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'old adult')
+      await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'male')
+      await collectionPom.table.expectRowToHaveText('UNIQ-ID', 'adult')
 
       // DELETE
       await collectionPom.table

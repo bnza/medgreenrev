@@ -34,6 +34,9 @@ const { updateDialogState } = storeToRefs(
 const vocabularyIndividualAge = useVocabularyStore(
   '/api/vocabulary/individual/age',
 )
+const vocabularyIndividualSex = useVocabularyStore(
+  '/api/vocabulary/individual/sex',
+)
 
 const searchPath = computed(
   () => (props.filterPath ?? props.path) as SearchableGetCollectionPath,
@@ -72,6 +75,9 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     </template>
     <template #[`item.age.id`]="{ item }">
       {{ vocabularyIndividualAge.getValue(item.age) }}
+    </template>
+    <template #[`item.sex.id`]="{ item }">
+      {{ vocabularyIndividualSex.getValue(item.sex) }}
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />

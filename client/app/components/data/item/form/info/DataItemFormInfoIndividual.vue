@@ -13,6 +13,9 @@ withDefaults(
 const vocabularyIndividualAge = useVocabularyStore(
   '/api/vocabulary/individual/age',
 )
+const vocabularyIndividualSex = useVocabularyStore(
+  '/api/vocabulary/individual/sex',
+)
 </script>
 
 <template>
@@ -50,7 +53,10 @@ const vocabularyIndividualAge = useVocabularyStore(
         <v-text-field :model-value="item.identifier" label="identifier" />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
-        <v-text-field :model-value="item.sex" label="sex" />
+        <v-text-field
+          :model-value="vocabularyIndividualSex.getValue(item.sex)"
+          label="sex"
+        />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field

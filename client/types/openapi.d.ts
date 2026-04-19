@@ -7646,6 +7646,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/individual/sex': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocIndividualSex resources.
+     * @description Retrieves the collection of VocIndividualSex resources.
+     */
+    get: operations['api_vocabularyindividualsex_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/individual/sex/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocIndividualSex resource.
+     * @description Retrieves a VocIndividualSex resource.
+     */
+    get: operations['api_vocabularyindividualsex_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/media_object/types': {
     parameters: {
       query?: never
@@ -12465,8 +12505,11 @@ export interface components {
        * @example https://example.com/
        */
       age?: string | null
-      /** @enum {string|null} */
-      sex?: 'F' | 'M' | '?' | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sex?: string | null
       notes?: string | null
     }
     'Individual-individual.create.jsonMergePatch': {
@@ -12481,6 +12524,10 @@ export interface components {
        * @example https://example.com/
        */
       age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       sex?: string | null
       notes?: string | null
     }
@@ -12529,6 +12576,10 @@ export interface components {
        * @example https://example.com/
        */
       age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       sex?: string | null
       notes?: string | null
       readonly code: string
@@ -12548,6 +12599,10 @@ export interface components {
        * @example https://example.com/
        */
       age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       sex?: string | null
       notes?: string | null
       readonly code: string
@@ -12575,6 +12630,10 @@ export interface components {
        * @example https://example.com/
        */
       age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       sex?: string | null
       notes?: string | null
       readonly code: string
@@ -12595,6 +12654,10 @@ export interface components {
        * @example https://example.com/
        */
       age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       sex?: string | null
       notes?: string | null
       readonly code: string
@@ -16843,6 +16906,10 @@ export interface components {
       id?: number
       value: string
     }
+    'VocIndividualSex.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      id?: number
+      value: string
+    }
     'VocMediaObjectType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       group?: string
@@ -17701,6 +17768,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[resourceLabel]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
@@ -17817,6 +17885,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[resourceLabel]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
@@ -17890,6 +17959,7 @@ export interface operations {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['AbsDatingAnalysis.jsonld-abs_dating_analysis.read'][]
           }
+          'text/csv': components['schemas']['AbsDatingAnalysis.csv-abs_dating_analysis.read'][]
         }
       }
     }
@@ -32728,7 +32798,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
-        'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -32863,7 +32932,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
-        'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -33191,7 +33259,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
-        'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -33248,7 +33315,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
-        'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -33343,7 +33409,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
-        'order[sex]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -46542,6 +46607,64 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['VocIndividualAge.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyindividualsex_get_collection: {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocIndividualSex collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocIndividualSex.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyindividualsex_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocIndividualSex identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocIndividualSex resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocIndividualSex.jsonld']
         }
       }
       /** @description Not found */

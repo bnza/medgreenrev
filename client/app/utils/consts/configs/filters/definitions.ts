@@ -185,10 +185,11 @@ const SelectionZooClass: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-const SelectionIndividualSex: StaticFiltersDefinitionObject = {
+const VocabularyIndividualSex: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
-  componentKey: 'SelectionIndividualSex',
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/individual/sex',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -491,7 +492,7 @@ export const API_FILTERS = {
   SelectionBotanyClass,
   SelectionBotanyFamily,
   SelectionContextType,
-  SelectionIndividualSex,
+  VocabularyIndividualSex,
   SelectionZooClass,
   SelectionZooFamily,
   SelectionZooBoneEndsPreserved,

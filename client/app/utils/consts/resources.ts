@@ -103,6 +103,7 @@ export const API_RESOURCE_MAP = {
   vocHistoryPlant: '/api/vocabulary/history/plants',
   vocHistoryWrittenSourceType: '/api/vocabulary/history/written_source_types',
   vocIndividualAge: '/api/vocabulary/individual/age',
+  vocIndividualSex: '/api/vocabulary/individual/sex',
   vocMediaObjectType: '/api/vocabulary/media_object/types',
   vocPotteryDecoration: '/api/vocabulary/pottery/decorations',
   vocPotteryFunctionalForm: '/api/vocabulary/pottery/functional_forms',

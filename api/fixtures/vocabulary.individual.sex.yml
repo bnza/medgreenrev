@@ -1,0 +1,13 @@
+App\Entity\Vocabulary\Individual\Sex:
+    voc__individual__sex__undetermined:
+        id: 0
+        code: '?'
+        value: undetermined
+    voc__individual__sex__female:
+        id: 100
+        code: 'F'
+        value: female
+    voc__individual__sex__male:
+        id: 200
+        code: 'M'
+        value: male

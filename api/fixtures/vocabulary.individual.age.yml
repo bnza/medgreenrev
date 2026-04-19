@@ -1,0 +1,10 @@
+App\Entity\Vocabulary\Individual\Age:
+    voc__individual__age__undetermined:
+        id: 0
+        value: undetermined
+    voc__individual__age__subadult:
+        id: 100
+        value: non-adult
+    voc__individual__age__adult:
+        id: 200
+        value: adult

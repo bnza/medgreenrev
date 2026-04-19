@@ -13,7 +13,6 @@ export type OperandComponentsKey =
   | 'SelectionAnalysisStatus'
   | 'SelectionZooBoneEndsPreserved'
   | 'SelectionZooBoneSide'
-  | 'SelectionIndividualSex'
   | 'Vocabulary'
   | 'HistoryLocation'
   | 'HistoryWrittenSource'

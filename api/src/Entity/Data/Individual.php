@@ -21,6 +21,7 @@ use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Vocabulary\Individual\Age;
+use App\Entity\Vocabulary\Individual\Sex;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
 use App\Metadata\ExportFeatureCollection;
@@ -115,7 +116,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     'id',
     'stratigraphicUnit.site.code',
     'identifier',
-    'sex',
+    'sex.id',
     'age.id',
 ])]
 #[ApiFilter(
@@ -190,16 +191,14 @@ class Individual
     ])]
     private ?Age $age = null;
 
-    #[ORM\Column(type: 'string', nullable: true, options: ['fixed' => true, 'length' => 1, 'comment' => 'F = female, M = male, ? = indeterminate'])]
+    #[ORM\ManyToOne(targetEntity: Sex::class)]
+    #[ORM\JoinColumn(name: 'sex_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
     #[Groups([
         'individual:acl:read',
         'individual:create',
         'individual:export',
     ])]
-    #[Assert\Choice(choices: ['F', 'M', '?'], groups: [
-        'validation:individual:create',
-    ])]
-    private ?string $sex = null;
+    private ?Sex $sex = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups([
@@ -264,12 +263,12 @@ class Individual
         return $this;
     }
 
-    public function getSex(): ?string
+    public function getSex(): ?Sex
     {
         return $this->sex;
     }
 
-    public function setSex(?string $sex): Individual
+    public function setSex(?Sex $sex): Individual
     {
         $this->sex = $sex ?? null;
 

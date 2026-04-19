@@ -41,12 +41,13 @@ class ApiResourceIndividualTest extends ApiTestCase
         $this->assertNotEmpty($su, 'Fixture stratigraphic unit should exist');
 
         $ages = $this->getVocabulary(['individual', 'age']);
+        $sexes = $this->getVocabulary(['individual', 'sex']);
 
         $payload = [
             'identifier' => 'test.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
             'age' => $ages[0]['@id'],
-            'sex' => 'F',
+            'sex' => $sexes[1]['@id'],
             'notes' => 'Test notes',
         ];
 
@@ -79,12 +80,13 @@ class ApiResourceIndividualTest extends ApiTestCase
         $this->assertNotEmpty($su, 'Fixture stratigraphic unit should exist');
 
         $ages = $this->getVocabulary(['individual', 'age']);
+        $sexes = $this->getVocabulary(['individual', 'sex']);
 
         $payload = [
             'identifier' => 'test.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
             'age' => $ages[0]['@id'],
-            'sex' => 'M',
+            'sex' => $sexes[1]['@id'],
             'notes' => 'Test notes',
         ];
 
@@ -110,12 +112,13 @@ class ApiResourceIndividualTest extends ApiTestCase
         $this->assertNotEmpty($su, 'Fixture stratigraphic unit should exist');
 
         $ages = $this->getVocabulary(['individual', 'age']);
+        $sexes = $this->getVocabulary(['individual', 'sex']);
 
         $payload = [
             'identifier' => 'test.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
             'age' => $ages[0]['@id'],
-            'sex' => '?',
+            'sex' => $sexes[1]['@id'],
             'notes' => 'Test notes',
         ];
 

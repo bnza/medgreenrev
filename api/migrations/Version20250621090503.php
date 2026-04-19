@@ -205,10 +205,12 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_DBE55CEADB52F5A9 ON history_written_sources_cited_works (cited_work_id)');
         $this->addSql('CREATE TABLE vocabulary.individual_ages (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D29ED9621D775834 ON vocabulary.individual_ages (value)');
-        $this->addSql('CREATE TABLE individuals (id BIGINT NOT NULL, identifier VARCHAR(255) NOT NULL, sex CHAR(1) DEFAULT NULL, notes TEXT DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, age_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE vocabulary.individual_sexes (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_2FD83B1D775834 ON vocabulary.individual_sexes (value)');
+        $this->addSql('CREATE TABLE individuals (id BIGINT NOT NULL, identifier VARCHAR(255) NOT NULL, notes TEXT DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, age_id SMALLINT DEFAULT NULL, sex_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_985AD930A502ADE ON individuals (stratigraphic_unit_id)');
         $this->addSql('CREATE INDEX IDX_985AD930CC80CD12 ON individuals (age_id)');
-        $this->addSql('COMMENT ON COLUMN individuals.sex IS \'F = female, M = male, ? = indeterminate\'');
+        $this->addSql('CREATE INDEX IDX_985AD9305A2DB2A0 ON individuals (sex_id)');
         $this->addSql('CREATE TABLE media_object_analyses (description TEXT DEFAULT NULL, id BIGINT NOT NULL, media_object_id BIGINT NOT NULL, item_id BIGINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_C2D113064DE5A5 ON media_object_analyses (media_object_id)');
         $this->addSql('CREATE INDEX IDX_C2D1130126F525E ON media_object_analyses (item_id)');
@@ -411,6 +413,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE history_written_sources_cited_works ADD CONSTRAINT FK_DBE55CEADB52F5A9 FOREIGN KEY (cited_work_id) REFERENCES vocabulary.history_cited_works (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE individuals ADD CONSTRAINT FK_985AD930A502ADE FOREIGN KEY (stratigraphic_unit_id) REFERENCES sus (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE individuals ADD CONSTRAINT FK_985AD930CC80CD12 FOREIGN KEY (age_id) REFERENCES vocabulary.individual_ages (id) ON DELETE RESTRICT NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE individuals ADD CONSTRAINT FK_985AD9305A2DB2A0 FOREIGN KEY (sex_id) REFERENCES vocabulary.individual_sexes (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_analyses ADD CONSTRAINT FK_C2D113064DE5A5 FOREIGN KEY (media_object_id) REFERENCES media_objects (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_analyses ADD CONSTRAINT FK_C2D1130126F525E FOREIGN KEY (item_id) REFERENCES analyses (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_history_location ADD CONSTRAINT FK_3066BD9A64DE5A5 FOREIGN KEY (media_object_id) REFERENCES media_objects (id) ON DELETE CASCADE NOT DEFERRABLE');
@@ -578,6 +581,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE history_written_sources_cited_works DROP CONSTRAINT FK_DBE55CEADB52F5A9');
         $this->addSql('ALTER TABLE individuals DROP CONSTRAINT FK_985AD930A502ADE');
         $this->addSql('ALTER TABLE individuals DROP CONSTRAINT FK_985AD930CC80CD12');
+        $this->addSql('ALTER TABLE individuals DROP CONSTRAINT FK_985AD9305A2DB2A0');
         $this->addSql('ALTER TABLE media_object_analyses DROP CONSTRAINT FK_C2D113064DE5A5');
         $this->addSql('ALTER TABLE media_object_analyses DROP CONSTRAINT FK_C2D1130126F525E');
         $this->addSql('ALTER TABLE media_object_history_location DROP CONSTRAINT FK_3066BD9A64DE5A5');
@@ -678,6 +682,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP TABLE history_written_sources');
         $this->addSql('DROP TABLE history_written_sources_cited_works');
         $this->addSql('DROP TABLE vocabulary.individual_ages');
+        $this->addSql('DROP TABLE vocabulary.individual_sexes');
         $this->addSql('DROP TABLE individuals');
         $this->addSql('DROP TABLE media_object_analyses');
         $this->addSql('DROP TABLE media_object_history_location');

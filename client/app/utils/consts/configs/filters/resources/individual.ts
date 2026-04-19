@@ -9,7 +9,7 @@ import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefin
 const {
   Exists,
   SearchPartial,
-  SelectionIndividualSex,
+  VocabularyIndividualSex,
   VocabularyIndividualAge,
 } = API_FILTERS
 
@@ -51,7 +51,7 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     sex: {
       filters: {
         Exists,
-        SelectionIndividualSex,
+        VocabularyIndividualSex,
       },
     },
   } as const

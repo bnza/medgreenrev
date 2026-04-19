@@ -12,6 +12,9 @@ withDefaults(
 const vocabularyIndividualAge = useVocabularyStore(
   '/api/vocabulary/individual/age',
 )
+const vocabularyIndividualSex = useVocabularyStore(
+  '/api/vocabulary/individual/sex',
+)
 </script>
 
 <template>
@@ -36,7 +39,10 @@ const vocabularyIndividualAge = useVocabularyStore(
           :text="item.stratigraphicUnit?.code"
         />
         <data-item-info-box-row label="identifier" :text="item.identifier" />
-        <data-item-info-box-row label="inventory" :text="item.sex" />
+        <data-item-info-box-row
+          label="sex"
+          :text="vocabularyIndividualSex.getValue(item.sex).value"
+        />
         <data-item-info-box-row
           label="age"
           :text="vocabularyIndividualAge.getValue(item.age).value"

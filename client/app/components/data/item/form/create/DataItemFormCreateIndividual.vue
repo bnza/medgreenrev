@@ -63,10 +63,12 @@ const { r$ } = useScopedRegle(model, {
     </v-row>
     <v-row>
       <v-col cols="12" md="4">
-        <data-selection-individual-sex
+        <data-autocomplete
           v-model="r$.$value.sex"
+          path="/api/vocabulary/individual/sex"
           item-title="value"
           label="sex"
+          :error-messages="r$.$errors?.sex"
         />
       </v-col>
       <v-col cols="12" md="4">

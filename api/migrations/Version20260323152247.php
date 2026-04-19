@@ -85,11 +85,13 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_individuals AS
                 SELECT
-                    i.id, i.identifier, i.sex, i.notes, i.age_id,
+                    i.id, i.identifier, sex.value AS sex, age.value AS age, i.notes,
                     su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
                 FROM individuals i
                 JOIN sus su ON i.stratigraphic_unit_id = su.id
-                JOIN archaeological_sites s ON su.site_id = s.id;
+                JOIN archaeological_sites s ON su.site_id = s.id
+                LEFT JOIN vocabulary.individual_sexes sex ON i.sex_id = sex.id
+                LEFT JOIN vocabulary.individual_ages age ON i.age_id = age.id;
             SQL
         );
 
