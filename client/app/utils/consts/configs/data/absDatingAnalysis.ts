@@ -70,13 +70,19 @@ const config: Readonly<ResourceConfig> = {
     {
       key: 'datingLower',
       value: 'datingLower',
-      title: 'dating (lower)',
+      title: 'cal dating (lower)',
       minWidth: '100',
     },
     {
       key: 'datingUpper',
       value: 'datingUpper',
-      title: 'dating (upper)',
+      title: 'cal dating (upper)',
+      minWidth: '100',
+    },
+    {
+      key: 'probability',
+      value: 'probability',
+      title: 'cal dating (probability %)',
       minWidth: '100',
     },
     {

@@ -8636,6 +8636,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisBotanyCharcoal-analysis_join.update': {
@@ -8644,6 +8645,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
@@ -8652,6 +8654,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8678,6 +8681,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
@@ -8693,6 +8697,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisBotanySeed-abs_dating_join.create': Record<string, never>
@@ -8706,6 +8711,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisBotanySeed-analysis_join.update': {
@@ -8714,6 +8720,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
@@ -8722,6 +8729,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8748,6 +8756,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
@@ -8763,6 +8772,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisIndividual-abs_dating_join.create': Record<string, never>
@@ -8776,6 +8786,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisIndividual-analysis_join.update': {
@@ -8784,6 +8795,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
@@ -8792,6 +8804,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8807,6 +8820,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8828,6 +8842,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisPottery-abs_dating_join.create': Record<string, never>
@@ -8841,6 +8856,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisPottery-analysis_join.update': {
@@ -8849,6 +8865,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
@@ -8857,6 +8874,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8883,6 +8901,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
@@ -8898,6 +8917,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisSample-abs_dating_join.create': Record<string, never>
@@ -8911,6 +8931,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisSample-analysis_join.update': {
@@ -8919,6 +8940,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
@@ -8927,6 +8949,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -8953,6 +8976,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
@@ -8968,6 +8992,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisSedimentCore-abs_dating_join.create': Record<
@@ -8984,6 +9009,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisSedimentCore-analysis_join.update': {
@@ -8992,6 +9018,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
@@ -9000,6 +9027,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9015,6 +9043,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9036,6 +9065,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisZooBone-abs_dating_join.create': Record<string, never>
@@ -9049,6 +9079,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisZooBone-analysis_join.update': {
@@ -9057,6 +9088,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
@@ -9065,6 +9097,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9091,6 +9124,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
@@ -9106,6 +9140,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisZooTooth-abs_dating_join.create': Record<string, never>
@@ -9119,6 +9154,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisZooTooth-analysis_join.update': {
@@ -9127,6 +9163,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
@@ -9135,6 +9172,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9161,6 +9199,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
@@ -9176,6 +9215,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     })
     'Analysis-analysis.create': {
@@ -16909,6 +16949,7 @@ export interface components {
     'VocIndividualSex.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id?: number
       value: string
+      code: string
     }
     'VocMediaObjectType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
@@ -32798,6 +32839,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
+        'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -32932,6 +32974,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
+        'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -33259,6 +33302,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
+        'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -33315,6 +33359,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
+        'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]
@@ -33409,6 +33454,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
+        'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
         age?: string
         'age[]'?: string[]

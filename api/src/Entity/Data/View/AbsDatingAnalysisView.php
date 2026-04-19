@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\View;
 
+use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -54,6 +55,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
     properties: [
         'id',
         'resourceLabel',
+        'analysis.status',
         'analysis.identifier',
         'analysis.laboratory',
         'analysis.responsible',
@@ -61,6 +63,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
         'analysis.year',
         'datingLower',
         'datingUpper',
+        'probability',
         'uncalibratedDating',
         'error',
         'calibrationCurve',
@@ -83,6 +86,11 @@ use Symfony\Component\Serializer\Attribute\Groups;
         'datingUpper',
         'uncalibratedDating',
         'error',
+    ]
+)]
+#[ApiFilter(ExistsFilter::class,
+    properties: [
+        'probability',
     ]
 )]
 #[ApiFilter(UnaccentedSearchFilter::class,
@@ -137,6 +145,10 @@ class AbsDatingAnalysisView
     #[ORM\Column(type: 'string')]
     #[Groups(['abs_dating_analysis:read'])]
     protected string $calibrationCurve;
+
+    #[ORM\Column(type: 'decimal', precision: 4, scale: 1, nullable: true)]
+    #[Groups(['abs_dating_analysis:read'])]
+    protected ?string $probability = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups(['abs_dating_analysis:read'])]
@@ -263,6 +275,18 @@ class AbsDatingAnalysisView
     public function setCalibrationCurve(string $calibrationCurve): AbsDatingAnalysisView
     {
         $this->calibrationCurve = $calibrationCurve;
+
+        return $this;
+    }
+
+    public function getProbability(): ?string
+    {
+        return $this->probability;
+    }
+
+    public function setProbability(?string $probability): AbsDatingAnalysisView
+    {
+        $this->probability = $probability;
 
         return $this;
     }

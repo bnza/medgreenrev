@@ -271,6 +271,7 @@ final class Version20250627142202 extends AbstractMigration
                         aj.analysis_id,
                         abs.dating_lower,
                         abs.dating_upper,
+                        abs.probability,
                         abs.uncalibrated_dating,
                         abs.error,
                         abs.calibration_curve,

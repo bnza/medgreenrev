@@ -24,19 +24,26 @@ withDefaults(
 <template>
   <data-item-form-read>
     <v-row>
-      <v-col cols="6" class="px-2">
+      <v-col cols="4" class="px-2">
         <v-text-field
           :model-value="item.datingLower"
-          label="dating (lower)"
+          label="calibrated dating (lower)"
           hint="In years CE"
           persistent-hint
         />
       </v-col>
-      <v-col cols="6" class="px-2">
+      <v-col cols="4" class="px-2">
         <v-text-field
           :model-value="item.datingUpper"
-          label="dating (upper)"
+          label="calibrated dating (upper)"
           hint="In years CE"
+          persistent-hint
+        />
+      </v-col>
+      <v-col cols="4" class="px-2">
+        <v-text-field
+          :model-value="item.probability"
+          label="calibrated dating (probability)"
           persistent-hint
         />
       </v-col>

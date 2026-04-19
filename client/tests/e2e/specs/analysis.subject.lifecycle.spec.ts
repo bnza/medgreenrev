@@ -54,6 +54,9 @@ test.describe('Analysis subject join', () => {
           .getByRole('textbox', { name: 'dating (upper)' })
           .fill('750')
         await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'dating (probability)' })
+          .fill('94.59')
+        await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'uncalibrated dating' })
           .fill('1200')
         await collectionPom.dataDialogCreate.form
@@ -82,6 +85,7 @@ test.describe('Analysis subject join', () => {
           .click()
         await itemPom.expectTextFieldToHaveValue('dating (lower)', '700')
         await itemPom.expectTextFieldToHaveValue('dating (upper)', '750')
+        await itemPom.expectTextFieldToHaveValue('dating (probability)', '94.6')
         await itemPom.expectTextFieldToHaveValue('uncalibrated dating', '1200')
         await itemPom.expectTextFieldToHaveValue('error', '50')
         await itemPom.expectTextFieldToHaveValue(

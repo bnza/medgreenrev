@@ -6,6 +6,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 1050
         error: 35
         calibrationCurve: 'IntCal20'
+        probability: '95.4'
         notes: 'Olive branch charcoal from hearth context. Sample pretreated with acid-alkali-acid protocol. Good preservation with minimal contamination risk.'
     abs_dating_charcoal_2:
         analysis: '@botany_charcoal_analysis_12'
@@ -14,6 +15,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 850
         error: 40
         calibrationCurve: 'IntCal20'
+        probability: '97.1'
     abs_dating_charcoal_3:
         analysis: '@botany_charcoal_analysis_13'
         datingLower: 650
@@ -36,6 +38,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 1100
         error: 50
         calibrationCurve: 'IntCal20'
+        probability: '90.7'
     abs_dating_charcoal_6:
         analysis: '@botany_charcoal_analysis_16'
         datingLower: 1200
@@ -43,6 +46,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 750
         error: 35
         calibrationCurve: 'IntCal20'
+        probability: '93.4'
         notes: 'Poplar-Willow group charcoal. Dating constrains late occupation phase.'
     abs_dating_charcoal_7:
         analysis: '@botany_charcoal_analysis_17'
@@ -51,6 +55,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 1350
         error: 40
         calibrationCurve: 'IntCal20'
+        probability: '90.2'
     abs_dating_charcoal_8:
         analysis: '@botany_charcoal_analysis_18'
         datingLower: 920
@@ -66,6 +71,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 900
         error: 30
         calibrationCurve: 'IntCal20'
+        probability: '91.7'
     abs_dating_charcoal_10:
         analysis: '@botany_charcoal_analysis_20'
         datingLower: 750
@@ -73,3 +79,4 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal:
         uncalibratedDating: 1150
         error: 50
         calibrationCurve: 'IntCal20'
+        probability: '94.0'

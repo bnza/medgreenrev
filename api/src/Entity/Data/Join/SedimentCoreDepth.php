@@ -25,7 +25,6 @@ use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
 use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\Validator as AppAssert;
-use BcMath\Number;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -219,7 +218,7 @@ class SedimentCoreDepth
     #[ApiProperty(required: true)]
     private ?SamplingStratigraphicUnit $stratigraphicUnit = null;
 
-    #[ORM\Column(type: 'number', precision: 5, scale: 1)]
+    #[ORM\Column(type: 'decimal', precision: 5, scale: 1)]
     #[Groups([
         'sediment_core_depth:acl:read',
         'sediment_core_depth:sediment_cores:acl:read',
@@ -236,9 +235,9 @@ class SedimentCoreDepth
             'example' => '8.5',
         ]
     )]
-    private Number $depthMin;
+    private ?string $depthMin = null;
 
-    #[ORM\Column(type: 'number', precision: 5, scale: 1)]
+    #[ORM\Column(type: 'decimal', precision: 5, scale: 1)]
     #[Groups([
         'sediment_core_depth:acl:read',
         'sediment_core_depth:sediment_cores:acl:read',
@@ -255,7 +254,7 @@ class SedimentCoreDepth
             'example' => '9.0',
         ]
     )]
-    private Number $depthMax;
+    private ?string $depthMax = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups([
@@ -366,31 +365,25 @@ class SedimentCoreDepth
         return $this;
     }
 
-    public function getDepthMin(): Number
+    public function getDepthMin(): ?string
     {
         return $this->depthMin;
     }
 
-    public function setDepthMin(Number|string $depthMin): SedimentCoreDepth
+    public function setDepthMin(string $depthMin): SedimentCoreDepth
     {
-        if (is_string($depthMin)) {
-            $depthMin = new Number($depthMin);
-        }
         $this->depthMin = $depthMin;
 
         return $this;
     }
 
-    public function getDepthMax(): Number
+    public function getDepthMax(): ?string
     {
         return $this->depthMax;
     }
 
-    public function setDepthMax(Number|string $depthMax): SedimentCoreDepth
+    public function setDepthMax(string $depthMax): SedimentCoreDepth
     {
-        if (is_string($depthMax)) {
-            $depthMax = new Number($depthMax);
-        }
         $this->depthMax = $depthMax;
 
         return $this;
@@ -512,7 +505,7 @@ class SedimentCoreDepth
         return sprintf(
             '%s.%s',
             $this->getSedimentCore()->getCode(),
-            $this->depthMin->mul(10)->round()
+            (int) round((float) $this->depthMin * 10)
         );
     }
 }

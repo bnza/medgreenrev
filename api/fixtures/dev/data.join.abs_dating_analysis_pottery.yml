@@ -6,6 +6,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisPottery:
         uncalibratedDating: 1025
         error: 45
         calibrationCurve: 'N/D'
+        probability: '95.8'
         notes: 'Fine-grained pottery fabric with quartz inclusions. TL signal shows good sensitivity with minimal fading. Dating constrains medieval ceramic production.'
     abs_dating_pottery_2:
         analysis: '@pottery_analysis_12'
@@ -21,6 +22,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisPottery:
         uncalibratedDating: 1130
         error: 50
         calibrationCurve: 'N/D'
+        probability: '94.3'
         notes: 'Well-fired ceramic showing minimal post-depositional alteration. Excellent luminescence characteristics for reliable age determination.'
     abs_dating_pottery_4:
         analysis: '@pottery_analysis_14'
@@ -36,4 +38,5 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisPottery:
         uncalibratedDating: 870
         error: 45
         calibrationCurve: 'N/D'
+        probability: '97.8'
         notes: 'Pottery sherd from occupation deposit. Annual dose rate calculated from surrounding sediment samples ensuring accurate age estimation.'

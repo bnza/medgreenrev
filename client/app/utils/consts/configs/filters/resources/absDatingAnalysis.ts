@@ -6,6 +6,7 @@ import {
 
 const {
   ArchaeologicalSiteEquals,
+  Exists,
   SearchPartial,
   StratigraphicUnitEquals,
   VocabularyAnalysisType,
@@ -55,14 +56,21 @@ export const staticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
     },
   },
   datingLower: {
-    propertyLabel: 'dating (lower)',
+    propertyLabel: 'calibrated dating (lower)',
     filters: {
       ...NumericOperations,
     },
   },
   datingUpper: {
-    propertyLabel: 'dating (upper)',
+    propertyLabel: 'calibrated dating (upper)',
     filters: {
+      ...NumericOperations,
+    },
+  },
+  probability: {
+    propertyLabel: 'calibrated dating (probability %)',
+    filters: {
+      Exists,
       ...NumericOperations,
     },
   },

@@ -15,13 +15,14 @@
   "
 >
 import type { ApiResourceKey } from '~~/types'
-import { integer, maxValue, minValue, required } from '@regle/rules'
+import { integer, decimal, maxValue, minValue, required } from '@regle/rules'
 import { isEmptyObject } from '~/utils'
 import { useScopedRegleItem } from '~/composables/validation/useCollectScopeRecord'
 
 type Item = {
   datingLower?: number
   datingUpper?: number
+  probability?: string | null
   uncalibratedDating?: number
   error?: number
   calibrationCurve?: string
@@ -67,6 +68,11 @@ const { r$ } = useScopedRegleItem(
             greaterOrEqualThan: greaterThanOrEqual(
               'Upper dating must be less than or equal lower dating.',
             )(() => model.value.datingLower),
+          },
+          probability: {
+            decimal,
+            minValue: minValue(0),
+            maxValue: maxValue(100),
           },
           uncalibratedDating: {
             required,
@@ -155,22 +161,31 @@ const deleteAbsoluteDatingData = async () => {
   </v-row>
   <div v-if="showForm">
     <v-row>
-      <v-col cols="6" class="px-2">
+      <v-col cols="4" class="px-2">
         <v-text-field
           v-model.number="r$.$value.datingLower"
-          label="dating (lower)"
+          label="calibrated dating (lower)"
           hint="In years CE"
           persistent-hint
           :error-messages="r$.$errors.datingLower"
         />
       </v-col>
-      <v-col cols="6" class="px-2">
+      <v-col cols="4" class="px-2">
         <v-text-field
           v-model.number="r$.$value.datingUpper"
-          label="dating (upper)"
+          label="calibrated dating (upper)"
           hint="In years CE"
           persistent-hint
           :error-messages="r$.$errors.datingUpper"
+        />
+      </v-col>
+      <v-col cols="4" class="px-2">
+        <v-text-field
+          v-model="r$.$value.probability"
+          label="calibrated dating (probability)"
+          hint="One digit precision percentage"
+          suffix="%"
+          :error-messages="r$.$errors.probability"
         />
       </v-col>
     </v-row>

@@ -156,8 +156,33 @@ class AbsDatingAnalysisJoin
     )]
     protected string $calibrationCurve;
 
+    #[ORM\Column(type: 'decimal', precision: 4, scale: 1, nullable: true)]
+    #[Groups([
+        'analysis_join:acl:read',
+        'analysis_join:create',
+        'analysis_join:update',
+        'abs_dating_analysis_join:acl:read',
+        'abs_dating_analysis_join:create',
+    ])]
+    #[Assert\Range(
+        min: 0,
+        max: 100,
+        groups: [
+            'validation:analysis_join:create',
+            'validation:analysis_join:update',
+            'validation:abs_dating_analysis_join:create',
+        ]
+    )]
+    protected ?string $probability = null;
+
     #[ORM\Column(type: 'text', nullable: true)]
-    #[Groups(['analysis_join:acl:read', 'analysis_join:create', 'analysis_join:update', 'abs_dating_analysis_join:acl:read', 'abs_dating_analysis_join:create'])]
+    #[Groups([
+        'analysis_join:acl:read',
+        'analysis_join:create',
+        'analysis_join:update',
+        'abs_dating_analysis_join:acl:read',
+        'abs_dating_analysis_join:create',
+    ])]
     protected string $notes;
 
     #[ApiProperty(identifier: true)]
@@ -234,6 +259,18 @@ class AbsDatingAnalysisJoin
     public function setCalibrationCurve(string $calibrationCurve): AbsDatingAnalysisJoin
     {
         $this->calibrationCurve = $calibrationCurve;
+
+        return $this;
+    }
+
+    public function getProbability(): ?string
+    {
+        return $this->probability;
+    }
+
+    public function setProbability(?string $probability): AbsDatingAnalysisJoin
+    {
+        $this->probability = $probability;
 
         return $this;
     }

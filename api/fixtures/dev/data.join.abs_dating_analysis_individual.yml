@@ -14,6 +14,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisIndividual:
         uncalibratedDating: 1100
         error: 35
         calibrationCurve: 'IntCal20'
+        probability: '90.8'
     abs_dating_individual_3:
         analysis: '@individual_analysis_13'
         datingLower: 1180
@@ -29,6 +30,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisIndividual:
         uncalibratedDating: 1150
         error: 50
         calibrationCurve: 'IntCal20'
+        probability: '93.0'
     abs_dating_individual_5:
         analysis: '@individual_analysis_15'
         datingLower: 1020
@@ -36,4 +38,5 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisIndividual:
         uncalibratedDating: 980
         error: 30
         calibrationCurve: 'IntCal20'
+        probability: '92.9'
         notes: 'Parietal bone fragment from disturbed context. Multiple pretreament cycles ensured contamination removal for accurate chronological placement.'

@@ -6,6 +6,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisZooTooth:
         uncalibratedDating: 870
         error: 35
         calibrationCurve: 'IntCal20'
+        probability: '92.2'
         notes: 'Pig mandibular molar from refuse pit. Enamel carbonate dating provides terminus post quem for disposal activity chronology.'
     abs_dating_zoo_tooth_2:
         analysis: '@zoo_tooth_analysis_12'
@@ -14,6 +15,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisZooTooth:
         uncalibratedDating: 1020
         error: 40
         calibrationCurve: 'IntCal20'
+        probability: '95.1'
     abs_dating_zoo_tooth_4:
         analysis: '@zoo_tooth_analysis_14'
         datingLower: 1080

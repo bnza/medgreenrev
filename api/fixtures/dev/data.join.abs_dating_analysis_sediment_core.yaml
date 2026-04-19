@@ -6,4 +6,5 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisSedimentCore:
         uncalibratedDating: 950
         error: 60
         calibrationCurve: 'IntCal20'
+        probability: '95.6'
         notes: 'OSL dating of quartz from SC1 deep core sample.'

@@ -6,6 +6,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisSample:
         uncalibratedDating: 920
         error: 45
         calibrationCurve: 'IntCal20'
+        probability: '96.6'
         notes: 'Quartz grains from construction fill at ME site. Single-aliquot regenerative dose protocol applied to fine-grain fraction.'
     abs_dating_sample_2:
         analysis: '@analysis_sample_27'
@@ -14,6 +15,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisSample:
         uncalibratedDating: 1060
         error: 55
         calibrationCurve: 'IntCal20'
+        probability: '94.9'
     abs_dating_sample_3:
         analysis: '@analysis_sample_28'
         datingLower: 1150
@@ -29,3 +31,4 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisSample:
         uncalibratedDating: 990
         error: 50
         calibrationCurve: 'IntCal20'
+        probability: '96.9'

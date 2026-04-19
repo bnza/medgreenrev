@@ -6,6 +6,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisZooBone:
         uncalibratedDating: 1050
         error: 40
         calibrationCurve: 'IntCal20'
+        probability: '96.2'
     abs_dating_zoo_bone_2:
         analysis: '@zoo_bone_analysis_12'
         datingLower: 1100
@@ -21,6 +22,7 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisZooBone:
         uncalibratedDating: 1120
         error: 50
         calibrationCurve: 'IntCal20'
+        probability: '97.9'
     abs_dating_zoo_bone_4:
         analysis: '@zoo_bone_analysis_14'
         datingLower: 1050
@@ -28,4 +30,5 @@ App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisZooBone:
         uncalibratedDating: 970
         error: 45
         calibrationCurve: 'IntCal20'
+        probability: '96.8'
         notes: 'Sheep tibia from occupation layer. Sample showed excellent organic preservation suitable for high-precision AMS dating of subsistence activities.'
