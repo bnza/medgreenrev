@@ -75,6 +75,8 @@ const { r$ } = useScopedRegleItem(model, rules, { scopeKey: 'base' })
 const emit = defineEmits<{
   selected: [any]
 }>()
+
+onUnmounted(() => emit('selected', false))
 </script>
 
 <template>

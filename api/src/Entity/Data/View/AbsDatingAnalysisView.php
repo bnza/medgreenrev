@@ -29,7 +29,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
         ),
         new GetCollection(
             uriTemplate: '/analyses/absolute_dating',
-            formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv']
+            formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            order: ['id' => 'DESC'],
         ),
         new GetCollection(
             uriTemplate: '/analyses/{parentId}/absolute_dating',
@@ -51,6 +52,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'id',
         'resourceLabel',
         'analysis.identifier',
         'analysis.laboratory',
