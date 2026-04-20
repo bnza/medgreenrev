@@ -12,12 +12,14 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\SearchPropertyAliasFilter;
+use App\Repository\ZooTaxonomyRepository;
+use App\Validator as AppAssert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: ZooTaxonomyRepository::class)]
 #[ORM\Table(
     name: 'zoo_taxonomy',
     schema: 'vocabulary'
@@ -54,7 +56,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Delete(
             uriTemplate: '/vocabulary/zoo/taxonomies/{id}',
-            security: 'is_granted("delete", object)'
+            security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:voc_zoo_taxonomy:delete']],
+            validate: true
         ),
     ],
     normalizationContext: ['groups' => ['voc_zoo_taxonomy:read']],
@@ -77,6 +81,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Duplicate taxonomy code: {{ value }}.',
     groups: ['validation:voc_zoo_taxonomy:create']
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the taxonomy because it is referenced by: {{ classes }}.', groups: ['validation:voc_zoo_taxonomy:delete'])]
 class Taxonomy
 {
     #[ORM\Id,
