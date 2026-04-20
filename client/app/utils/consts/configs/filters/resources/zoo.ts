@@ -13,7 +13,7 @@ const {
   SelectionZooClass,
   SelectionZooFamily,
   SelectionZooBoneSide,
-  SelectionZooBoneEndsPreserved,
+  VocabularyZooBoneEndsPreserved,
   VocabularyZooBone,
   VocabularyZooBonePart,
   VocabularyZooTaxonomy,
@@ -85,7 +85,7 @@ export const propertyBoneStaticFiltersDefinition: ResourceStaticFiltersDefinitio
     },
     endsPreserved: {
       filters: {
-        SelectionZooBoneEndsPreserved,
+        VocabularyZooBoneEndsPreserved,
       },
       propertyLabel: 'ends preserved',
     },
@@ -96,7 +96,7 @@ export const propertyToothStaticFiltersDefinition: ResourceStaticFiltersDefiniti
     ...commonPropertiesStaticFiltersDefinition,
     connected: {
       filters: {
-        SelectionZooBoneEndsPreserved,
+        VocabularyZooBoneEndsPreserved,
       },
     },
   }

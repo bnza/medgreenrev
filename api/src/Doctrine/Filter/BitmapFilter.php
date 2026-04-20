@@ -39,7 +39,7 @@ final class BitmapFilter extends AbstractFilter
     ): void {
         if (
             !$this->isPropertyEnabled($property, $resourceClass)
-            || !$this->isPropertyMapped($property, $resourceClass)
+            || !$this->isPropertyMapped($property, $resourceClass, true)
         ) {
             return;
         }
@@ -81,6 +81,11 @@ final class BitmapFilter extends AbstractFilter
             return;
         }
 
+        // Extract numeric ID from IRI (e.g. '/api/vocabulary/zoo/bone_end_preserved/1' → 1)
+        if (is_string($value) && preg_match('#/(\d+)$#', $value, $matches)) {
+            $value = $matches[1];
+        }
+
         // Convert to integer and validate
         $bitmask = (int) $value;
         if ($bitmask <= 0) {
@@ -101,6 +106,30 @@ final class BitmapFilter extends AbstractFilter
             );
         }
 
+        // Use IDENTITY() for association properties so BIT_AND operates on the FK integer value
+        $fieldOwnerClass = $resourceClass;
+        if ($this->isPropertyNested($property, $resourceClass)) {
+            $nestedParts = explode('.', $property);
+            $currentClass = $resourceClass;
+            for ($i = 0; $i < count($nestedParts) - 1; ++$i) {
+                $meta = $this->getManagerRegistry()
+                    ->getManagerForClass($currentClass)
+                    ->getClassMetadata($currentClass);
+                $currentClass = $meta->getAssociationTargetClass($nestedParts[$i]);
+            }
+            $fieldOwnerClass = $currentClass;
+        }
+
+        $fieldOwnerMetadata = $this->getManagerRegistry()
+            ->getManagerForClass($fieldOwnerClass)
+            ->getClassMetadata($fieldOwnerClass);
+
+        if ($fieldOwnerMetadata->hasAssociation($field)) {
+            $fieldExpr = sprintf('IDENTITY(%s.%s)', $alias, $field);
+        } else {
+            $fieldExpr = sprintf('%s.%s', $alias, $field);
+        }
+
         $parameterName = $queryNameGenerator->generateParameterName($property.'_'.$strategy);
 
         switch ($strategy) {
@@ -108,7 +137,7 @@ final class BitmapFilter extends AbstractFilter
                 // All specified bits must be set: BIT_AND(field, mask) = mask
                 $queryBuilder
                     ->andWhere(
-                        sprintf('BIT_AND(%s.%s, :%s) = :%s', $alias, $field, $parameterName, $parameterName)
+                        sprintf('BIT_AND(%s, :%s) = :%s', $fieldExpr, $parameterName, $parameterName)
                     )
                     ->setParameter($parameterName, $bitmask);
                 break;
@@ -117,7 +146,7 @@ final class BitmapFilter extends AbstractFilter
                 // Any of the specified bits must be set: BIT_AND(field, mask) > 0
                 $queryBuilder
                     ->andWhere(
-                        sprintf('BIT_AND(%s.%s, :%s) > 0', $alias, $field, $parameterName)
+                        sprintf('BIT_AND(%s, :%s) > 0', $fieldExpr, $parameterName)
                     )
                     ->setParameter($parameterName, $bitmask);
                 break;

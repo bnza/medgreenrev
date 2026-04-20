@@ -4,28 +4,28 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_ALEC'
         element: '@zoo_bone_CO'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
     zoo_bone_2:
         stratigraphicUnit: '@su_me_101'
         taxonomy: '@zoo_taxonomy_ALEC'
         element: '@zoo_bone_CO'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
     zoo_bone_3:
         stratigraphicUnit: '@su_me_102'
         taxonomy: '@zoo_taxonomy_RAR'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
     zoo_bone_8:
         stratigraphicUnit: '@su_me_104'
         taxonomy: '@zoo_taxonomy_B'
         element: '@zoo_bone_SC'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_9:
@@ -33,7 +33,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_B'
         element: '@zoo_bone_MT1'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: null
         notes: 'Polished and abraded. Perforation in the medial area; several cut marks transverse to the axis'
     zoo_bone_10:
@@ -41,7 +41,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_B'
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_D'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'L'
         notes: null
     zoo_bone_15:
@@ -49,7 +49,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_CAH'
         element: '@zoo_bone_MT2'
         part: '@zoo_bone_part_PM'
-        endsPreserved: 1
+        endsPreserved: '@voc__zoo__bone_end_preserved__distal'
         side: 'R'
         notes: null
     zoo_bone_16:
@@ -57,7 +57,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_CAH'
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_D'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: null
     zoo_bone_17:
@@ -65,7 +65,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_CAH'
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: null
     zoo_bone_18:
@@ -73,7 +73,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_CAH'
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_D'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: null
         notes: null
     zoo_bone_19:
@@ -81,7 +81,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_CEE'
         element: '@zoo_bone_P1'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: '?'
         notes: null
     zoo_bone_20:
@@ -89,7 +89,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_CEE'
         element: '@zoo_bone_AS'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_23:
@@ -97,7 +97,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_COL'
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: 'Small'
     zoo_bone_24:
@@ -105,7 +105,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_COL'
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: 'Small'
     zoo_bone_25:
@@ -113,7 +113,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_EQ'
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_P'
-        endsPreserved: 1
+        endsPreserved: '@voc__zoo__bone_end_preserved__distal'
         side: 'L'
         notes: null
     zoo_bone_26:
@@ -121,7 +121,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_EQ'
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_27:
@@ -129,7 +129,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_EQC'
         element: '@zoo_bone_CA'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: 'Numerous cuts. Eisenmann measurements: 1: 612; 2: 629; 3: 651; 5: 512; 6: 342; 7: 540'
     zoo_bone_28:
@@ -137,7 +137,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_EQC'
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_29:
@@ -145,7 +145,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_FAL'
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: 'Peregrine falcon (Falco peregrinus)'
     zoo_bone_30:
@@ -153,7 +153,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_FAL'
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: 'Peregrine falcon (Falco peregrinus)'
     zoo_bone_31:
@@ -161,7 +161,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_FAL'
         element: '@zoo_bone_UL'
         part: '@zoo_bone_part_PM'
-        endsPreserved: 1
+        endsPreserved: '@voc__zoo__bone_end_preserved__distal'
         side: 'L'
         notes: 'Peregrine falcon (Falco peregrinus)'
     zoo_bone_32:
@@ -169,7 +169,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_FEC'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 1
+        endsPreserved: '@voc__zoo__bone_end_preserved__distal'
         side: 'R'
         notes: 'Individual #5 in anatomical connection (only this remain recorded)'
     zoo_bone_33:
@@ -177,7 +177,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_FEC'
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: null
     zoo_bone_34:
@@ -185,7 +185,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_GNP'
         element: '@zoo_bone_CO'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_35:
@@ -193,7 +193,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_GNP'
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: null
     zoo_bone_36:
@@ -215,7 +215,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_LE'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_39:
@@ -223,7 +223,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_LE'
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'L'
         notes: null
     zoo_bone_42:
@@ -231,7 +231,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_O'
         element: '@zoo_bone_MT1'
         part: '@zoo_bone_part_P'
-        endsPreserved: 1
+        endsPreserved: '@voc__zoo__bone_end_preserved__distal'
         side: 'L'
         notes: null
     zoo_bone_43:
@@ -239,7 +239,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_O'
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_D'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: null
     zoo_bone_44:
@@ -247,7 +247,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_O'
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'L'
         notes: null
     zoo_bone_45:
@@ -255,7 +255,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_ORY'
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_46:
@@ -263,7 +263,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_ORY'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: null
     zoo_bone_47:
@@ -271,7 +271,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_ORY'
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_PM'
-        endsPreserved: 1
+        endsPreserved: '@voc__zoo__bone_end_preserved__distal'
         side: 'L'
         notes: null
     zoo_bone_50:
@@ -279,7 +279,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_OVA'
         element: '@zoo_bone_SC'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: null
     zoo_bone_51:
@@ -287,7 +287,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_OVA'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_D'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: null
     zoo_bone_52:
@@ -295,7 +295,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_OVA'
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'L'
         notes: null
     zoo_bone_55:
@@ -303,7 +303,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_VUV'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'L'
         notes: null
     zoo_bone_56:
@@ -311,7 +311,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_VUV'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: null
     zoo_bone_57:
@@ -319,7 +319,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_B'
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_D'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'L'
         notes: 'Possible pathology (lateral projection of condyles)'
     zoo_bone_58:
@@ -327,7 +327,7 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_B'
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_WH'
-        endsPreserved: 3
+        endsPreserved: '@voc__zoo__bone_end_preserved__both'
         side: 'R'
         notes: 'Cuts in distal area'
     zoo_bone_59:
@@ -342,6 +342,6 @@ App\Entity\Data\Zoo\Bone:
         taxonomy: '@zoo_taxonomy_O'
         element: '@zoo_bone_MT1'
         part: '@zoo_bone_part_DM'
-        endsPreserved: 2
+        endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
         side: 'R'
         notes: 'Localized burning on condyles'

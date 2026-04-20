@@ -2,10 +2,10 @@
 
 namespace App\Entity\Data\Join\Analysis;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
-use App\Doctrine\Filter\BitmapFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisJoin;
@@ -55,7 +55,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(ExistsFilter::class, properties: [
     'subject.taxonomy.family',
 ])]
-#[ApiFilter(BitmapFilter::class, properties: [
+#[ApiFilter(BooleanFilter::class, properties: [
     'subject.connected',
 ])]
 #[ApiStratigraphicUnitSubresourceFilters('subject.stratigraphicUnit')]

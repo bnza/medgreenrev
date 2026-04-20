@@ -23,6 +23,7 @@ use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\StratigraphicUnit;
 use App\Entity\Vocabulary\Zoo\Bone as VocabularyBone;
+use App\Entity\Vocabulary\Zoo\BoneEndPreserved;
 use App\Entity\Vocabulary\Zoo\BonePart;
 use App\Entity\Vocabulary\Zoo\Taxonomy;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
@@ -225,13 +226,14 @@ class Bone
     ])]
     private ?BonePart $part = null;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\ManyToOne(targetEntity: BoneEndPreserved::class)]
+    #[ORM\JoinColumn(name: 'voc_bone_end_preserved_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
     #[Groups([
         'zoo_bone:acl:read',
         'zoo_bone:create',
         'zoo_bone:export',
     ])]
-    private ?int $endsPreserved = null;
+    private ?BoneEndPreserved $endsPreserved = null;
 
     #[ORM\Column(type: 'string', nullable: true, options: ['fixed' => true, 'length' => 1, 'comment' => 'L = left, R = right, ? = indeterminate'])]
     #[Groups([
@@ -319,14 +321,14 @@ class Bone
         return $this;
     }
 
-    public function getEndsPreserved(): ?int
+    public function getEndsPreserved(): ?BoneEndPreserved
     {
         return $this->endsPreserved;
     }
 
-    public function setEndsPreserved(?int $endsPreserved): Bone
+    public function setEndsPreserved(?BoneEndPreserved $endsPreserved): Bone
     {
-        $this->endsPreserved = $endsPreserved ?? null; // 0 is converted to null
+        $this->endsPreserved = $endsPreserved;
 
         return $this;
     }

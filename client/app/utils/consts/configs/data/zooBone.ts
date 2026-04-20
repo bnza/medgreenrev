@@ -62,8 +62,8 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '150',
     },
     {
-      key: 'endsPreserved',
-      value: 'endsPreserved',
+      key: 'endsPreserved.code',
+      value: 'endsPreserved.code',
       title: 'ends preserved',
       minWidth: '100',
     },

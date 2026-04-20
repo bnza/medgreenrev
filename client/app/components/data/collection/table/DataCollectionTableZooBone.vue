@@ -30,17 +30,9 @@ const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 const vocabularyZooBoneParts = useVocabularyStore(
   '/api/vocabulary/zoo/bone_parts',
 )
-
-const stringifyEndPreserved = (value: number | null | undefined) => {
-  if (!value) {
-    return value
-  }
-  const parts = []
-  if (value & 0b01) parts.push('D') // Distal
-  if (value & 0b10) parts.push('P') // Proximal
-
-  return parts.join(' + ')
-}
+const vocabularyZooBoneEndPreserved = useVocabularyStore(
+  '/api/vocabulary/zoo/bone_end_preserved',
+)
 
 const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
@@ -103,8 +95,8 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.part.value`]="{ item }">
       {{ vocabularyZooBoneParts.getValue(item.part) }}
     </template>
-    <template #[`item.endsPreserved`]="{ item }">
-      {{ stringifyEndPreserved(item.endsPreserved) }}
+    <template #[`item.endsPreserved.code`]="{ item }">
+      {{ vocabularyZooBoneEndPreserved.getValue(item.endsPreserved, 'code') }}
     </template>
 
     <template #dialogs="{ refetch }">

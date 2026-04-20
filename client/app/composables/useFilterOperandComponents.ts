@@ -10,7 +10,6 @@ import DataDialogSearchOperandSamplingStratigraphicUnit from '~/components/data/
 import DataDialogSearchOperandStratigraphicUnit from '~/components/data/dialog/search/operand/DataDialogSearchOperandStratigraphicUnit.vue'
 import DataDialogSearchOperandSelection from '~/components/data/dialog/search/operand/DataDialogSearchOperandSelection.vue'
 import DataDialogSearchOperandAnalysisStatus from '~/components/data/dialog/search/operand/DataDialogSearchOperandAnalysisStatus.vue'
-import DataSelectionZooBoneEndsPreserved from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneEndsPreserved.vue'
 import DataDialogSearchOperandWrittenSource from '~/components/data/dialog/search/operand/DataDialogSearchOperandWrittenSource.vue'
 import DataSelectionZooBoneSide from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneSide.vue'
 import DataDialogSearchOperandHistoryLocation from '~/components/data/dialog/search/operand/DataDialogSearchOperandHistoryLocation.vue'
@@ -23,7 +22,6 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   NumericRange: DataDialogSearchOperandNumericRange,
   Selection: DataDialogSearchOperandSelection,
   SelectionAnalysisStatus: DataDialogSearchOperandAnalysisStatus,
-  SelectionZooBoneEndsPreserved: DataSelectionZooBoneEndsPreserved,
   SelectionZooBoneSide: DataSelectionZooBoneSide,
   Vocabulary: DataDialogSearchOperandVocabulary,
   HistoryLocation: DataDialogSearchOperandHistoryLocation,

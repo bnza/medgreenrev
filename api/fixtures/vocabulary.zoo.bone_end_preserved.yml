@@ -1,0 +1,14 @@
+# IDs are bitmap values used by BitmapFilter (1=D, 2=P, 3=D+P). Do not change them.
+App\Entity\Vocabulary\Zoo\BoneEndPreserved:
+    voc__zoo__bone_end_preserved__distal:
+        id: 1
+        code: 'D'
+        value: 'distal'
+    voc__zoo__bone_end_preserved__proximal:
+        id: 2
+        code: 'P'
+        value: 'proximal'
+    voc__zoo__bone_end_preserved__both:
+        id: 3
+        code: 'D+P'
+        value: 'both'

@@ -162,11 +162,12 @@ const SelectionContextType: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-const SelectionZooBoneEndsPreserved: StaticFiltersDefinitionObject = {
+const VocabularyZooBoneEndsPreserved: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
-  componentKey: 'SelectionZooBoneEndsPreserved',
-  addToQueryObject: addOperatorToQueryObjectSingle('any'),
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/zoo/bone_end_preserved',
+  addToQueryObject: addOperatorToQueryObjectSingle('and'),
 }
 
 const SelectionZooFamily: StaticFiltersDefinitionObject = {
@@ -495,7 +496,7 @@ export const API_FILTERS = {
   VocabularyIndividualSex,
   SelectionZooClass,
   SelectionZooFamily,
-  SelectionZooBoneEndsPreserved,
+  VocabularyZooBoneEndsPreserved,
   SelectionZooBoneSide,
   VocabularyAnalysisType,
   VocabularyBotanyElement,

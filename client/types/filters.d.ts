@@ -11,7 +11,6 @@ export type OperandComponentsKey =
   | 'NumericRange'
   | 'Selection'
   | 'SelectionAnalysisStatus'
-  | 'SelectionZooBoneEndsPreserved'
   | 'SelectionZooBoneSide'
   | 'Vocabulary'
   | 'HistoryLocation'

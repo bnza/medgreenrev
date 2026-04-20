@@ -15,7 +15,6 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\BitmapFilter;
 use App\Doctrine\Filter\Granted\GrantedParentStratigraphicUnitFilter;
 use App\Doctrine\Filter\SearchSiteAndIdFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
@@ -159,9 +158,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'taxonomy.family',
     ]
 )]
-#[ApiFilter(BitmapFilter::class, properties: [
-    'connected',
-])]
 #[ApiFilter(
     GrantedParentStratigraphicUnitFilter::class
 )]

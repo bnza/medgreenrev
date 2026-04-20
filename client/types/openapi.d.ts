@@ -8086,6 +8086,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/zoo/bone_end_preserved': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocZooBoneEndPreserved resources.
+     * @description Retrieves the collection of VocZooBoneEndPreserved resources.
+     */
+    get: operations['api_vocabularyzoobone_end_preserved_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/bone_end_preserved/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocZooBoneEndPreserved resource.
+     * @description Retrieves a VocZooBoneEndPreserved resource.
+     */
+    get: operations['api_vocabularyzoobone_end_preserved_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/vocabulary/zoo/bone_parts': {
     parameters: {
       query?: never
@@ -8602,6 +8642,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -8620,6 +8661,7 @@ export interface components {
       uncalibratedDating?: number
       error?: number
       calibrationCurve?: string
+      probability?: string | null
       notes?: string | null
     }
     'AbsDatingAnalysisBotanyCharcoal-abs_dating_join.create': Record<
@@ -17282,6 +17324,11 @@ export interface components {
       code?: string
       value: string
     }
+    'VocZooBoneEndPreserved.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number
+      code?: string
+      value: string
+    }
     'VocZooBonePart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       code?: string
@@ -17390,7 +17437,11 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
-      endsPreserved?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
@@ -17416,7 +17467,11 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
-      endsPreserved?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
       /** @enum {string|null} */
       side?: 'L' | 'R' | '?' | null
       notes?: string | null
@@ -17475,7 +17530,11 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
-      endsPreserved?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17504,7 +17563,11 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
-      endsPreserved?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17541,7 +17604,11 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
-      endsPreserved?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17571,7 +17638,11 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
-      endsPreserved?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17811,6 +17882,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[resourceLabel]'?: 'asc' | 'desc'
+        'order[analysis.status]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
         'order[analysis.responsible]'?: 'asc' | 'desc'
@@ -17818,6 +17890,7 @@ export interface operations {
         'order[analysis.year]'?: 'asc' | 'desc'
         'order[datingLower]'?: 'asc' | 'desc'
         'order[datingUpper]'?: 'asc' | 'desc'
+        'order[probability]'?: 'asc' | 'desc'
         'order[uncalibratedDating]'?: 'asc' | 'desc'
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
@@ -17854,6 +17927,7 @@ export interface operations {
         'error[gte]'?: string
         'error[lt]'?: string
         'error[lte]'?: string
+        'exists[probability]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: analysis.laboratory
          * @example cafè
@@ -17928,6 +18002,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[resourceLabel]'?: 'asc' | 'desc'
+        'order[analysis.status]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
         'order[analysis.responsible]'?: 'asc' | 'desc'
@@ -17935,6 +18010,7 @@ export interface operations {
         'order[analysis.year]'?: 'asc' | 'desc'
         'order[datingLower]'?: 'asc' | 'desc'
         'order[datingUpper]'?: 'asc' | 'desc'
+        'order[probability]'?: 'asc' | 'desc'
         'order[uncalibratedDating]'?: 'asc' | 'desc'
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
@@ -17971,6 +18047,7 @@ export interface operations {
         'error[gte]'?: string
         'error[lt]'?: string
         'error[lte]'?: string
+        'exists[probability]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: analysis.laboratory
          * @example cafè
@@ -27388,16 +27465,7 @@ export interface operations {
          */
         summary?: string
         'exists[subject.taxonomy.family]'?: boolean
-        /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'subject.connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'subject.connected[any]'?: string
+        'subject.connected'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -27731,16 +27799,7 @@ export interface operations {
          */
         summary?: string
         'exists[subject.taxonomy.family]'?: boolean
-        /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'subject.connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'subject.connected[any]'?: string
+        'subject.connected'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -27881,16 +27940,7 @@ export interface operations {
          */
         summary?: string
         'exists[subject.taxonomy.family]'?: boolean
-        /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'subject.connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'subject.connected[any]'?: string
+        'subject.connected'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -47316,6 +47366,68 @@ export interface operations {
       }
     }
   }
+  api_vocabularyzoobone_end_preserved_get_collection: {
+    parameters: {
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBoneEndPreserved collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocZooBoneEndPreserved.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_vocabularyzoobone_end_preserved_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocZooBoneEndPreserved identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBoneEndPreserved resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocZooBoneEndPreserved.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_vocabularyzoobone_parts_get_collection: {
     parameters: {
       query?: {
@@ -47797,7 +47909,6 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -47806,8 +47917,8 @@ export interface operations {
         search?: string
         element?: string
         'element[]'?: string[]
-        endsPreserved?: number
-        'endsPreserved[]'?: number[]
+        endsPreserved?: string
+        'endsPreserved[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -47955,7 +48066,6 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -47964,8 +48074,8 @@ export interface operations {
         search?: string
         element?: string
         'element[]'?: string[]
-        endsPreserved?: number
-        'endsPreserved[]'?: number[]
+        endsPreserved?: string
+        'endsPreserved[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -48113,7 +48223,6 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -48122,8 +48231,8 @@ export interface operations {
         search?: string
         element?: string
         'element[]'?: string[]
-        endsPreserved?: number
-        'endsPreserved[]'?: number[]
+        endsPreserved?: string
+        'endsPreserved[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -48386,7 +48495,6 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -48397,8 +48505,8 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         element?: string
         'element[]'?: string[]
-        endsPreserved?: number
-        'endsPreserved[]'?: number[]
+        endsPreserved?: string
+        'endsPreserved[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -48537,7 +48645,6 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[endsPreserved]'?: 'asc' | 'desc'
         'order[side]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -48548,8 +48655,8 @@ export interface operations {
         'stratigraphicUnit.site[]'?: string[]
         element?: string
         'element[]'?: string[]
-        endsPreserved?: number
-        'endsPreserved[]'?: number[]
+        endsPreserved?: string
+        'endsPreserved[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -48718,16 +48825,6 @@ export interface operations {
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
         /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'connected[any]'?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -48872,16 +48969,6 @@ export interface operations {
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
         /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'connected[any]'?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -49025,16 +49112,6 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
-        /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'connected[any]'?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -49297,16 +49374,6 @@ export interface operations {
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
         /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'connected[any]'?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
@@ -49443,16 +49510,6 @@ export interface operations {
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
-        /**
-         * @description Filter by bitwise AND operation - all specified bits must be set
-         * @example 5
-         */
-        'connected[and]'?: string
-        /**
-         * @description Filter by bitwise AND operation - any of the specified bits must be set
-         * @example 3
-         */
-        'connected[any]'?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true

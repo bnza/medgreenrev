@@ -115,6 +115,7 @@ export const API_RESOURCE_MAP = {
   vocStratigraphicUnitRelation:
     '/api/vocabulary/stratigraphic_unit/relationships',
   vocZooBone: '/api/vocabulary/zoo/bones',
+  vocZooBoneEndPreserved: '/api/vocabulary/zoo/bone_end_preserved',
   vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
   vocZooTaxonomy: '/api/vocabulary/zoo/taxonomies',
   writtenSourceCentury: '/api/data/written_source_centuries',

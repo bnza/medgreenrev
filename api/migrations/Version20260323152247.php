@@ -111,7 +111,7 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_zoo_bones AS
                 SELECT
-                    b.id, b.ends_preserved, b.side, b.notes,
+                    b.id, b.voc_bone_end_preserved_id AS ends_preserved, b.side, b.notes,
                     b.voc_taxonomy_id AS taxonomy_id, b.voc_bone_id AS element_id, b.voc_bone_part_id AS part_id,
                     su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
                 FROM zoo_bones b
