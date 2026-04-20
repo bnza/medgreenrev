@@ -1,0 +1,13 @@
+App\Entity\Vocabulary\Zoo\BoneSide:
+    voc__zoo__bone_side__indeterminate:
+        id: 0
+        code: '?'
+        value: indeterminate
+    voc__zoo__bone_side__left:
+        id: 100
+        code: 'L'
+        value: left
+    voc__zoo__bone_side__right:
+        id: 200
+        code: 'R'
+        value: right

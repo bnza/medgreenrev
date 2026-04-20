@@ -62,9 +62,11 @@ const { r$ } = useScopedRegle(model, {
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <data-selection-zoo-bone-side
+        <data-autocomplete
           v-model="r$.$value.side"
-          :multiple="false"
+          path="/api/vocabulary/zoo/bone-side"
+          item-title="code"
+          label="side"
           clearable
         />
       </v-col>

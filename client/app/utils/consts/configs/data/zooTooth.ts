@@ -62,8 +62,8 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'side',
-      value: 'side',
+      key: 'side.code',
+      value: 'side.code',
       title: 'side',
       minWidth: '100',
     },

@@ -111,12 +111,17 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_zoo_bones AS
                 SELECT
-                    b.id, b.voc_bone_end_preserved_id AS ends_preserved, b.side, b.notes,
-                    b.voc_taxonomy_id AS taxonomy_id, b.voc_bone_id AS element_id, b.voc_bone_part_id AS part_id,
+                    b.id, vep.code AS ends_preserved, vbs.code AS side, b.notes,
+                    vt.code AS taxonomy, vbe.code AS element, vbp.code AS part,
                     su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
                 FROM zoo_bones b
                 JOIN sus su ON b.stratigraphic_unit_id = su.id
-                JOIN archaeological_sites s ON su.site_id = s.id;
+                JOIN archaeological_sites s ON su.site_id = s.id
+                LEFT JOIN vocabulary.zoo_bone_end_preserved vep ON b.voc_bone_end_preserved_id = vep.id
+                LEFT JOIN vocabulary.zoo_bone_sides vbs ON b.voc_bone_side_id = vbs.id
+                LEFT JOIN vocabulary.zoo_taxonomy vt ON b.voc_taxonomy_id = vt.id
+                LEFT JOIN vocabulary.zoo_bones vbe ON b.voc_bone_id = vbe.id
+                LEFT JOIN vocabulary.zoo_bone_parts vbp ON b.voc_bone_part_id = vbp.id;
             SQL
         );
 
@@ -124,12 +129,15 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_zoo_teeth AS
                 SELECT
-                    t.id, t.connected, t.side, t.notes,
-                    t.voc_taxonomy_id AS taxonomy_id, t.voc_tooth_id AS element_id,
+                    t.id, t.connected, vbs.code AS side, t.notes,
+                    vt.code AS taxonomy, vte.code AS element,
                     su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
                 FROM zoo_teeth t
                 JOIN sus su ON t.stratigraphic_unit_id = su.id
-                JOIN archaeological_sites s ON su.site_id = s.id;
+                JOIN archaeological_sites s ON su.site_id = s.id
+                LEFT JOIN vocabulary.zoo_bone_sides vbs ON t.voc_bone_side_id = vbs.id
+                LEFT JOIN vocabulary.zoo_taxonomy vt ON t.voc_taxonomy_id = vt.id
+                LEFT JOIN vocabulary.zoo_bones vte ON t.voc_tooth_id = vte.id;
             SQL
         );
 

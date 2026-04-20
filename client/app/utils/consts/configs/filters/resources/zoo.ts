@@ -12,7 +12,7 @@ const {
   SearchPartial,
   SelectionZooClass,
   SelectionZooFamily,
-  SelectionZooBoneSide,
+  VocabularyZooBoneSide,
   VocabularyZooBoneEndsPreserved,
   VocabularyZooBone,
   VocabularyZooBonePart,
@@ -70,7 +70,7 @@ const commonPropertiesStaticFiltersDefinition: ResourceStaticFiltersDefinitionOb
     },
     side: {
       filters: {
-        SelectionZooBoneSide,
+        VocabularyZooBoneSide,
       },
     },
   }

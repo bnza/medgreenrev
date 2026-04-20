@@ -8166,6 +8166,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/vocabulary/zoo/bone-side': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of VocZooBoneSide resources.
+     * @description Retrieves the collection of VocZooBoneSide resources.
+     */
+    get: operations['api_vocabularyzoobone-side_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/vocabulary/zoo/bone-side/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a VocZooBoneSide resource.
+     * @description Retrieves a VocZooBoneSide resource.
+     */
+    get: operations['api_vocabularyzoobone-side_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/vocabulary/zoo/taxonomies': {
     parameters: {
       query?: never
@@ -17334,6 +17374,11 @@ export interface components {
       code?: string
       value: string
     }
+    'VocZooBoneSide.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      id?: number
+      value: string
+      code: string
+    }
     'VocZooTaxonomy-voc_zoo_taxonomy.create': {
       code: string
       value: string
@@ -17442,8 +17487,11 @@ export interface components {
        * @example https://example.com/
        */
       endsPreserved?: string | null
-      /** @enum {string|null} */
-      side?: 'L' | 'R' | '?' | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
       notes?: string | null
     }
     'ZooBone-zoo_bone.create.jsonMergePatch': {
@@ -17472,8 +17520,11 @@ export interface components {
        * @example https://example.com/
        */
       endsPreserved?: string | null
-      /** @enum {string|null} */
-      side?: 'L' | 'R' | '?' | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
       notes?: string | null
     }
     'ZooBone.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -17535,6 +17586,10 @@ export interface components {
        * @example https://example.com/
        */
       endsPreserved?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17568,6 +17623,10 @@ export interface components {
        * @example https://example.com/
        */
       endsPreserved?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17609,6 +17668,10 @@ export interface components {
        * @example https://example.com/
        */
       endsPreserved?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17643,6 +17706,10 @@ export interface components {
        * @example https://example.com/
        */
       endsPreserved?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -47490,6 +47557,64 @@ export interface operations {
       }
     }
   }
+  'api_vocabularyzoobone-side_get_collection': {
+    parameters: {
+      query?: {
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBoneSide collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['VocZooBoneSide.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  'api_vocabularyzoobone-side_id_get': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocZooBoneSide identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description VocZooBoneSide resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocZooBoneSide.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_datavocabularyzootaxonomies_get_collection: {
     parameters: {
       query?: {
@@ -47909,7 +48034,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48066,7 +48191,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48223,7 +48348,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48495,7 +48620,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48645,7 +48770,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123

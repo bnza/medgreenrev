@@ -117,6 +117,7 @@ export const API_RESOURCE_MAP = {
   vocZooBone: '/api/vocabulary/zoo/bones',
   vocZooBoneEndPreserved: '/api/vocabulary/zoo/bone_end_preserved',
   vocZooBonePart: '/api/vocabulary/zoo/bone_parts',
+  vocZooBoneSide: '/api/vocabulary/zoo/bone-side',
   vocZooTaxonomy: '/api/vocabulary/zoo/taxonomies',
   writtenSourceCentury: '/api/data/written_source_centuries',
   zooBone: '/api/data/zoo/bones',

@@ -11,7 +11,6 @@ import DataDialogSearchOperandStratigraphicUnit from '~/components/data/dialog/s
 import DataDialogSearchOperandSelection from '~/components/data/dialog/search/operand/DataDialogSearchOperandSelection.vue'
 import DataDialogSearchOperandAnalysisStatus from '~/components/data/dialog/search/operand/DataDialogSearchOperandAnalysisStatus.vue'
 import DataDialogSearchOperandWrittenSource from '~/components/data/dialog/search/operand/DataDialogSearchOperandWrittenSource.vue'
-import DataSelectionZooBoneSide from '~/components/data/dialog/search/operand/DataDialogSearchOperandZooBoneSide.vue'
 import DataDialogSearchOperandHistoryLocation from '~/components/data/dialog/search/operand/DataDialogSearchOperandHistoryLocation.vue'
 import DataDialogSearchOperandPaleoclimateSamplingSite from '~/components/data/dialog/search/operand/DataDialogSearchOperandPaleoclimateSamplingSite.vue'
 
@@ -22,7 +21,6 @@ const componentNameMap: Record<OperandComponentsKey, Component> = {
   NumericRange: DataDialogSearchOperandNumericRange,
   Selection: DataDialogSearchOperandSelection,
   SelectionAnalysisStatus: DataDialogSearchOperandAnalysisStatus,
-  SelectionZooBoneSide: DataSelectionZooBoneSide,
   Vocabulary: DataDialogSearchOperandVocabulary,
   HistoryLocation: DataDialogSearchOperandHistoryLocation,
   HistoryWrittenSource: DataDialogSearchOperandWrittenSource,

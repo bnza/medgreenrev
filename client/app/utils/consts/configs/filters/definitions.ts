@@ -194,10 +194,11 @@ const VocabularyIndividualSex: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-const SelectionZooBoneSide: StaticFiltersDefinitionObject = {
+const VocabularyZooBoneSide: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
-  componentKey: 'SelectionZooBoneSide',
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/zoo/bone-side',
   addToQueryObject: addToQueryObjectArray,
 }
 
@@ -497,7 +498,7 @@ export const API_FILTERS = {
   SelectionZooClass,
   SelectionZooFamily,
   VocabularyZooBoneEndsPreserved,
-  SelectionZooBoneSide,
+  VocabularyZooBoneSide,
   VocabularyAnalysisType,
   VocabularyBotanyElement,
   VocabularyBotanyElementPart,

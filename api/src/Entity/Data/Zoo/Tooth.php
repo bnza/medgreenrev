@@ -23,6 +23,7 @@ use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\StratigraphicUnit;
 use App\Entity\Vocabulary\Zoo\Bone as VocabularyBone;
+use App\Entity\Vocabulary\Zoo\BoneSide;
 use App\Entity\Vocabulary\Zoo\Taxonomy;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
@@ -126,7 +127,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     'element.value',
     'connected',
     'endsPreserved',
-    'side',
+    'side.code',
 ])]
 #[ApiFilter(SearchSiteAndIdFilter::class)]
 #[ApiFilter(
@@ -228,7 +229,8 @@ class Tooth
     ])]
     private bool $connected;
 
-    #[ORM\Column(type: 'string', nullable: true, options: ['fixed' => true, 'length' => 1, 'comment' => 'L = left, R = right, ? = indeterminate'])]
+    #[ORM\ManyToOne(targetEntity: BoneSide::class)]
+    #[ORM\JoinColumn(name: 'voc_bone_side_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
     #[Groups([
         'zoo_tooth:acl:read',
         'zoo_tooth:create',
@@ -237,7 +239,7 @@ class Tooth
     #[Assert\Choice(choices: ['L', 'R', '?'], groups: [
         'validation:zoo_tooth:create',
     ])]
-    private ?string $side = null;
+    private ?BoneSide $side = null;
 
     #[ORM\Column(type: 'string', nullable: true)]
     #[Groups([
@@ -302,14 +304,14 @@ class Tooth
         return $this;
     }
 
-    public function getSide(): ?string
+    public function getSide(): ?BoneSide
     {
         return $this->side;
     }
 
-    public function setSide(?string $side): Tooth
+    public function setSide(?BoneSide $side): Tooth
     {
-        $this->side = $side ?? null;
+        $this->side = $side;
 
         return $this;
     }

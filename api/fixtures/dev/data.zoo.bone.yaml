@@ -5,28 +5,28 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_CO'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
     zoo_bone_2:
         stratigraphicUnit: '@su_me_101'
         taxonomy: '@zoo_taxonomy_ALEC'
         element: '@zoo_bone_CO'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
     zoo_bone_3:
         stratigraphicUnit: '@su_me_102'
         taxonomy: '@zoo_taxonomy_RAR'
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
     zoo_bone_8:
         stratigraphicUnit: '@su_me_104'
         taxonomy: '@zoo_taxonomy_B'
         element: '@zoo_bone_SC'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_9:
         stratigraphicUnit: '@su_me_104'
@@ -42,7 +42,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_D'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_15:
         stratigraphicUnit: '@su_me_107'
@@ -50,7 +50,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MT2'
         part: '@zoo_bone_part_PM'
         endsPreserved: '@voc__zoo__bone_end_preserved__distal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_16:
         stratigraphicUnit: '@su_me_107'
@@ -58,7 +58,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_D'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_17:
         stratigraphicUnit: '@su_me_108'
@@ -66,7 +66,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_18:
         stratigraphicUnit: '@su_me_108'
@@ -82,7 +82,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_P1'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: '?'
+        side: '@voc__zoo__bone_side__indeterminate'
         notes: null
     zoo_bone_20:
         stratigraphicUnit: '@su_ca_202'
@@ -90,7 +90,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_AS'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_23:
         stratigraphicUnit: '@su_ca_204'
@@ -98,7 +98,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: 'Small'
     zoo_bone_24:
         stratigraphicUnit: '@su_ca_204'
@@ -106,7 +106,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: 'Small'
     zoo_bone_25:
         stratigraphicUnit: '@su_ca_205'
@@ -114,7 +114,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_P'
         endsPreserved: '@voc__zoo__bone_end_preserved__distal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_26:
         stratigraphicUnit: '@su_ca_205'
@@ -122,7 +122,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_27:
         stratigraphicUnit: '@su_ca_206'
@@ -130,7 +130,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_CA'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: 'Numerous cuts. Eisenmann measurements: 1: 612; 2: 629; 3: 651; 5: 512; 6: 342; 7: 540'
     zoo_bone_28:
         stratigraphicUnit: '@su_ca_206'
@@ -138,7 +138,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_29:
         stratigraphicUnit: '@su_ca_207'
@@ -146,7 +146,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: 'Peregrine falcon (Falco peregrinus)'
     zoo_bone_30:
         stratigraphicUnit: '@su_ca_207'
@@ -154,7 +154,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: 'Peregrine falcon (Falco peregrinus)'
     zoo_bone_31:
         stratigraphicUnit: '@su_ca_207'
@@ -162,7 +162,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_UL'
         part: '@zoo_bone_part_PM'
         endsPreserved: '@voc__zoo__bone_end_preserved__distal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: 'Peregrine falcon (Falco peregrinus)'
     zoo_bone_32:
         stratigraphicUnit: '@su_ca_208'
@@ -170,7 +170,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__distal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: 'Individual #5 in anatomical connection (only this remain recorded)'
     zoo_bone_33:
         stratigraphicUnit: '@su_ca_208'
@@ -178,7 +178,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_34:
         stratigraphicUnit: '@su_to_301'
@@ -186,7 +186,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_CO'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_35:
         stratigraphicUnit: '@su_to_301'
@@ -194,21 +194,21 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_36:
         stratigraphicUnit: '@su_to_302'
         taxonomy: '@zoo_taxonomy_LAG'
         element: '@zoo_bone_PE'
         part: null
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_37:
         stratigraphicUnit: '@su_to_302'
         taxonomy: '@zoo_taxonomy_LAG'
         element: '@zoo_bone_PE'
         part: null
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_38:
         stratigraphicUnit: '@su_to_303'
@@ -216,7 +216,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_39:
         stratigraphicUnit: '@su_to_303'
@@ -224,7 +224,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_42:
         stratigraphicUnit: '@su_to_305'
@@ -232,7 +232,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MT1'
         part: '@zoo_bone_part_P'
         endsPreserved: '@voc__zoo__bone_end_preserved__distal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_43:
         stratigraphicUnit: '@su_to_305'
@@ -240,7 +240,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_D'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_44:
         stratigraphicUnit: '@su_to_305'
@@ -248,7 +248,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_RA'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_45:
         stratigraphicUnit: '@su_to_306'
@@ -256,7 +256,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_FE'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_46:
         stratigraphicUnit: '@su_to_306'
@@ -264,7 +264,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_47:
         stratigraphicUnit: '@su_to_306'
@@ -272,7 +272,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_TI'
         part: '@zoo_bone_part_PM'
         endsPreserved: '@voc__zoo__bone_end_preserved__distal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_50:
         stratigraphicUnit: '@su_to_308'
@@ -280,7 +280,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_SC'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_51:
         stratigraphicUnit: '@su_to_308'
@@ -288,7 +288,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_D'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_52:
         stratigraphicUnit: '@su_to_308'
@@ -296,7 +296,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_55:
         stratigraphicUnit: '@su_ni_402'
@@ -304,7 +304,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: null
     zoo_bone_56:
         stratigraphicUnit: '@su_ni_402'
@@ -312,7 +312,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_HU'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: null
     zoo_bone_57:
         stratigraphicUnit: '@su_ni_403'
@@ -320,7 +320,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_D'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'L'
+        side: '@voc__zoo__bone_side__left'
         notes: 'Possible pathology (lateral projection of condyles)'
     zoo_bone_58:
         stratigraphicUnit: '@su_ni_403'
@@ -328,7 +328,7 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MC1'
         part: '@zoo_bone_part_WH'
         endsPreserved: '@voc__zoo__bone_end_preserved__both'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: 'Cuts in distal area'
     zoo_bone_59:
         stratigraphicUnit: '@su_se_501'
@@ -343,5 +343,5 @@ App\Entity\Data\Zoo\Bone:
         element: '@zoo_bone_MT1'
         part: '@zoo_bone_part_DM'
         endsPreserved: '@voc__zoo__bone_end_preserved__proximal'
-        side: 'R'
+        side: '@voc__zoo__bone_side__right'
         notes: 'Localized burning on condyles'

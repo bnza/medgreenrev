@@ -27,6 +27,9 @@ const vocabularyZooTaxonomy = useVocabularyStore(
   '/api/vocabulary/zoo/taxonomies',
 )
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
+const vocabularyZooBoneSide = useVocabularyStore(
+  '/api/vocabulary/zoo/bone-side',
+)
 
 const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
@@ -88,6 +91,9 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     </template>
     <template #[`item.connected`]="{ item }">
       {{ item.connected ? 'jaw' : 'loose' }}
+    </template>
+    <template #[`item.side`]="{ item }">
+      {{ vocabularyZooBoneSide.getValue(item.side, 'code') }}
     </template>
 
     <template #dialogs="{ refetch }">

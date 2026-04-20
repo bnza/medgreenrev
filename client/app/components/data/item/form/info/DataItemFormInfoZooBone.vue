@@ -18,6 +18,9 @@ const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 const vocabularyZooBoneParts = useVocabularyStore(
   '/api/vocabulary/zoo/bone_parts',
 )
+const vocabularyZooBoneSide = useVocabularyStore(
+  '/api/vocabulary/zoo/bone-side',
+)
 </script>
 
 <template>
@@ -91,7 +94,10 @@ const vocabularyZooBoneParts = useVocabularyStore(
         />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
-        <data-selection-zoo-bone-side :model-value="item.side" />
+        <v-text-field
+          :model-value="vocabularyZooBoneSide.getValue(item.side, 'code')"
+          label="side"
+        />
       </v-col>
     </v-row>
   </data-item-form-read>

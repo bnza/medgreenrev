@@ -330,24 +330,26 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE TABLE vocabulary.zoo_bone_parts (id SMALLINT NOT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_41B0A82877153098 ON vocabulary.zoo_bone_parts (code)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_41B0A8281D775834 ON vocabulary.zoo_bone_parts (value)');
-        $this->addSql('CREATE TABLE zoo_bones (id BIGINT NOT NULL, side CHAR(1) DEFAULT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_bone_id SMALLINT DEFAULT NULL, voc_bone_part_id SMALLINT DEFAULT NULL, voc_bone_end_preserved_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE vocabulary.zoo_bone_sides (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, code VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_88D606C51D775834 ON vocabulary.zoo_bone_sides (value)');
+        $this->addSql('CREATE TABLE zoo_bones (id BIGINT NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_bone_id SMALLINT DEFAULT NULL, voc_bone_part_id SMALLINT DEFAULT NULL, voc_bone_end_preserved_id SMALLINT DEFAULT NULL, voc_bone_side_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_1911F3EAA502ADE ON zoo_bones (stratigraphic_unit_id)');
         $this->addSql('CREATE INDEX IDX_1911F3EA2A3A1291 ON zoo_bones (voc_taxonomy_id)');
         $this->addSql('CREATE INDEX IDX_1911F3EAE26518D6 ON zoo_bones (voc_bone_id)');
         $this->addSql('CREATE INDEX IDX_1911F3EA2BAA4AD9 ON zoo_bones (voc_bone_part_id)');
         $this->addSql('CREATE INDEX IDX_1911F3EAE9FE71C7 ON zoo_bones (voc_bone_end_preserved_id)');
-        $this->addSql('COMMENT ON COLUMN zoo_bones.side IS \'L = left, R = right, ? = indeterminate\'');
+        $this->addSql('CREATE INDEX IDX_1911F3EAF11480F1 ON zoo_bones (voc_bone_side_id)');
         $this->addSql('CREATE TABLE vocabulary.zoo_bones (id SMALLINT NOT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_88CCAECB77153098 ON vocabulary.zoo_bones (code)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_88CCAECB1D775834 ON vocabulary.zoo_bones (value)');
         $this->addSql('CREATE TABLE vocabulary.zoo_taxonomy (id SMALLINT NOT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, vernacular_name VARCHAR(255) NOT NULL, class VARCHAR(255) NOT NULL, family VARCHAR(255) DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_AD4BDA3C77153098 ON vocabulary.zoo_taxonomy (code)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_AD4BDA3C1D775834 ON vocabulary.zoo_taxonomy (value)');
-        $this->addSql('CREATE TABLE zoo_teeth (id BIGINT NOT NULL, connected BOOLEAN NOT NULL, side CHAR(1) DEFAULT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_tooth_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE zoo_teeth (id BIGINT NOT NULL, connected BOOLEAN NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_tooth_id SMALLINT DEFAULT NULL, voc_bone_side_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_4CE574B1A502ADE ON zoo_teeth (stratigraphic_unit_id)');
         $this->addSql('CREATE INDEX IDX_4CE574B12A3A1291 ON zoo_teeth (voc_taxonomy_id)');
         $this->addSql('CREATE INDEX IDX_4CE574B123332A79 ON zoo_teeth (voc_tooth_id)');
-        $this->addSql('COMMENT ON COLUMN zoo_teeth.side IS \'L = left, R = right, ? = indeterminate\'');
+        $this->addSql('CREATE INDEX IDX_4CE574B1F11480F1 ON zoo_teeth (voc_bone_side_id)');
         $this->addSql('ALTER TABLE abs_dating_analysis_botany_charcoals ADD CONSTRAINT FK_70FE37C9BF396750 FOREIGN KEY (id) REFERENCES analysis_botany_charcoals (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE abs_dating_analysis_botany_seeds ADD CONSTRAINT FK_F725B0D6BF396750 FOREIGN KEY (id) REFERENCES analysis_botany_seeds (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE abs_dating_analysis_individuals ADD CONSTRAINT FK_A2EDE54BF396750 FOREIGN KEY (id) REFERENCES analysis_individuals (id) ON DELETE CASCADE NOT DEFERRABLE');
@@ -469,9 +471,11 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE zoo_bones ADD CONSTRAINT FK_1911F3EAE26518D6 FOREIGN KEY (voc_bone_id) REFERENCES vocabulary.zoo_bones (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE zoo_bones ADD CONSTRAINT FK_1911F3EA2BAA4AD9 FOREIGN KEY (voc_bone_part_id) REFERENCES vocabulary.zoo_bone_parts (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE zoo_bones ADD CONSTRAINT FK_1911F3EAE9FE71C7 FOREIGN KEY (voc_bone_end_preserved_id) REFERENCES vocabulary.zoo_bone_end_preserved (id) ON DELETE RESTRICT NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE zoo_bones ADD CONSTRAINT FK_1911F3EAF11480F1 FOREIGN KEY (voc_bone_side_id) REFERENCES vocabulary.zoo_bone_sides (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE zoo_teeth ADD CONSTRAINT FK_4CE574B1A502ADE FOREIGN KEY (stratigraphic_unit_id) REFERENCES sus (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE zoo_teeth ADD CONSTRAINT FK_4CE574B12A3A1291 FOREIGN KEY (voc_taxonomy_id) REFERENCES vocabulary.zoo_taxonomy (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE zoo_teeth ADD CONSTRAINT FK_4CE574B123332A79 FOREIGN KEY (voc_tooth_id) REFERENCES vocabulary.zoo_bones (id) ON DELETE RESTRICT NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE zoo_teeth ADD CONSTRAINT FK_4CE574B1F11480F1 FOREIGN KEY (voc_bone_side_id) REFERENCES vocabulary.zoo_bone_sides (id) ON DELETE RESTRICT NOT DEFERRABLE');
     }
 
     public function down(Schema $schema): void
@@ -639,9 +643,11 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE zoo_bones DROP CONSTRAINT FK_1911F3EAE26518D6');
         $this->addSql('ALTER TABLE zoo_bones DROP CONSTRAINT FK_1911F3EA2BAA4AD9');
         $this->addSql('ALTER TABLE zoo_bones DROP CONSTRAINT FK_1911F3EAE9FE71C7');
+        $this->addSql('ALTER TABLE zoo_bones DROP CONSTRAINT FK_1911F3EAF11480F1');
         $this->addSql('ALTER TABLE zoo_teeth DROP CONSTRAINT FK_4CE574B1A502ADE');
         $this->addSql('ALTER TABLE zoo_teeth DROP CONSTRAINT FK_4CE574B12A3A1291');
         $this->addSql('ALTER TABLE zoo_teeth DROP CONSTRAINT FK_4CE574B123332A79');
+        $this->addSql('ALTER TABLE zoo_teeth DROP CONSTRAINT FK_4CE574B1F11480F1');
         $this->addSql('DROP TABLE abs_dating_analysis_botany_charcoals');
         $this->addSql('DROP TABLE abs_dating_analysis_botany_seeds');
         $this->addSql('DROP TABLE abs_dating_analysis_individuals');
@@ -727,6 +733,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP TABLE auth.users');
         $this->addSql('DROP TABLE vocabulary.zoo_bone_end_preserved');
         $this->addSql('DROP TABLE vocabulary.zoo_bone_parts');
+        $this->addSql('DROP TABLE vocabulary.zoo_bone_sides');
         $this->addSql('DROP TABLE zoo_bones');
         $this->addSql('DROP TABLE vocabulary.zoo_bones');
         $this->addSql('DROP TABLE vocabulary.zoo_taxonomy');
