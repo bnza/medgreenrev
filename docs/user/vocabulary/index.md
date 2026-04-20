@@ -49,4 +49,6 @@
 #### Zoo
 
 - [Bone](vocabulary.zoo.bone.md)
+- [Bone End Preserved](vocabulary.zoo.bone_end_preserved.md)
 - [Bone Part](vocabulary.zoo.bone_part.md)
+- [Bone Side](vocabulary.zoo.bone_side.md)
