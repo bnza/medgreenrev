@@ -1,0 +1,10 @@
+App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisSedimentCoreDepth:
+    abs_dating_sediment_core_depth_1:
+        analysis: '@analysis_sediment_core_depth_1'
+        datingLower: 1200
+        datingUpper: 1400
+        uncalibratedDating: 950
+        error: 60
+        calibrationCurve: 'IntCal20'
+        probability: '95.6'
+        notes: 'OSL dating of quartz from SC1 deep core sample.'

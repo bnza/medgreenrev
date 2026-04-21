@@ -18,6 +18,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Entity\Data\SedimentCore;
 use App\Metadata\ExportFeatureCollection;
@@ -25,6 +26,8 @@ use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
 use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\Validator as AppAssert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -336,6 +339,14 @@ class SedimentCoreDepth
     ])]
     private bool $sedimentaryDna = false;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSedimentCoreDepth::class, mappedBy: 'subject')]
+    private Collection $analyses;
+
+    public function __construct()
+    {
+        $this->analyses = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -493,6 +504,18 @@ class SedimentCoreDepth
     public function setMicroCharcoal(bool $microCharcoal): SedimentCoreDepth
     {
         $this->microCharcoal = $microCharcoal;
+
+        return $this;
+    }
+
+    public function getAnalyses(): Collection
+    {
+        return $this->analyses;
+    }
+
+    public function setAnalyses(Collection $analyses): SedimentCoreDepth
+    {
+        $this->analyses = $analyses;
 
         return $this;
     }

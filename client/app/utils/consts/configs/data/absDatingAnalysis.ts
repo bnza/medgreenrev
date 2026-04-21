@@ -132,9 +132,9 @@ export const absDatingAnalysisPottery = {
   ...config,
   apiPath: '/api/data/analyses/absolute_dating/potteries',
 }
-export const absDatingAnalysisSedimentCore = {
+export const absDatingAnalysisSedimentCoreDepth = {
   ...config,
-  apiPath: '/api/data/analyses/absolute_dating/sediment_cores',
+  apiPath: '/api/data/analyses/absolute_dating/sediment_core_depths',
 }
 export const absDatingAnalysisSample = {
   ...config,

@@ -287,7 +287,7 @@ type AnalysisSubjectParentResourceKey = Extract<
   | 'individual'
   | 'pottery'
   | 'sample'
-  | 'sedimentCore'
+  | 'sedimentCoreDepth'
   | 'zooBone'
   | 'zooTooth'
 >

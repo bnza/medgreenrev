@@ -14,7 +14,7 @@ import { propertyStaticFiltersDefinition as individualPropertyStaticDefinition }
 import { propertyStaticFiltersDefinition as microstratigraphicUnitPropertyStaticDefinition } from './microstratigraphicUnit'
 import { propertyStaticFiltersDefinition as potteryPropertyStaticDefinition } from './pottery'
 import { propertyStaticFiltersDefinition as samplePropertyStaticDefinition } from './sample'
-import { propertyStaticFiltersDefinition as sedimentCorePropertyStaticDefinition } from './sedimentCore'
+import { propertyStaticFiltersDefinition as sedimentCoreDepthPropertyStaticDefinition } from './sedimentCoreDepth'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 import {
   propertyBoneStaticFiltersDefinition as zooBonePropertyStaticDefinition,
@@ -144,13 +144,13 @@ const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: Resou
     ...summaryPropertyStaticFiltersDefinition,
   }
 
-const analysisSedimentCorePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+const analysisSedimentCoreDepthPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     ...generateResourceDefinition(analysisPropertyStaticDefinition, [
       'analysis',
       'analysis',
     ]),
-    ...generateResourceDefinition(sedimentCorePropertyStaticDefinition, [
+    ...generateResourceDefinition(sedimentCoreDepthPropertyStaticDefinition, [
       'subject',
       'subject',
     ]),
@@ -280,16 +280,16 @@ export const staticFiltersDefinitionSampleMicrostratigraphicUnitParentSubject =
     ...analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition,
   }
 
-export const staticFiltersDefinitionSedimentCore = {
-  ...analysisSedimentCorePropertyStaticFiltersDefinition,
+export const staticFiltersDefinitionSedimentCoreDepth = {
+  ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
   ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
-    'subject.sedimentCoresStratigraphicUnits.stratigraphicUnit',
+    'subject.stratigraphicUnit',
     'stratigraphic unit',
   ]),
 }
 
-export const staticFiltersDefinitionSedimentCoreParentSubject = {
-  ...analysisSedimentCorePropertyStaticFiltersDefinition,
+export const staticFiltersDefinitionSedimentCoreDepthParentSubject = {
+  ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
 }
 
 export const staticFiltersDefinitionZooBone = {

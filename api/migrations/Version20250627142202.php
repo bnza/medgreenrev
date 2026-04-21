@@ -17,7 +17,7 @@ final class Version20250627142202 extends AbstractMigration
         'analysis_individuals',
         'analysis_potteries',
         'analysis_samples',
-        'analysis_sediment_cores',
+        'analysis_sediment_core_depths',
         'analysis_zoo_bones',
         'analysis_zoo_teeth',
     ];
@@ -41,7 +41,7 @@ final class Version20250627142202 extends AbstractMigration
     ];
 
     private const array VIEW_EXCLUDED_TABLES = [
-        'analysis_sediment_cores',
+        'analysis_sediment_core_depths',
     ];
 
     public function getDescription(): string

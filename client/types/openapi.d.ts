@@ -426,7 +426,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/absolute_dating/sediment_cores': {
+  '/api/data/analyses/absolute_dating/sediment_core_depths': {
     parameters: {
       query?: never
       header?: never
@@ -434,23 +434,23 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
-     * @description Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
+     * Retrieves the collection of AbsDatingAnalysisSedimentCoreDepth resources.
+     * @description Retrieves the collection of AbsDatingAnalysisSedimentCoreDepth resources.
      */
-    get: operations['api_dataanalysesabsolute_datingsediment_cores_get_collection']
+    get: operations['api_dataanalysesabsolute_datingsediment_core_depths_get_collection']
     put?: never
     /**
-     * Creates a AbsDatingAnalysisSedimentCore resource.
-     * @description Creates a AbsDatingAnalysisSedimentCore resource.
+     * Creates a AbsDatingAnalysisSedimentCoreDepth resource.
+     * @description Creates a AbsDatingAnalysisSedimentCoreDepth resource.
      */
-    post: operations['api_dataanalysesabsolute_datingsediment_cores_post']
+    post: operations['api_dataanalysesabsolute_datingsediment_core_depths_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/absolute_dating/sediment_cores/{id}': {
+  '/api/data/analyses/absolute_dating/sediment_core_depths/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -458,27 +458,27 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves a AbsDatingAnalysisSedimentCore resource.
-     * @description Retrieves a AbsDatingAnalysisSedimentCore resource.
+     * Retrieves a AbsDatingAnalysisSedimentCoreDepth resource.
+     * @description Retrieves a AbsDatingAnalysisSedimentCoreDepth resource.
      */
-    get: operations['api_dataanalysesabsolute_datingsediment_cores_id_get']
+    get: operations['api_dataanalysesabsolute_datingsediment_core_depths_id_get']
     put?: never
     post?: never
     /**
-     * Removes the AbsDatingAnalysisSedimentCore resource.
-     * @description Removes the AbsDatingAnalysisSedimentCore resource.
+     * Removes the AbsDatingAnalysisSedimentCoreDepth resource.
+     * @description Removes the AbsDatingAnalysisSedimentCoreDepth resource.
      */
-    delete: operations['api_dataanalysesabsolute_datingsediment_cores_id_delete']
+    delete: operations['api_dataanalysesabsolute_datingsediment_core_depths_id_delete']
     options?: never
     head?: never
     /**
-     * Updates the AbsDatingAnalysisSedimentCore resource.
-     * @description Updates the AbsDatingAnalysisSedimentCore resource.
+     * Updates the AbsDatingAnalysisSedimentCoreDepth resource.
+     * @description Updates the AbsDatingAnalysisSedimentCoreDepth resource.
      */
-    patch: operations['api_dataanalysesabsolute_datingsediment_cores_id_patch']
+    patch: operations['api_dataanalysesabsolute_datingsediment_core_depths_id_patch']
     trace?: never
   }
-  '/api/data/analyses/absolute_dating/{parentId}/sediment_cores': {
+  '/api/data/analyses/absolute_dating/{parentId}/sediment_core_depths': {
     parameters: {
       query?: never
       header?: never
@@ -486,10 +486,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
-     * @description Retrieves the collection of AbsDatingAnalysisSedimentCore resources.
+     * Retrieves the collection of AbsDatingAnalysisSedimentCoreDepth resources.
+     * @description Retrieves the collection of AbsDatingAnalysisSedimentCoreDepth resources.
      */
-    get: operations['api_dataanalysesabsolute_dating_parentIdsediment_cores_get_collection']
+    get: operations['api_dataanalysesabsolute_dating_parentIdsediment_core_depths_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1530,7 +1530,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/sediment_cores': {
+  '/api/data/analyses/sediment_core_depths': {
     parameters: {
       query?: never
       header?: never
@@ -1538,23 +1538,23 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AnalysisSedimentCore resources.
-     * @description Retrieves the collection of AnalysisSedimentCore resources.
+     * Retrieves the collection of AnalysisSedimentCoreDepth resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepth resources.
      */
-    get: operations['api_dataanalysessediment_cores_get_collection']
+    get: operations['api_dataanalysessediment_core_depths_get_collection']
     put?: never
     /**
-     * Creates a AnalysisSedimentCore resource.
-     * @description Creates a AnalysisSedimentCore resource.
+     * Creates a AnalysisSedimentCoreDepth resource.
+     * @description Creates a AnalysisSedimentCoreDepth resource.
      */
-    post: operations['api_dataanalysessediment_cores_post']
+    post: operations['api_dataanalysessediment_core_depths_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/data/analyses/sediment_cores/{id}': {
+  '/api/data/analyses/sediment_core_depths/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -1562,27 +1562,27 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves a AnalysisSedimentCore resource.
-     * @description Retrieves a AnalysisSedimentCore resource.
+     * Retrieves a AnalysisSedimentCoreDepth resource.
+     * @description Retrieves a AnalysisSedimentCoreDepth resource.
      */
-    get: operations['api_dataanalysessediment_cores_id_get']
+    get: operations['api_dataanalysessediment_core_depths_id_get']
     put?: never
     post?: never
     /**
-     * Removes the AnalysisSedimentCore resource.
-     * @description Removes the AnalysisSedimentCore resource.
+     * Removes the AnalysisSedimentCoreDepth resource.
+     * @description Removes the AnalysisSedimentCoreDepth resource.
      */
-    delete: operations['api_dataanalysessediment_cores_id_delete']
+    delete: operations['api_dataanalysessediment_core_depths_id_delete']
     options?: never
     head?: never
     /**
-     * Updates the AnalysisSedimentCore resource.
-     * @description Updates the AnalysisSedimentCore resource.
+     * Updates the AnalysisSedimentCoreDepth resource.
+     * @description Updates the AnalysisSedimentCoreDepth resource.
      */
-    patch: operations['api_dataanalysessediment_cores_id_patch']
+    patch: operations['api_dataanalysessediment_core_depths_id_patch']
     trace?: never
   }
-  '/api/data/analyses/{parentId}/sediment_cores': {
+  '/api/data/analyses/{parentId}/sediment_core_depths': {
     parameters: {
       query?: never
       header?: never
@@ -1590,10 +1590,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AnalysisSedimentCore resources.
-     * @description Retrieves the collection of AnalysisSedimentCore resources.
+     * Retrieves the collection of AnalysisSedimentCoreDepth resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepth resources.
      */
-    get: operations['api_dataanalyses_parentIdsediment_cores_get_collection']
+    get: operations['api_dataanalyses_parentIdsediment_core_depths_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1602,7 +1602,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/sediment_cores/{parentId}/analyses': {
+  '/api/data/sediment_core_depths/{parentId}/analyses': {
     parameters: {
       query?: never
       header?: never
@@ -1610,10 +1610,10 @@ export interface paths {
       cookie?: never
     }
     /**
-     * Retrieves the collection of AnalysisSedimentCore resources.
-     * @description Retrieves the collection of AnalysisSedimentCore resources.
+     * Retrieves the collection of AnalysisSedimentCoreDepth resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepth resources.
      */
-    get: operations['api_datasediment_cores_parentIdanalyses_get_collection']
+    get: operations['api_datasediment_core_depths_parentIdanalyses_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -6110,7 +6110,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/validator/unique/analyses/sediment_cores': {
+  '/api/validator/unique/analyses/sediment_core_depths': {
     parameters: {
       query?: never
       header?: never
@@ -6121,7 +6121,7 @@ export interface paths {
      * Retrieves a UniqueValidator resource.
      * @description Retrieves a UniqueValidator resource.
      */
-    get: operations['api_validatoruniqueanalysessediment_cores_get']
+    get: operations['api_validatoruniqueanalysessediment_core_depths_get']
     put?: never
     post?: never
     delete?: never
@@ -9077,15 +9077,15 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisSedimentCore-abs_dating_join.create': Record<
+    'AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.create': Record<
       string,
       never
     >
-    'AbsDatingAnalysisSedimentCore-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.update.jsonMergePatch': Record<
       string,
       never
     >
-    'AbsDatingAnalysisSedimentCore-analysis_join.create': {
+    'AbsDatingAnalysisSedimentCoreDepth-analysis_join.create': {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9094,7 +9094,7 @@ export interface components {
       probability?: string | null
       notes?: string | null
     }
-    'AbsDatingAnalysisSedimentCore-analysis_join.update': {
+    'AbsDatingAnalysisSedimentCoreDepth-analysis_join.update': {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9103,7 +9103,7 @@ export interface components {
       probability?: string | null
       notes?: string | null
     }
-    'AbsDatingAnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'AbsDatingAnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9118,8 +9118,8 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read': {
-      analysis?: components['schemas']['AnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+    'AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read': {
+      analysis?: components['schemas']['AnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9134,7 +9134,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
-    'AbsDatingAnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'AbsDatingAnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9441,18 +9441,18 @@ export interface components {
         canDelete: boolean
       }
     }
-    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       readonly id: number | string
       identifier: string
       /** @default 0 */
       status: number
-      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       responsible?: string | null
       year: number
       laboratory?: string | null
       summary?: string | null
       createdBy?:
-        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         | null
       readonly code: string
       /** @description Access control metadata */
@@ -9748,7 +9748,7 @@ export interface components {
         | null
       readonly code: string
     })
-    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9760,13 +9760,13 @@ export interface components {
       identifier: string
       /** @default 0 */
       status: number
-      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       responsible?: string | null
       year: number
       laboratory?: string | null
       summary?: string | null
       createdBy?:
-        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         | null
       readonly code: string
     })
@@ -10481,14 +10481,14 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     })
-    'AnalysisSedimentCore-analysis_join.create': {
+    'AnalysisSedimentCoreDepth-analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       subject: string
       absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisSedimentCore-analysis_join.create']
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth-analysis_join.create']
         | null
       /**
        * Format: iri-reference
@@ -10497,19 +10497,19 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSedimentCore-analysis_join.update.jsonMergePatch': {
+    'AnalysisSedimentCoreDepth-analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisSedimentCore-analysis_join.update']
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth-analysis_join.update']
         | null
       summary?: string | null
     }
-    'AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'AnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       readonly id?: number | string
-      subject?: components['schemas']['SedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      subject?: components['schemas']['SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         | null
-      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       summary?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10518,7 +10518,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read': {
+    'AnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10527,10 +10527,10 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
         | null
     })
-    'AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10539,11 +10539,11 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      subject?: components['schemas']['SedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      subject?: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         | null
-      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       summary?: string | null
     })
     'AnalysisSiteAnthropology-analysis_join.create': {
@@ -14362,7 +14362,7 @@ export interface components {
       typeName?: string
       readonly id?: unknown
     }
-    'SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -14438,7 +14438,7 @@ export interface components {
       }
     }
     'SamplingSite.geojson-feature_collection.json.read': Record<string, never>
-    'SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -14544,6 +14544,16 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
     }
+    'SamplingStratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
+      site: components['schemas']['SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'SamplingStratigraphicUnit.csv-sampling_su.acl.read': {
       readonly id?: number | string
       site: components['schemas']['SamplingSite.csv-sampling_su.acl.read']
@@ -14581,6 +14591,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SamplingStratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      site: components['schemas']['SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      readonly code: string
+    })
     'SamplingStratigraphicUnit.jsonld-sampling_su.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -14631,7 +14652,6 @@ export interface components {
       year: number
       number: number
       sedimentCoresStratigraphicUnits?: string[]
-      analyses?: string[]
       description?: string | null
       readonly code?: string
     }
@@ -14671,20 +14691,6 @@ export interface components {
       readonly timeStamp?: string
       typeName?: string
       readonly id?: unknown
-    }
-    'SedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
-      readonly id: number | string
-      site: components['schemas']['SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
-      year: number
-      number: number
-      description?: string | null
-      readonly code?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
     }
     'SedimentCore.csv-sediment_core.acl.read': {
       readonly id: number | string
@@ -14739,25 +14745,9 @@ export interface components {
       year?: number
       number?: number
       sedimentCoresStratigraphicUnits?: string[]
-      analyses?: string[]
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id: number | string
-      site: components['schemas']['SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
-      year: number
-      number: number
-      description?: string | null
-      readonly code?: string
-    })
     'SedimentCore.jsonld-sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -14836,6 +14826,7 @@ export interface components {
       pollen: boolean
       /** @default false */
       sedimentaryDna: boolean
+      analyses?: string[]
       readonly code?: string
     }
     'SedimentCoreDepth-feature_collection.json.read': Record<string, never>
@@ -14874,6 +14865,43 @@ export interface components {
       readonly timeStamp?: string
       typeName?: string
       readonly id?: unknown
+    }
+    'SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sedimentCore: string
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
+      readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       readonly id?: number | string
@@ -14991,8 +15019,47 @@ export interface components {
       pollen: boolean
       /** @default false */
       sedimentaryDna: boolean
+      analyses?: string[]
       readonly code?: string
     }
+    'SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sedimentCore: string
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
+      readonly code?: string
+    })
     'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15798,7 +15865,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
       readonly userIdentifier?: string
@@ -15968,7 +16035,7 @@ export interface components {
       readonly id?: string | null
       readonly userIdentifier?: string
     })
-    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -16254,7 +16321,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       code?: string
       group?: string
       value: string
@@ -16422,7 +16489,7 @@ export interface components {
       group?: string
       value: string
     })
-    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read': {
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -17732,8 +17799,11 @@ export interface components {
        */
       element: string | null
       connected?: boolean
-      /** @enum {string|null} */
-      side?: 'L' | 'R' | '?' | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
       notes?: string | null
     }
     'ZooTooth-zoo_tooth.create.jsonMergePatch': {
@@ -17753,8 +17823,11 @@ export interface components {
        */
       element?: string | null
       connected?: boolean
-      /** @enum {string|null} */
-      side?: 'L' | 'R' | '?' | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
       notes?: string | null
     }
     'ZooTooth.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -17816,6 +17889,10 @@ export interface components {
        */
       element?: string | null
       connected?: boolean
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -17858,6 +17935,10 @@ export interface components {
        */
       element?: string | null
       connected?: boolean
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
       side?: string | null
       notes?: string | null
       readonly code?: string
@@ -19414,7 +19495,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysesabsolute_datingsediment_cores_get_collection: {
+  api_dataanalysesabsolute_datingsediment_core_depths_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -19428,40 +19509,40 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description AbsDatingAnalysisSedimentCore collection */
+      /** @description AbsDatingAnalysisSedimentCoreDepth collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read'][]
           }
         }
       }
     }
   }
-  api_dataanalysesabsolute_datingsediment_cores_post: {
+  api_dataanalysesabsolute_datingsediment_core_depths_post: {
     parameters: {
       query?: never
       header?: never
       path?: never
       cookie?: never
     }
-    /** @description The new AbsDatingAnalysisSedimentCore resource */
+    /** @description The new AbsDatingAnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.create']
       }
     }
     responses: {
-      /** @description AbsDatingAnalysisSedimentCore resource created */
+      /** @description AbsDatingAnalysisSedimentCoreDepth resource created */
       201: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
         }
       }
       /** @description Invalid input */
@@ -19488,25 +19569,25 @@ export interface operations {
       }
     }
   }
-  api_dataanalysesabsolute_datingsediment_cores_id_get: {
+  api_dataanalysesabsolute_datingsediment_core_depths_id_get: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AbsDatingAnalysisSedimentCore identifier */
+        /** @description AbsDatingAnalysisSedimentCoreDepth identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AbsDatingAnalysisSedimentCore resource */
+      /** @description AbsDatingAnalysisSedimentCoreDepth resource */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
         }
       }
       /** @description Not found */
@@ -19522,19 +19603,19 @@ export interface operations {
       }
     }
   }
-  api_dataanalysesabsolute_datingsediment_cores_id_delete: {
+  api_dataanalysesabsolute_datingsediment_core_depths_id_delete: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AbsDatingAnalysisSedimentCore identifier */
+        /** @description AbsDatingAnalysisSedimentCoreDepth identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AbsDatingAnalysisSedimentCore resource deleted */
+      /** @description AbsDatingAnalysisSedimentCoreDepth resource deleted */
       204: {
         headers: {
           [name: string]: unknown
@@ -19565,30 +19646,30 @@ export interface operations {
       }
     }
   }
-  api_dataanalysesabsolute_datingsediment_cores_id_patch: {
+  api_dataanalysesabsolute_datingsediment_core_depths_id_patch: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AbsDatingAnalysisSedimentCore identifier */
+        /** @description AbsDatingAnalysisSedimentCoreDepth identifier */
         id: string
       }
       cookie?: never
     }
-    /** @description The updated AbsDatingAnalysisSedimentCore resource */
+    /** @description The updated AbsDatingAnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSedimentCore-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.update.jsonMergePatch']
       }
     }
     responses: {
-      /** @description AbsDatingAnalysisSedimentCore resource updated */
+      /** @description AbsDatingAnalysisSedimentCoreDepth resource updated */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
         }
       }
       /** @description Invalid input */
@@ -19637,7 +19718,7 @@ export interface operations {
       }
     }
   }
-  api_dataanalysesabsolute_dating_parentIdsediment_cores_get_collection: {
+  api_dataanalysesabsolute_dating_parentIdsediment_core_depths_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
@@ -19647,21 +19728,21 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description AbsDatingAnalysisSedimentCore identifier */
+        /** @description AbsDatingAnalysisSedimentCoreDepth identifier */
         parentId: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AbsDatingAnalysisSedimentCore collection */
+      /** @description AbsDatingAnalysisSedimentCoreDepth collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisSedimentCore.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read'][]
           }
         }
       }
@@ -25798,15 +25879,40 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessediment_cores_get_collection: {
+  api_dataanalysessediment_core_depths_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'exists[subject.stratigraphicUnit.description]'?: boolean
+        'exists[subject.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.stratigraphicUnit.chronologyLower'?: number
+        'subject.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.stratigraphicUnit.chronologyUpper'?: number
+        'subject.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.stratigraphicUnit.number'?: number
+        'subject.stratigraphicUnit.number[]'?: number[]
         'subject.stratigraphicUnit.site'?: string
         'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
@@ -25817,11 +25923,36 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'subject.sedimentCore'?: string
+        'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.site'?: string
+        'subject.sedimentCore.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.depthMin[between]'?: string
+        'subject.depthMin[gt]'?: string
+        'subject.depthMin[gte]'?: string
+        'subject.depthMin[lt]'?: string
+        'subject.depthMin[lte]'?: string
+        'subject.depthMax[between]'?: string
+        'subject.depthMax[gt]'?: string
+        'subject.depthMax[gte]'?: string
+        'subject.depthMax[lt]'?: string
+        'subject.depthMax[lte]'?: string
+        'exists[subject.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
+        'subject.pollen'?: boolean
+        'subject.geochemistry'?: boolean
+        'subject.sedimentaryDna'?: boolean
+        'subject.phytoliths'?: boolean
+        'subject.organicChemistry'?: boolean
+        'subject.plantMacroRemains'?: boolean
+        'subject.oslDating'?: boolean
+        'subject.microCharcoal'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -25868,41 +25999,41 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSedimentCore collection */
+      /** @description AnalysisSedimentCoreDepth collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+            member: components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
           }
-          'text/csv': components['schemas']['AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+          'text/csv': components['schemas']['AnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
         }
       }
     }
   }
-  api_dataanalysessediment_cores_post: {
+  api_dataanalysessediment_core_depths_post: {
     parameters: {
       query?: never
       header?: never
       path?: never
       cookie?: never
     }
-    /** @description The new AnalysisSedimentCore resource */
+    /** @description The new AnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSedimentCore-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth-analysis_join.create']
       }
     }
     responses: {
-      /** @description AnalysisSedimentCore resource created */
+      /** @description AnalysisSedimentCoreDepth resource created */
       201: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         }
       }
       /** @description Invalid input */
@@ -25929,25 +26060,25 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessediment_cores_id_get: {
+  api_dataanalysessediment_core_depths_id_get: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AnalysisSedimentCore identifier */
+        /** @description AnalysisSedimentCoreDepth identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSedimentCore resource */
+      /** @description AnalysisSedimentCoreDepth resource */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         }
       }
       /** @description Not found */
@@ -25963,19 +26094,19 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessediment_cores_id_delete: {
+  api_dataanalysessediment_core_depths_id_delete: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AnalysisSedimentCore identifier */
+        /** @description AnalysisSedimentCoreDepth identifier */
         id: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSedimentCore resource deleted */
+      /** @description AnalysisSedimentCoreDepth resource deleted */
       204: {
         headers: {
           [name: string]: unknown
@@ -26006,30 +26137,30 @@ export interface operations {
       }
     }
   }
-  api_dataanalysessediment_cores_id_patch: {
+  api_dataanalysessediment_core_depths_id_patch: {
     parameters: {
       query?: never
       header?: never
       path: {
-        /** @description AnalysisSedimentCore identifier */
+        /** @description AnalysisSedimentCoreDepth identifier */
         id: string
       }
       cookie?: never
     }
-    /** @description The updated AnalysisSedimentCore resource */
+    /** @description The updated AnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSedimentCore-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepth-analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
-      /** @description AnalysisSedimentCore resource updated */
+      /** @description AnalysisSedimentCoreDepth resource updated */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
         }
       }
       /** @description Invalid input */
@@ -26078,15 +26209,40 @@ export interface operations {
       }
     }
   }
-  api_dataanalyses_parentIdsediment_cores_get_collection: {
+  api_dataanalyses_parentIdsediment_core_depths_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'exists[subject.stratigraphicUnit.description]'?: boolean
+        'exists[subject.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.stratigraphicUnit.chronologyLower'?: number
+        'subject.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.stratigraphicUnit.chronologyUpper'?: number
+        'subject.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.stratigraphicUnit.number'?: number
+        'subject.stratigraphicUnit.number[]'?: number[]
         'subject.stratigraphicUnit.site'?: string
         'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
@@ -26097,11 +26253,36 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'subject.sedimentCore'?: string
+        'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.site'?: string
+        'subject.sedimentCore.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.depthMin[between]'?: string
+        'subject.depthMin[gt]'?: string
+        'subject.depthMin[gte]'?: string
+        'subject.depthMin[lt]'?: string
+        'subject.depthMin[lte]'?: string
+        'subject.depthMax[between]'?: string
+        'subject.depthMax[gt]'?: string
+        'subject.depthMax[gte]'?: string
+        'subject.depthMax[lt]'?: string
+        'subject.depthMax[lte]'?: string
+        'exists[subject.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
+        'subject.pollen'?: boolean
+        'subject.geochemistry'?: boolean
+        'subject.sedimentaryDna'?: boolean
+        'subject.phytoliths'?: boolean
+        'subject.organicChemistry'?: boolean
+        'subject.plantMacroRemains'?: boolean
+        'subject.oslDating'?: boolean
+        'subject.microCharcoal'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -26151,29 +26332,54 @@ export interface operations {
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSedimentCore collection */
+      /** @description AnalysisSedimentCoreDepth collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+            member: components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
           }
-          'text/csv': components['schemas']['AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+          'text/csv': components['schemas']['AnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
         }
       }
     }
   }
-  api_datasediment_cores_parentIdanalyses_get_collection: {
+  api_datasediment_core_depths_parentIdanalyses_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'exists[subject.stratigraphicUnit.description]'?: boolean
+        'exists[subject.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.stratigraphicUnit.chronologyLower'?: number
+        'subject.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.stratigraphicUnit.chronologyUpper'?: number
+        'subject.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.stratigraphicUnit.number'?: number
+        'subject.stratigraphicUnit.number[]'?: number[]
         'subject.stratigraphicUnit.site'?: string
         'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: partial
          * @example cafè
@@ -26184,11 +26390,36 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'subject.sedimentCore'?: string
+        'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.site'?: string
+        'subject.sedimentCore.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'subject.depthMin[between]'?: string
+        'subject.depthMin[gt]'?: string
+        'subject.depthMin[gte]'?: string
+        'subject.depthMin[lt]'?: string
+        'subject.depthMin[lte]'?: string
+        'subject.depthMax[between]'?: string
+        'subject.depthMax[gt]'?: string
+        'subject.depthMax[gte]'?: string
+        'subject.depthMax[lt]'?: string
+        'subject.depthMax[lte]'?: string
+        'exists[subject.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.notes
          * @example cafè
          */
         'subject.notes'?: string
+        'subject.pollen'?: boolean
+        'subject.geochemistry'?: boolean
+        'subject.sedimentaryDna'?: boolean
+        'subject.phytoliths'?: boolean
+        'subject.organicChemistry'?: boolean
+        'subject.plantMacroRemains'?: boolean
+        'subject.oslDating'?: boolean
+        'subject.microCharcoal'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -26231,23 +26462,23 @@ export interface operations {
       }
       header?: never
       path: {
-        /** @description SedimentCore identifier */
+        /** @description SedimentCoreDepth identifier */
         parentId: string
       }
       cookie?: never
     }
     requestBody?: never
     responses: {
-      /** @description AnalysisSedimentCore collection */
+      /** @description AnalysisSedimentCoreDepth collection */
       200: {
         headers: {
           [name: string]: unknown
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AnalysisSedimentCore.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+            member: components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
           }
-          'text/csv': components['schemas']['AnalysisSedimentCore.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core.acl.read_sediment_core.acl.read'][]
+          'text/csv': components['schemas']['AnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
         }
       }
     }
@@ -43300,7 +43531,7 @@ export interface operations {
       }
     }
   }
-  api_validatoruniqueanalysessediment_cores_get: {
+  api_validatoruniqueanalysessediment_core_depths_get: {
     parameters: {
       query?: never
       header?: never
@@ -48034,7 +48265,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side.value]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48191,7 +48422,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side.value]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48348,7 +48579,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side.value]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48620,7 +48851,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side.value]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48770,7 +49001,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
-        'order[side.value]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -48925,7 +49156,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[connected]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -49069,7 +49300,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[connected]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -49213,7 +49444,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[connected]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -49472,7 +49703,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[connected]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -49609,7 +49840,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         'order[connected]'?: 'asc' | 'desc'
-        'order[side]'?: 'asc' | 'desc'
+        'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123

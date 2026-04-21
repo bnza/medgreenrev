@@ -56,11 +56,18 @@ const roleMap: Record<
   individual: ApiSpecialistRole.Anthropologist,
   pottery: ApiSpecialistRole.CeramicSpecialist,
   sample: null,
-  sedimentCore: ApiSpecialistRole.GeoArchaeologist,
+  sedimentCoreDepth: ApiSpecialistRole.GeoArchaeologist,
   zooBone: ApiSpecialistRole.ZooArchaeologist,
   zooTooth: ApiSpecialistRole.ZooArchaeologist,
 }
 
+// Sampling does not require a granting
+const grantedResourceKeys = computed(
+  () =>
+    Object.keys(roleMap).filter(
+      (value) => !['sedimentCoreDepth'].includes(value),
+    ) as TParent[],
+)
 const role = computed<ApiSpecialistRole | null>(
   () => roleMap[props.subjectParentKey],
 )
@@ -68,6 +75,12 @@ const role = computed<ApiSpecialistRole | null>(
 // If the current logged user has any of the specialist roles related to AnalysisSubjectParentResourceKey
 const grantedOnlySubjects = computed<boolean>(() =>
   role.value ? hasSpecialistRole(role.value).value : hasAnySpecialistRole.value,
+)
+
+const grantedOnly = computed(
+  () =>
+    grantedOnlySubjects.value &&
+    grantedResourceKeys.value.includes(props.subjectParentKey),
 )
 
 const { r$ } = useScopedRegleItem(model, rules, { scopeKey: 'base' })
@@ -87,7 +100,7 @@ onUnmounted(() => emit('selected', false))
         :path="subjectPath"
         :item-title="subjectItemTitle"
         label="subject"
-        :granted-only="grantedOnlySubjects"
+        :granted-only
         :error-messages="r$.$errors?.subject"
         :disabled="parent?.key === subjectParentKey"
       />

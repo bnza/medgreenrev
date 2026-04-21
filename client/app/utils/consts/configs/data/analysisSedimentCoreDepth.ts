@@ -1,8 +1,7 @@
 import type { ResourceConfig } from '~~/types'
-
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data/analyses/sediment_cores',
-  appPath: '/data/analyses/sediment-cores',
+  apiPath: '/api/data/analyses/sediment_core_depths',
+  appPath: '/data/analyses/sediment-core-depths',
   defaultHeaders: [
     {
       key: 'id',
@@ -15,7 +14,7 @@ const config: Readonly<ResourceConfig> = {
     {
       key: 'subject.code',
       value: 'subject.code',
-      title: 'sediment core',
+      title: 'sediment core depth',
       minWidth: '100',
     },
     {
@@ -47,8 +46,7 @@ const config: Readonly<ResourceConfig> = {
       sortable: false,
     },
   ],
-  labels: ['sediment core analysis', 'sediment core analyses'],
-  name: 'analysisSedimentCore',
+  labels: ['sediment core depth analysis', 'sediment core depth analyses'],
+  name: 'analysisSedimentCoreDepth',
 }
-
 export default config

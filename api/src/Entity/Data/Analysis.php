@@ -27,7 +27,7 @@ use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
-use App\Entity\Data\Join\Analysis\AnalysisSedimentCore;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -369,8 +369,8 @@ class Analysis
     #[ORM\OneToMany(targetEntity: AnalysisSampleMicrostratigraphy::class, mappedBy: 'analysis')]
     private Collection $subjectSampleMicrostratigraphy;
 
-    #[ORM\OneToMany(targetEntity: AnalysisSedimentCore::class, mappedBy: 'analysis')]
-    private Collection $subjectSedimentCores;
+    #[ORM\OneToMany(targetEntity: AnalysisSedimentCoreDepth::class, mappedBy: 'analysis')]
+    private Collection $subjectSedimentCoreDepths;
 
     #[ORM\OneToMany(targetEntity: AnalysisSiteAnthropology::class, mappedBy: 'analysis')]
     private Collection $subjectSiteAnthropology;
@@ -392,7 +392,7 @@ class Analysis
         $this->subjectPottery = new ArrayCollection();
         $this->subjectSamples = new ArrayCollection();
         $this->subjectSampleMicrostratigraphy = new ArrayCollection();
-        $this->subjectSedimentCores = new ArrayCollection();
+        $this->subjectSedimentCoreDepths = new ArrayCollection();
         $this->subjectSiteAnthropology = new ArrayCollection();
         $this->subjectZooBones = new ArrayCollection();
         $this->subjectZooTeeth = new ArrayCollection();
@@ -510,9 +510,9 @@ class Analysis
         return $this->subjectSampleMicrostratigraphy;
     }
 
-    public function getSubjectSedimentCores(): Collection
+    public function getSubjectSedimentCoreDepths(): Collection
     {
-        return $this->subjectSedimentCores;
+        return $this->subjectSedimentCoreDepths;
     }
 
     public function getSubjectSiteAnthropology(): Collection

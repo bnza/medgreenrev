@@ -32,9 +32,9 @@ class ApiResourceAbsDatingAnalysisTest extends ApiTestCase
     private static function resourceConfigs(): array
     {
         return [
-            'sediment_cores' => [
-                'joinEndpoint' => '/api/data/analyses/sediment_cores',
-                'subjectEndpoint' => '/api/data/sediment_cores',
+            'sediment_core_depths' => [
+                'joinEndpoint' => '/api/data/analyses/sediment_core_depths',
+                'subjectEndpoint' => '/api/data/sediment_core_depths',
             ],
             'potteries' => [
                 'joinEndpoint' => '/api/data/analyses/potteries',

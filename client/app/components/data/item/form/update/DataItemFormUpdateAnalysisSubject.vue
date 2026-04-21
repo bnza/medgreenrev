@@ -10,7 +10,7 @@
       | 'individual'
       | 'pottery'
       | 'sample'
-      | 'sedimentCore'
+      | 'sedimentCoreDepth'
       | 'zooBone'
       | 'zooTooth'
     >
@@ -93,7 +93,6 @@ watch(
         :path
         :item-title="subjectItemTitle"
         label="subject"
-        granted-only
         disabled
       />
     </v-col>

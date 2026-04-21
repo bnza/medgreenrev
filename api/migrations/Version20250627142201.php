@@ -18,7 +18,7 @@ final class Version20250627142201 extends AbstractMigration
         'analysis_potteries' => ['analysisPottery', 'pottery'],
         'analysis_samples' => ['analysisSample', 'sample'],
         'analysis_samples_microstratigraphy' => ['analysisSampleMicrostratigraphy', 'sample'],
-        'analysis_sediment_cores' => ['analysisSedimentCore', 'sedimentCore'],
+        'analysis_sediment_core_depths' => ['analysisSedimentCoreDepth', 'sedimentCoreDepth'],
         'analysis_sites_anthropology' => ['analysisSiteAnthropology', 'site'],
         'analysis_zoo_bones' => ['analysisZooBone', 'zooBone'],
         'analysis_zoo_teeth' => ['analysisZooTooth', 'zooTooth'],

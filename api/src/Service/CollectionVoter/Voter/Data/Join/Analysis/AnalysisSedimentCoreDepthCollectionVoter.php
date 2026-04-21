@@ -3,16 +3,16 @@
 namespace App\Service\CollectionVoter\Voter\Data\Join\Analysis;
 
 use App\Entity\Auth\User;
-use App\Entity\Data\SedimentCore;
+use App\Entity\Data\Join\SedimentCoreDepth;
 use App\Service\CollectionVoter\Voter\AbstractCollectionVoter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
-readonly class AnalysisSedimentCoreCollectionVoter extends AbstractCollectionVoter
+readonly class AnalysisSedimentCoreDepthCollectionVoter extends AbstractCollectionVoter
 {
     protected function voteOnSubCollection(object $parent, TokenInterface $token): bool
     {
         $user = $token->getUser();
-        if ($parent instanceof SedimentCore && $user instanceof User) {
+        if ($parent instanceof SedimentCoreDepth && $user instanceof User) {
             return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST']);
         }
 

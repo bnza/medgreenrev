@@ -9,10 +9,10 @@ import { isEmptyObject } from '~/utils'
 import { useCollectScopeRecord } from '~/composables'
 
 defineProps<{
-  parent?: ResourceParent<'sedimentCore' | 'analysis'>
+  parent?: ResourceParent<'sedimentCoreDepth' | 'analysis'>
 }>()
 
-const path: PostCollectionPath = '/api/data/analyses/sediment_cores' as const
+const path: PostCollectionPath = '/api/data/analyses/sediment_core_depths' as const
 
 const emit = defineEmits<{
   refresh: []
@@ -46,7 +46,7 @@ const isAbsoluteDatingAnalysis = ref(false)
       <data-item-form-create-analysis-subject
         :parent
         subject-item-title="code"
-        subject-parent-key="sedimentCore"
+        subject-parent-key="sedimentCoreDepth"
         @selected="
           isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'
         "

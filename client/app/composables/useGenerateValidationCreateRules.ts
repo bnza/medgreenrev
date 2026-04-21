@@ -37,7 +37,8 @@ const validationPaths: Record<AnalysisSubjectResourceKey, GetValidationPath> = {
   analysisSample: '/api/validator/unique/analyses/samples',
   analysisSampleMicrostratigraphy:
     '/api/validator/unique/analyses/samples/microstratigraphy',
-  analysisSedimentCore: '/api/validator/unique/analyses/sediment_cores',
+  analysisSedimentCoreDepth:
+    '/api/validator/unique/analyses/sediment_core_depths',
   analysisSiteAnthropology:
     '/api/validator/unique/analyses/archaeological_sites/anthropology',
   analysisZooBone: '/api/validator/unique/analyses/zoo/bones',

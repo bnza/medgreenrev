@@ -2,7 +2,7 @@
 
 namespace App\Security\Voter;
 
-use App\Entity\Data\Join\Analysis\AnalysisSedimentCore;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Security\Utils\SitePrivilegeManager;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface
 use Symfony\Component\Security\Core\Authorization\Voter\Vote;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class AnalysisSedimentCoreVoter extends Voter
+class AnalysisSedimentCoreDepthVoter extends Voter
 {
     use ApiOperationVoterTrait;
 
@@ -24,7 +24,7 @@ class AnalysisSedimentCoreVoter extends Voter
     protected function supports(string $attribute, mixed $subject): bool
     {
         return $this->isAttributeSupported($attribute)
-            && $subject instanceof AnalysisSedimentCore;
+            && $subject instanceof AnalysisSedimentCoreDepth;
     }
 
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token, ?Vote $vote = null): bool
@@ -33,7 +33,7 @@ class AnalysisSedimentCoreVoter extends Voter
             return true;
         }
 
-        /* @var AnalysisSedimentCore $subject */
+        /* @var AnalysisSedimentCoreDepth $subject */
         return $this->security->isGranted('update', $subject->getSubject())
             || $this->security->isGranted('update', $subject->getAnalysis());
     }

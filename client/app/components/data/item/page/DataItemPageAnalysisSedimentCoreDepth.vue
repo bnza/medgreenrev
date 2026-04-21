@@ -2,7 +2,7 @@
 import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
 
-const path = '/api/data/analyses/sediment_cores/{id}' as const
+const path = '/api/data/analyses/sediment_core_depths/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
 const { tab } = storeToRefs(useResourceUiStore(path))
@@ -13,7 +13,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
 <template>
   <data-item-page :path identifier-prop="id">
     <template #default="{ item }: { item: GetItemResponse }">
-      <lazy-data-item-form-info-analysis-sediment-core :item />
+      <lazy-data-item-form-info-analysis-sediment-core-depth :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="analysis">analysis</v-tab>
         <v-tab value="subject">subject</v-tab>
@@ -45,7 +45,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
           data-testid="tab-absolute-dating"
         >
           <data-item-page-abs-dating-analysis
-            resource-key="absDatingAnalysisSedimentCore"
+            resource-key="absDatingAnalysisSedimentCoreDepth"
             :show-back-button="false"
           />
         </v-tabs-window-item>
@@ -61,10 +61,10 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
-      <data-dialog-delete-analysis-sediment-core
+      <data-dialog-delete-analysis-sediment-core-depth
         @refresh="redirectToCollectionPath()"
       />
-      <data-dialog-update-analysis-sediment-core @refresh="refetch()" />
+      <data-dialog-update-analysis-sediment-core-depth @refresh="refetch()" />
     </template>
   </data-item-page>
 </template>

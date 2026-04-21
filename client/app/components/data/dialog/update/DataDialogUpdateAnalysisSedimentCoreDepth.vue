@@ -7,14 +7,14 @@ import type {
 } from '~~/types'
 
 const path: GetItemPath & PatchItemPath =
-  '/api/data/analyses/sediment_cores/{id}'
+  '/api/data/analyses/sediment_core_depths/{id}'
 
 defineEmits<{
   refresh: []
 }>()
 
 const { initialValue, fetchedItem } = useUpdateDialog(path, undefined, [
-  'absDatingAnalysisSedimentCore',
+  'absDatingAnalysisSedimentCoreDepth',
 ])
 
 const { r$ } = useCollectScopeRecord<{
@@ -46,7 +46,7 @@ const isAbsoluteDatingAnalysis = ref(false)
         v-if="initialValue"
         :initial-value
         subject-item-title="code"
-        subject-parent-key="sedimentCore"
+        subject-parent-key="sedimentCoreDepth"
         @selected="
           isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'
         "

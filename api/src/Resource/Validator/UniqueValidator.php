@@ -17,7 +17,7 @@ use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
-use App\Entity\Data\Join\Analysis\AnalysisSedimentCore;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -96,9 +96,9 @@ use App\State\ValidatorUniqueProvider;
             ],
         ),
         new Get(
-            uriTemplate: '/validator/unique/analyses/sediment_cores',
+            uriTemplate: '/validator/unique/analyses/sediment_core_depths',
             defaults: [
-                'resource' => AnalysisSedimentCore::class,
+                'resource' => AnalysisSedimentCoreDepth::class,
             ],
         ),
         new Get(

@@ -22,6 +22,8 @@ const patchedSubresourceMap: Partial<Record<ApiResourcePath, ApiResourcePath>> =
       '/api/data/analyses/absolute_dating/zoo/bones',
     '/api/data/analyses/zoo/teeth':
       '/api/data/analyses/absolute_dating/zoo/teeth',
+    '/api/data/analyses/sediment_core_depths':
+      '/api/data/analyses/absolute_dating/sediment_core_depths',
   }
 
 const patchedSubresourcePath = Object.keys(patchedSubresourceMap)

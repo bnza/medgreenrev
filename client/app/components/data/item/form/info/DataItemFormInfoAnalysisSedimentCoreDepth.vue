@@ -3,7 +3,7 @@ import type { GetItemResponseMap } from '~~/types'
 
 withDefaults(
   defineProps<{
-    item: GetItemResponseMap['/api/data/analyses/sediment_cores/{id}']
+    item: GetItemResponseMap['/api/data/analyses/sediment_core_depths/{id}']
     readLink?: boolean
   }>(),
   {
@@ -16,9 +16,12 @@ withDefaults(
   <data-item-form-read>
     <v-row>
       <v-col cols="6" class="px-2">
-        <v-text-field :model-value="item.subject?.code" label="sediment core">
+        <v-text-field
+          :model-value="item.subject?.code"
+          label="sediment core depth"
+        >
           <template v-if="item.subject?.['@id']" #append-inner>
-            <data-item-info-box-sediment-core
+            <data-item-info-box-sediment-core-depth
               :iri="item.subject?.['@id']"
               :read-link
             />

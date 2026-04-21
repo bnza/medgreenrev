@@ -3,25 +3,25 @@
   lang="ts"
   generic="
     Path extends
-      | Extract<GetCollectionPath, '/api/data/analyses/sediment_cores'>
-      | '/api/data/sediment_cores/{parentId}/analyses'
+      | Extract<GetCollectionPath, '/api/data/analyses/sediment_core_depths'>
+      | '/api/data/sediment_core_depths/{parentId}/analyses'
   "
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'sedimentCore'>
+  parent?: ResourceParent<'sedimentCoreDepth'>
 }>()
 
 const { id: parentId } = useResourceParent(props.parent)
 
 const { appPath, labels } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
-  useResourceDeleteDialogStore('/api/data/analyses/sediment_cores/{id}'),
+  useResourceDeleteDialogStore('/api/data/analyses/sediment_core_depths/{id}'),
 )
 const { updateDialogState } = storeToRefs(
-  useResourceUpdateDialogStore('/api/data/analyses/sediment_cores/{id}'),
+  useResourceUpdateDialogStore('/api/data/analyses/sediment_core_depths/{id}'),
 )
 
 const vocabularyAnalysisStore = useVocabularyStore(
@@ -43,7 +43,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.subject.code`]="{ item }">
-      <data-item-info-box-span-sediment-core
+      <data-item-info-box-span-sediment-core-depth
         :iri="item.subject['@id']"
         :text="item.subject.code"
       />
@@ -66,13 +66,13 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id />
       <data-dialog-search :path :title="labels[1]" />
-      <data-dialog-create-analysis-sediment-core
+      <data-dialog-create-analysis-sediment-core-depth
         :path
         :parent
         @refresh="refetch()"
       />
-      <data-dialog-delete-analysis-sediment-core @refresh="refetch()" />
-      <data-dialog-update-analysis-sediment-core @refresh="refetch()" />
+      <data-dialog-delete-analysis-sediment-core-depth @refresh="refetch()" />
+      <data-dialog-update-analysis-sediment-core-depth @refresh="refetch()" />
     </template>
   </data-collection-table>
 </template>

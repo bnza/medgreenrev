@@ -1,0 +1,13 @@
+App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth:
+    analysis_sediment_core_depth_1:
+        subject: '@sediment_core_sc2_1_su_sc2_701_105'
+        analysis: '@analysis_58'
+    analysis_sediment_core_depth_2:
+        subject: '@sediment_core_sc2_1_su_sc2_701_105'
+        analysis: '@analysis_59'
+    analysis_sediment_core_depth_3:
+        subject: '@sediment_core_sc2_2_su_sc1_602_105'
+        analysis: '@analysis_59'
+    analysis_sediment_core_depth_4:
+        subject: '@sediment_core_sc2_2_su_sc1_602_105'
+        analysis: '@analysis_60'

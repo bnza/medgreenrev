@@ -6,11 +6,11 @@ defineEmits<{
 
 <template>
   <data-dialog-delete
-    path="/api/data/analyses/sediment_cores/{id}"
+    path="/api/data/analyses/sediment_core_depths/{id}"
     @refresh="$emit('refresh')"
   >
     <template #default="{ item }">
-      <lazy-data-item-form-info-analysis-sediment-core
+      <lazy-data-item-form-info-analysis-sediment-core-depth
         :item
         :read-link="false"
       />

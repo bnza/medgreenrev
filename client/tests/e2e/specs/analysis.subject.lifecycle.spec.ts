@@ -6,6 +6,8 @@ import { AnalysisSampleMicrostratigraphicUnitCollectionPage } from '~~/tests/e2e
 import { AnalysisSampleMicrostratigraphicUnitItemPage } from '~~/tests/e2e/pages/analysis-sample-microstratigraphic-unit-item.page'
 import { AnalysisSampleCollectionPage } from '~~/tests/e2e/pages/analysis-sample-collection.page'
 import { AnalysisSampleItemPage } from '~~/tests/e2e/pages/analysis-sample-item.page'
+import { AnalysisSedimentCoreDepthCollectionPage } from '~~/tests/e2e/pages/analysis-sediment-core-depth-collection.page'
+import { AnalysisSedimentCoreDepthItemPage } from '~~/tests/e2e/pages/analysis-sediment-core-depth-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
 
 test.beforeEach(async () => {
@@ -387,6 +389,171 @@ test.describe('Analysis subject join', () => {
         await collectionPom.expectAppMessageToHaveText(
           'Resource successfully created',
         )
+      })
+    })
+  })
+  test.describe('Sediment Core Depth', () => {
+    test.describe('Geoarchaeologist user', () => {
+      test.use({ storageState: 'playwright/.auth/geo.json' })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        const collectionPom = new AnalysisSedimentCoreDepthCollectionPage(page)
+        const itemPom = new AnalysisSedimentCoreDepthItemPage(page)
+
+        await collectionPom.open()
+
+        // CREATE AND REDIRECT TO NEW SITE PAGE
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+        await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
+        await page.getByRole('option', { name: /SC3/ }).first().click()
+        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
+        await page.getByRole('option', { name: /XRF/ }).first().click()
+        await expect(
+          page.getByRole('checkbox', { name: /add absolute dating data/i }),
+        ).toHaveCount(0)
+        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
+        await page.getByRole('option', { name: /OSL/ }).first().click()
+        await page.keyboard.press('Escape')
+        await expect(
+          page.getByRole('checkbox', { name: /add absolute dating data/i }),
+        ).toHaveCount(1)
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('summary')
+          .fill('Some summary about the tested analysis')
+
+        // ABSOLUTE DATING DATA
+        page
+          .getByRole('checkbox', { name: /add absolute dating data/i })
+          .click()
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'dating (lower)' })
+          .fill('700')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'dating (upper)' })
+          .fill('750')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'dating (probability)' })
+          .fill('94.59')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'uncalibrated dating' })
+          .fill('1200')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'error' })
+          .fill('50')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('combobox', { name: 'calibration curve' })
+          .click()
+        await page.getByRole('option', { name: 'N/D' }).first().click()
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('notes')
+          .fill('Some notes about the absolute dating')
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+
+        // Verify the created item details
+        await itemPom.expectTextFieldToHaveValue(
+          'summary',
+          'Some summary about the tested analysis',
+        )
+        await itemPom.page
+          .getByRole('tab', { name: 'absolute dating', exact: true })
+          .first()
+          .click()
+        await itemPom.expectTextFieldToHaveValue('dating (lower)', '700')
+        await itemPom.expectTextFieldToHaveValue('dating (upper)', '750')
+        await itemPom.expectTextFieldToHaveValue('dating (probability)', '94.6')
+        await itemPom.expectTextFieldToHaveValue('uncalibrated dating', '1200')
+        await itemPom.expectTextFieldToHaveValue('error', '50')
+        await itemPom.expectTextFieldToHaveValue('calibration curve', 'N/D')
+        await itemPom.dataCard.backButton.click()
+        await collectionPom.table.expectData()
+
+        // UPDATE ABSOLUTE DATING DATA
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Update)
+          .click()
+        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
+
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'summary' })
+          .fill('Updated summary about the tested analysis')
+
+        await collectionPom.dataDialogUpdate.expectOldFormData('error')
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'dating (upper)' })
+          .fill('780')
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('textbox', { name: 'error' })
+          .fill('30', { timeout: 30000 })
+        await collectionPom.dataDialogUpdate.submitForm()
+
+        // Verify updated item details
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully updated',
+        )
+
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Read)
+          .click()
+
+        await page.waitForResponse(
+          (r) =>
+            /\/api\/data\/analyses\/absolute_dating/.test(r.url()) &&
+            r.request().method() === 'GET' &&
+            r.ok(),
+          { timeout: 10000 },
+        )
+
+        await itemPom.expectTextFieldToHaveValue(
+          'summary',
+          'Updated summary about the tested analysis',
+        )
+
+        await itemPom.expectTextFieldToHaveValue('dating (upper)', '780')
+        await itemPom.expectTextFieldToHaveValue('error', '30')
+        await itemPom.dataCard.backButton.click()
+        await collectionPom.table.expectData()
+
+        // DELETE ABSOLUTE DATING DATA
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Update)
+          .click()
+        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
+        await page
+          .getByRole('button', { name: /remove absolute dating data/i })
+          .click()
+        await expect(
+          page.getByText('Would you like to delete absolute dating data'),
+        ).toBeVisible()
+        await page.getByRole('button', { name: /delete/i }).click()
+        await collectionPom.dataDialogUpdate.submitForm()
+
+        // Verify updated item details
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully updated',
+        )
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Read)
+          .click()
+
+        await page.waitForResponse(
+          (r) =>
+            /\/api\/data\/analyses\/absolute_dating/.test(r.url()) &&
+            r.request().method() === 'GET' &&
+            r.status() === 404,
+          { timeout: 10000 },
+        )
+        await itemPom.page
+          .getByRole('tab', { name: 'absolute dating', exact: true })
+          .click()
+        await expect(
+          page.getByText(
+            'No associated absolute dating information for this subject',
+          ),
+        ).toBeVisible()
       })
     })
   })
