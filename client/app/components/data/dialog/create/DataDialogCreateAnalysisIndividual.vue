@@ -45,7 +45,7 @@ const isAbsoluteDatingAnalysis = ref(false)
     <template #default>
       <data-item-form-create-analysis-subject
         :parent
-        subject-item-title="identifier"
+        subject-item-title="code"
         subject-parent-key="individual"
         @selected="
           isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'

@@ -18,6 +18,7 @@ const patchedSubresourceMap: Partial<Record<ApiResourcePath, ApiResourcePath>> =
       '/api/data/analyses/absolute_dating/individuals',
     '/api/data/analyses/potteries':
       '/api/data/analyses/absolute_dating/potteries',
+    '/api/data/analyses/samples': '/api/data/analyses/absolute_dating/samples',
     '/api/data/analyses/zoo/bones':
       '/api/data/analyses/absolute_dating/zoo/bones',
     '/api/data/analyses/zoo/teeth':

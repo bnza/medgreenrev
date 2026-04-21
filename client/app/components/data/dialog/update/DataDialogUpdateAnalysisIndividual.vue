@@ -44,7 +44,7 @@ const isAbsoluteDatingAnalysis = ref(false)
       <data-item-form-update-analysis-subject
         v-if="initialValue"
         :initial-value
-        subject-item-title="identifier"
+        subject-item-title="code"
         subject-parent-key="individual"
         @selected="
           isAbsoluteDatingAnalysis = $event?.type?.group === 'absolute dating'

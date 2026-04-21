@@ -34,18 +34,15 @@ class SearchPotteryFilterTest extends ApiTestCase
     {
         $client = self::createClient();
 
-        // Get existing potteries to find one with an inventory we can test
         $potteries = $this->getPotteries();
         $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
 
         $firstPottery = $potteries[0];
         $inventory = $firstPottery['inventory'];
 
-        // Extract a portion of the inventory to search for
-        $searchTerm = substr($inventory, 0, 3);
-
+        // Use dot-prefix format to search only by inventory and avoid dot-split logic
         $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
-            'query' => ['search' => $searchTerm],
+            'query' => ['search' => '.'.$inventory],
         ]);
 
         $this->assertResponseIsSuccessful();
@@ -55,49 +52,150 @@ class SearchPotteryFilterTest extends ApiTestCase
 
         // Verify that results contain potteries with inventory containing the search term
         foreach ($data['member'] as $item) {
-            $this->assertStringContainsString($searchTerm, $item['inventory']);
+            $this->assertStringContainsString(
+                strtolower($inventory),
+                strtolower($item['inventory']),
+                sprintf('Expected inventory "%s" to contain "%s"', $item['inventory'], $inventory)
+            );
         }
     }
 
-    public function testSearchFilterWithPartialInventory(): void
+    public function testSearchFilterWithSiteCode(): void
     {
         $client = self::createClient();
 
-        // Test with a partial search term that should match multiple results
+        $potteries = $this->getPotteries();
+        $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
+
+        // Extract site code from the first pottery's code (format: SITE.INVENTORY)
+        $firstPottery = $potteries[0];
+        $code = $firstPottery['code'];
+        $siteCode = explode('.', $code)[0];
+
         $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
-            'query' => ['search' => '2023'],
+            'query' => ['search' => $siteCode],
         ]);
 
         $this->assertResponseIsSuccessful();
         $data = $response->toArray();
         $this->assertArrayHasKey('member', $data);
+        $this->assertNotEmpty($data['member']);
 
-        // Verify that all results contain '2023' in their inventory
+        // All results should have the site code in their code
         foreach ($data['member'] as $item) {
-            $this->assertStringContainsString('2023', $item['inventory']);
+            $matchesInventory = str_contains(strtolower($item['inventory']), strtolower($siteCode));
+            $matchesSiteCode = str_contains(strtolower($item['code']), strtolower($siteCode));
+            $this->assertTrue($matchesInventory || $matchesSiteCode);
         }
     }
 
-    public function testSearchFilterWithNonExistingInventory(): void
+    public function testSearchFilterWithDotSeparatedSiteCodeAndInventory(): void
     {
         $client = self::createClient();
 
-        // Test with a search term that shouldn't match any inventory
+        $potteries = $this->getPotteries();
+        $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
+
+        $firstPottery = $potteries[0];
+        $code = $firstPottery['code'];
+        $parts = explode('.', $code, 2);
+
+        if (2 === count($parts)) {
+            $siteCode = $parts[0];
+            $inventory = $parts[1];
+
+            // Search with "siteCode.inventory" format
+            $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
+                'query' => ['search' => $siteCode.'.'.$inventory],
+            ]);
+
+            $this->assertResponseIsSuccessful();
+            $data = $response->toArray();
+            $this->assertArrayHasKey('member', $data);
+            $this->assertNotEmpty($data['member']);
+
+            // All results should match both site code AND inventory
+            foreach ($data['member'] as $item) {
+                $this->assertStringContainsString(strtolower($siteCode), strtolower($item['code']));
+                $this->assertStringContainsString(strtolower($inventory), strtolower($item['inventory']));
+            }
+        }
+    }
+
+    public function testSearchFilterWithDotPrefixSearchesOnlyInventory(): void
+    {
+        $client = self::createClient();
+
+        $potteries = $this->getPotteries();
+        $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
+
+        $firstPottery = $potteries[0];
+        $inventory = $firstPottery['inventory'];
+
+        // Search with ".inventory" format (empty site code)
         $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
-            'query' => ['search' => 'NONEXISTENT_INVENTORY_TERM'],
+            'query' => ['search' => '.'.$inventory],
         ]);
 
         $this->assertResponseIsSuccessful();
         $data = $response->toArray();
         $this->assertArrayHasKey('member', $data);
-        $this->assertEmpty($data['member'], 'Should return no results for non-existing inventory term');
+
+        // All results should match inventory
+        foreach ($data['member'] as $item) {
+            $this->assertStringContainsString(
+                strtolower($inventory),
+                strtolower($item['inventory']),
+                sprintf('Expected inventory "%s" to contain "%s"', $item['inventory'], $inventory)
+            );
+        }
+    }
+
+    public function testSearchFilterWithDotSuffixSearchesOnlySiteCode(): void
+    {
+        $client = self::createClient();
+
+        $potteries = $this->getPotteries();
+        $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
+
+        $firstPottery = $potteries[0];
+        $code = $firstPottery['code'];
+        $siteCode = explode('.', $code)[0];
+
+        // Search with "siteCode." format (empty inventory)
+        $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
+            'query' => ['search' => $siteCode.'.'],
+        ]);
+
+        $this->assertResponseIsSuccessful();
+        $data = $response->toArray();
+        $this->assertArrayHasKey('member', $data);
+        $this->assertNotEmpty($data['member']);
+
+        // All results should match site code
+        foreach ($data['member'] as $item) {
+            $this->assertStringContainsString(strtolower($siteCode), strtolower($item['code']));
+        }
+    }
+
+    public function testSearchFilterWithNonExistingTerm(): void
+    {
+        $client = self::createClient();
+
+        $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
+            'query' => ['search' => 'NONEXISTENT_TERM'],
+        ]);
+
+        $this->assertResponseIsSuccessful();
+        $data = $response->toArray();
+        $this->assertArrayHasKey('member', $data);
+        $this->assertEmpty($data['member'], 'Should return no results for non-existing term');
     }
 
     public function testSearchFilterWithEmptyValue(): void
     {
         $client = self::createClient();
 
-        // Test with empty search value - should return all potteries
         $responseWithoutSearch = $this->apiRequest($client, 'GET', '/api/data/potteries');
 
         $responseWithEmptySearch = $this->apiRequest($client, 'GET', '/api/data/potteries', [
@@ -113,11 +211,40 @@ class SearchPotteryFilterTest extends ApiTestCase
         $this->assertEquals($dataWithoutSearch['totalItems'], $dataWithEmptySearch['totalItems']);
     }
 
+    public function testSearchFilterCaseInsensitive(): void
+    {
+        $client = self::createClient();
+
+        $potteries = $this->getPotteries();
+        $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
+
+        $firstPottery = $potteries[0];
+        $code = $firstPottery['code'];
+        $siteCode = explode('.', $code)[0];
+
+        // Test with lowercase
+        $responseLower = $this->apiRequest($client, 'GET', '/api/data/potteries', [
+            'query' => ['search' => strtolower($siteCode)],
+        ]);
+
+        // Test with uppercase
+        $responseUpper = $this->apiRequest($client, 'GET', '/api/data/potteries', [
+            'query' => ['search' => strtoupper($siteCode)],
+        ]);
+
+        $this->assertResponseIsSuccessful();
+
+        $dataLower = $responseLower->toArray();
+        $dataUpper = $responseUpper->toArray();
+
+        // Both should return the same results (case insensitive)
+        $this->assertEquals($dataLower['totalItems'], $dataUpper['totalItems']);
+    }
+
     public function testSearchFilterCanBeCombinedWithOtherFilters(): void
     {
         $client = self::createClient();
 
-        // Get existing potteries to find one we can filter by
         $potteries = $this->getPotteries();
         $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
 
@@ -125,8 +252,8 @@ class SearchPotteryFilterTest extends ApiTestCase
         $inventory = $firstPottery['inventory'];
         $stratigraphicUnitId = basename($firstPottery['stratigraphicUnit']['@id']);
 
-        // Extract a portion of the inventory to search for
-        $searchTerm = substr($inventory, 0, 3);
+        // Use dot-prefix format to search only by inventory and avoid dot-split logic
+        $searchTerm = '.'.$inventory;
 
         // Combine search filter with stratigraphic unit filter
         $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
@@ -140,95 +267,10 @@ class SearchPotteryFilterTest extends ApiTestCase
         $data = $response->toArray();
         $this->assertArrayHasKey('member', $data);
 
-        // Verify that results match both search term AND stratigraphic unit
+        // Verify that results match both inventory AND stratigraphic unit
         foreach ($data['member'] as $item) {
-            $this->assertStringContainsString($searchTerm, $item['inventory']);
+            $this->assertStringContainsString(strtolower($inventory), strtolower($item['inventory']));
             $this->assertEquals($stratigraphicUnitId, basename($item['stratigraphicUnit']['@id']));
-        }
-    }
-
-    public function testSearchFilterCaseInsensitive(): void
-    {
-        $client = self::createClient();
-
-        // Get existing potteries to find one with letters in inventory
-        $potteries = $this->getPotteries();
-        $this->assertNotEmpty($potteries, 'Should have at least one pottery for testing');
-
-        // Find a pottery with letters in inventory
-        $potteryWithLetters = null;
-        foreach ($potteries as $pottery) {
-            if (preg_match('/[A-Za-z]/', $pottery['inventory'])) {
-                $potteryWithLetters = $pottery;
-                break;
-            }
-        }
-
-        if ($potteryWithLetters) {
-            $inventory = $potteryWithLetters['inventory'];
-
-            // Extract letters and test both upper and lower case
-            if (preg_match('/[A-Za-z]+/', $inventory, $matches)) {
-                $letterPart = $matches[0];
-
-                // Test with lowercase
-                $responseLower = $this->apiRequest($client, 'GET', '/api/data/potteries', [
-                    'query' => ['search' => strtolower($letterPart)],
-                ]);
-
-                // Test with uppercase
-                $responseUpper = $this->apiRequest($client, 'GET', '/api/data/potteries', [
-                    'query' => ['search' => strtoupper($letterPart)],
-                ]);
-
-                $this->assertResponseIsSuccessful();
-
-                $dataLower = $responseLower->toArray();
-                $dataUpper = $responseUpper->toArray();
-
-                // Both should return the same results (case insensitive)
-                $this->assertEquals($dataLower['totalItems'], $dataUpper['totalItems']);
-
-                // Verify that the original pottery is in both result sets
-                $foundInLower = false;
-                $foundInUpper = false;
-
-                foreach ($dataLower['member'] as $item) {
-                    if ($item['id'] === $potteryWithLetters['id']) {
-                        $foundInLower = true;
-                        break;
-                    }
-                }
-
-                foreach ($dataUpper['member'] as $item) {
-                    if ($item['id'] === $potteryWithLetters['id']) {
-                        $foundInUpper = true;
-                        break;
-                    }
-                }
-
-                $this->assertTrue($foundInLower, 'Original pottery should be found with lowercase search');
-                $this->assertTrue($foundInUpper, 'Original pottery should be found with uppercase search');
-            }
-        }
-    }
-
-    public function testSearchFilterWithSpecialCharacters(): void
-    {
-        $client = self::createClient();
-
-        // Test with dots (which are literal in SQL LIKE, not wildcards)
-        $response = $this->apiRequest($client, 'GET', '/api/data/potteries', [
-            'query' => ['search' => '.'],
-        ]);
-
-        $this->assertResponseIsSuccessful();
-        $data = $response->toArray();
-        $this->assertArrayHasKey('member', $data);
-
-        // All returned results should contain a literal dot in their inventory
-        foreach ($data['member'] as $item) {
-            $this->assertStringContainsString('.', $item['inventory']);
         }
     }
 }

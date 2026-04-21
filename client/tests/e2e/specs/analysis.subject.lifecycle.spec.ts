@@ -1,14 +1,171 @@
-import { test, expect } from '@playwright/test'
+import { test } from '@playwright/test'
 import { loadFixtures } from '~~/tests/e2e/utils/api'
 import { AnalysisBotanyCharcoalCollectionPage } from '~~/tests/e2e/pages/analysis-botany-charcoal-collection.page'
 import { AnalysisBotanyCharcoalItemPage } from '~~/tests/e2e/pages/analysis-botany-charcoal-item.page'
-import { AnalysisSampleMicrostratigraphicUnitCollectionPage } from '~~/tests/e2e/pages/analysis-sample-microstratigraphic-unit-collection.page'
-import { AnalysisSampleMicrostratigraphicUnitItemPage } from '~~/tests/e2e/pages/analysis-sample-microstratigraphic-unit-item.page'
+import { AnalysisBotanySeedCollectionPage } from '~~/tests/e2e/pages/analysis-botany-seed-collection.page'
+import { AnalysisBotanySeedItemPage } from '~~/tests/e2e/pages/analysis-botany-seed-item.page'
+import { AnalysisIndividualCollectionPage } from '~~/tests/e2e/pages/analysis-individual-collection.page'
+import { AnalysisIndividualItemPage } from '~~/tests/e2e/pages/analysis-individual-item.page'
+import { AnalysisPotteryCollectionPage } from '~~/tests/e2e/pages/analysis-pottery-collection.page'
+import { AnalysisPotteryItemPage } from '~~/tests/e2e/pages/analysis-pottery-item.page'
 import { AnalysisSampleCollectionPage } from '~~/tests/e2e/pages/analysis-sample-collection.page'
 import { AnalysisSampleItemPage } from '~~/tests/e2e/pages/analysis-sample-item.page'
 import { AnalysisSedimentCoreDepthCollectionPage } from '~~/tests/e2e/pages/analysis-sediment-core-depth-collection.page'
 import { AnalysisSedimentCoreDepthItemPage } from '~~/tests/e2e/pages/analysis-sediment-core-depth-item.page'
-import { NavigationLinksButton } from '~~/tests/e2e/utils'
+import { AnalysisZooBoneCollectionPage } from '~~/tests/e2e/pages/analysis-zoo-bone-collection.page'
+import { AnalysisZooBoneItemPage } from '~~/tests/e2e/pages/analysis-zoo-bone-item.page'
+import { AnalysisZooToothCollectionPage } from '~~/tests/e2e/pages/analysis-zoo-tooth-collection.page'
+import { AnalysisZooToothItemPage } from '~~/tests/e2e/pages/analysis-zoo-tooth-item.page'
+import {
+  runBasicLifecycle,
+  runAbsoluteDatingLifecycle,
+  runDataValidation,
+  type SubjectConfig,
+} from '~~/tests/e2e/helpers/analysis-subject-lifecycle.helpers'
+
+const botanyCharcoalConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisBotanyCharcoalCollectionPage(page),
+  createItemPom: (page) => new AnalysisBotanyCharcoalItemPage(page),
+  subjectOption: /TO/,
+  analysisOption: /C14/,
+  nonDatingAnalysis: /AD/,
+  datingAnalysis: /C14/,
+  calibrationCurve: 'IntCal20',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
+
+const botanySeedConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisBotanySeedCollectionPage(page),
+  createItemPom: (page) => new AnalysisBotanySeedItemPage(page),
+  subjectOption: /TO/,
+  analysisOption: /C14/,
+  nonDatingAnalysis: /AD/,
+  datingAnalysis: /C14/,
+  calibrationCurve: 'IntCal20',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
+
+const individualConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisIndividualCollectionPage(page),
+  createItemPom: (page) => new AnalysisIndividualItemPage(page),
+  subjectOption: /TO/,
+  analysisOption: /SEM/,
+  nonDatingAnalysis: /SEM/,
+  datingAnalysis: /C14/,
+  calibrationCurve: 'IntCal20',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
+
+const potteryConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisPotteryCollectionPage(page),
+  createItemPom: (page) => new AnalysisPotteryItemPage(page),
+  subjectOption: /SE/,
+  analysisOption: /SEM/,
+  nonDatingAnalysis: /ORA/,
+  datingAnalysis: /THL/,
+  calibrationCurve: 'N/D',
+  validation: {
+    duplicateSubjectSearch: 'SE.10',
+    duplicateSubjectOption: /SE\.10\.2023/,
+    duplicateAnalysisSearch: 'ME110',
+    duplicateAnalysisOption: /SEM/,
+    fixAnalysisOption: { index: 0, name: /XRF/ },
+  },
+}
+
+const sampleConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisSampleCollectionPage(page),
+  createItemPom: (page) => new AnalysisSampleItemPage(page),
+  subjectOption: /TO/,
+  analysisOption: /OSL/,
+  nonDatingAnalysis: /XRF/,
+  datingAnalysis: /OSL/,
+  calibrationCurve: 'N/D',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
+
+const sedimentCoreDepthConfig: SubjectConfig = {
+  createCollectionPom: (page) =>
+    new AnalysisSedimentCoreDepthCollectionPage(page),
+  createItemPom: (page) => new AnalysisSedimentCoreDepthItemPage(page),
+  subjectOption: /SC3/,
+  analysisOption: /OSL/,
+  nonDatingAnalysis: /XRF/,
+  datingAnalysis: /OSL/,
+  calibrationCurve: 'N/D',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
+
+const zooBoneConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisZooBoneCollectionPage(page),
+  createItemPom: (page) => new AnalysisZooBoneItemPage(page),
+  subjectOption: /CA/,
+  analysisOption: /ADN/,
+  nonDatingAnalysis: /ADN/,
+  datingAnalysis: /C14/,
+  calibrationCurve: 'IntCal20',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
+
+const zooToothConfig: SubjectConfig = {
+  createCollectionPom: (page) => new AnalysisZooToothCollectionPage(page),
+  createItemPom: (page) => new AnalysisZooToothItemPage(page),
+  subjectOption: /CA/,
+  analysisOption: /ADN/,
+  nonDatingAnalysis: /ADN/,
+  datingAnalysis: /C14/,
+  calibrationCurve: 'IntCal20',
+  // TODO: fill validation config from fixture data
+  validation: {
+    duplicateSubjectSearch: '',
+    duplicateSubjectOption: /TODO/,
+    duplicateAnalysisSearch: '',
+    duplicateAnalysisOption: /TODO/,
+    fixAnalysisOption: { index: 0, name: /TODO/ },
+  },
+}
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -18,543 +175,127 @@ test.describe('Analysis subject join', () => {
   test.describe('Botany Charcoal', () => {
     test.describe('Material analyst user', () => {
       test.use({ storageState: 'playwright/.auth/mat.json' })
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(botanyCharcoalConfig, page)
+      })
       test('Absolute dating lifecycle works as expected', async ({ page }) => {
-        const collectionPom = new AnalysisBotanyCharcoalCollectionPage(page)
-        const itemPom = new AnalysisBotanyCharcoalItemPage(page)
+        await runAbsoluteDatingLifecycle(botanyCharcoalConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(botanyCharcoalConfig, page)
+      // })
+    })
+  })
 
-        await collectionPom.open()
+  test.describe('Botany Seed', () => {
+    test.describe('Archaeobotanist user', () => {
+      test.use({ storageState: 'playwright/.auth/bot.json' })
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(botanySeedConfig, page)
+      })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(botanySeedConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(botanySeedConfig, page)
+      // })
+    })
+  })
 
-        // CREATE AND REDIRECT TO NEW SITE PAGE
-        await collectionPom.table.expectData()
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
-        await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
-        await page.getByRole('option', { name: /TO/ }).first().click()
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /AD/ }).first().click()
-        await expect(
-          page.getByRole('checkbox', { name: /add absolute dating data/i }),
-        ).toHaveCount(0)
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /C14/ }).first().click()
-        await page.keyboard.press('Escape')
-        await expect(
-          page.getByRole('checkbox', { name: /add absolute dating data/i }),
-        ).toHaveCount(1)
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('summary')
-          .fill('Some summary about the tested analysis')
+  test.describe('Individual', () => {
+    test.describe('Anthropologist user', () => {
+      test.use({ storageState: 'playwright/.auth/ant.json' })
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(individualConfig, page)
+      })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(individualConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(individualConfig, page)
+      // })
+    })
+  })
 
-        // ABSOLUTE DATING DATA
-        page
-          .getByRole('checkbox', { name: /add absolute dating data/i })
-          .click()
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'dating (lower)' })
-          .fill('700')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'dating (upper)' })
-          .fill('750')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'dating (probability)' })
-          .fill('94.59')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'uncalibrated dating' })
-          .fill('1200')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'error' })
-          .fill('50')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('combobox', { name: 'calibration curve' })
-          .click()
-        await page.getByRole('option', { name: 'IntCal20' }).first().click()
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('notes')
-          .fill('Some notes about the absolute dating')
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        // Verify the created item details
-        await itemPom.expectTextFieldToHaveValue(
-          'summary',
-          'Some summary about the tested analysis',
-        )
-        await itemPom.page
-          .getByRole('tab', { name: 'absolute dating', exact: true })
-          .first()
-          .click()
-        await itemPom.expectTextFieldToHaveValue('dating (lower)', '700')
-        await itemPom.expectTextFieldToHaveValue('dating (upper)', '750')
-        await itemPom.expectTextFieldToHaveValue('dating (probability)', '94.6')
-        await itemPom.expectTextFieldToHaveValue('uncalibrated dating', '1200')
-        await itemPom.expectTextFieldToHaveValue('error', '50')
-        await itemPom.expectTextFieldToHaveValue(
-          'calibration curve',
-          'IntCal20',
-        )
-        await itemPom.dataCard.backButton.click()
-        await collectionPom.table.expectData()
-
-        // UPDATE ABSOLUTE DATING DATA
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Update)
-          .click()
-        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
-
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'summary' })
-          .fill('Updated summary about the tested analysis')
-
-        await collectionPom.dataDialogUpdate.expectOldFormData('error')
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'dating (upper)' })
-          .fill('780')
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'error' })
-          .fill('30', { timeout: 30000 })
-        await collectionPom.dataDialogUpdate.submitForm()
-
-        // Verify updated item details
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully updated',
-        )
-
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Read)
-          .click()
-
-        await page.waitForResponse(
-          (r) =>
-            /\/api\/data\/analyses\/absolute_dating/.test(r.url()) &&
-            r.request().method() === 'GET' &&
-            r.ok(),
-          { timeout: 10000 },
-        )
-
-        await itemPom.expectTextFieldToHaveValue(
-          'summary',
-          'Updated summary about the tested analysis',
-        )
-
-        await itemPom.expectTextFieldToHaveValue('dating (upper)', '780')
-        await itemPom.expectTextFieldToHaveValue('error', '30')
-        await itemPom.dataCard.backButton.click()
-        await collectionPom.table.expectData()
-
-        // DELETE ABSOLUTE DATING DATA
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Update)
-          .click()
-        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
-        await page
-          .getByRole('button', { name: /remove absolute dating data/i })
-          .click()
-        await expect(
-          page.getByText('Would you like to delete absolute dating data'),
-        ).toBeVisible()
-        await page.getByRole('button', { name: /delete/i }).click()
-        await collectionPom.dataDialogUpdate.submitForm()
-
-        // Verify updated item details
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully updated',
-        )
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Read)
-          .click()
-
-        await page.waitForResponse(
-          (r) =>
-            /\/api\/data\/analyses\/absolute_dating/.test(r.url()) &&
-            r.request().method() === 'GET' &&
-            r.status() === 404,
-          { timeout: 10000 },
-        )
-        await itemPom.page
-          .getByRole('tab', { name: 'absolute dating', exact: true })
-          .click()
-        await expect(
-          page.getByText(
-            'No associated absolute dating information for this subject',
-          ),
-        ).toBeVisible()
+  test.describe('Pottery', () => {
+    test.describe('Ceramic specialist user', () => {
+      test.use({ storageState: 'playwright/.auth/pot.json' })
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(potteryConfig, page)
+      })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(potteryConfig, page)
+      })
+      test('Data validation', async ({ page }) => {
+        await runDataValidation(potteryConfig, page)
       })
     })
   })
+
   test.describe('Sample', () => {
     test.describe('Archaeobotanist user', () => {
       test.use({ storageState: 'playwright/.auth/bot.json' })
-
       test('Basic lifecycle works as expected', async ({ page }) => {
-        const collectionPom = new AnalysisSampleCollectionPage(page)
-        const itemPom = new AnalysisSampleItemPage(page)
-
-        await collectionPom.open()
-        await collectionPom.table.expectData()
-
-        // CREATE AND REDIRECT TO NEW SITE PAGE
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
-
-        await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
-        await page.getByRole('option', { name: /TO/ }).first().click()
-
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /OSL/ }).first().click()
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'summary' })
-          .fill('Some summary information about the analysis on the subject')
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        // Verify the created item details
-        await itemPom.expectTextFieldToHaveValue(
-          'summary',
-          'Some summary information about the analysis on the subject',
-        )
-        await itemPom.dataCard.backButton.click()
-        await collectionPom.table.expectData()
-
-        // UPDATE
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Update)
-          .click()
-        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
-
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'summary' })
-          .fill('Updated summary information about the analysis on the subject')
-
-        await collectionPom.dataDialogUpdate.submitForm()
-
-        // Verify updated item details
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully updated',
-        )
-        await collectionPom.table.expectRowToHaveText(
-          0,
-          'Updated summary information about the analysis on the subject',
-        )
-
-        // DELETE
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Delete)
-          .click()
-        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
-          'summary',
-          'Updated summary information about the analysis on the subject',
-        )
-        await collectionPom.dataDialogDelete.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully deleted',
-        )
-        await collectionPom.table.expectNotToHaveRowContainingText(
-          'Updated summary information about the analysis on the subject',
-        )
+        await runBasicLifecycle(sampleConfig, page)
       })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(sampleConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(sampleConfig, page)
+      // })
     })
   })
-  test.describe('Microstratigraphic Unit', () => {
-    test.describe('Miscrostratigraphist user', () => {
-      test.use({ storageState: 'playwright/.auth/mst.json' })
 
-      test('Basic lifecycle works as expected', async ({ page }) => {
-        const collectionPom =
-          new AnalysisSampleMicrostratigraphicUnitCollectionPage(page)
-        const itemPom = new AnalysisSampleMicrostratigraphicUnitItemPage(page)
-
-        // OPEN/CLOSE CREATE DIALOG
-        await collectionPom.open()
-        await collectionPom.table.expectData()
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-        await collectionPom.dataDialogCreate.closeDialog()
-
-        // CREATE AND REDIRECT TO NEW SITE PAGE
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
-
-        await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
-        await page
-          .getByRole('option', { name: /TO\.MM/ })
-          .first()
-          .click()
-
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /ths/i }).first().click()
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'summary' })
-          .fill('Some summary information about the analysis on the subject')
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        // Verify the created item details
-        await itemPom.expectTextFieldToHaveValue(
-          'summary',
-          'Some summary information about the analysis on the subject',
-        )
-        await itemPom.dataCard.backButton.click()
-        await collectionPom.table.expectData()
-
-        // UPDATE
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Update)
-          .click()
-        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
-
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'summary' })
-          .fill('Updated summary information about the analysis on the subject')
-
-        await collectionPom.dataDialogUpdate.submitForm()
-
-        // Verify updated item details
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully updated',
-        )
-        await collectionPom.table.expectRowToHaveText(
-          0,
-          'Updated summary information about the analysis on the subject',
-        )
-
-        // DELETE
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Delete)
-          .click()
-        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
-          'summary',
-          'Updated summary information about the analysis on the subject',
-        )
-        await collectionPom.dataDialogDelete.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully deleted',
-        )
-        await collectionPom.table.expectNotToHaveRowContainingText(
-          'Updated summary information about the analysis on the subject',
-        )
-      })
-      test('Data validation', async ({ page }) => {
-        const collectionPom =
-          new AnalysisSampleMicrostratigraphicUnitCollectionPage(page)
-        await collectionPom.open()
-        await collectionPom.table.expectData()
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-
-        // Test 1: Required field type - identifier
-
-        await collectionPom.dataDialogCreate.submitButton.click()
-        await expect(
-          page.locator('.v-input:has(label:text("subject"))'),
-        ).toContainText(/required/)
-        await expect(
-          page.locator('.v-input:has(label:text("analysis"))'),
-        ).toContainText(/required/)
-
-        // Test 2: Unique validation - try to create with duplicate type identifier
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('subject')
-          .fill('167')
-        await page.waitForTimeout(500)
-        await page.getByRole('option', { name: /167/ }).first().click()
-
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('analysis')
-          .fill('4')
-        await page.waitForTimeout(500)
-        await page.getByRole('option', { name: /ths/i }).first().click()
-        await page.keyboard.press('Tab')
-
-        await expect(
-          page.locator('.v-input:has(label:text("subject"))'),
-        ).toContainText('Duplicate [subject, analysis] combination')
-        await expect(
-          page.locator('.v-input:has(label:text("analysis"))'),
-        ).toContainText('Duplicate [subject, analysis] combination')
-
-        // Test 3: Valid form submission after fixing validation errors
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('analysis')
-          .fill('')
-        await page.waitForTimeout(500)
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /ths/i }).nth(2).click()
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-      })
-    })
-  })
   test.describe('Sediment Core Depth', () => {
     test.describe('Geoarchaeologist user', () => {
       test.use({ storageState: 'playwright/.auth/geo.json' })
-      test('Absolute dating lifecycle works as expected', async ({ page }) => {
-        const collectionPom = new AnalysisSedimentCoreDepthCollectionPage(page)
-        const itemPom = new AnalysisSedimentCoreDepthItemPage(page)
-
-        await collectionPom.open()
-
-        // CREATE AND REDIRECT TO NEW SITE PAGE
-        await collectionPom.table.expectData()
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
-        await collectionPom.dataDialogCreate.form.getByLabel('subject').click()
-        await page.getByRole('option', { name: /SC3/ }).first().click()
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /XRF/ }).first().click()
-        await expect(
-          page.getByRole('checkbox', { name: /add absolute dating data/i }),
-        ).toHaveCount(0)
-        await collectionPom.dataDialogCreate.form.getByLabel('analysis').click()
-        await page.getByRole('option', { name: /OSL/ }).first().click()
-        await page.keyboard.press('Escape')
-        await expect(
-          page.getByRole('checkbox', { name: /add absolute dating data/i }),
-        ).toHaveCount(1)
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('summary')
-          .fill('Some summary about the tested analysis')
-
-        // ABSOLUTE DATING DATA
-        page
-          .getByRole('checkbox', { name: /add absolute dating data/i })
-          .click()
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'dating (lower)' })
-          .fill('700')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'dating (upper)' })
-          .fill('750')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'dating (probability)' })
-          .fill('94.59')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'uncalibrated dating' })
-          .fill('1200')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'error' })
-          .fill('50')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('combobox', { name: 'calibration curve' })
-          .click()
-        await page.getByRole('option', { name: 'N/D' }).first().click()
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('notes')
-          .fill('Some notes about the absolute dating')
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        // Verify the created item details
-        await itemPom.expectTextFieldToHaveValue(
-          'summary',
-          'Some summary about the tested analysis',
-        )
-        await itemPom.page
-          .getByRole('tab', { name: 'absolute dating', exact: true })
-          .first()
-          .click()
-        await itemPom.expectTextFieldToHaveValue('dating (lower)', '700')
-        await itemPom.expectTextFieldToHaveValue('dating (upper)', '750')
-        await itemPom.expectTextFieldToHaveValue('dating (probability)', '94.6')
-        await itemPom.expectTextFieldToHaveValue('uncalibrated dating', '1200')
-        await itemPom.expectTextFieldToHaveValue('error', '50')
-        await itemPom.expectTextFieldToHaveValue('calibration curve', 'N/D')
-        await itemPom.dataCard.backButton.click()
-        await collectionPom.table.expectData()
-
-        // UPDATE ABSOLUTE DATING DATA
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Update)
-          .click()
-        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
-
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'summary' })
-          .fill('Updated summary about the tested analysis')
-
-        await collectionPom.dataDialogUpdate.expectOldFormData('error')
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'dating (upper)' })
-          .fill('780')
-        await collectionPom.dataDialogUpdate.form
-          .getByRole('textbox', { name: 'error' })
-          .fill('30', { timeout: 30000 })
-        await collectionPom.dataDialogUpdate.submitForm()
-
-        // Verify updated item details
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully updated',
-        )
-
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Read)
-          .click()
-
-        await page.waitForResponse(
-          (r) =>
-            /\/api\/data\/analyses\/absolute_dating/.test(r.url()) &&
-            r.request().method() === 'GET' &&
-            r.ok(),
-          { timeout: 10000 },
-        )
-
-        await itemPom.expectTextFieldToHaveValue(
-          'summary',
-          'Updated summary about the tested analysis',
-        )
-
-        await itemPom.expectTextFieldToHaveValue('dating (upper)', '780')
-        await itemPom.expectTextFieldToHaveValue('error', '30')
-        await itemPom.dataCard.backButton.click()
-        await collectionPom.table.expectData()
-
-        // DELETE ABSOLUTE DATING DATA
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Update)
-          .click()
-        await collectionPom.dataDialogUpdate.expectOldFormData('summary')
-        await page
-          .getByRole('button', { name: /remove absolute dating data/i })
-          .click()
-        await expect(
-          page.getByText('Would you like to delete absolute dating data'),
-        ).toBeVisible()
-        await page.getByRole('button', { name: /delete/i }).click()
-        await collectionPom.dataDialogUpdate.submitForm()
-
-        // Verify updated item details
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully updated',
-        )
-        await collectionPom.table
-          .getItemNavigationLink(0, NavigationLinksButton.Read)
-          .click()
-
-        await page.waitForResponse(
-          (r) =>
-            /\/api\/data\/analyses\/absolute_dating/.test(r.url()) &&
-            r.request().method() === 'GET' &&
-            r.status() === 404,
-          { timeout: 10000 },
-        )
-        await itemPom.page
-          .getByRole('tab', { name: 'absolute dating', exact: true })
-          .click()
-        await expect(
-          page.getByText(
-            'No associated absolute dating information for this subject',
-          ),
-        ).toBeVisible()
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(sedimentCoreDepthConfig, page)
       })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(sedimentCoreDepthConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(sedimentCoreDepthConfig, page)
+      // })
+    })
+  })
+
+  test.describe('Zoo Bone', () => {
+    test.describe('Zooarchaeologist user', () => {
+      test.use({ storageState: 'playwright/.auth/zoo.json' })
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(zooBoneConfig, page)
+      })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(zooBoneConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(zooBoneConfig, page)
+      // })
+    })
+  })
+
+  test.describe('Zoo Tooth', () => {
+    test.describe('Zooarchaeologist user', () => {
+      test.use({ storageState: 'playwright/.auth/zoo.json' })
+      test('Basic lifecycle works as expected', async ({ page }) => {
+        await runBasicLifecycle(zooToothConfig, page)
+      })
+      test('Absolute dating lifecycle works as expected', async ({ page }) => {
+        await runAbsoluteDatingLifecycle(zooToothConfig, page)
+      })
+      // TODO: enable when validation config is filled
+      // test('Data validation', async ({ page }) => {
+      //   await runDataValidation(zooToothConfig, page)
+      // })
     })
   })
 })

@@ -97,3 +97,36 @@ setup('authenticate as microstratigraphist user', async ({ page }) => {
   )
   await page.context().storageState({ path: mstFile })
 })
+
+const antFile = 'playwright/.auth/ant.json'
+setup('authenticate as anthropologist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.ANT)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: antFile })
+})
+
+const potFile = 'playwright/.auth/pot.json'
+setup('authenticate as ceramic specialist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.POT)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: potFile })
+})
+
+const zooFile = 'playwright/.auth/zoo.json'
+setup('authenticate as zooarchaeologist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.ZOO)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: zooFile })
+})
