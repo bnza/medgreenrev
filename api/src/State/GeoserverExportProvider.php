@@ -32,7 +32,7 @@ class GeoserverExportProvider extends AbstractGeoserverFeatureCollectionProvider
         $request = $context['request'];
 
         // Resolve output format
-        $formatAlias = $request->get('outputFormat', ExportFeatureCollection::DEFAULT_FORMAT);
+        $formatAlias = $request->query->get('outputFormat', ExportFeatureCollection::DEFAULT_FORMAT);
         if (!array_key_exists($formatAlias, ExportFeatureCollection::OUTPUT_FORMATS)) {
             throw new BadRequestHttpException(sprintf('Invalid outputFormat "%s". Allowed: %s', $formatAlias, implode(', ', array_keys(ExportFeatureCollection::OUTPUT_FORMATS))));
         }

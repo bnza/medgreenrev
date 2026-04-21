@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraint;
 #[\Attribute(\Attribute::TARGET_CLASS)]
 class NotLastJoinEntry extends Constraint
 {
-    public string $message = 'Cannot delete the last join entry.';
+    public string $message;
 
     public function __construct(
         public string $joinCollection,
@@ -16,11 +16,9 @@ class NotLastJoinEntry extends Constraint
         ?array $groups = null,
         mixed $payload = null,
     ) {
-        parent::__construct([], $groups, $payload);
+        $this->message = $message ?? 'Cannot delete the last join entry.';
 
-        if (null !== $message) {
-            $this->message = $message;
-        }
+        parent::__construct([], $groups, $payload);
     }
 
     public function getTargets(): string
