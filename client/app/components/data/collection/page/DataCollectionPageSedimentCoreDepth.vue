@@ -28,6 +28,9 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
     :show-back-button="false"
     :acl
   >
+    <template #search-bar>
+      <data-collection-search-text-field :path />
+    </template>
     <data-collection-table-sediment-core-depth
       v-model:acl="acl"
       :path

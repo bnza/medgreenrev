@@ -16,6 +16,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Doctrine\Filter\SearchSedimentCoreDepthFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
@@ -181,6 +182,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'pollen',
         'sedimentaryDna',
     ])]
+#[ApiFilter(SearchSedimentCoreDepthFilter::class)]
 #[UniqueEntity(
     fields: ['sedimentCore', 'depthMin'],
     message: 'Duplicate [sediment core, min depth] combination.',

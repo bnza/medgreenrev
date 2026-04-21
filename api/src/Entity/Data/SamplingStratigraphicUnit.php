@@ -16,6 +16,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Doctrine\Filter\SearchSamplingStratigraphicUnitFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\MediaObject\MediaObjectSamplingStratigraphicUnit;
 use App\Entity\Data\Join\SedimentCoreDepth;
@@ -103,6 +104,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'mediaObjects',
     ]
 )]
+#[ApiFilter(SearchSamplingStratigraphicUnitFilter::class)]
 #[UniqueEntity(
     fields: ['site', 'number'],
     message: 'Duplicate [site, number] combination.',
