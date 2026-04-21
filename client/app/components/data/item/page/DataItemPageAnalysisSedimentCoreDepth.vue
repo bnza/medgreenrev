@@ -33,7 +33,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
           <loading-component v-else />
         </v-tabs-window-item>
         <v-tabs-window-item value="subject" data-testid="tab-item-subject">
-          <data-item-page-sediment-core
+          <data-item-page-sediment-core-depth
             v-if="item.subject"
             :iri="item.subject['@id']"
           />
