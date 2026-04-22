@@ -17,8 +17,7 @@ class NotLastJoinEntry extends Constraint
         mixed $payload = null,
     ) {
         $this->message = $message ?? 'Cannot delete the last join entry.';
-
-        parent::__construct([], $groups, $payload);
+        parent::__construct(null, $groups, $payload);
     }
 
     public function getTargets(): string
