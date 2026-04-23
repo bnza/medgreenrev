@@ -10,8 +10,8 @@ test.beforeEach(async () => {
 })
 
 test.describe('Pottery lifecycle', () => {
-  test.describe('Admin user', () => {
-    test.use({ storageState: 'playwright/.auth/admin.json' })
+  test.describe('Ceramic specialist user', () => {
+    test.use({ storageState: 'playwright/.auth/pot.json' })
 
     test('Basic lifecycle works as expected', async ({ page }) => {
       const collectionPom = new PotteryCollectionPage(page)
@@ -31,7 +31,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option', { name: /TO/ }).first().click() // Select first available stratigraphic unit
+      await page.getByRole('option', { name: /SE/ }).first().click() // Select first available stratigraphic unit
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })
@@ -135,7 +135,7 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
-      await page.getByRole('option', { name: /TO/ }).first().click()
+      await page.getByRole('option', { name: /SE/ }).first().click()
 
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })
@@ -179,9 +179,9 @@ test.describe('Pottery lifecycle', () => {
       // Test 1: Required field validation - stratigraphic unit field
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
-        .fill('ME')
+        .fill('SE')
 
-      await page.getByRole('option', { name: /ME/ }).first().click()
+      await page.getByRole('option', { name: /SE/ }).first().click()
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
         .click()
@@ -197,8 +197,8 @@ test.describe('Pottery lifecycle', () => {
       // Fix the validation error
       await collectionPom.dataDialogCreate.form
         .getByLabel('stratigraphic unit')
-        .fill('ME')
-      await page.getByRole('option', { name: /ME/ }).first().click()
+        .fill('SE')
+      await page.getByRole('option', { name: /SE/ }).first().click()
 
       // Test 2: Required field validation - inventory field
       const inventoryField = collectionPom.dataDialogCreate.form.getByRole(
@@ -264,7 +264,7 @@ test.describe('Pottery lifecycle', () => {
       )
 
       // Test 7: Unique inventory validation - try to create with existing inventory
-      await inventoryField.fill('50.2023') // Assuming this exists in fixtures
+      await inventoryField.fill('10.2023') // Assuming this exists in fixtures
       await page.keyboard.press('Tab')
       await page.waitForTimeout(1000) // Wait for async validation
       await expect(
@@ -277,7 +277,7 @@ test.describe('Pottery lifecycle', () => {
       await expect(
         page.locator('.v-input:has(label:text("inventory"))'),
       ).toContainText(/required/i)
-      await inventoryField.fill('2/2023') // Assuming this exists in fixtures
+      await inventoryField.fill('11/2024') // Assuming this exists in fixtures
       await page.keyboard.press('Tab')
       await page.waitForTimeout(1000) // Wait for async validation
       await expect(
@@ -308,9 +308,6 @@ test.describe('Pottery lifecycle', () => {
         'Resource successfully created',
       )
     })
-  })
-  test.describe('Ceramic specialist user', () => {
-    test.use({ storageState: 'playwright/.auth/pot.json' })
     test('Media object', async ({ page }) => {
       const collectionPom = new PotteryCollectionPage(page)
       const itemPom = new PotteryItemPage(page)

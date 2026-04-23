@@ -111,7 +111,7 @@ App\Entity\Data\Pottery:
 
     pottery_se_11:
         stratigraphicUnit: '@su_se_502'
-        inventory: '11.2024'
+        inventory: '11/2024'
         functionalForm: '@voc__pottery_functional_form_18'
         functionalGroup: '@voc__pottery_functional_group_3'
         shape: '@voc__pottery_shape_3'
