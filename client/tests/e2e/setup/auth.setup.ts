@@ -130,3 +130,14 @@ setup('authenticate as zooarchaeologist user', async ({ page }) => {
   )
   await page.context().storageState({ path: zooFile })
 })
+
+const cliFile = 'playwright/.auth/cli.json'
+setup('authenticate as paleoclimatologist user', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  await loginPage.open()
+  await loginPage.login(credentials.CLI)
+  await expect(page.getByTestId('app-message').first()).toHaveText(
+    /successfully logged in/,
+  )
+  await page.context().storageState({ path: cliFile })
+})

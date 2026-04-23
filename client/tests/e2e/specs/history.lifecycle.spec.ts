@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { loadFixtures } from '~~/tests/e2e/utils/api'
+import { testMediaObjectLifecycle } from '~~/tests/e2e/utils/media-object-test-helper'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
 import { HistoryAnimalCollectionPage } from '~~/tests/e2e/pages/history-animal-collection.page'
 import { HistoryAnimalItemPage } from '~~/tests/e2e/pages/history-animal-item.page'
@@ -8,6 +9,7 @@ import { HistoryPlantItemPage } from '~~/tests/e2e/pages/history-plant-item.page
 import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
 import { LoginPage } from '~~/tests/e2e/pages/login.page'
 import { HistoryLocationCollectionPage } from '~~/tests/e2e/pages/history-location-collection.page'
+import { HistoryLocationItemPage } from '~~/tests/e2e/pages/history-location-item.page'
 import { HistoryWrittenSourceCollectionPage } from '~~/tests/e2e/pages/history-written-source-collection.page'
 import { HistoryWrittenSourceItemPage } from '~~/tests/e2e/pages/history-written-source-item.page'
 import { HistoryWrittenSourceCitedWorkCollectionPage } from '~~/tests/e2e/pages/history-written-source-cited-work-collection.page'
@@ -555,6 +557,22 @@ test.describe('History item lifecycle', () => {
         await collectionPom.table.expectNotToHaveRowContainingText(
           'New location',
         )
+      })
+    })
+    test.describe('Historian user', () => {
+      test.use({ storageState: 'playwright/.auth/his.json' })
+      test('Media object', async ({ page }) => {
+        const collectionPom = new HistoryLocationCollectionPage(page)
+        const itemPom = new HistoryLocationItemPage(page)
+        await testMediaObjectLifecycle(page, itemPom, async () => {
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+          await collectionPom.table
+            .getItemNavigationLink('Turillas', NavigationLinksButton.Read)
+            .click()
+          await itemPom.form.waitForLoad()
+          await itemPom.clickTab('media')
+        })
       })
     })
   })

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { loadFixtures, resetFixtureMedia } from '~~/tests/e2e/utils/api'
+import { loadFixtures } from '~~/tests/e2e/utils/api'
+import { testMediaObjectLifecycle } from '~~/tests/e2e/utils/media-object-test-helper'
 import { StratigraphicUnitCollectionPage } from '~~/tests/e2e/pages/stratigraphic-unit-collection.page'
 import { StratigraphicUnitsItemPage } from '~~/tests/e2e/pages/stratigraphic-units-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
@@ -447,7 +448,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
         page.getByTestId('su-relationship-card').first(),
       ).toContainText(/25\.406/)
 
-      page
+      await page
         .getByTestId('su-relationship-card')
         .first()
         .getByTestId('delete-relationship-button')
@@ -464,90 +465,18 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       ).not.toContainText(/25\.406/)
     })
     test('Media object', async ({ page }) => {
-      resetFixtureMedia()
       const collectionPom = new StratigraphicUnitCollectionPage(page)
       const itemPom = new StratigraphicUnitsItemPage(page)
-      await collectionPom.open()
-      await collectionPom.table.expectData()
-      await collectionPom.awaitSearchResults('NI.408')
-      await collectionPom.table
-        .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
-        .click()
-
-      await itemPom.form.waitForLoad()
-      await itemPom.clickTab('media')
-      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(0)
-
-      // CREATE (new media)
-      await itemPom.mediaContainer.openCreateDialog()
-      await itemPom.mediaContainer.dataDialogCreate.expectDialogToBeVisible()
-      await itemPom.mediaContainer.dataDialogCreate.setFileInput(
-        'input/lorem ipsum.txt',
-      )
-      await itemPom.mediaContainer.dataDialogCreate.form
-        .getByLabel('type')
-        .click()
-      await page
-        .getByRole('listbox')
-        .getByText('report', { exact: true })
-        .click()
-      await itemPom.mediaContainer.dataDialogCreate.form
-        .getByLabel('description')
-        .fill('A short description of the media object')
-      await itemPom.mediaContainer.dataDialogCreate.submitForm()
-      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(1)
-
-      // CREATE (existing media)
-      await itemPom.mediaContainer.openCreateDialog()
-      await itemPom.mediaContainer.dataDialogCreate.expectDialogToBeVisible()
-      await itemPom.mediaContainer.dataDialogCreate.setFileInput(
-        'input/unnecessary stuff.csv',
-      )
-      await itemPom.mediaContainer.dataDialogCreate.expectFileAlreadyArchived()
-      await itemPom.mediaContainer.dataDialogCreate.submitForm()
-      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(2)
-
-      // CREATE (image media)
-      await page.route(
-        '**/media/**/*.thumb.jpeg',
-        (route) => route.fulfill({ status: 404 }),
-        { times: 1 },
-      )
-      await itemPom.mediaContainer.openCreateDialog()
-      await itemPom.mediaContainer.dataDialogCreate.expectDialogToBeVisible()
-      await itemPom.mediaContainer.dataDialogCreate.setFileInput(
-        'input/logo-big-recortado.png',
-      )
-      await itemPom.mediaContainer.dataDialogCreate.form
-        .getByLabel('type')
-        .click()
-      await page
-        .getByRole('listbox')
-        .getByText('drawing', { exact: true })
-        .click()
-      await itemPom.mediaContainer.dataDialogCreate.form
-        .getByLabel('description')
-        .fill('An image media object')
-      const thumbResponsePromise = page.waitForResponse(
-        (response) =>
-          response.url().includes('.thumb.jpeg') &&
-          response.url().includes('_retry') &&
-          response.status() === 200,
-      )
-      await itemPom.mediaContainer.dataDialogCreate.submitForm()
-      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(3)
-      const thumbResponse = await thumbResponsePromise
-      expect(thumbResponse.status()).toBe(200)
-
-      // DELETE
-      await itemPom.mediaContainer.cards
-        .first()
-        .getByTestId('delete-media-button')
-        .click()
-      await itemPom.mediaContainer.dataDialogDelete
-        .getByRole('button', { name: /delete/i })
-        .click()
-      await itemPom.mediaContainer.expectMediaObjectCardsToHaveCount(2)
+      await testMediaObjectLifecycle(page, itemPom, async () => {
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.awaitSearchResults('NI.408')
+        await collectionPom.table
+          .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
+          .click()
+        await itemPom.form.waitForLoad()
+        await itemPom.clickTab('media')
+      })
     })
   })
 })

@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test'
 import { loadFixtures } from '~~/tests/e2e/utils/api'
+import { testMediaObjectLifecycle } from '~~/tests/e2e/utils/media-object-test-helper'
 import { PaleoclimateSamplingSiteCollectionPage } from '~~/tests/e2e/pages/paleoclimate-sampling-site-collection.page'
 import { PaleoclimateSamplingSiteItemPage } from '~~/tests/e2e/pages/paleoclimate-sampling-site-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
+import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
+import { LoginPage } from '~~/tests/e2e/pages/login.page'
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -272,6 +275,28 @@ test.describe('Paleoclimate sampling site lifecycle', () => {
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
       )
+    })
+  })
+  test.describe('Paleoclimatologist (editor) user', () => {
+    test('Media object', async ({ page, browser }) => {
+      const collectionPom = new PaleoclimateSamplingSiteCollectionPage(page)
+      const itemPom = new PaleoclimateSamplingSiteItemPage(page)
+      const authTestHelper = new AuthTestHelper(browser)
+      const credentials = await authTestHelper.createUser('editor', [
+        'paleoclimatologist',
+      ])
+      const loginPage = new LoginPage(page)
+      await loginPage.open()
+      await loginPage.login(credentials)
+      await testMediaObjectLifecycle(page, itemPom, async () => {
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.table
+          .getItemNavigationLink('PCS9', NavigationLinksButton.Read)
+          .click()
+        await itemPom.form.waitForLoad()
+        await itemPom.clickTab('media')
+      })
     })
   })
 })

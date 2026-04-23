@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { loadFixtures } from '~~/tests/e2e/utils/api'
+import { testMediaObjectLifecycle } from '~~/tests/e2e/utils/media-object-test-helper'
 import { PotteryCollectionPage } from '~~/tests/e2e/pages/pottery-collection.page'
 import { PotteryItemPage } from '~~/tests/e2e/pages/pottery-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
@@ -306,6 +307,22 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
       )
+    })
+  })
+  test.describe('Ceramic specialist user', () => {
+    test.use({ storageState: 'playwright/.auth/pot.json' })
+    test('Media object', async ({ page }) => {
+      const collectionPom = new PotteryCollectionPage(page)
+      const itemPom = new PotteryItemPage(page)
+      await testMediaObjectLifecycle(page, itemPom, async () => {
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.table
+          .getItemNavigationLink('SE.24.502', NavigationLinksButton.Read)
+          .click()
+        await itemPom.form.waitForLoad()
+        await itemPom.clickTab('media')
+      })
     })
   })
 })

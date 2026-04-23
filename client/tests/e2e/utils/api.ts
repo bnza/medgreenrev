@@ -13,6 +13,7 @@ export const credentials = {
   ANT: { email: 'user_ant@example.com', password: '0006' },
   POT: { email: 'user_pot@example.com', password: '0004' },
   ZOO: { email: 'user_zoo@example.com', password: '0005' },
+  CLI: { email: 'user_cli@example.com', password: '0009' },
 }
 
 export function loadFixtures() {

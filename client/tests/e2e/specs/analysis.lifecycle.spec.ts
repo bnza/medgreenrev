@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { loadFixtures } from '~~/tests/e2e/utils/api'
+import { testMediaObjectLifecycle } from '~~/tests/e2e/utils/media-object-test-helper'
 import { AnalysisCollectionPage } from '~~/tests/e2e/pages/analysis-collection.page'
 import { AnalysisItemPage } from '~~/tests/e2e/pages/analysis-item.page'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
@@ -178,6 +179,22 @@ test.describe('Analysis lifecycle', () => {
       await collectionPom.expectAppMessageToHaveText(
         'Resource successfully created',
       )
+    })
+  })
+  test.describe('Material analyst user', () => {
+    test.use({ storageState: 'playwright/.auth/mat.json' })
+    test('Media object', async ({ page }) => {
+      const collectionPom = new AnalysisCollectionPage(page)
+      const itemPom = new AnalysisItemPage(page)
+      await testMediaObjectLifecycle(page, itemPom, async () => {
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+        await collectionPom.table
+          .getItemNavigationLink('CORE.XRF.01', NavigationLinksButton.Read)
+          .click()
+        await itemPom.form.waitForLoad()
+        await itemPom.clickTab('media')
+      })
     })
   })
 })
