@@ -1,10 +1,8 @@
 import type { ResourceStaticFiltersDefinitionObject } from '~~/types'
-import {
-  API_FILTERS,
-  generateResourceDefinition,
-} from '~/utils/consts/configs/filters/definitions'
+import { generateResourceDefinition } from '~/utils/consts/configs/filters/definitions'
 
 import { propertyStaticFiltersDefinition as analysisPropertyStaticDefinition } from './analysis'
+import { associationPropertyStaticFiltersDefinition } from './analysisAssociation'
 import {
   propertyStaticFiltersDefinition as botanyPropertyStaticDefinition,
   taxonomyStaticFiltersDefinition as botanyTaxonomyPropertyStaticDefinition,
@@ -22,18 +20,6 @@ import {
   taxonomyStaticFiltersDefinition as zooTaxonomyPropertyStaticDefinition,
 } from './zoo'
 
-const { Exists, SearchPartial } = API_FILTERS
-
-const summaryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
-  {
-    summary: {
-      filters: {
-        Exists,
-        SearchPartial,
-      },
-    },
-  }
-
 const analysisBotanyPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
     ...generateResourceDefinition(analysisPropertyStaticDefinition, [
@@ -48,7 +34,7 @@ const analysisBotanyPropertyStaticFiltersDefinition: ResourceStaticFiltersDefini
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisContextBotanyPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -65,7 +51,7 @@ const analysisContextBotanyPropertyStaticFiltersDefinition: ResourceStaticFilter
       'taxonomies',
       '',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisContextZooPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -82,7 +68,7 @@ const analysisContextZooPropertyStaticFiltersDefinition: ResourceStaticFiltersDe
       'taxonomies',
       '',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisIndividualPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -95,7 +81,7 @@ const analysisIndividualPropertyStaticFiltersDefinition: ResourceStaticFiltersDe
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisPotteryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -108,7 +94,7 @@ const analysisPotteryPropertyStaticFiltersDefinition: ResourceStaticFiltersDefin
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisSamplePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -121,7 +107,7 @@ const analysisSamplePropertyStaticFiltersDefinition: ResourceStaticFiltersDefini
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -141,7 +127,7 @@ const analysisSampleMicrostratigraphicUnitPropertyStaticFiltersDefinition: Resou
         'microstratigraphic unit',
       ],
     ),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisSedimentCoreDepthPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -154,7 +140,7 @@ const analysisSedimentCoreDepthPropertyStaticFiltersDefinition: ResourceStaticFi
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisZooBonePropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -167,7 +153,7 @@ const analysisZooBonePropertyStaticFiltersDefinition: ResourceStaticFiltersDefin
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 const analysisZooToothPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -180,7 +166,7 @@ const analysisZooToothPropertyStaticFiltersDefinition: ResourceStaticFiltersDefi
       'subject',
       'subject',
     ]),
-    ...summaryPropertyStaticFiltersDefinition,
+    ...associationPropertyStaticFiltersDefinition,
   }
 
 export const staticFiltersDefinitionBotany = {

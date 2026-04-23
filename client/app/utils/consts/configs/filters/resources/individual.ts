@@ -4,6 +4,7 @@ import {
   generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as analysisPropertyStaticDefinition } from './analysis'
+import { associationPropertyStaticFiltersDefinition } from './analysisAssociation'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 
 const {
@@ -66,9 +67,16 @@ const existsPropertiesStaticFiltersDefinition: ResourceStaticFiltersDefinitionOb
     },
   } as const
 
+const analysisAssociationPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  generateResourceDefinition(associationPropertyStaticFiltersDefinition, [
+    'analyses',
+    'analysis association',
+  ])
+
 export const staticFiltersDefinition = {
   ...propertyStaticFiltersDefinition,
   ...analysisPropertyStaticFiltersDefinition,
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...stratigraphicUnitPropertyStaticFiltersDefinition,
   ...existsPropertiesStaticFiltersDefinition,
 }
@@ -76,10 +84,12 @@ export const staticFiltersDefinition = {
 export const staticFiltersDefinitionParentStratigraphicUnit = {
   ...propertyStaticFiltersDefinition,
   ...analysisPropertyStaticFiltersDefinition,
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...existsPropertiesStaticFiltersDefinition,
 }
 
 export const staticFiltersDefinitionParentAnalysis = {
   ...propertyStaticFiltersDefinition,
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...stratigraphicUnitPropertyStaticFiltersDefinition,
 }

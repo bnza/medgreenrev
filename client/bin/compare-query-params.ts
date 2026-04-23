@@ -125,6 +125,7 @@ async function main() {
   let onlyError = argv.includes('--only-error') || argv.includes('-E')
 
   let requestedPath: string | undefined
+  let apiUrl: string | undefined
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
     if (arg === '-h' || arg === '--help') continue
@@ -139,6 +140,15 @@ async function main() {
     }
     if (arg?.startsWith('--path=')) {
       requestedPath = arg.slice('--path='.length)
+      continue
+    }
+    if (arg === '--api-url' || arg === '-u') {
+      apiUrl = argv[i + 1]
+      i++
+      continue
+    }
+    if (arg?.startsWith('--api-url=')) {
+      apiUrl = arg.slice('--api-url='.length)
       continue
     }
     // First non-flag positional argument treated as path
@@ -159,6 +169,9 @@ async function main() {
     )
     console.log(
       '  --only-error, -E         Show only parameters present in client but not in API, and only for paths where such differences exist',
+    )
+    console.log(
+      '  --api-url, -u <URL>      Base URL of the API (default: http://nginx:80)',
     )
     console.log('\nAvailable paths:')
     for (const p of allPaths.sort()) console.log('  ' + p)
@@ -235,11 +248,8 @@ async function main() {
   }
 
   // Step 2a: download API specs
-  const apiBaseUrl = process.env.NUXT_PUBLIC_API_BASE_URL
-  if (!apiBaseUrl) {
-    console.error('NUXT_PUBLIC_API_BASE_URL is not defined in your .env file.')
-    process.exit(1)
-  }
+  const apiBaseUrl = apiUrl ?? 'http://nginx:80'
+  console.log(`Fetching OpenAPI spec from: ${apiBaseUrl}/api/docs.jsonopenapi`)
   const schemaUrl = `${apiBaseUrl}/api/docs.jsonopenapi`
   const response = await fetch(schemaUrl)
   if (!response.ok) {

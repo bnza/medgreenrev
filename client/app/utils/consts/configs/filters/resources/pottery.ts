@@ -5,6 +5,7 @@ import {
   generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as analysisPropertyStaticDefinition } from './analysis'
+import { associationPropertyStaticFiltersDefinition } from './analysisAssociation'
 import { propertyStaticFiltersDefinition as mediaObjectPropertyStaticDefinition } from './mediaObject'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 
@@ -26,6 +27,12 @@ const stratigraphicUnitPropertyStaticFiltersDefinition: ResourceStaticFiltersDef
       'stratigraphic unit',
     ]),
   }
+
+const analysisAssociationPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  generateResourceDefinition(associationPropertyStaticFiltersDefinition, [
+    'analyses',
+    'analysis association',
+  ])
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -132,6 +139,7 @@ export const staticFiltersDefinition = {
     'analyses.analysis',
     'analysis',
   ]),
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...stratigraphicUnitPropertyStaticFiltersDefinition,
   ...existsPropertiesStaticFiltersDefinition,
   ...generateResourceDefinition(
@@ -143,6 +151,7 @@ export const staticFiltersDefinition = {
 
 export const staticFiltersDefinitionParentStratigraphicUnit = {
   ...propertyStaticFiltersDefinition,
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...generateResourceDefinition(analysisPropertyStaticDefinition, [
     'analyses.analysis',
     'analysis',
@@ -156,6 +165,7 @@ export const staticFiltersDefinitionParentStratigraphicUnit = {
 
 export const staticFiltersDefinitionParentAnalysis = {
   ...propertyStaticFiltersDefinition,
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...stratigraphicUnitPropertyStaticFiltersDefinition,
   ...generateResourceDefinition(
     mediaObjectPropertyStaticDefinition,

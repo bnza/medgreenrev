@@ -131,6 +131,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'analyses.summary' => 'ipartial',
         'element' => 'exact',
         'notes' => 'ipartial',
         'part' => 'exact',
@@ -143,6 +144,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'analyses.summary',
         'element',
         'part',
         'notes',

@@ -136,6 +136,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'analyses.summary' => 'ipartial',
         'stratigraphicUnit.site' => 'exact',
         'stratigraphicUnit' => 'exact',
         'decorations.decoration' => 'exact',
@@ -151,12 +152,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'innerColor' => 'ipartial',
         'outerColor' => 'ipartial',
         'decorationMotif' => 'ipartial',
-        //        'mediaObjects.mediaObject.originalFilename' => 'ipartial',
-        //        'mediaObjects.mediaObject.mimeType' => 'ipartial',
-        //        'mediaObjects.mediaObject.type.group' => 'exact',
-        //        'mediaObjects.mediaObject.type' => 'exact',
-        //        'mediaObjects.mediaObject.uploadedBy.email' => 'ipartial',
-        //        'mediaObjects.mediaObject.uploadDate' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -170,6 +165,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     ExistsFilter::class,
     properties: [
         'analyses',
+        'analyses.summary',
         'notes',
         'culturalContext',
         'chronologyLower',
