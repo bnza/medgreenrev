@@ -13,7 +13,10 @@ readonly class AnalysisBotanyCharcoalCollectionVoter extends AbstractCollectionV
     {
         $user = $token->getUser();
         if ($parent instanceof Charcoal && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_ARCHAEOBOTANIST'])
+            return (
+                $this->accessDecisionManager->decide($token, ['ROLE_ARCHAEOBOTANIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST'])
+            )
                 && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getStratigraphicUnit()->getSite());
         }
 

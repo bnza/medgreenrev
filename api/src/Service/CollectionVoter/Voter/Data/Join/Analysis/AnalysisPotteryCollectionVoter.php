@@ -13,7 +13,10 @@ readonly class AnalysisPotteryCollectionVoter extends AbstractCollectionVoter
     {
         $user = $token->getUser();
         if ($parent instanceof Pottery && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_CERAMIC_SPECIALIST'])
+            return (
+                $this->accessDecisionManager->decide($token, ['ROLE_CERAMIC_SPECIALIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST'])
+            )
                 && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getStratigraphicUnit()->getSite());
         }
 

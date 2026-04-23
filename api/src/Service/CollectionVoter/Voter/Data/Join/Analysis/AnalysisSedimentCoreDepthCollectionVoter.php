@@ -13,7 +13,8 @@ readonly class AnalysisSedimentCoreDepthCollectionVoter extends AbstractCollecti
     {
         $user = $token->getUser();
         if ($parent instanceof SedimentCoreDepth && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST']);
+            return $this->accessDecisionManager->decide($token, ['ROLE_GEO_ARCHAEOLOGIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST']);
         }
 
         return false;

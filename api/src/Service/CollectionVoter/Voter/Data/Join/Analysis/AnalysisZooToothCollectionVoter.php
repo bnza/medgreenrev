@@ -13,7 +13,10 @@ readonly class AnalysisZooToothCollectionVoter extends AbstractCollectionVoter
     {
         $user = $token->getUser();
         if ($parent instanceof Tooth && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_ZOO_ARCHAEOLOGIST'])
+            return (
+                $this->accessDecisionManager->decide($token, ['ROLE_ZOO_ARCHAEOLOGIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST'])
+            )
                 && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getStratigraphicUnit()->getSite());
         }
 

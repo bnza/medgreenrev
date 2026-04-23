@@ -13,7 +13,10 @@ readonly class AnalysisContextZooCollectionVoter extends AbstractCollectionVoter
     {
         $user = $token->getUser();
         if ($parent instanceof Context && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_ZOO_ARCHAEOLOGIST'])
+            return (
+                $this->accessDecisionManager->decide($token, ['ROLE_ZOO_ARCHAEOLOGIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST'])
+            )
                 && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getSite());
         }
 

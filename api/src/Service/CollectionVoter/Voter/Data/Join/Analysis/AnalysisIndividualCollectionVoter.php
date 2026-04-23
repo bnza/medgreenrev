@@ -13,7 +13,10 @@ readonly class AnalysisIndividualCollectionVoter extends AbstractCollectionVoter
     {
         $user = $token->getUser();
         if ($parent instanceof Individual && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_ANTHROPOLOGIST'])
+            return (
+                $this->accessDecisionManager->decide($token, ['ROLE_ANTHROPOLOGIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST'])
+            )
                 && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getStratigraphicUnit()->getSite());
         }
 

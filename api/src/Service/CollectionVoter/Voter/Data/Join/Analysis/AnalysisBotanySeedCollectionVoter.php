@@ -13,7 +13,10 @@ readonly class AnalysisBotanySeedCollectionVoter extends AbstractCollectionVoter
     {
         $user = $token->getUser();
         if ($parent instanceof Seed && $user instanceof User) {
-            return $this->accessDecisionManager->decide($token, ['ROLE_ARCHAEOBOTANIST'])
+            return (
+                $this->accessDecisionManager->decide($token, ['ROLE_ARCHAEOBOTANIST'])
+                || $this->accessDecisionManager->decide($token, ['ROLE_MATERIAL_ANALYST'])
+            )
                 && $this->sitePrivilegeManager->hasSitePrivileges($user, $parent->getStratigraphicUnit()->getSite());
         }
 
