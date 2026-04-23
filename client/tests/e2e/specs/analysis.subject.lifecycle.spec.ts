@@ -21,7 +21,7 @@ import {
   runAbsoluteDatingLifecycle,
   runDataValidation,
   type SubjectConfig,
-} from '~~/tests/e2e/helpers/analysis-subject-lifecycle.helpers'
+} from '~~/tests/e2e/utils/analysis-subject-lifecycle.helpers'
 
 const botanyCharcoalConfig: SubjectConfig = {
   createCollectionPom: (page) => new AnalysisBotanyCharcoalCollectionPage(page),

@@ -1,7 +1,7 @@
 import { expect, type Page } from '@playwright/test'
 import type { BaseCollectionPage } from '~~/tests/e2e/pages/base-collection.page'
 import type { BaseItemPage } from '~~/tests/e2e/pages/base-item.page'
-import { NavigationLinksButton } from '~~/tests/e2e/utils'
+import { NavigationLinksButton } from '~~/tests/e2e/utils/index'
 
 export interface SubjectConfig {
   createCollectionPom: (page: Page) => BaseCollectionPage
