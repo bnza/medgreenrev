@@ -144,6 +144,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'analyses',
         'analyses.summary',
         'element',
         'part',

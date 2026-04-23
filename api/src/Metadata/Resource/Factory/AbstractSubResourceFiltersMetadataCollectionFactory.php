@@ -2,7 +2,7 @@
 
 namespace App\Metadata\Resource\Factory;
 
-use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\CollectionOperationInterface;
 use ApiPlatform\Metadata\Resource\Factory\ResourceMetadataCollectionFactoryInterface;
 use ApiPlatform\Metadata\Resource\ResourceMetadataCollection;
 use App\Metadata\Attribute\SubResourceFilters\AbstractApiSubresourceFilters;
@@ -43,7 +43,7 @@ abstract readonly class AbstractSubResourceFiltersMetadataCollectionFactory impl
             $ops = $resource->getOperations() ?? null;
             if ($ops) {
                 foreach ($ops as $name => $op) {
-                    if ($op instanceof GetCollection) {
+                    if ($op instanceof CollectionOperationInterface) {
                         $filters = $op->getFilters() ?? [];
                         foreach ($attrs as $attr) {
                             $apiSubResourceFilters = $attr->newInstance();

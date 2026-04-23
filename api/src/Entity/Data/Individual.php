@@ -131,11 +131,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'analyses',
         'analyses.summary',
         'age',
         'sex',
         'notes',
-        'analyses',
     ]
 )]
 #[ApiFilter(UnaccentedSearchFilter::class, properties: [

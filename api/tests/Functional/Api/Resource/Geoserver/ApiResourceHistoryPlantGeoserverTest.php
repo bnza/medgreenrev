@@ -57,7 +57,17 @@ class ApiResourceHistoryPlantGeoserverTest extends ApiTestCase
 
         $token = $this->getUserToken($client, 'user_editor');
 
-        // Assuming there is some data in the test database
+        // Get unfiltered counts first
+        $unfilteredResponse = $this->apiRequest($client, 'GET', '/api/features/history/plants', [
+            'token' => $token,
+            'headers' => [
+                'Accept' => 'application/json',
+            ],
+        ]);
+        $unfilteredJson = json_decode($unfilteredResponse->getContent(), true);
+        $unfilteredTotal = array_sum($unfilteredJson);
+
+        // Get filtered counts
         $collectionResponse = $this->apiRequest($client, 'GET', '/api/features/history/plants?id[]=1', [
             'token' => $token,
             'headers' => [
@@ -68,9 +78,18 @@ class ApiResourceHistoryPlantGeoserverTest extends ApiTestCase
         $this->assertResponseHeaderSame('content-type', 'application/json');
         $responseJson = json_decode($collectionResponse->getContent(), true);
 
-        // Should return a map {parentId: count} or true if all match
-        // If filtered, it should likely be an array (map)
-        $this->assertTrue(is_array($responseJson) || is_bool($responseJson));
+        // Must always be an array map {parentId: count}
+        $this->assertIsArray($responseJson);
+        $filteredTotal = array_sum($responseJson);
+
+        // Filtered total must be less than or equal to unfiltered total
+        $this->assertLessThanOrEqual($unfilteredTotal, $filteredTotal);
+
+        // Each count must be a positive integer
+        foreach ($responseJson as $parentId => $count) {
+            $this->assertIsInt($count);
+            $this->assertGreaterThan(0, $count);
+        }
     }
 
     public function testGetCollectionGeoJson(): void

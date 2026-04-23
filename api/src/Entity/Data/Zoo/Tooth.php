@@ -20,7 +20,7 @@ use App\Doctrine\Filter\SearchSiteAndIdFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\ArchaeologicalSite;
-use App\Entity\Data\Join\Analysis\AnalysisZooBone;
+use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
 use App\Entity\Data\StratigraphicUnit;
 use App\Entity\Vocabulary\Zoo\Bone as VocabularyBone;
 use App\Entity\Vocabulary\Zoo\BoneSide;
@@ -154,6 +154,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'analyses',
         'analyses.summary',
         'notes',
         'element',
@@ -190,9 +191,9 @@ class Tooth
     #[ApiProperty(required: true)]
     private StratigraphicUnit $stratigraphicUnit;
 
-    /** @var Collection<AnalysisZooBone> */
+    /** @var Collection<AnalysisZooTooth> */
     #[ORM\OneToMany(
-        targetEntity: AnalysisZooBone::class,
+        targetEntity: AnalysisZooTooth::class,
         mappedBy: 'subject',
         cascade: ['persist', 'remove'],
         orphanRemoval: true,
