@@ -132,10 +132,18 @@ const { r$ } = useScopedRegle(model, {
         />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
-        <v-text-field v-model="r$.$value.innerColor" label="inner color" />
+        <data-selection-list
+          v-model="r$.$value.innerColor"
+          path="/api/list/pottery_colors"
+          label="inner color"
+        />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
-        <v-text-field v-model="r$.$value.outerColor" label="outer color" />
+        <data-selection-list
+          v-model="r$.$value.outerColor"
+          path="/api/list/pottery_colors"
+          label="outer color"
+        />
       </v-col>
     </v-row>
     <v-row>

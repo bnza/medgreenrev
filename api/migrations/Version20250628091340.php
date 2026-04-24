@@ -258,6 +258,28 @@ final class Version20250628091340 extends AbstractMigration
                     DELETE FROM stratigraphic_units_relationships WHERE id = ABS(OLD.id)
                 SQL
         );
+
+        $this->addSql(
+            <<<'SQL'
+                            CREATE OR REPLACE VIEW vw_pottery_colors AS
+                            WITH DistinctValues AS (
+                                -- Step 1: Find the unique, input values.
+                                SELECT
+                                    DISTINCT inner_color AS original_value FROM potteries
+                                    WHERE inner_color IS NOT NULL
+                                UNION
+                                SELECT
+                                    DISTINCT outer_color AS original_value FROM potteries
+                                    WHERE outer_color IS NOT NULL
+                            )
+                            -- Step 2: Calculate the MD5 hash once for each unique type.
+                            SELECT
+                                MD5(original_value) AS id,
+                                original_value AS value
+                            FROM
+                                DistinctValues
+                SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -273,6 +295,7 @@ final class Version20250628091340 extends AbstractMigration
         $this->addSql('DROP VIEW vw_context_types;');
         $this->addSql('DROP VIEW vw_history_references;');
         $this->addSql('DROP VIEW vw_persons;');
+        $this->addSql('DROP VIEW vw_pottery_colors;');
         $this->addSql('DROP VIEW vw_stratigraphic_units_relationships;');
     }
 }
