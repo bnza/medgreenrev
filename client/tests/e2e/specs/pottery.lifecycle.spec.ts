@@ -39,16 +39,7 @@ test.describe('Pottery lifecycle', () => {
 
       // Fill shape field (using autocomplete)
       await collectionPom.dataDialogCreate.form.getByLabel('shape').click()
-      await page.getByRole('option', { name: /close/ }).first().click()
-
-      // Fill functional group field (using autocomplete)
-      await collectionPom.dataDialogCreate.form
-        .getByLabel('functional group')
-        .click()
-      await page
-        .getByRole('option', { name: /construction/ })
-        .first()
-        .click()
+      await page.getByRole('option', { name: /base/ }).first().click()
 
       // Fill functional form field (using autocomplete)
       await collectionPom.dataDialogCreate.form
@@ -140,14 +131,6 @@ test.describe('Pottery lifecycle', () => {
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'inventory' })
         .fill('POT-2024-002')
-
-      await collectionPom.dataDialogCreate.form
-        .getByLabel('functional group')
-        .click()
-      await page
-        .getByRole('option', { name: /others/ })
-        .first()
-        .click()
 
       await collectionPom.dataDialogCreate.form
         .getByLabel('functional form')
@@ -288,14 +271,6 @@ test.describe('Pottery lifecycle', () => {
       await inventoryField.fill('POT-VALID-001')
       await chronologyLowerField.fill('-200')
       await chronologyUpperField.fill('-100')
-      // Fill functional group field (using autocomplete)
-      await collectionPom.dataDialogCreate.form
-        .getByLabel('functional group')
-        .click()
-      await page
-        .getByRole('option', { name: /construction/ })
-        .first()
-        .click()
 
       // Fill functional form field (using autocomplete)
       await collectionPom.dataDialogCreate.form

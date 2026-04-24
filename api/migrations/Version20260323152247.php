@@ -72,12 +72,20 @@ final class Version20260323152247 extends AbstractMigration
                 SELECT
                     p.id, p.inventory, p.inner_color, p.outer_color, p.decoration_motif,
                     p.chronology_lower, p.chronology_upper, p.notes,
-                    p.surface_treatment_id, p.cultural_context_id, p.part_id AS shape_id,
-                    p.functional_group_id, p.functional_form_id,
+                    st.value AS surface_treatment,
+                    cc.value AS cultural_context,
+                    sh.value AS shape,
+                    fg.value AS functional_group,
+                    ff.value AS functional_form,
                     su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
                 FROM potteries p
                 JOIN sus su ON p.stratigraphic_unit_id = su.id
-                JOIN archaeological_sites s ON su.site_id = s.id;
+                JOIN archaeological_sites s ON su.site_id = s.id
+                LEFT JOIN vocabulary.surface_treatment st ON p.surface_treatment_id = st.id
+                LEFT JOIN vocabulary.cultural_contexts cc ON p.cultural_context_id = cc.id
+                LEFT JOIN vocabulary.pottery_shapes sh ON p.part_id = sh.id
+                LEFT JOIN vocabulary.pottery_functional_forms ff ON p.functional_form_id = ff.id
+                LEFT JOIN vocabulary.pottery_functional_groups fg ON ff.functional_group_id = fg.id;
             SQL
         );
 

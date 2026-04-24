@@ -41,4 +41,10 @@ class Shape
     ])]
     #[ApiProperty(required: true)]
     public string $value;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Groups([
+        'pottery:export',
+    ])]
+    public ?string $variant = null;
 }

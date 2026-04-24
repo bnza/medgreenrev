@@ -5,10 +5,11 @@
 | value |
 | --- |
 | construction |
-| fire container/lighting |
+| fire containers/lighting |
 | kitchenware |
 | multipurpose |
-| others |
-| transport/storage |
+| other |
+| storage/transport |
+| tableware |
 
 [Back to Vocabulary Index](index.md)

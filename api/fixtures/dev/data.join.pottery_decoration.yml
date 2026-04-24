@@ -28,7 +28,7 @@ App\Entity\Data\Join\PotteryDecoration:
         decoration: '@voc__decoration_4'
     pottery_decoration_10:
         pottery: '@pottery_ni_9'
-        decoration: '@voc__decoration_16'
+        decoration: '@voc__decoration_15'
     pottery_decoration_11:
         pottery: '@pottery_se_11'
         decoration: '@voc__decoration_11'
@@ -73,7 +73,7 @@ App\Entity\Data\Join\PotteryDecoration:
         decoration: '@voc__decoration_2'
     pottery_decoration_25:
         pottery: '@pottery_se_21'
-        decoration: '@voc__decoration_16'
+        decoration: '@voc__decoration_15'
     pottery_decoration_26:
         pottery: '@pottery_me_22'
         decoration: '@voc__decoration_10'
@@ -109,7 +109,7 @@ App\Entity\Data\Join\PotteryDecoration:
         decoration: '@voc__decoration_4'
     pottery_decoration_37:
         pottery: '@pottery_to_30'
-        decoration: '@voc__decoration_16'
+        decoration: '@voc__decoration_15'
     pottery_decoration_38:
         pottery: '@pottery_ni_32'
         decoration: '@voc__decoration_8'
@@ -166,7 +166,7 @@ App\Entity\Data\Join\PotteryDecoration:
         decoration: '@voc__decoration_7'
     pottery_decoration_56:
         pottery: '@pottery_ni_45'
-        decoration: '@voc__decoration_16'
+        decoration: '@voc__decoration_15'
     pottery_decoration_57:
         pottery: '@pottery_ni_45'
         decoration: '@voc__decoration_5'

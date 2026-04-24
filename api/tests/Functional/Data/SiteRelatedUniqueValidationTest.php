@@ -18,7 +18,6 @@ class SiteRelatedUniqueValidationTest extends KernelTestCase
     use ApiDataTestProviderTrait;
 
     private EntityManagerInterface $entityManager;
-    private FunctionalGroup $functionalGroup;
     private FunctionalForm $functionalForm;
 
     protected function setUp(): void
@@ -27,12 +26,13 @@ class SiteRelatedUniqueValidationTest extends KernelTestCase
         $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
 
         // Create common vocabulary items
-        $this->functionalGroup = new FunctionalGroup();
-        $this->functionalGroup->value = 'Tableware';
-        $this->entityManager->persist($this->functionalGroup);
+        $functionalGroup = new FunctionalGroup();
+        $functionalGroup->value = 'Tableware';
+        $this->entityManager->persist($functionalGroup);
 
         $this->functionalForm = new FunctionalForm();
         $this->functionalForm->value = 'Bowl';
+        $this->functionalForm->functionalGroup = $functionalGroup;
         $this->entityManager->persist($this->functionalForm);
 
         $this->entityManager->flush();
@@ -71,7 +71,6 @@ class SiteRelatedUniqueValidationTest extends KernelTestCase
         $pottery = new Pottery();
         $pottery->setStratigraphicUnit($su);
         $pottery->setInventory($inventory);
-        $pottery->setFunctionalGroup($this->functionalGroup);
         $pottery->setFunctionalForm($this->functionalForm);
         $this->entityManager->persist($pottery);
 

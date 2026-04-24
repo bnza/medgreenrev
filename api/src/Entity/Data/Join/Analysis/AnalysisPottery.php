@@ -47,7 +47,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.chronologyLower' => 'exact',
         'subject.chronologyUpper' => 'exact',
         'subject.shape' => 'exact',
-        'subject.functionalGroup' => 'exact',
         'subject.functionalForm' => 'exact',
         'subject.notes' => 'ipartial',
         'subject.surfaceTreatment' => 'exact',

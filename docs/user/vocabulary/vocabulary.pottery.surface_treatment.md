@@ -2,13 +2,11 @@
 
 [Back to Vocabulary Index](index.md)
 
-| value |
-| --- |
-| bitumen |
-| burnished |
-| glazed |
-| polished |
-| scraped |
-| smoothed |
+| value | variant |
+| --- | --- |
+| glazed | vidriado |
+| painted |  |
+| slipcoat | engobe |
+| without |  |
 
 [Back to Vocabulary Index](index.md)

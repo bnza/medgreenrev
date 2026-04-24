@@ -1,7 +1,17 @@
 App\Entity\Vocabulary\Pottery\Shape:
     voc__pottery_shape_1:
-        value: 'tall closed wares'
+        value: 'rim'
     voc__pottery_shape_2:
-        value: 'closed wares'
+        value: 'lip'
     voc__pottery_shape_3:
-        value: 'open wares'
+        value: 'neck'
+    voc__pottery_shape_4:
+        value: 'base'
+    voc__pottery_shape_5:
+        value: 'handle'
+    voc__pottery_shape_6:
+        value: 'body'
+        variant: 'galbo'
+    voc__pottery_shape_7:
+        value: 'indeterminate'
+        variant: 'amorfo'

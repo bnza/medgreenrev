@@ -1,51 +1,132 @@
 App\Entity\Vocabulary\Pottery\FunctionalForm:
     voc__pottery_functional_form_1:
-        value: 'ataifor'
-    voc__pottery_functional_form_2:
-        value: 'bowl'
-    voc__pottery_functional_form_3:
-        value: 'basin'
-    voc__pottery_functional_form_4:
-        value: 'casserole'
-    voc__pottery_functional_form_5:
         value: 'pot'
+        variant: 'olla/marmita'
+        functionalGroup: '@voc__pottery_functional_group_1'
+    voc__pottery_functional_form_2:
+        value: 'casserole'
+        functionalGroup: '@voc__pottery_functional_group_1'
+    voc__pottery_functional_form_3:
+        value: 'mortar'
+        variant: 'mortero'
+        functionalGroup: '@voc__pottery_functional_group_1'
+    voc__pottery_functional_form_4:
+        value: 'couscous maker'
+        functionalGroup: '@voc__pottery_functional_group_1'
+    voc__pottery_functional_form_5:
+        value: 'strainer'
+        functionalGroup: '@voc__pottery_functional_group_1'
     voc__pottery_functional_form_6:
         value: 'pitcher'
+        variant: 'jarrito'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_7:
-        value: 'jug'
+        value: 'little jug'
+        variant: 'jarrita'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_8:
-        value: 'vat'
+        value: 'bottle'
+        variant: 'redoma/limeta/botella'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_9:
-        value: 'flask'
-    voc__pottery_functional_form_10:
         value: 'mug'
+        variant: 'jarro/taza'
+        functionalGroup: '@voc__pottery_functional_group_2'
+    voc__pottery_functional_form_10:
+        value: 'cup'
+        variant: 'vaso'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_11:
-        value: 'bucket'
+        value: 'serving dish'
+        variant: 'ataifor/zafa'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_12:
-        value: 'lamp'
+        value: 'plate'
+        variant: 'plato/jofaina'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_13:
-        value: 'lid'
+        value: 'bowl'
+        variant: 'cuenco'
+        functionalGroup: '@voc__pottery_functional_group_2'
     voc__pottery_functional_form_14:
-        value: 'tab'
+        value: 'large store jar'
+        variant: 'tinaja'
+        functionalGroup: '@voc__pottery_functional_group_3'
     voc__pottery_functional_form_15:
-        value: 'toy'
-    voc__pottery_functional_form_16:
-        value: 'canteen'
-    voc__pottery_functional_form_17:
-        value: 'portable cooker'
-    voc__pottery_functional_form_18:
-        value: 'brazier'
-    voc__pottery_functional_form_19:
         value: 'stockpot'
+        variant: 'orza'
+        functionalGroup: '@voc__pottery_functional_group_3'
+    voc__pottery_functional_form_16:
+        value: 'jar'
+        variant: 'jarra/cántaro'
+        functionalGroup: '@voc__pottery_functional_group_3'
+    voc__pottery_functional_form_17:
+        value: 'canteen'
+        functionalGroup: '@voc__pottery_functional_group_3'
+    voc__pottery_functional_form_18:
+        value: 'lamp'
+        functionalGroup: '@voc__pottery_functional_group_4'
+    voc__pottery_functional_form_19:
+        value: 'portable cooker'
+        variant: 'anafe/hornillo'
+        functionalGroup: '@voc__pottery_functional_group_4'
     voc__pottery_functional_form_20:
-        value: 'tabaq'
+        value: 'brazier'
+        functionalGroup: '@voc__pottery_functional_group_4'
     voc__pottery_functional_form_21:
-        value: 'brick'
+        value: 'oven'
+        variant: 'tannur/horno'
+        functionalGroup: '@voc__pottery_functional_group_4'
     voc__pottery_functional_form_22:
-        value: 'pipe'
+        value: 'basin'
+        variant: 'alcadafe/lebrillo'
+        functionalGroup: '@voc__pottery_functional_group_5'
     voc__pottery_functional_form_23:
-        value: 'roof tile'
+        value: 'lid'
+        functionalGroup: '@voc__pottery_functional_group_5'
     voc__pottery_functional_form_24:
-        value: 'tessera'
+        value: 'flask'
+        variant: 'ungüentario'
+        functionalGroup: '@voc__pottery_functional_group_5'
     voc__pottery_functional_form_25:
+        value: 'slab'
+        variant: 'soporte plano'
+        functionalGroup: '@voc__pottery_functional_group_5'
+    voc__pottery_functional_form_26:
+        value: 'atifle'
+        functionalGroup: '@voc__pottery_functional_group_6'
+    voc__pottery_functional_form_27:
+        value: 'kiln bar'
+        variant: 'barra de horno'
+        functionalGroup: '@voc__pottery_functional_group_6'
+    voc__pottery_functional_form_28:
+        value: 'bucket'
+        variant: 'cangilón/arcaduz'
+        functionalGroup: '@voc__pottery_functional_group_6'
+    voc__pottery_functional_form_29:
+        value: 'toy'
+        functionalGroup: '@voc__pottery_functional_group_6'
+    voc__pottery_functional_form_30:
+        value: 'tab'
+        functionalGroup: '@voc__pottery_functional_group_6'
+    voc__pottery_functional_form_31:
+        value: 'drum or adufe'
+        variant: 'tambor'
+        functionalGroup: '@voc__pottery_functional_group_6'
+    voc__pottery_functional_form_32:
+        value: 'pipe'
+        functionalGroup: '@voc__pottery_functional_group_7'
+    voc__pottery_functional_form_33:
+        value: 'roof tile'
+        functionalGroup: '@voc__pottery_functional_group_7'
+    voc__pottery_functional_form_34:
+        value: 'brick'
+        functionalGroup: '@voc__pottery_functional_group_7'
+    voc__pottery_functional_form_35:
         value: 'tile'
+        variant: 'azulejo'
+        functionalGroup: '@voc__pottery_functional_group_7'
+    voc__pottery_functional_form_36:
+        value: 'tessera'
+        variant: 'tesela'
+        functionalGroup: '@voc__pottery_functional_group_7'

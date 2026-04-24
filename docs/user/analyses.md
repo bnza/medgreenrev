@@ -60,7 +60,7 @@ As an authenticated user, with a specialist role, you can create new analyses. S
 
 The following GIF demonstrates the process:
 
-![Analysis creation](./images/geo_thin_section_analysis_creation.gif))
+![Analysis creation](./images/geo_thin_section_analysis_creation.gif)
 
 ## Analysis association
 
@@ -109,4 +109,4 @@ To be able to associate a microstratigraphic analysis with a sample, the user mu
 
 The following GIF demonstrates the process:
 
-![Analysis association](./images/mst_sample_microstratigraphy_analysis_association.gif))
+![Analysis association](./images/mst_sample_microstratigraphy_analysis_association.gif)

@@ -40,13 +40,11 @@ class ApiResourcePotteryTest extends ApiTestCase
 
         $this->assertNotEmpty($su, 'Fixture stratigraphic unit should exist');
 
-        $functionalGroups = $this->getVocabulary(['pottery', 'functional_groups']);
         $functionalForms = $this->getVocabulary(['pottery', 'functional_forms']);
 
         $payload = [
             'inventory' => 'test.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
-            'functionalGroup' => $functionalGroups[0]['@id'],
             'functionalForm' => $functionalForms[0]['@id'],
             'notes' => 'Test notes',
         ];
@@ -60,7 +58,6 @@ class ApiResourcePotteryTest extends ApiTestCase
         $createdData = $response->toArray();
         $this->assertEquals($payload['inventory'], $createdData['inventory']);
         $this->assertEquals($payload['notes'], $createdData['notes']);
-        $this->assertEquals($payload['functionalGroup'], $createdData['functionalGroup']);
         $this->assertEquals($payload['functionalForm'], $createdData['functionalForm']);
         $this->assertEquals($payload['stratigraphicUnit'], $createdData['stratigraphicUnit']['@id']);
     }
@@ -78,13 +75,11 @@ class ApiResourcePotteryTest extends ApiTestCase
 
         $this->assertNotEmpty($su, 'Fixture stratigraphic unit should exist');
 
-        $functionalGroups = $this->getVocabulary(['pottery', 'functional_groups']);
         $functionalForms = $this->getVocabulary(['pottery', 'functional_forms']);
 
         $payload = [
             'inventory' => 'test.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
-            'functionalGroup' => $functionalGroups[0]['@id'],
             'functionalForm' => $functionalForms[0]['@id'],
             'notes' => 'Test notes',
         ];
@@ -110,13 +105,11 @@ class ApiResourcePotteryTest extends ApiTestCase
 
         $this->assertNotEmpty($su, 'Fixture stratigraphic unit should exist');
 
-        $functionalGroups = $this->getVocabulary(['pottery', 'functional_groups']);
         $functionalForms = $this->getVocabulary(['pottery', 'functional_forms']);
 
         $payload = [
             'inventory' => 'test.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
-            'functionalGroup' => $functionalGroups[0]['@id'],
             'functionalForm' => $functionalForms[0]['@id'],
             'notes' => 'Test notes',
         ];
@@ -140,14 +133,12 @@ class ApiResourcePotteryTest extends ApiTestCase
         $response = $this->apiRequest($client, 'GET', "/api/data/stratigraphic_units?site={$site['@id']}");
         $su = $response->toArray()['member'][0];
 
-        $functionalGroups = $this->getVocabulary(['pottery', 'functional_groups']);
         $functionalForms = $this->getVocabulary(['pottery', 'functional_forms']);
         $decorations = $this->getVocabulary(['pottery', 'decorations']);
 
         $payload = [
             'inventory' => 'test.decorations.'.uniqid(),
             'stratigraphicUnit' => $su['@id'],
-            'functionalGroup' => $functionalGroups[0]['@id'],
             'functionalForm' => $functionalForms[0]['@id'],
             'decorations' => [
                 $decorations[0]['@id'],
@@ -198,7 +189,6 @@ class ApiResourcePotteryTest extends ApiTestCase
         $response = $this->apiRequest($client, 'GET', "/api/data/stratigraphic_units?site={$site['@id']}");
         $su = $response->toArray()['member'][0];
 
-        $functionalGroups = $this->getVocabulary(['pottery', 'functional_groups']);
         $functionalForms = $this->getVocabulary(['pottery', 'functional_forms']);
 
         $inventory = 'duplicate.'.uniqid();
@@ -206,7 +196,6 @@ class ApiResourcePotteryTest extends ApiTestCase
         $payload = [
             'inventory' => $inventory,
             'stratigraphicUnit' => $su['@id'],
-            'functionalGroup' => $functionalGroups[0]['@id'],
             'functionalForm' => $functionalForms[0]['@id'],
         ];
 

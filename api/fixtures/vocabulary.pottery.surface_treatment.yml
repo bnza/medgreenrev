@@ -1,13 +1,11 @@
 App\Entity\Vocabulary\Pottery\SurfaceTreatment:
     voc__p__surface_treatment_1:
-        value: bitumen
+        value: 'without'
     voc__p__surface_treatment_2:
-        value: burnished
+        value: 'painted'
     voc__p__surface_treatment_3:
-        value: glazed
+        value: 'slipcoat'
+        variant: 'engobe'
     voc__p__surface_treatment_4:
-        value: polished
-    voc__p__surface_treatment_5:
-        value: scraped
-    voc__p__surface_treatment_6:
-        value: smoothed
+        value: 'glazed'
+        variant: 'vidriado'

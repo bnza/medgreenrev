@@ -13658,11 +13658,6 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      functionalGroup: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       functionalForm: string
       notes?: string | null
     }
@@ -13694,11 +13689,6 @@ export interface components {
        * @example https://example.com/
        */
       shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13744,7 +13734,7 @@ export interface components {
     }
     'Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       readonly id?: number | string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
       /**
@@ -13767,16 +13757,7 @@ export interface components {
        * @example https://example.com/
        */
       shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
+      functionalForm: components['schemas']['VocPotteryFunctionalForm.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       notes?: string | null
       readonly code?: string
       /** @description Access control metadata */
@@ -13788,7 +13769,7 @@ export interface components {
     }
     'Pottery.csv-pottery.acl.read': {
       readonly id?: number | string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-pottery.acl.read']
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.csv-pottery.acl.read'][]
       /**
@@ -13811,16 +13792,7 @@ export interface components {
        * @example https://example.com/
        */
       shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
+      functionalForm: components['schemas']['VocPotteryFunctionalForm.csv-pottery.acl.read']
       notes?: string | null
       readonly code?: string
       /** @description Access control metadata */
@@ -13840,7 +13812,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
       /**
@@ -13863,16 +13835,7 @@ export interface components {
        * @example https://example.com/
        */
       shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
+      functionalForm: components['schemas']['VocPotteryFunctionalForm.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       notes?: string | null
       readonly code?: string
     })
@@ -13885,7 +13848,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
-      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
       /**
@@ -13908,16 +13871,7 @@ export interface components {
        * @example https://example.com/
        */
       shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm?: string
+      functionalForm: components['schemas']['VocPotteryFunctionalForm.jsonld-pottery.acl.read']
       notes?: string | null
       readonly code?: string
     })
@@ -17108,22 +17062,112 @@ export interface components {
     'VocPotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
+      variant?: string | null
+    }
+    'VocPotteryFunctionalForm.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      value: string
+      functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocPotteryFunctionalForm.csv-pottery.acl.read': {
+      value: string
+      functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.csv-pottery.acl.read']
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocPotteryFunctionalForm.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
+      variant?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalGroup?: string
+    }
+    'VocPotteryFunctionalForm.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+    })
+    'VocPotteryFunctionalForm.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.jsonld-pottery.acl.read']
+    })
+    'VocPotteryFunctionalGroup.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocPotteryFunctionalGroup.csv-pottery.acl.read': {
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
     }
     'VocPotteryFunctionalGroup.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
+      functionalForms?: string[]
     }
+    'VocPotteryFunctionalGroup.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
+    'VocPotteryFunctionalGroup.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    })
     'VocPotteryShape.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
+      variant?: string | null
     }
     'VocPotterySurfaceTreatment.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
+      variant?: string | null
     }
     /** @description Project's regions vocabulary. */
     'VocRegions.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
@@ -23831,8 +23875,6 @@ export interface operations {
         'subject.chronologyUpper[]'?: number[]
         'subject.shape'?: string
         'subject.shape[]'?: string[]
-        'subject.functionalGroup'?: string
-        'subject.functionalGroup[]'?: string[]
         'subject.functionalForm'?: string
         'subject.functionalForm[]'?: string[]
         'subject.notes'?: string
@@ -24183,8 +24225,6 @@ export interface operations {
         'subject.chronologyUpper[]'?: number[]
         'subject.shape'?: string
         'subject.shape[]'?: string[]
-        'subject.functionalGroup'?: string
-        'subject.functionalGroup[]'?: string[]
         'subject.functionalForm'?: string
         'subject.functionalForm[]'?: string[]
         'subject.notes'?: string
@@ -24342,8 +24382,6 @@ export interface operations {
         'subject.chronologyUpper[]'?: number[]
         'subject.shape'?: string
         'subject.shape[]'?: string[]
-        'subject.functionalGroup'?: string
-        'subject.functionalGroup[]'?: string[]
         'subject.functionalForm'?: string
         'subject.functionalForm[]'?: string[]
         'subject.notes'?: string
@@ -28927,6 +28965,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -28939,6 +28978,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -29067,6 +29108,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -29079,6 +29121,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -29400,6 +29444,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -29412,6 +29457,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -29450,6 +29497,82 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -29462,6 +29585,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -29474,6 +29598,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -29507,6 +29633,82 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -29519,6 +29721,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
         element?: string
@@ -29531,6 +29734,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -29728,6 +29933,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -29740,6 +29946,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
@@ -29868,6 +30076,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -29880,6 +30089,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
@@ -30201,6 +30412,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -30213,6 +30425,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
@@ -30251,6 +30465,82 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -30263,6 +30553,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -30275,6 +30566,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
@@ -30308,6 +30601,82 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -30320,6 +30689,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -30332,6 +30702,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
@@ -33189,6 +33561,7 @@ export interface operations {
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         age?: string
         'age[]'?: string[]
         sex?: string
@@ -33196,16 +33569,20 @@ export interface operations {
         identifier?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[age]'?: boolean
         'exists[sex]'?: boolean
         'exists[notes]'?: boolean
-        'exists[analyses]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
-        /** @description Search case insensitive match the identifier field */
+        /**
+         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
+         * @example TO.IND001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -33324,6 +33701,7 @@ export interface operations {
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         age?: string
         'age[]'?: string[]
         sex?: string
@@ -33331,16 +33709,20 @@ export interface operations {
         identifier?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[age]'?: boolean
         'exists[sex]'?: boolean
         'exists[notes]'?: boolean
-        'exists[analyses]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
-        /** @description Search case insensitive match the identifier field */
+        /**
+         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
+         * @example TO.IND001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -33652,6 +34034,7 @@ export interface operations {
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         age?: string
         'age[]'?: string[]
         sex?: string
@@ -33659,16 +34042,20 @@ export interface operations {
         identifier?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[age]'?: boolean
         'exists[sex]'?: boolean
         'exists[notes]'?: boolean
-        'exists[analyses]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
-        /** @description Search case insensitive match the identifier field */
+        /**
+         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
+         * @example TO.IND001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -33704,11 +34091,88 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         age?: string
         'age[]'?: string[]
         sex?: string
@@ -33716,16 +34180,20 @@ export interface operations {
         identifier?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[age]'?: boolean
         'exists[sex]'?: boolean
         'exists[notes]'?: boolean
-        'exists[analyses]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
-        /** @description Search case insensitive match the identifier field */
+        /**
+         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
+         * @example TO.IND001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -33799,11 +34267,88 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         age?: string
         'age[]'?: string[]
         sex?: string
@@ -33811,16 +34356,20 @@ export interface operations {
         identifier?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[age]'?: boolean
         'exists[sex]'?: boolean
         'exists[notes]'?: boolean
-        'exists[analyses]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: notes
          * @example cafè
          */
         notes?: string
-        /** @description Search case insensitive match the identifier field */
+        /**
+         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
+         * @example TO.IND001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -36727,6 +37276,54 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
@@ -36806,6 +37403,54 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
@@ -37277,6 +37922,30 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[length]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -37437,6 +38106,30 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[length]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -37801,6 +38494,30 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[code]'?: 'asc' | 'desc'
         'order[name]'?: 'asc' | 'desc'
@@ -37929,6 +38646,30 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[code]'?: 'asc' | 'desc'
         'order[name]'?: 'asc' | 'desc'
@@ -38092,11 +38833,11 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
-        'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
         'order[outerColor]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'decorations.decoration'?: string
@@ -38110,8 +38851,6 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
-        functionalGroup?: string
-        'functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -38131,6 +38870,7 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -38141,7 +38881,10 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /** @description Search case insensitive match the inventory field */
+        /**
+         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
+         * @example SE.POT001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -38286,11 +39029,11 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
-        'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
         'order[outerColor]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'decorations.decoration'?: string
@@ -38304,8 +39047,6 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
-        functionalGroup?: string
-        'functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -38325,6 +39066,7 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -38335,7 +39077,10 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /** @description Search case insensitive match the inventory field */
+        /**
+         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
+         * @example SE.POT001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -38673,11 +39418,11 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
-        'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
         'order[outerColor]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'decorations.decoration'?: string
@@ -38691,8 +39436,6 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
-        functionalGroup?: string
-        'functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -38712,6 +39455,7 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -38722,7 +39466,10 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /** @description Search case insensitive match the inventory field */
+        /**
+         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
+         * @example SE.POT001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -38758,6 +39505,106 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
@@ -38765,13 +39612,11 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
-        'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
         'order[outerColor]'?: 'asc' | 'desc'
-        'stratigraphicUnit.site'?: string
-        'stratigraphicUnit.site[]'?: string[]
+        'analyses.summary'?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'decorations.decoration'?: string
@@ -38785,8 +39630,6 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
-        functionalGroup?: string
-        'functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -38806,6 +39649,7 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -38816,7 +39660,10 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /** @description Search case insensitive match the inventory field */
+        /**
+         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
+         * @example SE.POT001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -38921,6 +39768,106 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
@@ -38928,13 +39875,11 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
-        'order[functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
         'order[outerColor]'?: 'asc' | 'desc'
-        'stratigraphicUnit.site'?: string
-        'stratigraphicUnit.site[]'?: string[]
+        'analyses.summary'?: string
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'decorations.decoration'?: string
@@ -38948,8 +39893,6 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
-        functionalGroup?: string
-        'functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -38969,6 +39912,7 @@ export interface operations {
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
         'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[culturalContext]'?: boolean
         'exists[chronologyLower]'?: boolean
@@ -38979,7 +39923,10 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /** @description Search case insensitive match the inventory field */
+        /**
+         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
+         * @example SE.POT001
+         */
         search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
@@ -39155,6 +40102,8 @@ export interface operations {
         'order[number]'?: 'asc' | 'desc'
         'order[type.code]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
+        'analysesMicrostratigraphicUnits.summary'?: string
         site?: string
         'site[]'?: string[]
         type?: string
@@ -39175,6 +40124,8 @@ export interface operations {
         'number[gte]'?: string
         'number[lt]'?: string
         'number[lte]'?: string
+        'exists[analyses.summary]'?: boolean
+        'exists[analysesMicrostratigraphicUnits.summary]'?: boolean
         'exists[description]'?: boolean
         'exists[sampleStratigraphicUnits]'?: boolean
         'exists[analysesMicrostratigraphicUnits]'?: boolean
@@ -39306,6 +40257,8 @@ export interface operations {
         'order[number]'?: 'asc' | 'desc'
         'order[type.code]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
+        'analysesMicrostratigraphicUnits.summary'?: string
         site?: string
         'site[]'?: string[]
         type?: string
@@ -39326,6 +40279,8 @@ export interface operations {
         'number[gte]'?: string
         'number[lt]'?: string
         'number[lte]'?: string
+        'exists[analyses.summary]'?: boolean
+        'exists[analysesMicrostratigraphicUnits.summary]'?: boolean
         'exists[description]'?: boolean
         'exists[sampleStratigraphicUnits]'?: boolean
         'exists[analysesMicrostratigraphicUnits]'?: boolean
@@ -40580,6 +41535,11 @@ export interface operations {
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
         'exists[mediaObjects]'?: boolean
+        /**
+         * @description Search sampling stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site code + number). Invalid combinations return empty results.
+         * @example SITE 123
+         */
+        search?: string
       }
       header?: never
       path: {
@@ -40652,6 +41612,11 @@ export interface operations {
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
         'exists[mediaObjects]'?: boolean
+        /**
+         * @description Search sampling stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site code + number). Invalid combinations return empty results.
+         * @example SITE 123
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -40871,11 +41836,6 @@ export interface operations {
          * @example GVR 2023 5
          */
         search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
       }
       header?: never
       path: {
@@ -40925,11 +41885,6 @@ export interface operations {
          * @example GVR 2023 5
          */
         search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
       }
       header?: never
       path?: never
@@ -41170,11 +42125,6 @@ export interface operations {
          * @example GVR 2023 5
          */
         search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
       }
       header?: never
       path?: never
@@ -41291,11 +42241,6 @@ export interface operations {
          * @example GVR 2023 5
          */
         search?: string
-        /**
-         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
-         * @example true
-         */
-        granted?: string
       }
       header?: never
       path?: never
@@ -41388,6 +42333,11 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
+        /**
+         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
+         * @example SE 2025 1 85
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -41678,6 +42628,11 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
+        /**
+         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
+         * @example SE 2025 1 85
+         */
+        search?: string
       }
       header?: never
       path: {
@@ -41775,6 +42730,11 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
+        /**
+         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
+         * @example SE 2025 1 85
+         */
+        search?: string
       }
       header?: never
       path: {
@@ -41870,6 +42830,11 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
+        /**
+         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
+         * @example SE 2025 1 85
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -42034,6 +42999,11 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
+        /**
+         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
+         * @example SE 2025 1 85
+         */
+        search?: string
       }
       header?: never
       path?: never
@@ -48271,6 +49241,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         endsPreserved?: string
@@ -48289,6 +49260,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -48428,6 +49401,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         endsPreserved?: string
@@ -48446,6 +49420,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -48585,6 +49561,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         endsPreserved?: string
@@ -48603,6 +49580,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -48844,6 +49823,82 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -48857,8 +49912,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
-        'stratigraphicUnit.site'?: string
-        'stratigraphicUnit.site[]'?: string[]
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         endsPreserved?: string
@@ -48877,6 +49931,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -48994,6 +50050,82 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -49007,8 +50139,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
-        'stratigraphicUnit.site'?: string
-        'stratigraphicUnit.site[]'?: string[]
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         endsPreserved?: string
@@ -49027,6 +50158,8 @@ export interface operations {
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
@@ -49162,6 +50295,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -49177,6 +50311,8 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
         connected?: boolean
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
@@ -49306,6 +50442,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -49321,6 +50458,8 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
         connected?: boolean
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
@@ -49450,6 +50589,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -49465,6 +50605,8 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
         connected?: boolean
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
@@ -49695,6 +50837,82 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -49709,8 +50927,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
-        'stratigraphicUnit.site'?: string
-        'stratigraphicUnit.site[]'?: string[]
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -49726,6 +50943,8 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
         connected?: boolean
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean
@@ -49832,6 +51051,82 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'exists[stratigraphicUnit.description]'?: boolean
+        'exists[stratigraphicUnit.interpretation]'?: boolean
+        'exists[stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[stratigraphicUnit.chronologyUpper]'?: boolean
+        'stratigraphicUnit.area'?: string
+        'stratigraphicUnit.area[]'?: string[]
+        'stratigraphicUnit.building'?: string
+        'stratigraphicUnit.building[]'?: string[]
+        'stratigraphicUnit.chronologyLower'?: number
+        'stratigraphicUnit.chronologyLower[]'?: number[]
+        'stratigraphicUnit.chronologyUpper'?: number
+        'stratigraphicUnit.chronologyUpper[]'?: number[]
+        'stratigraphicUnit.number'?: number
+        'stratigraphicUnit.number[]'?: number[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'stratigraphicUnit.year'?: number
+        'stratigraphicUnit.year[]'?: number[]
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.year[between]'?: string
+        'stratigraphicUnit.year[gt]'?: string
+        'stratigraphicUnit.year[gte]'?: string
+        'stratigraphicUnit.year[lt]'?: string
+        'stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'stratigraphicUnit.interpretation'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -49846,8 +51141,7 @@ export interface operations {
          * @example MO 123
          */
         search?: string
-        'stratigraphicUnit.site'?: string
-        'stratigraphicUnit.site[]'?: string[]
+        'analyses.summary'?: string
         element?: string
         'element[]'?: string[]
         notes?: string
@@ -49863,6 +51157,8 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.vernacularName'?: string
         connected?: boolean
+        'exists[analyses]'?: boolean
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[taxonomy.family]'?: boolean

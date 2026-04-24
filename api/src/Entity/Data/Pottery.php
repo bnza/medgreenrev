@@ -24,7 +24,6 @@ use App\Entity\Data\Join\MediaObject\MediaObjectPottery;
 use App\Entity\Data\Join\PotteryDecoration;
 use App\Entity\Vocabulary\CulturalContext;
 use App\Entity\Vocabulary\Pottery\FunctionalForm;
-use App\Entity\Vocabulary\Pottery\FunctionalGroup;
 use App\Entity\Vocabulary\Pottery\Shape;
 use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
@@ -127,7 +126,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     'chronologyUpper',
     'culturalContext.id',
     'shape.value',
-    'functionalGroup.value',
+    'functionalForm.functionalGroup.value',
     'functionalForm.value',
     'surfaceTreatment.value',
     'innerColor',
@@ -145,7 +144,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower' => 'exact',
         'chronologyUpper' => 'exact',
         'shape' => 'exact',
-        'functionalGroup' => 'exact',
+        'functionalForm.functionalGroup' => 'exact',
         'functionalForm' => 'exact',
         'notes' => 'ipartial',
         'surfaceTreatment' => 'exact',
@@ -209,6 +208,7 @@ class Pottery
     #[Assert\NotBlank(groups: [
         'validation:pottery:create',
     ])]
+    #[ApiProperty(required: true)]
     private StratigraphicUnit $stratigraphicUnit;
 
     #[ORM\Column(type: 'string')]
@@ -319,18 +319,6 @@ class Pottery
     ])]
     private ?Shape $shape;
 
-    #[ORM\ManyToOne(targetEntity: FunctionalGroup::class)]
-    #[ORM\JoinColumn(name: 'functional_group_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
-    #[Groups([
-        'pottery:acl:read',
-        'pottery:create',
-        'pottery:export',
-    ])]
-    #[Assert\NotBlank(groups: [
-        'validation:pottery:create',
-    ])]
-    private FunctionalGroup $functionalGroup;
-
     #[ORM\ManyToOne(targetEntity: FunctionalForm::class)]
     #[ORM\JoinColumn(name: 'functional_form_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
@@ -341,6 +329,7 @@ class Pottery
     #[Assert\NotBlank(groups: [
         'validation:pottery:create',
     ])]
+    #[ApiProperty(required: true)]
     private FunctionalForm $functionalForm;
 
     #[ORM\Column(type: 'text', nullable: true)]
@@ -447,18 +436,6 @@ class Pottery
     public function setShape(?Shape $shape): Pottery
     {
         $this->shape = $shape;
-
-        return $this;
-    }
-
-    public function getFunctionalGroup(): FunctionalGroup
-    {
-        return $this->functionalGroup;
-    }
-
-    public function setFunctionalGroup(FunctionalGroup $functionalGroup): Pottery
-    {
-        $this->functionalGroup = $functionalGroup;
 
         return $this;
     }

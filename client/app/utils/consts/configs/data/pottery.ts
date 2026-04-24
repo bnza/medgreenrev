@@ -81,8 +81,8 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '150',
     },
     {
-      key: 'functionalGroup.value',
-      value: 'functionalGroup',
+      key: 'functionalForm.functionalGroup.value',
+      value: 'functionalForm.functionalGroup',
       title: 'functional group',
       minWidth: '150',
     },

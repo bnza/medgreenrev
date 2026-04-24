@@ -52,9 +52,6 @@ const { r$ } = useScopedRegle(
           }
         : {}),
     },
-    functionalGroup: {
-      required,
-    },
     functionalForm: {
       required,
     },
@@ -89,6 +86,7 @@ const { r$ } = useScopedRegle(
           item-title="code"
           :error-messages="r$.$errors.stratigraphicUnit"
           :granted-only="true"
+          disabled
         />
       </v-col>
       <v-col cols="12" md="4">
@@ -96,6 +94,7 @@ const { r$ } = useScopedRegle(
           v-model="r$.$value.inventory"
           :error-messages="r$.$errors.inventory"
           label="inventory"
+          disabled
         />
       </v-col>
     </v-row>
@@ -106,15 +105,6 @@ const { r$ } = useScopedRegle(
           path="/api/vocabulary/pottery/shapes"
           item-title="value"
           label="shape"
-        />
-      </v-col>
-      <v-col cols="12" md="4">
-        <data-autocomplete
-          v-model="r$.$value.functionalGroup"
-          path="/api/vocabulary/pottery/functional_groups"
-          item-title="value"
-          label="functional group"
-          :error-messages="r$.$errors.functionalGroup"
         />
       </v-col>
       <v-col cols="12" md="4">

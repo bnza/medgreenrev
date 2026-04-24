@@ -78,7 +78,7 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
         VocabularyPotteryFunctionalForm,
       },
     },
-    functionalGroup: {
+    'functionalForm.functionalGroup': {
       propertyLabel: 'functional group',
       filters: {
         VocabularyPotteryFunctionalGroups,

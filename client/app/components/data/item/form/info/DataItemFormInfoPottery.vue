@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GetItemResponseMap } from '~~/types'
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     item: GetItemResponseMap['/api/data/potteries/{id}']
     readLink?: boolean
@@ -10,6 +10,9 @@ withDefaults(
     readLink: true,
   },
 )
+const functionalGroup = computed(() => {
+  return props.item.functionalForm?.functionalGroup?.['@id'] ?? undefined
+})
 </script>
 
 <template>
@@ -54,7 +57,7 @@ withDefaults(
       <v-col cols="4" xs="12" class="px-2">
         <data-autocomplete
           path="/api/vocabulary/pottery/functional_groups"
-          :model-value="item.functionalGroup"
+          :model-value="functionalGroup"
           label="functional group"
           item-title="value"
         />
@@ -62,7 +65,7 @@ withDefaults(
       <v-col cols="4" xs="12" class="px-2">
         <data-autocomplete
           path="/api/vocabulary/pottery/functional_forms"
-          :model-value="item.functionalForm"
+          :model-value="item.functionalForm?.['@id']"
           label="form"
           item-title="value"
         />

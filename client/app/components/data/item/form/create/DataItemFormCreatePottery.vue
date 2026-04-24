@@ -6,6 +6,7 @@ import type {
 } from '~~/types'
 import { useScopedRegle } from '@regle/core'
 import { integer, maxValue, minValue, required } from '@regle/rules'
+import DataAutocompleteVocabularyPotteryFunctionalForm from '~/components/data/autocomplete/DataAutocompleteVocabularyPotteryFunctionalForm.vue'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/potteries'
 
@@ -34,10 +35,7 @@ const { r$ } = useScopedRegle(model, {
   },
   inventory: {
     required,
-    uniqueSite: uniqueInventory(() => model.value.stratigraphicUnit),
-  },
-  functionalGroup: {
-    required,
+    uniqueInventory: uniqueInventory(() => model.value.stratigraphicUnit),
   },
   functionalForm: {
     required,
@@ -93,20 +91,8 @@ const { r$ } = useScopedRegle(model, {
         />
       </v-col>
       <v-col cols="12" md="4">
-        <data-autocomplete
-          v-model="r$.$value.functionalGroup"
-          path="/api/vocabulary/pottery/functional_groups"
-          item-title="value"
-          label="functional group"
-          :error-messages="r$.$errors?.functionalGroup"
-        />
-      </v-col>
-      <v-col cols="12" md="4">
-        <data-autocomplete
+        <data-autocomplete-vocabulary-pottery-functional-form
           v-model="r$.$value.functionalForm"
-          path="/api/vocabulary/pottery/functional_forms"
-          item-title="value"
-          label="functional form"
           :error-messages="r$.$errors?.functionalForm"
         />
       </v-col>

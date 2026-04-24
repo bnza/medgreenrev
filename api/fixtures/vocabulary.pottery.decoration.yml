@@ -1,33 +1,39 @@
 App\Entity\Vocabulary\Pottery\Decoration:
     voc__decoration_1:
-        value: applied
+        value: 'carved'
+        variant: 'incisa'
     voc__decoration_2:
-        value: burnishing
+        value: 'stamped'
+        variant: 'estampillada'
     voc__decoration_3:
-        value: comb-impressed
+        value: 'fingerprinted'
+        variant: 'digital'
     voc__decoration_4:
-        value: comb-incised
-    voc__decoration_11:
-        value: embroided
+        value: 'plastic'
+        variant: 'plástica'
     voc__decoration_5:
-        value: excised
+        value: 'painted'
+        variant: 'pintada'
     voc__decoration_6:
-        value: glazed
-    voc__decoration_14:
-        value: grooved
-    voc__decoration_16:
-        value: honeycomb
+        value: 'sgraffito decoration'
+        variant: 'esgrafiada'
     voc__decoration_7:
-        value: impressed
+        value: 'glazed green-manganese'
     voc__decoration_8:
-        value: incised
+        value: 'glazed white-manganese'
     voc__decoration_9:
-        value: incised-excised
-    voc__decoration_13:
-        value: moulded
+        value: 'glazed honey-manganese'
     voc__decoration_10:
-        value: painted
-    voc__decoration_15:
-        value: slip painted
+        value: 'glazed partial cuerda seca'
+    voc__decoration_11:
+        value: 'glazed cuerda seca'
     voc__decoration_12:
-        value: stamped
+        value: 'glazed partial cuerda seca and sgraffito'
+    voc__decoration_13:
+        value: 'glazed lustreware'
+        variant: 'reflejo metálico'
+    voc__decoration_14:
+        value: 'glazed lustreware with blue'
+    voc__decoration_15:
+        value: 'other'
+        variant: 'other technique'

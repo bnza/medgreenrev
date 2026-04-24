@@ -380,9 +380,6 @@ const CREATION_RULES: {
             required,
             unique: uniqueInventory,
           },
-          functionalGroup: {
-            required,
-          },
           functionalForm: {
             required,
           },

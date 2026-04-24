@@ -9,12 +9,11 @@ withDefaults(
   },
 )
 
-const vocabularyPotteryFunctionalGroupStore = useVocabularyStore(
-  '/api/vocabulary/pottery/functional_groups',
-)
-
 const vocabularyPotteryFunctionalFormStore = useVocabularyStore(
   '/api/vocabulary/pottery/functional_forms',
+)
+const vocabularyPotteryFunctionalGroupStore = useVocabularyStore(
+  '/api/vocabulary/pottery/functional_groups',
 )
 </script>
 
@@ -43,14 +42,14 @@ const vocabularyPotteryFunctionalFormStore = useVocabularyStore(
         <data-item-info-box-row
           label="functional group"
           :text="
-            vocabularyPotteryFunctionalGroupStore.getValue(item.functionalGroup)
+            vocabularyPotteryFunctionalGroupStore.getValue(item.functionalForm?.functionalGroup?.['@id'])
               .value
           "
         />
         <data-item-info-box-row
           label="form"
           :text="
-            vocabularyPotteryFunctionalFormStore.getValue(item.functionalForm)
+            vocabularyPotteryFunctionalFormStore.getValue(item.functionalForm?.['@id'])
               .value
           "
         />

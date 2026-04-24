@@ -16,13 +16,8 @@ import type { SearchableGetCollectionPath } from '~/utils/consts/configs/filters
 const vocabularyPotteryShapeStore = useVocabularyStore(
   '/api/vocabulary/pottery/shapes',
 )
-
 const vocabularyCulturalContextStore = useVocabularyStore(
   '/api/vocabulary/cultural_contexts',
-)
-
-const vocabularyPotteryFunctionalGroupStore = useVocabularyStore(
-  '/api/vocabulary/pottery/functional_groups',
 )
 
 const vocabularyPotteryFunctionalFormStore = useVocabularyStore(
@@ -92,12 +87,16 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.shape.value`]="{ item }"
       >{{ vocabularyPotteryShapeStore.getValue(item.shape) }}
     </template>
-    <template #[`item.functionalGroup.value`]="{ item }">
-      {{ vocabularyPotteryFunctionalGroupStore.getValue(item.functionalGroup) }}
+    <template #[`item.functionalForm.functionalGroup.value`]="{ item }">
+      {{ item.functionalForm.functionalGroup?.value }}
     </template>
     <template #[`item.functionalForm.value`]="{ item }">
       <p>
-        {{ vocabularyPotteryFunctionalFormStore.getValue(item.functionalForm) }}
+        {{
+          vocabularyPotteryFunctionalFormStore.getValue(
+            item.functionalForm['@id'],
+          )
+        }}
       </p>
     </template>
     <template #[`item.surfaceTreatment.value`]="{ item }">

@@ -6,6 +6,8 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
@@ -37,8 +39,31 @@ class FunctionalGroup
 
     #[ORM\Column(type: 'string', unique: true)]
     #[Groups([
+        'pottery:acl:read',
         'pottery:export',
+        'vocabulary:pottery:functional_form:read',
     ])]
     #[ApiProperty(required: true)]
     public string $value;
+
+    /** @var Collection<FunctionalForm> */
+    #[ORM\OneToMany(targetEntity: FunctionalForm::class, mappedBy: 'functionalGroup')]
+    private Collection $functionalForms;
+
+    public function __construct()
+    {
+        $this->functionalForms = new ArrayCollection();
+    }
+
+    public function getFunctionalForms(): Collection
+    {
+        return $this->functionalForms;
+    }
+
+    public function setFunctionalForms(Collection $functionalForms): FunctionalGroup
+    {
+        $this->functionalForms = $functionalForms;
+
+        return $this;
+    }
 }

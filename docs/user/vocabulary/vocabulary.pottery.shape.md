@@ -2,10 +2,14 @@
 
 [Back to Vocabulary Index](index.md)
 
-| value |
-| --- |
-| closed wares |
-| open wares |
-| tall closed wares |
+| value | variant |
+| --- | --- |
+| base |  |
+| body | galbo |
+| handle |  |
+| indeterminate | amorfo |
+| lip |  |
+| neck |  |
+| rim |  |
 
 [Back to Vocabulary Index](index.md)
