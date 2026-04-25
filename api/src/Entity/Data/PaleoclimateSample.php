@@ -35,6 +35,7 @@ use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Data\View\Code\PaleoclimateSampleCodeView;
 
 #[Entity]
 #[Table(name: 'paleoclimate_sample')]
@@ -101,6 +102,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'codeView.code',
         'id',
         'length',
         'site.code',
@@ -173,6 +175,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiMediaObjectSubresourceFilters('mediaObjects.mediaObject')]
 class PaleoclimateSample
 {
+
+    #[ORM\OneToOne(
+        targetEntity: PaleoclimateSampleCodeView::class,
+        mappedBy: 'paleoclimateSample',
+    )]
+    private ?PaleoclimateSampleCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -463,6 +471,6 @@ class PaleoclimateSample
     #[ApiProperty(required: true)]
     public function getCode(): string
     {
-        return sprintf('%s.%u', $this->site->getCode(), $this->number);
+        return $this->codeView->getCode();
     }
 }

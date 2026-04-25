@@ -21,6 +21,7 @@ use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Join\Analysis\AnalysisBotanyCharcoal;
 use App\Entity\Data\StratigraphicUnit;
+use App\Entity\Data\View\Code\BotanyCharcoalCodeView;
 use App\Entity\Vocabulary\Botany\Element as VocabularyElement;
 use App\Entity\Vocabulary\Botany\ElementPart;
 use App\Entity\Vocabulary\Botany\Taxonomy;
@@ -117,8 +118,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ['id' => 'DESC'],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
+    'codeView.code',
     'id',
     'stratigraphicUnit.site.code',
+    'stratigraphicUnit.codeView.code',
     'taxonomy.value',
     'taxonomy.vernacularName',
     'taxonomy.family',
@@ -158,6 +161,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiStratigraphicUnitSubresourceFilters('stratigraphicUnit')]
 class Charcoal
 {
+    #[ORM\OneToOne(
+        targetEntity: BotanyCharcoalCodeView::class,
+        mappedBy: 'charcoal',
+    )]
+    private ?BotanyCharcoalCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -256,7 +264,7 @@ class Charcoal
     ])]
     public function getCode(): string
     {
-        return sprintf('%s.%u', $this->stratigraphicUnit->getSite()->getCode(), $this->getId());
+        return $this->codeView->getCode();
     }
 
     public function getTaxonomy(): Taxonomy

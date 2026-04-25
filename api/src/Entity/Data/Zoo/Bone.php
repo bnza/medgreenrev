@@ -22,6 +22,7 @@ use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\StratigraphicUnit;
+use App\Entity\Data\View\Code\ZooBoneCodeView;
 use App\Entity\Vocabulary\Zoo\Bone as VocabularyBone;
 use App\Entity\Vocabulary\Zoo\BoneEndPreserved;
 use App\Entity\Vocabulary\Zoo\BonePart;
@@ -119,8 +120,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     denormalizationContext: ['groups' => ['zoo_bone:create']],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
+    'codeView.code',
     'id',
     'stratigraphicUnit.site.code',
+    'stratigraphicUnit.codeView.code',
     'taxonomy.value',
     'taxonomy.vernacularName',
     'taxonomy.family',
@@ -168,6 +171,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiAnalysisSubresourceFilters('analyses.analysis')]
 class Bone
 {
+    #[ORM\OneToOne(
+        targetEntity: ZooBoneCodeView::class,
+        mappedBy: 'bone',
+    )]
+    private ?ZooBoneCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -284,7 +292,7 @@ class Bone
     ])]
     public function getCode(): string
     {
-        return sprintf('%s.%u', $this->stratigraphicUnit->getSite()->getCode(), $this->getId());
+        return $this->codeView->getCode();
     }
 
     public function getTaxonomy(): Taxonomy

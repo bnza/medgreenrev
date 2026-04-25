@@ -30,6 +30,7 @@ use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
 
 #[Entity(repositoryClass: SamplingStratigraphicUnitRepository::class)]
 #[Table(name: 'sampling_sus')]
@@ -60,6 +61,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'codeView.code',
         'id',
         'number',
         'chronologyLower',
@@ -111,6 +113,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class SamplingStratigraphicUnit
 {
+
+    #[ORM\OneToOne(
+        targetEntity: SamplingStratigraphicUnitCodeView::class,
+        mappedBy: 'samplingStratigraphicUnit',
+    )]
+    private ?SamplingStratigraphicUnitCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -309,6 +317,6 @@ class SamplingStratigraphicUnit
     #[ApiProperty(required: true)]
     public function getCode(): string
     {
-        return sprintf('%s.%u', $this->site->getCode(), $this->number);
+        return $this->codeView->getCode();
     }
 }

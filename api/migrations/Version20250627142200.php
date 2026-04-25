@@ -263,6 +263,136 @@ final class Version20250627142200 extends AbstractMigration
                 $$ LANGUAGE plpgsql IMMUTABLE;
             SQL
         );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_individual(site_code text, identifier text)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', identifier);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_mu(site_code text, su_year integer, su_number integer, mu_identifier text)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(generate_code_su(site_code, su_year, su_number), '.', mu_identifier);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_sample(site_code text, type_code text, sample_year integer, sample_number integer)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', type_code, '.', RIGHT(CASE WHEN sample_year = 0 THEN '____' ELSE sample_year::text END, 2), '.', sample_number);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_sampling_su(site_code text, su_number integer)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', su_number);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_sediment_core(site_code text, sc_year integer, sc_number integer)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.SC.', RIGHT(sc_year::text, 2), '.', sc_number);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_sediment_core_depth(site_code text, sc_year integer, sc_number integer, depth_min numeric)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(generate_code_sediment_core(site_code, sc_year, sc_number), '.', ROUND(depth_min * 10)::integer);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_paleoclimate_sample(site_code text, sample_number integer)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', sample_number);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_pottery(site_code text, inventory text)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', inventory);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_botany_charcoal(site_code text, charcoal_id bigint)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', charcoal_id);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_botany_seed(site_code text, seed_id bigint)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', seed_id);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_zoo_bone(site_code text, bone_id bigint)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', bone_id);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_zoo_tooth(site_code text, tooth_id bigint)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', tooth_id);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_analysis(type_code text, analysis_year integer, identifier text)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(type_code, '.', RIGHT(analysis_year::text, 2), '.', identifier);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -355,6 +485,19 @@ final class Version20250627142200 extends AbstractMigration
         $this->addSql('DROP FUNCTION IF EXISTS check_last_sample_stratigraphic_unit()');
         $this->addSql('DROP TRIGGER IF EXISTS trg_check_last_context_stratigraphic_unit ON context_stratigraphic_units');
         $this->addSql('DROP FUNCTION IF EXISTS check_last_context_stratigraphic_unit()');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_analysis(text, integer, text)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_zoo_tooth(text, bigint)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_zoo_bone(text, bigint)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_botany_seed(text, bigint)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_botany_charcoal(text, bigint)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_pottery(text, text)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_paleoclimate_sample(text, integer)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_sediment_core_depth(text, integer, integer, numeric)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_sediment_core(text, integer, integer)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_sampling_su(text, integer)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_sample(text, text, integer, integer)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_mu(text, integer, integer, text)');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_individual(text, text)');
         $this->addSql('DROP FUNCTION IF EXISTS generate_code_su(text, integer, integer)');
     }
 }

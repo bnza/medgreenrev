@@ -22,6 +22,7 @@ use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\MediaObject\MediaObjectPottery;
 use App\Entity\Data\Join\PotteryDecoration;
+use App\Entity\Data\View\Code\PotteryCodeView;
 use App\Entity\Vocabulary\CulturalContext;
 use App\Entity\Vocabulary\Pottery\FunctionalForm;
 use App\Entity\Vocabulary\Pottery\Shape;
@@ -119,8 +120,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ['id' => 'DESC'],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
+    'codeView.code',
     'id',
     'stratigraphicUnit.site.code',
+    'stratigraphicUnit.codeView.code',
     'inventory',
     'chronologyLower',
     'chronologyUpper',
@@ -189,6 +192,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[AppAssert\IsUniqueInSite(groups: ['validation:pottery:create'])]
 class Pottery
 {
+    #[ORM\OneToOne(
+        targetEntity: PotteryCodeView::class,
+        mappedBy: 'pottery',
+    )]
+    private ?PotteryCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -582,6 +590,6 @@ class Pottery
     ])]
     public function getCode(): string
     {
-        return sprintf('%s.%s', $this->getStratigraphicUnit()->getSite()->getCode(), $this->inventory);
+        return $this->codeView->getCode();
     }
 }

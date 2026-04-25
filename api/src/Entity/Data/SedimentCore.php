@@ -18,6 +18,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\SedimentCoreDepth;
+use App\Entity\Data\View\Code\SedimentCoreCodeView;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -110,7 +111,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 #[ApiFilter(
     OrderFilter::class,
-    properties: ['id', 'site.code', 'year', 'number']
+    properties: [
+        'codeView.code', 'id', 'site.code', 'year', 'number']
 )]
 #[ApiFilter(
     SearchFilter::class,
@@ -133,6 +135,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class SedimentCore
 {
+    #[ORM\OneToOne(
+        targetEntity: SedimentCoreCodeView::class,
+        mappedBy: 'sedimentCore',
+    )]
+    private ?SedimentCoreCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -271,11 +278,6 @@ class SedimentCore
     ])]
     public function getCode(): string
     {
-        return sprintf(
-            '%s.SC.%s.%u',
-            $this->getSite()->getCode(),
-            substr($this->year, -2),
-            $this->number
-        );
+        return $this->codeView->getCode();
     }
 }

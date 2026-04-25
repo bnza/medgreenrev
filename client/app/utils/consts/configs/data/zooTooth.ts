@@ -19,11 +19,10 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'stratigraphicUnit.code',
+      key: 'stratigraphicUnit.codeView.code',
       value: 'stratigraphicUnit.code',
       title: 'SU',
       minWidth: '100',
-      sortable: false,
     },
     {
       key: 'taxonomy.vernacularName',

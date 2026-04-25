@@ -32,6 +32,7 @@ use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
 use App\Entity\Data\Join\MediaObject\MediaObjectAnalysis;
+use App\Entity\Data\View\Code\AnalysisCodeView;
 use App\Entity\Vocabulary\Analysis\Type;
 use App\State\AnalysisPostProcessor;
 use App\Validator as AppAssert;
@@ -75,6 +76,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ['id' => 'DESC'],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
+    'codeView.code',
     'createdBy.email',
     'id',
     'identifier',
@@ -244,6 +246,12 @@ class Analysis
             'value' => 'sedimentary DNA',
         ],
     ];
+
+    #[ORM\OneToOne(
+        targetEntity: AnalysisCodeView::class,
+        mappedBy: 'analysis',
+    )]
+    private ?AnalysisCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -586,6 +594,6 @@ class Analysis
     #[ApiProperty(required: true)]
     public function getCode(): string
     {
-        return sprintf('%s.%s.%s', $this->getType()->code, substr($this->year, -2), $this->getIdentifier());
+        return $this->codeView->getCode();
     }
 }

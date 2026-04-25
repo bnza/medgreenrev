@@ -17,6 +17,7 @@ use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
+use App\Entity\Data\View\Code\MicrostratigraphicUnitCodeView;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
@@ -113,8 +114,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ['id' => 'DESC'],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
+    'codeView.code',
     'id',
     'stratigraphicUnit.site.code',
+    'stratigraphicUnit.codeView.code',
     'identifier',
 ])]
 #[ApiFilter(
@@ -136,6 +139,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['stratigraphicUnit', 'identifier'], groups: ['validation:microstratigraphic_unit:create'])]
 class MicrostratigraphicUnit
 {
+    #[ORM\OneToOne(
+        targetEntity: MicrostratigraphicUnitCodeView::class,
+        mappedBy: 'microstratigraphicUnit',
+    )]
+    private ?MicrostratigraphicUnitCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -232,10 +240,6 @@ class MicrostratigraphicUnit
     ])]
     public function getCode(): string
     {
-        return sprintf(
-            '%s.%s',
-            $this->getStratigraphicUnit()->getCode(),
-            $this->getIdentifier(),
-        );
+        return $this->codeView->getCode();
     }
 }

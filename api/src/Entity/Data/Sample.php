@@ -20,6 +20,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\SampleStratigraphicUnit;
+use App\Entity\Data\View\Code\SampleCodeView;
 use App\Entity\Vocabulary\Sample\Type;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
@@ -78,7 +79,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 #[ApiFilter(
     OrderFilter::class,
-    properties: ['id', 'site.code', 'year', 'number', 'type.code', 'type.value']
+    properties: [
+        'codeView.code', 'id', 'site.code', 'year', 'number', 'type.code', 'type.value']
 )]
 #[ApiFilter(
     SearchFilter::class,
@@ -127,6 +129,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class Sample
 {
+    #[ORM\OneToOne(
+        targetEntity: SampleCodeView::class,
+        mappedBy: 'sample',
+    )]
+    private ?SampleCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -325,12 +332,6 @@ class Sample
     ])]
     public function getCode(): string
     {
-        return sprintf(
-            '%s.%s.%s.%u',
-            $this->getSite()->getCode(),
-            $this->type->code,
-            substr(0 === $this->year ? '____' : $this->year, -2),
-            $this->number
-        );
+        return $this->codeView->getCode();
     }
 }

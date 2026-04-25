@@ -33,6 +33,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
 
 #[ORM\Entity]
 #[ORM\Table(
@@ -129,6 +130,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'codeView.code',
         'id',
         'depthMin',
         'depthMax',
@@ -191,6 +193,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[AppAssert\BelongToTheSameSite(groups: ['validation:sediment_core_depth:create'])]
 class SedimentCoreDepth
 {
+
+    #[ORM\OneToOne(
+        targetEntity: SedimentCoreDepthCodeView::class,
+        mappedBy: 'sedimentCoreDepth',
+    )]
+    private ?SedimentCoreDepthCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -527,10 +535,6 @@ class SedimentCoreDepth
     ])]
     public function getCode(): string
     {
-        return sprintf(
-            '%s.%s',
-            $this->getSedimentCore()->getCode(),
-            (int) round((float) $this->depthMin * 10)
-        );
+        return $this->codeView->getCode();
     }
 }

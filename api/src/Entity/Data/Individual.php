@@ -20,6 +20,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
+use App\Entity\Data\View\Code\IndividualCodeView;
 use App\Entity\Vocabulary\Individual\Age;
 use App\Entity\Vocabulary\Individual\Sex;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
@@ -113,8 +114,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ['id' => 'DESC'],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
+    'codeView.code',
     'id',
     'stratigraphicUnit.site.code',
+    'stratigraphicUnit.codeView.code',
     'identifier',
     'sex.id',
     'age.id',
@@ -152,6 +155,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[AppAssert\IsUniqueInSite(groups: ['validation:individual:create'])]
 class Individual
 {
+    #[ORM\OneToOne(
+        targetEntity: IndividualCodeView::class,
+        mappedBy: 'individual',
+    )]
+    private ?IndividualCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -308,10 +316,6 @@ class Individual
     #[ApiProperty(required: true)]
     public function getCode(): string
     {
-        return sprintf(
-            '%s.%s',
-            $this->getStratigraphicUnit()->getSite()->getCode(),
-            $this->getIdentifier(),
-        );
+        return $this->codeView->getCode();
     }
 }
