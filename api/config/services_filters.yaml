@@ -1,0 +1,11 @@
+services:
+    app.filter.su_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: ['api_platform.filter']
+    app.filter.user_email_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'email': 'ipartial' }
+        tags: [ 'api_platform.filter' ]

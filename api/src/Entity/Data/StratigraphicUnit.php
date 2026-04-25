@@ -16,6 +16,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
 use App\Doctrine\Filter\SearchStratigraphicUnitFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
@@ -50,6 +51,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Get(),
         new GetCollection(
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.su_code_search',
+                    property: 'codeView.code',
+                ),
+            ],
         ),
         new GetCollection(
             uriTemplate: '/archaeological_sites/{parentId}/stratigraphic_units',
@@ -58,6 +65,12 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'parentId' => new Link(
                     toProperty: 'site',
                     fromClass: ArchaeologicalSite::class,
+                ),
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.su_code_search',
+                    property: 'codeView.code',
                 ),
             ]
         ),
@@ -139,7 +152,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'mediaObjects',
     ]
 )]
-#[ApiFilter(SearchStratigraphicUnitFilter::class)]
+// #[ApiFilter(SearchStratigraphicUnitFilter::class)]
 #[ApiFilter(GrantedParentSiteFilter::class)]
 #[ApiMediaObjectSubresourceFilters('mediaObjects.mediaObject')]
 #[UniqueEntity(

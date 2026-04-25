@@ -13,7 +13,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\SearchUserFilter;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Dto\Input\UserPasswordChangeInputDto;
 use App\Entity\Data\ArchaeologicalSite;
 use App\Repository\UserRepository;
@@ -52,6 +52,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new GetCollection(
             security: 'is_granted("ROLE_ADMIN") || is_granted("ROLE_EDITOR")',
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.user_email_search',
+                    property: 'email',
+                ),
+            ],
         ),
         new Delete(
             security: 'is_granted("delete", object)',
@@ -91,7 +97,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     security: 'is_granted("ROLE_ADMIN")',
 )]
 #[ApiFilter(OrderFilter::class, properties: ['id', 'email'])]
-#[ApiFilter(SearchUserFilter::class)]
 #[AppAssert\NotReferenced(User::class, message: 'Cannot delete the user because it is referenced by: {{ classes }}.', groups: ['validation:user:delete'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
