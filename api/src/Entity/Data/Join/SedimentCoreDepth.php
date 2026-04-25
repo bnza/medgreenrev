@@ -16,12 +16,13 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\SearchSedimentCoreDepthFilter;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Entity\Data\SedimentCore;
+use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -33,7 +34,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
 
 #[ORM\Entity]
 #[ORM\Table(
@@ -48,6 +48,12 @@ use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
         new GetCollection(
             uriTemplate: '/data/sediment_core_depths',
             formats: ['csv' => 'text/csv', 'jsonld' => 'application/ld+json'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sediment_core_depth_code_search',
+                    property: 'codeView.code',
+                ),
+            ]
         ),
         new GetCollection(
             uriTemplate: '/data/stratigraphic_units/{parentId}/sediment_cores/depths',
@@ -60,6 +66,12 @@ use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
             ],
             normalizationContext: [
                 'groups' => ['sediment_core_depth:sediment_cores:acl:read', 'sediment_core:acl:read'],
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sediment_core_depth_code_search',
+                    property: 'codeView.code',
+                ),
             ],
         ),
         new GetCollection(
@@ -184,7 +196,6 @@ use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
         'pollen',
         'sedimentaryDna',
     ])]
-#[ApiFilter(SearchSedimentCoreDepthFilter::class)]
 #[UniqueEntity(
     fields: ['sedimentCore', 'depthMin'],
     message: 'Duplicate [sediment core, min depth] combination.',
@@ -193,7 +204,6 @@ use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
 #[AppAssert\BelongToTheSameSite(groups: ['validation:sediment_core_depth:create'])]
 class SedimentCoreDepth
 {
-
     #[ORM\OneToOne(
         targetEntity: SedimentCoreDepthCodeView::class,
         mappedBy: 'sedimentCoreDepth',

@@ -14,8 +14,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
-use App\Doctrine\Filter\SearchSampleFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
@@ -47,6 +47,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Get(),
         new GetCollection(
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sample_code_search',
+                    property: 'codeView.code',
+                ),
+            ]
         ),
         new GetCollection(
             uriTemplate: '/archaeological_sites/{parentId}/samples',
@@ -56,17 +62,23 @@ use Symfony\Component\Validator\Constraints as Assert;
                     toProperty: 'site',
                     fromClass: ArchaeologicalSite::class,
                 ),
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sample_code_search',
+                    property: 'codeView.code',
+                ),
             ]
         ),
         new Post(
-            securityPostDenormalize: 'is_granted("create", object)',
             denormalizationContext: ['groups' => ['sample:create']],
+            securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:sample:create']],
             processor: SamplePostProcessor::class,
         ),
         new Patch(
-            security: 'is_granted("update", object)',
             denormalizationContext: ['groups' => ['sample:update']],
+            security: 'is_granted("update", object)',
             validationContext: ['groups' => ['validation:sample:update']],
         ),
         new Delete(
@@ -118,7 +130,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'description',
     ]
 )]
-#[ApiFilter(SearchSampleFilter::class, properties: ['search'])]
 #[ApiFilter(GrantedParentSiteFilter::class)]
 #[ApiAnalysisSubresourceFilters('analysesMicrostratigraphicUnits.analysis')]
 #[ApiStratigraphicUnitSubresourceFilters('sampleStratigraphicUnits.stratigraphicUnit')]

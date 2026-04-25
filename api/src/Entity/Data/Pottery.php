@@ -15,8 +15,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentStratigraphicUnitFilter;
-use App\Doctrine\Filter\SearchPotteryFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
@@ -55,6 +55,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         new GetCollection(
             uriTemplate: '/data/potteries',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.pottery_code_search',
+                    property: 'codeView.code',
+                ),
+            ],
         ),
         new GetCollection(
             uriTemplate: '/data/stratigraphic_units/{parentId}/potteries',
@@ -63,6 +69,12 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'parentId' => new Link(
                     toProperty: 'stratigraphicUnit',
                     fromClass: StratigraphicUnit::class,
+                ),
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.pottery_code_search',
+                    property: 'codeView.code',
                 ),
             ]
         ),
@@ -75,6 +87,12 @@ use Symfony\Component\Validator\Constraints as Assert;
                 ),
             ],
             provider: SiteChildCollectionProvider::class,
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.pottery_code_search',
+                    property: 'codeView.code',
+                ),
+            ],
         ),
         new Delete(
             uriTemplate: '/data/potteries/{id}',
@@ -179,9 +197,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'surfaceTreatment',
         'mediaObjects',
     ]
-)]
-#[ApiFilter(
-    SearchPotteryFilter::class,
 )]
 #[ApiFilter(
     GrantedParentStratigraphicUnitFilter::class,

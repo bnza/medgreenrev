@@ -346,7 +346,7 @@ final class Version20250628091340 extends AbstractMigration
                     sc.id AS sediment_core_id,
                     generate_code_sediment_core(s.code, sc.year, sc.number) AS code
                 FROM sediment_cores sc
-                JOIN archaeological_sites s ON s.id = sc.site_id;
+                JOIN sampling_sites s ON s.id = sc.site_id;
             SQL
         );
         $this->addSql(
@@ -358,7 +358,7 @@ final class Version20250628091340 extends AbstractMigration
                     generate_code_sediment_core_depth(s.code, sc.year, sc.number, scd.depth_min) AS code
                 FROM sediment_core_depths scd
                 JOIN sediment_cores sc ON sc.id = scd.sediment_core_id
-                JOIN archaeological_sites s ON s.id = sc.site_id;
+                JOIN sampling_sites s ON s.id = sc.site_id;
             SQL
         );
         $this->addSql(

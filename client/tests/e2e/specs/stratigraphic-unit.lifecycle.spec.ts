@@ -399,7 +399,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       const itemPom = new StratigraphicUnitsItemPage(page)
       await collectionPom.open()
       await collectionPom.table.expectData()
-      await collectionPom.awaitSearchResults('NI.408')
+      await collectionPom.awaitSearchResults('408')
       await collectionPom.table
         .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
         .click()
@@ -470,7 +470,7 @@ test.describe('Stratigraphic Unit lifecycle', () => {
       await testMediaObjectLifecycle(page, itemPom, async () => {
         await collectionPom.open()
         await collectionPom.table.expectData()
-        await collectionPom.awaitSearchResults('NI.408')
+        await collectionPom.awaitSearchResults('408')
         await collectionPom.table
           .getItemNavigationLink('NI.25.408', NavigationLinksButton.Read)
           .click()

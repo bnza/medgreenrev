@@ -18,7 +18,6 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
-use App\Doctrine\Filter\SearchStratigraphicUnitFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Botany\Charcoal;
 use App\Entity\Data\Botany\Seed;

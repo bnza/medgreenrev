@@ -13,7 +13,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\SearchSedimentCoreFilter;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
@@ -48,6 +48,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         new GetCollection(
             uriTemplate: '/data/sediment_cores',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sediment_core_code_search',
+                    property: 'codeView.code',
+                ),
+            ]
         ),
         new GetCollection(
             uriTemplate: '/data/sampling_sites/{parentId}/sediment_cores',
@@ -56,6 +62,12 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'parentId' => new Link(
                     toProperty: 'site',
                     fromClass: SamplingSite::class,
+                ),
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sediment_core_code_search',
+                    property: 'codeView.code',
                 ),
             ]
         ),
@@ -127,7 +139,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'description',
     ]
 )]
-#[ApiFilter(SearchSedimentCoreFilter::class)]
 #[UniqueEntity(
     fields: ['site', 'year', 'number'],
     message: 'Duplicate [site, year, number] combination.',

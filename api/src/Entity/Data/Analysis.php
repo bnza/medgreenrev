@@ -15,8 +15,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedAnalysisFilter;
-use App\Doctrine\Filter\SearchAnalysisFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Auth\User;
 use App\Entity\Data\Join\Analysis\AnalysisBotanyCharcoal;
@@ -57,6 +57,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new GetCollection(
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.analysis_code_search',
+                    property: 'codeView.code',
+                ),
+            ]
         ),
         new Delete(
             security: 'is_granted("delete", object)',
@@ -136,7 +142,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'summary',
     ]
 )]
-#[ApiFilter(SearchAnalysisFilter::class)]
 #[ApiFilter(GrantedAnalysisFilter::class)]
 #[UniqueEntity(
     fields: ['type', 'year', 'identifier'],

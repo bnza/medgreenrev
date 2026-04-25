@@ -308,7 +308,7 @@ final class Version20250627142200 extends AbstractMigration
                 CREATE OR REPLACE FUNCTION generate_code_sediment_core(site_code text, sc_year integer, sc_number integer)
                 RETURNS text AS $$
                 BEGIN
-                    RETURN CONCAT(site_code, '.SC.', RIGHT(sc_year::text, 2), '.', sc_number);
+                    RETURN CONCAT(site_code, '.', RIGHT(sc_year::text, 2), '.', sc_number);
                 END;
                 $$ LANGUAGE plpgsql IMMUTABLE;
             SQL

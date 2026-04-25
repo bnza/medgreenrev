@@ -21,6 +21,9 @@ const acl = ref({ canExport: isAuthenticated, canCreate: false })
     :show-back-button="!Boolean(parent)"
     :acl
   >
+    <template #search-bar>
+      <data-collection-search-text-field :path />
+    </template>
     <data-collection-table-analysis v-model:acl="acl" :path :parent />
   </data-collection-page>
 </template>

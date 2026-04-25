@@ -20,7 +20,7 @@ const sample: ResourceConfig = {
       title: 'site',
     },
     {
-      key: 'code',
+      key: 'codeView.code',
       value: 'code',
       title: 'code',
     },

@@ -14,8 +14,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentStratigraphicUnitFilter;
-use App\Doctrine\Filter\SearchIndividualFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
@@ -49,6 +49,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         new GetCollection(
             uriTemplate: '/data/individuals',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.individual_code_search',
+                    property: 'codeView.code',
+                ),
+            ]
         ),
         new GetCollection(
             uriTemplate: '/data/stratigraphic_units/{parentId}/individuals',
@@ -57,6 +63,12 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'parentId' => new Link(
                     toProperty: 'stratigraphicUnit',
                     fromClass: StratigraphicUnit::class,
+                ),
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.individual_code_search',
+                    property: 'codeView.code',
                 ),
             ]
         ),
@@ -69,6 +81,12 @@ use Symfony\Component\Validator\Constraints as Assert;
                 ),
             ],
             provider: SiteChildCollectionProvider::class,
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.individual_code_search',
+                    property: 'codeView.code',
+                ),
+            ],
         ),
         new Delete(
             uriTemplate: '/data/individuals/{id}',
@@ -144,9 +162,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(UnaccentedSearchFilter::class, properties: [
     'notes',
 ])]
-#[ApiFilter(
-    SearchIndividualFilter::class,
-)]
 #[ApiFilter(
     GrantedParentStratigraphicUnitFilter::class
 )]

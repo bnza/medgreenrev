@@ -16,10 +16,11 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\SearchSamplingStratigraphicUnitFilter;
+use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\MediaObject\MediaObjectSamplingStratigraphicUnit;
 use App\Entity\Data\Join\SedimentCoreDepth;
+use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
 use App\Repository\SamplingStratigraphicUnitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -30,7 +31,6 @@ use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
 
 #[Entity(repositoryClass: SamplingStratigraphicUnitRepository::class)]
 #[Table(name: 'sampling_sus')]
@@ -38,7 +38,13 @@ use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
 #[ApiResource(
     operations: [
         new Get(),
-        new GetCollection(),
+        new GetCollection(
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sampling_su_code_search',
+                    property: 'codeView.code',
+                ),
+            ]),
         new GetCollection(
             uriTemplate: '/sampling_sites/{parentId}/stratigraphic_units',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
@@ -46,6 +52,12 @@ use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
                 'parentId' => new Link(
                     toProperty: 'site',
                     fromClass: SamplingSite::class,
+                ),
+            ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sampling_su_code_search',
+                    property: 'codeView.code',
                 ),
             ]
         ),
@@ -106,14 +118,12 @@ use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
         'mediaObjects',
     ]
 )]
-#[ApiFilter(SearchSamplingStratigraphicUnitFilter::class)]
 #[UniqueEntity(
     fields: ['site', 'number'],
     message: 'Duplicate [site, number] combination.',
 )]
 class SamplingStratigraphicUnit
 {
-
     #[ORM\OneToOne(
         targetEntity: SamplingStratigraphicUnitCodeView::class,
         mappedBy: 'samplingStratigraphicUnit',

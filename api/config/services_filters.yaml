@@ -1,4 +1,39 @@
 services:
+    app.filter.analysis_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
+    app.filter.individual_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
+    app.filter.pottery_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
+    app.filter.sample_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
+    app.filter.sediment_core_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
+    app.filter.sediment_core_depth_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
+    app.filter.sampling_su_code_search:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            $properties: { 'codeView.code': 'ipartial' }
+        tags: [ 'api_platform.filter' ]
     app.filter.su_code_search:
         parent: 'api_platform.doctrine.orm.search_filter'
         arguments:
