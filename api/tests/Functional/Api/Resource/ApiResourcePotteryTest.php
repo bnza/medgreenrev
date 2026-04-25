@@ -58,7 +58,7 @@ class ApiResourcePotteryTest extends ApiTestCase
         $createdData = $response->toArray();
         $this->assertEquals($payload['inventory'], $createdData['inventory']);
         $this->assertEquals($payload['notes'], $createdData['notes']);
-        $this->assertEquals($payload['functionalForm'], $createdData['functionalForm']);
+        $this->assertEquals($payload['functionalForm'], $createdData['functionalForm']['@id']);
         $this->assertEquals($payload['stratigraphicUnit'], $createdData['stratigraphicUnit']['@id']);
     }
 
