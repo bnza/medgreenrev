@@ -20,7 +20,7 @@ The `stratigraphic_unit` field is mandatory and must exist beforehand the potter
 
 ### Visual Guide
 
-The following GIF demonstrates the process for both the operations:
+The following GIF demonstrates the process for the operation:
 
 ![Pottery creation](./images/pot_pottery_creation_from_collection.gif)
 
@@ -36,7 +36,7 @@ The `stratigraphic_unit` field is pre-filled with the parent SU and cannot be ch
 
 ### Visual Guide
 
-The following GIF demonstrates the process for both the operations:
+The following GIF demonstrates the process for the operation:
 
 ![Pottery creation](./images/pot_pottery_creation_from_parent.gif)
 
