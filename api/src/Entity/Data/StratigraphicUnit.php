@@ -24,6 +24,7 @@ use App\Entity\Data\Botany\Seed;
 use App\Entity\Data\Join\ContextStratigraphicUnit;
 use App\Entity\Data\Join\MediaObject\MediaObjectStratigraphicUnit;
 use App\Entity\Data\Join\SampleStratigraphicUnit;
+use App\Entity\Data\View\Code\StratigraphicUnitCodeView;
 use App\Entity\Data\Zoo\Bone;
 use App\Entity\Data\Zoo\Tooth;
 use App\Metadata\Attribute\SubResourceFilters\ApiMediaObjectSubresourceFilters;
@@ -87,6 +88,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'year',
         'number',
         'site.code',
+        'codeView.code',
         'chronologyLower',
         'chronologyUpper',
     ])]
@@ -309,6 +311,11 @@ class StratigraphicUnit
 
     #[ORM\OneToMany(targetEntity: Tooth::class, mappedBy: 'stratigraphicUnit')]
     private Collection $zooTeeth;
+    #[ORM\OneToOne(
+        targetEntity: StratigraphicUnitCodeView::class,
+        mappedBy: 'stratigraphicUnit'
+    )]
+    private ?StratigraphicUnitCodeView $codeView = null;
 
     public function __construct()
     {
@@ -568,6 +575,6 @@ class StratigraphicUnit
     #[ApiProperty(required: true)]
     public function getCode(): string
     {
-        return sprintf('%s.%s.%u', $this->site->getCode(), substr(0 === $this->year ? '__' : $this->year, -2), $this->number);
+        return $this->codeView->getCode();
     }
 }

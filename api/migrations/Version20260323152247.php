@@ -70,14 +70,24 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_potteries AS
                 SELECT
-                    p.id, p.inventory, p.inner_color, p.outer_color, p.decoration_motif,
-                    p.chronology_lower, p.chronology_upper, p.notes,
+                    p.id,
+                    p.inventory,
+                    p.inner_color,
+                    p.outer_color,
+                    p.decoration_motif,
+                    p.chronology_lower,
+                    p.chronology_upper,
+                    p.notes,
                     st.value AS surface_treatment,
                     cc.value AS cultural_context,
                     sh.value AS shape,
                     fg.value AS functional_group,
                     ff.value AS functional_form,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM potteries p
                 JOIN sus su ON p.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id
@@ -94,7 +104,8 @@ final class Version20260323152247 extends AbstractMigration
                 CREATE OR REPLACE VIEW geoserver.vw_individuals AS
                 SELECT
                     i.id, i.identifier, sex.value AS sex, age.value AS age, i.notes,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM individuals i
                 JOIN sus su ON i.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id
@@ -108,7 +119,8 @@ final class Version20260323152247 extends AbstractMigration
                 CREATE OR REPLACE VIEW geoserver.vw_mus AS
                 SELECT
                     m.id, m.identifier, m.notes,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM mus m
                 JOIN sus su ON m.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id;
@@ -121,7 +133,8 @@ final class Version20260323152247 extends AbstractMigration
                 SELECT
                     b.id, vep.code AS ends_preserved, vbs.code AS side, b.notes,
                     vt.code AS taxonomy, vbe.code AS element, vbp.code AS part,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM zoo_bones b
                 JOIN sus su ON b.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id
@@ -139,7 +152,8 @@ final class Version20260323152247 extends AbstractMigration
                 SELECT
                     t.id, t.connected, vbs.code AS side, t.notes,
                     vt.code AS taxonomy, vte.code AS element,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM zoo_teeth t
                 JOIN sus su ON t.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id
@@ -155,7 +169,8 @@ final class Version20260323152247 extends AbstractMigration
                 SELECT
                     c.id, c.notes,
                     c.voc_taxonomy_id AS taxonomy_id, c.voc_element_id AS element_id, c.voc_element_part_id AS part_id,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM botany_charcoals c
                 JOIN sus su ON c.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id;
@@ -168,7 +183,8 @@ final class Version20260323152247 extends AbstractMigration
                 SELECT
                     s_seed.id, s_seed.notes,
                     s_seed.voc_taxonomy_id AS taxonomy_id, s_seed.voc_element_id AS element_id, s_seed.voc_element_part_id AS part_id,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM botany_seeds s_seed
                 JOIN sus su ON s_seed.stratigraphic_unit_id = su.id
                 JOIN archaeological_sites s ON su.site_id = s.id;

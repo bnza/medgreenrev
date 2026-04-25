@@ -247,6 +247,22 @@ final class Version20250627142200 extends AbstractMigration
                 EXECUTE FUNCTION check_last_context_stratigraphic_unit();
             SQL
         );
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_su(site_code text, su_year integer, su_number integer)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(
+                        site_code,
+                        '.',
+                        RIGHT(CASE WHEN su_year = 0 THEN '__' ELSE su_year::text END, 2),
+                        '.',
+                        su_number
+                    );
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -339,5 +355,6 @@ final class Version20250627142200 extends AbstractMigration
         $this->addSql('DROP FUNCTION IF EXISTS check_last_sample_stratigraphic_unit()');
         $this->addSql('DROP TRIGGER IF EXISTS trg_check_last_context_stratigraphic_unit ON context_stratigraphic_units');
         $this->addSql('DROP FUNCTION IF EXISTS check_last_context_stratigraphic_unit()');
+        $this->addSql('DROP FUNCTION IF EXISTS generate_code_su(text, integer, integer)');
     }
 }

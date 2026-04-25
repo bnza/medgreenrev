@@ -11,7 +11,7 @@ final class Version20250628091340 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create views';
+        return 'Create API views';
     }
 
     public function up(Schema $schema): void
@@ -280,6 +280,17 @@ final class Version20250628091340 extends AbstractMigration
                                 DistinctValues
                 SQL
         );
+        $this->addSql(
+            <<<'SQL'
+                CREATE VIEW vw_su_code AS
+                SELECT
+                    su.id,
+                    su.id AS su_id,
+                    generate_code_su(s.code, su.year, su.number) AS code
+                FROM sus su
+                JOIN archaeological_sites s ON s.id = su.site_id;
+            SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -290,6 +301,7 @@ final class Version20250628091340 extends AbstractMigration
         $this->addSql('DROP VIEW vocabulary.vw_zoo_taxonomy_families;');
         $this->addSql('DROP VIEW vw_analysis_laboratories;');
         $this->addSql('DROP VIEW vw_areas;');
+        $this->addSql('DROP VIEW IF EXISTS vw_su_code;');
         $this->addSql('DROP VIEW vw_buildings;');
         $this->addSql('DROP VIEW vw_calibration_curves;');
         $this->addSql('DROP VIEW vw_context_types;');
