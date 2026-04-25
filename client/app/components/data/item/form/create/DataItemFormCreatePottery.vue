@@ -90,7 +90,7 @@ const { r$ } = useScopedRegle(model, {
           label="shape"
         />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="8">
         <data-autocomplete-vocabulary-pottery-functional-form
           v-model="r$.$value.functionalForm"
           :error-messages="r$.$errors?.functionalForm"

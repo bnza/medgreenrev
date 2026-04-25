@@ -107,7 +107,7 @@ const { r$ } = useScopedRegle(
           label="shape"
         />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="8">
         <data-autocomplete
           v-model="r$.$value.functionalForm"
           path="/api/vocabulary/pottery/functional_forms"
