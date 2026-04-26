@@ -23,6 +23,7 @@ use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Entity\Data\SedimentCore;
 use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
+use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -159,6 +160,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'analyses.summary' => 'partial',
         'sedimentCore' => 'exact',
         'sedimentCore.site' => 'exact',
         'sedimentCore.site.code' => 'exact',
@@ -182,6 +184,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     ]
 )]
 #[ApiFilter(ExistsFilter::class, properties: [
+    'analyses.summary',
     'notes',
 ])]
 #[ApiFilter(
@@ -201,6 +204,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Duplicate [sediment core, min depth] combination.',
     groups: ['validation:sediment_core_depth:create']
 )]
+#[ApiAnalysisSubresourceFilters('analyses.analysis')]
 #[AppAssert\BelongToTheSameSite(groups: ['validation:sediment_core_depth:create'])]
 class SedimentCoreDepth
 {
@@ -219,7 +223,7 @@ class SedimentCoreDepth
     ])]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: SedimentCore::class, inversedBy: 'sedimentCoresStratigraphicUnits')]
+    #[ORM\ManyToOne(targetEntity: SedimentCore::class, inversedBy: 'sedimentCoreDepths')]
     #[ORM\JoinColumn(name: 'sediment_core_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     #[Groups([
         'sediment_core_depth:acl:read',

@@ -15,7 +15,7 @@ class SedimentCoreCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: SedimentCore::class)]
+    #[ORM\OneToOne(targetEntity: SedimentCore::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'sediment_core_id', referencedColumnName: 'id')]
     private SedimentCore $sedimentCore;
 

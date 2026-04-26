@@ -1,14 +1,28 @@
 import type { ResourceStaticFiltersDefinitionObject } from '~~/types'
+import { propertyStaticFiltersDefinition as analysisPropertyStaticDefinition } from './analysis'
 import {
   NumericOperations,
   API_FILTERS,
+  generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
+import { associationPropertyStaticFiltersDefinition } from '~/utils/consts/configs/filters/resources/analysisAssociation'
 
 const { Boolean, SamplingSiteEquals, SamplingStratigraphicUnitEquals } =
   API_FILTERS
 
+const analysisAssociationPropertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  generateResourceDefinition(associationPropertyStaticFiltersDefinition, [
+    'analyses',
+    'analysis association',
+  ])
+
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
+    ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+      'analyses.analysis',
+      'analysis',
+    ]),
+    ...analysisAssociationPropertyStaticFiltersDefinition,
     'sedimentCore.site': {
       propertyLabel: 'site',
       filters: {

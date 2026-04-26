@@ -15,7 +15,7 @@ class StratigraphicUnitCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: StratigraphicUnit::class)]
+    #[ORM\OneToOne(targetEntity: StratigraphicUnit::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'su_id', referencedColumnName: 'id')]
     private StratigraphicUnit $stratigraphicUnit;
 

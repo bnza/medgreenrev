@@ -122,7 +122,7 @@ class WrittenSourceCitedWork
     ])]
     private int $id;
 
-    #[ORM\ManyToOne(targetEntity: WrittenSource::class)]
+    #[ORM\ManyToOne(targetEntity: WrittenSource::class, inversedBy: "citedWorks")]
     #[ORM\JoinColumn(name: 'written_source_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'history_written_sources_cited_works:acl:read',

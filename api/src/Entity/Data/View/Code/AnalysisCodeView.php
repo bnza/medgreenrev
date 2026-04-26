@@ -15,7 +15,7 @@ class AnalysisCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Analysis::class)]
+    #[ORM\OneToOne(targetEntity: Analysis::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id')]
     private Analysis $analysis;
 

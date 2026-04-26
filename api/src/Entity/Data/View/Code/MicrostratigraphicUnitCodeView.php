@@ -15,7 +15,7 @@ class MicrostratigraphicUnitCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: MicrostratigraphicUnit::class)]
+    #[ORM\OneToOne(targetEntity: MicrostratigraphicUnit::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'mu_id', referencedColumnName: 'id')]
     private MicrostratigraphicUnit $microstratigraphicUnit;
 

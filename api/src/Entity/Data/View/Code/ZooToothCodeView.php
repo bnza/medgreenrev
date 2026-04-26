@@ -15,7 +15,7 @@ class ZooToothCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Tooth::class)]
+    #[ORM\OneToOne(targetEntity: Tooth::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'zoo_tooth_id', referencedColumnName: 'id')]
     private Tooth $tooth;
 

@@ -4,36 +4,38 @@ import {
   API_FILTERS,
 } from '~/utils/consts/configs/filters/definitions'
 
-const { SearchPartial, SamplingSiteEquals, SamplingStratigraphicUnitEquals } = API_FILTERS
+const { SearchPartial, SamplingSiteEquals, SamplingStratigraphicUnitEquals } =
+  API_FILTERS
 
-export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject = {
-  description: {
-    filters: {
-      SearchPartial,
+export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
+  {
+    description: {
+      filters: {
+        SearchPartial,
+      },
     },
-  },
-  number: {
-    filters: {
-      ...NumericOperations,
+    number: {
+      filters: {
+        ...NumericOperations,
+      },
     },
-  },
-  site: {
-    filters: {
+    site: {
+      filters: {
         SamplingSiteEquals,
+      },
     },
-  },
-  'sedimentCoresStratigraphicUnits.stratigraphicUnit': {
-    propertyLabel: 'stratigraphic unit',
-    filters: {
+    'sedimentCoreDepths.stratigraphicUnit': {
+      propertyLabel: 'stratigraphic unit',
+      filters: {
         SamplingStratigraphicUnitEquals,
+      },
     },
-  },
-  year: {
-    filters: {
-      ...NumericOperations,
+    year: {
+      filters: {
+        ...NumericOperations,
+      },
     },
-  },
-}
+  }
 
 export const staticFiltersDefinition = {
   ...propertyStaticFiltersDefinition,

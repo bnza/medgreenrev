@@ -15,7 +15,7 @@ class SampleCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Sample::class)]
+    #[ORM\OneToOne(targetEntity: Sample::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'sample_id', referencedColumnName: 'id')]
     private Sample $sample;
 

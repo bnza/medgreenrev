@@ -59,6 +59,7 @@ export const API_RESOURCE_MAP = {
   listContextType: '/api/list/contexts/types',
   listHistoryReference: '/api/list/history/references',
   listPerson: '/api/list/persons',
+  listPotteryColor: '/api/list/pottery_colors',
   listVocBotanyTaxonomyClass: '/api/list/vocabulary/botany/taxonomy_classes',
   listVocBotanyTaxonomyFamily: '/api/list/vocabulary/botany/taxonomy_families',
   listVocZooTaxonomyClass: '/api/list/vocabulary/zoo/taxonomy_classes',

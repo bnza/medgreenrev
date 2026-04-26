@@ -15,7 +15,7 @@ class BotanySeedCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Seed::class)]
+    #[ORM\OneToOne(targetEntity: Seed::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'botany_seed_id', referencedColumnName: 'id')]
     private Seed $seed;
 

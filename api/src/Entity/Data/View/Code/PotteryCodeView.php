@@ -15,7 +15,7 @@ class PotteryCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Pottery::class)]
+    #[ORM\OneToOne(targetEntity: Pottery::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'pottery_id', referencedColumnName: 'id')]
     private Pottery $pottery;
 

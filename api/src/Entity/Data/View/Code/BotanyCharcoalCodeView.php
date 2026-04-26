@@ -15,7 +15,7 @@ class BotanyCharcoalCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Charcoal::class)]
+    #[ORM\OneToOne(targetEntity: Charcoal::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'botany_charcoal_id', referencedColumnName: 'id')]
     private Charcoal $charcoal;
 

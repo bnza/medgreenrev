@@ -3474,6 +3474,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/list/pottery_colors': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListPotteryColor resources.
+     * @description Retrieves the collection of ListPotteryColor resources.
+     */
+    get: operations['api_listpottery_colors_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/pottery_colors/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListPotteryColor resource.
+     * @description Retrieves a ListPotteryColor resource.
+     */
+    get: operations['api_listpottery_colors_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/list/vocabulary/botany/taxonomy_classes': {
     parameters: {
       query?: never
@@ -12823,6 +12863,10 @@ export interface components {
       readonly id?: string
       readonly value?: string
     }
+    'ListPotteryColor.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: string
+      readonly value?: string
+    }
     'ListVocBotanyTaxonomyClass.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
       readonly value?: string
@@ -14605,7 +14649,7 @@ export interface components {
       site: string
       year: number
       number: number
-      sedimentCoresStratigraphicUnits?: string[]
+      sedimentCoreDepths?: string[]
       description?: string | null
       readonly code?: string
     }
@@ -14698,7 +14742,7 @@ export interface components {
       site?: string
       year?: number
       number?: number
-      sedimentCoresStratigraphicUnits?: string[]
+      sedimentCoreDepths?: string[]
       description?: string | null
       readonly code?: string
     }
@@ -17084,16 +17128,6 @@ export interface components {
         canDelete: boolean
       }
     }
-    'VocPotteryFunctionalForm.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
-      value: string
-      variant?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalGroup?: string
-    }
     'VocPotteryFunctionalForm.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17116,6 +17150,11 @@ export interface components {
       value: string
       functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.jsonld-pottery.acl.read']
     })
+    'VocPotteryFunctionalForm.jsonld-vocabulary.pottery.functional_form.read': components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+      variant?: string | null
+      functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.jsonld-vocabulary.pottery.functional_form.read']
+    }
     'VocPotteryFunctionalGroup.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       value: string
       /** @description Access control metadata */
@@ -17159,6 +17198,9 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
     })
+    'VocPotteryFunctionalGroup.jsonld-vocabulary.pottery.functional_form.read': components['schemas']['HydraItemBaseSchema'] & {
+      value: string
+    }
     'VocPotteryShape.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
       value: string
@@ -20305,6 +20347,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
@@ -20356,15 +20399,11 @@ export interface operations {
          */
         summary?: string
         /**
-         * @description Search by analysis type code OR identifier (case insensitive like) if single value, or by analysis type code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "typeCode." searches only by type code. Format: "typeCode.identifier"
-         * @example XRF.sample001
-         */
-        search?: string
-        /**
          * @description Filter analyses to only those created by the current user. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path?: never
@@ -28953,8 +28992,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -29096,8 +29137,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -29432,8 +29475,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -29573,8 +29618,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -29709,8 +29756,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -29921,8 +29970,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -30064,8 +30115,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -30400,8 +30453,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -30541,8 +30596,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -30677,8 +30734,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -33556,8 +33615,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
@@ -33580,15 +33641,11 @@ export interface operations {
          */
         notes?: string
         /**
-         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
-         * @example TO.IND001
-         */
-        search?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path: {
@@ -33696,8 +33753,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
@@ -33720,15 +33779,11 @@ export interface operations {
          */
         notes?: string
         /**
-         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
-         * @example TO.IND001
-         */
-        search?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path?: never
@@ -34029,8 +34084,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
@@ -34053,15 +34110,11 @@ export interface operations {
          */
         notes?: string
         /**
-         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
-         * @example TO.IND001
-         */
-        search?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path: {
@@ -34167,8 +34220,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
@@ -34190,11 +34245,6 @@ export interface operations {
          * @example cafè
          */
         notes?: string
-        /**
-         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
-         * @example TO.IND001
-         */
-        search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -34343,8 +34393,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         'order[sex.id]'?: 'asc' | 'desc'
         'order[age.id]'?: 'asc' | 'desc'
@@ -34366,11 +34418,6 @@ export interface operations {
          * @example cafè
          */
         notes?: string
-        /**
-         * @description Search by site code OR identifier (case insensitive like) if single value, or by site code AND identifier (both conditions must match) if value contains dot. Edge cases: ".identifier" searches only by identifier, "siteCode." searches only by site code. Format: "siteCode.identifier"
-         * @example TO.IND001
-         */
-        search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -34853,6 +34900,68 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['ListPerson.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_listpottery_colors_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListPotteryColor collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ListPotteryColor.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_listpottery_colors_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListPotteryColor identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListPotteryColor resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListPotteryColor.jsonld']
         }
       }
       /** @description Not found */
@@ -36769,8 +36878,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         identifier?: string
         stratigraphicUnit?: string
@@ -36860,8 +36971,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         identifier?: string
         stratigraphicUnit?: string
@@ -37144,8 +37257,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         identifier?: string
         stratigraphicUnit?: string
@@ -37235,8 +37350,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         identifier?: string
         stratigraphicUnit?: string
@@ -37324,8 +37441,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         identifier?: string
         stratigraphicUnit?: string
@@ -37451,8 +37570,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[identifier]'?: 'asc' | 'desc'
         identifier?: string
         stratigraphicUnit?: string
@@ -37544,6 +37665,7 @@ export interface operations {
         'mediaObjects.mediaObject.uploadDate[gte]'?: string
         'mediaObjects.mediaObject.uploadDate[lt]'?: string
         'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[length]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -37831,6 +37953,7 @@ export interface operations {
         'mediaObjects.mediaObject.uploadDate[gte]'?: string
         'mediaObjects.mediaObject.uploadDate[lt]'?: string
         'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[length]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -37946,6 +38069,7 @@ export interface operations {
         'mediaObjects.mediaObject.uploadDate[gte]'?: string
         'mediaObjects.mediaObject.uploadDate[lt]'?: string
         'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[length]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -38130,6 +38254,7 @@ export interface operations {
         'mediaObjects.mediaObject.uploadDate[gte]'?: string
         'mediaObjects.mediaObject.uploadDate[lt]'?: string
         'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[length]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -38826,13 +38951,16 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalForm.functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
@@ -38851,6 +38979,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
+        'functionalForm.functionalGroup'?: string
+        'functionalForm.functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -38882,15 +39012,11 @@ export interface operations {
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
         /**
-         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
-         * @example SE.POT001
-         */
-        search?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path: {
@@ -39022,13 +39148,16 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalForm.functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
@@ -39047,6 +39176,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
+        'functionalForm.functionalGroup'?: string
+        'functionalForm.functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -39078,15 +39209,11 @@ export interface operations {
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
         /**
-         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
-         * @example SE.POT001
-         */
-        search?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path?: never
@@ -39411,13 +39538,16 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalForm.functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
@@ -39436,6 +39566,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
+        'functionalForm.functionalGroup'?: string
+        'functionalForm.functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -39467,15 +39599,11 @@ export interface operations {
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
         /**
-         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
-         * @example SE.POT001
-         */
-        search?: string
-        /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path: {
@@ -39605,13 +39733,16 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalForm.functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
@@ -39630,6 +39761,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
+        'functionalForm.functionalGroup'?: string
+        'functionalForm.functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -39660,11 +39793,6 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /**
-         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
-         * @example SE.POT001
-         */
-        search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -39868,13 +39996,16 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[inventory]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[culturalContext.id]'?: 'asc' | 'desc'
         'order[shape.value]'?: 'asc' | 'desc'
+        'order[functionalForm.functionalGroup.value]'?: 'asc' | 'desc'
         'order[functionalForm.value]'?: 'asc' | 'desc'
         'order[surfaceTreatment.value]'?: 'asc' | 'desc'
         'order[innerColor]'?: 'asc' | 'desc'
@@ -39893,6 +40024,8 @@ export interface operations {
         'chronologyUpper[]'?: number[]
         shape?: string
         'shape[]'?: string[]
+        'functionalForm.functionalGroup'?: string
+        'functionalForm.functionalGroup[]'?: string[]
         functionalForm?: string
         'functionalForm[]'?: string[]
         notes?: string
@@ -39923,11 +40056,6 @@ export interface operations {
         'exists[shape]'?: boolean
         'exists[surfaceTreatment]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /**
-         * @description Search by site code OR inventory (case insensitive like) if single value, or by site code AND inventory (both conditions must match) if value contains dot. Edge cases: ".inventory" searches only by inventory, "siteCode." searches only by site code. Format: "siteCode.inventory"
-         * @example SE.POT001
-         */
-        search?: string
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -40096,6 +40224,7 @@ export interface operations {
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
@@ -40135,15 +40264,11 @@ export interface operations {
          */
         description?: string
         /**
-         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
-         * @example ME.GE.34.93
-         */
-        search?: string
-        /**
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path: {
@@ -40251,6 +40376,7 @@ export interface operations {
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
@@ -40290,15 +40416,11 @@ export interface operations {
          */
         description?: string
         /**
-         * @description Smart search for samples. Supports flexible input patterns: single values (site code or sample number), two values (site+type codes, year+number, or site+number), three values (site+type+number), or four values (site+type+year+number). Use any non-word characters as separators (spaces, dots, hyphens, etc.).
-         * @example ME.GE.34.93
-         */
-        search?: string
-        /**
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path?: never
@@ -41494,6 +41616,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
@@ -41535,10 +41658,6 @@ export interface operations {
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /**
-         * @description Search sampling stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site code + number). Invalid combinations return empty results.
-         * @example SITE 123
-         */
         search?: string
       }
       header?: never
@@ -41571,6 +41690,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
@@ -41612,10 +41732,6 @@ export interface operations {
         'exists[chronologyUpper]'?: boolean
         'exists[description]'?: boolean
         'exists[mediaObjects]'?: boolean
-        /**
-         * @description Search sampling stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site code + number). Invalid combinations return empty results.
-         * @example SITE 123
-         */
         search?: string
       }
       header?: never
@@ -41818,23 +41934,20 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'sedimentCoreDepths.stratigraphicUnit'?: string
+        'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
         search?: string
       }
       header?: never
@@ -41867,23 +41980,20 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'sedimentCoreDepths.stratigraphicUnit'?: string
+        'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
         search?: string
       }
       header?: never
@@ -42107,24 +42217,20 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'sedimentCoreDepths.stratigraphicUnit'?: string
+        'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
-        search?: string
       }
       header?: never
       path?: never
@@ -42223,24 +42329,20 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit'?: string
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'sedimentCoreDepths.stratigraphicUnit'?: string
+        'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
          */
         description?: string
-        /**
-         * @description Search sediment cores by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example GVR 2023 5
-         */
-        search?: string
       }
       header?: never
       path?: never
@@ -42267,6 +42369,35 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[depthMin]'?: 'asc' | 'desc'
         'order[depthMax]'?: 'asc' | 'desc'
@@ -42275,6 +42406,7 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -42324,6 +42456,7 @@ export interface operations {
         'stratigraphicUnit.chronologyUpper[gte]'?: string
         'stratigraphicUnit.chronologyUpper[lt]'?: string
         'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         geochemistry?: boolean
         microCharcoal?: boolean
@@ -42333,10 +42466,6 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
-        /**
-         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
-         * @example SE 2025 1 85
-         */
         search?: string
       }
       header?: never
@@ -42562,6 +42691,35 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[depthMin]'?: 'asc' | 'desc'
         'order[depthMax]'?: 'asc' | 'desc'
@@ -42570,6 +42728,7 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -42619,6 +42778,7 @@ export interface operations {
         'stratigraphicUnit.chronologyUpper[gte]'?: string
         'stratigraphicUnit.chronologyUpper[lt]'?: string
         'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         geochemistry?: boolean
         microCharcoal?: boolean
@@ -42628,11 +42788,6 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
-        /**
-         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
-         * @example SE 2025 1 85
-         */
-        search?: string
       }
       header?: never
       path: {
@@ -42664,6 +42819,35 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[depthMin]'?: 'asc' | 'desc'
         'order[depthMax]'?: 'asc' | 'desc'
@@ -42672,6 +42856,7 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -42721,6 +42906,7 @@ export interface operations {
         'stratigraphicUnit.chronologyUpper[gte]'?: string
         'stratigraphicUnit.chronologyUpper[lt]'?: string
         'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         geochemistry?: boolean
         microCharcoal?: boolean
@@ -42730,10 +42916,6 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
-        /**
-         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
-         * @example SE 2025 1 85
-         */
         search?: string
       }
       header?: never
@@ -42764,6 +42946,35 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[depthMin]'?: 'asc' | 'desc'
         'order[depthMax]'?: 'asc' | 'desc'
@@ -42772,6 +42983,7 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -42821,6 +43033,7 @@ export interface operations {
         'stratigraphicUnit.chronologyUpper[gte]'?: string
         'stratigraphicUnit.chronologyUpper[lt]'?: string
         'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         geochemistry?: boolean
         microCharcoal?: boolean
@@ -42830,11 +43043,6 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
-        /**
-         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
-         * @example SE 2025 1 85
-         */
-        search?: string
       }
       header?: never
       path?: never
@@ -42933,6 +43141,35 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[depthMin]'?: 'asc' | 'desc'
         'order[depthMax]'?: 'asc' | 'desc'
@@ -42941,6 +43178,7 @@ export interface operations {
         'order[sedimentCore.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -42990,6 +43228,7 @@ export interface operations {
         'stratigraphicUnit.chronologyUpper[gte]'?: string
         'stratigraphicUnit.chronologyUpper[lt]'?: string
         'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         geochemistry?: boolean
         microCharcoal?: boolean
@@ -42999,11 +43238,6 @@ export interface operations {
         plantMacroRemains?: boolean
         pollen?: boolean
         sedimentaryDna?: boolean
-        /**
-         * @description Search sediment core depths by splitting input on non-word characters. Supports: 1 chunk (site code or depth), 2 chunks (site+depth or sc_number+depth), 3 chunks (site+sc_number+depth or year+sc_number+depth), 4 chunks (site+year+sc_number+depth). Invalid combinations return empty results.
-         * @example SE 2025 1 85
-         */
-        search?: string
       }
       header?: never
       path?: never
@@ -43607,6 +43841,7 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         site?: string
@@ -43663,15 +43898,11 @@ export interface operations {
         'exists[description]'?: boolean
         'exists[mediaObjects]'?: boolean
         /**
-         * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example 2025 123
-         */
-        search?: string
-        /**
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path: {
@@ -43733,6 +43964,7 @@ export interface operations {
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         site?: string
@@ -43789,15 +44021,11 @@ export interface operations {
         'exists[description]'?: boolean
         'exists[mediaObjects]'?: boolean
         /**
-         * @description Search stratigraphic units by splitting input on non-word characters. Supports: 1 chunk (site code or number), 2 chunks (site+number or year+number), 3+ chunks (site+year+number). Invalid combinations return empty results.
-         * @example 2025 123
-         */
-        search?: string
-        /**
          * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
          */
         granted?: string
+        search?: string
       }
       header?: never
       path?: never
@@ -45502,10 +45730,6 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[email]'?: 'asc' | 'desc'
-        /**
-         * @description Search case sensitive match the email field
-         * @example me
-         */
         search?: string
       }
       header?: never
@@ -48163,7 +48387,13 @@ export interface operations {
   }
   api_vocabularypotteryfunctional_forms_get_collection: {
     parameters: {
-      query?: never
+      query?: {
+        /**
+         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @example oak
+         */
+        search?: string
+      }
       header?: never
       path?: never
       cookie?: never
@@ -48177,7 +48407,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
-            member: components['schemas']['VocPotteryFunctionalForm.jsonld'][]
+            member: components['schemas']['VocPotteryFunctionalForm.jsonld-vocabulary.pottery.functional_form.read'][]
           }
         }
       }
@@ -48201,7 +48431,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocPotteryFunctionalForm.jsonld']
+          'application/ld+json': components['schemas']['VocPotteryFunctionalForm.jsonld-vocabulary.pottery.functional_form.read']
         }
       }
       /** @description Not found */
@@ -49228,8 +49458,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -49388,8 +49620,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -49548,8 +49782,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -49899,8 +50135,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -50126,8 +50364,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -50281,8 +50521,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -50428,8 +50670,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -50575,8 +50819,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -50913,8 +51159,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
@@ -51127,8 +51375,10 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'

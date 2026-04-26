@@ -130,7 +130,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'site' => 'exact',
-        'sedimentCoresStratigraphicUnits.stratigraphicUnit' => 'exact',
+        'sedimentCoreDepths.stratigraphicUnit' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -204,7 +204,7 @@ class SedimentCore
     private int $number;
 
     #[ORM\OneToMany(targetEntity: SedimentCoreDepth::class, mappedBy: 'sedimentCore')]
-    private Collection $sedimentCoresStratigraphicUnits;
+    private Collection $sedimentCoreDepths;
 
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups([
@@ -215,7 +215,7 @@ class SedimentCore
 
     public function __construct()
     {
-        $this->sedimentCoresStratigraphicUnits = new ArrayCollection();
+        $this->sedimentCoreDepths = new ArrayCollection();
     }
 
     public function getId(): int
@@ -271,14 +271,14 @@ class SedimentCore
         return $this;
     }
 
-    public function getSedimentCoresStratigraphicUnits(): Collection
+    public function getSedimentCoreDepths(): Collection
     {
-        return $this->sedimentCoresStratigraphicUnits;
+        return $this->sedimentCoreDepths;
     }
 
-    public function setSedimentCoresStratigraphicUnits(Collection $sedimentCoresStratigraphicUnits): SedimentCore
+    public function setSedimentCoreDepths(Collection $sedimentCoreDepths): SedimentCore
     {
-        $this->sedimentCoresStratigraphicUnits = $sedimentCoresStratigraphicUnits;
+        $this->sedimentCoreDepths = $sedimentCoreDepths;
 
         return $this;
     }

@@ -15,7 +15,7 @@ class PaleoclimateSampleCodeView
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: PaleoclimateSample::class)]
+    #[ORM\OneToOne(targetEntity: PaleoclimateSample::class, inversedBy: "codeView")]
     #[ORM\JoinColumn(name: 'paleoclimate_sample_id', referencedColumnName: 'id')]
     private PaleoclimateSample $paleoclimateSample;
 

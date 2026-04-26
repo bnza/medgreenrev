@@ -106,53 +106,38 @@ const { r$ } = useScopedRegle(model, {
     </v-row>
     <v-row>
       <v-col cols="3" class="px-2">
-        <v-checkbox
-            v-model="r$.$value.geochemistry"
-            label="geochemistry"
-        />
+        <v-checkbox v-model="r$.$value.geochemistry" label="geochemistry" />
+      </v-col>
+      <v-col cols="3" class="px-2">
+        <v-checkbox v-model="r$.$value.microCharcoal" label="microcharcoal" />
       </v-col>
       <v-col cols="3" class="px-2">
         <v-checkbox
-            v-model="r$.$value.microCharcoal"
-            label="microcharcoal"
+          v-model="r$.$value.organicChemistry"
+          label="organic chemistry"
         />
       </v-col>
       <v-col cols="3" class="px-2">
-        <v-checkbox
-            v-model="r$.$value.organicChemistry"
-            label="organic chemistry"
-        />
-      </v-col>
-      <v-col cols="3" class="px-2">
-        <v-checkbox
-            v-model="r$.$value.oslDating"
-            label="OSL dating"
-        />
+        <v-checkbox v-model="r$.$value.oslDating" label="OSL dating" />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="3" class="px-2">
-        <v-checkbox
-            v-model="r$.$value.phytoliths"
-            label="phytoliths"
-        />
+        <v-checkbox v-model="r$.$value.phytoliths" label="phytoliths" />
       </v-col>
       <v-col cols="3" class="px-2">
         <v-checkbox
-            v-model="r$.$value.phytoliths"
-            label="plant micro-remains"
+          v-model="r$.$value.plantMacroRemains"
+          label="plant macro-remains"
         />
       </v-col>
       <v-col cols="3" class="px-2">
-        <v-checkbox
-            v-model="r$.$value.pollen"
-            label="pollen"
-        />
+        <v-checkbox v-model="r$.$value.pollen" label="pollen" />
       </v-col>
       <v-col cols="3" class="px-2">
         <v-checkbox
-            v-model="r$.$value.sedimentaryDna"
-            label="sedimentaryDna"
+          v-model="r$.$value.sedimentaryDna"
+          label="sedimentary DNA"
         />
       </v-col>
     </v-row>
