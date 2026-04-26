@@ -5,6 +5,7 @@
     Path extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_core_depths'
+      | '/api/data/sampling_sites/{parentId}/sediment_cores/depths'
       | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
       | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
     >
@@ -14,7 +15,10 @@ import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 
 const props = defineProps<{
   path: Path
-  parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sedimentCore'>
+  parent?:
+    | ResourceParent<'samplingStratigraphicUnit'>
+    | ResourceParent<'sedimentCore'>
+    | ResourceParent<'samplingSite'>
 }>()
 
 const { deleteDialogState } = storeToRefs(

@@ -18,10 +18,16 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
+use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
+use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\MediaObject\MediaObjectSamplingStratigraphicUnit;
 use App\Entity\Data\Join\SedimentCoreDepth;
 use App\Entity\Data\View\Code\SamplingStratigraphicUnitCodeView;
+use App\Metadata\ExportFeatureCollection;
+use App\Metadata\GetAggregatedFeatureCollection;
 use App\Repository\SamplingStratigraphicUnitRepository;
+use App\State\GeoserverAggregatedExtentMatchedProvider;
+use App\State\GeoserverAggregatedNumberMatchedProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -37,8 +43,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\UniqueConstraint(columns: ['site_id', 'number'])]
 #[ApiResource(
     operations: [
-        new Get(),
+        new Get(
+            uriTemplate: '/data/sampling_stratigraphic_units/{id}',
+        ),
         new GetCollection(
+            uriTemplate: '/data/sampling_stratigraphic_units',
             parameters: [
                 'search' => new QueryParameter(
                     filter: 'app.filter.sampling_su_code_search',
@@ -46,7 +55,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                 ),
             ]),
         new GetCollection(
-            uriTemplate: '/sampling_sites/{parentId}/stratigraphic_units',
+            uriTemplate: '/data/sampling_sites/{parentId}/stratigraphic_units',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
             uriVariables: [
                 'parentId' => new Link(
@@ -61,11 +70,43 @@ use Symfony\Component\Validator\Constraints as Assert;
                 ),
             ]
         ),
-        new Delete(),
-        new Patch(),
-        new Post(),
+        new Delete(
+            uriTemplate: '/data/sampling_stratigraphic_units/{id}',
+            security: 'is_granted("delete", object)',
+        ),
+        new Patch(
+            uriTemplate: '/data/sampling_stratigraphic_units/{id}',
+            security: 'is_granted("update", object)',
+        ),
+        new Post(
+            uriTemplate: '/data/sampling_stratigraphic_units',
+            securityPostDenormalize: 'is_granted("create", object)',
+        ),
+        new GetAggregatedFeatureCollection(
+            uriTemplate: '/features/sampling_stratigraphic_units.{_format}',
+            typeName: 'mgr:sampling_sites',
+            parentAccessor: 'site',
+            entityTypeName: 'mgr:sampling_stratigraphic_units',
+        ),
+        new Get(
+            uriTemplate: '/features/number_matched/sampling_stratigraphic_units',
+            defaults: ['typeName' => 'mgr:sampling_sites', 'parentAccessor' => 'site'],
+            normalizationContext: ['groups' => ['wfs_number_matched:read']],
+            output: WfsGetFeatureCollectionNumberMatched::class,
+            provider: GeoserverAggregatedNumberMatchedProvider::class,
+        ),
+        new Get(
+            uriTemplate: '/features/extent_matched/sampling_stratigraphic_units',
+            defaults: ['typeName' => 'mgr:sampling_sites', 'parentAccessor' => 'site'],
+            normalizationContext: ['groups' => ['wfs_extent_matched:read']],
+            output: WfsGetFeatureCollectionExtentMatched::class,
+            provider: GeoserverAggregatedExtentMatchedProvider::class,
+        ),
+        new ExportFeatureCollection(
+            uriTemplate: '/features/export/sampling_stratigraphic_units',
+            typeName: 'mgr:sampling_stratigraphic_units',
+        ),
     ],
-    routePrefix: 'data',
     normalizationContext: ['groups' => ['sampling_su:acl:read']],
     denormalizationContext: ['groups' => ['sampling_su:create']],
     order: ['id' => 'DESC'],

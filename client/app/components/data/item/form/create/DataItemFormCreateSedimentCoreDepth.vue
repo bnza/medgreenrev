@@ -10,7 +10,10 @@ const path: ApiResourcePath | PostCollectionPath =
   '/api/data/sediment_core_depths'
 
 const props = defineProps<{
-  parent?: ResourceParent<'sedimentCore'> | ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'sedimentCore'>
+    | ResourceParent<'samplingStratigraphicUnit'>
+    | ResourceParent<'samplingSite'>
 }>()
 
 const model = generateEmptyPostModel(path, props.parent)
@@ -66,9 +69,11 @@ const { r$ } = useScopedRegle(model, {
           :disabled="parent?.key === 'sedimentCore'"
           granted-only
           :query-params="
-            parent?.key === 'stratigraphicUnit'
+            parent?.key === 'samplingStratigraphicUnit'
               ? { site: parent.item.site?.['@id'] }
-              : {}
+              : parent?.key === 'samplingSite'
+                ? { site: parent.item['@id'] }
+                : {}
           "
         />
       </v-col>
@@ -79,11 +84,13 @@ const { r$ } = useScopedRegle(model, {
           label="stratigraphic unit"
           item-title="code"
           :error-messages="r$.$errors?.stratigraphicUnit"
-          :disabled="parent?.key === 'stratigraphicUnit'"
+          :disabled="parent?.key === 'samplingStratigraphicUnit'"
           :query-params="
             parent?.key === 'sedimentCore'
               ? { site: parent.item.site?.['@id'] }
-              : {}
+              : parent?.key === 'samplingSite'
+                ? { site: parent.item['@id'] }
+                : {}
           "
         />
       </v-col>

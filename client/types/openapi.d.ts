@@ -5362,6 +5362,86 @@ export interface paths {
     patch: operations['api_datasampling_stratigraphic_units_id_patch']
     trace?: never
   }
+  '/api/features/export/sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportsampling_stratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SamplingStratigraphicUnit resource.
+     * @description Retrieves a SamplingStratigraphicUnit resource.
+     */
+    get: operations['api_featuresextent_matchedsampling_stratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a SamplingStratigraphicUnit resource.
+     * @description Retrieves a SamplingStratigraphicUnit resource.
+     */
+    get: operations['api_featuresnumber_matchedsampling_stratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/sampling_stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuressampling_stratigraphic_units.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/sampling_sites/{parentId}/sediment_cores': {
     parameters: {
       query?: never
@@ -5506,6 +5586,26 @@ export interface paths {
      * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
      */
     get: operations['api_featuressediment_cores.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sampling_sites/{parentId}/sediment_cores/depths': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of SedimentCoreDepth resources.
+     * @description Retrieves the collection of SedimentCoreDepth resources.
+     */
+    get: operations['api_datasampling_sites_parentIdsediment_coresdepths_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -5948,6 +6048,86 @@ export interface paths {
      * @description Updates the StratigraphicUnit resource.
      */
     patch: operations['api_datastratigraphic_units_id_patch']
+    trace?: never
+  }
+  '/api/features/export/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Export filtered features via GeoServer
+     * @description Exports features matching the same filters as GetFeatureCollection (without BBOX) in the requested format. Proxied from GeoServer. CRS is always EPSG:4326.
+     */
+    get: operations['api_featuresexportstratigraphic_units_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/extent_matched/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a StratigraphicUnit resource.
+     * @description Retrieves a StratigraphicUnit resource.
+     */
+    get: operations['api_featuresextent_matchedstratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/number_matched/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a StratigraphicUnit resource.
+     * @description Retrieves a StratigraphicUnit resource.
+     */
+    get: operations['api_featuresnumber_matchedstratigraphic_units_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/features/stratigraphic_units': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Aggregated GeoServer FeatureCollection (GeoJSON)
+     * @description Returns a GeoJSON FeatureCollection from GeoServer aggregated by spatial parent (site/location), with number_matched property on each feature.
+     */
+    get: operations['api_featuresstratigraphic_units.__format_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
     trace?: never
   }
   '/api/data/stratigraphic_unit_relationships': {
@@ -14656,6 +14836,10 @@ export interface components {
       code?: string
       name?: string
     })
+    'SamplingStratigraphicUnit-feature_collection.json.read': Record<
+      string,
+      never
+    >
     'SamplingStratigraphicUnit-sampling_su.create': {
       /**
        * Format: iri-reference
@@ -14679,6 +14863,42 @@ export interface components {
       interpretation?: string | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
+    }
+    'SamplingStratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'SamplingStratigraphicUnit.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'SamplingStratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       site: components['schemas']['SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
@@ -14727,6 +14947,10 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SamplingStratigraphicUnit.geojson-feature_collection.json.read': Record<
+      string,
+      never
+    >
     'SamplingStratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15395,6 +15619,7 @@ export interface components {
       /** @default 0 */
       privilege: number
     })
+    'StratigraphicUnit-feature_collection.json.read': Record<string, never>
     'StratigraphicUnit-su.create': {
       /**
        * Format: iri-reference
@@ -15426,6 +15651,42 @@ export interface components {
       interpretation?: string | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
+    }
+    'StratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * @example [
+       *       -574545.7563392848,
+       *       4371056.783165679,
+       *       58028.027939854575,
+       *       5020082.443572257
+       *     ]
+       */
+      readonly extent: [number, number, number, number]
+      /**
+       * @example {
+       *       "type": "name",
+       *       "properties": {
+       *         "name": "urn:ogc:def:crs:EPSG::3857"
+       *       }
+       *     }
+       */
+      readonly crs: {
+        /** @enum {string} */
+        type: 'name'
+        properties: {
+          name: string
+        }
+      }
+      /** Format: date-time */
+      readonly timeStamp: string
+      typeName: string
+      readonly id: string
+    }
+    'StratigraphicUnit.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly numberMatched?: number
+      readonly timeStamp?: string
+      typeName?: string
+      readonly id?: unknown
     }
     'StratigraphicUnit.csv-abs_dating_analysis.read': {
       site: components['schemas']['ArchaeologicalSite.csv-abs_dating_analysis.read']
@@ -15644,6 +15905,10 @@ export interface components {
         canDelete: boolean
       }
     }
+    'StratigraphicUnit.geojson-feature_collection.json.read': Record<
+      string,
+      never
+    >
     'StratigraphicUnit.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['ArchaeologicalSite.jsonld-abs_dating_analysis.read']
       readonly code: string
@@ -42199,6 +42464,17 @@ export interface operations {
         }
         content?: never
       }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
       /** @description Not found */
       404: {
         headers: {
@@ -42249,6 +42525,17 @@ export interface operations {
           'application/json': components['schemas']['Error']
         }
       }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
       /** @description Not found */
       404: {
         headers: {
@@ -42269,6 +42556,212 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresexportsampling_stratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[id]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['SamplingStratigraphicUnit.jsonld-sampling_su.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedsampling_stratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingStratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedsampling_stratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SamplingStratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['SamplingStratigraphicUnit.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuressampling_stratigraphic_units.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[id]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
         }
       }
     }
@@ -42708,6 +43201,135 @@ export interface operations {
         content: {
           'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
           'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
+        }
+      }
+    }
+  }
+  api_datasampling_sites_parentIdsediment_coresdepths_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[analyses.analysis.laboratory]'?: boolean
+        'exists[analyses.analysis.responsible]'?: boolean
+        'exists[analyses.analysis.summary]'?: boolean
+        'analyses.analysis.createdBy.email'?: string
+        'analyses.analysis.createdBy.email[]'?: string[]
+        'analyses.analysis.identifier'?: string
+        'analyses.analysis.laboratory'?: string
+        'analyses.analysis.responsible'?: string
+        'analyses.analysis.status'?: number
+        'analyses.analysis.status[]'?: number[]
+        'analyses.analysis.type'?: string
+        'analyses.analysis.type[]'?: string[]
+        'analyses.analysis.type.code'?: string
+        'analyses.analysis.type.code[]'?: string[]
+        'analyses.analysis.type.group'?: string
+        'analyses.analysis.type.group[]'?: string[]
+        'analyses.analysis.year'?: number
+        'analyses.analysis.year[]'?: number[]
+        'analyses.analysis.year[between]'?: string
+        'analyses.analysis.year[gt]'?: string
+        'analyses.analysis.year[gte]'?: string
+        'analyses.analysis.year[lt]'?: string
+        'analyses.analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analyses.analysis.summary
+         * @example cafè
+         */
+        'analyses.analysis.summary'?: string
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[id]'?: 'asc' | 'desc'
+        'order[depthMin]'?: 'asc' | 'desc'
+        'order[depthMax]'?: 'asc' | 'desc'
+        'order[sedimentCore.year]'?: 'asc' | 'desc'
+        'order[sedimentCore.number]'?: 'asc' | 'desc'
+        'order[sedimentCore.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analyses.summary'?: string
+        sedimentCore?: string
+        'sedimentCore[]'?: string[]
+        'sedimentCore.site'?: string
+        'sedimentCore.site[]'?: string[]
+        'sedimentCore.site.code'?: string
+        'sedimentCore.site.code[]'?: string[]
+        'sedimentCore.year'?: number
+        'sedimentCore.year[]'?: number[]
+        'sedimentCore.number'?: number
+        'sedimentCore.number[]'?: number[]
+        stratigraphicUnit?: string
+        'stratigraphicUnit[]'?: string[]
+        'stratigraphicUnit.site'?: string
+        'stratigraphicUnit.site[]'?: string[]
+        'depthMin[between]'?: string
+        'depthMin[gt]'?: string
+        'depthMin[gte]'?: string
+        'depthMin[lt]'?: string
+        'depthMin[lte]'?: string
+        'depthMax[between]'?: string
+        'depthMax[gt]'?: string
+        'depthMax[gte]'?: string
+        'depthMax[lt]'?: string
+        'depthMax[lte]'?: string
+        'sedimentCore.year[between]'?: string
+        'sedimentCore.year[gt]'?: string
+        'sedimentCore.year[gte]'?: string
+        'sedimentCore.year[lt]'?: string
+        'sedimentCore.year[lte]'?: string
+        'sedimentCore.number[between]'?: string
+        'sedimentCore.number[gt]'?: string
+        'sedimentCore.number[gte]'?: string
+        'sedimentCore.number[lt]'?: string
+        'sedimentCore.number[lte]'?: string
+        'stratigraphicUnit.number[between]'?: string
+        'stratigraphicUnit.number[gt]'?: string
+        'stratigraphicUnit.number[gte]'?: string
+        'stratigraphicUnit.number[lt]'?: string
+        'stratigraphicUnit.number[lte]'?: string
+        'stratigraphicUnit.chronologyLower[between]'?: string
+        'stratigraphicUnit.chronologyLower[gt]'?: string
+        'stratigraphicUnit.chronologyLower[gte]'?: string
+        'stratigraphicUnit.chronologyLower[lt]'?: string
+        'stratigraphicUnit.chronologyLower[lte]'?: string
+        'stratigraphicUnit.chronologyUpper[between]'?: string
+        'stratigraphicUnit.chronologyUpper[gt]'?: string
+        'stratigraphicUnit.chronologyUpper[gte]'?: string
+        'stratigraphicUnit.chronologyUpper[lt]'?: string
+        'stratigraphicUnit.chronologyUpper[lte]'?: string
+        'exists[analyses.summary]'?: boolean
+        'exists[notes]'?: boolean
+        geochemistry?: boolean
+        microCharcoal?: boolean
+        organicChemistry?: boolean
+        oslDating?: boolean
+        phytoliths?: boolean
+        plantMacroRemains?: boolean
+        pollen?: boolean
+        sedimentaryDna?: boolean
+        search?: string
+      }
+      header?: never
+      path: {
+        /** @description SamplingSite identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description SedimentCoreDepth collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'text/csv': components['schemas']['SedimentCoreDepth.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read'][]
+          }
         }
       }
     }
@@ -44589,6 +45211,310 @@ export interface operations {
           'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
           'application/problem+json': components['schemas']['ConstraintViolation']
           'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_featuresexportstratigraphic_units_get_collection: {
+    parameters: {
+      query?: {
+        /** @description Export format: geojson, shapefile, csv, kml, gml3 */
+        outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[area]'?: 'asc' | 'desc'
+        'order[building]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        area?: string
+        'area[]'?: string[]
+        building?: string
+        'building[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'stratigraphicUnitContexts.context'?: string
+        'stratigraphicUnitContexts.context[]'?: string[]
+        'stratigraphicUnitSamples.sample'?: string
+        'stratigraphicUnitSamples.sample[]'?: string[]
+        'stratigraphicUnitContexts.context.name'?: string
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnit collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+            member: components['schemas']['StratigraphicUnit.jsonld-sus.acl.read'][]
+          }
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresextent_matchedstratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_featuresnumber_matchedstratigraphic_units_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description StratigraphicUnit resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['StratigraphicUnit.WfsGetFeatureCollectionNumberMatched.jsonld-wfs_number_matched.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_featuresstratigraphic_units.__format_get_collection': {
+    parameters: {
+      query?: {
+        /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
+        bbox?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[area]'?: 'asc' | 'desc'
+        'order[building]'?: 'asc' | 'desc'
+        'order[year]'?: 'asc' | 'desc'
+        'order[number]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[chronologyLower]'?: 'asc' | 'desc'
+        'order[chronologyUpper]'?: 'asc' | 'desc'
+        site?: string
+        'site[]'?: string[]
+        area?: string
+        'area[]'?: string[]
+        building?: string
+        'building[]'?: string[]
+        chronologyLower?: number
+        'chronologyLower[]'?: number[]
+        chronologyUpper?: number
+        'chronologyUpper[]'?: number[]
+        'stratigraphicUnitContexts.context'?: string
+        'stratigraphicUnitContexts.context[]'?: string[]
+        'stratigraphicUnitSamples.sample'?: string
+        'stratigraphicUnitSamples.sample[]'?: string[]
+        'stratigraphicUnitContexts.context.name'?: string
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
+        'chronologyLower[between]'?: string
+        'chronologyLower[gt]'?: string
+        'chronologyLower[gte]'?: string
+        'chronologyLower[lt]'?: string
+        'chronologyLower[lte]'?: string
+        'chronologyUpper[between]'?: string
+        'chronologyUpper[gt]'?: string
+        'chronologyUpper[gte]'?: string
+        'chronologyUpper[lt]'?: string
+        'chronologyUpper[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: description
+         * @example cafè
+         */
+        description?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: interpretation
+         * @example cafè
+         */
+        interpretation?: string
+        'exists[chronologyLower]'?: boolean
+        'exists[chronologyUpper]'?: boolean
+        'exists[description]'?: boolean
+        'exists[mediaObjects]'?: boolean
+        /**
+         * @description Filter sample to only those from sites where the current user has privileges. If no user is authenticated, returns empty set.
+         * @example true
+         */
+        granted?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description GeoJSON FeatureCollection aggregated by spatial parent, depending on the requested format return a geojson FeatureCollection with number_matched property or a {parentId: count} map. */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/geo+json': components['schemas']['GeoJSONAggregatedFeatureCollection']
+          'application/json': components['schemas']['MatchingFeaturesParentIdCounts']
         }
       }
     }

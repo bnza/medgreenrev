@@ -84,6 +84,7 @@ onMounted(() => {
         group-key="archaeologicalSite"
       />
       <map-layer-vector-api-pottery group-key="archaeologicalSite" />
+      <map-layer-vector-api-stratigraphic-unit group-key="archaeologicalSite" />
       <map-layer-vector-api-zoo-bone group-key="archaeologicalSite" />
       <map-layer-vector-api-zoo-tooth group-key="archaeologicalSite" />
       <map-layer-vector-api-history-location group-key="vocHistoryLocation" />
@@ -94,6 +95,9 @@ onMounted(() => {
         group-key="paleoclimateSamplingSite"
       />
       <map-layer-vector-api-sampling-site group-key="samplingSite" />
+      <map-layer-vector-api-sampling-stratigraphic-unit
+        group-key="samplingSite"
+      />
       <map-layer-vector-api-sediment-core group-key="samplingSite" />
       <map-layer-vector-api-sediment-core-depth group-key="samplingSite" />
       <map-layer-vector-api-archaeological-site

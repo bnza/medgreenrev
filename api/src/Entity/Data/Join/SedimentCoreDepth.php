@@ -20,6 +20,7 @@ use ApiPlatform\Metadata\QueryParameter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
+use App\Entity\Data\SamplingSite;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Entity\Data\SedimentCore;
 use App\Entity\Data\View\Code\SedimentCoreDepthCodeView;
@@ -28,6 +29,7 @@ use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
 use App\State\GeoserverAggregatedNumberMatchedProvider;
+use App\State\SedimentCoreDepthFromSamplingSiteProvider;
 use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -68,6 +70,25 @@ use Symfony\Component\Validator\Constraints as Assert;
             normalizationContext: [
                 'groups' => ['sediment_core_depth:sediment_cores:acl:read', 'sediment_core:acl:read'],
             ],
+            parameters: [
+                'search' => new QueryParameter(
+                    filter: 'app.filter.sediment_core_depth_code_search',
+                    property: 'codeView.code',
+                ),
+            ],
+        ),
+        new GetCollection(
+            uriTemplate: '/data/sampling_sites/{parentId}/sediment_cores/depths',
+            formats: ['csv' => 'text/csv', 'jsonld' => 'application/ld+json'],
+            uriVariables: [
+                'parentId' => new Link(
+                    fromClass: SamplingSite::class,
+                ),
+            ],
+            normalizationContext: [
+                'groups' => ['sediment_core_depth:sediment_cores:acl:read', 'sediment_core:acl:read'],
+            ],
+            provider: SedimentCoreDepthFromSamplingSiteProvider::class,
             parameters: [
                 'search' => new QueryParameter(
                     filter: 'app.filter.sediment_core_depth_code_search',

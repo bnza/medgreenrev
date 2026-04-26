@@ -60,6 +60,11 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
             group-key="archaeologicalSite"
           />
           <map-list-item-vector-api
+            title="Stratigraphic Unit"
+            path="/api/features/stratigraphic_units"
+            group-key="archaeologicalSite"
+          />
+          <map-list-item-vector-api
             title="Zoo Bone"
             path="/api/features/zoo/bones"
             group-key="archaeologicalSite"
@@ -100,6 +105,11 @@ const { mapOpened, visible } = storeToRefs(uiAppNavigationDrawerStore)
           <map-list-item-vector-api
             title="Sampling Sites"
             path="/api/features/sampling_sites"
+            group-key="samplingSite"
+          />
+          <map-list-item-vector-api
+            title="Sampling Stratigraphic Unit"
+            path="/api/features/sampling_stratigraphic_units"
             group-key="samplingSite"
           />
           <map-list-item-vector-api

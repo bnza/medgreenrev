@@ -274,6 +274,51 @@ final class Version20260323152247 extends AbstractMigration
                 JOIN vocabulary.regions r ON l.region_id = r.id;
             SQL
         );
+
+        // Stratigraphic Units (from archaeological sites)
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW geoserver.vw_stratigraphic_units AS
+                SELECT
+                    su.id,
+                    generate_code_su(s.code, su.year, su.number) AS code,
+                    su.site_id,
+                    su.year,
+                    su.number,
+                    su.chronology_lower,
+                    su.chronology_upper,
+                    su.description,
+                    su.interpretation,
+                    su.area,
+                    su.building,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom
+                FROM sus su
+                JOIN archaeological_sites s ON su.site_id = s.id;
+            SQL
+        );
+
+        // Sampling Stratigraphic Units (from sampling sites)
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW geoserver.vw_sampling_stratigraphic_units AS
+                SELECT
+                    ssu.id,
+                    generate_code_sampling_su(ss.code, ssu.number) AS code,
+                    ssu.site_id,
+                    ssu.number,
+                    ssu.chronology_lower,
+                    ssu.chronology_upper,
+                    ssu.description,
+                    ssu.interpretation,
+                    ss.code AS site_code,
+                    ss.name AS site_name,
+                    ss.the_geom
+                FROM sampling_sus ssu
+                JOIN sampling_sites ss ON ssu.site_id = ss.id;
+            SQL
+        );
     }
 
     public function down(Schema $schema): void

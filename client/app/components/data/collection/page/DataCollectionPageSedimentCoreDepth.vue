@@ -5,6 +5,7 @@
     P extends Extract<
       GetCollectionPath,
       | '/api/data/sediment_core_depths'
+      | '/api/data/sampling_sites/{parentId}/sediment_cores/depths'
       | '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths'
       | '/api/data/stratigraphic_units/{parentId}/sediment_cores/depths'
     >
@@ -14,7 +15,10 @@ import type { GetCollectionPath, ResourceParent } from '~~/types'
 
 defineProps<{
   path: P
-  parent?: ResourceParent<'sedimentCore'> | ResourceParent<'stratigraphicUnit'>
+  parent?:
+    | ResourceParent<'sedimentCore'>
+    | ResourceParent<'samplingStratigraphicUnit'>
+    | ResourceParent<'samplingSite'>
 }>()
 
 const { isAuthenticated } = useAppAuth()

@@ -148,8 +148,11 @@ export const API_FEATURES_RESOURCE_MAP = {
     '/api/data/paleoclimate_sampling_sites',
   '/api/features/potteries': '/api/data/potteries',
   '/api/features/sampling_sites': '/api/data/sampling_sites',
+  '/api/features/sampling_stratigraphic_units':
+    '/api/data/sampling_stratigraphic_units',
   '/api/features/sediment_core_depths': '/api/data/sediment_core_depths',
   '/api/features/sediment_cores': '/api/data/sediment_cores',
+  '/api/features/stratigraphic_units': '/api/data/stratigraphic_units',
   '/api/features/zoo/bones': '/api/data/zoo/bones',
   '/api/features/zoo/teeth': '/api/data/zoo/teeth',
 } as const satisfies Record<GetFeatureCollectionPath, GetCollectionPath>
@@ -171,9 +174,13 @@ export const API_FEATURES_RESOURCE_EXPORT_MAP = {
     '/api/features/export/paleoclimate_sampling_sites',
   '/api/features/potteries': '/api/features/export/potteries',
   '/api/features/sampling_sites': '/api/features/export/sampling_sites',
+  '/api/features/sampling_stratigraphic_units':
+    '/api/features/export/sampling_stratigraphic_units',
   '/api/features/sediment_core_depths':
     '/api/features/export/sediment_core_depths',
   '/api/features/sediment_cores': '/api/features/export/sediment_cores',
+  '/api/features/stratigraphic_units':
+    '/api/features/export/stratigraphic_units',
   '/api/features/zoo/bones': '/api/features/export/zoo/bones',
   '/api/features/zoo/teeth': '/api/features/export/zoo/teeth',
 } as const satisfies Record<
@@ -201,9 +208,13 @@ export const API_FEATURES_EXTENT_RESOURCE_MAP = {
     '/api/features/extent_matched/paleoclimate_sampling_sites',
   '/api/features/potteries': '/api/features/extent_matched/potteries',
   '/api/features/sampling_sites': '/api/features/extent_matched/sampling_sites',
+  '/api/features/sampling_stratigraphic_units':
+    '/api/features/extent_matched/sampling_stratigraphic_units',
   '/api/features/sediment_core_depths':
     '/api/features/extent_matched/sediment_core_depths',
   '/api/features/sediment_cores': '/api/features/extent_matched/sediment_cores',
+  '/api/features/stratigraphic_units':
+    '/api/features/extent_matched/stratigraphic_units',
   '/api/features/zoo/bones': '/api/features/extent_matched/zoo/bones',
   '/api/features/zoo/teeth': '/api/features/extent_matched/zoo/teeth',
 } as const satisfies Record<
@@ -221,8 +232,10 @@ export const API_AGGREGATED_FEATURES_RESOURCE_PATHS: GetAggregatedFeatureCollect
     '/api/features/microstratigraphic_units',
     '/api/features/paleoclimate_samples',
     '/api/features/potteries',
+    '/api/features/sampling_stratigraphic_units',
     '/api/features/sediment_cores',
     '/api/features/sediment_core_depths',
+    '/api/features/stratigraphic_units',
     '/api/features/zoo/bones',
     '/api/features/zoo/teeth',
   ]

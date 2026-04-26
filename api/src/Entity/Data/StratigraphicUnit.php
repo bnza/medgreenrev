@@ -19,6 +19,8 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
+use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
+use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Botany\Charcoal;
 use App\Entity\Data\Botany\Seed;
 use App\Entity\Data\Join\ContextStratigraphicUnit;
@@ -28,7 +30,11 @@ use App\Entity\Data\View\Code\StratigraphicUnitCodeView;
 use App\Entity\Data\Zoo\Bone;
 use App\Entity\Data\Zoo\Tooth;
 use App\Metadata\Attribute\SubResourceFilters\ApiMediaObjectSubresourceFilters;
+use App\Metadata\ExportFeatureCollection;
+use App\Metadata\GetAggregatedFeatureCollection;
 use App\Repository\StratigraphicUnitRepository;
+use App\State\GeoserverAggregatedExtentMatchedProvider;
+use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -47,8 +53,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\UniqueConstraint(columns: ['site_id', 'year', 'number'])]
 #[ApiResource(
     operations: [
-        new Get(),
+        new Get(
+            uriTemplate: '/data/stratigraphic_units/{id}',
+        ),
         new GetCollection(
+            uriTemplate: '/data/stratigraphic_units',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
             parameters: [
                 'search' => new QueryParameter(
@@ -58,7 +67,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             ],
         ),
         new GetCollection(
-            uriTemplate: '/archaeological_sites/{parentId}/stratigraphic_units',
+            uriTemplate: '/data/archaeological_sites/{parentId}/stratigraphic_units',
             formats: ['jsonld' => 'application/ld+json', 'csv' => 'text/csv'],
             uriVariables: [
                 'parentId' => new Link(
@@ -74,19 +83,45 @@ use Symfony\Component\Validator\Constraints as Assert;
             ]
         ),
         new Delete(
+            uriTemplate: '/data/stratigraphic_units/{id}',
             security: 'is_granted("delete", object)',
             validationContext: ['groups' => ['validation:su:delete']],
             validate: true
         ),
         new Patch(
+            uriTemplate: '/data/stratigraphic_units/{id}',
             security: 'is_granted("update", object)',
         ),
         new Post(
+            uriTemplate: '/data/stratigraphic_units',
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:su:create']],
         ),
+        new GetAggregatedFeatureCollection(
+            uriTemplate: '/features/stratigraphic_units.{_format}',
+            typeName: 'mgr:archaeological_sites',
+            parentAccessor: 'site',
+            entityTypeName: 'mgr:stratigraphic_units',
+        ),
+        new Get(
+            uriTemplate: '/features/number_matched/stratigraphic_units',
+            defaults: ['typeName' => 'mgr:archaeological_sites', 'parentAccessor' => 'site'],
+            normalizationContext: ['groups' => ['wfs_number_matched:read']],
+            output: WfsGetFeatureCollectionNumberMatched::class,
+            provider: GeoserverAggregatedNumberMatchedProvider::class,
+        ),
+        new Get(
+            uriTemplate: '/features/extent_matched/stratigraphic_units',
+            defaults: ['typeName' => 'mgr:archaeological_sites', 'parentAccessor' => 'site'],
+            normalizationContext: ['groups' => ['wfs_extent_matched:read']],
+            output: WfsGetFeatureCollectionExtentMatched::class,
+            provider: GeoserverAggregatedExtentMatchedProvider::class,
+        ),
+        new ExportFeatureCollection(
+            uriTemplate: '/features/export/stratigraphic_units',
+            typeName: 'mgr:stratigraphic_units',
+        ),
     ],
-    routePrefix: 'data',
     normalizationContext: ['groups' => ['sus:acl:read']],
     denormalizationContext: ['groups' => ['su:create']],
     order: ['id' => 'DESC'],

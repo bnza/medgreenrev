@@ -1,4 +1,4 @@
- import type { ResourceConfig } from '~~/types'
+import type { ResourceConfig } from '~~/types'
 
 export const config: Readonly<ResourceConfig> = {
   apiPath: '/api/data/sediment_core_depths',
@@ -82,7 +82,7 @@ export const config: Readonly<ResourceConfig> = {
       value: 'notes',
       title: 'notes',
       sortable: false,
-      },
+    },
   ],
   labels: ['sediment core depth', 'sediment core depths'],
   name: 'sedimentCoreDepth',
@@ -128,79 +128,161 @@ export const sedimentCoreSubResourceConfig: Readonly<ResourceConfig> = {
         title: 'depth (min)',
       },
       {
-      key: 'depthMax',
-      value: 'depthMax',
-      title: 'depth (max)',
-    },
-    {
-      key: 'geochemistry',
-      value: 'geochemistry',
-      title: 'geochemistry',
-    },
-    {
-      key: 'microCharcoal',
-      value: 'microCharcoal',
-      title: 'microcharcoal',
-    },
-    {
-      key: 'organicChemistry',
-      value: 'organicChemistry',
-      title: 'organic chemistry',
-    },
-    {
-      key: 'oslDating',
-      value: 'oslDating',
-      title: 'OSL dating',
-    },
-    {
-      key: 'phytoliths',
-      value: 'phytoliths',
-      title: 'phytoliths',
-    },
-    {
-      key: 'plantMacroRemains',
-      value: 'plantMacroRemains',
-      title: 'plant macro-remains',
-    },
-    {
-      key: 'pollen',
-      value: 'pollen',
-      title: 'pollen',
-    },
-    {
-      key: 'sedimentaryDna',
-      value: 'sedimentaryDna',
-      title: 'sedimentary DNA',
-    },
-      {      key: 'geochemistry',
+        key: 'depthMax',
+        value: 'depthMax',
+        title: 'depth (max)',
+      },
+      {
+        key: 'geochemistry',
         value: 'geochemistry',
         title: 'geochemistry',
       },
-      {      key: 'microCharcoal',
+      {
+        key: 'microCharcoal',
         value: 'microCharcoal',
         title: 'microcharcoal',
       },
-      {      key: 'organicChemistry',
+      {
+        key: 'organicChemistry',
         value: 'organicChemistry',
         title: 'organic chemistry',
       },
-      {      key: 'oslDating',
+      {
+        key: 'oslDating',
         value: 'oslDating',
         title: 'OSL dating',
       },
-      {      key: 'phytoliths',
+      {
+        key: 'phytoliths',
         value: 'phytoliths',
         title: 'phytoliths',
       },
-      {      key: 'plantMacroRemains',
+      {
+        key: 'plantMacroRemains',
         value: 'plantMacroRemains',
         title: 'plant macro-remains',
       },
-      {      key: 'pollen',
+      {
+        key: 'pollen',
         value: 'pollen',
         title: 'pollen',
       },
-      {      key: 'sedimentaryDna',
+      {
+        key: 'sedimentaryDna',
+        value: 'sedimentaryDna',
+        title: 'sedimentary DNA',
+      },
+      { key: 'geochemistry', value: 'geochemistry', title: 'geochemistry' },
+      { key: 'microCharcoal', value: 'microCharcoal', title: 'microcharcoal' },
+      {
+        key: 'organicChemistry',
+        value: 'organicChemistry',
+        title: 'organic chemistry',
+      },
+      { key: 'oslDating', value: 'oslDating', title: 'OSL dating' },
+      { key: 'phytoliths', value: 'phytoliths', title: 'phytoliths' },
+      {
+        key: 'plantMacroRemains',
+        value: 'plantMacroRemains',
+        title: 'plant macro-remains',
+      },
+      { key: 'pollen', value: 'pollen', title: 'pollen' },
+      {
+        key: 'sedimentaryDna',
+        value: 'sedimentaryDna',
+        title: 'sedimentary DNA',
+      },
+      {
+        key: 'notes',
+        value: 'notes',
+        title: 'notes',
+        sortable: false,
+      },
+    ],
+  },
+}
+
+export const samplingSiteSubResourceConfig: Readonly<ResourceConfig> = {
+  ...structuredClone(config),
+  ...{
+    defaultHeaders: [
+      {
+        key: 'id',
+        value: 'id',
+        title: 'ID',
+        align: 'center',
+        width: '200',
+        maxWidth: '200',
+      },
+      {
+        key: 'sedimentCore.site.code',
+        value: 'sedimentCore.site.code',
+        title: 'site',
+        sortable: false,
+      },
+      {
+        key: 'sedimentCore.code',
+        value: 'sedimentCore.code',
+        title: 'core',
+        sortable: false,
+      },
+      {
+        key: 'sedimentCore.year',
+        value: 'sedimentCore.year',
+        title: 'core (year)',
+      },
+      {
+        key: 'sedimentCore.number',
+        value: 'sedimentCore.number',
+        title: 'core (number)',
+      },
+      {
+        key: 'depthMin',
+        value: 'depthMin',
+        title: 'depth (min)',
+      },
+      {
+        key: 'depthMax',
+        value: 'depthMax',
+        title: 'depth (max)',
+      },
+      {
+        key: 'geochemistry',
+        value: 'geochemistry',
+        title: 'geochemistry',
+      },
+      {
+        key: 'microCharcoal',
+        value: 'microCharcoal',
+        title: 'microcharcoal',
+      },
+      {
+        key: 'organicChemistry',
+        value: 'organicChemistry',
+        title: 'organic chemistry',
+      },
+      {
+        key: 'oslDating',
+        value: 'oslDating',
+        title: 'OSL dating',
+      },
+      {
+        key: 'phytoliths',
+        value: 'phytoliths',
+        title: 'phytoliths',
+      },
+      {
+        key: 'plantMacroRemains',
+        value: 'plantMacroRemains',
+        title: 'plant macro-remains',
+      },
+      {
+        key: 'pollen',
+        value: 'pollen',
+        title: 'pollen',
+      },
+      {
+        key: 'sedimentaryDna',
         value: 'sedimentaryDna',
         title: 'sedimentary DNA',
       },
@@ -250,79 +332,67 @@ export const stratigraphicUnitSubResourceConfig: Readonly<ResourceConfig> = {
         title: 'depth (min)',
       },
       {
-      key: 'depthMax',
-      value: 'depthMax',
-      title: 'depth (max)',
-    },
-    {
-      key: 'geochemistry',
-      value: 'geochemistry',
-      title: 'geochemistry',
-    },
-    {
-      key: 'microCharcoal',
-      value: 'microCharcoal',
-      title: 'microcharcoal',
-    },
-    {
-      key: 'organicChemistry',
-      value: 'organicChemistry',
-      title: 'organic chemistry',
-    },
-    {
-      key: 'oslDating',
-      value: 'oslDating',
-      title: 'OSL dating',
-    },
-    {
-      key: 'phytoliths',
-      value: 'phytoliths',
-      title: 'phytoliths',
-    },
-    {
-      key: 'plantMacroRemains',
-      value: 'plantMacroRemains',
-      title: 'plant macro-remains',
-    },
-    {
-      key: 'pollen',
-      value: 'pollen',
-      title: 'pollen',
-    },
-    {
-      key: 'sedimentaryDna',
-      value: 'sedimentaryDna',
-      title: 'sedimentary DNA',
-    },
-      {      key: 'geochemistry',
+        key: 'depthMax',
+        value: 'depthMax',
+        title: 'depth (max)',
+      },
+      {
+        key: 'geochemistry',
         value: 'geochemistry',
         title: 'geochemistry',
       },
-      {      key: 'microCharcoal',
+      {
+        key: 'microCharcoal',
         value: 'microCharcoal',
         title: 'microcharcoal',
       },
-      {      key: 'organicChemistry',
+      {
+        key: 'organicChemistry',
         value: 'organicChemistry',
         title: 'organic chemistry',
       },
-      {      key: 'oslDating',
+      {
+        key: 'oslDating',
         value: 'oslDating',
         title: 'OSL dating',
       },
-      {      key: 'phytoliths',
+      {
+        key: 'phytoliths',
         value: 'phytoliths',
         title: 'phytoliths',
       },
-      {      key: 'plantMacroRemains',
+      {
+        key: 'plantMacroRemains',
         value: 'plantMacroRemains',
         title: 'plant macro-remains',
       },
-      {      key: 'pollen',
+      {
+        key: 'pollen',
         value: 'pollen',
         title: 'pollen',
       },
-      {      key: 'sedimentaryDna',
+      {
+        key: 'sedimentaryDna',
+        value: 'sedimentaryDna',
+        title: 'sedimentary DNA',
+      },
+      { key: 'geochemistry', value: 'geochemistry', title: 'geochemistry' },
+      { key: 'microCharcoal', value: 'microCharcoal', title: 'microcharcoal' },
+      {
+        key: 'organicChemistry',
+        value: 'organicChemistry',
+        title: 'organic chemistry',
+      },
+      { key: 'oslDating', value: 'oslDating', title: 'OSL dating' },
+      { key: 'phytoliths', value: 'phytoliths', title: 'phytoliths' },
+      {
+        key: 'plantMacroRemains',
+        value: 'plantMacroRemains',
+        title: 'plant macro-remains',
+      },
+      { key: 'pollen', value: 'pollen', title: 'pollen' },
+      {
+        key: 'sedimentaryDna',
         value: 'sedimentaryDna',
         title: 'sedimentary DNA',
       },

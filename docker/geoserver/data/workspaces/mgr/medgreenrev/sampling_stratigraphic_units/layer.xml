@@ -1,0 +1,16 @@
+<layer>
+  <name>sampling_stratigraphic_units</name>
+  <id>LayerInfoImpl--36fde883:19dc9136cb6:-7b37</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--290e1ee0:19b6ef53ed9:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--36fde883:19dc9136cb6:-7b38</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-04-26 09:40:21.469 UTC</dateCreated>
+</layer>

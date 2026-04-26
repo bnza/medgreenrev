@@ -129,6 +129,8 @@ export const RESOURCE_CONFIG_MAP = {
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
 
   '/api/data/sampling_sites': samplingSite,
+  '/api/data/sampling_sites/{parentId}/sediment_cores/depths':
+    sedimentCoreDepth.samplingSiteSubResourceConfig,
 
   '/api/data/sediment_core_depths': sedimentCoreDepth.config,
   '/api/data/sediment_cores': sedimentCore,

@@ -60,7 +60,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
           <data-collection-page-sediment-core-depth
             path="/api/data/stratigraphic_units/{parentId}/sediment_cores/depths"
             :parent="{
-              key: 'stratigraphicUnit',
+              key: 'samplingStratigraphicUnit',
               item,
             }"
           />
