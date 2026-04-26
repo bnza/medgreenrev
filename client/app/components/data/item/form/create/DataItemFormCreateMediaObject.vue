@@ -76,19 +76,17 @@ watch(
         />
       </v-col>
     </v-row>
-    <v-row class="justify-end">
-      <v-col cols="4">
-        <v-checkbox v-model="r$.$value.public" label="public" />
-      </v-col>
-    </v-row>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="8">
         <data-autocomplete-hierarchical-vocabulary
           v-model="r$.$value.type"
           path="/api/vocabulary/media_object/types"
           label="type"
           :error-messages="r$.$errors?.type"
         />
+      </v-col>
+      <v-col cols="4">
+        <v-checkbox v-model="r$.$value.public" label="public" />
       </v-col>
     </v-row>
     <v-row>
