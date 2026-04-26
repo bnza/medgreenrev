@@ -73,6 +73,7 @@ export const API_RESOURCE_MAP = {
   mediaObjectPottery: '/api/data/media_object_potteries',
   mediaObjectSamplingStratigraphicUnit:
     '/api/data/media_object_sampling_stratigraphic_units',
+  mediaObjectSedimentCore: '/api/data/media_object_sediment_cores',
   mediaObjectStratigraphicUnit: '/api/data/media_object_stratigraphic_units',
   microstratigraphicUnit: '/api/data/microstratigraphic_units',
   paleoclimateSample: '/api/data/paleoclimate_samples',

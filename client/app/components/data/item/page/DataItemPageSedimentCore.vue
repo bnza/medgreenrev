@@ -5,7 +5,7 @@ import type { GetItemResponseMap, Iri } from '~~/types'
 const path = '/api/data/sediment_cores/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
 
-const { tab } = storeToRefs(useResourceUiStore(path))
+const { tab } = storeToRefs(useResourceUiStore(path, []))
 defineProps<{
   iri?: Iri
 }>()
@@ -19,6 +19,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       <lazy-data-item-form-info-sediment-core :item />
       <v-tabs v-model="tab" background-color="transparent">
         <v-tab value="depths">depths</v-tab>
+        <v-tab value="media">media</v-tab>
       </v-tabs>
       <v-tabs-window v-model="tab">
         <v-tabs-window-item value="depths" data-testid="tab-window-depths">
@@ -28,6 +29,15 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
               key: 'sedimentCore',
               item,
             }"
+          />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="media" data-testid="tab-window-media">
+          <data-media-object-join-container
+            path="/api/data/sediment_cores/{parentId}/media_objects"
+            post-path="/api/data/media_object_sediment_cores"
+            delete-path="/api/data/media_object_sediment_cores/{id}"
+            :parent-iri="item['@id']!"
+            :can-update="Boolean(item._acl?.canUpdate)"
           />
         </v-tabs-window-item>
       </v-tabs-window>

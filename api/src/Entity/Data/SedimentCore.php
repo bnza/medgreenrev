@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data;
 
+use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -17,6 +18,7 @@ use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
+use App\Entity\Data\Join\MediaObject\MediaObjectSedimentCore;
 use App\Entity\Data\Join\SedimentCoreDepth;
 use App\Entity\Data\View\Code\SedimentCoreCodeView;
 use App\Metadata\ExportFeatureCollection;
@@ -139,6 +141,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         'description',
     ]
 )]
+#[ApiFilter(
+    ExistsFilter::class,
+    properties: [
+        'mediaObjects',
+    ]
+)]
 #[UniqueEntity(
     fields: ['site', 'year', 'number'],
     message: 'Duplicate [site, year, number] combination.',
@@ -206,6 +214,13 @@ class SedimentCore
     #[ORM\OneToMany(targetEntity: SedimentCoreDepth::class, mappedBy: 'sedimentCore')]
     private Collection $sedimentCoreDepths;
 
+    #[ORM\OneToMany(
+        targetEntity: MediaObjectSedimentCore::class,
+        mappedBy: 'item',
+        orphanRemoval: true
+    )]
+    private Collection $mediaObjects;
+
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups([
         'sediment_core:acl:read',
@@ -216,6 +231,7 @@ class SedimentCore
     public function __construct()
     {
         $this->sedimentCoreDepths = new ArrayCollection();
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int
@@ -279,6 +295,18 @@ class SedimentCore
     public function setSedimentCoreDepths(Collection $sedimentCoreDepths): SedimentCore
     {
         $this->sedimentCoreDepths = $sedimentCoreDepths;
+
+        return $this;
+    }
+
+    public function getMediaObjects(): Collection
+    {
+        return $this->mediaObjects;
+    }
+
+    public function setMediaObjects(Collection $mediaObjects): SedimentCore
+    {
+        $this->mediaObjects = $mediaObjects;
 
         return $this;
     }

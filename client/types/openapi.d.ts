@@ -4174,6 +4174,74 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/media_object_sediment_cores': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectSedimentCore resources.
+     * @description Retrieves the collection of MediaObjectSedimentCore resources.
+     */
+    get: operations['api_datamedia_object_sediment_cores_get_collection']
+    put?: never
+    /**
+     * Creates a MediaObjectSedimentCore resource.
+     * @description Creates a MediaObjectSedimentCore resource.
+     */
+    post: operations['api_datamedia_object_sediment_cores_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/media_object_sediment_cores/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a MediaObjectSedimentCore resource.
+     * @description Retrieves a MediaObjectSedimentCore resource.
+     */
+    get: operations['api_datamedia_object_sediment_cores_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the MediaObjectSedimentCore resource.
+     * @description Removes the MediaObjectSedimentCore resource.
+     */
+    delete: operations['api_datamedia_object_sediment_cores_id_delete']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sediment_cores/{parentId}/media_objects': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of MediaObjectSedimentCore resources.
+     * @description Retrieves the collection of MediaObjectSedimentCore resources.
+     */
+    get: operations['api_datasediment_cores_parentIdmedia_objects_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/media_object_stratigraphic_units': {
     parameters: {
       query?: never
@@ -13021,6 +13089,38 @@ export interface components {
       readonly contentThumbnailUrl?: string | null
       dimensions?: (string | null)[] | null
     })
+    'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type?: string
+      uploadedBy?:
+        | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
+        | null
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      description?: string | null
+      /** @default true */
+      public: boolean
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: (string | null)[] | null
+    })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13233,6 +13333,33 @@ export interface components {
        */
       item?: string
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read']
+      description?: string | null
+    })
+    'MediaObjectSedimentCore-media_object_join.create': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      item?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string
+      description?: string | null
+    }
+    'MediaObjectSedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      item?: components['schemas']['SedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
+      mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
       description?: string | null
     })
     'MediaObjectStratigraphicUnit-media_object_join.create': {
@@ -14447,6 +14574,17 @@ export interface components {
       code?: string
       name?: string
     })
+    'SamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
     'SamplingSite.jsonld-sampling_site.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -14650,6 +14788,7 @@ export interface components {
       year: number
       number: number
       sedimentCoreDepths?: string[]
+      mediaObjects?: string[]
       description?: string | null
       readonly code?: string
     }
@@ -14743,9 +14882,25 @@ export interface components {
       year?: number
       number?: number
       sedimentCoreDepths?: string[]
+      mediaObjects?: string[]
       description?: string | null
       readonly code?: string
     }
+    'SedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['SamplingSite.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+    })
     'SedimentCore.jsonld-sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -16186,6 +16341,16 @@ export interface components {
       readonly userIdentifier?: string
     })
     'User.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -36642,6 +36807,187 @@ export interface operations {
       }
     }
   }
+  api_datamedia_object_sediment_cores_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectSedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_datamedia_object_sediment_cores_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new MediaObjectSedimentCore resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['MediaObjectSedimentCore-media_object_join.create']
+      }
+    }
+    responses: {
+      /** @description MediaObjectSedimentCore resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectSedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_datamedia_object_sediment_cores_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSedimentCore resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['MediaObjectSedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datamedia_object_sediment_cores_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description MediaObjectSedimentCore identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSedimentCore resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datasediment_cores_parentIdmedia_objects_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description SedimentCore identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description MediaObjectSedimentCore collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['MediaObjectSedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read'][]
+          }
+        }
+      }
+    }
+  }
   api_datamedia_object_stratigraphic_units_get_collection: {
     parameters: {
       query?: {
@@ -41948,6 +42294,7 @@ export interface operations {
          * @example cafè
          */
         description?: string
+        'exists[mediaObjects]'?: boolean
         search?: string
       }
       header?: never
@@ -41994,6 +42341,7 @@ export interface operations {
          * @example cafè
          */
         description?: string
+        'exists[mediaObjects]'?: boolean
         search?: string
       }
       header?: never
@@ -42231,6 +42579,7 @@ export interface operations {
          * @example cafè
          */
         description?: string
+        'exists[mediaObjects]'?: boolean
       }
       header?: never
       path?: never
@@ -42343,6 +42692,7 @@ export interface operations {
          * @example cafè
          */
         description?: string
+        'exists[mediaObjects]'?: boolean
       }
       header?: never
       path?: never

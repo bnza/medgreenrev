@@ -236,6 +236,10 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_F5EC5FE464DE5A5 ON media_object_sampling_stratigraphic_units (media_object_id)');
         $this->addSql('CREATE INDEX IDX_F5EC5FE4126F525E ON media_object_sampling_stratigraphic_units (item_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F5EC5FE4126F525E64DE5A5 ON media_object_sampling_stratigraphic_units (item_id, media_object_id)');
+        $this->addSql('CREATE TABLE media_object_sediment_cores (description TEXT DEFAULT NULL, id BIGINT NOT NULL, media_object_id BIGINT NOT NULL, item_id BIGINT NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE INDEX IDX_9535618A64DE5A5 ON media_object_sediment_cores (media_object_id)');
+        $this->addSql('CREATE INDEX IDX_9535618A126F525E ON media_object_sediment_cores (item_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_9535618A126F525E64DE5A5 ON media_object_sediment_cores (item_id, media_object_id)');
         $this->addSql('CREATE TABLE media_object_stratigraphic_units (description TEXT DEFAULT NULL, id BIGINT NOT NULL, media_object_id BIGINT NOT NULL, item_id BIGINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_2DAB12CC64DE5A5 ON media_object_stratigraphic_units (media_object_id)');
         $this->addSql('CREATE INDEX IDX_2DAB12CC126F525E ON media_object_stratigraphic_units (item_id)');
@@ -433,6 +437,8 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE media_object_potteries ADD CONSTRAINT FK_9887E6D0126F525E FOREIGN KEY (item_id) REFERENCES potteries (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_sampling_stratigraphic_units ADD CONSTRAINT FK_F5EC5FE464DE5A5 FOREIGN KEY (media_object_id) REFERENCES media_objects (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_sampling_stratigraphic_units ADD CONSTRAINT FK_F5EC5FE4126F525E FOREIGN KEY (item_id) REFERENCES sampling_sus (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE media_object_sediment_cores ADD CONSTRAINT FK_9535618A64DE5A5 FOREIGN KEY (media_object_id) REFERENCES media_objects (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE media_object_sediment_cores ADD CONSTRAINT FK_9535618A126F525E FOREIGN KEY (item_id) REFERENCES sediment_cores (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_stratigraphic_units ADD CONSTRAINT FK_2DAB12CC64DE5A5 FOREIGN KEY (media_object_id) REFERENCES media_objects (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_object_stratigraphic_units ADD CONSTRAINT FK_2DAB12CC126F525E FOREIGN KEY (item_id) REFERENCES sus (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE media_objects ADD CONSTRAINT FK_D3CD4ABAC54C8C93 FOREIGN KEY (type_id) REFERENCES vocabulary.media_object_types (id) ON DELETE RESTRICT NOT DEFERRABLE');
@@ -605,6 +611,8 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE media_object_potteries DROP CONSTRAINT FK_9887E6D0126F525E');
         $this->addSql('ALTER TABLE media_object_sampling_stratigraphic_units DROP CONSTRAINT FK_F5EC5FE464DE5A5');
         $this->addSql('ALTER TABLE media_object_sampling_stratigraphic_units DROP CONSTRAINT FK_F5EC5FE4126F525E');
+        $this->addSql('ALTER TABLE media_object_sediment_cores DROP CONSTRAINT FK_9535618A64DE5A5');
+        $this->addSql('ALTER TABLE media_object_sediment_cores DROP CONSTRAINT FK_9535618A126F525E');
         $this->addSql('ALTER TABLE media_object_stratigraphic_units DROP CONSTRAINT FK_2DAB12CC64DE5A5');
         $this->addSql('ALTER TABLE media_object_stratigraphic_units DROP CONSTRAINT FK_2DAB12CC126F525E');
         $this->addSql('ALTER TABLE media_objects DROP CONSTRAINT FK_D3CD4ABAC54C8C93');
@@ -704,6 +712,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP TABLE media_object_paleoclimate_sampling_sites');
         $this->addSql('DROP TABLE media_object_potteries');
         $this->addSql('DROP TABLE media_object_sampling_stratigraphic_units');
+        $this->addSql('DROP TABLE media_object_sediment_cores');
         $this->addSql('DROP TABLE media_object_stratigraphic_units');
         $this->addSql('DROP TABLE vocabulary.media_object_types');
         $this->addSql('DROP TABLE media_objects');

@@ -1,11 +1,17 @@
 import type { ResourceStaticFiltersDefinitionObject } from '~~/types'
+import { propertyStaticFiltersDefinition as mediaObjectPropertyStaticDefinition } from './mediaObject'
 import {
   NumericOperations,
   API_FILTERS,
+  generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
 
-const { SearchPartial, SamplingSiteEquals, SamplingStratigraphicUnitEquals } =
-  API_FILTERS
+const {
+  Exists,
+  SearchPartial,
+  SamplingSiteEquals,
+  SamplingStratigraphicUnitEquals,
+} = API_FILTERS
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
@@ -39,4 +45,13 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
 
 export const staticFiltersDefinition = {
   ...propertyStaticFiltersDefinition,
+  ...generateResourceDefinition(
+    mediaObjectPropertyStaticDefinition,
+    ['mediaObjects.mediaObject', 'media'],
+    ['uploadedBy.email'],
+  ),
+  mediaObjects: {
+    propertyLabel: 'media',
+    filters: { Exists },
+  },
 }
