@@ -2,6 +2,7 @@
 import { useScopedRegle } from '@regle/core'
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
 import { integer, maxValue, minValue, required } from '@regle/rules'
+import DataAutocompleteVocabularyPotteryFunctionalForm from '~/components/data/autocomplete/DataAutocompleteVocabularyPotteryFunctionalForm.vue'
 
 type Path = '/api/data/potteries/{id}'
 const props = defineProps<{
@@ -108,12 +109,9 @@ const { r$ } = useScopedRegle(
         />
       </v-col>
       <v-col cols="12" md="8">
-        <data-autocomplete
+        <data-autocomplete-vocabulary-pottery-functional-form
           v-model="r$.$value.functionalForm"
-          path="/api/vocabulary/pottery/functional_forms"
-          item-title="value"
-          label="functional form"
-          :error-messages="r$.$errors.functionalForm"
+          :error-messages="r$.$errors?.functionalForm"
         />
       </v-col>
     </v-row>
