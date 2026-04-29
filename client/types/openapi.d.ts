@@ -3514,86 +3514,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/list/vocabulary/botany/taxonomy_classes': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ListVocBotanyTaxonomyClass resources.
-     * @description Retrieves the collection of ListVocBotanyTaxonomyClass resources.
-     */
-    get: operations['api_listvocabularybotanytaxonomy_classes_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/list/vocabulary/botany/taxonomy_classes/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ListVocBotanyTaxonomyClass resource.
-     * @description Retrieves a ListVocBotanyTaxonomyClass resource.
-     */
-    get: operations['api_listvocabularybotanytaxonomy_classes_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/list/vocabulary/botany/taxonomy_families': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves the collection of ListVocBotanyTaxonomyFamily resources.
-     * @description Retrieves the collection of ListVocBotanyTaxonomyFamily resources.
-     */
-    get: operations['api_listvocabularybotanytaxonomy_families_get_collection']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/list/vocabulary/botany/taxonomy_families/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Retrieves a ListVocBotanyTaxonomyFamily resource.
-     * @description Retrieves a ListVocBotanyTaxonomyFamily resource.
-     */
-    get: operations['api_listvocabularybotanytaxonomy_families_id_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/list/vocabulary/zoo/taxonomy_classes': {
     parameters: {
       query?: never
@@ -7851,7 +7771,11 @@ export interface paths {
     delete: operations['api_vocabularyhistoryplants_id_delete']
     options?: never
     head?: never
-    patch?: never
+    /**
+     * Updates the VocHistoryPlant resource.
+     * @description Updates the VocHistoryPlant resource.
+     */
+    patch: operations['api_vocabularyhistoryplants_id_patch']
     trace?: never
   }
   '/api/vocabulary/history/written_source_types': {
@@ -11776,6 +11700,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
     }
     'BotanyCharcoal-botany_charcoal.create.jsonMergePatch': {
@@ -11799,6 +11729,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
     }
     'BotanyCharcoal-feature_collection.json.read': Record<string, never>
@@ -11839,6 +11775,9 @@ export interface components {
       readonly id?: unknown
     }
     'BotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      readonly flat:
+        | components['schemas']['BotanyCharcoalView.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       /**
@@ -11856,6 +11795,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
       /** @description Access control metadata */
@@ -11866,6 +11811,9 @@ export interface components {
       }
     }
     'BotanyCharcoal.csv-botany_charcoal.acl.read': {
+      readonly flat:
+        | components['schemas']['BotanyCharcoalView.csv-botany_charcoal.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_charcoal.acl.read']
       /**
@@ -11883,6 +11831,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
       /** @description Access control metadata */
@@ -11901,6 +11855,9 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanyCharcoalView.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       /**
@@ -11918,6 +11875,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
     })
@@ -11929,6 +11892,9 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanyCharcoalView.jsonld-botany_charcoal.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
       /**
@@ -11946,9 +11912,51 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
     })
+    'BotanyCharcoalView.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanyCharcoalView.csv-botany_charcoal.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanyCharcoalView.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanyCharcoalView.jsonld-botany_charcoal.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'BotanySeed-botany_seed.create': {
       /**
        * Format: iri-reference
@@ -11970,6 +11978,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
     }
     'BotanySeed-botany_seed.create.jsonMergePatch': {
@@ -11993,6 +12007,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
     }
     'BotanySeed-feature_collection.json.read': Record<string, never>
@@ -12033,6 +12053,9 @@ export interface components {
       readonly id?: unknown
     }
     'BotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      readonly flat:
+        | components['schemas']['BotanySeedView.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       /**
@@ -12050,6 +12073,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
       /** @description Access control metadata */
@@ -12060,6 +12089,9 @@ export interface components {
       }
     }
     'BotanySeed.csv-botany_seed.acl.read': {
+      readonly flat:
+        | components['schemas']['BotanySeedView.csv-botany_seed.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_seed.acl.read']
       /**
@@ -12077,6 +12109,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
       /** @description Access control metadata */
@@ -12095,6 +12133,9 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanySeedView.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       /**
@@ -12112,6 +12153,12 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
     })
@@ -12123,6 +12170,9 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanySeedView.jsonld-botany_seed.acl.read']
+        | null
       readonly id?: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
       /**
@@ -12140,9 +12190,105 @@ export interface components {
        * @example https://example.com/
        */
       part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
       notes?: string | null
       readonly code?: string
     })
+    'BotanySeedView.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanySeedView.csv-botany_seed.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanySeedView.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanySeedView.jsonld-botany_seed.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanyTaxonomyView.jsonld-voc_botany_taxonomy.acl.read': {
+      readonly value?: string
+      readonly level?: string
+      readonly rank?: number
+      readonly species?: string | null
+      readonly genus?: string | null
+      readonly family?: string | null
+      readonly class?: string | null
+      readonly spanishName?: string | null
+      readonly englishName?: string | null
+      readonly genusId?: number | null
+      readonly familyId?: number | null
+      readonly classId?: number | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'BotanyTaxonomyView.jsonld-voc_botany_taxonomy.read': {
+      readonly value?: string
+      readonly level?: string
+      readonly rank?: number
+      readonly species?: string | null
+      readonly genus?: string | null
+      readonly family?: string | null
+      readonly class?: string | null
+      readonly spanishName?: string | null
+      readonly englishName?: string | null
+      readonly genusId?: number | null
+      readonly familyId?: number | null
+      readonly classId?: number | null
+    }
+    'BotanyTaxonomyView.jsonld-voc_history_plant.acl.read': {
+      readonly value?: string
+      readonly level?: string
+      readonly rank?: number
+      readonly species?: string | null
+      readonly genus?: string | null
+      readonly family?: string | null
+      readonly class?: string | null
+      readonly spanishName?: string | null
+      readonly englishName?: string | null
+      readonly genusId?: number | null
+      readonly familyId?: number | null
+      readonly classId?: number | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     /** @description Unprocessable entity */
     ConstraintViolation: {
       /** @default 422 */
@@ -12705,6 +12851,37 @@ export interface components {
        */
       createdBy?: string | null
     })
+    'HistoryPlantView.csv-history_plant.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryPlantView.jsonld': {
+      readonly id?: number
+      readonly value?: string | null
+    }
+    'HistoryPlantView.jsonld-history_plant.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryPlantView.jsonld-voc_history_plant.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'HistoryWrittenSource-history_written_source.create': {
       /**
        * Format: iri-reference
@@ -13112,14 +13289,6 @@ export interface components {
       readonly value?: string
     }
     'ListPotteryColor.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
-      readonly value?: string
-    }
-    'ListVocBotanyTaxonomyClass.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
-      readonly value?: string
-    }
-    'ListVocBotanyTaxonomyFamily.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: string
       readonly value?: string
     }
@@ -17047,14 +17216,17 @@ export interface components {
     }
     'VocBotanyTaxonomy-voc_botany_taxonomy.create': {
       value: string
-      vernacularName: string
-      class: string
-      family?: string | null
+      parent?:
+        | components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.create']
+        | null
+      /** @enum {string} */
+      level: 'class' | 'family' | 'genus' | 'species'
+      spanishName?: string | null
+      englishName?: string | null
     }
     'VocBotanyTaxonomy-voc_botany_taxonomy.update.jsonMergePatch': {
-      vernacularName?: string
-      class?: string
-      family?: string | null
+      spanishName?: string | null
+      englishName?: string | null
     }
     'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.acl.read': {
       /** @description Access control metadata */
@@ -17065,17 +17237,23 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value: string
-      vernacularName: string
-      class: string
-      family?: string | null
+      value?: string
+      level?: string
+      spanishName?: string | null
+      englishName?: string | null
+      readonly flat?:
+        | components['schemas']['BotanyTaxonomyView.jsonld-voc_botany_taxonomy.acl.read']
+        | null
     })
     'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number
-      value: string
-      vernacularName: string
-      class: string
-      family?: string | null
+      value?: string
+      level?: string
+      spanishName?: string | null
+      englishName?: string | null
+      readonly flat?:
+        | components['schemas']['BotanyTaxonomyView.jsonld-voc_botany_taxonomy.read']
+        | null
     }
     'VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read': {
       /** @description Access control metadata */
@@ -17085,10 +17263,10 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      value: string
-      vernacularName: string
-      class: string
-      family?: string | null
+      value?: string
+      readonly flat?:
+        | components['schemas']['BotanyTaxonomyView.jsonld-voc_history_plant.acl.read']
+        | null
     })
     /** @description Century vocabulary. */
     'VocCentury.csv-history_written_source.acl.read': {
@@ -17434,9 +17612,26 @@ export interface components {
        */
       taxonomy?: string | null
       value: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+    }
+    'VocHistoryPlant-voc_history_plant.update.jsonMergePatch': {
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
     }
     'VocHistoryPlant.csv-history_plant.acl.read': {
       value: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.csv-history_plant.acl.read']
+        | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -17452,6 +17647,11 @@ export interface components {
        */
       taxonomy?: string | null
       value: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      readonly flat?: components['schemas']['HistoryPlantView.jsonld'] | null
     }
     'VocHistoryPlant.jsonld-history_plant.acl.read': {
       /** @description Access control metadata */
@@ -17462,6 +17662,13 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.jsonld-history_plant.acl.read']
+        | null
     })
     'VocHistoryPlant.jsonld-voc_history_plant.acl.read': {
       /** @description Access control metadata */
@@ -17476,6 +17683,13 @@ export interface components {
         | components['schemas']['VocBotanyTaxonomy.jsonld-voc_history_plant.acl.read']
         | null
       value: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.jsonld-voc_history_plant.acl.read']
+        | null
     })
     'VocHistoryWrittenSourceType.csv-history_written_source.acl.read': {
       value: string
@@ -21112,13 +21326,12 @@ export interface operations {
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
-        'subject.taxonomy.family'?: string
-        'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.class'?: string
-        'subject.taxonomy.class[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
-        'subject.taxonomy.vernacularName[]'?: string[]
-        'exists[subject.taxonomy.family]'?: boolean
+        'subject.taxonomy.flat.classId'?: number
+        'subject.taxonomy.flat.classId[]'?: number[]
+        'subject.taxonomy.flat.familyId'?: number
+        'subject.taxonomy.flat.familyId[]'?: number[]
+        'subject.taxonomy.flat.genusId'?: number
+        'subject.taxonomy.flat.genusId[]'?: number[]
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -21447,13 +21660,12 @@ export interface operations {
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
-        'subject.taxonomy.family'?: string
-        'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.class'?: string
-        'subject.taxonomy.class[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
-        'subject.taxonomy.vernacularName[]'?: string[]
-        'exists[subject.taxonomy.family]'?: boolean
+        'subject.taxonomy.flat.classId'?: number
+        'subject.taxonomy.flat.classId[]'?: number[]
+        'subject.taxonomy.flat.familyId'?: number
+        'subject.taxonomy.flat.familyId[]'?: number[]
+        'subject.taxonomy.flat.genusId'?: number
+        'subject.taxonomy.flat.genusId[]'?: number[]
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -21589,13 +21801,12 @@ export interface operations {
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
-        'subject.taxonomy.family'?: string
-        'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.class'?: string
-        'subject.taxonomy.class[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
-        'subject.taxonomy.vernacularName[]'?: string[]
-        'exists[subject.taxonomy.family]'?: boolean
+        'subject.taxonomy.flat.classId'?: number
+        'subject.taxonomy.flat.classId[]'?: number[]
+        'subject.taxonomy.flat.familyId'?: number
+        'subject.taxonomy.flat.familyId[]'?: number[]
+        'subject.taxonomy.flat.genusId'?: number
+        'subject.taxonomy.flat.genusId[]'?: number[]
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -21731,13 +21942,12 @@ export interface operations {
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
-        'subject.taxonomy.family'?: string
-        'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.class'?: string
-        'subject.taxonomy.class[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
-        'subject.taxonomy.vernacularName[]'?: string[]
-        'exists[subject.taxonomy.family]'?: boolean
+        'subject.taxonomy.flat.classId'?: number
+        'subject.taxonomy.flat.classId[]'?: number[]
+        'subject.taxonomy.flat.familyId'?: number
+        'subject.taxonomy.flat.familyId[]'?: number[]
+        'subject.taxonomy.flat.genusId'?: number
+        'subject.taxonomy.flat.genusId[]'?: number[]
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -22066,13 +22276,12 @@ export interface operations {
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
-        'subject.taxonomy.family'?: string
-        'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.class'?: string
-        'subject.taxonomy.class[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
-        'subject.taxonomy.vernacularName[]'?: string[]
-        'exists[subject.taxonomy.family]'?: boolean
+        'subject.taxonomy.flat.classId'?: number
+        'subject.taxonomy.flat.classId[]'?: number[]
+        'subject.taxonomy.flat.familyId'?: number
+        'subject.taxonomy.flat.familyId[]'?: number[]
+        'subject.taxonomy.flat.genusId'?: number
+        'subject.taxonomy.flat.genusId[]'?: number[]
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -22208,13 +22417,12 @@ export interface operations {
         'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
-        'subject.taxonomy.family'?: string
-        'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.class'?: string
-        'subject.taxonomy.class[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
-        'subject.taxonomy.vernacularName[]'?: string[]
-        'exists[subject.taxonomy.family]'?: boolean
+        'subject.taxonomy.flat.classId'?: number
+        'subject.taxonomy.flat.classId[]'?: number[]
+        'subject.taxonomy.flat.familyId'?: number
+        'subject.taxonomy.flat.familyId[]'?: number[]
+        'subject.taxonomy.flat.genusId'?: number
+        'subject.taxonomy.flat.genusId[]'?: number[]
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -22352,13 +22560,13 @@ export interface operations {
         'subject.type[]'?: string[]
         'taxonomies.taxonomy'?: string
         'taxonomies.taxonomy[]'?: string[]
-        'taxonomies.taxonomy.family'?: string
-        'taxonomies.taxonomy.family[]'?: string[]
-        'taxonomies.taxonomy.class'?: string
-        'taxonomies.taxonomy.class[]'?: string[]
-        'taxonomies.taxonomy.vernacularName'?: string
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
         'exists[taxonomies]'?: boolean
-        'exists[taxonomies.taxonomy.family]'?: boolean
         'exists[subject.description]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.name
@@ -22694,13 +22902,13 @@ export interface operations {
         'subject.type[]'?: string[]
         'taxonomies.taxonomy'?: string
         'taxonomies.taxonomy[]'?: string[]
-        'taxonomies.taxonomy.family'?: string
-        'taxonomies.taxonomy.family[]'?: string[]
-        'taxonomies.taxonomy.class'?: string
-        'taxonomies.taxonomy.class[]'?: string[]
-        'taxonomies.taxonomy.vernacularName'?: string
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
         'exists[taxonomies]'?: boolean
-        'exists[taxonomies.taxonomy.family]'?: boolean
         'exists[subject.description]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.name
@@ -22843,13 +23051,13 @@ export interface operations {
         'subject.type[]'?: string[]
         'taxonomies.taxonomy'?: string
         'taxonomies.taxonomy[]'?: string[]
-        'taxonomies.taxonomy.family'?: string
-        'taxonomies.taxonomy.family[]'?: string[]
-        'taxonomies.taxonomy.class'?: string
-        'taxonomies.taxonomy.class[]'?: string[]
-        'taxonomies.taxonomy.vernacularName'?: string
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
         'exists[taxonomies]'?: boolean
-        'exists[taxonomies.taxonomy.family]'?: boolean
         'exists[subject.description]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.name
@@ -29426,10 +29634,14 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -29444,17 +29656,23 @@ export interface operations {
         notes?: string
         part?: string
         'part[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -29571,10 +29789,14 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -29589,17 +29811,23 @@ export interface operations {
         notes?: string
         part?: string
         'part[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -29909,10 +30137,14 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -29927,17 +30159,23 @@ export interface operations {
         notes?: string
         part?: string
         'part[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -30052,10 +30290,14 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -30070,17 +30312,23 @@ export interface operations {
         notes?: string
         part?: string
         'part[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -30190,10 +30438,14 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -30208,17 +30460,23 @@ export interface operations {
         notes?: string
         part?: string
         'part[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -30405,9 +30663,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -30422,17 +30682,23 @@ export interface operations {
         'part[]'?: string[]
         taxonomy?: string
         'taxonomy[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -30550,9 +30816,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -30567,17 +30835,23 @@ export interface operations {
         'part[]'?: string[]
         taxonomy?: string
         'taxonomy[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -30888,9 +31162,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -30905,17 +31181,23 @@ export interface operations {
         'part[]'?: string[]
         taxonomy?: string
         'taxonomy[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -31031,9 +31313,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -31048,17 +31332,23 @@ export interface operations {
         'part[]'?: string[]
         taxonomy?: string
         'taxonomy[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -31169,9 +31459,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -31186,17 +31478,23 @@ export interface operations {
         'part[]'?: string[]
         taxonomy?: string
         'taxonomy[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[notes]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
         /**
          * @description Filter entries to only those from SU belonging to sites where the current user has privileges. If no user is authenticated, returns empty set.
          * @example true
@@ -32773,20 +33071,24 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[plant.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'plant.cf'?: boolean
+        'plant.sp'?: boolean
         plant?: string
         'plant[]'?: string[]
         'plant.taxonomy'?: string
         'plant.taxonomy[]'?: string[]
-        'plant.taxonomy.family'?: string
-        'plant.taxonomy.family[]'?: string[]
-        'plant.taxonomy.class'?: string
-        'plant.taxonomy.class[]'?: string[]
-        'plant.taxonomy.vernacularName'?: string
+        'plant.taxonomy.flat.classId'?: number
+        'plant.taxonomy.flat.classId[]'?: number[]
+        'plant.taxonomy.flat.familyId'?: number
+        'plant.taxonomy.flat.familyId[]'?: number[]
+        'plant.taxonomy.flat.genusId'?: number
+        'plant.taxonomy.flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -32807,7 +33109,6 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -32858,20 +33159,24 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[plant.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'plant.cf'?: boolean
+        'plant.sp'?: boolean
         plant?: string
         'plant[]'?: string[]
         'plant.taxonomy'?: string
         'plant.taxonomy[]'?: string[]
-        'plant.taxonomy.family'?: string
-        'plant.taxonomy.family[]'?: string[]
-        'plant.taxonomy.class'?: string
-        'plant.taxonomy.class[]'?: string[]
-        'plant.taxonomy.vernacularName'?: string
+        'plant.taxonomy.flat.classId'?: number
+        'plant.taxonomy.flat.classId[]'?: number[]
+        'plant.taxonomy.flat.familyId'?: number
+        'plant.taxonomy.flat.familyId[]'?: number[]
+        'plant.taxonomy.flat.genusId'?: number
+        'plant.taxonomy.flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -32892,7 +33197,6 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -33136,20 +33440,24 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[plant.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'plant.cf'?: boolean
+        'plant.sp'?: boolean
         plant?: string
         'plant[]'?: string[]
         'plant.taxonomy'?: string
         'plant.taxonomy[]'?: string[]
-        'plant.taxonomy.family'?: string
-        'plant.taxonomy.family[]'?: string[]
-        'plant.taxonomy.class'?: string
-        'plant.taxonomy.class[]'?: string[]
-        'plant.taxonomy.vernacularName'?: string
+        'plant.taxonomy.flat.classId'?: number
+        'plant.taxonomy.flat.classId[]'?: number[]
+        'plant.taxonomy.flat.familyId'?: number
+        'plant.taxonomy.flat.familyId[]'?: number[]
+        'plant.taxonomy.flat.genusId'?: number
+        'plant.taxonomy.flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -33170,7 +33478,6 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -33257,20 +33564,24 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
+        'order[plant.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[plant.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'plant.cf'?: boolean
+        'plant.sp'?: boolean
         plant?: string
         'plant[]'?: string[]
         'plant.taxonomy'?: string
         'plant.taxonomy[]'?: string[]
-        'plant.taxonomy.family'?: string
-        'plant.taxonomy.family[]'?: string[]
-        'plant.taxonomy.class'?: string
-        'plant.taxonomy.class[]'?: string[]
-        'plant.taxonomy.vernacularName'?: string
+        'plant.taxonomy.flat.classId'?: number
+        'plant.taxonomy.flat.classId[]'?: number[]
+        'plant.taxonomy.flat.familyId'?: number
+        'plant.taxonomy.flat.familyId[]'?: number[]
+        'plant.taxonomy.flat.genusId'?: number
+        'plant.taxonomy.flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -33291,7 +33602,6 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[plant.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -35392,130 +35702,6 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['ListPotteryColor.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_listvocabularybotanytaxonomy_classes_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        value?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ListVocBotanyTaxonomyClass collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['ListVocBotanyTaxonomyClass.jsonld'][]
-          }
-        }
-      }
-    }
-  }
-  api_listvocabularybotanytaxonomy_classes_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ListVocBotanyTaxonomyClass identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ListVocBotanyTaxonomyClass resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ListVocBotanyTaxonomyClass.jsonld']
-        }
-      }
-      /** @description Not found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['Error.jsonld']
-          'application/problem+json': components['schemas']['Error']
-          'application/json': components['schemas']['Error']
-        }
-      }
-    }
-  }
-  api_listvocabularybotanytaxonomy_families_get_collection: {
-    parameters: {
-      query?: {
-        /** @description The collection page number */
-        page?: number
-        /** @description The number of items per page */
-        itemsPerPage?: number
-        value?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ListVocBotanyTaxonomyFamily collection */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['ListVocBotanyTaxonomyFamily.jsonld'][]
-          }
-        }
-      }
-    }
-  }
-  api_listvocabularybotanytaxonomy_families_id_get: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        /** @description ListVocBotanyTaxonomyFamily identifier */
-        id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description ListVocBotanyTaxonomyFamily resource */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/ld+json': components['schemas']['ListVocBotanyTaxonomyFamily.jsonld']
         }
       }
       /** @description Not found */
@@ -47610,11 +47796,29 @@ export interface operations {
   api_datavocabularybotanytaxonomies_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
-        'order[vernacularName]'?: 'asc' | 'desc'
-        'order[class]'?: 'asc' | 'desc'
-        'order[family]'?: 'asc' | 'desc'
+        'order[level]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
+        'order[spanishName]'?: 'asc' | 'desc'
+        'order[flat.rank]'?: 'asc' | 'desc'
+        'order[flat.family]'?: 'asc' | 'desc'
+        'order[flat.class]'?: 'asc' | 'desc'
+        'order[flat.genus]'?: 'asc' | 'desc'
+        'order[flat.species]'?: 'asc' | 'desc'
+        level?: string
+        'level[]'?: string[]
+        parent?: string
+        'parent[]'?: string[]
+        'flat.rank[between]'?: string
+        'flat.rank[gt]'?: string
+        'flat.rank[gte]'?: string
+        'flat.rank[lt]'?: string
+        'flat.rank[lte]'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -47633,7 +47837,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.acl.read'][]
           }
         }
@@ -47645,9 +47849,23 @@ export interface operations {
       query?: {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
-        'order[vernacularName]'?: 'asc' | 'desc'
-        'order[class]'?: 'asc' | 'desc'
-        'order[family]'?: 'asc' | 'desc'
+        'order[level]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
+        'order[spanishName]'?: 'asc' | 'desc'
+        'order[flat.rank]'?: 'asc' | 'desc'
+        'order[flat.family]'?: 'asc' | 'desc'
+        'order[flat.class]'?: 'asc' | 'desc'
+        'order[flat.genus]'?: 'asc' | 'desc'
+        'order[flat.species]'?: 'asc' | 'desc'
+        level?: string
+        'level[]'?: string[]
+        parent?: string
+        'parent[]'?: string[]
+        'flat.rank[between]'?: string
+        'flat.rank[gt]'?: string
+        'flat.rank[gte]'?: string
+        'flat.rank[lt]'?: string
+        'flat.rank[lte]'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
@@ -48537,11 +48755,6 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
-        'plants.plant.taxonomy.family'?: string
-        'plants.plant.taxonomy.family[]'?: string[]
-        'plants.plant.taxonomy.class'?: string
-        'plants.plant.taxonomy.class[]'?: string[]
-        'plants.plant.taxonomy.vernacularName'?: string
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -48566,7 +48779,6 @@ export interface operations {
         'animals.chronologyUpper[lte]'?: string
         'exists[animals.animal.taxonomy.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -48656,11 +48868,6 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
-        'plants.plant.taxonomy.family'?: string
-        'plants.plant.taxonomy.family[]'?: string[]
-        'plants.plant.taxonomy.class'?: string
-        'plants.plant.taxonomy.class[]'?: string[]
-        'plants.plant.taxonomy.vernacularName'?: string
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -48685,7 +48892,6 @@ export interface operations {
         'animals.chronologyUpper[lte]'?: string
         'exists[animals.animal.taxonomy.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -48817,11 +49023,6 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
-        'plants.plant.taxonomy.family'?: string
-        'plants.plant.taxonomy.family[]'?: string[]
-        'plants.plant.taxonomy.class'?: string
-        'plants.plant.taxonomy.class[]'?: string[]
-        'plants.plant.taxonomy.vernacularName'?: string
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -48846,7 +49047,6 @@ export interface operations {
         'animals.chronologyUpper[lte]'?: string
         'exists[animals.animal.taxonomy.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -48964,11 +49164,6 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
-        'plants.plant.taxonomy.family'?: string
-        'plants.plant.taxonomy.family[]'?: string[]
-        'plants.plant.taxonomy.class'?: string
-        'plants.plant.taxonomy.class[]'?: string[]
-        'plants.plant.taxonomy.vernacularName'?: string
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -48993,7 +49188,6 @@ export interface operations {
         'animals.chronologyUpper[lte]'?: string
         'exists[animals.animal.taxonomy.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.plant.taxonomy.family]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -49189,9 +49383,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -49223,9 +49414,6 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -49366,6 +49554,78 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_vocabularyhistoryplants_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description VocHistoryPlant identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated VocHistoryPlant resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['VocHistoryPlant-voc_history_plant.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description VocHistoryPlant resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['VocHistoryPlant.jsonld']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
         }
       }
     }

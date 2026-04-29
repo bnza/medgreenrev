@@ -2,9 +2,15 @@
 import type { VocabularyGetCollectionPath, DeleteItemPath } from '~~/types'
 
 type VocabularyGetItemPath = `${Path}/{id}`
-defineProps<{
-  path: VocabularyGetItemPath & DeleteItemPath
-}>()
+const props = withDefaults(
+  defineProps<{
+    path: VocabularyGetItemPath & DeleteItemPath
+    propertyName?: string
+  }>(),
+  {
+    propertyName: 'value',
+  },
+)
 
 defineEmits<{
   refresh: []
@@ -14,7 +20,10 @@ defineEmits<{
 <template>
   <data-dialog-delete :path :fullscreen="false" @refresh="$emit('refresh')">
     <template #default="{ item }">
-      <lazy-data-item-form-info-vocabulary-value :item :read-link="false" />
+      <lazy-data-item-form-info-vocabulary-value
+        :model-value="getNestedValue(item, props.propertyName)"
+        :read-link="false"
+      />
     </template>
   </data-dialog-delete>
 </template>

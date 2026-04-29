@@ -107,12 +107,36 @@ const submit = () => {
           <v-container>
             <v-row class="align-center justify-space-evenly" flex>
               <v-col cols="3">
-                <v-select v-model="propertyLabel" :items="availableProperties" :disabled="Boolean(filterId)" label="property" />
+                <v-select
+                  v-model="propertyLabel"
+                  :items="availableProperties"
+                  :disabled="Boolean(filterId)"
+                  label="property"
+                />
               </v-col>
               <v-col cols="3">
-                <v-select v-if="availableOperations.length > 0" v-model="operationLabel" :items="availableOperations" :disabled="Boolean(filterId)" label="operator" />
+                <v-select
+                  v-if="availableOperations.length > 0"
+                  v-model="operationLabel"
+                  :items="availableOperations"
+                  :disabled="Boolean(filterId)"
+                  label="operator"
+                />
               </v-col>
-              <component :is="operandsComponent" v-if="filterDefinition" v-model="filter.operands" v-model:valid="valid" :path="['Vocabulary', 'Selection'].includes(filterDefinition.componentKey) ? filterDefinition.path : undefined" />
+              <component
+                :is="operandsComponent"
+                v-if="filterDefinition"
+                v-model="filter.operands"
+                v-model:valid="valid"
+                :path="
+                  ['Vocabulary', 'Selection'].includes(
+                    filterDefinition.componentKey,
+                  )
+                    ? filterDefinition.path
+                    : undefined
+                "
+                :query-params="filterDefinition.queryParams"
+              />
               <v-col v-else cols="4" />
             </v-row>
           </v-container>

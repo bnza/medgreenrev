@@ -39,11 +39,9 @@ const { r$ } = useScopedRegle(model, {
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <data-autocomplete
+        <data-autocomplete-vocabulary-botany-taxonomy
           v-model="r$.$value.taxonomy"
-          path="/api/vocabulary/botany/taxonomies"
-          item-title="value"
-          label="species"
+          label="taxonomy"
           :error-messages="r$.$errors?.taxonomy"
           clearable
         />

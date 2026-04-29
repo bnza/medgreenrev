@@ -36,6 +36,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-create-vocabulary-botany-taxonomy @refresh="refetch()" />
       <data-dialog-delete-vocabulary
         path="/api/vocabulary/botany/taxonomies/{id}"
+        property-name="flat.value"
         @refresh="refetch()"
       />
       <data-dialog-update-vocabulary-botany-taxonomy @refresh="refetch()" />

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\History;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
@@ -106,6 +107,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower',
         'chronologyUpper',
         'createdBy.email',
+        'plant.flat.value',
         'language.value',
         'location.region.value',
         'location.value',
@@ -113,13 +115,20 @@ use Symfony\Component\Validator\Constraints as Assert;
         'reference',
     ])]
 #[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'plant.cf',
+        'plant.sp',
+    ]
+)]
+#[ApiFilter(
     SearchFilter::class,
     properties: [
         'plant' => 'exact',
         'plant.taxonomy' => 'exact',
-        'plant.taxonomy.family' => 'exact',
-        'plant.taxonomy.class' => 'exact',
-        'plant.taxonomy.vernacularName' => 'ipartial',
+        'plant.taxonomy.flat.classId' => 'exact',
+        'plant.taxonomy.flat.familyId' => 'exact',
+        'plant.taxonomy.flat.genusId' => 'exact',
         'language' => 'exact',
         'location' => 'exact',
         'chronologyLower' => 'exact',
@@ -135,7 +144,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'plant.taxonomy.family',
         'notes',
     ])]
 #[ApiFilter(

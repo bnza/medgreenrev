@@ -103,7 +103,7 @@ class ResourceUniqueValidator
         StratigraphicUnit::class => [['site', 'year', 'number']],
         StratigraphicUnitRelationshipView::class => [['lftStratigraphicUnit', 'rgtStratigraphicUnit']],
         User::class => [['email']],
-        VocBotanyTaxonomy::class => [['value']],
+        VocBotanyTaxonomy::class => [['value', 'parent']],
         VocHistoryAnimal::class => [['value']],
         VocHistoryLocation::class => [['value']],
         VocHistoryPlant::class => [['value']],
@@ -123,8 +123,12 @@ class ResourceUniqueValidator
         $qb->select('r')
             ->from($resource, 'r');
         foreach ($criteria as $field => $value) {
-            $qb->andWhere('r.'.$field.' = :'.$field);
-            $qb->setParameter($field, urldecode((string) $value));
+            if ('' === $value || null === $value) {
+                $qb->andWhere('r.'.$field.' IS NULL');
+            } else {
+                $qb->andWhere('r.'.$field.' = :'.$field);
+                $qb->setParameter($field, urldecode((string) $value));
+            }
         }
         $result = $qb->getQuery()->getResult();
 

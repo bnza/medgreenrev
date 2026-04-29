@@ -32,6 +32,12 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         />
       </v-btn-group>
     </template>
+    <template #[`item.sp`]="{ item }">
+      <v-checkbox-btn class="centered-item" :model-value="item.sp" readonly />
+    </template>
+    <template #[`item.cf`]="{ item }">
+      <v-checkbox-btn class="centered-item" :model-value="item.cf" readonly />
+    </template>
     <template #dialogs="{ refetch }">
       <data-dialog-create-vocabulary-history-plant @refresh="refetch()" />
       <data-dialog-delete-vocabulary

@@ -15,7 +15,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
 <template>
   <data-item-page :path identifier-prop="inventory" :iri>
     <template #default="{ item }">
-      <lazy-data-item-form-info-botany-seed :item />
+      <lazy-data-item-form-info-botany-charcoal :item />
       <v-tabs v-if="!iri" v-model="tab" background-color="transparent">
         <v-tab value="analyses">analyses</v-tab>
       </v-tabs>

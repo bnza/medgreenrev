@@ -8,13 +8,15 @@ import { associationPropertyStaticFiltersDefinition } from './analysisAssociatio
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 
 const {
+  Boolean,
   Exists,
   SearchPartial,
-  SelectionBotanyClass,
-  SelectionBotanyFamily,
   VocabularyBotanyElement,
   VocabularyBotanyElementPart,
   VocabularyBotanyTaxonomy,
+  VocabularyBotanyTaxonomyClass,
+  VocabularyBotanyTaxonomyFamily,
+  VocabularyBotanyTaxonomyGenus,
 } = API_FILTERS
 
 export const taxonomyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
@@ -25,23 +27,22 @@ export const taxonomyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
         VocabularyBotanyTaxonomy,
       },
     },
-    'taxonomy.family': {
-      propertyLabel: 'taxonomy (family)',
-      filters: {
-        SelectionBotanyFamily,
-        Exists,
-      },
-    },
-    'taxonomy.class': {
+    'taxonomy.flat.classId': {
       propertyLabel: 'taxonomy (class)',
       filters: {
-        SelectionBotanyClass,
+        VocabularyBotanyTaxonomyClass,
       },
     },
-    'taxonomy.vernacularName': {
-      propertyLabel: 'vernacular name',
+    'taxonomy.flat.familyId': {
+      propertyLabel: 'taxonomy (family)',
       filters: {
-        SearchPartial,
+        VocabularyBotanyTaxonomyFamily,
+      },
+    },
+    'taxonomy.flat.genusId': {
+      propertyLabel: 'taxonomy (genus)',
+      filters: {
+        VocabularyBotanyTaxonomyGenus,
       },
     },
   }
@@ -62,6 +63,24 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
       filters: {
         SearchPartial,
         Exists,
+      },
+    },
+    cf: {
+      propertyLabel: 'taxonomy (cf)',
+      filters: {
+        Boolean,
+      },
+    },
+    sp: {
+      propertyLabel: 'taxonomy (sp)',
+      filters: {
+        Boolean,
+      },
+    },
+    type: {
+      propertyLabel: 'taxonomy (type)',
+      filters: {
+        Boolean,
       },
     },
   }

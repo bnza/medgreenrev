@@ -13,6 +13,12 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
+      key: 'plant.flat.value',
+      value: 'plant.flat.value',
+      title: 'taxonomy',
+      minWidth: '200',
+    },
+    {
       key: 'plant.value',
       value: 'plant.value',
       title: 'plant',

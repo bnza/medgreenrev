@@ -9,12 +9,14 @@ import { useGetCollectionVocabularyQuery } from '~/composables/queries/useGetCol
 const props = defineProps<{
   multiple?: Multiple
   path: Path
+  queryParams?: Record<string, string>
 }>()
 
 const value = ref('')
 const { items, asyncStatus } = useGetCollectionVocabularyQuery(
   props.path,
   value,
+  props.queryParams,
 )
 const model = defineModel<
   (Multiple extends true ? string[] : string) | undefined | null

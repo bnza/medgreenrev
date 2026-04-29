@@ -15,14 +15,15 @@ App\Entity\Data\Botany\Seed:
         taxonomy: '@botany_taxonomy_QUERCUS'
         element: '@botany_element_FRUCTUS'
         part: '@botany_element_part_AP'
+        cf: true
     botany_seed_4:
         stratigraphicUnit: '@su_me_104'
-        taxonomy: '@botany_taxonomy_PISTACHIA_LENTISCUS'
+        taxonomy: '@botany_taxonomy_PISTACIA_LENTISCUS'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
     botany_seed_5:
         stratigraphicUnit: '@su_me_105'
-        taxonomy: '@botany_taxonomy_PRUNUS_TYPE'
+        taxonomy: '@botany_taxonomy_PRUNUS'
         element: '@botany_element_ENDOCARPIUM'
         part: '@botany_element_part_BS'
         notes: 'Stone fruit endocarp fragment showing typical almond-type characteristics'
@@ -41,6 +42,7 @@ App\Entity\Data\Botany\Seed:
         taxonomy: '@botany_taxonomy_CISTACEAE'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
+        sp: true
         notes: 'Tiny seed with reticulate surface pattern typical of Cistaceae family'
     botany_seed_9:
         stratigraphicUnit: '@su_ca_201'
@@ -63,6 +65,7 @@ App\Entity\Data\Botany\Seed:
         taxonomy: '@botany_taxonomy_QUERCUS_SUBER'
         element: '@botany_element_FRUCTUS'
         part: '@botany_element_part_WH'
+        type: true
     botany_seed_13:
         stratigraphicUnit: '@su_ca_205'
         taxonomy: '@botany_taxonomy_CHAMAEROPS_HUMILIS'
@@ -76,9 +79,10 @@ App\Entity\Data\Botany\Seed:
         notes: 'Minute seed with papery wing attachment for wind dispersal'
     botany_seed_15:
         stratigraphicUnit: '@su_ca_207'
-        taxonomy: '@botany_taxonomy_FABACEAE_CYTISUS_GENISTA'
+        taxonomy: '@botany_taxonomy_FABACEAE'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
+        cf: true
     botany_seed_16:
         stratigraphicUnit: '@su_ca_208'
         taxonomy: '@botany_taxonomy_TETRACLINIS_ARTICULATA'
@@ -92,23 +96,24 @@ App\Entity\Data\Botany\Seed:
         notes: 'Small nutlet typical of mint family with smooth surface'
     botany_seed_18:
         stratigraphicUnit: '@su_to_302'
-        taxonomy: '@botany_taxonomy_CF_OLEA_EUROPAEA'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
         element: '@botany_element_ENDOCARPIUM'
         part: '@botany_element_part_MD'
     botany_seed_19:
         stratigraphicUnit: '@su_to_303'
-        taxonomy: '@botany_taxonomy_PHILLYREA_RHAMNUS'
+        taxonomy: '@botany_taxonomy_PHILLYREA'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
     botany_seed_20:
         stratigraphicUnit: '@su_to_304'
-        taxonomy: '@botany_taxonomy_CF_PISTACHIA'
+        taxonomy: '@botany_taxonomy_PISTACIA'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
+        sp: true
         notes: 'Fragmentary seed with characteristics similar to Pistacia species'
     botany_seed_21:
         stratigraphicUnit: '@su_to_305'
-        taxonomy: '@botany_taxonomy_QUERCUS_COCCIFERA_ILEX'
+        taxonomy: '@botany_taxonomy_QUERCUS'
         element: '@botany_element_FRUCTUS'
         part: '@botany_element_part_BS'
     botany_seed_22:
@@ -118,15 +123,16 @@ App\Entity\Data\Botany\Seed:
         part: '@botany_element_part_WH'
     botany_seed_23:
         stratigraphicUnit: '@su_to_307'
-        taxonomy: '@botany_taxonomy_CF_CISTACEAE'
+        taxonomy: '@botany_taxonomy_CISTACEAE'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
         notes: 'Seed fragment with possible rockrose family characteristics'
     botany_seed_24:
         stratigraphicUnit: '@su_to_308'
-        taxonomy: '@botany_taxonomy_POPULUS_SALIX'
+        taxonomy: '@botany_taxonomy_SALICACEAE'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
+        cf: true
     botany_seed_25:
         stratigraphicUnit: '@su_ni_401'
         taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
@@ -140,9 +146,10 @@ App\Entity\Data\Botany\Seed:
         notes: 'Strawberry tree seed with granular surface texture'
     botany_seed_27:
         stratigraphicUnit: '@su_ni_403'
-        taxonomy: '@botany_taxonomy_PRUNUS_TYPE'
+        taxonomy: '@botany_taxonomy_PRUNUS'
         element: '@botany_element_ENDOCARPIUM'
         part: '@botany_element_part_AP'
+        type: true
     botany_seed_28:
         stratigraphicUnit: '@su_ni_404'
         taxonomy: '@botany_taxonomy_ROSMARINUS_OFFICINALIS'
@@ -150,7 +157,7 @@ App\Entity\Data\Botany\Seed:
         part: '@botany_element_part_WH'
     botany_seed_29:
         stratigraphicUnit: '@su_ni_405'
-        taxonomy: '@botany_taxonomy_PISTACHIA_LENTISCUS'
+        taxonomy: '@botany_taxonomy_PISTACIA_LENTISCUS'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
         notes: 'Mastic tree seed with characteristic wrinkled surface pattern'
@@ -175,6 +182,7 @@ App\Entity\Data\Botany\Seed:
         taxonomy: '@botany_taxonomy_CHAMAEROPS_HUMILIS'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
+        sp: true
     botany_seed_34:
         stratigraphicUnit: '@su_se_501'
         taxonomy: '@botany_taxonomy_TAMARIX'
@@ -182,7 +190,7 @@ App\Entity\Data\Botany\Seed:
         part: '@botany_element_part_WH'
     botany_seed_35:
         stratigraphicUnit: '@su_se_502'
-        taxonomy: '@botany_taxonomy_FABACEAE_CYTISUS_GENISTA'
+        taxonomy: '@botany_taxonomy_FABACEAE'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
         notes: 'Legume seed with hard testa and hilum scar visible'
@@ -196,6 +204,7 @@ App\Entity\Data\Botany\Seed:
         taxonomy: '@botany_taxonomy_LAMIACEAE'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_WH'
+        cf: true
     botany_seed_38:
         stratigraphicUnit: '@su_se_505'
         taxonomy: '@botany_taxonomy_POPULUS'
@@ -212,6 +221,7 @@ App\Entity\Data\Botany\Seed:
         taxonomy: '@botany_taxonomy_QUERCUS_SUBER'
         element: '@botany_element_FRUCTUS'
         part: '@botany_element_part_DS'
+        type: true
     botany_seed_41:
         stratigraphicUnit: '@su_se_508'
         taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
@@ -220,23 +230,23 @@ App\Entity\Data\Botany\Seed:
         notes: 'Complete olive stone with characteristic groove pattern'
 #    botany_seed_42:
 #        stratigraphicUnit: '@su_sc1_601'
-#        taxonomy: '@botany_taxonomy_CF_OLEA_EUROPAEA'
+#        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
 #        element: '@botany_element_ENDOCARPIUM'
 #        part: '@botany_element_part_MD'
 #    botany_seed_43:
 #        stratigraphicUnit: '@su_sc1_602'
-#        taxonomy: '@botany_taxonomy_PHILLYREA_RHAMNUS'
+#        taxonomy: '@botany_taxonomy_PHILLYREA'
 #        element: '@botany_element_SEMEN'
 #        part: '@botany_element_part_WH'
 #    botany_seed_44:
 #        stratigraphicUnit: '@su_sc1_603'
-#        taxonomy: '@botany_taxonomy_CF_PISTACHIA'
+#        taxonomy: '@botany_taxonomy_PISTACIA'
 #        element: '@botany_element_SEMEN'
 #        part: '@botany_element_part_WH'
 #        notes: 'Seed showing affinities to pistachio group with angular shape'
 #    botany_seed_45:
 #        stratigraphicUnit: '@su_sc1_604'
-#        taxonomy: '@botany_taxonomy_QUERCUS_COCCIFERA_ILEX'
+#        taxonomy: '@botany_taxonomy_QUERCUS'
 #        element: '@botany_element_FRUCTUS'
 #        part: '@botany_element_part_WH'
 #    botany_seed_46:
@@ -257,12 +267,12 @@ App\Entity\Data\Botany\Seed:
 #        part: '@botany_element_part_WH'
 #    botany_seed_49:
 #        stratigraphicUnit: '@su_sc2_702'
-#        taxonomy: '@botany_taxonomy_PRUNUS_TYPE'
+#        taxonomy: '@botany_taxonomy_PRUNUS'
 #        element: '@botany_element_ENDOCARPIUM'
 #        part: '@botany_element_part_BS'
 #    botany_seed_50:
 #        stratigraphicUnit: '@su_sc2_703'
-#        taxonomy: '@botany_taxonomy_PISTACHIA_LENTISCUS'
+#        taxonomy: '@botany_taxonomy_PISTACIA_LENTISCUS'
 #        element: '@botany_element_SEMEN'
 #        part: '@botany_element_part_WH'
 #        notes: 'Mastic seed with well-preserved surface showing reticulate pattern'

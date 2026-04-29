@@ -18,37 +18,131 @@ final class Version20250628091340 extends AbstractMigration
     {
         $this->addSql(
             <<<'SQL'
-                            CREATE OR REPLACE VIEW vocabulary.vw_botany_taxonomy_classes AS
-                            WITH DistinctValues AS (
-                                -- Step 1: Find the unique, input values.
-                                SELECT DISTINCT class AS original_value
-                                FROM vocabulary.botany_taxonomy
-                                WHERE class IS NOT NULL
-                            )
-                            -- Step 2: Calculate the MD5 hash once for each unique type.
-                            SELECT
-                                MD5(original_value) AS id,
-                                original_value AS value
-                            FROM
-                                DistinctValues
+                CREATE OR REPLACE VIEW vocabulary.vw_botany_taxonomy AS
+                SELECT
+                    t.id,
+                    CASE t.level
+                        WHEN 'species' THEN CONCAT(species_genus.value, ' ', t.value)
+                        ELSE t.value
+                    END AS value,
+                    t.level,
+                    CASE t.level
+                        WHEN 'class' THEN 0
+                        WHEN 'family' THEN 1
+                        WHEN 'genus' THEN 2
+                        WHEN 'species' THEN 3
+                    END AS rank,
+                    t.spanish_name,
+                    t.english_name,
+                    CASE t.level
+                        WHEN 'species' THEN t.value
+                        ELSE NULL
+                    END AS species,
+                    CASE t.level
+                        WHEN 'species' THEN species_genus.value
+                        WHEN 'genus' THEN t.value
+                        ELSE NULL
+                    END AS genus,
+                    CASE t.level
+                        WHEN 'species' THEN species_family.value
+                        WHEN 'genus' THEN genus_family.value
+                        WHEN 'family' THEN t.value
+                        ELSE NULL
+                    END AS family,
+                    CASE t.level
+                        WHEN 'species' THEN species_class.value
+                        WHEN 'genus' THEN genus_class.value
+                        WHEN 'family' THEN family_class.value
+                        ELSE NULL
+                    END AS class,
+                    CASE t.level
+                        WHEN 'species' THEN species_genus.id
+                        WHEN 'genus' THEN t.id
+                        ELSE NULL
+                    END AS genus_id,
+                    CASE t.level
+                        WHEN 'species' THEN species_family.id
+                        WHEN 'genus' THEN genus_family.id
+                        WHEN 'family' THEN t.id
+                        ELSE NULL
+                    END AS family_id,
+                    CASE t.level
+                        WHEN 'species' THEN species_class.id
+                        WHEN 'genus' THEN genus_class.id
+                        WHEN 'family' THEN family_class.id
+                        ELSE NULL
+                    END AS class_id
+                FROM vocabulary.botany_taxonomy t
+                -- species path: species → genus → family → class
+                LEFT JOIN vocabulary.botany_taxonomy species_genus ON t.parent_id = species_genus.id AND t.level = 'species'
+                LEFT JOIN vocabulary.botany_taxonomy species_family ON species_genus.parent_id = species_family.id AND t.level = 'species'
+                LEFT JOIN vocabulary.botany_taxonomy species_class ON species_family.parent_id = species_class.id AND t.level = 'species'
+                -- genus path: genus → family → class
+                LEFT JOIN vocabulary.botany_taxonomy genus_family ON t.parent_id = genus_family.id AND t.level = 'genus'
+                LEFT JOIN vocabulary.botany_taxonomy genus_class ON genus_family.parent_id = genus_class.id AND t.level = 'genus'
+                -- family path: family → class
+                LEFT JOIN vocabulary.botany_taxonomy family_class ON t.parent_id = family_class.id AND t.level = 'family';
                 SQL
         );
 
         $this->addSql(
             <<<'SQL'
-                            CREATE OR REPLACE VIEW vocabulary.vw_botany_taxonomy_families AS
-                            WITH DistinctValues AS (
-                                -- Step 1: Find the unique, input values.
-                                SELECT DISTINCT family AS original_value
-                                FROM vocabulary.botany_taxonomy
-                                WHERE family IS NOT NULL
-                            )
-                            -- Step 2: Calculate the MD5 hash once for each unique type.
-                            SELECT
-                                MD5(original_value) AS id,
-                                original_value AS value
-                            FROM
-                                DistinctValues
+                CREATE OR REPLACE VIEW vw_botany_seed AS
+                SELECT
+                    bs.id,
+                    bs.id AS botany_seed_id,
+                    CASE
+                        WHEN vt.level = 'species' AND bs.cf THEN vt.genus || ' cf. ' || vt.species
+                        WHEN vt.level = 'species' THEN vt.value
+                        ELSE
+                            CASE WHEN bs.cf THEN 'cf. ' ELSE '' END ||
+                            vt.value ||
+                            CASE WHEN bs.sp THEN ' sp.' ELSE '' END
+                    END ||
+                    CASE WHEN bs.type THEN ' type' ELSE '' END
+                    AS taxonomy_value
+                FROM botany_seeds bs
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bs.voc_taxonomy_id = vt.id;
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW vw_botany_charcoal AS
+                SELECT
+                    bc.id,
+                    bc.id AS botany_charcoal_id,
+                    CASE
+                        WHEN vt.level = 'species' AND bc.cf THEN vt.genus || ' cf. ' || vt.species
+                        WHEN vt.level = 'species' THEN vt.value
+                        ELSE
+                            CASE WHEN bc.cf THEN 'cf. ' ELSE '' END ||
+                            vt.value ||
+                            CASE WHEN bc.sp THEN ' sp.' ELSE '' END
+                    END ||
+                    CASE WHEN bc.type THEN ' type' ELSE '' END
+                    AS taxonomy_value
+                FROM botany_charcoals bc
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bc.voc_taxonomy_id = vt.id;
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW vocabulary.vw_history_plant AS
+                SELECT
+                    vp.id,
+                    CASE
+                        WHEN vbt.level = 'species' AND vp.cf THEN vbt.genus || ' cf. ' || vbt.species
+                        WHEN vbt.level = 'species' THEN vbt.value
+                        ELSE
+                            CASE WHEN vp.cf THEN 'cf. ' ELSE '' END ||
+                            vbt.value ||
+                            CASE WHEN vp.sp THEN ' sp.' ELSE '' END
+                    END
+                    AS taxonomy_value
+                FROM vocabulary.history_plants vp
+                LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON vp.taxonomy_id = vbt.id;
                 SQL
         );
 
@@ -447,8 +541,10 @@ final class Version20250628091340 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP VIEW vocabulary.vw_botany_taxonomy_classes;');
-        $this->addSql('DROP VIEW vocabulary.vw_botany_taxonomy_families;');
+        $this->addSql('DROP VIEW IF EXISTS vw_botany_seed;');
+        $this->addSql('DROP VIEW IF EXISTS vocabulary.vw_history_plant;');
+        $this->addSql('DROP VIEW IF EXISTS vw_botany_charcoal;');
+        $this->addSql('DROP VIEW IF EXISTS vocabulary.vw_botany_taxonomy;');
         $this->addSql('DROP VIEW vocabulary.vw_zoo_taxonomy_classes;');
         $this->addSql('DROP VIEW vocabulary.vw_zoo_taxonomy_families;');
         $this->addSql('DROP VIEW vw_analysis_laboratories;');

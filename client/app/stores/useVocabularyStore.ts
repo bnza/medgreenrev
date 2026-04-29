@@ -20,9 +20,7 @@ export const useVocabularyStore = <Path extends VocabularyGetCollectionPath>(
     const get = (iri?: string) =>
       computed(() => (iri ? normalizedState.value[iri] : undefined))
 
-    // Helper function to safely access properties
-    const getPropertyValue = (item: unknown, prop: string): unknown =>
-      isPlainObject(item) ? item[prop] : undefined
+    const getPropertyValue = getNestedValue
 
     const getValue = (id?: string | null, prop = 'value') =>
       computed(() => {

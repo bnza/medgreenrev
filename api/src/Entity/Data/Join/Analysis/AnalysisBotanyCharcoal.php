@@ -2,7 +2,6 @@
 
 namespace App\Entity\Data\Join\Analysis;
 
-use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use App\Entity\Data\Analysis;
@@ -36,15 +35,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.taxonomy' => 'exact',
         'subject.element' => 'exact',
         'subject.part' => 'exact',
-        'subject.taxonomy.family' => 'exact',
-        'subject.taxonomy.class' => 'exact',
-        'subject.taxonomy.vernacularName' => 'exact',
-    ]
-)]
-#[ApiFilter(
-    ExistsFilter::class,
-    properties: [
-        'subject.taxonomy.family',
+        'subject.taxonomy.flat.classId' => 'exact',
+        'subject.taxonomy.flat.familyId' => 'exact',
+        'subject.taxonomy.flat.genusId' => 'exact',
     ]
 )]
 #[ApiStratigraphicUnitSubresourceFilters('subject.stratigraphicUnit')]

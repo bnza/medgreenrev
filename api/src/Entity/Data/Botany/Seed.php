@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Botany;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -21,6 +22,7 @@ use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Join\Analysis\AnalysisBotanySeed;
 use App\Entity\Data\StratigraphicUnit;
+use App\Entity\Data\View\BotanySeedView;
 use App\Entity\Data\View\Code\BotanySeedCodeView;
 use App\Entity\Vocabulary\Botany\Element as VocabularyElement;
 use App\Entity\Vocabulary\Botany\ElementPart;
@@ -123,9 +125,11 @@ use Symfony\Component\Validator\Constraints as Assert;
     'stratigraphicUnit.site.code',
     'stratigraphicUnit.codeView.code',
     'taxonomy.value',
-    'taxonomy.vernacularName',
-    'taxonomy.family',
-    'taxonomy.class',
+    'flat.value',
+    'taxonomy.flat.species',
+    'taxonomy.flat.genus',
+    'taxonomy.flat.family',
+    'taxonomy.flat.class',
     'element.value',
     'endsPreserved',
     'side',
@@ -139,9 +143,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'notes' => 'ipartial',
         'part' => 'exact',
         'taxonomy' => 'exact',
-        'taxonomy.family' => 'exact',
-        'taxonomy.class' => 'exact',
-        'taxonomy.vernacularName' => 'ipartial',
+        'taxonomy.flat.classId' => 'exact',
+        'taxonomy.flat.familyId' => 'exact',
+        'taxonomy.flat.genusId' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -152,7 +156,17 @@ use Symfony\Component\Validator\Constraints as Assert;
         'element',
         'part',
         'notes',
-        'taxonomy.family',
+        'taxonomy.flat.class',
+        'taxonomy.flat.genus',
+        'taxonomy.flat.species',
+    ]
+)]
+#[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'cf',
+        'sp',
+        'type',
     ]
 )]
 #[ApiFilter(
@@ -167,9 +181,18 @@ class Seed
         mappedBy: 'seed',
     )]
     private ?BotanySeedCodeView $codeView = null;
+
+    #[ORM\OneToOne(targetEntity: BotanySeedView::class, mappedBy: 'seed', fetch: 'LAZY')]
+    #[Groups([
+        'botany_seed:acl:read',
+        'botany_seed:export',
+    ])]
+    #[ApiProperty(required: true)]
+    private BotanySeedView $flat;
+
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
-        ORM\Column(type: 'bigint', unique: true)]
+        ORM\Column(type: 'bigint')]
     #[SequenceGenerator(sequenceName: 'botany_item_id_seq')]
     #[Groups([
         'botany_seed:acl:read',
@@ -228,6 +251,30 @@ class Seed
         'botany_seed:export',
     ])]
     private ?ElementPart $part = null;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'botany_seed:acl:read',
+        'botany_seed:create',
+        'botany_seed:export',
+    ])]
+    private bool $cf = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'botany_seed:acl:read',
+        'botany_seed:create',
+        'botany_seed:export',
+    ])]
+    private bool $sp = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'botany_seed:acl:read',
+        'botany_seed:create',
+        'botany_seed:export',
+    ])]
+    private bool $type = false;
 
     #[ORM\Column(type: 'string', nullable: true)]
     #[Groups([
@@ -304,6 +351,42 @@ class Seed
         return $this;
     }
 
+    public function isCf(): bool
+    {
+        return $this->cf;
+    }
+
+    public function setCf(bool $cf): Seed
+    {
+        $this->cf = $cf;
+
+        return $this;
+    }
+
+    public function isSp(): bool
+    {
+        return $this->sp;
+    }
+
+    public function setSp(bool $sp): Seed
+    {
+        $this->sp = $sp;
+
+        return $this;
+    }
+
+    public function isType(): bool
+    {
+        return $this->type;
+    }
+
+    public function setType(bool $type): Seed
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
     public function getNotes(): ?string
     {
         return $this->notes;
@@ -314,6 +397,11 @@ class Seed
         $this->notes = $notes ?? null;
 
         return $this;
+    }
+
+    public function getFlat(): BotanySeedView
+    {
+        return $this->flat;
     }
 
     public function getAnalyses(): Collection

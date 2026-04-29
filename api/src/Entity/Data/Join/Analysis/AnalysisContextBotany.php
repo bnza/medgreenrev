@@ -46,9 +46,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.site' => 'exact',
         'subject.type' => 'exact',
         'taxonomies.taxonomy' => 'exact',
-        'taxonomies.taxonomy.family' => 'exact',
-        'taxonomies.taxonomy.class' => 'exact',
-        'taxonomies.taxonomy.vernacularName' => 'ipartial',
+        'taxonomies.taxonomy.flat.classId' => 'exact',
+        'taxonomies.taxonomy.flat.familyId' => 'exact',
+        'taxonomies.taxonomy.flat.genusId' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -61,7 +61,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     ExistsFilter::class,
     properties: [
         'taxonomies',
-        'taxonomies.taxonomy.family',
         'subject.description',
     ]
 )]

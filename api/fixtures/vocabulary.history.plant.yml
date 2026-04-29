@@ -2,12 +2,14 @@ App\Entity\Vocabulary\History\Plant:
     plant_AJO:
         value: 'ajo'
         taxonomy: '@botany_taxonomy_ALLIUM_SATIVUM'
+        cf: true
     plant_ALAMO:
         value: 'álamo'
         taxonomy: '@botany_taxonomy_POPULUS'
     plant_ALBARICOQUERO:
         value: 'albaricoquero'
         taxonomy: '@botany_taxonomy_PRUNUS_ARMENIACA'
+        sp: true
     plant_ALBUDECA:
         value: 'albudeca'
         taxonomy: ~
@@ -20,12 +22,14 @@ App\Entity\Vocabulary\History\Plant:
     plant_ALGARROBO:
         value: 'algarrobo'
         taxonomy: '@botany_taxonomy_CERATONIA_SILIQUA'
+        cf: true
     plant_ALHENA:
         value: 'alheña'
         taxonomy: '@botany_taxonomy_LAWSONIA_INERMIS'
     plant_ALMENDRO:
         value: 'almendro'
         taxonomy: '@botany_taxonomy_PRUNUS_DULCIS'
+        sp: true
     plant_ALMEZ:
         value: 'almez'
         taxonomy: '@botany_taxonomy_CELTIS_AUSTRALIS'
@@ -41,6 +45,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_ARROZ:
         value: 'arroz'
         taxonomy: '@botany_taxonomy_ORYZA_SATIVA'
+        cf: true
     plant_AVELLANO:
         value: 'avellano'
         taxonomy: '@botany_taxonomy_CORYLUS_AVELLANA'
@@ -50,15 +55,17 @@ App\Entity\Vocabulary\History\Plant:
     plant_AZAFRAN:
         value: 'azafrán'
         taxonomy: '@botany_taxonomy_CROCUS_SATIVUS'
+        sp: true
     plant_AZE_BUCHE:
         value: 'azebuche'
-        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA_SYLVESTRIS'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA_VAR_SYLVESTRIS'
     plant_BERENJENA:
         value: 'berenjena'
         taxonomy: '@botany_taxonomy_SOLANUM_MELONGENA'
     plant_CANA_AZUCAR:
         value: 'caña de azúcar'
         taxonomy: '@botany_taxonomy_SACCHARUM_OFFICINARUM'
+        cf: true
     plant_CANA:
         value: 'caña'
         taxonomy: '@botany_taxonomy_ARUNDO_DONAX'
@@ -77,6 +84,8 @@ App\Entity\Vocabulary\History\Plant:
     plant_CEBOLLA:
         value: 'cebolla'
         taxonomy: '@botany_taxonomy_ALLIUM_CEPA'
+        cf: true
+        sp: true
     plant_CIDRO:
         value: 'cidro'
         taxonomy: '@botany_taxonomy_CITRUS_MEDICA'
@@ -92,6 +101,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_ESPELTA:
         value: 'espelta'
         taxonomy: '@botany_taxonomy_TRITICUM_SPELTA'
+        sp: true
     plant_ESPINACA:
         value: 'espinaca'
         taxonomy: '@botany_taxonomy_SPINACIA_OLERACEA'
@@ -104,6 +114,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_GRANADO:
         value: 'granado'
         taxonomy: '@botany_taxonomy_PUNICA_GRANATUM'
+        cf: true
     plant_GUISANTE:
         value: 'guisante'
         taxonomy: '@botany_taxonomy_PISUM_SATIVUM'
@@ -116,6 +127,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_HIGUERA:
         value: 'higuera'
         taxonomy: '@botany_taxonomy_FICUS_CARICA'
+        sp: true
     plant_HORTALIZAS:
         value: 'hortalizas'
         taxonomy: ~
@@ -131,6 +143,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_LINO:
         value: 'lino'
         taxonomy: '@botany_taxonomy_LINUM_USITATISSIMUM'
+        cf: true
     plant_MALLOL:
         value: 'mallol'
         taxonomy: ~
@@ -143,18 +156,20 @@ App\Entity\Vocabulary\History\Plant:
     plant_MELOCOTONERO:
         value: 'melocotonero'
         taxonomy: '@botany_taxonomy_PRUNUS_PERSICA'
+        cf: true
     plant_MEMBRILLO:
         value: 'membrillo'
         taxonomy: '@botany_taxonomy_CYDONIA_OBLONGA'
     plant_MORERA_MORAL:
         value: 'morera / moral'
-        taxonomy: '@botany_taxonomy_MORUS_ALBA_NIGRA'
+        taxonomy: '@botany_taxonomy_MORUS'
     plant_NABO:
         value: 'nabo'
         taxonomy: '@botany_taxonomy_BRASSICA_RAPA'
     plant_NARANJO:
         value: 'naranjo'
         taxonomy: '@botany_taxonomy_CITRUS_SINENSIS'
+        sp: true
     plant_NISPERO:
         value: 'níspero'
         taxonomy: '@botany_taxonomy_MESPILUS_GERMANICA'
@@ -164,6 +179,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_OLIVO:
         value: 'olivo'
         taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+        cf: true
     plant_PALMA:
         value: 'palma'
         taxonomy: ~
@@ -173,6 +189,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_PARRA:
         value: 'parra'
         taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
+        sp: true
     plant_PERAL:
         value: 'peral'
         taxonomy: '@botany_taxonomy_PYRUS_COMMUNIS'
@@ -185,6 +202,7 @@ App\Entity\Vocabulary\History\Plant:
     plant_SANDIA:
         value: 'sandía'
         taxonomy: '@botany_taxonomy_CITRULLUS_LANATUS'
+        cf: true
     plant_SERBA_ZURBA:
         value: 'serba o zurba'
         taxonomy: '@botany_taxonomy_SORBUS_DOMESTICA'

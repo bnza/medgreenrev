@@ -34,21 +34,26 @@ const { r$ } = useScopedRegle(model, {
 <template>
   <v-container>
     <v-row>
-      <v-col cols="6" xs="12" class="px-2">
+      <v-col cols="5" xs="12" class="px-2">
         <v-text-field
           v-model="r$.$value.value"
           label="value"
           :error-messages="r$.$errors?.value"
         />
       </v-col>
-      <v-col cols="6" xs="12" class="px-2">
-        <data-autocomplete
+      <v-col cols="1" xs="12" class="px-2">
+        <v-checkbox v-model="r$.$value.cf" label="CF" />
+      </v-col>
+      <v-col cols="5" xs="12" class="px-2">
+        <data-autocomplete-vocabulary-botany-taxonomy
           v-model="r$.$value.taxonomy"
-          path="/api/vocabulary/botany/taxonomies"
-          item-title="value"
-          label="species"
+          label="taxonomy"
+          :error-messages="r$.$errors?.taxonomy"
           clearable
         />
+      </v-col>
+      <v-col cols="1" xs="12" class="px-2">
+        <v-checkbox v-model="r$.$value.sp" label="SP" />
       </v-col>
     </v-row>
   </v-container>

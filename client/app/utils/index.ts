@@ -175,6 +175,20 @@ export function getResourceKeyFromPath(path: ApiResourcePath): ApiResourceKey {
   return matches[0]?.[0] as ApiResourceKey
 }
 
+/**
+ * Safely access a nested property using dot notation.
+ * e.g. getNestedValue(item, 'flat.value') → item.flat.value
+ */
+export const getNestedValue = (item: unknown, path: string): unknown => {
+  const parts = path.split('.')
+  let current: unknown = item
+  for (const part of parts) {
+    if (current == null || typeof current !== 'object') return undefined
+    current = (current as Record<string, unknown>)[part]
+  }
+  return current
+}
+
 export const CLOSE_MAP_OVERLAY_INJECTION_KEY = Symbol() as InjectionKey<
   () => void
 >

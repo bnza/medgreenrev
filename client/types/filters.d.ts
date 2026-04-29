@@ -50,6 +50,7 @@ export type FilterDefinitionObject<K extends FilterKey = FilterKey> =
     key: K
     property: string
     propertyLabel: string
+    queryParams?: Record<string, string>
   } & ComponentKeyWithPath & {
       // Optional path to support template access without narrowing
       path?: ListGetCollectionPath | VocabularyGetCollectionPath
@@ -60,6 +61,7 @@ export type ExpandedFilter = FilterDefinitionObject & Filter
 type StaticFiltersDefinitionObject = BaseFilterDefinitionObject & {
   addToQueryObject: AddToQueryObject
   propertyLabel?: string
+  queryParams?: Record<string, string>
 } & ComponentKeyWithPath
 
 type ResourcePropertyFiltersDefinitionObject = Partial<

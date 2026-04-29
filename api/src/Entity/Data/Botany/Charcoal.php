@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Botany;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -21,6 +22,7 @@ use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Join\Analysis\AnalysisBotanyCharcoal;
 use App\Entity\Data\StratigraphicUnit;
+use App\Entity\Data\View\BotanyCharcoalView;
 use App\Entity\Data\View\Code\BotanyCharcoalCodeView;
 use App\Entity\Vocabulary\Botany\Element as VocabularyElement;
 use App\Entity\Vocabulary\Botany\ElementPart;
@@ -122,10 +124,14 @@ use Symfony\Component\Validator\Constraints as Assert;
     'id',
     'stratigraphicUnit.site.code',
     'stratigraphicUnit.codeView.code',
-    'taxonomy.value',
-    'taxonomy.vernacularName',
-    'taxonomy.family',
-    'taxonomy.class',
+    'cf',
+    'sp',
+    'type',
+    'flat.value',
+    'taxonomy.flat.species',
+    'taxonomy.flat.genus',
+    'taxonomy.flat.family',
+    'taxonomy.flat.class',
     'element.value',
     'endsPreserved',
 ])]
@@ -138,9 +144,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'element' => 'exact',
         'notes' => 'ipartial',
         'part' => 'exact',
-        'taxonomy.family' => 'exact',
-        'taxonomy.class' => 'exact',
-        'taxonomy.vernacularName' => 'ipartial',
+        'taxonomy.flat.classId' => 'exact',
+        'taxonomy.flat.familyId' => 'exact',
+        'taxonomy.flat.genusId' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -151,7 +157,17 @@ use Symfony\Component\Validator\Constraints as Assert;
         'notes',
         'element',
         'part',
-        'taxonomy.family',
+        'taxonomy.flat.class',
+        'taxonomy.flat.genus',
+        'taxonomy.flat.species',
+    ]
+)]
+#[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'cf',
+        'sp',
+        'type',
     ]
 )]
 #[ApiFilter(
@@ -166,9 +182,18 @@ class Charcoal
         mappedBy: 'charcoal',
     )]
     private ?BotanyCharcoalCodeView $codeView = null;
+
+    #[ORM\OneToOne(targetEntity: BotanyCharcoalView::class, mappedBy: 'charcoal', fetch: 'LAZY')]
+    #[Groups([
+        'botany_charcoal:acl:read',
+        'botany_charcoal:export',
+    ])]
+    #[ApiProperty(required: true)]
+    private BotanyCharcoalView $flat;
+
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
-        ORM\Column(type: 'bigint', unique: true)]
+        ORM\Column(type: 'bigint')]
     #[SequenceGenerator(sequenceName: 'botany_item_id_seq')]
     #[Groups([
         'botany_charcoal:acl:read',
@@ -227,6 +252,30 @@ class Charcoal
         'botany_charcoal:export',
     ])]
     private ?ElementPart $part = null;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'botany_charcoal:acl:read',
+        'botany_charcoal:create',
+        'botany_charcoal:export',
+    ])]
+    private bool $cf = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'botany_charcoal:acl:read',
+        'botany_charcoal:create',
+        'botany_charcoal:export',
+    ])]
+    private bool $sp = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'botany_charcoal:acl:read',
+        'botany_charcoal:create',
+        'botany_charcoal:export',
+    ])]
+    private bool $type = false;
 
     #[ORM\Column(type: 'string', nullable: true)]
     #[Groups([
@@ -303,6 +352,42 @@ class Charcoal
         return $this;
     }
 
+    public function isCf(): bool
+    {
+        return $this->cf;
+    }
+
+    public function setCf(bool $cf): Charcoal
+    {
+        $this->cf = $cf;
+
+        return $this;
+    }
+
+    public function isSp(): bool
+    {
+        return $this->sp;
+    }
+
+    public function setSp(bool $sp): Charcoal
+    {
+        $this->sp = $sp;
+
+        return $this;
+    }
+
+    public function isType(): bool
+    {
+        return $this->type;
+    }
+
+    public function setType(bool $type): Charcoal
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
     public function getNotes(): ?string
     {
         return $this->notes;
@@ -313,6 +398,11 @@ class Charcoal
         $this->notes = $notes ?? null;
 
         return $this;
+    }
+
+    public function getFlat(): BotanyCharcoalView
+    {
+        return $this->flat;
     }
 
     public function getAnalyses(): Collection

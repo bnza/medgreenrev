@@ -16,13 +16,15 @@ const isPostPath = computed<boolean>(() => {
     : findApiResourcePath(props.path)
   return isPostOperationPath(postPath)
 })
-defineSlots<{
+
+const slots = defineSlots<{
   default(): any
   create(): any
 }>()
 const { isGetExportCsvCollectionPath } = useOpenApiStore()
 
 const isEmptyMenu = computed<boolean>(() => {
+  if ('default' in slots || 'create' in slots) return false
   return !(
     isSearchableGetCollectionPath(props.path) ||
     (props.acl.canExport && isGetExportCsvCollectionPath(props.path)) ||

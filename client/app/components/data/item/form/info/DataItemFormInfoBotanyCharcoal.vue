@@ -50,36 +50,45 @@ const vocabularyBotanyElementParts = useVocabularyStore(
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="4" xs="12" class="px-2">
-        <v-text-field
-          :model-value="vocabularyBotanyTaxonomy.getValue(item.taxonomy)"
-          label="taxonomy"
-        />
+      <v-col cols="2" xs="12" class="px-2">
+        <v-checkbox :model-value="item.cf" label="CF" />
+      </v-col>
+      <v-col cols="2" xs="12" class="px-2">
+        <v-checkbox :model-value="item.type" label="type" />
+      </v-col>
+      <v-col cols="6" xs="12" class="px-2">
+        <v-text-field :model-value="item.flat?.value" label="taxonomy" />
+      </v-col>
+      <v-col cols="2" xs="12" class="px-2">
+        <v-checkbox :model-value="item.sp" label="SP" />
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="4" xs="12" class="px-2">
-        <v-text-field
-          :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'class')
-          "
-          label="class"
-        />
+      <v-col cols="3" xs="12" class="px-2">
+        <v-text-field :model-value="item.flat?.class" label="class" />
       </v-col>
-      <v-col cols="4" xs="12" class="px-2">
-        <v-text-field
-          :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'family')
-          "
-          label="class"
-        />
+      <v-col cols="3" xs="12" class="px-2">
+        <v-text-field :model-value="item.flat?.family" label="family" />
       </v-col>
-      <v-col cols="4" xs="12" class="px-2">
+      <v-col cols="3" xs="12" class="px-2">
+        <v-text-field :model-value="item.flat?.genus" label="genus" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="6" xs="12" class="px-2">
         <v-text-field
           :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'vernacularName')
+            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName')
           "
           label="vernacular name"
+        />
+      </v-col>
+      <v-col cols="6" xs="12" class="px-2">
+        <v-text-field
+          :model-value="
+            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'spanishName')
+          "
+          label="spanish name"
         />
       </v-col>
     </v-row>

@@ -8,6 +8,7 @@ import { taxonomyStaticFiltersDefinition as zooTaxonomyStaticFilterDefinition } 
 import { taxonomyStaticFiltersDefinition as botanyTaxonomyStaticFilterDefinition } from './botany'
 
 const {
+  Boolean,
   Exists,
   HistoryLocationEquals,
   HistoryWrittenSourceEquals,
@@ -106,6 +107,18 @@ export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject
     plant: {
       filters: {
         VocabularyHistoryPlant,
+      },
+    },
+    'plant.cf': {
+      propertyLabel: 'taxonomy (cf)',
+      filters: {
+        Boolean,
+      },
+    },
+    'plant.sp': {
+      propertyLabel: 'taxonomy (sp)',
+      filters: {
+        Boolean,
       },
     },
   }

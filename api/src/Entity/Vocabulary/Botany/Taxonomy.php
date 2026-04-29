@@ -3,8 +3,9 @@
 namespace App\Entity\Vocabulary\Botany;
 
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
-use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -12,17 +13,22 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\SearchPropertyAliasFilter;
+use App\Entity\Data\View\BotanyTaxonomyView;
+use App\Repository\BotanyTaxonomyRepository;
+use App\Validator as AppAssert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: BotanyTaxonomyRepository::class)]
 #[ORM\Table(
     name: 'botany_taxonomy',
     schema: 'vocabulary'
 )]
-#[ORM\UniqueConstraint(columns: ['value'])]
+#[ORM\UniqueConstraint(columns: ['value', 'parent_id'], options: ['nulls_distinct' => false])]
 #[ApiResource(
     shortName: 'VocBotanyTaxonomy',
     operations: [
@@ -32,6 +38,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new GetCollection(
             uriTemplate: '/data/vocabulary/botany/taxonomies',
+            paginationEnabled: true,
             order: ['id' => 'DESC'],
             normalizationContext: ['groups' => ['voc_botany_taxonomy:acl:read']]
         ),
@@ -42,23 +49,48 @@ use Symfony\Component\Validator\Constraints as Assert;
             uriTemplate: '/vocabulary/botany/taxonomies',
             denormalizationContext: ['groups' => ['voc_botany_taxonomy:create']],
             securityPostDenormalize: 'is_granted("create", object)',
+            validationContext: ['groups' => ['validation:voc_botany_taxonomy:create']],
         ),
         new Patch(
             uriTemplate: '/vocabulary/botany/taxonomies/{id}',
             denormalizationContext: ['groups' => ['voc_botany_taxonomy:update']],
             security: 'is_granted("update", object)',
-            validationContext: ['groups' => ['validation:voc_botany_taxonomy:update']],
         ),
         new Delete(
             uriTemplate: '/vocabulary/botany/taxonomies/{id}',
-            security: 'is_granted("delete", object)'
+            security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:voc_botany_taxonomy:delete']],
+            validate: true
         ),
     ],
     normalizationContext: ['groups' => ['voc_botany_taxonomy:read']],
-    validationContext: ['groups' => ['validation:voc_botany_taxonomy:create']],
     paginationEnabled: false,
 )]
-#[ApiFilter(OrderFilter::class, properties: ['id', 'value', 'vernacularName', 'class', 'family'])]
+#[ApiFilter(OrderFilter::class, properties: [
+    'id',
+    'value',
+    'level',
+    'englishName',
+    'spanishName',
+    'flat.rank',
+    'flat.family',
+    'flat.class',
+    'flat.genus',
+    'flat.species']
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'level' => 'exact',
+        'parent' => 'exact',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'flat.rank',
+    ]
+)]
 #[ApiFilter(
     SearchPropertyAliasFilter::class,
     properties: [
@@ -66,10 +98,11 @@ use Symfony\Component\Validator\Constraints as Assert;
     ]
 )]
 #[UniqueEntity(
-    fields: ['value'],
+    fields: ['value', 'parent'],
     message: 'Duplicate taxonomy value: {{ value }}.',
     groups: ['validation:voc_botany_taxonomy:create']
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the taxonomy because it is referenced by: {{ classes }}.', groups: ['validation:voc_botany_taxonomy:delete'])]
 class Taxonomy
 {
     #[ORM\Id,
@@ -94,51 +127,68 @@ class Taxonomy
     #[Assert\NotBlank(groups: [
         'validation:voc_botany_taxonomy:create',
     ])]
-    #[ApiProperty(required: true)]
     private string $value;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\ManyToOne(targetEntity: Taxonomy::class, inversedBy: 'children')]
+    #[ORM\JoinColumn(name: 'parent_id', referencedColumnName: 'id', nullable: true, onDelete: 'CASCADE')]
     #[Groups([
-        'voc_botany_taxonomy:read',
-        'voc_botany_taxonomy:acl:read',
         'voc_botany_taxonomy:create',
-        'voc_botany_taxonomy:update',
-        'voc_history_plant:acl:read',
-        'history_plant:export',
-        'botany_charcoal:export',
     ])]
-    #[Assert\NotBlank(groups: [
-        'validation:voc_botany_taxonomy:create',
-    ])]
-    #[ApiProperty(required: true)]
-    private string $vernacularName;
+    private ?Taxonomy $parent = null;
+
+    /** @var Collection<Taxonomy> */
+    #[ORM\OneToMany(targetEntity: Taxonomy::class, mappedBy: 'parent')]
+    private Collection $children;
 
     #[ORM\Column(type: 'string')]
     #[Groups([
         'voc_botany_taxonomy:read',
         'voc_botany_taxonomy:acl:read',
         'voc_botany_taxonomy:create',
-        'voc_botany_taxonomy:update',
-        'voc_history_plant:acl:read',
-        'history_plant:export',
-        'botany_charcoal:export',
     ])]
     #[Assert\NotBlank(groups: [
         'validation:voc_botany_taxonomy:create',
     ])]
-    #[ApiProperty(required: true)]
-    private string $class;
+    #[Assert\Choice(
+        choices: ['class', 'family', 'genus', 'species'],
+        groups: ['validation:voc_botany_taxonomy:create'],
+    )]
+    private string $level;
+
     #[ORM\Column(type: 'string', nullable: true)]
     #[Groups([
         'voc_botany_taxonomy:read',
         'voc_botany_taxonomy:acl:read',
         'voc_botany_taxonomy:create',
         'voc_botany_taxonomy:update',
-        'voc_history_plant:acl:read',
-        'history_plant:export',
-        'botany_charcoal:export',
     ])]
-    private ?string $family = null;
+    private ?string $spanishName = null;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Groups([
+        'voc_botany_taxonomy:read',
+        'voc_botany_taxonomy:acl:read',
+        'voc_botany_taxonomy:create',
+        'voc_botany_taxonomy:update',
+    ])]
+    private ?string $englishName = null;
+
+    #[ORM\OneToOne(targetEntity: BotanyTaxonomyView::class, mappedBy: 'taxonomy', fetch: 'LAZY')]
+    #[Groups([
+        'voc_botany_taxonomy:read',
+        'voc_botany_taxonomy:acl:read',
+        'voc_history_plant:read',
+        'voc_history_plant:acl:read',
+        'botany_seed:export',
+        'botany_charcoal:export',
+        'history_plant:export',
+    ])]
+    private ?BotanyTaxonomyView $flat = null;
+
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -157,39 +207,62 @@ class Taxonomy
         return $this;
     }
 
-    public function getVernacularName(): string
+    public function getParent(): ?Taxonomy
     {
-        return $this->vernacularName;
+        return $this->parent;
     }
 
-    public function setVernacularName(string $vernacularName): Taxonomy
+    public function setParent(?Taxonomy $parent): Taxonomy
     {
-        $this->vernacularName = $vernacularName;
+        $this->parent = $parent;
 
         return $this;
     }
 
-    public function getClass(): string
+    /** @return Collection<Taxonomy> */
+    public function getChildren(): Collection
     {
-        return $this->class;
+        return $this->children;
     }
 
-    public function setClass(string $class): Taxonomy
+    public function getLevel(): string
     {
-        $this->class = $class;
+        return $this->level;
+    }
+
+    public function setLevel(string $level): Taxonomy
+    {
+        $this->level = $level;
 
         return $this;
     }
 
-    public function getFamily(): ?string
+    public function getSpanishName(): ?string
     {
-        return $this->family;
+        return $this->spanishName;
     }
 
-    public function setFamily(?string $family): Taxonomy
+    public function setSpanishName(?string $spanishName): Taxonomy
     {
-        $this->family = $family;
+        $this->spanishName = $spanishName;
 
         return $this;
+    }
+
+    public function getEnglishName(): ?string
+    {
+        return $this->englishName;
+    }
+
+    public function setEnglishName(?string $englishName): Taxonomy
+    {
+        $this->englishName = $englishName;
+
+        return $this;
+    }
+
+    public function getFlat(): ?BotanyTaxonomyView
+    {
+        return $this->flat;
     }
 }

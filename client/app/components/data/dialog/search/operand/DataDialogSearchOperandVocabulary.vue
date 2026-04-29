@@ -3,7 +3,11 @@ import type { VocabularyGetCollectionPath } from '~~/types'
 import { required, minLength, withMessage } from '@regle/rules'
 
 const props = withDefaults(
-  defineProps<{ path: VocabularyGetCollectionPath; readonly?: boolean }>(),
+  defineProps<{
+    path: VocabularyGetCollectionPath
+    readonly?: boolean
+    queryParams?: Record<string, string>
+  }>(),
   {
     readonly: false,
   },
@@ -48,6 +52,7 @@ watch(
     <data-selection-vocabulary
       v-model="operands"
       :path="path"
+      :query-params="queryParams"
       :readonly
       :variant
       multiple

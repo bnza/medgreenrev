@@ -12,7 +12,7 @@ App\Entity\Data\Botany\Charcoal:
         notes: 'Branch fragment with visible growth marks, likely from pruned olive tree material.'
     charcoal_003:
         stratigraphicUnit: '@su_me_103'
-        taxonomy: '@botany_taxonomy_PISTACHIA_LENTISCUS'
+        taxonomy: '@botany_taxonomy_PISTACIA_LENTISCUS'
         element: '@botany_element_CAULIS'
         part: '@botany_element_part_MD'
         notes: 'Small stem fragment showing characteristic mastic tree anatomy with resin ducts.'
@@ -21,6 +21,7 @@ App\Entity\Data\Botany\Charcoal:
         taxonomy: '@botany_taxonomy_ARBUTUS_UNEDO'
         element: '@botany_element_CORTEX'
         part: '@botany_element_part_SU'
+        cf: true
     charcoal_005:
         stratigraphicUnit: '@su_ca_202'
         taxonomy: '@botany_taxonomy_CISTACEAE'
@@ -28,7 +29,7 @@ App\Entity\Data\Botany\Charcoal:
         part: '@botany_element_part_AP'
     charcoal_006:
         stratigraphicUnit: '@su_ca_203'
-        taxonomy: '@botany_taxonomy_FABACEAE_CYTISUS_GENISTA'
+        taxonomy: '@botany_taxonomy_FABACEAE'
         element: '@botany_element_LIGNUM'
         part: '@botany_element_part_DS'
         notes: 'Dense wood fragment from leguminous shrub, shows nitrogen-fixing root association scars.'
@@ -45,18 +46,19 @@ App\Entity\Data\Botany\Charcoal:
         part: '@botany_element_part_BS'
     charcoal_009:
         stratigraphicUnit: '@su_to_303'
-        taxonomy: '@botany_taxonomy_CF_OLEA_EUROPAEA'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
         element: '@botany_element_SEMEN'
         part: '@botany_element_part_TI'
+        sp: true
     charcoal_010:
         stratigraphicUnit: '@su_ni_401'
-        taxonomy: '@botany_taxonomy_PHILLYREA_RHAMNUS'
+        taxonomy: '@botany_taxonomy_PHILLYREA'
         element: '@botany_element_RADIX'
         part: '@botany_element_part_MG'
         notes: 'Root margin fragment showing secondary growth patterns typical of Mediterranean shrubs.'
     charcoal_011:
         stratigraphicUnit: '@su_ni_402'
-        taxonomy: '@botany_taxonomy_CF_PISTACHIA'
+        taxonomy: '@botany_taxonomy_PISTACIA'
         element: '@botany_element_GEMMA'
         part: '@botany_element_part_WH'
     charcoal_012:
@@ -67,20 +69,21 @@ App\Entity\Data\Botany\Charcoal:
         notes: 'Leaf blade middle section with preserved venation pattern, indicates autumn collection.'
     charcoal_013:
         stratigraphicUnit: '@su_se_501'
-        taxonomy: '@botany_taxonomy_POPULUS_SALIX'
+        taxonomy: '@botany_taxonomy_SALICACEAE'
         element: '@botany_element_BULBUS'
         part: '@botany_element_part_AP'
     charcoal_014:
         stratigraphicUnit: '@su_se_502'
-        taxonomy: '@botany_taxonomy_PRUNUS_TYPE'
+        taxonomy: '@botany_taxonomy_PRUNUS'
         element: '@botany_element_TUBER'
         part: '@botany_element_part_SU'
         notes: 'Tuber surface with visible storage starch granules, suggests underground organ exploitation.'
     charcoal_015:
         stratigraphicUnit: '@su_se_503'
-        taxonomy: '@botany_taxonomy_QUERCUS_COCCIFERA_ILEX'
+        taxonomy: '@botany_taxonomy_QUERCUS'
         element: '@botany_element_RHIZOMA'
         part: '@botany_element_part_NO'
+        type: true
     charcoal_016:
         stratigraphicUnit: '@su_me_104'
         taxonomy: '@botany_taxonomy_QUERCUS_SUBER'
@@ -103,6 +106,7 @@ App\Entity\Data\Botany\Charcoal:
         taxonomy: '@botany_taxonomy_TAXUS_BACCATA'
         element: '@botany_element_COROLLA'
         part: '@botany_element_part_AP'
+        cf: true
     charcoal_020:
         stratigraphicUnit: '@su_ca_204'
         taxonomy: '@botany_taxonomy_TAMARIX'
@@ -132,12 +136,13 @@ App\Entity\Data\Botany\Charcoal:
         notes: 'Inner fruit wall fragment retaining seed attachment scars, shows fruit processing activity.'
     charcoal_025:
         stratigraphicUnit: '@su_to_306'
-        taxonomy: '@botany_taxonomy_CF_CISTACEAE'
+        taxonomy: '@botany_taxonomy_CISTACEAE'
         element: '@botany_element_MESOCARPIUM'
         part: '@botany_element_part_MG'
+        sp: true
     charcoal_026:
         stratigraphicUnit: '@su_ni_404'
-        taxonomy: '@botany_taxonomy_FABACEAE_CYTISUS_GENISTA'
+        taxonomy: '@botany_taxonomy_FABACEAE'
         element: '@botany_element_EXOCARPIUM'
         part: '@botany_element_part_TI'
     charcoal_027:
@@ -158,13 +163,14 @@ App\Entity\Data\Botany\Charcoal:
         part: '@botany_element_part_BS'
     charcoal_030:
         stratigraphicUnit: '@su_se_505'
-        taxonomy: '@botany_taxonomy_PHILLYREA_RHAMNUS'
+        taxonomy: '@botany_taxonomy_PHILLYREA'
         element: '@botany_element_SPINA'
         part: '@botany_element_part_TI'
+        type: true
         notes: 'Thorn tip from shrub species, suggests collection of defensive plant structures.'
     #    charcoal_031:
     #        stratigraphicUnit: '@su_sc1_601'
-    #        taxonomy: '@botany_taxonomy_PISTACHIA_LENTISCUS'
+    #        taxonomy: '@botany_taxonomy_PISTACIA_LENTISCUS'
     #        element: '@botany_element_LIGNUM'
     #        part: '@botany_element_part_NO'
     #    charcoal_032:
@@ -175,12 +181,12 @@ App\Entity\Data\Botany\Charcoal:
     #        notes: 'Branch internode with visible lenticel patterns, indicates young growth material selection.'
     #    charcoal_033:
     #        stratigraphicUnit: '@su_sc1_603'
-    #        taxonomy: '@botany_taxonomy_POPULUS_SALIX'
+    #        taxonomy: '@botany_taxonomy_SALICACEAE'
     #        element: '@botany_element_CAULIS'
     #        part: '@botany_element_part_BR'
     #    charcoal_034:
     #        stratigraphicUnit: '@su_sc2_701'
-    #        taxonomy: '@botany_taxonomy_PRUNUS_TYPE'
+    #        taxonomy: '@botany_taxonomy_PRUNUS'
     #        element: '@botany_element_FOLIUM'
     #        part: '@botany_element_part_MG'
     #    charcoal_035:
@@ -190,7 +196,7 @@ App\Entity\Data\Botany\Charcoal:
     #        part: '@botany_element_part_DS'
     #    charcoal_036:
     #        stratigraphicUnit: '@su_sc2_703'
-    #        taxonomy: '@botany_taxonomy_QUERCUS_COCCIFERA_ILEX'
+    #        taxonomy: '@botany_taxonomy_QUERCUS'
     #        element: '@botany_element_RADIX'
     #        part: '@botany_element_part_AP'
     #        notes: 'Root apex with emerging lateral rootlets, shows active growth phase at time of burning.'
@@ -220,6 +226,7 @@ App\Entity\Data\Botany\Charcoal:
         taxonomy: '@botany_taxonomy_TAMARIX'
         element: '@botany_element_LAMINA'
         part: '@botany_element_part_TI'
+        cf: true
     charcoal_042:
         stratigraphicUnit: '@su_ca_208'
         taxonomy: '@botany_taxonomy_TETRACLINIS_ARTICULATA'
@@ -239,12 +246,12 @@ App\Entity\Data\Botany\Charcoal:
         notes: 'Strawberry tree tuber surface showing storage tissue organization, rare archaeological find.'
     charcoal_045:
         stratigraphicUnit: '@su_ni_407'
-        taxonomy: '@botany_taxonomy_CF_OLEA_EUROPAEA'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
         element: '@botany_element_RHIZOMA'
         part: '@botany_element_part_BR'
     charcoal_046:
         stratigraphicUnit: '@su_ni_408'
-        taxonomy: '@botany_taxonomy_CF_PISTACHIA'
+        taxonomy: '@botany_taxonomy_PISTACIA'
         element: '@botany_element_STOLON'
         part: '@botany_element_part_NO'
         notes: 'Stolon node from possible pistachio showing adventitious root development sites.'
@@ -253,6 +260,7 @@ App\Entity\Data\Botany\Charcoal:
         taxonomy: '@botany_taxonomy_CISTACEAE'
         element: '@botany_element_INFLORESCENTIA'
         part: '@botany_element_part_AP'
+        sp: true
     charcoal_048:
         stratigraphicUnit: '@su_se_507'
         taxonomy: '@botany_taxonomy_LAMIACEAE'
@@ -261,7 +269,7 @@ App\Entity\Data\Botany\Charcoal:
         notes: 'Distal calyx portion with fused sepals, characteristic of mint family floral architecture.'
 #    charcoal_049:
 #        stratigraphicUnit: '@su_sc3_804'
-#        taxonomy: '@botany_taxonomy_PHILLYREA_RHAMNUS'
+#        taxonomy: '@botany_taxonomy_PHILLYREA'
 #        element: '@botany_element_COROLLA'
 #        part: '@botany_element_part_MG'
 #    charcoal_050:

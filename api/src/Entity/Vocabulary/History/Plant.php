@@ -10,8 +10,10 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\SearchPropertyAliasFilter;
+use App\Entity\Data\View\HistoryPlantView;
 use App\Entity\Vocabulary\Botany\Taxonomy;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -46,12 +48,12 @@ use Symfony\Component\Validator\Constraints as Assert;
             securityPostDenormalize: 'is_granted("create", object)',
             validationContext: ['groups' => ['validation:voc_history_plant:create']],
         ),
-        //        new Patch(
-        //            uriTemplate: '/vocabulary/history/plants/{id}',
-        //            denormalizationContext: ['groups' => ['voc_history_plant:update']],
-        //            security: 'is_granted("update", object)',
-        //            validationContext: ['groups' => ['validation:voc_history_plant:update']],
-        //        ),
+        new Patch(
+            uriTemplate: '/vocabulary/history/plants/{id}',
+            denormalizationContext: ['groups' => ['voc_history_plant:update']],
+            security: 'is_granted("update", object)',
+            validationContext: ['groups' => ['validation:voc_history_plant:update']],
+        ),
         new Delete(
             uriTemplate: '/vocabulary/history/plants/{id}',
             security: 'is_granted("delete", object)'
@@ -59,6 +61,19 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
     paginationEnabled: false
 )]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'value',
+        'flat.value',
+        'taxonomy.flat.class',
+        'taxonomy.flat.family',
+        'taxonomy.flat.genus',
+        'taxonomy.flat.species',
+        'cf',
+        'sp',
+    ])]
 #[ApiFilter(
     SearchFilter::class,
     properties: [
@@ -77,7 +92,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Duplicate value: {{ value }}.',
     groups: ['validation:voc_history_plant:create']
 )]
-#[ApiFilter(OrderFilter::class, properties: ['id', 'value', 'taxonomy.value', 'taxonomy.vernacularName', 'taxonomy.class', 'taxonomy.family'])]
 class Plant
 {
     #[ORM\Id,
@@ -113,6 +127,37 @@ class Plant
     #[ApiProperty(required: true)]
     private string $value;
 
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'voc_history_plant:read',
+        'voc_history_plant:acl:read',
+        'voc_history_plant:create',
+        'voc_history_plant:update',
+        'history_plant:acl:read',
+        'history_plant:export',
+    ])]
+    private bool $cf = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'voc_history_plant:read',
+        'voc_history_plant:acl:read',
+        'voc_history_plant:create',
+        'voc_history_plant:update',
+        'history_plant:acl:read',
+        'history_plant:export',
+    ])]
+    private bool $sp = false;
+
+    #[ORM\OneToOne(targetEntity: HistoryPlantView::class, mappedBy: 'plant', fetch: 'LAZY')]
+    #[Groups([
+        'history_plant:acl:read',
+        'history_plant:export',
+        'voc_history_plant:read',
+        'voc_history_plant:acl:read',
+    ])]
+    private ?HistoryPlantView $flat = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -145,6 +190,35 @@ class Plant
     public function setValue(string $value): Plant
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function getFlat(): ?HistoryPlantView
+    {
+        return $this->flat;
+    }
+
+    public function isCf(): bool
+    {
+        return $this->cf;
+    }
+
+    public function setCf(bool $cf): Plant
+    {
+        $this->cf = $cf;
+
+        return $this;
+    }
+
+    public function isSp(): bool
+    {
+        return $this->sp;
+    }
+
+    public function setSp(bool $sp): Plant
+    {
+        $this->sp = $sp;
 
         return $this;
     }

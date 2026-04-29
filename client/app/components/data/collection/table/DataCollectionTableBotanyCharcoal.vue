@@ -12,6 +12,7 @@
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 import type { SearchableGetCollectionPath } from '~/utils/consts/configs/filters'
+import { ApiSpecialistRole } from '~/utils/consts/auth'
 
 const props = defineProps<{
   path: Path
@@ -23,7 +24,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const vocabularyZooTaxonomy = useVocabularyStore(
+const vocabularyBotanyTaxonomy = useVocabularyStore(
   '/api/vocabulary/botany/taxonomies',
 )
 const vocabularyBotanyElements = useVocabularyStore(
@@ -78,16 +79,31 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.taxonomy.value`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy) }}
+      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy) }}
     </template>
-    <template #[`item.taxonomy.vernacularName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName') }}
+    <template #[`item.taxonomy.englishName`]="{ item }">
+      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName') }}
     </template>
-    <template #[`item.taxonomy.class`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'class') }}
+    <template #[`item.taxonomy.flat.class`]="{ item }">
+      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.class') }}
     </template>
-    <template #[`item.taxonomy.family`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'family') }}
+    <template #[`item.taxonomy.flat.family`]="{ item }">
+      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.family') }}
+    </template>
+    <template #[`item.taxonomy.flat.genus`]="{ item }">
+      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.genus') }}
+    </template>
+    <template #[`item.taxonomy.flat.species`]="{ item }">
+      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.species') }}
+    </template>
+    <template #[`item.cf`]="{ item }">
+      <v-checkbox-btn class="centered-item" :model-value="item.cf" readonly />
+    </template>
+    <template #[`item.sp`]="{ item }">
+      <v-checkbox-btn class="centered-item" :model-value="item.sp" readonly />
+    </template>
+    <template #[`item.type`]="{ item }">
+      <v-checkbox-btn class="centered-item" :model-value="item.type" readonly />
     </template>
     <template #[`item.element.value`]="{ item }">
       {{ vocabularyBotanyElements.getValue(item.element) }}

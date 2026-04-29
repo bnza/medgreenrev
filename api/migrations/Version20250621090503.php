@@ -14,7 +14,7 @@ final class Version20250621090503 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Full schema (tables, sequences, constraints)';
     }
 
     public function up(Schema $schema): void
@@ -138,7 +138,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_C57CC6465E237E06 ON archaeological_sites (name)');
         $this->addSql('CREATE INDEX IDX_C57CC646B03A8386 ON archaeological_sites (created_by_id)');
         $this->addSql('CREATE INDEX IDX_C57CC64698260155 ON archaeological_sites (region_id)');
-        $this->addSql('CREATE TABLE botany_charcoals (id BIGINT NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_element_id SMALLINT DEFAULT NULL, voc_element_part_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE botany_charcoals (id BIGINT NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, type BOOLEAN DEFAULT false NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_element_id SMALLINT DEFAULT NULL, voc_element_part_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_9114F6E9A502ADE ON botany_charcoals (stratigraphic_unit_id)');
         $this->addSql('CREATE INDEX IDX_9114F6E92A3A1291 ON botany_charcoals (voc_taxonomy_id)');
         $this->addSql('CREATE INDEX IDX_9114F6E9A28A5B17 ON botany_charcoals (voc_element_id)');
@@ -147,13 +147,14 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4371DD621D775834 ON vocabulary.botany_element_parts (value)');
         $this->addSql('CREATE TABLE vocabulary.botany_elements (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8E79D1AA1D775834 ON vocabulary.botany_elements (value)');
-        $this->addSql('CREATE TABLE botany_seeds (id BIGINT NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_element_id SMALLINT DEFAULT NULL, voc_element_part_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE botany_seeds (id BIGINT NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, type BOOLEAN DEFAULT false NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_element_id SMALLINT DEFAULT NULL, voc_element_part_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_BD686190A502ADE ON botany_seeds (stratigraphic_unit_id)');
         $this->addSql('CREATE INDEX IDX_BD6861902A3A1291 ON botany_seeds (voc_taxonomy_id)');
         $this->addSql('CREATE INDEX IDX_BD686190A28A5B17 ON botany_seeds (voc_element_id)');
         $this->addSql('CREATE INDEX IDX_BD68619024B9A4F9 ON botany_seeds (voc_element_part_id)');
-        $this->addSql('CREATE TABLE vocabulary.botany_taxonomy (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, vernacular_name VARCHAR(255) NOT NULL, class VARCHAR(255) NOT NULL, family VARCHAR(255) DEFAULT NULL, PRIMARY KEY (id))');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_37216ECA1D775834 ON vocabulary.botany_taxonomy (value)');
+        $this->addSql('CREATE TABLE vocabulary.botany_taxonomy (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, level VARCHAR(255) NOT NULL, spanish_name VARCHAR(255) DEFAULT NULL, english_name VARCHAR(255) DEFAULT NULL, parent_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE INDEX IDX_37216ECA727ACA70 ON vocabulary.botany_taxonomy (parent_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_37216ECA1D775834727ACA70 ON vocabulary.botany_taxonomy (value, parent_id)');
         $this->addSql('CREATE TABLE vocabulary.centuries (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, chronology_lower SMALLINT NOT NULL, chronology_upper SMALLINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_A78F6A3D1D775834 ON vocabulary.centuries (value)');
         $this->addSql('CREATE TABLE context_stratigraphic_units (id BIGINT NOT NULL, su_id BIGINT NOT NULL, context_id BIGINT NOT NULL, PRIMARY KEY (id))');
@@ -189,7 +190,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_762190E51D935652 ON history_plants (plant_id)');
         $this->addSql('CREATE INDEX IDX_762190E564D218E ON history_plants (location_id)');
         $this->addSql('CREATE INDEX IDX_762190E5B03A8386 ON history_plants (created_by_id)');
-        $this->addSql('CREATE TABLE vocabulary.history_plants (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, taxonomy_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE vocabulary.history_plants (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, taxonomy_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_5EEC5C169557E6F6 ON vocabulary.history_plants (taxonomy_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_5EEC5C161D775834 ON vocabulary.history_plants (value)');
         $this->addSql('CREATE TABLE history_written_source_centuries (id BIGINT NOT NULL, written_source_id BIGINT NOT NULL, century_id SMALLINT NOT NULL, PRIMARY KEY (id))');
@@ -402,6 +403,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE botany_seeds ADD CONSTRAINT FK_BD6861902A3A1291 FOREIGN KEY (voc_taxonomy_id) REFERENCES vocabulary.botany_taxonomy (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_seeds ADD CONSTRAINT FK_BD686190A28A5B17 FOREIGN KEY (voc_element_id) REFERENCES vocabulary.botany_elements (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_seeds ADD CONSTRAINT FK_BD68619024B9A4F9 FOREIGN KEY (voc_element_part_id) REFERENCES vocabulary.botany_element_parts (id) ON DELETE RESTRICT NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE vocabulary.botany_taxonomy ADD CONSTRAINT FK_37216ECA727ACA70 FOREIGN KEY (parent_id) REFERENCES vocabulary.botany_taxonomy (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE context_stratigraphic_units ADD CONSTRAINT FK_A2BE5B62BDB1218E FOREIGN KEY (su_id) REFERENCES sus (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE context_stratigraphic_units ADD CONSTRAINT FK_A2BE5B626B00C1CF FOREIGN KEY (context_id) REFERENCES contexts (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE contexts ADD CONSTRAINT FK_AC51CEB5F6BD1646 FOREIGN KEY (site_id) REFERENCES archaeological_sites (id) ON DELETE RESTRICT NOT DEFERRABLE');
@@ -576,6 +578,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE botany_seeds DROP CONSTRAINT FK_BD6861902A3A1291');
         $this->addSql('ALTER TABLE botany_seeds DROP CONSTRAINT FK_BD686190A28A5B17');
         $this->addSql('ALTER TABLE botany_seeds DROP CONSTRAINT FK_BD68619024B9A4F9');
+        $this->addSql('ALTER TABLE vocabulary.botany_taxonomy DROP CONSTRAINT FK_37216ECA727ACA70');
         $this->addSql('ALTER TABLE context_stratigraphic_units DROP CONSTRAINT FK_A2BE5B62BDB1218E');
         $this->addSql('ALTER TABLE context_stratigraphic_units DROP CONSTRAINT FK_A2BE5B626B00C1CF');
         $this->addSql('ALTER TABLE contexts DROP CONSTRAINT FK_AC51CEB5F6BD1646');

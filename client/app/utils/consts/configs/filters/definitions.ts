@@ -53,6 +53,18 @@ const addToQueryObjectArray: AddToQueryObject = (queryObject, filter) => {
   queryObject[filter.property] = filter.operands
 }
 
+const addToQueryObjectArrayNumericId: AddToQueryObject = (
+  queryObject,
+  filter,
+) => {
+  queryObject[filter.property] = filter.operands.map(
+    (o: string | number | boolean) => {
+      const match = String(o).match(/\/(\d+)$/)
+      return match ? match[1] : o
+    },
+  )
+}
+
 const SearchExact: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: true,
@@ -138,20 +150,40 @@ const SelectionBuilding: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-const SelectionBotanyFamily: StaticFiltersDefinitionObject = {
+const VocabularyBotanyTaxonomyClass: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
-  multiple: true,
-  componentKey: 'Selection',
-  path: '/api/list/vocabulary/botany/taxonomy_families',
-  addToQueryObject: addToQueryObjectMultiple,
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/taxonomies',
+  queryParams: { level: 'class' },
+  addToQueryObject: addToQueryObjectArrayNumericId,
 }
 
-const SelectionBotanyClass: StaticFiltersDefinitionObject = {
+const VocabularyBotanyTaxonomyFamily: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
-  multiple: true,
-  componentKey: 'Selection',
-  path: '/api/list/vocabulary/botany/taxonomy_classes',
-  addToQueryObject: addToQueryObjectArray,
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/taxonomies',
+  queryParams: { level: 'family' },
+  addToQueryObject: addToQueryObjectArrayNumericId,
+}
+
+const VocabularyBotanyTaxonomyGenus: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/taxonomies',
+  queryParams: { level: 'genus' },
+  addToQueryObject: addToQueryObjectArrayNumericId,
+}
+
+const VocabularyBotanyTaxonomySpecies: StaticFiltersDefinitionObject = {
+  operationLabel: 'equals',
+  multiple: false,
+  componentKey: 'Vocabulary',
+  path: '/api/vocabulary/botany/taxonomies',
+  queryParams: { level: 'species' },
+  addToQueryObject: addToQueryObjectArrayNumericId,
 }
 
 const SelectionContextType: StaticFiltersDefinitionObject = {
@@ -491,8 +523,10 @@ export const API_FILTERS = {
   SelectionAnalysisStatus,
   SelectionArea,
   SelectionBuilding,
-  SelectionBotanyClass,
-  SelectionBotanyFamily,
+  VocabularyBotanyTaxonomyClass,
+  VocabularyBotanyTaxonomyFamily,
+  VocabularyBotanyTaxonomyGenus,
+  VocabularyBotanyTaxonomySpecies,
   SelectionContextType,
   VocabularyIndividualSex,
   SelectionZooClass,
