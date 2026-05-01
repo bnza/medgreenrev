@@ -26,6 +26,7 @@ use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
+use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
@@ -175,6 +176,7 @@ class Analysis
     public const string TYPE_GEO = 'GEO';
     public const string TYPE_POL = 'POL';
     public const string TYPE_SDNA = 'SDNA';
+    public const string TYPE_PHY = 'PHY';
 
     public const array TYPES = [
         // Generated from fixtures: fixtures/vocabulary.analysis_type.yml
@@ -249,6 +251,10 @@ class Analysis
         self::TYPE_SDNA => [
             'group' => self::GROUP_SEDIMENT,
             'value' => 'sedimentary DNA',
+        ],
+        self::TYPE_PHY => [
+            'group' => self::GROUP_SEDIMENT,
+            'value' => 'phytoliths',
         ],
     ];
 
@@ -379,6 +385,9 @@ class Analysis
     #[ORM\OneToMany(targetEntity: AnalysisSample::class, mappedBy: 'analysis')]
     private Collection $subjectSamples;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSampleBotany::class, mappedBy: 'analysis')]
+    private Collection $subjectSampleBotany;
+
     #[ORM\OneToMany(targetEntity: AnalysisSampleMicrostratigraphy::class, mappedBy: 'analysis')]
     private Collection $subjectSampleMicrostratigraphy;
 
@@ -404,6 +413,7 @@ class Analysis
         $this->subjectIndividuals = new ArrayCollection();
         $this->subjectPottery = new ArrayCollection();
         $this->subjectSamples = new ArrayCollection();
+        $this->subjectSampleBotany = new ArrayCollection();
         $this->subjectSampleMicrostratigraphy = new ArrayCollection();
         $this->subjectSedimentCoreDepths = new ArrayCollection();
         $this->subjectSiteAnthropology = new ArrayCollection();
@@ -516,6 +526,11 @@ class Analysis
     public function getSubjectSamples(): Collection
     {
         return $this->subjectSamples;
+    }
+
+    public function getSubjectSampleBotany(): Collection
+    {
+        return $this->subjectSampleBotany;
     }
 
     public function getSubjectSampleMicrostratigraphy(): Collection

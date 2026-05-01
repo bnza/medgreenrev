@@ -3,11 +3,14 @@ import analysis from './data/analysis'
 import analysisBotanyCharcoal from './data/analysisBotanyCharcoal'
 import analysisBotanySeed from './data/analysisBotanySeed'
 import analysisContextBotany from './data/analysisContextBotany'
+import analysisContextBotanyTaxonomy from './data/analysisContextBotanyTaxonomy'
 import analysisContextZoo from './data/analysisContextZoo'
 import analysisIndividual from './data/analysisIndividual'
 import analysisPottery from './data/analysisPottery'
 import analysisSedimentCoreDepth from './data/analysisSedimentCoreDepth'
 import analysisSample from './data/analysisSample'
+import analysisSampleBotany from './data/analysisSampleBotany'
+import analysisSampleBotanyTaxonomy from './data/analysisSampleBotanyTaxonomy'
 import analysisSampleMicrostratigraphy from './data/analysisSampleMicrostratigraphy'
 import analysisSiteAnthropology from './data/analysisSiteAnthropology'
 import analysisSubject from './data/analysisSubject'
@@ -73,12 +76,19 @@ export const RESOURCE_CONFIG_MAP = {
     absDatingAnalysis.absDatingAnalysisZooTooth,
   '/api/data/analyses/botany/charcoals': analysisBotanyCharcoal,
   '/api/data/analyses/botany/seeds': analysisBotanySeed,
+  '/api/data/analyses/context_botany_taxonomies': analysisContextBotanyTaxonomy,
   '/api/data/analyses/contexts/botany': analysisContextBotany,
+  '/api/data/analyses/contexts/botany/{parentId}/taxonomies':
+    analysisContextBotanyTaxonomy,
   '/api/data/analyses/contexts/zoo': analysisContextZoo,
   '/api/data/analyses/individuals': analysisIndividual,
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/sediment_core_depths': analysisSedimentCoreDepth,
+  '/api/data/analyses/sample_botany_taxonomies': analysisSampleBotanyTaxonomy,
   '/api/data/analyses/samples': analysisSample,
+  '/api/data/analyses/samples/botany': analysisSampleBotany,
+  '/api/data/analyses/samples/botany/{parentId}/taxonomies':
+    analysisSampleBotanyTaxonomy,
   '/api/data/analyses/samples/microstratigraphy':
     analysisSampleMicrostratigraphy,
   '/api/data/analyses/archaeological_sites/anthropology':
@@ -125,12 +135,11 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/sample_stratigraphic_units': sampleStratigraphicUnit.config,
   '/api/data/samples': sample,
   '/api/data/samples/{parentId}/analyses': analysisSample,
+  '/api/data/samples/{parentId}/analyses/botany': analysisSampleBotany,
   '/api/data/samples/{parentId}/stratigraphic_units':
     sampleStratigraphicUnit.stratigraphicUnitSubResourceConfig,
 
   '/api/data/sampling_sites': samplingSite,
-  '/api/data/sampling_sites/{parentId}/sediment_cores/depths':
-    sedimentCoreDepth.samplingSiteSubResourceConfig,
 
   '/api/data/sediment_core_depths': sedimentCoreDepth.config,
   '/api/data/sediment_cores': sedimentCore,

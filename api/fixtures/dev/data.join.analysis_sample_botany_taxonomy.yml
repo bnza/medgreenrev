@@ -1,0 +1,120 @@
+App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy:
+    # sample_botany_analysis_1: Pollen spectrum - Cerealia-type, open agricultural landscape
+    sample_botany_analysis_1_1:
+        analysis: '@sample_botany_analysis_1'
+        taxonomy: '@botany_taxonomy_FABACEAE'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_1_2:
+        analysis: '@sample_botany_analysis_1'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+        cf: true
+        sp: false
+        type: false
+    sample_botany_analysis_1_3:
+        analysis: '@sample_botany_analysis_1'
+        taxonomy: '@botany_taxonomy_QUERCUS'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_1_4:
+        analysis: '@sample_botany_analysis_1'
+        taxonomy: '@botany_taxonomy_LAMIACEAE'
+        cf: false
+        sp: true
+        type: false
+
+    # sample_botany_analysis_2: Pollen assemblage - Quercus and Corylus woodland
+    sample_botany_analysis_2_1:
+        analysis: '@sample_botany_analysis_2'
+        taxonomy: '@botany_taxonomy_QUERCUS'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_2_2:
+        analysis: '@sample_botany_analysis_2'
+        taxonomy: '@botany_taxonomy_QUERCUS_SUBER'
+        cf: false
+        sp: false
+        type: true
+    sample_botany_analysis_2_3:
+        analysis: '@sample_botany_analysis_2'
+        taxonomy: '@botany_taxonomy_SALICACEAE'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_2_4:
+        analysis: '@sample_botany_analysis_2'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+        cf: false
+        sp: false
+        type: false
+
+    # sample_botany_analysis_3: Palynological assessment - ME site
+    sample_botany_analysis_3_1:
+        analysis: '@sample_botany_analysis_3'
+        taxonomy: '@botany_taxonomy_PISTACIA'
+        cf: true
+        sp: false
+        type: false
+    sample_botany_analysis_3_2:
+        analysis: '@sample_botany_analysis_3'
+        taxonomy: '@botany_taxonomy_CISTACEAE'
+        cf: false
+        sp: false
+        type: false
+
+    # sample_botany_analysis_4: Pollen analysis - woodland to pastoral transition
+    sample_botany_analysis_4_1:
+        analysis: '@sample_botany_analysis_4'
+        taxonomy: '@botany_taxonomy_POPULUS'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_4_2:
+        analysis: '@sample_botany_analysis_4'
+        taxonomy: '@botany_taxonomy_SALIX'
+        cf: false
+        sp: true
+        type: false
+    sample_botany_analysis_4_3:
+        analysis: '@sample_botany_analysis_4'
+        taxonomy: '@botany_taxonomy_ROSMARINUS_OFFICINALIS'
+        cf: false
+        sp: false
+        type: true
+
+    # sample_botany_analysis_5: sDNA metabarcoding - Triticum, Hordeum, Olea
+    sample_botany_analysis_5_1:
+        analysis: '@sample_botany_analysis_5'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_5_2:
+        analysis: '@sample_botany_analysis_5'
+        taxonomy: '@botany_taxonomy_FABACEAE'
+        cf: true
+        sp: false
+        type: false
+    sample_botany_analysis_5_3:
+        analysis: '@sample_botany_analysis_5'
+        taxonomy: '@botany_taxonomy_ACACIA'
+        cf: false
+        sp: false
+        type: false
+
+    # sample_botany_analysis_6: sDNA - Hordeum and Secale sequences
+    sample_botany_analysis_6_1:
+        analysis: '@sample_botany_analysis_6'
+        taxonomy: '@botany_taxonomy_PRUNUS'
+        cf: false
+        sp: false
+        type: false
+    sample_botany_analysis_6_2:
+        analysis: '@sample_botany_analysis_6'
+        taxonomy: '@botany_taxonomy_TAMARIX'
+        cf: false
+        sp: false
+        type: true

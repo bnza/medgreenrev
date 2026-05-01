@@ -14,7 +14,7 @@ final class Version20250621090503 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Full schema (tables, sequences, constraints)';
+        return '';
     }
 
     public function up(Schema $schema): void
@@ -26,6 +26,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE analysis_join_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE analysis_context_botany_taxonomies_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE analysis_context_zoo_taxonomies_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE analysis_sample_botany_taxonomies_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE context_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE botany_item_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE vocabulary.botany_element_parts_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -83,7 +84,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_75FEF2947941003F ON analysis_botany_seeds (analysis_id)');
         $this->addSql('CREATE INDEX IDX_75FEF29423EDC87 ON analysis_botany_seeds (subject_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_75FEF29423EDC877941003F ON analysis_botany_seeds (subject_id, analysis_id)');
-        $this->addSql('CREATE TABLE analysis_context_botany_taxonomies (id BIGINT NOT NULL, analysis_id BIGINT NOT NULL, taxonomy_id SMALLINT NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE analysis_context_botany_taxonomies (id BIGINT NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, type BOOLEAN DEFAULT false NOT NULL, analysis_id BIGINT NOT NULL, taxonomy_id SMALLINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_94A277367941003F ON analysis_context_botany_taxonomies (analysis_id)');
         $this->addSql('CREATE INDEX IDX_94A277369557E6F6 ON analysis_context_botany_taxonomies (taxonomy_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_94A277367941003F9557E6F6 ON analysis_context_botany_taxonomies (analysis_id, taxonomy_id)');
@@ -107,10 +108,18 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_631A18587941003F ON analysis_potteries (analysis_id)');
         $this->addSql('CREATE INDEX IDX_631A185823EDC87 ON analysis_potteries (subject_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_631A185823EDC877941003F ON analysis_potteries (subject_id, analysis_id)');
+        $this->addSql('CREATE TABLE analysis_sample_botany_taxonomies (id BIGINT NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, type BOOLEAN DEFAULT false NOT NULL, analysis_id BIGINT NOT NULL, taxonomy_id SMALLINT NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE INDEX IDX_F4990A317941003F ON analysis_sample_botany_taxonomies (analysis_id)');
+        $this->addSql('CREATE INDEX IDX_F4990A319557E6F6 ON analysis_sample_botany_taxonomies (taxonomy_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_F4990A317941003F9557E6F6 ON analysis_sample_botany_taxonomies (analysis_id, taxonomy_id)');
         $this->addSql('CREATE TABLE analysis_samples (summary TEXT DEFAULT NULL, id BIGINT NOT NULL, analysis_id BIGINT NOT NULL, subject_id BIGINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_634331717941003F ON analysis_samples (analysis_id)');
         $this->addSql('CREATE INDEX IDX_6343317123EDC87 ON analysis_samples (subject_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_6343317123EDC877941003F ON analysis_samples (subject_id, analysis_id)');
+        $this->addSql('CREATE TABLE analysis_samples_botany (summary TEXT DEFAULT NULL, id BIGINT NOT NULL, analysis_id BIGINT NOT NULL, subject_id BIGINT NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE INDEX IDX_DAB964637941003F ON analysis_samples_botany (analysis_id)');
+        $this->addSql('CREATE INDEX IDX_DAB9646323EDC87 ON analysis_samples_botany (subject_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_DAB9646323EDC877941003F ON analysis_samples_botany (subject_id, analysis_id)');
         $this->addSql('CREATE TABLE analysis_samples_microstratigraphy (summary TEXT DEFAULT NULL, id BIGINT NOT NULL, analysis_id BIGINT NOT NULL, subject_id BIGINT NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_6ABB30D97941003F ON analysis_samples_microstratigraphy (analysis_id)');
         $this->addSql('CREATE INDEX IDX_6ABB30D923EDC87 ON analysis_samples_microstratigraphy (subject_id)');
@@ -381,8 +390,12 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE analysis_individuals ADD CONSTRAINT FK_D9985D0223EDC87 FOREIGN KEY (subject_id) REFERENCES individuals (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_potteries ADD CONSTRAINT FK_631A18587941003F FOREIGN KEY (analysis_id) REFERENCES analyses (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_potteries ADD CONSTRAINT FK_631A185823EDC87 FOREIGN KEY (subject_id) REFERENCES potteries (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE analysis_sample_botany_taxonomies ADD CONSTRAINT FK_F4990A317941003F FOREIGN KEY (analysis_id) REFERENCES analysis_samples_botany (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE analysis_sample_botany_taxonomies ADD CONSTRAINT FK_F4990A319557E6F6 FOREIGN KEY (taxonomy_id) REFERENCES vocabulary.botany_taxonomy (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_samples ADD CONSTRAINT FK_634331717941003F FOREIGN KEY (analysis_id) REFERENCES analyses (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_samples ADD CONSTRAINT FK_6343317123EDC87 FOREIGN KEY (subject_id) REFERENCES samples (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE analysis_samples_botany ADD CONSTRAINT FK_DAB964637941003F FOREIGN KEY (analysis_id) REFERENCES analyses (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE analysis_samples_botany ADD CONSTRAINT FK_DAB9646323EDC87 FOREIGN KEY (subject_id) REFERENCES samples (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_samples_microstratigraphy ADD CONSTRAINT FK_6ABB30D97941003F FOREIGN KEY (analysis_id) REFERENCES analyses (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_samples_microstratigraphy ADD CONSTRAINT FK_6ABB30D923EDC87 FOREIGN KEY (subject_id) REFERENCES samples (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE analysis_sediment_core_depths ADD CONSTRAINT FK_5AAF384D7941003F FOREIGN KEY (analysis_id) REFERENCES analyses (id) ON DELETE CASCADE NOT DEFERRABLE');
@@ -493,6 +506,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP SEQUENCE analysis_join_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE analysis_context_botany_taxonomies_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE analysis_context_zoo_taxonomies_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE analysis_sample_botany_taxonomies_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE context_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE botany_item_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE vocabulary.botany_element_parts_id_seq CASCADE');
@@ -556,8 +570,12 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE analysis_individuals DROP CONSTRAINT FK_D9985D0223EDC87');
         $this->addSql('ALTER TABLE analysis_potteries DROP CONSTRAINT FK_631A18587941003F');
         $this->addSql('ALTER TABLE analysis_potteries DROP CONSTRAINT FK_631A185823EDC87');
+        $this->addSql('ALTER TABLE analysis_sample_botany_taxonomies DROP CONSTRAINT FK_F4990A317941003F');
+        $this->addSql('ALTER TABLE analysis_sample_botany_taxonomies DROP CONSTRAINT FK_F4990A319557E6F6');
         $this->addSql('ALTER TABLE analysis_samples DROP CONSTRAINT FK_634331717941003F');
         $this->addSql('ALTER TABLE analysis_samples DROP CONSTRAINT FK_6343317123EDC87');
+        $this->addSql('ALTER TABLE analysis_samples_botany DROP CONSTRAINT FK_DAB964637941003F');
+        $this->addSql('ALTER TABLE analysis_samples_botany DROP CONSTRAINT FK_DAB9646323EDC87');
         $this->addSql('ALTER TABLE analysis_samples_microstratigraphy DROP CONSTRAINT FK_6ABB30D97941003F');
         $this->addSql('ALTER TABLE analysis_samples_microstratigraphy DROP CONSTRAINT FK_6ABB30D923EDC87');
         $this->addSql('ALTER TABLE analysis_sediment_core_depths DROP CONSTRAINT FK_5AAF384D7941003F');
@@ -676,7 +694,9 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP TABLE analysis_contexts_zoo');
         $this->addSql('DROP TABLE analysis_individuals');
         $this->addSql('DROP TABLE analysis_potteries');
+        $this->addSql('DROP TABLE analysis_sample_botany_taxonomies');
         $this->addSql('DROP TABLE analysis_samples');
+        $this->addSql('DROP TABLE analysis_samples_botany');
         $this->addSql('DROP TABLE analysis_samples_microstratigraphy');
         $this->addSql('DROP TABLE analysis_sediment_core_depths');
         $this->addSql('DROP TABLE analysis_sites_anthropology');

@@ -89,3 +89,8 @@ App\Entity\Vocabulary\Analysis\Type:
       code: GEO
       group: sediment
       value: geochemistry
+    voc__analysis__type__phytoliths:
+      id: 604
+      code: PHY
+      group: sediment
+      value: phytoliths

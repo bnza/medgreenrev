@@ -1,0 +1,27 @@
+App\Entity\Data\Join\Analysis\AnalysisSampleBotany:
+    # Pollen analyses
+    sample_botany_analysis_1:
+        subject: '@sample_ca_91'
+        analysis: '@analysis_48'
+        summary: 'Pollen spectrum dominated by Cerealia-type and Plantago lanceolata indicating open agricultural landscape around CA site.'
+    sample_botany_analysis_2:
+        subject: '@sample_se_118'
+        analysis: '@analysis_48'
+        summary: 'Pollen assemblage from waterlogged context at SE site records Quercus and Corylus woodland with cereal cultivation indicators.'
+    sample_botany_analysis_3:
+        subject: '@sample_me_5'
+        analysis: '@analysis_54'
+        summary: 'Palynological assessment of waterlogged deposit sample from ME site lower stratigraphic sequence.'
+    sample_botany_analysis_4:
+        subject: '@sample_ca_142'
+        analysis: '@analysis_48'
+        summary: 'Pollen analysis of CA site sediment core documents transition from woodland to open pastoral landscape.'
+    # Sedimentary DNA analyses
+    sample_botany_analysis_5:
+        subject: '@sample_to_134'
+        analysis: '@analysis_50'
+        summary: 'Sedimentary DNA metabarcoding detected Triticum, Hordeum and Olea sequences in occupation fill from TO site.'
+    sample_botany_analysis_6:
+        subject: '@sample_se_16'
+        analysis: '@analysis_50'
+        summary: 'Sedimentary DNA analysis of SE site deposit recovered Hordeum and Secale sequences confirming cereal storage context.'

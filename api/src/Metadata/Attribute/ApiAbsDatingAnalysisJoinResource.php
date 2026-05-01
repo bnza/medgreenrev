@@ -70,14 +70,14 @@ class ApiAbsDatingAnalysisJoinResource extends ApiResource
                 new Post(
                     uriTemplate: "/analyses/absolute_dating/$templateParentResourcePath",
                     denormalizationContext: [
-                        'groups' => ['abs_dating_join:create'],
+                        'groups' => ['abs_dating_analysis_join:create'],
                     ],
                     securityPostDenormalize: "is_granted('create', object)"
                 ),
                 new Patch(
                     uriTemplate: "/analyses/absolute_dating/$templateParentResourcePath/{id}",
                     denormalizationContext: [
-                        'groups' => ['abs_dating_join:update'],
+                        'groups' => ['abs_dating_analysis_join:update'],
                     ],
                     security: "is_granted('update', object)",
                 ),

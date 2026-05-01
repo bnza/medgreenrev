@@ -12,10 +12,13 @@ use App\Entity\Data\Individual;
 use App\Entity\Data\Join\Analysis\AnalysisBotanyCharcoal;
 use App\Entity\Data\Join\Analysis\AnalysisBotanySeed;
 use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
+use App\Entity\Data\Join\Analysis\AnalysisContextBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
+use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
+use App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
@@ -66,6 +69,12 @@ use App\State\ValidatorUniqueProvider;
             ],
         ),
         new Get(
+            uriTemplate: '/validator/unique/analyses/contexts/botany/taxonomies',
+            defaults: [
+                'resource' => AnalysisContextBotanyTaxonomy::class,
+            ],
+        ),
+        new Get(
             uriTemplate: '/validator/unique/analyses/contexts/zoo',
             defaults: [
                 'resource' => AnalysisContextZoo::class,
@@ -87,6 +96,18 @@ use App\State\ValidatorUniqueProvider;
             uriTemplate: '/validator/unique/analyses/samples',
             defaults: [
                 'resource' => AnalysisSample::class,
+            ],
+        ),
+        new Get(
+            uriTemplate: '/validator/unique/analyses/samples/botany',
+            defaults: [
+                'resource' => AnalysisSampleBotany::class,
+            ],
+        ),
+        new Get(
+            uriTemplate: '/validator/unique/analyses/samples/botany/taxonomies',
+            defaults: [
+                'resource' => AnalysisSampleBotanyTaxonomy::class,
             ],
         ),
         new Get(

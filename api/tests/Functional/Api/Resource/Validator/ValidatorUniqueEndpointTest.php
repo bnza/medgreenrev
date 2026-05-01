@@ -237,6 +237,145 @@ class ValidatorUniqueEndpointTest extends ApiTestCase
         $this->assertSame(1, $responseData['valid'], 'Non-existing botany charcoal analysis association should be unique');
     }
 
+    public function testValidatorUniqueAnalysisContextBotanyTaxonomiesEndpointReturnFalseWhenCombinationExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing context/botany taxonomy analysis associations
+        $items = $this->getResourceCollectionMember('/api/data/analyses/context_botany_taxonomies');
+        $this->assertNotEmpty($items, 'Should have at least one context/botany taxonomy analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+        $taxonomyId = basename($existingAssociation['taxonomy']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/contexts/botany/taxonomies?analysis={$analysisId}&taxonomy={$taxonomyId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing analysis/context botany taxonomy association should not be unique');
+    }
+
+    public function testValidatorUniqueAnalysisContextBotanyTaxonomiesEndpointReturnTrueWhenCombinationNotExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing associations to pick an analysis
+        $items = $this->getResourceCollectionMember('/api/data/analyses/context_botany_taxonomies');
+        $this->assertNotEmpty($items, 'Should have at least one context/botany taxonomy analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+
+        // Pick a different taxonomy
+        $taxonomies = $this->getVocabulary(['botany', 'taxonomies']);
+        $taxonomy = array_find($taxonomies, fn ($item) => $item['@id'] !== $existingAssociation['taxonomy']);
+        $taxonomyId = basename($taxonomy['@id']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/contexts/botany/taxonomies?analysis={$analysisId}&taxonomy={$taxonomyId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing analysis/context botany taxonomy association should be unique');
+    }
+
+    public function testValidatorUniqueAnalysisSamplesBotanyEndpointReturnFalseWhenCombinationExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing sample/botany analysis associations
+        $items = $this->getResourceCollectionMember('/api/data/analyses/samples/botany');
+        $this->assertNotEmpty($items, 'Should have at least one sample/botany analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+        $subjectId = basename($existingAssociation['subject']['@id']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/samples/botany?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing analysis/sample botany association should not be unique');
+    }
+
+    public function testValidatorUniqueAnalysisSamplesBotanyEndpointReturnTrueWhenCombinationNotExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing associations to pick an analysis
+        $items = $this->getResourceCollectionMember('/api/data/analyses/samples/botany');
+        $this->assertNotEmpty($items, 'Should have at least one sample/botany analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisIri = $existingAssociation['analysis']['@id'];
+        $analysisId = basename($analysisIri);
+
+        // Pick a different sample (subject)
+        $subjects = $this->getSamples();
+        $subject = array_find($subjects, fn ($item) => $item['@id'] !== $existingAssociation['subject']['@id']);
+        $subjectId = basename($subject['@id']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/samples/botany?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing analysis/sample botany association should be unique');
+    }
+
+    public function testValidatorUniqueAnalysisSamplesBotanyTaxonomiesEndpointReturnFalseWhenCombinationExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing sample/botany taxonomy analysis associations
+        $items = $this->getResourceCollectionMember('/api/data/analyses/sample_botany_taxonomies');
+        $this->assertNotEmpty($items, 'Should have at least one sample/botany taxonomy analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+        $taxonomyId = basename($existingAssociation['taxonomy']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/samples/botany/taxonomies?analysis={$analysisId}&taxonomy={$taxonomyId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing analysis/sample botany taxonomy association should not be unique');
+    }
+
+    public function testValidatorUniqueAnalysisSamplesBotanyTaxonomiesEndpointReturnTrueWhenCombinationNotExists(): void
+    {
+        $client = self::createClient();
+
+        // Get existing associations to pick an analysis
+        $items = $this->getResourceCollectionMember('/api/data/analyses/sample_botany_taxonomies');
+        $this->assertNotEmpty($items, 'Should have at least one sample/botany taxonomy analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+
+        // Pick a different taxonomy
+        $taxonomies = $this->getVocabulary(['botany', 'taxonomies']);
+        $taxonomy = array_find($taxonomies, fn ($item) => $item['@id'] !== $existingAssociation['taxonomy']);
+        $taxonomyId = basename($taxonomy['@id']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/samples/botany/taxonomies?analysis={$analysisId}&taxonomy={$taxonomyId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing analysis/sample botany taxonomy association should be unique');
+    }
+
     public function testValidatorUniqueSedimentCoreEndpointReturnFalseWhenCodeExists(): void
     {
         $client = self::createClient();

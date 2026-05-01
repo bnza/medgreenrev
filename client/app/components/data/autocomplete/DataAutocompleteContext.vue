@@ -3,11 +3,13 @@ import type { ApiResourcePath } from '~~/types'
 
 const model = defineModel<string>()
 interface Props {
-  path: ApiResourcePath
-  itemTitle: string
+  path?: ApiResourcePath
+  itemTitle?: string
   grantedOnly?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
+  path: '/api/data/contexts',
+  itemTitle: 'name',
   grantedOnly: false,
 })
 </script>

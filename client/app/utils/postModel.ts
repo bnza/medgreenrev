@@ -37,6 +37,22 @@ const EMPTY_POST_MODEL_MAP: {
     enabled: true,
     roles: [] as string[],
   }),
+  '/api/data/analyses/context_botany_taxonomies': (parent) => ({
+    analysis:
+      parent?.key === 'analysisContextBotany' ? parent.item['@id'] : undefined,
+    taxonomy: undefined,
+    cf: false,
+    sp: false,
+    type: false,
+  }),
+  '/api/data/analyses/sample_botany_taxonomies': (parent) => ({
+    analysis:
+      parent?.key === 'analysisSampleBotany' ? parent.item['@id'] : undefined,
+    taxonomy: undefined,
+    cf: false,
+    sp: false,
+    type: false,
+  }),
   '/api/data/analyses/botany/charcoals': (parent) => {
     return generateEmptyAnalysisSubjectModel('botanyCharcoal', parent)
   },
@@ -60,6 +76,9 @@ const EMPTY_POST_MODEL_MAP: {
   },
   '/api/data/analyses/zoo/teeth': (parent) => {
     return generateEmptyAnalysisSubjectModel('zooTooth', parent)
+  },
+  '/api/data/analyses/samples/botany': (parent) => {
+    return generateEmptyAnalysisSubjectModel('sample', parent)
   },
   '/api/data/analyses/samples/microstratigraphy': (parent) => {
     return generateEmptyAnalysisSubjectModel('sample', parent)

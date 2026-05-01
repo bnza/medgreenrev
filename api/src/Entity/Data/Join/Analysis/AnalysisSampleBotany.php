@@ -3,13 +3,12 @@
 namespace App\Entity\Data\Join\Analysis;
 
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
-use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
-use App\Entity\Data\Context;
+use App\Entity\Data\Sample;
 use App\Metadata\Attribute\ApiAnalysisJoinResource;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
 use Doctrine\Common\Collections\Collection;
@@ -20,29 +19,28 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 #[ORM\Table(
-    name: 'analysis_contexts_botany',
+    name: 'analysis_samples_botany',
 )]
 #[ORM\AssociationOverrides([
     new ORM\AssociationOverride(
         name: 'analysis',
-        inversedBy: 'subjectContextBotany'
+        inversedBy: 'subjectSampleBotany'
     ),
 ])]
 #[ApiAnalysisJoinResource(
-    subjectClass: Context::class,
+    subjectClass: Sample::class,
     templateParentResourceName: 'botany',
-    itemNormalizationGroups: ['context:acl:read', 'context_botany_analysis:acl:read'],
-    templateParentCategoryName: 'contexts'
-)]
-#[ApiFilter(
-    OrderFilter::class,
-    properties: ['subject.site.code', 'subject.name']
+    itemNormalizationGroups: ['sample_botany_analysis:acl:read', 'sample:acl:read'],
+    templateParentCategoryName: 'samples'
 )]
 #[ApiFilter(
     SearchFilter::class,
     properties: [
         'subject.site' => 'exact',
         'subject.type' => 'exact',
+        'subject.sampleStratigraphicUnits.stratigraphicUnit' => 'exact',
+        'subject.year' => 'exact',
+        'subject.number' => 'exact',
         'taxonomies.taxonomy' => 'exact',
         'taxonomies.taxonomy.flat.classId' => 'exact',
         'taxonomies.taxonomy.flat.familyId' => 'exact',
@@ -52,6 +50,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     RangeFilter::class,
     properties: [
+        'subject.year',
         'subject.number',
     ]
 )]
@@ -65,12 +64,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     UnaccentedSearchFilter::class,
     properties: [
-        'subject.name',
         'subject.description',
     ]
 )]
-#[ApiStratigraphicUnitSubresourceFilters('subject.contextStratigraphicUnits.stratigraphicUnit')]
-class AnalysisContextBotany extends BaseAnalysisJoin
+#[ApiStratigraphicUnitSubresourceFilters('subject.sampleStratigraphicUnits.stratigraphicUnit')]
+class AnalysisSampleBotany extends BaseAnalysisJoin
 {
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
@@ -78,31 +76,31 @@ class AnalysisContextBotany extends BaseAnalysisJoin
     #[SequenceGenerator(sequenceName: 'analysis_join_id_seq')]
     protected int $id;
 
-    #[ORM\ManyToOne(targetEntity: Context::class, inversedBy: 'botanyAnalyses')]
+    #[ORM\ManyToOne(targetEntity: Sample::class, inversedBy: 'botanyAnalyses')]
     #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     #[Groups([
         'analysis_join:acl:read',
         'analysis_join:create',
-        'context_botany_analysis:acl:read',
-        'context_botany_analysis:export',
+        'sample_botany_analysis:acl:read',
+        'sample_botany_analysis:export',
     ])]
     #[Assert\NotBlank(groups: ['validation:analysis_join:create'])]
-    private ?Context $subject = null;
+    private ?Sample $subject = null;
 
-    /** @var Collection<AnalysisContextBotanyTaxonomy> */
+    /** @var Collection<AnalysisSampleBotanyTaxonomy> */
     #[ORM\OneToMany(
-        targetEntity: AnalysisContextBotanyTaxonomy::class,
+        targetEntity: AnalysisSampleBotanyTaxonomy::class,
         mappedBy: 'analysis',
         cascade: ['remove'],
     )]
     private Collection $taxonomies;
 
-    public function getSubject(): ?Context
+    public function getSubject(): ?Sample
     {
         return $this->subject;
     }
 
-    public function setSubject(?Context $subject): self
+    public function setSubject(?Sample $subject): self
     {
         $this->subject = $subject;
 
@@ -119,7 +117,7 @@ class AnalysisContextBotany extends BaseAnalysisJoin
         return array_keys(
             array_filter(
                 Analysis::TYPES,
-                fn ($type) => in_array($type, [Analysis::TYPE_CARP, Analysis::TYPE_ANTX]),
+                fn ($type) => in_array($type, [Analysis::TYPE_SDNA, Analysis::TYPE_POL, Analysis::TYPE_PHY]),
                 ARRAY_FILTER_USE_KEY
             )
         );

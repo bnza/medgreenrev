@@ -10,10 +10,13 @@ use App\Entity\Data\Context;
 use App\Entity\Data\Join\Analysis\AnalysisBotanyCharcoal;
 use App\Entity\Data\Join\Analysis\AnalysisBotanySeed;
 use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
+use App\Entity\Data\Join\Analysis\AnalysisContextBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\Analysis\AnalysisIndividual;
 use App\Entity\Data\Join\Analysis\AnalysisPottery;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
+use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
+use App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
@@ -75,10 +78,13 @@ class ResourceUniqueValidator
         AnalysisBotanyCharcoal::class => [['subject', 'analysis']],
         AnalysisBotanySeed::class => [['subject', 'analysis']],
         AnalysisContextBotany::class => [['subject', 'analysis']],
+        AnalysisContextBotanyTaxonomy::class => [['analysis', 'taxonomy']],
         AnalysisContextZoo::class => [['subject', 'analysis']],
         AnalysisIndividual::class => [['subject', 'analysis']],
         AnalysisPottery::class => [['subject', 'analysis']],
         AnalysisSample::class => [['subject', 'analysis']],
+        AnalysisSampleBotany::class => [['subject', 'analysis']],
+        AnalysisSampleBotanyTaxonomy::class => [['analysis', 'taxonomy']],
         AnalysisSampleMicrostratigraphy::class => [['subject', 'analysis']],
         AnalysisSedimentCoreDepth::class => [['subject', 'analysis']],
         AnalysisSiteAnthropology::class => [['subject', 'analysis']],
@@ -103,7 +109,7 @@ class ResourceUniqueValidator
         StratigraphicUnit::class => [['site', 'year', 'number']],
         StratigraphicUnitRelationshipView::class => [['lftStratigraphicUnit', 'rgtStratigraphicUnit']],
         User::class => [['email']],
-        VocBotanyTaxonomy::class => [['value', 'parent']],
+        VocBotanyTaxonomy::class => [['value']],
         VocHistoryAnimal::class => [['value']],
         VocHistoryLocation::class => [['value']],
         VocHistoryPlant::class => [['value']],
@@ -123,12 +129,8 @@ class ResourceUniqueValidator
         $qb->select('r')
             ->from($resource, 'r');
         foreach ($criteria as $field => $value) {
-            if ('' === $value || null === $value) {
-                $qb->andWhere('r.'.$field.' IS NULL');
-            } else {
-                $qb->andWhere('r.'.$field.' = :'.$field);
-                $qb->setParameter($field, urldecode((string) $value));
-            }
+            $qb->andWhere('r.'.$field.' = :'.$field);
+            $qb->setParameter($field, urldecode((string) $value));
         }
         $result = $qb->getQuery()->getResult();
 

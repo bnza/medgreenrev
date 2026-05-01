@@ -970,7 +970,7 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/data/analysis_context_botany_taxonomies': {
+  '/api/data/analyses/context_botany_taxonomies': {
     parameters: {
       query?: never
       header?: never
@@ -981,16 +981,20 @@ export interface paths {
      * Retrieves the collection of AnalysisContextBotanyTaxonomy resources.
      * @description Retrieves the collection of AnalysisContextBotanyTaxonomy resources.
      */
-    get: operations['api_dataanalysis_context_botany_taxonomies_get_collection']
+    get: operations['api_dataanalysescontext_botany_taxonomies_get_collection']
     put?: never
-    post?: never
+    /**
+     * Creates a AnalysisContextBotanyTaxonomy resource.
+     * @description Creates a AnalysisContextBotanyTaxonomy resource.
+     */
+    post: operations['api_dataanalysescontext_botany_taxonomies_post']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/data/analysis_context_botany_taxonomies/{id}': {
+  '/api/data/analyses/context_botany_taxonomies/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -1001,7 +1005,35 @@ export interface paths {
      * Retrieves a AnalysisContextBotanyTaxonomy resource.
      * @description Retrieves a AnalysisContextBotanyTaxonomy resource.
      */
-    get: operations['api_dataanalysis_context_botany_taxonomies_id_get']
+    get: operations['api_dataanalysescontext_botany_taxonomies_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisContextBotanyTaxonomy resource.
+     * @description Removes the AnalysisContextBotanyTaxonomy resource.
+     */
+    delete: operations['api_dataanalysescontext_botany_taxonomies_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisContextBotanyTaxonomy resource.
+     * @description Updates the AnalysisContextBotanyTaxonomy resource.
+     */
+    patch: operations['api_dataanalysescontext_botany_taxonomies_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/contexts/botany/{parentId}/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisContextBotanyTaxonomy resources.
+     * @description Retrieves the collection of AnalysisContextBotanyTaxonomy resources.
+     */
+    get: operations['api_dataanalysescontextsbotany_parentIdtaxonomies_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -1410,6 +1442,170 @@ export interface paths {
      * @description Retrieves the collection of AnalysisSample resources.
      */
     get: operations['api_datasamples_parentIdanalyses_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/samples/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSampleBotany resources.
+     * @description Retrieves the collection of AnalysisSampleBotany resources.
+     */
+    get: operations['api_dataanalysessamplesbotany_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSampleBotany resource.
+     * @description Creates a AnalysisSampleBotany resource.
+     */
+    post: operations['api_dataanalysessamplesbotany_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/samples/botany/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSampleBotany resource.
+     * @description Retrieves a AnalysisSampleBotany resource.
+     */
+    get: operations['api_dataanalysessamplesbotany_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSampleBotany resource.
+     * @description Removes the AnalysisSampleBotany resource.
+     */
+    delete: operations['api_dataanalysessamplesbotany_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSampleBotany resource.
+     * @description Updates the AnalysisSampleBotany resource.
+     */
+    patch: operations['api_dataanalysessamplesbotany_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/samples/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSampleBotany resources.
+     * @description Retrieves the collection of AnalysisSampleBotany resources.
+     */
+    get: operations['api_dataanalyses_parentIdsamplesbotany_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/samples/{parentId}/analyses/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSampleBotany resources.
+     * @description Retrieves the collection of AnalysisSampleBotany resources.
+     */
+    get: operations['api_datasamples_parentIdanalysesbotany_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sample_botany_taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSampleBotanyTaxonomy resources.
+     * @description Retrieves the collection of AnalysisSampleBotanyTaxonomy resources.
+     */
+    get: operations['api_dataanalysessample_botany_taxonomies_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSampleBotanyTaxonomy resource.
+     * @description Creates a AnalysisSampleBotanyTaxonomy resource.
+     */
+    post: operations['api_dataanalysessample_botany_taxonomies_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sample_botany_taxonomies/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSampleBotanyTaxonomy resource.
+     * @description Retrieves a AnalysisSampleBotanyTaxonomy resource.
+     */
+    get: operations['api_dataanalysessample_botany_taxonomies_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSampleBotanyTaxonomy resource.
+     * @description Removes the AnalysisSampleBotanyTaxonomy resource.
+     */
+    delete: operations['api_dataanalysessample_botany_taxonomies_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSampleBotanyTaxonomy resource.
+     * @description Updates the AnalysisSampleBotanyTaxonomy resource.
+     */
+    patch: operations['api_dataanalysessample_botany_taxonomies_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/samples/botany/{parentId}/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSampleBotanyTaxonomy resources.
+     * @description Retrieves the collection of AnalysisSampleBotanyTaxonomy resources.
+     */
+    get: operations['api_dataanalysessamplesbotany_parentIdtaxonomies_get_collection']
     put?: never
     post?: never
     delete?: never
@@ -6218,6 +6414,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/contexts/botany/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysescontextsbotanytaxonomies_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/contexts/zoo': {
     parameters: {
       query?: never
@@ -6290,6 +6506,46 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniqueanalysessamples_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/samples/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessamplesbotany_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/samples/botany/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessamplesbotanytaxonomies_get']
     put?: never
     post?: never
     delete?: never
@@ -8916,11 +9172,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     }
-    'AbsDatingAnalysisBotanyCharcoal-abs_dating_join.create': Record<
-      string,
-      never
-    >
-    'AbsDatingAnalysisBotanyCharcoal-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisBotanyCharcoal-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanyCharcoal-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -8994,8 +9260,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisBotanySeed-abs_dating_join.create': Record<string, never>
-    'AbsDatingAnalysisBotanySeed-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisBotanySeed-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisBotanySeed-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9069,8 +9348,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisIndividual-abs_dating_join.create': Record<string, never>
-    'AbsDatingAnalysisIndividual-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisIndividual-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisIndividual-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9139,8 +9431,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisPottery-abs_dating_join.create': Record<string, never>
-    'AbsDatingAnalysisPottery-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisPottery-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisPottery-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9214,8 +9519,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisSample-abs_dating_join.create': Record<string, never>
-    'AbsDatingAnalysisSample-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisSample-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisSample-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9289,11 +9607,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.create': Record<
-      string,
-      never
-    >
-    'AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisSedimentCoreDepth-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisSedimentCoreDepth-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9362,8 +9690,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisZooBone-abs_dating_join.create': Record<string, never>
-    'AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisZooBone-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooBone-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9437,8 +9778,21 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'AbsDatingAnalysisZooTooth-abs_dating_join.create': Record<string, never>
-    'AbsDatingAnalysisZooTooth-abs_dating_join.update.jsonMergePatch': Record<
+    'AbsDatingAnalysisZooTooth-abs_dating_analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      datingLower?: number
+      datingUpper?: number
+      uncalibratedDating?: number
+      error?: number
+      calibrationCurve?: string
+      probability?: string | null
+      notes?: string | null
+    }
+    'AbsDatingAnalysisZooTooth-abs_dating_analysis_join.update.jsonMergePatch': Record<
       string,
       never
     >
@@ -9800,6 +10154,27 @@ export interface components {
         canDelete: boolean
       }
     }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+        | null
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly id: number | string
       identifier: string
@@ -10114,6 +10489,28 @@ export interface components {
         | null
       readonly code: string
     })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+        | null
+      readonly code: string
+    })
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10292,7 +10689,6 @@ export interface components {
        * @example https://example.com/
        */
       subject: string
-      taxonomies?: string[]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10301,13 +10697,11 @@ export interface components {
       summary?: string | null
     }
     'AnalysisContextBotany-analysis_join.update.jsonMergePatch': {
-      taxonomies?: string[]
       summary?: string | null
     }
     'AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       readonly id?: number | string
       subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
-      taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
       /** @description Access control metadata */
@@ -10327,25 +10721,31 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
-      taxonomies?: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read'][]
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
     })
-    'AnalysisContextBotanyTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string
+    'AnalysisContextBotany.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
         canUpdate: boolean
         canDelete: boolean
       }
-    }
-    'AnalysisContextBotanyTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+    } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    })
+    'AnalysisContextBotanyTaxonomy-context_botany_taxonomy.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10356,8 +10756,27 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
     }
-    'AnalysisContextBotanyTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+    'AnalysisContextBotanyTaxonomy-context_botany_taxonomy.update.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+    }
+    'AnalysisContextBotanyTaxonomy.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10365,12 +10784,32 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      readonly flat:
+        | components['schemas']['AnalysisContextBotanyTaxonomyView.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read']
+        | null
+      analysis?: components['schemas']['AnalysisContextBotany.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read']
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
       taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
     })
+    'AnalysisContextBotanyTaxonomyView.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'AnalysisContextZoo-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -10626,6 +11065,115 @@ export interface components {
         | null
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       summary?: string | null
+    })
+    'AnalysisSampleBotany-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    }
+    'AnalysisSampleBotany-analysis_join.update.jsonMergePatch': {
+      summary?: string | null
+    }
+    'AnalysisSampleBotany.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSampleBotany.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    })
+    'AnalysisSampleBotanyTaxonomy-sample_botany_taxonomy.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+    }
+    'AnalysisSampleBotanyTaxonomy-sample_botany_taxonomy.update.jsonMergePatch': {
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+    }
+    'AnalysisSampleBotanyTaxonomy.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      analysis?: components['schemas']['AnalysisSampleBotany.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
     })
     'AnalysisSampleMicrostratigraphy-analysis_join.create': {
       /**
@@ -11106,6 +11654,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       code?: string
       name?: string
@@ -11425,6 +11984,18 @@ export interface components {
       name?: string
     })
     'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      code?: string
+      name?: string
+    })
+    'ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -12367,6 +12938,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -12380,6 +12952,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -12393,6 +12966,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.csv-context.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -12405,6 +12979,7 @@ export interface components {
       type?: string
       site?: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.acl.read']
       name?: string
+      readonly code?: string
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -12418,6 +12993,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -12438,6 +13014,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
     })
     'Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       /** @description Access control metadata */
@@ -12452,6 +13029,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
     })
     'Context.jsonld-context.acl.read': {
       /** @description Access control metadata */
@@ -12466,6 +13044,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.jsonld-context.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
     })
     'Context.jsonld-context_stratigraphic_unit.acl.read': {
       /** @description Access control metadata */
@@ -12479,6 +13058,7 @@ export interface components {
       type?: string
       site?: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
+      readonly code?: string
     })
     'Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
       /** @description Access control metadata */
@@ -12493,6 +13073,7 @@ export interface components {
       site?: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
       description?: string | null
+      readonly code?: string
     })
     ContextStratigraphicUnit: {
       readonly id?: number | string
@@ -14547,6 +15128,22 @@ export interface components {
         canDelete: boolean
       }
     }
+    'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      readonly id?: number | string
+      site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'Sample.csv-sample.acl.read': {
       readonly id?: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-sample.acl.read']
@@ -14640,6 +15237,23 @@ export interface components {
       readonly id?: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    })
+    'Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       /** @default 0 */
       year: number
       number?: number
@@ -16529,6 +17143,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
@@ -16695,6 +17320,18 @@ export interface components {
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -16995,6 +17632,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      code?: string
+      group?: string
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       code?: string
       group?: string
@@ -17159,6 +17807,18 @@ export interface components {
       value: string
     })
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value: string
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -18045,6 +18705,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      code?: string
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocSampleType.csv-sample.acl.read': {
       code?: string
       value: string
@@ -18103,6 +18773,17 @@ export interface components {
       value: string
     })
     'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      value: string
+    })
+    'VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -18997,7 +19678,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisBotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -19124,7 +19805,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisBotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -19250,7 +19931,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisBotanySeed resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -19377,7 +20058,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisBotanySeed resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisBotanySeed-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisBotanySeed-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -19503,7 +20184,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisIndividual resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -19630,7 +20311,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisIndividual resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisIndividual-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisIndividual-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -19756,7 +20437,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisPottery resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisPottery-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisPottery-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -19883,7 +20564,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisPottery resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisPottery-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisPottery-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -20009,7 +20690,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisSample resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisSample-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisSample-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -20136,7 +20817,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisSample resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSample-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSample-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -20262,7 +20943,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -20389,7 +21070,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -20515,7 +21196,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -20642,7 +21323,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisZooBone-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisZooBone-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -20768,7 +21449,7 @@ export interface operations {
     /** @description The new AbsDatingAnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth-abs_dating_join.create']
+        'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth-abs_dating_analysis_join.create']
       }
     }
     responses: {
@@ -20895,7 +21576,7 @@ export interface operations {
     /** @description The updated AbsDatingAnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisZooTooth-abs_dating_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AbsDatingAnalysisZooTooth-abs_dating_analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -23137,13 +23818,34 @@ export interface operations {
       }
     }
   }
-  api_dataanalysis_context_botany_taxonomies_get_collection: {
+  api_dataanalysescontext_botany_taxonomies_get_collection: {
     parameters: {
       query?: {
         /** @description The collection page number */
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
       }
       header?: never
       path?: never
@@ -23158,13 +23860,60 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld'][]
+            member: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read'][]
           }
         }
       }
     }
   }
-  api_dataanalysis_context_botany_taxonomies_id_get: {
+  api_dataanalysescontext_botany_taxonomies_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisContextBotanyTaxonomy resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisContextBotanyTaxonomy-context_botany_taxonomy.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisContextBotanyTaxonomy resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysescontext_botany_taxonomies_id_get: {
     parameters: {
       query?: never
       header?: never
@@ -23182,7 +23931,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisContextBotanyTaxonomy.jsonld']
+          'application/ld+json': components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read']
         }
       }
       /** @description Not found */
@@ -23194,6 +23943,172 @@ export interface operations {
           'application/ld+json': components['schemas']['Error.jsonld']
           'application/problem+json': components['schemas']['Error']
           'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysescontext_botany_taxonomies_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotanyTaxonomy resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysescontext_botany_taxonomies_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisContextBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisContextBotanyTaxonomy resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisContextBotanyTaxonomy-context_botany_taxonomy.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisContextBotanyTaxonomy resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysescontextsbotany_parentIdtaxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisContextBotany identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisContextBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisContextBotanyTaxonomy.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read'][]
+          }
         }
       }
     }
@@ -25785,6 +26700,926 @@ export interface operations {
             member: components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
           }
           'text/csv': components['schemas']['AnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessamplesbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'taxonomies.taxonomy'?: string
+        'taxonomies.taxonomy[]'?: string[]
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        'exists[taxonomies]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
+         * @example cafè
+         */
+        'subject.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSampleBotany.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessamplesbotany_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSampleBotany resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSampleBotany-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSampleBotany resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessamplesbotany_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotany resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessamplesbotany_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotany resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessamplesbotany_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSampleBotany resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSampleBotany-analysis_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisSampleBotany resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdsamplesbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'taxonomies.taxonomy'?: string
+        'taxonomies.taxonomy[]'?: string[]
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        'exists[taxonomies]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
+         * @example cafè
+         */
+        'subject.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSampleBotany.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datasamples_parentIdanalysesbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.description]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.area[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.building[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.site[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year'?: number
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[]'?: number[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.number[lte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[between]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[gte]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lt]'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'subject.site'?: string
+        'subject.site[]'?: string[]
+        'subject.type'?: string
+        'subject.type[]'?: string[]
+        'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
+        'subject.sampleStratigraphicUnits.stratigraphicUnit[]'?: string[]
+        'subject.year'?: number
+        'subject.year[]'?: number[]
+        'subject.number'?: number
+        'subject.number[]'?: number[]
+        'taxonomies.taxonomy'?: string
+        'taxonomies.taxonomy[]'?: string[]
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.year[between]'?: string
+        'subject.year[gt]'?: string
+        'subject.year[gte]'?: string
+        'subject.year[lt]'?: string
+        'subject.year[lte]'?: string
+        'subject.number[between]'?: string
+        'subject.number[gt]'?: string
+        'subject.number[gte]'?: string
+        'subject.number[lt]'?: string
+        'subject.number[lte]'?: string
+        'exists[taxonomies]'?: boolean
+        'exists[subject.description]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.description
+         * @example cafè
+         */
+        'subject.description'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+      }
+      header?: never
+      path: {
+        /** @description Sample identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSampleBotany.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessample_botany_taxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSampleBotanyTaxonomy.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysessample_botany_taxonomies_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSampleBotanyTaxonomy resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSampleBotanyTaxonomy-sample_botany_taxonomy.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSampleBotanyTaxonomy resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSampleBotanyTaxonomy.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessample_botany_taxonomies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotanyTaxonomy resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSampleBotanyTaxonomy.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessample_botany_taxonomies_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotanyTaxonomy resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessample_botany_taxonomies_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSampleBotanyTaxonomy resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSampleBotanyTaxonomy-sample_botany_taxonomy.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisSampleBotanyTaxonomy resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSampleBotanyTaxonomy.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessamplesbotany_parentIdtaxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path: {
+        /** @description AnalysisSampleBotany identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSampleBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSampleBotanyTaxonomy.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read'][]
+          }
         }
       }
     }
@@ -46036,6 +47871,37 @@ export interface operations {
       }
     }
   }
+  api_validatoruniqueanalysescontextsbotanytaxonomies_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniqueanalysescontextszoo_get: {
     parameters: {
       query?: never
@@ -46130,6 +47996,68 @@ export interface operations {
     }
   }
   api_validatoruniqueanalysessamples_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessamplesbotany_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessamplesbotanytaxonomies_get: {
     parameters: {
       query?: never
       header?: never
@@ -49375,14 +51303,20 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
          */
         search?: string
-        'order[id]'?: 'asc' | 'desc'
-        'order[value]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never
@@ -49406,14 +51340,20 @@ export interface operations {
   api_vocabularyhistoryplants_get_collection: {
     parameters: {
       query?: {
+        'order[id]'?: 'asc' | 'desc'
+        'order[value]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
          * @example oak
          */
         search?: string
-        'order[id]'?: 'asc' | 'desc'
-        'order[value]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
       }
       header?: never
       path?: never

@@ -79,7 +79,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.taxonomy.value`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy) }}
+      {{ vocabularyBotanyTaxonomy.getValue(item) }}
     </template>
     <template #[`item.taxonomy.englishName`]="{ item }">
       {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName') }}

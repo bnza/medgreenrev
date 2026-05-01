@@ -19,6 +19,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\Analysis\AnalysisContextBotany;
 use App\Entity\Data\Join\Analysis\AnalysisContextZoo;
 use App\Entity\Data\Join\ContextStratigraphicUnit;
+use App\Entity\Data\View\Code\ContextCodeView;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
 use App\State\ContextPostProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -113,6 +114,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class Context
 {
+    #[ORM\OneToOne(
+        targetEntity: ContextCodeView::class,
+        mappedBy: 'context',
+    )]
+    private ?ContextCodeView $codeView = null;
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -295,5 +301,15 @@ class Context
         $this->zooAnalyses = $zooAnalyses;
 
         return $this;
+    }
+
+    #[Groups([
+        'context:acl:read',
+        'context:export',
+        'context_stratigraphic_unit:acl:read',
+    ])]
+    public function getCode(): string
+    {
+        return $this->codeView->getCode();
     }
 }

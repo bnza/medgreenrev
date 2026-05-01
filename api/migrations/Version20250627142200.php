@@ -265,6 +265,16 @@ final class Version20250627142200 extends AbstractMigration
         );
         $this->addSql(
             <<<'SQL'
+                CREATE OR REPLACE FUNCTION generate_code_context(site_code text, name text)
+                RETURNS text AS $$
+                BEGIN
+                    RETURN CONCAT(site_code, '.', name);
+                END;
+                $$ LANGUAGE plpgsql IMMUTABLE;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
                 CREATE OR REPLACE FUNCTION generate_code_individual(site_code text, identifier text)
                 RETURNS text AS $$
                 BEGIN
@@ -393,6 +403,29 @@ final class Version20250627142200 extends AbstractMigration
                 $$ LANGUAGE plpgsql IMMUTABLE;
             SQL
         );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION format_botany_taxonomy(
+                    level text,
+                    value text,
+                    genus text,
+                    species text,
+                    cf boolean,
+                    sp boolean,
+                    is_type boolean DEFAULT false
+                )
+                RETURNS text AS $$
+                SELECT (
+                    CASE
+                        WHEN level = 'species' AND cf THEN genus || ' cf. ' || species
+                        WHEN level = 'species' THEN value
+                        ELSE (CASE WHEN cf THEN 'cf. ' ELSE '' END) || value || (CASE WHEN sp THEN ' sp.' ELSE '' END)
+                    END
+                ) || (CASE WHEN is_type THEN ' type' ELSE '' END);
+                $$ LANGUAGE sql IMMUTABLE PARALLEL SAFE;
+            SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -499,5 +532,6 @@ final class Version20250627142200 extends AbstractMigration
         $this->addSql('DROP FUNCTION IF EXISTS generate_code_mu(text, integer, integer, text)');
         $this->addSql('DROP FUNCTION IF EXISTS generate_code_individual(text, text)');
         $this->addSql('DROP FUNCTION IF EXISTS generate_code_su(text, integer, integer)');
+        $this->addSql('DROP FUNCTION IF EXISTS format_botany_taxonomy(text, text, text, text, boolean, boolean, boolean)');
     }
 }

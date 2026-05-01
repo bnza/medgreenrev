@@ -36,7 +36,13 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
           <loading-component v-else />
         </v-tabs-window-item>
         <v-tabs-window-item value="taxonomies" data-testid="tab-taxonomies">
-          <data-taxonomy-botany-table :items="item.taxonomies" />
+          <data-collection-page-analysis-context-botany-taxonomy
+            path="/api/data/analyses/contexts/botany/{parentId}/taxonomies"
+            :parent="{
+              key: 'analysisContextBotany',
+              item,
+            }"
+          />
         </v-tabs-window-item>
         <v-tabs-window-item value="media" data-testid="tab-media">
           <data-media-object-join-container

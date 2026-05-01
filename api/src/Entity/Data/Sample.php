@@ -18,6 +18,7 @@ use ApiPlatform\Metadata\QueryParameter;
 use App\Doctrine\Filter\Granted\GrantedParentSiteFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\Analysis\AnalysisSample;
+use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\SampleStratigraphicUnit;
 use App\Entity\Data\View\Code\SampleCodeView;
@@ -221,6 +222,9 @@ class Sample
     #[ORM\OneToMany(targetEntity: AnalysisSample::class, mappedBy: 'subject')]
     private Collection $analyses;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSampleBotany::class, mappedBy: 'subject')]
+    private Collection $botanyAnalyses;
+
     #[ORM\OneToMany(targetEntity: AnalysisSampleMicrostratigraphy::class, mappedBy: 'subject')]
     private Collection $analysesMicrostratigraphicUnits;
 
@@ -241,6 +245,7 @@ class Sample
     {
         $this->sampleStratigraphicUnits = new ArrayCollection();
         $this->analyses = new ArrayCollection();
+        $this->botanyAnalyses = new ArrayCollection();
     }
 
     public function getId(): int

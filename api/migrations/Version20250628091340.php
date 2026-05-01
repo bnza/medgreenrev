@@ -91,15 +91,7 @@ final class Version20250628091340 extends AbstractMigration
                 SELECT
                     bs.id,
                     bs.id AS botany_seed_id,
-                    CASE
-                        WHEN vt.level = 'species' AND bs.cf THEN vt.genus || ' cf. ' || vt.species
-                        WHEN vt.level = 'species' THEN vt.value
-                        ELSE
-                            CASE WHEN bs.cf THEN 'cf. ' ELSE '' END ||
-                            vt.value ||
-                            CASE WHEN bs.sp THEN ' sp.' ELSE '' END
-                    END ||
-                    CASE WHEN bs.type THEN ' type' ELSE '' END
+                    format_botany_taxonomy(vt.level, vt.value, vt.genus, vt.species, bs.cf, bs.sp, bs.type)
                     AS taxonomy_value
                 FROM botany_seeds bs
                 LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bs.voc_taxonomy_id = vt.id;
@@ -112,15 +104,7 @@ final class Version20250628091340 extends AbstractMigration
                 SELECT
                     bc.id,
                     bc.id AS botany_charcoal_id,
-                    CASE
-                        WHEN vt.level = 'species' AND bc.cf THEN vt.genus || ' cf. ' || vt.species
-                        WHEN vt.level = 'species' THEN vt.value
-                        ELSE
-                            CASE WHEN bc.cf THEN 'cf. ' ELSE '' END ||
-                            vt.value ||
-                            CASE WHEN bc.sp THEN ' sp.' ELSE '' END
-                    END ||
-                    CASE WHEN bc.type THEN ' type' ELSE '' END
+                    format_botany_taxonomy(vt.level, vt.value, vt.genus, vt.species, bc.cf, bc.sp, bc.type)
                     AS taxonomy_value
                 FROM botany_charcoals bc
                 LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bc.voc_taxonomy_id = vt.id;
@@ -129,17 +113,36 @@ final class Version20250628091340 extends AbstractMigration
 
         $this->addSql(
             <<<'SQL'
+                CREATE OR REPLACE VIEW vw_analysis_context_botany_taxonomy AS
+                SELECT
+                    bc.id,
+                    bc.id AS botany_charcoal_id,
+                    format_botany_taxonomy(vt.level, vt.value, vt.genus, vt.species, bc.cf, bc.sp, bc.type)
+                    AS taxonomy_value
+                FROM analysis_context_botany_taxonomies bc
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bc.taxonomy_id = vt.id;
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW vw_analysis_sample_botany_taxonomy AS
+                SELECT
+                    bc.id,
+                    bc.id AS botany_charcoal_id,
+                    format_botany_taxonomy(vt.level, vt.value, vt.genus, vt.species, bc.cf, bc.sp, bc.type)
+                    AS taxonomy_value
+                FROM analysis_sample_botany_taxonomies bc
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bc.taxonomy_id = vt.id;
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
                 CREATE OR REPLACE VIEW vocabulary.vw_history_plant AS
                 SELECT
                     vp.id,
-                    CASE
-                        WHEN vbt.level = 'species' AND vp.cf THEN vbt.genus || ' cf. ' || vbt.species
-                        WHEN vbt.level = 'species' THEN vbt.value
-                        ELSE
-                            CASE WHEN vp.cf THEN 'cf. ' ELSE '' END ||
-                            vbt.value ||
-                            CASE WHEN vp.sp THEN ' sp.' ELSE '' END
-                    END
+                    format_botany_taxonomy(vbt.level, vbt.value, vbt.genus, vbt.species, vp.cf, vp.sp)
                     AS taxonomy_value
                 FROM vocabulary.history_plants vp
                 LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON vp.taxonomy_id = vbt.id;
@@ -383,6 +386,17 @@ final class Version20250628091340 extends AbstractMigration
                     generate_code_su(s.code, su.year, su.number) AS code
                 FROM sus su
                 JOIN archaeological_sites s ON s.id = su.site_id;
+            SQL
+        );
+        $this->addSql(
+            <<<'SQL'
+                CREATE VIEW vw_context_code AS
+                SELECT
+                    c.id,
+                    c.id AS context_id,
+                    generate_code_context(s.code, c.name) AS code
+                FROM contexts c
+                JOIN archaeological_sites s ON s.id = c.site_id;;
             SQL
         );
         $this->addSql(

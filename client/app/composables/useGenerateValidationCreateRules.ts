@@ -1,4 +1,5 @@
 import type {
+  AnalysisBotanyTaxonomyResourceKey,
   AnalysisSubjectResourceKey,
   FormDataFields,
   GetValidationPath,
@@ -35,6 +36,7 @@ const validationPaths: Record<AnalysisSubjectResourceKey, GetValidationPath> = {
   analysisIndividual: '/api/validator/unique/analyses/individuals',
   analysisPottery: '/api/validator/unique/analyses/potteries',
   analysisSample: '/api/validator/unique/analyses/samples',
+  analysisSampleBotany: '/api/validator/unique/analyses/samples/botany',
   analysisSampleMicrostratigraphy:
     '/api/validator/unique/analyses/samples/microstratigraphy',
   analysisSedimentCoreDepth:
@@ -70,6 +72,45 @@ export const generateAnalysisSubjectValidationRules = (
     analysis: {
       required,
       unique: uniqueAnalysis(() => model.value.subject),
+    },
+  }
+}
+
+const taxonomyValidationPaths: Record<
+  AnalysisBotanyTaxonomyResourceKey,
+  GetValidationPath
+> = {
+  analysisContextBotanyTaxonomy:
+    '/api/validator/unique/analyses/contexts/botany/taxonomies',
+  analysisSampleBotanyTaxonomy:
+    '/api/validator/unique/analyses/samples/botany/taxonomies',
+} as const
+
+export const generateAnalysisTaxonomySubjectValidationRules = (
+  resourceKey: AnalysisBotanyTaxonomyResourceKey,
+  model: Ref<Partial<{ analysis: string; taxonomy: string }>>,
+) => {
+  const path = taxonomyValidationPaths[resourceKey]
+
+  const uniqueAnalysis = useApiUniqueValidator(
+    path,
+    ['analysis', 'taxonomy'],
+    'Duplicate [analysis, taxonomy] combination',
+  )
+  const uniqueTaxonomy = useApiUniqueValidator(
+    path,
+    ['taxonomy', 'analysis'],
+    'Duplicate [analysis, taxonomy] combination',
+  )
+
+  return {
+    taxonomy: {
+      required,
+      unique: uniqueTaxonomy(() => model.value.analysis),
+    },
+    analysis: {
+      required,
+      unique: uniqueAnalysis(() => model.value.taxonomy),
     },
   }
 }
@@ -167,6 +208,12 @@ const CREATION_RULES: {
       model,
     )
   },
+  '/api/data/analyses/context_botany_taxonomies': (model) => {
+    return generateAnalysisTaxonomySubjectValidationRules(
+      'analysisContextBotanyTaxonomy',
+      model,
+    )
+  },
   '/api/data/analyses/contexts/zoo': (model) => {
     return generateAnalysisSubjectValidationRules('analysisContextZoo', model)
   },
@@ -181,6 +228,12 @@ const CREATION_RULES: {
   },
   '/api/data/analyses/zoo/teeth': (model) => {
     return generateAnalysisSubjectValidationRules('analysisZooTooth', model)
+  },
+  '/api/data/analyses/sample_botany_taxonomies': (model) => {
+    return generateAnalysisTaxonomySubjectValidationRules(
+      'analysisSampleBotanyTaxonomy',
+      model,
+    )
   },
   '/api/data/analyses/samples/microstratigraphy': (model) => {
     return generateAnalysisSubjectValidationRules(

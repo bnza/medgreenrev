@@ -16,20 +16,13 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
 <template>
   <data-collection-table :path @acl="acl = { ...acl, ...$event }">
     <template #[`item.id`]="{ item }">
-      <v-btn-group>
-        <navigation-resource-item-update
-          :id="item.id"
-          :disabled="!item._acl.canUpdate"
-          :app-path
-          @update="updateDialogState = { id: item.id }"
-        />
-        <navigation-resource-item-delete
-          :id="item.id"
-          :disabled="!item._acl.canDelete"
-          :app-path
-          @delete="deleteDialogState = { id: item.id }"
-        />
-      </v-btn-group>
+      <navigation-resource-item
+        :id="item.id"
+        :acl="item._acl"
+        :app-path
+        @delete="deleteDialogState = { id: item.id }"
+        @update="updateDialogState = { id: item.id }"
+      />
     </template>
 
     <template #dialogs="{ refetch }">

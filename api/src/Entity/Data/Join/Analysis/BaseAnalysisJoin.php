@@ -85,7 +85,7 @@ abstract class BaseAnalysisJoin
 
     #[ORM\ManyToOne(targetEntity: Analysis::class)]
     #[ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['analysis_join:acl:read', 'analysis_join:create', 'analysis_join:export'])]
+    #[Groups(['analysis_join:acl:read', 'analysis_join:create', 'analysis_join:export',         'context_botany_analysis:acl:read'])]
     #[Assert\NotBlank(groups: ['validation:analysis_join:create'])]
     #[AppAssert\PermittedAnalysisType(groups: ['validation:analysis_join:create'])]
     #[ApiProperty(required: true)]

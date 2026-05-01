@@ -297,6 +297,7 @@ type AnalysisAssemblageResourceKey = Extract<
   | 'analysisContextBotany'
   | 'analysisContextZoo'
   | 'analysisSampleMicrostratigraphy'
+  | 'analysisSampleBotany'
   | 'analysisSiteAnthropology'
 >
 
@@ -308,6 +309,11 @@ export type AnalysisSubjectWithAbsDatingResourceKey = Extract<
 export type AnalysisSubjectResourceKey =
   | AnalysisSubjectWithAbsDatingResourceKey
   | AnalysisAssemblageResourceKey
+
+type AnalysisBotanyTaxonomyResourceKey = Extract<
+  ApiResourceKey,
+  'analysisContextBotanyTaxonomy' | 'analysisSampleBotanyTaxonomy'
+>
 
 type AnalysisSubjectWithAbsDatingResourceMap = Pick<
   typeof API_RESOURCE_MAP,
