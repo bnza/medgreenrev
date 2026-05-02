@@ -40,6 +40,7 @@ class AnalysisSampleBotanyTaxonomy
     #[Groups([
         'sample_botany_analysis:acl:read',
         'sample_botany_taxonomy:create',
+        'sample_botany_taxonomy:update',
     ])]
     private Taxonomy $taxonomy;
 

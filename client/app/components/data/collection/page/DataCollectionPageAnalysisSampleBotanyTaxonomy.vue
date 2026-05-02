@@ -1,0 +1,33 @@
+<script
+  setup
+  lang="ts"
+  generic="
+    P extends Extract<
+      GetCollectionPath,
+      | '/api/data/analyses/sample_botany_taxonomies'
+      | '/api/data/analyses/samples/botany/{parentId}/taxonomies'
+    >
+  "
+>
+import type { GetCollectionPath, ResourceParent } from '~~/types'
+defineProps<{
+  path: P
+  parent?: ResourceParent<'analysisSampleBotany'>
+}>()
+const { isAuthenticated } = useAppAuth()
+const acl = ref({ canExport: isAuthenticated, canCreate: false })
+</script>
+<template>
+  <data-collection-page
+    :parent="Boolean(parent)"
+    :path
+    :show-back-button="!Boolean(parent)"
+    :acl
+  >
+    <data-collection-table-analysis-sample-botany-taxonomy
+      v-model:acl="acl"
+      :path
+      :parent
+    />
+  </data-collection-page>
+</template>

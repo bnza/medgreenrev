@@ -205,6 +205,22 @@ export const staticFiltersDefinitionContextZooParentSubject = {
   ...analysisContextZooPropertyStaticFiltersDefinition,
 }
 
+export const staticFiltersDefinitionSampleBotany = {
+  ...analysisSamplePropertyStaticFiltersDefinition,
+  ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
+    'taxonomies',
+    '',
+  ]),
+}
+
+export const staticFiltersDefinitionSampleBotanyParentSubject = {
+  ...analysisSamplePropertyStaticFiltersDefinition,
+  ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
+    'taxonomies',
+    '',
+  ]),
+}
+
 export const staticFiltersDefinitionIndividual = {
   ...analysisIndividualPropertyStaticFiltersDefinition,
   ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [

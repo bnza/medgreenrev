@@ -12,6 +12,8 @@ export {
   staticFiltersDefinitionPottery as analysisPottery,
   staticFiltersDefinitionSample as analysisSample,
   staticFiltersDefinitionSampleParentSubject as analysisSampleParentSubject,
+  staticFiltersDefinitionSampleBotany as analysisSampleBotany,
+  staticFiltersDefinitionSampleBotanyParentSubject as analysisSampleBotanyParentSubject,
   staticFiltersDefinitionPotteryParentSubject as analysisPotteryParentSubject,
   staticFiltersDefinitionSampleMicrostratigraphicUnit as analysisSampleMicrostratigraphicUnit,
   staticFiltersDefinitionSampleMicrostratigraphicUnitParentAnalysis as analysisSampleMicrostratigraphicUnitParentAnalysis,

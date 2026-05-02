@@ -60,6 +60,13 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           />
           <v-list-item
             nuxt
+            to="/data/analyses/samples/botany"
+            router
+            title="Sediment botany"
+            data-testid="app-nav-drawer-li-analyses-sediment-botany"
+          />
+          <v-list-item
+            nuxt
             to="/data/analyses/context/zoo"
             router
             title="Zooarchaeology"

@@ -11,6 +11,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/botany/charcoals'
   | '/api/data/analyses/botany/seeds'
   | '/api/data/analyses/contexts/botany'
+  | '/api/data/analyses/samples/botany'
   | '/api/data/analyses/individuals'
   | '/api/data/analyses/samples'
   | '/api/data/analyses/samples/microstratigraphy'
@@ -38,6 +39,7 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/individuals/{parentId}/analyses'
   | '/api/data/contexts'
   | '/api/data/contexts/{parentId}/analyses/botany'
+  | '/api/data/samples/{parentId}/analyses/botany'
   | '/api/data/contexts/{parentId}/analyses/zoo'
   | '/api/data/individuals'
   | '/api/data/media_objects'
@@ -96,6 +98,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/analyses/botany/seeds': resourceFilterDefinitions.analysisBotany,
   '/api/data/analyses/contexts/botany':
     resourceFilterDefinitions.analysisContextBotany,
+  '/api/data/analyses/samples/botany':
+    resourceFilterDefinitions.analysisSampleBotany,
   '/api/data/analyses/contexts/zoo':
     resourceFilterDefinitions.analysisContextZoo,
   '/api/data/analyses/individuals':
@@ -127,6 +131,8 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/contexts': resourceFilterDefinitions.context,
   '/api/data/contexts/{parentId}/analyses/botany':
     resourceFilterDefinitions.analysisContextBotanyParentSubject,
+  '/api/data/samples/{parentId}/analyses/botany':
+    resourceFilterDefinitions.analysisSampleBotanyParentSubject,
   '/api/data/contexts/{parentId}/analyses/zoo':
     resourceFilterDefinitions.analysisContextZooParentSubject,
   '/api/data/contexts/{parentId}/stratigraphic_units':

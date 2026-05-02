@@ -1,20 +1,16 @@
 <script setup lang="ts">
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
 import { required } from '@regle/rules'
-
-type Path = '/api/data/analyses/context_botany_taxonomies/{id}'
+type Path = '/api/data/analyses/sample_botany_taxonomies/{id}'
 const props = defineProps<{
   initialValue: PatchItemRequestMap[Path]
   fetchedItem?: GetItemResponseMap[Path]
 }>()
-
 const model = ref(structuredClone(props.initialValue))
-
 const { r$ } = useScopedRegle(model, {
   taxonomy: { required },
 })
 </script>
-
 <template>
   <v-row>
     <v-col cols="6" class="px-2">
@@ -24,8 +20,12 @@ const { r$ } = useScopedRegle(model, {
       />
     </v-col>
     <v-col cols="6" class="px-2">
-      <data-autocomplete-context
+      <data-autocomplete-sample
         :model-value="fetchedItem?.analysis?.subject"
+        path="/api/data/samples"
+        item-title="code"
+        label="sample"
+        :granted-only="true"
         disabled
       />
     </v-col>

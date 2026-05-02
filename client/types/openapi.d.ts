@@ -11147,6 +11147,11 @@ export interface components {
       type: boolean
     }
     'AnalysisSampleBotanyTaxonomy-sample_botany_taxonomy.update.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
       /** @default false */
       cf: boolean
       /** @default false */
