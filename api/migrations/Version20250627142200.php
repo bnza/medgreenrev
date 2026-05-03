@@ -110,6 +110,64 @@ final class Version20250627142200 extends AbstractMigration
                 SQL
         );
 
+        // Enforce allowed analysis types on sediment core depth botany join (POL, SDNA, PHY)
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION validate_analysis_sediment_core_depths_botany_type()
+                RETURNS TRIGGER AS $$
+                DECLARE allowed BOOLEAN;
+                BEGIN
+                    SELECT (t.code IN ('POL','SDNA','PHY')) INTO allowed
+                    FROM analyses a
+                    JOIN vocabulary.analysis_types t ON t.id = a.analysis_type_id
+                    WHERE a.id = NEW.analysis_id;
+                    IF NOT allowed THEN
+                        RAISE EXCEPTION 'Only POL (601), SDNA (602), or PHY (604) analysis types are allowed for sediment core depth botany join. Found analysis_id=%', NEW.analysis_id;
+                    END IF;
+                    RETURN NEW;
+                END;
+                $$ LANGUAGE plpgsql;
+            SQL
+        );
+
+        $this->addSql(<<<'SQL'
+            DROP TRIGGER IF EXISTS trg_validate_analysis_sediment_core_depths_botany_type ON analysis_sediment_core_depths_botany
+        SQL);
+        $this->addSql(<<<'SQL'
+            CREATE TRIGGER trg_validate_analysis_sediment_core_depths_botany_type
+            BEFORE INSERT OR UPDATE ON analysis_sediment_core_depths_botany
+            FOR EACH ROW EXECUTE FUNCTION validate_analysis_sediment_core_depths_botany_type()
+        SQL);
+
+        // Disallow botany sediment types (POL, SDNA, PHY) on the generic sediment core depth join
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE FUNCTION validate_analysis_sediment_core_depths_type_exclude_botany()
+                RETURNS TRIGGER AS $$
+                DECLARE is_botany BOOLEAN;
+                BEGIN
+                    SELECT (t.code IN ('POL','SDNA','PHY')) INTO is_botany
+                    FROM analyses a
+                    JOIN vocabulary.analysis_types t ON t.id = a.analysis_type_id
+                    WHERE a.id = NEW.analysis_id;
+                    IF is_botany THEN
+                        RAISE EXCEPTION 'Pollen (601), SDNA (602), and Phytoliths (604) must be linked via sediment core depth botany join, not analysis_sediment_core_depths. Found analysis_id=%', NEW.analysis_id;
+                    END IF;
+                    RETURN NEW;
+                END;
+                $$ LANGUAGE plpgsql;
+            SQL
+        );
+
+        $this->addSql(<<<'SQL'
+            DROP TRIGGER IF EXISTS trg_validate_analysis_sediment_core_depths_type_exclude_botany ON analysis_sediment_core_depths
+        SQL);
+        $this->addSql(<<<'SQL'
+            CREATE TRIGGER trg_validate_analysis_sediment_core_depths_type_exclude_botany
+            BEFORE INSERT OR UPDATE ON analysis_sediment_core_depths
+            FOR EACH ROW EXECUTE FUNCTION validate_analysis_sediment_core_depths_type_exclude_botany()
+        SQL);
+
         // Enforce: when type_group = 'absolute dating', id must be between 100 and 199 (inclusive)
         $this->addSql(
             <<<'SQL'

@@ -1,8 +1,7 @@
 import type { ResourceConfig } from '~~/types'
-
 const config: Readonly<ResourceConfig> = {
-  apiPath: '/api/data/analyses/sample_botany_taxonomies',
-  appPath: '/data/analyses/sample/botany',
+  apiPath: '/api/data/analyses/sediment_core_depth_botany_taxonomies',
+  appPath: '/data/analyses/sediment-core-depth/botany',
   defaultHeaders: [
     {
       key: 'id',
@@ -64,8 +63,10 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
   ],
-  labels: ['sample botany taxonomy', 'sample botany taxonomies'],
-  name: 'analysisSampleBotanyTaxonomy',
+  labels: [
+    'sediment core depth botany taxonomy',
+    'sediment core depth botany taxonomies',
+  ],
+  name: 'analysisSedimentCoreDepthBotanyTaxonomy',
 }
-
 export default config

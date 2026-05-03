@@ -38,6 +38,10 @@ export const API_RESOURCE_MAP = {
   analysisSampleMicrostratigraphy:
     '/api/data/analyses/samples/microstratigraphy',
   analysisSedimentCoreDepth: '/api/data/analyses/sediment_core_depths',
+  analysisSedimentCoreDepthBotany:
+    '/api/data/analyses/sediment_core_depths/botany',
+  analysisSedimentCoreDepthBotanyTaxonomy:
+    '/api/data/analyses/sediment_core_depth_botany_taxonomies',
   analysisSiteAnthropology:
     '/api/data/analyses/archaeological_sites/anthropology',
   analysisSubject: '/api/data/analysis_subjects',

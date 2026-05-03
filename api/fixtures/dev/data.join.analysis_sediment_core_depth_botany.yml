@@ -1,0 +1,7 @@
+App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotany:
+    sediment_core_depth_botany_analysis_1:
+        subject: '@sediment_core_sc2_1_su_sc2_701_105'
+        analysis: '@analysis_59'
+    sediment_core_depth_botany_analysis_2:
+        subject: '@sediment_core_sc2_2_su_sc1_602_105'
+        analysis: '@analysis_59'

@@ -107,6 +107,92 @@ class ValidatorUniqueEndpointTest extends ApiTestCase
         $this->assertSame(1, $responseData['valid'], 'Non-existing association should not be unique');
     }
 
+    public function testValidatorUniqueAnalysisSedimentCoreDepthBotanyEndpointReturnFalseWhenExists(): void
+    {
+        $client = self::createClient();
+
+        $items = $this->getResourceCollectionMember('/api/data/analyses/sediment_core_depths/botany');
+        $this->assertNotEmpty($items, 'Should have at least one sediment core depth botany analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+        $subjectId = basename($existingAssociation['subject']['@id']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/sediment_core_depths/botany?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing sediment-core-depth botany association should not be unique');
+    }
+
+    public function testValidatorUniqueAnalysisSedimentCoreDepthBotanyEndpointReturnTrueWhenNotExists(): void
+    {
+        $client = self::createClient();
+
+        $items = $this->getResourceCollectionMember('/api/data/analyses/sediment_core_depths/botany');
+        $this->assertNotEmpty($items, 'Should have at least one sediment core depth botany analysis for testing');
+
+        $existingAssociation = $items[0];
+        $analysisId = basename($existingAssociation['analysis']['@id']);
+
+        // Pick a different subject (depth) than the one used in the first association
+        $depths = $this->getResourceCollectionMember('/api/data/sediment_core_depths');
+        $other = array_find($depths, fn ($d) => $d['@id'] !== $existingAssociation['subject']['@id']);
+        $this->assertNotEmpty($other, 'Should have at least two sediment core depths for testing');
+        $subjectId = basename($other['@id']);
+
+        $response = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/sediment_core_depths/botany?analysis={$analysisId}&subject={$subjectId}");
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing sediment-core-depth botany association should be unique');
+    }
+
+    public function testValidatorUniqueAnalysisSedimentCoreDepthBotanyTaxonomyEndpoint(): void
+    {
+        $client = self::createClient();
+
+        $items = $this->getResourceCollectionMember('/api/data/analyses/sediment_core_depths/botany');
+        $this->assertNotEmpty($items, 'Should have at least one sediment core depth botany analysis for testing');
+
+        $existingAssociation = $items[0];
+        $parentId = basename($existingAssociation['id']);
+
+        // Fetch taxonomies for this analysis
+        $taxonomies = $this->getResourceCollectionMember("/api/data/analyses/sediment_core_depths/botany/{$parentId}/taxonomies");
+        $this->assertNotEmpty($taxonomies, 'Should have at least one taxonomy for testing');
+
+        $existing = $taxonomies[0];
+        // In taxonomy items, relations may be provided as IRIs (strings)
+        $analysisIri = is_array($existing['analysis']) ? $existing['analysis']['@id'] : $existing['analysis'];
+        $taxonomyIri = is_array($existing['taxonomy']) ? $existing['taxonomy']['@id'] : $existing['taxonomy'];
+        $analysisId = basename($analysisIri);
+        $taxonomyId = basename($taxonomyIri);
+
+        // Existing pair should be not unique
+        $resp1 = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/sediment_core_depths/botany/taxonomies?analysis={$analysisId}&taxonomy={$taxonomyId}");
+        $this->assertSame(200, $resp1->getStatusCode());
+        $data1 = $resp1->toArray();
+        $this->assertArrayHasKey('valid', $data1);
+        $this->assertSame(0, $data1['valid']);
+
+        // Choose a different taxonomy to make a unique pair
+        $allVocab = $this->getResourceCollectionMember('/api/vocabulary/botany/taxonomies');
+        $otherTax = array_find($allVocab, fn ($t) => $t['@id'] !== $taxonomyIri);
+        $this->assertNotEmpty($otherTax, 'Should have at least two taxa');
+        $otherTaxId = basename($otherTax['@id']);
+
+        $resp2 = $this->apiRequest($client, 'GET', "/api/validator/unique/analyses/sediment_core_depths/botany/taxonomies?analysis={$analysisId}&taxonomy={$otherTaxId}");
+        $this->assertSame(200, $resp2->getStatusCode());
+        $data2 = $resp2->toArray();
+        $this->assertArrayHasKey('valid', $data2);
+        $this->assertSame(1, $data2['valid']);
+    }
+
     public function testValidatorUniqueAnalysisContextZooEndpointReturnFalseWhenCodeExists(): void
     {
         $client = self::createClient();

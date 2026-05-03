@@ -8,6 +8,8 @@ import analysisContextZoo from './data/analysisContextZoo'
 import analysisIndividual from './data/analysisIndividual'
 import analysisPottery from './data/analysisPottery'
 import analysisSedimentCoreDepth from './data/analysisSedimentCoreDepth'
+import analysisSedimentCoreDepthBotany from './data/analysisSedimentCoreDepthBotany'
+import analysisSedimentCoreDepthBotanyTaxonomy from './data/analysisSedimentCoreDepthBotanyTaxonomy'
 import analysisSample from './data/analysisSample'
 import analysisSampleBotany from './data/analysisSampleBotany'
 import analysisSampleBotanyTaxonomy from './data/analysisSampleBotanyTaxonomy'
@@ -84,6 +86,12 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/analyses/individuals': analysisIndividual,
   '/api/data/analyses/potteries': analysisPottery,
   '/api/data/analyses/sediment_core_depths': analysisSedimentCoreDepth,
+  '/api/data/analyses/sediment_core_depths/botany':
+    analysisSedimentCoreDepthBotany,
+  '/api/data/analyses/sediment_core_depths/botany/{parentId}/taxonomies':
+    analysisSedimentCoreDepthBotanyTaxonomy,
+  '/api/data/analyses/sediment_core_depth_botany_taxonomies':
+    analysisSedimentCoreDepthBotanyTaxonomy,
   '/api/data/analyses/sample_botany_taxonomies': analysisSampleBotanyTaxonomy,
   '/api/data/analyses/samples': analysisSample,
   '/api/data/analyses/samples/botany': analysisSampleBotany,
@@ -145,6 +153,8 @@ export const RESOURCE_CONFIG_MAP = {
   '/api/data/sediment_cores': sedimentCore,
   '/api/data/sediment_core_depths/{parentId}/analyses':
     analysisSedimentCoreDepth,
+  '/api/data/sediment_core_depths/{parentId}/analyses/botany':
+    analysisSedimentCoreDepthBotany,
   '/api/data/sediment_cores/{parentId}/stratigraphic_units/depths':
     sedimentCoreDepth.stratigraphicUnitSubResourceConfig,
 

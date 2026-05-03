@@ -8,23 +8,21 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
-use App\Entity\Data\View\AnalysisSampleBotanyTaxonomyView;
+use App\Entity\Data\View\AnalysisSedimentCoreDepthBotanyTaxonomyView;
 use App\Entity\Vocabulary\Botany\Taxonomy;
 use App\Metadata\Attribute\ApiAnalysisBotanyTaxonomyResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity]
-#[ORM\Table(
-    name: 'analysis_sample_botany_taxonomies',
-)]
+#[ORM\Table(name: 'analysis_sediment_core_depth_botany_taxonomies')]
 #[ApiAnalysisBotanyTaxonomyResource(
-    taxonomyResourceName: 'sample_botany_taxonomies',
-    readGroup: 'sample_botany_analysis:acl:read',
-    createGroup: 'sample_botany_taxonomy:create',
-    updateGroup: 'sample_botany_taxonomy:update',
-    parentResourceName: 'samples/botany',
-    parentClass: AnalysisSampleBotany::class,
+    taxonomyResourceName: 'sediment_core_depth_botany_taxonomies',
+    readGroup: 'sediment_core_depth_botany_analysis:acl:read',
+    createGroup: 'sediment_core_depth_botany_taxonomy:create',
+    updateGroup: 'sediment_core_depth_botany_taxonomy:update',
+    parentResourceName: 'sediment_core_depths/botany',
+    parentClass: AnalysisSedimentCoreDepthBotany::class,
 )]
 #[ApiFilter(OrderFilter::class, properties: [
     'id',
@@ -62,59 +60,57 @@ use Symfony\Component\Serializer\Attribute\Groups;
     ]
 )]
 #[ORM\UniqueConstraint(columns: ['analysis_id', 'taxonomy_id'])]
-class AnalysisSampleBotanyTaxonomy
+class AnalysisSedimentCoreDepthBotanyTaxonomy
 {
-    #[ORM\Id,
-        ORM\GeneratedValue(strategy: 'SEQUENCE'),
-        ORM\Column(type: 'bigint', unique: true)]
+    #[ORM\Id, ORM\GeneratedValue(strategy: 'SEQUENCE'), ORM\Column(type: 'bigint', unique: true)]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: AnalysisSampleBotanyTaxonomyView::class, mappedBy: 'analysisSample', fetch: 'LAZY')]
+    #[ORM\OneToOne(targetEntity: AnalysisSedimentCoreDepthBotanyTaxonomyView::class, mappedBy: 'analysisSedimentCoreDepth', fetch: 'LAZY')]
     #[Groups([
-        'sample_botany_analysis:acl:read',
-        'sample_botany_analysis:export',
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_analysis:export',
     ])]
     #[ApiProperty(required: true)]
-    private AnalysisSampleBotanyTaxonomyView $flat;
+    private AnalysisSedimentCoreDepthBotanyTaxonomyView $flat;
 
-    #[ORM\ManyToOne(targetEntity: AnalysisSampleBotany::class, inversedBy: 'taxonomies')]
+    #[ORM\ManyToOne(targetEntity: AnalysisSedimentCoreDepthBotany::class, inversedBy: 'taxonomies')]
     #[ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     #[Groups([
-        'sample_botany_analysis:acl:read',
-        'sample_botany_taxonomy:create',
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_taxonomy:create',
     ])]
-    private AnalysisSampleBotany $analysis;
+    private AnalysisSedimentCoreDepthBotany $analysis;
 
     #[ORM\ManyToOne(targetEntity: Taxonomy::class)]
     #[ORM\JoinColumn(name: 'taxonomy_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     #[Groups([
-        'sample_botany_analysis:acl:read',
-        'sample_botany_taxonomy:create',
-        'sample_botany_taxonomy:update',
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_taxonomy:create',
+        'sediment_core_depth_botany_taxonomy:update',
     ])]
     private Taxonomy $taxonomy;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
     #[Groups([
-        'sample_botany_analysis:acl:read',
-        'sample_botany_taxonomy:create',
-        'sample_botany_taxonomy:update',
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_taxonomy:create',
+        'sediment_core_depth_botany_taxonomy:update',
     ])]
     private bool $cf = false;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
     #[Groups([
-        'sample_botany_analysis:acl:read',
-        'sample_botany_taxonomy:create',
-        'sample_botany_taxonomy:update',
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_taxonomy:create',
+        'sediment_core_depth_botany_taxonomy:update',
     ])]
     private bool $sp = false;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
     #[Groups([
-        'sample_botany_analysis:acl:read',
-        'sample_botany_taxonomy:create',
-        'sample_botany_taxonomy:update',
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_taxonomy:create',
+        'sediment_core_depth_botany_taxonomy:update',
     ])]
     private bool $type = false;
 
@@ -123,12 +119,12 @@ class AnalysisSampleBotanyTaxonomy
         return $this->id;
     }
 
-    public function getAnalysis(): AnalysisSampleBotany
+    public function getAnalysis(): AnalysisSedimentCoreDepthBotany
     {
         return $this->analysis;
     }
 
-    public function setAnalysis(AnalysisSampleBotany $analysis): AnalysisSampleBotanyTaxonomy
+    public function setAnalysis(AnalysisSedimentCoreDepthBotany $analysis): AnalysisSedimentCoreDepthBotanyTaxonomy
     {
         $this->analysis = $analysis;
 
@@ -140,7 +136,7 @@ class AnalysisSampleBotanyTaxonomy
         return $this->taxonomy;
     }
 
-    public function setTaxonomy(Taxonomy $taxonomy): AnalysisSampleBotanyTaxonomy
+    public function setTaxonomy(Taxonomy $taxonomy): AnalysisSedimentCoreDepthBotanyTaxonomy
     {
         $this->taxonomy = $taxonomy;
 
@@ -152,7 +148,7 @@ class AnalysisSampleBotanyTaxonomy
         return $this->cf;
     }
 
-    public function setCf(bool $cf): AnalysisSampleBotanyTaxonomy
+    public function setCf(bool $cf): AnalysisSedimentCoreDepthBotanyTaxonomy
     {
         $this->cf = $cf;
 
@@ -164,7 +160,7 @@ class AnalysisSampleBotanyTaxonomy
         return $this->sp;
     }
 
-    public function setSp(bool $sp): AnalysisSampleBotanyTaxonomy
+    public function setSp(bool $sp): AnalysisSedimentCoreDepthBotanyTaxonomy
     {
         $this->sp = $sp;
 
@@ -176,14 +172,14 @@ class AnalysisSampleBotanyTaxonomy
         return $this->type;
     }
 
-    public function setType(bool $type): AnalysisSampleBotanyTaxonomy
+    public function setType(bool $type): AnalysisSedimentCoreDepthBotanyTaxonomy
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function getFlat(): AnalysisSampleBotanyTaxonomyView
+    public function getFlat(): AnalysisSedimentCoreDepthBotanyTaxonomyView
     {
         return $this->flat;
     }

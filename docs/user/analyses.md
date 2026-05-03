@@ -27,20 +27,21 @@ Specimen analyses target a specific find or element. They are grouped by analyti
 | **Micromorphology** | THS | Thin Section |
 | **Microscope** | OPT | Optical |
 | | SEM | SEM |
-| **Sediment** | POL | Pollen |
-| | SDNA | Sedimentary DNA |
-| | GEO | Geochemistry |
+| **Sediment** | GEO | Geochemistry |
+|  | POL | Pollen |
+|  | SDNA | Sedimentary DNA |
+|  | PHY | Phytoliths |
 
 ### Assemblage Analyses
 
-Assemblage analyses operate at an aggregated level, associated with contexts or the site as a whole rather than individual specimens:
+Assemblage analyses operate at an aggregated level, associated with contexts, samples, sediment core depths, or the site as a whole rather than individual specimens:
 
-| Code | Analysis |
-|---|---|
-| ANTX | Anthracology |
-| ANTH | Anthropology |
-| CARP | Carpology |
-| ZOO | Zooarchaeology |
+| Sub-group | Code | Analysis |
+|---|---|---|
+| **Anthropology** | ANTH | Anthropology |
+| **Zooarchaeology** | ZOO | Zooarchaeology |
+| **Botany** | ANTX | Anthracology |
+| | CARP | Carpology |
 
 ## Analysis creation
 
@@ -70,24 +71,26 @@ You can associate analyses with any entity that is relevant to the study.
 
 The following table shows which analysis types are permitted for each resource:
 
-| Resource                                   | Permitted Groups                                        | Permitted Type Codes |
-|--------------------------------------------|---------------------------------------------------------|---|
-| Pottery analysis                           | absolute dating, microscope, material analysis          | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| Human individual analysis                  | absolute dating, microscope, material analysis          | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| Botany seed analysis                       | absolute dating, microscope, material analysis          | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| Botany charcoal analysis                   | absolute dating, microscope, material analysis          | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| Animal bone analysis                       | absolute dating, microscope, material analysis          | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| Animal tooth analysis                      | absolute dating, microscope, material analysis          | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| Sample analysis                            | absolute dating, material analysis, sediment            | `C14`, `THL`, `OSL`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA` |
-| Sample microstratigraphic analysis | micromorphology*                                        | `THS` |
-| Sediment core analysis                     | absolute dating, microscope, material analysis, sediment | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA` |
-| Zooarchaeological analysis                 | assemblage*                                             | `ZOO` |
-| Archaeobotanical analysis                  | assemblage*                                             | `CARP`, `ANTX` |
-| Anthropological analysis                   | assemblage*                                             | `ANTH` |
+| Resource                                            | Permitted Groups / Filter                                | Permitted Type Codes |
+|-----------------------------------------------------|----------------------------------------------------------|---|
+| Pottery analysis                                    | absolute dating, microscope, material analysis           | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| Human individual analysis                           | absolute dating, microscope, material analysis           | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| Botany seed analysis                                | absolute dating, microscope, material analysis           | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| Botany charcoal analysis                            | absolute dating, microscope, material analysis           | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| Animal bone analysis                                | absolute dating, microscope, material analysis           | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| Animal tooth analysis                               | absolute dating, microscope, material analysis           | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
+| Sample analysis                                     | absolute dating, material analysis, sediment             | `C14`, `THL`, `OSL`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA`, `PHY` |
+| Sample botany analysis (assemblage)                 | specific type codes*                                     | `POL`, `SDNA`, `PHY` |
+| Sample microstratigraphic analysis                  | micromorphology*                                         | `THS` |
+| Sediment core depth analysis                        | absolute dating, microscope, material analysis + `GEO`   | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| Sediment core depth botany analysis (assemblage)    | specific type codes*                                     | `POL`, `SDNA`, `PHY` |
+| Zooarchaeological analysis (context, assemblage)    | specific type codes*                                     | `ZOO` |
+| Archaeobotanical analysis (context, assemblage)     | specific type codes*                                     | `CARP`, `ANTX` |
+| Anthropological analysis (site, assemblage)         | specific type codes*                                     | `ANTH` |
 
-> **Note**: Zooarchaeological, archaeobotanical, and anthropological analyses filter by **specific type codes** (from the **assemblage** group). The remaining resources filter by **group**, so they automatically include any future types added to those groups.
+> **Note**: Sample botany, Sediment core depth botany, Zooarchaeological, Archaeobotanical, and Anthropological analyses filter by **specific type codes** (from the **assemblage** or **sediment** groups). The remaining resources filter by **group**, so they automatically include any future types added to those groups. The Sediment core depth analysis filters by group plus the explicit `GEO` type to keep geochemistry on the depth side while pollen / sedimentary DNA / phytoliths live on the dedicated Sediment core depth botany join.
 
-> **Note**: *Microstratigraphic, Zooarchaeological, archaeobotanical, and anthropological analyses have their own association tab in the parent resource's details page, so their association is slightly different from the other resources.
+> **Note**: *Sample botany, Sediment core depth botany, Microstratigraphic, Zooarchaeological, Archaeobotanical, and Anthropological analyses have their own association tab in the parent resource's details page, so their association is slightly different from the other resources.
 
 ### Microstratigraphic Analysis Association
 

@@ -1818,6 +1818,170 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/analyses/sediment_core_depths/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCoreDepthBotany resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepthBotany resources.
+     */
+    get: operations['api_dataanalysessediment_core_depthsbotany_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSedimentCoreDepthBotany resource.
+     * @description Creates a AnalysisSedimentCoreDepthBotany resource.
+     */
+    post: operations['api_dataanalysessediment_core_depthsbotany_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sediment_core_depths/botany/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSedimentCoreDepthBotany resource.
+     * @description Retrieves a AnalysisSedimentCoreDepthBotany resource.
+     */
+    get: operations['api_dataanalysessediment_core_depthsbotany_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSedimentCoreDepthBotany resource.
+     * @description Removes the AnalysisSedimentCoreDepthBotany resource.
+     */
+    delete: operations['api_dataanalysessediment_core_depthsbotany_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSedimentCoreDepthBotany resource.
+     * @description Updates the AnalysisSedimentCoreDepthBotany resource.
+     */
+    patch: operations['api_dataanalysessediment_core_depthsbotany_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/{parentId}/sediment_core_depths/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCoreDepthBotany resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepthBotany resources.
+     */
+    get: operations['api_dataanalyses_parentIdsediment_core_depthsbotany_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/sediment_core_depths/{parentId}/analyses/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCoreDepthBotany resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepthBotany resources.
+     */
+    get: operations['api_datasediment_core_depths_parentIdanalysesbotany_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sediment_core_depth_botany_taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCoreDepthBotanyTaxonomy resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepthBotanyTaxonomy resources.
+     */
+    get: operations['api_dataanalysessediment_core_depth_botany_taxonomies_get_collection']
+    put?: never
+    /**
+     * Creates a AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     * @description Creates a AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     */
+    post: operations['api_dataanalysessediment_core_depth_botany_taxonomies_post']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/analyses/sediment_core_depth_botany_taxonomies/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     * @description Retrieves a AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     */
+    get: operations['api_dataanalysessediment_core_depth_botany_taxonomies_id_get']
+    put?: never
+    post?: never
+    /**
+     * Removes the AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     * @description Removes the AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     */
+    delete: operations['api_dataanalysessediment_core_depth_botany_taxonomies_id_delete']
+    options?: never
+    head?: never
+    /**
+     * Updates the AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     * @description Updates the AnalysisSedimentCoreDepthBotanyTaxonomy resource.
+     */
+    patch: operations['api_dataanalysessediment_core_depth_botany_taxonomies_id_patch']
+    trace?: never
+  }
+  '/api/data/analyses/sediment_core_depths/botany/{parentId}/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of AnalysisSedimentCoreDepthBotanyTaxonomy resources.
+     * @description Retrieves the collection of AnalysisSedimentCoreDepthBotanyTaxonomy resources.
+     */
+    get: operations['api_dataanalysessediment_core_depthsbotany_parentIdtaxonomies_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/analyses/archaeological_sites/anthropology': {
     parameters: {
       query?: never
@@ -6594,6 +6758,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/analyses/sediment_core_depths/botany': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessediment_core_depthsbotany_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/analyses/sediment_core_depths/botany/taxonomies': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniqueanalysessediment_core_depthsbotanytaxonomies_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/analyses/zoo/bones': {
     parameters: {
       query?: never
@@ -10175,6 +10379,27 @@ export interface components {
         canDelete: boolean
       }
     }
+    'Analysis.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+        | null
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'Analysis.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       readonly id: number | string
       identifier: string
@@ -10508,6 +10733,28 @@ export interface components {
       summary?: string | null
       createdBy?:
         | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+        | null
+      readonly code: string
+    })
+    'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?:
+        | components['schemas']['User.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
         | null
       readonly code: string
     })
@@ -11167,6 +11414,9 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['AnalysisSampleBotanyTaxonomyView.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
+        | null
       analysis?: components['schemas']['AnalysisSampleBotany.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
       /**
        * Format: iri-reference
@@ -11180,6 +11430,15 @@ export interface components {
       /** @default false */
       type: boolean
     })
+    'AnalysisSampleBotanyTaxonomyView.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'AnalysisSampleMicrostratigraphy-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -11311,6 +11570,132 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       summary?: string | null
     })
+    'AnalysisSedimentCoreDepthBotany-analysis_join.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    }
+    'AnalysisSedimentCoreDepthBotany-analysis_join.update.jsonMergePatch': {
+      summary?: string | null
+    }
+    'AnalysisSedimentCoreDepthBotany.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      readonly id?: number | string
+      subject?: components['schemas']['SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      summary?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      subject?: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepthBotany.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      subject?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis: string
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepthBotanyTaxonomy-sediment_core_depth_botany_taxonomy.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      analysis?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+    }
+    'AnalysisSedimentCoreDepthBotanyTaxonomy-sediment_core_depth_botany_taxonomy.update.jsonMergePatch': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+    }
+    'AnalysisSedimentCoreDepthBotanyTaxonomy.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomyView.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read']
+        | null
+      analysis?: components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy?: string
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+    })
+    'AnalysisSedimentCoreDepthBotanyTaxonomyView.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read': {
+      readonly value?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'AnalysisSiteAnthropology-analysis_join.create': {
       /**
        * Format: iri-reference
@@ -15465,6 +15850,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      code?: string
+      name?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'SamplingSite.csv-sampling_site.acl.read': {
       readonly id?: number | string
       code?: string
@@ -15532,6 +15927,17 @@ export interface components {
     }
     'SamplingSite.geojson-feature_collection.json.read': Record<string, never>
     'SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      name?: string
+    })
+    'SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -15698,6 +16104,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'SamplingStratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      site: components['schemas']['SamplingSite.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      readonly code: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'SamplingStratigraphicUnit.csv-sampling_su.acl.read': {
       readonly id?: number | string
       site: components['schemas']['SamplingSite.csv-sampling_su.acl.read']
@@ -15748,6 +16164,17 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       site: components['schemas']['SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      readonly code: string
+    })
+    'SamplingStratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      site: components['schemas']['SamplingSite.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       readonly code: string
     })
     'SamplingStratigraphicUnit.jsonld-sampling_su.acl.read': {
@@ -15992,6 +16419,7 @@ export interface components {
       /** @default false */
       sedimentaryDna: boolean
       analyses?: string[]
+      readonly botanyAnalyses?: string[]
       readonly code?: string
     }
     'SedimentCoreDepth-feature_collection.json.read': Record<string, never>
@@ -16039,6 +16467,43 @@ export interface components {
        */
       sedimentCore: string
       stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
+      readonly code?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sedimentCore: string
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -16185,6 +16650,7 @@ export interface components {
       /** @default false */
       sedimentaryDna: boolean
       analyses?: string[]
+      readonly botanyAnalyses?: string[]
       readonly code?: string
     }
     'SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
@@ -16202,6 +16668,44 @@ export interface components {
        */
       sedimentCore: string
       stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
+      readonly code?: string
+    })
+    'SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sedimentCore: string
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       /** @example 8.5 */
       depthMin: string
       /** @example 9.0 */
@@ -17159,6 +17663,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'User.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** Format: uuid */
       readonly id?: string | null
@@ -17337,6 +17852,18 @@ export interface components {
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id?: string | null
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -17648,6 +18175,17 @@ export interface components {
         canDelete: boolean
       }
     }
+    'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      code?: string
+      group?: string
+      value: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocAnalysisType.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       code?: string
       group?: string
@@ -17824,6 +18362,18 @@ export interface components {
       value: string
     })
     'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      code?: string
+      group?: string
+      value: string
+    })
+    'VocAnalysisType.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -27383,6 +27933,27 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
       }
       header?: never
       path?: never
@@ -27606,6 +28177,27 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
       }
       header?: never
       path: {
@@ -29034,6 +29626,908 @@ export interface operations {
             member: components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
           }
           'text/csv': components['schemas']['AnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depthsbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.stratigraphicUnit.description]'?: boolean
+        'exists[subject.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.stratigraphicUnit.chronologyLower'?: number
+        'subject.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.stratigraphicUnit.chronologyUpper'?: number
+        'subject.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.stratigraphicUnit.number'?: number
+        'subject.stratigraphicUnit.number[]'?: number[]
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.interpretation'?: string
+        'subject.sedimentCore'?: string
+        'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.site'?: string
+        'subject.sedimentCore.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'taxonomies.taxonomy'?: string
+        'taxonomies.taxonomy[]'?: string[]
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.depthMin[between]'?: string
+        'subject.depthMin[gt]'?: string
+        'subject.depthMin[gte]'?: string
+        'subject.depthMin[lt]'?: string
+        'subject.depthMin[lte]'?: string
+        'subject.depthMax[between]'?: string
+        'subject.depthMax[gt]'?: string
+        'subject.depthMax[gte]'?: string
+        'subject.depthMax[lt]'?: string
+        'subject.depthMax[lte]'?: string
+        'exists[taxonomies]'?: boolean
+        'exists[subject.notes]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSedimentCoreDepthBotany.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depthsbotany_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSedimentCoreDepthBotany resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany-analysis_join.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depthsbotany_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depthsbotany_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depthsbotany_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotany identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSedimentCoreDepthBotany resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepthBotany-analysis_join.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalyses_parentIdsediment_core_depthsbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.stratigraphicUnit.description]'?: boolean
+        'exists[subject.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.stratigraphicUnit.chronologyLower'?: number
+        'subject.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.stratigraphicUnit.chronologyUpper'?: number
+        'subject.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.stratigraphicUnit.number'?: number
+        'subject.stratigraphicUnit.number[]'?: number[]
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.interpretation'?: string
+        'subject.sedimentCore'?: string
+        'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.site'?: string
+        'subject.sedimentCore.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'taxonomies.taxonomy'?: string
+        'taxonomies.taxonomy[]'?: string[]
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.depthMin[between]'?: string
+        'subject.depthMin[gt]'?: string
+        'subject.depthMin[gte]'?: string
+        'subject.depthMin[lt]'?: string
+        'subject.depthMin[lte]'?: string
+        'subject.depthMax[between]'?: string
+        'subject.depthMax[gt]'?: string
+        'subject.depthMax[gte]'?: string
+        'subject.depthMax[lt]'?: string
+        'subject.depthMax[lte]'?: string
+        'exists[taxonomies]'?: boolean
+        'exists[subject.notes]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description Analysis identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSedimentCoreDepthBotany.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read'][]
+        }
+      }
+    }
+  }
+  api_datasediment_core_depths_parentIdanalysesbotany_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'exists[subject.stratigraphicUnit.description]'?: boolean
+        'exists[subject.stratigraphicUnit.interpretation]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyLower]'?: boolean
+        'exists[subject.stratigraphicUnit.chronologyUpper]'?: boolean
+        'subject.stratigraphicUnit.chronologyLower'?: number
+        'subject.stratigraphicUnit.chronologyLower[]'?: number[]
+        'subject.stratigraphicUnit.chronologyUpper'?: number
+        'subject.stratigraphicUnit.chronologyUpper[]'?: number[]
+        'subject.stratigraphicUnit.number'?: number
+        'subject.stratigraphicUnit.number[]'?: number[]
+        'subject.stratigraphicUnit.site'?: string
+        'subject.stratigraphicUnit.site[]'?: string[]
+        'subject.stratigraphicUnit.chronologyLower[between]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[gte]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lt]'?: string
+        'subject.stratigraphicUnit.chronologyLower[lte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[between]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[gte]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lt]'?: string
+        'subject.stratigraphicUnit.chronologyUpper[lte]'?: string
+        'subject.stratigraphicUnit.number[between]'?: string
+        'subject.stratigraphicUnit.number[gt]'?: string
+        'subject.stratigraphicUnit.number[gte]'?: string
+        'subject.stratigraphicUnit.number[lt]'?: string
+        'subject.stratigraphicUnit.number[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: partial
+         * @example cafè
+         */
+        'subject.stratigraphicUnit.interpretation'?: string
+        'subject.sedimentCore'?: string
+        'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.site'?: string
+        'subject.sedimentCore.site[]'?: string[]
+        'subject.stratigraphicUnit'?: string
+        'subject.stratigraphicUnit[]'?: string[]
+        'taxonomies.taxonomy'?: string
+        'taxonomies.taxonomy[]'?: string[]
+        'taxonomies.taxonomy.flat.classId'?: number
+        'taxonomies.taxonomy.flat.classId[]'?: number[]
+        'taxonomies.taxonomy.flat.familyId'?: number
+        'taxonomies.taxonomy.flat.familyId[]'?: number[]
+        'taxonomies.taxonomy.flat.genusId'?: number
+        'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.depthMin[between]'?: string
+        'subject.depthMin[gt]'?: string
+        'subject.depthMin[gte]'?: string
+        'subject.depthMin[lt]'?: string
+        'subject.depthMin[lte]'?: string
+        'subject.depthMax[between]'?: string
+        'subject.depthMax[gt]'?: string
+        'subject.depthMax[gte]'?: string
+        'subject.depthMax[lt]'?: string
+        'subject.depthMax[lte]'?: string
+        'exists[taxonomies]'?: boolean
+        'exists[subject.notes]'?: boolean
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.notes
+         * @example cafè
+         */
+        'subject.notes'?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[analysis.type.group]'?: 'asc' | 'desc'
+        'order[analysis.type.value]'?: 'asc' | 'desc'
+        'order[analysis.identifier]'?: 'asc' | 'desc'
+        'analysis.createdBy.email'?: string
+        'analysis.createdBy.email[]'?: string[]
+        'analysis.identifier'?: string
+        'analysis.laboratory'?: string
+        'analysis.responsible'?: string
+        'analysis.status'?: number
+        'analysis.status[]'?: number[]
+        'analysis.summary'?: string
+        'analysis.type'?: string
+        'analysis.type[]'?: string[]
+        'analysis.type.code'?: string
+        'analysis.type.code[]'?: string[]
+        'analysis.type.group'?: string
+        'analysis.type.group[]'?: string[]
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        'exists[summary]'?: boolean
+        'exists[analysis.laboratory]'?: boolean
+        'exists[analysis.responsible]'?: boolean
+        'exists[analysis.summary]'?: boolean
+        'analysis.year[between]'?: string
+        'analysis.year[gt]'?: string
+        'analysis.year[gte]'?: string
+        'analysis.year[lt]'?: string
+        'analysis.year[lte]'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: summary
+         * @example cafè
+         */
+        summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: analysis.name
+         * @example cafè
+         */
+        'analysis.name'?: string
+      }
+      header?: never
+      path: {
+        /** @description SedimentCoreDepth identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotany collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read'][]
+          }
+          'text/csv': components['schemas']['AnalysisSedimentCoreDepthBotany.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read'][]
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depth_botany_taxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read'][]
+          }
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depth_botany_taxonomies_post: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The new AnalysisSedimentCoreDepthBotanyTaxonomy resource */
+    requestBody: {
+      content: {
+        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy-sediment_core_depth_botany_taxonomy.create']
+      }
+    }
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotanyTaxonomy resource created */
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depth_botany_taxonomies_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotanyTaxonomy resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depth_botany_taxonomies_id_delete: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotanyTaxonomy resource deleted */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depth_botany_taxonomies_id_patch: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotanyTaxonomy identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description The updated AnalysisSedimentCoreDepthBotanyTaxonomy resource */
+    requestBody: {
+      content: {
+        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy-sediment_core_depth_botany_taxonomy.update.jsonMergePatch']
+      }
+    }
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotanyTaxonomy resource updated */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read']
+        }
+      }
+      /** @description Invalid input */
+      400: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+      /** @description An error occurred */
+      422: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ConstraintViolation.jsonld']
+          'application/problem+json': components['schemas']['ConstraintViolation']
+          'application/json': components['schemas']['ConstraintViolation']
+        }
+      }
+    }
+  }
+  api_dataanalysessediment_core_depthsbotany_parentIdtaxonomies_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.species]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.family]'?: 'asc' | 'desc'
+        'order[taxonomy.flat.class]'?: 'asc' | 'desc'
+        'taxonomy.flat.classId'?: number
+        'taxonomy.flat.classId[]'?: number[]
+        'taxonomy.flat.familyId'?: number
+        'taxonomy.flat.familyId[]'?: number[]
+        'taxonomy.flat.genusId'?: number
+        'taxonomy.flat.genusId[]'?: number[]
+        'exists[taxonomy.flat.class]'?: boolean
+        'exists[taxonomy.flat.genus]'?: boolean
+        'exists[taxonomy.flat.species]'?: boolean
+        cf?: boolean
+        sp?: boolean
+        type?: boolean
+      }
+      header?: never
+      path: {
+        /** @description AnalysisSedimentCoreDepthBotany identifier */
+        parentId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description AnalysisSedimentCoreDepthBotanyTaxonomy collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomy.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read'][]
+          }
         }
       }
     }
@@ -48125,6 +49619,68 @@ export interface operations {
     }
   }
   api_validatoruniqueanalysessediment_core_depths_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessediment_core_depthsbotany_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniqueanalysessediment_core_depthsbotanytaxonomies_get: {
     parameters: {
       query?: never
       header?: never

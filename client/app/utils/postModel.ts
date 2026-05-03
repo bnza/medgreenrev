@@ -155,6 +155,19 @@ const EMPTY_POST_MODEL_MAP: {
     sedimentCore:
       parent?.key === 'sedimentCore' ? parent.item['@id'] : undefined,
   }),
+  '/api/data/analyses/sediment_core_depths/botany': (parent) => {
+    return generateEmptyAnalysisSubjectModel('sedimentCoreDepth', parent)
+  },
+  '/api/data/analyses/sediment_core_depth_botany_taxonomies': (parent) => ({
+    analysis:
+      parent?.key === 'analysisSedimentCoreDepthBotany'
+        ? parent.item['@id']
+        : undefined,
+    taxonomy: undefined,
+    cf: false,
+    sp: false,
+    type: false,
+  }),
   '/api/data/stratigraphic_units': (parent) => ({
     site: parent?.key === 'archaeologicalSite' ? parent.item['@id'] : undefined,
   }),

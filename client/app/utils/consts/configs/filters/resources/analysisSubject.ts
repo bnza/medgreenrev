@@ -294,6 +294,26 @@ export const staticFiltersDefinitionSedimentCoreDepthParentSubject = {
   ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
 }
 
+export const staticFiltersDefinitionSedimentCoreDepthBotany = {
+  ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
+  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
+    'subject.stratigraphicUnit',
+    'stratigraphic unit',
+  ]),
+  ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
+    'taxonomies',
+    '',
+  ]),
+}
+
+export const staticFiltersDefinitionSedimentCoreDepthBotanyParentSubject = {
+  ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
+  ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
+    'taxonomies',
+    '',
+  ]),
+}
+
 export const staticFiltersDefinitionZooBone = {
   ...analysisZooBonePropertyStaticFiltersDefinition,
   ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [

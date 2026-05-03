@@ -298,6 +298,7 @@ type AnalysisAssemblageResourceKey = Extract<
   | 'analysisContextZoo'
   | 'analysisSampleMicrostratigraphy'
   | 'analysisSampleBotany'
+  | 'analysisSedimentCoreDepthBotany'
   | 'analysisSiteAnthropology'
 >
 
@@ -312,7 +313,9 @@ export type AnalysisSubjectResourceKey =
 
 type AnalysisBotanyTaxonomyResourceKey = Extract<
   ApiResourceKey,
-  'analysisContextBotanyTaxonomy' | 'analysisSampleBotanyTaxonomy'
+  | 'analysisContextBotanyTaxonomy'
+  | 'analysisSampleBotanyTaxonomy'
+  | 'analysisSedimentCoreDepthBotanyTaxonomy'
 >
 
 type AnalysisSubjectWithAbsDatingResourceMap = Pick<

@@ -139,6 +139,19 @@ final class Version20250628091340 extends AbstractMigration
 
         $this->addSql(
             <<<'SQL'
+                CREATE OR REPLACE VIEW vw_analysis_sediment_core_depth_botany_taxonomy AS
+                SELECT
+                    bc.id,
+                    bc.id AS botany_charcoal_id,
+                    format_botany_taxonomy(vt.level, vt.value, vt.genus, vt.species, bc.cf, bc.sp, bc.type)
+                    AS taxonomy_value
+                FROM analysis_sediment_core_depth_botany_taxonomies bc
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt ON bc.taxonomy_id = vt.id;
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
                 CREATE OR REPLACE VIEW vocabulary.vw_history_plant AS
                 SELECT
                     vp.id,

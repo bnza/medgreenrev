@@ -21,6 +21,8 @@ use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
 use App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotany;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -108,6 +110,18 @@ use App\State\ValidatorUniqueProvider;
             uriTemplate: '/validator/unique/analyses/samples/botany/taxonomies',
             defaults: [
                 'resource' => AnalysisSampleBotanyTaxonomy::class,
+            ],
+        ),
+        new Get(
+            uriTemplate: '/validator/unique/analyses/sediment_core_depths/botany',
+            defaults: [
+                'resource' => AnalysisSedimentCoreDepthBotany::class,
+            ],
+        ),
+        new Get(
+            uriTemplate: '/validator/unique/analyses/sediment_core_depths/botany/taxonomies',
+            defaults: [
+                'resource' => AnalysisSedimentCoreDepthBotanyTaxonomy::class,
             ],
         ),
         new Get(

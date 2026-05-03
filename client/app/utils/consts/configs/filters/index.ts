@@ -12,6 +12,8 @@ export type SearchableGetCollectionPath = Extract<
   | '/api/data/analyses/botany/seeds'
   | '/api/data/analyses/contexts/botany'
   | '/api/data/analyses/samples/botany'
+  | '/api/data/analyses/sediment_core_depths/botany'
+  | '/api/data/sediment_core_depths/{parentId}/analyses/botany'
   | '/api/data/analyses/individuals'
   | '/api/data/analyses/samples'
   | '/api/data/analyses/samples/microstratigraphy'
@@ -107,6 +109,10 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/analyses/potteries': resourceFilterDefinitions.analysisPottery,
   '/api/data/analyses/sediment_core_depths':
     resourceFilterDefinitions.analysisSedimentCoreDepth,
+  '/api/data/analyses/sediment_core_depths/botany':
+    resourceFilterDefinitions.analysisSedimentCoreDepthBotany,
+  '/api/data/sediment_core_depths/{parentId}/analyses/botany':
+    resourceFilterDefinitions.analysisSedimentCoreDepthBotanyParentSubject,
   '/api/data/analyses/samples': resourceFilterDefinitions.analysisSample,
   '/api/data/analyses/samples/microstratigraphy':
     resourceFilterDefinitions.analysisSampleMicrostratigraphicUnit,

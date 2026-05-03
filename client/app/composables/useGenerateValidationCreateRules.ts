@@ -41,6 +41,8 @@ const validationPaths: Record<AnalysisSubjectResourceKey, GetValidationPath> = {
     '/api/validator/unique/analyses/samples/microstratigraphy',
   analysisSedimentCoreDepth:
     '/api/validator/unique/analyses/sediment_core_depths',
+  analysisSedimentCoreDepthBotany:
+    '/api/validator/unique/analyses/sediment_core_depths/botany',
   analysisSiteAnthropology:
     '/api/validator/unique/analyses/archaeological_sites/anthropology',
   analysisZooBone: '/api/validator/unique/analyses/zoo/bones',
@@ -84,6 +86,8 @@ const taxonomyValidationPaths: Record<
     '/api/validator/unique/analyses/contexts/botany/taxonomies',
   analysisSampleBotanyTaxonomy:
     '/api/validator/unique/analyses/samples/botany/taxonomies',
+  analysisSedimentCoreDepthBotanyTaxonomy:
+    '/api/validator/unique/analyses/sediment_core_depths/botany/taxonomies',
 } as const
 
 export const generateAnalysisTaxonomySubjectValidationRules = (

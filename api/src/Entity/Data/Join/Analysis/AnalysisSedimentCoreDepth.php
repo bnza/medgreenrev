@@ -132,15 +132,18 @@ class AnalysisSedimentCoreDepth extends BaseAnalysisJoin
         return array_keys(
             array_filter(
                 Analysis::TYPES,
-                fn ($type) => in_array(
-                    $type['group'],
-                    [
-                        Analysis::GROUP_ABS_DATING,
-                        Analysis::GROUP_MICROSCOPE,
-                        Analysis::GROUP_MATERIAL_ANALYSIS,
-                        Analysis::GROUP_SEDIMENT,
-                    ]
-                )
+                fn ($type, $key) =>
+                    in_array(
+                        $type['group'],
+                        [
+                            Analysis::GROUP_ABS_DATING,
+                            Analysis::GROUP_MICROSCOPE,
+                            Analysis::GROUP_MATERIAL_ANALYSIS,
+                        ]
+                    )
+                    || Analysis::TYPE_GEO === $key
+                ,
+                ARRAY_FILTER_USE_BOTH
             )
         );
     }

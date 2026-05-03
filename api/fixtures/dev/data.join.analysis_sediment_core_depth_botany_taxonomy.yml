@@ -1,0 +1,19 @@
+App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotanyTaxonomy:
+    sediment_core_depth_botany_analysis_1_1:
+        analysis: '@sediment_core_depth_botany_analysis_1'
+        taxonomy: '@botany_taxonomy_QUERCUS'
+        cf: false
+        sp: false
+        type: false
+    sediment_core_depth_botany_analysis_1_2:
+        analysis: '@sediment_core_depth_botany_analysis_1'
+        taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+        cf: true
+        sp: false
+        type: false
+    sediment_core_depth_botany_analysis_2_1:
+        analysis: '@sediment_core_depth_botany_analysis_2'
+        taxonomy: '@botany_taxonomy_FABACEAE'
+        cf: false
+        sp: false
+        type: false

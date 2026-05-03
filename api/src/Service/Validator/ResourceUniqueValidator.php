@@ -19,6 +19,8 @@ use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
 use App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotany;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -87,6 +89,8 @@ class ResourceUniqueValidator
         AnalysisSampleBotanyTaxonomy::class => [['analysis', 'taxonomy']],
         AnalysisSampleMicrostratigraphy::class => [['subject', 'analysis']],
         AnalysisSedimentCoreDepth::class => [['subject', 'analysis']],
+        AnalysisSedimentCoreDepthBotany::class => [['subject', 'analysis']],
+        AnalysisSedimentCoreDepthBotanyTaxonomy::class => [['analysis', 'taxonomy']],
         AnalysisSiteAnthropology::class => [['subject', 'analysis']],
         AnalysisZooBone::class => [['subject', 'analysis']],
         AnalysisZooTooth::class => [['subject', 'analysis']],

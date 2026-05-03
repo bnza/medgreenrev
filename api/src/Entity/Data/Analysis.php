@@ -29,6 +29,7 @@ use App\Entity\Data\Join\Analysis\AnalysisSample;
 use App\Entity\Data\Join\Analysis\AnalysisSampleBotany;
 use App\Entity\Data\Join\Analysis\AnalysisSampleMicrostratigraphy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotany;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\Analysis\AnalysisZooBone;
 use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
@@ -394,6 +395,9 @@ class Analysis
     #[ORM\OneToMany(targetEntity: AnalysisSedimentCoreDepth::class, mappedBy: 'analysis')]
     private Collection $subjectSedimentCoreDepths;
 
+    #[ORM\OneToMany(targetEntity: AnalysisSedimentCoreDepthBotany::class, mappedBy: 'analysis')]
+    private Collection $subjectSedimentCoreDepthBotany;
+
     #[ORM\OneToMany(targetEntity: AnalysisSiteAnthropology::class, mappedBy: 'analysis')]
     private Collection $subjectSiteAnthropology;
 
@@ -416,6 +420,7 @@ class Analysis
         $this->subjectSampleBotany = new ArrayCollection();
         $this->subjectSampleMicrostratigraphy = new ArrayCollection();
         $this->subjectSedimentCoreDepths = new ArrayCollection();
+        $this->subjectSedimentCoreDepthBotany = new ArrayCollection();
         $this->subjectSiteAnthropology = new ArrayCollection();
         $this->subjectZooBones = new ArrayCollection();
         $this->subjectZooTeeth = new ArrayCollection();
@@ -460,6 +465,14 @@ class Analysis
     public function getResponsible(): ?string
     {
         return $this->responsible;
+    }
+
+    /**
+     * @return Collection<int, AnalysisSedimentCoreDepthBotany>
+     */
+    public function getSubjectSedimentCoreDepthBotany(): Collection
+    {
+        return $this->subjectSedimentCoreDepthBotany;
     }
 
     public function setResponsible(?string $responsible): Analysis

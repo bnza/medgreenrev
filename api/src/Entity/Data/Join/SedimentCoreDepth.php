@@ -20,6 +20,7 @@ use ApiPlatform\Metadata\QueryParameter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepth;
+use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotany;
 use App\Entity\Data\SamplingSite;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Entity\Data\SedimentCore;
@@ -387,9 +388,16 @@ class SedimentCoreDepth
     #[ORM\OneToMany(targetEntity: AnalysisSedimentCoreDepth::class, mappedBy: 'subject')]
     private Collection $analyses;
 
+    /**
+     * @var Collection<int, AnalysisSedimentCoreDepthBotany>
+     */
+    #[ORM\OneToMany(targetEntity: AnalysisSedimentCoreDepthBotany::class, mappedBy: 'subject', cascade: ['remove'])]
+    private Collection $botanyAnalyses;
+
     public function __construct()
     {
         $this->analyses = new ArrayCollection();
+        $this->botanyAnalyses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -467,6 +475,14 @@ class SedimentCoreDepth
         $this->pollen = $pollen;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, AnalysisSedimentCoreDepthBotany>
+     */
+    public function getBotanyAnalyses(): Collection
+    {
+        return $this->botanyAnalyses;
     }
 
     public function isSedimentaryDna(): bool
