@@ -7,9 +7,6 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20260323152247 extends AbstractMigration
 {
     public function getDescription(): string
@@ -167,9 +164,15 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_botany_charcoals AS
                 SELECT
-                    c.id, c.notes,
-                    c.voc_taxonomy_id AS taxonomy_id, c.voc_element_id AS element_id, c.voc_element_part_id AS part_id,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    c.id,
+                    c.notes,
+                    c.voc_taxonomy_id AS taxonomy_id,
+                    c.voc_element_id AS element_id,
+                    c.voc_element_part_id AS part_id,
+                    su.site_id,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom,
                     generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM botany_charcoals c
                 JOIN sus su ON c.stratigraphic_unit_id = su.id
@@ -182,8 +185,13 @@ final class Version20260323152247 extends AbstractMigration
                 CREATE OR REPLACE VIEW geoserver.vw_botany_seeds AS
                 SELECT
                     s_seed.id, s_seed.notes,
-                    s_seed.voc_taxonomy_id AS taxonomy_id, s_seed.voc_element_id AS element_id, s_seed.voc_element_part_id AS part_id,
-                    su.site_id, s.code AS site_code, s.name AS site_name, s.the_geom,
+                    s_seed.voc_taxonomy_id AS taxonomy_id,
+                    s_seed.voc_element_id AS element_id,
+                    s_seed.voc_element_part_id AS part_id,
+                    su.site_id,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom,
                     generate_code_su(s.code, su.year, su.number) AS su_code
                 FROM botany_seeds s_seed
                 JOIN sus su ON s_seed.stratigraphic_unit_id = su.id
@@ -210,12 +218,22 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_paleoclimate_samples AS
                 SELECT
-                    p.id, s.code || '.' || p.number AS code, p.number, p.description,
-                    p.chronology_lower, p.chronology_upper, p.length,
-                    p.temperature_record, p.precipitation_record,
-                    p.stable_isotopes, p.trace_elements,
-                    p.petrographic_descriptions, p.fluid_inclusions,
-                    p.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    p.id, s.code || '.' || p.number AS code,
+                    p.number,
+                    p.description,
+                    p.chronology_lower,
+                    p.chronology_upper,
+                    p.length,
+                    p.temperature_record,
+                    p.precipitation_record,
+                    p.stable_isotopes,
+                    p.trace_elements,
+                    p.petrographic_descriptions,
+                    p.fluid_inclusions,
+                    p.site_id,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom
                 FROM paleoclimate_sample p
                 JOIN paleoclimate_sampling_sites s ON p.site_id = s.id;
             SQL
@@ -225,9 +243,15 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_sediment_cores AS
                 SELECT
-                    sc.id, s.code || '.SC.' || RIGHT(sc.year::text, 2) || '.' || sc.number AS code,
-                    sc.year, sc.number, sc.description,
-                    sc.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    sc.id,
+                    generate_code_sediment_core(s.code, sc.year, sc.number) AS code,
+                    sc.year,
+                    sc.number,
+                    sc.description,
+                    sc.site_id,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom
                 FROM sediment_cores sc
                 JOIN sampling_sites s ON sc.site_id = s.id;
             SQL
@@ -237,12 +261,25 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_sediment_core_depths AS
                 SELECT
-                    d.id, d.sediment_core_id, d.su_id,
-                    d.depth_min, d.depth_max, d.notes,
-                    d.pollen, d.sedimentary_dna, d.phytoliths,
-                    d.geochemistry, d.organic_chemistry, d.plant_macro_remains,
-                    d.osl_dating, d.micro_charcoal,
-                    sc.site_id, s.code AS site_code, s.name AS site_name, s.the_geom
+                    d.id,
+                    generate_code_sediment_core_depth(s.code, sc.year, sc.number, d.depth_min) AS code,
+                    d.sediment_core_id,
+                    d.su_id,
+                    d.depth_min,
+                    d.depth_max,
+                    d.notes,
+                    d.pollen,
+                    d.sedimentary_dna,
+                    d.phytoliths,
+                    d.geochemistry,
+                    d.organic_chemistry,
+                    d.plant_macro_remains,
+                    d.osl_dating,
+                    d.micro_charcoal,
+                    sc.site_id,
+                    s.code AS site_code,
+                    s.name AS site_name,
+                    s.the_geom
                 FROM sediment_core_depths d
                 JOIN sediment_cores sc ON d.sediment_core_id = sc.id
                 JOIN sampling_sites s ON sc.site_id = s.id;
@@ -253,12 +290,26 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_history_animals AS
                 SELECT
-                    a.id, a.chronology_lower, a.chronology_upper, a.reference, a.notes,
-                    a.animal_id, a.location_id,
-                    l.value AS location_value, r.value AS region, l.the_geom
+                    a.id,
+                    a.chronology_lower,
+                    a.chronology_upper,
+                    a.reference,
+                    a.notes,
+                    a.animal_id,
+                    va.value as name,
+                    a.location_id,
+                    zt.value AS value,
+                    zt.family AS family,
+                    zt.class AS class,
+                    zt.vernacular_name AS vernacular_name,
+                    l.value AS location_value,
+                    r.value AS region,
+                    l.the_geom
                 FROM history_animals a
                 JOIN vocabulary.history_locations l ON a.location_id = l.id
-                JOIN vocabulary.regions r ON l.region_id = r.id;
+                JOIN vocabulary.regions r ON l.region_id = r.id
+                LEFT JOIN vocabulary.history_animals va ON a.animal_id = va.id
+                LEFT JOIN vocabulary.zoo_taxonomy zt ON va.taxonomy_id = zt.id;
             SQL
         );
 
@@ -266,12 +317,30 @@ final class Version20260323152247 extends AbstractMigration
             <<<'SQL'
                 CREATE OR REPLACE VIEW geoserver.vw_history_plants AS
                 SELECT
-                    p.id, p.chronology_lower, p.chronology_upper, p.reference, p.notes,
-                    p.plant_id, p.location_id,
-                    l.value AS location_value, r.value AS region, l.the_geom
+                    p.id,
+                    p.chronology_lower,
+                    p.chronology_upper,
+                    p.reference,
+                    p.notes,
+                    p.plant_id,
+                    vp.value AS name,
+                    p.location_id,
+                    vbt.value AS taxon,
+                    vbt.family AS family,
+                    vbt.class AS class,
+                    vbt.genus AS genus,
+                    vbt.species AS species,
+                    vp.cf AS cf,
+                    vp.sp AS sp,
+                    l.value AS location_value,
+                    r.value AS region,
+                    l.the_geom
                 FROM history_plants p
                 JOIN vocabulary.history_locations l ON p.location_id = l.id
-                JOIN vocabulary.regions r ON l.region_id = r.id;
+                JOIN vocabulary.regions r ON l.region_id = r.id
+                JOIN vocabulary.vw_history_plant vhp ON p.plant_id = vhp.id
+                JOIN vocabulary.history_plants vp ON p.plant_id = vp.id
+                LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON vp.taxonomy_id = vbt.id;
             SQL
         );
 
