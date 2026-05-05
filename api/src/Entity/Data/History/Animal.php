@@ -115,6 +115,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'animal' => 'exact',
+        'animal.taxonomy' => 'exact',
+        'animal.taxonomy.vernacularName' => 'ipartial',
+        'animal.taxonomy.class' => 'exact',
+        'animal.taxonomy.family' => 'exact',
         'chronologyLower' => 'exact',
         'chronologyUpper' => 'exact',
         'createdBy.email' => 'exact',
@@ -132,6 +136,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'animal.taxonomy.family',
         'notes',
     ])]
 #[ApiFilter(

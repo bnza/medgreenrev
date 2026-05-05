@@ -36033,6 +36033,13 @@ export interface operations {
         'order[reference]'?: 'asc' | 'desc'
         animal?: string
         'animal[]'?: string[]
+        'animal.taxonomy'?: string
+        'animal.taxonomy[]'?: string[]
+        'animal.taxonomy.vernacularName'?: string
+        'animal.taxonomy.class'?: string
+        'animal.taxonomy.class[]'?: string[]
+        'animal.taxonomy.family'?: string
+        'animal.taxonomy.family[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36055,6 +36062,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
+        'exists[animal.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36305,6 +36313,13 @@ export interface operations {
         'order[reference]'?: 'asc' | 'desc'
         animal?: string
         'animal[]'?: string[]
+        'animal.taxonomy'?: string
+        'animal.taxonomy[]'?: string[]
+        'animal.taxonomy.vernacularName'?: string
+        'animal.taxonomy.class'?: string
+        'animal.taxonomy.class[]'?: string[]
+        'animal.taxonomy.family'?: string
+        'animal.taxonomy.family[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36327,6 +36342,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
+        'exists[animal.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36382,6 +36398,13 @@ export interface operations {
         'order[reference]'?: 'asc' | 'desc'
         animal?: string
         'animal[]'?: string[]
+        'animal.taxonomy'?: string
+        'animal.taxonomy[]'?: string[]
+        'animal.taxonomy.vernacularName'?: string
+        'animal.taxonomy.class'?: string
+        'animal.taxonomy.class[]'?: string[]
+        'animal.taxonomy.family'?: string
+        'animal.taxonomy.family[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36404,6 +36427,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
+        'exists[animal.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36497,6 +36521,13 @@ export interface operations {
         'order[reference]'?: 'asc' | 'desc'
         animal?: string
         'animal[]'?: string[]
+        'animal.taxonomy'?: string
+        'animal.taxonomy[]'?: string[]
+        'animal.taxonomy.vernacularName'?: string
+        'animal.taxonomy.class'?: string
+        'animal.taxonomy.class[]'?: string[]
+        'animal.taxonomy.family'?: string
+        'animal.taxonomy.family[]'?: string[]
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36519,6 +36550,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
+        'exists[animal.taxonomy.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value

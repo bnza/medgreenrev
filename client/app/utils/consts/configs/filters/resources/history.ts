@@ -90,6 +90,16 @@ export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObjec
         VocabularyHistoryAnimal,
       },
     },
+    'location.region': {
+      propertyLabel: 'region',
+      filters: {
+        VocabularyRegion,
+      },
+    },
+    ...generateResourceDefinition(zooTaxonomyStaticFilterDefinition, [
+      'animal',
+      'animal',
+    ]),
   }
 
 export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject =
