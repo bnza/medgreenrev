@@ -48,6 +48,12 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         @update="updateDialogState = { id: item.id }"
       />
     </template>
+    <template #[`item.subject.stratigraphicUnit.site.code`]="{ item }">
+      <data-item-info-box-span-sampling-site
+        :iri="item.subject.stratigraphicUnit.site['@id']"
+        :text="item.subject.stratigraphicUnit.site.code"
+      />
+    </template>
     <template #[`item.subject.code`]="{ item }">
       <data-item-info-box-span-sediment-core-depth
         :iri="item.subject['@id']"

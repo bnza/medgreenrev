@@ -23,9 +23,10 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
     }
 
     #[DataProvider('provideCollections')]
-    public function testSearchAliasReturnsSubset(string $collectionUrl, string $field): void
+    public function testSearchAliasReturnsSubset(string $collectionUrl, string $field, ?string $relation = null): void
     {
         $client = static::createClient();
+        $searchPath = $relation ?? $field;
 
         // 1) Get full collection (no search)
         $response = $this->apiRequest($client, 'GET', $collectionUrl);
@@ -35,11 +36,11 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
         $total = $all['totalItems'];
         $this->assertGreaterThan(0, $total, 'Fixtures should provide at least one item');
 
-        // 2) Derive a search token from the first item
+        // 2) Derive a search token from the first item using the relation path
         $first = $all['member'][0];
-        $this->assertArrayHasKey($field, $first, sprintf('Item should have a %s field', $field));
-        $value = (string) $first[$field];
-        $this->assertNotSame('', $value, sprintf('%s should not be empty', ucfirst($field)));
+        $value = self::readPath($first, $searchPath);
+        $this->assertNotNull($value, sprintf('Item should expose path "%s"', $searchPath));
+        $this->assertNotSame('', $value, sprintf('Path "%s" should not be empty', $searchPath));
 
         // Pick a mid substring for partial search (case-insensitive)
         $start = (int) max(0, floor(strlen($value) / 3) - 1);
@@ -61,13 +62,33 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
 
         // Every returned item should contain the token in the target field (case-insensitive)
         foreach ($data['member'] as $item) {
-            $this->assertArrayHasKey($field, $item);
-            $this->assertNotFalse(stripos($item[$field], $token), sprintf('Expected "%s" to contain "%s" (case-insensitive)', $item[$field], $token));
+            $itemValue = self::readPath($item, $searchPath);
+            $this->assertNotNull($itemValue, sprintf('Returned item should expose path "%s"', $searchPath));
+            $this->assertNotFalse(
+                stripos($itemValue, $token),
+                sprintf('Expected "%s" (at path "%s") to contain "%s" (case-insensitive)', $itemValue, $searchPath, $token),
+            );
         }
     }
 
+    /**
+     * Read a (possibly dotted) path from a response item.
+     */
+    private static function readPath(array $item, string $path): ?string
+    {
+        $current = $item;
+        foreach (explode('.', $path) as $segment) {
+            if (!is_array($current) || !array_key_exists($segment, $current)) {
+                return null;
+            }
+            $current = $current[$segment];
+        }
+
+        return is_scalar($current) ? (string) $current : null;
+    }
+
     #[DataProvider('provideCollections')]
-    public function testGibberishQueryReturnsEmptySet(string $collectionUrl, string $field): void
+    public function testGibberishQueryReturnsEmptySet(string $collectionUrl, string $field, ?string $relation = null): void
     {
         $client = static::createClient();
 
@@ -85,7 +106,7 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
         return [
             'botany elements by value' => ['/api/vocabulary/botany/elements', 'value'],
             'botany element parts by value' => ['/api/vocabulary/botany/element_parts', 'value'],
-            'botany taxonomies by value' => ['/api/vocabulary/botany/taxonomies', 'value'],
+            'botany taxonomies by value' => ['/api/vocabulary/botany/taxonomies', 'value', 'flat.value'],
             'zoo bones by value' => ['/api/vocabulary/zoo/bones', 'value'],
             'zoo bone parts by value' => ['/api/vocabulary/zoo/bone_parts', 'value'],
             'zoo taxonomies by value' => ['/api/vocabulary/zoo/taxonomies', 'value'],

@@ -8,7 +8,7 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
     :model-value="visible"
     permanent
     data-testid="app-navigation-drawer"
-    width="350"
+    width="400"
   >
     <v-list v-model:opened="dataOpened">
       <v-list-item
@@ -55,21 +55,21 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             nuxt
             to="/data/analyses/context/botany"
             router
-            title="Archaeobotany"
+            title="Archaeobotany (contexts)"
             data-testid="app-nav-drawer-li-analyses-archaeobotany"
           />
           <v-list-item
             nuxt
             to="/data/analyses/samples/botany"
             router
-            title="Sediment botany"
+            title="Archaeobotany (samples)"
             data-testid="app-nav-drawer-li-analyses-sediment-botany"
           />
           <v-list-item
             nuxt
             to="/data/analyses/sediment-core-depths/botany"
             router
-            title="Sediment core depth botany"
+            title="Archaeobotany (sediment core depths)"
             data-testid="app-nav-drawer-li-analyses-sediment-core-depth-botany"
           />
           <v-list-item

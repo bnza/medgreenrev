@@ -12,8 +12,8 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
-      key: 'subject.sedimentCore.site.code',
-      value: 'subject.sedimentCore.site.code',
+      key: 'subject.stratigraphicUnit.site.code',
+      value: 'subject.stratigraphicUnit.site.code',
       title: 'site',
       minWidth: '100',
     },

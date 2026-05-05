@@ -94,7 +94,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchPropertyAliasFilter::class,
     properties: [
-        'search' => 'value',
+        'search' => 'flat.value',
     ]
 )]
 #[UniqueEntity(
