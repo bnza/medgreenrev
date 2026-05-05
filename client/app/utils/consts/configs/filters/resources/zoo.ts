@@ -8,6 +8,7 @@ import { associationPropertyStaticFiltersDefinition } from './analysisAssociatio
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
 
 const {
+  Boolean,
   Exists,
   SearchExact,
   SearchPartial,
@@ -97,7 +98,7 @@ export const propertyToothStaticFiltersDefinition: ResourceStaticFiltersDefiniti
     ...commonPropertiesStaticFiltersDefinition,
     connected: {
       filters: {
-        VocabularyZooBoneEndsPreserved,
+        Boolean,
       },
     },
   }

@@ -166,7 +166,7 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/paleoclimate_sampling_sites':
     resourceFilterDefinitions.paleoclimateSamplingSite,
   '/api/data/paleoclimate_sampling_sites/{parentId}/samples':
-    resourceFilterDefinitions.paleoclimateSamplingSite,
+    resourceFilterDefinitions.paleoclimateSample,
   '/api/data/potteries': resourceFilterDefinitions.pottery,
   '/api/data/potteries/{parentId}/analyses':
     resourceFilterDefinitions.analysisPotteryParentSubject,

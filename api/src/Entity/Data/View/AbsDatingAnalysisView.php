@@ -73,10 +73,16 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'analysis.year' => 'exact',
+        'datingLower' => 'exact',
+        'datingUpper' => 'exact',
+        'error' => 'exact',
+        'probability' => 'exact',
         'stratigraphicUnit' => 'exact',
         'stratigraphicUnit.site' => 'exact',
         'analysis.type.value' => 'exact',
         'analysis.identifier' => 'ipartial',
+        'uncalibratedDating' => 'exact',
     ]
 )]
 #[ApiFilter(RangeFilter::class,
@@ -85,6 +91,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
         'datingLower',
         'datingUpper',
         'uncalibratedDating',
+        'probability',
         'error',
     ]
 )]

@@ -183,6 +183,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'analyses.summary' => 'partial',
+        'depthMin' => 'exact',
+        'depthMax' => 'exact',
         'sedimentCore' => 'exact',
         'sedimentCore.site' => 'exact',
         'sedimentCore.site.code' => 'exact',

@@ -186,11 +186,6 @@ export const staticFiltersDefinitionWrittenSource: ResourceStaticFiltersDefiniti
         SearchPartial,
       },
     },
-    reference: {
-      filters: {
-        SearchPartial,
-      },
-    },
   }
 
 export const staticFiltersDefinitionWrittenSourceCitedWork: ResourceStaticFiltersDefinitionObject =
@@ -249,7 +244,6 @@ export const staticFiltersDefinitionWrittenSourceCitedWork: ResourceStaticFilter
       filters: {
         Exists,
         SearchExact,
-        ...NumericOperations,
       },
       propertyLabel: 'year completed (upper)',
     },

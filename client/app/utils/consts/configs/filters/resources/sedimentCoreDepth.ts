@@ -18,11 +18,6 @@ const analysisAssociationPropertyStaticFiltersDefinition: ResourceStaticFiltersD
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
-    ...generateResourceDefinition(analysisPropertyStaticDefinition, [
-      'analyses.analysis',
-      'analysis',
-    ]),
-    ...analysisAssociationPropertyStaticFiltersDefinition,
     'sedimentCore.site': {
       propertyLabel: 'site',
       filters: {
@@ -116,5 +111,10 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
   }
 
 export const staticFiltersDefinition = {
+  ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+    'analyses.analysis',
+    'analysis',
+  ]),
+  ...analysisAssociationPropertyStaticFiltersDefinition,
   ...propertyStaticFiltersDefinition,
 }

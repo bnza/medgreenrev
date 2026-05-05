@@ -77,10 +77,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
-        'writtenSource' => 'exact',
         'citedWork' => 'exact',
+        'writtenSource' => 'exact',
         'writtenSource.author' => 'exact',
         'writtenSource.centuries.century' => 'exact',
+        'yearCompleted' => 'exact',
+        'yearCompletedUpper' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -89,7 +91,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'writtenSource.title',
         'writtenSource.subtitle',
         'writtenSource.publicationDetails',
-        'search' => ['writtenSource.title', 'writtenSource.author.value', 'writtenSource.author.variant'],
+        'yearCompletedUpper',
+        //        'search' => ['writtenSource.title', 'writtenSource.author.value', 'writtenSource.author.variant'],
     ]
 )]
 #[ApiFilter(
@@ -122,7 +125,7 @@ class WrittenSourceCitedWork
     ])]
     private int $id;
 
-    #[ORM\ManyToOne(targetEntity: WrittenSource::class, inversedBy: "citedWorks")]
+    #[ORM\ManyToOne(targetEntity: WrittenSource::class, inversedBy: 'citedWorks')]
     #[ORM\JoinColumn(name: 'written_source_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'history_written_sources_cited_works:acl:read',

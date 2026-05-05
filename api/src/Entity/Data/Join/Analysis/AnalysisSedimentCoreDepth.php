@@ -36,9 +36,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'subject.depthMin' => 'exact',
+        'subject.depthMax' => 'exact',
         'subject.sedimentCore' => 'exact',
+        'subject.sedimentCore.number' => 'exact',
         'subject.sedimentCore.site' => 'exact',
         'subject.stratigraphicUnit' => 'exact',
+        'subject.sedimentCore.year' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -46,6 +50,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'subject.depthMin',
         'subject.depthMax',
+        'subject.sedimentCore.number',
+        'subject.sedimentCore.year',
     ]
 )]
 #[ApiFilter(
@@ -132,17 +138,15 @@ class AnalysisSedimentCoreDepth extends BaseAnalysisJoin
         return array_keys(
             array_filter(
                 Analysis::TYPES,
-                fn ($type, $key) =>
-                    in_array(
-                        $type['group'],
-                        [
-                            Analysis::GROUP_ABS_DATING,
-                            Analysis::GROUP_MICROSCOPE,
-                            Analysis::GROUP_MATERIAL_ANALYSIS,
-                        ]
-                    )
-                    || Analysis::TYPE_GEO === $key
-                ,
+                fn ($type, $key) => in_array(
+                    $type['group'],
+                    [
+                        Analysis::GROUP_ABS_DATING,
+                        Analysis::GROUP_MICROSCOPE,
+                        Analysis::GROUP_MATERIAL_ANALYSIS,
+                    ]
+                )
+                    || Analysis::TYPE_GEO === $key,
                 ARRAY_FILTER_USE_BOTH
             )
         );

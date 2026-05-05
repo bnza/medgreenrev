@@ -16,12 +16,14 @@
  * - We directly import the TS module `app/utils/consts/configs/filters/index.ts`
  *   via a file URL so no bundling step is needed.
  */
-
+// @ts-expect-error path import
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { stringify } from 'qs'
+// @ts-expect-error dotenv default import
 import dotenv from 'dotenv'
 
+// @ts-expect-error import.meta.url
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const projectRoot = path.resolve(__dirname, '..')
@@ -302,10 +304,13 @@ async function main() {
       for (const name of onlyClient)
         console.log(`${COLOR.red}${name}${COLOR.reset}`)
     } else {
+      console.log('--- Only in API  ---')
       for (const name of onlyApi)
         console.log(`${COLOR.yellow}${name}${COLOR.reset}`)
+      console.log('--- Matching ---')
       for (const name of both)
         console.log(`${COLOR.green}${name}${COLOR.reset}`)
+      console.log('--- Only in client  ---')
       for (const name of onlyClient)
         console.log(`${COLOR.red}${name}${COLOR.reset}`)
     }
@@ -326,6 +331,7 @@ async function main() {
 }
 
 // Execute only when run directly
+// @ts-expect-error import.meta.url
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main().catch((err) => {
     console.error('[compare-query-params] Error:', err)

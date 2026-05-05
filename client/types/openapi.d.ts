@@ -20009,6 +20009,16 @@ export interface operations {
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        datingLower?: number
+        'datingLower[]'?: number[]
+        datingUpper?: number
+        'datingUpper[]'?: number[]
+        error?: number
+        'error[]'?: number[]
+        probability?: string
+        'probability[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'stratigraphicUnit.site'?: string
@@ -20016,6 +20026,8 @@ export interface operations {
         'analysis.type.value'?: string
         'analysis.type.value[]'?: string[]
         'analysis.identifier'?: string
+        uncalibratedDating?: number
+        'uncalibratedDating[]'?: number[]
         'analysis.year[between]'?: string
         'analysis.year[gt]'?: string
         'analysis.year[gte]'?: string
@@ -20036,6 +20048,11 @@ export interface operations {
         'uncalibratedDating[gte]'?: string
         'uncalibratedDating[lt]'?: string
         'uncalibratedDating[lte]'?: string
+        'probability[between]'?: string
+        'probability[gt]'?: string
+        'probability[gte]'?: string
+        'probability[lt]'?: string
+        'probability[lte]'?: string
         'error[between]'?: string
         'error[gt]'?: string
         'error[gte]'?: string
@@ -20129,6 +20146,16 @@ export interface operations {
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'analysis.year'?: number
+        'analysis.year[]'?: number[]
+        datingLower?: number
+        'datingLower[]'?: number[]
+        datingUpper?: number
+        'datingUpper[]'?: number[]
+        error?: number
+        'error[]'?: number[]
+        probability?: string
+        'probability[]'?: string[]
         stratigraphicUnit?: string
         'stratigraphicUnit[]'?: string[]
         'stratigraphicUnit.site'?: string
@@ -20136,6 +20163,8 @@ export interface operations {
         'analysis.type.value'?: string
         'analysis.type.value[]'?: string[]
         'analysis.identifier'?: string
+        uncalibratedDating?: number
+        'uncalibratedDating[]'?: number[]
         'analysis.year[between]'?: string
         'analysis.year[gt]'?: string
         'analysis.year[gte]'?: string
@@ -20156,6 +20185,11 @@ export interface operations {
         'uncalibratedDating[gte]'?: string
         'uncalibratedDating[lt]'?: string
         'uncalibratedDating[lte]'?: string
+        'probability[between]'?: string
+        'probability[gt]'?: string
+        'probability[gte]'?: string
+        'probability[lt]'?: string
+        'probability[lte]'?: string
         'error[between]'?: string
         'error[gt]'?: string
         'error[gte]'?: string
@@ -22568,6 +22602,9 @@ export interface operations {
         'subject.taxonomy.flat.familyId[]'?: number[]
         'subject.taxonomy.flat.genusId'?: number
         'subject.taxonomy.flat.genusId[]'?: number[]
+        'subject.cf'?: boolean
+        'subject.sp'?: boolean
+        'subject.type'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -22902,6 +22939,9 @@ export interface operations {
         'subject.taxonomy.flat.familyId[]'?: number[]
         'subject.taxonomy.flat.genusId'?: number
         'subject.taxonomy.flat.genusId[]'?: number[]
+        'subject.cf'?: boolean
+        'subject.sp'?: boolean
+        'subject.type'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -23043,6 +23083,9 @@ export interface operations {
         'subject.taxonomy.flat.familyId[]'?: number[]
         'subject.taxonomy.flat.genusId'?: number
         'subject.taxonomy.flat.genusId[]'?: number[]
+        'subject.cf'?: boolean
+        'subject.sp'?: boolean
+        'subject.type'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -23184,6 +23227,9 @@ export interface operations {
         'subject.taxonomy.flat.familyId[]'?: number[]
         'subject.taxonomy.flat.genusId'?: number
         'subject.taxonomy.flat.genusId[]'?: number[]
+        'subject.cf'?: boolean
+        'subject.sp'?: boolean
+        'subject.type'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -23518,6 +23564,9 @@ export interface operations {
         'subject.taxonomy.flat.familyId[]'?: number[]
         'subject.taxonomy.flat.genusId'?: number
         'subject.taxonomy.flat.genusId[]'?: number[]
+        'subject.cf'?: boolean
+        'subject.sp'?: boolean
+        'subject.type'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -23659,6 +23708,9 @@ export interface operations {
         'subject.taxonomy.flat.familyId[]'?: number[]
         'subject.taxonomy.flat.genusId'?: number
         'subject.taxonomy.flat.genusId[]'?: number[]
+        'subject.cf'?: boolean
+        'subject.sp'?: boolean
+        'subject.type'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -26024,6 +26076,8 @@ export interface operations {
         'subject.shape[]'?: string[]
         'subject.functionalForm'?: string
         'subject.functionalForm[]'?: string[]
+        'subject.functionalForm.functionalGroup'?: string
+        'subject.functionalForm.functionalGroup[]'?: string[]
         'subject.notes'?: string
         'subject.surfaceTreatment'?: string
         'subject.surfaceTreatment[]'?: string[]
@@ -26374,6 +26428,8 @@ export interface operations {
         'subject.shape[]'?: string[]
         'subject.functionalForm'?: string
         'subject.functionalForm[]'?: string[]
+        'subject.functionalForm.functionalGroup'?: string
+        'subject.functionalForm.functionalGroup[]'?: string[]
         'subject.notes'?: string
         'subject.surfaceTreatment'?: string
         'subject.surfaceTreatment[]'?: string[]
@@ -26531,6 +26587,8 @@ export interface operations {
         'subject.shape[]'?: string[]
         'subject.functionalForm'?: string
         'subject.functionalForm[]'?: string[]
+        'subject.functionalForm.functionalGroup'?: string
+        'subject.functionalForm.functionalGroup[]'?: string[]
         'subject.notes'?: string
         'subject.surfaceTreatment'?: string
         'subject.surfaceTreatment[]'?: string[]
@@ -29070,12 +29128,20 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'subject.depthMin'?: string
+        'subject.depthMin[]'?: string[]
+        'subject.depthMax'?: string
+        'subject.depthMax[]'?: string[]
         'subject.sedimentCore'?: string
         'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.number'?: number
+        'subject.sedimentCore.number[]'?: number[]
         'subject.sedimentCore.site'?: string
         'subject.sedimentCore.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.sedimentCore.year'?: number
+        'subject.sedimentCore.year[]'?: number[]
         'subject.depthMin[between]'?: string
         'subject.depthMin[gt]'?: string
         'subject.depthMin[gte]'?: string
@@ -29086,6 +29152,16 @@ export interface operations {
         'subject.depthMax[gte]'?: string
         'subject.depthMax[lt]'?: string
         'subject.depthMax[lte]'?: string
+        'subject.sedimentCore.number[between]'?: string
+        'subject.sedimentCore.number[gt]'?: string
+        'subject.sedimentCore.number[gte]'?: string
+        'subject.sedimentCore.number[lt]'?: string
+        'subject.sedimentCore.number[lte]'?: string
+        'subject.sedimentCore.year[between]'?: string
+        'subject.sedimentCore.year[gt]'?: string
+        'subject.sedimentCore.year[gte]'?: string
+        'subject.sedimentCore.year[lt]'?: string
+        'subject.sedimentCore.year[lte]'?: string
         'exists[subject.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.notes
@@ -29400,12 +29476,20 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'subject.depthMin'?: string
+        'subject.depthMin[]'?: string[]
+        'subject.depthMax'?: string
+        'subject.depthMax[]'?: string[]
         'subject.sedimentCore'?: string
         'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.number'?: number
+        'subject.sedimentCore.number[]'?: number[]
         'subject.sedimentCore.site'?: string
         'subject.sedimentCore.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.sedimentCore.year'?: number
+        'subject.sedimentCore.year[]'?: number[]
         'subject.depthMin[between]'?: string
         'subject.depthMin[gt]'?: string
         'subject.depthMin[gte]'?: string
@@ -29416,6 +29500,16 @@ export interface operations {
         'subject.depthMax[gte]'?: string
         'subject.depthMax[lt]'?: string
         'subject.depthMax[lte]'?: string
+        'subject.sedimentCore.number[between]'?: string
+        'subject.sedimentCore.number[gt]'?: string
+        'subject.sedimentCore.number[gte]'?: string
+        'subject.sedimentCore.number[lt]'?: string
+        'subject.sedimentCore.number[lte]'?: string
+        'subject.sedimentCore.year[between]'?: string
+        'subject.sedimentCore.year[gt]'?: string
+        'subject.sedimentCore.year[gte]'?: string
+        'subject.sedimentCore.year[lt]'?: string
+        'subject.sedimentCore.year[lte]'?: string
         'exists[subject.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.notes
@@ -29537,12 +29631,20 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'subject.depthMin'?: string
+        'subject.depthMin[]'?: string[]
+        'subject.depthMax'?: string
+        'subject.depthMax[]'?: string[]
         'subject.sedimentCore'?: string
         'subject.sedimentCore[]'?: string[]
+        'subject.sedimentCore.number'?: number
+        'subject.sedimentCore.number[]'?: number[]
         'subject.sedimentCore.site'?: string
         'subject.sedimentCore.site[]'?: string[]
         'subject.stratigraphicUnit'?: string
         'subject.stratigraphicUnit[]'?: string[]
+        'subject.sedimentCore.year'?: number
+        'subject.sedimentCore.year[]'?: number[]
         'subject.depthMin[between]'?: string
         'subject.depthMin[gt]'?: string
         'subject.depthMin[gte]'?: string
@@ -29553,6 +29655,16 @@ export interface operations {
         'subject.depthMax[gte]'?: string
         'subject.depthMax[lt]'?: string
         'subject.depthMax[lte]'?: string
+        'subject.sedimentCore.number[between]'?: string
+        'subject.sedimentCore.number[gt]'?: string
+        'subject.sedimentCore.number[gte]'?: string
+        'subject.sedimentCore.number[lt]'?: string
+        'subject.sedimentCore.number[lte]'?: string
+        'subject.sedimentCore.year[between]'?: string
+        'subject.sedimentCore.year[gt]'?: string
+        'subject.sedimentCore.year[gte]'?: string
+        'subject.sedimentCore.year[lt]'?: string
+        'subject.sedimentCore.year[lte]'?: string
         'exists[subject.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: subject.notes
@@ -29688,6 +29800,14 @@ export interface operations {
         'taxonomies.taxonomy.flat.familyId[]'?: number[]
         'taxonomies.taxonomy.flat.genusId'?: number
         'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.depthMin'?: string
+        'subject.depthMin[]'?: string[]
+        'subject.depthMax'?: string
+        'subject.depthMax[]'?: string[]
+        'subject.sedimentCore.number'?: number
+        'subject.sedimentCore.number[]'?: number[]
+        'subject.sedimentCore.year'?: number
+        'subject.sedimentCore.year[]'?: number[]
         'subject.depthMin[between]'?: string
         'subject.depthMin[gt]'?: string
         'subject.depthMin[gte]'?: string
@@ -29698,6 +29818,16 @@ export interface operations {
         'subject.depthMax[gte]'?: string
         'subject.depthMax[lt]'?: string
         'subject.depthMax[lte]'?: string
+        'subject.sedimentCore.number[between]'?: string
+        'subject.sedimentCore.number[gt]'?: string
+        'subject.sedimentCore.number[gte]'?: string
+        'subject.sedimentCore.number[lt]'?: string
+        'subject.sedimentCore.number[lte]'?: string
+        'subject.sedimentCore.year[between]'?: string
+        'subject.sedimentCore.year[gt]'?: string
+        'subject.sedimentCore.year[gte]'?: string
+        'subject.sedimentCore.year[lt]'?: string
+        'subject.sedimentCore.year[lte]'?: string
         'exists[taxonomies]'?: boolean
         'exists[subject.notes]'?: boolean
         /**
@@ -29705,6 +29835,14 @@ export interface operations {
          * @example cafè
          */
         'subject.notes'?: string
+        'subject.pollen'?: boolean
+        'subject.geochemistry'?: boolean
+        'subject.sedimentaryDna'?: boolean
+        'subject.phytoliths'?: boolean
+        'subject.organicChemistry'?: boolean
+        'subject.plantMacroRemains'?: boolean
+        'subject.oslDating'?: boolean
+        'subject.microCharcoal'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -30019,6 +30157,14 @@ export interface operations {
         'taxonomies.taxonomy.flat.familyId[]'?: number[]
         'taxonomies.taxonomy.flat.genusId'?: number
         'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.depthMin'?: string
+        'subject.depthMin[]'?: string[]
+        'subject.depthMax'?: string
+        'subject.depthMax[]'?: string[]
+        'subject.sedimentCore.number'?: number
+        'subject.sedimentCore.number[]'?: number[]
+        'subject.sedimentCore.year'?: number
+        'subject.sedimentCore.year[]'?: number[]
         'subject.depthMin[between]'?: string
         'subject.depthMin[gt]'?: string
         'subject.depthMin[gte]'?: string
@@ -30029,6 +30175,16 @@ export interface operations {
         'subject.depthMax[gte]'?: string
         'subject.depthMax[lt]'?: string
         'subject.depthMax[lte]'?: string
+        'subject.sedimentCore.number[between]'?: string
+        'subject.sedimentCore.number[gt]'?: string
+        'subject.sedimentCore.number[gte]'?: string
+        'subject.sedimentCore.number[lt]'?: string
+        'subject.sedimentCore.number[lte]'?: string
+        'subject.sedimentCore.year[between]'?: string
+        'subject.sedimentCore.year[gt]'?: string
+        'subject.sedimentCore.year[gte]'?: string
+        'subject.sedimentCore.year[lt]'?: string
+        'subject.sedimentCore.year[lte]'?: string
         'exists[taxonomies]'?: boolean
         'exists[subject.notes]'?: boolean
         /**
@@ -30036,6 +30192,14 @@ export interface operations {
          * @example cafè
          */
         'subject.notes'?: string
+        'subject.pollen'?: boolean
+        'subject.geochemistry'?: boolean
+        'subject.sedimentaryDna'?: boolean
+        'subject.phytoliths'?: boolean
+        'subject.organicChemistry'?: boolean
+        'subject.plantMacroRemains'?: boolean
+        'subject.oslDating'?: boolean
+        'subject.microCharcoal'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -30157,6 +30321,14 @@ export interface operations {
         'taxonomies.taxonomy.flat.familyId[]'?: number[]
         'taxonomies.taxonomy.flat.genusId'?: number
         'taxonomies.taxonomy.flat.genusId[]'?: number[]
+        'subject.depthMin'?: string
+        'subject.depthMin[]'?: string[]
+        'subject.depthMax'?: string
+        'subject.depthMax[]'?: string[]
+        'subject.sedimentCore.number'?: number
+        'subject.sedimentCore.number[]'?: number[]
+        'subject.sedimentCore.year'?: number
+        'subject.sedimentCore.year[]'?: number[]
         'subject.depthMin[between]'?: string
         'subject.depthMin[gt]'?: string
         'subject.depthMin[gte]'?: string
@@ -30167,6 +30339,16 @@ export interface operations {
         'subject.depthMax[gte]'?: string
         'subject.depthMax[lt]'?: string
         'subject.depthMax[lte]'?: string
+        'subject.sedimentCore.number[between]'?: string
+        'subject.sedimentCore.number[gt]'?: string
+        'subject.sedimentCore.number[gte]'?: string
+        'subject.sedimentCore.number[lt]'?: string
+        'subject.sedimentCore.number[lte]'?: string
+        'subject.sedimentCore.year[between]'?: string
+        'subject.sedimentCore.year[gt]'?: string
+        'subject.sedimentCore.year[gte]'?: string
+        'subject.sedimentCore.year[lt]'?: string
+        'subject.sedimentCore.year[lte]'?: string
         'exists[taxonomies]'?: boolean
         'exists[subject.notes]'?: boolean
         /**
@@ -30174,6 +30356,14 @@ export interface operations {
          * @example cafè
          */
         'subject.notes'?: string
+        'subject.pollen'?: boolean
+        'subject.geochemistry'?: boolean
+        'subject.sedimentaryDna'?: boolean
+        'subject.phytoliths'?: boolean
+        'subject.organicChemistry'?: boolean
+        'subject.plantMacroRemains'?: boolean
+        'subject.oslDating'?: boolean
+        'subject.microCharcoal'?: boolean
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -37283,15 +37473,20 @@ export interface operations {
         'order[citedWork.value]'?: 'asc' | 'desc'
         'order[yearCompleted]'?: 'asc' | 'desc'
         'order[yearCompletedUpper]'?: 'asc' | 'desc'
-        writtenSource?: string
-        'writtenSource[]'?: string[]
         citedWork?: string
         'citedWork[]'?: string[]
+        writtenSource?: string
+        'writtenSource[]'?: string[]
         'writtenSource.author'?: string
         'writtenSource.author[]'?: string[]
         'writtenSource.centuries.century'?: string
         'writtenSource.centuries.century[]'?: string[]
+        yearCompleted?: number
+        'yearCompleted[]'?: number[]
+        yearCompletedUpper?: number
+        'yearCompletedUpper[]'?: number[]
         'exists[writtenSource.subtitle]'?: boolean
+        'exists[yearCompletedUpper]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: writtenSource.title
          * @example cafè
@@ -37312,7 +37507,6 @@ export interface operations {
          * @example cafè
          */
         search?: string
-        yearCompleted?: string
         'yearCompleted[gt]'?: string
         'yearCompleted[gte]'?: string
         'yearCompleted[lt]'?: string
@@ -37354,15 +37548,20 @@ export interface operations {
         'order[citedWork.value]'?: 'asc' | 'desc'
         'order[yearCompleted]'?: 'asc' | 'desc'
         'order[yearCompletedUpper]'?: 'asc' | 'desc'
-        writtenSource?: string
-        'writtenSource[]'?: string[]
         citedWork?: string
         'citedWork[]'?: string[]
+        writtenSource?: string
+        'writtenSource[]'?: string[]
         'writtenSource.author'?: string
         'writtenSource.author[]'?: string[]
         'writtenSource.centuries.century'?: string
         'writtenSource.centuries.century[]'?: string[]
+        yearCompleted?: number
+        'yearCompleted[]'?: number[]
+        yearCompletedUpper?: number
+        'yearCompletedUpper[]'?: number[]
         'exists[writtenSource.subtitle]'?: boolean
+        'exists[yearCompletedUpper]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: writtenSource.title
          * @example cafè
@@ -37383,7 +37582,6 @@ export interface operations {
          * @example cafè
          */
         search?: string
-        yearCompleted?: string
         'yearCompleted[gt]'?: string
         'yearCompleted[gte]'?: string
         'yearCompleted[lt]'?: string
@@ -46293,6 +46491,30 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -46302,6 +46524,20 @@ export interface operations {
         'site[]'?: string[]
         'sedimentCoreDepths.stratigraphicUnit'?: string
         'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
@@ -46340,6 +46576,30 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -46349,6 +46609,20 @@ export interface operations {
         'site[]'?: string[]
         'sedimentCoreDepths.stratigraphicUnit'?: string
         'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
@@ -46578,6 +46852,30 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -46587,6 +46885,20 @@ export interface operations {
         'site[]'?: string[]
         'sedimentCoreDepths.stratigraphicUnit'?: string
         'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
@@ -46691,6 +47003,30 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'mediaObjects.mediaObject.public'?: boolean
+        'exists[mediaObjects.mediaObject.description]'?: boolean
+        'mediaObjects.mediaObject.sha256'?: string
+        'mediaObjects.mediaObject.sha256[]'?: string[]
+        'mediaObjects.mediaObject.originalFilename'?: string
+        'mediaObjects.mediaObject.mimeType'?: string
+        'mediaObjects.mediaObject.type.group'?: string
+        'mediaObjects.mediaObject.type.group[]'?: string[]
+        'mediaObjects.mediaObject.type'?: string
+        'mediaObjects.mediaObject.type[]'?: string[]
+        'mediaObjects.mediaObject.description'?: string
+        'mediaObjects.mediaObject.uploadedBy.email'?: string
+        'mediaObjects.mediaObject.uploadDate'?: string
+        'mediaObjects.mediaObject.uploadDate[]'?: string
+        'mediaObjects.mediaObject.size[between]'?: string
+        'mediaObjects.mediaObject.size[gt]'?: string
+        'mediaObjects.mediaObject.size[gte]'?: string
+        'mediaObjects.mediaObject.size[lt]'?: string
+        'mediaObjects.mediaObject.size[lte]'?: string
+        'mediaObjects.mediaObject.uploadDate[between]'?: string
+        'mediaObjects.mediaObject.uploadDate[gt]'?: string
+        'mediaObjects.mediaObject.uploadDate[gte]'?: string
+        'mediaObjects.mediaObject.uploadDate[lt]'?: string
+        'mediaObjects.mediaObject.uploadDate[lte]'?: string
         'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
@@ -46700,6 +47036,20 @@ export interface operations {
         'site[]'?: string[]
         'sedimentCoreDepths.stratigraphicUnit'?: string
         'sedimentCoreDepths.stratigraphicUnit[]'?: string[]
+        number?: number
+        'number[]'?: number[]
+        year?: number
+        'year[]'?: number[]
+        'number[between]'?: string
+        'number[gt]'?: string
+        'number[gte]'?: string
+        'number[lt]'?: string
+        'number[lte]'?: string
+        'year[between]'?: string
+        'year[gt]'?: string
+        'year[gte]'?: string
+        'year[lt]'?: string
+        'year[lte]'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: description
          * @example cafè
@@ -46770,6 +47120,10 @@ export interface operations {
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'analyses.summary'?: string
+        depthMin?: string
+        'depthMin[]'?: string[]
+        depthMax?: string
+        'depthMax[]'?: string[]
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -46899,6 +47253,10 @@ export interface operations {
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'analyses.summary'?: string
+        depthMin?: string
+        'depthMin[]'?: string[]
+        depthMax?: string
+        'depthMax[]'?: string[]
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -47221,6 +47579,10 @@ export interface operations {
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'analyses.summary'?: string
+        depthMin?: string
+        'depthMin[]'?: string[]
+        depthMax?: string
+        'depthMax[]'?: string[]
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -47349,6 +47711,10 @@ export interface operations {
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'analyses.summary'?: string
+        depthMin?: string
+        'depthMin[]'?: string[]
+        depthMax?: string
+        'depthMax[]'?: string[]
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -47476,6 +47842,10 @@ export interface operations {
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'analyses.summary'?: string
+        depthMin?: string
+        'depthMin[]'?: string[]
+        depthMax?: string
+        'depthMax[]'?: string[]
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -47671,6 +48041,10 @@ export interface operations {
         'order[stratigraphicUnit.number]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'analyses.summary'?: string
+        depthMin?: string
+        'depthMin[]'?: string[]
+        depthMax?: string
+        'depthMax[]'?: string[]
         sedimentCore?: string
         'sedimentCore[]'?: string[]
         'sedimentCore.site'?: string
@@ -51162,7 +51536,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51224,7 +51598,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51309,7 +51683,7 @@ export interface operations {
         'flat.rank[lt]'?: string
         'flat.rank[lte]'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'flat.value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51356,7 +51730,7 @@ export interface operations {
         'flat.rank[lt]'?: string
         'flat.rank[lte]'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'flat.value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51711,7 +52085,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51745,7 +52119,7 @@ export interface operations {
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -52219,14 +52593,16 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
-        'animals.animal'?: string
-        'animals.animal[]'?: string[]
+        'animals.animal.taxonomy'?: string
+        'animals.animal.taxonomy[]'?: string[]
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
         'animals.chronologyUpper[]'?: number[]
         'animals.createdBy.email'?: string
         'animals.createdBy.email[]'?: string[]
+        'animals.language'?: string
+        'animals.language[]'?: string[]
         'animals.animal.taxonomy.value'?: string
         'animals.animal.taxonomy.value[]'?: string[]
         'animals.animal.taxonomy.class'?: string
@@ -52236,6 +52612,8 @@ export interface operations {
         'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.language'?: string
+        'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
         'plants.chronologyLower[]'?: number[]
         'plants.chronologyUpper'?: number
@@ -52244,6 +52622,12 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.flat.classId'?: number
+        'plants.plant.taxonomy.flat.classId[]'?: number[]
+        'plants.plant.taxonomy.flat.familyId'?: number
+        'plants.plant.taxonomy.flat.familyId[]'?: number[]
+        'plants.plant.taxonomy.flat.genusId'?: number
+        'plants.plant.taxonomy.flat.genusId[]'?: number[]
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -52300,7 +52684,7 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -52332,14 +52716,16 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
-        'animals.animal'?: string
-        'animals.animal[]'?: string[]
+        'animals.animal.taxonomy'?: string
+        'animals.animal.taxonomy[]'?: string[]
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
         'animals.chronologyUpper[]'?: number[]
         'animals.createdBy.email'?: string
         'animals.createdBy.email[]'?: string[]
+        'animals.language'?: string
+        'animals.language[]'?: string[]
         'animals.animal.taxonomy.value'?: string
         'animals.animal.taxonomy.value[]'?: string[]
         'animals.animal.taxonomy.class'?: string
@@ -52349,6 +52735,8 @@ export interface operations {
         'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.language'?: string
+        'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
         'plants.chronologyLower[]'?: number[]
         'plants.chronologyUpper'?: number
@@ -52357,6 +52745,12 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.flat.classId'?: number
+        'plants.plant.taxonomy.flat.classId[]'?: number[]
+        'plants.plant.taxonomy.flat.familyId'?: number
+        'plants.plant.taxonomy.flat.familyId[]'?: number[]
+        'plants.plant.taxonomy.flat.genusId'?: number
+        'plants.plant.taxonomy.flat.genusId[]'?: number[]
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -52413,7 +52807,7 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -52487,14 +52881,16 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
-        'animals.animal'?: string
-        'animals.animal[]'?: string[]
+        'animals.animal.taxonomy'?: string
+        'animals.animal.taxonomy[]'?: string[]
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
         'animals.chronologyUpper[]'?: number[]
         'animals.createdBy.email'?: string
         'animals.createdBy.email[]'?: string[]
+        'animals.language'?: string
+        'animals.language[]'?: string[]
         'animals.animal.taxonomy.value'?: string
         'animals.animal.taxonomy.value[]'?: string[]
         'animals.animal.taxonomy.class'?: string
@@ -52504,6 +52900,8 @@ export interface operations {
         'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.language'?: string
+        'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
         'plants.chronologyLower[]'?: number[]
         'plants.chronologyUpper'?: number
@@ -52512,6 +52910,12 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.flat.classId'?: number
+        'plants.plant.taxonomy.flat.classId[]'?: number[]
+        'plants.plant.taxonomy.flat.familyId'?: number
+        'plants.plant.taxonomy.flat.familyId[]'?: number[]
+        'plants.plant.taxonomy.flat.genusId'?: number
+        'plants.plant.taxonomy.flat.genusId[]'?: number[]
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -52568,7 +52972,7 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -52628,14 +53032,16 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
-        'animals.animal'?: string
-        'animals.animal[]'?: string[]
+        'animals.animal.taxonomy'?: string
+        'animals.animal.taxonomy[]'?: string[]
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
         'animals.chronologyUpper[]'?: number[]
         'animals.createdBy.email'?: string
         'animals.createdBy.email[]'?: string[]
+        'animals.language'?: string
+        'animals.language[]'?: string[]
         'animals.animal.taxonomy.value'?: string
         'animals.animal.taxonomy.value[]'?: string[]
         'animals.animal.taxonomy.class'?: string
@@ -52645,6 +53051,8 @@ export interface operations {
         'animals.animal.taxonomy.vernacularName'?: string
         'plants.plant'?: string
         'plants.plant[]'?: string[]
+        'plants.language'?: string
+        'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
         'plants.chronologyLower[]'?: number[]
         'plants.chronologyUpper'?: number
@@ -52653,6 +53061,12 @@ export interface operations {
         'plants.createdBy.email[]'?: string[]
         'plants.plant.taxonomy'?: string
         'plants.plant.taxonomy[]'?: string[]
+        'plants.plant.taxonomy.flat.classId'?: number
+        'plants.plant.taxonomy.flat.classId[]'?: number[]
+        'plants.plant.taxonomy.flat.familyId'?: number
+        'plants.plant.taxonomy.flat.familyId[]'?: number[]
+        'plants.plant.taxonomy.flat.genusId'?: number
+        'plants.plant.taxonomy.flat.genusId[]'?: number[]
         region?: string
         'region[]'?: string[]
         'plants.chronologyLower[between]'?: string
@@ -52709,7 +53123,7 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -52874,7 +53288,7 @@ export interface operations {
         'order[cf]'?: 'asc' | 'desc'
         'order[sp]'?: 'asc' | 'desc'
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -52911,7 +53325,7 @@ export interface operations {
         'order[cf]'?: 'asc' | 'desc'
         'order[sp]'?: 'asc' | 'desc'
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -53426,7 +53840,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -53838,7 +54252,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -53905,7 +54319,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -53967,7 +54381,7 @@ export interface operations {
     parameters: {
       query?: {
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -54097,7 +54511,7 @@ export interface operations {
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -54131,7 +54545,7 @@ export interface operations {
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value. Nested properties are not supported
+         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string

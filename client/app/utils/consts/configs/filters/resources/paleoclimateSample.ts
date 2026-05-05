@@ -5,7 +5,6 @@ import {
   generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
 import { propertyStaticFiltersDefinition as mediaObjectPropertyStaticDefinition } from './mediaObject'
-import { propertyStaticFiltersDefinition as paleoclimateSamplingSiteDefinition } from './paleoclimateSamplingSite'
 
 const { Exists, SearchPartial, Boolean, PaleoclimateSamplingSiteEquals } =
   API_FILTERS

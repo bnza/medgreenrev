@@ -4,6 +4,7 @@ namespace App\Entity\Data;
 
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
@@ -21,6 +22,7 @@ use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\MediaObject\MediaObjectSedimentCore;
 use App\Entity\Data\Join\SedimentCoreDepth;
 use App\Entity\Data\View\Code\SedimentCoreCodeView;
+use App\Metadata\Attribute\SubResourceFilters\ApiMediaObjectSubresourceFilters;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -133,6 +135,15 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'site' => 'exact',
         'sedimentCoreDepths.stratigraphicUnit' => 'exact',
+        'number' => 'exact',
+        'year' => 'exact',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'number',
+        'year',
     ]
 )]
 #[ApiFilter(
@@ -147,6 +158,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'mediaObjects',
     ]
 )]
+#[ApiMediaObjectSubresourceFilters('mediaObjects.mediaObject')]
 #[UniqueEntity(
     fields: ['site', 'year', 'number'],
     message: 'Duplicate [site, year, number] combination.',

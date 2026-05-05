@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join\Analysis;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -41,6 +42,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         'taxonomies.taxonomy.flat.classId' => 'exact',
         'taxonomies.taxonomy.flat.familyId' => 'exact',
         'taxonomies.taxonomy.flat.genusId' => 'exact',
+        'subject.depthMin' => 'exact',
+        'subject.depthMax' => 'exact',
+        'subject.sedimentCore.number' => 'exact',
+        'subject.sedimentCore.year' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -48,6 +53,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'subject.depthMin',
         'subject.depthMax',
+        'subject.sedimentCore.number',
+        'subject.sedimentCore.year',
     ]
 )]
 #[ApiFilter(
@@ -63,7 +70,19 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.notes',
     ]
 )]
-#[ApiStratigraphicUnitSubresourceFilters('subject.stratigraphicUnit')]
+#[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'subject.pollen',
+        'subject.geochemistry',
+        'subject.sedimentaryDna',
+        'subject.phytoliths',
+        'subject.organicChemistry',
+        'subject.plantMacroRemains',
+        'subject.oslDating',
+        'subject.microCharcoal',
+    ]
+)] #[ApiStratigraphicUnitSubresourceFilters('subject.stratigraphicUnit')]
 class AnalysisSedimentCoreDepthBotany extends BaseAnalysisJoin
 {
     #[ORM\Id, ORM\GeneratedValue(strategy: 'SEQUENCE'), ORM\Column(type: 'bigint', unique: true)]

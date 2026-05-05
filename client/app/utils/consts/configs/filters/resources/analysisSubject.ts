@@ -14,6 +14,7 @@ import { propertyStaticFiltersDefinition as potteryPropertyStaticDefinition } fr
 import { propertyStaticFiltersDefinition as samplePropertyStaticDefinition } from './sample'
 import { propertyStaticFiltersDefinition as sedimentCoreDepthPropertyStaticDefinition } from './sedimentCoreDepth'
 import { propertyStaticFiltersDefinition as stratigraphicUnitPropertyStaticDefinition } from './stratigraphicUnit'
+import { propertyStaticFiltersDefinition as samplingStratigraphicUnitPropertyStaticDefinition } from './samplingStratigraphicUnit'
 import {
   propertyBoneStaticFiltersDefinition as zooBonePropertyStaticDefinition,
   propertyToothStaticFiltersDefinition as zooToothPropertyStaticDefinition,
@@ -248,7 +249,7 @@ export const staticFiltersDefinitionPotteryParentSubject = {
 export const staticFiltersDefinitionSample = {
   ...analysisSamplePropertyStaticFiltersDefinition,
   ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
-    'subject.stratigraphicUnits.stratigraphicUnit',
+    'subject.sampleStratigraphicUnits.stratigraphicUnit',
     'stratigraphic unit',
   ]),
 }
@@ -284,10 +285,10 @@ export const staticFiltersDefinitionSampleMicrostratigraphicUnitParentSubject =
 
 export const staticFiltersDefinitionSedimentCoreDepth = {
   ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
-  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
-    'subject.stratigraphicUnit',
-    'stratigraphic unit',
-  ]),
+  ...generateResourceDefinition(
+    samplingStratigraphicUnitPropertyStaticDefinition,
+    ['subject.stratigraphicUnit', 'stratigraphic unit'],
+  ),
 }
 
 export const staticFiltersDefinitionSedimentCoreDepthParentSubject = {
@@ -296,10 +297,10 @@ export const staticFiltersDefinitionSedimentCoreDepthParentSubject = {
 
 export const staticFiltersDefinitionSedimentCoreDepthBotany = {
   ...analysisSedimentCoreDepthPropertyStaticFiltersDefinition,
-  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
-    'subject.stratigraphicUnit',
-    'stratigraphic unit',
-  ]),
+  ...generateResourceDefinition(
+    samplingStratigraphicUnitPropertyStaticDefinition,
+    ['subject.stratigraphicUnit', 'stratigraphic unit'],
+  ),
   ...generateResourceDefinition(botanyTaxonomyPropertyStaticDefinition, [
     'taxonomies',
     '',

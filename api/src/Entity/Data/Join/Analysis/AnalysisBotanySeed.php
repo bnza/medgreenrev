@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join\Analysis;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use App\Entity\Data\Analysis;
@@ -38,6 +39,14 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.taxonomy.flat.classId' => 'exact',
         'subject.taxonomy.flat.familyId' => 'exact',
         'subject.taxonomy.flat.genusId' => 'exact',
+    ]
+)]
+#[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'subject.cf',
+        'subject.sp',
+        'subject.type',
     ]
 )]
 #[ApiStratigraphicUnitSubresourceFilters('subject.stratigraphicUnit')]
