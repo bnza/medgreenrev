@@ -88,10 +88,11 @@ const config: Readonly<ResourceConfig> = {
       key: 'description',
       value: 'description',
       title: 'description',
+      minWidth: '300',
       sortable: false,
     },
   ],
-  labels: ['paleoclimate sample', 'paleoclimate sample'],
+  labels: ['paleoclimate sample', 'paleoclimate samples'],
   name: 'paleoclimateSample',
 }
 
