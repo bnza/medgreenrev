@@ -10,7 +10,10 @@ use Fidry\AliceDataFixtures\Persistence\PurgerFactoryInterface;
 use Fidry\AliceDataFixtures\Persistence\PurgerInterface;
 use Symfony\Component\DependencyInjection\Attribute\AsDecorator;
 use Symfony\Component\DependencyInjection\Attribute\AutowireDecorated;
+use Symfony\Component\DependencyInjection\Attribute\When;
 
+#[When('dev')]
+#[When('test')]
 #[AsDecorator(
     decorates: 'fidry_alice_data_fixtures.persistence.doctrine.purger.purger_factory',
 )]
