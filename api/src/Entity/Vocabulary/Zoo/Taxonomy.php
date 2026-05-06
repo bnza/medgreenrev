@@ -12,7 +12,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\SearchPropertyAliasFilter;
+use App\Doctrine\Filter\SearchMultiPropertyAliasFilter;
 use App\Repository\ZooTaxonomyRepository;
 use App\Validator as AppAssert;
 use Doctrine\ORM\Mapping as ORM;
@@ -71,9 +71,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(OrderFilter::class, properties: ['id', 'code', 'value', 'englishName', 'spanishName', 'class', 'family'])]
 #[ApiFilter(SearchFilter::class, properties: ['id' => 'exact'])]
 #[ApiFilter(
-    SearchPropertyAliasFilter::class,
+    SearchMultiPropertyAliasFilter::class,
     properties: [
-        'search' => 'value',
+        'search' => ['value', 'englishName'],
     ]
 )]
 #[UniqueEntity(

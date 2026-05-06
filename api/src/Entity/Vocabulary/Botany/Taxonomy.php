@@ -12,7 +12,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Doctrine\Filter\SearchPropertyAliasFilter;
+use App\Doctrine\Filter\SearchMultiPropertyAliasFilter;
 use App\Entity\Data\View\BotanyTaxonomyView;
 use App\Repository\BotanyTaxonomyRepository;
 use App\Validator as AppAssert;
@@ -96,9 +96,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     ]
 )]
 #[ApiFilter(
-    SearchPropertyAliasFilter::class,
+    SearchMultiPropertyAliasFilter::class,
     properties: [
-        'search' => 'flat.value',
+        'search' => ['flat.value', 'englishName'],
     ]
 )]
 #[UniqueEntity(
