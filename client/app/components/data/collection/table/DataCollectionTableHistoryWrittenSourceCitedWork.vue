@@ -55,6 +55,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <!-- TODO: Add info-box components for writtenSource and citedWork when available -->
     <template #dialogs="{ refetch }">
       <data-dialog-create-history-written-source-cited-work
+        :path
         :parent
         @refresh="refetch()"
       />

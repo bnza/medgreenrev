@@ -108,6 +108,10 @@ const EMPTY_POST_MODEL_MAP: {
     stratigraphicUnit:
       parent?.key === 'stratigraphicUnit' ? parent.item['@id'] : undefined,
   }),
+  '/api/data/history/written_sources_cited_works': (parent) => ({
+    writtenSource:
+      parent?.key === 'historyWrittenSource' ? parent.item['@id'] : undefined,
+  }),
   '/api/data/history/plants': (parent) => ({
     location:
       parent?.key === 'vocHistoryLocation' ? parent.item['@id'] : undefined,
