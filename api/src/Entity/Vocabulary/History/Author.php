@@ -3,6 +3,7 @@
 namespace App\Entity\Vocabulary\History;
 
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
@@ -30,7 +31,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new GetCollection(
             uriTemplate: '/vocabulary/history/authors',
-            order: ['value' => 'ASC'],
+            paginationEnabled: true,
+            paginationItemsPerPage: 100,
+            paginationClientItemsPerPage: true,
+            order: ['id' => 'ASC'],
         ),
         new GetCollection(
             uriTemplate: '/data/vocabulary/history/authors',
@@ -53,6 +57,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     paginationEnabled: false
 )]
 #[ApiFilter(OrderFilter::class, properties: ['id', 'value', 'variant'])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact'])]
 #[ApiFilter(
     UnaccentedSearchFilter::class,
     properties: [

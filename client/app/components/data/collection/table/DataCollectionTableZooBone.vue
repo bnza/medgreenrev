@@ -23,9 +23,6 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const vocabularyZooTaxonomy = useVocabularyStore(
-  '/api/vocabulary/zoo/taxonomies',
-)
 const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
 const vocabularyZooBoneParts = useVocabularyStore(
   '/api/vocabulary/zoo/bone_parts',
@@ -81,19 +78,38 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       />
     </template>
     <template #[`item.taxonomy.value`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy) }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+      />
     </template>
     <template #[`item.taxonomy.englishName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+        prop="englishName"
+      />
     </template>
     <template #[`item.taxonomy.spanishName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+        prop="spanishName"
+      />
     </template>
     <template #[`item.taxonomy.class`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'class') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+        prop="class"
+      />
     </template>
     <template #[`item.taxonomy.family`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'family') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+        prop="family"
+      />
     </template>
     <template #[`item.element.value`]="{ item }">
       {{ vocabularyZooBones.getValue(item.element) }}

@@ -3,6 +3,7 @@
 namespace App\Entity\Vocabulary\Zoo;
 
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
@@ -31,7 +32,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     operations: [
         new GetCollection(
             uriTemplate: '/vocabulary/zoo/taxonomies',
-            order: ['value' => 'ASC'],
+            paginationEnabled: true,
+            paginationItemsPerPage: 100,
+            paginationClientItemsPerPage: true,
+            order: ['id' => 'ASC'],
         ),
         new GetCollection(
             uriTemplate: '/data/vocabulary/zoo/taxonomies',
@@ -65,6 +69,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     paginationEnabled: false,
 )]
 #[ApiFilter(OrderFilter::class, properties: ['id', 'code', 'value', 'englishName', 'spanishName', 'class', 'family'])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact'])]
 #[ApiFilter(
     SearchPropertyAliasFilter::class,
     properties: [

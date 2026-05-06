@@ -66,7 +66,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new GetCollection(
             uriTemplate: '/vocabulary/history/locations',
-            order: ['value' => 'ASC'],
+            paginationEnabled: true,
+            paginationItemsPerPage: 100,
+            paginationClientItemsPerPage: true,
+            order: ['id' => 'ASC'],
             normalizationContext: ['groups' => ['voc_history_location:read']],
         ),
         new GetCollection(
@@ -103,6 +106,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'id' => 'exact',
         'animals.animal' => 'ipartial',
         'animals.taxonomy' => 'exact',
         'animals.taxonomy.class' => 'exact',

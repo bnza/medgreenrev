@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import useAutocompleteQuery from '~/composables/queries/useAutocompleteQuery'
 import type { ApiResourcePath } from '~/utils/consts/resources'
-import type {
-  GetItemPath,
-  JsonLdItem,
-  OperationPathParams,
-} from '~~/types'
+import { isDynamicVocabularyPath } from '~/utils/consts/dynamicVocabulary'
+import type { GetItemPath, JsonLdItem, OperationPathParams } from '~~/types'
 
 const model = defineModel<string[] | string | null>()
 
@@ -91,6 +88,23 @@ const emit = defineEmits<{
 watch(selectedItem, (newValue) => {
   emit('selected', newValue)
 })
+
+// Write-through bridge to the dynamic vocabulary store: any item fetched by
+// the autocomplete (search results or the resolved selected item) is pushed
+// into the IRI cache so open <vocabulary-value-cell>s pointing at those IRIs
+// resolve instantly without an extra `id[]=` round-trip.
+const dynamicStore = isDynamicVocabularyPath(props.path)
+  ? useDynamicVocabularyStore(props.path)
+  : null
+
+if (dynamicStore) {
+  watch(items, (list) => {
+    list?.forEach((it) => dynamicStore.upsert(it as any))
+  })
+  watch(selectedItem, (it) => {
+    if (it) dynamicStore.upsert(it as any)
+  })
+}
 </script>
 
 <template>

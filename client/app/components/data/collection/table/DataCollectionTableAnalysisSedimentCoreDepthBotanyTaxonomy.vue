@@ -26,9 +26,6 @@ const { updateDialogState } = storeToRefs(
     '/api/data/analyses/sediment_core_depth_botany_taxonomies/{id}',
   ),
 )
-const vocabularyBotanyTaxonomy = useVocabularyStore(
-  '/api/vocabulary/botany/taxonomies',
-)
 const acl = defineModel<CollectionAcl>('acl', { required: true })
 </script>
 <template>
@@ -50,22 +47,45 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       </v-btn-group>
     </template>
     <template #[`item.taxonomy.value`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy) }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+      />
     </template>
     <template #[`item.taxonomy.englishName`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="englishName"
+      />
     </template>
     <template #[`item.taxonomy.flat.class`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.class') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="flat.class"
+      />
     </template>
     <template #[`item.taxonomy.flat.family`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.family') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="flat.family"
+      />
     </template>
     <template #[`item.taxonomy.flat.genus`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.genus') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="flat.genus"
+      />
     </template>
     <template #[`item.taxonomy.flat.species`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.species') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="flat.species"
+      />
     </template>
     <template #[`item.cf`]="{ item }">
       <v-checkbox-btn class="centered-item" :model-value="item.cf" readonly />

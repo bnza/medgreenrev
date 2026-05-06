@@ -33,10 +33,6 @@ const searchPath = computed(
 )
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })
-
-const vocabularyBotanyTaxonomy = useVocabularyStore(
-  '/api/vocabulary/botany/taxonomies',
-)
 </script>
 
 <template>
@@ -56,10 +52,18 @@ const vocabularyBotanyTaxonomy = useVocabularyStore(
       />
     </template>
     <template #[`item.taxonomy.flat.value`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.value') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="flat.value"
+      />
     </template>
     <template #[`item.taxonomy.englishName`]="{ item }">
-      {{ vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/botany/taxonomies"
+        :iri="item.taxonomy"
+        prop="englishName"
+      />
     </template>
     <template #[`item.cf`]="{ item }">
       <v-checkbox-btn class="centered-item" :model-value="item.cf" readonly />

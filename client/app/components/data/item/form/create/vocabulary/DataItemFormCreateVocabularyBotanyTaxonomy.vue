@@ -41,7 +41,8 @@ watch(parentIri, (value) => {
 watch(
   () => model.value.value,
   (value) => {
-    model.value.value = value ? capitalize(value) : value
+    model.value.value =
+      value && model.value.level !== 'species' ? capitalize(value) : value
   },
 )
 

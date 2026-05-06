@@ -111,7 +111,7 @@ class ResourceUniqueValidator
         StratigraphicUnit::class => [['site', 'year', 'number']],
         StratigraphicUnitRelationshipView::class => [['lftStratigraphicUnit', 'rgtStratigraphicUnit']],
         User::class => [['email']],
-        VocBotanyTaxonomy::class => [['value']],
+        VocBotanyTaxonomy::class => [['value', 'parent']],
         VocHistoryLocation::class => [['value']],
         VocZooTaxonomy::class => [['code'], ['value']],
     ];

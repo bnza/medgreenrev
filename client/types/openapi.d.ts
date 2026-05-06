@@ -36452,6 +36452,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -36540,6 +36541,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -36821,6 +36823,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -36945,6 +36948,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -51591,6 +51595,8 @@ export interface operations {
         'order[flat.class]'?: 'asc' | 'desc'
         'order[flat.genus]'?: 'asc' | 'desc'
         'order[flat.species]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         level?: string
         'level[]'?: string[]
         parent?: string
@@ -51601,7 +51607,7 @@ export interface operations {
         'flat.rank[lt]'?: string
         'flat.rank[lte]'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'flat.value'. Supports dot-notation for nested relations.
+         * @description Case-insensitive, accent-insensitive contains search; alias 'search' matches any of: flat.value, englishName. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51628,6 +51634,10 @@ export interface operations {
   api_vocabularybotanytaxonomies_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[level]'?: 'asc' | 'desc'
@@ -51638,6 +51648,8 @@ export interface operations {
         'order[flat.class]'?: 'asc' | 'desc'
         'order[flat.genus]'?: 'asc' | 'desc'
         'order[flat.species]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         level?: string
         'level[]'?: string[]
         parent?: string
@@ -51648,7 +51660,7 @@ export interface operations {
         'flat.rank[lt]'?: string
         'flat.rank[lte]'?: string
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'flat.value'. Supports dot-notation for nested relations.
+         * @description Case-insensitive, accent-insensitive contains search; alias 'search' matches any of: flat.value, englishName. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -51665,7 +51677,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read'][]
           }
         }
@@ -51999,6 +52011,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[variant]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
@@ -52032,9 +52046,15 @@ export interface operations {
   api_vocabularyhistoryauthors_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[variant]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
          * @example cafè
@@ -52058,7 +52078,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.read'][]
           }
         }
@@ -52315,6 +52335,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         'animals.animal'?: string
         'animals.taxonomy'?: string
         'animals.taxonomy[]'?: string[]
@@ -52443,6 +52465,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         'animals.animal'?: string
         'animals.taxonomy'?: string
         'animals.taxonomy[]'?: string[]
@@ -52613,6 +52637,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         'animals.animal'?: string
         'animals.taxonomy'?: string
         'animals.taxonomy[]'?: string[]
@@ -52766,9 +52792,15 @@ export interface operations {
   api_vocabularyhistorylocations_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
         'order[region.value]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         'animals.animal'?: string
         'animals.taxonomy'?: string
         'animals.taxonomy[]'?: string[]
@@ -52882,7 +52914,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocHistoryLocation.jsonld-voc_history_location.read'][]
           }
         }
@@ -53979,8 +54011,10 @@ export interface operations {
         'order[spanishName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
+         * @description Case-insensitive, accent-insensitive contains search; alias 'search' matches any of: value, englishName. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -54007,6 +54041,10 @@ export interface operations {
   api_vocabularyzootaxonomies_get_collection: {
     parameters: {
       query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[code]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
@@ -54014,8 +54052,10 @@ export interface operations {
         'order[spanishName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
+        id?: number
+        'id[]'?: number[]
         /**
-         * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
+         * @description Case-insensitive, accent-insensitive contains search; alias 'search' matches any of: value, englishName. Supports dot-notation for nested relations.
          * @example oak
          */
         search?: string
@@ -54032,7 +54072,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HydraCollectionBaseSchemaNoPagination'] & {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
             member: components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read'][]
           }
         }

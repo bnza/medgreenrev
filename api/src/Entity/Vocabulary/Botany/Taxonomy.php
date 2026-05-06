@@ -34,7 +34,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     operations: [
         new GetCollection(
             uriTemplate: '/vocabulary/botany/taxonomies',
-            order: ['value' => 'ASC'],
+            paginationEnabled: true,
+            paginationItemsPerPage: 100,
+            paginationClientItemsPerPage: true,
+            order: ['id' => 'ASC'],
         ),
         new GetCollection(
             uriTemplate: '/data/vocabulary/botany/taxonomies',
@@ -81,6 +84,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
+        'id' => 'exact',
         'level' => 'exact',
         'parent' => 'exact',
     ]

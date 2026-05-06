@@ -120,6 +120,14 @@ export type VocabularyGetCollectionPath = {
   [K in GetCollectionPath]: K extends `/api/vocabulary/${string}` ? K : never
 }[GetCollectionPath]
 
+// Dynamic vocabulary paths used by the chunked, CRUD-aware store
+// Keep in sync with API resource paths under /api/vocabulary/...
+export type DynamicVocabularyPath =
+  | '/api/vocabulary/zoo/taxonomies'
+  | '/api/vocabulary/botany/taxonomies'
+  | '/api/vocabulary/history/locations'
+  | '/api/vocabulary/history/authors'
+
 export type ListGetCollectionPath = {
   [K in GetCollectionPath]: K extends `${string}/list/${string}` ? K : never
 }[GetCollectionPath]

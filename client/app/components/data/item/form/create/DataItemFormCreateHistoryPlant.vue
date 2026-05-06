@@ -92,11 +92,10 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
   </v-row>
   <v-row>
     <v-col cols="8" xs="12" class="px-2">
-      <data-autocomplete
+      <data-autocomplete-vocabulary-botany-taxonomy
         v-model="r$.$value.taxonomy"
-        path="/api/vocabulary/botany/taxonomies"
-        item-title="flat.value"
         label="taxonomy"
+        :error-messages="r$.$errors?.taxonomy"
         clearable
       />
     </v-col>

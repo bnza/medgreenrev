@@ -33,10 +33,6 @@ const searchPath = computed(
 )
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })
-
-const vocabularyZooTaxonomy = useVocabularyStore(
-  '/api/vocabulary/zoo/taxonomies',
-)
 </script>
 
 <template>
@@ -56,10 +52,18 @@ const vocabularyZooTaxonomy = useVocabularyStore(
       />
     </template>
     <template #[`item.taxonomy.englishName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+        prop="englishName"
+      />
     </template>
     <template #[`item.taxonomy.spanishName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName') }}
+      <vocabulary-value-cell
+        path="/api/vocabulary/zoo/taxonomies"
+        :iri="item.taxonomy"
+        prop="spanishName"
+      />
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
