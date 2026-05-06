@@ -103,27 +103,24 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     SearchFilter::class,
     properties: [
-        'animals.animal.taxonomy' => 'exact',
+        'animals.animal' => 'ipartial',
+        'animals.taxonomy' => 'exact',
+        'animals.taxonomy.class' => 'exact',
+        'animals.taxonomy.family' => 'exact',
+        'animals.taxonomy.vernacularName' => 'ipartial',
         'animals.chronologyLower' => 'exact',
         'animals.chronologyUpper' => 'exact',
         'animals.createdBy.email' => 'exact',
         'animals.language' => 'exact',
-        'animals.animal.taxonomy.value' => 'exact',
-        'animals.animal.taxonomy.class' => 'exact',
-        'animals.animal.taxonomy.family' => 'exact',
-        'animals.animal.taxonomy.vernacularName' => 'ipartial',
-        'plants.plant' => 'exact',
+        'plants.plant' => 'ipartial',
+        'plants.taxonomy' => 'exact',
+        'plants.taxonomy.flat.classId' => 'exact',
+        'plants.taxonomy.flat.familyId' => 'exact',
+        'plants.taxonomy.flat.genusId' => 'exact',
         'plants.language' => 'exact',
         'plants.chronologyLower' => 'exact',
         'plants.chronologyUpper' => 'exact',
         'plants.createdBy.email' => 'exact',
-        'plants.plant.taxonomy' => 'exact',
-        'plants.plant.taxonomy.flat.classId' => 'exact',
-        'plants.plant.taxonomy.flat.familyId' => 'exact',
-        'plants.plant.taxonomy.flat.genusId' => 'exact',
-        'plants.plant.taxonomy.family' => 'exact',
-        'plants.plant.taxonomy.class' => 'exact',
-        'plants.plant.taxonomy.vernacularName' => 'ipartial',
         'region' => 'exact',
     ]
 )]
@@ -139,9 +136,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'animals.animal.taxonomy.family',
+        'animals.taxonomy',
+        'animals.taxonomy.family',
         'animals.notes',
-        'plants.plant.taxonomy.family',
+        'plants.taxonomy',
         'plants.notes',
     ])]
 #[ApiFilter(

@@ -1,6 +1,7 @@
 App\Entity\Data\History\Plant:
   history_plant_1:
-    plant: '@plant_ALAMO'
+    plant: 'álamo'
+    taxonomy: '@botany_taxonomy_POPULUS'
     chronologyLower: 1150
     chronologyUpper: 1200
     location: '@location_5'
@@ -10,7 +11,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_2:
-    plant: '@plant_TRIGO'
+    plant: 'trigo'
+    taxonomy: '@botany_taxonomy_TRITICUM_AESTIVUM'
     chronologyLower: 950
     chronologyUpper: 975
     location: '@location_1'
@@ -19,7 +21,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_plant_3:
-    plant: '@plant_CEBADA'
+    plant: 'cebada'
+    taxonomy: '@botany_taxonomy_HORDEUM_VULGARE'
     chronologyLower: 1010
     chronologyUpper: 1030
     location: '@location_2'
@@ -29,7 +32,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_4:
-    plant: '@plant_OLIVO'
+    plant: 'olivo'
+    cf: true
+    taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
     chronologyLower: 1120
     chronologyUpper: 1140
     location: '@location_3'
@@ -37,7 +42,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_plant_5:
-    plant: '@plant_VINA'
+    plant: 'viña'
+    taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
     chronologyLower: 1185
     chronologyUpper: 1200
     location: '@location_4'
@@ -46,7 +52,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_6:
-    plant: '@plant_AJO'
+    plant: 'ajo'
+    cf: true
+    taxonomy: '@botany_taxonomy_ALLIUM_SATIVUM'
     chronologyLower: 1201
     chronologyUpper: 1201
     location: '@location_5'
@@ -54,7 +62,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_7:
-    plant: '@plant_LENTEJA'
+    plant: 'lenteja'
+    taxonomy: '@botany_taxonomy_LENS_CULINARIS'
     chronologyLower: 1220
     chronologyUpper: 1230
     location: '@location_6'
@@ -63,7 +72,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_plant_8:
-    plant: '@plant_GARBANZO'
+    plant: 'garbanzo'
+    taxonomy: '@botany_taxonomy_CICER_ARIETINUM'
     chronologyLower: 1275
     chronologyUpper: 1285
     location: '@location_7'
@@ -72,7 +82,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_9:
-    plant: '@plant_ALMENDRO'
+    plant: 'almendro'
+    sp: true
+    taxonomy: '@botany_taxonomy_PRUNUS_DULCIS'
     chronologyLower: 1300
     chronologyUpper: 1310
     location: '@location_8'
@@ -81,7 +93,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_10:
-    plant: '@plant_ALCORNOQUE'
+    plant: 'alcornoque'
+    taxonomy: '@botany_taxonomy_QUERCUS_SUBER'
     chronologyLower: 1325
     chronologyUpper: 1335
     location: '@location_9'
@@ -89,7 +102,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_11:
-    plant: '@plant_ALGARROBO'
+    plant: 'algarrobo'
+    cf: true
+    taxonomy: '@botany_taxonomy_CERATONIA_SILIQUA'
     chronologyLower: 1350
     chronologyUpper: 1350
     location: '@location_10'
@@ -98,7 +113,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_12:
-    plant: '@plant_ARROZ'
+    plant: 'arroz'
+    cf: true
+    taxonomy: '@botany_taxonomy_ORYZA_SATIVA'
     chronologyLower: 1360
     chronologyUpper: 1368
     location: '@location_11'
@@ -106,7 +123,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_13:
-    plant: '@plant_AVENA'
+    plant: 'avena'
+    taxonomy: '@botany_taxonomy_AVENA_SATIVA'
     chronologyLower: 1390
     chronologyUpper: 1395
     location: '@location_12'
@@ -115,7 +133,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_plant_14:
-    plant: '@plant_AVELLANO'
+    plant: 'avellano'
+    taxonomy: '@botany_taxonomy_CORYLUS_AVELLANA'
     chronologyLower: 1420
     chronologyUpper: 1425
     location: '@location_13'
@@ -123,7 +142,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_15:
-    plant: '@plant_ZANAHORIA'
+    plant: 'zanahoria'
+    taxonomy: '@botany_taxonomy_DAUCUS_CAROTA'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_14'
@@ -132,7 +152,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_16:
-    plant: '@plant_BERENJENA'
+    plant: 'berenjena'
+    taxonomy: '@botany_taxonomy_SOLANUM_MELONGENA'
     chronologyLower: 1155
     chronologyUpper: 1165
     location: '@location_15'
@@ -140,7 +161,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_plant_17:
-    plant: '@plant_AZAFRAN'
+    plant: 'azafrán'
+    sp: true
+    taxonomy: '@botany_taxonomy_CROCUS_SATIVUS'
     chronologyLower: 1240
     chronologyUpper: 1248
     location: '@location_16'
@@ -149,7 +172,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_18:
-    plant: '@plant_ALFALFA'
+    plant: 'alfalfa'
+    taxonomy: '@botany_taxonomy_MEDICAGO_SATIVA'
     chronologyLower: 1342
     chronologyUpper: 1346
     location: '@location_17'
@@ -157,7 +181,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_19:
-    plant: '@plant_GUISANTE'
+    plant: 'guisante'
+    taxonomy: '@botany_taxonomy_PISUM_SATIVUM'
     chronologyLower: 1020
     chronologyUpper: 1040
     location: '@location_18'
@@ -166,7 +191,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_plant_20:
-    plant: '@plant_HABA'
+    plant: 'haba'
+    taxonomy: '@botany_taxonomy_VICIA_FABA'
     chronologyLower: 1080
     chronologyUpper: 1090
     location: '@location_19'
@@ -174,7 +200,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_21:
-    plant: '@plant_HABICHUELA_JUDIA'
+    plant: 'habichuela o judía'
+    taxonomy: '@botany_taxonomy_PHASEOLUS_VULGARIS'
     chronologyLower: 1105
     chronologyUpper: 1115
     location: '@location_20'
@@ -183,7 +210,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_22:
-    plant: '@plant_HIGUERA'
+    plant: 'higuera'
+    sp: true
+    taxonomy: '@botany_taxonomy_FICUS_CARICA'
     chronologyLower: 1128
     chronologyUpper: 1132
     location: '@location_21'
@@ -191,7 +220,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_23:
-    plant: '@plant_LIMONERO'
+    plant: 'limonero'
+    taxonomy: '@botany_taxonomy_CITRUS_LIMON'
     chronologyLower: 1140
     chronologyUpper: 1145
     location: '@location_22'
@@ -200,7 +230,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_plant_24:
-    plant: '@plant_LINO'
+    plant: 'lino'
+    cf: true
+    taxonomy: '@botany_taxonomy_LINUM_USITATISSIMUM'
     chronologyLower: 1250
     chronologyUpper: 1260
     location: '@location_23'
@@ -208,7 +240,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_25:
-    plant: '@plant_MANZANO'
+    plant: 'manzano'
+    taxonomy: '@botany_taxonomy_MALUS_DOMESTICA'
     chronologyLower: 1270
     chronologyUpper: 1272
     location: '@location_24'
@@ -217,7 +250,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_26:
-    plant: '@plant_MELOCOTONERO'
+    plant: 'melocotonero'
+    cf: true
+    taxonomy: '@botany_taxonomy_PRUNUS_PERSICA'
     chronologyLower: 1285
     chronologyUpper: 1290
     location: '@location_25'
@@ -225,7 +260,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_27:
-    plant: '@plant_MEMBRILLO'
+    plant: 'membrillo'
+    taxonomy: '@botany_taxonomy_CYDONIA_OBLONGA'
     chronologyLower: 1305
     chronologyUpper: 1315
     location: '@location_26'
@@ -234,7 +270,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_28:
-    plant: '@plant_MORERA_MORAL'
+    plant: 'morera / moral'
+    taxonomy: '@botany_taxonomy_MORUS'
     chronologyLower: 1320
     chronologyUpper: 1324
     location: '@location_27'
@@ -242,7 +279,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_29:
-    plant: '@plant_NABO'
+    plant: 'nabo'
+    taxonomy: '@botany_taxonomy_BRASSICA_RAPA'
     chronologyLower: 1330
     chronologyUpper: 1331
     location: '@location_28'
@@ -251,7 +289,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_30:
-    plant: '@plant_NARANJO'
+    plant: 'naranjo'
+    sp: true
+    taxonomy: '@botany_taxonomy_CITRUS_SINENSIS'
     chronologyLower: 1344
     chronologyUpper: 1349
     location: '@location_29'
@@ -259,7 +299,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_31:
-    plant: '@plant_NISPERO'
+    plant: 'níspero'
+    taxonomy: '@botany_taxonomy_MESPILUS_GERMANICA'
     chronologyLower: 1355
     chronologyUpper: 1358
     location: '@location_30'
@@ -268,7 +309,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_32:
-    plant: '@plant_NOGAL'
+    plant: 'nogal'
+    taxonomy: '@botany_taxonomy_JUGLANS_REGIA'
     chronologyLower: 1366
     chronologyUpper: 1370
     location: '@location_31'
@@ -276,7 +318,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_plant_33:
-    plant: '@plant_PANIZO_MIJO'
+    plant: 'panizo o mijo'
+    taxonomy: '@botany_taxonomy_PANICUM_MILIACEUM'
     chronologyLower: 1375
     chronologyUpper: 1380
     location: '@location_32'
@@ -285,7 +328,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_34:
-    plant: '@plant_PARRA'
+    plant: 'parra'
+    sp: true
+    taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
     chronologyLower: 1382
     chronologyUpper: 1389
     location: '@location_33'
@@ -293,7 +338,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_plant_35:
-    plant: '@plant_PERAL'
+    plant: 'peral'
+    taxonomy: '@botany_taxonomy_PYRUS_COMMUNIS'
     chronologyLower: 1391
     chronologyUpper: 1393
     location: '@location_34'
@@ -302,7 +348,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_36:
-    plant: '@plant_POMELO_TORONJA'
+    plant: 'pomelo o toronja'
+    taxonomy: '@botany_taxonomy_CITRUS_PARADISI'
     chronologyLower: 1400
     chronologyUpper: 1405
     location: '@location_1'
@@ -310,7 +357,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_37:
-    plant: '@plant_PUERRO'
+    plant: 'puerro'
+    taxonomy: '@botany_taxonomy_ALLIUM_PORRUM'
     chronologyLower: 1406
     chronologyUpper: 1408
     location: '@location_2'
@@ -319,7 +367,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_38:
-    plant: '@plant_SANDIA'
+    plant: 'sandía'
+    cf: true
+    taxonomy: '@botany_taxonomy_CITRULLUS_LANATUS'
     chronologyLower: 1410
     chronologyUpper: 1415
     location: '@location_3'
@@ -327,7 +377,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_39:
-    plant: '@plant_SERBA_ZURBA'
+    plant: 'serba o zurba'
+    taxonomy: '@botany_taxonomy_SORBUS_DOMESTICA'
     chronologyLower: 1412
     chronologyUpper: 1419
     location: '@location_4'
@@ -336,7 +387,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_40:
-    plant: '@plant_TRIGO'
+    plant: 'trigo'
+    taxonomy: '@botany_taxonomy_TRITICUM_AESTIVUM'
     chronologyLower: 1420
     chronologyUpper: 1422
     location: '@location_5'
@@ -344,7 +396,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_41:
-    plant: '@plant_CEBADA'
+    plant: 'cebada'
+    taxonomy: '@botany_taxonomy_HORDEUM_VULGARE'
     chronologyLower: 1424
     chronologyUpper: 1426
     location: '@location_6'
@@ -353,7 +406,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_42:
-    plant: '@plant_AZAFRAN'
+    plant: 'azafrán'
+    sp: true
+    taxonomy: '@botany_taxonomy_CROCUS_SATIVUS'
     chronologyLower: 1427
     chronologyUpper: 1429
     location: '@location_6'
@@ -361,7 +416,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_43:
-    plant: '@plant_ALMENDRO'
+    plant: 'almendro'
+    sp: true
+    taxonomy: '@botany_taxonomy_PRUNUS_DULCIS'
     chronologyLower: 1430
     chronologyUpper: 1430
     location: '@location_6'
@@ -370,7 +427,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_44:
-    plant: '@plant_VINA'
+    plant: 'viña'
+    taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
     chronologyLower: 1431
     chronologyUpper: 1433
     location: '@location_9'
@@ -378,7 +436,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_plant_45:
-    plant: '@plant_OLIVO'
+    plant: 'olivo'
+    cf: true
+    taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
     chronologyLower: 1434
     chronologyUpper: 1436
     location: '@location_10'
@@ -387,7 +447,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_46:
-    plant: '@plant_HABA'
+    plant: 'haba'
+    taxonomy: '@botany_taxonomy_VICIA_FABA'
     chronologyLower: 1437
     chronologyUpper: 1438
     location: '@location_11'
@@ -395,7 +456,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_47:
-    plant: '@plant_GARBANZO'
+    plant: 'garbanzo'
+    taxonomy: '@botany_taxonomy_CICER_ARIETINUM'
     chronologyLower: 1439
     chronologyUpper: 1440
     location: '@location_12'
@@ -404,7 +466,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_plant_48:
-    plant: '@plant_AVENA'
+    plant: 'avena'
+    taxonomy: '@botany_taxonomy_AVENA_SATIVA'
     chronologyLower: 1441
     chronologyUpper: 1441
     location: '@location_13'
@@ -412,7 +475,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_49:
-    plant: '@plant_GUISANTE'
+    plant: 'guisante'
+    taxonomy: '@botany_taxonomy_PISUM_SATIVUM'
     chronologyLower: 1442
     chronologyUpper: 1443
     location: '@location_14'
@@ -421,7 +485,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_plant_50:
-    plant: '@plant_LINO'
+    plant: 'lino'
+    cf: true
+    taxonomy: '@botany_taxonomy_LINUM_USITATISSIMUM'
     chronologyLower: 1444
     chronologyUpper: 1445
     location: '@location_15'
@@ -429,7 +495,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_51:
-    plant: '@plant_HIGUERA'
+    plant: 'higuera'
+    sp: true
+    taxonomy: '@botany_taxonomy_FICUS_CARICA'
     chronologyLower: 1446
     chronologyUpper: 1447
     location: '@location_16'
@@ -438,7 +506,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_VER'
   history_plant_52:
-    plant: '@plant_PERAL'
+    plant: 'peral'
+    taxonomy: '@botany_taxonomy_PYRUS_COMMUNIS'
     chronologyLower: 1448
     chronologyUpper: 1448
     location: '@location_17'
@@ -446,7 +515,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_plant_53:
-    plant: '@plant_TRIGO'
+    plant: 'trigo'
+    taxonomy: '@botany_taxonomy_TRITICUM_AESTIVUM'
     chronologyLower: 1449
     chronologyUpper: 1449
     location: '@location_18'
@@ -455,7 +525,8 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_plant_54:
-    plant: '@plant_CEBADA'
+    plant: 'cebada'
+    taxonomy: '@botany_taxonomy_HORDEUM_VULGARE'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_19'
@@ -463,7 +534,9 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_55:
-    plant: '@plant_AJO'
+    plant: 'ajo'
+    cf: true
+    taxonomy: '@botany_taxonomy_ALLIUM_SATIVUM'
     chronologyLower: 1000
     chronologyUpper: 1010
     location: '@location_20'

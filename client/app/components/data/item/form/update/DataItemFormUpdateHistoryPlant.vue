@@ -42,6 +42,8 @@ const { r$ } = useScopedRegle(model, {
     )(() => model.value.chronologyLower),
   },
 })
+
+const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
 </script>
 
 <template>
@@ -69,14 +71,29 @@ const { r$ } = useScopedRegle(model, {
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="8" xs="12" class="px-2">
-      <data-autocomplete
-        v-model="r$.$value.plant"
-        path="/api/vocabulary/history/plants"
-        item-title="value"
+    <v-col cols="6" xs="12" class="px-2">
+      <data-selection-list
+        v-model="plantModel"
+        path="/api/list/history/plants"
         label="plant"
         :error-messages="r$.$errors?.plant"
-        disabled
+      />
+    </v-col>
+    <v-col cols="1" xs="12" class="px-2">
+      <v-checkbox v-model="r$.$value.cf" label="cf" />
+    </v-col>
+    <v-col cols="1" xs="12" class="px-2">
+      <v-checkbox v-model="r$.$value.sp" label="sp" />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="8" xs="12" class="px-2">
+      <data-autocomplete
+        v-model="r$.$value.taxonomy"
+        path="/api/vocabulary/botany/taxonomies"
+        item-title="flat.value"
+        label="taxonomy"
+        clearable
       />
     </v-col>
   </v-row>

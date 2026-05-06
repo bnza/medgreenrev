@@ -19,9 +19,9 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Auth\User;
-use App\Entity\Vocabulary\History\Animal as VocabularyAnimal;
 use App\Entity\Vocabulary\History\Language;
 use App\Entity\Vocabulary\History\Location;
+use App\Entity\Vocabulary\Zoo\Taxonomy as ZooTaxonomy;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -102,7 +102,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
-        'animal.value',
+        'animal',
         'createdBy.email',
         'language.value',
         'location.region.value',
@@ -110,15 +110,18 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower',
         'chronologyUpper',
         'reference',
+        'taxonomy.vernacularName',
+        'taxonomy.class',
+        'taxonomy.family',
     ])]
 #[ApiFilter(
     SearchFilter::class,
     properties: [
-        'animal' => 'exact',
-        'animal.taxonomy' => 'exact',
-        'animal.taxonomy.vernacularName' => 'ipartial',
-        'animal.taxonomy.class' => 'exact',
-        'animal.taxonomy.family' => 'exact',
+        'animal' => 'ipartial',
+        'taxonomy' => 'exact',
+        'taxonomy.class' => 'exact',
+        'taxonomy.family' => 'exact',
+        'taxonomy.vernacularName' => 'ipartial',
         'chronologyLower' => 'exact',
         'chronologyUpper' => 'exact',
         'createdBy.email' => 'exact',
@@ -136,12 +139,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'animal.taxonomy.family',
+        'taxonomy',
+        'taxonomy.family',
         'notes',
     ])]
 #[ApiFilter(
     UnaccentedSearchFilter::class,
     properties: [
+        'animal',
         'location.region.value',
         'notes',
         'reference',
@@ -169,8 +174,7 @@ class Animal
     #[ApiProperty(required: true)]
     private Language $language;
 
-    #[ORM\ManyToOne(targetEntity: VocabularyAnimal::class)]
-    #[ORM\JoinColumn(name: 'animal_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
+    #[ORM\Column(type: 'string')]
     #[Groups([
         'history_animal:acl:read',
         'history_animal:export',
@@ -179,7 +183,16 @@ class Animal
     #[Assert\NotBlank(groups: [
         'validation:history_animal:create',
     ])]
-    private VocabularyAnimal $animal;
+    private string $animal;
+
+    #[ORM\ManyToOne(targetEntity: ZooTaxonomy::class)]
+    #[ORM\JoinColumn(name: 'taxonomy_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
+    #[Groups([
+        'history_animal:acl:read',
+        'history_animal:export',
+        'history_animal:create',
+    ])]
+    private ?ZooTaxonomy $taxonomy = null;
 
     #[ORM\ManyToOne(targetEntity: Location::class, inversedBy: 'animals')]
     #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
@@ -264,14 +277,26 @@ class Animal
         return $this;
     }
 
-    public function getAnimal(): VocabularyAnimal
+    public function getAnimal(): string
     {
         return $this->animal;
     }
 
-    public function setAnimal(VocabularyAnimal $animal): Animal
+    public function setAnimal(string $animal): Animal
     {
-        $this->animal = $animal;
+        $this->animal = mb_strtolower($animal);
+
+        return $this;
+    }
+
+    public function getTaxonomy(): ?ZooTaxonomy
+    {
+        return $this->taxonomy;
+    }
+
+    public function setTaxonomy(?ZooTaxonomy $taxonomy): Animal
+    {
+        $this->taxonomy = $taxonomy;
 
         return $this;
     }

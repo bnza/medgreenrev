@@ -33,6 +33,10 @@ const searchPath = computed(
 )
 
 const acl = defineModel<CollectionAcl>('acl', { required: true })
+
+const vocabularyZooTaxonomy = useVocabularyStore(
+  '/api/vocabulary/zoo/taxonomies',
+)
 </script>
 
 <template>
@@ -50,6 +54,9 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
       />
+    </template>
+    <template #[`item.taxonomy.vernacularName`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName') }}
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />

@@ -152,18 +152,6 @@ final class Version20250628091340 extends AbstractMigration
 
         $this->addSql(
             <<<'SQL'
-                CREATE OR REPLACE VIEW vocabulary.vw_history_plant AS
-                SELECT
-                    vp.id,
-                    format_botany_taxonomy(vbt.level, vbt.value, vbt.genus, vbt.species, vp.cf, vp.sp)
-                    AS taxonomy_value
-                FROM vocabulary.history_plants vp
-                LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON vp.taxonomy_id = vbt.id;
-                SQL
-        );
-
-        $this->addSql(
-            <<<'SQL'
                 CREATE OR REPLACE VIEW vocabulary.vw_zoo_taxonomy_classes AS
                 WITH DistinctValues AS (
                     -- Step 1: Find the unique, input values.
@@ -245,6 +233,40 @@ final class Version20250628091340 extends AbstractMigration
                     FROM contexts
                 )
                 -- Step 2: Calculate the MD5 hash once for each unique type.
+                SELECT
+                    MD5(original_value) AS id,
+                    original_value AS value
+                FROM
+                    DistinctValues
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW vw_history_animals AS
+                WITH DistinctValues AS (
+                    -- Step 1: Find the unique, input values (already lowercased on write).
+                    SELECT DISTINCT animal AS original_value
+                    FROM history_animals
+                )
+                -- Step 2: Calculate the MD5 hash once for each unique value.
+                SELECT
+                    MD5(original_value) AS id,
+                    original_value AS value
+                FROM
+                    DistinctValues
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE OR REPLACE VIEW vw_history_plants AS
+                WITH DistinctValues AS (
+                    -- Step 1: Find the unique, input values (already lowercased on write).
+                    SELECT DISTINCT plant AS original_value
+                    FROM history_plants
+                )
+                -- Step 2: Calculate the MD5 hash once for each unique value.
                 SELECT
                     MD5(original_value) AS id,
                     original_value AS value
@@ -569,7 +591,6 @@ final class Version20250628091340 extends AbstractMigration
     public function down(Schema $schema): void
     {
         $this->addSql('DROP VIEW IF EXISTS vw_botany_seed;');
-        $this->addSql('DROP VIEW IF EXISTS vocabulary.vw_history_plant;');
         $this->addSql('DROP VIEW IF EXISTS vw_botany_charcoal;');
         $this->addSql('DROP VIEW IF EXISTS vocabulary.vw_botany_taxonomy;');
         $this->addSql('DROP VIEW vocabulary.vw_zoo_taxonomy_classes;');
@@ -593,6 +614,8 @@ final class Version20250628091340 extends AbstractMigration
         $this->addSql('DROP VIEW vw_buildings;');
         $this->addSql('DROP VIEW vw_calibration_curves;');
         $this->addSql('DROP VIEW vw_context_types;');
+        $this->addSql('DROP VIEW vw_history_animals;');
+        $this->addSql('DROP VIEW vw_history_plants;');
         $this->addSql('DROP VIEW vw_history_references;');
         $this->addSql('DROP VIEW vw_persons;');
         $this->addSql('DROP VIEW vw_pottery_colors;');

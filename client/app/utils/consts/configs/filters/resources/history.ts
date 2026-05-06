@@ -14,14 +14,14 @@ const {
   HistoryWrittenSourceEquals,
   SearchExact,
   SearchPartial,
-  VocabularyHistoryAnimal,
   VocabularyHistoryAuthor,
   VocabularyHistoryLanguage,
-  VocabularyHistoryPlant,
   VocabularyHistoryWrittenSourceType,
   VocabularyRegion,
   VocabularyCentury,
   VocabularyHistoryCitedWork,
+  VocabularyBotanyTaxonomy,
+  VocabularyZooTaxonomy,
 } = API_FILTERS
 
 const historyLocation: ResourceStaticFiltersDefinitionObject = {
@@ -87,7 +87,7 @@ export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObjec
     ...historyEntityStaticFiltersDefinitionObject,
     animal: {
       filters: {
-        VocabularyHistoryAnimal,
+        SearchPartial,
       },
     },
     'location.region': {
@@ -96,10 +96,14 @@ export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObjec
         VocabularyRegion,
       },
     },
-    ...generateResourceDefinition(zooTaxonomyStaticFilterDefinition, [
-      'animal',
-      'animal',
-    ]),
+    ...zooTaxonomyStaticFilterDefinition,
+    taxonomy: {
+      propertyLabel: 'taxonomy',
+      filters: {
+        VocabularyZooTaxonomy,
+        Exists,
+      },
+    },
   }
 
 export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject =
@@ -110,25 +114,35 @@ export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject
       },
     },
     ...historyEntityStaticFiltersDefinitionObject,
-    ...generateResourceDefinition(botanyTaxonomyStaticFilterDefinition, [
-      'plant',
-      'plant',
-    ]),
     plant: {
       filters: {
-        VocabularyHistoryPlant,
+        SearchPartial,
       },
     },
-    'plant.cf': {
+    cf: {
       propertyLabel: 'taxonomy (cf)',
       filters: {
         Boolean,
       },
     },
-    'plant.sp': {
+    sp: {
       propertyLabel: 'taxonomy (sp)',
       filters: {
         Boolean,
+      },
+    },
+    ...botanyTaxonomyStaticFilterDefinition,
+    'taxonomy.englishName': {
+      propertyLabel: 'taxonomy (english name)',
+      filters: {
+        SearchPartial,
+      },
+    },
+    taxonomy: {
+      propertyLabel: 'taxonomy',
+      filters: {
+        VocabularyBotanyTaxonomy,
+        Exists,
       },
     },
   }
@@ -141,7 +155,7 @@ export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObj
       'animals',
     ]),
     ...generateResourceDefinition(zooTaxonomyStaticFilterDefinition, [
-      'animals.animal',
+      'animals.taxonomy',
       'animals',
     ]),
     ...generateResourceDefinition(historyEntityStaticFiltersDefinitionObject, [
@@ -149,7 +163,7 @@ export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObj
       'plants',
     ]),
     ...generateResourceDefinition(botanyTaxonomyStaticFilterDefinition, [
-      'plants.plant',
+      'plants.taxonomy',
       'plants',
     ]),
   }

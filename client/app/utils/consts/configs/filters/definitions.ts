@@ -266,14 +266,6 @@ const VocabularyBotanyTaxonomy: StaticFiltersDefinitionObject = {
   addToQueryObject: addToQueryObjectArray,
 }
 
-const VocabularyHistoryAnimal: StaticFiltersDefinitionObject = {
-  operationLabel: 'equals',
-  multiple: false,
-  componentKey: 'Vocabulary',
-  addToQueryObject: addToQueryObjectArray,
-  path: '/api/vocabulary/history/animals',
-}
-
 const VocabularyHistoryLanguage: StaticFiltersDefinitionObject = {
   operationLabel: 'equals',
   multiple: false,
@@ -312,14 +304,6 @@ const VocabularyHistoryCitedWork: StaticFiltersDefinitionObject = {
   componentKey: 'Vocabulary',
   addToQueryObject: addToQueryObjectMultiple,
   path: '/api/vocabulary/history/cited_works',
-}
-
-const VocabularyHistoryPlant: StaticFiltersDefinitionObject = {
-  operationLabel: 'equals',
-  multiple: false,
-  componentKey: 'Vocabulary',
-  addToQueryObject: addToQueryObjectArray,
-  path: '/api/vocabulary/history/plants',
 }
 
 const VocabularyCulturalContext: StaticFiltersDefinitionObject = {
@@ -539,10 +523,8 @@ export const API_FILTERS = {
   VocabularyIndividualAge,
   VocabularyBotanyTaxonomy,
   VocabularyCulturalContext,
-  VocabularyHistoryAnimal,
   VocabularyHistoryAuthor,
   VocabularyHistoryLanguage,
-  VocabularyHistoryPlant,
   VocabularyHistoryWrittenSourceType,
   VocabularyCentury,
   VocabularyHistoryCitedWork,

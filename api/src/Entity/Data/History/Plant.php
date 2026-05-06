@@ -20,9 +20,9 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Auth\User;
+use App\Entity\Vocabulary\Botany\Taxonomy as BotanyTaxonomy;
 use App\Entity\Vocabulary\History\Language;
 use App\Entity\Vocabulary\History\Location;
-use App\Entity\Vocabulary\History\Plant as VocabularyPlant;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -107,28 +107,21 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower',
         'chronologyUpper',
         'createdBy.email',
-        'plant.flat.value',
+        'plant',
+        'taxonomy.flat.value',
         'language.value',
         'location.region.value',
         'location.value',
-        'plant.value',
         'reference',
     ])]
 #[ApiFilter(
-    BooleanFilter::class,
-    properties: [
-        'plant.cf',
-        'plant.sp',
-    ]
-)]
-#[ApiFilter(
     SearchFilter::class,
     properties: [
-        'plant' => 'exact',
-        'plant.taxonomy' => 'exact',
-        'plant.taxonomy.flat.classId' => 'exact',
-        'plant.taxonomy.flat.familyId' => 'exact',
-        'plant.taxonomy.flat.genusId' => 'exact',
+        'plant' => 'ipartial',
+        'taxonomy' => 'exact',
+        'taxonomy.flat.classId' => 'exact',
+        'taxonomy.flat.familyId' => 'exact',
+        'taxonomy.flat.genusId' => 'exact',
         'language' => 'exact',
         'location' => 'exact',
         'chronologyLower' => 'exact',
@@ -142,13 +135,22 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyUpper']
 )]
 #[ApiFilter(
+    BooleanFilter::class,
+    properties: [
+        'cf',
+        'sp',
+    ]
+)]
+#[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'taxonomy',
         'notes',
     ])]
 #[ApiFilter(
     UnaccentedSearchFilter::class,
     properties: [
+        'plant',
         'location.region.value',
         'notes',
         'reference',
@@ -176,8 +178,7 @@ class Plant
     #[ApiProperty(required: true)]
     private Language $language;
 
-    #[ORM\ManyToOne(targetEntity: VocabularyPlant::class)]
-    #[ORM\JoinColumn(name: 'plant_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
+    #[ORM\Column(type: 'string')]
     #[Groups([
         'history_plant:acl:read',
         'history_plant:export',
@@ -186,7 +187,32 @@ class Plant
     #[Assert\NotBlank(groups: [
         'validation:history_plant:create',
     ])]
-    private VocabularyPlant $plant;
+    private string $plant;
+
+    #[ORM\ManyToOne(targetEntity: BotanyTaxonomy::class)]
+    #[ORM\JoinColumn(name: 'taxonomy_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
+    #[Groups([
+        'history_plant:acl:read',
+        'history_plant:export',
+        'history_plant:create',
+    ])]
+    private ?BotanyTaxonomy $taxonomy = null;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'history_plant:acl:read',
+        'history_plant:export',
+        'history_plant:create',
+    ])]
+    private bool $cf = false;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    #[Groups([
+        'history_plant:acl:read',
+        'history_plant:export',
+        'history_plant:create',
+    ])]
+    private bool $sp = false;
 
     #[ORM\ManyToOne(targetEntity: Location::class, inversedBy: 'plants')]
     #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
@@ -271,14 +297,50 @@ class Plant
         return $this;
     }
 
-    public function getPlant(): VocabularyPlant
+    public function getPlant(): string
     {
         return $this->plant;
     }
 
-    public function setPlant(VocabularyPlant $plant): Plant
+    public function setPlant(string $plant): Plant
     {
-        $this->plant = $plant;
+        $this->plant = mb_strtolower($plant);
+
+        return $this;
+    }
+
+    public function getTaxonomy(): ?BotanyTaxonomy
+    {
+        return $this->taxonomy;
+    }
+
+    public function setTaxonomy(?BotanyTaxonomy $taxonomy): Plant
+    {
+        $this->taxonomy = $taxonomy;
+
+        return $this;
+    }
+
+    public function getCf(): bool
+    {
+        return $this->cf;
+    }
+
+    public function setCf(bool $cf): Plant
+    {
+        $this->cf = $cf;
+
+        return $this;
+    }
+
+    public function getSp(): bool
+    {
+        return $this->sp;
+    }
+
+    public function setSp(bool $sp): Plant
+    {
+        $this->sp = $sp;
 
         return $this;
     }

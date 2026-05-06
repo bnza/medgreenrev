@@ -4,11 +4,11 @@ namespace App\Repository;
 
 use App\Entity\Data\Botany\Charcoal;
 use App\Entity\Data\Botany\Seed;
+use App\Entity\Data\History\Plant;
 use App\Entity\Data\Join\Analysis\AnalysisContextBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotanyTaxonomy;
 use App\Entity\Vocabulary\Botany\Taxonomy;
-use App\Entity\Vocabulary\History\Plant;
 use App\Repository\Traits\ReferencingEntityClassesTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

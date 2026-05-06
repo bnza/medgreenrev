@@ -47,10 +47,8 @@ use App\Entity\Data\StratigraphicUnit;
 use App\Entity\Data\Zoo\Bone;
 use App\Entity\Data\Zoo\Tooth;
 use App\Entity\Vocabulary\Botany\Taxonomy as VocBotanyTaxonomy;
-use App\Entity\Vocabulary\History\Animal as VocHistoryAnimal;
 use App\Entity\Vocabulary\History\Author;
 use App\Entity\Vocabulary\History\Location;
-use App\Entity\Vocabulary\History\Plant as VocHistoryPlant;
 use App\Entity\Vocabulary\Zoo\Taxonomy as VocZooTaxonomy;
 use App\Service\AclDataMerger;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -89,8 +87,6 @@ final class AccessControlledResourceItemNormalizer implements NormalizerInterfac
         Charcoal::class => true,
         Context::class => true,
         ContextStratigraphicUnit::class => true,
-        VocHistoryAnimal::class => true,
-        VocHistoryPlant::class => true,
         Individual::class => true,
         Location::class => true,
         MicrostratigraphicUnit::class => true,

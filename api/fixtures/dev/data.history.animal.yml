@@ -1,6 +1,7 @@
 App\Entity\Data\History\Animal:
   history_animal_1:
-    animal: '@animal_B'
+    animal: 'ganado vacuno'
+    taxonomy: '@zoo_taxonomy_B'
     chronologyLower: 875
     chronologyUpper: 900
     location: '@location_1'
@@ -10,7 +11,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_2:
-    animal: '@animal_OVA'
+    animal: 'oveja'
+    taxonomy: '@zoo_taxonomy_OVA'
     chronologyLower: 920
     chronologyUpper: 950
     location: '@location_2'
@@ -19,7 +21,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_3:
-    animal: '@animal_EQC'
+    animal: 'caballo'
+    taxonomy: '@zoo_taxonomy_EQC'
     chronologyLower: 980
     chronologyUpper: 1010
     location: '@location_3'
@@ -28,7 +31,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_4:
-    animal: '@animal_CAH'
+    animal: 'cabra'
+    taxonomy: '@zoo_taxonomy_CAH'
     chronologyLower: 1025
     chronologyUpper: 1050
     location: '@location_4'
@@ -36,7 +40,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_5:
-    animal: '@animal_S'
+    animal: 'cerdo (cerdo doméstico / jabalí)'
+    taxonomy: '@zoo_taxonomy_S'
     chronologyLower: 1065
     chronologyUpper: 1080
     location: '@location_5'
@@ -45,7 +50,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_6:
-    animal: '@animal_GNP'
+    animal: 'gallina'
+    taxonomy: '@zoo_taxonomy_GNP'
     chronologyLower: 1090
     chronologyUpper: 1095
     location: '@location_6'
@@ -54,7 +60,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_animal_7:
-    animal: '@animal_ORY'
+    animal: 'conejo'
+    taxonomy: '@zoo_taxonomy_ORY'
     chronologyLower: 1110
     chronologyUpper: 1125
     location: '@location_7'
@@ -63,7 +70,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_8:
-    animal: '@animal_CAF'
+    animal: 'perro'
+    taxonomy: '@zoo_taxonomy_CAF'
     chronologyLower: 1140
     chronologyUpper: 1155
     location: '@location_8'
@@ -72,7 +80,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_9:
-    animal: '@animal_ANA'
+    animal: 'pato'
+    taxonomy: '@zoo_taxonomy_ANA'
     chronologyLower: 1168
     chronologyUpper: 1175
     location: '@location_9'
@@ -80,7 +89,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_10:
-    animal: '@animal_B'
+    animal: 'ganado vacuno'
+    taxonomy: '@zoo_taxonomy_B'
     chronologyLower: 1190
     chronologyUpper: 1200
     location: '@location_10'
@@ -89,7 +99,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_11:
-    animal: '@animal_EQA'
+    animal: 'asno'
+    taxonomy: '@zoo_taxonomy_EQA'
     chronologyLower: 1215
     chronologyUpper: 1220
     location: '@location_11'
@@ -98,7 +109,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_12:
-    animal: '@animal_OVA'
+    animal: 'oveja'
+    taxonomy: '@zoo_taxonomy_OVA'
     chronologyLower: 1235
     chronologyUpper: 1245
     location: '@location_12'
@@ -106,7 +118,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_13:
-    animal: '@animal_FEC'
+    animal: 'gato'
+    taxonomy: '@zoo_taxonomy_FEC'
     chronologyLower: 1258
     chronologyUpper: 1265
     location: '@location_13'
@@ -115,7 +128,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_14:
-    animal: '@animal_COL'
+    animal: 'paloma'
+    taxonomy: '@zoo_taxonomy_COL'
     chronologyLower: 1278
     chronologyUpper: 1285
     location: '@location_14'
@@ -123,7 +137,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_15:
-    animal: '@animal_ANS'
+    animal: 'ganso'
+    taxonomy: '@zoo_taxonomy_ANS'
     chronologyLower: 1295
     chronologyUpper: 1300
     location: '@location_15'
@@ -132,7 +147,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_16:
-    animal: '@animal_CEE'
+    animal: 'ciervo rojo'
+    taxonomy: '@zoo_taxonomy_CEE'
     chronologyLower: 1315
     chronologyUpper: 1325
     location: '@location_16'
@@ -141,7 +157,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_17:
-    animal: '@animal_DAD'
+    animal: 'gamo'
+    taxonomy: '@zoo_taxonomy_DAD'
     chronologyLower: 1340
     chronologyUpper: 1345
     location: '@location_17'
@@ -149,7 +166,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_18:
-    animal: '@animal_LE'
+    animal: 'liebre'
+    taxonomy: '@zoo_taxonomy_LE'
     chronologyLower: 1355
     chronologyUpper: 1362
     location: '@location_18'
@@ -158,7 +176,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_19:
-    animal: '@animal_ALEC'
+    animal: 'perdiz'
+    taxonomy: '@zoo_taxonomy_ALEC'
     chronologyLower: 1370
     chronologyUpper: 1378
     location: '@location_19'
@@ -166,7 +185,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_20:
-    animal: '@animal_ICT'
+    animal: 'pez'
+    taxonomy: '@zoo_taxonomy_ICT'
     chronologyLower: 1385
     chronologyUpper: 1390
     location: '@location_20'
@@ -175,7 +195,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_21:
-    animal: '@animal_VUV'
+    animal: 'zorro'
+    taxonomy: '@zoo_taxonomy_VUV'
     chronologyLower: 1398
     chronologyUpper: 1405
     location: '@location_21'
@@ -184,7 +205,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_22:
-    animal: '@animal_CAC'
+    animal: 'corzo'
+    taxonomy: '@zoo_taxonomy_CAC'
     chronologyLower: 1412
     chronologyUpper: 1418
     location: '@location_22'
@@ -192,7 +214,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_23:
-    animal: '@animal_RAR'
+    animal: 'rata'
+    taxonomy: '@zoo_taxonomy_RAR'
     chronologyLower: 1425
     chronologyUpper: 1430
     location: '@location_23'
@@ -201,7 +224,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_24:
-    animal: '@animal_FAL'
+    animal: 'halcón'
+    taxonomy: '@zoo_taxonomy_FAL'
     chronologyLower: 1438
     chronologyUpper: 1445
     location: '@location_24'
@@ -209,7 +233,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_25:
-    animal: '@animal_B'
+    animal: 'ganado vacuno'
+    taxonomy: '@zoo_taxonomy_B'
     chronologyLower: 850
     chronologyUpper: 875
     location: '@location_25'
@@ -218,7 +243,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_animal_26:
-    animal: '@animal_OVA'
+    animal: 'oveja'
+    taxonomy: '@zoo_taxonomy_OVA'
     chronologyLower: 892
     chronologyUpper: 910
     location: '@location_26'
@@ -227,7 +253,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_27:
-    animal: '@animal_EQC'
+    animal: 'caballo'
+    taxonomy: '@zoo_taxonomy_EQC'
     chronologyLower: 935
     chronologyUpper: 960
     location: '@location_27'
@@ -235,7 +262,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_28:
-    animal: '@animal_S'
+    animal: 'cerdo (cerdo doméstico / jabalí)'
+    taxonomy: '@zoo_taxonomy_S'
     chronologyLower: 975
     chronologyUpper: 990
     location: '@location_28'
@@ -244,7 +272,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_29:
-    animal: '@animal_CAH'
+    animal: 'cabra'
+    taxonomy: '@zoo_taxonomy_CAH'
     chronologyLower: 1005
     chronologyUpper: 1015
     location: '@location_29'
@@ -252,7 +281,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_VER'
   history_animal_30:
-    animal: '@animal_GNP'
+    animal: 'gallina'
+    taxonomy: '@zoo_taxonomy_GNP'
     chronologyLower: 1032
     chronologyUpper: 1045
     location: '@location_30'
@@ -261,7 +291,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_animal_31:
-    animal: '@animal_ORY'
+    animal: 'conejo'
+    taxonomy: '@zoo_taxonomy_ORY'
     chronologyLower: 1058
     chronologyUpper: 1070
     location: '@location_31'
@@ -270,7 +301,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_32:
-    animal: '@animal_ANA'
+    animal: 'pato'
+    taxonomy: '@zoo_taxonomy_ANA'
     chronologyLower: 1085
     chronologyUpper: 1095
     location: '@location_32'
@@ -278,7 +310,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_VER'
   history_animal_33:
-    animal: '@animal_EQA'
+    animal: 'asno'
+    taxonomy: '@zoo_taxonomy_EQA'
     chronologyLower: 1118
     chronologyUpper: 1130
     location: '@location_33'
@@ -287,7 +320,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_34:
-    animal: '@animal_B'
+    animal: 'ganado vacuno'
+    taxonomy: '@zoo_taxonomy_B'
     chronologyLower: 1145
     chronologyUpper: 1160
     location: '@location_34'
@@ -295,7 +329,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_animal_35:
-    animal: '@animal_OVA'
+    animal: 'oveja'
+    taxonomy: '@zoo_taxonomy_OVA'
     chronologyLower: 1172
     chronologyUpper: 1180
     location: '@location_1'
@@ -304,7 +339,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_VER'
   history_animal_36:
-    animal: '@animal_FEC'
+    animal: 'gato'
+    taxonomy: '@zoo_taxonomy_FEC'
     chronologyLower: 1195
     chronologyUpper: 1205
     location: '@location_2'
@@ -313,7 +349,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_37:
-    animal: '@animal_COL'
+    animal: 'paloma'
+    taxonomy: '@zoo_taxonomy_COL'
     chronologyLower: 1222
     chronologyUpper: 1230
     location: '@location_3'
@@ -321,7 +358,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_38:
-    animal: '@animal_ANS'
+    animal: 'ganso'
+    taxonomy: '@zoo_taxonomy_ANS'
     chronologyLower: 1248
     chronologyUpper: 1255
     location: '@location_4'
@@ -330,7 +368,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_39:
-    animal: '@animal_CEE'
+    animal: 'ciervo rojo'
+    taxonomy: '@zoo_taxonomy_CEE'
     chronologyLower: 1268
     chronologyUpper: 1275
     location: '@location_5'
@@ -338,7 +377,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_40:
-    animal: '@animal_LE'
+    animal: 'liebre'
+    taxonomy: '@zoo_taxonomy_LE'
     chronologyLower: 1288
     chronologyUpper: 1295
     location: '@location_6'
@@ -347,7 +387,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_41:
-    animal: '@animal_ALEC'
+    animal: 'perdiz'
+    taxonomy: '@zoo_taxonomy_ALEC'
     chronologyLower: 1308
     chronologyUpper: 1315
     location: '@location_7'
@@ -356,7 +397,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_42:
-    animal: '@animal_ICT'
+    animal: 'pez'
+    taxonomy: '@zoo_taxonomy_ICT'
     chronologyLower: 1328
     chronologyUpper: 1335
     location: '@location_8'
@@ -364,7 +406,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_43:
-    animal: '@animal_VUV'
+    animal: 'zorro'
+    taxonomy: '@zoo_taxonomy_VUV'
     chronologyLower: 1348
     chronologyUpper: 1352
     location: '@location_9'
@@ -373,7 +416,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_44:
-    animal: '@animal_CAF'
+    animal: 'perro'
+    taxonomy: '@zoo_taxonomy_CAF'
     chronologyLower: 1365
     chronologyUpper: 1372
     location: '@location_10'
@@ -381,7 +425,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_VER'
   history_animal_45:
-    animal: '@animal_S'
+    animal: 'cerdo (cerdo doméstico / jabalí)'
+    taxonomy: '@zoo_taxonomy_S'
     chronologyLower: 1382
     chronologyUpper: 1388
     location: '@location_11'
@@ -390,7 +435,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_animal_46:
-    animal: '@animal_EQC'
+    animal: 'caballo'
+    taxonomy: '@zoo_taxonomy_EQC'
     chronologyLower: 1401
     chronologyUpper: 1408
     location: '@location_12'
@@ -399,7 +445,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_VER'
   history_animal_47:
-    animal: '@animal_CAH'
+    animal: 'cabra'
+    taxonomy: '@zoo_taxonomy_CAH'
     chronologyLower: 1418
     chronologyUpper: 1425
     location: '@location_13'
@@ -407,7 +454,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_48:
-    animal: '@animal_GNP'
+    animal: 'gallina'
+    taxonomy: '@zoo_taxonomy_GNP'
     chronologyLower: 1432
     chronologyUpper: 1438
     location: '@location_14'
@@ -416,7 +464,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_animal_49:
-    animal: '@animal_O'
+    animal: 'caprino (oveja / cabra)'
+    taxonomy: '@zoo_taxonomy_O'
     chronologyLower: 1442
     chronologyUpper: 1448
     location: '@location_15'
@@ -424,7 +473,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_50:
-    animal: '@animal_DAD'
+    animal: 'gamo'
+    taxonomy: '@zoo_taxonomy_DAD'
     chronologyLower: 1135
     chronologyUpper: 1142
     location: '@location_16'
@@ -433,7 +483,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_51:
-    animal: '@animal_LAG'
+    animal: 'lagomorfo (conejo / liebre)'
+    taxonomy: '@zoo_taxonomy_LAG'
     chronologyLower: 1255
     chronologyUpper: 1262
     location: '@location_17'
@@ -442,7 +493,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_VER'
   history_animal_52:
-    animal: '@animal_AVE'
+    animal: 'pájaro'
+    taxonomy: '@zoo_taxonomy_AVE'
     chronologyLower: 1378
     chronologyUpper: 1385
     location: '@location_18'
@@ -450,7 +502,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_animal_53:
-    animal: '@animal_AMP'
+    animal: 'anfibio'
+    taxonomy: '@zoo_taxonomy_AMP'
     chronologyLower: 1228
     chronologyUpper: 1235
     location: '@location_19'
@@ -459,7 +512,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_54:
-    animal: '@animal_EQ'
+    animal: 'équido (caballo / asno)'
+    taxonomy: '@zoo_taxonomy_EQ'
     chronologyLower: 1052
     chronologyUpper: 1065
     location: '@location_20'
@@ -468,7 +522,8 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_55:
-    animal: '@animal_B'
+    animal: 'ganado vacuno'
+    taxonomy: '@zoo_taxonomy_B'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_21'

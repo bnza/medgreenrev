@@ -2,10 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Data\History\Animal;
 use App\Entity\Data\Join\Analysis\AnalysisContextZooTaxonomy;
 use App\Entity\Data\Zoo\Bone;
 use App\Entity\Data\Zoo\Tooth;
-use App\Entity\Vocabulary\History\Animal;
 use App\Entity\Vocabulary\Zoo\Taxonomy;
 use App\Repository\Traits\ReferencingEntityClassesTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

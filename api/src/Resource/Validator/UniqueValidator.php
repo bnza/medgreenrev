@@ -43,9 +43,7 @@ use App\Entity\Data\SedimentCore;
 use App\Entity\Data\StratigraphicUnit;
 use App\Entity\Data\View\StratigraphicUnitRelationshipView;
 use App\Entity\Vocabulary\Botany\Taxonomy as VocBotanyTaxonomy;
-use App\Entity\Vocabulary\History\Animal as VocHistoryAnimal;
 use App\Entity\Vocabulary\History\Location as VocHistoryLocation;
-use App\Entity\Vocabulary\History\Plant as VocHistoryPlant;
 use App\Entity\Vocabulary\Zoo\Taxonomy as VocZooTaxonomy;
 use App\State\ValidatorSiteRelatedUniqueProvider;
 use App\State\ValidatorUniqueProvider;
@@ -307,21 +305,9 @@ use App\State\ValidatorUniqueProvider;
             ],
         ),
         new Get(
-            uriTemplate: '/validator/unique/vocabulary/history/animals',
-            defaults: [
-                'resource' => VocHistoryAnimal::class,
-            ],
-        ),
-        new Get(
             uriTemplate: '/validator/unique/vocabulary/history/locations',
             defaults: [
                 'resource' => VocHistoryLocation::class,
-            ],
-        ),
-        new Get(
-            uriTemplate: '/validator/unique/vocabulary/history/plants',
-            defaults: [
-                'resource' => VocHistoryPlant::class,
             ],
         ),
         new Get(

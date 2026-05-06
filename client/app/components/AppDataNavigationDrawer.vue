@@ -447,13 +447,6 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           </template>
           <v-list-item
             nuxt
-            to="/data/vocabulary/history/animals"
-            router
-            title="Animals"
-            data-testid="app-nav-drawer-li-voc-historical-data-animals"
-          />
-          <v-list-item
-            nuxt
             to="/data/vocabulary/history/authors"
             router
             title="Authors"
@@ -465,13 +458,6 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             router
             title="Locations"
             data-testid="app-nav-drawer-li-voc-historical-data-locations"
-          />
-          <v-list-item
-            nuxt
-            to="/data/vocabulary/history/plants"
-            router
-            title="Plants"
-            data-testid="app-nav-drawer-li-voc-historical-data-plants"
           />
         </v-list-group>
         <v-list-group value="Vocabulary Zoo">

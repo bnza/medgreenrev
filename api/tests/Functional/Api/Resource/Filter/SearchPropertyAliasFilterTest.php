@@ -110,9 +110,7 @@ class SearchPropertyAliasFilterTest extends ApiTestCase
             'zoo bones by value' => ['/api/vocabulary/zoo/bones', 'value'],
             'zoo bone parts by value' => ['/api/vocabulary/zoo/bone_parts', 'value'],
             'zoo taxonomies by value' => ['/api/vocabulary/zoo/taxonomies', 'value'],
-            'history animals by value' => ['/api/vocabulary/history/animals', 'value'],
             'history locations by value' => ['/api/vocabulary/history/locations', 'value'],
-            'history plants by value' => ['/api/vocabulary/history/plants', 'value'],
         ];
     }
 }

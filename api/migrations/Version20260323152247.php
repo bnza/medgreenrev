@@ -295,8 +295,7 @@ final class Version20260323152247 extends AbstractMigration
                     a.chronology_upper,
                     a.reference,
                     a.notes,
-                    a.animal_id,
-                    va.value as name,
+                    a.animal AS name,
                     a.location_id,
                     zt.value AS value,
                     zt.family AS family,
@@ -308,8 +307,7 @@ final class Version20260323152247 extends AbstractMigration
                 FROM history_animals a
                 JOIN vocabulary.history_locations l ON a.location_id = l.id
                 JOIN vocabulary.regions r ON l.region_id = r.id
-                LEFT JOIN vocabulary.history_animals va ON a.animal_id = va.id
-                LEFT JOIN vocabulary.zoo_taxonomy zt ON va.taxonomy_id = zt.id;
+                LEFT JOIN vocabulary.zoo_taxonomy zt ON a.taxonomy_id = zt.id;
             SQL
         );
 
@@ -322,25 +320,22 @@ final class Version20260323152247 extends AbstractMigration
                     p.chronology_upper,
                     p.reference,
                     p.notes,
-                    p.plant_id,
-                    vp.value AS name,
+                    p.plant AS name,
                     p.location_id,
                     vbt.value AS taxon,
                     vbt.family AS family,
                     vbt.class AS class,
                     vbt.genus AS genus,
                     vbt.species AS species,
-                    vp.cf AS cf,
-                    vp.sp AS sp,
+                    p.cf AS cf,
+                    p.sp AS sp,
                     l.value AS location_value,
                     r.value AS region,
                     l.the_geom
                 FROM history_plants p
                 JOIN vocabulary.history_locations l ON p.location_id = l.id
                 JOIN vocabulary.regions r ON l.region_id = r.id
-                JOIN vocabulary.vw_history_plant vhp ON p.plant_id = vhp.id
-                JOIN vocabulary.history_plants vp ON p.plant_id = vp.id
-                LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON vp.taxonomy_id = vbt.id;
+                LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON p.taxonomy_id = vbt.id;
             SQL
         );
 
