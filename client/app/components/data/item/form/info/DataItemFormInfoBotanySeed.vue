@@ -77,9 +77,17 @@ const vocabularyBotanyElementParts = useVocabularyStore(
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'vernacularName')
+            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName')
           "
-          label="vernacular name"
+          label="english name"
+        />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="
+            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'spanishName')
+          "
+          label="spanish name"
         />
       </v-col>
     </v-row>

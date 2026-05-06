@@ -48,7 +48,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'taxonomies.taxonomy' => 'exact',
         'taxonomies.taxonomy.family' => 'exact',
         'taxonomies.taxonomy.class' => 'exact',
-        'taxonomies.taxonomy.vernacularName' => 'ipartial',
+        'taxonomies.taxonomy.englishName' => 'ipartial',
     ]
 )]
 #[ApiFilter(
@@ -71,6 +71,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'subject.name',
         'subject.description',
+        'taxonomies.taxonomy.spanishName',
     ]
 )]
 #[ApiStratigraphicUnitSubresourceFilters('subject.contextStratigraphicUnits.stratigraphicUnit')]

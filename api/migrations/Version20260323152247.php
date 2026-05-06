@@ -300,7 +300,8 @@ final class Version20260323152247 extends AbstractMigration
                     zt.value AS value,
                     zt.family AS family,
                     zt.class AS class,
-                    zt.vernacular_name AS vernacular_name,
+                    zt.english_name AS english_name,
+                    zt.spanish_name AS spanish_name,
                     l.value AS location_value,
                     r.value AS region,
                     l.the_geom

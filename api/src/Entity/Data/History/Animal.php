@@ -110,7 +110,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower',
         'chronologyUpper',
         'reference',
-        'taxonomy.vernacularName',
+        'taxonomy.englishName',
+        'taxonomy.spanishName',
         'taxonomy.class',
         'taxonomy.family',
     ])]
@@ -121,7 +122,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'taxonomy' => 'exact',
         'taxonomy.class' => 'exact',
         'taxonomy.family' => 'exact',
-        'taxonomy.vernacularName' => 'ipartial',
+        'taxonomy.englishName' => 'ipartial',
         'chronologyLower' => 'exact',
         'chronologyUpper' => 'exact',
         'createdBy.email' => 'exact',
@@ -150,6 +151,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'location.region.value',
         'notes',
         'reference',
+        'taxonomy.spanishName',
     ]
 )]
 class Animal

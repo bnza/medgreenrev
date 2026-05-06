@@ -64,7 +64,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     normalizationContext: ['groups' => ['voc_zoo_taxonomy:read']],
     paginationEnabled: false,
 )]
-#[ApiFilter(OrderFilter::class, properties: ['id', 'code', 'value', 'vernacularName', 'class', 'family'])]
+#[ApiFilter(OrderFilter::class, properties: ['id', 'code', 'value', 'englishName', 'spanishName', 'class', 'family'])]
 #[ApiFilter(
     SearchPropertyAliasFilter::class,
     properties: [
@@ -139,7 +139,24 @@ class Taxonomy
         'validation:voc_zoo_taxonomy:create',
     ])]
     #[ApiProperty(required: true)]
-    private string $vernacularName;
+    private string $englishName;
+
+    #[ORM\Column(type: 'string')]
+    #[Groups([
+        'voc_zoo_taxonomy:read',
+        'voc_zoo_taxonomy:acl:read',
+        'voc_zoo_taxonomy:create',
+        'voc_zoo_taxonomy:update',
+        'voc_history_animal:acl:read',
+        'history_animal:export',
+        'zoo_bone:export',
+        'zoo_tooth:export',
+    ])]
+    #[Assert\NotBlank(groups: [
+        'validation:voc_zoo_taxonomy:create',
+    ])]
+    #[ApiProperty(required: true)]
+    private string $spanishName;
 
     #[ORM\Column(type: 'string')]
     #[Groups([
@@ -199,14 +216,26 @@ class Taxonomy
         return $this;
     }
 
-    public function getVernacularName(): string
+    public function getEnglishName(): string
     {
-        return $this->vernacularName;
+        return $this->englishName;
     }
 
-    public function setVernacularName(string $vernacularName): Taxonomy
+    public function setEnglishName(string $englishName): Taxonomy
     {
-        $this->vernacularName = $vernacularName;
+        $this->englishName = $englishName;
+
+        return $this;
+    }
+
+    public function getSpanishName(): string
+    {
+        return $this->spanishName;
+    }
+
+    public function setSpanishName(string $spanishName): Taxonomy
+    {
+        $this->spanishName = $spanishName;
 
         return $this;
     }

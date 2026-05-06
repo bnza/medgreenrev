@@ -7,6 +7,7 @@ use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use App\Doctrine\Filter\BitmapFilter;
+use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisJoin;
 use App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisZooBone;
@@ -44,7 +45,13 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.taxonomy.class' => 'exact',
         'subject.taxonomy.code' => 'exact',
         'subject.taxonomy.family' => 'exact',
-        'subject.taxonomy.vernacularName' => 'ipartial',
+        'subject.taxonomy.englishName' => 'ipartial',
+    ]
+)]
+#[ApiFilter(
+    UnaccentedSearchFilter::class,
+    properties: [
+        'subject.taxonomy.spanishName',
     ]
 )]
 #[ApiFilter(

@@ -19168,12 +19168,14 @@ export interface components {
     'VocZooTaxonomy-voc_zoo_taxonomy.create': {
       code: string
       value: string
-      vernacularName: string
+      englishName: string
+      spanishName: string
       class: string
       family?: string | null
     }
     'VocZooTaxonomy-voc_zoo_taxonomy.update.jsonMergePatch': {
-      vernacularName?: string
+      englishName?: string
+      spanishName?: string
       class?: string
       family?: string | null
     }
@@ -19188,7 +19190,8 @@ export interface components {
       readonly id?: number
       code: string
       value: string
-      vernacularName: string
+      englishName: string
+      spanishName: string
       class: string
       family?: string | null
     })
@@ -19196,7 +19199,8 @@ export interface components {
       readonly id?: number
       code: string
       value: string
-      vernacularName: string
+      englishName: string
+      spanishName: string
       class: string
       family?: string | null
     }
@@ -24526,7 +24530,7 @@ export interface operations {
         'taxonomies.taxonomy.family[]'?: string[]
         'taxonomies.taxonomy.class'?: string
         'taxonomies.taxonomy.class[]'?: string[]
-        'taxonomies.taxonomy.vernacularName'?: string
+        'taxonomies.taxonomy.englishName'?: string
         'exists[subject.description]'?: boolean
         'exists[taxonomies]'?: boolean
         'exists[taxonomies.taxonomy.family]'?: boolean
@@ -24540,6 +24544,11 @@ export interface operations {
          * @example cafè
          */
         'subject.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomies.taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomies.taxonomy.spanishName'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -24868,7 +24877,7 @@ export interface operations {
         'taxonomies.taxonomy.family[]'?: string[]
         'taxonomies.taxonomy.class'?: string
         'taxonomies.taxonomy.class[]'?: string[]
-        'taxonomies.taxonomy.vernacularName'?: string
+        'taxonomies.taxonomy.englishName'?: string
         'exists[subject.description]'?: boolean
         'exists[taxonomies]'?: boolean
         'exists[taxonomies.taxonomy.family]'?: boolean
@@ -24882,6 +24891,11 @@ export interface operations {
          * @example cafè
          */
         'subject.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomies.taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomies.taxonomy.spanishName'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -25017,7 +25031,7 @@ export interface operations {
         'taxonomies.taxonomy.family[]'?: string[]
         'taxonomies.taxonomy.class'?: string
         'taxonomies.taxonomy.class[]'?: string[]
-        'taxonomies.taxonomy.vernacularName'?: string
+        'taxonomies.taxonomy.englishName'?: string
         'exists[subject.description]'?: boolean
         'exists[taxonomies]'?: boolean
         'exists[taxonomies.taxonomy.family]'?: boolean
@@ -25031,6 +25045,11 @@ export interface operations {
          * @example cafè
          */
         'subject.description'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomies.taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomies.taxonomy.spanishName'?: string
         'order[id]'?: 'asc' | 'desc'
         'order[analysis.type.group]'?: 'asc' | 'desc'
         'order[analysis.type.value]'?: 'asc' | 'desc'
@@ -31087,7 +31106,12 @@ export interface operations {
         'subject.taxonomy.code[]'?: string[]
         'subject.taxonomy.family'?: string
         'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
+        'subject.taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.taxonomy.spanishName
+         * @example cafè
+         */
+        'subject.taxonomy.spanishName'?: string
         'exists[subject.taxonomy.family]'?: boolean
         /**
          * @description Filter by bitwise AND operation - all specified bits must be set
@@ -31432,7 +31456,12 @@ export interface operations {
         'subject.taxonomy.code[]'?: string[]
         'subject.taxonomy.family'?: string
         'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
+        'subject.taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.taxonomy.spanishName
+         * @example cafè
+         */
+        'subject.taxonomy.spanishName'?: string
         'exists[subject.taxonomy.family]'?: boolean
         /**
          * @description Filter by bitwise AND operation - all specified bits must be set
@@ -31584,7 +31613,12 @@ export interface operations {
         'subject.taxonomy.code[]'?: string[]
         'subject.taxonomy.family'?: string
         'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
+        'subject.taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.taxonomy.spanishName
+         * @example cafè
+         */
+        'subject.taxonomy.spanishName'?: string
         'exists[subject.taxonomy.family]'?: boolean
         /**
          * @description Filter by bitwise AND operation - all specified bits must be set
@@ -31734,12 +31768,17 @@ export interface operations {
         'subject.taxonomy.code[]'?: string[]
         'subject.taxonomy.family'?: string
         'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
+        'subject.taxonomy.englishName'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.taxonomy.spanishName
+         * @example cafè
+         */
+        'subject.taxonomy.spanishName'?: string
         'exists[subject.taxonomy.family]'?: boolean
         'subject.connected'?: boolean
         'order[id]'?: 'asc' | 'desc'
@@ -32068,12 +32107,17 @@ export interface operations {
         'subject.taxonomy.code[]'?: string[]
         'subject.taxonomy.family'?: string
         'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
+        'subject.taxonomy.englishName'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.taxonomy.spanishName
+         * @example cafè
+         */
+        'subject.taxonomy.spanishName'?: string
         'exists[subject.taxonomy.family]'?: boolean
         'subject.connected'?: boolean
         'order[id]'?: 'asc' | 'desc'
@@ -32209,12 +32253,17 @@ export interface operations {
         'subject.taxonomy.code[]'?: string[]
         'subject.taxonomy.family'?: string
         'subject.taxonomy.family[]'?: string[]
-        'subject.taxonomy.vernacularName'?: string
+        'subject.taxonomy.englishName'?: string
         /**
          * @description Case insensitive unaccented string matching. Filters on: summary
          * @example cafè
          */
         summary?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: subject.taxonomy.spanishName
+         * @example cafè
+         */
+        'subject.taxonomy.spanishName'?: string
         'exists[subject.taxonomy.family]'?: boolean
         'subject.connected'?: boolean
         'order[id]'?: 'asc' | 'desc'
@@ -35770,7 +35819,8 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         animal?: string
@@ -35780,7 +35830,7 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.family'?: string
         'taxonomy.family[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -35821,6 +35871,11 @@ export interface operations {
          * @example cafè
          */
         reference?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
       }
       header?: never
       path?: never
@@ -36053,7 +36108,8 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         animal?: string
@@ -36063,7 +36119,7 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.family'?: string
         'taxonomy.family[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36104,6 +36160,11 @@ export interface operations {
          * @example cafè
          */
         reference?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
       }
       header?: never
       path: {
@@ -36141,7 +36202,8 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         animal?: string
@@ -36151,7 +36213,7 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.family'?: string
         'taxonomy.family[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36192,6 +36254,11 @@ export interface operations {
          * @example cafè
          */
         reference?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
       }
       header?: never
       path?: never
@@ -36267,7 +36334,8 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         animal?: string
@@ -36277,7 +36345,7 @@ export interface operations {
         'taxonomy.class[]'?: string[]
         'taxonomy.family'?: string
         'taxonomy.family[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36318,6 +36386,11 @@ export interface operations {
          * @example cafè
          */
         reference?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
       }
       header?: never
       path?: never
@@ -52249,7 +52322,7 @@ export interface operations {
         'animals.taxonomy.class[]'?: string[]
         'animals.taxonomy.family'?: string
         'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.vernacularName'?: string
+        'animals.taxonomy.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52332,6 +52405,11 @@ export interface operations {
          * @example cafè
          */
         'region.value'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @example cafè
+         */
+        'animals.taxonomy.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -52372,7 +52450,7 @@ export interface operations {
         'animals.taxonomy.class[]'?: string[]
         'animals.taxonomy.family'?: string
         'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.vernacularName'?: string
+        'animals.taxonomy.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52455,6 +52533,11 @@ export interface operations {
          * @example cafè
          */
         'region.value'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @example cafè
+         */
+        'animals.taxonomy.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -52537,7 +52620,7 @@ export interface operations {
         'animals.taxonomy.class[]'?: string[]
         'animals.taxonomy.family'?: string
         'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.vernacularName'?: string
+        'animals.taxonomy.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52620,6 +52703,11 @@ export interface operations {
          * @example cafè
          */
         'region.value'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @example cafè
+         */
+        'animals.taxonomy.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -52688,7 +52776,7 @@ export interface operations {
         'animals.taxonomy.class[]'?: string[]
         'animals.taxonomy.family'?: string
         'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.vernacularName'?: string
+        'animals.taxonomy.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52771,6 +52859,11 @@ export interface operations {
          * @example cafè
          */
         'region.value'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @example cafè
+         */
+        'animals.taxonomy.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -53882,7 +53975,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[code]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
-        'order[vernacularName]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
+        'order[spanishName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
         /**
@@ -53916,7 +54010,8 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[code]'?: 'asc' | 'desc'
         'order[value]'?: 'asc' | 'desc'
-        'order[vernacularName]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
+        'order[spanishName]'?: 'asc' | 'desc'
         'order[class]'?: 'asc' | 'desc'
         'order[family]'?: 'asc' | 'desc'
         /**
@@ -54289,7 +54384,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -54317,7 +54413,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
@@ -54451,7 +54552,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -54479,7 +54581,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
@@ -54613,7 +54720,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -54641,7 +54749,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
@@ -54966,7 +55079,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -54994,7 +55108,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
@@ -55195,7 +55314,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -55223,7 +55343,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
@@ -55352,7 +55477,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -55377,7 +55503,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         connected?: boolean
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
@@ -55501,7 +55632,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -55526,7 +55658,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         connected?: boolean
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
@@ -55650,7 +55787,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -55675,7 +55813,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         connected?: boolean
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
@@ -55990,7 +56133,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -56015,7 +56159,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         connected?: boolean
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
@@ -56206,7 +56355,8 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.vernacularName]'?: 'asc' | 'desc'
+        'order[taxonomy.englishName]'?: 'asc' | 'desc'
+        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
@@ -56231,7 +56381,12 @@ export interface operations {
         'taxonomy.family[]'?: string[]
         'taxonomy.class'?: string
         'taxonomy.class[]'?: string[]
-        'taxonomy.vernacularName'?: string
+        'taxonomy.englishName'?: string
+        /**
+         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @example cafè
+         */
+        'taxonomy.spanishName'?: string
         connected?: boolean
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean

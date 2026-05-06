@@ -357,7 +357,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE TABLE vocabulary.zoo_bones (id SMALLINT NOT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_88CCAECB77153098 ON vocabulary.zoo_bones (code)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_88CCAECB1D775834 ON vocabulary.zoo_bones (value)');
-        $this->addSql('CREATE TABLE vocabulary.zoo_taxonomy (id SMALLINT NOT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, vernacular_name VARCHAR(255) NOT NULL, class VARCHAR(255) NOT NULL, family VARCHAR(255) DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE vocabulary.zoo_taxonomy (id SMALLINT NOT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, english_name VARCHAR(255) NOT NULL, spanish_name VARCHAR(255) NOT NULL, class VARCHAR(255) NOT NULL, family VARCHAR(255) DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_AD4BDA3C77153098 ON vocabulary.zoo_taxonomy (code)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_AD4BDA3C1D775834 ON vocabulary.zoo_taxonomy (value)');
         $this->addSql('CREATE TABLE zoo_teeth (id BIGINT NOT NULL, connected BOOLEAN NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_tooth_id SMALLINT DEFAULT NULL, voc_bone_side_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');

@@ -55,8 +55,11 @@ const vocabularyZooTaxonomy = useVocabularyStore(
         @update="updateDialogState = { id: item.id }"
       />
     </template>
-    <template #[`item.taxonomy.vernacularName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName') }}
+    <template #[`item.taxonomy.englishName`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName') }}
+    </template>
+    <template #[`item.taxonomy.spanishName`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName') }}
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />

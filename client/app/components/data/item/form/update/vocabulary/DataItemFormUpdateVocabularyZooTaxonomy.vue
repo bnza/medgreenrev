@@ -11,7 +11,8 @@ const props = defineProps<{
 const model = ref(structuredClone(props.initialValue))
 
 const { r$ } = useScopedRegle(model, {
-  vernacularName: { required },
+  englishName: { required },
+  spanishName: { required },
   class: { required },
 })
 </script>
@@ -31,14 +32,23 @@ const { r$ } = useScopedRegle(model, {
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <v-text-field
-          v-model="r$.$value.vernacularName"
-          label="vernacular name"
-          :error-messages="r$.$errors?.vernacularName"
+          v-model="r$.$value.englishName"
+          label="english name"
+          :error-messages="r$.$errors?.englishName"
         />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
+        <v-text-field
+          v-model="r$.$value.spanishName"
+          label="spanish name"
+          :error-messages="r$.$errors?.spanishName"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="6">
         <data-selection-list
           v-model="r$.$value.class"
           path="/api/list/vocabulary/zoo/taxonomy_classes"
@@ -46,7 +56,7 @@ const { r$ } = useScopedRegle(model, {
           :error-messages="r$.$errors?.class"
         />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <data-selection-list
           v-model="r$.$value.family"
           path="/api/list/vocabulary/zoo/taxonomy_families"

@@ -17,6 +17,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\Granted\GrantedParentStratigraphicUnitFilter;
 use App\Doctrine\Filter\SearchSiteAndIdFilter;
+use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\ArchaeologicalSite;
@@ -124,7 +125,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     'stratigraphicUnit.site.code',
     'stratigraphicUnit.codeView.code',
     'taxonomy.value',
-    'taxonomy.vernacularName',
+    'taxonomy.englishName',
+    'taxonomy.spanishName',
     'taxonomy.family',
     'taxonomy.class',
     'element.value',
@@ -145,7 +147,13 @@ use Symfony\Component\Validator\Constraints as Assert;
         'taxonomy.code' => 'exact',
         'taxonomy.family' => 'exact',
         'taxonomy.class' => 'exact',
-        'taxonomy.vernacularName' => 'ipartial',
+        'taxonomy.englishName' => 'ipartial',
+    ]
+)]
+#[ApiFilter(
+    UnaccentedSearchFilter::class,
+    properties: [
+        'taxonomy.spanishName',
     ]
 )]
 #[ApiFilter(

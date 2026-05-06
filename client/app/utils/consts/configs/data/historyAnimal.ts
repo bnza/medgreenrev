@@ -25,9 +25,15 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
-      key: 'taxonomy.vernacularName',
-      value: 'taxonomy.vernacularName',
-      title: 'taxonomy (vernacular name)',
+      key: 'taxonomy.englishName',
+      value: 'taxonomy.englishName',
+      title: 'taxonomy (english name)',
+      minWidth: '200',
+    },
+    {
+      key: 'taxonomy.spanishName',
+      value: 'taxonomy.spanishName',
+      title: 'taxonomy (spanish name)',
       minWidth: '200',
     },
     {

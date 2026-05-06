@@ -43,13 +43,14 @@ use Symfony\Component\Validator\Constraints as Assert;
         'subject.taxonomy.class' => 'exact',
         'subject.taxonomy.code' => 'exact',
         'subject.taxonomy.family' => 'exact',
-        'subject.taxonomy.vernacularName' => 'ipartial',
+        'subject.taxonomy.englishName' => 'ipartial',
     ]
 )]
 #[ApiFilter(
     UnaccentedSearchFilter::class,
     properties: [
         'summary',
+        'subject.taxonomy.spanishName',
     ]
 )]
 #[ApiFilter(ExistsFilter::class, properties: [

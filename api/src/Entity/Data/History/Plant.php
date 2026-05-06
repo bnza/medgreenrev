@@ -108,6 +108,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyUpper',
         'createdBy.email',
         'plant',
+        'taxonomy.englishName',
         'taxonomy.flat.value',
         'language.value',
         'location.region.value',

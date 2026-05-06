@@ -42,8 +42,14 @@ export const taxonomyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
         SelectionZooClass,
       },
     },
-    'taxonomy.vernacularName': {
-      propertyLabel: 'vernacular name',
+    'taxonomy.englishName': {
+      propertyLabel: 'english name',
+      filters: {
+        SearchPartial,
+      },
+    },
+    'taxonomy.spanishName': {
+      propertyLabel: 'spanish name',
       filters: {
         SearchPartial,
       },

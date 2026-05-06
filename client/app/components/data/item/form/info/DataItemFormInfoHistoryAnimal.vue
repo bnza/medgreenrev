@@ -10,8 +10,8 @@ withDefaults(
     readLink: true,
   },
 )
-const vocabularyBotanyTaxonomy = useVocabularyStore(
-  '/api/vocabulary/botany/taxonomies',
+const vocabularyZooTaxonomy = useVocabularyStore(
+  '/api/vocabulary/zoo/taxonomies',
 )
 </script>
 
@@ -39,12 +39,20 @@ const vocabularyBotanyTaxonomy = useVocabularyStore(
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="8" xs="12" class="px-2">
+      <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'vernacularName')
+            vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName')
           "
-          label="vernacular name"
+          label="english name"
+        />
+      </v-col>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="
+            vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName')
+          "
+          label="spanish name"
         />
       </v-col>
     </v-row>

@@ -68,9 +68,19 @@ const vocabularyZooBones = useVocabularyStore('/api/vocabulary/zoo/bones')
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="
-            vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName')
+            vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName')
           "
-          label="vernacular name"
+          label="english name"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="4" xs="12" class="px-2">
+        <v-text-field
+          :model-value="
+            vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName')
+          "
+          label="spanish name"
         />
       </v-col>
     </v-row>

@@ -83,7 +83,7 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
       <data-autocomplete
         v-model="r$.$value.taxonomy"
         path="/api/vocabulary/zoo/taxonomies"
-        item-title="vernacularName"
+        item-title="englishName"
         label="taxonomy"
         clearable
       />

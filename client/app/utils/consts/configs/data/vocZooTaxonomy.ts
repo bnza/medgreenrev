@@ -25,9 +25,15 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'vernacularName',
-      value: 'vernacularName',
-      title: 'vernacular name',
+      key: 'englishName',
+      value: 'englishName',
+      title: 'english name',
+      minWidth: '200',
+    },
+    {
+      key: 'spanishName',
+      value: 'spanishName',
+      title: 'spanish name',
       minWidth: '200',
     },
     {

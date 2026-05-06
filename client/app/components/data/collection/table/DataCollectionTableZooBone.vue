@@ -83,8 +83,11 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.taxonomy.value`]="{ item }">
       {{ vocabularyZooTaxonomy.getValue(item.taxonomy) }}
     </template>
-    <template #[`item.taxonomy.vernacularName`]="{ item }">
-      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'vernacularName') }}
+    <template #[`item.taxonomy.englishName`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName') }}
+    </template>
+    <template #[`item.taxonomy.spanishName`]="{ item }">
+      {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName') }}
     </template>
     <template #[`item.taxonomy.class`]="{ item }">
       {{ vocabularyZooTaxonomy.getValue(item.taxonomy, 'class') }}
