@@ -42,7 +42,7 @@ const config: Readonly<ResourceConfig> = {
     //   title: 'year completed (upper)',
     // },
   ],
-  labels: ['cited work (written source)', 'cited works (written sources)'],
+  labels: ['cited work (arabic written source)', 'cited works (arabic written sources)'],
   name: 'historyWrittenSourceCitedWork',
 }
 

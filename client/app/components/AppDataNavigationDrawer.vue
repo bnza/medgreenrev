@@ -343,6 +343,20 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
           </template>
           <v-list-item
             nuxt
+            to="/data/history/written-sources"
+            router
+            title="Arabic written sources"
+            data-testid="app-nav-drawer-li-historical-data-sources"
+          />
+          <v-list-item
+            nuxt
+            to="/data/history/written-sources/cited-works"
+            router
+            title="Cited works (Arabic written sources)"
+            data-testid="app-nav-drawer-li-historical-data-cited-works"
+          />
+          <v-list-item
+            nuxt
             to="/data/history/animals"
             router
             title="Animals"
@@ -361,20 +375,6 @@ const { hasRoleAdmin, isAuthenticated } = useAppAuth()
             router
             title="Plants"
             data-testid="app-nav-drawer-li-analyses-historical-data-plants"
-          />
-          <v-list-item
-            nuxt
-            to="/data/history/written-sources"
-            router
-            title="Written sources"
-            data-testid="app-nav-drawer-li-historical-data-sources"
-          />
-          <v-list-item
-            nuxt
-            to="/data/history/written-sources/cited-works"
-            router
-            title="Cited works (written sources)"
-            data-testid="app-nav-drawer-li-historical-data-cited-works"
           />
         </v-list-group>
       </v-list-group>

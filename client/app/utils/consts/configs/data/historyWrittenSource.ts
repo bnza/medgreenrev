@@ -48,7 +48,7 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '300',
     },
   ],
-  labels: ['history written source', 'history written sources'],
+  labels: ['arabic written source', 'arabic written sources'],
   name: 'historyWrittenSource',
 }
 
