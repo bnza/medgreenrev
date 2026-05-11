@@ -47,8 +47,7 @@ test.describe('History item lifecycle', () => {
           .first()
           .click() // Select arabic
 
-        await collectionPom.dataDialogCreate.form.getByLabel('animal').click()
-        await page.getByRole('option', { name: /^asno/ }).first().click() // Select asno
+        await collectionPom.dataDialogCreate.form.getByLabel('animal', {exact: true}).fill('perro')
 
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'chronology (lower)' })
@@ -77,7 +76,7 @@ test.describe('History item lifecycle', () => {
         // Verify the created item details
         await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
         await itemPom.expectTextFieldToHaveValue('language', 'arabic')
-        await itemPom.expectTextFieldToHaveValue('animal', 'asno')
+        await itemPom.expectTextFieldToHaveValue('animal', 'perro')
         await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
         await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
         await itemPom.expectTextFieldToHaveValue('reference', 'Test reference')
@@ -186,8 +185,7 @@ test.describe('History item lifecycle', () => {
           .first()
           .click() // Select arabic
 
-        await collectionPom.dataDialogCreate.form.getByLabel('animal').click()
-        await page.getByRole('option', { name: /^asno/ }).first().click() // Select asno
+        await collectionPom.dataDialogCreate.form.getByLabel('animal', {exact: true}).fill('perro')
 
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'chronology (lower)' })
@@ -237,8 +235,7 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form.getByLabel('language').click()
         await page.getByRole('option', { name: /^lat/ }).first().click() // Select latin
 
-        await collectionPom.dataDialogCreate.form.getByLabel('plant').click()
-        await page.getByRole('option', { name: /^albu/ }).first().click() // Select albudeca
+        await collectionPom.dataDialogCreate.form.getByLabel('plant', {exact: true}).fill('ajo')
 
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'chronology (lower)' })
@@ -265,7 +262,7 @@ test.describe('History item lifecycle', () => {
         // Verify the created item details
         await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
         await itemPom.expectTextFieldToHaveValue('language', 'latin')
-        await itemPom.expectTextFieldToHaveValue('plant', 'albudeca')
+        await itemPom.expectTextFieldToHaveValue('plant', 'ajo')
         await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
         await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
         await itemPom.expectTextFieldToHaveValue('reference', 'Test reference')
@@ -371,8 +368,7 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form.getByLabel('language').click()
         await page.getByRole('option', { name: /^lat/ }).first().click() // Select latin
 
-        await collectionPom.dataDialogCreate.form.getByLabel('plant').click()
-        await page.getByRole('option', { name: /^albu/ }).first().click() // Select albudeca
+        await collectionPom.dataDialogCreate.form.getByLabel('plant', {exact: true}).fill('ajo')
 
         await collectionPom.dataDialogCreate.form
           .getByRole('textbox', { name: 'chronology (lower)' })
