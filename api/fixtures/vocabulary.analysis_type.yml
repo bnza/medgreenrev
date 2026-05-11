@@ -34,6 +34,21 @@ App\Entity\Vocabulary\Analysis\Type:
         code: ZOO
         group: assemblage
         value: zooarchaeology
+    voc__analysis__type__pollen:
+        id: 205
+        code: POL
+        group: assemblage
+        value: pollen
+    voc__analysis__type__sedimentary_dna:
+        id: 206
+        code: SDNA
+        group: assemblage
+        value: sedimentary DNA
+    voc__analysis__type__phytoliths:
+        id: 207
+        code: PHY
+        group: assemblage
+        value: phytoliths
     voc__analysis__type__adna:
         id: 301
         code: ADNA
@@ -59,6 +74,11 @@ App\Entity\Vocabulary\Analysis\Type:
         code: XRD
         group: material analysis
         value: XRD
+    voc__analysis__type__geo:
+        id: 306
+        code: GEO
+        group: material analysis
+        value: geochemistry
     voc__analysis__type__thin_section:
         id: 401
         code: THS
@@ -74,23 +94,3 @@ App\Entity\Vocabulary\Analysis\Type:
         code: SEM
         group: microscope
         value: SEM
-    voc__analysis__type__pollen:
-        id: 601
-        code: POL
-        group: sediment
-        value: pollen
-    voc__analysis__type__sedimentary_dna:
-        id: 602
-        code: SDNA
-        group: sediment
-        value: sedimentary DNA
-    voc__analysis__type__geo:
-      id: 603
-      code: GEO
-      group: sediment
-      value: geochemistry
-    voc__analysis__type__phytoliths:
-      id: 604
-      code: PHY
-      group: sediment
-      value: phytoliths

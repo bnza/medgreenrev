@@ -157,7 +157,6 @@ class Analysis
     public const string GROUP_MATERIAL_ANALYSIS = 'material analysis';
     public const string GROUP_MICROMORPHOLOGY = 'micromorphology';
     public const string GROUP_MICROSCOPE = 'microscope';
-    public const string GROUP_SEDIMENT = 'sediment';
 
     public const string TYPE_C14 = 'C14';
     public const string TYPE_THL = 'THL';
@@ -242,19 +241,19 @@ class Analysis
             'value' => 'SEM',
         ],
         self::TYPE_GEO => [
-            'group' => self::GROUP_SEDIMENT,
+            'group' => self::GROUP_MATERIAL_ANALYSIS,
             'value' => 'geochemistry',
         ],
         self::TYPE_POL => [
-            'group' => self::GROUP_SEDIMENT,
+            'group' => self::GROUP_ASSEMBLAGE,
             'value' => 'pollen',
         ],
         self::TYPE_SDNA => [
-            'group' => self::GROUP_SEDIMENT,
+            'group' => self::GROUP_ASSEMBLAGE,
             'value' => 'sedimentary DNA',
         ],
         self::TYPE_PHY => [
-            'group' => self::GROUP_SEDIMENT,
+            'group' => self::GROUP_ASSEMBLAGE,
             'value' => 'phytoliths',
         ],
     ];

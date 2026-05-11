@@ -129,7 +129,6 @@ class AnalysisSample extends BaseAnalysisJoin
             array_filter(Analysis::TYPES, fn ($type) => in_array($type['group'], [
                 Analysis::GROUP_ABS_DATING,
                 Analysis::GROUP_MATERIAL_ANALYSIS,
-                Analysis::GROUP_SEDIMENT,
             ]))
         );
     }

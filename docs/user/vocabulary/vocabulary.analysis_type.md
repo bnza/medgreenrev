@@ -14,8 +14,9 @@
 | OPT | optical | microscope |
 | OSL | optical simulated luminescence | absolute dating |
 | ORA | ORA | material analysis |
-| POL | pollen | sediment cores |
-| SDNA | sedimentary DNA | sediment cores |
+| PHY | phytoliths | assemblage |
+| POL | pollen | assemblage |
+| SDNA | sedimentary DNA | assemblage |
 | SEM | SEM | microscope |
 | THL | thermoluminescence | absolute dating |
 | THS | thin section | micromorphology |

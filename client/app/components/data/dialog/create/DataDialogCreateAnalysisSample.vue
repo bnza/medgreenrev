@@ -35,7 +35,6 @@ const isAbsoluteDatingAnalysis = ref(false)
 const analysisQueryParams = {
   'type.group': [
     AnalysisGroups.MaterialAnalysis,
-    AnalysisGroups.Sediment,
     AnalysisGroups.AbsoluteDating,
   ],
 } as const
