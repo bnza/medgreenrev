@@ -1,4 +1,4 @@
-import type { Browser } from '@playwright/test'
+import type { Browser, Page } from '@playwright/test'
 import { LoginPage } from '~~/tests/e2e/pages/login.page'
 import type { UserPasswordDialogComponent } from '~~/tests/e2e/components/user-password-dialog.component'
 import { UserCollectionPage } from '~~/tests/e2e/pages/user-collection.page'
@@ -51,6 +51,17 @@ export class AuthTestHelper {
       await page.close()
       await context.close()
     }
+  }
+
+  async createUserAndLogin(
+    page: Page,
+    userRole: string,
+    specialistRoles: string[],
+  ): Promise<void> {
+    const credentials = await this.createUser(userRole, specialistRoles)
+    const loginPage = new LoginPage(page)
+    await loginPage.open()
+    await loginPage.login(credentials)
   }
 
   async verifyLoginWithPassword(

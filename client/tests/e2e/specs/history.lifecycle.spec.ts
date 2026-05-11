@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Page } from '@playwright/test'
 import { loadFixtures } from '~~/tests/e2e/utils/api'
 import { testMediaObjectLifecycle } from '~~/tests/e2e/utils/media-object-test-helper'
 import { NavigationLinksButton } from '~~/tests/e2e/utils'
@@ -7,13 +7,163 @@ import { HistoryAnimalItemPage } from '~~/tests/e2e/pages/history-animal-item.pa
 import { HistoryPlantCollectionPage } from '~~/tests/e2e/pages/history-plant-collection.page'
 import { HistoryPlantItemPage } from '~~/tests/e2e/pages/history-plant-item.page'
 import { AuthTestHelper } from '~~/tests/e2e/utils/auth-test-helper'
-import { LoginPage } from '~~/tests/e2e/pages/login.page'
 import { HistoryLocationCollectionPage } from '~~/tests/e2e/pages/history-location-collection.page'
 import { HistoryLocationItemPage } from '~~/tests/e2e/pages/history-location-item.page'
 import { HistoryWrittenSourceCollectionPage } from '~~/tests/e2e/pages/history-written-source-collection.page'
 import { HistoryWrittenSourceItemPage } from '~~/tests/e2e/pages/history-written-source-item.page'
 import { HistoryWrittenSourceCitedWorkCollectionPage } from '~~/tests/e2e/pages/history-written-source-cited-work-collection.page'
 import { HistoryWrittenSourceCitedWorkItemPage } from '~~/tests/e2e/pages/history-written-source-cited-work-item.page'
+
+async function fillAndSubmitAnimalForm(
+  page: Page,
+  collectionPom: HistoryAnimalCollectionPage,
+  itemPom?: HistoryAnimalItemPage,
+  {
+    language = 'arabic',
+    animal = 'perro',
+    chronologyLower = '1050',
+    chronologyUpper = '1150',
+    reference = 'Test reference',
+    notes = 'Some summary information about the animal historical reference',
+  }: {
+    language?: string
+    animal?: string
+    chronologyLower?: string
+    chronologyUpper?: string
+    reference?: string
+    notes?: string
+  } = {},
+): Promise<void> {
+  const languagePattern = new RegExp(`^${language}`)
+
+  await collectionPom.dataDialogCreate.form.getByLabel('language', { exact: true }).click()
+  await page
+    .getByRole('option', { name: languagePattern })
+    .first()
+    .click()
+
+  await collectionPom.dataDialogCreate.form.getByLabel('animal', { exact: true }).fill(animal)
+
+  await collectionPom.dataDialogCreate.form
+    .getByRole('textbox', { name: 'chronology (lower)' })
+    .fill(chronologyLower)
+
+  await collectionPom.dataDialogCreate.form
+    .getByRole('textbox', { name: 'chronology (upper)' })
+    .fill(chronologyUpper)
+
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('reference', { exact: true })
+    .fill(reference)
+
+  await collectionPom.dataDialogCreate.form
+    .getByRole('textbox', { name: 'notes' })
+    .fill(notes)
+
+  await collectionPom.dataDialogCreate.submitForm()
+
+  await collectionPom.expectAppMessageToHaveText('Resource successfully created')
+}
+
+async function expectHistoryAnimalFormValues(
+  itemPom: HistoryAnimalItemPage,
+  {
+    language = 'arabic',
+    animal = 'perro',
+    chronologyLower = '1050',
+    chronologyUpper = '1150',
+    reference = 'Test reference',
+    notes = 'Some summary information about the animal historical reference',
+  }: {
+    language?: string
+    animal?: string
+    chronologyLower?: string
+    chronologyUpper?: string
+    reference?: string
+    notes?: string
+  } = {},
+): Promise<void> {
+  await itemPom.expectTextFieldToHaveValue('language', language)
+  await itemPom.expectTextFieldToHaveValue('animal', animal)
+  await itemPom.expectTextFieldToHaveValue('chronology (upper)', chronologyUpper)
+  await itemPom.expectTextFieldToHaveValue('chronology (lower)', chronologyLower)
+  await itemPom.expectTextFieldToHaveValue('reference', reference)
+  await itemPom.expectTextFieldToHaveValue('notes', notes)
+}
+
+
+async function fillAndSubmitPlantForm(
+  page: Page,
+  collectionPom: HistoryPlantCollectionPage,
+  {
+    language = 'latin',
+    plant = 'ajo',
+    chronologyLower = '1050',
+    chronologyUpper = '1150',
+    reference = 'Test reference',
+    notes = 'Some summary information about the plant historical reference',
+  }: {
+    language?: string
+    plant?: string
+    chronologyLower?: string
+    chronologyUpper?: string
+    reference?: string
+    notes?: string
+  } = {},
+): Promise<void> {
+  const languagePattern = new RegExp(`^${language}`)
+
+  await collectionPom.dataDialogCreate.form.getByLabel('language').click()
+  await page.getByRole('option', { name: languagePattern }).first().click()
+
+  await collectionPom.dataDialogCreate.form.getByLabel('plant', { exact: true }).fill(plant)
+
+  await collectionPom.dataDialogCreate.form
+    .getByRole('textbox', { name: 'chronology (lower)' })
+    .fill(chronologyLower)
+
+  await collectionPom.dataDialogCreate.form
+    .getByRole('textbox', { name: 'chronology (upper)' })
+    .fill(chronologyUpper)
+
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('reference', { exact: true })
+    .fill(reference)
+
+  await collectionPom.dataDialogCreate.form
+    .getByRole('textbox', { name: 'notes' })
+    .fill(notes)
+
+  await collectionPom.dataDialogCreate.submitForm()
+
+  await collectionPom.expectAppMessageToHaveText('Resource successfully created')
+}
+
+async function expectHistoryPlantFormValues(
+  itemPom: HistoryPlantItemPage,
+  {
+    language = 'latin',
+    plant = 'ajo',
+    chronologyLower = '1050',
+    chronologyUpper = '1150',
+    reference = 'Test reference',
+    notes = 'Some summary information about the plant historical reference',
+  }: {
+    language?: string
+    plant?: string
+    chronologyLower?: string
+    chronologyUpper?: string
+    reference?: string
+    notes?: string
+  } = {},
+): Promise<void> {
+  await itemPom.expectTextFieldToHaveValue('language', language)
+  await itemPom.expectTextFieldToHaveValue('plant', plant)
+  await itemPom.expectTextFieldToHaveValue('chronology (upper)', chronologyUpper)
+  await itemPom.expectTextFieldToHaveValue('chronology (lower)', chronologyLower)
+  await itemPom.expectTextFieldToHaveValue('reference', reference)
+  await itemPom.expectTextFieldToHaveValue('notes', notes)
+}
 
 test.beforeEach(async () => {
   loadFixtures()
@@ -42,48 +192,8 @@ test.describe('History item lifecycle', () => {
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
         await collectionPom.dataDialogCreate.form.getByLabel('language').click()
-        await page
-          .getByRole('option', { name: /^arabic/ })
-          .first()
-          .click() // Select arabic
-
-        await collectionPom.dataDialogCreate.form.getByLabel('animal', {exact: true}).fill('perro')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (lower)' })
-          .fill('1050')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (upper)' })
-          .fill('1150')
-
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('reference', { exact: true })
-          .fill('Test reference')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'notes' })
-          .fill(
-            'Some summary information about the animal historical reference',
-          )
-
-        await collectionPom.dataDialogCreate.submitForm()
-
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        // Verify the created item details
-        await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
-        await itemPom.expectTextFieldToHaveValue('language', 'arabic')
-        await itemPom.expectTextFieldToHaveValue('animal', 'perro')
-        await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
-        await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
-        await itemPom.expectTextFieldToHaveValue('reference', 'Test reference')
-        await itemPom.expectTextFieldToHaveValue(
-          'notes',
-          'Some summary information about the animal historical reference',
-        )
+        await fillAndSubmitAnimalForm(page, collectionPom)
+        await expectHistoryAnimalFormValues(itemPom)
         await itemPom.dataCard.backButton.click()
         await collectionPom.table.expectData()
 
@@ -180,34 +290,7 @@ test.describe('History item lifecycle', () => {
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
         await collectionPom.dataDialogCreate.form.getByLabel('language').click()
-        await page
-          .getByRole('option', { name: /^arabic/ })
-          .first()
-          .click() // Select arabic
-
-        await collectionPom.dataDialogCreate.form.getByLabel('animal', {exact: true}).fill('perro')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (lower)' })
-          .fill('1050')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (upper)' })
-          .fill('1150')
-
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('reference', { exact: true })
-          .fill('Test reference')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'notes' })
-          .fill(
-            'Some summary information about the animal historical reference',
-          )
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
+        await fillAndSubmitAnimalForm(page, collectionPom)
       })
     })
   })
@@ -232,44 +315,8 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form.getByLabel('location').click()
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
-        await collectionPom.dataDialogCreate.form.getByLabel('language').click()
-        await page.getByRole('option', { name: /^lat/ }).first().click() // Select latin
-
-        await collectionPom.dataDialogCreate.form.getByLabel('plant', {exact: true}).fill('ajo')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (lower)' })
-          .fill('1050')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (upper)' })
-          .fill('1150')
-
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('reference', { exact: true })
-          .fill('Test reference')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'notes' })
-          .fill('Some summary information about the plant historical reference')
-
-        await collectionPom.dataDialogCreate.submitForm()
-
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        // Verify the created item details
-        await itemPom.expectTextFieldToHaveValue('location', 'Antequera')
-        await itemPom.expectTextFieldToHaveValue('language', 'latin')
-        await itemPom.expectTextFieldToHaveValue('plant', 'ajo')
-        await itemPom.expectTextFieldToHaveValue('chronology (upper)', '1150')
-        await itemPom.expectTextFieldToHaveValue('chronology (lower)', '1050')
-        await itemPom.expectTextFieldToHaveValue('reference', 'Test reference')
-        await itemPom.expectTextFieldToHaveValue(
-          'notes',
-          'Some summary information about the plant historical reference',
-        )
+        await fillAndSubmitPlantForm(page, collectionPom)
+        await expectHistoryPlantFormValues(itemPom)
         await itemPom.dataCard.backButton.click()
         await collectionPom.table.expectData()
 
@@ -365,38 +412,77 @@ test.describe('History item lifecycle', () => {
         await collectionPom.dataDialogCreate.form.getByLabel('location').click()
         await page.getByRole('option', { name: /^Ant/ }).first().click() // Select Antequera
 
-        await collectionPom.dataDialogCreate.form.getByLabel('language').click()
-        await page.getByRole('option', { name: /^lat/ }).first().click() // Select latin
-
-        await collectionPom.dataDialogCreate.form.getByLabel('plant', {exact: true}).fill('ajo')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (lower)' })
-          .fill('1050')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'chronology (upper)' })
-          .fill('1150')
-
-        await collectionPom.dataDialogCreate.form
-          .getByLabel('reference', { exact: true })
-          .fill('Test reference')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'notes' })
-          .fill('Some summary information about the plant historical reference')
-        await collectionPom.dataDialogCreate.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
+        await fillAndSubmitPlantForm(page, collectionPom)
       })
     })
   })
   test.describe('Locations', () => {
-    test.describe('Admin user', () => {
-      test.use({ storageState: 'playwright/.auth/admin.json' })
+    test.describe('Editor/historian user', () => {
+      test('Basic lifecycle works as expected', async ({ page, browser }) => {
+        const collectionPom = new HistoryLocationCollectionPage(page)
+        const authTestHelper = new AuthTestHelper(browser)
+        await authTestHelper.createUserAndLogin(page, 'editor', ['historian'])
 
-      test('Data validation', async ({ page }) => {
+        // Navigate to the site collection page
+        await collectionPom.appNavBarIcon.click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Data', { exact: true })
+          .click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Written sources', { exact: true })
+          .first()
+          .click()
+        await page
+          .getByTestId('app-navigation-drawer')
+          .getByText('Locations', { exact: true })
+          .first()
+          .click()
+        await collectionPom.table.expectData()
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'value' })
+          .fill('New location')
+        await collectionPom.dataDialogCreate.form.getByLabel('region').click()
+        await page.getByRole('option', { name: /catalan/i }).click()
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate E' })
+          .fill('37.5')
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'coordinate N' })
+          .fill('-4.5')
+
+        await collectionPom.dataDialogCreate.submitForm()
+
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+
+        await collectionPom.table.expectRowToHaveText('New location', 'Catalan')
+        await collectionPom.table.expectRowToHaveText('New location', '37.5')
+        await collectionPom.table.expectRowToHaveText('New location', '-4.5')
+
+        // DELETE
+        await collectionPom.table
+          .getItemNavigationLink('New location', NavigationLinksButton.Delete)
+          .click()
+        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
+          'value',
+          'New location',
+        )
+        await collectionPom.dataDialogDelete.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully deleted',
+        )
+        await collectionPom.table.expectNotToHaveRowContainingText(
+          'New location',
+        )
+      })
+      test('Data validation', async ({ page, browser }) => {
+        const authTestHelper = new AuthTestHelper(browser)
+        await authTestHelper.createUserAndLogin(page, 'editor', ['historian'])
         const collectionPom = new HistoryLocationCollectionPage(page)
         await collectionPom.open()
         await collectionPom.table.expectData()
@@ -486,77 +572,38 @@ test.describe('History item lifecycle', () => {
         )
       })
     })
-    test.describe('Editor/historian user', () => {
-      test('Basic lifecycle works as expected', async ({ page, browser }) => {
-        const collectionPom = new HistoryLocationCollectionPage(page)
-        const authTestHelper = new AuthTestHelper(browser)
-        const credentials = await authTestHelper.createUser('editor', [
-          'historian',
-        ])
-        const loginPage = new LoginPage(page)
-        await loginPage.open()
-        await loginPage.login(credentials)
-
-        // Navigate to the site collection page
-        await collectionPom.appNavBarIcon.click()
-        await page
-          .getByTestId('app-navigation-drawer')
-          .getByText('Data', { exact: true })
-          .click()
-        await page
-          .getByTestId('app-navigation-drawer')
-          .getByText('Written sources', { exact: true })
-          .first()
-          .click()
-        await page
-          .getByTestId('app-navigation-drawer')
-          .getByText('Locations', { exact: true })
-          .first()
-          .click()
-        await collectionPom.table.expectData()
-        await collectionPom.dataCard.clickOnActionMenuButton('add new')
-
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'value' })
-          .fill('New location')
-        await collectionPom.dataDialogCreate.form.getByLabel('region').click()
-        await page.getByRole('option', { name: /catalan/i }).click()
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'coordinate E' })
-          .fill('37.5')
-        await collectionPom.dataDialogCreate.form
-          .getByRole('textbox', { name: 'coordinate N' })
-          .fill('-4.5')
-
-        await collectionPom.dataDialogCreate.submitForm()
-
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully created',
-        )
-
-        await collectionPom.table.expectRowToHaveText('New location', 'Catalan')
-        await collectionPom.table.expectRowToHaveText('New location', '37.5')
-        await collectionPom.table.expectRowToHaveText('New location', '-4.5')
-
-        // DELETE
-        await collectionPom.table
-          .getItemNavigationLink('New location', NavigationLinksButton.Delete)
-          .click()
-        await collectionPom.dataDialogDelete.expectTextFieldToHaveValue(
-          'value',
-          'New location',
-        )
-        await collectionPom.dataDialogDelete.submitForm()
-        await collectionPom.expectAppMessageToHaveText(
-          'Resource successfully deleted',
-        )
-        await collectionPom.table.expectNotToHaveRowContainingText(
-          'New location',
-        )
-      })
-    })
     test.describe('Historian user', () => {
       test.use({ storageState: 'playwright/.auth/his.json' })
+      test.describe('Location sub-resources', () => {
+        test('Animals', async ({ page }) => {
+          const collectionPom = new HistoryLocationCollectionPage(page)
+          const itemPom = new HistoryLocationItemPage(page)
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+          await collectionPom.table
+            .getItemNavigationLink('Turillas', NavigationLinksButton.Read)
+            .click()
+          await itemPom.clickTab('animals')
+          await expect(page.getByTestId('tab-animals').getByTestId('data-card-toolbar-main-title')).toContainText('animals')
+          await page.getByTestId('tab-animals').getByTestId('data-toolbar-collection-action-menu-button').click()
+          await page.getByText('add new').click()
+          await fillAndSubmitAnimalForm(page, new HistoryAnimalCollectionPage(page))
+          })
+        test('Plants', async ({ page }) => {
+          const collectionPom = new HistoryLocationCollectionPage(page)
+          const itemPom = new HistoryLocationItemPage(page)
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+          await collectionPom.table
+            .getItemNavigationLink('Turillas', NavigationLinksButton.Read)
+            .click()
+          await itemPom.clickTab('plants')
+          await expect(page.getByTestId('tab-plants').getByTestId('data-card-toolbar-main-title')).toContainText('plants')
+          await page.getByTestId('tab-plants').getByTestId('data-toolbar-collection-action-menu-button').click()
+          await page.getByText('add new').click()
+          await fillAndSubmitPlantForm(page, new HistoryPlantCollectionPage(page))
+        })
+      })
       test('Media object', async ({ page }) => {
         const collectionPom = new HistoryLocationCollectionPage(page)
         const itemPom = new HistoryLocationItemPage(page)
