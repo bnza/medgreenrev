@@ -128,10 +128,10 @@ export const FILTERS_PATHS_MAP: Record<
     resourceFilterDefinitions.sample,
   '/api/data/archaeological_sites/{parentId}/stratigraphic_units':
     resourceFilterDefinitions.stratigraphicUnit,
-  '/api/data/botany/charcoals': resourceFilterDefinitions.botany,
+  '/api/data/botany/charcoals': resourceFilterDefinitions.botanyCharcoal,
   '/api/data/botany/charcoals/{parentId}/analyses':
     resourceFilterDefinitions.analysisBotanyParentSubject,
-  '/api/data/botany/seeds': resourceFilterDefinitions.botany,
+  '/api/data/botany/seeds': resourceFilterDefinitions.botanySeed,
   '/api/data/botany/seeds/{parentId}/analyses':
     resourceFilterDefinitions.analysisBotanyParentSubject,
   '/api/data/contexts': resourceFilterDefinitions.context,
@@ -204,7 +204,7 @@ export const FILTERS_PATHS_MAP: Record<
   '/api/data/stratigraphic_units/{parentId}/botany/charcoals':
     resourceFilterDefinitions.botanyParentStratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/botany/seeds':
-    resourceFilterDefinitions.botanyParentStratigraphicUnit,
+    resourceFilterDefinitions.botanySeedParentStratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/contexts':
     resourceFilterDefinitions.contextStratigraphicUnitParentStratigraphicUnit,
   '/api/data/stratigraphic_units/{parentId}/individuals':

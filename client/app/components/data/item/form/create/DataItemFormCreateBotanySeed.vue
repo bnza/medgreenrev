@@ -38,14 +38,23 @@ const { r$ } = useScopedRegle(model, {
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="6">
+      <v-col cols="1" class="px-2">
+        <v-checkbox v-model="r$.$value.type" label="type" />
+      </v-col>
+      <v-col cols="1" class="px-2">
+        <v-checkbox v-model="r$.$value.cf" label="cf" />
+      </v-col>
+      <v-col cols="6">
         <data-autocomplete-vocabulary-botany-taxonomy
           v-model="r$.$value.taxonomy"
-          label="taxonomy"
           :error-messages="r$.$errors?.taxonomy"
-          clearable
         />
       </v-col>
+      <v-col cols="1" class="px-2">
+        <v-checkbox v-model="r$.$value.sp" label="sp" />
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="12" md="3">
         <data-autocomplete
           v-model="r$.$value.element"

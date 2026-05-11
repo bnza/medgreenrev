@@ -49,11 +49,6 @@ export const taxonomyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
 
 export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObject =
   {
-    element: {
-      filters: {
-        VocabularyBotanyElement,
-      },
-    },
     part: {
       filters: {
         VocabularyBotanyElementPart,
@@ -85,8 +80,21 @@ export const propertyStaticFiltersDefinition: ResourceStaticFiltersDefinitionObj
     },
   }
 
-export const staticFiltersDefinition = {
-  ...propertyStaticFiltersDefinition,
+export const propertyStaticFiltersDefinitionCharcoal: ResourceStaticFiltersDefinitionObject =
+  {
+    ...propertyStaticFiltersDefinition,
+  }
+export const propertyStaticFiltersDefinitionSeed: ResourceStaticFiltersDefinitionObject =
+  {
+    ...propertyStaticFiltersDefinition,
+    element: {
+      filters: {
+        VocabularyBotanyElement,
+      },
+    },
+  }
+export const staticFiltersDefinitionCharcoal = {
+  ...propertyStaticFiltersDefinitionCharcoal,
   ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
     'stratigraphicUnit',
     'stratigraphic unit',
@@ -102,8 +110,36 @@ export const staticFiltersDefinition = {
   ...taxonomyStaticFiltersDefinition,
 }
 
+export const staticFiltersDefinitionSeed = {
+  ...propertyStaticFiltersDefinitionSeed,
+  ...generateResourceDefinition(stratigraphicUnitPropertyStaticDefinition, [
+    'stratigraphicUnit',
+    'stratigraphic unit',
+  ]),
+  ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+    'analyses.analysis',
+    'analysis',
+  ]),
+  ...generateResourceDefinition(associationPropertyStaticFiltersDefinition, [
+    'analyses',
+    'analysis association',
+  ]),
+  ...taxonomyStaticFiltersDefinition,
+}
 export const staticFiltersDefinitionParentStratigraphicUnit = {
-  ...propertyStaticFiltersDefinition,
+  ...propertyStaticFiltersDefinitionCharcoal,
+  ...generateResourceDefinition(analysisPropertyStaticDefinition, [
+    'analyses.analysis',
+    'analyses.analysis',
+  ]),
+  ...generateResourceDefinition(associationPropertyStaticFiltersDefinition, [
+    'analyses',
+    'analysis association',
+  ]),
+  ...taxonomyStaticFiltersDefinition,
+}
+export const staticFiltersDefinitionParentStratigraphicUnitSeed = {
+  ...propertyStaticFiltersDefinitionSeed,
   ...generateResourceDefinition(analysisPropertyStaticDefinition, [
     'analyses.analysis',
     'analyses.analysis',

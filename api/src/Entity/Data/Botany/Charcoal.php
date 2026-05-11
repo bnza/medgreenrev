@@ -24,7 +24,6 @@ use App\Entity\Data\Join\Analysis\AnalysisBotanyCharcoal;
 use App\Entity\Data\StratigraphicUnit;
 use App\Entity\Data\View\BotanyCharcoalView;
 use App\Entity\Data\View\Code\BotanyCharcoalCodeView;
-use App\Entity\Vocabulary\Botany\Element as VocabularyElement;
 use App\Entity\Vocabulary\Botany\ElementPart;
 use App\Entity\Vocabulary\Botany\Taxonomy;
 use App\Metadata\Attribute\SubResourceFilters\ApiAnalysisSubresourceFilters;
@@ -132,7 +131,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     'taxonomy.flat.genus',
     'taxonomy.flat.family',
     'taxonomy.flat.class',
-    'element.value',
     'endsPreserved',
 ])]
 #[ApiFilter(SearchSiteAndIdFilter::class)]
@@ -141,7 +139,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'analyses.summary' => 'ipartial',
         'taxonomy' => 'exact',
-        'element' => 'exact',
         'notes' => 'ipartial',
         'part' => 'exact',
         'taxonomy.flat.classId' => 'exact',
@@ -155,7 +152,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'analyses',
         'analyses.summary',
         'notes',
-        'element',
         'part',
         'taxonomy.flat.class',
         'taxonomy.flat.genus',
@@ -234,15 +230,6 @@ class Charcoal
     ])]
     #[ApiProperty(required: true)]
     private Taxonomy $taxonomy;
-
-    #[ORM\ManyToOne(targetEntity: VocabularyElement::class)]
-    #[ORM\JoinColumn(name: 'voc_element_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
-    #[Groups([
-        'botany_charcoal:acl:read',
-        'botany_charcoal:create',
-        'botany_charcoal:export',
-    ])]
-    private ?VocabularyElement $element;
 
     #[ORM\ManyToOne(targetEntity: ElementPart::class)]
     #[ORM\JoinColumn(name: 'voc_element_part_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
@@ -324,18 +311,6 @@ class Charcoal
     public function setTaxonomy(Taxonomy $taxonomy): Charcoal
     {
         $this->taxonomy = $taxonomy;
-
-        return $this;
-    }
-
-    public function getElement(): ?VocabularyElement
-    {
-        return $this->element;
-    }
-
-    public function setElement(?VocabularyElement $element): Charcoal
-    {
-        $this->element = $element;
 
         return $this;
     }

@@ -154,10 +154,9 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_C57CC6465E237E06 ON archaeological_sites (name)');
         $this->addSql('CREATE INDEX IDX_C57CC646B03A8386 ON archaeological_sites (created_by_id)');
         $this->addSql('CREATE INDEX IDX_C57CC64698260155 ON archaeological_sites (region_id)');
-        $this->addSql('CREATE TABLE botany_charcoals (id BIGINT NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, type BOOLEAN DEFAULT false NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_element_id SMALLINT DEFAULT NULL, voc_element_part_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE botany_charcoals (id BIGINT NOT NULL, cf BOOLEAN DEFAULT false NOT NULL, sp BOOLEAN DEFAULT false NOT NULL, type BOOLEAN DEFAULT false NOT NULL, notes VARCHAR(255) DEFAULT NULL, stratigraphic_unit_id BIGINT NOT NULL, voc_taxonomy_id SMALLINT DEFAULT NULL, voc_element_part_id SMALLINT DEFAULT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE INDEX IDX_9114F6E9A502ADE ON botany_charcoals (stratigraphic_unit_id)');
         $this->addSql('CREATE INDEX IDX_9114F6E92A3A1291 ON botany_charcoals (voc_taxonomy_id)');
-        $this->addSql('CREATE INDEX IDX_9114F6E9A28A5B17 ON botany_charcoals (voc_element_id)');
         $this->addSql('CREATE INDEX IDX_9114F6E924B9A4F9 ON botany_charcoals (voc_element_part_id)');
         $this->addSql('CREATE TABLE vocabulary.botany_element_parts (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4371DD621D775834 ON vocabulary.botany_element_parts (value)');
@@ -415,7 +414,6 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE archaeological_sites ADD CONSTRAINT FK_C57CC64698260155 FOREIGN KEY (region_id) REFERENCES vocabulary.regions (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_charcoals ADD CONSTRAINT FK_9114F6E9A502ADE FOREIGN KEY (stratigraphic_unit_id) REFERENCES sus (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_charcoals ADD CONSTRAINT FK_9114F6E92A3A1291 FOREIGN KEY (voc_taxonomy_id) REFERENCES vocabulary.botany_taxonomy (id) ON DELETE RESTRICT NOT DEFERRABLE');
-        $this->addSql('ALTER TABLE botany_charcoals ADD CONSTRAINT FK_9114F6E9A28A5B17 FOREIGN KEY (voc_element_id) REFERENCES vocabulary.botany_elements (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_charcoals ADD CONSTRAINT FK_9114F6E924B9A4F9 FOREIGN KEY (voc_element_part_id) REFERENCES vocabulary.botany_element_parts (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_seeds ADD CONSTRAINT FK_BD686190A502ADE FOREIGN KEY (stratigraphic_unit_id) REFERENCES sus (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE botany_seeds ADD CONSTRAINT FK_BD6861902A3A1291 FOREIGN KEY (voc_taxonomy_id) REFERENCES vocabulary.botany_taxonomy (id) ON DELETE RESTRICT NOT DEFERRABLE');
@@ -596,7 +594,6 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE archaeological_sites DROP CONSTRAINT FK_C57CC64698260155');
         $this->addSql('ALTER TABLE botany_charcoals DROP CONSTRAINT FK_9114F6E9A502ADE');
         $this->addSql('ALTER TABLE botany_charcoals DROP CONSTRAINT FK_9114F6E92A3A1291');
-        $this->addSql('ALTER TABLE botany_charcoals DROP CONSTRAINT FK_9114F6E9A28A5B17');
         $this->addSql('ALTER TABLE botany_charcoals DROP CONSTRAINT FK_9114F6E924B9A4F9');
         $this->addSql('ALTER TABLE botany_seeds DROP CONSTRAINT FK_BD686190A502ADE');
         $this->addSql('ALTER TABLE botany_seeds DROP CONSTRAINT FK_BD6861902A3A1291');

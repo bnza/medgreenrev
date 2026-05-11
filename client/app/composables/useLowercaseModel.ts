@@ -21,10 +21,10 @@ interface WritableLike<T> {
  */
 export function useLowercaseModel(
   model: WritableLike<string | undefined | null>,
-): WritableComputedRef<string> {
+) {
   return computed<string|null>({
     get: () => model.value ? model.value.toLocaleLowerCase() : null,
-    set: (value: string) => {
+    set: (value: string|undefined|null) => {
       model.value = value ? value.toLocaleLowerCase() : null
     },
   })

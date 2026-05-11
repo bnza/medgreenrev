@@ -73,12 +73,6 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '80',
     },
     {
-      key: 'element.value',
-      value: 'element',
-      title: 'element',
-      minWidth: '150',
-    },
-    {
       key: 'part.value',
       value: 'part',
       title: 'part',

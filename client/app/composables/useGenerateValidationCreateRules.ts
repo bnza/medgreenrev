@@ -256,7 +256,6 @@ const CREATION_RULES: {
       () =>
         ({
           stratigraphicUnit: { required },
-          element: { required },
           taxonomy: { required },
           part: { required },
         }) satisfies RegleComputedRules<

@@ -29,8 +29,10 @@ export {
 } from './analysisSubject'
 export { staticFiltersDefinition as archaeologicalSite } from './archaeologicalSite'
 export {
-  staticFiltersDefinition as botany,
+  staticFiltersDefinitionCharcoal as botanyCharcoal,
   staticFiltersDefinitionParentStratigraphicUnit as botanyParentStratigraphicUnit,
+  staticFiltersDefinitionSeed as botanySeed,
+  staticFiltersDefinitionParentStratigraphicUnitSeed as botanySeedParentStratigraphicUnit,
 } from './botany'
 export { staticFiltersDefinition as context } from './context'
 export {

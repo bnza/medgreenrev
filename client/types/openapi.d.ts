@@ -12555,11 +12555,6 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      element?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       part?: string | null
       /** @default false */
       cf: boolean
@@ -12580,11 +12575,6 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element?: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -12650,11 +12640,6 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      element?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       part?: string | null
       /** @default false */
       cf: boolean
@@ -12682,11 +12667,6 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element?: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -12730,11 +12710,6 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      element?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       part?: string | null
       /** @default false */
       cf: boolean
@@ -12763,11 +12738,6 @@ export interface components {
        * @example https://example.com/
        */
       taxonomy: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      element?: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -22335,8 +22305,6 @@ export interface operations {
         'subject.stratigraphicUnit.interpretation'?: string
         'subject.taxonomy'?: string
         'subject.taxonomy[]'?: string[]
-        'subject.element'?: string
-        'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
         'subject.taxonomy.flat.classId'?: number
@@ -22672,8 +22640,6 @@ export interface operations {
         'subject.stratigraphicUnit.interpretation'?: string
         'subject.taxonomy'?: string
         'subject.taxonomy[]'?: string[]
-        'subject.element'?: string
-        'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
         'subject.taxonomy.flat.classId'?: number
@@ -22816,8 +22782,6 @@ export interface operations {
         'subject.stratigraphicUnit.interpretation'?: string
         'subject.taxonomy'?: string
         'subject.taxonomy[]'?: string[]
-        'subject.element'?: string
-        'subject.element[]'?: string[]
         'subject.part'?: string
         'subject.part[]'?: string[]
         'subject.taxonomy.flat.classId'?: number
@@ -32954,7 +32918,6 @@ export interface operations {
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
         'order[taxonomy.flat.class]'?: 'asc' | 'desc'
-        'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -32963,8 +32926,6 @@ export interface operations {
         'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
-        element?: string
-        'element[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -32977,7 +32938,6 @@ export interface operations {
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
-        'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[taxonomy.flat.class]'?: boolean
         'exists[taxonomy.flat.genus]'?: boolean
@@ -33109,7 +33069,6 @@ export interface operations {
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
         'order[taxonomy.flat.class]'?: 'asc' | 'desc'
-        'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -33118,8 +33077,6 @@ export interface operations {
         'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
-        element?: string
-        'element[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -33132,7 +33089,6 @@ export interface operations {
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
-        'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[taxonomy.flat.class]'?: boolean
         'exists[taxonomy.flat.genus]'?: boolean
@@ -33457,7 +33413,6 @@ export interface operations {
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
         'order[taxonomy.flat.class]'?: 'asc' | 'desc'
-        'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -33466,8 +33421,6 @@ export interface operations {
         'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
-        element?: string
-        'element[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -33480,7 +33433,6 @@ export interface operations {
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
-        'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[taxonomy.flat.class]'?: boolean
         'exists[taxonomy.flat.genus]'?: boolean
@@ -33610,7 +33562,6 @@ export interface operations {
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
         'order[taxonomy.flat.class]'?: 'asc' | 'desc'
-        'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -33619,8 +33570,6 @@ export interface operations {
         'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
-        element?: string
-        'element[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -33633,7 +33582,6 @@ export interface operations {
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
-        'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[taxonomy.flat.class]'?: boolean
         'exists[taxonomy.flat.genus]'?: boolean
@@ -33758,7 +33706,6 @@ export interface operations {
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
         'order[taxonomy.flat.class]'?: 'asc' | 'desc'
-        'order[element.value]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
          * @example MO 123
@@ -33767,8 +33714,6 @@ export interface operations {
         'analyses.summary'?: string
         taxonomy?: string
         'taxonomy[]'?: string[]
-        element?: string
-        'element[]'?: string[]
         notes?: string
         part?: string
         'part[]'?: string[]
@@ -33781,7 +33726,6 @@ export interface operations {
         'exists[analyses]'?: boolean
         'exists[analyses.summary]'?: boolean
         'exists[notes]'?: boolean
-        'exists[element]'?: boolean
         'exists[part]'?: boolean
         'exists[taxonomy.flat.class]'?: boolean
         'exists[taxonomy.flat.genus]'?: boolean

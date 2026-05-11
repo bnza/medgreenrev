@@ -24,9 +24,6 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const vocabularyBotanyElements = useVocabularyStore(
-  '/api/vocabulary/botany/elements',
-)
 const vocabularyBotanyElementParts = useVocabularyStore(
   '/api/vocabulary/botany/element_parts',
 )
@@ -125,13 +122,9 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.type`]="{ item }">
       <v-checkbox-btn class="centered-item" :model-value="item.type" readonly />
     </template>
-    <template #[`item.element.value`]="{ item }">
-      {{ vocabularyBotanyElements.getValue(item.element) }}
-    </template>
     <template #[`item.part.value`]="{ item }">
       {{ vocabularyBotanyElementParts.getValue(item.part) }}
     </template>
-
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
       <data-dialog-search :path="searchPath" :title="labels[1]" />

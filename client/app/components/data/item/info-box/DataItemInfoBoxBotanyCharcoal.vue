@@ -12,9 +12,6 @@ withDefaults(
 const vocabularyBotanyTaxonomy = useVocabularyStore(
   '/api/vocabulary/botany/taxonomies',
 )
-const vocabularyBotanyElement = useVocabularyStore(
-  '/api/vocabulary/botany/elements',
-)
 const vocabularyBotanyElementPart = useVocabularyStore(
   '/api/vocabulary/botany/element_parts',
 )
@@ -44,10 +41,6 @@ const vocabularyBotanyElementPart = useVocabularyStore(
         <data-item-info-box-row
           label="taxonomy"
           :text="vocabularyBotanyTaxonomy.getValue(item.taxonomy).value"
-        />
-        <data-item-info-box-row
-          label="element"
-          :text="vocabularyBotanyElement.getValue(item.element).value"
         />
         <data-item-info-box-row
           label="part"

@@ -14,9 +14,6 @@ withDefaults(
 const vocabularyBotanyTaxonomy = useVocabularyStore(
   '/api/vocabulary/botany/taxonomies',
 )
-const vocabularyBotanyElement = useVocabularyStore(
-  '/api/vocabulary/botany/elements',
-)
 const vocabularyBotanyElementParts = useVocabularyStore(
   '/api/vocabulary/botany/element_parts',
 )
@@ -93,12 +90,6 @@ const vocabularyBotanyElementParts = useVocabularyStore(
     <!--      </v-col>-->
     <!--    </v-row>-->
     <v-row>
-      <v-col cols="4" xs="12" class="px-2">
-        <v-text-field
-          :model-value="vocabularyBotanyElement.getValue(item.element)"
-          label="element"
-        />
-      </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
           :model-value="vocabularyBotanyElementParts.getValue(item.part)"

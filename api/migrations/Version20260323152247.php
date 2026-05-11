@@ -167,7 +167,6 @@ final class Version20260323152247 extends AbstractMigration
                     c.id,
                     c.notes,
                     c.voc_taxonomy_id AS taxonomy_id,
-                    c.voc_element_id AS element_id,
                     c.voc_element_part_id AS part_id,
                     su.site_id,
                     s.code AS site_code,

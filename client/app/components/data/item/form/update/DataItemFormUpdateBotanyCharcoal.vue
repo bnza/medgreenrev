@@ -12,7 +12,6 @@ const model = ref(structuredClone(props.initialValue))
 
 const { r$ } = useScopedRegle(model, {
   stratigraphicUnit: { required },
-  element: { required },
   taxonomy: { required },
   // part: { required },
 })
@@ -39,17 +38,6 @@ const { r$ } = useScopedRegle(model, {
           v-model="r$.$value.taxonomy"
           label="taxonomy"
           :error-messages="r$.$errors?.taxonomy"
-          clearable
-        />
-      </v-col>
-      <v-col cols="12" md="3">
-        <data-autocomplete
-          v-model="r$.$value.element"
-          path="/api/vocabulary/botany/elements"
-          item-title="value"
-          label="element"
-          :query-params="{ teeth: true }"
-          :error-messages="r$.$errors?.element"
           clearable
         />
       </v-col>

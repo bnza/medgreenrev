@@ -112,6 +112,10 @@ const EMPTY_POST_MODEL_MAP: {
     writtenSource:
       parent?.key === 'historyWrittenSource' ? parent.item['@id'] : undefined,
   }),
+  '/api/data/history/animals': (parent) => ({
+    location:
+      parent?.key === 'vocHistoryLocation' ? parent.item['@id'] : undefined,
+  }),
   '/api/data/history/plants': (parent) => ({
     location:
       parent?.key === 'vocHistoryLocation' ? parent.item['@id'] : undefined,
