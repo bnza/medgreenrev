@@ -15,8 +15,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 )]
 #[ApiAbsDatingAnalysisJoinResource(
     subjectClass: self::class,
-    templateParentResourceName: 'samples',
-    itemNormalizationGroups: ['abs_dating_analysis_join:acl:read', 'analysis_samples:acl:read']
+    templateParentResourceName: 'samples'
 )]
 class AbsDatingAnalysisSample extends AbsDatingAnalysisJoin
 {

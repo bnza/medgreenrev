@@ -15,8 +15,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 )]
 #[ApiAbsDatingAnalysisJoinResource(
     subjectClass: self::class,
-    templateParentResourceName: 'sediment_core_depths',
-    itemNormalizationGroups: ['abs_dating_analysis_join:acl:read', 'analysis_sediment_core_depth:acl:read']
+    templateParentResourceName: 'sediment_core_depths'
 )]
 class AbsDatingAnalysisSedimentCoreDepth extends AbsDatingAnalysisJoin
 {

@@ -17,13 +17,31 @@ class ApiAbsDatingAnalysisJoinResource extends ApiResource
     public function __construct(
         string $subjectClass,
         string $templateParentResourceName,
-        array $itemNormalizationGroups,
         string $templateParentCategoryName = '', // category name in plural form e.g. "contexts" or "sites"
     ) {
         // $templateParentCategoryName is used to create the URI template which pertains to a category (such as "context/zoo" or "site/anthropology")
         // if $templateParentCategoryName is not provided, $templateParentResourceName will be used directly, otherwise $templateParentCategoryName
         // will be prepended
         $templateParentResourcePath = implode('/', array_filter([$templateParentCategoryName, $templateParentResourceName]));
+
+        // Variant B: derive a *slim* per-subject serialization group name from the URI slug, instead of
+        // accepting the heavy `analysis_<subject>:acl:read` group from callers.
+        //
+        // Why: API Platform's EagerLoadingExtension adds a LEFT JOIN for every relation property in the
+        // active normalization groups (recursively). The heavy `analysis_<subject>:acl:read` groups
+        // transitively reach `StratigraphicUnit:acl:read` and friends for some subjects (notably
+        // Individual and SedimentCoreDepth), blowing past `api_platform.eager_loading.max_joins=30`
+        // and surfacing as a 500 on `/api/data/analyses/absolute_dating/<subject>`.
+        //
+        // By forcing every abs-dating endpoint through a dedicated group named
+        // `abs_dating_analysis_<slug>:acl:read`, the eager-loading walk only follows properties that
+        // are explicitly tagged with that slim group on the subject entity — which by convention
+        // remain scalar (id + a label field). The cap stops being a concern, the SQL stays small,
+        // and the generated OpenAPI schema accurately reflects what the abs-dating tab consumes.
+        $slimSubjectGroup = sprintf(
+            'abs_dating_analysis_%s:acl:read',
+            str_replace('/', '_', $templateParentResourceName),
+        );
 
         // when $templateParentCategoryName is not provided, the URI template will be "/$templateParentResourceName/{parentId}/absolute_dating"
         // otherwise, the URI template will be "/$templateParentCategoryName/{parentId}/analyses/$templateParentResourceName"
@@ -89,7 +107,12 @@ class ApiAbsDatingAnalysisJoinResource extends ApiResource
             ],
             routePrefix: 'data',
             normalizationContext: [
-                'groups' => array_merge(['abs_dating_join:acl:read', 'analysis:acl:read'], $itemNormalizationGroups),
+                'groups' => [
+                    'abs_dating_join:acl:read',
+                    'analysis:acl:read',
+                    'abs_dating_analysis_join:acl:read',
+                    $slimSubjectGroup,
+                ],
             ],
             //            order: ['analysis.id' => 'DESC'],
         );

@@ -9327,7 +9327,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': {
+    'AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9335,7 +9335,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      analysis?: components['schemas']['AnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+      analysis?: components['schemas']['AnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9412,7 +9412,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': {
+    'AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9420,7 +9420,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      analysis?: components['schemas']['AnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+      analysis?: components['schemas']['AnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9497,8 +9497,15 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read': {
-      analysis?: components['schemas']['AnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
+    'AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      analysis?: components['schemas']['AnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9506,14 +9513,8 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
-      readonly id?: number
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
+      readonly id: number
+    })
     'AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9581,7 +9582,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': {
+    'AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9589,7 +9590,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      analysis?: components['schemas']['AnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+      analysis?: components['schemas']['AnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9666,7 +9667,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read': {
+    'AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9674,7 +9675,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      analysis?: components['schemas']['AnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+      analysis?: components['schemas']['AnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9751,8 +9752,15 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read': {
-      analysis?: components['schemas']['AnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
+    'AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      analysis?: components['schemas']['AnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9760,14 +9768,8 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
-      readonly id?: number
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
+      readonly id: number
+    })
     'AbsDatingAnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -9835,7 +9837,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': {
+    'AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9843,7 +9845,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      analysis?: components['schemas']['AnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+      analysis?: components['schemas']['AnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9920,7 +9922,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': {
+    'AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9928,7 +9930,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      analysis?: components['schemas']['AnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+      analysis?: components['schemas']['AnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -10745,7 +10747,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': {
+    'AnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -10808,7 +10810,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': {
+    'AnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11083,7 +11085,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read': {
+    'AnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11092,9 +11094,6 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
-        | null
     })
     'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** @description Access control metadata */
@@ -11149,7 +11148,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': {
+    'AnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11212,7 +11211,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read': {
+    'AnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11468,7 +11467,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read': {
+    'AnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11477,9 +11476,6 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
-      absDatingAnalysis?:
-        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
-        | null
     })
     'AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** @description Access control metadata */
@@ -11713,7 +11709,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': {
+    'AnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11776,7 +11772,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': {
+    'AnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -20020,7 +20016,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read'][]
           }
         }
       }
@@ -20046,7 +20042,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20091,7 +20087,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read']
         }
       }
       /** @description Not found */
@@ -20173,7 +20169,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20246,7 +20242,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_charcoals.acl.read'][]
           }
         }
       }
@@ -20273,7 +20269,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read'][]
           }
         }
       }
@@ -20299,7 +20295,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20344,7 +20340,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read']
         }
       }
       /** @description Not found */
@@ -20426,7 +20422,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20499,7 +20495,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_botany_seeds.acl.read'][]
           }
         }
       }
@@ -20526,7 +20522,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read'][]
           }
         }
       }
@@ -20552,7 +20548,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20597,7 +20593,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read']
         }
       }
       /** @description Not found */
@@ -20679,7 +20675,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20752,7 +20748,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_individuals.acl.read'][]
           }
         }
       }
@@ -20779,7 +20775,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read'][]
           }
         }
       }
@@ -20805,7 +20801,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read']
         }
       }
       /** @description Invalid input */
@@ -20850,7 +20846,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read']
         }
       }
       /** @description Not found */
@@ -20932,7 +20928,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21005,7 +21001,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_potteries.acl.read'][]
           }
         }
       }
@@ -21032,7 +21028,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read'][]
           }
         }
       }
@@ -21058,7 +21054,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21103,7 +21099,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read']
         }
       }
       /** @description Not found */
@@ -21185,7 +21181,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21258,7 +21254,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_samples.acl.read'][]
           }
         }
       }
@@ -21285,7 +21281,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read'][]
           }
         }
       }
@@ -21311,7 +21307,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21356,7 +21352,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read']
         }
       }
       /** @description Not found */
@@ -21438,7 +21434,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21511,7 +21507,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_sediment_core_depths.acl.read'][]
           }
         }
       }
@@ -21538,7 +21534,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read'][]
           }
         }
       }
@@ -21564,7 +21560,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21609,7 +21605,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read']
         }
       }
       /** @description Not found */
@@ -21691,7 +21687,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21764,7 +21760,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_bones.acl.read'][]
           }
         }
       }
@@ -21791,7 +21787,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read'][]
           }
         }
       }
@@ -21817,7 +21813,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read']
         }
       }
       /** @description Invalid input */
@@ -21862,7 +21858,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read']
         }
       }
       /** @description Not found */
@@ -21944,7 +21940,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
+          'application/ld+json': components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read']
         }
       }
       /** @description Invalid input */
@@ -22017,7 +22013,7 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
-            member: components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read'][]
+            member: components['schemas']['AbsDatingAnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_abs_dating_analysis_zoo_teeth.acl.read'][]
           }
         }
       }
