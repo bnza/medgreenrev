@@ -13,6 +13,12 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
+      key: 'language.value',
+      value: 'language.value',
+      title: 'language',
+      minWidth: '200',
+    },
+    {
       key: 'plant',
       value: 'plant',
       title: 'plant',
@@ -45,22 +51,16 @@ const config: Readonly<ResourceConfig> = {
       width: '80',
     },
     {
-      key: 'language.value',
-      value: 'language.value',
-      title: 'language',
-      minWidth: '200',
-    },
-    {
       key: 'location.value',
       value: 'location.value',
       title: 'location',
-      minWidth: '100',
+      minWidth: '200',
     },
     {
       key: 'location.region.value',
       value: 'location.region.value',
       title: 'region',
-      minWidth: '100',
+      minWidth: '200',
     },
     {
       key: 'chronologyLower',

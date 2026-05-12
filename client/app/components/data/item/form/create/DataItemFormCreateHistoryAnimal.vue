@@ -83,7 +83,9 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
         :error-messages="r$.$errors?.animal"
       />
     </v-col>
-    <v-col cols="4" xs="12" class="px-2">
+  </v-row>
+  <v-row>
+    <v-col cols="8" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.taxonomy"
         path="/api/vocabulary/zoo/taxonomies"

@@ -110,6 +110,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower',
         'chronologyUpper',
         'reference',
+        'taxonomy.value',
         'taxonomy.englishName',
         'taxonomy.spanishName',
         'taxonomy.class',

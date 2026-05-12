@@ -3,7 +3,7 @@ import type { JsonLdItem } from '~~/types'
 
 const model = defineModel<string | null>()
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     queryParams?: Record<string, any>
     label?: string
@@ -30,6 +30,8 @@ const emit = defineEmits<{
   >
     <template #item="{ item, props: slotProps }">
       <v-list-item v-if="item.level" v-bind="slotProps" :title="undefined">
+        <span v-if="item.englishName" class="text-grey-darken-1">{{item.englishName}}</span>
+        <br v-if="item.englishName" />
         <span class="text-grey-darken-1">{{ item.level }}</span>
         - {{ item.flat.value }}
       </v-list-item>

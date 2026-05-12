@@ -58,11 +58,11 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         prop="englishName"
       />
     </template>
-    <template #[`item.taxonomy.spanishName`]="{ item }">
+    <template #[`item.taxonomy.value`]="{ item }">
       <vocabulary-value-cell
         path="/api/vocabulary/zoo/taxonomies"
         :iri="item.taxonomy"
-        prop="spanishName"
+        prop="value"
       />
     </template>
     <template #dialogs="{ refetch }">

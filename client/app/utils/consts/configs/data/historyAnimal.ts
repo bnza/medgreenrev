@@ -31,22 +31,22 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
-      key: 'taxonomy.spanishName',
-      value: 'taxonomy.spanishName',
-      title: 'taxonomy (spanish name)',
+      key: 'taxonomy.value',
+      value: 'taxonomy.value',
+      title: 'taxonomy',
       minWidth: '200',
     },
     {
       key: 'location.value',
       value: 'location.value',
       title: 'location',
-      minWidth: '100',
+      minWidth: '200',
     },
     {
       key: 'location.region.value',
       value: 'location.region.value',
       title: 'region',
-      minWidth: '100',
+      minWidth: '200',
     },
     {
       key: 'chronologyLower',
