@@ -15,7 +15,7 @@ const sample: ResourceConfig = {
       maxWidth: '200',
     },
     {
-      key: 'code',
+      key: 'codeView.code',
       value: 'code',
       title: 'code',
     },

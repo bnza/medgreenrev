@@ -34,7 +34,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     itemNormalizationGroups: ['analysis_individual:acl:read', 'individual:acl:read'])]
 #[ApiFilter(
     OrderFilter::class,
-    properties: ['subject.inventory']
+    properties: ['subject.identifier']
 )]
 #[ApiFilter(
     SearchFilter::class,

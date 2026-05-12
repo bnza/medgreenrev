@@ -118,21 +118,24 @@ use Symfony\Component\Validator\Constraints as Assert;
     denormalizationContext: ['groups' => ['botany_charcoal:create']],
     order: ['id' => 'DESC'],
 )]
-#[ApiFilter(OrderFilter::class, properties: [
-    'codeView.code',
-    'id',
-    'stratigraphicUnit.site.code',
-    'stratigraphicUnit.codeView.code',
-    'cf',
-    'sp',
-    'type',
-    'flat.value',
-    'taxonomy.flat.species',
-    'taxonomy.flat.genus',
-    'taxonomy.flat.family',
-    'taxonomy.flat.class',
-    'endsPreserved',
-])]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'codeView.code',
+        'id',
+        'stratigraphicUnit.site.code',
+        'stratigraphicUnit.codeView.code',
+        'cf',
+        'sp',
+        'type',
+        'flat.value',
+        'part.value',
+        'taxonomy.flat.species',
+        'taxonomy.flat.genus',
+        'taxonomy.flat.family',
+        'taxonomy.flat.class',
+        'endsPreserved',
+    ])]
 #[ApiFilter(SearchSiteAndIdFilter::class)]
 #[ApiFilter(
     SearchFilter::class,

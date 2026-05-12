@@ -19,7 +19,7 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'subject.code',
+      key: 'subject.codeView.code',
       value: 'subject.code',
       title: 'sample',
       minWidth: '100',
@@ -32,7 +32,7 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
-      key: 'analysis.type',
+      key: 'analysis.type.value',
       value: 'analysis.type.value',
       title: 'type',
       maxWidth: '200',

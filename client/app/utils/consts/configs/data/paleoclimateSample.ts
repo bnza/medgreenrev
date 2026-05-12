@@ -19,7 +19,7 @@ const config: Readonly<ResourceConfig> = {
       width: '200',
     },
     {
-      key: 'code',
+      key: 'codeView.code',
       value: 'code',
       title: 'code',
       width: '200',

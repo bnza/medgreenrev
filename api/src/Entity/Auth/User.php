@@ -96,7 +96,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     order: ['id' => 'DESC'],
     security: 'is_granted("ROLE_ADMIN")',
 )]
-#[ApiFilter(OrderFilter::class, properties: ['id', 'email'])]
+#[ApiFilter(OrderFilter::class, properties: ['id', 'email', 'enabled'])]
 #[AppAssert\NotReferenced(User::class, message: 'Cannot delete the user because it is referenced by: {{ classes }}.', groups: ['validation:user:delete'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {

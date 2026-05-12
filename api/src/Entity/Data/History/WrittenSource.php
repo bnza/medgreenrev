@@ -65,11 +65,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'id',
         'author.value',
         'subTitle',
         'title',
         'writtenSourceType.value',
-        'publicationsDetails',
+        'publicationDetails',
     ])]
 #[ApiFilter(
     DynamicCollectionOrderFilter::class,

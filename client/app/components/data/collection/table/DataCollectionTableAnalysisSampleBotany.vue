@@ -48,7 +48,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :text="item.subject.site.code"
       />
     </template>
-    <template #[`item.subject.code`]="{ item }">
+    <template #[`item.subject.codeView.code`]="{ item }">
       <data-item-info-box-span-sample
         :iri="item.subject['@id']"
         :text="item.subject.code"

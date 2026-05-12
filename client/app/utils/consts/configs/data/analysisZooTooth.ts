@@ -27,7 +27,7 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
-      key: 'analysis.type',
+      key: 'analysis.type.value',
       value: 'analysis.type.value',
       title: 'type',
       maxWidth: '200',

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join\Analysis;
 
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -29,6 +30,12 @@ use Symfony\Component\Validator\Constraints as Assert;
     templateParentResourceName: 'anthropology',
     itemNormalizationGroups: ['archaeological_site:acl:read', 'site_anthropology:acl:read'],
     templateParentCategoryName: 'archaeological_sites'
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'subject.code',
+    ]
 )]
 #[ApiFilter(
     SearchFilter::class,

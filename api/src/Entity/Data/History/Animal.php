@@ -102,6 +102,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'id',
         'animal',
         'createdBy.email',
         'language.value',

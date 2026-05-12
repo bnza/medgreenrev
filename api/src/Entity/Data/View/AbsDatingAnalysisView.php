@@ -68,6 +68,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
         'error',
         'calibrationCurve',
         'stratigraphicUnit.site.code',
+        'stratigraphicUnit.codeView.code',
     ]
 )]
 #[ApiFilter(

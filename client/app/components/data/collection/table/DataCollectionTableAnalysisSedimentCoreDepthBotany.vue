@@ -54,7 +54,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :text="item.subject.stratigraphicUnit.site.code"
       />
     </template>
-    <template #[`item.subject.code`]="{ item }">
+    <template #[`item.subject.codeView.code`]="{ item }">
       <data-item-info-box-span-sediment-core-depth
         :iri="item.subject['@id']"
         :text="item.subject.code"

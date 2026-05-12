@@ -40,6 +40,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'id',
+        'resourceName',
         'analysis.identifier',
         'analysis.laboratory',
         'analysis.responsible',

@@ -13,7 +13,7 @@ const config: Readonly<ResourceConfig> = {
       maxWidth: '200',
     },
     {
-      key: 'subject.code',
+      key: 'subject.codeView.code',
       value: 'subject.code',
       title: 'sample',
       minWidth: '100',

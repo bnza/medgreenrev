@@ -102,6 +102,7 @@ use Vich\UploaderBundle\Mapping\Attribute as Vich;
     'id',
     'mimeType',
     'originalFilename',
+    'public',
     'sha256',
     'type',
     'type.group',

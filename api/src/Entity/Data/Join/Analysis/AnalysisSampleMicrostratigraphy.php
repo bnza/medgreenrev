@@ -3,6 +3,7 @@
 namespace App\Entity\Data\Join\Analysis;
 
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -47,6 +48,12 @@ use Symfony\Component\Validator\Constraints as Assert;
             normalizationContext: ['groups' => ['analysis:acl:read', 'analysis_join:acl:read', 'sample:acl:read', 'sample_microstratigraphy_analysis:acl:read']],
             provider: AnalysisSampleMicrostratigraphyFromStratigraphicUnitProvider::class,
         ),
+    ]
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'subject.codeView.code',
     ]
 )]
 #[ApiFilter(

@@ -18,7 +18,7 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '100',
     },
     {
-      key: 'subject.code',
+      key: 'subject.codeView.code',
       value: 'subject.code',
       title: 'sediment core depth',
       minWidth: '100',

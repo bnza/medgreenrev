@@ -3,6 +3,7 @@
 namespace App\Entity\Data\Join\Analysis;
 
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -32,6 +33,13 @@ use Symfony\Component\Validator\Constraints as Assert;
     templateParentResourceName: 'botany',
     itemNormalizationGroups: ['sample_botany_analysis:acl:read', 'sample:acl:read'],
     templateParentCategoryName: 'samples'
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'subject.codeView.code',
+        'subject.site.code',
+    ]
 )]
 #[ApiFilter(
     SearchFilter::class,

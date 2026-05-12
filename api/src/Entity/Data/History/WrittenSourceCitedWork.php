@@ -68,6 +68,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'id',
         'writtenSource.author.value',
         'writtenSource.title',
         'citedWork.value',

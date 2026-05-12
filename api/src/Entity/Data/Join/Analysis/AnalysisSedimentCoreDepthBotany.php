@@ -4,6 +4,7 @@ namespace App\Entity\Data\Join\Analysis;
 
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -31,6 +32,13 @@ use Symfony\Component\Validator\Constraints as Assert;
     templateParentResourceName: 'botany',
     itemNormalizationGroups: ['sediment_core_depth_botany_analysis:acl:read', 'sediment_core_depth:acl:read'],
     templateParentCategoryName: 'sediment_core_depths'
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'subject.codeView.code',
+        'subject.stratigraphicUnit.site.code',
+    ]
 )]
 #[ApiFilter(
     SearchFilter::class,

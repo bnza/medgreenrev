@@ -121,8 +121,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     denormalizationContext: ['groups' => ['zoo_bone:create']],
 )]
 #[ApiFilter(OrderFilter::class, properties: [
-    'codeView.code',
     'id',
+    'codeView.code',
+    'part.value',
     'stratigraphicUnit.site.code',
     'stratigraphicUnit.codeView.code',
     'taxonomy.value',
@@ -131,7 +132,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     'taxonomy.family',
     'taxonomy.class',
     'element.value',
-    'endsPreserved',
+    'endsPreserved.code',
     'side.code',
 ])]
 #[ApiFilter(SearchSiteAndIdFilter::class)]

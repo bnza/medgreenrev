@@ -104,6 +104,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
+        'id',
+        'cf',
+        'sp',
         'chronologyLower',
         'chronologyUpper',
         'createdBy.email',

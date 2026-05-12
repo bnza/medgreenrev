@@ -28,7 +28,12 @@ use Symfony\Component\Validator\Constraints as Assert;
     groups: ['validation:analysis_join:create'])]
 #[ApiFilter(
     OrderFilter::class,
-    properties: ['id', 'analysis.type.group', 'analysis.type.value', 'analysis.identifier']
+    properties: [
+        'id',
+        'analysis.type.group',
+        'analysis.type.value',
+        'analysis.identifier',
+    ]
 )]
 #[ApiFilter(
     SearchFilter::class,

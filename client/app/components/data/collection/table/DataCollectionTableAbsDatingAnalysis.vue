@@ -68,7 +68,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :text="item.stratigraphicUnit.site.code"
       />
     </template>
-    <template #[`item.stratigraphicUnit.code`]="{ item }">
+    <template #[`item.stratigraphicUnit.codeView.code`]="{ item }">
       <data-item-info-box-span-stratigraphic-unit
         :iri="item.stratigraphicUnit['@id']"
         :text="item.stratigraphicUnit.code"

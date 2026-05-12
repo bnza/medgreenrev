@@ -93,7 +93,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     OrderFilter::class,
     properties: [
-        'codeView.code', 'id', 'site.code', 'year', 'number', 'type.code', 'type.value']
+        'id',
+        'codeView.code',
+        'site.code',
+        'year',
+        'number',
+        'type.code',
+        'type.value',
+    ]
 )]
 #[ApiFilter(
     SearchFilter::class,
