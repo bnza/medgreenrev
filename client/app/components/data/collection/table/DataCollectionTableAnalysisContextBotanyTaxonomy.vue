@@ -18,7 +18,7 @@ const props = defineProps<{
 
 const { id: parentId } = useResourceParent(props.parent)
 
-const { appPath, labels } = useResourceConfig(props.path)
+const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore(
     '/api/data/analyses/context_botany_taxonomies/{id}',
@@ -113,18 +113,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #[`item.type`]="{ item }">
       <v-checkbox-btn class="centered-item" :model-value="item.type" readonly />
     </template>
-    <!--    <template #[`item.analysis.identifier`]="{ item }">-->
-    <!--      <data-item-info-box-span-analysis-->
-    <!--        :iri="item.analysis['@id']"-->
-    <!--        :text="item.analysis.code"-->
-    <!--      />-->
-    <!--    </template>-->
-    <!--    <template #[`item.summary`]="{ item }">-->
-    <!--      <text-tooltip-span :text="item.summary" />-->
-    <!--    </template>-->
     <template #dialogs="{ refetch }">
-      <!--      <data-dialog-download :path :title="labels[1]" :parent-id />-->
-      <!--      <data-dialog-search :path :title="labels[1]" />-->
       <data-dialog-create-analysis-context-botany-taxonomy
         :path
         :parent

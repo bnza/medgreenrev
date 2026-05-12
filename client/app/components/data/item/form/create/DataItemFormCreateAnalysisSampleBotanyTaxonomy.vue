@@ -38,10 +38,10 @@ const { r$ } = useScopedRegle(model, rules)
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="1" class="px-2">
+    <v-col cols="2" class="px-2">
       <v-checkbox v-model="r$.$value.type" label="type" />
     </v-col>
-    <v-col cols="1" class="px-2">
+    <v-col cols="2" class="px-2">
       <v-checkbox v-model="r$.$value.cf" label="cf" />
     </v-col>
     <v-col cols="6">
@@ -50,7 +50,7 @@ const { r$ } = useScopedRegle(model, rules)
         :error-messages="r$.$errors?.taxonomy"
       />
     </v-col>
-    <v-col cols="1" class="px-2">
+    <v-col cols="2" class="px-2">
       <v-checkbox v-model="r$.$value.sp" label="sp" />
     </v-col>
   </v-row>

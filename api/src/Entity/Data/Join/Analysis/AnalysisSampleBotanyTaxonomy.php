@@ -67,6 +67,10 @@ class AnalysisSampleBotanyTaxonomy
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
+    #[Groups([
+        'sample_botany_analysis:acl:read',
+        'sample_botany_analysis:export',
+    ])]
     private int $id;
 
     #[ORM\OneToOne(targetEntity: AnalysisSampleBotanyTaxonomyView::class, mappedBy: 'analysisSample', fetch: 'LAZY')]

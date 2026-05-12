@@ -14,8 +14,9 @@ const props = defineProps<{
   path: Path
   parent?: ResourceParent<'analysisSampleBotany'>
 }>()
+console.log(props.parent)
 const { id: parentId } = useResourceParent(props.parent)
-const { appPath, labels } = useResourceConfig(props.path)
+const { appPath } = useResourceConfig(props.path)
 const { deleteDialogState } = storeToRefs(
   useResourceDeleteDialogStore(
     '/api/data/analyses/sample_botany_taxonomies/{id}',

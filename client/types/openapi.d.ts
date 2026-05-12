@@ -11314,6 +11314,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id?: number | string
       readonly flat:
         | components['schemas']['AnalysisSampleBotanyTaxonomyView.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
         | null
@@ -19722,6 +19723,7 @@ export interface operations {
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'analysis.year'?: number
         'analysis.year[]'?: number[]
         datingLower?: number
@@ -19859,6 +19861,7 @@ export interface operations {
         'order[error]'?: 'asc' | 'desc'
         'order[calibrationCurve]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
+        'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'analysis.year'?: number
         'analysis.year[]'?: number[]
         datingLower?: number
@@ -25198,6 +25201,7 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.identifier]'?: 'asc' | 'desc'
         'subject.sex'?: string
         'subject.sex[]'?: string[]
         'subject.identifier'?: string
@@ -25522,6 +25526,7 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.identifier]'?: 'asc' | 'desc'
         'subject.sex'?: string
         'subject.sex[]'?: string[]
         'subject.identifier'?: string
@@ -25653,6 +25658,7 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.identifier]'?: 'asc' | 'desc'
         'subject.sex'?: string
         'subject.sex[]'?: string[]
         'subject.identifier'?: string
@@ -26454,6 +26460,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -26796,6 +26803,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -26945,6 +26953,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -27094,6 +27103,8 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
+        'order[subject.site.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.type'?: string
@@ -27445,6 +27456,8 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
+        'order[subject.site.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.type'?: string
@@ -27603,6 +27616,8 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
+        'order[subject.site.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.type'?: string
@@ -28056,6 +28071,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -28402,6 +28418,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -28555,6 +28572,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -28708,6 +28726,7 @@ export interface operations {
          * @example cafè
          */
         'subject.sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.site'?: string
         'subject.site[]'?: string[]
         'subject.sampleStratigraphicUnits.stratigraphicUnit'?: string
@@ -28850,6 +28869,7 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.depthMin'?: string
         'subject.depthMin[]'?: string[]
         'subject.depthMax'?: string
@@ -29198,6 +29218,7 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.depthMin'?: string
         'subject.depthMin[]'?: string[]
         'subject.depthMax'?: string
@@ -29353,6 +29374,7 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
         'subject.depthMin'?: string
         'subject.depthMin[]'?: string[]
         'subject.depthMax'?: string
@@ -29508,6 +29530,8 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
+        'order[subject.stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'subject.sedimentCore'?: string
         'subject.sedimentCore[]'?: string[]
         'subject.sedimentCore.site'?: string
@@ -29865,6 +29889,8 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
+        'order[subject.stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'subject.sedimentCore'?: string
         'subject.sedimentCore[]'?: string[]
         'subject.sedimentCore.site'?: string
@@ -30029,6 +30055,8 @@ export interface operations {
          * @example cafè
          */
         'subject.stratigraphicUnit.interpretation'?: string
+        'order[subject.codeView.code]'?: 'asc' | 'desc'
+        'order[subject.stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'subject.sedimentCore'?: string
         'subject.sedimentCore[]'?: string[]
         'subject.sedimentCore.site'?: string
@@ -30451,6 +30479,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[subject.code]'?: 'asc' | 'desc'
         subject?: string
         'subject[]'?: string[]
         /**
@@ -30731,6 +30760,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[subject.code]'?: 'asc' | 'desc'
         subject?: string
         'subject[]'?: string[]
         /**
@@ -30818,6 +30848,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[subject.code]'?: 'asc' | 'desc'
         subject?: string
         'subject[]'?: string[]
         /**
@@ -30905,6 +30936,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[resourceName]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
         'order[analysis.responsible]'?: 'asc' | 'desc'
@@ -30940,6 +30973,8 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[resourceName]'?: 'asc' | 'desc'
         'order[analysis.identifier]'?: 'asc' | 'desc'
         'order[analysis.laboratory]'?: 'asc' | 'desc'
         'order[analysis.responsible]'?: 'asc' | 'desc'
@@ -32914,6 +32949,7 @@ export interface operations {
         'order[sp]'?: 'asc' | 'desc'
         'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -33065,6 +33101,7 @@ export interface operations {
         'order[sp]'?: 'asc' | 'desc'
         'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -33409,6 +33446,7 @@ export interface operations {
         'order[sp]'?: 'asc' | 'desc'
         'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -33558,6 +33596,7 @@ export interface operations {
         'order[sp]'?: 'asc' | 'desc'
         'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -33702,6 +33741,7 @@ export interface operations {
         'order[sp]'?: 'asc' | 'desc'
         'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -33919,7 +33959,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -34072,7 +34116,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -34418,7 +34466,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -34569,7 +34621,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -34715,7 +34771,11 @@ export interface operations {
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
+        'order[type]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[taxonomy.flat.species]'?: 'asc' | 'desc'
         'order[taxonomy.flat.genus]'?: 'asc' | 'desc'
         'order[taxonomy.flat.family]'?: 'asc' | 'desc'
@@ -35755,6 +35815,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -35763,6 +35824,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
@@ -36044,6 +36106,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -36052,6 +36115,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
@@ -36138,6 +36202,7 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -36146,6 +36211,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
@@ -36270,6 +36336,7 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -36278,6 +36345,7 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
+        'order[taxonomy.value]'?: 'asc' | 'desc'
         'order[taxonomy.englishName]'?: 'asc' | 'desc'
         'order[taxonomy.spanishName]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
@@ -36392,6 +36460,9 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
@@ -36481,6 +36552,9 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
@@ -36763,6 +36837,9 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
@@ -36888,6 +36965,9 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
+        'order[id]'?: 'asc' | 'desc'
+        'order[cf]'?: 'asc' | 'desc'
+        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
@@ -37003,9 +37083,11 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[author.value]'?: 'asc' | 'desc'
         'order[title]'?: 'asc' | 'desc'
         'order[writtenSourceType.value]'?: 'asc' | 'desc'
+        'order[publicationDetails]'?: 'asc' | 'desc'
         'order[centuries.century.chronologyLower]'?: 'asc' | 'desc'
         'order[centuries.century.chronologyUpper]'?: 'asc' | 'desc'
         author?: string
@@ -37272,6 +37354,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[writtenSource.author.value]'?: 'asc' | 'desc'
         'order[writtenSource.title]'?: 'asc' | 'desc'
         'order[citedWork.value]'?: 'asc' | 'desc'
@@ -37347,6 +37430,7 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
+        'order[id]'?: 'asc' | 'desc'
         'order[writtenSource.author.value]'?: 'asc' | 'desc'
         'order[writtenSource.title]'?: 'asc' | 'desc'
         'order[citedWork.value]'?: 'asc' | 'desc'
@@ -39341,6 +39425,7 @@ export interface operations {
         'order[id]'?: 'asc' | 'desc'
         'order[mimeType]'?: 'asc' | 'desc'
         'order[originalFilename]'?: 'asc' | 'desc'
+        'order[public]'?: 'asc' | 'desc'
         'order[sha256]'?: 'asc' | 'desc'
         'order[type.group]'?: 'asc' | 'desc'
         'order[type.value]'?: 'asc' | 'desc'
@@ -44481,8 +44566,8 @@ export interface operations {
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
@@ -44633,8 +44718,8 @@ export interface operations {
          * @example cafè
          */
         'sampleStratigraphicUnits.stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[site.code]'?: 'asc' | 'desc'
         'order[year]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
@@ -45873,11 +45958,12 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
         number?: number
@@ -45947,11 +46033,12 @@ export interface operations {
         page?: number
         /** @description The number of items per page */
         itemsPerPage?: number
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
         number?: number
@@ -46211,11 +46298,12 @@ export interface operations {
       query?: {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
         number?: number
@@ -46351,11 +46439,12 @@ export interface operations {
       query?: {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
         'order[number]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
+        'order[site.code]'?: 'asc' | 'desc'
         site?: string
         'site[]'?: string[]
         number?: number
@@ -50921,6 +51010,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[email]'?: 'asc' | 'desc'
+        'order[enabled]'?: 'asc' | 'desc'
         search?: string
       }
       header?: never
@@ -54363,8 +54453,9 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -54373,6 +54464,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved.code]'?: 'asc' | 'desc'
         'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -54531,8 +54623,9 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -54541,6 +54634,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved.code]'?: 'asc' | 'desc'
         'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -54699,8 +54793,9 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -54709,6 +54804,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved.code]'?: 'asc' | 'desc'
         'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -55058,8 +55154,9 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -55068,6 +55165,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved.code]'?: 'asc' | 'desc'
         'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.
@@ -55293,8 +55391,9 @@ export interface operations {
          * @example cafè
          */
         'stratigraphicUnit.interpretation'?: string
-        'order[codeView.code]'?: 'asc' | 'desc'
         'order[id]'?: 'asc' | 'desc'
+        'order[codeView.code]'?: 'asc' | 'desc'
+        'order[part.value]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.site.code]'?: 'asc' | 'desc'
         'order[stratigraphicUnit.codeView.code]'?: 'asc' | 'desc'
         'order[taxonomy.value]'?: 'asc' | 'desc'
@@ -55303,6 +55402,7 @@ export interface operations {
         'order[taxonomy.family]'?: 'asc' | 'desc'
         'order[taxonomy.class]'?: 'asc' | 'desc'
         'order[element.value]'?: 'asc' | 'desc'
+        'order[endsPreserved.code]'?: 'asc' | 'desc'
         'order[side.code]'?: 'asc' | 'desc'
         /**
          * @description Search ZooBone records. Splits input by non-word characters and uses first two chunks. Numeric chunks match the end of ID (cast as string), non-numeric chunks match the end of site code. Multiple chunks are combined with AND.

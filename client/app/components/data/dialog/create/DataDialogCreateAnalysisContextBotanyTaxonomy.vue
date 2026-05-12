@@ -27,6 +27,7 @@ const item = computed(() => r$.$value[0])
     :parent
     :path
     :regle="r$"
+    :redirect-option="false"
     @refresh="emit('refresh')"
   >
     <template #default>
