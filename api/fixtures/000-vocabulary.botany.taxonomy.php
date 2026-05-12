@@ -2,7 +2,7 @@
 
 use App\Entity\Vocabulary\Botany\Taxonomy;
 
-$csvPath = __DIR__.'/../vocabulary.botany.taxonomy.csv';
+$csvPath = __DIR__.'/vocabulary.botany.taxonomy.csv';
 $csv = array_map('str_getcsv', file($csvPath));
 array_shift($csv); // remove header
 
