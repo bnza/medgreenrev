@@ -127,36 +127,38 @@ The following table shows which analysis type codes (and their groups) are allow
 | `ANTH` | anthropology | assemblage |
 | `CARP` | carpology | assemblage |
 | `ZOO` | zooarchaeology | assemblage |
+| `POL` | pollen | assemblage |
+| `SDNA` | sedimentary DNA | assemblage |
+| `PHY` | phytoliths | assemblage |
 | `ADNA` | aDNA | material analysis |
 | `ISO` | isotopes | material analysis |
 | `ORA` | ORA | material analysis |
 | `XRF` | XRF | material analysis |
 | `XRD` | XRD | material analysis |
-| `GEO` | geochemistry | sediment |
+| `GEO` | geochemistry | material analysis |
 | `THS` | thin section | micromorphology |
 | `OPT` | optical | microscope |
 | `SEM` | SEM | microscope |
-| `POL` | pollen | sediment |
-| `SDNA` | sedimentary DNA | sediment |
 
 ##### Permitted Types per Join Entity
 
 | Join Entity | Subject | Permitted Groups | Permitted Type Codes |
 |---|---|---|---|
-| `AnalysisPottery` | Pottery | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| `AnalysisIndividual` | Individual | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| `AnalysisBotanySeed` | Botany Seed | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| `AnalysisBotanyCharcoal` | Botany Charcoal | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| `AnalysisZooBone` | Zoo Bone | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| `AnalysisZooTooth` | Zoo Tooth | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD` |
-| `AnalysisSample` | Sample | absolute dating, material analysis, sediment | `C14`, `THL`, `OSL`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA` |
-| `AnalysisSedimentCore` | Sediment Core | absolute dating, microscope, material analysis, sediment | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO`, `POL`, `SDNA` |
+| `AnalysisPottery` | Pottery | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisIndividual` | Individual | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisBotanySeed` | Botany Seed | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisBotanyCharcoal` | Botany Charcoal | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisZooBone` | Zoo Bone | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisZooTooth` | Zoo Tooth | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisSample` | Sample | absolute dating, material analysis | `C14`, `THL`, `OSL`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisSedimentCoreDepth` | Sediment Core Depth | absolute dating, microscope, material analysis | `C14`, `THL`, `OSL`, `OPT`, `SEM`, `ADNA`, `ISO`, `ORA`, `XRF`, `XRD`, `GEO` |
+| `AnalysisSampleBotany` | Sample (Botany) | *(by type code)* | `SDNA`, `POL`, `PHY` |
 | `AnalysisSampleMicrostratigraphy` | Sample (Microstratigraphy) | micromorphology | `THS` |
 | `AnalysisContextZoo` | Context (Zoo) | *(by type code)* | `ZOO` |
 | `AnalysisContextBotany` | Context (Botany) | *(by type code)* | `CARP`, `ANTX` |
 | `AnalysisSiteAnthropology` | Site (Anthropology) | *(by type code)* | `ANTH` |
 
-> **Note**: Zooarchaeological, archaeobotanical, and anthropological analyses filter by **specific type codes** (from the **assemblage** group). The remaining resources filter by **group**, so they automatically include any future types added to those groups.
+> **Note**: Zooarchaeological, archaeobotanical, anthropological, and palaeoenvironmental (botany) analyses filter by **specific type codes** (from the **assemblage** group). The remaining resources filter by **group**, so they automatically include any future types added to those groups.
 
 ---
 
