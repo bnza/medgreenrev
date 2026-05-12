@@ -185,7 +185,10 @@ class AbsDatingAnalysisJoin
     ])]
     protected string $notes;
 
-    #[ApiProperty(identifier: true)]
+    #[Groups([
+        'abs_dating_analysis_join:acl:read',
+    ])]
+    #[ApiProperty(required: true, identifier: true)]
     public function getId(): int
     {
         return $this->analysis->getId();

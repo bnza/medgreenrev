@@ -5,6 +5,7 @@ namespace App\Entity\Data\Join\Analysis;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\Botany\Seed;
 use App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanySeed;
@@ -61,6 +62,7 @@ class AnalysisBotanySeed extends BaseAnalysisJoin
         'botany_seed_analysis:acl:read',
         'botany_seed_analysis:export',
     ])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Seed::class, inversedBy: 'analyses')]

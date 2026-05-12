@@ -38,6 +38,7 @@ class Type
 {
     #[ORM\Id,
         ORM\Column(type: 'smallint')]
+    #[ApiProperty(required: true)]
     public int $id;
 
     #[ORM\Column(name: 'code', type: 'string')]

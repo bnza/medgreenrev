@@ -9239,7 +9239,7 @@ export type webhooks = Record<string, never>
 export interface components {
   schemas: {
     'AbsDatingAnalysis.csv-abs_dating_analysis.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?:
         | components['schemas']['StratigraphicUnit.csv-abs_dating_analysis.read']
         | null
@@ -9258,7 +9258,7 @@ export interface components {
       notes?: string | null
     }
     'AbsDatingAnalysis.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?:
         | components['schemas']['StratigraphicUnit.jsonld-abs_dating_analysis.read']
         | null
@@ -9335,11 +9335,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+      analysis?: components['schemas']['AnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9347,6 +9343,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id: number
     })
     'AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       /** @description Access control metadata */
@@ -9423,11 +9420,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+      analysis?: components['schemas']['AnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9435,6 +9428,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id: number
     })
     'AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       /** @description Access control metadata */
@@ -9512,6 +9506,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id?: number
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9594,11 +9589,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+      analysis?: components['schemas']['AnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9606,6 +9597,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id: number
     })
     'AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /** @description Access control metadata */
@@ -9682,11 +9674,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+      analysis?: components['schemas']['AnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9694,6 +9682,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id: number
     })
     'AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
       /** @description Access control metadata */
@@ -9771,6 +9760,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id?: number
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -9853,11 +9843,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+      analysis?: components['schemas']['AnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9865,6 +9851,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id: number
     })
     'AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** @description Access control metadata */
@@ -9941,11 +9928,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      analysis?: string
+      analysis?: components['schemas']['AnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read']
       datingLower?: number
       datingUpper?: number
       uncalibratedDating?: number
@@ -9953,6 +9936,7 @@ export interface components {
       calibrationCurve?: string
       probability?: string | null
       notes?: string | null
+      readonly id: number
     })
     'AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       /** @description Access control metadata */
@@ -10747,7 +10731,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['BotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanyCharcoal.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
@@ -10761,6 +10745,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisBotanyCharcoal.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_charcoal.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+    })
     'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10769,7 +10763,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
@@ -10800,7 +10794,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['BotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanySeed.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
@@ -10814,6 +10808,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisBotanySeed.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_botany_seed.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+    })
     'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10822,7 +10826,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
@@ -10847,7 +10851,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
@@ -10866,7 +10870,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       summary?: string | null
@@ -10879,7 +10883,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10931,7 +10935,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       readonly flat:
         | components['schemas']['AnalysisContextBotanyTaxonomyView.jsonld-context_botany_analysis.acl.read_analysis_join.acl.read']
         | null
@@ -10976,7 +10980,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisContextZoo.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
@@ -10996,7 +11000,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
@@ -11016,7 +11020,7 @@ export interface components {
       }
     }
     'AnalysisContextZooTaxonomy.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11065,7 +11069,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Individual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisIndividual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
@@ -11087,6 +11091,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisIndividual.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_individual.acl.read']
         | null
@@ -11099,7 +11104,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
@@ -11130,7 +11135,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisPottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
@@ -11144,6 +11149,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisPottery.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_potteries.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+    })
     'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -11152,7 +11167,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
@@ -11183,7 +11198,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
@@ -11197,6 +11212,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisSample.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_samples.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+    })
     'AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -11205,7 +11230,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
@@ -11230,7 +11255,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSampleBotany.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       summary?: string | null
@@ -11249,7 +11274,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       summary?: string | null
@@ -11262,7 +11287,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11314,7 +11339,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       readonly flat:
         | components['schemas']['AnalysisSampleBotanyTaxonomyView.jsonld-sample_botany_analysis.acl.read_analysis_join.acl.read']
         | null
@@ -11357,7 +11382,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSampleMicrostratigraphy.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis: components['schemas']['Analysis.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
@@ -11369,7 +11394,7 @@ export interface components {
       }
     }
     'AnalysisSampleMicrostratigraphy.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
@@ -11388,7 +11413,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
@@ -11401,7 +11426,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
@@ -11429,7 +11454,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
@@ -11451,6 +11476,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_sediment_core_depth.acl.read']
         | null
@@ -11463,7 +11489,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
@@ -11488,7 +11514,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSedimentCoreDepthBotany.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       summary?: string | null
@@ -11507,7 +11533,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
       summary?: string | null
@@ -11520,7 +11546,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11572,6 +11598,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       readonly flat:
         | components['schemas']['AnalysisSedimentCoreDepthBotanyTaxonomyView.jsonld-sediment_core_depth_botany_analysis.acl.read_analysis_join.acl.read']
         | null
@@ -11614,7 +11641,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       analysis: components['schemas']['Analysis.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
@@ -11633,13 +11660,13 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     })
     'AnalysisSubject.jsonld-analysis_subject.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11672,7 +11699,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['ZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
@@ -11686,6 +11713,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisZooBone.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_bone.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+    })
     'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -11694,7 +11731,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
@@ -11725,7 +11762,7 @@ export interface components {
       summary?: string | null
     }
     'AnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['ZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooTooth.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
@@ -11739,6 +11776,16 @@ export interface components {
         canDelete: boolean
       }
     }
+    'AnalysisZooTooth.jsonld-abs_dating_join.acl.read_analysis.acl.read_abs_dating_analysis_join.acl.read_analysis_zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+    })
     'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -11747,7 +11794,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       subject?: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
@@ -11788,7 +11835,7 @@ export interface components {
       e?: number
     }
     'ArchaeologicalSite-feature_collection.json.read': {
-      readonly id?: number | string
+      readonly id: number | string
     }
     'ArchaeologicalSite.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
@@ -11831,7 +11878,7 @@ export interface components {
       name?: string
     }
     'ArchaeologicalSite.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -11862,7 +11909,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -11873,7 +11920,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -11935,7 +11982,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -11946,7 +11993,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -11967,7 +12014,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-archaeological_site.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -12039,7 +12086,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12060,6 +12107,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-microstratigraphic_unit.acl.read': {
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12080,7 +12128,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12091,7 +12139,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12102,7 +12150,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12113,7 +12161,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12124,7 +12172,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.csv-sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       /** @description Access control metadata */
@@ -12155,7 +12203,7 @@ export interface components {
       }
     }
     'ArchaeologicalSite.geojson-feature_collection.json.read': {
-      readonly id?: number | string
+      readonly id: number | string
     }
     'ArchaeologicalSite.jsonld-abs_dating_analysis.read': components['schemas']['HydraItemBaseSchema'] & {
       code?: string
@@ -12169,7 +12217,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12203,7 +12251,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12215,7 +12263,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -12282,7 +12330,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12294,7 +12342,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12317,7 +12365,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -12395,7 +12443,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12418,7 +12466,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12430,6 +12478,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12452,7 +12501,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12464,7 +12513,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12476,7 +12525,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12488,7 +12537,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12500,7 +12549,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       createdBy?:
@@ -12515,7 +12564,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
     })
@@ -12630,7 +12679,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanyCharcoalView.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -12661,7 +12710,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanyCharcoalView.csv-botany_charcoal.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_charcoal.acl.read']
       /**
        * Format: iri-reference
@@ -12700,7 +12749,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanyCharcoalView.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -12732,7 +12781,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanyCharcoalView.jsonld-botany_charcoal.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
       /**
        * Format: iri-reference
@@ -12888,7 +12937,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanySeedView.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -12924,7 +12973,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanySeedView.csv-botany_seed.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_seed.acl.read']
       /**
        * Format: iri-reference
@@ -12968,7 +13017,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanySeedView.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -13005,7 +13054,7 @@ export interface components {
       readonly flat:
         | components['schemas']['BotanySeedView.jsonld-botany_seed.acl.read']
         | null
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
       /**
        * Format: iri-reference
@@ -13174,7 +13223,7 @@ export interface components {
       description?: string | null
     }
     'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
@@ -13188,7 +13237,7 @@ export interface components {
       }
     }
     'Context.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
@@ -13202,7 +13251,7 @@ export interface components {
       }
     }
     'Context.csv-context.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.csv-context.acl.read']
       name?: string
@@ -13216,7 +13265,7 @@ export interface components {
       }
     }
     'Context.csv-context_stratigraphic_unit.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.acl.read']
       name?: string
@@ -13229,7 +13278,7 @@ export interface components {
       }
     }
     'Context.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
@@ -13250,7 +13299,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
       name?: string
@@ -13265,7 +13314,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
       name?: string
@@ -13280,7 +13329,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.jsonld-context.acl.read']
       name?: string
@@ -13295,7 +13344,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.acl.read']
       name?: string
@@ -13309,7 +13358,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       type?: string
       site?: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       name?: string
@@ -13317,7 +13366,7 @@ export interface components {
       readonly code?: string
     })
     ContextStratigraphicUnit: {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13330,7 +13379,7 @@ export interface components {
       context: string
     }
     'ContextStratigraphicUnit.csv-context_stratigraphic_unit.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.csv-context_stratigraphic_unit.acl.read']
       /** @description Access control metadata */
@@ -13341,7 +13390,7 @@ export interface components {
       }
     }
     'ContextStratigraphicUnit.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       context?: components['schemas']['Context.csv-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13351,7 +13400,7 @@ export interface components {
       }
     }
     'ContextStratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13368,7 +13417,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
     })
@@ -13380,7 +13429,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.contexts.acl.read_context.acl.read']
     })
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
@@ -13391,7 +13440,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     })
     /** @description A representation of common errors. */
@@ -13509,7 +13558,7 @@ export interface components {
       readonly id?: unknown
     }
     'HistoryAnimal.csv-history_animal.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.csv-history_animal.acl.read']
       animal?: string
       /**
@@ -13543,7 +13592,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.jsonld-history_animal.acl.read']
       animal?: string
       /**
@@ -13652,7 +13701,7 @@ export interface components {
       readonly id?: unknown
     }
     'HistoryPlant.csv-history_plant.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.csv-history_plant.acl.read']
       plant?: string
       /**
@@ -13690,7 +13739,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.jsonld-history_plant.acl.read']
       plant?: string
       /**
@@ -13748,7 +13797,7 @@ export interface components {
       centuries?: string[]
     }
     'HistoryWrittenSource.csv-history_written_source.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.csv-history_written_source.acl.read']
       author: components['schemas']['VocHistoryAuthor.csv-history_written_source.acl.read']
       title: string
@@ -13782,7 +13831,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.jsonld-history_written_source.acl.read']
       author: components['schemas']['VocHistoryAuthor.jsonld-history_written_source.acl.read']
       title: string
@@ -13832,7 +13881,7 @@ export interface components {
       yearCompletedUpper?: number | null
     }
     'HistoryWrittenSourceCitedWork.csv-history_written_sources_cited_works.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       writtenSource: components['schemas']['HistoryWrittenSource.csv-history_written_sources_cited_works.acl.read']
       citedWork: components['schemas']['VocHistoryHistoryCitedWork.csv-history_written_sources_cited_works.acl.read']
       yearCompleted: number
@@ -13852,7 +13901,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       writtenSource: components['schemas']['HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read']
       citedWork: components['schemas']['VocHistoryHistoryCitedWork.jsonld-history_written_sources_cited_works.acl.read']
       yearCompleted: number
@@ -13986,7 +14035,7 @@ export interface components {
       readonly id?: unknown
     }
     'Individual.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       identifier?: string
       /**
@@ -14009,7 +14058,7 @@ export interface components {
       }
     }
     'Individual.csv-individual.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-individual.acl.read']
       identifier?: string
       /**
@@ -14040,7 +14089,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       identifier?: string
       /**
@@ -14064,7 +14113,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
       identifier?: string
       /**
@@ -14081,7 +14130,7 @@ export interface components {
       readonly code: string
     })
     'ListAnalysisLaboratory.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListArea.jsonld': components['schemas']['HydraItemBaseSchema'] & {
@@ -14104,39 +14153,39 @@ export interface components {
       readonly value: string
     }
     'ListCalibrationCurve.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListContextType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListHistoryAnimal.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListHistoryReference.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListPerson.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListPotteryColor.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListVocZooTaxonomyClass.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'ListVocZooTaxonomyFamily.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: string
+      readonly id: string
       readonly value?: string
     }
     'MediaObject-media_object.update.jsonMergePatch': {
@@ -14157,7 +14206,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14189,7 +14238,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14221,7 +14270,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14253,7 +14302,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14285,7 +14334,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14317,7 +14366,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14342,7 +14391,7 @@ export interface components {
       dimensions?: (string | null)[] | null
     })
     'MediaObjectAnalysis-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14363,13 +14412,13 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       item?: components['schemas']['Analysis.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
       description?: string | null
     })
     'MediaObjectHistoryLocation-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14390,7 +14439,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14400,7 +14449,7 @@ export interface components {
       description?: string | null
     })
     'MediaObjectPaleoclimateSample-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14421,7 +14470,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14431,7 +14480,7 @@ export interface components {
       description?: string | null
     })
     'MediaObjectPaleoclimateSamplingSite-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14452,7 +14501,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14462,7 +14511,7 @@ export interface components {
       description?: string | null
     })
     'MediaObjectPottery-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14483,7 +14532,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14493,7 +14542,7 @@ export interface components {
       description?: string | null
     })
     'MediaObjectSamplingStratigraphicUnit-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14514,7 +14563,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14524,7 +14573,7 @@ export interface components {
       description?: string | null
     })
     'MediaObjectSedimentCore-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14545,13 +14594,13 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       item?: components['schemas']['SedimentCore.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
       description?: string | null
     })
     'MediaObjectStratigraphicUnit-media_object_join.create': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14572,7 +14621,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       item?: components['schemas']['StratigraphicUnit.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       mediaObject?: components['schemas']['MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       description?: string | null
@@ -14633,7 +14682,7 @@ export interface components {
       readonly id?: unknown
     }
     'MicrostratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-microstratigraphic_unit.acl.read']
       identifier: string
       notes?: string | null
@@ -14657,7 +14706,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
       identifier: string
       notes?: string | null
@@ -14749,7 +14798,7 @@ export interface components {
       readonly id?: unknown
     }
     'PaleoclimateSample.csv-paleoclimate_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['PaleoclimateSamplingSite.csv-paleoclimate_sample.acl.read']
       number: number
       description?: string | null
@@ -14788,7 +14837,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sample.acl.read']
       number: number
       description?: string | null
@@ -14817,7 +14866,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read']
       number: number
       description?: string | null
@@ -14913,7 +14962,7 @@ export interface components {
       }
     }
     'PaleoclimateSamplingSite.csv-paleoclimate_sampling_sites.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -14950,7 +14999,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -14966,7 +15015,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -15092,7 +15141,7 @@ export interface components {
       readonly id?: unknown
     }
     'Pottery.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
@@ -15127,7 +15176,7 @@ export interface components {
       }
     }
     'Pottery.csv-pottery.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.csv-pottery.acl.read'][]
@@ -15170,7 +15219,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
@@ -15206,7 +15255,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory: string
       decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
@@ -15261,7 +15310,7 @@ export interface components {
       }
     }
     'PotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15339,7 +15388,7 @@ export interface components {
       description?: string | null
     }
     'Sample.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
@@ -15355,7 +15404,7 @@ export interface components {
       }
     }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       /** @default 0 */
@@ -15371,7 +15420,7 @@ export interface components {
       }
     }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
@@ -15387,7 +15436,7 @@ export interface components {
       }
     }
     'Sample.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       /** @default 0 */
@@ -15403,7 +15452,7 @@ export interface components {
       }
     }
     'Sample.csv-sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-sample.acl.read']
       type?: components['schemas']['VocSampleType.csv-sample.acl.read']
       /** @default 0 */
@@ -15419,7 +15468,7 @@ export interface components {
       }
     }
     'Sample.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['VocSampleType.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /** @default 0 */
@@ -15435,7 +15484,7 @@ export interface components {
       }
     }
     'Sample.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /** @default 0 */
@@ -15458,7 +15507,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
@@ -15475,7 +15524,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       /** @default 0 */
@@ -15492,7 +15541,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       /** @default 0 */
@@ -15509,7 +15558,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
       /** @default 0 */
@@ -15526,7 +15575,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample.acl.read']
       /** @default 0 */
@@ -15543,7 +15592,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /** @default 0 */
@@ -15560,7 +15609,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site?: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       type?: components['schemas']['VocSampleType.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /** @default 0 */
@@ -15570,7 +15619,7 @@ export interface components {
       readonly code?: string
     })
     SampleStratigraphicUnit: {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15583,7 +15632,7 @@ export interface components {
       stratigraphicUnit: string
     }
     'SampleStratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       sample?: components['schemas']['Sample.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       /** @description Access control metadata */
@@ -15594,7 +15643,7 @@ export interface components {
       }
     }
     'SampleStratigraphicUnit.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       sample?: components['schemas']['Sample.csv-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15604,7 +15653,7 @@ export interface components {
       }
     }
     'SampleStratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15621,7 +15670,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
     })
@@ -15633,7 +15682,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read']
     })
     'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
@@ -15644,7 +15693,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     })
     'SamplingSite-feature_collection.json.read': Record<string, never>
@@ -15729,7 +15778,7 @@ export interface components {
       }
     }
     'SamplingSite.csv-sampling_site.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -15835,7 +15884,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       code?: string
       name?: string
       description?: string | null
@@ -15983,7 +16032,7 @@ export interface components {
       }
     }
     'SamplingStratigraphicUnit.csv-sampling_su.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['SamplingSite.csv-sampling_su.acl.read']
       number: number
       description?: string | null
@@ -16053,7 +16102,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['SamplingSite.jsonld-sampling_su.acl.read']
       number: number
       description?: string | null
@@ -16254,7 +16303,7 @@ export interface components {
       readonly code?: string
     })
     SedimentCoreDepth: {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16328,7 +16377,7 @@ export interface components {
       readonly id?: unknown
     }
     'SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16365,7 +16414,7 @@ export interface components {
       }
     }
     'SedimentCoreDepth.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16402,7 +16451,7 @@ export interface components {
       }
     }
     'SedimentCoreDepth.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
-      readonly id?: number | string
+      readonly id: number | string
       sedimentCore: components['schemas']['SedimentCore.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.csv-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       /** @example 8.5 */
@@ -16435,7 +16484,7 @@ export interface components {
       }
     }
     'SedimentCoreDepth.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       sedimentCore: components['schemas']['SedimentCore.csv-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       /** @example 8.5 */
       depthMin: string
@@ -16450,7 +16499,7 @@ export interface components {
       }
     }
     'SedimentCoreDepth.csv-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.csv-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read']
       /** @example 8.5 */
       depthMin: string
@@ -16529,7 +16578,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16567,7 +16616,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16605,7 +16654,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
       /** @example 8.5 */
@@ -16639,7 +16688,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read']
       /** @example 8.5 */
       depthMin: string
@@ -16655,7 +16704,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-sediment_core_depth.stratigraphic_units.acl.read_sampling_su.read']
       /** @example 8.5 */
       depthMin: string
@@ -16706,7 +16755,7 @@ export interface components {
       }
     }
     'SiteCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16773,7 +16822,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string
+      readonly id: string
       user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
       site?: components['schemas']['ArchaeologicalSite.jsonld-site_user_privilege.acl.read']
       /** @default 0 */
@@ -16923,7 +16972,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       area?: string | null
       building?: string | null
       interpretation?: string | null
@@ -16936,7 +16985,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.csv-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -16966,6 +17015,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-microstratigraphic_unit.acl.read': {
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.csv-microstratigraphic_unit.acl.read']
       readonly code: string
       /** @description Access control metadata */
@@ -16986,7 +17036,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17006,7 +17056,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.csv-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17026,7 +17076,7 @@ export interface components {
       }
     }
     'StratigraphicUnit.csv-sus.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.csv-sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17158,7 +17208,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       area?: string | null
       building?: string | null
       interpretation?: string | null
@@ -17172,7 +17222,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-context_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17204,7 +17254,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17225,6 +17275,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-microstratigraphic_unit.acl.read']
       readonly code: string
     })
@@ -17247,7 +17298,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17268,7 +17319,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17292,7 +17343,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       site: components['schemas']['ArchaeologicalSite.jsonld-sus.acl.read']
       area?: string | null
       building?: string | null
@@ -17345,6 +17396,7 @@ export interface components {
       rgtStratigraphicUnit: string
     }
     'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
       lftStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
       /**
        * Format: iri-reference
@@ -17390,7 +17442,7 @@ export interface components {
     }
     'User.csv-analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17401,7 +17453,7 @@ export interface components {
     }
     'User.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17412,7 +17464,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17423,7 +17475,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17434,7 +17486,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17445,7 +17497,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17456,7 +17508,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17467,7 +17519,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17478,7 +17530,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17489,7 +17541,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17500,7 +17552,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17511,7 +17563,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17522,7 +17574,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17533,7 +17585,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17544,7 +17596,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17555,7 +17607,7 @@ export interface components {
     }
     'User.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17566,7 +17618,7 @@ export interface components {
     }
     'User.csv-archaeological_site.acl.read': {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17584,7 +17636,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
@@ -17596,7 +17648,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
@@ -17608,7 +17660,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
@@ -17620,7 +17672,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read': {
@@ -17632,7 +17684,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read': {
@@ -17644,7 +17696,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
@@ -17656,7 +17708,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
@@ -17668,7 +17720,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
@@ -17680,7 +17732,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
@@ -17692,7 +17744,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
@@ -17704,7 +17756,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
@@ -17716,7 +17768,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
@@ -17728,7 +17780,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
@@ -17740,7 +17792,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
@@ -17752,7 +17804,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read': {
@@ -17764,7 +17816,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-archaeological_site.acl.read': {
@@ -17776,7 +17828,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-media_object.acl.read': {
@@ -17808,7 +17860,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read': {
@@ -17850,7 +17902,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       readonly userIdentifier?: string
     })
     'User.jsonld-user.acl.read': {
@@ -17862,7 +17914,7 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       email?: string
       /**
        * @default [
@@ -17876,7 +17928,7 @@ export interface components {
     })
     'User.jsonld-user.me.read': components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
-      readonly id?: string | null
+      readonly id: string
       email?: string
       /**
        * @default [
@@ -18077,7 +18129,7 @@ export interface components {
       }
     }
     'VocAnalysisType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: number
+      id: number
       code?: string
       group?: string
       value: string
@@ -18290,11 +18342,11 @@ export interface components {
       value: string
     })
     'VocBotanyElement.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
     }
     'VocBotanyElementPart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
     }
     'VocBotanyTaxonomy-voc_botany_taxonomy.create': {
@@ -18319,7 +18371,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value?: string
       level?: string
       spanishName?: string | null
@@ -18329,7 +18381,7 @@ export interface components {
         | null
     })
     'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value?: string
       level?: string
       spanishName?: string | null
@@ -18352,7 +18404,7 @@ export interface components {
     }
     /** @description Century vocabulary. */
     'VocCentury.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: number
+      id: number
       value: string
       chronologyLower: number
       chronologyUpper: number
@@ -18372,7 +18424,7 @@ export interface components {
     })
     /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: number
+      id: number
       value: string
     }
     'VocHistoryAuthor-voc_history_author.create': {
@@ -18429,12 +18481,12 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       variant?: string | null
     })
     'VocHistoryAuthor.jsonld-voc_history_author.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       variant?: string | null
     }
@@ -18448,7 +18500,7 @@ export interface components {
       }
     }
     'VocHistoryHistoryCitedWork.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
     }
     'VocHistoryHistoryCitedWork.jsonld-history_written_sources_cited_works.acl.read': {
@@ -18480,7 +18532,7 @@ export interface components {
       }
     }
     'VocHistoryLanguage.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
     }
     'VocHistoryLanguage.jsonld-history_animal.acl.read': {
@@ -18504,7 +18556,7 @@ export interface components {
       value: string
     })
     'VocHistoryLocation-feature_collection.json.read': {
-      readonly id?: number | string
+      readonly id: number | string
     }
     'VocHistoryLocation-voc_history_location.create': {
       value: string
@@ -18573,10 +18625,10 @@ export interface components {
       }
     }
     'VocHistoryLocation.geojson-feature_collection.json.read': {
-      readonly id?: number | string
+      readonly id: number | string
     }
     'VocHistoryLocation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       value: string
       point?: components['schemas']['Point.jsonld']
       /**
@@ -18617,14 +18669,14 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       value: string
       region?: components['schemas']['VocRegions.jsonld-voc_history_location.acl.read']
       n?: number
       e?: number
     })
     'VocHistoryLocation.jsonld-voc_history_location.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       value: string
       region?: components['schemas']['VocRegions.jsonld-voc_history_location.read']
       n?: number
@@ -18649,7 +18701,7 @@ export interface components {
       }
     }
     'VocHistoryWrittenSourceType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
     }
     'VocHistoryWrittenSourceType.jsonld-history_written_source.acl.read': {
@@ -18673,21 +18725,21 @@ export interface components {
       value: string
     })
     'VocIndividualAge.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: number
+      id: number
       value: string
     }
     'VocIndividualSex.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: number
+      id: number
       value: string
       code: string
     }
     'VocMediaObjectType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       group?: string
       value: string
     }
     'VocPotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       variant?: string | null
     }
@@ -18734,6 +18786,7 @@ export interface components {
       functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.jsonld-pottery.acl.read']
     })
     'VocPotteryFunctionalForm.jsonld-vocabulary.pottery.functional_form.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
       value: string
       variant?: string | null
       functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.jsonld-vocabulary.pottery.functional_form.read']
@@ -18757,7 +18810,7 @@ export interface components {
       }
     }
     'VocPotteryFunctionalGroup.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       functionalForms?: string[]
     }
@@ -18785,12 +18838,12 @@ export interface components {
       value: string
     }
     'VocPotteryShape.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       variant?: string | null
     }
     'VocPotterySurfaceTreatment.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       variant?: string | null
     }
@@ -18856,7 +18909,7 @@ export interface components {
     }
     /** @description Project's regions vocabulary. */
     'VocRegions.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       value: string
       description?: string | null
     }
@@ -19025,7 +19078,7 @@ export interface components {
       }
     }
     'VocSampleType.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       code?: string
       value: string
     }
@@ -19107,7 +19160,7 @@ export interface components {
       value: string
     })
     'VocStratigraphicUnitRelation.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: string
+      id: string
       value: string
       /**
        * Format: iri-reference
@@ -19117,22 +19170,22 @@ export interface components {
       description?: string | null
     }
     'VocZooBone.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       code?: string
       value: string
     }
     'VocZooBoneEndPreserved.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       code?: string
       value: string
     }
     'VocZooBonePart.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       code?: string
       value: string
     }
     'VocZooBoneSide.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      id?: number
+      id: number
       value: string
       code: string
     }
@@ -19158,7 +19211,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       code: string
       value: string
       englishName: string
@@ -19167,7 +19220,7 @@ export interface components {
       family?: string | null
     })
     'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number
+      readonly id: number
       code: string
       value: string
       englishName: string
@@ -19185,7 +19238,7 @@ export interface components {
       }
     }
     'WrittenSourceCentury.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -19311,7 +19364,7 @@ export interface components {
       readonly id?: unknown
     }
     'ZooBone.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -19348,7 +19401,7 @@ export interface components {
       }
     }
     'ZooBone.csv-zoo_bone.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-zoo_bone.acl.read']
       /**
        * Format: iri-reference
@@ -19393,7 +19446,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       /**
        * Format: iri-reference
@@ -19431,7 +19484,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_bone.acl.read']
       /**
        * Format: iri-reference
@@ -19556,7 +19609,7 @@ export interface components {
       }
     }
     'ZooTooth.csv-zoo_tooth.acl.read': {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-zoo_tooth.acl.read']
       /**
        * Format: iri-reference
@@ -19602,7 +19655,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
-      readonly id?: number | string
+      readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_tooth.acl.read']
       /**
        * Format: iri-reference

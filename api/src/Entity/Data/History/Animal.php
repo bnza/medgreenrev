@@ -166,6 +166,7 @@ class Animal
         'history_animal:acl:read',
         'history_animal:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: Language::class)]

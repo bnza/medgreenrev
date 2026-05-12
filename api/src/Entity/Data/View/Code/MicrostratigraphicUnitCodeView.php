@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Data\View\Code;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\MicrostratigraphicUnit;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,10 @@ class MicrostratigraphicUnitCodeView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: MicrostratigraphicUnit::class, inversedBy: "codeView")]
+    #[ORM\OneToOne(targetEntity: MicrostratigraphicUnit::class, inversedBy: 'codeView')]
     #[ORM\JoinColumn(name: 'mu_id', referencedColumnName: 'id')]
     private MicrostratigraphicUnit $microstratigraphicUnit;
 

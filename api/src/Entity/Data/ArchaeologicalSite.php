@@ -10,6 +10,7 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -176,7 +177,9 @@ class ArchaeologicalSite
         'sample:acl:read',
         'sus:acl:read',
         'sus:export',
+        'microstratigraphic_unit:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\Column(type: 'string', unique: true)]

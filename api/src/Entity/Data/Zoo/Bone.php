@@ -192,6 +192,7 @@ class Bone
     #[Groups([
         'zoo_bone:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'zooBones')]

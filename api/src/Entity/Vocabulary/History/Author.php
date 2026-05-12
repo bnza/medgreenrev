@@ -79,6 +79,7 @@ class Author
         'voc_history_author:read',
         'voc_history_author:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     public int $id;
 
     #[ORM\Column(type: 'string')]

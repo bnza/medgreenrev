@@ -6,6 +6,7 @@ use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisJoin;
@@ -71,6 +72,7 @@ class AnalysisZooTooth extends BaseAnalysisJoin
         'zoo_tooth_analysis:acl:read',
         'zoo_tooth_analysis:export',
     ])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Tooth::class, inversedBy: 'analyses')]

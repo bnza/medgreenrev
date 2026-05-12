@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\View;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Vocabulary\Botany\Taxonomy;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -15,6 +16,7 @@ class BotanyTaxonomyView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'smallint')]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\OneToOne(targetEntity: Taxonomy::class, inversedBy: 'flat')]

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -28,6 +29,7 @@ class SiteCulturalContext
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: ArchaeologicalSite::class, inversedBy: 'culturalContexts')]

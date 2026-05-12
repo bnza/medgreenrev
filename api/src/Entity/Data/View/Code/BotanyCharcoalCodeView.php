@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Data\View\Code;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Botany\Charcoal;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,10 @@ class BotanyCharcoalCodeView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Charcoal::class, inversedBy: "codeView")]
+    #[ORM\OneToOne(targetEntity: Charcoal::class, inversedBy: 'codeView')]
     #[ORM\JoinColumn(name: 'botany_charcoal_id', referencedColumnName: 'id')]
     private Charcoal $charcoal;
 

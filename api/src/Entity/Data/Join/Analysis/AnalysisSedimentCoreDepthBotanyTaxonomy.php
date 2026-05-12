@@ -63,6 +63,11 @@ use Symfony\Component\Serializer\Attribute\Groups;
 class AnalysisSedimentCoreDepthBotanyTaxonomy
 {
     #[ORM\Id, ORM\GeneratedValue(strategy: 'SEQUENCE'), ORM\Column(type: 'bigint', unique: true)]
+    #[ApiProperty(required: true)]
+    #[Groups([
+        'sediment_core_depth_botany_analysis:acl:read',
+        'sediment_core_depth_botany_analysis:export',
+    ])]
     private int $id;
 
     #[ORM\OneToOne(targetEntity: AnalysisSedimentCoreDepthBotanyTaxonomyView::class, mappedBy: 'analysisSedimentCoreDepth', fetch: 'LAZY')]

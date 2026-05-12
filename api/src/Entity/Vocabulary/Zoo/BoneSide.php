@@ -41,6 +41,7 @@ class BoneSide
 {
     #[ORM\Id,
         ORM\Column(type: 'smallint')]
+    #[ApiProperty(required: true)]
     public int $id;
 
     #[ORM\Column(type: 'string')]

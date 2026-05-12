@@ -170,6 +170,7 @@ class Plant
         'history_plant:acl:read',
         'history_plant:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: Language::class)]

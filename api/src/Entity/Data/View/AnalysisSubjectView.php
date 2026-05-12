@@ -4,6 +4,7 @@ namespace App\Entity\Data\View;
 
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -54,6 +55,7 @@ class AnalysisSubjectView
     #[ORM\Id,
         ORM\Column(type: 'bigint', unique: true)]
     #[Groups(['analysis_subject:read'])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: Analysis::class)]

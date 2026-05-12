@@ -219,6 +219,7 @@ class Pottery
         'pottery:acl:read',
         'pottery:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'potteries')]

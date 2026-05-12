@@ -111,6 +111,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         'user:me:read',
         'user:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private Uuid $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
@@ -183,6 +184,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        // Pre-assign the identifier with a UUID v7 to match the version produced by
+        // Symfony's UuidGenerator (see config/packages/uid.yaml -> default_uuid_version: 7,
+        // time_based_uuid_version: 7), which is the generator wired via
+        // #[ORM\CustomIdGenerator(class: UuidGenerator::class)] on $id.
+        //
+        // Rationale:
+        //  - UUID v7 is time-ordered and K-sortable, which is friendlier to B-Tree indexes
+        //    (sequential inserts) than v4. Keeping construction in sync with the configured
+        //    generator preserves that property across every code path that creates a User
+        //    (controllers, fixtures, tests) without relying on Doctrine's pre-persist hook.
+        //  - Doctrine's UuidGenerator respects pre-assigned identifiers: if $this->id is
+        //    already set when the entity reaches UnitOfWork::executeInserts(), the generator
+        //    keeps the existing value instead of overwriting it.
+        //  - On hydration from the database Doctrine uses newInstanceWithoutConstructor(),
+        //    so this constructor is NOT executed for entities loaded from PostgreSQL: the
+        //    persisted UUID is preserved as-is.
+        //  - With $id initialized here, getId(): Uuid is provably non-null for any User
+        //    instance, which keeps the OpenAPI schema (and the generated TS types) free
+        //    of the spurious string|null on the id property.
+        $this->id = Uuid::v7();
         $this->sitePrivileges = new ArrayCollection();
     }
 
@@ -198,7 +219,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getId(): ?Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }

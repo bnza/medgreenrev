@@ -4,6 +4,7 @@ namespace App\Entity\Data\View\List;
 
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -37,6 +38,7 @@ class HistoryPlantView
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'IDENTITY'),
         ORM\Column(type: 'string', unique: true)]
+    #[ApiProperty(required: true)]
     public readonly string $id;
 
     #[ORM\Column(type: 'string')]

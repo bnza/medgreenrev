@@ -6,6 +6,7 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\ArchaeologicalSite;
@@ -67,6 +68,7 @@ class AnalysisSiteAnthropology extends BaseAnalysisJoin
         'analysis_join:acl:read',
         'site_anthropology:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: ArchaeologicalSite::class, inversedBy: 'analysesAnthropology')]

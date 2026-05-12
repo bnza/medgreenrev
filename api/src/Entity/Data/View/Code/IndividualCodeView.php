@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Data\View\Code;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Individual;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,10 @@ class IndividualCodeView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Individual::class, inversedBy: "codeView")]
+    #[ORM\OneToOne(targetEntity: Individual::class, inversedBy: 'codeView')]
     #[ORM\JoinColumn(name: 'individual_id', referencedColumnName: 'id')]
     private Individual $individual;
 

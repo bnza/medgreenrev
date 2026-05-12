@@ -71,6 +71,7 @@ class AnalysisContextBotanyTaxonomy
         'context_botany_analysis:acl:read',
         'context_botany_analysis:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\OneToOne(targetEntity: AnalysisContextBotanyTaxonomyView::class, mappedBy: 'analysisContext', fetch: 'LAZY')]

@@ -96,6 +96,7 @@ class Taxonomy
         'voc_zoo_taxonomy:read',
         'voc_zoo_taxonomy:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\Column(type: 'string')]

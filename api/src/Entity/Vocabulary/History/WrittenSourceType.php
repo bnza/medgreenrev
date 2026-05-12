@@ -42,6 +42,7 @@ class WrittenSourceType
     #[ORM\Id,
         ORM\Column(type: 'smallint'),
         ORM\GeneratedValue(strategy: 'SEQUENCE'),]
+    #[ApiProperty(required: true)]
     public int $id;
 
     #[ORM\Column(type: 'string')]

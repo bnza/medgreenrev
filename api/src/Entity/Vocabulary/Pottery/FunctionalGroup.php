@@ -35,6 +35,7 @@ class FunctionalGroup
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'smallint')]
+    #[ApiProperty(required: true)]
     public int $id;
 
     #[ORM\Column(type: 'string', unique: true)]

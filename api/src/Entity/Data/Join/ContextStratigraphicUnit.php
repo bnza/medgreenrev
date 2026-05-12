@@ -6,6 +6,7 @@ use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -136,6 +137,7 @@ class ContextStratigraphicUnit
         'context_stratigraphic_unit:contexts:acl:read',
         'context_stratigraphic_unit:stratigraphic_units:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'stratigraphicUnitContexts')]

@@ -124,6 +124,7 @@ class WrittenSourceCitedWork
         'history_written_sources_cited_works:acl:read',
         'history_written_sources_cited_works:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: WrittenSource::class, inversedBy: 'citedWorks')]

@@ -197,6 +197,7 @@ class Charcoal
     #[Groups([
         'botany_charcoal:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'botanyCharcoals')]

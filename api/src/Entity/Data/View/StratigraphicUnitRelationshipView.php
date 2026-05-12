@@ -54,6 +54,10 @@ class StratigraphicUnitRelationshipView
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'IDENTITY'),
         ORM\Column(type: 'bigint', unique: true)]
+    #[Groups([
+        'stratigraphic_unit_relationship:read',
+    ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class)]

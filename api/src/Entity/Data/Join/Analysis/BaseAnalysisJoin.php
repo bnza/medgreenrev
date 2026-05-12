@@ -85,12 +85,21 @@ abstract class BaseAnalysisJoin
 
     // You must define #[ORM\Id],  #[ORM\GeneratedValue] and #[ORM\Column] in the subclass to share the same generator
     // For serialization contexts @see MediaObjectJoinApiResource::class
-    #[Groups(['analysis_join:acl:read'])]
+    #[Groups([
+        'analysis_join:acl:read',
+        'abs_dating_analysis_join:acl:read',
+    ])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Analysis::class)]
     #[ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['analysis_join:acl:read', 'analysis_join:create', 'analysis_join:export',         'context_botany_analysis:acl:read'])]
+    #[Groups([
+        'analysis_join:acl:read',
+        'analysis_join:create',
+        'analysis_join:export',
+        'context_botany_analysis:acl:read',
+    ])]
     #[Assert\NotBlank(groups: ['validation:analysis_join:create'])]
     #[AppAssert\PermittedAnalysisType(groups: ['validation:analysis_join:create'])]
     #[ApiProperty(required: true)]

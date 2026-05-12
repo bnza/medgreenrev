@@ -179,6 +179,7 @@ class SamplingStratigraphicUnit
         'sampling_su:acl:read',
         'sampling_su:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: SamplingSite::class)]

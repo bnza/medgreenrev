@@ -205,7 +205,9 @@ class StratigraphicUnit
         'sus:acl:read',
         'sus:export',
         'context_stratigraphic_unit:acl:read',
+        'microstratigraphic_unit:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: ArchaeologicalSite::class)]

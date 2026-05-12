@@ -7,6 +7,7 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\Context;
@@ -76,6 +77,7 @@ class AnalysisContextBotany extends BaseAnalysisJoin
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
     #[SequenceGenerator(sequenceName: 'analysis_join_id_seq')]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Context::class, inversedBy: 'botanyAnalyses')]

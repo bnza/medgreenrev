@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\View;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Botany\Seed;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -12,8 +13,8 @@ class BotanySeedView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
-
     #[ORM\OneToOne(targetEntity: Seed::class, inversedBy: 'flat')]
     #[ORM\JoinColumn(name: 'id', referencedColumnName: 'id')]
     private Seed $seed;

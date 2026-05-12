@@ -182,6 +182,7 @@ class Individual
         'individual:acl:read',
         'individual:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'individuals')]

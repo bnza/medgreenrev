@@ -41,6 +41,7 @@ class AreaView
         ORM\GeneratedValue(strategy: 'IDENTITY'),
         ORM\Column(type: 'string', unique: true)]
     #[ApiProperty(required: true)]
+    #[ApiProperty(required: true)]
     public readonly string $id;
 
     #[ORM\ManyToOne(targetEntity: ArchaeologicalSite::class)]

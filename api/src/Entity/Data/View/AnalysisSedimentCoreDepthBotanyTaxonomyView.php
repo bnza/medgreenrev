@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\View;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotanyTaxonomy;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -12,6 +13,7 @@ class AnalysisSedimentCoreDepthBotanyTaxonomyView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\OneToOne(targetEntity: AnalysisSedimentCoreDepthBotanyTaxonomy::class, inversedBy: 'flat')]

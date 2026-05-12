@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Data\View\Code;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Context;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,6 +14,7 @@ class ContextCodeView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\OneToOne(targetEntity: Context::class, inversedBy: 'codeView')]

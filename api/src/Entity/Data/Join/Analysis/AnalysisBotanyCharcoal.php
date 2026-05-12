@@ -5,6 +5,7 @@ namespace App\Entity\Data\Join\Analysis;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Analysis;
 use App\Entity\Data\Botany\Charcoal;
 use App\Entity\Data\Join\Analysis\AbsDating\AbsDatingAnalysisBotanyCharcoal;
@@ -61,6 +62,7 @@ class AnalysisBotanyCharcoal extends BaseAnalysisJoin
         'botany_charcoal_analysis:export',
         'botany_charcoal_analysis:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Charcoal::class, inversedBy: 'analyses')]

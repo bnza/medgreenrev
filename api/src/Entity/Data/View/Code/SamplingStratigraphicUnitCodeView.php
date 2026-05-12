@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Data\View\Code;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,10 @@ class SamplingStratigraphicUnitCodeView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: SamplingStratigraphicUnit::class, inversedBy: "codeView")]
+    #[ORM\OneToOne(targetEntity: SamplingStratigraphicUnit::class, inversedBy: 'codeView')]
     #[ORM\JoinColumn(name: 'sampling_su_id', referencedColumnName: 'id')]
     private SamplingStratigraphicUnit $samplingStratigraphicUnit;
 

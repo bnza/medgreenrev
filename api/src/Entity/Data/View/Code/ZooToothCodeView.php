@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Data\View\Code;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\Zoo\Tooth;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,9 +14,10 @@ class ZooToothCodeView
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(required: true)]
     private int $id;
 
-    #[ORM\OneToOne(targetEntity: Tooth::class, inversedBy: "codeView")]
+    #[ORM\OneToOne(targetEntity: Tooth::class, inversedBy: 'codeView')]
     #[ORM\JoinColumn(name: 'zoo_tooth_id', referencedColumnName: 'id')]
     private Tooth $tooth;
 

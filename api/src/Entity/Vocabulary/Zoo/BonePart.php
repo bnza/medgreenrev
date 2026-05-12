@@ -43,6 +43,7 @@ class BonePart
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'smallint')]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\Column(type: 'string')]

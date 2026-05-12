@@ -21,6 +21,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Data\Join\MediaObject\MediaObjectPaleoclimateSample;
+use App\Entity\Data\View\Code\PaleoclimateSampleCodeView;
 use App\Metadata\Attribute\SubResourceFilters\ApiMediaObjectSubresourceFilters;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
@@ -35,7 +36,6 @@ use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Entity\Data\View\Code\PaleoclimateSampleCodeView;
 
 #[Entity]
 #[Table(name: 'paleoclimate_sample')]
@@ -175,7 +175,6 @@ use App\Entity\Data\View\Code\PaleoclimateSampleCodeView;
 #[ApiMediaObjectSubresourceFilters('mediaObjects.mediaObject')]
 class PaleoclimateSample
 {
-
     #[ORM\OneToOne(
         targetEntity: PaleoclimateSampleCodeView::class,
         mappedBy: 'paleoclimateSample',
@@ -189,6 +188,7 @@ class PaleoclimateSample
         'paleoclimate_sample:acl:read',
         'paleoclimate_sample:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: PaleoclimateSamplingSite::class, inversedBy: 'samples')]

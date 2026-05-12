@@ -7,6 +7,7 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
@@ -100,6 +101,7 @@ class AnalysisSampleMicrostratigraphy extends BaseAnalysisJoin
         'sample_microstratigraphy_analysis:acl:read',
         'sample_microstratigraphy_analysis:export',
     ])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Sample::class, inversedBy: 'analysesMicrostratigraphicUnits')]

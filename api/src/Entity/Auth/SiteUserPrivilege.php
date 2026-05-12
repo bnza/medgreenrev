@@ -6,6 +6,7 @@ namespace App\Entity\Auth;
 
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -114,6 +115,7 @@ class SiteUserPrivilege
     #[Groups([
         'site_user_privilege:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private Uuid $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'sitePrivileges')]

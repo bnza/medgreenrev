@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join\MediaObject;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\SamplingStratigraphicUnit;
 use App\Metadata\Attribute\ApiMediaObjectJoinResource;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,6 +24,7 @@ class MediaObjectSamplingStratigraphicUnit extends BaseMediaObjectJoin
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
     #[SequenceGenerator(sequenceName: 'media_object_join_id_seq')]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: SamplingStratigraphicUnit::class, inversedBy: 'mediaObjects')]

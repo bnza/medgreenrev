@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join\MediaObject;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Entity\Data\MediaObject;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -13,6 +14,7 @@ abstract class BaseMediaObjectJoin
     // You must define #[ORM\Id],  #[ORM\GeneratedValue] and #[ORM\Column] in the subclass to share the same generator
     // For serialization contexts @see MediaObjectJoinApiResource::class
     #[Groups(['media_object_join:acl:read', 'media_object_join:create'])]
+    #[ApiProperty(required: true)]
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: MediaObject::class)]

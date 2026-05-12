@@ -245,6 +245,7 @@ class SedimentCoreDepth
         'sediment_core_depth:stratigraphic_units:acl:read',
         'sediment_core_depth:sediment_cores:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: SedimentCore::class, inversedBy: 'sedimentCoreDepths')]

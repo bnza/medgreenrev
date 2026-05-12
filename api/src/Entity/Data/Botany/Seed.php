@@ -203,6 +203,7 @@ class Seed
     #[Groups([
         'botany_seed:acl:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'botanySeeds')]

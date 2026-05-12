@@ -143,6 +143,7 @@ class PaleoclimateSamplingSite
         'paleoclimate_sampling_sites:acl:read',
         'paleoclimate_sampling_sites:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\Column(type: 'string', unique: true)]

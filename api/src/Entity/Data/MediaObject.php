@@ -157,6 +157,7 @@ class MediaObject
         'media_object:acl:read',
         'media_object_join:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: Type::class)]

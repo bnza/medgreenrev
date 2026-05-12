@@ -176,6 +176,7 @@ class Location
         'voc_history_location:acl:read',
         'feature_collection:json:read',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\Column(type: 'string')]

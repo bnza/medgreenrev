@@ -121,6 +121,7 @@ class WrittenSource
         'history_written_source:acl:read',
         'history_written_source:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     //    #[ORM\ManyToOne(targetEntity: Language::class)]

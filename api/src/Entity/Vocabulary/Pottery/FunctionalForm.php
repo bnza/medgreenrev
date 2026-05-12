@@ -42,6 +42,10 @@ class FunctionalForm
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'smallint')]
+    #[Groups([
+        'vocabulary:pottery:functional_form:read',
+    ])]
+    #[ApiProperty(required: true)]
     public int $id;
 
     #[ORM\Column(type: 'string', unique: true)]

@@ -39,6 +39,7 @@ class Relation
             options: [
                 'fixed' => true,
             ])]
+    #[ApiProperty(required: true)]
     private string $id;
 
     #[ORM\Column(type: 'string', unique: true)]

@@ -144,6 +144,7 @@ class MicrostratigraphicUnit
         mappedBy: 'microstratigraphicUnit',
     )]
     private ?MicrostratigraphicUnitCodeView $codeView = null;
+
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
@@ -151,6 +152,7 @@ class MicrostratigraphicUnit
         'microstratigraphic_unit:acl:read',
         'microstratigraphic_unit:export',
     ])]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: StratigraphicUnit::class, inversedBy: 'microstratigraphicUnits')]

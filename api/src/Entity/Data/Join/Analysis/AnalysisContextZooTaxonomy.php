@@ -2,6 +2,7 @@
 
 namespace App\Entity\Data\Join\Analysis;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -26,6 +27,7 @@ class AnalysisContextZooTaxonomy
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
         ORM\Column(type: 'bigint', unique: true)]
+    #[ApiProperty(required: true)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: AnalysisContextZoo::class, inversedBy: 'taxonomies')]
