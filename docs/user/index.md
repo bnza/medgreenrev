@@ -11,6 +11,8 @@ Re-thinking the “Green Revolution” in the Medieval Western Mediterranean (6t
 - Data Entry
     - Analyses
       - [Analyses](analyses.md)
+    - History
+      - [History](history.md)
     - Data
       - [Microstratigraphic Units](mu.md)
       - [Pottery](pottery.md)
