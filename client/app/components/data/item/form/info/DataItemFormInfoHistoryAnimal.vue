@@ -35,7 +35,12 @@ const vocabularyZooTaxonomy = useVocabularyStore(
     </v-row>
     <v-row>
       <v-col cols="8" xs="12" class="px-2">
-        <v-text-field :model-value="item.animal" label="animal" />
+        <v-text-field
+          :model-value="item.animal"
+          label="animal"
+          hint="The term as it appears in the source"
+          persistent-hint
+        />
       </v-col>
     </v-row>
     <v-row>

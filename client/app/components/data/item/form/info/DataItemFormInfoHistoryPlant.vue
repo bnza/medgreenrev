@@ -35,7 +35,12 @@ const vocabularyBotanyTaxonomy = useVocabularyStore(
     </v-row>
     <v-row>
       <v-col cols="6" xs="12" class="px-2">
-        <v-text-field :model-value="item.plant" label="plant" />
+        <v-text-field
+          :model-value="item.plant"
+          label="plant"
+          hint="The term as it appears in the source"
+          persistent-hint
+        />
       </v-col>
       <v-col cols="1" xs="12" class="px-2">
         <v-checkbox :model-value="item.cf" label="cf" />

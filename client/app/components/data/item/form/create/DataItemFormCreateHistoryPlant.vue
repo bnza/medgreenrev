@@ -80,6 +80,8 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
         v-model="plantModel"
         path="/api/list/history/plants"
         label="plant"
+        hint="The term as it appears in the source"
+        persistent-hint
         :error-messages="r$.$errors?.plant"
       />
     </v-col>
