@@ -18,6 +18,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Table(
     name: 'analysis_sample_botany_taxonomies',
 )]
+#[ORM\AssociationOverrides([
+    new ORM\AssociationOverride(
+        name: 'analysis',
+        joinColumns: [new ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')],
+    ),
+])]
 #[ApiAnalysisBotanyTaxonomyResource(
     taxonomyResourceName: 'sample_botany_taxonomies',
     readGroup: 'sample_botany_analysis:acl:read',

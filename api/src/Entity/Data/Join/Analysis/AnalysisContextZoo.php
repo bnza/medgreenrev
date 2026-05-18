@@ -86,7 +86,7 @@ class AnalysisContextZoo extends BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Context::class, inversedBy: 'zooAnalyses')]
-    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'analysis_join:acl:read',
         'analysis_join:create',

@@ -14,6 +14,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Table(
     name: 'analysis_context_zoo_taxonomies',
 )]
+#[ORM\AssociationOverrides([
+    new ORM\AssociationOverride(
+        name: 'analysis',
+        joinColumns: [new ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')],
+    ),
+])]
 #[ApiResource(
     operations: [
         new Get(),

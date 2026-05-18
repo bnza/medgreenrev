@@ -11,6 +11,7 @@ class ApiResourceAnalysisTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -79,5 +80,44 @@ class ApiResourceAnalysisTest extends ApiTestCase
         $collection = $collectionResponse->toArray();
         $this->arrayHasKey('_acl', $collection);
         $this->assertFalse($collection['_acl']['canCreate']);
+    }
+
+    public function testDeleteAnalysisIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: [
+                '/api/data/analyses/botany/charcoals',
+                '/api/data/analyses/botany/seeds',
+                '/api/data/analyses/context/botanies',
+                '/api/data/analyses/context/zoos',
+                '/api/data/analyses/individuals',
+                '/api/data/analyses/potteries',
+                '/api/data/analyses/samples',
+                '/api/data/analyses/sample/botanies',
+                '/api/data/analyses/sample/microstratigraphies',
+                '/api/data/analyses/sediment_core/depths',
+                '/api/data/analyses/sediment_core/depth_botanies',
+                '/api/data/analyses/site/anthropologies',
+                '/api/data/analyses/zoo/bones',
+                '/api/data/analyses/zoo/tooths',
+            ],
+            expectedShortClassNames: [
+                'AnalysisBotanyCharcoal',
+                'AnalysisBotanySeed',
+                'AnalysisContextBotany',
+                'AnalysisContextZoo',
+                'AnalysisIndividual',
+                'AnalysisPottery',
+                'AnalysisSample',
+                'AnalysisSampleBotany',
+                'AnalysisSampleMicrostratigraphy',
+                'AnalysisSedimentCoreDepth',
+                'AnalysisSedimentCoreDepthBotany',
+                'AnalysisSiteAnthropology',
+                'AnalysisZooBone',
+                'AnalysisZooTooth',
+            ],
+            targetSide: 'analysis'
+        );
     }
 }

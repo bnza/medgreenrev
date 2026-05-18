@@ -23,6 +23,7 @@ use App\Entity\Data\Join\ContextStratigraphicUnit;
 use App\Entity\Data\View\Code\ContextCodeView;
 use App\Metadata\Attribute\SubResourceFilters\ApiStratigraphicUnitSubresourceFilters;
 use App\State\ContextPostProcessor;
+use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -33,11 +34,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[Entity]
+#[Entity(repositoryClass: \App\Repository\ContextRepository::class)]
 #[Table(
     name: 'contexts',
 )]
-#[ORM\UniqueConstraint(columns: ['site_id', 'name'])]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the context because it is referenced by: {{ classes }}.', groups: ['validation:context:delete'])]
 #[ApiResource(
     shortName: 'Context',
     operations: [
@@ -68,6 +69,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Delete(
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:context:delete']],
+            validate: true,
         ),
     ],
     routePrefix: 'data',

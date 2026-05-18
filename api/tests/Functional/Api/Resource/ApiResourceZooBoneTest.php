@@ -11,6 +11,7 @@ class ApiResourceZooBoneTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -98,5 +99,13 @@ class ApiResourceZooBoneTest extends ApiTestCase
                 sprintf('endsPreserved IRI must end with /3, got %s', $iri)
             );
         }
+    }
+
+    public function testDeleteZooBoneIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: ['/api/data/analyses/zoo/bones'],
+            expectedShortClassNames: ['AnalysisZooBone'],
+        );
     }
 }

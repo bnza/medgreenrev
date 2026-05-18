@@ -43,10 +43,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\PotteryRepository::class)]
 #[ORM\Table(
     name: 'potteries',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the pottery because it is referenced by: {{ classes }}.', groups: ['validation:pottery:delete'])]
 #[ApiResource(
     operations: [
         new Get(
@@ -97,6 +98,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/potteries/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:pottery:delete']],
+            validate: true,
         ),
         new Patch(
             uriTemplate: '/data/potteries/{id}',

@@ -11,6 +11,7 @@ class ApiResourcePotteryTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -216,5 +217,13 @@ class ApiResourcePotteryTest extends ApiTestCase
         $data = $response->toArray(false);
         $this->assertArrayHasKey('violations', $data);
         $this->assertStringContainsString('unique', $data['violations'][0]['message']);
+    }
+
+    public function testDeletePotteryIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: ['/api/data/analyses/potteries'],
+            expectedShortClassNames: ['AnalysisPottery'],
+        );
     }
 }

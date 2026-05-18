@@ -12,6 +12,7 @@ class ApiResourceContextTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -212,6 +213,20 @@ class ApiResourceContextTest extends ApiTestCase
         // Check that name validation failed
         $nameViolation = array_filter($data['violations'], fn ($violation) => 'name' === $violation['propertyPath']);
         $this->assertNotEmpty($nameViolation);
+    }
+
+    public function testDeleteContextIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: [
+                '/api/data/analyses/contexts/botany',
+                '/api/data/analyses/contexts/zoo',
+            ],
+            expectedShortClassNames: [
+                'AnalysisContextBotany',
+                'AnalysisContextZoo',
+            ],
+        );
     }
 
     private function createContext(Client $client, string $username = 'user_admin', array $payload = [], bool $test = true): array

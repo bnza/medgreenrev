@@ -36,6 +36,7 @@ use App\Entity\Data\Join\Analysis\AnalysisZooTooth;
 use App\Entity\Data\Join\MediaObject\MediaObjectAnalysis;
 use App\Entity\Data\View\Code\AnalysisCodeView;
 use App\Entity\Vocabulary\Analysis\Type;
+use App\Repository\AnalysisRepository;
 use App\State\AnalysisPostProcessor;
 use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -45,12 +46,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: AnalysisRepository::class)]
 #[ORM\Table(
     name: 'analyses',
 )]
 #[ORM\UniqueConstraint(fields: ['type', 'year', 'identifier'])]
 #[ORM\HasLifecycleCallbacks]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the analysis because it is referenced by: {{ classes }}.', groups: ['validation:analysis:delete'])]
 #[ApiResource(
     operations: [
         new Get(
@@ -68,6 +70,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Delete(
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:analysis:delete']],
+            validate: true,
         ),
         new Patch(
             security: 'is_granted("update", object)',

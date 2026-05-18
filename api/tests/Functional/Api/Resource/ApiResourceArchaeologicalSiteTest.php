@@ -763,6 +763,18 @@ class ApiResourceArchaeologicalSiteTest extends ApiTestCase
             }
         }
 
+        // Collect anthropology analysis joins referencing sites via subject
+        $anthroResponse = $this->apiRequest($client, 'GET', '/api/data/analysis_site_anthropologies', [
+            'token' => $adminToken,
+        ]);
+        if (200 === $anthroResponse->getStatusCode()) {
+            $joins = $anthroResponse->toArray();
+            foreach ($joins['member'] ?? [] as $join) {
+                $siteIri = $join['subject']['@id'] ?? null;
+                $addRef($referencedBy, $siteIri, 'AnalysisSiteAnthropology');
+            }
+        }
+
         // Pick a site that is referenced by at least one entity type
         $targetSiteIri = null;
         $expectedClasses = [];

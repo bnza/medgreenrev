@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class ApiResourceSedimentCoreDepthFromSamplingSiteTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     protected function setUp(): void
     {
@@ -97,5 +98,19 @@ class ApiResourceSedimentCoreDepthFromSamplingSiteTest extends ApiTestCase
             $data = $response->toArray();
             $this->assertSame(0, $data['totalItems']);
         }
+    }
+
+    public function testDeleteSedimentCoreDepthIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: [
+                '/api/data/analyses/sediment_core_depths',
+                '/api/data/analyses/sediment_core_depths/botany',
+            ],
+            expectedShortClassNames: [
+                'AnalysisSedimentCoreDepth',
+                'AnalysisSedimentCoreDepthBotany',
+            ],
+        );
     }
 }

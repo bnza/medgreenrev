@@ -33,6 +33,7 @@ use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
 use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\State\SiteChildCollectionProvider;
+use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -40,10 +41,11 @@ use Doctrine\ORM\Mapping\SequenceGenerator;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\Botany\CharcoalRepository::class)]
 #[ORM\Table(
     name: 'botany_charcoals',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the charcoal because it is referenced by: {{ classes }}.', groups: ['validation:botany_charcoal:delete'])]
 #[ApiResource(
     shortName: 'BotanyCharcoal',
     operations: [
@@ -87,6 +89,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/botany/charcoals/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:botany_charcoal:delete']],
+            validate: true,
         ),
         new GetAggregatedFeatureCollection(
             uriTemplate: '/features/botany/charcoals.{_format}',

@@ -12,6 +12,7 @@ class ApiResourceSampleTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -218,6 +219,22 @@ class ApiResourceSampleTest extends ApiTestCase
         // Check that number validation failed
         $numberViolation = array_filter($data['violations'], fn ($violation) => 'number' === $violation['propertyPath']);
         $this->assertNotEmpty($numberViolation);
+    }
+
+    public function testDeleteSampleIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: [
+                '/api/data/analyses/samples',
+                '/api/data/analyses/sample/botanies',
+                '/api/data/analyses/samples/microstratigraphy',
+            ],
+            expectedShortClassNames: [
+                'AnalysisSample',
+                'AnalysisSampleBotany',
+                'AnalysisSampleMicrostratigraphy',
+            ],
+        );
     }
 
     protected function getFixtureSampleTypes(array $queryParams = []): array

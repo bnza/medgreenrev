@@ -39,10 +39,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\Join\SedimentCoreDepthRepository::class)]
 #[ORM\Table(
     name: 'sediment_core_depths',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the sediment core depth because it is referenced by: {{ classes }}.', groups: ['validation:sediment_core_depth:delete'])]
 #[ORM\UniqueConstraint(columns: ['sediment_core_id', 'depth_min'])]
 #[ApiResource(
     operations: [
@@ -122,6 +123,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/sediment_core_depths/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:sediment_core_depth:delete']],
+            validate: true,
         ),
 
         // Aggregated WFS Feature Collection (grouped by parent site)

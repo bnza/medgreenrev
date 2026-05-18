@@ -72,7 +72,7 @@ class AnalysisSiteAnthropology extends BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: ArchaeologicalSite::class, inversedBy: 'analysesAnthropology')]
-    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'site_anthropology:acl:read',
         'analysis_join:acl:read',

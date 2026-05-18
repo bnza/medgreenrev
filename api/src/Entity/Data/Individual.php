@@ -37,10 +37,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\IndividualRepository::class)]
 #[ORM\Table(
     name: 'individuals',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the individual because it is referenced by: {{ classes }}.', groups: ['validation:individual:delete'])]
 #[ApiResource(
     operations: [
         new Get(
@@ -91,6 +92,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/individuals/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:individual:delete']],
+            validate: true,
         ),
         new Patch(
             uriTemplate: '/data/individuals/{id}',

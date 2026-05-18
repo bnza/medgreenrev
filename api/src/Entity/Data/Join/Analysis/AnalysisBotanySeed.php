@@ -66,7 +66,7 @@ class AnalysisBotanySeed extends BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Seed::class, inversedBy: 'analyses')]
-    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'botany_seed_analysis:acl:read',
         'botany_seed_analysis:export',

@@ -70,7 +70,7 @@ class AnalysisIndividual extends BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: 'analyses')]
-    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'analysis_join:acl:read',
         'analysis_individual:export',

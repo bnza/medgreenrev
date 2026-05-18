@@ -11,6 +11,7 @@ class ApiResourceBotanyCharcoalTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -94,5 +95,13 @@ class ApiResourceBotanyCharcoalTest extends ApiTestCase
         $siteTotal = $siteData['totalItems'] ?? count($siteData['member']);
 
         $this->assertLessThanOrEqual($allTotal, $siteTotal, 'Site-scoped charcoals should be a subset of all charcoals');
+    }
+
+    public function testDeleteBotanyCharcoalIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: ['/api/data/analyses/botany/charcoals'],
+            expectedShortClassNames: ['AnalysisBotanyCharcoal'],
+        );
     }
 }

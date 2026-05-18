@@ -42,10 +42,11 @@ use Doctrine\ORM\Mapping\SequenceGenerator;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\Zoo\ToothRepository::class)]
 #[ORM\Table(
     name: 'zoo_teeth',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the zoo tooth because it is referenced by: {{ classes }}.', groups: ['validation:zoo_tooth:delete'])]
 #[ApiResource(
     shortName: 'ZooTooth',
     operations: [
@@ -89,6 +90,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/zoo/teeth/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:zoo_tooth:delete']],
+            validate: true,
         ),
         new GetAggregatedFeatureCollection(
             uriTemplate: '/features/zoo/teeth.{_format}',
@@ -212,8 +215,6 @@ class Tooth
     #[ORM\OneToMany(
         targetEntity: AnalysisZooTooth::class,
         mappedBy: 'subject',
-        cascade: ['persist', 'remove'],
-        orphanRemoval: true,
     )]
     private Collection $analyses;
 

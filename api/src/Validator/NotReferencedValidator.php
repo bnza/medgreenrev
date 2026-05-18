@@ -20,7 +20,11 @@ class NotReferencedValidator extends ConstraintValidator
             return;
         }
 
-        if (!\is_object($value) || !$value instanceof $constraint->class) {
+        if (!\is_object($value)) {
+            return;
+        }
+
+        if (!$value instanceof $constraint->class) {
             // Not the target entity instance; ignore.
             return;
         }

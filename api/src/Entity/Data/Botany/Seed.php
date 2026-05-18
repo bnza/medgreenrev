@@ -34,6 +34,7 @@ use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
 use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\State\SiteChildCollectionProvider;
+use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,10 +42,11 @@ use Doctrine\ORM\Mapping\SequenceGenerator;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\Botany\SeedRepository::class)]
 #[ORM\Table(
     name: 'botany_seeds',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the seed because it is referenced by: {{ classes }}.', groups: ['validation:botany_seed:delete'])]
 #[ApiResource(
     shortName: 'BotanySeed',
     operations: [
@@ -88,6 +90,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/botany/seeds/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:botany_seed:delete']],
+            validate: true,
         ),
         new GetAggregatedFeatureCollection(
             uriTemplate: '/features/botany/seeds.{_format}',

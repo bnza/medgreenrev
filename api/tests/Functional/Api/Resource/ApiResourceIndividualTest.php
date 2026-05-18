@@ -11,6 +11,7 @@ class ApiResourceIndividualTest extends ApiTestCase
 {
     use ApiTestRequestTrait;
     use ApiTestProviderTrait;
+    use AnalysisJoinDeleteTestTrait;
 
     private ?ParameterBagInterface $parameterBag = null;
 
@@ -168,5 +169,13 @@ class ApiResourceIndividualTest extends ApiTestCase
         $data = $response->toArray(false);
         $this->assertArrayHasKey('violations', $data);
         $this->assertStringContainsString('unique', $data['violations'][0]['message']);
+    }
+
+    public function testDeleteIndividualIsBlockedWhenReferencedByAnalysisJoin(): void
+    {
+        $this->assertDeleteIsBlockedByAnalysisJoin(
+            joinCollectionPaths: ['/api/data/analyses/individuals'],
+            expectedShortClassNames: ['AnalysisIndividual'],
+        );
     }
 }

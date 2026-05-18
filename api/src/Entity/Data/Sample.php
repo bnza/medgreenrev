@@ -38,10 +38,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[Entity]
+#[Entity(repositoryClass: \App\Repository\SampleRepository::class)]
 #[Table(
     name: 'samples',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the sample because it is referenced by: {{ classes }}.', groups: ['validation:sample:delete'])]
 #[ORM\UniqueConstraint(columns: ['site_id', 'type_id', 'year', 'number'])]
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource(
@@ -85,6 +86,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Delete(
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:sample:delete']],
+            validate: true,
         ),
     ],
     routePrefix: 'data',

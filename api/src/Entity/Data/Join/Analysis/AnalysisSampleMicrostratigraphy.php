@@ -105,7 +105,7 @@ class AnalysisSampleMicrostratigraphy extends BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Sample::class, inversedBy: 'analysesMicrostratigraphicUnits')]
-    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'sample_microstratigraphy_analysis:acl:read',
         'sample_microstratigraphy_analysis:export',

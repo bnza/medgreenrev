@@ -93,7 +93,7 @@ abstract class BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Analysis::class)]
-    #[ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'analysis_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'analysis_join:acl:read',
         'analysis_join:create',

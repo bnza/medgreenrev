@@ -36,6 +36,7 @@ use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
 use App\State\GeoserverAggregatedNumberMatchedProvider;
 use App\State\SiteChildCollectionProvider;
+use App\Validator as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -43,10 +44,11 @@ use Doctrine\ORM\Mapping\SequenceGenerator;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \App\Repository\Zoo\BoneRepository::class)]
 #[ORM\Table(
     name: 'zoo_bones',
 )]
+#[AppAssert\NotReferenced(self::class, message: 'Cannot delete the zoo bone because it is referenced by: {{ classes }}.', groups: ['validation:zoo_bone:delete'])]
 #[ApiResource(
     shortName: 'ZooBone',
     operations: [
@@ -90,6 +92,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete(
             uriTemplate: '/data/zoo/bones/{id}',
             security: 'is_granted("delete", object)',
+            validationContext: ['groups' => ['validation:zoo_bone:delete']],
+            validate: true,
         ),
         new GetAggregatedFeatureCollection(
             uriTemplate: '/features/zoo/bones.{_format}',
@@ -212,8 +216,6 @@ class Bone
     #[ORM\OneToMany(
         targetEntity: AnalysisZooBone::class,
         mappedBy: 'subject',
-        cascade: ['persist', 'remove'],
-        orphanRemoval: true,
     )]
     private Collection $analyses;
 

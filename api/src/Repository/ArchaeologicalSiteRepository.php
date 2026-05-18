@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Data\ArchaeologicalSite;
 use App\Entity\Data\Context;
+use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Sample;
 use App\Entity\Data\SedimentCore;
 use App\Entity\Data\StratigraphicUnit;
@@ -47,6 +48,10 @@ class ArchaeologicalSiteRepository extends ServiceEntityRepository
 
         if ($this->existsReference($subject, Context::class, 'site')) {
             $result[] = Context::class;
+        }
+
+        if ($this->existsReference($subject, AnalysisSiteAnthropology::class, 'subject')) {
+            $result[] = AnalysisSiteAnthropology::class;
         }
 
         return $result;

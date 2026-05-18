@@ -66,7 +66,7 @@ class AnalysisBotanyCharcoal extends BaseAnalysisJoin
     protected int $id;
 
     #[ORM\ManyToOne(targetEntity: Charcoal::class, inversedBy: 'analyses')]
-    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(name: 'subject_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
     #[Groups([
         'botany_charcoal_analysis:acl:read',
         'botany_charcoal_analysis:export',
