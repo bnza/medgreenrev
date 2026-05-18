@@ -198,6 +198,12 @@ export const staticFiltersDefinitionWrittenSource: ResourceStaticFiltersDefiniti
       },
       propertyLabel: 'century',
     },
+    'regions.region': {
+      filters: {
+        VocabularyRegion,
+      },
+      propertyLabel: 'regions',
+    },
     'citedWorks.citedWork': {
       filters: {
         VocabularyHistoryCitedWork,
@@ -237,6 +243,12 @@ export const staticFiltersDefinitionWrittenSourceCitedWork: ResourceStaticFilter
         VocabularyCentury,
       },
       propertyLabel: 'written source (century)',
+    },
+    'writtenSource.regions.region': {
+      filters: {
+        VocabularyRegion,
+      },
+      propertyLabel: 'written source (regions)',
     },
     'writtenSource.title': {
       filters: {

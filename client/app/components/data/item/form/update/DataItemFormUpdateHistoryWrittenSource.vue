@@ -91,6 +91,16 @@ const { r$ } = useScopedRegle(model, {
   </v-row>
   <v-row>
     <v-col cols="12" class="px-2">
+      <data-selection-vocabulary
+        v-model="r$.$value.regions"
+        path="/api/vocabulary/regions"
+        label="regions"
+        multiple
+      />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12" class="px-2">
       <v-textarea
         v-model="r$.$value.notes"
         label="notes"

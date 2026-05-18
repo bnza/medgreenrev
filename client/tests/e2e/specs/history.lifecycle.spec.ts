@@ -799,6 +799,97 @@ test.describe('History item lifecycle', () => {
           'Resource successfully created',
         )
       })
+      test('Written sources regions work as expected', async ({ page }) => {
+        const collectionPom = new HistoryWrittenSourceCollectionPage(page)
+        const itemPom = new HistoryWrittenSourceItemPage(page)
+        await collectionPom.open()
+        await collectionPom.table.expectData()
+
+        //CREATE AND REDIRECT TO NEW SITE PAGE
+        await collectionPom.dataCard.clickOnActionMenuButton('add new')
+        await collectionPom.dataDialogCreate.showCreatedItemCheckbox.check()
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('written source type')
+          .click({ force: true })
+        await page
+          .getByRole('listbox')
+          .getByRole('option', { name: 'agr' })
+          .first()
+          .click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('author')
+          .click({ force: true })
+        await page
+          .getByRole('listbox')
+          .getByRole('option', { name: 'Al-Buntī', includeHidden: false })
+          .first()
+          .click()
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'title', exact: true })
+          .fill('Test written source title')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'subtitle' })
+          .fill('Test subtitle')
+
+        await collectionPom.dataDialogCreate.form
+          .getByRole('textbox', { name: 'publication details' })
+          .fill('Test publication details')
+
+        await collectionPom.dataDialogCreate.form
+          .getByLabel('centuries')
+          .click({ force: true })
+        await page
+          .getByRole('listbox')
+          .getByRole('option', { name: 'XIII', includeHidden: false })
+          .first()
+          .click()
+        await page.keyboard.press('Escape')
+        await expect(page.getByRole('listbox')).not.toBeVisible()
+        await collectionPom.dataDialogCreate.form
+          .getByRole('combobox', { name: 'regions' })
+          .locator('xpath=ancestor::*[contains(@class,"v-field")][1]')
+          .click()
+        await expect(page.getByRole('listbox')).toBeVisible()
+        await page.getByRole('option', { name: 'Catalan area' }).click()
+        await page.getByRole('option', { name: 'East Andalusia' }).click()
+        await page.keyboard.press('Tab')
+        await collectionPom.dataDialogCreate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully created',
+        )
+        await expect(page.getByTestId('project-regions-selection')).toHaveText(
+          /(?=.*Catalan area)(?=.*East Andalusia)/,
+        )
+        await itemPom.dataCard.backButton.click()
+        await collectionPom.table.expectData()
+
+        //UPDATE
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Update)
+          .click()
+        await collectionPom.dataDialogUpdate.expectOldFormData()
+        await collectionPom.dataDialogUpdate.form
+          .getByRole('combobox', { name: 'regions' })
+          .locator('xpath=ancestor::*[contains(@class,"v-field")][1]')
+          .click()
+        await expect(page.getByRole('listbox')).toBeVisible()
+        await page.getByRole('option', { name: 'Catalan area' }).click() //uncheck
+        await page.getByRole('option', { name: 'La Mancha' }).click()
+        await page.keyboard.press('Escape')
+        await collectionPom.dataDialogUpdate.submitForm()
+        await collectionPom.expectAppMessageToHaveText(
+          'Resource successfully updated',
+        )
+        await collectionPom.table
+          .getItemNavigationLink(0, NavigationLinksButton.Read)
+          .click()
+        await expect(page.getByTestId('project-regions-selection')).toHaveText(
+          /(?=.*East Andalusia)(?=.*La Mancha)/,
+        )
+      })
     })
   })
 

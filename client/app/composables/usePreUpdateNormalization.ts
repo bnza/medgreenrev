@@ -41,6 +41,9 @@ const NORMALIZATION_FN_MAP: Partial<
       if (diffItem && 'centuries' in diffItem && 'centuries' in item) {
         diffItem.centuries = item.centuries
       }
+      if (diffItem && 'regions' in diffItem && 'regions' in item) {
+        diffItem.regions = item.regions
+      }
       return diffItem
     },
   historyWrittenSourceCitedWork:

@@ -126,6 +126,7 @@ export const API_RESOURCE_MAP = {
   vocZooBoneSide: '/api/vocabulary/zoo/bone-side',
   vocZooTaxonomy: '/api/vocabulary/zoo/taxonomies',
   writtenSourceCentury: '/api/data/written_source_centuries',
+  writtenSourceRegion: '/api/data/written_source_regions',
   zooBone: '/api/data/zoo/bones',
   zooTooth: '/api/data/zoo/teeth',
 } as const

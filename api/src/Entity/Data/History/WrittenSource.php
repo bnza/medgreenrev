@@ -16,6 +16,7 @@ use ApiPlatform\Metadata\Post;
 use App\Doctrine\Filter\DynamicCollectionOrderFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\WrittenSourceCentury;
+use App\Entity\Data\Join\WrittenSourceRegion;
 use App\Entity\Vocabulary\History\Author;
 use App\Entity\Vocabulary\History\WrittenSourceType;
 use App\Repository\HistoryWrittenSourceRepository;
@@ -91,6 +92,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'writtenSourceType' => 'exact',
         'centuries.century' => 'exact',
         'citedWorks.citedWork' => 'exact',
+        'regions.region' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -225,7 +227,18 @@ class WrittenSource
     )]
     private Collection $citedWorks;
 
+    /** @var Collection<WrittenSourceRegion> */
+    #[ORM\OneToMany(
+        targetEntity: WrittenSourceRegion::class,
+        mappedBy: 'writtenSource',
+        cascade: ['persist', 'remove'],
+        orphanRemoval: true,
+    )]
+    private Collection $regions;
+
     private EntityOneToManyRelationshipSynchronizer $centuriesSynchronizer;
+
+    private EntityOneToManyRelationshipSynchronizer $regionsSynchronizer;
 
     //    #[ORM\ManyToOne(targetEntity: User::class)]
     //    #[ORM\JoinColumn(name: 'created_by_id', referencedColumnName: 'id', onDelete: 'RESTRICT')]
@@ -237,6 +250,7 @@ class WrittenSource
     public function __construct()
     {
         $this->centuries = new ArrayCollection();
+        $this->regions = new ArrayCollection();
     }
 
     public function getId(): int
@@ -318,7 +332,7 @@ class WrittenSource
 
     private function getCenturiesSynchronizer(): EntityOneToManyRelationshipSynchronizer
     {
-        if (!isset($this->getCenturiesSynchronizer)) {
+        if (!isset($this->centuriesSynchronizer)) {
             $this->centuriesSynchronizer = new EntityOneToManyRelationshipSynchronizer(
                 $this->centuries,
                 WrittenSourceCentury::class,
@@ -364,6 +378,57 @@ class WrittenSource
     {
         return implode('-', $this->centuries->map(function ($century) {
             return $century->getCentury()->value;
+        })->toArray());
+    }
+
+    private function getRegionsSynchronizer(): EntityOneToManyRelationshipSynchronizer
+    {
+        if (!isset($this->regionsSynchronizer)) {
+            $this->regionsSynchronizer = new EntityOneToManyRelationshipSynchronizer(
+                $this->regions,
+                WrittenSourceRegion::class,
+                'writtenSource',
+                'region'
+            );
+        }
+
+        return $this->regionsSynchronizer;
+    }
+
+    #[Groups([
+        'history_written_source:acl:read',
+    ])]
+    public function getRegions(): Collection
+    {
+        return $this->regions->map(function ($writtenSourceRegion) {
+            return $writtenSourceRegion->getRegion();
+        });
+    }
+
+    #[Groups([
+        'history_written_source:create',
+    ])]
+    public function setRegions(array|Collection $regions): WrittenSource
+    {
+        if ($regions instanceof Collection) {
+            $this->regions = $regions;
+
+            return $this;
+        }
+
+        $this->getRegionsSynchronizer()->synchronize($regions, $this);
+
+        return $this;
+    }
+
+    #[Groups([
+        'history_written_source:export',
+        'history_written_sources_cited_works:export',
+    ])]
+    public function getRegion(): string
+    {
+        return implode('-', $this->regions->map(function ($writtenSourceRegion) {
+            return $writtenSourceRegion->getRegion()->getValue();
         })->toArray());
     }
 }

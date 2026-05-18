@@ -247,6 +247,124 @@ class ApiResourceHistoryWrittenSourceTest extends ApiTestCase
         $this->assertSame('/api/vocabulary/centuries/1000', $responseData['centuries'][2]['@id']);
     }
 
+    public function testWrittenSourceCreateWithThreeRegionsAndPatch(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_his');
+
+        $author = $this->getVocabulary('history/authors')[0];
+        $type = $this->getVocabulary('history/written_source_types')[0];
+        $regions = $this->getVocabulary('regions');
+        $this->assertGreaterThanOrEqual(4, count($regions), 'Need at least 4 regions in fixtures.');
+        $regionIris = [$regions[0]['@id'], $regions[1]['@id'], $regions[2]['@id']];
+
+        $payload = [
+            'author' => $author['@id'],
+            'writtenSourceType' => $type['@id'],
+            'title' => 'Test Written Source with Regions',
+            'publicationDetails' => 'Test Publication Details',
+            'regions' => $regionIris,
+        ];
+
+        $response = $this->apiRequest($client, 'POST', '/api/data/history/written_sources', [
+            'token' => $token,
+            'json' => $payload,
+        ]);
+
+        $this->assertSame(201, $response->getStatusCode());
+        $responseData = $response->toArray();
+        $this->assertArrayHasKey('regions', $responseData);
+        $this->assertCount(3, $responseData['regions']);
+        $returnedIris = array_map(fn ($r) => $r['@id'], $responseData['regions']);
+        foreach ($regionIris as $iri) {
+            $this->assertContains($iri, $returnedIris);
+        }
+
+        // PATCH: replace the regions set (remove one, keep one, add two new)
+        $patchedRegionIris = [$regions[0]['@id'], $regions[2]['@id'], $regions[3]['@id']];
+        $patchResponse = $this->apiRequest($client, 'PATCH', $responseData['@id'], [
+            'token' => $token,
+            'json' => [
+                'regions' => $patchedRegionIris,
+            ],
+        ]);
+
+        $this->assertSame(200, $patchResponse->getStatusCode());
+        $patchedData = $patchResponse->toArray();
+        $this->assertArrayHasKey('regions', $patchedData);
+        $this->assertCount(3, $patchedData['regions']);
+        $patchedReturnedIris = array_map(fn ($r) => $r['@id'], $patchedData['regions']);
+        foreach ($patchedRegionIris as $iri) {
+            $this->assertContains($iri, $patchedReturnedIris);
+        }
+        // The removed region must no longer be present
+        $this->assertNotContains($regions[1]['@id'], $patchedReturnedIris);
+
+        // Verify join table reflects exactly the new set
+        $id = $this->getIdFromIri($responseData['@id']);
+        $connection = self::getContainer()->get('doctrine')->getConnection();
+        $count = (int) $connection->fetchOne(
+            'SELECT COUNT(*) FROM history_written_source_regions WHERE written_source_id = :id',
+            ['id' => $id]
+        );
+        $this->assertSame(3, $count);
+    }
+
+    public function testWrittenSourceDeleteCascadesRegionAssociations(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_his');
+
+        $author = $this->getVocabulary('history/authors')[0];
+        $type = $this->getVocabulary('history/written_source_types')[0];
+        $regions = $this->getVocabulary('regions');
+        $this->assertGreaterThanOrEqual(3, count($regions), 'Need at least 3 regions in fixtures.');
+        $regionIris = [$regions[0]['@id'], $regions[1]['@id'], $regions[2]['@id']];
+
+        $payload = [
+            'author' => $author['@id'],
+            'writtenSourceType' => $type['@id'],
+            'title' => 'Test Written Source to Delete',
+            'publicationDetails' => 'Test Publication Details',
+            'regions' => $regionIris,
+        ];
+
+        $response = $this->apiRequest($client, 'POST', '/api/data/history/written_sources', [
+            'token' => $token,
+            'json' => $payload,
+        ]);
+        $this->assertSame(201, $response->getStatusCode());
+        $writtenSourceIri = $response->toArray()['@id'];
+        $id = $this->getIdFromIri($writtenSourceIri);
+
+        // Verify 3 join rows exist before delete
+        $connection = self::getContainer()->get('doctrine')->getConnection();
+        $beforeCount = (int) $connection->fetchOne(
+            'SELECT COUNT(*) FROM history_written_source_regions WHERE written_source_id = :id',
+            ['id' => $id]
+        );
+        $this->assertSame(3, $beforeCount);
+
+        // Delete the written source
+        $deleteResponse = $this->apiRequest($client, 'DELETE', "/api/data/history/written_sources/$id", [
+            'token' => $token,
+        ]);
+        $this->assertSame(204, $deleteResponse->getStatusCode());
+
+        // Verify the join rows are gone (cascade)
+        $afterCount = (int) $connection->fetchOne(
+            'SELECT COUNT(*) FROM history_written_source_regions WHERE written_source_id = :id',
+            ['id' => $id]
+        );
+        $this->assertSame(0, $afterCount);
+
+        // And the written source itself returns 404
+        $getResponse = $this->apiRequest($client, 'GET', "/api/data/history/written_sources/$id", [
+            'token' => $token,
+        ]);
+        $this->assertSame(404, $getResponse->getStatusCode());
+    }
+
     private function createWrittenSource(string $token): string
     {
         $client = self::createClient();

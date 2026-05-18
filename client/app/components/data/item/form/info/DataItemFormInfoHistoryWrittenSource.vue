@@ -8,6 +8,12 @@ const props = defineProps<{
 const centuries = props.item.centuries?.map(
   (century) => century['@id'] as string,
 )
+const regions = computed(
+  () =>
+    props.item.regions
+      ?.filter((context) => Boolean(context['@id']))
+      .map((context) => context['@id']) || [],
+)
 </script>
 
 <template>
@@ -29,6 +35,17 @@ const centuries = props.item.centuries?.map(
           label="century"
           item-title="value"
           multiple
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" class="px-2">
+        <data-selection-vocabulary
+          readonly
+          path="/api/vocabulary/regions"
+          :model-value="regions"
+          label="regions"
+          data-testid="project-regions-selection"
         />
       </v-col>
     </v-row>

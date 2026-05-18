@@ -40,6 +40,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE vocabulary.history_languages_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE vocabulary.history_locations_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE history_written_source_centuries_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE history_written_source_regions_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE vocabulary.history_written_source_types_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE individuals_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE media_object_join_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -205,6 +206,10 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_5A7F40C7E1B4DE13 ON history_written_source_centuries (written_source_id)');
         $this->addSql('CREATE INDEX IDX_5A7F40C7452289B6 ON history_written_source_centuries (century_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_5A7F40C7E1B4DE13452289B6 ON history_written_source_centuries (written_source_id, century_id)');
+        $this->addSql('CREATE TABLE history_written_source_regions (id BIGINT NOT NULL, written_source_id BIGINT NOT NULL, region_id SMALLINT NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE INDEX IDX_F40BBF49E1B4DE13 ON history_written_source_regions (written_source_id)');
+        $this->addSql('CREATE INDEX IDX_F40BBF4998260155 ON history_written_source_regions (region_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_F40BBF49E1B4DE1398260155 ON history_written_source_regions (written_source_id, region_id)');
         $this->addSql('CREATE TABLE vocabulary.history_written_source_types (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_5B32BCCB1D775834 ON vocabulary.history_written_source_types (value)');
         $this->addSql('CREATE TABLE history_written_sources (id BIGINT NOT NULL, title VARCHAR(255) NOT NULL, subtitle VARCHAR(255) DEFAULT NULL, publication_details VARCHAR(255) NOT NULL, notes VARCHAR(255) DEFAULT NULL, written_source_type_id SMALLINT NOT NULL, author_id SMALLINT NOT NULL, PRIMARY KEY (id))');
@@ -433,6 +438,8 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE history_plants ADD CONSTRAINT FK_762190E5B03A8386 FOREIGN KEY (created_by_id) REFERENCES auth.users (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE history_written_source_centuries ADD CONSTRAINT FK_5A7F40C7E1B4DE13 FOREIGN KEY (written_source_id) REFERENCES history_written_sources (id) ON DELETE CASCADE NOT DEFERRABLE');
         $this->addSql('ALTER TABLE history_written_source_centuries ADD CONSTRAINT FK_5A7F40C7452289B6 FOREIGN KEY (century_id) REFERENCES vocabulary.centuries (id) ON DELETE RESTRICT NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE history_written_source_regions ADD CONSTRAINT FK_F40BBF49E1B4DE13 FOREIGN KEY (written_source_id) REFERENCES history_written_sources (id) ON DELETE CASCADE NOT DEFERRABLE');
+        $this->addSql('ALTER TABLE history_written_source_regions ADD CONSTRAINT FK_F40BBF4998260155 FOREIGN KEY (region_id) REFERENCES vocabulary.regions (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE history_written_sources ADD CONSTRAINT FK_FABBF87677B05713 FOREIGN KEY (written_source_type_id) REFERENCES vocabulary.history_written_source_types (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE history_written_sources ADD CONSTRAINT FK_FABBF876F675F31B FOREIGN KEY (author_id) REFERENCES vocabulary.history_authors (id) ON DELETE RESTRICT NOT DEFERRABLE');
         $this->addSql('ALTER TABLE history_written_sources_cited_works ADD CONSTRAINT FK_DBE55CEAE1B4DE13 FOREIGN KEY (written_source_id) REFERENCES history_written_sources (id) ON DELETE RESTRICT NOT DEFERRABLE');
@@ -520,6 +527,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP SEQUENCE vocabulary.history_languages_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE vocabulary.history_locations_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE history_written_source_centuries_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE history_written_source_regions_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE vocabulary.history_written_source_types_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE individuals_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE media_object_join_id_seq CASCADE');
@@ -613,6 +621,8 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('ALTER TABLE history_plants DROP CONSTRAINT FK_762190E5B03A8386');
         $this->addSql('ALTER TABLE history_written_source_centuries DROP CONSTRAINT FK_5A7F40C7E1B4DE13');
         $this->addSql('ALTER TABLE history_written_source_centuries DROP CONSTRAINT FK_5A7F40C7452289B6');
+        $this->addSql('ALTER TABLE history_written_source_regions DROP CONSTRAINT FK_F40BBF49E1B4DE13');
+        $this->addSql('ALTER TABLE history_written_source_regions DROP CONSTRAINT FK_F40BBF4998260155');
         $this->addSql('ALTER TABLE history_written_sources DROP CONSTRAINT FK_FABBF87677B05713');
         $this->addSql('ALTER TABLE history_written_sources DROP CONSTRAINT FK_FABBF876F675F31B');
         $this->addSql('ALTER TABLE history_written_sources_cited_works DROP CONSTRAINT FK_DBE55CEAE1B4DE13');
@@ -723,6 +733,7 @@ final class Version20250621090503 extends AbstractMigration
         $this->addSql('DROP TABLE vocabulary.history_locations');
         $this->addSql('DROP TABLE history_plants');
         $this->addSql('DROP TABLE history_written_source_centuries');
+        $this->addSql('DROP TABLE history_written_source_regions');
         $this->addSql('DROP TABLE vocabulary.history_written_source_types');
         $this->addSql('DROP TABLE history_written_sources');
         $this->addSql('DROP TABLE history_written_sources_cited_works');

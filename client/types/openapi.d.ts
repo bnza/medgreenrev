@@ -8890,6 +8890,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/data/written_source_regions': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of WrittenSourceRegion resources.
+     * @description Retrieves the collection of WrittenSourceRegion resources.
+     */
+    get: operations['api_datawritten_source_regions_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/data/written_source_regions/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a WrittenSourceRegion resource.
+     * @description Retrieves a WrittenSourceRegion resource.
+     */
+    get: operations['api_datawritten_source_regions_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/data/archaeological_sites/{parentId}/zoo/bones': {
     parameters: {
       query?: never
@@ -13774,6 +13814,7 @@ export interface components {
       publicationDetails: string
       notes?: string | null
       centuries?: string[]
+      regions?: string[]
     }
     'HistoryWrittenSource-history_written_source.create.jsonMergePatch': {
       /**
@@ -13791,6 +13832,7 @@ export interface components {
       publicationDetails?: string
       notes?: string | null
       centuries?: string[]
+      regions?: string[]
     }
     'HistoryWrittenSource.csv-history_written_source.acl.read': {
       readonly id: number | string
@@ -13801,6 +13843,7 @@ export interface components {
       publicationDetails: string
       notes?: string | null
       centuries?: components['schemas']['WrittenSourceCentury.csv-history_written_source.acl.read'][]
+      regions?: components['schemas']['WrittenSourceRegion.csv-history_written_source.acl.read'][]
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13835,6 +13878,7 @@ export interface components {
       publicationDetails: string
       notes?: string | null
       centuries?: components['schemas']['WrittenSourceCentury.jsonld-history_written_source.acl.read'][]
+      regions?: components['schemas']['WrittenSourceRegion.jsonld-history_written_source.acl.read'][]
     })
     'HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read': {
       /** @description Access control metadata */
@@ -19255,6 +19299,46 @@ export interface components {
       }
     } & (components['schemas']['HydraItemBaseSchema'] & {
       century?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read']
+    })
+    'WrittenSourceRegion.csv-history_written_source.acl.read': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region?: string
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'WrittenSourceRegion.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSource?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region?: string
+    }
+    'WrittenSourceRegion.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region?: string
     })
     'ZooBone-feature_collection.json.read': Record<string, never>
     'ZooBone-zoo_bone.create': {
@@ -37147,6 +37231,8 @@ export interface operations {
         'centuries.century[]'?: string[]
         'citedWorks.citedWork'?: string
         'citedWorks.citedWork[]'?: string[]
+        'regions.region'?: string
+        'regions.region[]'?: string[]
         'exists[subtitle]'?: boolean
         'exists[notes]'?: boolean
         /**
@@ -37417,6 +37503,8 @@ export interface operations {
         'writtenSource.author[]'?: string[]
         'writtenSource.centuries.century'?: string
         'writtenSource.centuries.century[]'?: string[]
+        'writtenSource.regions.region'?: string
+        'writtenSource.regions.region[]'?: string[]
         yearCompleted?: number
         'yearCompleted[]'?: number[]
         yearCompletedUpper?: number
@@ -37493,6 +37581,8 @@ export interface operations {
         'writtenSource.author[]'?: string[]
         'writtenSource.centuries.century'?: string
         'writtenSource.centuries.century[]'?: string[]
+        'writtenSource.regions.region'?: string
+        'writtenSource.regions.region[]'?: string[]
         yearCompleted?: number
         'yearCompleted[]'?: number[]
         yearCompletedUpper?: number
@@ -54404,6 +54494,67 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['WrittenSourceCentury.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_datawritten_source_regions_get_collection: {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description WrittenSourceRegion collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['WrittenSourceRegion.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  api_datawritten_source_regions_id_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description WrittenSourceRegion identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description WrittenSourceRegion resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['WrittenSourceRegion.jsonld']
         }
       }
       /** @description Not found */

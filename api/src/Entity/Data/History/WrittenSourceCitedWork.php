@@ -82,6 +82,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'writtenSource' => 'exact',
         'writtenSource.author' => 'exact',
         'writtenSource.centuries.century' => 'exact',
+        'writtenSource.regions.region' => 'exact',
         'yearCompleted' => 'exact',
         'yearCompletedUpper' => 'exact',
     ]
