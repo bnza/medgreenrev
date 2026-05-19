@@ -30,6 +30,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-history-written-source-cited-work @refresh="refetch()" />
       <data-dialog-delete-history-written-source-cited-work
         @refresh="redirectToCollectionPath()"
       />

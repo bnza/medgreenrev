@@ -98,7 +98,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-create-analysis-sediment-core-depth-botany-taxonomy
-        :path
         :parent
         @refresh="refetch()"
       />

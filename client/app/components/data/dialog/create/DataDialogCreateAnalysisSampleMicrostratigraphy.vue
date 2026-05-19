@@ -21,7 +21,7 @@ const emit = defineEmits<{
   refresh: []
 }>()
 
-const item = computed(() => r$.$value[0])
+const { item } = useCreateBaseItem(r$)
 </script>
 
 <template>
@@ -30,6 +30,7 @@ const item = computed(() => r$.$value[0])
     :parent
     :path
     :regle="r$"
+
     @refresh="emit('refresh')"
   >
     <template #default>

@@ -76,7 +76,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <!--      <data-dialog-download :path title="Pottery Analysis" :parent-id />-->
       <!--      <data-dialog-search :path title="Pottery Analysis" />-->
       <data-dialog-create-analysis-site-anthropology
-        :path
         :parent
         @refresh="refetch()"
       />

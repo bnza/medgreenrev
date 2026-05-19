@@ -89,6 +89,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-archaeological-site @refresh="refetch()" />
       <data-dialog-delete-archaeological-site
         @refresh="redirectToCollectionPath()"
       />

@@ -129,7 +129,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-search :path="searchPath" :title="labels[1]" />
       <data-dialog-create-zoo-bone
         v-if="parent?.key !== 'archaeologicalSite'"
-        :path
         :parent
         @refresh="refetch()"
       />

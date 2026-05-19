@@ -32,6 +32,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-botany-charchoal @refresh="refetch()" />
       <data-dialog-delete-botany-charcoal
         @refresh="redirectToCollectionPath()"
       />

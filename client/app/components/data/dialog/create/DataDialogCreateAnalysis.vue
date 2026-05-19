@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
 
-const path: PostCollectionPath = '/api/data/analyses' as const
+const path = '/api/data/analyses' satisfies PostCollectionPath
 
 const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 
@@ -9,7 +9,7 @@ const emit = defineEmits<{
   refresh: []
 }>()
 
-const item = computed(() => r$.$value[0])
+const { item } = useCreateBaseItem(r$)
 </script>
 
 <template>
@@ -18,10 +18,11 @@ const item = computed(() => r$.$value[0])
     :parent="undefined"
     :path
     :regle="r$"
+
     @refresh="emit('refresh')"
   >
-    <template #default>
-      <data-item-form-create-analysis />
+    <template #default="{ duplicateItem }">
+      <data-item-form-create-analysis :duplicate-item/>
     </template>
   </data-dialog-create>
 </template>

@@ -2,6 +2,7 @@
 import type {
   ApiResourcePath,
   PostCollectionPath,
+  PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
 import { required } from '@regle/rules'
@@ -10,9 +11,12 @@ const path: ApiResourcePath | PostCollectionPath = '/api/data/contexts'
 
 const props = defineProps<{
   parent?: ResourceParent<'archaeologicalSite'>
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
 }>()
 
-const model = generateEmptyPostModel(path, props.parent)
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path, props.parent)
 
 const uniqueSite = useApiUniqueValidator(
   '/api/validator/unique/contexts',
@@ -51,14 +55,14 @@ const { r$ } = useScopedRegle(model, {
       </v-col>
       <v-col cols="4">
         <data-autocomplete-stratigraphic-unit
-            v-model="r$.$value.stratigraphicUnit"
-            path="/api/data/stratigraphic_units"
-            item-title="code"
-            label="stratigraphic unit"
-            granted-only
-            :query-param="r$.$value.site ? { site: r$.$value.site } : undefined"
-            :error-messages="r$.$errors?.stratigraphicUnit"
-            :disabled="!r$.$value.site"
+          v-model="r$.$value.stratigraphicUnit"
+          path="/api/data/stratigraphic_units"
+          item-title="code"
+          label="stratigraphic unit"
+          granted-only
+          :query-param="r$.$value.site ? { site: r$.$value.site } : undefined"
+          :error-messages="r$.$errors?.stratigraphicUnit"
+          :disabled="!r$.$value.site"
         />
       </v-col>
     </v-row>

@@ -98,9 +98,9 @@ export default defineNuxtConfig({
     server: true,
   },
   vite: {
-    optimizeDeps: {
-      include: ['ol > geotiff', 'ol-ext'],
-    },
+    // optimizeDeps: {
+    //   include: ['ol > geotiff', 'ol-ext'],
+    // },
     resolve: {
       alias: {
         // Temporary patch until vue3-openlayers fixes the problem with ol-contextmenu CSS import
@@ -110,6 +110,7 @@ export default defineNuxtConfig({
   },
   ssr: false,
   experimental: {
+    viteEnvironmentApi: true,
     // Payload extraction is not needed in SPA mode (no pre-rendered pages with embedded payloads)
     payloadExtraction: false,
   },

@@ -95,7 +95,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-search :path :parent-id :title="labels[1]" />
       <data-dialog-download :path :title="labels[1]" :parent-id />
       <data-dialog-create-sediment-core-depth
-        :path
         :parent
         @refresh="refetch()"
       />

@@ -2,6 +2,7 @@
 import type {
   ApiResourcePath,
   PostCollectionPath,
+  PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
 import { required } from '@regle/rules'
@@ -11,12 +12,17 @@ const path: ApiResourcePath | PostCollectionPath =
 
 const props = defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'> | ResourceParent<'sample'>
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
 }>()
 
-const model = generateEmptyPostModel(
-  path,
-  props.parent?.key === 'stratigraphicUnit' ? props.parent : undefined,
-)
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path, props.parent?.key === 'stratigraphicUnit' ? props.parent : undefined,)
+
+// const model = generateEmptyPostModel(
+//   path,
+//   props.parent?.key === 'stratigraphicUnit' ? props.parent : undefined,
+// )
 
 const uniqueStratigraphicUnit = useApiUniqueValidator(
   '/api/validator/unique/microstratigraphic_units',

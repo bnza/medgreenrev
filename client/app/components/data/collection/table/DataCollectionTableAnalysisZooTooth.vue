@@ -67,7 +67,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-download :path :title="labels[1]" :parent-id />
       <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-analysis-zoo-tooth
-        :path
         :parent
         @refresh="refetch()"
       />

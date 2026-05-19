@@ -35,6 +35,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-microstratigraphic-unit @refresh="refetch()" />
       <data-dialog-delete-sampling-stratigraphic-unit
         @refresh="redirectToCollectionPath()"
       />

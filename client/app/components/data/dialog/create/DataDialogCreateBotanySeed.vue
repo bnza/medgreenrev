@@ -18,7 +18,7 @@ const emit = defineEmits<{
   refresh: []
 }>()
 
-const item = computed(() => r$.$value[0])
+const { item } = useCreateBaseItem(r$)
 </script>
 
 <template>
@@ -27,10 +27,11 @@ const item = computed(() => r$.$value[0])
     :parent
     :path
     :regle="r$"
+
     @refresh="emit('refresh')"
   >
-    <template #default>
-      <data-item-form-create-botany-seed :parent />
+    <template #default="{ duplicateItem }">
+      <data-item-form-create-botany-seed :parent :duplicate-item />
     </template>
   </data-dialog-create>
 </template>

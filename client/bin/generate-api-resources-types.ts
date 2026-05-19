@@ -37,6 +37,14 @@ try {
     .map(([key, value]) => `  ${key}: '${value}'`)
     .join(',\n')
 
+  // Generate API_ITEMS_RESOURCE_MAP object: collection path -> item path (`${collection}/{id}`)
+  // Sorted by collection path for stable output.
+  const itemsResourceMapEntries = resourceEntries
+    .slice()
+    .sort(([, a], [, b]) => a.localeCompare(b))
+    .map(([, value]) => `  '${value}': '${value}/{id}'`)
+    .join(',\n')
+
   // Fetch OpenAPI spec to build API_FEATURES_RESOURCE_MAP
   console.log(`Fetching OpenAPI spec from: ${openApiUrl}`)
   const openApiResponse = await fetch(openApiUrl)
@@ -283,6 +291,16 @@ export type ApiResourceKey = keyof typeof API_RESOURCE_MAP
 
 export type ApiResourcePath =
   (typeof API_RESOURCE_MAP)[keyof typeof API_RESOURCE_MAP]
+
+// Map of each API resource collection path to its corresponding GET item path
+// (\`\${collection}/{id}\`). Useful to derive a typed item path from a
+// collection path without resorting to string template casts.
+export const API_ITEMS_RESOURCE_MAP = {
+${itemsResourceMapEntries}
+} as const satisfies Record<ApiResourcePath, GetItemPath>
+
+export type ApiItemPath =
+  (typeof API_ITEMS_RESOURCE_MAP)[keyof typeof API_ITEMS_RESOURCE_MAP]
 
 // Map of feature collection endpoints (GeoJSON) to their related API resource collection path
 // Keys are OpenAPI paths that return 200 with 'application/geo+json'

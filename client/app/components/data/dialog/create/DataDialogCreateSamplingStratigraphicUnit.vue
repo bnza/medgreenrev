@@ -18,13 +18,13 @@ const emit = defineEmits<{
   refresh: []
 }>()
 
-const item = computed(() => r$.$value[0])
+const { item } = useCreateBaseItem(r$)
 </script>
 
 <template>
-  <data-dialog-create :item :path :regle="r$" @refresh="emit('refresh')">
-    <template #default>
-      <data-item-form-create-sampling-stratigraphic-unit :parent />
+  <data-dialog-create :item :path :regle="r$"  @refresh="emit('refresh')">
+    <template #default="{ duplicateItem }">
+      <data-item-form-create-sampling-stratigraphic-unit :parent :duplicate-item/>
     </template>
   </data-dialog-create>
 </template>

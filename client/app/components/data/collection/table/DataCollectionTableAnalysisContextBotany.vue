@@ -73,7 +73,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-download :path :title="labels[1]" :parent-id />
       <data-dialog-search :path :title="labels[1]" />
       <lazy-data-dialog-create-analysis-context-botany
-        :path
         :parent
         @refresh="refetch()"
       />

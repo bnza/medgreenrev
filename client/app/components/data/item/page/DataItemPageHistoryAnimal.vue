@@ -26,6 +26,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       <!--      </v-tabs-window>-->
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-history-animal @refresh="refetch()" />
       <data-dialog-delete-history-animal
         @refresh="redirectToCollectionPath()"
       />

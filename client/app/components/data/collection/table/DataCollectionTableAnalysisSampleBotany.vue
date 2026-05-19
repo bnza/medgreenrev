@@ -76,7 +76,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :title="labels[1]"
       />
       <data-dialog-create-analysis-sample-botany
-        :path
         :parent
         @refresh="refetch()"
       />

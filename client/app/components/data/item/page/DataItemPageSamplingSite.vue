@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import useResourceUiStore from '~/stores/useResourceUiStore'
 import type { GetItemResponseMap } from '~~/types'
-import { hasAcl } from '~/utils/acl'
 
 const path = '/api/data/sampling_sites/{id}' as const
 type GetItemResponse = GetItemResponseMap[typeof path]
@@ -50,6 +49,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-sample @refresh="refetch()" />
       <data-dialog-delete-sampling-site @refresh="redirectToCollectionPath()" />
       <data-dialog-update-sampling-site @refresh="refetch()" />
     </template>

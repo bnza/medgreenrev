@@ -44,8 +44,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" />
       <data-dialog-search :path :title="labels[1]" />
-      <lazy-data-dialog-create-sediment-core
-        :path
+      <data-dialog-create-sediment-core
         :parent
         @refresh="refetch()"
       />

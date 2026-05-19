@@ -2,6 +2,7 @@
 import type {
   ApiResourcePath,
   PostCollectionPath,
+  PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
 import { required } from '@regle/rules'
@@ -10,9 +11,12 @@ const path: ApiResourcePath | PostCollectionPath = '/api/data/zoo/bones'
 
 const props = defineProps<{
   parent?: ResourceParent<'stratigraphicUnit'>
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
 }>()
 
-const model = generateEmptyPostModel(path, props.parent)
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path, props.parent)
 
 const { r$ } = useScopedRegle(model, {
   stratigraphicUnit: { required },

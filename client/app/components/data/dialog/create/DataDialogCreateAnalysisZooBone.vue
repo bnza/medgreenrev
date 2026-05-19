@@ -4,7 +4,6 @@ import type {
   PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
-import { isEmptyObject } from '~/utils'
 import { useCollectScopeRecord } from '~/composables'
 
 defineProps<{
@@ -22,13 +21,7 @@ const { r$ } = useCollectScopeRecord<{
   absDating: AbsoluteDatingRequestItem
 }>()
 
-const item = computed(() => {
-  const base = r$.$value.base ?? {}
-  base.absDatingAnalysis = isEmptyObject(r$.$value.absDating)
-    ? null
-    : r$.$value.absDating
-  return base
-})
+const { item } = useCreateAbsDatingAnalysisItem(r$)
 
 const isAbsoluteDatingAnalysis = ref(false)
 </script>
@@ -39,6 +32,7 @@ const isAbsoluteDatingAnalysis = ref(false)
     :parent
     :path
     :regle="r$"
+
     @refresh="emit('refresh')"
   >
     <template #default>

@@ -43,6 +43,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-sediment-core @refresh="refetch()" />
       <data-dialog-delete-sediment-core @refresh="redirectToCollectionPath()" />
       <data-dialog-update-sediment-core @refresh="refetch()" />
     </template>

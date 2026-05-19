@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import type { ApiResourcePath, PostCollectionPath } from '~~/types'
+import type {
+  ApiResourcePath,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+} from '~~/types'
 import { createRule, type Maybe, useScopedRegle } from '@regle/core'
 import { decimal, integer, maxValue, minValue, required } from '@regle/rules'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
@@ -8,7 +12,13 @@ import { capitalize } from 'vue'
 const path: ApiResourcePath | PostCollectionPath =
   '/api/data/archaeological_sites'
 
-const model = generateEmptyPostModel(path)
+const props = defineProps<{
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
+}>()
+
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path)
 
 watch(
   () => model.value.code,

@@ -136,6 +136,167 @@ export type ApiResourceKey = keyof typeof API_RESOURCE_MAP
 export type ApiResourcePath =
   (typeof API_RESOURCE_MAP)[keyof typeof API_RESOURCE_MAP]
 
+// Map of each API resource collection path to its corresponding GET item path
+// (`${collection}/{id}`). Useful to derive a typed item path from a
+// collection path without resorting to string template casts.
+export const API_ITEMS_RESOURCE_MAP = {
+  '/api/admin/site_user_privileges': '/api/admin/site_user_privileges/{id}',
+  '/api/admin/users': '/api/admin/users/{id}',
+  '/api/data/analyses': '/api/data/analyses/{id}',
+  '/api/data/analyses/absolute_dating':
+    '/api/data/analyses/absolute_dating/{id}',
+  '/api/data/analyses/absolute_dating/botany/charcoals':
+    '/api/data/analyses/absolute_dating/botany/charcoals/{id}',
+  '/api/data/analyses/absolute_dating/botany/seeds':
+    '/api/data/analyses/absolute_dating/botany/seeds/{id}',
+  '/api/data/analyses/absolute_dating/individuals':
+    '/api/data/analyses/absolute_dating/individuals/{id}',
+  '/api/data/analyses/absolute_dating/potteries':
+    '/api/data/analyses/absolute_dating/potteries/{id}',
+  '/api/data/analyses/absolute_dating/samples':
+    '/api/data/analyses/absolute_dating/samples/{id}',
+  '/api/data/analyses/absolute_dating/sediment_core_depths':
+    '/api/data/analyses/absolute_dating/sediment_core_depths/{id}',
+  '/api/data/analyses/absolute_dating/zoo/bones':
+    '/api/data/analyses/absolute_dating/zoo/bones/{id}',
+  '/api/data/analyses/absolute_dating/zoo/teeth':
+    '/api/data/analyses/absolute_dating/zoo/teeth/{id}',
+  '/api/data/analyses/archaeological_sites/anthropology':
+    '/api/data/analyses/archaeological_sites/anthropology/{id}',
+  '/api/data/analyses/botany/charcoals':
+    '/api/data/analyses/botany/charcoals/{id}',
+  '/api/data/analyses/botany/seeds': '/api/data/analyses/botany/seeds/{id}',
+  '/api/data/analyses/context_botany_taxonomies':
+    '/api/data/analyses/context_botany_taxonomies/{id}',
+  '/api/data/analyses/contexts/botany':
+    '/api/data/analyses/contexts/botany/{id}',
+  '/api/data/analyses/contexts/zoo': '/api/data/analyses/contexts/zoo/{id}',
+  '/api/data/analyses/individuals': '/api/data/analyses/individuals/{id}',
+  '/api/data/analyses/potteries': '/api/data/analyses/potteries/{id}',
+  '/api/data/analyses/sample_botany_taxonomies':
+    '/api/data/analyses/sample_botany_taxonomies/{id}',
+  '/api/data/analyses/samples': '/api/data/analyses/samples/{id}',
+  '/api/data/analyses/samples/botany': '/api/data/analyses/samples/botany/{id}',
+  '/api/data/analyses/samples/microstratigraphy':
+    '/api/data/analyses/samples/microstratigraphy/{id}',
+  '/api/data/analyses/sediment_core_depth_botany_taxonomies':
+    '/api/data/analyses/sediment_core_depth_botany_taxonomies/{id}',
+  '/api/data/analyses/sediment_core_depths':
+    '/api/data/analyses/sediment_core_depths/{id}',
+  '/api/data/analyses/sediment_core_depths/botany':
+    '/api/data/analyses/sediment_core_depths/botany/{id}',
+  '/api/data/analyses/zoo/bones': '/api/data/analyses/zoo/bones/{id}',
+  '/api/data/analyses/zoo/teeth': '/api/data/analyses/zoo/teeth/{id}',
+  '/api/data/analysis_context_zoo_taxonomies':
+    '/api/data/analysis_context_zoo_taxonomies/{id}',
+  '/api/data/analysis_subjects': '/api/data/analysis_subjects/{id}',
+  '/api/data/archaeological_sites': '/api/data/archaeological_sites/{id}',
+  '/api/data/botany/charcoals': '/api/data/botany/charcoals/{id}',
+  '/api/data/botany/seeds': '/api/data/botany/seeds/{id}',
+  '/api/data/context_stratigraphic_units':
+    '/api/data/context_stratigraphic_units/{id}',
+  '/api/data/contexts': '/api/data/contexts/{id}',
+  '/api/data/history/animals': '/api/data/history/animals/{id}',
+  '/api/data/history/plants': '/api/data/history/plants/{id}',
+  '/api/data/history/written_sources': '/api/data/history/written_sources/{id}',
+  '/api/data/history/written_sources_cited_works':
+    '/api/data/history/written_sources_cited_works/{id}',
+  '/api/data/individuals': '/api/data/individuals/{id}',
+  '/api/data/media_object_analyses': '/api/data/media_object_analyses/{id}',
+  '/api/data/media_object_history_locations':
+    '/api/data/media_object_history_locations/{id}',
+  '/api/data/media_object_paleoclimate_samples':
+    '/api/data/media_object_paleoclimate_samples/{id}',
+  '/api/data/media_object_paleoclimate_sampling_sites':
+    '/api/data/media_object_paleoclimate_sampling_sites/{id}',
+  '/api/data/media_object_potteries': '/api/data/media_object_potteries/{id}',
+  '/api/data/media_object_sampling_stratigraphic_units':
+    '/api/data/media_object_sampling_stratigraphic_units/{id}',
+  '/api/data/media_object_sediment_cores':
+    '/api/data/media_object_sediment_cores/{id}',
+  '/api/data/media_object_stratigraphic_units':
+    '/api/data/media_object_stratigraphic_units/{id}',
+  '/api/data/media_objects': '/api/data/media_objects/{id}',
+  '/api/data/microstratigraphic_units':
+    '/api/data/microstratigraphic_units/{id}',
+  '/api/data/paleoclimate_samples': '/api/data/paleoclimate_samples/{id}',
+  '/api/data/paleoclimate_sampling_sites':
+    '/api/data/paleoclimate_sampling_sites/{id}',
+  '/api/data/potteries': '/api/data/potteries/{id}',
+  '/api/data/pottery_decorations': '/api/data/pottery_decorations/{id}',
+  '/api/data/sample_stratigraphic_units':
+    '/api/data/sample_stratigraphic_units/{id}',
+  '/api/data/samples': '/api/data/samples/{id}',
+  '/api/data/sampling_sites': '/api/data/sampling_sites/{id}',
+  '/api/data/sampling_stratigraphic_units':
+    '/api/data/sampling_stratigraphic_units/{id}',
+  '/api/data/sediment_core_depths': '/api/data/sediment_core_depths/{id}',
+  '/api/data/sediment_cores': '/api/data/sediment_cores/{id}',
+  '/api/data/site_cultural_contexts': '/api/data/site_cultural_contexts/{id}',
+  '/api/data/stratigraphic_unit_relationships':
+    '/api/data/stratigraphic_unit_relationships/{id}',
+  '/api/data/stratigraphic_units': '/api/data/stratigraphic_units/{id}',
+  '/api/data/written_source_centuries':
+    '/api/data/written_source_centuries/{id}',
+  '/api/data/written_source_regions': '/api/data/written_source_regions/{id}',
+  '/api/data/zoo/bones': '/api/data/zoo/bones/{id}',
+  '/api/data/zoo/teeth': '/api/data/zoo/teeth/{id}',
+  '/api/list/analyses/laboratories': '/api/list/analyses/laboratories/{id}',
+  '/api/list/areas': '/api/list/areas/{id}',
+  '/api/list/buildings': '/api/list/buildings/{id}',
+  '/api/list/calibration_curves': '/api/list/calibration_curves/{id}',
+  '/api/list/contexts/types': '/api/list/contexts/types/{id}',
+  '/api/list/history/animals': '/api/list/history/animals/{id}',
+  '/api/list/history/plants': '/api/list/history/plants/{id}',
+  '/api/list/history/references': '/api/list/history/references/{id}',
+  '/api/list/persons': '/api/list/persons/{id}',
+  '/api/list/pottery_colors': '/api/list/pottery_colors/{id}',
+  '/api/list/vocabulary/zoo/taxonomy_classes':
+    '/api/list/vocabulary/zoo/taxonomy_classes/{id}',
+  '/api/list/vocabulary/zoo/taxonomy_families':
+    '/api/list/vocabulary/zoo/taxonomy_families/{id}',
+  '/api/vocabulary/analysis/types': '/api/vocabulary/analysis/types/{id}',
+  '/api/vocabulary/botany/element_parts':
+    '/api/vocabulary/botany/element_parts/{id}',
+  '/api/vocabulary/botany/elements': '/api/vocabulary/botany/elements/{id}',
+  '/api/vocabulary/botany/taxonomies': '/api/vocabulary/botany/taxonomies/{id}',
+  '/api/vocabulary/centuries': '/api/vocabulary/centuries/{id}',
+  '/api/vocabulary/cultural_contexts': '/api/vocabulary/cultural_contexts/{id}',
+  '/api/vocabulary/history/authors': '/api/vocabulary/history/authors/{id}',
+  '/api/vocabulary/history/cited_works':
+    '/api/vocabulary/history/cited_works/{id}',
+  '/api/vocabulary/history/languages': '/api/vocabulary/history/languages/{id}',
+  '/api/vocabulary/history/locations': '/api/vocabulary/history/locations/{id}',
+  '/api/vocabulary/history/written_source_types':
+    '/api/vocabulary/history/written_source_types/{id}',
+  '/api/vocabulary/individual/age': '/api/vocabulary/individual/age/{id}',
+  '/api/vocabulary/individual/sex': '/api/vocabulary/individual/sex/{id}',
+  '/api/vocabulary/media_object/types':
+    '/api/vocabulary/media_object/types/{id}',
+  '/api/vocabulary/pottery/decorations':
+    '/api/vocabulary/pottery/decorations/{id}',
+  '/api/vocabulary/pottery/functional_forms':
+    '/api/vocabulary/pottery/functional_forms/{id}',
+  '/api/vocabulary/pottery/functional_groups':
+    '/api/vocabulary/pottery/functional_groups/{id}',
+  '/api/vocabulary/pottery/shapes': '/api/vocabulary/pottery/shapes/{id}',
+  '/api/vocabulary/pottery/surface_treatments':
+    '/api/vocabulary/pottery/surface_treatments/{id}',
+  '/api/vocabulary/regions': '/api/vocabulary/regions/{id}',
+  '/api/vocabulary/sample/types': '/api/vocabulary/sample/types/{id}',
+  '/api/vocabulary/stratigraphic_unit/relationships':
+    '/api/vocabulary/stratigraphic_unit/relationships/{id}',
+  '/api/vocabulary/zoo/bone_end_preserved':
+    '/api/vocabulary/zoo/bone_end_preserved/{id}',
+  '/api/vocabulary/zoo/bone_parts': '/api/vocabulary/zoo/bone_parts/{id}',
+  '/api/vocabulary/zoo/bone-side': '/api/vocabulary/zoo/bone-side/{id}',
+  '/api/vocabulary/zoo/bones': '/api/vocabulary/zoo/bones/{id}',
+  '/api/vocabulary/zoo/taxonomies': '/api/vocabulary/zoo/taxonomies/{id}',
+} as const satisfies Record<ApiResourcePath, GetItemPath>
+
+export type ApiItemPath =
+  (typeof API_ITEMS_RESOURCE_MAP)[keyof typeof API_ITEMS_RESOURCE_MAP]
+
 // Map of feature collection endpoints (GeoJSON) to their related API resource collection path
 // Keys are OpenAPI paths that return 200 with 'application/geo+json'
 export const API_FEATURES_RESOURCE_MAP = {

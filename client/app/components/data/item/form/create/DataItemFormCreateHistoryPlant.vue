@@ -2,6 +2,7 @@
 import type {
   ApiResourcePath,
   PostCollectionPath,
+  PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
 import { integer, maxValue, minValue, required } from '@regle/rules'
@@ -10,9 +11,12 @@ const path: ApiResourcePath | PostCollectionPath = '/api/data/history/plants'
 
 const props = defineProps<{
   parent?: ResourceParent<'vocHistoryLocation'>
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
 }>()
 
-const model = generateEmptyPostModel(path, props.parent)
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path, props.parent)
 
 const { r$ } = useScopedRegle(model, {
   plant: {

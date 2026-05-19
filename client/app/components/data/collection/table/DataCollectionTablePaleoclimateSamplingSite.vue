@@ -48,7 +48,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-download :path :title="labels[1]" />
       <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-paleoclimate-sampling-site
-        :path
         @refresh="refetch()"
       />
       <data-dialog-delete-paleoclimate-sampling-site @refresh="refetch()" />

@@ -2,6 +2,7 @@
 import type {
   ApiResourcePath,
   PostCollectionPath,
+  PostCollectionRequestMap,
   ResourceParent,
 } from '~~/types'
 import { required, numeric } from '@regle/rules'
@@ -14,9 +15,12 @@ const props = defineProps<{
     | ResourceParent<'sedimentCore'>
     | ResourceParent<'samplingStratigraphicUnit'>
     | ResourceParent<'samplingSite'>
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
 }>()
 
-const model = generateEmptyPostModel(path, props.parent)
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path, props.parent)
 
 const uniqueSedimentCore = useApiUniqueValidator(
   '/api/validator/unique/sediment_core_depths',

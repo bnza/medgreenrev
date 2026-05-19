@@ -32,6 +32,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-zoo-bone @refresh="refetch()" />
       <data-dialog-delete-zoo-bone @refresh="redirectToCollectionPath()" />
       <data-dialog-update-zoo-bone @refresh="refetch()" />
     </template>

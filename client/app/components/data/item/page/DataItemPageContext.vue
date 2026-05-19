@@ -53,6 +53,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-context @refresh="refetch()" />
       <data-dialog-delete-context @refresh="redirectToCollectionPath()" />
       <data-dialog-update-context @refresh="refetch()" />
     </template>

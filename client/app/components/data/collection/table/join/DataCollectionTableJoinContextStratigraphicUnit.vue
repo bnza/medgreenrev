@@ -67,7 +67,6 @@ const { id: parentId } = useResourceParent(props.parent)
       <data-dialog-search :path :title="labels[1]" />
       <data-dialog-download :path :title="subResourceKey" :parent-id />
       <data-dialog-create-context-stratigraphic-unit
-        :path
         :parent
         @refresh="refetch()"
       />

@@ -5,8 +5,7 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(
   startingPanels: string[] = [],
 ) =>
   defineStore(`resource-ui:${path}`, () => {
-    const dialogStates = reactive<{ create: boolean; search: boolean }>({
-      create: false,
+    const dialogStates = reactive<{ search: boolean }>({
       search: false,
     })
 
@@ -26,7 +25,6 @@ const useResourceUiStore = <P extends ApiPath | keyof paths>(
     const panels = ref<string[]>(startingPanels)
     return {
       dialogStates,
-      isCreateDialogOpen: isDialogOpenFn('create'),
       isSearchDialogOpen: isDialogOpenFn('search'),
       redirectToItem,
       tab,

@@ -93,7 +93,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
       <data-dialog-search :path :title="labels[1]" />
       <data-dialog-create-paleoclimate-sample
-        :path
         :parent
         @refresh="refetch()"
       />

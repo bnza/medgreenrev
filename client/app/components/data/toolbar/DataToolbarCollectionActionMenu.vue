@@ -1,5 +1,9 @@
 <script setup lang="ts" generic="Path extends GetCollectionPath">
-import type { GetCollectionPath, CollectionAcl } from '~~/types'
+import type {
+  CollectionAcl,
+  GetCollectionPath,
+  PostCollectionPath,
+} from '~~/types'
 import { isSearchableGetCollectionPath } from '~/utils/consts/configs/filters'
 
 const props = defineProps<{
@@ -7,15 +11,16 @@ const props = defineProps<{
   path: Path
 }>()
 const { findApiResourcePath, isPostOperationPath } = useOpenApiStore()
-const isPostPath = computed<boolean>(() => {
+const postPath = computed<PostCollectionPath | undefined>(() => {
   if (isPostOperationPath(props.path)) {
-    return true
+    return props.path
   }
-  const postPath = isApiResourceKey(props.path)
+  const candidate = isApiResourceKey(props.path)
     ? props.path
     : findApiResourcePath(props.path)
-  return isPostOperationPath(postPath)
+  return isPostOperationPath(candidate) ? candidate : undefined
 })
+const isPostPath = computed<boolean>(() => postPath.value !== undefined)
 
 const slots = defineSlots<{
   default(): any
@@ -52,8 +57,8 @@ const isEmptyMenu = computed<boolean>(() => {
           />
           <slot name="create">
             <data-toolbar-list-item-create
-              v-if="acl.canCreate && isPostPath"
-              :path
+              v-if="acl.canCreate && postPath"
+              :path="postPath"
             />
           </slot>
           <v-list-item

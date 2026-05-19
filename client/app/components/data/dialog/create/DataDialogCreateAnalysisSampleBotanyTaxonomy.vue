@@ -13,7 +13,7 @@ const { r$ } = useCollectScope<[PostCollectionRequestMap[typeof path]]>()
 const emit = defineEmits<{
   refresh: []
 }>()
-const item = computed(() => r$.$value[0])
+const { item } = useCreateBaseItem(r$)
 </script>
 <template>
   <data-dialog-create
@@ -21,6 +21,7 @@ const item = computed(() => r$.$value[0])
     :parent
     :path
     :regle="r$"
+
     :redirect-option="false"
     @refresh="emit('refresh')"
   >

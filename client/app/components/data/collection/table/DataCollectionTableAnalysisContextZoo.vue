@@ -74,7 +74,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
       <data-dialog-search :path :title="labels[1]" />
       <lazy-data-dialog-create-analysis-context-zoo
         :parent
-        :path
         @refresh="refetch()"
       />
       <data-dialog-delete-analysis-context-zoo @refresh="refetch()" />

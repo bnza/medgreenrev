@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import type { ApiResourcePath, PostCollectionPath } from '~~/types'
+import type {
+  ApiResourcePath,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+} from '~~/types'
 import { minLength, required } from '@regle/rules'
 
 const path: ApiResourcePath | PostCollectionPath =
   '/api/data/history/written_sources'
 
-const model = generateEmptyPostModel(path)
+const props = defineProps<{
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
+}>()
+
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path)
 
 const { r$ } = useScopedRegle(model, {
   writtenSourceType: {

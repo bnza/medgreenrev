@@ -56,7 +56,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #dialogs="{ refetch }">
       <data-dialog-delete-site-user-privilege @refresh="refetch()" />
       <data-dialog-create-site-user-privilege
-        :path
         :parent
         @refresh="refetch()"
       />

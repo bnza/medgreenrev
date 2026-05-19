@@ -1,10 +1,10 @@
 import type { OpenAPIV3_1 } from 'openapi-types'
 import type {
   ApiResourceKey,
+  GetExportCsvCollectionPath,
   OperationPathParams,
   paths,
   PostCollectionPath,
-  GetExportCsvCollectionPath,
 } from '~~/types'
 import {
   API_RESOURCE_MAP,

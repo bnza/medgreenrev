@@ -6,23 +6,20 @@
 import type {
   ApiRequestOptions,
   ApiResourcePath,
-  GetCollectionPath,
   PostCollectionPath,
   PostCollectionRequestMap,
   PostCollectionResponseMap,
   RegleAdapter,
 } from '~~/types'
-import useResourceUiStore from '~/stores/useResourceUiStore'
 import usePostCollectionMutation from '~/composables/queries/usePostCollectionMutation'
 import { TypedFormData } from '~/api/TypedFormData'
-import { API_RESOURCE_MAP } from '~/utils/consts/resources'
 import usePreCreateNormalization from '~/composables/usePreCreateNormalization'
 
 const props = withDefaults(
   defineProps<{
-    path: GetCollectionPath // Used as a key for useResourceUiStore
+    path: Path // Used as a key for useResourceUiStore
     regle: RegleAdapter<PostCollectionRequestMap[Path]>
-    item: PostCollectionRequestMap[Path]
+    item: Partial<PostCollectionRequestMap[Path]>
     title?: string
     redirectOption?: boolean
     postRequestOptions?: ApiRequestOptions
@@ -33,17 +30,15 @@ const props = withDefaults(
   },
 )
 
-const { findApiResourceKeyFromPath, isPostOperationPath } = useOpenApiStore()
+const { findApiResourceKeyFromPath } = useOpenApiStore()
 const resourceKey = findApiResourceKeyFromPath(props.path)
 
 if (!resourceKey) throw new Error(`No resource found for path ${props.path}`)
 
-const postPath = isPostOperationPath(props.path)
-  ? props.path
-  : (API_RESOURCE_MAP[resourceKey] as Path)
-
 defineSlots<{
-  default(): any
+  default(props: {
+    duplicateItem: Partial<PostCollectionRequestMap[Path]> | null
+  }): any
   actions(): any
 }>()
 
@@ -53,19 +48,24 @@ const emit = defineEmits<{
   visible: [boolean]
   success: [
     {
-      request: Partial<PostCollectionRequestMap[typeof postPath]>
-      response: PostCollectionResponseMap[typeof postPath]
+      request: Partial<PostCollectionRequestMap[Path]>
+      response: PostCollectionResponseMap[Path]
     },
   ]
   refresh: []
 }>()
 
-const { isCreateDialogOpen: visible, redirectToItem } = storeToRefs(
-  useResourceUiStore(props.path),
-)
+const {
+  isCreateDialogOpen: visible,
+  isReady: isCreateDialogReady,
+  duplicateSource,
+  clonedItem,
+  redirectToItem,
+} = useCreateDialog(props.path)
+
 
 const { postCollection, invalidatedCacheEntries } = usePostCollectionMutation(
-  postPath,
+  props.path,
   props.postRequestOptions,
 )
 
@@ -75,7 +75,7 @@ const disabled = ref(false)
 const { fullPath } = useRoute()
 const router = useRouter()
 const { push } = useHistoryStackStore()
-const { appPath, labels } = useResourceConfig(postPath)
+const { appPath, labels } = useResourceConfig(props.path)
 
 const redirectToNewItem = async (newItem: Record<string, any>) => {
   if (!('id' in newItem)) {
@@ -109,7 +109,7 @@ const submit = async () => {
 
   const isValidItem = (
     _value: any,
-  ): _value is PostCollectionRequestMap[typeof postPath] => {
+  ): _value is PostCollectionRequestMap[Path] => {
     return valid
   }
 
@@ -167,7 +167,10 @@ watch(visible, async (flag) => {
   emit('visible', flag)
 })
 
-const title = computed(() => props.title || labels[0])
+const baseTitle = computed(() => props.title || labels[0])
+const displayTitle = computed(() =>
+  duplicateSource.value ? `Duplicate ${baseTitle.value}` : baseTitle.value,
+)
 </script>
 
 <template>
@@ -179,11 +182,17 @@ const title = computed(() => props.title || labels[0])
           data-testid="data-card-toolbar-main-title"
           class="text-uppercase px-2"
         >
-          {{ title }}</span
+          {{ displayTitle }}</span
         >
       </p>
     </template>
     <template #default>
+      <v-progress-linear
+        v-if="!isCreateDialogReady"
+        data-testid="data-dialog-create-clone-loader"
+        indeterminate
+        color="primary"
+      />
       <v-form data-testid="data-dialog-form">
         <v-sheet class="ma-4">
           <v-container>
@@ -198,7 +207,10 @@ const title = computed(() => props.title || labels[0])
               </v-col>
             </v-row>
             <async-wrapper>
-              <slot v-if="status !== 'success'" />
+              <slot
+                v-if="status !== 'success' && isCreateDialogReady"
+                :duplicate-item="clonedItem"
+              />
               <success-component v-else />
             </async-wrapper>
           </v-container>

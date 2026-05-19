@@ -46,6 +46,7 @@ const redirectToCollectionPath = useRedirectToCollectionPath(path)
       </v-tabs-window>
     </template>
     <template #dialogs="{ refetch }">
+      <data-dialog-create-pottery @refresh="refetch()" />
       <data-dialog-delete-pottery @refresh="redirectToCollectionPath()" />
       <data-dialog-update-pottery @refresh="refetch()" />
     </template>

@@ -64,7 +64,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     </template>
     <template #dialogs="{ refetch }">
       <data-dialog-search :path title="Media" />
-      <data-dialog-create-media-object :path @refresh="refetch()" />
+      <data-dialog-create-media-object @refresh="refetch()" />
       <data-dialog-delete-media-object @refresh="refetch()" />
       <data-dialog-update-media-object @refresh="refetch()" />
     </template>

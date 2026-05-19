@@ -9,7 +9,7 @@ const emit = defineEmits<{
   refresh: []
 }>()
 
-const item = computed(() => r$.$value[0])
+const { item } = useCreateBaseItem(r$)
 
 const { openUserPasswordDialog } = useUserPasswordDialog()
 </script>
@@ -20,6 +20,7 @@ const { openUserPasswordDialog } = useUserPasswordDialog()
     :parent="undefined"
     :path
     :regle="r$"
+
     @refresh="emit('refresh')"
     @success="(event) => openUserPasswordDialog(event)"
   >

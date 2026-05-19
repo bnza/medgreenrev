@@ -1,8 +1,20 @@
 <script setup lang="ts">
-import type { ApiResourcePath, PostCollectionPath } from '~~/types'
+import type {
+  ApiResourcePath,
+  PostCollectionPath,
+  PostCollectionRequestMap,
+} from '~~/types'
 import { integer, maxValue, minValue, required } from '@regle/rules'
 
 const path: ApiResourcePath | PostCollectionPath = '/api/data/analyses'
+
+const props = defineProps<{
+  duplicateItem?: Partial<PostCollectionRequestMap[typeof path]> | null
+}>()
+
+const model = props.duplicateItem
+  ? ref(Object.assign({}, props.duplicateItem))
+  : generateEmptyPostModel(path)
 
 const uniqueType = useApiUniqueValidator(
   '/api/validator/unique/analyses',
@@ -20,7 +32,6 @@ const uniqueIdentifier = useApiUniqueValidator(
   'Duplicate [type, year, identifier] combination',
 )
 
-const model = generateEmptyPostModel(path)
 const { r$ } = useScopedRegle(
   model,
   computed(() => ({
