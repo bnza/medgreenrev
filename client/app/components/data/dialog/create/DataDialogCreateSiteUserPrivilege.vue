@@ -5,7 +5,7 @@ import type {
   ResourceParent,
 } from '~~/types'
 
-const path: PostCollectionPath = '/api/data/sediment_cores' as const
+const path: PostCollectionPath = '/api/admin/site_user_privileges' as const
 
 defineProps<{
   parent?: ResourceParent<'archaeologicalSite'> | ResourceParent<'user'>
@@ -29,7 +29,7 @@ const { item } = useCreateBaseItem(r$)
     @refresh="emit('refresh')"
   >
     <template #default="{ duplicateItem }">
-      <data-item-form-create-site-user-privilege :parent :duplicate-item/>
+      <data-item-form-create-site-user-privilege :parent :duplicate-item />
     </template>
   </data-dialog-create>
 </template>

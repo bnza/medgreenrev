@@ -436,6 +436,8 @@ test.describe('Archaeological site lifecycle', () => {
         await collectionPom.expectAppMessageToHaveText(
           'Resource successfully created',
         )
+        await page.getByText('Resource successfully created').click()
+
         await privilegesCollectionPom.table
           .getItemNavigationLink(
             'user_zoo@example.com',
