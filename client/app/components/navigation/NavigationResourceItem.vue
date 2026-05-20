@@ -12,6 +12,7 @@ defineEmits<{
 }>()
 defineSlots<{
   prepend(): any
+  inner(): any
   append(): any
 }>()
 </script>
@@ -20,6 +21,7 @@ defineSlots<{
   <v-btn-group v-if="acl">
     <slot name="prepend" />
     <navigation-resource-item-read :id :app-path :disabled="!acl.canRead" />
+    <slot name="inner" />
     <navigation-resource-item-update
       :disabled="!acl.canUpdate"
       @update="$emit('update')"

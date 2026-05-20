@@ -1,5 +1,37 @@
-import type { StratigraphicUnitRelationshipKey } from '~~/types'
+import type {
+  PostCollectionPath,
+  StratigraphicUnitRelationshipKey,
+} from '~~/types'
 
+/**
+ * Whitelist of POST collection paths for which the duplicate flow is enabled.
+ *
+ * Keep this list curated: a resource only belongs here once its create form
+ * has been migrated to accept a `duplicateItem` prop AND any per-resource
+ * normalization (unique fields, codes, relations to drop) has been added in
+ * `usePostCloneDuplicateNormalization`.
+ *
+ * The tuple is declared `as const` so the derived `DuplicablePostCollectionPath`
+ * type narrows `PostCollectionPath` down to the exact literal members.
+ */
+export const DUPLICABLE_POST_COLLECTION_PATHS = [
+  '/api/data/potteries',
+  '/api/data/stratigraphic_units',
+  '/api/data/history/animals',
+  '/api/data/history/plants',
+] as const satisfies readonly PostCollectionPath[]
+
+export type DuplicablePostCollectionPath =
+  (typeof DUPLICABLE_POST_COLLECTION_PATHS)[number]
+
+export const isDuplicablePostCollectionPath = (
+  path: unknown,
+): path is DuplicablePostCollectionPath => {
+  return (
+    'string' === typeof path &&
+    DUPLICABLE_POST_COLLECTION_PATHS.includes(path as any)
+  )
+}
 export const STRATIGRAPHIC_UNIT_RELATIONSHIP_MAP: Record<
   StratigraphicUnitRelationshipKey,
   string
@@ -27,7 +59,10 @@ export const ANALYSIS_TYPE_MAP: Record<
 > = {
   C14: { group: AnalysisGroups.AbsoluteDating, value: 'C14' },
   THL: { group: AnalysisGroups.AbsoluteDating, value: 'thermoluminescence' },
-  OSL: { group: AnalysisGroups.AbsoluteDating, value: 'optical simulated luminescence' },
+  OSL: {
+    group: AnalysisGroups.AbsoluteDating,
+    value: 'optical simulated luminescence',
+  },
   ANTX: { group: AnalysisGroups.Assemblage, value: 'anthracology' },
   ANTH: { group: AnalysisGroups.Assemblage, value: 'anthropology' },
   CARP: { group: AnalysisGroups.Assemblage, value: 'carpology' },

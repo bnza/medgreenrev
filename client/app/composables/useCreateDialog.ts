@@ -31,13 +31,20 @@ export const useCreateDialog = <
 >(
   path: Path,
 ) => {
-
   const getItemPath = API_ITEMS_RESOURCE_MAP[path]
 
   // Dialog state (tri-state: false | true | Iri).
-  const { createDialogState, isCreateDialogOpen, duplicateSource } = storeToRefs(
-    useResourceCreateDialogStore(path),
-  )
+  const {
+    createDialogState,
+    isCreateDialogOpen,
+    duplicateSource,
+    redirectOnSuccess,
+  } = storeToRefs(useResourceCreateDialogStore(path))
+
+  // Reset redirectOnSuccess when the dialog closes.
+  watch(isCreateDialogOpen, (open) => {
+    if (!open) redirectOnSuccess.value = undefined
+  })
 
   // Post-success redirect flag (shared with the rest of the resource UI).
   const { redirectToItem } = storeToRefs(useResourceUiStore(path))
@@ -54,9 +61,9 @@ export const useCreateDialog = <
       : undefined,
   )
 
-  const isDuplicate = computed(() => typeof createDialogState.value !== 'boolean')
-  
-
+  const isDuplicate = computed(
+    () => typeof createDialogState.value !== 'boolean',
+  )
 
   const {
     data: fetchedItem,
@@ -64,7 +71,9 @@ export const useCreateDialog = <
     error: cloneError,
   } = useGetItemQuery(getItemPath, getItemParams)
 
-  const isReady = computed(() => !isDuplicate.value || cloneStatus.value === 'success')
+  const isReady = computed(
+    () => !isDuplicate.value || cloneStatus.value === 'success',
+  )
 
   // Strip identity/audit/JSON-LD fields and apply any per-resource override.
   const normalize = usePostCloneDuplicateNormalization<Path>(path)
@@ -88,6 +97,7 @@ export const useCreateDialog = <
     cloneStatus,
     cloneError,
     redirectToItem,
+    redirectOnSuccess,
     getItemPath,
   }
 }

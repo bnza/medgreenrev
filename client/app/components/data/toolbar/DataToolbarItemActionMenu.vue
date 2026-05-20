@@ -12,6 +12,8 @@ import type {
   PatchItemPath,
   PostCollectionPath,
 } from '~~/types'
+import type { DuplicablePostCollectionPath } from '~/utils'
+import { isDuplicablePostCollectionPath } from '~/utils'
 
 const props = defineProps<{
   acl: BaseAcl
@@ -29,11 +31,11 @@ const { findApiResourcePath, isPostOperationPath } = useOpenApiStore()
 // create/duplicate dialog store. Falls back to `undefined` when the resource
 // has no POST collection endpoint (read-only resources): in that case the
 // duplicate entry is not rendered.
-const postPath = computed<PostCollectionPath | undefined>(() => {
+const postPath = computed<DuplicablePostCollectionPath | undefined>(() => {
   const candidate = isApiResourceKey(props.path)
     ? props.path
     : findApiResourcePath(props.path)
-  return isPostOperationPath(candidate) ? candidate : undefined
+  return isDuplicablePostCollectionPath(candidate) ? candidate : undefined
 })
 
 const itemForDuplicate = computed<{ '@id': Iri } | undefined>(() => {
@@ -54,7 +56,7 @@ const isEmptyMenu = computed<boolean>(
           <data-toolbar-list-item-delete v-if="acl.canDelete" :path :item />
           <data-toolbar-list-item-update v-if="acl.canUpdate" :path :item />
           <data-toolbar-list-item-duplicate
-            v-if="true && postPath && itemForDuplicate"
+            v-if="postPath && itemForDuplicate"
             :path="postPath"
             :item
           />

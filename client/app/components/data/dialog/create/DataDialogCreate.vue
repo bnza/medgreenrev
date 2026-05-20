@@ -61,8 +61,8 @@ const {
   duplicateSource,
   clonedItem,
   redirectToItem,
+  redirectOnSuccess,
 } = useCreateDialog(props.path)
-
 
 const { postCollection, invalidatedCacheEntries } = usePostCollectionMutation(
   props.path,
@@ -142,7 +142,8 @@ const submit = async () => {
     }
 
     //The app will redirect to the new item page since the user decided so
-    if (redirectToItem.value) {
+    const shouldRedirect = redirectOnSuccess.value || redirectToItem.value
+    if (shouldRedirect) {
       await redirectToNewItem(data)
     }
 
@@ -199,7 +200,7 @@ const displayTitle = computed(() =>
             <v-row class="justify-end">
               <v-col cols="4">
                 <v-checkbox
-                  v-if="redirectOption"
+                  v-if="redirectOption && redirectOnSuccess !== true"
                   v-model="redirectToItem"
                   data-testid="show-created-item-checkbox"
                   label="show created item"

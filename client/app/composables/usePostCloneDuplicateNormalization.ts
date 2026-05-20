@@ -1,7 +1,4 @@
-import type {
-  PostCollectionPath,
-  PostCollectionRequestMap,
-} from '~~/types'
+import type { PostCollectionPath, PostCollectionRequestMap } from '~~/types'
 
 /**
  * Generic, server-managed fields that must never be carried over from the
@@ -15,7 +12,7 @@ const GENERIC_STRIP_KEYS = [
   'updatedAt',
   'createdBy',
   'updatedBy',
-  '_acl'
+  '_acl',
 ] as const
 
 /**
@@ -43,9 +40,9 @@ const GENERIC_STRIP_KEYS = [
  *   )
  *   // → { site: '/api/data/archaeological_sites/3', year: 2024 }
  */
-export const flattenRelations = <P extends PostCollectionPath>(
+export const flattenRelations = (
   item: Record<string, unknown>,
-  blackList: (keyof PostCollectionRequestMap[P])[] = [],
+  blackList: string[] = [],
 ): Record<string, unknown> => {
   const blocked = new Set(blackList as string[])
   return Object.fromEntries(
@@ -70,7 +67,15 @@ export const flattenRelations = <P extends PostCollectionPath>(
  */
 const POST_CLONE_NORMALIZATION_FN_MAP: Partial<
   Record<PostCollectionPath, (item: Record<string, any>) => Record<string, any>>
-> = {}
+> = {
+  '/api/data/potteries': (item) => {
+    const flattened = flattenRelations(item)
+    flattened.decorations = item.decorations?.map(
+      (d: { '@id': string }) => d['@id'],
+    )
+    return flattened
+  },
+}
 
 /**
  * Returns a normalizer to be applied to an item fetched for duplication.
@@ -89,10 +94,8 @@ export const usePostCloneDuplicateNormalization = <
 ) => {
   const resourceSpecific =
     POST_CLONE_NORMALIZATION_FN_MAP[path] ??
-    ((item: Record<string, any>) => flattenRelations<P>(item))
-  return (
-    item: Record<string, any>,
-  ): Partial<PostCollectionRequestMap[P]> => {
+    ((item: Record<string, any>) => flattenRelations(item))
+  return (item: Record<string, any>): Partial<PostCollectionRequestMap[P]> => {
     const stripped = Object.fromEntries(
       Object.entries(structuredClone(item)).filter(
         ([key]) => !(GENERIC_STRIP_KEYS as readonly string[]).includes(key),

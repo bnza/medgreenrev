@@ -38,7 +38,15 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :app-path
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
-      />
+      >
+        <template #inner>
+          <navigation-resource-item-duplicate
+            :path
+            :item
+            :disabled="!acl.canCreate"
+          />
+        </template>
+      </navigation-resource-item>
     </template>
     <template #[`item.site.code`]="{ item }">
       <data-item-info-box-span-archaeological-site
@@ -49,10 +57,7 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id />
       <data-dialog-search :path :title="labels[1]" />
-      <data-dialog-create-stratigraphic-unit
-        :parent
-        @refresh="refetch()"
-      />
+      <data-dialog-create-stratigraphic-unit :parent @refresh="refetch()" />
       <data-dialog-delete-stratigraphic-unit @refresh="refetch()" />
       <data-dialog-update-stratigraphic-unit @refresh="refetch()" />
     </template>

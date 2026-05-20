@@ -12,6 +12,7 @@
 >
 import type { CollectionAcl, GetCollectionPath, ResourceParent } from '~~/types'
 import type { SearchableGetCollectionPath } from '~/utils/consts/configs/filters'
+import NavigationResourceItemDuplicate from '~/components/navigation/NavigationResourceItemDuplicate.vue'
 
 const vocabularyPotteryShapeStore = useVocabularyStore(
   '/api/vocabulary/pottery/shapes',
@@ -67,7 +68,15 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         :app-path
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
-      />
+      >
+        <template #inner>
+          <navigation-resource-item-duplicate
+            :path
+            :item
+            :disabled="!acl.canCreate"
+          />
+        </template>
+      </navigation-resource-item>
     </template>
     <template #[`item.stratigraphicUnit.site.code`]="{ item }">
       <data-item-info-box-span-archaeological-site

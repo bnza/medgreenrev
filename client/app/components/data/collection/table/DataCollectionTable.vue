@@ -58,9 +58,13 @@ const emit = defineEmits<{
   acl: [CollectionAcl]
 }>()
 
+// emit once anyway, because the cached queries don't emit the acl'
+// emit('acl', acl.value)
+
 watch(
   () => acl.value,
   (acl) => emit('acl', acl),
+  { immediate: true },
 )
 </script>
 

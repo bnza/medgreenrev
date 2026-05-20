@@ -17,6 +17,7 @@ export const useResourceCreateDialogStore = <P extends PostCollectionPath>(
 ) =>
   defineStore(`resource-dialog:create:${path}`, () => {
     const createDialogState = ref<boolean | Iri>(false)
+    const redirectOnSuccess = ref<boolean | undefined>(false)
 
     const isCreateDialogOpen = computed({
       get(): boolean {
@@ -28,7 +29,7 @@ export const useResourceCreateDialogStore = <P extends PostCollectionPath>(
     })
 
     const duplicateSource = computed<Iri | null>(() =>
-      typeof createDialogState.value === 'boolean'
+      createDialogState.value === false || createDialogState.value === true
         ? null
         : createDialogState.value,
     )
@@ -37,6 +38,7 @@ export const useResourceCreateDialogStore = <P extends PostCollectionPath>(
       createDialogState,
       isCreateDialogOpen,
       duplicateSource,
+      redirectOnSuccess,
     }
   })()
 

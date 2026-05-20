@@ -1,5 +1,6 @@
-import type { GetCollectionPath, OperationPathParams } from '~~/types'
+import type { CollectionAcl, GetCollectionPath, OperationPathParams } from '~~/types'
 import { GetCollectionOperation } from '~/api/operations/GetCollectionOperation'
+import useAppQueryCache from '~/composables/queries/useAppQueryCache'
 import useCollectionQueryStore from '~/stores/useCollectionQueryStore'
 
 export function useGetCollectionTotalItemQuery(
@@ -18,8 +19,10 @@ export function useGetCollectionTotalItemQuery(
     useCollectionQueryStore(path),
   )
 
+  const { RESOURCE_QUERY_KEY } = useAppQueryCache(apiResourcePath, path)
+
   const query = useQuery({
-    key: () => [`${path}:${JSON.stringify(params?.value ?? {})}:totalItems`],
+    key: () => RESOURCE_QUERY_KEY.byFilter({ ...params?.value, itemsPerPage: 0 }),
     query: () =>
       getCollectionOperation.request({
         query: { itemsPerPage: 0 },
@@ -27,6 +30,9 @@ export function useGetCollectionTotalItemQuery(
       }),
   })
   const totalItems = computed(() => query.data.value?.totalItems ?? 0)
+  const acl = computed<CollectionAcl>(
+    () => query.data.value?._acl ?? { canCreate: false, canExport: false },
+  )
 
   watch(
     () => totalItems.value,
@@ -38,6 +44,7 @@ export function useGetCollectionTotalItemQuery(
   return {
     ...query,
     totalItems,
+    acl,
   }
 }
 
