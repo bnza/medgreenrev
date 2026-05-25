@@ -40,4 +40,8 @@ export abstract class BasePage {
     expect(response.status()).toBe(status)
     return result
   }
+
+  async expectComboboxToContainText(locator: Locator, value: string) {
+    await expect(locator.locator('../..')).toContainText(value)
+  }
 }

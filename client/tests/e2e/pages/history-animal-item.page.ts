@@ -5,6 +5,6 @@ export class HistoryAnimalItemPage extends BaseItemPage {
   protected readonly path = '/data/history/animals/[id]'
 
   constructor(page: Page) {
-    super(page, 'item-action-menu')
+    super(page, 'data-toolbar-item-action-menu')
   }
 }

@@ -5,6 +5,6 @@ export class HistoryPlantItemPage extends BaseItemPage {
   protected readonly path = '/data/history/plants/[id]'
 
   constructor(page: Page) {
-    super(page, 'item-action-menu')
+    super(page, 'data-toolbar-item-action-menu')
   }
 }

@@ -11,9 +11,9 @@ export abstract class BaseItemPage extends BaseDataPage {
     'data-toolbar-item-action-menu-button',
   )
 
-  public readonly dataDialogUpdate = new DataDialogUpdateComponent(this.page)
-
-  public readonly dataDialogDelete = new DataDialogDeleteComponent(this.page)
+  // public readonly dataDialogUpdate = new DataDialogUpdateComponent(this.page)
+  //
+  // public readonly dataDialogDelete = new DataDialogDeleteComponent(this.page)
 
   async expectTextFieldToHaveValue(
     fieldName: string,

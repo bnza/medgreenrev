@@ -39,13 +39,13 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         @delete="deleteDialogState = { id: item.id }"
         @update="updateDialogState = { id: item.id }"
       >
-        <template #inner>
-          <navigation-resource-item-duplicate
-            :path
-            :item
-            :disabled="!acl.canCreate"
-          />
-        </template>
+        <!--        <template #inner>-->
+        <!--          <navigation-resource-item-duplicate-->
+        <!--            :path-->
+        <!--            :item-->
+        <!--            :disabled="!acl.canCreate"-->
+        <!--          />-->
+        <!--        </template>-->
       </navigation-resource-item>
     </template>
     <template #[`item.site.code`]="{ item }">

@@ -36,13 +36,14 @@ async function fillAndSubmitAnimalForm(
 ): Promise<void> {
   const languagePattern = new RegExp(`^${language}`)
 
-  await collectionPom.dataDialogCreate.form.getByLabel('language', { exact: true }).click()
-  await page
-    .getByRole('option', { name: languagePattern })
-    .first()
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('language', { exact: true })
     .click()
+  await page.getByRole('option', { name: languagePattern }).first().click()
 
-  await collectionPom.dataDialogCreate.form.getByLabel('animal', { exact: true }).fill(animal)
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('animal', { exact: true })
+    .fill(animal)
 
   await collectionPom.dataDialogCreate.form
     .getByRole('textbox', { name: 'chronology (lower)' })
@@ -62,7 +63,9 @@ async function fillAndSubmitAnimalForm(
 
   await collectionPom.dataDialogCreate.submitForm()
 
-  await collectionPom.expectAppMessageToHaveText('Resource successfully created')
+  await collectionPom.expectAppMessageToHaveText(
+    'Resource successfully created',
+  )
 }
 
 async function expectHistoryAnimalFormValues(
@@ -85,12 +88,17 @@ async function expectHistoryAnimalFormValues(
 ): Promise<void> {
   await itemPom.expectTextFieldToHaveValue('language', language)
   await itemPom.expectTextFieldToHaveValue('animal', animal)
-  await itemPom.expectTextFieldToHaveValue('chronology (upper)', chronologyUpper)
-  await itemPom.expectTextFieldToHaveValue('chronology (lower)', chronologyLower)
+  await itemPom.expectTextFieldToHaveValue(
+    'chronology (upper)',
+    chronologyUpper,
+  )
+  await itemPom.expectTextFieldToHaveValue(
+    'chronology (lower)',
+    chronologyLower,
+  )
   await itemPom.expectTextFieldToHaveValue('reference', reference)
   await itemPom.expectTextFieldToHaveValue('notes', notes)
 }
-
 
 async function fillAndSubmitPlantForm(
   page: Page,
@@ -116,7 +124,9 @@ async function fillAndSubmitPlantForm(
   await collectionPom.dataDialogCreate.form.getByLabel('language').click()
   await page.getByRole('option', { name: languagePattern }).first().click()
 
-  await collectionPom.dataDialogCreate.form.getByLabel('plant', { exact: true }).fill(plant)
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('plant', { exact: true })
+    .fill(plant)
 
   await collectionPom.dataDialogCreate.form
     .getByRole('textbox', { name: 'chronology (lower)' })
@@ -136,7 +146,9 @@ async function fillAndSubmitPlantForm(
 
   await collectionPom.dataDialogCreate.submitForm()
 
-  await collectionPom.expectAppMessageToHaveText('Resource successfully created')
+  await collectionPom.expectAppMessageToHaveText(
+    'Resource successfully created',
+  )
 }
 
 async function expectHistoryPlantFormValues(
@@ -159,8 +171,14 @@ async function expectHistoryPlantFormValues(
 ): Promise<void> {
   await itemPom.expectTextFieldToHaveValue('language', language)
   await itemPom.expectTextFieldToHaveValue('plant', plant)
-  await itemPom.expectTextFieldToHaveValue('chronology (upper)', chronologyUpper)
-  await itemPom.expectTextFieldToHaveValue('chronology (lower)', chronologyLower)
+  await itemPom.expectTextFieldToHaveValue(
+    'chronology (upper)',
+    chronologyUpper,
+  )
+  await itemPom.expectTextFieldToHaveValue(
+    'chronology (lower)',
+    chronologyLower,
+  )
   await itemPom.expectTextFieldToHaveValue('reference', reference)
   await itemPom.expectTextFieldToHaveValue('notes', notes)
 }
@@ -242,6 +260,139 @@ test.describe('History item lifecycle', () => {
           'Resource successfully deleted',
         )
         // await collectionPom.table.expectNotToHaveRowContainingText('UNIQ-ID')
+      })
+      test.describe('Item duplication', () => {
+        test('From collection', async ({ page }) => {
+          const collectionPom = new HistoryAnimalCollectionPage(page)
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+
+          await expect(collectionPom.table.getRow(0)).toContainText('Almuñécar')
+          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'AHPGR, Protocolos, leg. 11, fol. 20r',
+          )
+
+          await collectionPom.table
+            .getItemNavigationLink(0, NavigationLinksButton.Duplicate)
+            .click()
+
+          await collectionPom.dataDialogCreate.expectOldFormData(
+            'reference',
+            'combobox',
+          )
+
+          await collectionPom.expectComboboxToContainText(
+            collectionPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'location',
+            }),
+            'Almuñécar',
+          )
+          await collectionPom.expectComboboxToContainText(
+            collectionPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'language',
+            }),
+            'arabic',
+          )
+          await collectionPom.expectComboboxToContainText(
+            collectionPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'reference',
+            }),
+            'AHPGR, Protocolos, leg. 11, fol. 20r',
+          )
+
+          await collectionPom.dataDialogCreate.form
+            .getByRole('combobox', {
+              name: 'reference',
+            })
+            .fill('AHPGR, Protocolos, leg. 11, fol. 21r')
+          await collectionPom.dataDialogCreate.form
+            .getByRole('textbox', { name: 'notes' })
+            .fill(
+              'Duplicated item summary information about the animal historical reference',
+            )
+
+          await collectionPom.dataDialogCreate.submitButton.click()
+          await collectionPom.expectAppMessageToHaveText(
+            'Resource successfully created',
+          )
+
+          await collectionPom.table.expectData()
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'AHPGR, Protocolos, leg. 11, fol. 21r',
+          )
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'Duplicated item summary information about the animal historical reference',
+          )
+        })
+        test('From item', async ({ page }) => {
+          const collectionPom = new HistoryAnimalCollectionPage(page)
+          const itemPom = new HistoryAnimalItemPage(page)
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+
+          await expect(collectionPom.table.getRow(0)).toContainText('Almuñécar')
+          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'AHPGR, Protocolos, leg. 11, fol. 20r',
+          )
+
+          await collectionPom.table
+            .getItemNavigationLink(0, NavigationLinksButton.Read)
+            .click()
+
+          await itemPom.form.waitForLoad()
+          await itemPom.dataCard.clickOnActionMenuButton('duplicate')
+
+          await itemPom.expectComboboxToContainText(
+            itemPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'location',
+            }),
+            'Almuñécar',
+          )
+          await itemPom.expectComboboxToContainText(
+            itemPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'language',
+            }),
+            'arabic',
+          )
+          await itemPom.expectComboboxToContainText(
+            itemPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'reference',
+            }),
+            'AHPGR, Protocolos, leg. 11, fol. 20r',
+          )
+
+          await itemPom.dataDialogCreate.form
+            .getByRole('combobox', {
+              name: 'reference',
+            })
+            .fill('AHPGR, Protocolos, leg. 11, fol. 21r')
+          await itemPom.dataDialogCreate.form
+            .getByRole('textbox', { name: 'notes' })
+            .fill(
+              'Duplicated item summary information about the animal historical reference',
+            )
+
+          await itemPom.dataDialogCreate.submitButton.click()
+          await itemPom.expectAppMessageToHaveText(
+            'Resource successfully created',
+          )
+
+          await expect(
+            itemPom.form.container.getByRole('textbox', {
+              name: 'reference',
+            }),
+          ).toHaveValue('AHPGR, Protocolos, leg. 11, fol. 21r')
+
+          await expect(
+            itemPom.form.container.getByRole('textbox', {
+              name: 'notes',
+            }),
+          ).toHaveValue(
+            'Duplicated item summary information about the animal historical reference',
+          )
+        })
       })
       test('Data validation', async ({ page }) => {
         const collectionPom = new HistoryAnimalCollectionPage(page)
@@ -365,6 +516,139 @@ test.describe('History item lifecycle', () => {
           'Resource successfully deleted',
         )
         // await collectionPom.table.expectNotToHaveRowContainingText('UNIQ-ID')
+      })
+      test.describe('Item duplication', () => {
+        test('From collection', async ({ page }) => {
+          const collectionPom = new HistoryPlantCollectionPage(page)
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+
+          await expect(collectionPom.table.getRow(0)).toContainText('Torrox')
+          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 1r',
+          )
+
+          await collectionPom.table
+            .getItemNavigationLink(0, NavigationLinksButton.Duplicate)
+            .click()
+
+          await collectionPom.dataDialogCreate.expectOldFormData(
+            'reference',
+            'combobox',
+          )
+
+          await collectionPom.expectComboboxToContainText(
+            collectionPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'location',
+            }),
+            'Torrox',
+          )
+          await collectionPom.expectComboboxToContainText(
+            collectionPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'language',
+            }),
+            'arabic',
+          )
+          await collectionPom.expectComboboxToContainText(
+            collectionPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'reference',
+            }),
+            'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 1r',
+          )
+
+          await collectionPom.dataDialogCreate.form
+            .getByRole('combobox', {
+              name: 'reference',
+            })
+            .fill('AHP Málaga (AHPM), Protocolos, leg. 1, fol. 2r')
+          await collectionPom.dataDialogCreate.form
+            .getByRole('textbox', { name: 'notes' })
+            .fill(
+              'Duplicated item summary information about the plant historical reference',
+            )
+
+          await collectionPom.dataDialogCreate.submitButton.click()
+          await collectionPom.expectAppMessageToHaveText(
+            'Resource successfully created',
+          )
+
+          await collectionPom.table.expectData()
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 2r',
+          )
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'Duplicated item summary information about the plant historical reference',
+          )
+        })
+        test('From item', async ({ page }) => {
+          const collectionPom = new HistoryPlantCollectionPage(page)
+          const itemPom = new HistoryPlantItemPage(page)
+          await collectionPom.open()
+          await collectionPom.table.expectData()
+
+          await expect(collectionPom.table.getRow(0)).toContainText('Torrox')
+          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(0)).toContainText(
+            'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 1r',
+          )
+
+          await collectionPom.table
+            .getItemNavigationLink(0, NavigationLinksButton.Read)
+            .click()
+
+          await itemPom.form.waitForLoad()
+          await itemPom.dataCard.clickOnActionMenuButton('duplicate')
+
+          await itemPom.expectComboboxToContainText(
+            itemPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'location',
+            }),
+            'Torrox',
+          )
+          await itemPom.expectComboboxToContainText(
+            itemPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'language',
+            }),
+            'arabic',
+          )
+          await itemPom.expectComboboxToContainText(
+            itemPom.dataDialogCreate.form.getByRole('combobox', {
+              name: 'reference',
+            }),
+            'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 1r',
+          )
+
+          await itemPom.dataDialogCreate.form
+            .getByRole('combobox', {
+              name: 'reference',
+            })
+            .fill('AHP Málaga (AHPM), Protocolos, leg. 1, fol. 2r')
+          await itemPom.dataDialogCreate.form
+            .getByRole('textbox', { name: 'notes' })
+            .fill(
+              'Duplicated item summary information about the plant historical reference',
+            )
+
+          await itemPom.dataDialogCreate.submitButton.click()
+          await itemPom.expectAppMessageToHaveText(
+            'Resource successfully created',
+          )
+
+          await expect(
+            itemPom.form.container.getByRole('textbox', {
+              name: 'reference',
+            }),
+          ).toHaveValue('AHP Málaga (AHPM), Protocolos, leg. 1, fol. 2r')
+
+          await expect(
+            itemPom.form.container.getByRole('textbox', {
+              name: 'notes',
+            }),
+          ).toHaveValue(
+            'Duplicated item summary information about the plant historical reference',
+          )
+        })
       })
       test('Data validation', async ({ page }) => {
         const collectionPom = new HistoryPlantCollectionPage(page)
@@ -584,11 +868,21 @@ test.describe('History item lifecycle', () => {
             .getItemNavigationLink('Turillas', NavigationLinksButton.Read)
             .click()
           await itemPom.clickTab('animals')
-          await expect(page.getByTestId('tab-animals').getByTestId('data-card-toolbar-main-title')).toContainText('animals')
-          await page.getByTestId('tab-animals').getByTestId('data-toolbar-collection-action-menu-button').click()
+          await expect(
+            page
+              .getByTestId('tab-animals')
+              .getByTestId('data-card-toolbar-main-title'),
+          ).toContainText('animals')
+          await page
+            .getByTestId('tab-animals')
+            .getByTestId('data-toolbar-collection-action-menu-button')
+            .click()
           await page.getByText('add new').click()
-          await fillAndSubmitAnimalForm(page, new HistoryAnimalCollectionPage(page))
-          })
+          await fillAndSubmitAnimalForm(
+            page,
+            new HistoryAnimalCollectionPage(page),
+          )
+        })
         test('Plants', async ({ page }) => {
           const collectionPom = new HistoryLocationCollectionPage(page)
           const itemPom = new HistoryLocationItemPage(page)
@@ -598,10 +892,20 @@ test.describe('History item lifecycle', () => {
             .getItemNavigationLink('Turillas', NavigationLinksButton.Read)
             .click()
           await itemPom.clickTab('plants')
-          await expect(page.getByTestId('tab-plants').getByTestId('data-card-toolbar-main-title')).toContainText('plants')
-          await page.getByTestId('tab-plants').getByTestId('data-toolbar-collection-action-menu-button').click()
+          await expect(
+            page
+              .getByTestId('tab-plants')
+              .getByTestId('data-card-toolbar-main-title'),
+          ).toContainText('plants')
+          await page
+            .getByTestId('tab-plants')
+            .getByTestId('data-toolbar-collection-action-menu-button')
+            .click()
           await page.getByText('add new').click()
-          await fillAndSubmitPlantForm(page, new HistoryPlantCollectionPage(page))
+          await fillAndSubmitPlantForm(
+            page,
+            new HistoryPlantCollectionPage(page),
+          )
         })
       })
       test('Media object', async ({ page }) => {

@@ -2,6 +2,7 @@ import { BaseComponent } from '~~/tests/e2e/components/base.component'
 import { expect, type Locator, type Page } from '@playwright/test'
 import { DataCardComponent } from '~~/tests/e2e/components/data-card.component'
 
+type RoleType = Parameters<Locator['getByRole']>[0]
 export class DataDialogComponent extends BaseComponent {
   // Button locators using data-testids from the component
   public readonly closeButton = this.container.getByTestId(
@@ -82,5 +83,11 @@ export class DataDialogComponent extends BaseComponent {
     if (expectClosure) {
       await this.expectDialogToBeClosed()
     }
+  }
+  
+  expectOldFormData(name?: string, role: RoleType = 'textbox') {
+    return expect(
+      this.container.getByRole(role, { name }).first(),
+    ).not.toHaveValue('')
   }
 }

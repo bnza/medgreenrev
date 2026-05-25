@@ -15,8 +15,8 @@ import type {
  * type narrows `PostCollectionPath` down to the exact literal members.
  */
 export const DUPLICABLE_POST_COLLECTION_PATHS = [
-  '/api/data/potteries',
-  '/api/data/stratigraphic_units',
+  // '/api/data/potteries',
+  // '/api/data/stratigraphic_units',
   '/api/data/history/animals',
   '/api/data/history/plants',
 ] as const satisfies readonly PostCollectionPath[]

@@ -3,6 +3,7 @@ import path from 'path'
 
 export enum NavigationLinksButton {
   Delete = 'delete-item-button',
+  Duplicate = 'duplicate-item-button',
   Read = 'read-item-button',
   Update = 'update-item-button',
 }

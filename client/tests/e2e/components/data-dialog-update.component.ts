@@ -5,10 +5,4 @@ export class DataDialogUpdateComponent extends DataDialogComponent {
   constructor(page: Page) {
     super(page, 'data-dialog-update')
   }
-
-  expectOldFormData(name?: string) {
-    return expect(
-      this.container.getByRole('textbox', { name }).first(),
-    ).not.toHaveValue('')
-  }
 }
