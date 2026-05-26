@@ -46,6 +46,14 @@ services:
         arguments:
             $projectDir: '%kernel.project_dir%'
 
+    App\Command\CsvListHeadersCommand:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
+    App\EventSubscriber\CsvHeaderReplacementSubscriber:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
     App\Service\FixturesMediaReset:
         arguments:
             $sourcePath: '%kernel.project_dir%/fixtures/media'
