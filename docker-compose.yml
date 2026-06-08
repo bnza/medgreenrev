@@ -26,9 +26,13 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
       - POSTGRES_USER=${POSTGRES_USER:-app}
       - PGDATA=/var/lib/postgresql/data
+      - POSTGRES_BACKUP_DIR=/var/backups/postgresql
     volumes:
       - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
       - pg_socket:/var/run/postgresql
+      - ${POSTGRES_BACKUP_DIR:-/var/backups/postgresql}:/var/backups/postgresql
+      - ./docker/database/backup.sh:/usr/local/bin/backup.sh:ro
+      - ./docker/database/initdb.d:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app}" ]
       interval: 5s

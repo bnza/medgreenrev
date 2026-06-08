@@ -12,3 +12,4 @@ client/.pnpm-store
 client/.nuxt
 client/.output
 client/.env
+/docker/database/initdb.d/
