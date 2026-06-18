@@ -274,8 +274,8 @@ final class Version20250628091340 extends AbstractMigration
                     WHERE english_name IS NOT NULL
                     UNION
                     -- Data values (already lowercased on write); no taxonomy match.
-                    SELECT animal AS value
-                    FROM history_animals
+                    SELECT plant AS value
+                    FROM history_plants
                 )
                 SELECT
                     MD5(u.value) AS id,
