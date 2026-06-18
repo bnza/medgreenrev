@@ -43,4 +43,10 @@ class HistoryAnimalView
 
     #[ORM\Column(type: 'string')]
     public readonly string $value;
+
+    #[ORM\Column(name: 'taxonomy_id', type: 'integer', nullable: true)]
+    public readonly ?int $taxonomyId;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    public readonly ?string $taxonomy;
 }

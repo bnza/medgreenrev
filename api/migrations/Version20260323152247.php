@@ -296,18 +296,18 @@ final class Version20260323152247 extends AbstractMigration
                     a.notes,
                     a.animal AS name,
                     a.location_id,
-                    zt.value AS value,
-                    zt.family AS family,
-                    zt.class AS class,
-                    zt.english_name AS english_name,
-                    zt.spanish_name AS spanish_name,
+                    fa.value AS value,
+                    fa.family AS family,
+                    fa.class AS class,
+                    fa.english_name AS english_name,
+                    fa.spanish_name AS spanish_name,
                     l.value AS location_value,
                     r.value AS region,
                     l.the_geom
                 FROM history_animals a
                 JOIN vocabulary.history_locations l ON a.location_id = l.id
                 JOIN vocabulary.regions r ON l.region_id = r.id
-                LEFT JOIN vocabulary.zoo_taxonomy zt ON a.taxonomy_id = zt.id;
+                LEFT JOIN vw_history_animal fa ON fa.id = a.id;
             SQL
         );
 
@@ -322,20 +322,18 @@ final class Version20260323152247 extends AbstractMigration
                     p.notes,
                     p.plant AS name,
                     p.location_id,
-                    vbt.value AS taxon,
-                    vbt.family AS family,
-                    vbt.class AS class,
-                    vbt.genus AS genus,
-                    vbt.species AS species,
-                    p.cf AS cf,
-                    p.sp AS sp,
+                    fp.value AS taxon,
+                    fp.family AS family,
+                    fp.class AS class,
+                    fp.genus AS genus,
+                    fp.species AS species,
                     l.value AS location_value,
                     r.value AS region,
                     l.the_geom
                 FROM history_plants p
                 JOIN vocabulary.history_locations l ON p.location_id = l.id
                 JOIN vocabulary.regions r ON l.region_id = r.id
-                LEFT JOIN vocabulary.vw_botany_taxonomy vbt ON p.taxonomy_id = vbt.id;
+                LEFT JOIN vw_history_plant fp ON fp.id = p.id;
             SQL
         );
 

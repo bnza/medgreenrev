@@ -1,9 +1,11 @@
 App\Entity\Vocabulary\History\Language:
     language_ARA:
         value: 'arabic'
-    language_HEB:
-        value: 'hebrew'
     language_LAT:
         value: 'latin'
-    language_VER:
-        value: 'vernacular'
+    language_CAS:
+        value: 'castilian'
+    language_CAT:
+        value: 'catalan'
+    language_VAL:
+        value: 'valencian'

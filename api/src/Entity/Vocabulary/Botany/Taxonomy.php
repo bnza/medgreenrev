@@ -30,6 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     schema: 'vocabulary'
 )]
 #[ORM\UniqueConstraint(columns: ['value', 'parent_id'], options: ['nulls_distinct' => false])]
+#[ORM\UniqueConstraint(columns: ['english_name'], options: ['nulls_distinct' => true])]
 #[ApiResource(
     shortName: 'VocBotanyTaxonomy',
     operations: [
@@ -107,12 +108,17 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Duplicate taxonomy value: {{ value }}.',
     groups: ['validation:voc_botany_taxonomy:create']
 )]
+#[UniqueEntity(
+    fields: ['englishName'],
+    message: 'Duplicate taxonomy english name: {{ value }}.',
+    groups: ['validation:voc_botany_taxonomy:create']
+)]
 #[AppAssert\NotReferenced(self::class, message: 'Cannot delete the taxonomy because it is referenced by: {{ classes }}.', groups: ['validation:voc_botany_taxonomy:delete'])]
 class Taxonomy
 {
     #[ORM\Id,
         ORM\GeneratedValue(strategy: 'SEQUENCE'),
-        ORM\Column(type: 'smallint')]
+        ORM\Column(type: 'integer')]
     #[Groups([
         'voc_botany_taxonomy:read',
         'voc_botany_taxonomy:acl:read',
@@ -250,7 +256,7 @@ class Taxonomy
 
     public function setSpanishName(?string $spanishName): Taxonomy
     {
-        $this->spanishName = $spanishName;
+        $this->spanishName = null !== $spanishName ? mb_strtolower($spanishName) : null;
 
         return $this;
     }
@@ -262,7 +268,7 @@ class Taxonomy
 
     public function setEnglishName(?string $englishName): Taxonomy
     {
-        $this->englishName = $englishName;
+        $this->englishName = null !== $englishName ? mb_strtolower($englishName) : null;
 
         return $this;
     }

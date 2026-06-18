@@ -305,6 +305,12 @@ use App\State\ValidatorUniqueProvider;
             ],
         ),
         new Get(
+            uriTemplate: '/validator/unique/vocabulary/botany/taxonomies/english_name',
+            defaults: [
+                'resource' => VocBotanyTaxonomy::class,
+            ],
+        ),
+        new Get(
             uriTemplate: '/validator/unique/vocabulary/history/locations',
             defaults: [
                 'resource' => VocHistoryLocation::class,
@@ -318,6 +324,12 @@ use App\State\ValidatorUniqueProvider;
         ),
         new Get(
             uriTemplate: '/validator/unique/vocabulary/zoo/taxonomies/value',
+            defaults: [
+                'resource' => VocZooTaxonomy::class,
+            ],
+        ),
+        new Get(
+            uriTemplate: '/validator/unique/vocabulary/zoo/taxonomies/english_name',
             defaults: [
                 'resource' => VocZooTaxonomy::class,
             ],

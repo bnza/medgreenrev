@@ -60,26 +60,6 @@ const acl = defineModel<CollectionAcl>('acl', { required: true })
         </template>
       </navigation-resource-item>
     </template>
-    <template #[`item.taxonomy.flat.value`]="{ item }">
-      <vocabulary-value-cell
-        path="/api/vocabulary/botany/taxonomies"
-        :iri="item.taxonomy"
-        prop="flat.value"
-      />
-    </template>
-    <template #[`item.taxonomy.englishName`]="{ item }">
-      <vocabulary-value-cell
-        path="/api/vocabulary/botany/taxonomies"
-        :iri="item.taxonomy"
-        prop="englishName"
-      />
-    </template>
-    <template #[`item.cf`]="{ item }">
-      <v-checkbox-btn class="centered-item" :model-value="item.cf" readonly />
-    </template>
-    <template #[`item.sp`]="{ item }">
-      <v-checkbox-btn class="centered-item" :model-value="item.sp" readonly />
-    </template>
     <template #dialogs="{ refetch }">
       <data-dialog-download :path :title="labels[1]" :parent-id :filter-path />
       <data-dialog-search :path="searchPath" :title="labels[1]" />

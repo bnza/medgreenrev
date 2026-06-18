@@ -26,7 +26,6 @@ Magnoliopsida,Amaranthaceae,Chenopodium,murale,Cenizo mural,Nettle-leaved goosef
 Magnoliopsida,Amaranthaceae,Chenopodium,quinoa,Quinoa,Quinoa
 Magnoliopsida,Amaranthaceae,Chenopodium,vulvaria,Cenizo hediondo,Stinking goosefoot
 Magnoliopsida,Amaranthaceae,Dysphania,botrys,,
-Magnoliopsida,Amaranthaceae,Dysphania,ambrosioides,Pazote,Mexican tea
 Magnoliopsida,Amaranthaceae,Oxybasis,glauca,,
 Magnoliopsida,Amaranthaceae,Sueda,vera,,
 Magnoliopsida,Amaranthaceae,Sula,capillata,,
@@ -262,7 +261,6 @@ Magnoliopsida,Asteraceae,Echinops,bannnaticus,,Globe thistle
 Magnoliopsida,Asteraceae,Echinops,exaltatus,,
 Magnoliopsida,Asteraceae,Echinops,microcephalus,,
 Magnoliopsida,Asteraceae,Echinops,orientalis,,
-Magnoliopsida,Asteraceae,Echinops,ritro,Cardo de cabeza,Globe thistle
 Magnoliopsida,Asteraceae,Erigeron,acer,,Blue fleabane
 Magnoliopsida,Asteraceae,Erigeron,alpinus,,Alpine fleabane
 Magnoliopsida,Asteraceae,Erigeron,annuus,,Annual fleabane
@@ -270,9 +268,6 @@ Magnoliopsida,Asteraceae,Filago,germanica,,Common cudweed
 Magnoliopsida,Asteraceae,Filago,lutescens,,
 Magnoliopsida,Asteraceae,Filago,minima,,Small cudweed
 Magnoliopsida,Asteraceae,Filago,pyramidata,,Broad-leaved cudweed
-Magnoliopsida,Asteraceae,Filago,vulgaris,,Common cudweed
-Magnoliopsida,Asteraceae,Glebionis,coronaria,,Crown daisy
-Magnoliopsida,Asteraceae,Glebionis,segetum,Magarza,Corn marigold
 Magnoliopsida,Asteraceae,Helianthus,annuus,Girasol,Sunflower
 Magnoliopsida,Asteraceae,Helianthus,tuberosus,Aguaturma,Jerusalem artichoke
 Magnoliopsida,Asteraceae,Helichrysum,compactum,,
@@ -305,7 +300,6 @@ Magnoliopsida,Asteraceae,Leucanthemum,gracilicaule,,
 Magnoliopsida,Asteraceae,Leucanthemum,maximum,,
 Magnoliopsida,Asteraceae,Leucanthemum,monspeliense,,
 Magnoliopsida,Asteraceae,Leucanthemum,vulgare,Margarita mayor,Ox-eye daisy
-Magnoliopsida,Asteraceae,Matricaria,chamomilla,Manzanilla,Chamomile
 Magnoliopsida,Asteraceae,Matricaria,discoidea,,Pineapple mayweed
 Magnoliopsida,Asteraceae,Onopordum,acanthium,Cardo borriquero,Cotton thistle
 Magnoliopsida,Asteraceae,Onopordum,macrolepis,,
@@ -540,14 +534,12 @@ Magnoliopsida,Caryophyllaceae,Silene,cebennensis,,
 Magnoliopsida,Caryophyllaceae,Silene,colorata,,
 Magnoliopsida,Caryophyllaceae,Silene,compacta,,
 Magnoliopsida,Caryophyllaceae,Silene,conica,,Cone silene
-Magnoliopsida,Caryophyllaceae,Silene,coronaria,,Rose campion
 Magnoliopsida,Caryophyllaceae,Silene,dichotoma,,
 Magnoliopsida,Caryophyllaceae,Silene,dioica,Colleja roja,Red campion
 Magnoliopsida,Caryophyllaceae,Silene,flos-cuculi,Flor del cuclillo,Ragged robin
 Magnoliopsida,Caryophyllaceae,Silene,flos-jovis,,
 Magnoliopsida,Caryophyllaceae,Silene,gallica,,Small-flowered catchfly
 Magnoliopsida,Caryophyllaceae,Silene,hifacensis,,
-Magnoliopsida,Caryophyllaceae,Silene,latifolia,Colleja,White campion
 Magnoliopsida,Caryophyllaceae,Silene,legionensis,,
 Magnoliopsida,Caryophyllaceae,Silene,longicaulis,,
 Magnoliopsida,Caryophyllaceae,Silene,naceflora,,
@@ -836,7 +828,6 @@ Magnoliopsida,Fabaceae,Retama,monosperma,,White weeping broom
 Magnoliopsida,Fabaceae,Retama,sphaerocarpa,Retama,Spanish broom
 Magnoliopsida,Fabaceae,Robinia,pseudoacacia,Acacia,Black locust
 Magnoliopsida,Fabaceae,Scorpiurus,muricatus,,
-Magnoliopsida,Fabaceae,Spartium,junceum,Retama de olor,Spanish broom
 Magnoliopsida,Fabaceae,Trifolium,alpestre,,
 Magnoliopsida,Fabaceae,Trifolium,angustifolium,,
 Magnoliopsida,Fabaceae,Trifolium,arvense,Trébol pie de liebre,Hare's-foot clover
@@ -872,7 +863,6 @@ Magnoliopsida,Fabaceae,Vicia,benghalensis,,
 Magnoliopsida,Fabaceae,Vicia,bithynica,,
 Magnoliopsida,Fabaceae,Vicia,cracca,Arveja ratona,Tufted vetch
 Magnoliopsida,Fabaceae,Vicia,disperma,,
-Magnoliopsida,Fabaceae,Vicia,ervilia,Yero,Bitter vetch
 Magnoliopsida,Fabaceae,Vicia,faba,Haba,Broad bean
 Magnoliopsida,Fabaceae,Vicia,hirsuta,,Hairy tare
 Magnoliopsida,Fabaceae,Vicia,lens,,
@@ -985,7 +975,6 @@ Magnoliopsida,Lamiaceae,Ballota,spinosa,,
 Magnoliopsida,Lamiaceae,Calamintha,nepeta,Calamento,Lesser calamint
 Magnoliopsida,Lamiaceae,Clinopodium,alpinum,,
 Magnoliopsida,Lamiaceae,Clinopodium,grandiflorum,,
-Magnoliopsida,Lamiaceae,Clinopodium,nepeta,Nébeda,Lesser calamint
 Magnoliopsida,Lamiaceae,Clinopodium,thymifolium,,
 Magnoliopsida,Lamiaceae,Clinopodium,vulgare,Clinopodio,Wild basil
 Magnoliopsida,Lamiaceae,Dracocephalum,austriacum,,
@@ -1037,7 +1026,6 @@ Magnoliopsida,Lamiaceae,Salvia,lavandulifolia,Salvia,Spanish sage
 Magnoliopsida,Lamiaceae,Salvia,nemorosa,,
 Magnoliopsida,Lamiaceae,Salvia,officinalis,Salvia,Sage
 Magnoliopsida,Lamiaceae,Salvia,pratensis,Salvia de prado,Meadow clary
-Magnoliopsida,Lamiaceae,Salvia,rosmarinus,Romero,Rosemary
 Magnoliopsida,Lamiaceae,Salvia,sclarea,Amaro,Clary sage
 Magnoliopsida,Lamiaceae,Salvia,taraxacifolia,,
 Magnoliopsida,Lamiaceae,Salvia,verbenacea,Gallocresta,Wild clary
@@ -1082,7 +1070,6 @@ Magnoliopsida,Lamiaceae,Thymus,mastichina,Mejorana,
 Magnoliopsida,Lamiaceae,Thymus,polytrichus,,Wild thyme
 Magnoliopsida,Lamiaceae,Thymus,praecox,,
 Magnoliopsida,Lamiaceae,Thymus,pulegioides,,Large thyme
-Magnoliopsida,Lamiaceae,Thymus,serpyllum,Serpol,Wild thyme
 Magnoliopsida,Lamiaceae,Thymus,vulgaris,Tomillo,Thyme
 Magnoliopsida,Lamiaceae,Vitex,agnus-castus,Sauzgatillo,Chaste tree
 Magnoliopsida,Lauraceae,Laurus,nobilis,Laurel,Bay laurel
@@ -1118,7 +1105,6 @@ Magnoliopsida,Malvaceae,Malva,moschata,Malva almizclada,Musk mallow
 Magnoliopsida,Malvaceae,Malva,neglecta,,Dwarf mallow
 Magnoliopsida,Malvaceae,Malva,officinalis,Malva,Common mallow
 Magnoliopsida,Malvaceae,Malva,parviflora,,
-Magnoliopsida,Malvaceae,Malva,sylvestris,Malva silvestre,Common mallow
 Magnoliopsida,Malvaceae,Malva,subovata,,
 Magnoliopsida,Malvaceae,Malva,trimestris,,Royal mallow
 Magnoliopsida,Malvaceae,Tilia,cordata,Tilo,Small-leaved lime
@@ -1294,7 +1280,6 @@ Liliopsida,Poaceae,Avenula,bromoides,,
 Liliopsida,Poaceae,Avenula,pubescens,,Hairy oat
 Liliopsida,Poaceae,Brachypodium,distachyon,Brachypodio,False brome
 Liliopsida,Poaceae,Brachypodium,pinnatum,Brachypodio pinnado,Tor grass
-Liliopsida,Poaceae,Brachypodium,sylvaticum,Brachypodio silvestre,False brome
 Liliopsida,Poaceae,Briza,maxima,Lágrimas de la Virgen,Greater quaking grass
 Liliopsida,Poaceae,Briza,media,Briza,Quaking grass
 Liliopsida,Poaceae,Bromus,arvensis,Bromo de campo,Field brome
@@ -1306,8 +1291,6 @@ Liliopsida,Poaceae,Bromus,ramosus,Bromo ramoso,Hairy brome
 Liliopsida,Poaceae,Bromus,rigidus,,Rigid brome
 Liliopsida,Poaceae,Bromus,rubens,,Red brome
 Liliopsida,Poaceae,Bromus,secalinus,,Rye brome
-Liliopsida,Poaceae,Bromus,sterilis,Bromo estéril,Barren brome
-Liliopsida,Poaceae,Bromus,tectorum,,Drooping brome
 Liliopsida,Poaceae,Cutandia,divaricata,,
 Liliopsida,Poaceae,Cutandia,maritima,,
 Liliopsida,Poaceae,Cynodon,dactylon,Grama,Bermuda grass
@@ -1404,7 +1387,6 @@ Magnoliopsida,Polygonaceae,Rumex,bucephalophorus,,
 Magnoliopsida,Polygonaceae,Rumex,conglomeratus,Romaza,Clustered dock
 Magnoliopsida,Polygonaceae,Rumex,crispus,Romaza crespa,Curled dock
 Magnoliopsida,Polygonaceae,Rumex,cristatus,,
-Magnoliopsida,Polygonaceae,Rumex,hydrolapathum,,Water dock
 Magnoliopsida,Polygonaceae,Rumex,intermedius,,
 Magnoliopsida,Polygonaceae,Rumex,longifolius,,Northern dock
 Magnoliopsida,Polygonaceae,Rumex,montanus,,
@@ -1469,7 +1451,6 @@ Magnoliopsida,Ranunculaceae,Eranthis,hiemalis,Acónito de invierno,Winter aconit
 Magnoliopsida,Ranunculaceae,Helleborus,foetidus,Eléboro fétido,Stinking hellebore
 Magnoliopsida,Ranunculaceae,Helleborus,niger,Rosa de Navidad,Christmas rose
 Magnoliopsida,Ranunculaceae,Helleborus,viridis,Eléboro verde,Green hellebore
-Magnoliopsida,Ranunculaceae,Hepatica,nobilis,Hepática,Hepatica
 Magnoliopsida,Ranunculaceae,Nigella,arvensis,Arañuela,Wild fennel flower
 Magnoliopsida,Ranunculaceae,Nigella,damascena,Arañuela,Love-in-a-mist
 Magnoliopsida,Ranunculaceae,Nigella,hispanica,,
@@ -1580,7 +1561,6 @@ Magnoliopsida,Rosaceae,Rosa,glauca,Rosa glauca,Redleaf rose
 Magnoliopsida,Rosaceae,Rosa,pendulina,Rosa alpina,Alpine rose
 Magnoliopsida,Rosaceae,Rosa,pimpinellifolia,Rosal pimpinela,Burnet rose
 Magnoliopsida,Rosaceae,Rosa,sempervirens,Rosal siempreverde,Evergreen rose
-Magnoliopsida,Rosaceae,Rosa,spinosissima,,Burnet rose
 Magnoliopsida,Rosaceae,Rosa,stylosa,,
 Magnoliopsida,Rosaceae,Rosa,tomentosa,,Harsh downy rose
 Magnoliopsida,Rosaceae,Rubus,caesius,Zarza menor,Dewberry
@@ -1659,7 +1639,6 @@ Magnoliopsida,Scrophulariaceae,Verbascum,thapsus,Gordolobo,Great mullein
 Magnoliopsida,Solanaceae,Datura,stramonium,Estramonio,Thorn apple
 Magnoliopsida,Solanaceae,Hyoscyamus,niger,Beleño negro,Henbane
 Magnoliopsida,Solanaceae,Mandragora,autumnalis,Mandrágora,Mandrake
-Magnoliopsida,Solanaceae,Mandragora,officinarum,Mandrágora,Mandrake
 Magnoliopsida,Solanaceae,Solanum,atro,,
 Magnoliopsida,Solanaceae,Solanum,dulcamara,Dulcamara,Bittersweet
 Magnoliopsida,Solanaceae,Solanum,luteum,,

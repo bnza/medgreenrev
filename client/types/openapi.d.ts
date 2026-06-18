@@ -7378,6 +7378,26 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/validator/unique/vocabulary/botany/taxonomies/english_name': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquevocabularybotanytaxonomiesenglish_name_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/validator/unique/vocabulary/botany/taxonomies/value': {
     parameters: {
       query?: never
@@ -7430,6 +7450,26 @@ export interface paths {
      * @description Retrieves a UniqueValidator resource.
      */
     get: operations['api_validatoruniquevocabularyzootaxonomiescode_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/validator/unique/vocabulary/zoo/taxonomies/english_name': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a UniqueValidator resource.
+     * @description Retrieves a UniqueValidator resource.
+     */
+    get: operations['api_validatoruniquevocabularyzootaxonomiesenglish_name_get']
     put?: never
     post?: never
     delete?: never
@@ -13524,11 +13564,6 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      taxonomy?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
       location: string
       chronologyLower: number
       chronologyUpper: number
@@ -13542,11 +13577,6 @@ export interface components {
        */
       language?: string
       animal?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13597,11 +13627,9 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.csv-history_animal.acl.read']
       animal?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
+      readonly flat?:
+        | components['schemas']['HistoryAnimalView.csv-history_animal.acl.read']
+        | null
       location?: components['schemas']['VocHistoryLocation.csv-history_animal.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
@@ -13631,11 +13659,9 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.jsonld-history_animal.acl.read']
       animal?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
+      readonly flat?:
+        | components['schemas']['HistoryAnimalView.jsonld-history_animal.acl.read']
+        | null
       location?: components['schemas']['VocHistoryLocation.jsonld-history_animal.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
@@ -13647,6 +13673,34 @@ export interface components {
        */
       createdBy?: string | null
     })
+    'HistoryAnimalView.csv-history_animal.acl.read': {
+      readonly taxonomyId?: number | null
+      readonly value?: string | null
+      readonly englishName?: string | null
+      readonly spanishName?: string | null
+      readonly class?: string | null
+      readonly family?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryAnimalView.jsonld-history_animal.acl.read': {
+      readonly taxonomyId?: number | null
+      readonly value?: string | null
+      readonly englishName?: string | null
+      readonly spanishName?: string | null
+      readonly class?: string | null
+      readonly family?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'HistoryPlant-feature_collection.json.read': Record<string, never>
     'HistoryPlant-history_plant.create': {
       /**
@@ -13655,15 +13709,6 @@ export interface components {
        */
       language: string
       plant: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
-      /** @default false */
-      cf: boolean
-      /** @default false */
-      sp: boolean
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13681,15 +13726,6 @@ export interface components {
        */
       language?: string
       plant?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
-      /** @default false */
-      cf: boolean
-      /** @default false */
-      sp: boolean
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13740,15 +13776,9 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.csv-history_plant.acl.read']
       plant?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
-      /** @default false */
-      cf: boolean
-      /** @default false */
-      sp: boolean
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.csv-history_plant.acl.read']
+        | null
       location?: components['schemas']['VocHistoryLocation.csv-history_plant.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
@@ -13778,15 +13808,9 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.jsonld-history_plant.acl.read']
       plant?: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      taxonomy?: string | null
-      /** @default false */
-      cf: boolean
-      /** @default false */
-      sp: boolean
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.jsonld-history_plant.acl.read']
+        | null
       location?: components['schemas']['VocHistoryLocation.jsonld-history_plant.acl.read']
       chronologyLower?: number
       chronologyUpper?: number
@@ -13798,6 +13822,48 @@ export interface components {
        */
       createdBy?: string | null
     })
+    'HistoryPlantView.csv-history_plant.acl.read': {
+      readonly taxonomyId?: number | null
+      readonly value?: string | null
+      readonly level?: string | null
+      readonly rank?: number | null
+      readonly species?: string | null
+      readonly genus?: string | null
+      readonly family?: string | null
+      readonly class?: string | null
+      readonly spanishName?: string | null
+      readonly englishName?: string | null
+      readonly genusId?: number | null
+      readonly familyId?: number | null
+      readonly classId?: number | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryPlantView.jsonld-history_plant.acl.read': {
+      readonly taxonomyId?: number | null
+      readonly value?: string | null
+      readonly level?: string | null
+      readonly rank?: number | null
+      readonly species?: string | null
+      readonly genus?: string | null
+      readonly family?: string | null
+      readonly class?: string | null
+      readonly spanishName?: string | null
+      readonly englishName?: string | null
+      readonly genusId?: number | null
+      readonly familyId?: number | null
+      readonly classId?: number | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'HistoryWrittenSource-history_written_source.create': {
       /**
        * Format: iri-reference
@@ -14203,10 +14269,14 @@ export interface components {
     'ListHistoryAnimal.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
       readonly value?: string
+      readonly taxonomyId?: number | null
+      readonly taxonomy?: string | null
     }
     'ListHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
       readonly value?: string
+      readonly taxonomyId?: number | null
+      readonly taxonomy?: string | null
     }
     'ListHistoryReference.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
@@ -35957,19 +36027,19 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.spanishName]'?: 'asc' | 'desc'
+        'order[flat.class]'?: 'asc' | 'desc'
+        'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.englishName'?: string
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.class'?: string
+        'flat.class[]'?: string[]
+        'flat.family'?: string
+        'flat.family[]'?: string[]
+        'flat.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -35992,8 +36062,8 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[taxonomy]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
+        'exists[flat.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36011,10 +36081,10 @@ export interface operations {
          */
         reference?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: flat.spanishName
          * @example cafè
          */
-        'taxonomy.spanishName'?: string
+        'flat.spanishName'?: string
       }
       header?: never
       path?: never
@@ -36248,19 +36318,19 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.spanishName]'?: 'asc' | 'desc'
+        'order[flat.class]'?: 'asc' | 'desc'
+        'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.englishName'?: string
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.class'?: string
+        'flat.class[]'?: string[]
+        'flat.family'?: string
+        'flat.family[]'?: string[]
+        'flat.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36283,8 +36353,8 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[taxonomy]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
+        'exists[flat.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36302,10 +36372,10 @@ export interface operations {
          */
         reference?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: flat.spanishName
          * @example cafè
          */
-        'taxonomy.spanishName'?: string
+        'flat.spanishName'?: string
       }
       header?: never
       path: {
@@ -36344,19 +36414,19 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.spanishName]'?: 'asc' | 'desc'
+        'order[flat.class]'?: 'asc' | 'desc'
+        'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.englishName'?: string
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.class'?: string
+        'flat.class[]'?: string[]
+        'flat.family'?: string
+        'flat.family[]'?: string[]
+        'flat.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36379,8 +36449,8 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[taxonomy]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
+        'exists[flat.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36398,10 +36468,10 @@ export interface operations {
          */
         reference?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: flat.spanishName
          * @example cafè
          */
-        'taxonomy.spanishName'?: string
+        'flat.spanishName'?: string
       }
       header?: never
       path?: never
@@ -36478,19 +36548,19 @@ export interface operations {
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
-        'order[taxonomy.value]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.spanishName]'?: 'asc' | 'desc'
-        'order[taxonomy.class]'?: 'asc' | 'desc'
-        'order[taxonomy.family]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.spanishName]'?: 'asc' | 'desc'
+        'order[flat.class]'?: 'asc' | 'desc'
+        'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.class'?: string
-        'taxonomy.class[]'?: string[]
-        'taxonomy.family'?: string
-        'taxonomy.family[]'?: string[]
-        'taxonomy.englishName'?: string
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.class'?: string
+        'flat.class[]'?: string[]
+        'flat.family'?: string
+        'flat.family[]'?: string[]
+        'flat.englishName'?: string
         chronologyLower?: number
         'chronologyLower[]'?: number[]
         chronologyUpper?: number
@@ -36513,8 +36583,8 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        'exists[taxonomy]'?: boolean
-        'exists[taxonomy.family]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
+        'exists[flat.family]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36532,10 +36602,10 @@ export interface operations {
          */
         reference?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: flat.spanishName
          * @example cafè
          */
-        'taxonomy.spanishName'?: string
+        'flat.spanishName'?: string
       }
       header?: never
       path?: never
@@ -36594,27 +36664,25 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
-        'order[cf]'?: 'asc' | 'desc'
-        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.flat.classId'?: number
-        'taxonomy.flat.classId[]'?: number[]
-        'taxonomy.flat.familyId'?: number
-        'taxonomy.flat.familyId[]'?: number[]
-        'taxonomy.flat.genusId'?: number
-        'taxonomy.flat.genusId[]'?: number[]
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.classId'?: number
+        'flat.classId[]'?: number[]
+        'flat.familyId'?: number
+        'flat.familyId[]'?: number[]
+        'flat.genusId'?: number
+        'flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -36635,9 +36703,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        cf?: boolean
-        sp?: boolean
-        'exists[taxonomy]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36686,27 +36752,25 @@ export interface operations {
         /** @description The number of items per page */
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
-        'order[cf]'?: 'asc' | 'desc'
-        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.flat.classId'?: number
-        'taxonomy.flat.classId[]'?: number[]
-        'taxonomy.flat.familyId'?: number
-        'taxonomy.flat.familyId[]'?: number[]
-        'taxonomy.flat.genusId'?: number
-        'taxonomy.flat.genusId[]'?: number[]
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.classId'?: number
+        'flat.classId[]'?: number[]
+        'flat.familyId'?: number
+        'flat.familyId[]'?: number[]
+        'flat.genusId'?: number
+        'flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -36727,9 +36791,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        cf?: boolean
-        sp?: boolean
-        'exists[taxonomy]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -36971,27 +37033,25 @@ export interface operations {
         /** @description Export format: geojson, shapefile, csv, kml, gml3 */
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
         'order[id]'?: 'asc' | 'desc'
-        'order[cf]'?: 'asc' | 'desc'
-        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.flat.classId'?: number
-        'taxonomy.flat.classId[]'?: number[]
-        'taxonomy.flat.familyId'?: number
-        'taxonomy.flat.familyId[]'?: number[]
-        'taxonomy.flat.genusId'?: number
-        'taxonomy.flat.genusId[]'?: number[]
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.classId'?: number
+        'flat.classId[]'?: number[]
+        'flat.familyId'?: number
+        'flat.familyId[]'?: number[]
+        'flat.genusId'?: number
+        'flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -37012,9 +37072,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        cf?: boolean
-        sp?: boolean
-        'exists[taxonomy]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -37099,27 +37157,25 @@ export interface operations {
         /** @description BBOX filter: minx,miny,maxx,maxy[,CRS]. CRS defaults to EPSG:3857. */
         bbox?: string
         'order[id]'?: 'asc' | 'desc'
-        'order[cf]'?: 'asc' | 'desc'
-        'order[sp]'?: 'asc' | 'desc'
         'order[chronologyLower]'?: 'asc' | 'desc'
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
-        'order[taxonomy.englishName]'?: 'asc' | 'desc'
-        'order[taxonomy.flat.value]'?: 'asc' | 'desc'
+        'order[flat.englishName]'?: 'asc' | 'desc'
+        'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
-        taxonomy?: string
-        'taxonomy[]'?: string[]
-        'taxonomy.flat.classId'?: number
-        'taxonomy.flat.classId[]'?: number[]
-        'taxonomy.flat.familyId'?: number
-        'taxonomy.flat.familyId[]'?: number[]
-        'taxonomy.flat.genusId'?: number
-        'taxonomy.flat.genusId[]'?: number[]
+        'flat.taxonomyId'?: number
+        'flat.taxonomyId[]'?: number[]
+        'flat.classId'?: number
+        'flat.classId[]'?: number[]
+        'flat.familyId'?: number
+        'flat.familyId[]'?: number[]
+        'flat.genusId'?: number
+        'flat.genusId[]'?: number[]
         language?: string
         'language[]'?: string[]
         location?: string
@@ -37140,9 +37196,7 @@ export interface operations {
         'chronologyUpper[gte]'?: string
         'chronologyUpper[lt]'?: string
         'chronologyUpper[lte]'?: string
-        cf?: boolean
-        sp?: boolean
-        'exists[taxonomy]'?: boolean
+        'exists[flat.taxonomyId]'?: boolean
         'exists[notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: location.region.value
@@ -51016,6 +51070,37 @@ export interface operations {
       }
     }
   }
+  api_validatoruniquevocabularybotanytaxonomiesenglish_name_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_validatoruniquevocabularybotanytaxonomiesvalue_get: {
     parameters: {
       query?: never
@@ -51079,6 +51164,37 @@ export interface operations {
     }
   }
   api_validatoruniquevocabularyzootaxonomiescode_get: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description UniqueValidator resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['UniqueValidator.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  api_validatoruniquevocabularyzootaxonomiesenglish_name_get: {
     parameters: {
       query?: never
       header?: never
@@ -52511,13 +52627,13 @@ export interface operations {
         id?: number
         'id[]'?: number[]
         'animals.animal'?: string
-        'animals.taxonomy'?: string
-        'animals.taxonomy[]'?: string[]
-        'animals.taxonomy.class'?: string
-        'animals.taxonomy.class[]'?: string[]
-        'animals.taxonomy.family'?: string
-        'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.englishName'?: string
+        'animals.flat.taxonomyId'?: number
+        'animals.flat.taxonomyId[]'?: number[]
+        'animals.flat.class'?: string
+        'animals.flat.class[]'?: string[]
+        'animals.flat.family'?: string
+        'animals.flat.family[]'?: string[]
+        'animals.flat.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52527,14 +52643,14 @@ export interface operations {
         'animals.language'?: string
         'animals.language[]'?: string[]
         'plants.plant'?: string
-        'plants.taxonomy'?: string
-        'plants.taxonomy[]'?: string[]
-        'plants.taxonomy.flat.classId'?: number
-        'plants.taxonomy.flat.classId[]'?: number[]
-        'plants.taxonomy.flat.familyId'?: number
-        'plants.taxonomy.flat.familyId[]'?: number[]
-        'plants.taxonomy.flat.genusId'?: number
-        'plants.taxonomy.flat.genusId[]'?: number[]
+        'plants.flat.taxonomyId'?: number
+        'plants.flat.taxonomyId[]'?: number[]
+        'plants.flat.classId'?: number
+        'plants.flat.classId[]'?: number[]
+        'plants.flat.familyId'?: number
+        'plants.flat.familyId[]'?: number[]
+        'plants.flat.genusId'?: number
+        'plants.flat.genusId[]'?: number[]
         'plants.language'?: string
         'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
@@ -52565,10 +52681,10 @@ export interface operations {
         'animals.chronologyUpper[gte]'?: string
         'animals.chronologyUpper[lt]'?: string
         'animals.chronologyUpper[lte]'?: string
-        'exists[animals.taxonomy]'?: boolean
-        'exists[animals.taxonomy.family]'?: boolean
+        'exists[animals.flat.taxonomyId]'?: boolean
+        'exists[animals.flat.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.taxonomy]'?: boolean
+        'exists[plants.flat.taxonomyId]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -52601,10 +52717,10 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: animals.flat.spanishName
          * @example cafè
          */
-        'animals.taxonomy.spanishName'?: string
+        'animals.flat.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -52641,13 +52757,13 @@ export interface operations {
         id?: number
         'id[]'?: number[]
         'animals.animal'?: string
-        'animals.taxonomy'?: string
-        'animals.taxonomy[]'?: string[]
-        'animals.taxonomy.class'?: string
-        'animals.taxonomy.class[]'?: string[]
-        'animals.taxonomy.family'?: string
-        'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.englishName'?: string
+        'animals.flat.taxonomyId'?: number
+        'animals.flat.taxonomyId[]'?: number[]
+        'animals.flat.class'?: string
+        'animals.flat.class[]'?: string[]
+        'animals.flat.family'?: string
+        'animals.flat.family[]'?: string[]
+        'animals.flat.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52657,14 +52773,14 @@ export interface operations {
         'animals.language'?: string
         'animals.language[]'?: string[]
         'plants.plant'?: string
-        'plants.taxonomy'?: string
-        'plants.taxonomy[]'?: string[]
-        'plants.taxonomy.flat.classId'?: number
-        'plants.taxonomy.flat.classId[]'?: number[]
-        'plants.taxonomy.flat.familyId'?: number
-        'plants.taxonomy.flat.familyId[]'?: number[]
-        'plants.taxonomy.flat.genusId'?: number
-        'plants.taxonomy.flat.genusId[]'?: number[]
+        'plants.flat.taxonomyId'?: number
+        'plants.flat.taxonomyId[]'?: number[]
+        'plants.flat.classId'?: number
+        'plants.flat.classId[]'?: number[]
+        'plants.flat.familyId'?: number
+        'plants.flat.familyId[]'?: number[]
+        'plants.flat.genusId'?: number
+        'plants.flat.genusId[]'?: number[]
         'plants.language'?: string
         'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
@@ -52695,10 +52811,10 @@ export interface operations {
         'animals.chronologyUpper[gte]'?: string
         'animals.chronologyUpper[lt]'?: string
         'animals.chronologyUpper[lte]'?: string
-        'exists[animals.taxonomy]'?: boolean
-        'exists[animals.taxonomy.family]'?: boolean
+        'exists[animals.flat.taxonomyId]'?: boolean
+        'exists[animals.flat.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.taxonomy]'?: boolean
+        'exists[plants.flat.taxonomyId]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -52731,10 +52847,10 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: animals.flat.spanishName
          * @example cafè
          */
-        'animals.taxonomy.spanishName'?: string
+        'animals.flat.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -52813,13 +52929,13 @@ export interface operations {
         id?: number
         'id[]'?: number[]
         'animals.animal'?: string
-        'animals.taxonomy'?: string
-        'animals.taxonomy[]'?: string[]
-        'animals.taxonomy.class'?: string
-        'animals.taxonomy.class[]'?: string[]
-        'animals.taxonomy.family'?: string
-        'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.englishName'?: string
+        'animals.flat.taxonomyId'?: number
+        'animals.flat.taxonomyId[]'?: number[]
+        'animals.flat.class'?: string
+        'animals.flat.class[]'?: string[]
+        'animals.flat.family'?: string
+        'animals.flat.family[]'?: string[]
+        'animals.flat.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52829,14 +52945,14 @@ export interface operations {
         'animals.language'?: string
         'animals.language[]'?: string[]
         'plants.plant'?: string
-        'plants.taxonomy'?: string
-        'plants.taxonomy[]'?: string[]
-        'plants.taxonomy.flat.classId'?: number
-        'plants.taxonomy.flat.classId[]'?: number[]
-        'plants.taxonomy.flat.familyId'?: number
-        'plants.taxonomy.flat.familyId[]'?: number[]
-        'plants.taxonomy.flat.genusId'?: number
-        'plants.taxonomy.flat.genusId[]'?: number[]
+        'plants.flat.taxonomyId'?: number
+        'plants.flat.taxonomyId[]'?: number[]
+        'plants.flat.classId'?: number
+        'plants.flat.classId[]'?: number[]
+        'plants.flat.familyId'?: number
+        'plants.flat.familyId[]'?: number[]
+        'plants.flat.genusId'?: number
+        'plants.flat.genusId[]'?: number[]
         'plants.language'?: string
         'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
@@ -52867,10 +52983,10 @@ export interface operations {
         'animals.chronologyUpper[gte]'?: string
         'animals.chronologyUpper[lt]'?: string
         'animals.chronologyUpper[lte]'?: string
-        'exists[animals.taxonomy]'?: boolean
-        'exists[animals.taxonomy.family]'?: boolean
+        'exists[animals.flat.taxonomyId]'?: boolean
+        'exists[animals.flat.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.taxonomy]'?: boolean
+        'exists[plants.flat.taxonomyId]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -52903,10 +53019,10 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: animals.flat.spanishName
          * @example cafè
          */
-        'animals.taxonomy.spanishName'?: string
+        'animals.flat.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak
@@ -52975,13 +53091,13 @@ export interface operations {
         id?: number
         'id[]'?: number[]
         'animals.animal'?: string
-        'animals.taxonomy'?: string
-        'animals.taxonomy[]'?: string[]
-        'animals.taxonomy.class'?: string
-        'animals.taxonomy.class[]'?: string[]
-        'animals.taxonomy.family'?: string
-        'animals.taxonomy.family[]'?: string[]
-        'animals.taxonomy.englishName'?: string
+        'animals.flat.taxonomyId'?: number
+        'animals.flat.taxonomyId[]'?: number[]
+        'animals.flat.class'?: string
+        'animals.flat.class[]'?: string[]
+        'animals.flat.family'?: string
+        'animals.flat.family[]'?: string[]
+        'animals.flat.englishName'?: string
         'animals.chronologyLower'?: number
         'animals.chronologyLower[]'?: number[]
         'animals.chronologyUpper'?: number
@@ -52991,14 +53107,14 @@ export interface operations {
         'animals.language'?: string
         'animals.language[]'?: string[]
         'plants.plant'?: string
-        'plants.taxonomy'?: string
-        'plants.taxonomy[]'?: string[]
-        'plants.taxonomy.flat.classId'?: number
-        'plants.taxonomy.flat.classId[]'?: number[]
-        'plants.taxonomy.flat.familyId'?: number
-        'plants.taxonomy.flat.familyId[]'?: number[]
-        'plants.taxonomy.flat.genusId'?: number
-        'plants.taxonomy.flat.genusId[]'?: number[]
+        'plants.flat.taxonomyId'?: number
+        'plants.flat.taxonomyId[]'?: number[]
+        'plants.flat.classId'?: number
+        'plants.flat.classId[]'?: number[]
+        'plants.flat.familyId'?: number
+        'plants.flat.familyId[]'?: number[]
+        'plants.flat.genusId'?: number
+        'plants.flat.genusId[]'?: number[]
         'plants.language'?: string
         'plants.language[]'?: string[]
         'plants.chronologyLower'?: number
@@ -53029,10 +53145,10 @@ export interface operations {
         'animals.chronologyUpper[gte]'?: string
         'animals.chronologyUpper[lt]'?: string
         'animals.chronologyUpper[lte]'?: string
-        'exists[animals.taxonomy]'?: boolean
-        'exists[animals.taxonomy.family]'?: boolean
+        'exists[animals.flat.taxonomyId]'?: boolean
+        'exists[animals.flat.family]'?: boolean
         'exists[animals.notes]'?: boolean
-        'exists[plants.taxonomy]'?: boolean
+        'exists[plants.flat.taxonomyId]'?: boolean
         'exists[plants.notes]'?: boolean
         /**
          * @description Case insensitive unaccented string matching. Filters on: value
@@ -53065,10 +53181,10 @@ export interface operations {
          */
         'region.value'?: string
         /**
-         * @description Case insensitive unaccented string matching. Filters on: animals.taxonomy.spanishName
+         * @description Case insensitive unaccented string matching. Filters on: animals.flat.spanishName
          * @example cafè
          */
-        'animals.taxonomy.spanishName'?: string
+        'animals.flat.spanishName'?: string
         /**
          * @description Case-insensitive contains search; alias 'search' targets 'value'. Supports dot-notation for nested relations.
          * @example oak

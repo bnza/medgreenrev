@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { GetItemResponseMap, PatchItemRequestMap } from '~~/types'
-import { required } from '@regle/rules'
 
 type Path = '/api/vocabulary/botany/taxonomies/{id}'
 const props = defineProps<{
@@ -11,6 +10,9 @@ const props = defineProps<{
 const model = ref(structuredClone(props.initialValue))
 
 const { r$ } = useScopedRegle(model, {})
+
+const englishNameModel = useLowercaseModel(toRef(r$.$value, 'englishName'))
+const spanishNameModel = useLowercaseModel(toRef(r$.$value, 'spanishName'))
 </script>
 
 <template>
@@ -56,10 +58,10 @@ const { r$ } = useScopedRegle(model, {})
     </v-row>
     <v-row>
       <v-col cols="6">
-        <v-text-field v-model="r$.$value.englishName" label="english name" />
+        <v-text-field v-model="englishNameModel" label="english name" />
       </v-col>
       <v-col cols="6">
-        <v-text-field v-model="r$.$value.spanishName" label="spanish name" />
+        <v-text-field v-model="spanishNameModel" label="spanish name" />
       </v-col>
     </v-row>
   </v-container>

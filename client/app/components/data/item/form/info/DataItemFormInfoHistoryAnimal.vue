@@ -10,9 +10,6 @@ withDefaults(
     readLink: true,
   },
 )
-const vocabularyZooTaxonomy = useVocabularyStore(
-  '/api/vocabulary/zoo/taxonomies',
-)
 </script>
 
 <template>
@@ -45,18 +42,11 @@ const vocabularyZooTaxonomy = useVocabularyStore(
     </v-row>
     <v-row>
       <v-col cols="4" xs="12" class="px-2">
-        <v-text-field
-          :model-value="
-            vocabularyZooTaxonomy.getValue(item.taxonomy, 'englishName')
-          "
-          label="english name"
-        />
+        <v-text-field :model-value="item.flat?.value" label="taxonomy" />
       </v-col>
       <v-col cols="4" xs="12" class="px-2">
         <v-text-field
-          :model-value="
-            vocabularyZooTaxonomy.getValue(item.taxonomy, 'spanishName')
-          "
+          :model-value="item.flat?.spanishName"
           label="spanish name"
         />
       </v-col>

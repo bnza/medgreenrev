@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Data\Botany\Charcoal;
 use App\Entity\Data\Botany\Seed;
-use App\Entity\Data\History\Plant;
 use App\Entity\Data\Join\Analysis\AnalysisContextBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSampleBotanyTaxonomy;
 use App\Entity\Data\Join\Analysis\AnalysisSedimentCoreDepthBotanyTaxonomy;
@@ -53,10 +52,6 @@ class BotanyTaxonomyRepository extends ServiceEntityRepository
 
         if ($this->existsReference($subject, AnalysisSedimentCoreDepthBotanyTaxonomy::class, 'taxonomy')) {
             $result[] = AnalysisSedimentCoreDepthBotanyTaxonomy::class;
-        }
-
-        if ($this->existsReference($subject, Plant::class, 'taxonomy')) {
-            $result[] = Plant::class;
         }
 
         if ($this->existsReference($subject, Taxonomy::class, 'parent')) {

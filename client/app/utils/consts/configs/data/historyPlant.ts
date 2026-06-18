@@ -25,30 +25,10 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
-      key: 'taxonomy.englishName',
-      value: 'taxonomy.englishName',
-      title: 'taxonomy (english name)',
-      minWidth: '200',
-    },
-    {
-      key: 'taxonomy.flat.value',
-      value: 'taxonomy.flat.value',
+      key: 'flat.value',
+      value: 'flat.value',
       title: 'taxonomy',
       minWidth: '200',
-    },
-    {
-      key: 'cf',
-      value: 'cf',
-      title: 'cf',
-      align: 'center',
-      width: '80',
-    },
-    {
-      key: 'sp',
-      value: 'sp',
-      title: 'sp',
-      align: 'center',
-      width: '80',
     },
     {
       key: 'location.value',

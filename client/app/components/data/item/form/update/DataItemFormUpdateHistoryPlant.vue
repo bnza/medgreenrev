@@ -72,30 +72,12 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
   </v-row>
   <v-row>
     <v-col cols="6" xs="12" class="px-2">
-      <data-selection-list
+      <data-selection-list-history-taxonomy
         v-model="plantModel"
         path="/api/list/history/plants"
         label="plant"
-        hint="The term as it appears in the source"
-        persistent-hint
         :error-messages="r$.$errors?.plant"
       />
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols="8" xs="12" class="px-2">
-      <data-autocomplete-vocabulary-botany-taxonomy
-        v-model="r$.$value.taxonomy"
-        label="taxonomy"
-        :error-messages="r$.$errors?.taxonomy"
-        clearable
-      />
-    </v-col>
-    <v-col cols="1" xs="12" class="px-2">
-      <v-checkbox v-model="r$.$value.cf" label="cf" />
-    </v-col>
-    <v-col cols="1" xs="12" class="px-2">
-      <v-checkbox v-model="r$.$value.sp" label="sp" />
     </v-col>
   </v-row>
   <v-row>

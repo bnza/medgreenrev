@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
 class BotanyTaxonomyView
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'smallint')]
+    #[ORM\Column(type: 'integer')]
     #[ApiProperty(required: true)]
     private int $id;
 
@@ -131,7 +131,7 @@ class BotanyTaxonomyView
     ])]
     private ?string $englishName = null;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups([
         'voc_botany_taxonomy:read',
         'voc_botany_taxonomy:acl:read',
@@ -143,7 +143,7 @@ class BotanyTaxonomyView
     ])]
     private ?int $genusId = null;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups([
         'voc_botany_taxonomy:read',
         'voc_botany_taxonomy:acl:read',
@@ -155,7 +155,7 @@ class BotanyTaxonomyView
     ])]
     private ?int $familyId = null;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups([
         'voc_botany_taxonomy:read',
         'voc_botany_taxonomy:acl:read',

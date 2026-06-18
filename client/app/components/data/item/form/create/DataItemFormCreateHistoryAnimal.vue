@@ -80,22 +80,11 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
   </v-row>
   <v-row>
     <v-col cols="8" xs="12" class="px-2">
-      <data-selection-list
+      <data-selection-list-history-taxonomy
         v-model="animalModel"
         path="/api/list/history/animals"
         label="animal"
-        hint="The term as it appears in the source"
-        persistent-hint
         :error-messages="r$.$errors?.animal"
-      />
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols="8" xs="12" class="px-2">
-      <data-autocomplete-vocabulary-zoo-taxonomy
-        v-model="r$.$value.taxonomy"
-        label="taxonomy"
-        clearable
       />
     </v-col>
   </v-row>

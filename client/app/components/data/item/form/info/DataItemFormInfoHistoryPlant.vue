@@ -10,9 +10,6 @@ withDefaults(
     readLink: true,
   },
 )
-const vocabularyBotanyTaxonomy = useVocabularyStore(
-  '/api/vocabulary/botany/taxonomies',
-)
 </script>
 
 <template>
@@ -42,37 +39,10 @@ const vocabularyBotanyTaxonomy = useVocabularyStore(
           persistent-hint
         />
       </v-col>
-      <v-col cols="1" xs="12" class="px-2">
-        <v-checkbox :model-value="item.cf" label="cf" />
-      </v-col>
-      <v-col cols="1" xs="12" class="px-2">
-        <v-checkbox :model-value="item.sp" label="sp" />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="6" xs="12" class="px-2">
-        <v-text-field
-          :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'englishName')
-          "
-          label="english name"
-        />
-      </v-col>
     </v-row>
     <v-row>
       <v-col cols="8" xs="12" class="px-2">
-        <v-text-field
-          :model-value="
-            vocabularyBotanyTaxonomy.getValue(item.taxonomy, 'flat.value')
-          "
-          label="taxonomy"
-        />
-      </v-col>
-      <v-col cols="2" xs="12" class="px-2">
-        <v-checkbox :model-value="item.cf" label="cf" />
-      </v-col>
-      <v-col cols="2" xs="12" class="px-2">
-        <v-checkbox :model-value="item.sp" label="sp" />
+        <v-text-field :model-value="item.flat?.value" label="taxonomy" />
       </v-col>
     </v-row>
     <v-row>

@@ -1,7 +1,6 @@
 App\Entity\Data\History\Plant:
   history_plant_1:
-    plant: 'álamo'
-    taxonomy: '@botany_taxonomy_POPULUS'
+    plant: 'white poplar'
     chronologyLower: 1150
     chronologyUpper: 1200
     location: '@location_5'
@@ -11,18 +10,16 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_2:
-    plant: 'trigo'
-    taxonomy: '@botany_taxonomy_TRITICUM_AESTIVUM'
+    plant: 'wheat'
     chronologyLower: 950
     chronologyUpper: 975
     location: '@location_1'
     reference: Archivo de la Corona de Aragón (ACA), Cancillería, Registros, leg.
       45, fol. 12r
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_3:
-    plant: 'cebada'
-    taxonomy: '@botany_taxonomy_HORDEUM_VULGARE'
+    plant: 'barley'
     chronologyLower: 1010
     chronologyUpper: 1030
     location: '@location_2'
@@ -30,20 +27,17 @@ App\Entity\Data\History\Plant:
       45v
     notes: Tithe record mentions barley sowing
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_4:
-    plant: 'olivo'
-    cf: true
-    taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+    plant: 'olive'
     chronologyLower: 1120
     chronologyUpper: 1140
     location: '@location_3'
     reference: Archivo Histórico Provincial de Valencia (AHPV), Protocolo 234/12
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_5:
-    plant: 'viña'
-    taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
+    plant: 'grapevine'
     chronologyLower: 1185
     chronologyUpper: 1200
     location: '@location_4'
@@ -52,28 +46,24 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_6:
-    plant: 'ajo'
-    cf: true
-    taxonomy: '@botany_taxonomy_ALLIUM_SATIVUM'
+    plant: 'garlic'
     chronologyLower: 1201
     chronologyUpper: 1201
     location: '@location_5'
     reference: ACA, Cancillería, Registros, leg. 46, fol. 8v
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_7:
-    plant: 'lenteja'
-    taxonomy: '@botany_taxonomy_LENS_CULINARIS'
+    plant: 'lentil'
     chronologyLower: 1220
     chronologyUpper: 1230
     location: '@location_6'
     reference: AHPV, Protocolo 301/2
     notes: Purchase of lentils for monastery kitchen
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_8:
-    plant: 'garbanzo'
-    taxonomy: '@botany_taxonomy_CICER_ARIETINUM'
+    plant: 'chickpea'
     chronologyLower: 1275
     chronologyUpper: 1285
     location: '@location_7'
@@ -82,9 +72,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_9:
-    plant: 'almendro'
-    sp: true
-    taxonomy: '@botany_taxonomy_PRUNUS_DULCIS'
+    plant: 'almond'
     chronologyLower: 1300
     chronologyUpper: 1310
     location: '@location_8'
@@ -93,8 +81,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_10:
-    plant: 'alcornoque'
-    taxonomy: '@botany_taxonomy_QUERCUS_SUBER'
+    plant: 'cork oak'
     chronologyLower: 1325
     chronologyUpper: 1335
     location: '@location_9'
@@ -102,9 +89,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_11:
-    plant: 'algarrobo'
-    cf: true
-    taxonomy: '@botany_taxonomy_CERATONIA_SILIQUA'
+    plant: 'carob tree'
     chronologyLower: 1350
     chronologyUpper: 1350
     location: '@location_10'
@@ -113,9 +98,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_12:
-    plant: 'arroz'
-    cf: true
-    taxonomy: '@botany_taxonomy_ORYZA_SATIVA'
+    plant: 'rice'
     chronologyLower: 1360
     chronologyUpper: 1368
     location: '@location_11'
@@ -123,8 +106,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_13:
-    plant: 'avena'
-    taxonomy: '@botany_taxonomy_AVENA_SATIVA'
+    plant: 'oat'
     chronologyLower: 1390
     chronologyUpper: 1395
     location: '@location_12'
@@ -133,8 +115,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_plant_14:
-    plant: 'avellano'
-    taxonomy: '@botany_taxonomy_CORYLUS_AVELLANA'
+    plant: 'hazel'
     chronologyLower: 1420
     chronologyUpper: 1425
     location: '@location_13'
@@ -142,8 +123,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_15:
-    plant: 'zanahoria'
-    taxonomy: '@botany_taxonomy_DAUCUS_CAROTA'
+    plant: 'wild carrot'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_14'
@@ -152,8 +132,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_16:
-    plant: 'berenjena'
-    taxonomy: '@botany_taxonomy_SOLANUM_MELONGENA'
+    plant: 'aubergine'
     chronologyLower: 1155
     chronologyUpper: 1165
     location: '@location_15'
@@ -161,9 +140,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_plant_17:
-    plant: 'azafrán'
-    sp: true
-    taxonomy: '@botany_taxonomy_CROCUS_SATIVUS'
+    plant: 'saffron'
     chronologyLower: 1240
     chronologyUpper: 1248
     location: '@location_16'
@@ -172,27 +149,24 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_18:
-    plant: 'alfalfa'
-    taxonomy: '@botany_taxonomy_MEDICAGO_SATIVA'
+    plant: 'lucerne'
     chronologyLower: 1342
     chronologyUpper: 1346
     location: '@location_17'
     reference: AHN, Clero, carp. 98, n. 4
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_19:
-    plant: 'guisante'
-    taxonomy: '@botany_taxonomy_PISUM_SATIVUM'
+    plant: 'pea'
     chronologyLower: 1020
     chronologyUpper: 1040
     location: '@location_18'
     reference: AHN, Sección Nobleza, OSUNA, C.248, D.3
     notes: Pea ration in castle account
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_20:
-    plant: 'haba'
-    taxonomy: '@botany_taxonomy_VICIA_FABA'
+    plant: 'broad bean'
     chronologyLower: 1080
     chronologyUpper: 1090
     location: '@location_19'
@@ -200,19 +174,16 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_21:
-    plant: 'habichuela o judía'
-    taxonomy: '@botany_taxonomy_PHASEOLUS_VULGARIS'
+    plant: 'common bean'
     chronologyLower: 1105
     chronologyUpper: 1115
     location: '@location_20'
     reference: AHN, Consejos, leg. 55, fol. 23r
     notes: Bean seed procurement
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_22:
-    plant: 'higuera'
-    sp: true
-    taxonomy: '@botany_taxonomy_FICUS_CARICA'
+    plant: 'fig'
     chronologyLower: 1128
     chronologyUpper: 1132
     location: '@location_21'
@@ -220,19 +191,16 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_23:
-    plant: 'limonero'
-    taxonomy: '@botany_taxonomy_CITRUS_LIMON'
+    plant: 'lemon'
     chronologyLower: 1140
     chronologyUpper: 1145
     location: '@location_22'
     reference: ARV, Bailía, leg. 90, fol. 17r
     notes: Citrus orchard lease
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_24:
-    plant: 'lino'
-    cf: true
-    taxonomy: '@botany_taxonomy_LINUM_USITATISSIMUM'
+    plant: 'flax'
     chronologyLower: 1250
     chronologyUpper: 1260
     location: '@location_23'
@@ -240,8 +208,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_25:
-    plant: 'manzano'
-    taxonomy: '@botany_taxonomy_MALUS_DOMESTICA'
+    plant: 'apple'
     chronologyLower: 1270
     chronologyUpper: 1272
     location: '@location_24'
@@ -250,9 +217,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_26:
-    plant: 'melocotonero'
-    cf: true
-    taxonomy: '@botany_taxonomy_PRUNUS_PERSICA'
+    plant: 'peach'
     chronologyLower: 1285
     chronologyUpper: 1290
     location: '@location_25'
@@ -260,8 +225,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_27:
-    plant: 'membrillo'
-    taxonomy: '@botany_taxonomy_CYDONIA_OBLONGA'
+    plant: 'quince'
     chronologyLower: 1305
     chronologyUpper: 1315
     location: '@location_26'
@@ -270,8 +234,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_28:
-    plant: 'morera / moral'
-    taxonomy: '@botany_taxonomy_MORUS'
+    plant: 'white mulberry'
     chronologyLower: 1320
     chronologyUpper: 1324
     location: '@location_27'
@@ -279,28 +242,24 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_29:
-    plant: 'nabo'
-    taxonomy: '@botany_taxonomy_BRASSICA_RAPA'
+    plant: 'turnip'
     chronologyLower: 1330
     chronologyUpper: 1331
     location: '@location_28'
     reference: ARV, Gobernación, leg. 205, fol. 2r
     notes: Turnips for garrison
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_30:
-    plant: 'naranjo'
-    sp: true
-    taxonomy: '@botany_taxonomy_CITRUS_SINENSIS'
+    plant: 'sweet orange'
     chronologyLower: 1344
     chronologyUpper: 1349
     location: '@location_29'
     reference: AHN, Concejos, leg. 80, fol. 33v
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_31:
-    plant: 'níspero'
-    taxonomy: '@botany_taxonomy_MESPILUS_GERMANICA'
+    plant: 'medlar'
     chronologyLower: 1355
     chronologyUpper: 1358
     location: '@location_30'
@@ -309,17 +268,15 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_32:
-    plant: 'nogal'
-    taxonomy: '@botany_taxonomy_JUGLANS_REGIA'
+    plant: 'walnut'
     chronologyLower: 1366
     chronologyUpper: 1370
     location: '@location_31'
     reference: AHN, Clero, carp. 120, n. 2
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_33:
-    plant: 'panizo o mijo'
-    taxonomy: '@botany_taxonomy_PANICUM_MILIACEUM'
+    plant: 'proso millet'
     chronologyLower: 1375
     chronologyUpper: 1380
     location: '@location_32'
@@ -328,18 +285,15 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_34:
-    plant: 'parra'
-    sp: true
-    taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
+    plant: 'grapevine'
     chronologyLower: 1382
     chronologyUpper: 1389
     location: '@location_33'
     reference: ACA, Cancillería, Registros, leg. 130, fol. 3v
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_35:
-    plant: 'peral'
-    taxonomy: '@botany_taxonomy_PYRUS_COMMUNIS'
+    plant: 'wild pear'
     chronologyLower: 1391
     chronologyUpper: 1393
     location: '@location_34'
@@ -348,17 +302,15 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_36:
-    plant: 'pomelo o toronja'
-    taxonomy: '@botany_taxonomy_CITRUS_PARADISI'
+    plant: 'grapefruit'
     chronologyLower: 1400
     chronologyUpper: 1405
     location: '@location_1'
     reference: ARV, Maestre Racional, leg. 40, fol. 1r
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_37:
-    plant: 'puerro'
-    taxonomy: '@botany_taxonomy_ALLIUM_PORRUM'
+    plant: 'leek'
     chronologyLower: 1406
     chronologyUpper: 1408
     location: '@location_2'
@@ -367,9 +319,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_38:
-    plant: 'sandía'
-    cf: true
-    taxonomy: '@botany_taxonomy_CITRULLUS_LANATUS'
+    plant: 'watermelon'
     chronologyLower: 1410
     chronologyUpper: 1415
     location: '@location_3'
@@ -377,18 +327,16 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_plant_39:
-    plant: 'serba o zurba'
-    taxonomy: '@botany_taxonomy_SORBUS_DOMESTICA'
+    plant: 'service tree'
     chronologyLower: 1412
     chronologyUpper: 1419
     location: '@location_4'
     reference: ACA, Real Patrimonio, leg. 140, fol. 9r
     notes: Service tree timber mention
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_40:
-    plant: 'trigo'
-    taxonomy: '@botany_taxonomy_TRITICUM_AESTIVUM'
+    plant: 'wheat'
     chronologyLower: 1420
     chronologyUpper: 1422
     location: '@location_5'
@@ -396,8 +344,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_plant_41:
-    plant: 'cebada'
-    taxonomy: '@botany_taxonomy_HORDEUM_VULGARE'
+    plant: 'barley'
     chronologyLower: 1424
     chronologyUpper: 1426
     location: '@location_6'
@@ -406,9 +353,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_42:
-    plant: 'azafrán'
-    sp: true
-    taxonomy: '@botany_taxonomy_CROCUS_SATIVUS'
+    plant: 'saffron'
     chronologyLower: 1427
     chronologyUpper: 1429
     location: '@location_6'
@@ -416,9 +361,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_43:
-    plant: 'almendro'
-    sp: true
-    taxonomy: '@botany_taxonomy_PRUNUS_DULCIS'
+    plant: 'almond'
     chronologyLower: 1430
     chronologyUpper: 1430
     location: '@location_6'
@@ -427,18 +370,15 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_44:
-    plant: 'viña'
-    taxonomy: '@botany_taxonomy_VITIS_VINIFERA'
+    plant: 'grapevine'
     chronologyLower: 1431
     chronologyUpper: 1433
     location: '@location_9'
     reference: ACA, Cancillería, Registros, leg. 150, fol. 20r
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_45:
-    plant: 'olivo'
-    cf: true
-    taxonomy: '@botany_taxonomy_OLEA_EUROPAEA'
+    plant: 'olive'
     chronologyLower: 1434
     chronologyUpper: 1436
     location: '@location_10'
@@ -447,36 +387,32 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_plant_46:
-    plant: 'haba'
-    taxonomy: '@botany_taxonomy_VICIA_FABA'
+    plant: 'broad bean'
     chronologyLower: 1437
     chronologyUpper: 1438
     location: '@location_11'
     reference: AHN, Concejos, leg. 112, fol. 5r
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_47:
-    plant: 'garbanzo'
-    taxonomy: '@botany_taxonomy_CICER_ARIETINUM'
+    plant: 'chickpea'
     chronologyLower: 1439
     chronologyUpper: 1440
     location: '@location_12'
     reference: AGS, Contaduría Mayor, leg. 22, fol. 13v
     notes: Ration ledger
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_48:
-    plant: 'avena'
-    taxonomy: '@botany_taxonomy_AVENA_SATIVA'
+    plant: 'oat'
     chronologyLower: 1441
     chronologyUpper: 1441
     location: '@location_13'
     reference: AHPGR, Protocolos, leg. 9, fol. 1r
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_49:
-    plant: 'guisante'
-    taxonomy: '@botany_taxonomy_PISUM_SATIVUM'
+    plant: 'pea'
     chronologyLower: 1442
     chronologyUpper: 1443
     location: '@location_14'
@@ -485,9 +421,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_plant_50:
-    plant: 'lino'
-    cf: true
-    taxonomy: '@botany_taxonomy_LINUM_USITATISSIMUM'
+    plant: 'flax'
     chronologyLower: 1444
     chronologyUpper: 1445
     location: '@location_15'
@@ -495,38 +429,33 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_plant_51:
-    plant: 'higuera'
-    sp: true
-    taxonomy: '@botany_taxonomy_FICUS_CARICA'
+    plant: 'fig'
     chronologyLower: 1446
     chronologyUpper: 1447
     location: '@location_16'
     reference: AHPC, Protocolos, leg. 70, fol. 18r
     notes: Fig tithe
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_plant_52:
-    plant: 'peral'
-    taxonomy: '@botany_taxonomy_PYRUS_COMMUNIS'
+    plant: 'wild pear'
     chronologyLower: 1448
     chronologyUpper: 1448
     location: '@location_17'
     reference: ACA, Real Patrimonio, leg. 160, fol. 6v
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_plant_53:
-    plant: 'trigo'
-    taxonomy: '@botany_taxonomy_TRITICUM_AESTIVUM'
+    plant: 'wheat'
     chronologyLower: 1449
     chronologyUpper: 1449
     location: '@location_18'
     reference: AGS, Cámara de Castilla, leg. 400, fol. 2r
     notes: Grain quota recorded
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_plant_54:
-    plant: 'cebada'
-    taxonomy: '@botany_taxonomy_HORDEUM_VULGARE'
+    plant: 'barley'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_19'
@@ -534,9 +463,7 @@ App\Entity\Data\History\Plant:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_plant_55:
-    plant: 'ajo'
-    cf: true
-    taxonomy: '@botany_taxonomy_ALLIUM_SATIVUM'
+    plant: 'garlic'
     chronologyLower: 1000
     chronologyUpper: 1010
     location: '@location_20'

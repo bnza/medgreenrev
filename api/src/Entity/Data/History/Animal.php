@@ -19,9 +19,9 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Auth\User;
+use App\Entity\Data\View\HistoryAnimalView;
 use App\Entity\Vocabulary\History\Language;
 use App\Entity\Vocabulary\History\Location;
-use App\Entity\Vocabulary\Zoo\Taxonomy as ZooTaxonomy;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetAggregatedFeatureCollection;
 use App\State\GeoserverAggregatedExtentMatchedProvider;
@@ -111,20 +111,20 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyLower',
         'chronologyUpper',
         'reference',
-        'taxonomy.value',
-        'taxonomy.englishName',
-        'taxonomy.spanishName',
-        'taxonomy.class',
-        'taxonomy.family',
+        'flat.value',
+        'flat.englishName',
+        'flat.spanishName',
+        'flat.class',
+        'flat.family',
     ])]
 #[ApiFilter(
     SearchFilter::class,
     properties: [
         'animal' => 'ipartial',
-        'taxonomy' => 'exact',
-        'taxonomy.class' => 'exact',
-        'taxonomy.family' => 'exact',
-        'taxonomy.englishName' => 'ipartial',
+        'flat.taxonomyId' => 'exact',
+        'flat.class' => 'exact',
+        'flat.family' => 'exact',
+        'flat.englishName' => 'ipartial',
         'chronologyLower' => 'exact',
         'chronologyUpper' => 'exact',
         'createdBy.email' => 'exact',
@@ -142,8 +142,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'taxonomy',
-        'taxonomy.family',
+        'flat.taxonomyId',
+        'flat.family',
         'notes',
     ])]
 #[ApiFilter(
@@ -153,7 +153,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'location.region.value',
         'notes',
         'reference',
-        'taxonomy.spanishName',
+        'flat.spanishName',
     ]
 )]
 class Animal
@@ -190,14 +190,12 @@ class Animal
     ])]
     private string $animal;
 
-    #[ORM\ManyToOne(targetEntity: ZooTaxonomy::class)]
-    #[ORM\JoinColumn(name: 'taxonomy_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
+    #[ORM\OneToOne(targetEntity: HistoryAnimalView::class, mappedBy: 'animal', fetch: 'LAZY')]
     #[Groups([
         'history_animal:acl:read',
         'history_animal:export',
-        'history_animal:create',
     ])]
-    private ?ZooTaxonomy $taxonomy = null;
+    private ?HistoryAnimalView $flat = null;
 
     #[ORM\ManyToOne(targetEntity: Location::class, inversedBy: 'animals')]
     #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
@@ -294,16 +292,9 @@ class Animal
         return $this;
     }
 
-    public function getTaxonomy(): ?ZooTaxonomy
+    public function getFlat(): ?HistoryAnimalView
     {
-        return $this->taxonomy;
-    }
-
-    public function setTaxonomy(?ZooTaxonomy $taxonomy): Animal
-    {
-        $this->taxonomy = $taxonomy;
-
-        return $this;
+        return $this->flat;
     }
 
     public function getLocation(): Location

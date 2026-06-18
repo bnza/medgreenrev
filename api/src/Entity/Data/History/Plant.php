@@ -2,7 +2,6 @@
 
 namespace App\Entity\Data\History;
 
-use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
@@ -20,7 +19,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Auth\User;
-use App\Entity\Vocabulary\Botany\Taxonomy as BotanyTaxonomy;
+use App\Entity\Data\View\HistoryPlantView;
 use App\Entity\Vocabulary\History\Language;
 use App\Entity\Vocabulary\History\Location;
 use App\Metadata\ExportFeatureCollection;
@@ -105,14 +104,12 @@ use Symfony\Component\Validator\Constraints as Assert;
     OrderFilter::class,
     properties: [
         'id',
-        'cf',
-        'sp',
         'chronologyLower',
         'chronologyUpper',
         'createdBy.email',
         'plant',
-        'taxonomy.englishName',
-        'taxonomy.flat.value',
+        'flat.englishName',
+        'flat.value',
         'language.value',
         'location.region.value',
         'location.value',
@@ -122,10 +119,10 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'plant' => 'ipartial',
-        'taxonomy' => 'exact',
-        'taxonomy.flat.classId' => 'exact',
-        'taxonomy.flat.familyId' => 'exact',
-        'taxonomy.flat.genusId' => 'exact',
+        'flat.taxonomyId' => 'exact',
+        'flat.classId' => 'exact',
+        'flat.familyId' => 'exact',
+        'flat.genusId' => 'exact',
         'language' => 'exact',
         'location' => 'exact',
         'chronologyLower' => 'exact',
@@ -139,16 +136,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyUpper']
 )]
 #[ApiFilter(
-    BooleanFilter::class,
-    properties: [
-        'cf',
-        'sp',
-    ]
-)]
-#[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'taxonomy',
+        'flat.taxonomyId',
         'notes',
     ])]
 #[ApiFilter(
@@ -194,30 +184,12 @@ class Plant
     ])]
     private string $plant;
 
-    #[ORM\ManyToOne(targetEntity: BotanyTaxonomy::class)]
-    #[ORM\JoinColumn(name: 'taxonomy_id', referencedColumnName: 'id', nullable: true, onDelete: 'RESTRICT')]
+    #[ORM\OneToOne(targetEntity: HistoryPlantView::class, mappedBy: 'plant', fetch: 'LAZY')]
     #[Groups([
         'history_plant:acl:read',
         'history_plant:export',
-        'history_plant:create',
     ])]
-    private ?BotanyTaxonomy $taxonomy = null;
-
-    #[ORM\Column(type: 'boolean', options: ['default' => false])]
-    #[Groups([
-        'history_plant:acl:read',
-        'history_plant:export',
-        'history_plant:create',
-    ])]
-    private bool $cf = false;
-
-    #[ORM\Column(type: 'boolean', options: ['default' => false])]
-    #[Groups([
-        'history_plant:acl:read',
-        'history_plant:export',
-        'history_plant:create',
-    ])]
-    private bool $sp = false;
+    private ?HistoryPlantView $flat = null;
 
     #[ORM\ManyToOne(targetEntity: Location::class, inversedBy: 'plants')]
     #[ORM\JoinColumn(name: 'location_id', referencedColumnName: 'id', nullable: false, onDelete: 'RESTRICT')]
@@ -314,40 +286,9 @@ class Plant
         return $this;
     }
 
-    public function getTaxonomy(): ?BotanyTaxonomy
+    public function getFlat(): ?HistoryPlantView
     {
-        return $this->taxonomy;
-    }
-
-    public function setTaxonomy(?BotanyTaxonomy $taxonomy): Plant
-    {
-        $this->taxonomy = $taxonomy;
-
-        return $this;
-    }
-
-    public function getCf(): bool
-    {
-        return $this->cf;
-    }
-
-    public function setCf(bool $cf): Plant
-    {
-        $this->cf = $cf;
-
-        return $this;
-    }
-
-    public function getSp(): bool
-    {
-        return $this->sp;
-    }
-
-    public function setSp(bool $sp): Plant
-    {
-        $this->sp = $sp;
-
-        return $this;
+        return $this->flat;
     }
 
     public function getLocation(): Location

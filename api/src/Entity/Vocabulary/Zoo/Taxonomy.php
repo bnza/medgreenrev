@@ -27,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 #[ORM\UniqueConstraint(columns: ['code'])]
 #[ORM\UniqueConstraint(columns: ['value'])]
+#[ORM\UniqueConstraint(columns: ['english_name'])]
 #[ApiResource(
     shortName: 'VocZooTaxonomy',
     operations: [
@@ -84,6 +85,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(
     fields: ['code'],
     message: 'Duplicate taxonomy code: {{ value }}.',
+    groups: ['validation:voc_zoo_taxonomy:create']
+)]
+#[UniqueEntity(
+    fields: ['englishName'],
+    message: 'Duplicate taxonomy english name: {{ value }}.',
     groups: ['validation:voc_zoo_taxonomy:create']
 )]
 #[AppAssert\NotReferenced(self::class, message: 'Cannot delete the taxonomy because it is referenced by: {{ classes }}.', groups: ['validation:voc_zoo_taxonomy:delete'])]
@@ -229,7 +235,7 @@ class Taxonomy
 
     public function setEnglishName(string $englishName): Taxonomy
     {
-        $this->englishName = $englishName;
+        $this->englishName = mb_strtolower($englishName);
 
         return $this;
     }
@@ -241,7 +247,7 @@ class Taxonomy
 
     public function setSpanishName(string $spanishName): Taxonomy
     {
-        $this->spanishName = $spanishName;
+        $this->spanishName = mb_strtolower($spanishName);
 
         return $this;
     }

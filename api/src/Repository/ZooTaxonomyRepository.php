@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Entity\Data\History\Animal;
 use App\Entity\Data\Join\Analysis\AnalysisContextZooTaxonomy;
 use App\Entity\Data\Zoo\Bone;
 use App\Entity\Data\Zoo\Tooth;
@@ -43,10 +42,6 @@ class ZooTaxonomyRepository extends ServiceEntityRepository
 
         if ($this->existsReference($subject, AnalysisContextZooTaxonomy::class, 'taxonomy')) {
             $result[] = AnalysisContextZooTaxonomy::class;
-        }
-
-        if ($this->existsReference($subject, Animal::class, 'taxonomy')) {
-            $result[] = Animal::class;
         }
 
         return $result;

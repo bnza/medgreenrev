@@ -15,6 +15,9 @@ const { r$ } = useScopedRegle(model, {
   spanishName: { required },
   class: { required },
 })
+
+const englishNameModel = useLowercaseModel(toRef(r$.$value, 'englishName'))
+const spanishNameModel = useLowercaseModel(toRef(r$.$value, 'spanishName'))
 </script>
 
 <template>
@@ -34,14 +37,14 @@ const { r$ } = useScopedRegle(model, {
     <v-row>
       <v-col cols="12" md="6">
         <v-text-field
-          v-model="r$.$value.englishName"
+          v-model="englishNameModel"
           label="english name"
           :error-messages="r$.$errors?.englishName"
         />
       </v-col>
       <v-col cols="12" md="6">
         <v-text-field
-          v-model="r$.$value.spanishName"
+          v-model="spanishNameModel"
           label="spanish name"
           :error-messages="r$.$errors?.spanishName"
         />

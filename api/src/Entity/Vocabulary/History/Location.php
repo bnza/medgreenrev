@@ -108,19 +108,19 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'id' => 'exact',
         'animals.animal' => 'ipartial',
-        'animals.taxonomy' => 'exact',
-        'animals.taxonomy.class' => 'exact',
-        'animals.taxonomy.family' => 'exact',
-        'animals.taxonomy.englishName' => 'ipartial',
+        'animals.flat.taxonomyId' => 'exact',
+        'animals.flat.class' => 'exact',
+        'animals.flat.family' => 'exact',
+        'animals.flat.englishName' => 'ipartial',
         'animals.chronologyLower' => 'exact',
         'animals.chronologyUpper' => 'exact',
         'animals.createdBy.email' => 'exact',
         'animals.language' => 'exact',
         'plants.plant' => 'ipartial',
-        'plants.taxonomy' => 'exact',
-        'plants.taxonomy.flat.classId' => 'exact',
-        'plants.taxonomy.flat.familyId' => 'exact',
-        'plants.taxonomy.flat.genusId' => 'exact',
+        'plants.flat.taxonomyId' => 'exact',
+        'plants.flat.classId' => 'exact',
+        'plants.flat.familyId' => 'exact',
+        'plants.flat.genusId' => 'exact',
         'plants.language' => 'exact',
         'plants.chronologyLower' => 'exact',
         'plants.chronologyUpper' => 'exact',
@@ -140,10 +140,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'animals.taxonomy',
-        'animals.taxonomy.family',
+        'animals.flat.taxonomyId',
+        'animals.flat.family',
         'animals.notes',
-        'plants.taxonomy',
+        'plants.flat.taxonomyId',
         'plants.notes',
     ])]
 #[ApiFilter(
@@ -155,7 +155,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'plants.reference',
         'plants.notes',
         'region.value',
-        'animals.taxonomy.spanishName',
+        'animals.flat.spanishName',
     ]
 )]
 #[ApiFilter(

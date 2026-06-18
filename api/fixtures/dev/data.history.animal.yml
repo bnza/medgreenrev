@@ -1,7 +1,6 @@
 App\Entity\Data\History\Animal:
   history_animal_1:
-    animal: 'ganado vacuno'
-    taxonomy: '@zoo_taxonomy_B'
+    animal: 'cattle'
     chronologyLower: 875
     chronologyUpper: 900
     location: '@location_1'
@@ -9,10 +8,9 @@ App\Entity\Data\History\Animal:
       23, fol. 5r
     notes: Cattle trade record for monastery supply
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_2:
-    animal: 'oveja'
-    taxonomy: '@zoo_taxonomy_OVA'
+    animal: 'sheep'
     chronologyLower: 920
     chronologyUpper: 950
     location: '@location_2'
@@ -21,8 +19,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_3:
-    animal: 'caballo'
-    taxonomy: '@zoo_taxonomy_EQC'
+    animal: 'horse'
     chronologyLower: 980
     chronologyUpper: 1010
     location: '@location_3'
@@ -31,17 +28,15 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_4:
-    animal: 'cabra'
-    taxonomy: '@zoo_taxonomy_CAH'
+    animal: 'goat'
     chronologyLower: 1025
     chronologyUpper: 1050
     location: '@location_4'
     reference: Archivo del Reino de Valencia (ARV), Bailía, leg. 45, fol. 8r
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_animal_5:
-    animal: 'cerdo (cerdo doméstico / jabalí)'
-    taxonomy: '@zoo_taxonomy_S'
+    animal: 'swine (pig / wild boar)'
     chronologyLower: 1065
     chronologyUpper: 1080
     location: '@location_5'
@@ -50,28 +45,25 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_6:
-    animal: 'gallina'
-    taxonomy: '@zoo_taxonomy_GNP'
+    animal: 'chicken'
     chronologyLower: 1090
     chronologyUpper: 1095
     location: '@location_6'
     reference: AHPV, Protocolo 201/5
     notes: Chicken tax collection recorded
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_animal_7:
-    animal: 'conejo'
-    taxonomy: '@zoo_taxonomy_ORY'
+    animal: 'rabbit'
     chronologyLower: 1110
     chronologyUpper: 1125
     location: '@location_7'
     reference: Archivo Histórico Provincial de Castellón (AHPC), Protocolos, leg.
       8, fol. 19r
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_8:
-    animal: 'perro'
-    taxonomy: '@zoo_taxonomy_CAF'
+    animal: 'dog'
     chronologyLower: 1140
     chronologyUpper: 1155
     location: '@location_8'
@@ -80,8 +72,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_9:
-    animal: 'pato'
-    taxonomy: '@zoo_taxonomy_ANA'
+    animal: 'duck'
     chronologyLower: 1168
     chronologyUpper: 1175
     location: '@location_9'
@@ -89,8 +80,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_10:
-    animal: 'ganado vacuno'
-    taxonomy: '@zoo_taxonomy_B'
+    animal: 'cattle'
     chronologyLower: 1190
     chronologyUpper: 1200
     location: '@location_10'
@@ -99,8 +89,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_11:
-    animal: 'asno'
-    taxonomy: '@zoo_taxonomy_EQA'
+    animal: 'ass'
     chronologyLower: 1215
     chronologyUpper: 1220
     location: '@location_11'
@@ -109,8 +98,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_12:
-    animal: 'oveja'
-    taxonomy: '@zoo_taxonomy_OVA'
+    animal: 'sheep'
     chronologyLower: 1235
     chronologyUpper: 1245
     location: '@location_12'
@@ -118,8 +106,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_13:
-    animal: 'gato'
-    taxonomy: '@zoo_taxonomy_FEC'
+    animal: 'cat'
     chronologyLower: 1258
     chronologyUpper: 1265
     location: '@location_13'
@@ -128,8 +115,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_14:
-    animal: 'paloma'
-    taxonomy: '@zoo_taxonomy_COL'
+    animal: 'pigeon'
     chronologyLower: 1278
     chronologyUpper: 1285
     location: '@location_14'
@@ -137,8 +123,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_15:
-    animal: 'ganso'
-    taxonomy: '@zoo_taxonomy_ANS'
+    animal: 'goose'
     chronologyLower: 1295
     chronologyUpper: 1300
     location: '@location_15'
@@ -147,18 +132,16 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_16:
-    animal: 'ciervo rojo'
-    taxonomy: '@zoo_taxonomy_CEE'
+    animal: 'red deer'
     chronologyLower: 1315
     chronologyUpper: 1325
     location: '@location_16'
     reference: ARV, Maestre Racional, leg. 18, fol. 26v
     notes: Red deer hunting privileges granted
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_animal_17:
-    animal: 'gamo'
-    taxonomy: '@zoo_taxonomy_DAD'
+    animal: 'fallow deer'
     chronologyLower: 1340
     chronologyUpper: 1345
     location: '@location_17'
@@ -166,8 +149,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_18:
-    animal: 'liebre'
-    taxonomy: '@zoo_taxonomy_LE'
+    animal: 'hare'
     chronologyLower: 1355
     chronologyUpper: 1362
     location: '@location_18'
@@ -176,17 +158,15 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_19:
-    animal: 'perdiz'
-    taxonomy: '@zoo_taxonomy_ALEC'
+    animal: 'partridge'
     chronologyLower: 1370
     chronologyUpper: 1378
     location: '@location_19'
     reference: ACA, Real Patrimonio, leg. 98, fol. 13v
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_animal_20:
-    animal: 'pez'
-    taxonomy: '@zoo_taxonomy_ICT'
+    animal: 'fish'
     chronologyLower: 1385
     chronologyUpper: 1390
     location: '@location_20'
@@ -195,8 +175,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_21:
-    animal: 'zorro'
-    taxonomy: '@zoo_taxonomy_VUV'
+    animal: 'fox'
     chronologyLower: 1398
     chronologyUpper: 1405
     location: '@location_21'
@@ -205,17 +184,15 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_22:
-    animal: 'corzo'
-    taxonomy: '@zoo_taxonomy_CAC'
+    animal: 'roe deer'
     chronologyLower: 1412
     chronologyUpper: 1418
     location: '@location_22'
     reference: ARV, Bailía, leg. 89, fol. 14r
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_23:
-    animal: 'rata'
-    taxonomy: '@zoo_taxonomy_RAR'
+    animal: 'rat'
     chronologyLower: 1425
     chronologyUpper: 1430
     location: '@location_23'
@@ -224,8 +201,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_24:
-    animal: 'halcón'
-    taxonomy: '@zoo_taxonomy_FAL'
+    animal: 'falcon'
     chronologyLower: 1438
     chronologyUpper: 1445
     location: '@location_24'
@@ -233,8 +209,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_25:
-    animal: 'ganado vacuno'
-    taxonomy: '@zoo_taxonomy_B'
+    animal: 'cattle'
     chronologyLower: 850
     chronologyUpper: 875
     location: '@location_25'
@@ -243,8 +218,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_animal_26:
-    animal: 'oveja'
-    taxonomy: '@zoo_taxonomy_OVA'
+    animal: 'sheep'
     chronologyLower: 892
     chronologyUpper: 910
     location: '@location_26'
@@ -253,8 +227,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_27:
-    animal: 'caballo'
-    taxonomy: '@zoo_taxonomy_EQC'
+    animal: 'horse'
     chronologyLower: 935
     chronologyUpper: 960
     location: '@location_27'
@@ -262,8 +235,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_28:
-    animal: 'cerdo (cerdo doméstico / jabalí)'
-    taxonomy: '@zoo_taxonomy_S'
+    animal: 'swine (pig / wild boar)'
     chronologyLower: 975
     chronologyUpper: 990
     location: '@location_28'
@@ -272,46 +244,41 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_29:
-    animal: 'cabra'
-    taxonomy: '@zoo_taxonomy_CAH'
+    animal: 'goat'
     chronologyLower: 1005
     chronologyUpper: 1015
     location: '@location_29'
     reference: AHN, Concejos, leg. 34, fol. 22v
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_animal_30:
-    animal: 'gallina'
-    taxonomy: '@zoo_taxonomy_GNP'
+    animal: 'chicken'
     chronologyLower: 1032
     chronologyUpper: 1045
     location: '@location_30'
     reference: AHN, Consejos, leg. 56, fol. 19r
     notes: Chicken coop construction noted
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_animal_31:
-    animal: 'conejo'
-    taxonomy: '@zoo_taxonomy_ORY'
+    animal: 'rabbit'
     chronologyLower: 1058
     chronologyUpper: 1070
     location: '@location_31'
     reference: AGS, Contaduría Mayor, leg. 8, fol. 4v
     notes: Rabbit warren lease agreement
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_32:
-    animal: 'pato'
-    taxonomy: '@zoo_taxonomy_ANA'
+    animal: 'duck'
     chronologyLower: 1085
     chronologyUpper: 1095
     location: '@location_32'
     reference: ACA, Cancillería, Registros, leg. 42, fol. 6r
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_animal_33:
-    animal: 'asno'
-    taxonomy: '@zoo_taxonomy_EQA'
+    animal: 'ass'
     chronologyLower: 1118
     chronologyUpper: 1130
     location: '@location_33'
@@ -320,8 +287,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_34:
-    animal: 'ganado vacuno'
-    taxonomy: '@zoo_taxonomy_B'
+    animal: 'cattle'
     chronologyLower: 1145
     chronologyUpper: 1160
     location: '@location_34'
@@ -329,18 +295,16 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_animal_35:
-    animal: 'oveja'
-    taxonomy: '@zoo_taxonomy_OVA'
+    animal: 'sheep'
     chronologyLower: 1172
     chronologyUpper: 1180
     location: '@location_1'
     reference: ARV, Maestre Racional, leg. 13, fol. 8r
     notes: Wool production quantities recorded
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_animal_36:
-    animal: 'gato'
-    taxonomy: '@zoo_taxonomy_FEC'
+    animal: 'cat'
     chronologyLower: 1195
     chronologyUpper: 1205
     location: '@location_2'
@@ -349,17 +313,15 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_37:
-    animal: 'paloma'
-    taxonomy: '@zoo_taxonomy_COL'
+    animal: 'pigeon'
     chronologyLower: 1222
     chronologyUpper: 1230
     location: '@location_3'
     reference: AHN, Diversos, leg. 56, fol. 9v
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_38:
-    animal: 'ganso'
-    taxonomy: '@zoo_taxonomy_ANS'
+    animal: 'goose'
     chronologyLower: 1248
     chronologyUpper: 1255
     location: '@location_4'
@@ -368,8 +330,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_39:
-    animal: 'ciervo rojo'
-    taxonomy: '@zoo_taxonomy_CEE'
+    animal: 'red deer'
     chronologyLower: 1268
     chronologyUpper: 1275
     location: '@location_5'
@@ -377,8 +338,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_ARA'
   history_animal_40:
-    animal: 'liebre'
-    taxonomy: '@zoo_taxonomy_LE'
+    animal: 'hare'
     chronologyLower: 1288
     chronologyUpper: 1295
     location: '@location_6'
@@ -387,8 +347,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_41:
-    animal: 'perdiz'
-    taxonomy: '@zoo_taxonomy_ALEC'
+    animal: 'partridge'
     chronologyLower: 1308
     chronologyUpper: 1315
     location: '@location_7'
@@ -397,8 +356,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_42:
-    animal: 'pez'
-    taxonomy: '@zoo_taxonomy_ICT'
+    animal: 'fish'
     chronologyLower: 1328
     chronologyUpper: 1335
     location: '@location_8'
@@ -406,47 +364,42 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_43:
-    animal: 'zorro'
-    taxonomy: '@zoo_taxonomy_VUV'
+    animal: 'fox'
     chronologyLower: 1348
     chronologyUpper: 1352
     location: '@location_9'
     reference: AHPC, Protocolos, leg. 28, fol. 11v
     notes: Fox damage to poultry reported
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_animal_44:
-    animal: 'perro'
-    taxonomy: '@zoo_taxonomy_CAF'
+    animal: 'dog'
     chronologyLower: 1365
     chronologyUpper: 1372
     location: '@location_10'
     reference: ARV, Gobernación, leg. 198, fol. 6r
     createdBy: '@user_his'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_animal_45:
-    animal: 'cerdo (cerdo doméstico / jabalí)'
-    taxonomy: '@zoo_taxonomy_S'
+    animal: 'swine (pig / wild boar)'
     chronologyLower: 1382
     chronologyUpper: 1388
     location: '@location_11'
     reference: AHN, Consejos, leg. 89, fol. 14v
     notes: Pig fattening for winter provisions
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_46:
-    animal: 'caballo'
-    taxonomy: '@zoo_taxonomy_EQC'
+    animal: 'horse'
     chronologyLower: 1401
     chronologyUpper: 1408
     location: '@location_12'
     reference: ACA, Cancillería, Registros, leg. 112, fol. 9r
     notes: Horse breeding stock purchase
     createdBy: '@user_admin'
-    language: '@language_VER'
+    language: '@language_CAS'
   history_animal_47:
-    animal: 'cabra'
-    taxonomy: '@zoo_taxonomy_CAH'
+    animal: 'goat'
     chronologyLower: 1418
     chronologyUpper: 1425
     location: '@location_13'
@@ -454,18 +407,16 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_LAT'
   history_animal_48:
-    animal: 'gallina'
-    taxonomy: '@zoo_taxonomy_GNP'
+    animal: 'chicken'
     chronologyLower: 1432
     chronologyUpper: 1438
     location: '@location_14'
     reference: ARV, Maestre Racional, leg. 44, fol. 12v
     notes: Chicken eggs for Easter celebration
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_VAL'
   history_animal_49:
-    animal: 'caprino (oveja / cabra)'
-    taxonomy: '@zoo_taxonomy_O'
+    animal: 'caprine (sheep / goat)'
     chronologyLower: 1442
     chronologyUpper: 1448
     location: '@location_15'
@@ -473,8 +424,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_LAT'
   history_animal_50:
-    animal: 'gamo'
-    taxonomy: '@zoo_taxonomy_DAD'
+    animal: 'fallow deer'
     chronologyLower: 1135
     chronologyUpper: 1142
     location: '@location_16'
@@ -483,18 +433,16 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_51:
-    animal: 'lagomorfo (conejo / liebre)'
-    taxonomy: '@zoo_taxonomy_LAG'
+    animal: 'lagomorph (rabbit / hare)'
     chronologyLower: 1255
     chronologyUpper: 1262
     location: '@location_17'
     reference: AHPM, Protocolos, leg. 4, fol. 18r
     notes: Lagomorph hunting rights granted
     createdBy: '@user_editor'
-    language: '@language_VER'
+    language: '@language_CAT'
   history_animal_52:
-    animal: 'pájaro'
-    taxonomy: '@zoo_taxonomy_AVE'
+    animal: 'bird'
     chronologyLower: 1378
     chronologyUpper: 1385
     location: '@location_18'
@@ -502,8 +450,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_admin'
     language: '@language_ARA'
   history_animal_53:
-    animal: 'anfibio'
-    taxonomy: '@zoo_taxonomy_AMP'
+    animal: 'amphibia'
     chronologyLower: 1228
     chronologyUpper: 1235
     location: '@location_19'
@@ -512,8 +459,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_his'
     language: '@language_ARA'
   history_animal_54:
-    animal: 'équido (caballo / asno)'
-    taxonomy: '@zoo_taxonomy_EQ'
+    animal: 'equid (horse / ass)'
     chronologyLower: 1052
     chronologyUpper: 1065
     location: '@location_20'
@@ -522,8 +468,7 @@ App\Entity\Data\History\Animal:
     createdBy: '@user_editor'
     language: '@language_LAT'
   history_animal_55:
-    animal: 'ganado vacuno'
-    taxonomy: '@zoo_taxonomy_B'
+    animal: 'cattle'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_21'

@@ -4,25 +4,83 @@ import {
   API_FILTERS,
   generateResourceDefinition,
 } from '~/utils/consts/configs/filters/definitions'
-import { taxonomyStaticFiltersDefinition as zooTaxonomyStaticFilterDefinition } from './zoo'
-import { taxonomyStaticFiltersDefinition as botanyTaxonomyStaticFilterDefinition } from './botany'
-
 const {
-  Boolean,
   Exists,
   HistoryLocationEquals,
   HistoryWrittenSourceEquals,
   SearchExact,
   SearchPartial,
+  SelectionZooClass,
+  SelectionZooFamily,
   VocabularyHistoryAuthor,
   VocabularyHistoryLanguage,
   VocabularyHistoryWrittenSourceType,
   VocabularyRegion,
   VocabularyCentury,
   VocabularyHistoryCitedWork,
-  VocabularyBotanyTaxonomy,
-  VocabularyZooTaxonomy,
+  VocabularyBotanyTaxonomyClass,
+  VocabularyBotanyTaxonomyFamily,
+  VocabularyBotanyTaxonomyGenus,
 } = API_FILTERS
+
+// Flattened taxonomy filters exposed through the read-only `flat` view
+// (history plant/animal no longer hold a direct taxonomy relation).
+const flatStaticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObject =
+  {
+    'flat.taxonomyId': {
+      propertyLabel: 'taxonomy',
+      filters: {
+        Exists,
+      },
+    },
+    'flat.class': {
+      propertyLabel: 'taxonomy (class)',
+      filters: {
+        SelectionZooClass,
+      },
+    },
+    'flat.family': {
+      propertyLabel: 'taxonomy (family)',
+      filters: {
+        SelectionZooFamily,
+        Exists,
+      },
+    },
+    'flat.spanishName': {
+      propertyLabel: 'taxonomy (spanish name)',
+      filters: {
+        SearchPartial,
+      },
+    },
+  }
+
+const flatStaticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject =
+  {
+    'flat.taxonomyId': {
+      propertyLabel: 'taxonomy',
+      filters: {
+        Exists,
+      },
+    },
+    'flat.classId': {
+      propertyLabel: 'taxonomy (class)',
+      filters: {
+        VocabularyBotanyTaxonomyClass,
+      },
+    },
+    'flat.familyId': {
+      propertyLabel: 'taxonomy (family)',
+      filters: {
+        VocabularyBotanyTaxonomyFamily,
+      },
+    },
+    'flat.genusId': {
+      propertyLabel: 'taxonomy (genus)',
+      filters: {
+        VocabularyBotanyTaxonomyGenus,
+      },
+    },
+  }
 
 const historyLocation: ResourceStaticFiltersDefinitionObject = {
   value: {
@@ -96,14 +154,7 @@ export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObjec
         VocabularyRegion,
       },
     },
-    ...zooTaxonomyStaticFilterDefinition,
-    taxonomy: {
-      propertyLabel: 'taxonomy',
-      filters: {
-        VocabularyZooTaxonomy,
-        Exists,
-      },
-    },
+    ...flatStaticFiltersDefinitionAnimal,
   }
 
 export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject =
@@ -119,32 +170,7 @@ export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject
         SearchPartial,
       },
     },
-    cf: {
-      propertyLabel: 'taxonomy (cf)',
-      filters: {
-        Boolean,
-      },
-    },
-    sp: {
-      propertyLabel: 'taxonomy (sp)',
-      filters: {
-        Boolean,
-      },
-    },
-    ...botanyTaxonomyStaticFilterDefinition,
-    'taxonomy.englishName': {
-      propertyLabel: 'taxonomy (english name)',
-      filters: {
-        SearchPartial,
-      },
-    },
-    taxonomy: {
-      propertyLabel: 'taxonomy',
-      filters: {
-        VocabularyBotanyTaxonomy,
-        Exists,
-      },
-    },
+    ...flatStaticFiltersDefinitionPlant,
   }
 
 export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObject =
@@ -154,16 +180,16 @@ export const staticFiltersDefinitionLocation: ResourceStaticFiltersDefinitionObj
       'animals',
       'animals',
     ]),
-    ...generateResourceDefinition(zooTaxonomyStaticFilterDefinition, [
-      'animals.taxonomy',
+    ...generateResourceDefinition(flatStaticFiltersDefinitionAnimal, [
+      'animals',
       'animals',
     ]),
     ...generateResourceDefinition(historyEntityStaticFiltersDefinitionObject, [
       'plants',
       'plants',
     ]),
-    ...generateResourceDefinition(botanyTaxonomyStaticFilterDefinition, [
-      'plants.taxonomy',
+    ...generateResourceDefinition(flatStaticFiltersDefinitionPlant, [
+      'plants',
       'plants',
     ]),
   }

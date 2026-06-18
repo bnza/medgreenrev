@@ -60,9 +60,25 @@ const uniqueValue = createRule({
   message: 'Value must be unique for this parent',
 })
 
+const apiEnglishNameValidator = new GetValidationOperation(
+  '/api/validator/unique/vocabulary/botany/taxonomies/english_name',
+)
+
+const uniqueEnglishName = createRule({
+  validator: async (value: Maybe<string>) => {
+    if (!value) return true
+    return await apiEnglishNameValidator.isValid({ englishName: value })
+  },
+  message: 'English name must be unique',
+})
+
 const { r$ } = useScopedRegle(model, {
   value: { required, unique: uniqueValue },
+  englishName: { unique: uniqueEnglishName },
 })
+
+const englishNameModel = useLowercaseModel(toRef(r$.$value, 'englishName'))
+const spanishNameModel = useLowercaseModel(toRef(model.value, 'spanishName'))
 </script>
 
 <template>
@@ -95,10 +111,14 @@ const { r$ } = useScopedRegle(model, {
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <v-text-field v-model="model.englishName" label="vernacular name" />
+        <v-text-field
+          v-model="englishNameModel"
+          label="english name"
+          :error-messages="r$.$errors?.englishName"
+        />
       </v-col>
       <v-col cols="12" md="6">
-        <v-text-field v-model="model.spanishName" label="spanish name" />
+        <v-text-field v-model="spanishNameModel" label="spanish name" />
       </v-col>
     </v-row>
   </v-container>

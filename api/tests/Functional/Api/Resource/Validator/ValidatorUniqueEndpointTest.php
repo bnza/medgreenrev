@@ -1958,4 +1958,82 @@ class ValidatorUniqueEndpointTest extends ApiTestCase
         $this->assertArrayHasKey('valid', $responseData);
         $this->assertSame(1, $responseData['valid'], 'Non-existing sediment core depth analysis combination should be unique');
     }
+
+    public function testValidatorUniqueVocBotanyTaxonomyEnglishNameEndpointReturnFalseWhenExists(): void
+    {
+        $client = self::createClient();
+
+        $englishName = $this->getFirstEnglishName('/api/vocabulary/botany/taxonomies');
+        $this->assertNotNull($englishName, 'Should have at least one botany taxonomy with an english name for testing');
+
+        $response = $this->apiRequest($client, 'GET', '/api/validator/unique/vocabulary/botany/taxonomies/english_name?englishName='.urlencode($englishName));
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing botany taxonomy english name should not be unique');
+    }
+
+    public function testValidatorUniqueVocBotanyTaxonomyEnglishNameEndpointReturnTrueWhenNotExists(): void
+    {
+        $client = self::createClient();
+
+        $response = $this->apiRequest($client, 'GET', '/api/validator/unique/vocabulary/botany/taxonomies/english_name?englishName='.urlencode('a non existing english name '.uniqid()));
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing botany taxonomy english name should be unique');
+    }
+
+    public function testValidatorUniqueVocZooTaxonomyEnglishNameEndpointReturnFalseWhenExists(): void
+    {
+        $client = self::createClient();
+
+        $englishName = $this->getFirstEnglishName('/api/vocabulary/zoo/taxonomies');
+        $this->assertNotNull($englishName, 'Should have at least one zoo taxonomy with an english name for testing');
+
+        $response = $this->apiRequest($client, 'GET', '/api/validator/unique/vocabulary/zoo/taxonomies/english_name?englishName='.urlencode($englishName));
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(0, $responseData['valid'], 'Existing zoo taxonomy english name should not be unique');
+    }
+
+    public function testValidatorUniqueVocZooTaxonomyEnglishNameEndpointReturnTrueWhenNotExists(): void
+    {
+        $client = self::createClient();
+
+        $response = $this->apiRequest($client, 'GET', '/api/validator/unique/vocabulary/zoo/taxonomies/english_name?englishName='.urlencode('a non existing english name '.uniqid()));
+
+        $this->assertSame(200, $response->getStatusCode());
+        $responseData = $response->toArray();
+
+        $this->assertArrayHasKey('valid', $responseData);
+        $this->assertSame(1, $responseData['valid'], 'Non-existing zoo taxonomy english name should be unique');
+    }
+
+    /**
+     * Fetch the first non-empty english name from a taxonomy collection endpoint.
+     */
+    private function getFirstEnglishName(string $uri): ?string
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_admin');
+
+        $response = $this->apiRequest($client, 'GET', $uri, [
+            'token' => $token,
+        ]);
+
+        $this->assertSame(200, $response->getStatusCode());
+
+        $members = $response->toArray()['member'] ?? [];
+        $member = array_find($members, fn ($item) => !empty($item['englishName']));
+
+        return $member['englishName'] ?? null;
+    }
 }

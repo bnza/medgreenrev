@@ -57,16 +57,31 @@ const uniqueValue = createRule({
   message: 'Value must be unique',
 })
 
+const apiEnglishNameValidator = new GetValidationOperation(
+  '/api/validator/unique/vocabulary/zoo/taxonomies/english_name',
+)
+
+const uniqueEnglishName = createRule({
+  validator: async (value: Maybe<string>) =>
+    value
+      ? await apiEnglishNameValidator.isValid({ englishName: value })
+      : true,
+  message: 'English name must be unique',
+})
+
 const { r$ } = useScopedRegle(model, {
   code: {
     required,
     unique: uniqueCode,
   },
   value: { required, unique: uniqueValue },
-  englishName: { required },
+  englishName: { required, unique: uniqueEnglishName },
   spanishName: { required },
   class: { required },
 })
+
+const englishNameModel = useLowercaseModel(toRef(r$.$value, 'englishName'))
+const spanishNameModel = useLowercaseModel(toRef(r$.$value, 'spanishName'))
 </script>
 
 <template>
@@ -90,14 +105,14 @@ const { r$ } = useScopedRegle(model, {
     <v-row>
       <v-col cols="12" md="6">
         <v-text-field
-          v-model="r$.$value.englishName"
+          v-model="englishNameModel"
           label="english name"
           :error-messages="r$.$errors?.englishName"
         />
       </v-col>
       <v-col cols="12" md="6">
         <v-text-field
-          v-model="r$.$value.spanishName"
+          v-model="spanishNameModel"
           label="spanish name"
           :error-messages="r$.$errors?.spanishName"
         />

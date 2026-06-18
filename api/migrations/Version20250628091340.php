@@ -244,34 +244,93 @@ final class Version20250628091340 extends AbstractMigration
         $this->addSql(
             <<<'SQL'
                 CREATE OR REPLACE VIEW vw_history_animals AS
-                WITH DistinctValues AS (
-                    -- Step 1: Find the unique, input values (already lowercased on write).
-                    SELECT DISTINCT animal AS original_value
+                WITH u AS (
+                    -- Taxonomy english names (already lowercased on write); match.
+                    SELECT english_name AS value
+                    FROM vocabulary.zoo_taxonomy
+                    WHERE english_name IS NOT NULL
+                    UNION
+                    -- Data values (already lowercased on write); no taxonomy match.
+                    SELECT animal AS value
                     FROM history_animals
                 )
-                -- Step 2: Calculate the MD5 hash once for each unique value.
                 SELECT
-                    MD5(original_value) AS id,
-                    original_value AS value
-                FROM
-                    DistinctValues
+                    MD5(u.value) AS id,
+                    u.value,
+                    vt.id AS taxonomy_id,
+                    vt.value as taxonomy
+                FROM u
+                LEFT JOIN vocabulary.zoo_taxonomy vt ON u.value = vt.english_name
                 SQL
         );
 
         $this->addSql(
             <<<'SQL'
                 CREATE OR REPLACE VIEW vw_history_plants AS
-                WITH DistinctValues AS (
-                    -- Step 1: Find the unique, input values (already lowercased on write).
-                    SELECT DISTINCT plant AS original_value
-                    FROM history_plants
+                WITH u AS (
+                    -- Taxonomy english names (already lowercased on write); match.
+                    SELECT english_name AS value
+                    FROM vocabulary.botany_taxonomy
+                    WHERE english_name IS NOT NULL
+                    UNION
+                    -- Data values (already lowercased on write); no taxonomy match.
+                    SELECT animal AS value
+                    FROM history_animals
                 )
-                -- Step 2: Calculate the MD5 hash once for each unique value.
                 SELECT
-                    MD5(original_value) AS id,
-                    original_value AS value
-                FROM
-                    DistinctValues
+                    MD5(u.value) AS id,
+                    u.value,
+                    vt.id AS taxonomy_id,
+                    vt.value as taxonomy
+                FROM u
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt ON u.value = vt.english_name
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE VIEW vw_history_plant AS
+                SELECT
+                    hp.id,
+                    hp.id AS history_plant_id,
+                    vt.id AS taxonomy_id,
+                    vt.value,
+                    vt.level,
+                    vt.rank,
+                    vt.species,
+                    vt.genus,
+                    vt.family,
+                    vt.class,
+                    vt.spanish_name,
+                    vt.english_name,
+                    vt.genus_id,
+                    vt.family_id,
+                    vt.class_id
+                FROM history_plants hp
+                -- english_name (taxonomy) and plant (data) are both lowercased on write
+                -- and english_name is unique, so a plain equality keeps the view 1:1.
+                LEFT JOIN vocabulary.vw_botany_taxonomy vt
+                    ON vt.english_name = hp.plant
+                SQL
+        );
+
+        $this->addSql(
+            <<<'SQL'
+                CREATE VIEW vw_history_animal AS
+                SELECT
+                    ha.id,
+                    ha.id AS history_animal_id,
+                    zt.id AS taxonomy_id,
+                    zt.value,
+                    zt.english_name,
+                    zt.spanish_name,
+                    zt.class,
+                    zt.family
+                FROM history_animals ha
+                -- english_name (taxonomy) and animal (data) are both lowercased on write
+                -- and english_name is unique, so a plain equality keeps the view 1:1.
+                LEFT JOIN vocabulary.zoo_taxonomy zt
+                    ON zt.english_name = ha.animal
                 SQL
         );
 
@@ -614,6 +673,8 @@ final class Version20250628091340 extends AbstractMigration
         $this->addSql('DROP VIEW vw_buildings;');
         $this->addSql('DROP VIEW vw_calibration_curves;');
         $this->addSql('DROP VIEW vw_context_types;');
+        $this->addSql('DROP VIEW IF EXISTS vw_history_animal;');
+        $this->addSql('DROP VIEW IF EXISTS vw_history_plant;');
         $this->addSql('DROP VIEW vw_history_animals;');
         $this->addSql('DROP VIEW vw_history_plants;');
         $this->addSql('DROP VIEW vw_history_references;');
