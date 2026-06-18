@@ -56,7 +56,7 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
 
 <template>
   <v-row>
-    <v-col cols="4" xs="12" class="px-2">
+    <v-col cols="6" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.location"
         path="/api/vocabulary/history/locations"
@@ -68,7 +68,7 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="8" xs="12" class="px-2">
+    <v-col cols="6" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.language"
         path="/api/vocabulary/history/languages"
@@ -79,7 +79,7 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="6" xs="12" class="px-2">
+    <v-col cols="12" xs="12" class="px-2">
       <data-selection-list-history-taxonomy
         v-model="plantModel"
         path="/api/list/history/plants"

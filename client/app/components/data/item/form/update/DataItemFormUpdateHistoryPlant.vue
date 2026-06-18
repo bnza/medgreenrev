@@ -60,7 +60,7 @@ const plantModel = useLowercaseModel(toRef(r$.$value, 'plant'))
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="8" xs="12" class="px-2">
+    <v-col cols="6" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.language"
         path="/api/vocabulary/history/languages"

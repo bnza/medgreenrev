@@ -48,7 +48,7 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
 
 <template>
   <v-row>
-    <v-col cols="4" xs="12" class="px-2">
+    <v-col cols="6" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.location"
         path="/api/vocabulary/history/locations"
@@ -60,7 +60,7 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="8" xs="12" class="px-2">
+    <v-col cols="6" xs="12" class="px-2">
       <data-autocomplete
         v-model="r$.$value.language"
         path="/api/vocabulary/history/languages"
@@ -71,7 +71,7 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="8" xs="12" class="px-2">
+    <v-col cols="12" xs="12" class="px-2">
       <data-selection-list-history-taxonomy
         v-model="animalModel"
         path="/api/list/history/animals"
