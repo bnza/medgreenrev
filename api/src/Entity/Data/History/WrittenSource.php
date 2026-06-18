@@ -17,8 +17,10 @@ use App\Doctrine\Filter\DynamicCollectionOrderFilter;
 use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Entity\Data\Join\WrittenSourceCentury;
 use App\Entity\Data\Join\WrittenSourceRegion;
+use App\Entity\Vocabulary\Century;
 use App\Entity\Vocabulary\History\Author;
 use App\Entity\Vocabulary\History\WrittenSourceType;
+use App\Entity\Vocabulary\Region;
 use App\Repository\HistoryWrittenSourceRepository;
 use App\Util\EntityOneToManyRelationshipSynchronizer;
 use App\Validator as AppAssert;
@@ -27,6 +29,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\TypeInfo\Type;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: HistoryWrittenSourceRepository::class)]
@@ -218,6 +221,17 @@ class WrittenSource
         cascade: ['persist', 'remove'],
         orphanRemoval: true,
     )]
+    // see ArchaologicalSite::culturalContexts for explanation
+    #[ApiProperty(
+        readableLink: true,
+        writableLink: false,
+        nativeType: new Type\CollectionType(
+            new Type\GenericType(
+                new Type\ObjectType(Collection::class),
+                new Type\ObjectType(Century::class),
+            ),
+        ),
+    )]
     private Collection $centuries;
 
     /** @var Collection<WrittenSourceCitedWork> */
@@ -233,6 +247,17 @@ class WrittenSource
         mappedBy: 'writtenSource',
         cascade: ['persist', 'remove'],
         orphanRemoval: true,
+    )]
+    // see ArchaologicalSite::culturalContexts for explanation
+    #[ApiProperty(
+        readableLink: true,
+        writableLink: false,
+        nativeType: new Type\CollectionType(
+            new Type\GenericType(
+                new Type\ObjectType(Collection::class),
+                new Type\ObjectType(Region::class),
+            ),
+        ),
     )]
     private Collection $regions;
 

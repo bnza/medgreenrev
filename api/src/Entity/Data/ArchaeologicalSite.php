@@ -26,6 +26,7 @@ use App\Entity\Auth\SiteUserPrivilege;
 use App\Entity\Auth\User;
 use App\Entity\Data\Join\Analysis\AnalysisSiteAnthropology;
 use App\Entity\Data\Join\SiteCulturalContext;
+use App\Entity\Vocabulary\CulturalContext;
 use App\Entity\Vocabulary\Region;
 use App\Metadata\ExportFeatureCollection;
 use App\Metadata\GetFeatureCollection;
@@ -46,6 +47,7 @@ use Doctrine\ORM\Mapping\Table;
 use LongitudeOne\Spatial\PHP\Types\Geography\Point;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\TypeInfo\Type;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[Entity(repositoryClass: ArchaeologicalSiteRepository::class)]
@@ -325,6 +327,43 @@ class ArchaeologicalSite
         mappedBy: 'site',
         cascade: ['persist', 'remove'],
         orphanRemoval: true,
+    )]
+    /*
+     * IMPORTANT: this #[ApiProperty] override is required because of a behavioural change
+     * introduced by api-platform/* >= v4.3.13 (we upgraded from v4.3.5).
+     *
+     * The Doctrine relation above targets the JOIN entity `SiteCulturalContext`, so API Platform
+     * infers the relation's resource class as `SiteCulturalContext`. However, on the API surface we
+     * intentionally accept and expose plain VOCABULARY IRIs:
+     *     /api/vocabulary/cultural_contexts/{id}  ->  App\Entity\Vocabulary\CulturalContext
+     * (see getCulturalContexts(), which maps each join row to its CulturalContext, and
+     *  setCulturalContexts(), which expands CulturalContext IRIs back into SiteCulturalContext join rows).
+     *
+     * Since v4.3.13, AbstractItemNormalizer::getResourceFromIri() adds a type-confusion guard
+     * (`is_a($item, $resourceClass)`). When denormalizing an incoming IRI it now checks that the
+     * resolved object's class matches the relation's declared resource class. With the inferred
+     * `SiteCulturalContext` class, a `CulturalContext` IRI fails this check and the request aborts
+     * with: 400 `Invalid IRI "/api/vocabulary/cultural_contexts/700"`.
+     *
+     * Declaring `nativeType` as Collection<CulturalContext> makes the property metadata honest:
+     * the declared resource class becomes `CulturalContext`, which is exactly what the submitted
+     * IRIs resolve to, so the new guard passes.
+     *
+     * - readableLink: true  -> on read, embed the related CulturalContext object (with its @id).
+     * - writableLink: false -> on write, accept a plain IRI (not an inline/embedded object).
+     *
+     * Note: static factory helpers (e.g. Type::collection(...)) cannot be used inside attribute
+     * arguments, hence the explicit `new` constructors below.
+     */
+    #[ApiProperty(
+        readableLink: true,
+        writableLink: false,
+        nativeType: new Type\CollectionType(
+            new Type\GenericType(
+                new Type\ObjectType(Collection::class),
+                new Type\ObjectType(CulturalContext::class),
+            ),
+        ),
     )]
     private Collection $culturalContexts;
 

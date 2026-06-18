@@ -24,6 +24,7 @@ use App\Entity\Data\Join\MediaObject\MediaObjectPottery;
 use App\Entity\Data\Join\PotteryDecoration;
 use App\Entity\Data\View\Code\PotteryCodeView;
 use App\Entity\Vocabulary\CulturalContext;
+use App\Entity\Vocabulary\Pottery\Decoration;
 use App\Entity\Vocabulary\Pottery\FunctionalForm;
 use App\Entity\Vocabulary\Pottery\Shape;
 use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
@@ -41,6 +42,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\TypeInfo\Type;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: \App\Repository\PotteryRepository::class)]
@@ -262,6 +264,17 @@ class Pottery
         'pottery:acl:read',
         'pottery:create',
     ])]
+    // see ArchaologicalSite::culturalContexts for explanation
+    #[ApiProperty(
+        readableLink: true,
+        writableLink: false,
+        nativeType: new Type\CollectionType(
+            new Type\GenericType(
+                new Type\ObjectType(Collection::class),
+                new Type\ObjectType(Decoration::class),
+            ),
+        ),
+    )]
     private Collection $decorations;
 
     /** @var Collection<AnalysisPottery> */
