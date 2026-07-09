@@ -14,9 +14,29 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-echo "Starting database backup (running pg_dump inside the database container)..."
+QUIET=false
+QUIET_FLAG=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -q|--quiet)
+      QUIET=true
+      QUIET_FLAG="--quiet"
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
+if [ "$QUIET" = false ]; then
+  echo "Starting database backup (running pg_dump inside the database container)..."
+fi
 
 docker compose --project-directory "${PROJECT_ROOT}" exec -T database \
-  sh /usr/local/bin/backup.sh
+  sh /usr/local/bin/backup.sh ${QUIET_FLAG}
 
-echo "Backup completed successfully."
+if [ "$QUIET" = false ]; then
+  echo "Backup completed successfully."
+fi

@@ -12,6 +12,20 @@ set -eu
 : "${POSTGRES_DB:?POSTGRES_DB not set in container}"
 : "${POSTGRES_BACKUP_DIR:?POSTGRES_BACKUP_DIR not set in container}"
 
+QUIET=false
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -q|--quiet)
+      QUIET=true
+      shift
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
 YEAR="$(date +%Y)"
 MONTH="$(date +%m)"
 ISO_DATETIME="$(date +%Y%m%dT%H%M%S)"
@@ -21,7 +35,9 @@ DEST_FILE="${DEST_DIR}/${ISO_DATETIME}.sql.gz"
 
 mkdir -p "${DEST_DIR}"
 
-echo "Dumping database '${POSTGRES_DB}' as user '${POSTGRES_USER}' to ${DEST_FILE}"
+if [ "$QUIET" = false ]; then
+  echo "Dumping database '${POSTGRES_DB}' as user '${POSTGRES_USER}' to ${DEST_FILE}"
+fi
 
 PGPASSWORD="${POSTGRES_PASSWORD}" pg_dump \
   --format=plain \
@@ -32,4 +48,6 @@ PGPASSWORD="${POSTGRES_PASSWORD}" pg_dump \
   "${POSTGRES_DB}" \
   | gzip -9 > "${DEST_FILE}"
 
-echo "Backup completed: ${DEST_FILE}"
+if [ "$QUIET" = false ]; then
+  echo "Backup completed: ${DEST_FILE}"
+fi
