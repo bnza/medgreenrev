@@ -1,0 +1,20 @@
+[Unit]
+Description=MEDGREENREV app (Docker Compose)
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+User=${DOCKER_USER}
+WorkingDirectory=${DOCKER_COMPOSE_DIRECTORY}
+ExecStart=docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+ExecStop=docker compose -f docker-compose.yml -f docker-compose.prod.yml down
+Restart=always
+RestartSec=10
+TimeoutStartSec=0
+
+StandardOutput=journal
+StandardError=journal
+
+
+[Install]
+WantedBy=multi-user.target

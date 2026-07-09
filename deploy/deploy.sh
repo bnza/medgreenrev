@@ -163,7 +163,7 @@ echo "==> Installing client dependencies..."
 docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm node pnpm install
 
 echo "==> Generating static client bundle..."
-docker compose run -f docker-compose.yml -f docker-compose.prod.yml --rm node pnpm generate
+docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm node pnpm generate
 STEPS_LOG+=("Client static files generated")
 
 # ── 7. Start Nginx ──────────────────────────────────────────
