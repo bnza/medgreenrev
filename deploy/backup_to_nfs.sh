@@ -154,14 +154,38 @@ else
     log "WARNING" "WWW_STATIC_DIR not found or not a directory."
 fi
 
-# 4. Sync Configuration Files
+# 4. Sync Configuration Files (Incremental on change)
 log "INFO" "Syncing configuration files..."
+TIMESTAMP="$(date +%Y%m%dT%H%M%S)"
+
 for cfg in "${CONFIG_FILES[@]}"; do
-    if [ -f "${PROJECT_ROOT}/${cfg}" ]; then
-        if [ "$QUIET" = false ]; then
-            cp -v "${PROJECT_ROOT}/${cfg}" "${BACKUP_DEST}/config/$(basename "${cfg}")"
+    SRC_FILE="${PROJECT_ROOT}/${cfg}"
+    if [ -f "${SRC_FILE}" ]; then
+        BASE_NAME="$(basename "${cfg}")"
+        DEST_DIR="${BACKUP_DEST}/config"
+
+        # Find the most recent backup of this file
+        # We look for files starting with BASE_NAME followed by a dot and timestamp
+        LAST_BACKUP=$(ls -1 "${DEST_DIR}/${BASE_NAME}."* 2>/dev/null | sort | tail -n 1 || true)
+
+        SHOULD_COPY=false
+        if [ -z "${LAST_BACKUP}" ]; then
+            SHOULD_COPY=true
+            log "INFO" "No previous backup for ${BASE_NAME}, creating first one."
+        elif ! cmp -s "${SRC_FILE}" "${LAST_BACKUP}"; then
+            SHOULD_COPY=true
+            log "INFO" "Config file ${BASE_NAME} has changed, creating new backup."
+        fi
+
+        if [ "$SHOULD_COPY" = true ]; then
+            DEST_FILE="${DEST_DIR}/${BASE_NAME}.${TIMESTAMP}"
+            if [ "$QUIET" = false ]; then
+                cp -v "${SRC_FILE}" "${DEST_FILE}"
+            else
+                cp "${SRC_FILE}" "${DEST_FILE}"
+            fi
         else
-            cp "${PROJECT_ROOT}/${cfg}" "${BACKUP_DEST}/config/$(basename "${cfg}")"
+            log "INFO" "Config file ${BASE_NAME} has not changed, skipping."
         fi
     else
         log "INFO" "Config file ${cfg} not found, skipping."
