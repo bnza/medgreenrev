@@ -30,13 +30,33 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+log() {
+    local level="$1"
+    local message="$2"
+    # Always log to syslog
+    logger -t db-backup "[${level}] ${message}"
+    # Only echo to stdout if NOT in quiet mode
+    if [ "$QUIET" = false ]; then
+        if [ "$level" = "ERROR" ]; then
+            echo "${level}: ${message}" >&2
+        else
+            echo "${message}"
+        fi
+    elif [ "$level" = "ERROR" ]; then
+        echo "${level}: ${message}" >&2
+    fi
+}
+
 if [ "$QUIET" = false ]; then
-  echo "Starting database backup (running pg_dump inside the database container)..."
+  log "INFO" "Starting database backup (running pg_dump inside the database container)..."
+else
+  log "INFO" "Starting database backup (quiet mode)..."
 fi
 
-docker compose --project-directory "${PROJECT_ROOT}" exec -T database \
-  sh /usr/local/bin/backup.sh ${QUIET_FLAG}
-
-if [ "$QUIET" = false ]; then
-  echo "Backup completed successfully."
+if ! docker compose --project-directory "${PROJECT_ROOT}" exec -T database \
+  sh /usr/local/bin/backup.sh ${QUIET_FLAG}; then
+    log "ERROR" "Database backup failed."
+    exit 1
 fi
+
+log "INFO" "Backup completed successfully."
