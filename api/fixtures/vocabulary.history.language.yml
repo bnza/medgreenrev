@@ -7,5 +7,3 @@ App\Entity\Vocabulary\History\Language:
         value: 'castilian'
     language_CAT:
         value: 'catalan'
-    language_VAL:
-        value: 'valencian'

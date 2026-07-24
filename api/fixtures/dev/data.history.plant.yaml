@@ -35,7 +35,7 @@ App\Entity\Data\History\Plant:
     location: '@location_3'
     reference: Archivo Histórico Provincial de Valencia (AHPV), Protocolo 234/12
     createdBy: '@user_editor'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_plant_5:
     plant: 'grapevine'
     chronologyLower: 1185
@@ -155,7 +155,7 @@ App\Entity\Data\History\Plant:
     location: '@location_17'
     reference: AHN, Clero, carp. 98, n. 4
     createdBy: '@user_his'
-    language: '@language_VAL'
+    language: '@language_CAT'
   history_plant_19:
     plant: 'pea'
     chronologyLower: 1020
@@ -198,7 +198,7 @@ App\Entity\Data\History\Plant:
     reference: ARV, Bailía, leg. 90, fol. 17r
     notes: Citrus orchard lease
     createdBy: '@user_admin'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_plant_24:
     plant: 'flax'
     chronologyLower: 1250
@@ -274,7 +274,7 @@ App\Entity\Data\History\Plant:
     location: '@location_31'
     reference: AHN, Clero, carp. 120, n. 2
     createdBy: '@user_admin'
-    language: '@language_VAL'
+    language: '@language_CAT'
   history_plant_33:
     plant: 'proso millet'
     chronologyLower: 1375
@@ -334,7 +334,7 @@ App\Entity\Data\History\Plant:
     reference: ACA, Real Patrimonio, leg. 140, fol. 9r
     notes: Service tree timber mention
     createdBy: '@user_his'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_plant_40:
     plant: 'wheat'
     chronologyLower: 1420
@@ -402,7 +402,7 @@ App\Entity\Data\History\Plant:
     reference: AGS, Contaduría Mayor, leg. 22, fol. 13v
     notes: Ration ledger
     createdBy: '@user_admin'
-    language: '@language_VAL'
+    language: '@language_CAT'
   history_plant_48:
     plant: 'oat'
     chronologyLower: 1441
@@ -436,7 +436,7 @@ App\Entity\Data\History\Plant:
     reference: AHPC, Protocolos, leg. 70, fol. 18r
     notes: Fig tithe
     createdBy: '@user_his'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_plant_52:
     plant: 'wild pear'
     chronologyLower: 1448

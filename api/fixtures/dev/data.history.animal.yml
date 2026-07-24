@@ -52,7 +52,7 @@ App\Entity\Data\History\Animal:
     reference: AHPV, Protocolo 201/5
     notes: Chicken tax collection recorded
     createdBy: '@user_editor'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_animal_7:
     animal: 'rabbit'
     chronologyLower: 1110
@@ -164,7 +164,7 @@ App\Entity\Data\History\Animal:
     location: '@location_19'
     reference: ACA, Real Patrimonio, leg. 98, fol. 13v
     createdBy: '@user_admin'
-    language: '@language_VAL'
+    language: '@language_CAT'
   history_animal_20:
     animal: 'fish'
     chronologyLower: 1385
@@ -259,7 +259,7 @@ App\Entity\Data\History\Animal:
     reference: AHN, Consejos, leg. 56, fol. 19r
     notes: Chicken coop construction noted
     createdBy: '@user_editor'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_animal_31:
     animal: 'rabbit'
     chronologyLower: 1058
@@ -302,7 +302,7 @@ App\Entity\Data\History\Animal:
     reference: ARV, Maestre Racional, leg. 13, fol. 8r
     notes: Wool production quantities recorded
     createdBy: '@user_his'
-    language: '@language_VAL'
+    language: '@language_CAT'
   history_animal_36:
     animal: 'cat'
     chronologyLower: 1195
@@ -379,7 +379,7 @@ App\Entity\Data\History\Animal:
     location: '@location_10'
     reference: ARV, Gobernación, leg. 198, fol. 6r
     createdBy: '@user_his'
-    language: '@language_VAL'
+    language: '@language_CAS'
   history_animal_45:
     animal: 'swine (pig / wild boar)'
     chronologyLower: 1382
@@ -414,7 +414,7 @@ App\Entity\Data\History\Animal:
     reference: ARV, Maestre Racional, leg. 44, fol. 12v
     notes: Chicken eggs for Easter celebration
     createdBy: '@user_editor'
-    language: '@language_VAL'
+    language: '@language_CAT'
   history_animal_49:
     animal: 'caprine (sheep / goat)'
     chronologyLower: 1442
