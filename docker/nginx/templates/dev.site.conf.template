@@ -27,9 +27,10 @@ server {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
-    # CORS headers for the static OpenAPI spec, only needed for the Vue dev server.
+    # CORS and revalidation headers for the static OpenAPI spec, only needed for the Vue dev server.
     # The generate client client served via /app/ is same-origin and doesn't need this.
     location = /docs.jsonopenapi.json {
+        add_header Cache-Control "no-cache";
         add_header Access-Control-Allow-Origin *;
         add_header Access-Control-Allow-Methods "GET, OPTIONS";
         add_header Access-Control-Allow-Headers "Content-Type, Authorization";
