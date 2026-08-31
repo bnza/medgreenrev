@@ -108,6 +108,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  vuetify: {
+    moduleOptions: {
+      prefixComposables: true,
+    },
+  },
   ssr: false,
   experimental: {
     viteEnvironmentApi: true,
