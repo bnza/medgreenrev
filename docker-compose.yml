@@ -102,7 +102,7 @@ services:
       - STABLE_EXTENSIONS=wps
       - SKIP_DEMO_DATA=true
     healthcheck:
-      test: curl --fail "http://localhost:8080/geoserver/web/wicket/resource/org.geoserver.web.GeoServerBasePage/img/logo.png" || exit 1
+      test: [ "CMD", "/opt/healthcheck.sh" ]
       interval: 1m
       retries: 3
       timeout: 20s
