@@ -15,7 +15,6 @@ doctrine:
             geography_point: LongitudeOne\Spatial\DBAL\Types\Geography\PointType
     
     orm:
-        auto_generate_proxy_classes: true
         default_entity_manager: default
         enable_native_lazy_objects: true
         controller_resolver:
