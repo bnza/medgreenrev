@@ -7,6 +7,7 @@ Re-thinking the “Green Revolution” in the Medieval Western Mediterranean (6t
 ## User Documentation
 
 - [Authorization](authorization.md)
+- [Change Password](change-password.md)
 - [Site permissions management](site-permissions-management.md)
 - Data Entry
     - Analyses
