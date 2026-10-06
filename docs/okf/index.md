@@ -74,6 +74,7 @@ The knowledge graph is organized across three tiers:
 * [Database Lifecycle & Migration Workflow](./workflows/database_lifecycle.md) – Pre-1.0.0 development rebuilds, schema regeneration, purpose-specific migrations, and post-1.0.0 production incremental migrations.
 * [GeoServer Operations & Entity Integration Workflow](./workflows/geoserver_operations.md) – PostGIS spatial views, REST layer publication, API Platform feature collections, and WFS test suites.
 * [Server & Container Deployment Workflow](./workflows/server_deployment.md) – Automated production deployment pipeline, Docker Compose overrides, environment secrets, and systemd service supervision.
+* [Production Update Workflow (Running Server)](./workflows/production_update.md) – Ordered operations after `git pull` on a live server: backup, cache clear, php restart, client rebuild, verification.
 * [SSL Certificate Lifecycle & Renewal Workflow](./workflows/ssl_certificate_lifecycle.md) – Dual-stage SSL certificate initialization, Let's Encrypt ACME renewal, and Nginx automated reload.
 * [Client Synchronization & Build Workflow](./workflows/client_sync.md) – OpenAPI schema regeneration, PHP container restart, and Nuxt static asset compilation.
 * [Testing Execution Workflow](./workflows/testing.md) – Standard commands for running PHPUnit, Vitest, and Playwright suites.

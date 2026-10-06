@@ -113,5 +113,6 @@ To enable automated restart on system boot:
 
 ## Related Nodes
 
+* [Production Update Workflow (Running Server)](./production_update.md) – Updating an already running server after `git pull`.
 * Back to [Workflows Hub](./index.md)
 * Back to [Main Knowledge Graph Index](../index.md)
