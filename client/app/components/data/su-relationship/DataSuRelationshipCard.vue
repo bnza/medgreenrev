@@ -38,14 +38,30 @@ const relationships = computed(() =>
   >
     <template #title>
       <v-container fluid class="pa-0 ma-0">
-        <v-row density="compact" class="pa-0 ma-0 align-center justify-space-between">
-          <v-col cols="11" class="text-center text-uppercase text-body-medium pa-0 ma-0">
+        <v-row
+          density="compact"
+          class="pa-0 ma-0 align-center justify-space-between"
+        >
+          <v-col
+            cols="10"
+            class="text-center text-uppercase text-body-medium pa-0 ma-0"
+          >
             {{ name }}
           </v-col>
-          <v-col cols="1" class="text-center pa-0 ma-0">
-            <v-btn v-if="isEditable" data-testid="add-relationship-button" class="mx-4" color="anchor" rounded="false" variant="text" :icon="true" size="x-small" @click="creatingRelationshipType = relationshipKey;">
+          <v-col cols="2" class="d-flex justify-end pa-0 ma-0">
+            <v-btn
+              v-if="isEditable"
+              data-testid="add-relationship-button"
+              color="anchor"
+              rounded="false"
+              variant="text"
+              :icon="true"
+              size="x-small"
+              @click="creatingRelationshipType = relationshipKey"
+            >
               <v-icon icon="fas fa-plus" size="x-small" />
-              <v-tooltip activator="parent" location="bottom">Add relationship
+              <v-tooltip activator="parent" location="bottom">
+                Add relationship
               </v-tooltip>
             </v-btn>
           </v-col>
