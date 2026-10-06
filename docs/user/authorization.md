@@ -13,6 +13,7 @@ specific actions (Read, Create, Update, Delete) on different resources within th
     - [Analysis Records](#analysis-records)
     - [Contexts](#contexts)
     - [Stratigraphic Units (SU)](#stratigraphic-units-su)
+    - [Stratigraphic Unit Relationships](#stratigraphic-unit-relationships)
     - [Samples](#samples)
     - [Specialist Data Items (Botany, Zoo, Pottery, etc.)](#specialist-data-items-botany-zoo-pottery-etc)
     - [Sediment Cores](#sediment-cores)
@@ -75,6 +76,11 @@ specific actions (Read, Create, Update, Delete) on different resources within th
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` or site-specific **User** privileges on the related site.
 
 ### <a name="stratigraphic-units-su"></a>Stratigraphic Units (SU)
+
+* **Read**: Publicly accessible.
+* **Create / Update / Delete**: Requires `ROLE_ADMIN` or site-specific **User** privileges on the related site.
+
+### <a name="stratigraphic-unit-relationships"></a><a name="stratigraphic-relationships"></a>Stratigraphic Unit Relationships
 
 * **Read**: Publicly accessible.
 * **Create / Update / Delete**: Requires `ROLE_ADMIN` or site-specific **User** privileges on the related site.
@@ -176,9 +182,6 @@ For all these specialist items:
 
 ## Relationships and Joins
 
-* **Stratigraphic Unit Relationships**:
-    * **Read**: Requires full authentication.
-    * **C/U/D**: Permissions are delegated to the first (left) Stratigraphic Unit in the relationship.
 * **Resource Joins (e.g., Analysis Joins)**:
     * **Read**: Publicly accessible.
     * **C/U/D**: Typically delegated to the permissions of the underlying subject (e.g., the specific Botany item or
