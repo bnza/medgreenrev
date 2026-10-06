@@ -181,6 +181,29 @@ test.describe('Archaeological site lifecycle', () => {
         page.locator('.v-input:has(label:text("code"))'),
       ).toContainText(/required/)
 
+      // Format validation - code field
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'code' })
+        .fill('A1')
+      await page.keyboard.press('Tab')
+      await expect(
+        page.locator('.v-input:has(label:text("code"))'),
+      ).toContainText(/up to 10 characters/)
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'code' })
+        .fill('ABCDEFGHIJK')
+      await page.keyboard.press('Tab')
+      await expect(
+        page.locator('.v-input:has(label:text("code"))'),
+      ).toContainText(/up to 10 characters/)
+      await collectionPom.dataDialogCreate.form
+        .getByRole('textbox', { name: 'code' })
+        .fill('AB12345678')
+      await page.keyboard.press('Tab')
+      await expect(
+        page.locator('.v-input:has(label:text("code"))'),
+      ).not.toContainText(/up to 10 characters/)
+
       // Required field validation - name field
       await collectionPom.dataDialogCreate.form
         .getByRole('textbox', { name: 'code' })

@@ -219,14 +219,16 @@ class ArchaeologicalSite
         'validation:archaeological_site:create',
     ])]
     #[Assert\Regex(
-        pattern: '/^[A-Z]{2}[A-Z\d]{0,4}$/',
-        message: 'ArchaeologicalSite code must have up to 6 characters: 2 mandatory uppercase letters followed by up to 4 optional uppercase letters or digits.',
+        pattern: '/^[A-Z]{2}[A-Z\d]{0,8}$/',
+        message: 'ArchaeologicalSite code must have up to 10 characters: 2 mandatory uppercase letters followed by up to 8 optional uppercase letters or digits.',
         groups: ['validation:archaeological_site:create']
     )]
     #[Assert\Length(
         min: 2,
-        max: 6,
-        minMessage: 'ArchaeologicalSite code must be 2 or 3 uppercase letters.',
+        max: 10,
+        minMessage: 'ArchaeologicalSite code must have at least 2 characters.',
+        maxMessage: 'ArchaeologicalSite code must have up to 10 characters.',
+        groups: ['validation:archaeological_site:create'],
     )]
     private string $code;
 

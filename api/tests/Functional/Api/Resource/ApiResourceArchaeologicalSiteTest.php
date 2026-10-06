@@ -336,7 +336,7 @@ class ApiResourceArchaeologicalSiteTest extends ApiTestCase
         $response = $this->apiRequest($client, 'POST', '/api/data/archaeological_sites', [
             'token' => $token,
             'json' => [
-                'code' => 'ABCDEFG',
+                'code' => 'ABCDEFGHIJK',
                 'name' => 'Test ArchaeologicalSite',
             ],
         ]);
@@ -346,6 +346,49 @@ class ApiResourceArchaeologicalSiteTest extends ApiTestCase
         $this->assertArrayHasKey('violations', $data);
         $this->assertGreaterThan(0, count($data['violations']));
 
+        $codeViolation = array_filter($data['violations'], fn ($violation) => 'code' === $violation['propertyPath']);
+        $this->assertNotEmpty($codeViolation);
+    }
+
+    /**
+     * @return array<string, array{string, bool}>
+     */
+    public static function siteCodeFormatProvider(): array
+    {
+        return [
+            'two letters' => ['AB', true],
+            'ten chars' => ['AB12345678', true],
+            'eleven chars' => ['ABCDEFGHIJK', false],
+            'digit second' => ['A1', false],
+            'lowercase is normalized to uppercase' => ['ab', true],
+            'dash' => ['AB-1', false],
+            'single letter' => ['A', false],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('siteCodeFormatProvider')]
+    public function testSiteCodeFormatValidation(string $code, bool $valid): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_editor');
+
+        $response = $this->apiRequest($client, 'POST', '/api/data/archaeological_sites', [
+            'token' => $token,
+            'json' => [
+                'code' => $code,
+                'name' => 'Code Format Test '.uniqid(),
+                'region' => $this->getVocabulary('regions')[0]['@id'],
+            ],
+        ]);
+
+        if ($valid) {
+            $this->assertSame(201, $response->getStatusCode());
+
+            return;
+        }
+
+        $this->assertSame(422, $response->getStatusCode());
+        $data = $response->toArray(false);
         $codeViolation = array_filter($data['violations'], fn ($violation) => 'code' === $violation['propertyPath']);
         $this->assertNotEmpty($codeViolation);
     }

@@ -5,7 +5,15 @@ import type {
   PostCollectionRequestMap,
 } from '~~/types'
 import { createRule, type Maybe, useScopedRegle } from '@regle/core'
-import { decimal, integer, maxValue, minValue, required } from '@regle/rules'
+import {
+  decimal,
+  integer,
+  maxValue,
+  minValue,
+  regex,
+  required,
+  withMessage,
+} from '@regle/rules'
 import { GetValidationOperation } from '~/api/operations/GetValidationOperation'
 import { capitalize } from 'vue'
 
@@ -68,6 +76,10 @@ const { r$ } = useScopedRegle(
   computed(() => ({
     code: {
       required,
+      format: withMessage(
+        regex(/^[A-Z]{2}[A-Z\d]{0,8}$/),
+        'ArchaeologicalSite code must have up to 10 characters: 2 mandatory uppercase letters followed by up to 8 optional uppercase letters or digits.',
+      ),
       unique: uniqueCode,
     },
     name: {

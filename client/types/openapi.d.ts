@@ -9324,8 +9324,7 @@ export interface components {
         | components['schemas']['StratigraphicUnit.csv-abs_dating_analysis.read']
         | null
       analysis?:
-        | components['schemas']['Analysis.csv-abs_dating_analysis.read']
-        | null
+        components['schemas']['Analysis.csv-abs_dating_analysis.read'] | null
       subjectId?: number | string
       subjectType?: string
       resourceLabel?: string
@@ -9343,8 +9342,7 @@ export interface components {
         | components['schemas']['StratigraphicUnit.jsonld-abs_dating_analysis.read']
         | null
       analysis?:
-        | components['schemas']['Analysis.jsonld-abs_dating_analysis.read']
-        | null
+        components['schemas']['Analysis.jsonld-abs_dating_analysis.read'] | null
       subjectId?: number | string
       subjectType?: string
       resourceLabel?: string
@@ -12095,8 +12093,7 @@ export interface components {
       name?: string
       description?: string | null
       createdBy?:
-        | components['schemas']['User.csv-archaeological_site.acl.read']
-        | null
+        components['schemas']['User.csv-archaeological_site.acl.read'] | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
       fieldDirector?: string | null
@@ -12446,8 +12443,7 @@ export interface components {
       name?: string
       description?: string | null
       createdBy?:
-        | components['schemas']['User.jsonld-archaeological_site.acl.read']
-        | null
+        components['schemas']['User.jsonld-archaeological_site.acl.read'] | null
       chronologyLower?: number | null
       chronologyUpper?: number | null
       fieldDirector?: string | null
@@ -12629,8 +12625,7 @@ export interface components {
       code?: string
       name?: string
       createdBy?:
-        | components['schemas']['User.jsonld-site_user_privilege.acl.read']
-        | null
+        components['schemas']['User.jsonld-site_user_privilege.acl.read'] | null
     })
     'ArchaeologicalSite.jsonld-sus.acl.read': {
       /** @description Access control metadata */
@@ -13047,8 +13042,7 @@ export interface components {
     }
     'BotanySeed.csv-botany_seed.acl.read': {
       readonly flat:
-        | components['schemas']['BotanySeedView.csv-botany_seed.acl.read']
-        | null
+        components['schemas']['BotanySeedView.csv-botany_seed.acl.read'] | null
       readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-botany_seed.acl.read']
       /**
@@ -14323,8 +14317,7 @@ export interface components {
        */
       type?: string
       uploadedBy?:
-        | components['schemas']['User.jsonld-media_object.acl.read']
-        | null
+        components['schemas']['User.jsonld-media_object.acl.read'] | null
       contentUrl?: string | null
       originalFilename?: string
       sha256?: string
