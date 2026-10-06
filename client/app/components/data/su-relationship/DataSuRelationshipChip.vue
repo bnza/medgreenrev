@@ -16,14 +16,15 @@ const codeWithoutSite = computed(() =>
 
 <template>
   <data-item-info-box-stratigraphic-unit
-    v-slot="{ props }"
+    v-slot="{ props: chipProps }"
     :iri="item.rgtStratigraphicUnit['@id']"
   >
-    <v-chip v-bind="props" color="primary" label
+    <v-chip v-bind="chipProps" color="primary" label
       >{{ codeWithoutSite }}
       <template #close>
         <v-icon
           v-if="isEditable"
+          class="mb-2"
           data-testid="delete-relationship-button"
           icon="far fa-circle-xmark"
           size="x-small"
