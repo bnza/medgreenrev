@@ -19,6 +19,8 @@ Re-thinking the “Green Revolution” in the Medieval Western Mediterranean (6t
       - [Samples](sample.md)
       - [Stratigraphic Units](su.md)
       - [Stratigraphic Unit Relationships](su-relationships.md)
+    - Core Sampling
+      - [Core Sampling](core-sampling.md)
     - History
       - [History](history.md)
     - Paleoclimate
