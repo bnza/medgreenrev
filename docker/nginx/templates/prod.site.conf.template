@@ -32,6 +32,10 @@ server {
     ssl_certificate /etc/nginx/ssl/live/${NGINX_HOST}/fullchain.pem;
     ssl_certificate_key /etc/nginx/ssl/live/${NGINX_HOST}/privkey.pem;
 
+    # Anti-clickjacking: forbid framing by other origins
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Content-Security-Policy "frame-ancestors 'self'" always;
+
     location /app/ {
         alias /srv/client_output/;
     }
@@ -49,12 +53,17 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # GeoServer already sends its own CSP (frame-ancestors 'self') and X-Frame-Options
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        proxy_hide_header X-Frame-Options;
     }
 
     # CORS and revalidation headers for the static OpenAPI spec.
     # The client uses this to build its resources map.
     location = /docs.jsonopenapi.json {
         add_header Cache-Control "no-cache";
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header Content-Security-Policy "frame-ancestors 'self'" always;
         add_header Access-Control-Allow-Origin *;
         add_header Access-Control-Allow-Methods "GET, OPTIONS";
         add_header Access-Control-Allow-Headers "Content-Type, Authorization";
