@@ -18,6 +18,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "$PROJECT_ROOT" || exit 1
 
+COMPOSE_CMD=(docker compose -f docker-compose.yml -f docker-compose.prod.yml)
+
 LOG_FILE="${LOG_FILE:-${PROJECT_ROOT}/docker/certbot/logs/certbot-renew.log}"
 mkdir -p "$(dirname "$LOG_FILE")"
 if [ -f "$LOG_FILE" ] && [ "$(stat -c %s "$LOG_FILE")" -gt 1048576 ]; then
@@ -53,7 +55,7 @@ BEFORE="$(cert_expiry || true)"
 log INFO "Certificate expiry before: ${BEFORE:-unknown}"
 
 # -T: no TTY allocation (required under cron, otherwise "the input device is not a TTY")
-if ! run_logged "certbot renew" docker compose run --rm -T certbot /opt/certbot-scripts/renew-certs.sh; then
+if ! run_logged "certbot renew" "${COMPOSE_CMD[@]}" run --rm -T certbot /opt/certbot-scripts/renew-certs.sh; then
   log ERROR "===== Renewal FAILED — certificate NOT renewed ====="
   exit 1
 fi
@@ -67,7 +69,7 @@ else
   log INFO "Certificate was renewed"
 fi
 
-if ! run_logged "nginx reload" docker compose exec -T nginx nginx -s reload; then
+if ! run_logged "nginx reload" "${COMPOSE_CMD[@]}" exec -T nginx nginx -s reload; then
   log ERROR "===== nginx reload FAILED — new certificate may not be served ====="
   exit 2
 fi
