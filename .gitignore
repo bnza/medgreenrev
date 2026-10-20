@@ -13,3 +13,7 @@ client/.nuxt
 client/.output
 client/.env
 /docker/database/initdb.d/
+
+# Certbot renewal logs
+/docker/certbot/logs/*
+!/docker/certbot/logs/.gitkeep

@@ -25,7 +25,7 @@ openssl req -x509 -nodes -newkey rsa:2048 -days 1 \
     -out "$CERT_DIR/fullchain.pem" \
     -subj "/CN=${DOMAIN}" 2>/dev/null
 
-chown -R "${USER_UID:-1000}:${USER_GID:-1000}" /etc/letsencrypt/
+chown -R "${USER_UID:-1000}:${USER_GID:-1000}" /etc/letsencrypt/ /var/log/letsencrypt/
 
 echo "==> Done! Temporary certificate created for ${DOMAIN}."
 echo "    You can now start nginx with: docker compose up -d nginx"

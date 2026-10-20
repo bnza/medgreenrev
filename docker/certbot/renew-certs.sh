@@ -39,7 +39,7 @@ certbot certonly \
     ${EMAIL_ARG} \
     -d "${DOMAIN}"
 
-chown -R "${USER_UID:-1000}:${USER_GID:-1000}" /etc/letsencrypt/
+chown -R "${USER_UID:-1000}:${USER_GID:-1000}" /etc/letsencrypt/ /var/log/letsencrypt/
 
 echo "==> Done! Certificate for ${DOMAIN} is up to date."
 echo "    Remember to reload nginx: docker compose exec nginx nginx -s reload"
