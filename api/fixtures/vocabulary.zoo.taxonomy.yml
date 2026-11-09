@@ -108,6 +108,13 @@ App\Entity\Vocabulary\Zoo\Taxonomy:
         value: 'Columba livia domestica'
         class: 'Aves'
         family: 'Columbidae'
+    zoo_taxonomy_COLP:
+        code: 'COLP'
+        englishName: 'wood pigeon'
+        spanishName: 'paloma'
+        value: 'Columba palumbus'
+        class: 'Aves'
+        family: 'Columbidae'
     zoo_taxonomy_EQ:
         code: 'EQ'
         englishName: 'equid (horse / ass)'

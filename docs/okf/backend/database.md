@@ -39,6 +39,7 @@ Migrations in [api/migrations/](../../../api/migrations/) are segregated strictl
 * **`Version20250627142202`:** Creates absolute dating views (`vw_abs_dating_analyses`) aggregating radiocarbon and luminescence analyses, alongside join trigger checks.
 * **`Version20250628091340`:** Establishes API-consumed formatted taxonomy and observation views (`vocabulary.vw_botany_taxonomy`, `vocabulary.vw_zoo_taxonomy`, `vw_botany_seed`, `vw_botany_charcoal`, `vw_zoo_bone`, `vw_pottery`) using PostgreSQL functions (`format_botany_taxonomy`, `generate_code_su`).
 * **`Version20260323152247`:** Establishes GeoServer spatial publishing views (`geoserver.vw_*`).
+* **`Version20261109150500`:** Additive migration (API already at `1.0.0`) resolving historical plant/animal Spanish/English common-name ambiguity purely at the view layer — see [Historical Taxonomy Name Resolution (Spanish/English)](./history_taxonomy_name_resolution.md); no underlying table data is modified.
 
 ---
 
@@ -49,6 +50,7 @@ Migrations in [api/migrations/](../../../api/migrations/) are segregated strictl
 * **Database Lifecycle Workflow:** [Database Lifecycle & Migrations Workflow](../workflows/database_lifecycle.md)
 * **Foreign Key Policies:** [Foreign Key Deletion & Referential Integrity Policies](./foreign_key_policies.md)
 * **GeoServer Integration Architecture:** [GeoServer Integration & Spatial Architecture](./geoserver.md)
+* **Historical Taxonomy Resolution Views:** [Historical Taxonomy Name Resolution (Spanish/English)](./history_taxonomy_name_resolution.md)
 * **Database Infrastructure:** [PostGIS Spatial Database Service](../infrastructure/database_service.md)
 
 ---

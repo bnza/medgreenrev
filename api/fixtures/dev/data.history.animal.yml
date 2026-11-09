@@ -475,3 +475,21 @@ App\Entity\Data\History\Animal:
     reference: AHPGR, Protocolos, leg. 11, fol. 20r
     createdBy: '@user_admin'
     language: '@language_ARA'
+  history_animal_56:
+    animal: 'perdiz'
+    chronologyLower: 1451
+    chronologyUpper: 1452
+    location: '@location_1'
+    reference: AHN, Clero, carp. 170, n. 1
+    notes: Unique Spanish common name, resolves to a single species
+    createdBy: '@user_his'
+    language: '@language_CAS'
+  history_animal_57:
+    animal: 'paloma'
+    chronologyLower: 1453
+    chronologyUpper: 1454
+    location: '@location_2'
+    reference: AHN, Clero, carp. 170, n. 2
+    notes: Ambiguous Spanish common name shared by two species of the same family
+    createdBy: '@user_editor'
+    language: '@language_CAS'

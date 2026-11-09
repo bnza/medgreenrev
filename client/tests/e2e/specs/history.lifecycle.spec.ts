@@ -267,14 +267,14 @@ test.describe('History item lifecycle', () => {
           await collectionPom.open()
           await collectionPom.table.expectData()
 
-          await expect(collectionPom.table.getRow(0)).toContainText('Almuñécar')
-          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
-          await expect(collectionPom.table.getRow(0)).toContainText(
+          await expect(collectionPom.table.getRow(2)).toContainText('Almuñécar')
+          await expect(collectionPom.table.getRow(2)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(2)).toContainText(
             'AHPGR, Protocolos, leg. 11, fol. 20r',
           )
 
           await collectionPom.table
-            .getItemNavigationLink(0, NavigationLinksButton.Duplicate)
+            .getItemNavigationLink(2, NavigationLinksButton.Duplicate)
             .click()
 
           await collectionPom.dataDialogCreate.expectOldFormData(
@@ -331,14 +331,14 @@ test.describe('History item lifecycle', () => {
           await collectionPom.open()
           await collectionPom.table.expectData()
 
-          await expect(collectionPom.table.getRow(0)).toContainText('Almuñécar')
-          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
-          await expect(collectionPom.table.getRow(0)).toContainText(
+          await expect(collectionPom.table.getRow(2)).toContainText('Almuñécar')
+          await expect(collectionPom.table.getRow(2)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(2)).toContainText(
             'AHPGR, Protocolos, leg. 11, fol. 20r',
           )
 
           await collectionPom.table
-            .getItemNavigationLink(0, NavigationLinksButton.Read)
+            .getItemNavigationLink(2, NavigationLinksButton.Read)
             .click()
 
           await itemPom.form.waitForLoad()
@@ -523,14 +523,14 @@ test.describe('History item lifecycle', () => {
           await collectionPom.open()
           await collectionPom.table.expectData()
 
-          await expect(collectionPom.table.getRow(0)).toContainText('Torrox')
-          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
-          await expect(collectionPom.table.getRow(0)).toContainText(
+          await expect(collectionPom.table.getRow(6)).toContainText('Torrox')
+          await expect(collectionPom.table.getRow(6)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(6)).toContainText(
             'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 1r',
           )
 
           await collectionPom.table
-            .getItemNavigationLink(0, NavigationLinksButton.Duplicate)
+            .getItemNavigationLink(6, NavigationLinksButton.Duplicate)
             .click()
 
           await collectionPom.dataDialogCreate.expectOldFormData(
@@ -587,14 +587,14 @@ test.describe('History item lifecycle', () => {
           await collectionPom.open()
           await collectionPom.table.expectData()
 
-          await expect(collectionPom.table.getRow(0)).toContainText('Torrox')
-          await expect(collectionPom.table.getRow(0)).toContainText('arabic')
-          await expect(collectionPom.table.getRow(0)).toContainText(
+          await expect(collectionPom.table.getRow(6)).toContainText('Torrox')
+          await expect(collectionPom.table.getRow(6)).toContainText('arabic')
+          await expect(collectionPom.table.getRow(6)).toContainText(
             'AHP Málaga (AHPM), Protocolos, leg. 1, fol. 1r',
           )
 
           await collectionPom.table
-            .getItemNavigationLink(0, NavigationLinksButton.Read)
+            .getItemNavigationLink(6, NavigationLinksButton.Read)
             .click()
 
           await itemPom.form.waitForLoad()

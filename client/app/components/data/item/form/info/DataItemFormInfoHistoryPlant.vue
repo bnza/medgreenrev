@@ -35,7 +35,7 @@ withDefaults(
         <v-text-field
           :model-value="item.plant"
           label="plant"
-          hint="The term as it appears in the source"
+          hint="The plant cited in the source, in Spanish or English"
           persistent-hint
         />
       </v-col>

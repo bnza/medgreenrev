@@ -471,3 +471,57 @@ App\Entity\Data\History\Plant:
     notes: Purchase of garlic heads
     createdBy: '@user_editor'
     language: '@language_ARA'
+  history_plant_56:
+    plant: 'acanto'
+    chronologyLower: 1451
+    chronologyUpper: 1452
+    location: '@location_1'
+    reference: AHN, Clero, carp. 160, n. 1
+    notes: Unique Spanish common name, resolves to a single species
+    createdBy: '@user_admin'
+    language: '@language_CAS'
+  history_plant_57:
+    plant: 'verónica'
+    chronologyLower: 1453
+    chronologyUpper: 1454
+    location: '@location_2'
+    reference: AHN, Clero, carp. 160, n. 2
+    notes: Ambiguous Spanish common name shared by three species of the same genus
+    createdBy: '@user_his'
+    language: '@language_CAS'
+  history_plant_58:
+    plant: 'lengua de buey'
+    chronologyLower: 1455
+    chronologyUpper: 1456
+    location: '@location_3'
+    reference: AHN, Clero, carp. 160, n. 3
+    notes: Ambiguous Spanish common name shared across two genera of the same family
+    createdBy: '@user_editor'
+    language: '@language_CAS'
+  history_plant_59:
+    plant: 'flor errante'
+    chronologyLower: 1457
+    chronologyUpper: 1458
+    location: '@location_4'
+    reference: AHN, Clero, carp. 160, n. 4
+    notes: Ambiguous Spanish common name shared across unrelated classes, no deterministic match
+    createdBy: '@user_admin'
+    language: '@language_CAS'
+  history_plant_60:
+    plant: 'trigo'
+    chronologyLower: 1459
+    chronologyUpper: 1460
+    location: '@location_5'
+    reference: AHN, Clero, carp. 160, n. 5
+    notes: Unique Spanish common name with a known English counterpart
+    createdBy: '@user_his'
+    language: '@language_CAS'
+  history_plant_61:
+    plant: 'wheat'
+    chronologyLower: 1461
+    chronologyUpper: 1462
+    location: '@location_6'
+    reference: AHN, Clero, carp. 160, n. 6
+    notes: English common name match, mirrors the Spanish entry above
+    createdBy: '@user_editor'
+    language: '@language_CAS'

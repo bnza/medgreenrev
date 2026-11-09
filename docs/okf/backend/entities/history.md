@@ -52,11 +52,13 @@ The historical subsystem in MEDGREENREV models historical written texts, modern 
 * **`History\Plant`:** [api/src/Entity/Data/History/Plant.php](../../../../api/src/Entity/Data/History/Plant.php)
   * Records specific mentions of cultivated crops, wild plants, or agricultural practices extracted from historical texts.
   * Links `$writtenSource`, chronological `$century`, geographic `$location`, and botanical taxonomy (`Vocabulary\Botany\Taxonomy`).
-  * Read-only presentation model: `HistoryPlantView` (`vw_history_plants`).
+  * `$plant` remains free text; it is only matched against `Vocabulary\Botany\Taxonomy` through read-only views (see below), never through a stored foreign key.
+  * Read-only presentation models: `HistoryPlantView` (singular, `vw_history_plant_taxonomies`) and the picklist `List\HistoryPlantView` (`vw_history_plants`).
 * **`History\Animal`:** [api/src/Entity/Data/History/Animal.php](../../../../api/src/Entity/Data/History/Animal.php)
   * Records historical textual references to livestock, beasts of burden, hunting, or wild animals.
   * Links `$writtenSource`, `$century`, `$location`, and faunal taxonomy (`Vocabulary\Zoo\Taxonomy`).
-  * Read-only presentation model: `HistoryAnimalView` (`vw_history_animals`).
+  * `$animal` remains free text; it is only matched against `Vocabulary\Zoo\Taxonomy` through read-only views (see below), never through a stored foreign key.
+  * Read-only presentation models: `HistoryAnimalView` (singular, `vw_history_animal_taxonomies`) and the picklist `List\HistoryAnimalView` (`vw_history_animals`).
 
 ---
 
@@ -66,12 +68,19 @@ Locations associated with written sources and historical taxa are georeferenced 
 
 ---
 
+## Free-Text Taxonomy Resolution
+
+`History\Plant.$plant` / `History\Animal.$animal` are entered as free text and never carry a taxonomy foreign key. A dedicated chain of views (`vocabulary.vw_{botany,zoo}_taxonomy_name_lookup`/`vw_{botany,zoo}_taxonomy_spanish_resolution`) matches that text against the taxonomy's `english_name` (always unique) or `spanish_name` (resolved to a common ancestor when ambiguous), added in migration [Version20261109150500.php](../../../../api/migrations/Version20261109150500.php) without altering any `history_plants`/`history_animals`/taxonomy table or row. See [Historical Taxonomy Name Resolution (Spanish/English)](../history_taxonomy_name_resolution.md) for the full rationale and view graph.
+
+---
+
 ## Key Relationships
 
 * **Entity Directory:** [api/src/Entity/Data/History/](../../../../api/src/Entity/Data/History/)
 * **Vocabulary Entities:** [Controlled Vocabularies & Lookups](./vocabularies.md)
 * **GeoServer Integration:** [GeoServer Integration & Spatial Architecture](../geoserver.md)
 * **Foreign Key Policies:** [Foreign Key Deletion & Referential Integrity Policies](../foreign_key_policies.md)
+* **Taxonomy Name Resolution:** [Historical Taxonomy Name Resolution (Spanish/English)](../history_taxonomy_name_resolution.md)
 
 ---
 

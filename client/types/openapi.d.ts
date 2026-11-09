@@ -12004,7 +12004,7 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read'][]
+      culturalContexts?: components['schemas']['VocCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read'][]
       region?: components['schemas']['VocRegions.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       n?: number
       e?: number
@@ -12097,7 +12097,7 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.csv-archaeological_site.acl.read'][]
+      culturalContexts?: components['schemas']['VocCulturalContext.csv-archaeological_site.acl.read'][]
       region?: components['schemas']['VocRegions.csv-archaeological_site.acl.read']
       n?: number
       e?: number
@@ -12346,7 +12346,7 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read'][]
+      culturalContexts?: components['schemas']['VocCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read'][]
       region?: components['schemas']['VocRegions.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       n?: number
       e?: number
@@ -12447,7 +12447,7 @@ export interface components {
       chronologyLower?: number | null
       chronologyUpper?: number | null
       fieldDirector?: string | null
-      culturalContexts?: components['schemas']['SiteCulturalContext.jsonld-archaeological_site.acl.read'][]
+      culturalContexts?: components['schemas']['VocCulturalContext.jsonld-archaeological_site.acl.read'][]
       region?: components['schemas']['VocRegions.jsonld-archaeological_site.acl.read']
       n?: number
       e?: number
@@ -13674,6 +13674,10 @@ export interface components {
       readonly spanishName?: string | null
       readonly class?: string | null
       readonly family?: string | null
+      readonly level?: string | null
+      readonly language?: string | null
+      readonly matchedEnglishName?: string | null
+      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13688,6 +13692,10 @@ export interface components {
       readonly spanishName?: string | null
       readonly class?: string | null
       readonly family?: string | null
+      readonly level?: string | null
+      readonly language?: string | null
+      readonly matchedEnglishName?: string | null
+      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13830,6 +13838,9 @@ export interface components {
       readonly genusId?: number | null
       readonly familyId?: number | null
       readonly classId?: number | null
+      readonly language?: string | null
+      readonly matchedEnglishName?: string | null
+      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13851,6 +13862,9 @@ export interface components {
       readonly genusId?: number | null
       readonly familyId?: number | null
       readonly classId?: number | null
+      readonly language?: string | null
+      readonly matchedEnglishName?: string | null
+      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13902,8 +13916,8 @@ export interface components {
       subtitle?: string | null
       publicationDetails: string
       notes?: string | null
-      centuries?: components['schemas']['WrittenSourceCentury.csv-history_written_source.acl.read'][]
-      regions?: components['schemas']['WrittenSourceRegion.csv-history_written_source.acl.read'][]
+      centuries?: components['schemas']['VocCentury.csv-history_written_source.acl.read'][]
+      regions?: components['schemas']['VocRegions.csv-history_written_source.acl.read'][]
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13937,8 +13951,8 @@ export interface components {
       subtitle?: string | null
       publicationDetails: string
       notes?: string | null
-      centuries?: components['schemas']['WrittenSourceCentury.jsonld-history_written_source.acl.read'][]
-      regions?: components['schemas']['WrittenSourceRegion.jsonld-history_written_source.acl.read'][]
+      centuries?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read'][]
+      regions?: components['schemas']['VocRegions.jsonld-history_written_source.acl.read'][]
     })
     'HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read': {
       /** @description Access control metadata */
@@ -14023,13 +14037,13 @@ export interface components {
         '@id': Iri
         '@type': string
         /** Format: iri-reference */
-        first?: string
+        first?: string | null
         /** Format: iri-reference */
-        last?: string
+        last?: string | null
         /** Format: iri-reference */
-        previous?: string
+        previous?: string | null
         /** Format: iri-reference */
-        next?: string
+        next?: string | null
       }
     }
     HydraCollectionBaseSchemaNoPagination: {
@@ -14265,12 +14279,20 @@ export interface components {
       readonly value?: string
       readonly taxonomyId?: number | null
       readonly taxonomy?: string | null
+      readonly level?: string | null
+      readonly language?: string | null
+      readonly matchedEnglishName?: string | null
+      readonly matchedSpanishName?: string | null
     }
     'ListHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
       readonly value?: string
       readonly taxonomyId?: number | null
       readonly taxonomy?: string | null
+      readonly level?: string | null
+      readonly language?: string | null
+      readonly matchedEnglishName?: string | null
+      readonly matchedSpanishName?: string | null
     }
     'ListHistoryReference.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
@@ -15133,8 +15155,6 @@ export interface components {
       latitude?: number | string
       longitude?: number | string
       readonly type?: string
-      cartesianCoordinate?: number | string
-      geodesicCoordinate?: number | string
     }
     'Pottery-feature_collection.json.read': Record<string, never>
     'Pottery-pottery.create': {
@@ -15247,7 +15267,7 @@ export interface components {
       readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
-      decorations?: components['schemas']['PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+      decorations?: components['schemas']['VocPotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15282,7 +15302,7 @@ export interface components {
       readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.csv-pottery.acl.read']
       inventory: string
-      decorations?: components['schemas']['PotteryDecoration.csv-pottery.acl.read'][]
+      decorations?: components['schemas']['VocPotteryDecoration.csv-pottery.acl.read'][]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15325,7 +15345,7 @@ export interface components {
       readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       inventory: string
-      decorations?: components['schemas']['PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
+      decorations?: components['schemas']['VocPotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read'][]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15361,7 +15381,7 @@ export interface components {
       readonly id: number | string
       stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
       inventory: string
-      decorations?: components['schemas']['PotteryDecoration.jsonld-pottery.acl.read'][]
+      decorations?: components['schemas']['VocPotteryDecoration.jsonld-pottery.acl.read'][]
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15386,32 +15406,6 @@ export interface components {
       notes?: string | null
       readonly code?: string
     })
-    'PotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      decoration?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'PotteryDecoration.csv-pottery.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      decoration?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
     'PotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       /**
@@ -15425,34 +15419,6 @@ export interface components {
        */
       decoration?: string
     }
-    'PotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      decoration?: string
-    })
-    'PotteryDecoration.jsonld-pottery.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      decoration?: string
-    })
     'Sample-sample.create': {
       /**
        * Format: iri-reference
@@ -16831,32 +16797,6 @@ export interface components {
       /** @default false */
       sedimentaryDna: boolean
     })
-    'SiteCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
-    'SiteCulturalContext.csv-archaeological_site.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
     'SiteCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       /**
@@ -16870,34 +16810,6 @@ export interface components {
        */
       culturalContext?: string
     }
-    'SiteCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string
-    })
-    'SiteCulturalContext.jsonld-archaeological_site.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string
-    })
     'SiteUserPrivilege-site_user_privilege.create': {
       /**
        * Format: iri-reference
@@ -18526,10 +18438,46 @@ export interface components {
       chronologyUpper: number
     })
     /** @description Cultural context vocabulary. */
+    'VocCulturalContext.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    /** @description Cultural context vocabulary. */
+    'VocCulturalContext.csv-archaeological_site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    /** @description Cultural context vocabulary. */
     'VocCulturalContext.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       id: number
       value: string
     }
+    /** @description Cultural context vocabulary. */
+    'VocCulturalContext.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
+    /** @description Cultural context vocabulary. */
+    'VocCulturalContext.jsonld-archaeological_site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
     'VocHistoryAuthor-voc_history_author.create': {
       value: string
       variant?: string | null
@@ -18841,11 +18789,43 @@ export interface components {
       group?: string
       value: string
     }
+    'VocPotteryDecoration.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'VocPotteryDecoration.csv-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
     'VocPotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number
       value: string
       variant?: string | null
     }
+    'VocPotteryDecoration.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
+    'VocPotteryDecoration.jsonld-pottery.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
     'VocPotteryFunctionalForm.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read': {
       value: string
       functionalGroup?: components['schemas']['VocPotteryFunctionalGroup.csv-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
@@ -18991,6 +18971,15 @@ export interface components {
       }
     }
     /** @description Project's regions vocabulary. */
+    'VocRegions.csv-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    /** @description Project's regions vocabulary. */
     'VocRegions.csv-paleoclimate_sampling_sites.acl.read': {
       value: string
       /** @description Access control metadata */
@@ -19060,6 +19049,15 @@ export interface components {
     } & (components['schemas']['HydraItemBaseSchema'] & {
       value: string
     })
+    /** @description Project's regions vocabulary. */
+    'VocRegions.jsonld-history_written_source.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
     /** @description Project's regions vocabulary. */
     'VocRegions.jsonld-paleoclimate_sample.acl.read_paleoclimate_sampling_sites.acl.read': {
       /** @description Access control metadata */
@@ -19331,15 +19329,6 @@ export interface components {
       class: string
       family?: string | null
     }
-    'WrittenSourceCentury.csv-history_written_source.acl.read': {
-      century?: components['schemas']['VocCentury.csv-history_written_source.acl.read']
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    }
     'WrittenSourceCentury.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       /**
@@ -19352,29 +19341,6 @@ export interface components {
        * @example https://example.com/
        */
       century?: string
-    }
-    'WrittenSourceCentury.jsonld-history_written_source.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      century?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read']
-    })
-    'WrittenSourceRegion.csv-history_written_source.acl.read': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      region?: string
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
     }
     'WrittenSourceRegion.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
@@ -19389,20 +19355,6 @@ export interface components {
        */
       region?: string
     }
-    'WrittenSourceRegion.jsonld-history_written_source.acl.read': {
-      /** @description Access control metadata */
-      readonly _acl?: {
-        canRead: boolean
-        canUpdate: boolean
-        canDelete: boolean
-      }
-    } & (components['schemas']['HydraItemBaseSchema'] & {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      region?: string
-    })
     'ZooBone-feature_collection.json.read': Record<string, never>
     'ZooBone-zoo_bone.create': {
       /**

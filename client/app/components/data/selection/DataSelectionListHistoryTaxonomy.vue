@@ -36,13 +36,27 @@ const model = defineModel<string | null | undefined>({ required: true })
 
 const isApiListResponseItem = (
   item: unknown,
-): item is { value: string; taxonomy: string | null } =>
-  isApiResourceObject(item) && 'taxonomy' in item && 'value' in item
+): item is {
+  value: string
+  taxonomy: string | null
+  level?: string | null
+  language?: string | null
+} => isApiResourceObject(item) && 'taxonomy' in item && 'value' in item
 
 const hasTaxonomy = (item: unknown): boolean =>
   isApiListResponseItem(item) && item.taxonomy !== null
 
+const isApproximateMatch = (item: unknown): boolean =>
+  isApiListResponseItem(item) &&
+  item.taxonomy !== null &&
+  !!item.level &&
+  item.level !== 'species'
+
+const itemLevel = (item: unknown): string | null =>
+  isApiListResponseItem(item) ? (item.level ?? null) : null
+
 const modelTaxonomy = ref<string | null>(null)
+const modelLevel = ref<string | null>(null)
 const taxonomyLoading = ref(false)
 
 // Dedicated operation used to resolve the taxonomy of a plain string value
@@ -57,6 +71,7 @@ const resolveTaxonomy = async (value: string) => {
   const normalized = value.trim().toLowerCase()
   if (!normalized) {
     modelTaxonomy.value = null
+    modelLevel.value = null
     return
   }
   taxonomyLoading.value = true
@@ -71,10 +86,13 @@ const resolveTaxonomy = async (value: string) => {
     if (model.value === value) {
       modelTaxonomy.value =
         match && isApiListResponseItem(match) ? match.taxonomy : null
+      modelLevel.value =
+        match && isApiListResponseItem(match) ? (match.level ?? null) : null
     }
   } catch {
     if (model.value === value) {
       modelTaxonomy.value = null
+      modelLevel.value = null
     }
   } finally {
     if (model.value === value) {
@@ -91,6 +109,7 @@ const updateModel = computed({
     if (newValue === null || newValue === '') {
       model.value = null
       modelTaxonomy.value = null
+      modelLevel.value = null
     } else if ('string' === typeof newValue) {
       // Taxonomy resolution is delegated to the watcher below so that both
       // user typing and external (duplication) injection are handled.
@@ -98,6 +117,7 @@ const updateModel = computed({
     } else if (isApiListResponseItem(newValue)) {
       suppressLookup = true
       modelTaxonomy.value = newValue.taxonomy
+      modelLevel.value = newValue.level ?? null
       model.value = newValue.value
     }
   },
@@ -112,6 +132,7 @@ watch(
     }
     if (value === null || value === undefined || value === '') {
       modelTaxonomy.value = null
+      modelLevel.value = null
       return
     }
     if ('string' === typeof value) {
@@ -123,6 +144,7 @@ watch(
 
 onUnmounted(() => {
   modelTaxonomy.value = null
+  modelLevel.value = null
 })
 </script>
 
@@ -147,6 +169,12 @@ onUnmounted(() => {
           <span class="text-grey-darken-1">{{
             modelTaxonomy ?? 'No matching taxonomy'
           }}</span
+          >&nbsp;<v-chip
+            v-if="modelTaxonomy && modelLevel && modelLevel !== 'species'"
+            size="x-small"
+            color="warning"
+            variant="flat"
+            >{{ modelLevel }}</v-chip
           >&nbsp;<v-icon
             icon="far fa-circle-check"
             :color="modelTaxonomy ? 'success' : 'warning'"
@@ -161,6 +189,13 @@ onUnmounted(() => {
     <template #item="{ item, props: slotProps }">
       <v-list-item v-bind="slotProps">
         <template v-if="hasTaxonomy(item)" #append
+          ><v-chip
+            v-if="isApproximateMatch(item)"
+            size="x-small"
+            color="warning"
+            variant="flat"
+            class="mr-1"
+            >{{ itemLevel(item) }}</v-chip
           ><v-icon icon="fas fa-circle-check" color="success" size="small" />
         </template>
       </v-list-item>
