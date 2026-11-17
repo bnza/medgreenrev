@@ -40,6 +40,7 @@ The architecture enforces strict separation of concerns across multiple PostgreS
 
 ### Framework & System Architecture
 * [API Platform Architecture & Operations](./api_platform.md) – API Platform resource configuration, lifecycle processors, DTO pipelines, and serialization normalizers.
+* [Data Import Framework & Domain Processors](./data_import_framework.md) – Decoupled Facade/Strategy/Processor bulk ingestion architecture, streaming CSV parsing, atomic transactional rollback, exhaustive error reporting, and MediaObject archival.
 * [Database Architecture & Policies](./database.md) – PostgreSQL schema partitioning, `vw_` view naming conventions, DBAL regex filtering, and pre/post-1.0.0 migration strategies.
 * [Historical Taxonomy Name Resolution (Spanish/English)](./history_taxonomy_name_resolution.md) – View-only Spanish/English common-name resolution for historical plant/animal mentions, with common-ancestor fallback, leaving all underlying data untouched.
 * [Foreign Key Deletion & Referential Integrity Policies](./foreign_key_policies.md) – `CASCADE` vs `RESTRICT` deletion rules, child-to-parent constraints, and entity dependency behaviors.

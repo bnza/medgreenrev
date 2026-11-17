@@ -102,7 +102,7 @@ class CsvListHeadersCommand extends Command
 
                     $csv = $csvEncoder->encode([$dummyRow], 'csv');
                     $firstLine = strtok($csv, "\n");
-                    $headers = false !== $firstLine ? str_getcsv($firstLine) : [];
+                    $headers = false !== $firstLine ? str_getcsv($firstLine, escape: '') : [];
 
                     if (empty($headers)) {
                         continue;

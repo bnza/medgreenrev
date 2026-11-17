@@ -68,6 +68,7 @@ vw_history_plants / vw_history_animals                      (picklist) reads (va
 * **Migration:** [api/migrations/Version20261109150500.php](../../../api/migrations/Version20261109150500.php)
 * **Historical Entities:** [Historical Written Sources & Biodiversity Entities](./entities/history.md)
 * **Taxonomy Vocabularies:** [Controlled Vocabularies & Hierarchical Taxonomies](./entities/vocabularies.md)
+* **Data Import Workflow:** [Data Import & Bulk Ingestion Workflow](../workflows/data_import.md)
 * **Database & Migration Policy:** [Database Architecture & Migration Policies](./database.md)
 * **GeoServer Integration:** [GeoServer Integration & Spatial Architecture](./geoserver.md)
 * **Picklist UI Component:** [client/app/components/data/selection/DataSelectionListHistoryTaxonomy.vue](../../../client/app/components/data/selection/DataSelectionListHistoryTaxonomy.vue)

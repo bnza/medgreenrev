@@ -21,9 +21,7 @@ class MediaObjectFileHashNamerTest extends TestCase
     public function testTransliterateWithExtension(): void
     {
         // Arrange
-        $unicodeString = $this->createMock(UnicodeString::class);
-        $unicodeString->method('__toString')->willReturn('hello-world');
-
+        $unicodeString = new UnicodeString('hello-world');
         $this->slugger->method('slug')->with('hello world')->willReturn($unicodeString);
 
         // Act
@@ -36,9 +34,7 @@ class MediaObjectFileHashNamerTest extends TestCase
     public function testTransliterateWithoutExtension(): void
     {
         // Arrange
-        $unicodeString = $this->createMock(UnicodeString::class);
-        $unicodeString->method('__toString')->willReturn('filename-only');
-
+        $unicodeString = new UnicodeString('filename-only');
         $this->slugger->method('slug')->with('filename only')->willReturn($unicodeString);
 
         // Act

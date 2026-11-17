@@ -20,6 +20,10 @@ This document describes how history is managed within the MEDGREENREV system.
     - [Alternative Procedure: From Historical Location](#alternative-procedure-plants)
   - [Duplication Procedure](#duplication-procedure-2)
   - [Visual Guide](#visual-guide-2)
+- [Bulk Data Import](#bulk-data-import)
+  - [Overview & Workflow](#import-overview)
+  - [CSV File Structure & Templates](#import-csv-structure)
+  - [Validation Rules](#import-validation-rules)
 
 ## <a name="location"></a>Location
 ### <a name="permissions"></a>Permissions
@@ -44,8 +48,8 @@ There are two ways to create a new animal history entry:
 2. Click the vertical **...** button in the top bar and select the **add new** option in the dropdown menu.
 3. Fill in the form:
     - Select the **Location** from the autocomplete dropdown list.
-    - When entering the **Animal** field, the system automatically attempts to resolve a corresponding **Taxonomy** based on the provided English name.
-        - If the name matches an existing taxonomy record (exact, case-insensitive), the taxonomy name is displayed alongside a green checkmark icon.
+    - When entering the **Animal** field, the system automatically attempts to resolve a corresponding **Taxonomy** based on the provided English or Spanish common name (e.g. `horse` or `caballo`, `sheep` or `oveja`; Latin scientific species names are not used).
+        - If the name matches an existing taxonomy record (exact, case-insensitive against English or Spanish common names), the taxonomy name is displayed alongside a green checkmark icon.
         - If no match is found, a warning icon and "No matching taxonomy" message are shown.
         - This resolution is dynamic: it works during manual entry, when duplicating an existing record, and even if a matching taxonomy record is only added to the system *after* the history entry was created (the link will resolve the next time the form is opened).
     - Provide the remaining required fields and any validation rules (Language, Chronology Lower/Upper, Reference, and Notes).
@@ -66,7 +70,7 @@ The duplication action allows you to create a new entry based on an existing one
 - **From the Collection Page**: Navigate to either the main **Data / History / Animals** section or a location's **Animal** tab (via **Data / History / Locations**). In the list of animals, click the **duplicate** button (copy icon) in the navigation section of the desired row.
 - **From the Item Page**: Open a specific animal history entry. Click the vertical **...** button in the top bar and select the **duplicate** option.
 
-Once activated, the system opens a new form pre-filled with the original entry's data. You can then modify the fields as needed (the taxonomy will automatically resolve based on the pre-filled English name) and click **Submit**.
+Once activated, the system opens a new form pre-filled with the original entry's data. You can then modify the fields as needed (the taxonomy will automatically resolve based on the pre-filled English or Spanish common name) and click **Submit**.
 ### <a name="visual-guide-1"></a>Visual Guide
 The following GIF demonstrates the process:
 ![Animal history creation](./images/history_create_animal.gif)
@@ -82,8 +86,8 @@ There are two ways to create a new plant history entry:
 2. Click the vertical **...** button in the top bar and select the **add new** option in the dropdown menu.
 3. Fill in the form:
     - Select the **Location** from the autocomplete dropdown list.
-    - When entering the **Plant** field, the system automatically attempts to resolve a corresponding **Taxonomy** based on the provided English name.
-        - If the name matches an existing taxonomy record (exact, case-insensitive), the taxonomy name is displayed alongside a green checkmark icon.
+    - When entering the **Plant** field, the system automatically attempts to resolve a corresponding **Taxonomy** based on the provided English or Spanish common name (e.g. `grapevine` or `vid`, `wheat` or `trigo`; Latin scientific species names are not used).
+        - If the name matches an existing taxonomy record (exact, case-insensitive against English or Spanish common names), the taxonomy name is displayed alongside a green checkmark icon.
         - If no match is found, a warning icon and "No matching taxonomy" message are shown.
         - This resolution is dynamic: it works during manual entry, when duplicating an existing record, and even if a matching taxonomy record is only added to the system *after* the history entry was created (the link will resolve the next time the form is opened).
     - Provide the remaining required fields and any validation rules (Language, Chronology Lower/Upper, Reference, and Notes).
@@ -104,7 +108,43 @@ The duplication action allows you to create a new entry based on an existing one
 - **From the Collection Page**: Navigate to either the main **Data / History / Plants** section or a location's **Plant** tab (via **Data / History / Locations**). In the list of plants, click the **duplicate** button (copy icon) in the navigation section of the desired row.
 - **From the Item Page**: Open a specific plant history entry. Click the vertical **...** button in the top bar and select the **duplicate** option.
 
-Once activated, the system opens a new form pre-filled with the original entry's data. You can then modify the fields as needed (the taxonomy will automatically resolve based on the pre-filled English name) and click **Submit**.
+Once activated, the system opens a new form pre-filled with the original entry's data. You can then modify the fields as needed (the taxonomy will automatically resolve based on the pre-filled English or Spanish common name) and click **Submit**.
 ### <a name="visual-guide-2"></a>Visual Guide
 The following GIF demonstrates the process:
 ![Plant history creation](./images/history_create_plant.gif)
+
+## <a name="bulk-data-import"></a>Bulk Data Import
+
+### <a name="import-overview"></a>Overview & Workflow
+For large datasets of historical mentions, MEDGREENREV supports bulk imports of historical animal and plant data.
+
+- **Roles & Responsibilities:** Bulk imports are performed directly by the system administrator. Researchers prepare and provide the CSV dataset following the required structure and validation rules detailed below.
+- **Archival & Ingestion:** When the administrator runs the import and all records in the file pass validation, the data is saved into the database and the source CSV file is automatically archived as a `MediaObject` in the system.
+
+### <a name="import-csv-structure"></a>CSV File Structure & Templates
+The input file must be a CSV file with comma (`,`) or semicolon (`;`) delimiters and UTF-8 encoding.
+
+#### Required Column Headers
+
+| Column | Description | Example Values |
+| :--- | :--- | :--- |
+| `location` | Historical location name. Must match an existing location in the system. | `Tortosa`, `Almería`, `Gandesa`, `Toledo` |
+| `language` | Source manuscript language. Must match an existing language in the system. | `latin`, `castilian`, `catalan`, `arabic` |
+| `animal` / `plant` | The animal or plant common name in **English or Spanish** (use the column name matching `--type`). **Do not use Latin scientific names.** | `horse`, `caballo`, `sheep`, `oveja` (animals)<br>`grapevine`, `vid`, `wheat`, `trigo` (plants) |
+| `chronology_lower` | Starting historical year (integer). | `1150` |
+| `chronology_upper` | Ending historical year (integer, must be $\ge$ `chronology_lower`). | `1200` |
+| `reference` | Archival, bibliographic, or manuscript source citation. | `Cartulary of Tortosa fol. 12r` |
+| `notes` | *(Optional)* Supplementary notes or research annotations. | `Mention of horses in historical record` |
+
+#### Downloadable Templates
+Pre-formatted CSV templates with the required column headers are available:
+- **Animal Import Template:** [history_animal_template.csv](./files/history_animal_template.csv)
+- **Plant Import Template:** [history_plant_template.csv](./files/history_plant_template.csv)
+
+### <a name="import-validation-rules"></a>Validation Rules
+To ensure data quality, the system checks each row during the import:
+- **Locations & Languages:** Every `location` and `language` in your file must match an existing entry in the system vocabularies.
+- **Common Names:** Animal and plant names must be provided as English or Spanish common names (e.g. `horse`/`caballo`, `wheat`/`trigo`). The system automatically links recognized names to taxonomy records.
+- **Chronological Range:** Years must be integers, and `chronology_upper` cannot be earlier than `chronology_lower`.
+- **Required Information:** All columns (except `notes`) are required and cannot be blank.
+- **Error Handling:** If any row in the file is invalid, no records are imported into the database. An error CSV file is generated in `var/imports/errors/` listing all problematic rows along with the reasons for each failure so you can correct them and retry.

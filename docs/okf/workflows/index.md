@@ -16,6 +16,7 @@ This directory defines standardized development, maintenance, and operational wo
 
 ## Standard Workflows
 
+* [Data Import & Bulk Ingestion Workflow](./data_import.md) – Procedures and CLI interface (`app:history:import`) for validating and importing tabular datasets with atomic transaction rollbacks, exhaustive error CSV generation, and MediaObject archival.
 * [Database Lifecycle & Migration Workflow](./database_lifecycle.md) – Procedures for pre-1.0.0 development rebuilds, schema regeneration, purpose-specific migrations, and post-1.0.0 production incremental migrations.
 * [GeoServer Operations & Entity Integration Workflow](./geoserver_operations.md) – Procedures for creating PostGIS spatial views, registering REST feature types, configuring API Platform feature collection endpoints, and verifying WFS test suites.
 * [Server & Container Deployment Workflow](./server_deployment.md) – Automated production deployment pipeline, Docker Compose overrides, environment secrets, and systemd service supervision.

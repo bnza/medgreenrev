@@ -51,6 +51,7 @@ The knowledge graph is organized across three tiers:
   * [Historical Sources & Taxa](./backend/entities/history.md) – Written sources, cited works, historical plant/animal references, and locations.
   * [Controlled Vocabularies & Lookups](./backend/entities/vocabularies.md) – Standard taxonomies, chronological periods, and shared lookup entities.
 * [API Platform Architecture & Operations](./backend/api_platform.md) – API Platform resource configuration, lifecycle processors, DTO pipelines, and serialization normalizers.
+* [Data Import Framework & Domain Processors](./backend/data_import_framework.md) – Decoupled Facade/Strategy/Processor bulk ingestion architecture, streaming CSV parsing, atomic transactional rollback, exhaustive error reporting, and MediaObject archival.
 * [Database Architecture & Policies](./backend/database.md) – Schema partitioning, `vw_` database view isolation, DBAL regex filtering, and pre/post-1.0.0 migration strategies.
 * [Foreign Key Deletion & Referential Integrity Policies](./backend/foreign_key_policies.md) – `CASCADE` vs `RESTRICT` rules, child dependency protection, and table inheritance cleanup.
 * [Analysis Join Constraints & Validation Architecture](./backend/analysis_validation_constraints.md) – `BaseAnalysisJoin` mapped superclass, `PermittedAnalysisType` validator, and database triggers for absolute dating integrity.
@@ -71,6 +72,7 @@ The knowledge graph is organized across three tiers:
 * [Frontend Client Testing Specification](./testing/client_testing.md) – Vitest component tests and Playwright E2E browser automation.
 
 ### 6. [Operational & Developer Workflows](./workflows/index.md)
+* [Data Import & Bulk Ingestion Workflow](./workflows/data_import.md) – Procedures and CLI interface (`app:history:import`) for validating and importing tabular datasets with atomic transaction rollbacks, exhaustive error CSV generation, and MediaObject archival.
 * [Database Lifecycle & Migration Workflow](./workflows/database_lifecycle.md) – Pre-1.0.0 development rebuilds, schema regeneration, purpose-specific migrations, and post-1.0.0 production incremental migrations.
 * [GeoServer Operations & Entity Integration Workflow](./workflows/geoserver_operations.md) – PostGIS spatial views, REST layer publication, API Platform feature collections, and WFS test suites.
 * [Server & Container Deployment Workflow](./workflows/server_deployment.md) – Automated production deployment pipeline, Docker Compose overrides, environment secrets, and systemd service supervision.

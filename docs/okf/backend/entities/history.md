@@ -78,6 +78,8 @@ Locations associated with written sources and historical taxa are georeferenced 
 
 * **Entity Directory:** [api/src/Entity/Data/History/](../../../../api/src/Entity/Data/History/)
 * **Vocabulary Entities:** [Controlled Vocabularies & Lookups](./vocabularies.md)
+* **Data Import Framework:** [Data Import Framework & Domain Processors](../data_import_framework.md)
+* **Bulk Ingestion Workflow:** [Data Import & Bulk Ingestion Workflow](../../workflows/data_import.md)
 * **GeoServer Integration:** [GeoServer Integration & Spatial Architecture](../geoserver.md)
 * **Foreign Key Policies:** [Foreign Key Deletion & Referential Integrity Policies](../foreign_key_policies.md)
 * **Taxonomy Name Resolution:** [Historical Taxonomy Name Resolution (Spanish/English)](../history_taxonomy_name_resolution.md)
