@@ -1,4 +1,4 @@
-location,language,animal,chronology_lower,chronology_upper,reference,notes
-Tortosa,catalan,horse,1150,1200,Cartulary of Tortosa fol. 12r,Mention of horses in historical record
-Almería,arabic,caballo,1000,1100,Ibn Bassam Dhakhira,Mention of horses in Andalusian commerce
-Toledo,castilian,oveja,1250,1300,Fuero de Toledo fol. 45v,Sheep breeding in pastoral records
+location,language,animal,english_name,chronology_lower,chronology_upper,reference,notes
+Tortosa,catalan,horse,horse,1150,1200,Cartulary of Tortosa fol. 12r,Mention of horses in historical record
+Almería,arabic,caballo,horse,1000,1100,Ibn Bassam Dhakhira,Mention of horses in Andalusian commerce
+Toledo,castilian,oveja,sheep,1250,1300,Fuero de Toledo fol. 45v,Sheep breeding in pastoral records

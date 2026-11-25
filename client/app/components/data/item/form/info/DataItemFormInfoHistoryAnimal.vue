@@ -31,11 +31,19 @@ withDefaults(
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="8" xs="12" class="px-2">
+      <v-col cols="6" xs="12" class="px-2">
         <v-text-field
           :model-value="item.animal"
           label="animal"
-          hint="The animal cited in the source, in Spanish or English"
+          hint="The term as it appears in the source"
+          persistent-hint
+        />
+      </v-col>
+      <v-col cols="6" xs="12" class="px-2">
+        <v-text-field
+          :model-value="item.englishName"
+          label="english name"
+          hint="English reference name (for taxonomy lookup)"
           persistent-hint
         />
       </v-col>

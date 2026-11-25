@@ -49,16 +49,4 @@ class HistoryAnimalView
 
     #[ORM\Column(type: 'string', nullable: true)]
     public readonly ?string $taxonomy;
-
-    #[ORM\Column(type: 'string', nullable: true)]
-    public readonly ?string $level;
-
-    #[ORM\Column(type: 'string', nullable: true)]
-    public readonly ?string $language;
-
-    #[ORM\Column(name: 'matched_english_name', type: 'string', nullable: true)]
-    public readonly ?string $matchedEnglishName;
-
-    #[ORM\Column(name: 'matched_spanish_name', type: 'string', nullable: true)]
-    public readonly ?string $matchedSpanishName;
 }

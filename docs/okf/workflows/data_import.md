@@ -36,7 +36,8 @@ docker compose exec php bin/console app:history:import <file> [options]
 | :--- | :--- | :--- |
 | `location` | String | Vocabulary value resolved against `App\Entity\Vocabulary\History\Location`. Unknown locations trigger a validation error. |
 | `language` | String | Vocabulary value resolved against `App\Entity\Vocabulary\History\Language` (e.g. `latin`, `castilian`, `catalan`, `arabic`). Unknown languages trigger a validation error. |
-| `animal` / `plant` | String | Common name in English or Spanish (e.g. `horse`/`caballo`, `wheat`/`trigo`; Latin species names are not used). Lowercased during mapping and resolved dynamically in views. |
+| `animal` / `plant` | String | The exact historical term as written in the source manuscript (e.g. Latin, Arabic, archaic Spanish/Catalan, such as `caballo`, `oveja`, `trigo`, `olivo`). Stored verbatim. |
+| `english_name` | String | Mandatory English reference name (e.g. `horse`, `sheep`, `wheat`, `olive`) used for 1:1 join matching against Botany / Zoo taxonomy tables (`Vocabulary\Botany\Taxonomy` and `Vocabulary\Zoo\Taxonomy`). |
 | `chronology_lower` | Integer | Lower chronological year bound (e.g. `1100`). |
 | `chronology_upper` | Integer | Upper chronological year bound (e.g. `1250`). Must be $\ge$ `chronology_lower`. |
 | `reference` | String | Historical source reference citation or manuscript folio. |
@@ -46,7 +47,7 @@ docker compose exec php bin/console app:history:import <file> [options]
 * **Encoding:** UTF-8 (BOM headers are automatically stripped).
 * **Delimiters:** Auto-detected (supports comma `,` and semicolon `;`).
 * **Header Normalization:** Column names are trimmed and matched case-insensitively.
-* **Taxonomy Name Resolution:** Mentions of animals and plants are stored as free text and dynamically resolved against controlled taxonomy vocabularies using PostgreSQL views supporting both English and Spanish common names (see [Historical Taxonomy Name Resolution](../backend/history_taxonomy_name_resolution.md)).
+* **Taxonomy Name Resolution:** Mentions of animals and plants are decoupled: `animal`/`plant` preserves the source term, while `english_name` provides the taxonomy reference matched against taxonomy tables (see [Historical Taxonomy Name Resolution](../backend/history_taxonomy_name_resolution.md)).
 
 ---
 

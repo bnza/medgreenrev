@@ -35,6 +35,7 @@ End-to-end testing validates full browser workflows against the containerized ap
 
 * **Configuration:** Defined in [client/playwright.config.ts](../../../client/playwright.config.ts).
 * **Execution Parameters:** `workers: 1`, `fullyParallel: false`, viewport `1600x1000`, targeting `baseURL: 'http://localhost/app/'`.
+* **Execution Host:** Playwright tests currently cannot run inside the Node Docker container and must be executed directly on the WSL host environment.
 
 ---
 
@@ -91,28 +92,35 @@ Repeated UI login sequences introduce massive overhead. The test suite uses Play
 
 ## Execution Constraints & Operational Rules
 
-### 1. Mandatory Single-Browser Execution (`--project=chromium`)
-`client/playwright.config.ts` declares five browser projects (`setup`, `chromium`, `firefox`, `webkit`, `Microsoft Edge`). Running `pnpm test:e2e` without project filters spawns tests across all browsers concurrently, causing severe database deadlocks and timeout failures.
-* **Rule:** Always execute tests specifying a single browser project:
-  ```bash
-  docker compose run --rm node pnpm test:e2e --project=chromium
-  ```
+### 1. WSL Host Execution & Single-Browser Selection (`--project=setup --project=chromium`)
+Playwright requires browser binaries installed on the host. Always execute tests on the WSL host with the `setup` project followed by the single browser project (e.g. `chromium`):
+```bash
+# Run targeted spec file on WSL host
+pnpm test:e2e --project=setup --project=chromium tests/e2e/specs/history.lifecycle.spec.ts
+```
 
-### 2. Client Static Asset Rebuild Prerequisite
+### 2. Targeted Test Execution
+Full E2E regression runs are time-consuming. During regular development and task verification, only execute strictly necessary targeted spec files (e.g., specific domain lifecycle specs).
+
+### 3. Client Static Asset Rebuild Prerequisite
 Because Playwright interacts with the containerized application served by Nginx from the `client_output` volume mount, client logic modifications in `client/app/**` **do not take effect until assets are regenerated**.
 * **Workflow:**
   ```bash
   # 1. Rebuild static client assets into client_output volume
   docker compose run --rm node pnpm generate
 
-  # 2. Run Playwright E2E suite
-  docker compose run --rm node pnpm test:e2e --project=chromium
+  # 2. Restart Nginx if volume mount rebinding is required
+  docker compose restart nginx
+
+  # 3. Refresh auth state and run targeted spec on WSL host
+  pnpm test:e2e --project=setup
+  pnpm test:e2e --project=chromium tests/e2e/specs/<target>.spec.ts
   ```
 
-### 3. Setup-Only Execution
+### 4. Setup-Only Execution
 To refresh stored auth states without running the full test suite:
 ```bash
-docker compose run --rm node pnpm test:e2e:setup
+pnpm test:e2e --project=setup
 ```
 
 ---

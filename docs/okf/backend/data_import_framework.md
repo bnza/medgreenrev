@@ -118,7 +118,7 @@ The historical domain pipeline is located in [api/src/Service/History/Import/](.
 ### 1. `HistoryEntityImportProcessor`
 * **Path:** [api/src/Service/History/Import/HistoryEntityImportProcessor.php](../../../api/src/Service/History/Import/HistoryEntityImportProcessor.php)
 * **Supported Types:** `animal`, `plant`
-* **Required Headers:** `location`, `language`, `animal` or `plant`, `chronology_lower`, `chronology_upper`, `reference`
+* **Required Headers:** `location`, `language`, `animal` or `plant`, `english_name`, `chronology_lower`, `chronology_upper`, `reference`
 * **Reference Resolution with In-Memory Caching:**
   * **Location:** Resolved by value against `App\Entity\Vocabulary\History\Location` via `LocationRepository`.
   * **Language:** Resolved by value against `App\Entity\Vocabulary\History\Language` via `LanguageRepository`.

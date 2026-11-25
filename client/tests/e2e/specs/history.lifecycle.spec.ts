@@ -21,6 +21,7 @@ async function fillAndSubmitAnimalForm(
   {
     language = 'arabic',
     animal = 'perro',
+    englishName = 'dog',
     chronologyLower = '1050',
     chronologyUpper = '1150',
     reference = 'Test reference',
@@ -28,6 +29,7 @@ async function fillAndSubmitAnimalForm(
   }: {
     language?: string
     animal?: string
+    englishName?: string
     chronologyLower?: string
     chronologyUpper?: string
     reference?: string
@@ -44,6 +46,10 @@ async function fillAndSubmitAnimalForm(
   await collectionPom.dataDialogCreate.form
     .getByLabel('animal', { exact: true })
     .fill(animal)
+
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('english name', { exact: true })
+    .fill(englishName)
 
   await collectionPom.dataDialogCreate.form
     .getByRole('textbox', { name: 'chronology (lower)' })
@@ -73,6 +79,7 @@ async function expectHistoryAnimalFormValues(
   {
     language = 'arabic',
     animal = 'perro',
+    englishName = 'dog',
     chronologyLower = '1050',
     chronologyUpper = '1150',
     reference = 'Test reference',
@@ -80,6 +87,7 @@ async function expectHistoryAnimalFormValues(
   }: {
     language?: string
     animal?: string
+    englishName?: string
     chronologyLower?: string
     chronologyUpper?: string
     reference?: string
@@ -88,6 +96,7 @@ async function expectHistoryAnimalFormValues(
 ): Promise<void> {
   await itemPom.expectTextFieldToHaveValue('language', language)
   await itemPom.expectTextFieldToHaveValue('animal', animal)
+  await itemPom.expectTextFieldToHaveValue('english name', englishName)
   await itemPom.expectTextFieldToHaveValue(
     'chronology (upper)',
     chronologyUpper,
@@ -106,6 +115,7 @@ async function fillAndSubmitPlantForm(
   {
     language = 'latin',
     plant = 'ajo',
+    englishName = 'garlic',
     chronologyLower = '1050',
     chronologyUpper = '1150',
     reference = 'Test reference',
@@ -113,6 +123,7 @@ async function fillAndSubmitPlantForm(
   }: {
     language?: string
     plant?: string
+    englishName?: string
     chronologyLower?: string
     chronologyUpper?: string
     reference?: string
@@ -127,6 +138,10 @@ async function fillAndSubmitPlantForm(
   await collectionPom.dataDialogCreate.form
     .getByLabel('plant', { exact: true })
     .fill(plant)
+
+  await collectionPom.dataDialogCreate.form
+    .getByLabel('english name', { exact: true })
+    .fill(englishName)
 
   await collectionPom.dataDialogCreate.form
     .getByRole('textbox', { name: 'chronology (lower)' })
@@ -156,6 +171,7 @@ async function expectHistoryPlantFormValues(
   {
     language = 'latin',
     plant = 'ajo',
+    englishName = 'garlic',
     chronologyLower = '1050',
     chronologyUpper = '1150',
     reference = 'Test reference',
@@ -163,6 +179,7 @@ async function expectHistoryPlantFormValues(
   }: {
     language?: string
     plant?: string
+    englishName?: string
     chronologyLower?: string
     chronologyUpper?: string
     reference?: string
@@ -171,6 +188,7 @@ async function expectHistoryPlantFormValues(
 ): Promise<void> {
   await itemPom.expectTextFieldToHaveValue('language', language)
   await itemPom.expectTextFieldToHaveValue('plant', plant)
+  await itemPom.expectTextFieldToHaveValue('english name', englishName)
   await itemPom.expectTextFieldToHaveValue(
     'chronology (upper)',
     chronologyUpper,
@@ -411,6 +429,9 @@ test.describe('History item lifecycle', () => {
         ).toContainText(/required/)
         await expect(
           page.locator('.v-input:has(label:text("animal"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("english name"))'),
         ).toContainText(/required/)
         await expect(
           page.locator('.v-input:has(label:text("chronology (lower)"))'),
@@ -667,6 +688,9 @@ test.describe('History item lifecycle', () => {
         ).toContainText(/required/)
         await expect(
           page.locator('.v-input:has(label:text("plant"))'),
+        ).toContainText(/required/)
+        await expect(
+          page.locator('.v-input:has(label:text("english name"))'),
         ).toContainText(/required/)
         await expect(
           page.locator('.v-input:has(label:text("chronology (lower)"))'),

@@ -43,7 +43,7 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
     {
         $entityField = strtolower($type) === self::TYPE_PLANT ? self::TYPE_PLANT : self::TYPE_ANIMAL;
 
-        return ['location', 'language', $entityField, 'chronology_lower', 'chronology_upper', 'reference'];
+        return ['location', 'language', $entityField, 'english_name', 'chronology_lower', 'chronology_upper', 'reference'];
     }
 
     public function processRow(int $rowNumber, array $rowData, ImportInputDtoInterface $input): RowProcessResult
@@ -100,13 +100,19 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
             $errors[] = sprintf('%s: This value should not be blank.', $entityField);
         }
 
-        // 5. Reference
+        // 5. Taxonomy reference field (english_name)
+        $rawEnglishName = isset($rowData['english_name']) ? trim((string) $rowData['english_name']) : '';
+        if ('' === $rawEnglishName) {
+            $errors[] = 'english_name: This value should not be blank.';
+        }
+
+        // 6. Reference
         $reference = isset($rowData['reference']) ? trim((string) $rowData['reference']) : '';
         if ('' === $reference) {
             $errors[] = 'reference: This value should not be blank.';
         }
 
-        // 6. Notes
+        // 7. Notes
         $notes = isset($rowData['notes']) && '' !== trim((string) $rowData['notes']) ? trim((string) $rowData['notes']) : null;
 
         // Instantiate entity
@@ -123,6 +129,9 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
         }
         if (null !== $chronologyUpper) {
             $entity->setChronologyUpper($chronologyUpper);
+        }
+        if ('' !== $rawEnglishName) {
+            $entity->setEnglishName($rawEnglishName);
         }
         if ('' !== $reference) {
             $entity->setReference($reference);

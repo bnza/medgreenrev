@@ -19,6 +19,7 @@ Backend testing ensures the correctness of Symfony API endpoints, access control
 * **Database Isolation:** Utilizes `DAMA\DoctrineTestBundle` to wrap each test case in an isolated database transaction, automatically rolling back changes upon completion.
 * **Fixture Generation:** Uses `hautelook/alice-bundle` to load standardized YAML test fixtures into the test environment.
 * **Execution Environment:** Executed inside the `php` container using `bin/phpunit`.
+* **JWT Auth Retry Rule:** The PHPUnit test suite occasionally encounters transient 401 Unauthorized authentication failures due to token/auth caching. In the event of test failures with a 401 status during regression runs, failing tests should be retried individually before treating them as code regressions.
 
 ---
 

@@ -35,7 +35,15 @@ withDefaults(
         <v-text-field
           :model-value="item.plant"
           label="plant"
-          hint="The plant cited in the source, in Spanish or English"
+          hint="The term as it appears in the source"
+          persistent-hint
+        />
+      </v-col>
+      <v-col cols="6" xs="12" class="px-2">
+        <v-text-field
+          :model-value="item.englishName"
+          label="english name"
+          hint="English reference name (for taxonomy lookup)"
           persistent-hint
         />
       </v-col>

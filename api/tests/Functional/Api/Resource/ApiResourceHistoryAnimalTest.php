@@ -81,7 +81,7 @@ class ApiResourceHistoryAnimalTest extends ApiTestCase
         $this->assertFalse($collection['_acl']['canCreate']);
     }
 
-    public function testAnimalWithUniqueSpanishNameResolvesToSpeciesLevel(): void
+    public function testAnimalWithMatchingEnglishNameResolvesTaxonomy(): void
     {
         $client = self::createClient();
 
@@ -89,66 +89,87 @@ class ApiResourceHistoryAnimalTest extends ApiTestCase
         $this->assertSame(200, $response->getStatusCode());
 
         $animal = $response->toArray()['member'][0];
-        $this->assertNotNull($animal['flat'], 'A unique Spanish name should resolve to a taxonomy match');
+        $this->assertSame('perdiz', $animal['animal']);
+        $this->assertSame('partridge', $animal['englishName']);
+        $this->assertNotNull($animal['flat'], 'Matching englishName should resolve to taxonomy');
         $this->assertSame('species', $animal['flat']['level']);
-        $this->assertSame('spanish', $animal['flat']['language']);
         $this->assertSame('Alectoris rufa', $animal['flat']['value']);
         $this->assertSame('Phasianidae', $animal['flat']['family']);
-        $this->assertSame('perdiz', $animal['flat']['matchedSpanishName']);
-        $this->assertSame('partridge', $animal['flat']['matchedEnglishName']);
+        $this->assertSame('partridge', $animal['flat']['englishName']);
+        $this->assertSame('perdiz', $animal['flat']['spanishName']);
     }
 
-    public function testAnimalWithAmbiguousSpanishNameSharedByOneFamilyResolvesToFamilyLevel(): void
+    public function testAnimalWithUncataloguedEnglishNamePreservesValuesWithNullTaxonomy(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_his');
+
+        $locationIri = $this->getVocabulary('history/locations')[0]['@id'];
+        $languageIri = $this->getVocabulary('history/languages')[0]['@id'];
+
+        $payload = [
+            'animal' => 'animal misterioso',
+            'englishName' => 'mysterious uncatalogued animal',
+            'location' => $locationIri,
+            'language' => $languageIri,
+            'chronologyLower' => 1200,
+            'chronologyUpper' => 1300,
+            'reference' => 'Historical text reference',
+        ];
+
+        $postResponse = $this->apiRequest($client, 'POST', '/api/data/history/animals', [
+            'token' => $token,
+            'json' => $payload,
+        ]);
+        $this->assertSame(201, $postResponse->getStatusCode());
+        $created = $postResponse->toArray();
+
+        $this->assertSame('animal misterioso', $created['animal']);
+        $this->assertSame('mysterious uncatalogued animal', $created['englishName']);
+
+        // Check flat view
+        $getResponse = $this->apiRequest($client, 'GET', $created['@id'], ['token' => $token]);
+        $this->assertSame(200, $getResponse->getStatusCode());
+        $item = $getResponse->toArray();
+        $this->assertNull($item['flat']['taxonomyId'] ?? null);
+        $this->assertNull($item['flat']['value'] ?? null);
+    }
+
+    public function testPostAnimalRequiresEnglishName(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_his');
+
+        $locationIri = $this->getVocabulary('history/locations')[0]['@id'];
+        $languageIri = $this->getVocabulary('history/languages')[0]['@id'];
+
+        $payload = [
+            'animal' => 'animal sin ingles',
+            'location' => $locationIri,
+            'language' => $languageIri,
+            'chronologyLower' => 1200,
+            'chronologyUpper' => 1300,
+            'reference' => 'Historical text reference',
+        ];
+
+        $postResponse = $this->apiRequest($client, 'POST', '/api/data/history/animals', [
+            'token' => $token,
+            'json' => $payload,
+        ]);
+        $this->assertSame(422, $postResponse->getStatusCode());
+    }
+
+    public function testPicklistReturnsTaxonomyAndDataEnglishNames(): void
     {
         $client = self::createClient();
 
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/animals?animal=paloma');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $animal = $response->toArray()['member'][0];
-        $this->assertNotNull($animal['flat'], 'An ambiguous Spanish name sharing a family should still resolve');
-        $this->assertSame('family', $animal['flat']['level']);
-        $this->assertSame('spanish', $animal['flat']['language']);
-        $this->assertSame('Columbidae', $animal['flat']['family']);
-        $this->assertNull($animal['flat']['taxonomyId'] ?? null);
-    }
-
-    public function testAnimalWithEnglishNameResolvesViaEnglishBranch(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/animals?animal=partridge');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $animal = $response->toArray()['member'][0];
-        $this->assertNotNull($animal['flat']);
-        $this->assertSame('species', $animal['flat']['level']);
-        $this->assertSame('english', $animal['flat']['language']);
-        $this->assertSame('partridge', $animal['flat']['matchedEnglishName']);
-        $this->assertSame('perdiz', $animal['flat']['matchedSpanishName']);
-    }
-
-    public function testPicklistSurfacesAmbiguousSpanishNameResolvedToFamilyLevel(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/list/history/animals?value=paloma');
+        $response = $this->apiRequest($client, 'GET', '/api/list/history/animals?value=partridge');
         $this->assertSame(200, $response->getStatusCode());
 
         $members = $response->toArray()['member'];
-        $taxonomyMember = $this->findListMemberByValueAndLanguage($members, 'paloma', 'spanish');
-        $this->assertNotNull($taxonomyMember, 'The ambiguous Spanish name should still surface a resolved picklist entry');
-        $this->assertSame('family', $taxonomyMember['level']);
-    }
-
-    private function findListMemberByValueAndLanguage(array $members, string $value, ?string $language): ?array
-    {
-        foreach ($members as $member) {
-            if ($member['value'] === $value && $member['language'] === $language) {
-                return $member;
-            }
-        }
-
-        return null;
+        $this->assertNotEmpty($members);
+        $this->assertSame('partridge', $members[0]['value']);
+        $this->assertNotNull($members[0]['taxonomyId']);
+        $this->assertSame('Alectoris rufa', $members[0]['taxonomy']);
     }
 }

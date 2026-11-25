@@ -148,6 +148,12 @@ export const staticFiltersDefinitionAnimal: ResourceStaticFiltersDefinitionObjec
         SearchPartial,
       },
     },
+    englishName: {
+      filters: {
+        SearchPartial,
+      },
+      propertyLabel: 'english name',
+    },
     'location.region': {
       propertyLabel: 'region',
       filters: {
@@ -169,6 +175,12 @@ export const staticFiltersDefinitionPlant: ResourceStaticFiltersDefinitionObject
       filters: {
         SearchPartial,
       },
+    },
+    englishName: {
+      filters: {
+        SearchPartial,
+      },
+      propertyLabel: 'english name',
     },
     ...flatStaticFiltersDefinitionPlant,
   }

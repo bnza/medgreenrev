@@ -25,6 +25,12 @@ const config: Readonly<ResourceConfig> = {
       minWidth: '200',
     },
     {
+      key: 'englishName',
+      value: 'englishName',
+      title: 'english name',
+      minWidth: '200',
+    },
+    {
       key: 'flat.value',
       value: 'flat.value',
       title: 'taxonomy',

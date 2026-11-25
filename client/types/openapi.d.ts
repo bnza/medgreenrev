@@ -3794,6 +3794,46 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/list/history/animal-terms': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListHistoryAnimalTerm resources.
+     * @description Retrieves the collection of ListHistoryAnimalTerm resources.
+     */
+    get: operations['api_listhistoryanimal-terms_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/history/animal-terms/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListHistoryAnimalTerm resource.
+     * @description Retrieves a ListHistoryAnimalTerm resource.
+     */
+    get: operations['api_listhistoryanimal-terms_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/list/history/plants': {
     parameters: {
       query?: never
@@ -3826,6 +3866,46 @@ export interface paths {
      * @description Retrieves a ListHistoryPlant resource.
      */
     get: operations['api_listhistoryplants_id_get']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/history/plant-terms': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves the collection of ListHistoryPlantTerm resources.
+     * @description Retrieves the collection of ListHistoryPlantTerm resources.
+     */
+    get: operations['api_listhistoryplant-terms_get_collection']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/list/history/plant-terms/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Retrieves a ListHistoryPlantTerm resource.
+     * @description Retrieves a ListHistoryPlantTerm resource.
+     */
+    get: operations['api_listhistoryplant-terms_id_get']
     put?: never
     post?: never
     delete?: never
@@ -13554,6 +13634,7 @@ export interface components {
        */
       language: string
       animal: string
+      englishName: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13571,6 +13652,7 @@ export interface components {
        */
       language?: string
       animal?: string
+      englishName?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13621,6 +13703,7 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.csv-history_animal.acl.read']
       animal?: string
+      englishName?: string
       readonly flat?:
         | components['schemas']['HistoryAnimalView.csv-history_animal.acl.read']
         | null
@@ -13653,6 +13736,7 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.jsonld-history_animal.acl.read']
       animal?: string
+      englishName?: string
       readonly flat?:
         | components['schemas']['HistoryAnimalView.jsonld-history_animal.acl.read']
         | null
@@ -13675,9 +13759,6 @@ export interface components {
       readonly class?: string | null
       readonly family?: string | null
       readonly level?: string | null
-      readonly language?: string | null
-      readonly matchedEnglishName?: string | null
-      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13693,9 +13774,6 @@ export interface components {
       readonly class?: string | null
       readonly family?: string | null
       readonly level?: string | null
-      readonly language?: string | null
-      readonly matchedEnglishName?: string | null
-      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13711,6 +13789,7 @@ export interface components {
        */
       language: string
       plant: string
+      englishName: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13728,6 +13807,7 @@ export interface components {
        */
       language?: string
       plant?: string
+      englishName?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13778,6 +13858,7 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.csv-history_plant.acl.read']
       plant?: string
+      englishName?: string
       readonly flat?:
         | components['schemas']['HistoryPlantView.csv-history_plant.acl.read']
         | null
@@ -13810,6 +13891,7 @@ export interface components {
       readonly id: number | string
       language: components['schemas']['VocHistoryLanguage.jsonld-history_plant.acl.read']
       plant?: string
+      englishName?: string
       readonly flat?:
         | components['schemas']['HistoryPlantView.jsonld-history_plant.acl.read']
         | null
@@ -13838,9 +13920,6 @@ export interface components {
       readonly genusId?: number | null
       readonly familyId?: number | null
       readonly classId?: number | null
-      readonly language?: string | null
-      readonly matchedEnglishName?: string | null
-      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13862,9 +13941,6 @@ export interface components {
       readonly genusId?: number | null
       readonly familyId?: number | null
       readonly classId?: number | null
-      readonly language?: string | null
-      readonly matchedEnglishName?: string | null
-      readonly matchedSpanishName?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -14279,20 +14355,20 @@ export interface components {
       readonly value?: string
       readonly taxonomyId?: number | null
       readonly taxonomy?: string | null
-      readonly level?: string | null
-      readonly language?: string | null
-      readonly matchedEnglishName?: string | null
-      readonly matchedSpanishName?: string | null
+    }
+    'ListHistoryAnimalTerm.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: string
+      readonly value?: string
     }
     'ListHistoryPlant.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
       readonly value?: string
       readonly taxonomyId?: number | null
       readonly taxonomy?: string | null
-      readonly level?: string | null
-      readonly language?: string | null
-      readonly matchedEnglishName?: string | null
-      readonly matchedSpanishName?: string | null
+    }
+    'ListHistoryPlantTerm.jsonld': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: string
+      readonly value?: string
     }
     'ListHistoryReference.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
@@ -35965,6 +36041,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -35978,6 +36055,7 @@ export interface operations {
         'order[flat.class]'?: 'asc' | 'desc'
         'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.class'?: string
@@ -36256,6 +36334,7 @@ export interface operations {
         itemsPerPage?: number
         'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -36269,6 +36348,7 @@ export interface operations {
         'order[flat.class]'?: 'asc' | 'desc'
         'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.class'?: string
@@ -36352,6 +36432,7 @@ export interface operations {
         outputFormat?: 'geojson' | 'shapefile' | 'csv' | 'kml' | 'gml3'
         'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -36365,6 +36446,7 @@ export interface operations {
         'order[flat.class]'?: 'asc' | 'desc'
         'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.class'?: string
@@ -36486,6 +36568,7 @@ export interface operations {
         bbox?: string
         'order[id]'?: 'asc' | 'desc'
         'order[animal]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
         'order[location.region.value]'?: 'asc' | 'desc'
@@ -36499,6 +36582,7 @@ export interface operations {
         'order[flat.class]'?: 'asc' | 'desc'
         'order[flat.family]'?: 'asc' | 'desc'
         animal?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.class'?: string
@@ -36613,6 +36697,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[flat.englishName]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -36620,6 +36705,7 @@ export interface operations {
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.classId'?: number
@@ -36701,6 +36787,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[flat.englishName]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -36708,6 +36795,7 @@ export interface operations {
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.classId'?: number
@@ -36982,6 +37070,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[flat.englishName]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -36989,6 +37078,7 @@ export interface operations {
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.classId'?: number
@@ -37106,6 +37196,7 @@ export interface operations {
         'order[chronologyUpper]'?: 'asc' | 'desc'
         'order[createdBy.email]'?: 'asc' | 'desc'
         'order[plant]'?: 'asc' | 'desc'
+        'order[englishName]'?: 'asc' | 'desc'
         'order[flat.englishName]'?: 'asc' | 'desc'
         'order[flat.value]'?: 'asc' | 'desc'
         'order[language.value]'?: 'asc' | 'desc'
@@ -37113,6 +37204,7 @@ export interface operations {
         'order[location.value]'?: 'asc' | 'desc'
         'order[reference]'?: 'asc' | 'desc'
         plant?: string
+        englishName?: string
         'flat.taxonomyId'?: number
         'flat.taxonomyId[]'?: number[]
         'flat.classId'?: number
@@ -39151,6 +39243,68 @@ export interface operations {
       }
     }
   }
+  'api_listhistoryanimal-terms_get_collection': {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListHistoryAnimalTerm collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ListHistoryAnimalTerm.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  'api_listhistoryanimal-terms_id_get': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListHistoryAnimalTerm identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListHistoryAnimalTerm resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListHistoryAnimalTerm.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
   api_listhistoryplants_get_collection: {
     parameters: {
       query?: {
@@ -39198,6 +39352,68 @@ export interface operations {
         }
         content: {
           'application/ld+json': components['schemas']['ListHistoryPlant.jsonld']
+        }
+      }
+      /** @description Not found */
+      404: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['Error.jsonld']
+          'application/problem+json': components['schemas']['Error']
+          'application/json': components['schemas']['Error']
+        }
+      }
+    }
+  }
+  'api_listhistoryplant-terms_get_collection': {
+    parameters: {
+      query?: {
+        /** @description The collection page number */
+        page?: number
+        /** @description The number of items per page */
+        itemsPerPage?: number
+        value?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListHistoryPlantTerm collection */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['HydraCollectionBaseSchema'] & {
+            member: components['schemas']['ListHistoryPlantTerm.jsonld'][]
+          }
+        }
+      }
+    }
+  }
+  'api_listhistoryplant-terms_id_get': {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        /** @description ListHistoryPlantTerm identifier */
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description ListHistoryPlantTerm resource */
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/ld+json': components['schemas']['ListHistoryPlantTerm.jsonld']
         }
       }
       /** @description Not found */

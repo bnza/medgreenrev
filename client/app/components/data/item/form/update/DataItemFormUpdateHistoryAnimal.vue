@@ -14,6 +14,9 @@ const { r$ } = useScopedRegle(model, {
   animal: {
     required,
   },
+  englishName: {
+    required,
+  },
   language: {
     required,
   },
@@ -44,6 +47,7 @@ const { r$ } = useScopedRegle(model, {
 })
 
 const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
+const englishNameModel = useLowercaseModel(toRef(r$.$value, 'englishName'))
 </script>
 
 <template>
@@ -71,12 +75,24 @@ const animalModel = useLowercaseModel(toRef(r$.$value, 'animal'))
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="12" xs="12" class="px-2">
-      <data-selection-list-history-taxonomy
+    <v-col cols="6" xs="12" class="px-2">
+      <data-selection-list
         v-model="animalModel"
-        path="/api/list/history/animals"
+        path="/api/list/history/animal-terms"
         label="animal"
+        hint="The term as it appears in the source"
+        persistent-hint
         :error-messages="r$.$errors?.animal"
+      />
+    </v-col>
+    <v-col cols="6" xs="12" class="px-2">
+      <data-selection-list-history-taxonomy
+        v-model="englishNameModel"
+        path="/api/list/history/animals"
+        label="english name"
+        hint="English reference name (for taxonomy lookup)"
+        persistent-hint
+        :error-messages="r$.$errors?.englishName"
       />
     </v-col>
   </v-row>

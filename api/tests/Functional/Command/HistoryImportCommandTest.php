@@ -71,9 +71,9 @@ class HistoryImportCommandTest extends KernelTestCase
     public function testSuccessfulAnimalImportNonInteractive(): void
     {
         $csvFile = $this->tempDir . '/valid_animals.csv';
-        $content = "location,language,animal,chronology_lower,chronology_upper,reference,notes\n" .
-            sprintf("%s,%s,dromedary,1200,1250,\"ACA, Cancilleria, Reg. 12, fol. 3r\",Imported test animal\n", $this->locationValue, $this->languageValue) .
-            sprintf("%s,%s,falcon,1300,1350,\"ARV, Bailia, leg. 4, fol. 1v\",Royal hunting falcon\n", $this->locationValue, $this->languageValue);
+        $content = "location,language,animal,english_name,chronology_lower,chronology_upper,reference,notes\n" .
+            sprintf("%s,%s,dromedary,camel,1200,1250,\"ACA, Cancilleria, Reg. 12, fol. 3r\",Imported test animal\n", $this->locationValue, $this->languageValue) .
+            sprintf("%s,%s,falcon,falcon,1300,1350,\"ARV, Bailia, leg. 4, fol. 1v\",Royal hunting falcon\n", $this->locationValue, $this->languageValue);
         file_put_contents($csvFile, $content);
 
         $initialCount = $this->entityManager->getRepository(Animal::class)->count([]);
@@ -107,9 +107,9 @@ class HistoryImportCommandTest extends KernelTestCase
     public function testSuccessfulPlantImportNonInteractive(): void
     {
         $csvFile = $this->tempDir . '/valid_plants.csv';
-        $content = "location,language,plant,chronology_lower,chronology_upper,reference,notes\n" .
-            sprintf("%s,%s,fig,1100,1150,\"ACA, Cancilleria, Reg. 20, fol. 10r\",Fig plantation\n", $this->locationValue, $this->languageValue) .
-            sprintf("%s,%s,grapevine,1210,1260,\"AHPV, Protocolo 12, fol. 2r\",Vineyard grant\n", $this->locationValue, $this->languageValue);
+        $content = "location,language,plant,english_name,chronology_lower,chronology_upper,reference,notes\n" .
+            sprintf("%s,%s,fig,fig,1100,1150,\"ACA, Cancilleria, Reg. 20, fol. 10r\",Fig plantation\n", $this->locationValue, $this->languageValue) .
+            sprintf("%s,%s,grapevine,grapevine,1210,1260,\"AHPV, Protocolo 12, fol. 2r\",Vineyard grant\n", $this->locationValue, $this->languageValue);
         file_put_contents($csvFile, $content);
 
         $initialCount = $this->entityManager->getRepository(Plant::class)->count([]);
@@ -141,11 +141,11 @@ class HistoryImportCommandTest extends KernelTestCase
     public function testValidationFailureRollbackAndErrorCsv(): void
     {
         $csvFile = $this->tempDir . '/invalid_animals.csv';
-        $content = "location,language,animal,chronology_lower,chronology_upper,reference,notes\n" .
-            sprintf("%s,%s,valid_wolf,1000,1100,\"Ref 1\",Note 1\n", $this->locationValue, $this->languageValue) .
-            sprintf("NonExistentLocation,%s,invalid_bear,1000,1100,\"Ref 2\",Note 2\n", $this->languageValue) .
-            sprintf("%s,non_existent_lang,invalid_lion,1000,1100,\"Ref 3\",Note 3\n", $this->locationValue) .
-            sprintf("%s,%s,chronology_fail,1500,1200,\"Ref 4\",Note 4\n", $this->locationValue, $this->languageValue);
+        $content = "location,language,animal,english_name,chronology_lower,chronology_upper,reference,notes\n" .
+            sprintf("%s,%s,valid_wolf,wolf,1000,1100,\"Ref 1\",Note 1\n", $this->locationValue, $this->languageValue) .
+            sprintf("NonExistentLocation,%s,invalid_bear,bear,1000,1100,\"Ref 2\",Note 2\n", $this->languageValue) .
+            sprintf("%s,non_existent_lang,invalid_lion,lion,1000,1100,\"Ref 3\",Note 3\n", $this->locationValue) .
+            sprintf("%s,%s,chronology_fail,wolf,1500,1200,\"Ref 4\",Note 4\n", $this->locationValue, $this->languageValue);
         file_put_contents($csvFile, $content);
 
         $initialCount = $this->entityManager->getRepository(Animal::class)->count([]);
@@ -194,8 +194,8 @@ class HistoryImportCommandTest extends KernelTestCase
     public function testInteractiveModePrompts(): void
     {
         $csvFile = $this->tempDir . '/interactive_animals.csv';
-        $content = "location,language,animal,chronology_lower,chronology_upper,reference,notes\n" .
-            sprintf("%s,%s,lynx,1250,1300,\"ARV, Real Cancilleria, fol. 5v\",Lynx skin trade\n", $this->locationValue, $this->languageValue);
+        $content = "location,language,animal,english_name,chronology_lower,chronology_upper,reference,notes\n" .
+            sprintf("%s,%s,lynx,lynx,1250,1300,\"ARV, Real Cancilleria, fol. 5v\",Lynx skin trade\n", $this->locationValue, $this->languageValue);
         file_put_contents($csvFile, $content);
 
         // Provide interactive inputs: choice 0 ('animal') and choice user email

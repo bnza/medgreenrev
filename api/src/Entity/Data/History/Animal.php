@@ -104,6 +104,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'id',
         'animal',
+        'englishName',
         'createdBy.email',
         'language.value',
         'location.region.value',
@@ -121,6 +122,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'animal' => 'ipartial',
+        'englishName' => 'ipartial',
         'flat.taxonomyId' => 'exact',
         'flat.class' => 'exact',
         'flat.family' => 'exact',
@@ -150,6 +152,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     UnaccentedSearchFilter::class,
     properties: [
         'animal',
+        'englishName',
         'location.region.value',
         'notes',
         'reference',
@@ -189,6 +192,17 @@ class Animal
         'validation:history_animal:create',
     ])]
     private string $animal;
+
+    #[ORM\Column(name: 'english_name', type: 'string')]
+    #[Groups([
+        'history_animal:acl:read',
+        'history_animal:export',
+        'history_animal:create',
+    ])]
+    #[Assert\NotBlank(groups: [
+        'validation:history_animal:create',
+    ])]
+    private string $englishName;
 
     #[ORM\OneToOne(targetEntity: HistoryAnimalView::class, mappedBy: 'animal', fetch: 'LAZY')]
     #[Groups([
@@ -288,6 +302,18 @@ class Animal
     public function setAnimal(string $animal): Animal
     {
         $this->animal = mb_strtolower($animal);
+
+        return $this;
+    }
+
+    public function getEnglishName(): string
+    {
+        return $this->englishName;
+    }
+
+    public function setEnglishName(string $englishName): Animal
+    {
+        $this->englishName = mb_strtolower($englishName);
 
         return $this;
     }

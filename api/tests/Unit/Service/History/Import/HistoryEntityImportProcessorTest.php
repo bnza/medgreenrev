@@ -62,11 +62,11 @@ class HistoryEntityImportProcessorTest extends TestCase
     public function testGetRequiredHeaders(): void
     {
         $this->assertSame(
-            ['location', 'language', 'animal', 'chronology_lower', 'chronology_upper', 'reference'],
+            ['location', 'language', 'animal', 'english_name', 'chronology_lower', 'chronology_upper', 'reference'],
             $this->processor->getRequiredHeaders('animal')
         );
         $this->assertSame(
-            ['location', 'language', 'plant', 'chronology_lower', 'chronology_upper', 'reference'],
+            ['location', 'language', 'plant', 'english_name', 'chronology_lower', 'chronology_upper', 'reference'],
             $this->processor->getRequiredHeaders('plant')
         );
     }
@@ -99,6 +99,7 @@ class HistoryEntityImportProcessorTest extends TestCase
             'location' => 'Rome',
             'language' => 'latin',
             'animal' => 'Camel',
+            'english_name' => 'Camel',
             'chronology_lower' => '100',
             'chronology_upper' => '200',
             'reference' => 'Pliny the Elder, Nat. Hist. VIII',
@@ -112,6 +113,7 @@ class HistoryEntityImportProcessorTest extends TestCase
         /** @var Animal $entity */
         $entity = $result->entity;
         $this->assertSame('camel', $entity->getAnimal());
+        $this->assertSame('camel', $entity->getEnglishName());
         $this->assertSame($this->location, $entity->getLocation());
         $this->assertSame($this->language, $entity->getLanguage());
         $this->assertSame(100, $entity->getChronologyLower());
@@ -149,6 +151,7 @@ class HistoryEntityImportProcessorTest extends TestCase
             'location' => 'Rome',
             'language' => 'latin',
             'plant' => 'Olive',
+            'english_name' => 'Olive',
             'chronology_lower' => '-100',
             'chronology_upper' => '50',
             'reference' => 'Columella, De Re Rustica',
@@ -162,6 +165,7 @@ class HistoryEntityImportProcessorTest extends TestCase
         /** @var Plant $entity */
         $entity = $result->entity;
         $this->assertSame('olive', $entity->getPlant());
+        $this->assertSame('olive', $entity->getEnglishName());
         $this->assertSame($this->location, $entity->getLocation());
         $this->assertSame($this->language, $entity->getLanguage());
         $this->assertSame(-100, $entity->getChronologyLower());
@@ -196,6 +200,7 @@ class HistoryEntityImportProcessorTest extends TestCase
             'location' => 'Atlantis',
             'language' => 'klingon',
             'animal' => 'Dragon',
+            'english_name' => 'Dragon',
             'chronology_lower' => '500',
             'chronology_upper' => '400',
             'reference' => 'Mythology Book',
@@ -209,5 +214,40 @@ class HistoryEntityImportProcessorTest extends TestCase
         $this->assertStringContainsString('Location "Atlantis" does not exist in vocabulary', $result->errors[0]);
         $this->assertStringContainsString('Language "klingon" does not exist in vocabulary', $result->errors[1]);
         $this->assertStringContainsString('chronologyLower cannot be greater than chronologyUpper', $result->errors[2]);
+    }
+
+    public function testProcessRowMissingEnglishName(): void
+    {
+        $input = new GenericImportInputDto(filePath: 'test.csv', type: 'plant', user: $this->user);
+
+        $locRepo = $this->createStub(EntityRepository::class);
+        $locRepo->method('findOneBy')->willReturn($this->location);
+
+        $langRepo = $this->createStub(EntityRepository::class);
+        $langRepo->method('findOneBy')->willReturn($this->language);
+
+        $this->entityManager->method('getRepository')
+            ->willReturnMap([
+                [Location::class, $locRepo],
+                [Language::class, $langRepo],
+            ]);
+
+        $this->validator->method('validate')->willReturn(new ConstraintViolationList());
+
+        $rowData = [
+            'location' => 'Rome',
+            'language' => 'latin',
+            'plant' => 'Olive',
+            'english_name' => '',
+            'chronology_lower' => '100',
+            'chronology_upper' => '200',
+            'reference' => 'Columella, De Re Rustica',
+        ];
+
+        $result = $this->processor->processRow(1, $rowData, $input);
+
+        $this->assertFalse($result->isValid());
+        $this->assertNull($result->entity);
+        $this->assertContains('english_name: This value should not be blank.', $result->errors);
     }
 }

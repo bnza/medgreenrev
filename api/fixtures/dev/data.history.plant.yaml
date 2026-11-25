@@ -1,6 +1,7 @@
 App\Entity\Data\History\Plant:
   history_plant_1:
     plant: 'white poplar'
+    englishName: 'white poplar'
     chronologyLower: 1150
     chronologyUpper: 1200
     location: '@location_5'
@@ -11,6 +12,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_2:
     plant: 'wheat'
+    englishName: 'wheat'
     chronologyLower: 950
     chronologyUpper: 975
     location: '@location_1'
@@ -20,6 +22,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_3:
     plant: 'barley'
+    englishName: 'barley'
     chronologyLower: 1010
     chronologyUpper: 1030
     location: '@location_2'
@@ -30,6 +33,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_4:
     plant: 'olive'
+    englishName: 'olive'
     chronologyLower: 1120
     chronologyUpper: 1140
     location: '@location_3'
@@ -38,6 +42,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_5:
     plant: 'grapevine'
+    englishName: 'grapevine'
     chronologyLower: 1185
     chronologyUpper: 1200
     location: '@location_4'
@@ -47,6 +52,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_6:
     plant: 'garlic'
+    englishName: 'garlic'
     chronologyLower: 1201
     chronologyUpper: 1201
     location: '@location_5'
@@ -55,6 +61,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_7:
     plant: 'lentil'
+    englishName: 'lentil'
     chronologyLower: 1220
     chronologyUpper: 1230
     location: '@location_6'
@@ -64,6 +71,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_8:
     plant: 'chickpea'
+    englishName: 'chickpea'
     chronologyLower: 1275
     chronologyUpper: 1285
     location: '@location_7'
@@ -73,6 +81,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_9:
     plant: 'almond'
+    englishName: 'almond'
     chronologyLower: 1300
     chronologyUpper: 1310
     location: '@location_8'
@@ -82,6 +91,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_10:
     plant: 'cork oak'
+    englishName: 'cork oak'
     chronologyLower: 1325
     chronologyUpper: 1335
     location: '@location_9'
@@ -90,6 +100,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_11:
     plant: 'carob tree'
+    englishName: 'carob tree'
     chronologyLower: 1350
     chronologyUpper: 1350
     location: '@location_10'
@@ -99,6 +110,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_12:
     plant: 'rice'
+    englishName: 'rice'
     chronologyLower: 1360
     chronologyUpper: 1368
     location: '@location_11'
@@ -107,6 +119,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_13:
     plant: 'oat'
+    englishName: 'oat'
     chronologyLower: 1390
     chronologyUpper: 1395
     location: '@location_12'
@@ -116,6 +129,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_14:
     plant: 'hazel'
+    englishName: 'hazel'
     chronologyLower: 1420
     chronologyUpper: 1425
     location: '@location_13'
@@ -124,6 +138,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_15:
     plant: 'wild carrot'
+    englishName: 'wild carrot'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_14'
@@ -133,6 +148,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_16:
     plant: 'aubergine'
+    englishName: 'aubergine'
     chronologyLower: 1155
     chronologyUpper: 1165
     location: '@location_15'
@@ -141,6 +157,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_17:
     plant: 'saffron'
+    englishName: 'saffron'
     chronologyLower: 1240
     chronologyUpper: 1248
     location: '@location_16'
@@ -150,6 +167,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_18:
     plant: 'lucerne'
+    englishName: 'lucerne'
     chronologyLower: 1342
     chronologyUpper: 1346
     location: '@location_17'
@@ -158,6 +176,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_19:
     plant: 'pea'
+    englishName: 'pea'
     chronologyLower: 1020
     chronologyUpper: 1040
     location: '@location_18'
@@ -167,6 +186,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_20:
     plant: 'broad bean'
+    englishName: 'broad bean'
     chronologyLower: 1080
     chronologyUpper: 1090
     location: '@location_19'
@@ -175,6 +195,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_21:
     plant: 'common bean'
+    englishName: 'common bean'
     chronologyLower: 1105
     chronologyUpper: 1115
     location: '@location_20'
@@ -184,6 +205,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_22:
     plant: 'fig'
+    englishName: 'fig'
     chronologyLower: 1128
     chronologyUpper: 1132
     location: '@location_21'
@@ -192,6 +214,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_23:
     plant: 'lemon'
+    englishName: 'lemon'
     chronologyLower: 1140
     chronologyUpper: 1145
     location: '@location_22'
@@ -201,6 +224,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_24:
     plant: 'flax'
+    englishName: 'flax'
     chronologyLower: 1250
     chronologyUpper: 1260
     location: '@location_23'
@@ -209,6 +233,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_25:
     plant: 'apple'
+    englishName: 'apple'
     chronologyLower: 1270
     chronologyUpper: 1272
     location: '@location_24'
@@ -218,6 +243,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_26:
     plant: 'peach'
+    englishName: 'peach'
     chronologyLower: 1285
     chronologyUpper: 1290
     location: '@location_25'
@@ -226,6 +252,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_27:
     plant: 'quince'
+    englishName: 'quince'
     chronologyLower: 1305
     chronologyUpper: 1315
     location: '@location_26'
@@ -235,6 +262,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_28:
     plant: 'white mulberry'
+    englishName: 'white mulberry'
     chronologyLower: 1320
     chronologyUpper: 1324
     location: '@location_27'
@@ -243,6 +271,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_29:
     plant: 'turnip'
+    englishName: 'turnip'
     chronologyLower: 1330
     chronologyUpper: 1331
     location: '@location_28'
@@ -252,6 +281,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_30:
     plant: 'sweet orange'
+    englishName: 'sweet orange'
     chronologyLower: 1344
     chronologyUpper: 1349
     location: '@location_29'
@@ -260,6 +290,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_31:
     plant: 'medlar'
+    englishName: 'medlar'
     chronologyLower: 1355
     chronologyUpper: 1358
     location: '@location_30'
@@ -269,6 +300,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_32:
     plant: 'walnut'
+    englishName: 'walnut'
     chronologyLower: 1366
     chronologyUpper: 1370
     location: '@location_31'
@@ -277,6 +309,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_33:
     plant: 'proso millet'
+    englishName: 'proso millet'
     chronologyLower: 1375
     chronologyUpper: 1380
     location: '@location_32'
@@ -286,6 +319,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_34:
     plant: 'grapevine'
+    englishName: 'grapevine'
     chronologyLower: 1382
     chronologyUpper: 1389
     location: '@location_33'
@@ -294,6 +328,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_35:
     plant: 'wild pear'
+    englishName: 'wild pear'
     chronologyLower: 1391
     chronologyUpper: 1393
     location: '@location_34'
@@ -303,6 +338,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_36:
     plant: 'grapefruit'
+    englishName: 'grapefruit'
     chronologyLower: 1400
     chronologyUpper: 1405
     location: '@location_1'
@@ -311,6 +347,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_37:
     plant: 'leek'
+    englishName: 'leek'
     chronologyLower: 1406
     chronologyUpper: 1408
     location: '@location_2'
@@ -320,6 +357,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_38:
     plant: 'watermelon'
+    englishName: 'watermelon'
     chronologyLower: 1410
     chronologyUpper: 1415
     location: '@location_3'
@@ -328,6 +366,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_39:
     plant: 'service tree'
+    englishName: 'service tree'
     chronologyLower: 1412
     chronologyUpper: 1419
     location: '@location_4'
@@ -337,6 +376,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_40:
     plant: 'wheat'
+    englishName: 'wheat'
     chronologyLower: 1420
     chronologyUpper: 1422
     location: '@location_5'
@@ -345,6 +385,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_41:
     plant: 'barley'
+    englishName: 'barley'
     chronologyLower: 1424
     chronologyUpper: 1426
     location: '@location_6'
@@ -354,6 +395,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_42:
     plant: 'saffron'
+    englishName: 'saffron'
     chronologyLower: 1427
     chronologyUpper: 1429
     location: '@location_6'
@@ -362,6 +404,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_43:
     plant: 'almond'
+    englishName: 'almond'
     chronologyLower: 1430
     chronologyUpper: 1430
     location: '@location_6'
@@ -371,6 +414,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_44:
     plant: 'grapevine'
+    englishName: 'grapevine'
     chronologyLower: 1431
     chronologyUpper: 1433
     location: '@location_9'
@@ -379,6 +423,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_45:
     plant: 'olive'
+    englishName: 'olive'
     chronologyLower: 1434
     chronologyUpper: 1436
     location: '@location_10'
@@ -388,6 +433,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_46:
     plant: 'broad bean'
+    englishName: 'broad bean'
     chronologyLower: 1437
     chronologyUpper: 1438
     location: '@location_11'
@@ -396,6 +442,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_47:
     plant: 'chickpea'
+    englishName: 'chickpea'
     chronologyLower: 1439
     chronologyUpper: 1440
     location: '@location_12'
@@ -405,6 +452,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_48:
     plant: 'oat'
+    englishName: 'oat'
     chronologyLower: 1441
     chronologyUpper: 1441
     location: '@location_13'
@@ -413,6 +461,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_49:
     plant: 'pea'
+    englishName: 'pea'
     chronologyLower: 1442
     chronologyUpper: 1443
     location: '@location_14'
@@ -422,6 +471,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_50:
     plant: 'flax'
+    englishName: 'flax'
     chronologyLower: 1444
     chronologyUpper: 1445
     location: '@location_15'
@@ -430,6 +480,7 @@ App\Entity\Data\History\Plant:
     language: '@language_LAT'
   history_plant_51:
     plant: 'fig'
+    englishName: 'fig'
     chronologyLower: 1446
     chronologyUpper: 1447
     location: '@location_16'
@@ -439,6 +490,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_52:
     plant: 'wild pear'
+    englishName: 'wild pear'
     chronologyLower: 1448
     chronologyUpper: 1448
     location: '@location_17'
@@ -447,6 +499,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAT'
   history_plant_53:
     plant: 'wheat'
+    englishName: 'wheat'
     chronologyLower: 1449
     chronologyUpper: 1449
     location: '@location_18'
@@ -456,6 +509,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_54:
     plant: 'barley'
+    englishName: 'barley'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_19'
@@ -464,6 +518,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_55:
     plant: 'garlic'
+    englishName: 'garlic'
     chronologyLower: 1000
     chronologyUpper: 1010
     location: '@location_20'
@@ -473,6 +528,7 @@ App\Entity\Data\History\Plant:
     language: '@language_ARA'
   history_plant_56:
     plant: 'acanto'
+    englishName: "bear's breeches"
     chronologyLower: 1451
     chronologyUpper: 1452
     location: '@location_1'
@@ -482,6 +538,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_57:
     plant: 'verónica'
+    englishName: 'germander speedwell'
     chronologyLower: 1453
     chronologyUpper: 1454
     location: '@location_2'
@@ -491,6 +548,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_58:
     plant: 'lengua de buey'
+    englishName: 'italian bugloss'
     chronologyLower: 1455
     chronologyUpper: 1456
     location: '@location_3'
@@ -500,6 +558,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_59:
     plant: 'flor errante'
+    englishName: 'unknown wandering flower'
     chronologyLower: 1457
     chronologyUpper: 1458
     location: '@location_4'
@@ -509,6 +568,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_60:
     plant: 'trigo'
+    englishName: 'wheat'
     chronologyLower: 1459
     chronologyUpper: 1460
     location: '@location_5'
@@ -518,6 +578,7 @@ App\Entity\Data\History\Plant:
     language: '@language_CAS'
   history_plant_61:
     plant: 'wheat'
+    englishName: 'wheat'
     chronologyLower: 1461
     chronologyUpper: 1462
     location: '@location_6'

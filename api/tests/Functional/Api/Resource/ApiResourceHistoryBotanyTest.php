@@ -81,7 +81,7 @@ class ApiResourceHistoryBotanyTest extends ApiTestCase
         $this->assertFalse($collection['_acl']['canCreate']);
     }
 
-    public function testPlantWithUniqueSpanishNameResolvesToSpeciesLevel(): void
+    public function testPlantWithMatchingEnglishNameResolvesTaxonomy(): void
     {
         $client = self::createClient();
 
@@ -89,120 +89,88 @@ class ApiResourceHistoryBotanyTest extends ApiTestCase
         $this->assertSame(200, $response->getStatusCode());
 
         $plant = $response->toArray()['member'][0];
-        $this->assertNotNull($plant['flat'], 'A unique Spanish name should resolve to a taxonomy match');
+        $this->assertSame('acanto', $plant['plant']);
+        $this->assertSame("bear's breeches", $plant['englishName']);
+        $this->assertNotNull($plant['flat'], 'Matching englishName should resolve to taxonomy');
         $this->assertSame('species', $plant['flat']['level']);
-        $this->assertSame('spanish', $plant['flat']['language']);
-        $this->assertSame('acanto', $plant['flat']['matchedSpanishName']);
-        $this->assertSame("bear's breeches", $plant['flat']['matchedEnglishName']);
+        $this->assertSame('Acanthus mollis', $plant['flat']['value']);
+        $this->assertSame("bear's breeches", $plant['flat']['englishName']);
+        $this->assertSame('acanto', $plant['flat']['spanishName']);
+        $this->assertSame('Acanthaceae', $plant['flat']['family']);
+        $this->assertSame('Magnoliopsida', $plant['flat']['class']);
     }
 
-    public function testPlantWithAmbiguousSpanishNameSharedByOneGenusResolvesToGenusLevel(): void
+    public function testPlantWithUncataloguedEnglishNamePreservesValuesWithNullTaxonomy(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_his');
+
+        $locationIri = $this->getVocabulary('history/locations')[0]['@id'];
+        $languageIri = $this->getVocabulary('history/languages')[0]['@id'];
+
+        $payload = [
+            'plant' => 'planta misteriosa',
+            'englishName' => 'mysterious uncatalogued plant',
+            'location' => $locationIri,
+            'language' => $languageIri,
+            'chronologyLower' => 1200,
+            'chronologyUpper' => 1300,
+            'reference' => 'Historical text reference',
+        ];
+
+        $postResponse = $this->apiRequest($client, 'POST', '/api/data/history/plants', [
+            'token' => $token,
+            'json' => $payload,
+        ]);
+        $this->assertSame(201, $postResponse->getStatusCode());
+        $created = $postResponse->toArray();
+
+        $this->assertSame('planta misteriosa', $created['plant']);
+        $this->assertSame('mysterious uncatalogued plant', $created['englishName']);
+
+        // Check flat view
+        $getResponse = $this->apiRequest($client, 'GET', $created['@id'], ['token' => $token]);
+        $this->assertSame(200, $getResponse->getStatusCode());
+        $item = $getResponse->toArray();
+        $this->assertNull($item['flat']['taxonomyId'] ?? null);
+        $this->assertNull($item['flat']['value'] ?? null);
+    }
+
+    public function testPostPlantRequiresEnglishName(): void
+    {
+        $client = self::createClient();
+        $token = $this->getUserToken($client, 'user_his');
+
+        $locationIri = $this->getVocabulary('history/locations')[0]['@id'];
+        $languageIri = $this->getVocabulary('history/languages')[0]['@id'];
+
+        $payload = [
+            'plant' => 'planta sin ingles',
+            'location' => $locationIri,
+            'language' => $languageIri,
+            'chronologyLower' => 1200,
+            'chronologyUpper' => 1300,
+            'reference' => 'Historical text reference',
+        ];
+
+        $postResponse = $this->apiRequest($client, 'POST', '/api/data/history/plants', [
+            'token' => $token,
+            'json' => $payload,
+        ]);
+        $this->assertSame(422, $postResponse->getStatusCode());
+    }
+
+    public function testPicklistReturnsTaxonomyAndDataEnglishNames(): void
     {
         $client = self::createClient();
 
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/plants?plant=ver%C3%B3nica');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $plant = $response->toArray()['member'][0];
-        $this->assertNotNull($plant['flat'], 'An ambiguous Spanish name sharing a genus should still resolve');
-        $this->assertSame('genus', $plant['flat']['level']);
-        $this->assertSame('spanish', $plant['flat']['language']);
-        $this->assertSame('Veronica', $plant['flat']['value']);
-    }
-
-    public function testPlantWithAmbiguousSpanishNameSharedByOneFamilyResolvesToFamilyLevel(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/plants?plant=lengua+de+buey');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $plant = $response->toArray()['member'][0];
-        $this->assertNotNull($plant['flat'], 'An ambiguous Spanish name sharing a family should still resolve');
-        $this->assertSame('family', $plant['flat']['level']);
-        $this->assertSame('spanish', $plant['flat']['language']);
-        $this->assertSame('Boraginaceae', $plant['flat']['value']);
-    }
-
-    public function testPlantWithCrossClassAmbiguousSpanishNameResolvesToNoMatch(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/plants?plant=flor+errante');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $plant = $response->toArray()['member'][0];
-        $this->assertNotNull($plant['flat'], 'The view row must still exist even without a taxonomy match');
-        $this->assertNull($plant['flat']['level'] ?? null);
-        $this->assertNull($plant['flat']['taxonomyId'] ?? null);
-        $this->assertNull($plant['flat']['value'] ?? null);
-    }
-
-    public function testPlantWithUniqueSpanishNameHavingAnEnglishCounterpartExposesBothMatchedNames(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/plants?plant=trigo');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $plant = $response->toArray()['member'][0];
-        $this->assertNotNull($plant['flat']);
-        $this->assertSame('species', $plant['flat']['level']);
-        $this->assertSame('spanish', $plant['flat']['language']);
-        $this->assertSame('trigo', $plant['flat']['matchedSpanishName']);
-        $this->assertSame('wheat', $plant['flat']['matchedEnglishName']);
-    }
-
-    public function testPlantWithEnglishNameResolvesViaEnglishBranch(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/data/history/plants?plant=wheat');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $plant = $response->toArray()['member'][0];
-        $this->assertNotNull($plant['flat']);
-        $this->assertSame('species', $plant['flat']['level']);
-        $this->assertSame('english', $plant['flat']['language']);
-        $this->assertSame('wheat', $plant['flat']['matchedEnglishName']);
-        $this->assertSame('trigo', $plant['flat']['matchedSpanishName']);
-    }
-
-    public function testPicklistSurfacesBothSpanishAndEnglishCandidatesForAmbiguousName(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/list/history/plants?value=ver%C3%B3nica');
+        $response = $this->apiRequest($client, 'GET', '/api/list/history/plants?value=bear');
         $this->assertSame(200, $response->getStatusCode());
 
         $members = $response->toArray()['member'];
-        $taxonomyMember = $this->findListMemberByValueAndLanguage($members, 'verónica', 'spanish');
-        $this->assertNotNull($taxonomyMember, 'The ambiguous Spanish name should still surface a resolved picklist entry');
-        $this->assertSame('genus', $taxonomyMember['level']);
-    }
-
-    public function testPicklistSurfacesUnresolvedCrossClassSpanishNameWithoutTaxonomy(): void
-    {
-        $client = self::createClient();
-
-        $response = $this->apiRequest($client, 'GET', '/api/list/history/plants?value=flor+errante');
-        $this->assertSame(200, $response->getStatusCode());
-
-        $members = $response->toArray()['member'];
-        $taxonomyMember = $this->findListMemberByValueAndLanguage($members, 'flor errante', 'spanish');
-        $this->assertNotNull($taxonomyMember, 'An unresolved Spanish name should still appear as a candidate value');
-        $this->assertNull($taxonomyMember['level'] ?? null);
-        $this->assertNull($taxonomyMember['taxonomyId'] ?? null);
-    }
-
-    private function findListMemberByValueAndLanguage(array $members, string $value, ?string $language): ?array
-    {
-        foreach ($members as $member) {
-            if ($member['value'] === $value && $member['language'] === $language) {
-                return $member;
-            }
-        }
-
-        return null;
+        $this->assertNotEmpty($members);
+        $this->assertSame("bear's breeches", $members[0]['value']);
+        $this->assertNotNull($members[0]['taxonomyId']);
+        $this->assertSame('Acanthus mollis', $members[0]['taxonomy']);
     }
 }

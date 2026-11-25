@@ -69,27 +69,6 @@ class HistoryAnimalView
     ])]
     private ?string $level = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Groups([
-        'history_animal:acl:read',
-        'history_animal:export',
-    ])]
-    private ?string $language = null;
-
-    #[ORM\Column(name: 'matched_english_name', type: 'string', nullable: true)]
-    #[Groups([
-        'history_animal:acl:read',
-        'history_animal:export',
-    ])]
-    private ?string $matchedEnglishName = null;
-
-    #[ORM\Column(name: 'matched_spanish_name', type: 'string', nullable: true)]
-    #[Groups([
-        'history_animal:acl:read',
-        'history_animal:export',
-    ])]
-    private ?string $matchedSpanishName = null;
-
     public function getId(): int
     {
         return $this->id;
@@ -128,20 +107,5 @@ class HistoryAnimalView
     public function getLevel(): ?string
     {
         return $this->level;
-    }
-
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-
-    public function getMatchedEnglishName(): ?string
-    {
-        return $this->matchedEnglishName;
-    }
-
-    public function getMatchedSpanishName(): ?string
-    {
-        return $this->matchedSpanishName;
     }
 }

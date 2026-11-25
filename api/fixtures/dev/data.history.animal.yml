@@ -1,6 +1,7 @@
 App\Entity\Data\History\Animal:
   history_animal_1:
     animal: 'cattle'
+    englishName: 'cattle'
     chronologyLower: 875
     chronologyUpper: 900
     location: '@location_1'
@@ -11,6 +12,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_2:
     animal: 'sheep'
+    englishName: 'sheep'
     chronologyLower: 920
     chronologyUpper: 950
     location: '@location_2'
@@ -20,6 +22,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_3:
     animal: 'horse'
+    englishName: 'horse'
     chronologyLower: 980
     chronologyUpper: 1010
     location: '@location_3'
@@ -29,6 +32,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_4:
     animal: 'goat'
+    englishName: 'goat'
     chronologyLower: 1025
     chronologyUpper: 1050
     location: '@location_4'
@@ -37,6 +41,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_5:
     animal: 'swine (pig / wild boar)'
+    englishName: 'swine (pig / wild boar)'
     chronologyLower: 1065
     chronologyUpper: 1080
     location: '@location_5'
@@ -46,6 +51,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_6:
     animal: 'chicken'
+    englishName: 'chicken'
     chronologyLower: 1090
     chronologyUpper: 1095
     location: '@location_6'
@@ -55,6 +61,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_7:
     animal: 'rabbit'
+    englishName: 'rabbit'
     chronologyLower: 1110
     chronologyUpper: 1125
     location: '@location_7'
@@ -64,6 +71,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_8:
     animal: 'dog'
+    englishName: 'dog'
     chronologyLower: 1140
     chronologyUpper: 1155
     location: '@location_8'
@@ -73,6 +81,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_9:
     animal: 'duck'
+    englishName: 'duck'
     chronologyLower: 1168
     chronologyUpper: 1175
     location: '@location_9'
@@ -81,6 +90,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_10:
     animal: 'cattle'
+    englishName: 'cattle'
     chronologyLower: 1190
     chronologyUpper: 1200
     location: '@location_10'
@@ -90,6 +100,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_11:
     animal: 'ass'
+    englishName: 'ass'
     chronologyLower: 1215
     chronologyUpper: 1220
     location: '@location_11'
@@ -99,6 +110,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_12:
     animal: 'sheep'
+    englishName: 'sheep'
     chronologyLower: 1235
     chronologyUpper: 1245
     location: '@location_12'
@@ -107,6 +119,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_13:
     animal: 'cat'
+    englishName: 'cat'
     chronologyLower: 1258
     chronologyUpper: 1265
     location: '@location_13'
@@ -116,6 +129,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_14:
     animal: 'pigeon'
+    englishName: 'pigeon'
     chronologyLower: 1278
     chronologyUpper: 1285
     location: '@location_14'
@@ -124,6 +138,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_15:
     animal: 'goose'
+    englishName: 'goose'
     chronologyLower: 1295
     chronologyUpper: 1300
     location: '@location_15'
@@ -133,6 +148,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_16:
     animal: 'red deer'
+    englishName: 'red deer'
     chronologyLower: 1315
     chronologyUpper: 1325
     location: '@location_16'
@@ -142,6 +158,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_17:
     animal: 'fallow deer'
+    englishName: 'fallow deer'
     chronologyLower: 1340
     chronologyUpper: 1345
     location: '@location_17'
@@ -150,6 +167,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_18:
     animal: 'hare'
+    englishName: 'hare'
     chronologyLower: 1355
     chronologyUpper: 1362
     location: '@location_18'
@@ -159,6 +177,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_19:
     animal: 'partridge'
+    englishName: 'partridge'
     chronologyLower: 1370
     chronologyUpper: 1378
     location: '@location_19'
@@ -167,6 +186,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_20:
     animal: 'fish'
+    englishName: 'fish'
     chronologyLower: 1385
     chronologyUpper: 1390
     location: '@location_20'
@@ -176,6 +196,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_21:
     animal: 'fox'
+    englishName: 'fox'
     chronologyLower: 1398
     chronologyUpper: 1405
     location: '@location_21'
@@ -185,6 +206,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_22:
     animal: 'roe deer'
+    englishName: 'roe deer'
     chronologyLower: 1412
     chronologyUpper: 1418
     location: '@location_22'
@@ -193,6 +215,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_23:
     animal: 'rat'
+    englishName: 'rat'
     chronologyLower: 1425
     chronologyUpper: 1430
     location: '@location_23'
@@ -202,6 +225,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_24:
     animal: 'falcon'
+    englishName: 'falcon'
     chronologyLower: 1438
     chronologyUpper: 1445
     location: '@location_24'
@@ -210,6 +234,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_25:
     animal: 'cattle'
+    englishName: 'cattle'
     chronologyLower: 850
     chronologyUpper: 875
     location: '@location_25'
@@ -219,6 +244,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_26:
     animal: 'sheep'
+    englishName: 'sheep'
     chronologyLower: 892
     chronologyUpper: 910
     location: '@location_26'
@@ -228,6 +254,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_27:
     animal: 'horse'
+    englishName: 'horse'
     chronologyLower: 935
     chronologyUpper: 960
     location: '@location_27'
@@ -236,6 +263,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_28:
     animal: 'swine (pig / wild boar)'
+    englishName: 'swine (pig / wild boar)'
     chronologyLower: 975
     chronologyUpper: 990
     location: '@location_28'
@@ -245,6 +273,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_29:
     animal: 'goat'
+    englishName: 'goat'
     chronologyLower: 1005
     chronologyUpper: 1015
     location: '@location_29'
@@ -253,6 +282,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_30:
     animal: 'chicken'
+    englishName: 'chicken'
     chronologyLower: 1032
     chronologyUpper: 1045
     location: '@location_30'
@@ -262,6 +292,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_31:
     animal: 'rabbit'
+    englishName: 'rabbit'
     chronologyLower: 1058
     chronologyUpper: 1070
     location: '@location_31'
@@ -271,6 +302,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_32:
     animal: 'duck'
+    englishName: 'duck'
     chronologyLower: 1085
     chronologyUpper: 1095
     location: '@location_32'
@@ -279,6 +311,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_33:
     animal: 'ass'
+    englishName: 'ass'
     chronologyLower: 1118
     chronologyUpper: 1130
     location: '@location_33'
@@ -288,6 +321,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_34:
     animal: 'cattle'
+    englishName: 'cattle'
     chronologyLower: 1145
     chronologyUpper: 1160
     location: '@location_34'
@@ -296,6 +330,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_35:
     animal: 'sheep'
+    englishName: 'sheep'
     chronologyLower: 1172
     chronologyUpper: 1180
     location: '@location_1'
@@ -305,6 +340,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_36:
     animal: 'cat'
+    englishName: 'cat'
     chronologyLower: 1195
     chronologyUpper: 1205
     location: '@location_2'
@@ -314,6 +350,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_37:
     animal: 'pigeon'
+    englishName: 'pigeon'
     chronologyLower: 1222
     chronologyUpper: 1230
     location: '@location_3'
@@ -322,6 +359,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_38:
     animal: 'goose'
+    englishName: 'goose'
     chronologyLower: 1248
     chronologyUpper: 1255
     location: '@location_4'
@@ -331,6 +369,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_39:
     animal: 'red deer'
+    englishName: 'red deer'
     chronologyLower: 1268
     chronologyUpper: 1275
     location: '@location_5'
@@ -339,6 +378,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_40:
     animal: 'hare'
+    englishName: 'hare'
     chronologyLower: 1288
     chronologyUpper: 1295
     location: '@location_6'
@@ -348,6 +388,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_41:
     animal: 'partridge'
+    englishName: 'partridge'
     chronologyLower: 1308
     chronologyUpper: 1315
     location: '@location_7'
@@ -357,6 +398,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_42:
     animal: 'fish'
+    englishName: 'fish'
     chronologyLower: 1328
     chronologyUpper: 1335
     location: '@location_8'
@@ -365,6 +407,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_43:
     animal: 'fox'
+    englishName: 'fox'
     chronologyLower: 1348
     chronologyUpper: 1352
     location: '@location_9'
@@ -374,6 +417,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_44:
     animal: 'dog'
+    englishName: 'dog'
     chronologyLower: 1365
     chronologyUpper: 1372
     location: '@location_10'
@@ -382,6 +426,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_45:
     animal: 'swine (pig / wild boar)'
+    englishName: 'swine (pig / wild boar)'
     chronologyLower: 1382
     chronologyUpper: 1388
     location: '@location_11'
@@ -391,6 +436,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_46:
     animal: 'horse'
+    englishName: 'horse'
     chronologyLower: 1401
     chronologyUpper: 1408
     location: '@location_12'
@@ -400,6 +446,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_47:
     animal: 'goat'
+    englishName: 'goat'
     chronologyLower: 1418
     chronologyUpper: 1425
     location: '@location_13'
@@ -408,6 +455,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_48:
     animal: 'chicken'
+    englishName: 'chicken'
     chronologyLower: 1432
     chronologyUpper: 1438
     location: '@location_14'
@@ -417,6 +465,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_49:
     animal: 'caprine (sheep / goat)'
+    englishName: 'caprine (sheep / goat)'
     chronologyLower: 1442
     chronologyUpper: 1448
     location: '@location_15'
@@ -425,6 +474,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_50:
     animal: 'fallow deer'
+    englishName: 'fallow deer'
     chronologyLower: 1135
     chronologyUpper: 1142
     location: '@location_16'
@@ -434,6 +484,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_51:
     animal: 'lagomorph (rabbit / hare)'
+    englishName: 'lagomorph (rabbit / hare)'
     chronologyLower: 1255
     chronologyUpper: 1262
     location: '@location_17'
@@ -443,6 +494,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAT'
   history_animal_52:
     animal: 'bird'
+    englishName: 'bird'
     chronologyLower: 1378
     chronologyUpper: 1385
     location: '@location_18'
@@ -451,6 +503,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_53:
     animal: 'amphibia'
+    englishName: 'amphibia'
     chronologyLower: 1228
     chronologyUpper: 1235
     location: '@location_19'
@@ -460,6 +513,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_54:
     animal: 'equid (horse / ass)'
+    englishName: 'equid (horse / ass)'
     chronologyLower: 1052
     chronologyUpper: 1065
     location: '@location_20'
@@ -469,6 +523,7 @@ App\Entity\Data\History\Animal:
     language: '@language_LAT'
   history_animal_55:
     animal: 'cattle'
+    englishName: 'cattle'
     chronologyLower: 1450
     chronologyUpper: 1450
     location: '@location_21'
@@ -477,6 +532,7 @@ App\Entity\Data\History\Animal:
     language: '@language_ARA'
   history_animal_56:
     animal: 'perdiz'
+    englishName: 'partridge'
     chronologyLower: 1451
     chronologyUpper: 1452
     location: '@location_1'
@@ -486,6 +542,7 @@ App\Entity\Data\History\Animal:
     language: '@language_CAS'
   history_animal_57:
     animal: 'paloma'
+    englishName: 'wood pigeon'
     chronologyLower: 1453
     chronologyUpper: 1454
     location: '@location_2'

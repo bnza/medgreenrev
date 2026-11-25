@@ -108,6 +108,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'chronologyUpper',
         'createdBy.email',
         'plant',
+        'englishName',
         'flat.englishName',
         'flat.value',
         'language.value',
@@ -119,6 +120,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'plant' => 'ipartial',
+        'englishName' => 'ipartial',
         'flat.taxonomyId' => 'exact',
         'flat.classId' => 'exact',
         'flat.familyId' => 'exact',
@@ -145,6 +147,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     UnaccentedSearchFilter::class,
     properties: [
         'plant',
+        'englishName',
         'location.region.value',
         'notes',
         'reference',
@@ -183,6 +186,17 @@ class Plant
         'validation:history_plant:create',
     ])]
     private string $plant;
+
+    #[ORM\Column(name: 'english_name', type: 'string')]
+    #[Groups([
+        'history_plant:acl:read',
+        'history_plant:export',
+        'history_plant:create',
+    ])]
+    #[Assert\NotBlank(groups: [
+        'validation:history_plant:create',
+    ])]
+    private string $englishName;
 
     #[ORM\OneToOne(targetEntity: HistoryPlantView::class, mappedBy: 'plant', fetch: 'LAZY')]
     #[Groups([
@@ -282,6 +296,18 @@ class Plant
     public function setPlant(string $plant): Plant
     {
         $this->plant = mb_strtolower($plant);
+
+        return $this;
+    }
+
+    public function getEnglishName(): string
+    {
+        return $this->englishName;
+    }
+
+    public function setEnglishName(string $englishName): Plant
+    {
+        $this->englishName = mb_strtolower($englishName);
 
         return $this;
     }
