@@ -22,7 +22,6 @@ abstract class AbstractGeoserverFeatureCollectionProvider implements ProviderInt
     public function __construct(
         #[Autowire(service: 'api_platform.doctrine.orm.state.collection_provider')]
         protected readonly ProviderInterface $doctrineOrmCollectionProvider,
-        #[Autowire(service: 'monolog.http_client')]
         protected readonly HttpClientInterface $httpClient,
         protected readonly GeoserverXmlWfsGetFeatureFilterBuilder $xmlFilterBuilder,
         protected readonly GeoserverXmlWpsExecuteBoundsBuilder $wpsBoundsBuilder,

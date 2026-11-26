@@ -23,6 +23,8 @@ framework:
     php_errors:
         log: true
 
+    http_client: ~
+
 when@test:
     parameters:
         default_test_worker: '1'
