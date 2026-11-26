@@ -53,10 +53,10 @@ class HistoryEntityImportProcessorTest extends TestCase
         $this->assertFalse($this->processor->supports('analysis'));
     }
 
-    public function testGetEntityLabel(): void
+    public function testGetDatasetLabel(): void
     {
-        $this->assertSame('Animal', $this->processor->getEntityLabel('animal'));
-        $this->assertSame('Plant', $this->processor->getEntityLabel('plant'));
+        $this->assertSame('written source animal citations', $this->processor->getDatasetLabel('animal'));
+        $this->assertSame('written source plant citations', $this->processor->getDatasetLabel('plant'));
     }
 
     public function testGetRequiredHeaders(): void

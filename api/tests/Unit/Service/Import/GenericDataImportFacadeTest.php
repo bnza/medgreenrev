@@ -13,6 +13,7 @@ use App\Service\Import\Progress\ImportProgressReporterInterface;
 use App\Service\Import\Reader\FileReaderInterface;
 use App\Service\Import\Writer\ImportErrorWriterInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use PHPUnit\Framework\TestCase;
 
 class GenericDataImportFacadeTest extends TestCase
@@ -43,14 +44,14 @@ class GenericDataImportFacadeTest extends TestCase
         );
 
         $this->user = new User();
-        $this->tempDir = sys_get_temp_dir() . '/facade_test_' . uniqid();
+        $this->tempDir = sys_get_temp_dir().'/facade_test_'.uniqid();
         mkdir($this->tempDir, 0777, true);
     }
 
     protected function tearDown(): void
     {
         if (is_dir($this->tempDir)) {
-            $files = glob($this->tempDir . '/*');
+            $files = glob($this->tempDir.'/*');
             if ($files) {
                 foreach ($files as $file) {
                     unlink($file);
@@ -62,7 +63,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportFileDoesNotExist(): void
     {
-        $filePath = $this->tempDir . '/non_existent.csv';
+        $filePath = $this->tempDir.'/non_existent.csv';
         $input = new GenericImportInputDto(filePath: $filePath, type: 'animal', user: $this->user);
 
         $result = $this->facade->import($input);
@@ -73,9 +74,48 @@ class GenericDataImportFacadeTest extends TestCase
         $this->assertStringContainsString('does not exist', $result->error ?? '');
     }
 
+    public function testImportAlreadyImportedFileFails(): void
+    {
+        $filePath = $this->tempDir.'/already_imported.csv';
+        file_put_contents($filePath, "col1,col2\nval1,val2\n");
+        $expectedSha256 = hash_file('sha256', $filePath);
+
+        $existingMedia = new MediaObject();
+        $existingMedia->setSha256($expectedSha256);
+
+        $mediaRepo = $this->createMock(EntityRepository::class);
+        $mediaRepo->expects($this->once())
+            ->method('findOneBy')
+            ->with(['sha256' => $expectedSha256])
+            ->willReturn($existingMedia);
+
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->expects($this->once())
+            ->method('getRepository')
+            ->with(MediaObject::class)
+            ->willReturn($mediaRepo);
+
+        $facade = new GenericDataImportFacade(
+            processors: [$this->processor],
+            readers: [$this->reader],
+            errorWriter: $this->errorWriter,
+            mediaPersister: $this->mediaPersister,
+            entityManager: $entityManager,
+        );
+
+        $input = new GenericImportInputDto(filePath: $filePath, type: 'animal', user: $this->user);
+        $result = $facade->import($input);
+
+        $this->assertFalse($result->success);
+        $this->assertSame(0, $result->totalRows);
+        $this->assertSame(0, $result->importedCount);
+        $this->assertStringContainsString('has already been imported', $result->error ?? '');
+        $this->assertStringContainsString($expectedSha256, $result->error ?? '');
+    }
+
     public function testImportUnsupportedFileFormat(): void
     {
-        $filePath = $this->tempDir . '/test.unknown';
+        $filePath = $this->tempDir.'/test.unknown';
         touch($filePath);
 
         $input = new GenericImportInputDto(filePath: $filePath, type: 'animal', user: $this->user);
@@ -99,7 +139,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportUnsupportedProcessorType(): void
     {
-        $filePath = $this->tempDir . '/test.csv';
+        $filePath = $this->tempDir.'/test.csv';
         touch($filePath);
 
         $input = new GenericImportInputDto(filePath: $filePath, type: 'unsupported_type', user: $this->user);
@@ -126,7 +166,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportHeaderReadException(): void
     {
-        $filePath = $this->tempDir . '/corrupt.csv';
+        $filePath = $this->tempDir.'/corrupt.csv';
         touch($filePath);
 
         $input = new GenericImportInputDto(filePath: $filePath, type: 'animal', user: $this->user);
@@ -154,7 +194,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportMissingHeaders(): void
     {
-        $filePath = $this->tempDir . '/file.csv';
+        $filePath = $this->tempDir.'/file.csv';
         touch($filePath);
         $input = new GenericImportInputDto(filePath: $filePath, type: 'animal', user: $this->user);
 
@@ -173,7 +213,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportEmptyFile(): void
     {
-        $filePath = $this->tempDir . '/empty.csv';
+        $filePath = $this->tempDir.'/empty.csv';
         touch($filePath);
         $input = new GenericImportInputDto(filePath: $filePath, type: 'animal', user: $this->user);
 
@@ -192,7 +232,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportSuccessful(): void
     {
-        $filePath = $this->tempDir . '/animals.csv';
+        $filePath = $this->tempDir.'/animals.csv';
         touch($filePath);
         $input = new GenericImportInputDto(
             filePath: $filePath,
@@ -202,13 +242,14 @@ class GenericDataImportFacadeTest extends TestCase
 
         $reader = $this->createStub(FileReaderInterface::class);
         $reader->method('supports')->willReturn(true);
+        $reader->method('getMimeType')->willReturn('text/csv');
         $reader->method('getHeaders')->willReturn(['location', 'language', 'animal', 'chronology_lower', 'chronology_upper']);
         $reader->method('countRows')->willReturn(2);
 
         $processor = $this->createMock(EntityImportProcessorInterface::class);
         $processor->method('supports')->willReturn(true);
         $processor->method('getRequiredHeaders')->willReturn(['location', 'language', 'animal']);
-        $processor->method('getEntityLabel')->willReturn('Animal');
+        $processor->method('getDatasetLabel')->willReturn('written source animal citations');
 
         $dummyEntity1 = new \stdClass();
         $dummyEntity2 = new \stdClass();
@@ -247,7 +288,7 @@ class GenericDataImportFacadeTest extends TestCase
         $mediaPersister = $this->createMock(ImportMediaPersisterInterface::class);
         $mediaPersister->expects($this->once())
             ->method('createMediaObject')
-            ->with($filePath, $this->user, 'Raw data imported Animal', 'raw data')
+            ->with($filePath, $this->user, 'Raw data imported: written source animal citations', 'raw data', $this->anything(), 'text/csv')
             ->willReturn($mediaObject);
 
         $errorWriter = $this->createMock(ImportErrorWriterInterface::class);
@@ -278,7 +319,7 @@ class GenericDataImportFacadeTest extends TestCase
 
     public function testImportValidationFailureExhaustiveErrorCollection(): void
     {
-        $filePath = $this->tempDir . '/animals.csv';
+        $filePath = $this->tempDir.'/animals.csv';
         touch($filePath);
         $input = new GenericImportInputDto(
             filePath: $filePath,
@@ -333,11 +374,11 @@ class GenericDataImportFacadeTest extends TestCase
                 $filePath,
                 ['location', 'language', 'animal'],
                 $this->callback(function ($failedRows) {
-                    return count($failedRows) === 2
-                        && $failedRows[0]['location'] === 'UnknownLoc'
-                        && $failedRows[0]['error'] === 'Unknown location "UnknownLoc"'
-                        && $failedRows[1]['language'] === 'invalid_lang'
-                        && $failedRows[1]['error'] === 'Unknown language "invalid_lang"';
+                    return 2 === count($failedRows)
+                        && 'UnknownLoc' === $failedRows[0]['location']
+                        && 'Unknown location "UnknownLoc"' === $failedRows[0]['error']
+                        && 'invalid_lang' === $failedRows[1]['language']
+                        && 'Unknown language "invalid_lang"' === $failedRows[1]['error'];
                 })
             )
             ->willReturn('/var/imports/errors/20261117_112500_animals_errors.csv');

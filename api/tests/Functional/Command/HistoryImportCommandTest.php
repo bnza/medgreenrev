@@ -95,12 +95,13 @@ class HistoryImportCommandTest extends KernelTestCase
         $newCount = $this->entityManager->getRepository(Animal::class)->count([]);
         $this->assertSame($initialCount + 2, $newCount);
 
-        // Verify MediaObject description
+        // Verify MediaObject description and MIME type
         $mediaObject = $this->entityManager->getRepository(MediaObject::class)->findOneBy(
-            ['description' => 'Raw data imported Animal'],
+            ['description' => 'Raw data imported: written source animal citations'],
             ['id' => 'DESC']
         );
         $this->assertNotNull($mediaObject);
+        $this->assertSame('text/csv', $mediaObject->getMimeType());
         $this->assertSame($this->userEmail, $mediaObject->getUploadedBy()?->getEmail());
 
         // Verify imported animals reference the MediaObject
@@ -112,6 +113,45 @@ class HistoryImportCommandTest extends KernelTestCase
             $this->assertNotNull($importedAnimal->getMediaObject());
             $this->assertSame($mediaObject->getId(), $importedAnimal->getMediaObject()->getId());
         }
+    }
+
+    public function testImportAlreadyImportedFileFails(): void
+    {
+        $csvFile = $this->tempDir . '/duplicate_animals.csv';
+        $content = "location,language,animal,english_name,chronology_lower,chronology_upper,reference,notes\n" .
+            sprintf("%s,%s,wild boar,wild boar,1200,1250,\"ACA, Reg. 20, fol. 10r\",Wild boar citation\n", $this->locationValue, $this->languageValue);
+        file_put_contents($csvFile, $content);
+
+        // 1. First import should succeed
+        $firstExitCode = $this->commandTester->execute([
+            'file' => $csvFile,
+            '--type' => 'animal',
+            '--user' => $this->userEmail,
+        ], [
+            'interactive' => false,
+        ]);
+
+        $this->assertSame(0, $firstExitCode);
+        $countAfterFirst = $this->entityManager->getRepository(Animal::class)->count([]);
+
+        // 2. Second import of the identical file must fail
+        $secondExitCode = $this->commandTester->execute([
+            'file' => $csvFile,
+            '--type' => 'animal',
+            '--user' => $this->userEmail,
+        ], [
+            'interactive' => false,
+        ]);
+
+        $secondOutput = $this->commandTester->getDisplay();
+
+        $this->assertSame(1, $secondExitCode);
+        $this->assertStringContainsString('Import failed!', $secondOutput);
+        $this->assertStringContainsString('has already been imported', $secondOutput);
+
+        // Verify no duplicate records were inserted
+        $countAfterSecond = $this->entityManager->getRepository(Animal::class)->count([]);
+        $this->assertSame($countAfterFirst, $countAfterSecond);
     }
 
     public function testSuccessfulPlantImportNonInteractive(): void
@@ -140,12 +180,13 @@ class HistoryImportCommandTest extends KernelTestCase
         $newCount = $this->entityManager->getRepository(Plant::class)->count([]);
         $this->assertSame($initialCount + 2, $newCount);
 
-        // Verify MediaObject description
+        // Verify MediaObject description and MIME type
         $mediaObject = $this->entityManager->getRepository(MediaObject::class)->findOneBy(
-            ['description' => 'Raw data imported Plant'],
+            ['description' => 'Raw data imported: written source plant citations'],
             ['id' => 'DESC']
         );
         $this->assertNotNull($mediaObject);
+        $this->assertSame('text/csv', $mediaObject->getMimeType());
 
         // Verify imported plants reference the MediaObject
         $importedPlants = $this->entityManager->getRepository(Plant::class)->findBy([

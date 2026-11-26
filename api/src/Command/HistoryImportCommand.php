@@ -142,6 +142,10 @@ class HistoryImportCommand extends Command
 
         $io->error('Import failed! The transaction has been rolled back and 0 records were inserted.');
 
+        if ($result->error && empty($result->validationErrors)) {
+            $io->error($result->error);
+        }
+
         if ($result->errorFilePath) {
             $io->warning(sprintf('An error CSV file has been generated at: %s', $result->errorFilePath));
         }

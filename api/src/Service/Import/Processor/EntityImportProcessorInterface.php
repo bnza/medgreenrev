@@ -9,9 +9,9 @@ interface EntityImportProcessorInterface
     public function supports(string $type): bool;
 
     /**
-     * @return string Human-readable label for the entity type (e.g. 'Animal', 'Plant') used in MediaObject description
+     * @return string Human-readable label for the dataset (e.g. 'written source animal citations', 'written source plant citations') used in MediaObject description
      */
-    public function getEntityLabel(string $type): string;
+    public function getDatasetLabel(string $type): string;
 
     /**
      * @return list<string> Required header field names for validation

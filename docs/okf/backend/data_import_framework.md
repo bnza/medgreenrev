@@ -63,7 +63,7 @@ The generalized framework resides in [api/src/Service/Import/](../../../api/src/
 ### 3. Pluggable Domain Processors (`EntityImportProcessorInterface`)
 * **Contract:** [api/src/Service/Import/Processor/EntityImportProcessorInterface.php](../../../api/src/Service/Import/Processor/EntityImportProcessorInterface.php)
   * `supports(string $type): bool`: Determines which data types the processor handles.
-  * `getEntityLabel(string $type): string`: Human-readable label (e.g., `'Animal'`, `'Plant'`) used in generated `MediaObject` descriptions.
+  * `getDatasetLabel(string $type): string`: Human-readable label (e.g., `'written source animal citations'`, `'written source plant citations'`) used in generated `MediaObject` descriptions.
   * `getRequiredHeaders(string $type): array`: Validates the presence of mandatory columns before row parsing starts.
   * `processRow(int $rowNumber, array $rowData, ImportInputDtoInterface $input): RowProcessResult`: Maps row fields, resolves foreign references, and validates constraints.
 * **`RowProcessResult`:** [api/src/Service/Import/Processor/RowProcessResult.php](../../../api/src/Service/Import/Processor/RowProcessResult.php)
@@ -80,7 +80,7 @@ The generalized framework resides in [api/src/Service/Import/](../../../api/src/
 * **`ImportMediaPersister`:** [api/src/Service/Import/Media/ImportMediaPersister.php](../../../api/src/Service/Import/Media/ImportMediaPersister.php)
   * Prepares `MediaObject` instances with `createMediaObject` to be persisted and flushed within the main entity transaction.
   * Resolves vocabulary type `@voc__media_object__data_raw` (group `data`, value `raw data`).
-  * Assigns standardized description: `Raw data imported <Entity>` (e.g., `Raw data imported Animal`, `Raw data imported Plant`).
+  * Assigns standardized description: `Raw data imported: %s` (e.g., `Raw data imported: written source animal citations`, `Raw data imported: written source plant citations`).
   * Computes SHA256 checksum and binds `$uploadedBy` to the importing `User`.
   * Provides `cleanup(?MediaObject $mediaObject, ?string $tempFilePath)` to remove temporary files and orphaned destination files if the database transaction aborts.
 
@@ -98,6 +98,7 @@ The generalized framework resides in [api/src/Service/Import/](../../../api/src/
 * **Execution Flow:**
   1. **Pre-Flight Validation:**
      * Verifies file existence and read permissions on disk (returns failure with `$error` if missing or unreadable).
+     * Computes the file's SHA256 checksum and queries `MediaObject` repository (`media_objects` table) to prevent duplicate imports (returns failure with `$error` if the file has already been imported).
      * Identifies the supporting `FileReaderInterface` (returns failure with `$error` if format is unsupported).
      * Identifies the supporting `EntityImportProcessorInterface` (returns failure with `$error` if entity domain type is unrecognized).
   2. **Header & Data Pre-Checks:**
@@ -136,10 +137,11 @@ The historical domain pipeline is located in [api/src/Service/History/Import/](.
 
 ## System Invariants & Policies
 
-1. **Atomic Transaction Boundary:** Either 100% of rows are persisted and the file is archived as a `MediaObject`, or 0 rows enter the database and an error CSV is generated.
-2. **Exhaustive Error Collection:** Importers must never stop at the first failing row. All rows across the entire file are evaluated to provide complete feedback in the error CSV.
-3. **Auditability & Provenance:** Every successfully imported file is linked to a `MediaObject` record containing the creator's user ID, upload timestamp, SHA256 hash, and raw data vocabulary classification.
-4. **Transport Agnosticism:** The core service layer has zero coupling to Symfony Console or HTTP requests, making it directly consumable by CLI commands, Symfony Messenger background workers, or API Platform controllers.
+1. **Idempotence & Duplicate Prevention:** An identical file cannot be imported more than once. The framework verifies the file's SHA256 checksum against existing `MediaObject` records before initiating any row processing or database operations.
+2. **Atomic Transaction Boundary:** Either 100% of rows are persisted and the file is archived as a `MediaObject`, or 0 rows enter the database and an error CSV is generated.
+3. **Exhaustive Error Collection:** Importers must never stop at the first failing row. All rows across the entire file are evaluated to provide complete feedback in the error CSV.
+4. **Auditability & Provenance:** Every successfully imported file is linked to a `MediaObject` record containing the creator's user ID, upload timestamp, SHA256 hash, and raw data vocabulary classification.
+5. **Transport Agnosticism:** The core service layer has zero coupling to Symfony Console or HTTP requests, making it directly consumable by CLI commands, Symfony Messenger background workers, or API Platform controllers.
 
 ---
 

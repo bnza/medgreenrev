@@ -14,8 +14,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class HistoryEntityImportProcessor implements EntityImportProcessorInterface
 {
-    public const TYPE_ANIMAL = 'animal';
-    public const TYPE_PLANT = 'plant';
+    public const string TYPE_ANIMAL = 'animal';
+    public const string TYPE_PLANT = 'plant';
 
     /** @var array<string, Location|null> */
     private array $locationCache = [];
@@ -34,14 +34,14 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
         return in_array(strtolower($type), [self::TYPE_ANIMAL, self::TYPE_PLANT], true);
     }
 
-    public function getEntityLabel(string $type): string
+    public function getDatasetLabel(string $type): string
     {
-        return strtolower($type) === self::TYPE_PLANT ? 'Plant' : 'Animal';
+        return self::TYPE_PLANT === strtolower($type) ? 'written source plant citations' : 'written source animal citations';
     }
 
     public function getRequiredHeaders(string $type): array
     {
-        $entityField = strtolower($type) === self::TYPE_PLANT ? self::TYPE_PLANT : self::TYPE_ANIMAL;
+        $entityField = self::TYPE_PLANT === strtolower($type) ? self::TYPE_PLANT : self::TYPE_ANIMAL;
 
         return ['location', 'language', $entityField, 'english_name', 'chronology_lower', 'chronology_upper', 'reference'];
     }
@@ -94,7 +94,7 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
         }
 
         // 4. Entity-specific target field
-        $entityField = $type === self::TYPE_PLANT ? 'plant' : 'animal';
+        $entityField = self::TYPE_PLANT === $type ? 'plant' : 'animal';
         $entityValue = isset($rowData[$entityField]) ? trim((string) $rowData[$entityField]) : '';
         if ('' === $entityValue) {
             $errors[] = sprintf('%s: This value should not be blank.', $entityField);
@@ -116,7 +116,7 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
         $notes = isset($rowData['notes']) && '' !== trim((string) $rowData['notes']) ? trim((string) $rowData['notes']) : null;
 
         // Instantiate entity
-        $entity = $type === self::TYPE_PLANT ? new Plant() : new Animal();
+        $entity = self::TYPE_PLANT === $type ? new Plant() : new Animal();
 
         if (null !== $location) {
             $entity->setLocation($location);
@@ -142,7 +142,7 @@ class HistoryEntityImportProcessor implements EntityImportProcessorInterface
 
         $entity->setCreatedBy($input->getUser());
 
-        if ($type === self::TYPE_PLANT) {
+        if (self::TYPE_PLANT === $type) {
             if ('' !== $entityValue) {
                 $entity->setPlant($entityValue);
             }

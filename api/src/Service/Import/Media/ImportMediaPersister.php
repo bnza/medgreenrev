@@ -6,7 +6,6 @@ use App\Entity\Auth\User;
 use App\Entity\Data\MediaObject;
 use App\Entity\Vocabulary\MediaObject\Type;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Storage\StorageInterface;
 
 class ImportMediaPersister implements ImportMediaPersisterInterface
@@ -23,6 +22,7 @@ class ImportMediaPersister implements ImportMediaPersisterInterface
         string $description,
         string $mediaType = 'raw data',
         ?string &$tempFilePath = null,
+        ?string $mimeType = null,
     ): MediaObject {
         if (!file_exists($filePath) || !is_readable($filePath)) {
             throw new \InvalidArgumentException(sprintf('File "%s" does not exist or is not readable.', $filePath));
@@ -42,18 +42,24 @@ class ImportMediaPersister implements ImportMediaPersisterInterface
 
         // Create a temporary copy for VichUploader to move, preserving the original file on disk
         $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-        $tempFilePath = sys_get_temp_dir() . '/import_media_' . uniqid('', true) . ($extension ? '.' . $extension : '');
+        $tempFilePath = sys_get_temp_dir().'/import_media_'.uniqid('', true).($extension ? '.'.$extension : '');
         if (!copy($filePath, $tempFilePath)) {
             throw new \RuntimeException(sprintf('Failed to create temporary copy of "%s".', $filePath));
         }
 
         $originalName = basename($filePath);
-        $mimeType = @mime_content_type($filePath) ?: 'text/csv';
-        $uploadedFile = new UploadedFile($tempFilePath, $originalName, $mimeType, null, true);
+        $resolvedMimeType = $mimeType ?? (@mime_content_type($filePath) ?: 'application/octet-stream');
+        $uploadedFile = new ExplicitMimeTypeUploadedFile(
+            path: $tempFilePath,
+            originalName: $originalName,
+            explicitMimeType: $resolvedMimeType,
+            test: true,
+        );
 
         $mediaObject = new MediaObject();
         $mediaObject->setType($type);
         $mediaObject->setFile($uploadedFile);
+        $mediaObject->setMimeType($resolvedMimeType);
         $mediaObject->setDescription($description);
         $mediaObject->setUploadedBy($uploadedBy);
         $mediaObject->setUploadDate(new \DateTimeImmutable());
@@ -68,11 +74,12 @@ class ImportMediaPersister implements ImportMediaPersisterInterface
         User $uploadedBy,
         string $description,
         string $mediaType = 'raw data',
+        ?string $mimeType = null,
     ): MediaObject {
         $tempFilePath = null;
         $mediaObject = null;
         try {
-            $mediaObject = $this->createMediaObject($filePath, $uploadedBy, $description, $mediaType, $tempFilePath);
+            $mediaObject = $this->createMediaObject($filePath, $uploadedBy, $description, $mediaType, $tempFilePath, $mimeType);
             $this->entityManager->persist($mediaObject);
             $this->entityManager->flush();
 

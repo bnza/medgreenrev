@@ -55,7 +55,9 @@ docker compose exec php bin/console app:history:import <file> [options]
 
 ```mermaid
 graph TD
-    Start[Execute app:history:import] --> ValidateHeaders{Check Required Headers}
+    Start[Execute app:history:import] --> CheckDuplicate{Check SHA256 in MediaObject}
+    CheckDuplicate -->|Already Imported| AbortDup[Abort Command: Already Imported & Exit Code 1]
+    CheckDuplicate -->|New File| ValidateHeaders{Check Required Headers}
     ValidateHeaders -->|Missing Headers| Abort[Abort Command & Exit Code 1]
     ValidateHeaders -->|Headers OK| ParseRows[Stream Rows & Validate Constraints]
     ParseRows --> CheckErrors{Any Invalid Rows?}
@@ -94,13 +96,19 @@ docker compose exec php bin/console app:history:import var/data/plants.csv \
 * **Database State:** All parsed domain entities and the source `MediaObject` are committed atomically within a single database transaction.
 * **MediaObject Archival & Provenance Linking:** The imported file is registered as a `MediaObject` with:
   * Vocabulary Type: `raw data` (`@voc__media_object__data_raw`).
-  * Description: `Raw data imported Animal` or `Raw data imported Plant`.
+  * Description: `Raw data imported: written source animal citations` or `Raw data imported: written source plant citations`.
   * Checksum: Calculated SHA256.
   * Uploaded By: The specified `User`.
   * Entity References: Every imported row record links to the `MediaObject` via `media_object_id`.
 * **Exit Code:** `0` (Success).
 
-### 2. Failure Scenario (Validation or Reference Errors)
+### 2. Duplicate File Scenario (Already Imported)
+* **Pre-Flight Hash Check:** The importer computes the SHA256 checksum of the file before any parsing or database operations and matches it against `data.media_objects`.
+* **Database State:** 0 operations executed (zero database writes).
+* **Console Output:** Renders an error indicating that the file has already been imported with its SHA256 checksum.
+* **Exit Code:** `1` (Failure).
+
+### 3. Failure Scenario (Validation or Reference Errors)
 * **Exhaustive Evaluation:** The command processes all rows through to the end of the file, collecting all validation errors rather than aborting at the first failure.
 * **Database State:** Full transaction rollback (0 database rows inserted).
 * **Error CSV Generation:** An error CSV file is written to `var/imports/errors/<timestamp>_<basename>_errors.csv`.

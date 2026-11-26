@@ -6,6 +6,8 @@ interface FileReaderInterface
 {
     public function supports(string $filePath): bool;
 
+    public function getMimeType(): string;
+
     /**
      * @return \Generator<int, array<string, mixed>> Yields 1-based row number and associative row data
      */

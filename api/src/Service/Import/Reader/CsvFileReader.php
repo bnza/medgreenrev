@@ -11,6 +11,11 @@ class CsvFileReader implements FileReaderInterface
         return 'csv' === $extension;
     }
 
+    public function getMimeType(): string
+    {
+        return 'text/csv';
+    }
+
     public function detectDelimiter(string $filePath): string
     {
         $handle = fopen($filePath, 'r');

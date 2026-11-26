@@ -4,6 +4,7 @@ namespace App\Service\Import;
 
 use App\Dto\Input\ImportInputDtoInterface;
 use App\Dto\Output\ImportResultDto;
+use App\Entity\Data\MediaObject;
 use App\Service\Import\Media\ImportMediaPersisterInterface;
 use App\Service\Import\Processor\EntityImportProcessorInterface;
 use App\Service\Import\Progress\ImportProgressReporterInterface;
@@ -73,7 +74,36 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
             return $result;
         }
 
-        // 2. Resolve File Reader
+        // 2. Verify File Has Not Already Been Imported (SHA-256 Check in MediaObject)
+        $sha256 = hash_file('sha256', $filePath);
+        if (false === $sha256) {
+            $errorMsg = sprintf('Failed to compute SHA-256 checksum for "%s".', $filePath);
+            $result = new ImportResultDto(
+                success: false,
+                totalRows: 0,
+                importedCount: 0,
+                error: $errorMsg,
+            );
+            $reporter->onFinish($result);
+
+            return $result;
+        }
+
+        $existingMedia = $this->entityManager->getRepository(MediaObject::class)?->findOneBy(['sha256' => $sha256]);
+        if (null !== $existingMedia) {
+            $errorMsg = sprintf('File "%s" has already been imported (SHA-256: %s).', basename($filePath), $sha256);
+            $result = new ImportResultDto(
+                success: false,
+                totalRows: 0,
+                importedCount: 0,
+                error: $errorMsg,
+            );
+            $reporter->onFinish($result);
+
+            return $result;
+        }
+
+        // 3. Resolve File Reader
         $reader = $this->resolveReader($filePath);
         if (null === $reader) {
             $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
@@ -92,7 +122,7 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
             return $result;
         }
 
-        // 3. Resolve Entity Processor
+        // 4. Resolve Entity Processor
         $processor = $this->resolveProcessor($type);
         if (null === $processor) {
             $errorMsg = sprintf('Unsupported import type "%s". No matching entity processor found.', $type);
@@ -107,7 +137,7 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
             return $result;
         }
 
-        // 4. Verify Required Headers
+        // 5. Verify Required Headers
         try {
             $fileHeaders = $reader->getHeaders($filePath);
         } catch (\Throwable $e) {
@@ -140,7 +170,7 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
             return $result;
         }
 
-        // 5. Count Total Data Rows
+        // 6. Count Total Data Rows
         try {
             $totalRows = $reader->countRows($filePath);
         } catch (\Throwable $e) {
@@ -172,7 +202,7 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
 
         $reporter->onStart($totalRows);
 
-        // 6. Exhaustive Validation & Entity Mapping
+        // 7. Exhaustive Validation & Entity Mapping
         try {
             $validEntities = [];
             $validationErrors = [];
@@ -198,7 +228,7 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
                 }
             }
 
-            // 7. Handle Validation Failure (Atomic Rollback & Error CSV Generation)
+            // 8. Handle Validation Failure (Atomic Rollback & Error CSV Generation)
             if (!empty($validationErrors) || !empty($failedRows)) {
                 $errorFilePath = $this->errorWriter->writeErrors($filePath, $fileHeaders, $failedRows);
 
@@ -217,19 +247,20 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
                 return $result;
             }
 
-            // 8. Handle Success (Commit Transaction and Persist MediaObject)
+            // 9. Handle Success (Commit Transaction and Persist MediaObject)
             $tempFilePath = null;
             $mediaObject = null;
             try {
-                $this->entityManager->wrapInTransaction(function () use ($validEntities, $filePath, $input, $processor, $type, &$mediaObject, &$tempFilePath) {
-                    $entityLabel = $processor->getEntityLabel($type);
-                    $mediaDescription = sprintf('Raw data imported %s', $entityLabel);
+                $this->entityManager->wrapInTransaction(function () use ($validEntities, $filePath, $input, $processor, $reader, $type, &$mediaObject, &$tempFilePath) {
+                    $datasetLabel = $processor->getDatasetLabel($type);
+                    $mediaDescription = sprintf('Raw data imported: %s', $datasetLabel);
                     $mediaObject = $this->mediaPersister->createMediaObject(
                         $filePath,
                         $input->getUser(),
                         $mediaDescription,
                         'raw data',
                         $tempFilePath,
+                        $reader->getMimeType(),
                     );
                     $this->entityManager->persist($mediaObject);
 

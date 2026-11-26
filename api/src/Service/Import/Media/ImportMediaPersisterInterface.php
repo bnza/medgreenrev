@@ -13,6 +13,7 @@ interface ImportMediaPersisterInterface
         string $description,
         string $mediaType = 'raw data',
         ?string &$tempFilePath = null,
+        ?string $mimeType = null,
     ): MediaObject;
 
     public function persistImportedFile(
@@ -20,6 +21,7 @@ interface ImportMediaPersisterInterface
         User $uploadedBy,
         string $description,
         string $mediaType = 'raw data',
+        ?string $mimeType = null,
     ): MediaObject;
 
     public function cleanup(?MediaObject $mediaObject, ?string $tempFilePath = null): void;
