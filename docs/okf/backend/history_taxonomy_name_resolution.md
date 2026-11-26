@@ -21,7 +21,7 @@ This architecture replaces the earlier multi-tier Spanish resolver views from `V
 
 1. **Decoupled Historical Term and Taxonomy Reference**:
    - `plant` / `animal`: The verbatim citation from the historical source. Distinct historical terms are accessible via `/api/list/history/plant-terms` and `/api/list/history/animal-terms` for picklist autocomplete.
-   - `english_name`: Standardized English common name referencing the taxonomy. Suggestions are provided via `/api/list/history/plants` and `/api/list/history/animals`.
+   - `english_name`: Standardized English common name referencing the taxonomy. For consistency in plant entries, use the fruit/crop name rather than the tree/cultivation term where possible (e.g. `grapevine` not `vineyard`, `fig` not `fig tree`). Suggestions are provided via `/api/list/history/plants` and `/api/list/history/animals`.
 2. **Strict 1:1 Cardinality**:
    - Because `english_name` is unique in `vocabulary.botany_taxonomy` and `vocabulary.zoo_taxonomy`, `LEFT JOIN` on `english_name` guarantees exact 1:1 cardinality in presentation views (`vw_history_plant_taxonomies`, `vw_history_animal_taxonomies`).
    - If an uncatalogued `english_name` is entered, the record persists cleanly while taxonomy attributes in the embedded `flat` view remain `NULL`.

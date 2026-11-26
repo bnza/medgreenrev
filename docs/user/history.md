@@ -85,7 +85,7 @@ There are two ways to create a new plant history entry:
 3. Fill in the form:
     - Select the **Location** from the autocomplete dropdown list.
     - Enter the **Plant** field with the exact historical term as it appears in the written source (e.g. archaic Spanish, Catalan, Latin, Arabic such as `vid`, `trigo`, `acanto`, `olivo`). Autocomplete suggestions are provided based on previously recorded terms.
-    - Select or enter the **English Name** field for taxonomy lookup (e.g. `grapevine`, `wheat`, `bear's breeches`, `olive`). The dropdown provides live autocomplete assistance linked to modern scientific taxonomy (genus, family, class, scientific name).
+    - Select or enter the **English Name** field for taxonomy lookup (e.g. `grapevine`, `wheat`, `bear's breeches`, `olive`). The dropdown provides live autocomplete assistance linked to modern scientific taxonomy (genus, family, class, scientific name). For consistency, use the fruit/plant name rather than the tree/cultivation term where possible (e.g. `grapevine` not `vineyard`, `fig` not `fig tree`).
     - Provide the remaining required fields and any validation rules (Language, Chronology Lower/Upper, Reference, and Notes).
 4. Click the **Submit** button.
 
@@ -127,7 +127,7 @@ The input file must be a CSV file with comma (`,`) or semicolon (`;`) delimiters
 | `location` | Historical location name. Must exactly match an existing location in the system. Any new location must be entered into the system before starting the import procedure. | `Tortosa`, `Almería`, `Gandesa`, `Toledo` |
 | `language` | Source manuscript language. Must match an existing language in the system. | `latin`, `castilian`, `catalan`, `arabic` |
 | `animal` / `plant` | The historical written source term (use the column name matching `--type`). Represents the verbatim citation (e.g. Latin, Arabic, archaic Spanish/Catalan). | `horse`, `caballo`, `dromedarius`, `oveja` (animals)<br>`grapevine`, `olivo`, `acanto`, `trigo` (plants) |
-| `english_name` | The English reference name used for scientific taxonomy lookup. Names without a correspondence in the taxonomy table are permitted, but the record will not be linked to the scientific taxonomy. Corresponding taxonomy entries can be added at any time to automatically establish the link. | `horse`, `camel`, `sheep` (animals)<br>`grapevine`, `olive`, `bear's breeches`, `wheat` (plants) |
+| `english_name` | The English reference name used for scientific taxonomy lookup. For consistency, use the fruit/crop name rather than the tree/cultivation term where possible (e.g. `grapevine` rather than `vineyard`, `fig` rather than `fig tree`). Names without a correspondence in the taxonomy table are permitted, but the record will not be linked to the scientific taxonomy. Corresponding taxonomy entries can be added at any time to automatically establish the link. | `horse`, `camel`, `sheep` (animals)<br>`grapevine`, `olive`, `bear's breeches`, `wheat` (plants) |
 | `chronology_lower` | Starting historical year (integer). | `1150` |
 | `chronology_upper` | Ending historical year (integer, must be $\ge$ `chronology_lower`). | `1200` |
 | `reference` | Archival, bibliographic, or manuscript source citation. | `Cartulary of Tortosa fol. 12r` |
@@ -141,7 +141,7 @@ Pre-formatted CSV templates with the required column headers are available:
 ### <a name="import-validation-rules"></a>Validation Rules
 To ensure data quality, the system checks each row during the import:
 - **Locations & Languages:** Every `location` and `language` in your file must match an existing entry in the system vocabularies. Any new locations or languages must be registered in the system before running the import.
-- **Historical Terms & Taxonomy References:** The `animal` / `plant` column records the verbatim textual citation. The `english_name` column is mandatory; values without a matching taxonomy entry are allowed, but the record will remain unlinked until the corresponding taxonomy entry is added.
+- **Historical Terms & Taxonomy References:** The `animal` / `plant` column records the verbatim textual citation. The `english_name` column is mandatory (for plants, use the fruit/crop name rather than the tree/cultivation designation where possible, such as `grapevine` not `vineyard`, `fig` not `fig tree`); values without a matching taxonomy entry are allowed, but the record will remain unlinked until the corresponding taxonomy entry is added.
 - **Chronological Range:** Years must be integers, and `chronology_upper` cannot be earlier than `chronology_lower`.
 - **Required Information:** All columns (except `notes`) are required and cannot be blank.
 - **Error Handling:** If any row in the file is invalid, no records are imported into the database. An error CSV file is generated in `var/imports/errors/` listing all problematic rows along with the reasons for each failure so you can correct them and retry.
