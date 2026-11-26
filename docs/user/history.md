@@ -124,10 +124,10 @@ The input file must be a CSV file with comma (`,`) or semicolon (`;`) delimiters
 
 | Column | Description | Example Values |
 | :--- | :--- | :--- |
-| `location` | Historical location name. Must match an existing location in the system. | `Tortosa`, `Almería`, `Gandesa`, `Toledo` |
+| `location` | Historical location name. Must exactly match an existing location in the system. Any new location must be entered into the system before starting the import procedure. | `Tortosa`, `Almería`, `Gandesa`, `Toledo` |
 | `language` | Source manuscript language. Must match an existing language in the system. | `latin`, `castilian`, `catalan`, `arabic` |
 | `animal` / `plant` | The historical written source term (use the column name matching `--type`). Represents the verbatim citation (e.g. Latin, Arabic, archaic Spanish/Catalan). | `horse`, `caballo`, `dromedarius`, `oveja` (animals)<br>`grapevine`, `olivo`, `acanto`, `trigo` (plants) |
-| `english_name` | The English reference name used for scientific taxonomy lookup. | `horse`, `camel`, `sheep` (animals)<br>`grapevine`, `olive`, `bear's breeches`, `wheat` (plants) |
+| `english_name` | The English reference name used for scientific taxonomy lookup. Names without a correspondence in the taxonomy table are permitted, but the record will not be linked to the scientific taxonomy. Corresponding taxonomy entries can be added at any time to automatically establish the link. | `horse`, `camel`, `sheep` (animals)<br>`grapevine`, `olive`, `bear's breeches`, `wheat` (plants) |
 | `chronology_lower` | Starting historical year (integer). | `1150` |
 | `chronology_upper` | Ending historical year (integer, must be $\ge$ `chronology_lower`). | `1200` |
 | `reference` | Archival, bibliographic, or manuscript source citation. | `Cartulary of Tortosa fol. 12r` |
@@ -140,8 +140,8 @@ Pre-formatted CSV templates with the required column headers are available:
 
 ### <a name="import-validation-rules"></a>Validation Rules
 To ensure data quality, the system checks each row during the import:
-- **Locations & Languages:** Every `location` and `language` in your file must match an existing entry in the system vocabularies.
-- **Historical Terms & Taxonomy References:** The `animal` / `plant` column records the verbatim textual citation. The `english_name` column is mandatory and must contain the English common name matching modern taxonomy definitions.
+- **Locations & Languages:** Every `location` and `language` in your file must match an existing entry in the system vocabularies. Any new locations or languages must be registered in the system before running the import.
+- **Historical Terms & Taxonomy References:** The `animal` / `plant` column records the verbatim textual citation. The `english_name` column is mandatory; values without a matching taxonomy entry are allowed, but the record will remain unlinked until the corresponding taxonomy entry is added.
 - **Chronological Range:** Years must be integers, and `chronology_upper` cannot be earlier than `chronology_lower`.
 - **Required Information:** All columns (except `notes`) are required and cannot be blank.
 - **Error Handling:** If any row in the file is invalid, no records are imported into the database. An error CSV file is generated in `var/imports/errors/` listing all problematic rows along with the reasons for each failure so you can correct them and retry.
