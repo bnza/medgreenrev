@@ -102,6 +102,16 @@ class HistoryImportCommandTest extends KernelTestCase
         );
         $this->assertNotNull($mediaObject);
         $this->assertSame($this->userEmail, $mediaObject->getUploadedBy()?->getEmail());
+
+        // Verify imported animals reference the MediaObject
+        $importedAnimals = $this->entityManager->getRepository(Animal::class)->findBy([
+            'reference' => ['ACA, Cancilleria, Reg. 12, fol. 3r', 'ARV, Bailia, leg. 4, fol. 1v'],
+        ]);
+        $this->assertCount(2, $importedAnimals);
+        foreach ($importedAnimals as $importedAnimal) {
+            $this->assertNotNull($importedAnimal->getMediaObject());
+            $this->assertSame($mediaObject->getId(), $importedAnimal->getMediaObject()->getId());
+        }
     }
 
     public function testSuccessfulPlantImportNonInteractive(): void
@@ -136,6 +146,16 @@ class HistoryImportCommandTest extends KernelTestCase
             ['id' => 'DESC']
         );
         $this->assertNotNull($mediaObject);
+
+        // Verify imported plants reference the MediaObject
+        $importedPlants = $this->entityManager->getRepository(Plant::class)->findBy([
+            'reference' => ['ACA, Cancilleria, Reg. 20, fol. 10r', 'AHPV, Protocolo 12, fol. 2r'],
+        ]);
+        $this->assertCount(2, $importedPlants);
+        foreach ($importedPlants as $importedPlant) {
+            $this->assertNotNull($importedPlant->getMediaObject());
+            $this->assertSame($mediaObject->getId(), $importedPlant->getMediaObject()->getId());
+        }
     }
 
     public function testValidationFailureRollbackAndErrorCsv(): void
@@ -214,5 +234,65 @@ class HistoryImportCommandTest extends KernelTestCase
 
         $this->assertSame(0, $exitCode, $output);
         $this->assertStringContainsString('Successfully imported 1 animal record(s)', $output);
+    }
+
+    public function testManualRecordHasNullMediaObject(): void
+    {
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $this->userEmail]);
+        $location = $this->entityManager->getRepository(Location::class)->findOneBy(['value' => $this->locationValue]);
+        $language = $this->entityManager->getRepository(Language::class)->findOneBy(['value' => $this->languageValue]);
+
+        $animal = new Animal();
+        $animal->setAnimal('manual_wolf');
+        $animal->setEnglishName('wolf');
+        $animal->setLocation($location);
+        $animal->setLanguage($language);
+        $animal->setChronologyLower(1000);
+        $animal->setChronologyUpper(1100);
+        $animal->setReference('Manual reference');
+        $animal->setCreatedBy($user);
+
+        $this->assertNull($animal->getMediaObject());
+
+        $this->entityManager->persist($animal);
+        $this->entityManager->flush();
+
+        $this->entityManager->refresh($animal);
+        $this->assertNull($animal->getMediaObject());
+    }
+
+    public function testDeletingMediaObjectSetsNullOnReferencingRecords(): void
+    {
+        $csvFile = $this->tempDir . '/delete_cascade_test.csv';
+        $content = "location,language,animal,english_name,chronology_lower,chronology_upper,reference,notes\n" .
+            sprintf("%s,%s,otter,otter,1200,1250,\"ACA, Reg. 99, fol. 1r\",River otter\n", $this->locationValue, $this->languageValue);
+        file_put_contents($csvFile, $content);
+
+        $exitCode = $this->commandTester->execute([
+            'file' => $csvFile,
+            '--type' => 'animal',
+            '--user' => $this->userEmail,
+        ], [
+            'interactive' => false,
+        ]);
+        $this->assertSame(0, $exitCode);
+
+        $animal = $this->entityManager->getRepository(Animal::class)->findOneBy([
+            'reference' => 'ACA, Reg. 99, fol. 1r',
+        ]);
+        $this->assertNotNull($animal);
+        $mediaObject = $animal->getMediaObject();
+        $this->assertNotNull($mediaObject);
+        $animalId = $animal->getId();
+
+        // Delete the MediaObject
+        $this->entityManager->remove($mediaObject);
+        $this->entityManager->flush();
+        $this->entityManager->clear();
+
+        // Reload animal and verify media_object is now null while animal record is preserved
+        $reloadedAnimal = $this->entityManager->getRepository(Animal::class)->find($animalId);
+        $this->assertNotNull($reloadedAnimal);
+        $this->assertNull($reloadedAnimal->getMediaObject());
     }
 }

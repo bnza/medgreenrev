@@ -61,9 +61,9 @@ graph TD
     ParseRows --> CheckErrors{Any Invalid Rows?}
     CheckErrors -->|Yes: Rollback| WriteErrCSV[Generate Error CSV in var/imports/errors/]
     WriteErrCSV --> PrintErr[Render Error Table & Exit Code 1]
-    CheckErrors -->|No: All Valid| CommitTx[Commit DB Transaction]
-    CommitTx --> SaveMedia[Create & Persist MediaObject]
-    SaveMedia --> PrintSuccess[Render Success Summary & Exit Code 0]
+    CheckErrors -->|No: All Valid| PrepareMedia[Prepare MediaObject & Link to Entities]
+    PrepareMedia --> CommitTx[Atomic Transaction: Flush MediaObject + Entities]
+    CommitTx --> PrintSuccess[Render Success Summary & Exit Code 0]
 ```
 
 ### 1. Interactive Execution Example
@@ -91,12 +91,13 @@ docker compose exec php bin/console app:history:import var/data/plants.csv \
 ## Outcome Scenarios & Error Resolution
 
 ### 1. Success Scenario (100% Valid Rows)
-* **Database State:** All rows are persisted and committed in a single transaction.
-* **MediaObject Archival:** The imported file is registered as a `MediaObject` with:
+* **Database State:** All parsed domain entities and the source `MediaObject` are committed atomically within a single database transaction.
+* **MediaObject Archival & Provenance Linking:** The imported file is registered as a `MediaObject` with:
   * Vocabulary Type: `raw data` (`@voc__media_object__data_raw`).
   * Description: `Raw data imported Animal` or `Raw data imported Plant`.
   * Checksum: Calculated SHA256.
   * Uploaded By: The specified `User`.
+  * Entity References: Every imported row record links to the `MediaObject` via `media_object_id`.
 * **Exit Code:** `0` (Success).
 
 ### 2. Failure Scenario (Validation or Reference Errors)

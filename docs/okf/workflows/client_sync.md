@@ -13,9 +13,10 @@ This workflow governs the synchronization between backend API resource changes a
 
 ## Synchronization Steps
 
-1. **Update API Resources & Types:** Run `pnpm generate:all` inside the `node` container (`docker compose run --rm node pnpm generate:all`) to regenerate `types/openapi.d.ts` and `app/utils/consts/resources.ts`.
-2. **Refresh Runtime OpenAPI Cache:** The PHP container caches the runtime OpenAPI document at startup; execute `docker compose restart php` whenever API Platform serialization or resource metadata changes.
-3. **Compile Static Output:** Generate compiled assets into `.output/public` via `docker compose run --rm node pnpm generate`, making them immediately available to Nginx at `/app/`.
+1. **Increment API Version:** Whenever changing resource schemas or serialization groups, increment the version in `api/config/packages/api_platform.yaml` (e.g. from `1.0.1` to `1.0.2`).
+2. **Update API Resources & Types:** Run `pnpm generate:all` inside the `node` container (`docker compose run --rm node pnpm generate:all`) to regenerate `types/openapi.d.ts` and `app/utils/consts/resources.ts`.
+3. **Refresh Runtime OpenAPI Cache:** The PHP container caches the runtime OpenAPI document at startup; execute `docker compose restart php` whenever API Platform serialization or resource metadata changes.
+4. **Compile Static Output:** Generate compiled assets into `.output/public` via `docker compose run --rm node pnpm generate`, making them immediately available to Nginx at `/app/`.
 
 ## Key Relationships
 

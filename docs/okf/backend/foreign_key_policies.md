@@ -42,6 +42,12 @@ Junction and extension tables automatically delete their rows when either associ
 * **User Site Privileges (`SiteUserPrivilege`):** Privilege grants use `ON DELETE CASCADE` on both `user_id` and `site_id`, so privileges are cleaned up when either the user or the site is deleted.
 * **Absolute Dating Table Inheritance:** Specialized absolute dating tables (`abs_dating_analysis_*`) use `ON DELETE CASCADE` on their primary key `id` linking to the parent `analysis_*` join table, mirroring class table inheritance cleanup.
 
+### 3. Provenance Disassociation (`SET NULL`)
+
+For observational domain entities imported from raw source files:
+
+* **Historical Biodiversity Records (`Animal.mediaObject`, `Plant.mediaObject`):** The foreign key `media_object_id` references `data.media_objects(id)` with `ON DELETE SET NULL`. If an archived source CSV file is removed, historical animal or plant records are preserved, and their `mediaObject` reference is automatically cleared to `NULL`.
+
 ---
 
 ## Entity Deletion Behavior Matrix
@@ -58,6 +64,7 @@ Junction and extension tables automatically delete their rows when either associ
 | **Analysis** | Subclasses of `BaseAnalysisJoin` (`AnalysisPottery`, `AnalysisIndividual`, `AnalysisSample`, etc.) | `CASCADE` | ✅ Join records deleted automatically when Analysis is deleted |
 | **Analysis Join** | Subclasses of `AbsDatingAnalysis*` (`abs_dating_*`) | `CASCADE` | ✅ Absolute dating child records deleted automatically with join row |
 | **MediaObject** | Subclasses of `BaseMediaObjectJoin` (`MediaObjectAnalysis`, `MediaObjectPottery`, etc.) | `CASCADE` | ✅ Media attachment joins deleted automatically |
+| **MediaObject** | `Animal.mediaObject`, `Plant.mediaObject` | `SET NULL` | 🔄 Media reference cleared to `NULL`, historical records preserved |
 | **Vocabulary Term** | All domain entity vocabulary lookup properties | `RESTRICT` | ⛔ Blocked while vocabulary item is referenced |
 
 ---

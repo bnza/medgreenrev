@@ -54,12 +54,14 @@ The historical subsystem in MEDGREENREV models historical written texts, modern 
   * Links `$location`, chronological `$chronologyLower`/`$chronologyUpper`, source manuscript `$language`, and textual `$reference`.
   * `$plant` represents the exact verbatim term in the source manuscript (free text, supported by picklist `/api/list/history/plant-terms`).
   * `$englishName` is a mandatory string attribute serving as a reference key for 1:1 join matching against botanical taxonomy (`Vocabulary\Botany\Taxonomy`).
+  * `$mediaObject`: Nullable ManyToOne relation referencing the archived source `MediaObject` created during bulk data import (`media_object_id`, `ON DELETE SET NULL`).
   * Read-only presentation models: `HistoryPlantView` (singular, `vw_history_plant_taxonomies`) and the picklist `List\HistoryPlantView` (`vw_history_plants`).
 * **`History\Animal`:** [api/src/Entity/Data/History/Animal.php](../../../../api/src/Entity/Data/History/Animal.php)
   * Records historical textual references to livestock, beasts of burden, hunting, or wild animals.
   * Links `$location`, chronological `$chronologyLower`/`$chronologyUpper`, source manuscript `$language`, and textual `$reference`.
   * `$animal` represents the exact verbatim term in the source manuscript (free text, supported by picklist `/api/list/history/animal-terms`).
   * `$englishName` is a mandatory string attribute serving as a reference key for 1:1 join matching against faunal taxonomy (`Vocabulary\Zoo\Taxonomy`).
+  * `$mediaObject`: Nullable ManyToOne relation referencing the archived source `MediaObject` created during bulk data import (`media_object_id`, `ON DELETE SET NULL`).
   * Read-only presentation models: `HistoryAnimalView` (singular, `vw_history_animal_taxonomies`) and the picklist `List\HistoryAnimalView` (`vw_history_animals`).
 
 ---

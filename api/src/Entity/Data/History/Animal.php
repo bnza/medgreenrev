@@ -19,6 +19,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Auth\User;
+use App\Entity\Data\MediaObject;
 use App\Entity\Data\View\HistoryAnimalView;
 use App\Entity\Vocabulary\History\Language;
 use App\Entity\Vocabulary\History\Location;
@@ -277,6 +278,14 @@ class Animal
     ])]
     private User $createdBy;
 
+    #[ORM\ManyToOne(targetEntity: MediaObject::class)]
+    #[ORM\JoinColumn(name: 'media_object_id', referencedColumnName: 'id', nullable: true, onDelete: 'SET NULL')]
+    #[Groups([
+        'history_animal:acl:read',
+        'history_animal:export',
+    ])]
+    private ?MediaObject $mediaObject = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -391,6 +400,18 @@ class Animal
     public function setCreatedBy(User $createdBy): Animal
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getMediaObject(): ?MediaObject
+    {
+        return $this->mediaObject;
+    }
+
+    public function setMediaObject(?MediaObject $mediaObject): self
+    {
+        $this->mediaObject = $mediaObject;
 
         return $this;
     }

@@ -19,6 +19,7 @@ use App\Doctrine\Filter\UnaccentedSearchFilter;
 use App\Dto\Output\WfsGetFeatureCollectionExtentMatched;
 use App\Dto\Output\WfsGetFeatureCollectionNumberMatched;
 use App\Entity\Auth\User;
+use App\Entity\Data\MediaObject;
 use App\Entity\Data\View\HistoryPlantView;
 use App\Entity\Vocabulary\History\Language;
 use App\Entity\Vocabulary\History\Location;
@@ -271,6 +272,14 @@ class Plant
     ])]
     private User $createdBy;
 
+    #[ORM\ManyToOne(targetEntity: MediaObject::class)]
+    #[ORM\JoinColumn(name: 'media_object_id', referencedColumnName: 'id', nullable: true, onDelete: 'SET NULL')]
+    #[Groups([
+        'history_plant:acl:read',
+        'history_plant:export',
+    ])]
+    private ?MediaObject $mediaObject = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -385,6 +394,18 @@ class Plant
     public function setCreatedBy(User $createdBy): Plant
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getMediaObject(): ?MediaObject
+    {
+        return $this->mediaObject;
+    }
+
+    public function setMediaObject(?MediaObject $mediaObject): self
+    {
+        $this->mediaObject = $mediaObject;
 
         return $this;
     }

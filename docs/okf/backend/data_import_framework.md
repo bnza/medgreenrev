@@ -30,9 +30,9 @@ graph TD
     HistoryProc --> LangRepo[LanguageRepository]
     HistoryProc --> Validator[Symfony Validator]
     Facade -->|On Validation Failure: Rollback| ErrWriter[ImportErrorWriterInterface / CsvImportErrorWriter]
-    Facade -->|On Full Success: Commits Tx| EM[EntityManager Transaction]
-    Facade -->|On Full Success: Registers File| MediaPersister[ImportMediaPersisterInterface]
+    Facade -->|On 100% Valid: Prepares File| MediaPersister[ImportMediaPersisterInterface]
     MediaPersister --> MediaObject["App\\Entity\\Data\\MediaObject"]
+    Facade -->|Assigns mediaObject & Commits| EM["wrapInTransaction: MediaObject + Valid Entities"]
 ```
 
 ---
@@ -75,13 +75,14 @@ The generalized framework resides in [api/src/Service/Import/](../../../api/src/
   * Generates error files under `var/imports/errors/<timestamp>_<basename>_errors.csv`.
   * Preserves all original source columns exactly as provided and appends an `error` column containing semicolon-delimited validation messages.
 
-### 5. MediaObject Archival (`ImportMediaPersisterInterface`)
+### 5. MediaObject Archival & Linking (`ImportMediaPersisterInterface`)
 * **Contract:** [api/src/Service/Import/Media/ImportMediaPersisterInterface.php](../../../api/src/Service/Import/Media/ImportMediaPersisterInterface.php)
 * **`ImportMediaPersister`:** [api/src/Service/Import/Media/ImportMediaPersister.php](../../../api/src/Service/Import/Media/ImportMediaPersister.php)
-  * Automatically archives imported source files upon successful completion.
+  * Prepares `MediaObject` instances with `createMediaObject` to be persisted and flushed within the main entity transaction.
   * Resolves vocabulary type `@voc__media_object__data_raw` (group `data`, value `raw data`).
   * Assigns standardized description: `Raw data imported <Entity>` (e.g., `Raw data imported Animal`, `Raw data imported Plant`).
   * Computes SHA256 checksum and binds `$uploadedBy` to the importing `User`.
+  * Provides `cleanup(?MediaObject $mediaObject, ?string $tempFilePath)` to remove temporary files and orphaned destination files if the database transaction aborts.
 
 ### 6. Decoupled Progress Reporting (`ImportProgressReporterInterface`)
 * **Contract:** [api/src/Service/Import/Progress/ImportProgressReporterInterface.php](../../../api/src/Service/Import/Progress/ImportProgressReporterInterface.php)
@@ -106,7 +107,7 @@ The generalized framework resides in [api/src/Service/Import/](../../../api/src/
   3. **Exhaustive Row Iteration:** Processes every row from start to finish without early termination, accumulating valid mapped entities and collecting all row failures.
   4. **Transactional Evaluation:**
      * **If validation errors exist:** Aborts database persistence (0 database rows inserted), generates the timestamped error CSV in `var/imports/errors/`, and returns a failure `ImportResultDto` populated with `$error`, `$validationErrors`, and `$errorFilePath`.
-     * **If 100% valid:** Executes `wrapInTransaction` to persist and flush all mapped entities, archives the source file via `ImportMediaPersister`, and returns a success `ImportResultDto`.
+     * **If 100% valid:** Prepares the `MediaObject` via `createMediaObject`, assigns it to each valid entity (`setMediaObject`), and persists and flushes all entities and the `MediaObject` atomically within `wrapInTransaction`. In case of transaction failure, `cleanup` removes any temporary or orphaned disk files.
      * **On unexpected runtime exception:** Catches any throwable during execution and returns a failure `ImportResultDto` reporting the exact exception message in `$error`.
 
 ---

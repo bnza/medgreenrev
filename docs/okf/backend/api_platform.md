@@ -16,6 +16,7 @@ The API layer in MEDGREENREV is built upon Symfony 7.x and API Platform 3.x, con
 ## Global Framework Configuration
 
 Configured in `api/config/packages/api_platform.yaml`:
+* **API Schema Versioning:** Every modification to API Platform resource endpoint schemas, property mappings, or serialization groups (`acl:read`, `create`, `update`, `export`) requires incrementing the version (minor or patch, e.g., `1.0.1` -> `1.0.2`) in `api/config/packages/api_platform.yaml` before regenerating client contracts.
 * **Serialization Formats:** Default format is JSON-LD / Hydra (`application/ld+json`). Patch operations use JSON Merge Patch (`application/merge-patch+json`). Geospatial endpoints dynamically support GeoJSON (`application/geo+json`) and JSON (`application/json`).
 * **Resource Scanning:** Mapped across entities in `src/Entity` and virtual resources in `src/Resource`.
 * **Pagination:** Standard pagination with client control (`pagination_client_items_per_page: true`).

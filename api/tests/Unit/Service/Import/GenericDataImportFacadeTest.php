@@ -240,13 +240,13 @@ class GenericDataImportFacadeTest extends TestCase
                 return $callback();
             });
 
-        $entityManager->expects($this->exactly(2))->method('persist');
+        $entityManager->expects($this->exactly(3))->method('persist');
         $entityManager->expects($this->once())->method('flush');
 
         $mediaObject = new MediaObject();
         $mediaPersister = $this->createMock(ImportMediaPersisterInterface::class);
         $mediaPersister->expects($this->once())
-            ->method('persistImportedFile')
+            ->method('createMediaObject')
             ->with($filePath, $this->user, 'Raw data imported Animal', 'raw data')
             ->willReturn($mediaObject);
 
@@ -324,7 +324,7 @@ class GenericDataImportFacadeTest extends TestCase
         $entityManager->expects($this->never())->method('persist');
 
         $mediaPersister = $this->createMock(ImportMediaPersisterInterface::class);
-        $mediaPersister->expects($this->never())->method('persistImportedFile');
+        $mediaPersister->expects($this->never())->method('createMediaObject');
 
         $errorWriter = $this->createMock(ImportErrorWriterInterface::class);
         $errorWriter->expects($this->once())

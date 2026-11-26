@@ -7,19 +7,22 @@ use App\Entity\Data\MediaObject;
 use App\Entity\Vocabulary\MediaObject\Type;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Storage\StorageInterface;
 
 class ImportMediaPersister implements ImportMediaPersisterInterface
 {
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
+        private readonly ?StorageInterface $storage = null,
     ) {
     }
 
-    public function persistImportedFile(
+    public function createMediaObject(
         string $filePath,
         User $uploadedBy,
         string $description,
         string $mediaType = 'raw data',
+        ?string &$tempFilePath = null,
     ): MediaObject {
         if (!file_exists($filePath) || !is_readable($filePath)) {
             throw new \InvalidArgumentException(sprintf('File "%s" does not exist or is not readable.', $filePath));
@@ -57,9 +60,51 @@ class ImportMediaPersister implements ImportMediaPersisterInterface
         $mediaObject->setSha256($sha256);
         $mediaObject->setPublic(false);
 
-        $this->entityManager->persist($mediaObject);
-        $this->entityManager->flush();
-
         return $mediaObject;
+    }
+
+    public function persistImportedFile(
+        string $filePath,
+        User $uploadedBy,
+        string $description,
+        string $mediaType = 'raw data',
+    ): MediaObject {
+        $tempFilePath = null;
+        $mediaObject = null;
+        try {
+            $mediaObject = $this->createMediaObject($filePath, $uploadedBy, $description, $mediaType, $tempFilePath);
+            $this->entityManager->persist($mediaObject);
+            $this->entityManager->flush();
+
+            return $mediaObject;
+        } catch (\Throwable $e) {
+            $this->cleanup($mediaObject, $tempFilePath);
+            throw $e;
+        }
+    }
+
+    public function cleanup(?MediaObject $mediaObject, ?string $tempFilePath = null): void
+    {
+        if (null !== $tempFilePath && file_exists($tempFilePath)) {
+            @unlink($tempFilePath);
+        }
+
+        if (null !== $mediaObject) {
+            $file = $mediaObject->getFile();
+            if (null !== $file && file_exists($file->getPathname())) {
+                @unlink($file->getPathname());
+            }
+
+            if (null !== $this->storage) {
+                try {
+                    $resolvedPath = $this->storage->resolvePath($mediaObject, 'file');
+                    if (null !== $resolvedPath && file_exists($resolvedPath)) {
+                        @unlink($resolvedPath);
+                    }
+                } catch (\Throwable) {
+                    // Ignore resolution errors during cleanup
+                }
+            }
+        }
     }
 }

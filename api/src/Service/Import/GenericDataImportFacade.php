@@ -218,21 +218,35 @@ class GenericDataImportFacade implements GenericImportFacadeInterface
             }
 
             // 8. Handle Success (Commit Transaction and Persist MediaObject)
-            $this->entityManager->wrapInTransaction(function () use ($validEntities) {
-                foreach ($validEntities as $entity) {
-                    $this->entityManager->persist($entity);
-                }
-                $this->entityManager->flush();
-            });
+            $tempFilePath = null;
+            $mediaObject = null;
+            try {
+                $this->entityManager->wrapInTransaction(function () use ($validEntities, $filePath, $input, $processor, $type, &$mediaObject, &$tempFilePath) {
+                    $entityLabel = $processor->getEntityLabel($type);
+                    $mediaDescription = sprintf('Raw data imported %s', $entityLabel);
+                    $mediaObject = $this->mediaPersister->createMediaObject(
+                        $filePath,
+                        $input->getUser(),
+                        $mediaDescription,
+                        'raw data',
+                        $tempFilePath,
+                    );
+                    $this->entityManager->persist($mediaObject);
 
-            $entityLabel = $processor->getEntityLabel($type);
-            $mediaDescription = sprintf('Raw data imported %s', $entityLabel);
-            $mediaObject = $this->mediaPersister->persistImportedFile(
-                $filePath,
-                $input->getUser(),
-                $mediaDescription,
-                'raw data',
-            );
+                    foreach ($validEntities as $entity) {
+                        if (method_exists($entity, 'setMediaObject')) {
+                            $entity->setMediaObject($mediaObject);
+                        }
+                        $this->entityManager->persist($entity);
+                    }
+                    $this->entityManager->flush();
+                });
+            } catch (\Throwable $e) {
+                if (null !== $mediaObject || null !== $tempFilePath) {
+                    $this->mediaPersister->cleanup($mediaObject, $tempFilePath);
+                }
+                throw $e;
+            }
 
             $result = new ImportResultDto(
                 success: true,
