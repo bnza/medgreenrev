@@ -15,5 +15,6 @@ when@test:
         secret_key: '%kernel.project_dir%/config/jwt/private-test.pem'
         public_key: '%kernel.project_dir%/config/jwt/public-test.pem'
         pass_phrase: 'test'
+        clock_skew: 60
 
 

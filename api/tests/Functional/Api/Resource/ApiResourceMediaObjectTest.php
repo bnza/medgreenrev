@@ -55,7 +55,7 @@ class ApiResourceMediaObjectTest extends ApiTestCase
         ]);
 
         $this->assertSame(201, $response->getStatusCode());
-        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
+        $this->assertResponseHeaderSame('content-type', 'application/ld+json');
     }
 
     public function testDuplicateFileShouldReturn422(): void
@@ -85,7 +85,7 @@ class ApiResourceMediaObjectTest extends ApiTestCase
         ]);
 
         $this->assertSame(201, $response->getStatusCode());
-        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
+        $this->assertResponseHeaderSame('content-type', 'application/ld+json');
 
         $uploadedFile = $this->getTestUploadFile('simple-text.txt');
 

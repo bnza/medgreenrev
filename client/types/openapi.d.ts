@@ -10114,20 +10114,6 @@ export interface components {
       probability?: string | null
       notes?: string | null
     })
-    'Analysis-analysis.create': {
-      identifier: string
-      /** @default 0 */
-      status: number
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      type: string
-      responsible?: string | null
-      year: number
-      laboratory?: string | null
-      summary?: string | null
-    }
     'Analysis-analysis.create.jsonMergePatch': {
       identifier?: string
       /** @default 0 */
@@ -10139,6 +10125,20 @@ export interface components {
       type?: string
       responsible?: string | null
       year?: number
+      laboratory?: string | null
+      summary?: string | null
+    }
+    'Analysis-analysis.create_validation.validation.analysis.create': {
+      identifier: string
+      /** @default 0 */
+      status: number
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      responsible?: string | null
+      year: number
       laboratory?: string | null
       summary?: string | null
     }
@@ -10538,6 +10538,46 @@ export interface components {
         | null
       readonly code: string
     })
+    'Analysis.jsonld-analysis.acl.read_validation.validation.analysis.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
+      readonly code: string
+    })
+    'Analysis.jsonld-analysis.acl.read_validation.validation.analysis.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      identifier: string
+      /** @default 0 */
+      status: number
+      type: components['schemas']['VocAnalysisType.jsonld-analysis.acl.read']
+      responsible?: string | null
+      year: number
+      laboratory?: string | null
+      summary?: string | null
+      createdBy?: components['schemas']['User.jsonld-analysis.acl.read'] | null
+      readonly code: string
+    })
     'Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -10868,7 +10908,7 @@ export interface components {
         | null
       readonly code: string
     })
-    'AnalysisBotanyCharcoal-analysis_join.create': {
+    'AnalysisBotanyCharcoal-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10884,7 +10924,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisBotanyCharcoal-analysis_join.update.jsonMergePatch': {
+    'AnalysisBotanyCharcoal-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanyCharcoal-analysis_join.update']
         | null
@@ -10931,7 +10971,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
       summary?: string | null
     })
-    'AnalysisBotanySeed-analysis_join.create': {
+    'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['BotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisBotanySeed-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -10947,7 +11019,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisBotanySeed-analysis_join.update.jsonMergePatch': {
+    'AnalysisBotanySeed-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisBotanySeed-analysis_join.update']
         | null
@@ -10994,7 +11066,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
       summary?: string | null
     })
-    'AnalysisContextBotany-analysis_join.create': {
+    'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['BotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisContextBotany-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11007,7 +11111,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisContextBotany-analysis_join.update.jsonMergePatch': {
+    'AnalysisContextBotany-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
     'AnalysisContextBotany.csv-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
@@ -11023,6 +11127,32 @@ export interface components {
       }
     }
     'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read_validation.validation.analysis_join.update': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11121,7 +11251,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisContextZoo-analysis_join.create': {
+    'AnalysisContextZoo-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11135,7 +11265,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisContextZoo-analysis_join.update.jsonMergePatch': {
+    'AnalysisContextZoo-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       taxonomies?: string[]
       summary?: string | null
     }
@@ -11153,6 +11283,34 @@ export interface components {
       }
     }
     'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Context.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      taxonomies?: components['schemas']['AnalysisContextZooTaxonomy.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read'][]
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read_validation.validation.analysis_join.update': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11206,7 +11364,7 @@ export interface components {
        */
       taxonomy?: string
     })
-    'AnalysisIndividual-analysis_join.create': {
+    'AnalysisIndividual-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11222,7 +11380,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisIndividual-analysis_join.update.jsonMergePatch': {
+    'AnalysisIndividual-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisIndividual-analysis_join.update']
         | null
@@ -11269,7 +11427,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
       summary?: string | null
     })
-    'AnalysisPottery-analysis_join.create': {
+    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      summary?: string | null
+    })
+    'AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Individual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+      summary?: string | null
+    })
+    'AnalysisPottery-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11285,7 +11475,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisPottery-analysis_join.update.jsonMergePatch': {
+    'AnalysisPottery-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisPottery-analysis_join.update']
         | null
@@ -11332,7 +11522,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
       summary?: string | null
     })
-    'AnalysisSample-analysis_join.create': {
+    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      summary?: string | null
+    })
+    'AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Pottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSample-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11348,7 +11570,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSample-analysis_join.update.jsonMergePatch': {
+    'AnalysisSample-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSample-analysis_join.update']
         | null
@@ -11395,7 +11617,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
       summary?: string | null
     })
-    'AnalysisSampleBotany-analysis_join.create': {
+    'AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSampleBotany-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11408,7 +11662,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSampleBotany-analysis_join.update.jsonMergePatch': {
+    'AnalysisSampleBotany-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
     'AnalysisSampleBotany.csv-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
@@ -11424,6 +11678,32 @@ export interface components {
       }
     }
     'AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read_validation.validation.analysis_join.update': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11522,7 +11802,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisSampleMicrostratigraphy-analysis_join.create': {
+    'AnalysisSampleMicrostratigraphy-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11535,7 +11815,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch': {
+    'AnalysisSampleMicrostratigraphy-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
     'AnalysisSampleMicrostratigraphy.csv-analysis.acl.read_analysis_join.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read': {
@@ -11588,7 +11868,33 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
       summary?: string | null
     })
-    'AnalysisSedimentCoreDepth-analysis_join.create': {
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['Sample.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepth-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11604,7 +11910,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSedimentCoreDepth-analysis_join.update.jsonMergePatch': {
+    'AnalysisSedimentCoreDepth-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisSedimentCoreDepth-analysis_join.update']
         | null
@@ -11651,7 +11957,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
       summary?: string | null
     })
-    'AnalysisSedimentCoreDepthBotany-analysis_join.create': {
+    'AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepthBotany-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11664,7 +12002,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSedimentCoreDepthBotany-analysis_join.update.jsonMergePatch': {
+    'AnalysisSedimentCoreDepthBotany-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
     'AnalysisSedimentCoreDepthBotany.csv-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
@@ -11680,6 +12018,32 @@ export interface components {
       }
     }
     'AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['SedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.update': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -11778,7 +12142,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'AnalysisSiteAnthropology-analysis_join.create': {
+    'AnalysisSiteAnthropology-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11791,7 +12155,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisSiteAnthropology-analysis_join.update.jsonMergePatch': {
+    'AnalysisSiteAnthropology-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       summary?: string | null
     }
     'AnalysisSiteAnthropology.csv-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read': {
@@ -11819,6 +12183,32 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
       summary?: string | null
     })
+    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+      summary?: string | null
+    })
+    'AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['ArchaeologicalSite.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+      summary?: string | null
+    })
     'AnalysisSubject.jsonld-analysis_subject.read': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       /**
@@ -11830,7 +12220,7 @@ export interface components {
       joinResourceName?: string
       resourceName?: string
     }
-    'AnalysisZooBone-analysis_join.create': {
+    'AnalysisZooBone-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11846,7 +12236,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisZooBone-analysis_join.update.jsonMergePatch': {
+    'AnalysisZooBone-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooBone-analysis_join.update']
         | null
@@ -11893,7 +12283,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
       summary?: string | null
     })
-    'AnalysisZooTooth-analysis_join.create': {
+    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['ZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisZooTooth-analysis_join.create_validation.validation.analysis_join.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -11909,7 +12331,7 @@ export interface components {
       analysis: string
       summary?: string | null
     }
-    'AnalysisZooTooth-analysis_join.update.jsonMergePatch': {
+    'AnalysisZooTooth-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch': {
       absDatingAnalysis?:
         | components['schemas']['AbsDatingAnalysisZooTooth-analysis_join.update']
         | null
@@ -11956,7 +12378,39 @@ export interface components {
       analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
       summary?: string | null
     })
-    'ArchaeologicalSite-archaeological_site.create': {
+    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read_validation.validation.analysis_join.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      summary?: string | null
+    })
+    'AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read_validation.validation.analysis_join.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      subject?: components['schemas']['ZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      absDatingAnalysis?:
+        | components['schemas']['AbsDatingAnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+        | null
+      analysis: components['schemas']['Analysis.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+      summary?: string | null
+    })
+    'ArchaeologicalSite-archaeological_site.create_validation.validation.archaeological_site.create': {
       code: string
       name: string
       description?: string | null
@@ -11972,7 +12426,7 @@ export interface components {
       n?: number
       e?: number
     }
-    'ArchaeologicalSite-archaeological_site.create.jsonMergePatch': {
+    'ArchaeologicalSite-archaeological_site.create_validation.validation.archaeological_site.create.jsonMergePatch': {
       code?: string
       name?: string
       description?: string | null
@@ -12532,6 +12986,50 @@ export interface components {
       n?: number
       e?: number
     })
+    'ArchaeologicalSite.jsonld-archaeological_site.acl.read_validation.validation.archaeological_site.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      code: string
+      name: string
+      description?: string | null
+      createdBy?:
+        components['schemas']['User.jsonld-archaeological_site.acl.read'] | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['VocCulturalContext.jsonld-archaeological_site.acl.read'][]
+      region?: components['schemas']['VocRegions.jsonld-archaeological_site.acl.read']
+      n?: number
+      e?: number
+    })
+    'ArchaeologicalSite.jsonld-archaeological_site.acl.read_validation.validation.archaeological_site.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      createdBy?:
+        components['schemas']['User.jsonld-archaeological_site.acl.read'] | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      fieldDirector?: string | null
+      culturalContexts?: components['schemas']['VocCulturalContext.jsonld-archaeological_site.acl.read'][]
+      region?: components['schemas']['VocRegions.jsonld-archaeological_site.acl.read']
+      n?: number
+      e?: number
+    })
     'ArchaeologicalSite.jsonld-botany_charcoal.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -12741,7 +13239,7 @@ export interface components {
       code?: string
       name?: string
     })
-    'BotanyCharcoal-botany_charcoal.create': {
+    'BotanyCharcoal-botany_charcoal.create_validation.validation.botany_charcoal.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -12765,7 +13263,7 @@ export interface components {
       type: boolean
       notes?: string | null
     }
-    'BotanyCharcoal-botany_charcoal.create.jsonMergePatch': {
+    'BotanyCharcoal-botany_charcoal.create_validation.validation.botany_charcoal.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -12953,6 +13451,70 @@ export interface components {
       notes?: string | null
       readonly code?: string
     })
+    'BotanyCharcoal.jsonld-botany_charcoal.acl.read_validation.validation.botany_charcoal.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanyCharcoalView.jsonld-botany_charcoal.acl.read']
+        | null
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+      notes?: string | null
+      readonly code?: string
+    })
+    'BotanyCharcoal.jsonld-botany_charcoal.acl.read_validation.validation.botany_charcoal.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanyCharcoalView.jsonld-botany_charcoal.acl.read']
+        | null
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_charcoal.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+      notes?: string | null
+      readonly code?: string
+    })
     'BotanyCharcoalView.csv-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read': {
       readonly value?: string | null
       /** @description Access control metadata */
@@ -12989,7 +13551,7 @@ export interface components {
         canDelete: boolean
       }
     }
-    'BotanySeed-botany_seed.create': {
+    'BotanySeed-botany_seed.create_validation.validation.botany_seed.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13018,7 +13580,7 @@ export interface components {
       type: boolean
       notes?: string | null
     }
-    'BotanySeed-botany_seed.create.jsonMergePatch': {
+    'BotanySeed-botany_seed.create_validation.validation.botany_seed.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -13230,6 +13792,80 @@ export interface components {
       notes?: string | null
       readonly code?: string
     })
+    'BotanySeed.jsonld-botany_seed.acl.read_validation.validation.botany_seed.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanySeedView.jsonld-botany_seed.acl.read']
+        | null
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+      notes?: string | null
+      readonly code?: string
+    })
+    'BotanySeed.jsonld-botany_seed.acl.read_validation.validation.botany_seed.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly flat:
+        | components['schemas']['BotanySeedView.jsonld-botany_seed.acl.read']
+        | null
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-botany_seed.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      /** @default false */
+      cf: boolean
+      /** @default false */
+      sp: boolean
+      /** @default false */
+      type: boolean
+      notes?: string | null
+      readonly code?: string
+    })
     'BotanySeedView.csv-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read': {
       readonly value?: string | null
       /** @description Access control metadata */
@@ -13347,7 +13983,7 @@ export interface components {
       readonly title?: string | null
       readonly instance?: string | null
     }
-    'Context-context.create': {
+    'Context-context.create_validation.validation.context.create': {
       type: string
       /**
        * Format: iri-reference
@@ -13362,7 +13998,7 @@ export interface components {
        */
       stratigraphicUnit: string
     }
-    'Context-context.update.jsonMergePatch': {
+    'Context-context.update_validation.validation.context.update.jsonMergePatch': {
       type?: string
       /**
        * Format: iri-reference
@@ -13486,6 +14122,51 @@ export interface components {
       description?: string | null
       readonly code?: string
     })
+    'Context.jsonld-context.acl.read_validation.validation.context.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      type: string
+      site: components['schemas']['ArchaeologicalSite.jsonld-context.acl.read']
+      name: string
+      description?: string | null
+      readonly code?: string
+    })
+    'Context.jsonld-context.acl.read_validation.validation.context.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      type?: string
+      site?: components['schemas']['ArchaeologicalSite.jsonld-context.acl.read']
+      name?: string
+      description?: string | null
+      readonly code?: string
+    })
+    'Context.jsonld-context.acl.read_validation.validation.context.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      type: string
+      site: components['schemas']['ArchaeologicalSite.jsonld-context.acl.read']
+      name: string
+      description?: string | null
+      readonly code?: string
+    })
     'Context.jsonld-context_stratigraphic_unit.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -13515,7 +14196,7 @@ export interface components {
       description?: string | null
       readonly code?: string
     })
-    ContextStratigraphicUnit: {
+    'ContextStratigraphicUnit-validation.validation.context_stratigraphic_unit.create': {
       readonly id: number | string
       /**
        * Format: iri-reference
@@ -13560,6 +14241,30 @@ export interface components {
       }
     }
     'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
+      context?: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
+    })
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read_validation.validation.context_stratigraphic_unit.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
+      context: components['schemas']['Context.jsonld-context_stratigraphic_unit.acl.read']
+    })
+    'ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read_validation.validation.context_stratigraphic_unit.delete': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13627,24 +14332,6 @@ export interface components {
       readonly description?: string | null
     }
     'HistoryAnimal-feature_collection.json.read': Record<string, never>
-    'HistoryAnimal-history_animal.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      language: string
-      animal: string
-      englishName: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      location: string
-      chronologyLower: number
-      chronologyUpper: number
-      reference: string
-      notes?: string | null
-    }
     'HistoryAnimal-history_animal.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -13661,6 +14348,24 @@ export interface components {
       chronologyLower?: number
       chronologyUpper?: number
       reference?: string
+      notes?: string | null
+    }
+    'HistoryAnimal-history_animal.create_validation.validation.history_animal.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      language: string
+      animal: string
+      englishName: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      location: string
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
       notes?: string | null
     }
     'HistoryAnimal.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -13717,6 +14422,11 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13750,6 +14460,42 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
+    })
+    'HistoryAnimal.jsonld-history_animal.acl.read_validation.validation.history_animal.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      language: components['schemas']['VocHistoryLanguage.jsonld-history_animal.acl.read']
+      animal: string
+      englishName: string
+      readonly flat?:
+        | components['schemas']['HistoryAnimalView.jsonld-history_animal.acl.read']
+        | null
+      location: components['schemas']['VocHistoryLocation.jsonld-history_animal.acl.read']
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
     })
     'HistoryAnimalView.csv-history_animal.acl.read': {
       readonly taxonomyId?: number | null
@@ -13782,24 +14528,6 @@ export interface components {
       }
     }
     'HistoryPlant-feature_collection.json.read': Record<string, never>
-    'HistoryPlant-history_plant.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      language: string
-      plant: string
-      englishName: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      location: string
-      chronologyLower: number
-      chronologyUpper: number
-      reference: string
-      notes?: string | null
-    }
     'HistoryPlant-history_plant.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -13816,6 +14544,24 @@ export interface components {
       chronologyLower?: number
       chronologyUpper?: number
       reference?: string
+      notes?: string | null
+    }
+    'HistoryPlant-history_plant.create_validation.validation.history_plant.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      language: string
+      plant: string
+      englishName: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      location: string
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
       notes?: string | null
     }
     'HistoryPlant.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -13872,6 +14618,41 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    }
+    'HistoryPlant.csv-history_plant.acl.read_validation.validation.history_plant.create': {
+      readonly id: number | string
+      language: components['schemas']['VocHistoryLanguage.csv-history_plant.acl.read']
+      plant: string
+      englishName: string
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.csv-history_plant.acl.read']
+        | null
+      location: components['schemas']['VocHistoryLocation.csv-history_plant.acl.read']
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -13905,6 +14686,42 @@ export interface components {
        * @example https://example.com/
        */
       createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
+    })
+    'HistoryPlant.jsonld-history_plant.acl.read_validation.validation.history_plant.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      language: components['schemas']['VocHistoryLanguage.jsonld-history_plant.acl.read']
+      plant: string
+      englishName: string
+      readonly flat?:
+        | components['schemas']['HistoryPlantView.jsonld-history_plant.acl.read']
+        | null
+      location: components['schemas']['VocHistoryLocation.jsonld-history_plant.acl.read']
+      chronologyLower: number
+      chronologyUpper: number
+      reference: string
+      notes?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      createdBy?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      mediaObject?: string | null
     })
     'HistoryPlantView.csv-history_plant.acl.read': {
       readonly taxonomyId?: number | null
@@ -13948,24 +14765,6 @@ export interface components {
         canDelete: boolean
       }
     }
-    'HistoryWrittenSource-history_written_source.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      writtenSourceType: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      author: string
-      title: string
-      subtitle?: string | null
-      publicationDetails: string
-      notes?: string | null
-      centuries?: string[]
-      regions?: string[]
-    }
     'HistoryWrittenSource-history_written_source.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -13980,6 +14779,24 @@ export interface components {
       title?: string
       subtitle?: string | null
       publicationDetails?: string
+      notes?: string | null
+      centuries?: string[]
+      regions?: string[]
+    }
+    'HistoryWrittenSource-history_written_source.create_validation.validation.history_written_source.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSourceType: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      author: string
+      title: string
+      subtitle?: string | null
+      publicationDetails: string
       notes?: string | null
       centuries?: string[]
       regions?: string[]
@@ -14030,6 +14847,42 @@ export interface components {
       centuries?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read'][]
       regions?: components['schemas']['VocRegions.jsonld-history_written_source.acl.read'][]
     })
+    'HistoryWrittenSource.jsonld-history_written_source.acl.read_validation.validation.history_written_source.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.jsonld-history_written_source.acl.read']
+      author: components['schemas']['VocHistoryAuthor.jsonld-history_written_source.acl.read']
+      title: string
+      subtitle?: string | null
+      publicationDetails: string
+      notes?: string | null
+      centuries?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read'][]
+      regions?: components['schemas']['VocRegions.jsonld-history_written_source.acl.read'][]
+    })
+    'HistoryWrittenSource.jsonld-history_written_source.acl.read_validation.validation.written_sources.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      writtenSourceType: components['schemas']['VocHistoryWrittenSourceType.jsonld-history_written_source.acl.read']
+      author: components['schemas']['VocHistoryAuthor.jsonld-history_written_source.acl.read']
+      title: string
+      subtitle?: string | null
+      publicationDetails: string
+      notes?: string | null
+      centuries?: components['schemas']['VocCentury.jsonld-history_written_source.acl.read'][]
+      regions?: components['schemas']['VocRegions.jsonld-history_written_source.acl.read'][]
+    })
     'HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -14042,20 +14895,6 @@ export interface components {
       author: components['schemas']['VocHistoryAuthor.jsonld-history_written_sources_cited_works.acl.read']
       title: string
     })
-    'HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      writtenSource: string
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      citedWork: string
-      yearCompleted: number
-      yearCompletedUpper: number | null
-    }
     'HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -14069,6 +14908,20 @@ export interface components {
       citedWork?: string
       yearCompleted?: number
       yearCompletedUpper?: number | null
+    }
+    'HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create_validation.validation.history_written_sources_cited_works.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      writtenSource: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      citedWork: string
+      yearCompleted: number
+      yearCompletedUpper: number | null
     }
     'HistoryWrittenSourceCitedWork.csv-history_written_sources_cited_works.acl.read': {
       readonly id: number | string
@@ -14084,6 +14937,20 @@ export interface components {
       }
     }
     'HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      writtenSource: components['schemas']['HistoryWrittenSource.jsonld-history_written_sources_cited_works.acl.read']
+      citedWork: components['schemas']['VocHistoryHistoryCitedWork.jsonld-history_written_sources_cited_works.acl.read']
+      yearCompleted: number
+      yearCompletedUpper: number | null
+    })
+    'HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read_validation.validation.history_written_sources_cited_works.create': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -14150,13 +15017,13 @@ export interface components {
       '@type': string
     }
     'Individual-feature_collection.json.read': Record<string, never>
-    'Individual-individual.create': {
+    'Individual-individual.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      stratigraphicUnit: string
-      identifier: string
+      stratigraphicUnit?: string
+      identifier?: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14169,13 +15036,13 @@ export interface components {
       sex?: string | null
       notes?: string | null
     }
-    'Individual-individual.create.jsonMergePatch': {
+    'Individual-individual.create_validation.validation.individual.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
        */
-      stratigraphicUnit?: string
-      identifier?: string
+      stratigraphicUnit: string
+      identifier: string
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14319,6 +15186,54 @@ export interface components {
       notes?: string | null
       readonly code: string
     })
+    'Individual.jsonld-individual.acl.read_validation.validation.individual.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
+      identifier: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sex?: string | null
+      notes?: string | null
+      readonly code: string
+    })
+    'Individual.jsonld-individual.acl.read_validation.validation.individual.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-individual.acl.read']
+      identifier?: string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      age?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      sex?: string | null
+      notes?: string | null
+      readonly code: string
+    })
     'ListAnalysisLaboratory.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: string
       readonly value?: string
@@ -14390,7 +15305,7 @@ export interface components {
       readonly id: string
       readonly value?: string
     }
-    'MediaObject-media_object.update.jsonMergePatch': {
+    'MediaObject-media_object.update_validation.validation.media_object.update.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -14413,7 +15328,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       uploadedBy?:
         components['schemas']['User.jsonld-media_object.acl.read'] | null
       contentUrl?: string | null
@@ -14429,7 +15344,69 @@ export interface components {
       /** @default true */
       public: boolean
       readonly contentThumbnailUrl?: string | null
-      dimensions?: (string | null)[] | null
+      dimensions?: unknown[] | null
+    })
+    'MediaObject.jsonld-media_object.acl.read_validation.validation.media_object.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      uploadedBy?:
+        components['schemas']['User.jsonld-media_object.acl.read'] | null
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      description?: string | null
+      /** @default true */
+      public: boolean
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: unknown[] | null
+    })
+    'MediaObject.jsonld-media_object.acl.read_validation.validation.media_object.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      type: string
+      uploadedBy?:
+        components['schemas']['User.jsonld-media_object.acl.read'] | null
+      contentUrl?: string | null
+      originalFilename?: string
+      sha256?: string
+      mimeType?: string
+      size?: number
+      width?: number | null
+      height?: number | null
+      /** Format: date-time */
+      uploadDate?: string | null
+      description?: string | null
+      /** @default true */
+      public: boolean
+      readonly contentThumbnailUrl?: string | null
+      dimensions?: unknown[] | null
     })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read': {
       /** @description Access control metadata */
@@ -14444,7 +15421,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       uploadedBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_Location.acl.read']
         | null
@@ -14461,7 +15438,7 @@ export interface components {
       /** @default true */
       public: boolean
       readonly contentThumbnailUrl?: string | null
-      dimensions?: (string | null)[] | null
+      dimensions?: unknown[] | null
     })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read': {
       /** @description Access control metadata */
@@ -14476,7 +15453,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       uploadedBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_analysis.acl.read']
         | null
@@ -14493,7 +15470,7 @@ export interface components {
       /** @default true */
       public: boolean
       readonly contentThumbnailUrl?: string | null
-      dimensions?: (string | null)[] | null
+      dimensions?: unknown[] | null
     })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read': {
       /** @description Access control metadata */
@@ -14508,7 +15485,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       uploadedBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_sampling_su.read']
         | null
@@ -14525,7 +15502,7 @@ export interface components {
       /** @default true */
       public: boolean
       readonly contentThumbnailUrl?: string | null
-      dimensions?: (string | null)[] | null
+      dimensions?: unknown[] | null
     })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read': {
       /** @description Access control metadata */
@@ -14540,7 +15517,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       uploadedBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_sediment_core.acl.read']
         | null
@@ -14557,7 +15534,7 @@ export interface components {
       /** @default true */
       public: boolean
       readonly contentThumbnailUrl?: string | null
-      dimensions?: (string | null)[] | null
+      dimensions?: unknown[] | null
     })
     'MediaObject.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read': {
       /** @description Access control metadata */
@@ -14572,7 +15549,7 @@ export interface components {
        * Format: iri-reference
        * @example https://example.com/
        */
-      type?: string
+      type: string
       uploadedBy?:
         | components['schemas']['User.jsonld-media_object_join.acl.read_media_object.acl.read_sus.acl.read']
         | null
@@ -14589,7 +15566,7 @@ export interface components {
       /** @default true */
       public: boolean
       readonly contentThumbnailUrl?: string | null
-      dimensions?: (string | null)[] | null
+      dimensions?: unknown[] | null
     })
     'MediaObjectAnalysis-media_object_join.create': {
       readonly id: number | string
@@ -14828,15 +15805,6 @@ export interface components {
       description?: string | null
     })
     'MicrostratigraphicUnit-feature_collection.json.read': Record<string, never>
-    'MicrostratigraphicUnit-microstratigraphic_unit.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
-      identifier: string
-      notes?: string | null
-    }
     'MicrostratigraphicUnit-microstratigraphic_unit.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -14844,6 +15812,15 @@ export interface components {
        */
       stratigraphicUnit?: string
       identifier?: string
+      notes?: string | null
+    }
+    'MicrostratigraphicUnit-microstratigraphic_unit.create_validation.validation.microstratigraphic_unit.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      identifier: string
       notes?: string | null
     }
     'MicrostratigraphicUnit.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -14900,6 +15877,20 @@ export interface components {
       never
     >
     'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+      identifier: string
+      notes?: string | null
+      readonly code?: string
+    })
+    'MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read_validation.validation.microstratigraphic_unit.create': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -15092,7 +16083,7 @@ export interface components {
       string,
       never
     >
-    'PaleoclimateSamplingSite-paleoclimate_sampling_sites.create': {
+    'PaleoclimateSamplingSite-paleoclimate_sampling_sites.create_validation.validation.paleoclimate_sampling_sites.create': {
       code: string
       name: string
       description?: string | null
@@ -15104,7 +16095,7 @@ export interface components {
       n?: number
       e?: number
     }
-    'PaleoclimateSamplingSite-paleoclimate_sampling_sites.create.jsonMergePatch': {
+    'PaleoclimateSamplingSite-paleoclimate_sampling_sites.create_validation.validation.paleoclimate_sampling_sites.create.jsonMergePatch': {
       code?: string
       name?: string
       description?: string | null
@@ -15224,6 +16215,38 @@ export interface components {
       n?: number
       e?: number
     })
+    'PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read_validation.validation.paleoclimate_sampling_sites.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      code: string
+      name: string
+      description?: string | null
+      region: components['schemas']['VocRegions.jsonld-paleoclimate_sampling_sites.acl.read']
+      n?: number
+      e?: number
+    })
+    'PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read_validation.validation.paleoclimate_sampling_sites.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      region: components['schemas']['VocRegions.jsonld-paleoclimate_sampling_sites.acl.read']
+      n?: number
+      e?: number
+    })
     'Point.jsonld': {
       x?: number | string
       y?: number | string
@@ -15233,41 +16256,6 @@ export interface components {
       readonly type?: string
     }
     'Pottery-feature_collection.json.read': Record<string, never>
-    'Pottery-pottery.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      stratigraphicUnit: string
-      inventory: string
-      decorations?: string[]
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      surfaceTreatment?: string | null
-      innerColor?: string | null
-      outerColor?: string | null
-      decorationMotif?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      culturalContext?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      shape?: string | null
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      functionalForm: string
-      notes?: string | null
-    }
     'Pottery-pottery.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -15301,6 +16289,41 @@ export interface components {
        * @example https://example.com/
        */
       functionalForm?: string
+      notes?: string | null
+    }
+    'Pottery-pottery.create_validation.validation.pottery.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      stratigraphicUnit: string
+      inventory: string
+      decorations?: string[]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      functionalForm: string
       notes?: string | null
     }
     'Pottery.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
@@ -15482,6 +16505,78 @@ export interface components {
       notes?: string | null
       readonly code?: string
     })
+    'Pottery.jsonld-pottery.acl.read_validation.validation.pottery.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
+      inventory: string
+      decorations?: components['schemas']['VocPotteryDecoration.jsonld-pottery.acl.read'][]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      functionalForm: components['schemas']['VocPotteryFunctionalForm.jsonld-pottery.acl.read']
+      notes?: string | null
+      readonly code?: string
+    })
+    'Pottery.jsonld-pottery.acl.read_validation.validation.pottery.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-pottery.acl.read']
+      inventory: string
+      decorations?: components['schemas']['VocPotteryDecoration.jsonld-pottery.acl.read'][]
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      surfaceTreatment?: string | null
+      innerColor?: string | null
+      outerColor?: string | null
+      decorationMotif?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      culturalContext?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      shape?: string | null
+      functionalForm: components['schemas']['VocPotteryFunctionalForm.jsonld-pottery.acl.read']
+      notes?: string | null
+      readonly code?: string
+    })
     'PotteryDecoration.jsonld': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number | string
       /**
@@ -15495,7 +16590,7 @@ export interface components {
        */
       decoration?: string
     }
-    'Sample-sample.create': {
+    'Sample-sample.create_validation.validation.sample.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15516,7 +16611,7 @@ export interface components {
        */
       stratigraphicUnit: string
     }
-    'Sample-sample.update.jsonMergePatch': {
+    'Sample-sample.update_validation.validation.sample.update.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -15729,6 +16824,57 @@ export interface components {
       description?: string | null
       readonly code?: string
     })
+    'Sample.jsonld-sample.acl.read_validation.validation.sample.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['ArchaeologicalSite.jsonld-sample.acl.read']
+      type: components['schemas']['VocSampleType.jsonld-sample.acl.read']
+      /** @default 0 */
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+    })
+    'Sample.jsonld-sample.acl.read_validation.validation.sample.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site?: components['schemas']['ArchaeologicalSite.jsonld-sample.acl.read']
+      type?: components['schemas']['VocSampleType.jsonld-sample.acl.read']
+      /** @default 0 */
+      year: number
+      number?: number
+      description?: string | null
+      readonly code?: string
+    })
+    'Sample.jsonld-sample.acl.read_validation.validation.sample.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['ArchaeologicalSite.jsonld-sample.acl.read']
+      type: components['schemas']['VocSampleType.jsonld-sample.acl.read']
+      /** @default 0 */
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+    })
     'Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15763,7 +16909,7 @@ export interface components {
       description?: string | null
       readonly code?: string
     })
-    SampleStratigraphicUnit: {
+    'SampleStratigraphicUnit-validation.validation.sample_stratigraphic_unit.create': {
       readonly id: number | string
       /**
        * Format: iri-reference
@@ -15819,6 +16965,30 @@ export interface components {
       sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
     })
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read_validation.validation.sample_stratigraphic_unit.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      sample: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+    })
+    'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read_validation.validation.sample_stratigraphic_unit.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      sample?: components['schemas']['Sample.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+      stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+    })
     'SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.samples.acl.read_sample.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -15842,7 +17012,7 @@ export interface components {
       stratigraphicUnit?: components['schemas']['StratigraphicUnit.jsonld-sample_stratigraphic_unit.stratigraphic_units.acl.read_sus.acl.read']
     })
     'SamplingSite-feature_collection.json.read': Record<string, never>
-    'SamplingSite-sampling_site.create': {
+    'SamplingSite-sampling_site.create_validation.validation.sampling_site.create': {
       code: string
       name: string
       description?: string | null
@@ -15854,7 +17024,7 @@ export interface components {
       n?: number
       e?: number
     }
-    'SamplingSite-sampling_site.create.jsonMergePatch': {
+    'SamplingSite-sampling_site.create_validation.validation.sampling_site.create.jsonMergePatch': {
       code?: string
       name?: string
       description?: string | null
@@ -16022,6 +17192,38 @@ export interface components {
       name?: string
     })
     'SamplingSite.jsonld-sampling_site.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      code?: string
+      name?: string
+      description?: string | null
+      region?: components['schemas']['VocRegions.jsonld-sampling_site.acl.read']
+      n?: number
+      e?: number
+    })
+    'SamplingSite.jsonld-sampling_site.acl.read_validation.validation.sampling_site.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      code: string
+      name: string
+      description?: string | null
+      region?: components['schemas']['VocRegions.jsonld-sampling_site.acl.read']
+      n?: number
+      e?: number
+    })
+    'SamplingSite.jsonld-sampling_site.acl.read_validation.validation.sampling_site.delete': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -16279,7 +17481,8 @@ export interface components {
       number: number
       readonly code: string
     })
-    SedimentCore: {
+    'SedimentCore-feature_collection.json.read': Record<string, never>
+    'SedimentCore-validation.validation.sediment_core.create': {
       readonly id: number | string
       /**
        * Format: iri-reference
@@ -16293,7 +17496,6 @@ export interface components {
       description?: string | null
       readonly code?: string
     }
-    'SedimentCore-feature_collection.json.read': Record<string, never>
     'SedimentCore.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * @example [
@@ -16417,6 +17619,21 @@ export interface components {
       description?: string | null
       readonly code?: string
     })
+    'SedimentCore.jsonld-sediment_core.acl.read_validation.validation.sediment_core.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['SamplingSite.jsonld-sediment_core.acl.read']
+      year: number
+      number: number
+      description?: string | null
+      readonly code?: string
+    })
     'SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -16447,7 +17664,8 @@ export interface components {
       description?: string | null
       readonly code?: string
     })
-    SedimentCoreDepth: {
+    'SedimentCoreDepth-feature_collection.json.read': Record<string, never>
+    'SedimentCoreDepth-validation.validation.sediment_core_depth.create': {
       readonly id: number | string
       /**
        * Format: iri-reference
@@ -16484,7 +17702,6 @@ export interface components {
       readonly botanyAnalyses?: string[]
       readonly code?: string
     }
-    'SedimentCoreDepth-feature_collection.json.read': Record<string, never>
     'SedimentCoreDepth.WfsGetFeatureCollectionExtentMatched.jsonld-wfs_extent_matched.read': components['schemas']['HydraItemBaseSchema'] & {
       /**
        * @example [
@@ -16825,6 +18042,74 @@ export interface components {
       sedimentaryDna: boolean
       readonly code?: string
     })
+    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read_validation.validation.sediment_core_depth.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
+      readonly code?: string
+    })
+    'SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read_validation.validation.sediment_core_depth.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      sedimentCore: components['schemas']['SedimentCore.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      stratigraphicUnit: components['schemas']['SamplingStratigraphicUnit.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+      /** @example 8.5 */
+      depthMin: string
+      /** @example 9.0 */
+      depthMax: string
+      notes?: string | null
+      /** @default false */
+      geochemistry: boolean
+      /** @default false */
+      microCharcoal: boolean
+      /** @default false */
+      organicChemistry: boolean
+      /** @default false */
+      oslDating: boolean
+      /** @default false */
+      phytoliths: boolean
+      /** @default false */
+      plantMacroRemains: boolean
+      /** @default false */
+      pollen: boolean
+      /** @default false */
+      sedimentaryDna: boolean
+      readonly code?: string
+    })
     'SedimentCoreDepth.jsonld-sediment_core_depth.sediment_cores.acl.read_sediment_core.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -16886,7 +18171,7 @@ export interface components {
        */
       culturalContext?: string
     }
-    'SiteUserPrivilege-site_user_privilege.create': {
+    'SiteUserPrivilege-site_user_privilege.create_validation.validation.site_user_privilege.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -16900,7 +18185,7 @@ export interface components {
       /** @default 0 */
       privilege: number
     }
-    'SiteUserPrivilege-site_user_privilege.update.jsonMergePatch': {
+    'SiteUserPrivilege-site_user_privilege.update_validation.validation.site_user_privilege.update.jsonMergePatch': {
       /** @default 0 */
       privilege: number
     }
@@ -16919,23 +18204,37 @@ export interface components {
       /** @default 0 */
       privilege: number
     })
-    'StratigraphicUnit-feature_collection.json.read': Record<string, never>
-    'StratigraphicUnit-su.create': {
-      /**
-       * Format: iri-reference
-       * @example https://example.com/
-       */
-      site: string
-      area?: string | null
-      building?: string | null
+    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read_validation.validation.site_user_privilege.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id: string
+      user: components['schemas']['User.jsonld-site_user_privilege.acl.read']
+      site: components['schemas']['ArchaeologicalSite.jsonld-site_user_privilege.acl.read']
       /** @default 0 */
-      year: number
-      number: number
-      description?: string | null
-      interpretation?: string | null
-      chronologyLower?: number | null
-      chronologyUpper?: number | null
-    }
+      privilege: number
+    })
+    'SiteUserPrivilege.jsonld-site_user_privilege.acl.read_validation.validation.site_user_privilege.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id: string
+      user?: components['schemas']['User.jsonld-site_user_privilege.acl.read']
+      site?: components['schemas']['ArchaeologicalSite.jsonld-site_user_privilege.acl.read']
+      /** @default 0 */
+      privilege: number
+    })
+    'StratigraphicUnit-feature_collection.json.read': Record<string, never>
     'StratigraphicUnit-su.create.jsonMergePatch': {
       /**
        * Format: iri-reference
@@ -16947,6 +18246,22 @@ export interface components {
       /** @default 0 */
       year: number
       number?: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+    }
+    'StratigraphicUnit-su.create_validation.validation.su.create': {
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      site: string
+      area?: string | null
+      building?: string | null
+      /** @default 0 */
+      year: number
+      number: number
       description?: string | null
       interpretation?: string | null
       chronologyLower?: number | null
@@ -17447,6 +18762,48 @@ export interface components {
       chronologyUpper?: number | null
       readonly code: string
     })
+    'StratigraphicUnit.jsonld-sus.acl.read_validation.validation.su.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['ArchaeologicalSite.jsonld-sus.acl.read']
+      area?: string | null
+      building?: string | null
+      /** @default 0 */
+      year: number
+      number: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      readonly code: string
+    })
+    'StratigraphicUnit.jsonld-sus.acl.read_validation.validation.su.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      site: components['schemas']['ArchaeologicalSite.jsonld-sus.acl.read']
+      area?: string | null
+      building?: string | null
+      /** @default 0 */
+      year: number
+      number: number
+      description?: string | null
+      interpretation?: string | null
+      chronologyLower?: number | null
+      chronologyUpper?: number | null
+      readonly code: string
+    })
     'StratigraphicUnit.jsonld-zoo_bone.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -17469,7 +18826,7 @@ export interface components {
       site: components['schemas']['ArchaeologicalSite.jsonld-zoo_tooth.acl.read']
       readonly code: string
     })
-    'StratigraphicUnitRelationship-su_relationship.create': {
+    'StratigraphicUnitRelationship-su_relationship.create_validation.validation.su_relationship.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -17496,14 +18853,24 @@ export interface components {
       relationship: string
       rgtStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
     }
+    'StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read_validation.validation.su_relationship.create': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      lftStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      relationship: string
+      rgtStratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-stratigraphic_unit_relationship.read']
+    }
     'UniqueValidator.jsonld': components['schemas']['HydraItemBaseSchema'] & {
-      criteria?: (string | null)[]
+      criteria?: unknown[]
       valid?: number
     }
-    'User-user.change-password.jsonMergePatch': {
+    'User-user.change-password_validation.validation.user.change-password.jsonMergePatch': {
       plainPassword?: string | null
     }
-    'User-user.create': {
+    'User-user.create_validation.validation.user.create': {
       /** Format: email */
       email: string
       plainPassword: string | null
@@ -17516,7 +18883,7 @@ export interface components {
       /** @default true */
       enabled: boolean
     }
-    'User-user.update.jsonMergePatch': {
+    'User-user.update_validation.validation.user.update.jsonMergePatch': {
       /**
        * @default [
        *       "ROLE_USER"
@@ -17526,7 +18893,7 @@ export interface components {
       /** @default true */
       enabled: boolean
     }
-    'User.UserPasswordChangeInputDto': {
+    'User.UserPasswordChangeInputDto-validation.validation.user.change-password': {
       oldPassword: string | null
       plainPassword: string | null
       repeatPassword: string | null
@@ -18017,6 +19384,70 @@ export interface components {
       enabled: boolean
       readonly userIdentifier?: string
     })
+    'User.jsonld-user.acl.read_validation.validation.user.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id: string
+      /** Format: email */
+      email: string
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+      /** @default true */
+      enabled: boolean
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-user.acl.read_validation.validation.user.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id: string
+      email?: string
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+      /** @default true */
+      enabled: boolean
+      readonly userIdentifier?: string
+    })
+    'User.jsonld-user.acl.read_validation.validation.user.update': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      /** Format: uuid */
+      readonly id: string
+      email?: string
+      /**
+       * @default [
+       *       "ROLE_USER"
+       *     ]
+       */
+      roles: string[]
+      /** @default true */
+      enabled: boolean
+      readonly userIdentifier?: string
+    })
     'User.jsonld-user.me.read': components['schemas']['HydraItemBaseSchema'] & {
       /** Format: uuid */
       readonly id: string
@@ -18440,10 +19871,10 @@ export interface components {
       readonly id: number
       value: string
     }
-    'VocBotanyTaxonomy-voc_botany_taxonomy.create': {
+    'VocBotanyTaxonomy-voc_botany_taxonomy.create_validation.validation.voc_botany_taxonomy.create': {
       value: string
       parent?:
-        | components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.create']
+        | components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.create_validation.validation.voc_botany_taxonomy.create']
         | null
       /** @enum {string} */
       level: 'class' | 'family' | 'genus' | 'species'
@@ -18472,6 +19903,27 @@ export interface components {
         | null
     })
     'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
+      value?: string
+      level?: string
+      spanishName?: string | null
+      englishName?: string | null
+      readonly flat?:
+        | components['schemas']['BotanyTaxonomyView.jsonld-voc_botany_taxonomy.read']
+        | null
+    }
+    'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read_validation.validation.voc_botany_taxonomy.create': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
+      value: string
+      /** @enum {string} */
+      level: 'class' | 'family' | 'genus' | 'species'
+      spanishName?: string | null
+      englishName?: string | null
+      readonly flat?:
+        | components['schemas']['BotanyTaxonomyView.jsonld-voc_botany_taxonomy.read']
+        | null
+    }
+    'VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read_validation.validation.voc_botany_taxonomy.delete': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number
       value?: string
       level?: string
@@ -18554,7 +20006,7 @@ export interface components {
         canDelete: boolean
       }
     } & (components['schemas']['HydraItemBaseSchema'] & Record<string, never>)
-    'VocHistoryAuthor-voc_history_author.create': {
+    'VocHistoryAuthor-voc_history_author.create_validation.validation.voc_history_author.create': {
       value: string
       variant?: string | null
     }
@@ -18613,6 +20065,11 @@ export interface components {
       variant?: string | null
     })
     'VocHistoryAuthor.jsonld-voc_history_author.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
+      value: string
+      variant?: string | null
+    }
+    'VocHistoryAuthor.jsonld-voc_history_author.read_validation.validation.voc_history_author.create': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number
       value: string
       variant?: string | null
@@ -18685,7 +20142,7 @@ export interface components {
     'VocHistoryLocation-feature_collection.json.read': {
       readonly id: number | string
     }
-    'VocHistoryLocation-voc_history_location.create': {
+    'VocHistoryLocation-voc_history_location.create_validation.validation.voc_history_location.create': {
       value: string
       /**
        * Format: iri-reference
@@ -18788,6 +20245,30 @@ export interface components {
       value: string
       region?: components['schemas']['VocRegions.jsonld-history_plant.acl.read']
     })
+    'VocHistoryLocation.jsonld-validation.validation.voc_history_location.create': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      value: string
+      point: components['schemas']['Point.jsonld']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region?: string
+      n?: number
+      e?: number
+    }
+    'VocHistoryLocation.jsonld-validation.validation.voc_history_location.delete': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      value: string
+      point?: components['schemas']['Point.jsonld']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      region?: string
+      n?: number
+      e?: number
+    }
     'VocHistoryLocation.jsonld-voc_history_location.acl.read': {
       /** @description Access control metadata */
       readonly _acl?: {
@@ -19366,7 +20847,7 @@ export interface components {
       value: string
       code: string
     }
-    'VocZooTaxonomy-voc_zoo_taxonomy.create': {
+    'VocZooTaxonomy-voc_zoo_taxonomy.create_validation.validation.voc_zoo_taxonomy.create': {
       code: string
       value: string
       englishName: string
@@ -19374,7 +20855,7 @@ export interface components {
       class: string
       family?: string | null
     }
-    'VocZooTaxonomy-voc_zoo_taxonomy.update.jsonMergePatch': {
+    'VocZooTaxonomy-voc_zoo_taxonomy.update_validation.validation.voc_zoo_taxonomy.update.jsonMergePatch': {
       englishName?: string
       spanishName?: string
       class?: string
@@ -19397,6 +20878,33 @@ export interface components {
       family?: string | null
     })
     'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
+      code: string
+      value: string
+      englishName: string
+      spanishName: string
+      class: string
+      family?: string | null
+    }
+    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read_validation.validation.voc_zoo_taxonomy.create': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
+      code: string
+      value: string
+      englishName: string
+      spanishName: string
+      class: string
+      family?: string | null
+    }
+    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read_validation.validation.voc_zoo_taxonomy.delete': components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number
+      code: string
+      value: string
+      englishName: string
+      spanishName: string
+      class: string
+      family?: string | null
+    }
+    'VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read_validation.validation.voc_zoo_taxonomy.update': components['schemas']['HydraItemBaseSchema'] & {
       readonly id: number
       code: string
       value: string
@@ -19432,7 +20940,7 @@ export interface components {
       region?: string
     }
     'ZooBone-feature_collection.json.read': Record<string, never>
-    'ZooBone-zoo_bone.create': {
+    'ZooBone-zoo_bone.create_validation.validation.zoo_bone.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -19465,7 +20973,7 @@ export interface components {
       side?: string | null
       notes?: string | null
     }
-    'ZooBone-zoo_bone.create.jsonMergePatch': {
+    'ZooBone-zoo_bone.create_validation.validation.zoo_bone.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -19685,8 +21193,84 @@ export interface components {
       notes?: string | null
       readonly code?: string
     })
+    'ZooBone.jsonld-zoo_bone.acl.read_validation.validation.zoo_bone.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_bone.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    })
+    'ZooBone.jsonld-zoo_bone.acl.read_validation.validation.zoo_bone.delete': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_bone.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      part?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      endsPreserved?: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    })
     'ZooTooth-feature_collection.json.read': Record<string, never>
-    'ZooTooth-zoo_tooth.create': {
+    'ZooTooth-zoo_tooth.create_validation.validation.zoo_tooth.create': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -19710,7 +21294,7 @@ export interface components {
       side?: string | null
       notes?: string | null
     }
-    'ZooTooth-zoo_tooth.create.jsonMergePatch': {
+    'ZooTooth-zoo_tooth.create_validation.validation.zoo_tooth.create.jsonMergePatch': {
       /**
        * Format: iri-reference
        * @example https://example.com/
@@ -19819,6 +21403,64 @@ export interface components {
       readonly code?: string
     })
     'ZooTooth.jsonld-zoo_tooth.acl.read': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_tooth.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element?: string | null
+      connected?: boolean
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    })
+    'ZooTooth.jsonld-zoo_tooth.acl.read_validation.validation.zoo_tooth.create': {
+      /** @description Access control metadata */
+      readonly _acl?: {
+        canRead: boolean
+        canUpdate: boolean
+        canDelete: boolean
+      }
+    } & (components['schemas']['HydraItemBaseSchema'] & {
+      readonly id: number | string
+      stratigraphicUnit: components['schemas']['StratigraphicUnit.jsonld-zoo_tooth.acl.read']
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      taxonomy: string | null
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      element: string | null
+      connected?: boolean
+      /**
+       * Format: iri-reference
+       * @example https://example.com/
+       */
+      side?: string | null
+      notes?: string | null
+      readonly code?: string
+    })
+    'ZooTooth.jsonld-zoo_tooth.acl.read_validation.validation.zoo_tooth.delete': {
       /** @description Access control metadata */
       readonly _acl?: {
         canRead: boolean
@@ -22289,7 +23931,7 @@ export interface operations {
     /** @description The new Analysis resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Analysis-analysis.create']
+        'application/ld+json': components['schemas']['Analysis-analysis.create_validation.validation.analysis.create']
       }
     }
     responses: {
@@ -22299,7 +23941,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Analysis.jsonld-analysis.acl.read']
+          'application/ld+json': components['schemas']['Analysis.jsonld-analysis.acl.read_validation.validation.analysis.create']
         }
       }
       /** @description Invalid input */
@@ -22624,7 +24266,7 @@ export interface operations {
     /** @description The new AnalysisBotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisBotanyCharcoal-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisBotanyCharcoal-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -22634,7 +24276,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -22751,7 +24393,7 @@ export interface operations {
     /** @description The updated AnalysisBotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisBotanyCharcoal-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisBotanyCharcoal-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -22761,7 +24403,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisBotanyCharcoal.jsonld-analysis_join.acl.read_analysis.acl.read_botany_charcoal.acl.read_botany_charcoal_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -23245,7 +24887,7 @@ export interface operations {
     /** @description The new AnalysisBotanySeed resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisBotanySeed-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisBotanySeed-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -23255,7 +24897,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -23372,7 +25014,7 @@ export interface operations {
     /** @description The updated AnalysisBotanySeed resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisBotanySeed-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisBotanySeed-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -23382,7 +25024,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisBotanySeed.jsonld-analysis_join.acl.read_analysis.acl.read_botany_seed.acl.read_botany_seed_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -23875,7 +25517,7 @@ export interface operations {
     /** @description The new AnalysisContextBotany resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisContextBotany-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisContextBotany-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -23885,7 +25527,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -24002,7 +25644,7 @@ export interface operations {
     /** @description The updated AnalysisContextBotany resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisContextBotany-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisContextBotany-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -24012,7 +25654,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisContextBotany.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_botany_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -24815,7 +26457,7 @@ export interface operations {
     /** @description The new AnalysisContextZoo resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisContextZoo-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisContextZoo-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -24825,7 +26467,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -24942,7 +26584,7 @@ export interface operations {
     /** @description The updated AnalysisContextZoo resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisContextZoo-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisContextZoo-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -24952,7 +26594,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisContextZoo.jsonld-analysis_join.acl.read_analysis.acl.read_context.acl.read_context_zoo_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -25509,7 +27151,7 @@ export interface operations {
     /** @description The new AnalysisIndividual resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisIndividual-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisIndividual-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -25519,7 +27161,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -25636,7 +27278,7 @@ export interface operations {
     /** @description The updated AnalysisIndividual resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisIndividual-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisIndividual-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -25646,7 +27288,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read']
+          'application/ld+json': components['schemas']['AnalysisIndividual.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_individual.acl.read_individual.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -26125,7 +27767,7 @@ export interface operations {
     /** @description The new AnalysisPottery resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisPottery-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisPottery-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -26135,7 +27777,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -26252,7 +27894,7 @@ export interface operations {
     /** @description The updated AnalysisPottery resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisPottery-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisPottery-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -26262,7 +27904,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read']
+          'application/ld+json': components['schemas']['AnalysisPottery.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_pottery.acl.read_pottery.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -26786,7 +28428,7 @@ export interface operations {
     /** @description The new AnalysisSample resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSample-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSample-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -26796,7 +28438,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -26913,7 +28555,7 @@ export interface operations {
     /** @description The updated AnalysisSample resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSample-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSample-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -26923,7 +28565,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSample.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sample.acl.read_sample.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -27439,7 +29081,7 @@ export interface operations {
     /** @description The new AnalysisSampleBotany resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSampleBotany-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSampleBotany-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -27449,7 +29091,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -27566,7 +29208,7 @@ export interface operations {
     /** @description The updated AnalysisSampleBotany resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSampleBotany-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSampleBotany-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -27576,7 +29218,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sample_botany_analysis.acl.read_sample.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -28401,7 +30043,7 @@ export interface operations {
     /** @description The new AnalysisSampleMicrostratigraphy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -28411,7 +30053,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -28528,7 +30170,7 @@ export interface operations {
     /** @description The updated AnalysisSampleMicrostratigraphy resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSampleMicrostratigraphy-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -28538,7 +30180,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSampleMicrostratigraphy.jsonld-analysis_join.acl.read_analysis.acl.read_sample.acl.read_sample_microstratigraphy_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -29212,7 +30854,7 @@ export interface operations {
     /** @description The new AnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -29222,7 +30864,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -29339,7 +30981,7 @@ export interface operations {
     /** @description The updated AnalysisSedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepth-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepth-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -29349,7 +30991,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepth.jsonld-analysis_join.acl.read_analysis.acl.read_analysis_sediment_core_depth.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -29883,7 +31525,7 @@ export interface operations {
     /** @description The new AnalysisSedimentCoreDepthBotany resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -29893,7 +31535,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -30010,7 +31652,7 @@ export interface operations {
     /** @description The updated AnalysisSedimentCoreDepthBotany resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepthBotany-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSedimentCoreDepthBotany-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -30020,7 +31662,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSedimentCoreDepthBotany.jsonld-analysis_join.acl.read_analysis.acl.read_sediment_core_depth_botany_analysis.acl.read_sediment_core_depth.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -30791,7 +32433,7 @@ export interface operations {
     /** @description The new AnalysisSiteAnthropology resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -30801,7 +32443,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -30918,7 +32560,7 @@ export interface operations {
     /** @description The updated AnalysisSiteAnthropology resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisSiteAnthropology-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -30928,7 +32570,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read']
+          'application/ld+json': components['schemas']['AnalysisSiteAnthropology.jsonld-analysis_join.acl.read_analysis.acl.read_archaeological_site.acl.read_site_anthropology.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -31422,7 +33064,7 @@ export interface operations {
     /** @description The new AnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisZooBone-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisZooBone-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -31432,7 +33074,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -31549,7 +33191,7 @@ export interface operations {
     /** @description The updated AnalysisZooBone resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisZooBone-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisZooBone-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -31559,7 +33201,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisZooBone.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_bone_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -32075,7 +33717,7 @@ export interface operations {
     /** @description The new AnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['AnalysisZooTooth-analysis_join.create']
+        'application/ld+json': components['schemas']['AnalysisZooTooth-analysis_join.create_validation.validation.analysis_join.create']
       }
     }
     responses: {
@@ -32085,7 +33727,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read_validation.validation.analysis_join.create']
         }
       }
       /** @description Invalid input */
@@ -32202,7 +33844,7 @@ export interface operations {
     /** @description The updated AnalysisZooTooth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['AnalysisZooTooth-analysis_join.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['AnalysisZooTooth-analysis_join.update_validation.validation.analysis_join.update.jsonMergePatch']
       }
     }
     responses: {
@@ -32212,7 +33854,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read']
+          'application/ld+json': components['schemas']['AnalysisZooTooth.jsonld-analysis_join.acl.read_analysis.acl.read_zoo_bone.acl.read_zoo_tooth_analysis.acl.read_validation.validation.analysis_join.update']
         }
       }
       /** @description Invalid input */
@@ -32652,7 +34294,7 @@ export interface operations {
     /** @description The new ArchaeologicalSite resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ArchaeologicalSite-archaeological_site.create']
+        'application/ld+json': components['schemas']['ArchaeologicalSite-archaeological_site.create_validation.validation.archaeological_site.create']
       }
     }
     responses: {
@@ -32662,7 +34304,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-archaeological_site.acl.read']
+          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-archaeological_site.acl.read_validation.validation.archaeological_site.create']
         }
       }
       /** @description Invalid input */
@@ -32779,7 +34421,7 @@ export interface operations {
     /** @description The updated ArchaeologicalSite resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['ArchaeologicalSite-archaeological_site.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['ArchaeologicalSite-archaeological_site.create_validation.validation.archaeological_site.create.jsonMergePatch']
       }
     }
     responses: {
@@ -32789,7 +34431,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-archaeological_site.acl.read']
+          'application/ld+json': components['schemas']['ArchaeologicalSite.jsonld-archaeological_site.acl.read_validation.validation.archaeological_site.create']
         }
       }
       /** @description Invalid input */
@@ -33393,7 +35035,7 @@ export interface operations {
     /** @description The new BotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['BotanyCharcoal-botany_charcoal.create']
+        'application/ld+json': components['schemas']['BotanyCharcoal-botany_charcoal.create_validation.validation.botany_charcoal.create']
       }
     }
     responses: {
@@ -33403,7 +35045,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read']
+          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read_validation.validation.botany_charcoal.create']
         }
       }
       /** @description Invalid input */
@@ -33520,7 +35162,7 @@ export interface operations {
     /** @description The updated BotanyCharcoal resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['BotanyCharcoal-botany_charcoal.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['BotanyCharcoal-botany_charcoal.create_validation.validation.botany_charcoal.create.jsonMergePatch']
       }
     }
     responses: {
@@ -33530,7 +35172,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read']
+          'application/ld+json': components['schemas']['BotanyCharcoal.jsonld-botany_charcoal.acl.read_validation.validation.botany_charcoal.create']
         }
       }
       /** @description Invalid input */
@@ -34416,7 +36058,7 @@ export interface operations {
     /** @description The new BotanySeed resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['BotanySeed-botany_seed.create']
+        'application/ld+json': components['schemas']['BotanySeed-botany_seed.create_validation.validation.botany_seed.create']
       }
     }
     responses: {
@@ -34426,7 +36068,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read']
+          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read_validation.validation.botany_seed.create']
         }
       }
       /** @description Invalid input */
@@ -34543,7 +36185,7 @@ export interface operations {
     /** @description The updated BotanySeed resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['BotanySeed-botany_seed.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['BotanySeed-botany_seed.create_validation.validation.botany_seed.create.jsonMergePatch']
       }
     }
     responses: {
@@ -34553,7 +36195,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read']
+          'application/ld+json': components['schemas']['BotanySeed.jsonld-botany_seed.acl.read_validation.validation.botany_seed.create']
         }
       }
       /** @description Invalid input */
@@ -35356,7 +36998,7 @@ export interface operations {
     /** @description The new Context resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Context-context.create']
+        'application/ld+json': components['schemas']['Context-context.create_validation.validation.context.create']
       }
     }
     responses: {
@@ -35366,7 +37008,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read']
+          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read_validation.validation.context.create']
         }
       }
       /** @description Invalid input */
@@ -35483,7 +37125,7 @@ export interface operations {
     /** @description The updated Context resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Context-context.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['Context-context.update_validation.validation.context.update.jsonMergePatch']
       }
     }
     responses: {
@@ -35493,7 +37135,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read']
+          'application/ld+json': components['schemas']['Context.jsonld-context.acl.read_validation.validation.context.update']
         }
       }
       /** @description Invalid input */
@@ -35672,7 +37314,7 @@ export interface operations {
     /** @description The new ContextStratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ContextStratigraphicUnit']
+        'application/ld+json': components['schemas']['ContextStratigraphicUnit-validation.validation.context_stratigraphic_unit.create']
       }
     }
     responses: {
@@ -35682,7 +37324,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read']
+          'application/ld+json': components['schemas']['ContextStratigraphicUnit.jsonld-context_stratigraphic_unit.acl.read_validation.validation.context_stratigraphic_unit.create']
         }
       }
       /** @description Invalid input */
@@ -36139,7 +37781,7 @@ export interface operations {
     /** @description The new HistoryAnimal resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['HistoryAnimal-history_animal.create']
+        'application/ld+json': components['schemas']['HistoryAnimal-history_animal.create_validation.validation.history_animal.create']
       }
     }
     responses: {
@@ -36149,7 +37791,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read']
+          'application/ld+json': components['schemas']['HistoryAnimal.jsonld-history_animal.acl.read_validation.validation.history_animal.create']
         }
       }
       /** @description Invalid input */
@@ -36872,8 +38514,8 @@ export interface operations {
     /** @description The new HistoryPlant resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['HistoryPlant-history_plant.create']
-        'text/csv': components['schemas']['HistoryPlant-history_plant.create']
+        'application/ld+json': components['schemas']['HistoryPlant-history_plant.create_validation.validation.history_plant.create']
+        'text/csv': components['schemas']['HistoryPlant-history_plant.create_validation.validation.history_plant.create']
       }
     }
     responses: {
@@ -36883,8 +38525,8 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HistoryPlant.jsonld-history_plant.acl.read']
-          'text/csv': components['schemas']['HistoryPlant.csv-history_plant.acl.read']
+          'application/ld+json': components['schemas']['HistoryPlant.jsonld-history_plant.acl.read_validation.validation.history_plant.create']
+          'text/csv': components['schemas']['HistoryPlant.csv-history_plant.acl.read_validation.validation.history_plant.create']
         }
       }
       /** @description Invalid input */
@@ -37387,7 +39029,7 @@ export interface operations {
     /** @description The new HistoryWrittenSource resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['HistoryWrittenSource-history_written_source.create']
+        'application/ld+json': components['schemas']['HistoryWrittenSource-history_written_source.create_validation.validation.history_written_source.create']
       }
     }
     responses: {
@@ -37397,7 +39039,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HistoryWrittenSource.jsonld-history_written_source.acl.read']
+          'application/ld+json': components['schemas']['HistoryWrittenSource.jsonld-history_written_source.acl.read_validation.validation.history_written_source.create']
         }
       }
       /** @description Invalid input */
@@ -37736,7 +39378,7 @@ export interface operations {
     /** @description The new HistoryWrittenSourceCitedWork resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create']
+        'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork-history_written_sources_cited_works.create_validation.validation.history_written_sources_cited_works.create']
       }
     }
     responses: {
@@ -37746,7 +39388,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read']
+          'application/ld+json': components['schemas']['HistoryWrittenSourceCitedWork.jsonld-history_written_sources_cited_works.acl.read_validation.validation.history_written_sources_cited_works.create']
         }
       }
       /** @description Invalid input */
@@ -38205,7 +39847,7 @@ export interface operations {
     /** @description The new Individual resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Individual-individual.create']
+        'application/ld+json': components['schemas']['Individual-individual.create_validation.validation.individual.create']
       }
     }
     responses: {
@@ -38215,7 +39857,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Individual.jsonld-individual.acl.read']
+          'application/ld+json': components['schemas']['Individual.jsonld-individual.acl.read_validation.validation.individual.create']
         }
       }
       /** @description Invalid input */
@@ -39861,7 +41503,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
+          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read_validation.validation.media_object.create']
         }
       }
       /** @description Invalid input */
@@ -39978,7 +41620,7 @@ export interface operations {
     /** @description The updated MediaObject resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['MediaObject-media_object.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['MediaObject-media_object.update_validation.validation.media_object.update.jsonMergePatch']
       }
     }
     responses: {
@@ -39988,7 +41630,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read']
+          'application/ld+json': components['schemas']['MediaObject.jsonld-media_object.acl.read_validation.validation.media_object.update']
         }
       }
       /** @description Invalid input */
@@ -41712,7 +43354,7 @@ export interface operations {
     /** @description The new MicrostratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.create']
+        'application/ld+json': components['schemas']['MicrostratigraphicUnit-microstratigraphic_unit.create_validation.validation.microstratigraphic_unit.create']
       }
     }
     responses: {
@@ -41722,7 +43364,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read']
+          'application/ld+json': components['schemas']['MicrostratigraphicUnit.jsonld-microstratigraphic_unit.acl.read_validation.validation.microstratigraphic_unit.create']
         }
       }
       /** @description Invalid input */
@@ -43124,7 +44766,7 @@ export interface operations {
     /** @description The new PaleoclimateSamplingSite resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['PaleoclimateSamplingSite-paleoclimate_sampling_sites.create']
+        'application/ld+json': components['schemas']['PaleoclimateSamplingSite-paleoclimate_sampling_sites.create_validation.validation.paleoclimate_sampling_sites.create']
       }
     }
     responses: {
@@ -43134,7 +44776,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read']
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read_validation.validation.paleoclimate_sampling_sites.create']
         }
       }
       /** @description Invalid input */
@@ -43251,7 +44893,7 @@ export interface operations {
     /** @description The updated PaleoclimateSamplingSite resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['PaleoclimateSamplingSite-paleoclimate_sampling_sites.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['PaleoclimateSamplingSite-paleoclimate_sampling_sites.create_validation.validation.paleoclimate_sampling_sites.create.jsonMergePatch']
       }
     }
     responses: {
@@ -43261,7 +44903,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read']
+          'application/ld+json': components['schemas']['PaleoclimateSamplingSite.jsonld-paleoclimate_sampling_sites.acl.read_validation.validation.paleoclimate_sampling_sites.create']
         }
       }
       /** @description Invalid input */
@@ -43941,7 +45583,7 @@ export interface operations {
     /** @description The new Pottery resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Pottery-pottery.create']
+        'application/ld+json': components['schemas']['Pottery-pottery.create_validation.validation.pottery.create']
       }
     }
     responses: {
@@ -43951,7 +45593,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Pottery.jsonld-pottery.acl.read']
+          'application/ld+json': components['schemas']['Pottery.jsonld-pottery.acl.read_validation.validation.pottery.create']
         }
       }
       /** @description Invalid input */
@@ -45148,7 +46790,7 @@ export interface operations {
     /** @description The new Sample resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['Sample-sample.create']
+        'application/ld+json': components['schemas']['Sample-sample.create_validation.validation.sample.create']
       }
     }
     responses: {
@@ -45158,7 +46800,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read']
+          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read_validation.validation.sample.create']
         }
       }
       /** @description Invalid input */
@@ -45275,7 +46917,7 @@ export interface operations {
     /** @description The updated Sample resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['Sample-sample.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['Sample-sample.update_validation.validation.sample.update.jsonMergePatch']
       }
     }
     responses: {
@@ -45285,7 +46927,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read']
+          'application/ld+json': components['schemas']['Sample.jsonld-sample.acl.read_validation.validation.sample.update']
         }
       }
       /** @description Invalid input */
@@ -45480,7 +47122,7 @@ export interface operations {
     /** @description The new SampleStratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SampleStratigraphicUnit']
+        'application/ld+json': components['schemas']['SampleStratigraphicUnit-validation.validation.sample_stratigraphic_unit.create']
       }
     }
     responses: {
@@ -45490,7 +47132,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read']
+          'application/ld+json': components['schemas']['SampleStratigraphicUnit.jsonld-sample_stratigraphic_unit.acl.read_sample.acl.read_sus.acl.read_validation.validation.sample_stratigraphic_unit.create']
         }
       }
       /** @description Invalid input */
@@ -45939,7 +47581,7 @@ export interface operations {
     /** @description The new SamplingSite resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SamplingSite-sampling_site.create']
+        'application/ld+json': components['schemas']['SamplingSite-sampling_site.create_validation.validation.sampling_site.create']
       }
     }
     responses: {
@@ -45949,7 +47591,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read']
+          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read_validation.validation.sampling_site.create']
         }
       }
       /** @description Invalid input */
@@ -46066,7 +47708,7 @@ export interface operations {
     /** @description The updated SamplingSite resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['SamplingSite-sampling_site.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['SamplingSite-sampling_site.create_validation.validation.sampling_site.create.jsonMergePatch']
       }
     }
     responses: {
@@ -46076,7 +47718,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read']
+          'application/ld+json': components['schemas']['SamplingSite.jsonld-sampling_site.acl.read_validation.validation.sampling_site.create']
         }
       }
       /** @description Invalid input */
@@ -47032,7 +48674,7 @@ export interface operations {
     /** @description The new SedimentCore resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SedimentCore']
+        'application/ld+json': components['schemas']['SedimentCore-validation.validation.sediment_core.create']
       }
     }
     responses: {
@@ -47042,7 +48684,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SedimentCore.jsonld-sediment_core.acl.read']
+          'application/ld+json': components['schemas']['SedimentCore.jsonld-sediment_core.acl.read_validation.validation.sediment_core.create']
         }
       }
       /** @description Invalid input */
@@ -47719,7 +49361,7 @@ export interface operations {
     /** @description The new SedimentCoreDepth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SedimentCoreDepth']
+        'application/ld+json': components['schemas']['SedimentCoreDepth-validation.validation.sediment_core_depth.create']
       }
     }
     responses: {
@@ -47729,7 +49371,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read']
+          'application/ld+json': components['schemas']['SedimentCoreDepth.jsonld-sediment_core_depth.acl.read_sediment_core.acl.read_sampling_su.read_validation.validation.sediment_core_depth.create']
         }
       }
       /** @description Invalid input */
@@ -48699,7 +50341,7 @@ export interface operations {
     /** @description The new SiteUserPrivilege resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['SiteUserPrivilege-site_user_privilege.create']
+        'application/ld+json': components['schemas']['SiteUserPrivilege-site_user_privilege.create_validation.validation.site_user_privilege.create']
       }
     }
     responses: {
@@ -48709,7 +50351,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read_validation.validation.site_user_privilege.create']
         }
       }
       /** @description Invalid input */
@@ -48848,7 +50490,7 @@ export interface operations {
     /** @description The updated SiteUserPrivilege resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['SiteUserPrivilege-site_user_privilege.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['SiteUserPrivilege-site_user_privilege.update_validation.validation.site_user_privilege.update.jsonMergePatch']
       }
     }
     responses: {
@@ -48858,7 +50500,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read']
+          'application/ld+json': components['schemas']['SiteUserPrivilege.jsonld-site_user_privilege.acl.read_validation.validation.site_user_privilege.update']
         }
       }
       /** @description Invalid input */
@@ -49294,7 +50936,7 @@ export interface operations {
     /** @description The new StratigraphicUnit resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['StratigraphicUnit-su.create']
+        'application/ld+json': components['schemas']['StratigraphicUnit-su.create_validation.validation.su.create']
       }
     }
     responses: {
@@ -49304,7 +50946,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-sus.acl.read']
+          'application/ld+json': components['schemas']['StratigraphicUnit.jsonld-sus.acl.read_validation.validation.su.create']
         }
       }
       /** @description Invalid input */
@@ -49821,7 +51463,7 @@ export interface operations {
     /** @description The new StratigraphicUnitRelationship resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['StratigraphicUnitRelationship-su_relationship.create']
+        'application/ld+json': components['schemas']['StratigraphicUnitRelationship-su_relationship.create_validation.validation.su_relationship.create']
       }
     }
     responses: {
@@ -49831,7 +51473,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read']
+          'application/ld+json': components['schemas']['StratigraphicUnitRelationship.jsonld-stratigraphic_unit_relationship.read_validation.validation.su_relationship.create']
         }
       }
       /** @description Invalid input */
@@ -51469,7 +53111,7 @@ export interface operations {
     /** @description The new User resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['User-user.create']
+        'application/ld+json': components['schemas']['User-user.create_validation.validation.user.create']
       }
     }
     responses: {
@@ -51479,7 +53121,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['User.jsonld-user.acl.read']
+          'application/ld+json': components['schemas']['User.jsonld-user.acl.read_validation.validation.user.create']
         }
       }
       /** @description Invalid input */
@@ -51527,7 +53169,7 @@ export interface operations {
     /** @description The new User resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['User.UserPasswordChangeInputDto']
+        'application/ld+json': components['schemas']['User.UserPasswordChangeInputDto-validation.validation.user.change-password']
       }
     }
     responses: {
@@ -51674,7 +53316,7 @@ export interface operations {
     /** @description The updated User resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['User-user.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['User-user.update_validation.validation.user.update.jsonMergePatch']
       }
     }
     responses: {
@@ -51684,7 +53326,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['User.jsonld-user.acl.read']
+          'application/ld+json': components['schemas']['User.jsonld-user.acl.read_validation.validation.user.update']
         }
       }
       /** @description Invalid input */
@@ -51746,7 +53388,7 @@ export interface operations {
     /** @description The updated User resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['User-user.change-password.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['User-user.change-password_validation.validation.user.change-password.jsonMergePatch']
       }
     }
     responses: {
@@ -52144,7 +53786,7 @@ export interface operations {
     /** @description The new VocBotanyTaxonomy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.create']
+        'application/ld+json': components['schemas']['VocBotanyTaxonomy-voc_botany_taxonomy.create_validation.validation.voc_botany_taxonomy.create']
       }
     }
     responses: {
@@ -52154,7 +53796,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read']
+          'application/ld+json': components['schemas']['VocBotanyTaxonomy.jsonld-voc_botany_taxonomy.read_validation.validation.voc_botany_taxonomy.create']
         }
       }
       /** @description Invalid input */
@@ -52545,7 +54187,7 @@ export interface operations {
     /** @description The new VocHistoryAuthor resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['VocHistoryAuthor-voc_history_author.create']
+        'application/ld+json': components['schemas']['VocHistoryAuthor-voc_history_author.create_validation.validation.voc_history_author.create']
       }
     }
     responses: {
@@ -52555,7 +54197,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.read']
+          'application/ld+json': components['schemas']['VocHistoryAuthor.jsonld-voc_history_author.read_validation.validation.voc_history_author.create']
         }
       }
       /** @description Invalid input */
@@ -53381,7 +55023,7 @@ export interface operations {
     /** @description The new VocHistoryLocation resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['VocHistoryLocation-voc_history_location.create']
+        'application/ld+json': components['schemas']['VocHistoryLocation-voc_history_location.create_validation.validation.voc_history_location.create']
       }
     }
     responses: {
@@ -53391,7 +55033,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocHistoryLocation.jsonld']
+          'application/ld+json': components['schemas']['VocHistoryLocation.jsonld-validation.validation.voc_history_location.create']
         }
       }
       /** @description Invalid input */
@@ -54539,7 +56181,7 @@ export interface operations {
     /** @description The new VocZooTaxonomy resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['VocZooTaxonomy-voc_zoo_taxonomy.create']
+        'application/ld+json': components['schemas']['VocZooTaxonomy-voc_zoo_taxonomy.create_validation.validation.voc_zoo_taxonomy.create']
       }
     }
     responses: {
@@ -54549,7 +56191,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read']
+          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read_validation.validation.voc_zoo_taxonomy.create']
         }
       }
       /** @description Invalid input */
@@ -54666,7 +56308,7 @@ export interface operations {
     /** @description The updated VocZooTaxonomy resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['VocZooTaxonomy-voc_zoo_taxonomy.update.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['VocZooTaxonomy-voc_zoo_taxonomy.update_validation.validation.voc_zoo_taxonomy.update.jsonMergePatch']
       }
     }
     responses: {
@@ -54676,7 +56318,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read']
+          'application/ld+json': components['schemas']['VocZooTaxonomy.jsonld-voc_zoo_taxonomy.read_validation.validation.voc_zoo_taxonomy.update']
         }
       }
       /** @description Invalid input */
@@ -55364,7 +57006,7 @@ export interface operations {
     /** @description The new ZooBone resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ZooBone-zoo_bone.create']
+        'application/ld+json': components['schemas']['ZooBone-zoo_bone.create_validation.validation.zoo_bone.create']
       }
     }
     responses: {
@@ -55374,7 +57016,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read']
+          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read_validation.validation.zoo_bone.create']
         }
       }
       /** @description Invalid input */
@@ -55491,7 +57133,7 @@ export interface operations {
     /** @description The updated ZooBone resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['ZooBone-zoo_bone.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['ZooBone-zoo_bone.create_validation.validation.zoo_bone.create.jsonMergePatch']
       }
     }
     responses: {
@@ -55501,7 +57143,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read']
+          'application/ld+json': components['schemas']['ZooBone.jsonld-zoo_bone.acl.read_validation.validation.zoo_bone.create']
         }
       }
       /** @description Invalid input */
@@ -56422,7 +58064,7 @@ export interface operations {
     /** @description The new ZooTooth resource */
     requestBody: {
       content: {
-        'application/ld+json': components['schemas']['ZooTooth-zoo_tooth.create']
+        'application/ld+json': components['schemas']['ZooTooth-zoo_tooth.create_validation.validation.zoo_tooth.create']
       }
     }
     responses: {
@@ -56432,7 +58074,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read']
+          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read_validation.validation.zoo_tooth.create']
         }
       }
       /** @description Invalid input */
@@ -56549,7 +58191,7 @@ export interface operations {
     /** @description The updated ZooTooth resource */
     requestBody: {
       content: {
-        'application/merge-patch+json': components['schemas']['ZooTooth-zoo_tooth.create.jsonMergePatch']
+        'application/merge-patch+json': components['schemas']['ZooTooth-zoo_tooth.create_validation.validation.zoo_tooth.create.jsonMergePatch']
       }
     }
     responses: {
@@ -56559,7 +58201,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read']
+          'application/ld+json': components['schemas']['ZooTooth.jsonld-zoo_tooth.acl.read_validation.validation.zoo_tooth.create']
         }
       }
       /** @description Invalid input */

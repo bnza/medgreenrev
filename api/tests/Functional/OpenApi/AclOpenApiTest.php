@@ -21,7 +21,7 @@ class AclOpenApiTest extends ApiTestCase
         ]);
 
         $this->assertResponseIsSuccessful();
-        $this->assertResponseHeaderSame('content-type', 'application/vnd.openapi+json; charset=utf-8');
+        $this->assertResponseHeaderSame('content-type', 'application/vnd.openapi+json');
 
         $openApiSpec = $response->toArray();
         $this->assertArrayHasKey('components', $openApiSpec);

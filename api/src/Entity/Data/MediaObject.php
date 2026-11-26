@@ -171,6 +171,7 @@ class MediaObject
         'validation:media_object:create',
         'validation:media_object:update',
     ])]
+    #[ApiProperty(required: true)]
     private Type $type;
 
     #[Vich\UploadableField(
