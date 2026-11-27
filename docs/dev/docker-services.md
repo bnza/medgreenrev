@@ -28,7 +28,7 @@ The application is orchestrated via Docker Compose. The main configuration is in
 
 ### nginx
 
-- **Image:** `nginx:1.25-alpine`
+- **Image:** `nginx:1.30-alpine`
 - **Purpose:** Reverse proxy serving the API, static client app (`/app/`), media files, and proxying GeoServer.
 - **Ports:** `${NGINX_PORT:-8000}:80`
 - **Volumes:**

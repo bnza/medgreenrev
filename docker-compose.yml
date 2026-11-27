@@ -124,7 +124,7 @@ services:
       - NUXT_PUBLIC_API_BASE_URL=https://${NGINX_HOST}:${NGINX_PORT_SSL:-443}
       - NUXT_PUBLIC_CLIENT_MAX_BODY_SIZE=${CLIENT_BODY_SIZE:-10M}
   nginx:
-    image: nginx:1.29-alpine
+    image: nginx:1.30-alpine
     depends_on:
       php:
         condition: service_healthy
