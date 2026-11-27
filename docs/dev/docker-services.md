@@ -47,11 +47,11 @@ The application is orchestrated via Docker Compose. The main configuration is in
 
 ### geoserver
 
-- **Image:** Custom build from `docker/geoserver/Dockerfile`
+- **Image:** Custom build from `docker/geoserver/Dockerfile` (GeoServer 3.0.x series on Tomcat 11 / Java 17)
 - **Purpose:** Geospatial data server with PostGIS integration.
 - **Volumes:** `./docker/geoserver/data:/opt/geoserver_data`
-- **Environment:** PostgreSQL JNDI connection, admin credentials, GeoServer extensions.
-- **Health check:** HTTP request to GeoServer logo endpoint.
+- **Environment:** PostgreSQL JNDI connection, admin credentials, GeoServer extensions (`wps,kml`).
+- **Health check:** Script (`/opt/healthcheck.sh`) querying base endpoint and WPS `GetCapabilities`.
 
 ### node
 

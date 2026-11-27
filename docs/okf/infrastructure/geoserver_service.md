@@ -14,9 +14,11 @@ The `geoserver` container publishes spatial datasets and archaeological cartogra
 
 ## Runtime & Configuration Constraints
 
+* **GeoServer Version:** 3.0.x series (`3.0.2`), running on Jakarta EE (Tomcat 11 / Servlet 6.1) on Java 17.
+* **Extensions:** Configured with `STABLE_EXTENSIONS=wps,kml` (`wps` for spatial bounds calculation and `kml` for Google Earth KML vector export format, which was moved from core to an extension in GeoServer 3.0).
 * **JNDI PostGIS Store:** Configured with `POSTGRES_JNDI_ENABLED=true` pointing to the `database` service.
 * **Data Volume:** Persists GeoServer workspace and layer configuration in `docker/geoserver/data/`.
-* **Healthcheck:** Periodically queries the GeoServer HTTP healthcheck endpoint.
+* **Healthcheck:** Periodically queries GeoServer base endpoint and WPS capabilities via `/opt/healthcheck.sh`.
 * **Proxy Ingress:** Proxied through Nginx to ensure uniform domain access and SSL termination.
 
 ## Key Relationships

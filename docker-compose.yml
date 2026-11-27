@@ -78,7 +78,7 @@ services:
     build:
       context: ./docker/geoserver
       args:
-        GEOSERVER_VERSION: ${GEOSERVER_VERSION:-2.28.3}
+        GEOSERVER_VERSION: ${GEOSERVER_VERSION:-3.0.2}
     volumes:
       - ./docker/geoserver/data:/opt/geoserver_data
     depends_on:
@@ -100,7 +100,7 @@ services:
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER:-admin}
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD:-geoserver}
       - INSTALL_EXTENSIONS=true
-      - STABLE_EXTENSIONS=wps
+      - STABLE_EXTENSIONS=wps,kml
       - SKIP_DEMO_DATA=true
     healthcheck:
       test: [ "CMD", "/opt/healthcheck.sh" ]

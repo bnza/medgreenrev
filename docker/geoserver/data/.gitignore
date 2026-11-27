@@ -3,6 +3,7 @@ logs/*
 !logs/*.xml
 temp/
 tmp/
+legendsamples/
 
 # Ignore all subdirectories in GWC (this catches the tile folders)
 gwc/tmp/
