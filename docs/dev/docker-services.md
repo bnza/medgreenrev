@@ -41,9 +41,14 @@ The application is orchestrated via Docker Compose. The main configuration is in
 
 ### redis
 
-- **Image:** Custom build from `docker/redis/Dockerfile`
+- **Image:** Custom build from `docker/redis/Dockerfile`, based on `redis:8.2-alpine` (upgraded from `redis:7.4-alpine`).
 - **Purpose:** Caching and message broker.
 - **Health check:** `redis-cli ping` via Unix socket.
+- **Upgrade notes (7.4 → 8.2):**
+  - The `7.4 → 8.2` upgrade is a single, officially supported hop per Redis's upgrade matrix (no intermediate hop through `8.0` required).
+  - No persistence/RDB migration concerns for this deployment: `docker/redis/redis.conf` defines no `save`/AOF directives, so the container always starts with an empty, ephemeral dataset (cache + transient queue data only).
+  - No configuration changes were required: `port 0` + `unixsocket`/`unixsocketperm` directives are unaffected by the version bump, and no ACL rules are defined, so the Redis 8.x ACL category-widening change does not apply.
+  - **Licensing note:** as of Redis `8.0+`, Redis Open Source is available under a tri-license choice (RSALv2, SSPLv1, or AGPLv3), whereas `7.4` only offered RSALv2/SSPLv1. No action is required unless the project has specific licensing constraints.
 
 ### geoserver
 

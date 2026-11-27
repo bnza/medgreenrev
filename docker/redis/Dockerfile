@@ -1,4 +1,4 @@
-FROM redis:7.4-alpine
+FROM redis:8.2-alpine
 
 RUN mkdir -p /tmp/socket/redis
 RUN chmod 777 /tmp/socket/redis
